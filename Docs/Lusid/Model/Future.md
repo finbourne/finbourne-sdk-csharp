@@ -1,0 +1,67 @@
+# Finbourne.Sdk.Lusid.Model.Future
+
+LUSID representation of a Future.  Including, but not limited to, Equity Futures, Bond Futures, Index Futures, Currency Futures, and Interest Rate Futures.
+> **Inherits from:** [LusidInstrument](LusidInstrument.md)
+
+## Properties
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| **StartDate** | **DateTimeOffset** | Required | The start date of the instrument. This is normally synonymous with the trade-date. |
+| **MaturityDate** | **DateTimeOffset** | Required | The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount.  For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as  Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it. |
+| **Identifiers** | **Dictionary&lt;string, string&gt;** | Required | External market codes and identifiers for the bond, e.g. ISIN. |
+| **ContractDetails** | [FuturesContractDetails](FuturesContractDetails.md) | Required | *No description available.* |
+| **Contracts** | **decimal** | Optional | The number of contracts held. This is optional and will default to 1 if not set.  Instrument events will only work when this field is 1.  We recommend not using this field and instead relying on the number of holdings to   represent the number of futures contracts. Default: `1D` |
+| **MarkToMarketConventions** | [MarkToMarketConventions](MarkToMarketConventions.md) | Optional | *No description available.* |
+| **RefSpotPrice** | **decimal** | Optional | The reference spot price for the future at which the contract was entered into. |
+| **Underlying** | [LusidInstrument](LusidInstrument.md) | Optional | *No description available.* |
+| **CalculationType** | **string** | Optional | Calculation type for some Future instruments which have non-standard methodology.  Optional, if not set defaults as follows:  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;IR\&quot; or \&quot;BB\&quot; set to ASX_BankBills  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;YT\&quot; set to ASX_3Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;VT\&quot; set to ASX_5Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;XT\&quot; set to ASX_10Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;LT\&quot; set to ASX_20Year  - otherwise set to Standard                Specific calculation types for bond and interest rate futures are:  - [Standard] The default calculation type, which does not fit into any of the categories below.  - [ASX_BankBills] Used for AUD and NZD futures “IR” and “BB” on ASX. 90D Bank Bills.  - [ASX_3Year] Used for “YT” on ASX. 3YR semi-annual bond (6 coupons) @ 6%.  - [ASX_5Year] Used for “VT” on ASX. 5yr semi-annual bond (10 coupons) @ 2%.  - [ASX_10Year] Used for “XT” on ASX. 10yr semi-annual bond (20 coupons) @ 6%.  - [ASX_20Year] Used for “LT” on ASX. 20yr semi-annual bond (40 coupons) @ 4%.  - [IMM_1Month] Used for 1 month interest rate futures where the price is expressed as 100 minus the annualised interest rate.  - [IMM_3Month] Used for 3 month interest rate futures where the price is expressed as 100 minus the annualised interest rate.  - [B3_DI1] Used for “DI1” on B3. Average of 1D interbank deposit rates.    - For futures with this calculation type, quote values are expected to be specified as a percentage.      For example, a quoted rate of 13.205% should be specified as a quote of 13.205 with a face value of 100.                Supported string (enumeration) values are: [Standard, ASX_BankBills, ASX_3Year, ASX_5Year, ASX_10Year, ASX_20Year, B3_DI1, IMM_1Month, IMM_3Month]. |
+| **TradingConventions** | [TradingConventions](TradingConventions.md) | Optional | *No description available.* |
+| **TimeZoneConventions** | [TimeZoneConventions](TimeZoneConventions.md) | Optional | *No description available.* |
+| **InstrumentType** | **string** | Required | The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo Default: `InstrumentTypeEnum.Future` |
+
+
+## Usage
+
+### Creating an instance
+
+```csharp
+using Finbourne.Sdk.Services.Lusid.Model;
+
+var instance = new Future(
+    startDate: DateTimeOffset.Now,  // required — The start date of the instrument. This is normally synonymous with the trade-date.
+    maturityDate: DateTimeOffset.Now,  // required — The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount.  For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as  Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it.
+    identifiers: ,  // required — External market codes and identifiers for the bond, e.g. ISIN.
+    contractDetails: new FuturesContractDetails(...),  // required
+    contracts: 0.0d,  // optional — The number of contracts held. This is optional and will default to 1 if not set.  Instrument events will only work when this field is 1.  We recommend not using this field and instead relying on the number of holdings to   represent the number of futures contracts.
+    markToMarketConventions: new MarkToMarketConventions(...),  // optional
+    refSpotPrice: 0.0d,  // optional — The reference spot price for the future at which the contract was entered into.
+    underlying: new LusidInstrument(...),  // optional
+    calculationType: "...",  // optional — Calculation type for some Future instruments which have non-standard methodology.  Optional, if not set defaults as follows:  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;IR\&quot; or \&quot;BB\&quot; set to ASX_BankBills  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;YT\&quot; set to ASX_3Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;VT\&quot; set to ASX_5Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;XT\&quot; set to ASX_10Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;LT\&quot; set to ASX_20Year  - otherwise set to Standard                Specific calculation types for bond and interest rate futures are:  - [Standard] The default calculation type, which does not fit into any of the categories below.  - [ASX_BankBills] Used for AUD and NZD futures “IR” and “BB” on ASX. 90D Bank Bills.  - [ASX_3Year] Used for “YT” on ASX. 3YR semi-annual bond (6 coupons) @ 6%.  - [ASX_5Year] Used for “VT” on ASX. 5yr semi-annual bond (10 coupons) @ 2%.  - [ASX_10Year] Used for “XT” on ASX. 10yr semi-annual bond (20 coupons) @ 6%.  - [ASX_20Year] Used for “LT” on ASX. 20yr semi-annual bond (40 coupons) @ 4%.  - [IMM_1Month] Used for 1 month interest rate futures where the price is expressed as 100 minus the annualised interest rate.  - [IMM_3Month] Used for 3 month interest rate futures where the price is expressed as 100 minus the annualised interest rate.  - [B3_DI1] Used for “DI1” on B3. Average of 1D interbank deposit rates.    - For futures with this calculation type, quote values are expected to be specified as a percentage.      For example, a quoted rate of 13.205% should be specified as a quote of 13.205 with a face value of 100.                Supported string (enumeration) values are: [Standard, ASX_BankBills, ASX_3Year, ASX_5Year, ASX_10Year, ASX_20Year, B3_DI1, IMM_1Month, IMM_3Month].
+    tradingConventions: new TradingConventions(...),  // optional
+    timeZoneConventions: new TimeZoneConventions(...),  // optional
+    instrumentType: "..."  // required — The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo
+);
+```
+### Serializing to JSON
+
+```csharp
+var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
+```
+
+### Deserializing from JSON
+
+```csharp
+var instance = JsonConvert.DeserializeObject<Future>(json);
+```
+
+
+- [FuturesContractDetails](FuturesContractDetails.md)
+- [MarkToMarketConventions](MarkToMarketConventions.md)
+- [LusidInstrument](LusidInstrument.md)
+- [TradingConventions](TradingConventions.md)
+- [TimeZoneConventions](TimeZoneConventions.md)
+
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+

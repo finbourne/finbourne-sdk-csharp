@@ -1,0 +1,39 @@
+# Finbourne.Sdk.Identity.Model.LogGeolocation
+
+Represents a LogGeolocation resource in the Okta API
+## Properties
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| **Latitude** | **decimal?** | Optional | *No description available.* |
+| **Longitude** | **decimal?** | Optional | *No description available.* |
+
+
+## Usage
+
+### Creating an instance
+
+```csharp
+using Finbourne.Sdk.Services.Identity.Model;
+
+var instance = new LogGeolocation(
+    latitude: 0.0d,  // optional
+    longitude: 0.0d  // optional
+);
+```
+### Serializing to JSON
+
+```csharp
+var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
+```
+
+### Deserializing from JSON
+
+```csharp
+var instance = JsonConvert.DeserializeObject<LogGeolocation>(json);
+```
+
+
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+

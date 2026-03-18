@@ -1,0 +1,38 @@
+# Finbourne.Sdk.Lusid.Model.TransactionPrice
+
+## Properties
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| **Price** | **decimal** | Optional | *No description available.* |
+| **Type** | **string** | Optional | The available values are: Price, Yield, Spread, CashFlowPerUnit, CleanPrice, DirtyPrice |
+
+
+## Usage
+
+### Creating an instance
+
+```csharp
+using Finbourne.Sdk.Services.Lusid.Model;
+
+var instance = new TransactionPrice(
+    price: 0.0d,  // optional
+    type: "..."  // optional — The available values are: Price, Yield, Spread, CashFlowPerUnit, CleanPrice, DirtyPrice
+);
+```
+### Serializing to JSON
+
+```csharp
+var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
+```
+
+### Deserializing from JSON
+
+```csharp
+var instance = JsonConvert.DeserializeObject<TransactionPrice>(json);
+```
+
+
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+

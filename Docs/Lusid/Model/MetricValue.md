@@ -1,0 +1,38 @@
+# Finbourne.Sdk.Lusid.Model.MetricValue
+
+## Properties
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| **Value** | **decimal** | Optional | The numerical value of the property. |
+| **Unit** | **string** | Optional | *No description available.* |
+
+
+## Usage
+
+### Creating an instance
+
+```csharp
+using Finbourne.Sdk.Services.Lusid.Model;
+
+var instance = new MetricValue(
+    value: 0.0d,  // optional — The numerical value of the property.
+    unit: "..."  // optional
+);
+```
+### Serializing to JSON
+
+```csharp
+var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
+```
+
+### Deserializing from JSON
+
+```csharp
+var instance = JsonConvert.DeserializeObject<MetricValue>(json);
+```
+
+
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
