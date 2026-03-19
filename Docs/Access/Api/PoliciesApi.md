@@ -475,7 +475,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getpolicy"></a>
 ## GetPolicy
 
-> PolicyResponse GetPolicy(string code, string? scope = null)
+> PolicyResponse GetPolicy(string code, string? scope = null, DateTimeOffset? asAt = null)
 
 GetPolicy: Get Policy
 
@@ -487,7 +487,8 @@ Gets an identified Policy
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<PoliciesApi>();
 var code = "code_example";  // string
 var scope = "scope_example";  // string? (optional)
-PolicyResponse result = apiInstance.GetPolicy(code, scope);
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+PolicyResponse result = apiInstance.GetPolicy(code, scope, asAt);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -497,6 +498,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **code** | **string** | path | **required** | The code of the Policy |
 | **scope** | **string?** | query | optional | Optional. Will use the default scope if not provided. The scope of the Policy |
+| **asAt** | **DateTimeOffset?** | query | optional | Optional. The AsAt date and time at which to retrieve the Policy. Defaults to returning the latest version |
 
 ### Return type
 
@@ -521,7 +523,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PolicyResponse> response = apiInstance.GetPolicyWithHttpInfo(code, scope);
+ApiResponse<PolicyResponse> response = apiInstance.GetPolicyWithHttpInfo(code, scope, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

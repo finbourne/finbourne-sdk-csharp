@@ -7,6 +7,7 @@
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **DisplayName** | **string** | Required | The name of the ruleset |
 | **ReconciliationType** | **string** | Required | The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot; |
+| **Filters** | [GroupReconciliationFilters](GroupReconciliationFilters.md) | Optional | *No description available.* |
 | **CoreAttributeRules** | [List&lt;GroupReconciliationCoreAttributeRule&gt;](GroupReconciliationCoreAttributeRule.md) | Required | The core comparison rules |
 | **AggregateAttributeRules** | [List&lt;GroupReconciliationAggregateAttributeRule&gt;](GroupReconciliationAggregateAttributeRule.md) | Required | The aggregate comparison rules |
 
@@ -22,6 +23,7 @@ var instance = new CreateGroupReconciliationComparisonRulesetRequest(
     id: new ResourceId(...),  // required
     displayName: "...",  // required — The name of the ruleset
     reconciliationType: "...",  // required — The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot;
+    filters: new GroupReconciliationFilters(...),  // optional
     coreAttributeRules: new List<GroupReconciliationCoreAttributeRule>(),  // required — The core comparison rules
     aggregateAttributeRules: new List<GroupReconciliationAggregateAttributeRule>()  // required — The aggregate comparison rules
 );
@@ -42,6 +44,7 @@ var instance = JsonConvert.DeserializeObject<CreateGroupReconciliationComparison
 ## Related Models
 
 - [ResourceId](ResourceId.md)
+- [GroupReconciliationFilters](GroupReconciliationFilters.md)
 - [GroupReconciliationCoreAttributeRule](GroupReconciliationCoreAttributeRule.md) — used in `CoreAttributeRules`
 - [GroupReconciliationAggregateAttributeRule](GroupReconciliationAggregateAttributeRule.md) — used in `AggregateAttributeRules`
 

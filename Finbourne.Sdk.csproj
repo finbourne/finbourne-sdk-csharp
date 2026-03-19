@@ -9,10 +9,10 @@
     <Authors>FINBOURNE Technology Ltd</Authors>
     <Company>FINBOURNE Technology Ltd</Company>
     <AssemblyTitle>OpenAPI Library</AssemblyTitle>
-    <Description>A library generated from a OpenAPI doc</Description>
+    <Description>This is the C# SDK for all of FINBOURNE's APIs</Description>
     <Copyright>FINBOURNE Technology Ltd</Copyright>
     <RootNamespace>Finbourne.Sdk</RootNamespace>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Finbourne.Sdk.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/finbourne/finbourne-sdk-csharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -31,6 +31,10 @@
   </ItemGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="Finbourne.Sdk.Extensions.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 

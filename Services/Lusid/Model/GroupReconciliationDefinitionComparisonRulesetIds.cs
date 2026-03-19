@@ -33,11 +33,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="transactionReconciliation">transactionReconciliation.</param>
         /// <param name="holdingReconciliation">holdingReconciliation.</param>
         /// <param name="valuationReconciliation">valuationReconciliation.</param>
-        public GroupReconciliationDefinitionComparisonRulesetIds(ResourceId transactionReconciliation = default(ResourceId), ResourceId holdingReconciliation = default(ResourceId), ResourceId valuationReconciliation = default(ResourceId))
+        /// <param name="cashHoldingReconciliation">cashHoldingReconciliation.</param>
+        public GroupReconciliationDefinitionComparisonRulesetIds(ResourceId transactionReconciliation = default(ResourceId), ResourceId holdingReconciliation = default(ResourceId), ResourceId valuationReconciliation = default(ResourceId), ResourceId cashHoldingReconciliation = default(ResourceId))
         {
             this.TransactionReconciliation = transactionReconciliation;
             this.HoldingReconciliation = holdingReconciliation;
             this.ValuationReconciliation = valuationReconciliation;
+            this.CashHoldingReconciliation = cashHoldingReconciliation;
         }
 
         /// <summary>
@@ -59,6 +61,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ResourceId ValuationReconciliation { get; set; }
 
         /// <summary>
+        /// Gets or Sets CashHoldingReconciliation
+        /// </summary>
+        [DataMember(Name = "cashHoldingReconciliation", EmitDefaultValue = false)]
+        public ResourceId CashHoldingReconciliation { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -69,6 +77,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  TransactionReconciliation: ").Append(TransactionReconciliation).Append("\n");
             sb.Append("  HoldingReconciliation: ").Append(HoldingReconciliation).Append("\n");
             sb.Append("  ValuationReconciliation: ").Append(ValuationReconciliation).Append("\n");
+            sb.Append("  CashHoldingReconciliation: ").Append(CashHoldingReconciliation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -118,6 +127,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ValuationReconciliation == input.ValuationReconciliation ||
                     (this.ValuationReconciliation != null &&
                     this.ValuationReconciliation.Equals(input.ValuationReconciliation))
+                ) && 
+                (
+                    this.CashHoldingReconciliation == input.CashHoldingReconciliation ||
+                    (this.CashHoldingReconciliation != null &&
+                    this.CashHoldingReconciliation.Equals(input.CashHoldingReconciliation))
                 );
         }
 
@@ -141,6 +155,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.ValuationReconciliation != null)
                 {
                     hashCode = (hashCode * 59) + this.ValuationReconciliation.GetHashCode();
+                }
+                if (this.CashHoldingReconciliation != null)
+                {
+                    hashCode = (hashCode * 59) + this.CashHoldingReconciliation.GetHashCode();
                 }
                 return hashCode;
             }

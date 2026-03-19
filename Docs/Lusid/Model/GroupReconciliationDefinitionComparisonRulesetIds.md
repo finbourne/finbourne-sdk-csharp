@@ -7,6 +7,7 @@
 | **TransactionReconciliation** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **HoldingReconciliation** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **ValuationReconciliation** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **CashHoldingReconciliation** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -19,7 +20,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new GroupReconciliationDefinitionComparisonRulesetIds(
     transactionReconciliation: new ResourceId(...),  // optional
     holdingReconciliation: new ResourceId(...),  // optional
-    valuationReconciliation: new ResourceId(...)  // optional
+    valuationReconciliation: new ResourceId(...),  // optional
+    cashHoldingReconciliation: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -37,6 +39,7 @@ var instance = JsonConvert.DeserializeObject<GroupReconciliationDefinitionCompar
 
 ## Related Models
 
+- [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)

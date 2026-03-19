@@ -9,8 +9,6 @@
 | **Description** | **string** | Optional | A description of the transaction fee. |
 | **Calculation** | [FeeCalculationRequest](FeeCalculationRequest.md) | Optional | *No description available.* |
 | **Condition** | **string** | Optional | The condition that the transaction must meet in order for the fee to be applied. |
-| **Capitalised** | **string** | Optional | Specifies whether the fee should be capitalised, not capitalised or conditionally capitalised. |
-| **CapitalisationCondition** | **string** | Optional | If the fee Capitalisation is Conditional, this condition determines whether the fee is capitalised, when applied to the transaction. |
 | **TxnPropertyKey** | **string** | Optional | The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the transaction fee. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
@@ -32,8 +30,6 @@ var instance = new TransactionFee(
     description: "...",  // optional — A description of the transaction fee.
     calculation: new FeeCalculationRequest(...),  // optional
     condition: "...",  // optional — The condition that the transaction must meet in order for the fee to be applied.
-    capitalised: "...",  // optional — Specifies whether the fee should be capitalised, not capitalised or conditionally capitalised.
-    capitalisationCondition: "...",  // optional — If the fee Capitalisation is Conditional, this condition determines whether the fee is capitalised, when applied to the transaction.
     txnPropertyKey: "...",  // optional — The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain.
     properties: new Property(...),  // optional — A set of properties for the transaction fee.
     varVersion: new ModelVersion(...),  // optional

@@ -8,8 +8,6 @@
 | **Description** | **string** | Required | A description of the transaction fee. |
 | **Calculation** | [FeeCalculationRequest](FeeCalculationRequest.md) | Required | *No description available.* |
 | **Condition** | **string** | Required | The condition that the transaction must meet in order for the fee to be applied. |
-| **Capitalised** | **string** | Required | Specifies whether the fee should be capitalised, not capitalised or conditionally capitalised. |
-| **CapitalisationCondition** | **string** | Optional | If the fee Capitalisation is Conditional, this condition determines whether the fee is capitalised, when applied to the transaction. |
 | **TxnPropertyKey** | **string** | Required | The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the transaction fee. |
 | **IsActive** | **bool** | Optional | Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided. |
@@ -27,8 +25,6 @@ var instance = new CreateTransactionFeeRequest(
     description: "...",  // required — A description of the transaction fee.
     calculation: new FeeCalculationRequest(...),  // required
     condition: "...",  // required — The condition that the transaction must meet in order for the fee to be applied.
-    capitalised: "...",  // required — Specifies whether the fee should be capitalised, not capitalised or conditionally capitalised.
-    capitalisationCondition: "...",  // optional — If the fee Capitalisation is Conditional, this condition determines whether the fee is capitalised, when applied to the transaction.
     txnPropertyKey: "...",  // required — The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain.
     properties: new Property(...),  // optional — A set of properties for the transaction fee.
     isActive: true  // optional — Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided.

@@ -37,9 +37,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="displayName">The name of the ruleset (required).</param>
         /// <param name="reconciliationType">The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot; (required).</param>
+        /// <param name="filters">filters.</param>
         /// <param name="coreAttributeRules">The core comparison rules (required).</param>
         /// <param name="aggregateAttributeRules">The aggregate comparison rules (required).</param>
-        public UpdateGroupReconciliationComparisonRulesetRequest(string displayName = default(string), string reconciliationType = default(string), List<GroupReconciliationCoreAttributeRule> coreAttributeRules = default(List<GroupReconciliationCoreAttributeRule>), List<GroupReconciliationAggregateAttributeRule> aggregateAttributeRules = default(List<GroupReconciliationAggregateAttributeRule>))
+        public UpdateGroupReconciliationComparisonRulesetRequest(string displayName = default(string), string reconciliationType = default(string), GroupReconciliationFilters filters = default(GroupReconciliationFilters), List<GroupReconciliationCoreAttributeRule> coreAttributeRules = default(List<GroupReconciliationCoreAttributeRule>), List<GroupReconciliationAggregateAttributeRule> aggregateAttributeRules = default(List<GroupReconciliationAggregateAttributeRule>))
         {
             // to ensure "displayName" is required (not null)
             if (displayName == null)
@@ -65,6 +66,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("aggregateAttributeRules is a required property for UpdateGroupReconciliationComparisonRulesetRequest and cannot be null");
             }
             this.AggregateAttributeRules = aggregateAttributeRules;
+            this.Filters = filters;
         }
 
         /// <summary>
@@ -80,6 +82,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot;</value>
         [DataMember(Name = "reconciliationType", IsRequired = true, EmitDefaultValue = true)]
         public string ReconciliationType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Filters
+        /// </summary>
+        [DataMember(Name = "filters", EmitDefaultValue = false)]
+        public GroupReconciliationFilters Filters { get; set; }
 
         /// <summary>
         /// The core comparison rules
@@ -105,6 +113,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class UpdateGroupReconciliationComparisonRulesetRequest {\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  ReconciliationType: ").Append(ReconciliationType).Append("\n");
+            sb.Append("  Filters: ").Append(Filters).Append("\n");
             sb.Append("  CoreAttributeRules: ").Append(CoreAttributeRules).Append("\n");
             sb.Append("  AggregateAttributeRules: ").Append(AggregateAttributeRules).Append("\n");
             sb.Append("}\n");
@@ -153,6 +162,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ReconciliationType.Equals(input.ReconciliationType))
                 ) && 
                 (
+                    this.Filters == input.Filters ||
+                    (this.Filters != null &&
+                    this.Filters.Equals(input.Filters))
+                ) && 
+                (
                     this.CoreAttributeRules == input.CoreAttributeRules ||
                     this.CoreAttributeRules != null &&
                     input.CoreAttributeRules != null &&
@@ -182,6 +196,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.ReconciliationType != null)
                 {
                     hashCode = (hashCode * 59) + this.ReconciliationType.GetHashCode();
+                }
+                if (this.Filters != null)
+                {
+                    hashCode = (hashCode * 59) + this.Filters.GetHashCode();
                 }
                 if (this.CoreAttributeRules != null)
                 {

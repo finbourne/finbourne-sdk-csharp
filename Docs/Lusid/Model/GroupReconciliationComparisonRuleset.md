@@ -7,6 +7,7 @@
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **DisplayName** | **string** | Required | The name of the ruleset |
 | **ReconciliationType** | **string** | Required | The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot; |
+| **Filters** | [GroupReconciliationFilters](GroupReconciliationFilters.md) | Optional | *No description available.* |
 | **CoreAttributeRules** | [List&lt;GroupReconciliationCoreAttributeRule&gt;](GroupReconciliationCoreAttributeRule.md) | Required | The core comparison rules |
 | **AggregateAttributeRules** | [List&lt;GroupReconciliationAggregateAttributeRule&gt;](GroupReconciliationAggregateAttributeRule.md) | Required | The aggregate comparison rules |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
@@ -25,6 +26,7 @@ var instance = new GroupReconciliationComparisonRuleset(
     id: new ResourceId(...),  // required
     displayName: "...",  // required — The name of the ruleset
     reconciliationType: "...",  // required — The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot;
+    filters: new GroupReconciliationFilters(...),  // optional
     coreAttributeRules: new List<GroupReconciliationCoreAttributeRule>(),  // required — The core comparison rules
     aggregateAttributeRules: new List<GroupReconciliationAggregateAttributeRule>(),  // required — The aggregate comparison rules
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
@@ -48,6 +50,7 @@ var instance = JsonConvert.DeserializeObject<GroupReconciliationComparisonRulese
 ## Related Models
 
 - [ResourceId](ResourceId.md)
+- [GroupReconciliationFilters](GroupReconciliationFilters.md)
 - [GroupReconciliationCoreAttributeRule](GroupReconciliationCoreAttributeRule.md) — used in `CoreAttributeRules`
 - [GroupReconciliationAggregateAttributeRule](GroupReconciliationAggregateAttributeRule.md) — used in `AggregateAttributeRules`
 - [ModelVersion](ModelVersion.md)

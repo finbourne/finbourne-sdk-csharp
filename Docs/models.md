@@ -929,6 +929,7 @@
 * [GroupReconciliationDefinitionCurrencies](Lusid/Model/GroupReconciliationDefinitionCurrencies.md)
 * [GroupReconciliationDefinitionPortfolioEntityIds](Lusid/Model/GroupReconciliationDefinitionPortfolioEntityIds.md)
 * [GroupReconciliationDefinitionRecipeIds](Lusid/Model/GroupReconciliationDefinitionRecipeIds.md)
+* [GroupReconciliationFilters](Lusid/Model/GroupReconciliationFilters.md)
 * [GroupReconciliationInstanceId](Lusid/Model/GroupReconciliationInstanceId.md)
 * [GroupReconciliationResultStatuses](Lusid/Model/GroupReconciliationResultStatuses.md)
 * [GroupReconciliationResultTypes](Lusid/Model/GroupReconciliationResultTypes.md)
