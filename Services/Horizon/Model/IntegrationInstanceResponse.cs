@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// IntegrationInstanceResponse
+    /// Response representing an integration instance.
     /// </summary>
     [DataContract(Name = "IntegrationInstanceResponse")]
     public partial class IntegrationInstanceResponse : IEquatable<IntegrationInstanceResponse>, IValidatableObject
@@ -35,14 +35,14 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationInstanceResponse" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="integrationType">integrationType (required).</param>
-        /// <param name="name">name (required).</param>
-        /// <param name="description">description (required).</param>
-        /// <param name="enabled">enabled (required).</param>
-        /// <param name="triggers">triggers (required).</param>
-        /// <param name="details">details (required).</param>
-        /// <param name="postProcessTasks">postProcessTasks (required).</param>
+        /// <param name="id">The unique identifier of the integration instance. (required).</param>
+        /// <param name="integrationType">The type of the integration. (required).</param>
+        /// <param name="name">The name of the integration instance. (required).</param>
+        /// <param name="description">The description of the integration instance. (required).</param>
+        /// <param name="enabled">Whether the integration instance is enabled. (required).</param>
+        /// <param name="triggers">The triggers associated with the integration instance. (required).</param>
+        /// <param name="details">Base DTO type of an integration configuration specific to the integration type.              N.B. ASP.NET Core model validation is normally applied automatically when [ApiController] is added to a controller, however it doesn&#39;t work here with the polymorphic integration subtypes of this class (see https://github.com/dotnet/aspnetcore/issues/27882). The workaround here is to implement the IValidatableObject interface and each subtype must call Validate() or ValidateContents() on its properties (the validation is not recursive).  Located in Horizon.Integrations.Web so both specific integration projects and Horizon.WebApi can reference it. (required).</param>
+        /// <param name="postProcessTasks">The post process tasks associated with the integration instance. (required).</param>
         public IntegrationInstanceResponse(string id = default(string), string integrationType = default(string), string name = default(string), string description = default(string), bool enabled = default(bool), List<Trigger> triggers = default(List<Trigger>), Object details = default(Object), List<PostProcessTask> postProcessTasks = default(List<PostProcessTask>))
         {
             // to ensure "id" is required (not null)
@@ -91,50 +91,58 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// The unique identifier of the integration instance.
         /// </summary>
+        /// <value>The unique identifier of the integration instance.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets IntegrationType
+        /// The type of the integration.
         /// </summary>
+        /// <value>The type of the integration.</value>
         [DataMember(Name = "integrationType", IsRequired = true, EmitDefaultValue = true)]
         public string IntegrationType { get; set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name of the integration instance.
         /// </summary>
+        /// <value>The name of the integration instance.</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// The description of the integration instance.
         /// </summary>
+        /// <value>The description of the integration instance.</value>
         [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Enabled
+        /// Whether the integration instance is enabled.
         /// </summary>
+        /// <value>Whether the integration instance is enabled.</value>
         [DataMember(Name = "enabled", IsRequired = true, EmitDefaultValue = true)]
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// Gets or Sets Triggers
+        /// The triggers associated with the integration instance.
         /// </summary>
+        /// <value>The triggers associated with the integration instance.</value>
         [DataMember(Name = "triggers", IsRequired = true, EmitDefaultValue = true)]
         public List<Trigger> Triggers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Details
+        /// Base DTO type of an integration configuration specific to the integration type.              N.B. ASP.NET Core model validation is normally applied automatically when [ApiController] is added to a controller, however it doesn&#39;t work here with the polymorphic integration subtypes of this class (see https://github.com/dotnet/aspnetcore/issues/27882). The workaround here is to implement the IValidatableObject interface and each subtype must call Validate() or ValidateContents() on its properties (the validation is not recursive).  Located in Horizon.Integrations.Web so both specific integration projects and Horizon.WebApi can reference it.
         /// </summary>
+        /// <value>Base DTO type of an integration configuration specific to the integration type.              N.B. ASP.NET Core model validation is normally applied automatically when [ApiController] is added to a controller, however it doesn&#39;t work here with the polymorphic integration subtypes of this class (see https://github.com/dotnet/aspnetcore/issues/27882). The workaround here is to implement the IValidatableObject interface and each subtype must call Validate() or ValidateContents() on its properties (the validation is not recursive).  Located in Horizon.Integrations.Web so both specific integration projects and Horizon.WebApi can reference it.</value>
         [DataMember(Name = "details", IsRequired = true, EmitDefaultValue = true)]
         public Object Details { get; set; }
 
         /// <summary>
-        /// Gets or Sets PostProcessTasks
+        /// The post process tasks associated with the integration instance.
         /// </summary>
+        /// <value>The post process tasks associated with the integration instance.</value>
         [DataMember(Name = "postProcessTasks", IsRequired = true, EmitDefaultValue = true)]
         public List<PostProcessTask> PostProcessTasks { get; set; }
 

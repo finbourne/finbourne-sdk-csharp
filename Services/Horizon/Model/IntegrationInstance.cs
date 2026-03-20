@@ -41,7 +41,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="description">Description of the instance. (required).</param>
         /// <param name="enabled">If true the instance will be executed if its trigger is satisfied. (required).</param>
         /// <param name="triggers">Defines what triggers execution of the instance. (required).</param>
-        /// <param name="details">details (required).</param>
+        /// <param name="details">Base DTO type of an integration configuration specific to the integration type.              N.B. ASP.NET Core model validation is normally applied automatically when [ApiController] is added to a controller, however it doesn&#39;t work here with the polymorphic integration subtypes of this class (see https://github.com/dotnet/aspnetcore/issues/27882). The workaround here is to implement the IValidatableObject interface and each subtype must call Validate() or ValidateContents() on its properties (the validation is not recursive).  Located in Horizon.Integrations.Web so both specific integration projects and Horizon.WebApi can reference it. (required).</param>
         public IntegrationInstance(string id = default(string), string integrationType = default(string), string name = default(string), string description = default(string), bool enabled = default(bool), List<Trigger> triggers = default(List<Trigger>), Object details = default(Object))
         {
             // to ensure "id" is required (not null)
@@ -126,8 +126,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public List<Trigger> Triggers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Details
+        /// Base DTO type of an integration configuration specific to the integration type.              N.B. ASP.NET Core model validation is normally applied automatically when [ApiController] is added to a controller, however it doesn&#39;t work here with the polymorphic integration subtypes of this class (see https://github.com/dotnet/aspnetcore/issues/27882). The workaround here is to implement the IValidatableObject interface and each subtype must call Validate() or ValidateContents() on its properties (the validation is not recursive).  Located in Horizon.Integrations.Web so both specific integration projects and Horizon.WebApi can reference it.
         /// </summary>
+        /// <value>Base DTO type of an integration configuration specific to the integration type.              N.B. ASP.NET Core model validation is normally applied automatically when [ApiController] is added to a controller, however it doesn&#39;t work here with the polymorphic integration subtypes of this class (see https://github.com/dotnet/aspnetcore/issues/27882). The workaround here is to implement the IValidatableObject interface and each subtype must call Validate() or ValidateContents() on its properties (the validation is not recursive).  Located in Horizon.Integrations.Web so both specific integration projects and Horizon.WebApi can reference it.</value>
         [DataMember(Name = "details", IsRequired = true, EmitDefaultValue = true)]
         public Object Details { get; set; }
 

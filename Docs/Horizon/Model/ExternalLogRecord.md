@@ -1,23 +1,24 @@
 # Finbourne.Sdk.Horizon.Model.ExternalLogRecord
 
+Represents an external log record.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Logid** | **long** | Required | *No description available.* |
-| **Parentlogid** | **long?** | Optional | *No description available.* |
-| **Loglevel** | **string** | Required | *No description available.* |
-| **Logstatus** | **string** | Required | *No description available.* |
-| **Sourcerecordtype** | **string** | Optional | *No description available.* |
-| **Sourceprimaryidtype** | **string** | Optional | *No description available.* |
-| **Sourceprimaryidvalue** | **string** | Optional | *No description available.* |
-| **Targetrecordtype** | **string** | Optional | *No description available.* |
-| **Targetrecordaction** | **string** | Optional | *No description available.* |
-| **Targetprimaryidtype** | **string** | Optional | *No description available.* |
-| **Targetprimaryidvalue** | **string** | Optional | *No description available.* |
-| **Message** | **string** | Optional | *No description available.* |
-| **Messagetype** | **string** | Optional | *No description available.* |
-| **Timestamp** | **string** | Required | *No description available.* |
+| **Logid** | **long** | Required | The unique log identifier. |
+| **Parentlogid** | **long?** | Optional | The parent log identifier (null is allowed). |
+| **Loglevel** | **string** | Required | The log level. |
+| **Logstatus** | **string** | Required | The log status. |
+| **Sourcerecordtype** | **string** | Optional | The source record type. |
+| **Sourceprimaryidtype** | **string** | Optional | The source primary ID type. |
+| **Sourceprimaryidvalue** | **string** | Optional | The source primary ID value. |
+| **Targetrecordtype** | **string** | Optional | The target record type. |
+| **Targetrecordaction** | **string** | Optional | The target record action. |
+| **Targetprimaryidtype** | **string** | Optional | The target primary ID type. |
+| **Targetprimaryidvalue** | **string** | Optional | The target primary ID value. |
+| **Message** | **string** | Optional | The log message. |
+| **Messagetype** | **string** | Optional | The message type. |
+| **Timestamp** | **string** | Required | The timestamp of the log record. |
 
 
 ## Usage
@@ -28,20 +29,20 @@
 using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new ExternalLogRecord(
-    logid: 0L,  // required
-    parentlogid: 0L,  // optional
-    loglevel: "...",  // required
-    logstatus: "...",  // required
-    sourcerecordtype: "...",  // optional
-    sourceprimaryidtype: "...",  // optional
-    sourceprimaryidvalue: "...",  // optional
-    targetrecordtype: "...",  // optional
-    targetrecordaction: "...",  // optional
-    targetprimaryidtype: "...",  // optional
-    targetprimaryidvalue: "...",  // optional
-    message: "...",  // optional
-    messagetype: "...",  // optional
-    timestamp: "..."  // required
+    logid: 0L,  // required — The unique log identifier.
+    parentlogid: 0L,  // optional — The parent log identifier (null is allowed).
+    loglevel: "...",  // required — The log level.
+    logstatus: "...",  // required — The log status.
+    sourcerecordtype: "...",  // optional — The source record type.
+    sourceprimaryidtype: "...",  // optional — The source primary ID type.
+    sourceprimaryidvalue: "...",  // optional — The source primary ID value.
+    targetrecordtype: "...",  // optional — The target record type.
+    targetrecordaction: "...",  // optional — The target record action.
+    targetprimaryidtype: "...",  // optional — The target primary ID type.
+    targetprimaryidvalue: "...",  // optional — The target primary ID value.
+    message: "...",  // optional — The log message.
+    messagetype: "...",  // optional — The message type.
+    timestamp: "..."  // required — The timestamp of the log record.
 );
 ```
 ### Serializing to JSON

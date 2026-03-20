@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// ExternalLogRecord
+    /// Represents an external log record.
     /// </summary>
     [DataContract(Name = "ExternalLogRecord")]
     public partial class ExternalLogRecord : IEquatable<ExternalLogRecord>, IValidatableObject
@@ -35,20 +35,20 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ExternalLogRecord" /> class.
         /// </summary>
-        /// <param name="logid">logid (required).</param>
-        /// <param name="parentlogid">parentlogid.</param>
-        /// <param name="loglevel">loglevel (required).</param>
-        /// <param name="logstatus">logstatus (required).</param>
-        /// <param name="sourcerecordtype">sourcerecordtype.</param>
-        /// <param name="sourceprimaryidtype">sourceprimaryidtype.</param>
-        /// <param name="sourceprimaryidvalue">sourceprimaryidvalue.</param>
-        /// <param name="targetrecordtype">targetrecordtype.</param>
-        /// <param name="targetrecordaction">targetrecordaction.</param>
-        /// <param name="targetprimaryidtype">targetprimaryidtype.</param>
-        /// <param name="targetprimaryidvalue">targetprimaryidvalue.</param>
-        /// <param name="message">message.</param>
-        /// <param name="messagetype">messagetype.</param>
-        /// <param name="timestamp">timestamp (required).</param>
+        /// <param name="logid">The unique log identifier. (required).</param>
+        /// <param name="parentlogid">The parent log identifier (null is allowed)..</param>
+        /// <param name="loglevel">The log level. (required).</param>
+        /// <param name="logstatus">The log status. (required).</param>
+        /// <param name="sourcerecordtype">The source record type..</param>
+        /// <param name="sourceprimaryidtype">The source primary ID type..</param>
+        /// <param name="sourceprimaryidvalue">The source primary ID value..</param>
+        /// <param name="targetrecordtype">The target record type..</param>
+        /// <param name="targetrecordaction">The target record action..</param>
+        /// <param name="targetprimaryidtype">The target primary ID type..</param>
+        /// <param name="targetprimaryidvalue">The target primary ID value..</param>
+        /// <param name="message">The log message..</param>
+        /// <param name="messagetype">The message type..</param>
+        /// <param name="timestamp">The timestamp of the log record. (required).</param>
         public ExternalLogRecord(long logid = default(long), long? parentlogid = default(long?), string loglevel = default(string), string logstatus = default(string), string sourcerecordtype = default(string), string sourceprimaryidtype = default(string), string sourceprimaryidvalue = default(string), string targetrecordtype = default(string), string targetrecordaction = default(string), string targetprimaryidtype = default(string), string targetprimaryidvalue = default(string), string message = default(string), string messagetype = default(string), string timestamp = default(string))
         {
             this.Logid = logid;
@@ -83,86 +83,100 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         }
 
         /// <summary>
-        /// Gets or Sets Logid
+        /// The unique log identifier.
         /// </summary>
+        /// <value>The unique log identifier.</value>
         [DataMember(Name = "logid", IsRequired = true, EmitDefaultValue = true)]
         public long Logid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Parentlogid
+        /// The parent log identifier (null is allowed).
         /// </summary>
+        /// <value>The parent log identifier (null is allowed).</value>
         [DataMember(Name = "parentlogid", EmitDefaultValue = true)]
         public long? Parentlogid { get; set; }
 
         /// <summary>
-        /// Gets or Sets Loglevel
+        /// The log level.
         /// </summary>
+        /// <value>The log level.</value>
         [DataMember(Name = "loglevel", IsRequired = true, EmitDefaultValue = true)]
         public string Loglevel { get; set; }
 
         /// <summary>
-        /// Gets or Sets Logstatus
+        /// The log status.
         /// </summary>
+        /// <value>The log status.</value>
         [DataMember(Name = "logstatus", IsRequired = true, EmitDefaultValue = true)]
         public string Logstatus { get; set; }
 
         /// <summary>
-        /// Gets or Sets Sourcerecordtype
+        /// The source record type.
         /// </summary>
+        /// <value>The source record type.</value>
         [DataMember(Name = "sourcerecordtype", EmitDefaultValue = true)]
         public string Sourcerecordtype { get; set; }
 
         /// <summary>
-        /// Gets or Sets Sourceprimaryidtype
+        /// The source primary ID type.
         /// </summary>
+        /// <value>The source primary ID type.</value>
         [DataMember(Name = "sourceprimaryidtype", EmitDefaultValue = true)]
         public string Sourceprimaryidtype { get; set; }
 
         /// <summary>
-        /// Gets or Sets Sourceprimaryidvalue
+        /// The source primary ID value.
         /// </summary>
+        /// <value>The source primary ID value.</value>
         [DataMember(Name = "sourceprimaryidvalue", EmitDefaultValue = true)]
         public string Sourceprimaryidvalue { get; set; }
 
         /// <summary>
-        /// Gets or Sets Targetrecordtype
+        /// The target record type.
         /// </summary>
+        /// <value>The target record type.</value>
         [DataMember(Name = "targetrecordtype", EmitDefaultValue = true)]
         public string Targetrecordtype { get; set; }
 
         /// <summary>
-        /// Gets or Sets Targetrecordaction
+        /// The target record action.
         /// </summary>
+        /// <value>The target record action.</value>
         [DataMember(Name = "targetrecordaction", EmitDefaultValue = true)]
         public string Targetrecordaction { get; set; }
 
         /// <summary>
-        /// Gets or Sets Targetprimaryidtype
+        /// The target primary ID type.
         /// </summary>
+        /// <value>The target primary ID type.</value>
         [DataMember(Name = "targetprimaryidtype", EmitDefaultValue = true)]
         public string Targetprimaryidtype { get; set; }
 
         /// <summary>
-        /// Gets or Sets Targetprimaryidvalue
+        /// The target primary ID value.
         /// </summary>
+        /// <value>The target primary ID value.</value>
         [DataMember(Name = "targetprimaryidvalue", EmitDefaultValue = true)]
         public string Targetprimaryidvalue { get; set; }
 
         /// <summary>
-        /// Gets or Sets Message
+        /// The log message.
         /// </summary>
+        /// <value>The log message.</value>
         [DataMember(Name = "message", EmitDefaultValue = true)]
         public string Message { get; set; }
 
         /// <summary>
-        /// Gets or Sets Messagetype
+        /// The message type.
         /// </summary>
+        /// <value>The message type.</value>
         [DataMember(Name = "messagetype", EmitDefaultValue = true)]
         public string Messagetype { get; set; }
 
         /// <summary>
-        /// Gets or Sets Timestamp
+        /// The timestamp of the log record.
         /// </summary>
+        /// <value>The timestamp of the log record.</value>
         [DataMember(Name = "timestamp", IsRequired = true, EmitDefaultValue = true)]
         public string Timestamp { get; set; }
 

@@ -1,10 +1,11 @@
 # Finbourne.Sdk.Horizon.Model.ExternalLogInsertionRequest
 
+A request to insert external log records.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Logs** | [List&lt;ExternalLogRecord&gt;](ExternalLogRecord.md) | Required | *No description available.* |
+| **Logs** | [List&lt;ExternalLogRecord&gt;](ExternalLogRecord.md) | Required | The collection of external log records to insert. |
 
 
 ## Usage
@@ -15,7 +16,7 @@
 using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new ExternalLogInsertionRequest(
-    logs: new List<ExternalLogRecord>()  // required
+    logs: new List<ExternalLogRecord>()  // required — The collection of external log records to insert.
 );
 ```
 ### Serializing to JSON
@@ -33,7 +34,7 @@ var instance = JsonConvert.DeserializeObject<ExternalLogInsertionRequest>(json);
 
 ## Related Models
 
-- [ExternalLogRecord](ExternalLogRecord.md)
+- [ExternalLogRecord](ExternalLogRecord.md) — used in `Logs`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

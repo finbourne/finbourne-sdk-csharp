@@ -1,11 +1,12 @@
 # Finbourne.Sdk.Horizon.Model.CancelRunRequest
 
+A request to cancel the specified instance execution.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **RunIds** | **List&lt;string&gt;** | Required | *No description available.* |
-| **Message** | **string** | Optional | *No description available.* |
+| **RunIds** | **List&lt;string&gt;** | Required | The instance run ids to be cancelled. |
+| **Message** | **string** | Optional | The user provided message as to why the instance executions were cancelled. |
 
 
 ## Usage
@@ -16,8 +17,8 @@
 using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new CancelRunRequest(
-    runIds: ,  // required
-    message: "..."  // optional
+    runIds: ,  // required — The instance run ids to be cancelled.
+    message: "..."  // optional — The user provided message as to why the instance executions were cancelled.
 );
 ```
 ### Serializing to JSON

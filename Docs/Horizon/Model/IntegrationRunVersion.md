@@ -1,5 +1,6 @@
 # Finbourne.Sdk.Horizon.Model.IntegrationRunVersion
 
+Integration Run Version
 ## Properties
 
 | Name | Type | Required | Description |

@@ -1,5 +1,6 @@
 # Finbourne.Sdk.Horizon.Model.IntegrationRerunResponse
 
+No content is returned when an instance is rerun.
 ## Properties
 
 | Name | Type | Required | Description |

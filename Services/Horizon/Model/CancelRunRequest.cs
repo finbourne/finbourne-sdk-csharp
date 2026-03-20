@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// CancelRunRequest
+    /// A request to cancel the specified instance execution.
     /// </summary>
     [DataContract(Name = "CancelRunRequest")]
     public partial class CancelRunRequest : IEquatable<CancelRunRequest>, IValidatableObject
@@ -35,8 +35,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CancelRunRequest" /> class.
         /// </summary>
-        /// <param name="runIds">runIds (required).</param>
-        /// <param name="message">message.</param>
+        /// <param name="runIds">The instance run ids to be cancelled. (required).</param>
+        /// <param name="message">The user provided message as to why the instance executions were cancelled..</param>
         public CancelRunRequest(List<string> runIds = default(List<string>), string message = default(string))
         {
             // to ensure "runIds" is required (not null)
@@ -49,14 +49,16 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         }
 
         /// <summary>
-        /// Gets or Sets RunIds
+        /// The instance run ids to be cancelled.
         /// </summary>
+        /// <value>The instance run ids to be cancelled.</value>
         [DataMember(Name = "runIds", IsRequired = true, EmitDefaultValue = true)]
         public List<string> RunIds { get; set; }
 
         /// <summary>
-        /// Gets or Sets Message
+        /// The user provided message as to why the instance executions were cancelled.
         /// </summary>
+        /// <value>The user provided message as to why the instance executions were cancelled.</value>
         [DataMember(Name = "message", EmitDefaultValue = true)]
         public string Message { get; set; }
 

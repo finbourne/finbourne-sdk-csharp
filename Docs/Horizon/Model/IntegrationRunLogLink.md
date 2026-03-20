@@ -1,5 +1,6 @@
 # Finbourne.Sdk.Horizon.Model.IntegrationRunLogLink
 
+Integration run log link
 ## Properties
 
 | Name | Type | Required | Description |

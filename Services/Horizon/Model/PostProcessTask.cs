@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// PostProcessTask
+    /// Request defining a post-processing task for an instance.
     /// </summary>
     [DataContract(Name = "PostProcessTask")]
     public partial class PostProcessTask : IEquatable<PostProcessTask>, IValidatableObject
@@ -35,10 +35,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PostProcessTask" /> class.
         /// </summary>
-        /// <param name="action">action (required).</param>
-        /// <param name="targetInstance">targetInstance.</param>
-        /// <param name="triggerOn">triggerOn (required).</param>
-        /// <param name="parameters">parameters.</param>
+        /// <param name="action">The type of action to perform (Allowed: RunIntegration, RunWorkflow, TriggerEmail) (required).</param>
+        /// <param name="targetInstance">The instance identifier to trigger (for TriggerIntegration action)..</param>
+        /// <param name="triggerOn">When the task should be triggered (Allowed: OnSuccess, OnFailure, Always) (required).</param>
+        /// <param name="parameters">JSON parameters specific to the action type..</param>
         public PostProcessTask(string action = default(string), string targetInstance = default(string), string triggerOn = default(string), Object parameters = default(Object))
         {
             // to ensure "action" is required (not null)
@@ -58,26 +58,30 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         }
 
         /// <summary>
-        /// Gets or Sets Action
+        /// The type of action to perform (Allowed: RunIntegration, RunWorkflow, TriggerEmail)
         /// </summary>
+        /// <value>The type of action to perform (Allowed: RunIntegration, RunWorkflow, TriggerEmail)</value>
         [DataMember(Name = "action", IsRequired = true, EmitDefaultValue = true)]
         public string Action { get; set; }
 
         /// <summary>
-        /// Gets or Sets TargetInstance
+        /// The instance identifier to trigger (for TriggerIntegration action).
         /// </summary>
+        /// <value>The instance identifier to trigger (for TriggerIntegration action).</value>
         [DataMember(Name = "targetInstance", EmitDefaultValue = true)]
         public string TargetInstance { get; set; }
 
         /// <summary>
-        /// Gets or Sets TriggerOn
+        /// When the task should be triggered (Allowed: OnSuccess, OnFailure, Always)
         /// </summary>
+        /// <value>When the task should be triggered (Allowed: OnSuccess, OnFailure, Always)</value>
         [DataMember(Name = "triggerOn", IsRequired = true, EmitDefaultValue = true)]
         public string TriggerOn { get; set; }
 
         /// <summary>
-        /// Gets or Sets Parameters
+        /// JSON parameters specific to the action type.
         /// </summary>
+        /// <value>JSON parameters specific to the action type.</value>
         [DataMember(Name = "parameters", EmitDefaultValue = true)]
         public Object Parameters { get; set; }
 

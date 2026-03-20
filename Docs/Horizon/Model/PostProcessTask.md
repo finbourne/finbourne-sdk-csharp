@@ -1,13 +1,14 @@
 # Finbourne.Sdk.Horizon.Model.PostProcessTask
 
+Request defining a post-processing task for an instance.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Action** | **string** | Required | *No description available.* |
-| **TargetInstance** | **string** | Optional | *No description available.* |
-| **TriggerOn** | **string** | Required | *No description available.* |
-| **Parameters** | **Object** | Optional | *No description available.* |
+| **Action** | **string** | Required | The type of action to perform (Allowed: RunIntegration, RunWorkflow, TriggerEmail) |
+| **TargetInstance** | **string** | Optional | The instance identifier to trigger (for TriggerIntegration action). |
+| **TriggerOn** | **string** | Required | When the task should be triggered (Allowed: OnSuccess, OnFailure, Always) |
+| **Parameters** | **Object** | Optional | JSON parameters specific to the action type. |
 
 
 ## Usage
@@ -18,10 +19,10 @@
 using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new PostProcessTask(
-    action: "...",  // required
-    targetInstance: "...",  // optional
-    triggerOn: "...",  // required
-    parameters:   // optional
+    action: "...",  // required — The type of action to perform (Allowed: RunIntegration, RunWorkflow, TriggerEmail)
+    targetInstance: "...",  // optional — The instance identifier to trigger (for TriggerIntegration action).
+    triggerOn: "...",  // required — When the task should be triggered (Allowed: OnSuccess, OnFailure, Always)
+    parameters:   // optional — JSON parameters specific to the action type.
 );
 ```
 ### Serializing to JSON

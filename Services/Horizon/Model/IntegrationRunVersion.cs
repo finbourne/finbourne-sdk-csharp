@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// IntegrationRunVersion
+    /// Integration Run Version
     /// </summary>
     [DataContract(Name = "IntegrationRunVersion")]
     public partial class IntegrationRunVersion : IEquatable<IntegrationRunVersion>, IValidatableObject

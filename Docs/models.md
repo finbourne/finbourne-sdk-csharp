@@ -399,6 +399,7 @@
 * [TableView](Luminesce/Model/TableView.md)
 * [TaskStatus](Luminesce/Model/TaskStatus.md)
 * [Type](Luminesce/Model/Type.md)
+* [ViewItem](Luminesce/Model/ViewItem.md)
 * [ViewParameter](Luminesce/Model/ViewParameter.md)
 * [WriterDesign](Luminesce/Model/WriterDesign.md)
 ## Lusid
