@@ -9,6 +9,8 @@ The Valuation Point Data Response for the Fund and specified date.
 | **JournalEntryAction** | **string** | Optional | The journal entry line action associated with this transaction. |
 | **Transaction** | [OutputTransaction](OutputTransaction.md) | Optional | *No description available.* |
 | **PortfolioId** | [PortfolioId](PortfolioId.md) | Optional | *No description available.* |
+| **ValuationPointOrigin** | **string** | Optional | Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action. |
+| **AddedOriginValuationPointCode** | **string** | Optional | The Valuation Point, only for transaction added as part of a Complex Close action. |
 
 
 ## Usage
@@ -22,7 +24,9 @@ var instance = new AccountedTransaction(
     accountingDate: DateTimeOffset.Now,  // optional — The transaction&#39;s accounting date.
     journalEntryAction: "...",  // optional — The journal entry line action associated with this transaction.
     transaction: new OutputTransaction(...),  // optional
-    portfolioId: new PortfolioId(...)  // optional
+    portfolioId: new PortfolioId(...),  // optional
+    valuationPointOrigin: "...",  // optional — Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action.
+    addedOriginValuationPointCode: "..."  // optional — The Valuation Point, only for transaction added as part of a Complex Close action.
 );
 ```
 ### Serializing to JSON

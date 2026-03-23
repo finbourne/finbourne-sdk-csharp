@@ -34,12 +34,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="journalEntryAction">The journal entry line action associated with this transaction..</param>
         /// <param name="transaction">transaction.</param>
         /// <param name="portfolioId">portfolioId.</param>
-        public AccountedTransaction(DateTimeOffset accountingDate = default(DateTimeOffset), string journalEntryAction = default(string), OutputTransaction transaction = default(OutputTransaction), PortfolioId portfolioId = default(PortfolioId))
+        /// <param name="valuationPointOrigin">Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action..</param>
+        /// <param name="addedOriginValuationPointCode">The Valuation Point, only for transaction added as part of a Complex Close action..</param>
+        public AccountedTransaction(DateTimeOffset accountingDate = default(DateTimeOffset), string journalEntryAction = default(string), OutputTransaction transaction = default(OutputTransaction), PortfolioId portfolioId = default(PortfolioId), string valuationPointOrigin = default(string), string addedOriginValuationPointCode = default(string))
         {
             this.AccountingDate = accountingDate;
             this.JournalEntryAction = journalEntryAction;
             this.Transaction = transaction;
             this.PortfolioId = portfolioId;
+            this.ValuationPointOrigin = valuationPointOrigin;
+            this.AddedOriginValuationPointCode = addedOriginValuationPointCode;
         }
 
         /// <summary>
@@ -69,6 +73,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public PortfolioId PortfolioId { get; set; }
 
         /// <summary>
+        /// Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action.
+        /// </summary>
+        /// <value>Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action.</value>
+        [DataMember(Name = "valuationPointOrigin", EmitDefaultValue = true)]
+        public string ValuationPointOrigin { get; set; }
+
+        /// <summary>
+        /// The Valuation Point, only for transaction added as part of a Complex Close action.
+        /// </summary>
+        /// <value>The Valuation Point, only for transaction added as part of a Complex Close action.</value>
+        [DataMember(Name = "addedOriginValuationPointCode", EmitDefaultValue = true)]
+        public string AddedOriginValuationPointCode { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -80,6 +98,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  JournalEntryAction: ").Append(JournalEntryAction).Append("\n");
             sb.Append("  Transaction: ").Append(Transaction).Append("\n");
             sb.Append("  PortfolioId: ").Append(PortfolioId).Append("\n");
+            sb.Append("  ValuationPointOrigin: ").Append(ValuationPointOrigin).Append("\n");
+            sb.Append("  AddedOriginValuationPointCode: ").Append(AddedOriginValuationPointCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -134,6 +154,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PortfolioId == input.PortfolioId ||
                     (this.PortfolioId != null &&
                     this.PortfolioId.Equals(input.PortfolioId))
+                ) && 
+                (
+                    this.ValuationPointOrigin == input.ValuationPointOrigin ||
+                    (this.ValuationPointOrigin != null &&
+                    this.ValuationPointOrigin.Equals(input.ValuationPointOrigin))
+                ) && 
+                (
+                    this.AddedOriginValuationPointCode == input.AddedOriginValuationPointCode ||
+                    (this.AddedOriginValuationPointCode != null &&
+                    this.AddedOriginValuationPointCode.Equals(input.AddedOriginValuationPointCode))
                 );
         }
 
@@ -161,6 +191,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.PortfolioId != null)
                 {
                     hashCode = (hashCode * 59) + this.PortfolioId.GetHashCode();
+                }
+                if (this.ValuationPointOrigin != null)
+                {
+                    hashCode = (hashCode * 59) + this.ValuationPointOrigin.GetHashCode();
+                }
+                if (this.AddedOriginValuationPointCode != null)
+                {
+                    hashCode = (hashCode * 59) + this.AddedOriginValuationPointCode.GetHashCode();
                 }
                 return hashCode;
             }
