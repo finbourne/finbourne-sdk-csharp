@@ -23,6 +23,11 @@ Defines a Task created based on a Task Definition
 | **ActionLogIdCreated** | **Guid?** | Optional | The Id of the Action that created this Task |
 | **ActionLogIdModified** | **Guid?** | Optional | The Id of the Action that last modified this Task |
 | **ActionLogIdSubmitted** | **Guid?** | Optional | The Id of the last Action submitted by this Task |
+| **HierarchicalPosition** | **string** | Optional | The hierarchical position of this Task: UltimateParent, IntermediateParent, Child, or Standalone |
+| **CompletionStatus** | **string** | Optional | The completion status of this Task: NotStarted, InProgress, or Completed |
+| **OpenDuration** | **long?** | Optional | Duration in seconds since the Task was created. If the Task is Completed, this is the duration from creation to the last transition. |
+| **OpenDurationSinceLastUpdate** | **long?** | Optional | Duration in seconds since the Task was last updated. 0 if the Task is Completed. |
+| **OpenDurationSinceLastTransition** | **long?** | Optional | Duration in seconds since the Task last transitioned. 0 if the Task is Completed. |
 
 
 ## Usage
@@ -50,7 +55,12 @@ var instance = new Task(
     stack: new Stack(...),  // optional
     actionLogIdCreated: "...",  // optional — The Id of the Action that created this Task
     actionLogIdModified: "...",  // optional — The Id of the Action that last modified this Task
-    actionLogIdSubmitted: "..."  // optional — The Id of the last Action submitted by this Task
+    actionLogIdSubmitted: "...",  // optional — The Id of the last Action submitted by this Task
+    hierarchicalPosition: "...",  // optional — The hierarchical position of this Task: UltimateParent, IntermediateParent, Child, or Standalone
+    completionStatus: "...",  // optional — The completion status of this Task: NotStarted, InProgress, or Completed
+    openDuration: 0L,  // optional — Duration in seconds since the Task was created. If the Task is Completed, this is the duration from creation to the last transition.
+    openDurationSinceLastUpdate: 0L,  // optional — Duration in seconds since the Task was last updated. 0 if the Task is Completed.
+    openDurationSinceLastTransition: 0L  // optional — Duration in seconds since the Task last transitioned. 0 if the Task is Completed.
 );
 ```
 ### Serializing to JSON

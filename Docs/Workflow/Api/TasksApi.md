@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**BatchUpdateTasks**](#batchupdatetasks) | **PATCH** `/workflow/api/tasks/$update` | [EXPERIMENTAL] BatchUpdateTasks: Batch update tasks |
+| [**BatchUpdateTasks**](#batchupdatetasks) | **PATCH** `/workflow/api/tasks/$update` | BatchUpdateTasks: Batch update tasks |
 | [**CreateTask**](#createtask) | **POST** `/workflow/api/tasks` | CreateTask: Create a new Task |
 | [**DeleteTask**](#deletetask) | **DELETE** `/workflow/api/tasks/{id}` | DeleteTask: Delete a Task |
 | [**DeleteTasks**](#deletetasks) | **POST** `/workflow/api/tasks/$delete` | DeleteTasks: Batch Delete Tasks |
@@ -61,7 +61,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TasksApi>();
 
 > BatchUpdateTasksResponse BatchUpdateTasks(BatchUpdateTasksRequest? batchUpdateTasksRequest = null)
 
-[EXPERIMENTAL] BatchUpdateTasks: Batch update tasks
+BatchUpdateTasks: Batch update tasks
 
 ### Example
 

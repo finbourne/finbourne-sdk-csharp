@@ -5,8 +5,8 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateWorkflow**](#createworkflow) | **POST** `/workflow/api/workflows` | [EXPERIMENTAL] CreateWorkflow: Create a new Workflow |
-| [**GetWorkflow**](#getworkflow) | **GET** `/workflow/api/workflows/{scope}/{code}` | [EXPERIMENTAL] GetWorkflow: Get a Workflow |
+| [**CreateWorkflow**](#createworkflow) | **POST** `/workflow/api/workflows` | CreateWorkflow: Create a new Workflow |
+| [**GetWorkflow**](#getworkflow) | **GET** `/workflow/api/workflows/{scope}/{code}` | GetWorkflow: Get a Workflow |
 
 ### Example
 
@@ -55,7 +55,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WorkflowsApi>();
 
 > WorkflowResponse CreateWorkflow(CreateWorkflowRequest createWorkflowRequest)
 
-[EXPERIMENTAL] CreateWorkflow: Create a new Workflow
+CreateWorkflow: Create a new Workflow
 
 ### Example
 
@@ -112,7 +112,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > WorkflowResponse GetWorkflow(string scope, string code, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetWorkflow: Get a Workflow
+GetWorkflow: Get a Workflow
 
 ### Example
 

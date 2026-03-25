@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetActionLogs**](#getactionlogs) | **GET** `/workflow/api/actionlogs/{id}` | [EXPERIMENTAL] GetActionLogs: Get the Action Logs for an Action Id |
+| [**GetActionLogs**](#getactionlogs) | **GET** `/workflow/api/actionlogs/{id}` | GetActionLogs: Get the Action Logs for an Action Id |
 
 ### Example
 
@@ -54,7 +54,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ActionLogsApi>();
 
 > ActionLog GetActionLogs(string id)
 
-[EXPERIMENTAL] GetActionLogs: Get the Action Logs for an Action Id
+GetActionLogs: Get the Action Logs for an Action Id
 
 ### Example
 

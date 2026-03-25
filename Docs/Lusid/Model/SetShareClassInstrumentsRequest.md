@@ -6,7 +6,7 @@ The request used to create a Fund.
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **ShareClassInstrumentScopes** | **List&lt;string&gt;** | Required | The scopes in which the instruments lie, currently limited to one. |
-| **ShareClassInstruments** | [List&lt;InstrumentResolutionDetail&gt;](InstrumentResolutionDetail.md) | Required | Details the user-provided instrument identifiers and the instrument resolved from them. |
+| **ShareClassInstruments** | [List&lt;InstrumentResolutionDetail&gt;](InstrumentResolutionDetail.md) | Required | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. |
 
 
 ## Usage
@@ -18,7 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new SetShareClassInstrumentsRequest(
     shareClassInstrumentScopes: ,  // required — The scopes in which the instruments lie, currently limited to one.
-    shareClassInstruments: new List<InstrumentResolutionDetail>()  // required — Details the user-provided instrument identifiers and the instrument resolved from them.
+    shareClassInstruments: new List<InstrumentResolutionDetail>()  // required — Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
 );
 ```
 ### Serializing to JSON

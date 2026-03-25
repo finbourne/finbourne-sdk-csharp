@@ -13,13 +13,16 @@ The request used to create a Fund.
 | **PortfolioIds** | [List&lt;PortfolioEntityId&gt;](PortfolioEntityId.md) | Required | A list of the Portfolio IDs associated with the fund, which are part of the Fund. Note: These must all have the same base currency, which must also much the Fund Base Currency. |
 | **FundConfigurationId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **ShareClassInstrumentScopes** | **List&lt;string&gt;** | Optional | The scopes in which the instruments lie, currently limited to one. |
-| **ShareClassInstruments** | [List&lt;InstrumentResolutionDetail&gt;](InstrumentResolutionDetail.md) | Optional | Details the user-provided instrument identifiers and the instrument resolved from them. |
+| **ShareClassInstruments** | [List&lt;InstrumentResolutionDetail&gt;](InstrumentResolutionDetail.md) | Optional | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. |
 | **Type** | **string** | Optional | The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39; |
 | **InceptionDate** | **DateTimeOffset** | Required | Inception date of the Fund |
 | **DecimalPlaces** | **int?** | Optional | Number of decimal places for reporting |
 | **PrimaryNavType** | [NavTypeDefinition](NavTypeDefinition.md) | Required | *No description available.* |
 | **AdditionalNavTypes** | [List&lt;NavTypeDefinition&gt;](NavTypeDefinition.md) | Optional | The definitions for any additional NAVs on the Fund. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the Fund. |
+| **CreateInstrument** | **bool** | Optional | Whether to create an instrument for the Fund upon creation. Defaults to false. |
+| **ApportionmentMethodProperty** | [AllocationMethodProperty](AllocationMethodProperty.md) | Optional | *No description available.* |
+| **ShareClasses** | [List&lt;ShareClassDefinition&gt;](ShareClassDefinition.md) | Optional | An optional list of Share Class definitions for the Fund. |
 
 
 ## Usage
@@ -38,13 +41,16 @@ var instance = new FundDefinitionRequest(
     portfolioIds: new List<PortfolioEntityId>(),  // required — A list of the Portfolio IDs associated with the fund, which are part of the Fund. Note: These must all have the same base currency, which must also much the Fund Base Currency.
     fundConfigurationId: new ResourceId(...),  // required
     shareClassInstrumentScopes: ,  // optional — The scopes in which the instruments lie, currently limited to one.
-    shareClassInstruments: new List<InstrumentResolutionDetail>(),  // optional — Details the user-provided instrument identifiers and the instrument resolved from them.
+    shareClassInstruments: new List<InstrumentResolutionDetail>(),  // optional — Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
     type: "...",  // optional — The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39;
     inceptionDate: DateTimeOffset.Now,  // required — Inception date of the Fund
     decimalPlaces: 0,  // optional — Number of decimal places for reporting
     primaryNavType: new NavTypeDefinition(...),  // required
     additionalNavTypes: new List<NavTypeDefinition>(),  // optional — The definitions for any additional NAVs on the Fund.
-    properties: new Property(...)  // optional — A set of properties for the Fund.
+    properties: new Property(...),  // optional — A set of properties for the Fund.
+    createInstrument: true,  // optional — Whether to create an instrument for the Fund upon creation. Defaults to false.
+    apportionmentMethodProperty: new AllocationMethodProperty(...),  // optional
+    shareClasses: new List<ShareClassDefinition>()  // optional — An optional list of Share Class definitions for the Fund.
 );
 ```
 ### Serializing to JSON
@@ -65,6 +71,8 @@ var instance = JsonConvert.DeserializeObject<FundDefinitionRequest>(json);
 - [NavTypeDefinition](NavTypeDefinition.md)
 - [NavTypeDefinition](NavTypeDefinition.md) — used in `AdditionalNavTypes`
 - [Property](Property.md) — used in `Properties`
+- [AllocationMethodProperty](AllocationMethodProperty.md)
+- [ShareClassDefinition](ShareClassDefinition.md) — used in `ShareClasses`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

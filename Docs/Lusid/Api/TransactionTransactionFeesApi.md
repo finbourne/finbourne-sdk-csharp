@@ -56,7 +56,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionTransa
 <a id="createtransactionfee"></a>
 ## CreateTransactionFee
 
-> TransactionFee CreateTransactionFee(string scope, string code, CreateTransactionFeeRequest createTransactionFeeRequest, DateTimeOrCutLabel? effectiveAt = null)
+> TransactionFee CreateTransactionFee(string scope, string code, CreateTransactionFeeRequest createTransactionFeeRequest)
 
 [EXPERIMENTAL] CreateTransactionFee: Create a TransactionFee
 
@@ -69,8 +69,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionTransa
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var createTransactionFeeRequest = new CreateTransactionFeeRequest(); // CreateTransactionFeeRequest
-var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
-TransactionFee result = apiInstance.CreateTransactionFee(scope, code, createTransactionFeeRequest, effectiveAt);
+TransactionFee result = apiInstance.CreateTransactionFee(scope, code, createTransactionFeeRequest);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -81,7 +80,6 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the TransactionFee. |
 | **code** | **string** | path | **required** | The code of the TransactionFee.              Together with the scope this uniquely identifies the TransactionFee. |
 | **createTransactionFeeRequest** | [CreateTransactionFeeRequest](CreateTransactionFeeRequest.md) | body | **required** | The contents of the TransactionFee. |
-| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The date and time at which the TransactionFee should be effective. |
 
 ### Return type
 
@@ -106,7 +104,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<TransactionFee> response = apiInstance.CreateTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest, effectiveAt);
+ApiResponse<TransactionFee> response = apiInstance.CreateTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -205,7 +203,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the TransactionFee. |
 | **code** | **string** | path | **required** | The code of the TransactionFee.              Together with the scope this uniquely identifies the TransactionFee. |
-| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The date and time at which the query is effective. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime at which to retrieve the TransactionFee properties.              Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the TransactionFees.              Defaults to latest if not specified. |
 | **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The collection of &#x60;PropertyKey&#x60;s that we want to decorate on identifies the TransactionFee. |
 
@@ -271,9 +269,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The date and time at which the query is effective. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime at which to retrieve TransactionFee properties.              Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the TransactionFees.              Defaults to latest if not specified. |
-| **page** | **string?** | query | optional | The pagination token to use to continue listing TransactionFees from a previous call to list TransactionFees.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy and asAt field must not have changed since the original request. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing TransactionFees from a previous call to list TransactionFees.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy, effectiveAt and asAt field must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
@@ -316,7 +314,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="updatetransactionfee"></a>
 ## UpdateTransactionFee
 
-> TransactionFee UpdateTransactionFee(string scope, string code, UpdateTransactionFeeRequest updateTransactionFeeRequest, DateTimeOrCutLabel? effectiveAt = null)
+> TransactionFee UpdateTransactionFee(string scope, string code, UpdateTransactionFeeRequest updateTransactionFeeRequest)
 
 [EXPERIMENTAL] UpdateTransactionFee: Update a TransactionFee
 
@@ -329,8 +327,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionTransa
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var updateTransactionFeeRequest = new UpdateTransactionFeeRequest(); // UpdateTransactionFeeRequest
-var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
-TransactionFee result = apiInstance.UpdateTransactionFee(scope, code, updateTransactionFeeRequest, effectiveAt);
+TransactionFee result = apiInstance.UpdateTransactionFee(scope, code, updateTransactionFeeRequest);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -340,8 +337,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the TransactionFee. |
 | **code** | **string** | path | **required** | The code of the specified TransactionFee.              Together with the scope this uniquely identifies the TransactionFee. |
-| **updateTransactionFeeRequest** | [UpdateTransactionFeeRequest](UpdateTransactionFeeRequest.md) | body | **required** | The contents of the TransactionFee. |
-| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The date and time at which the update should take effect.             The updated contents of the TransactionFee. |
+| **updateTransactionFeeRequest** | [UpdateTransactionFeeRequest](UpdateTransactionFeeRequest.md) | body | **required** | The updated contents of the TransactionFee. |
 
 ### Return type
 
@@ -366,7 +362,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<TransactionFee> response = apiInstance.UpdateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest, effectiveAt);
+ApiResponse<TransactionFee> response = apiInstance.UpdateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

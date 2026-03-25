@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="SetShareClassInstrumentsRequest" /> class.
         /// </summary>
         /// <param name="shareClassInstrumentScopes">The scopes in which the instruments lie, currently limited to one. (required).</param>
-        /// <param name="shareClassInstruments">Details the user-provided instrument identifiers and the instrument resolved from them. (required).</param>
+        /// <param name="shareClassInstruments">Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. (required).</param>
         public SetShareClassInstrumentsRequest(List<string> shareClassInstrumentScopes = default(List<string>), List<InstrumentResolutionDetail> shareClassInstruments = default(List<InstrumentResolutionDetail>))
         {
             // to ensure "shareClassInstrumentScopes" is required (not null)
@@ -61,9 +61,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<string> ShareClassInstrumentScopes { get; set; }
 
         /// <summary>
-        /// Details the user-provided instrument identifiers and the instrument resolved from them.
+        /// Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
         /// </summary>
-        /// <value>Details the user-provided instrument identifiers and the instrument resolved from them.</value>
+        /// <value>Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.</value>
         [DataMember(Name = "shareClassInstruments", IsRequired = true, EmitDefaultValue = true)]
         public List<InstrumentResolutionDetail> ShareClassInstruments { get; set; }
 

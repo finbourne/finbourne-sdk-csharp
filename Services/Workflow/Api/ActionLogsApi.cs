@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] GetActionLogs: Get the Action Logs for an Action Id
+        /// GetActionLogs: Get the Action Logs for an Action Id
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Action Id</param>
@@ -41,7 +41,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         ActionLog GetActionLogs(string id, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetActionLogs: Get the Action Logs for an Action Id
+        /// GetActionLogs: Get the Action Logs for an Action Id
         /// </summary>
         /// <remarks>
         /// 
@@ -62,7 +62,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] GetActionLogs: Get the Action Logs for an Action Id
+        /// GetActionLogs: Get the Action Logs for an Action Id
         /// </summary>
         /// <remarks>
         /// 
@@ -76,7 +76,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         System.Threading.Tasks.Task<ActionLog> GetActionLogsAsync(string id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetActionLogs: Get the Action Logs for an Action Id
+        /// GetActionLogs: Get the Action Logs for an Action Id
         /// </summary>
         /// <remarks>
         /// 
@@ -183,7 +183,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetActionLogs: Get the Action Logs for an Action Id 
+        /// GetActionLogs: Get the Action Logs for an Action Id 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Action Id</param>
@@ -197,7 +197,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetActionLogs: Get the Action Logs for an Action Id 
+        /// GetActionLogs: Get the Action Logs for an Action Id 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -284,7 +284,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetActionLogs: Get the Action Logs for an Action Id 
+        /// GetActionLogs: Get the Action Logs for an Action Id 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Action Id</param>
@@ -299,7 +299,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetActionLogs: Get the Action Logs for an Action Id 
+        /// GetActionLogs: Get the Action Logs for an Action Id 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateWorkflow: Create a new Workflow
+        /// CreateWorkflow: Create a new Workflow
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createWorkflowRequest">The data to create a Workflow</param>
@@ -41,7 +41,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         WorkflowResponse CreateWorkflow(CreateWorkflowRequest createWorkflowRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateWorkflow: Create a new Workflow
+        /// CreateWorkflow: Create a new Workflow
         /// </summary>
         /// <remarks>
         /// 
@@ -53,7 +53,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <returns>ApiResponse of WorkflowResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<WorkflowResponse> CreateWorkflowWithHttpInfo(CreateWorkflowRequest createWorkflowRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetWorkflow: Get a Workflow
+        /// GetWorkflow: Get a Workflow
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope that identifies a Workflow</param>
@@ -65,7 +65,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         WorkflowResponse GetWorkflow(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetWorkflow: Get a Workflow
+        /// GetWorkflow: Get a Workflow
         /// </summary>
         /// <remarks>
         /// 
@@ -88,7 +88,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateWorkflow: Create a new Workflow
+        /// CreateWorkflow: Create a new Workflow
         /// </summary>
         /// <remarks>
         /// 
@@ -102,7 +102,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowAsync(CreateWorkflowRequest createWorkflowRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateWorkflow: Create a new Workflow
+        /// CreateWorkflow: Create a new Workflow
         /// </summary>
         /// <remarks>
         /// 
@@ -115,7 +115,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<WorkflowResponse>> CreateWorkflowWithHttpInfoAsync(CreateWorkflowRequest createWorkflowRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetWorkflow: Get a Workflow
+        /// GetWorkflow: Get a Workflow
         /// </summary>
         /// <remarks>
         /// 
@@ -131,7 +131,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         System.Threading.Tasks.Task<WorkflowResponse> GetWorkflowAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetWorkflow: Get a Workflow
+        /// GetWorkflow: Get a Workflow
         /// </summary>
         /// <remarks>
         /// 
@@ -240,7 +240,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateWorkflow: Create a new Workflow 
+        /// CreateWorkflow: Create a new Workflow 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createWorkflowRequest">The data to create a Workflow</param>
@@ -254,7 +254,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateWorkflow: Create a new Workflow 
+        /// CreateWorkflow: Create a new Workflow 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -343,7 +343,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateWorkflow: Create a new Workflow 
+        /// CreateWorkflow: Create a new Workflow 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createWorkflowRequest">The data to create a Workflow</param>
@@ -358,7 +358,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateWorkflow: Create a new Workflow 
+        /// CreateWorkflow: Create a new Workflow 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -450,7 +450,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetWorkflow: Get a Workflow 
+        /// GetWorkflow: Get a Workflow 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope that identifies a Workflow</param>
@@ -466,7 +466,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetWorkflow: Get a Workflow 
+        /// GetWorkflow: Get a Workflow 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -564,7 +564,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetWorkflow: Get a Workflow 
+        /// GetWorkflow: Get a Workflow 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope that identifies a Workflow</param>
@@ -581,7 +581,7 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetWorkflow: Get a Workflow 
+        /// GetWorkflow: Get a Workflow 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
