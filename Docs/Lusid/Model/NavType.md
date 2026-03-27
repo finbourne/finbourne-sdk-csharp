@@ -20,7 +20,7 @@
 | **CashGainLossCalculationDate** | **string** | Required | The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. A non-default value is required. |
 | **AmortisationRuleSetId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **LeaderNavTypeCode** | **string** | Optional | The code of the Nav Type that this Nav Type will follow when set. |
-| **TransactionTemplateScope** | **string** | Optional | The Transaction Template Scope used by the NavType. Will default to the scope set on the parent portfolio. If the fund has multiple parent portfolios, then the Transaction Template Scope must be provided. |
+| **TransactionTemplateScope** | **string** | Required | The Transaction Template Scope used by the NavType. |
 
 
 ## Usage
@@ -47,7 +47,7 @@ var instance = new NavType(
     cashGainLossCalculationDate: "...",  // required — The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. A non-default value is required.
     amortisationRuleSetId: new ResourceId(...),  // optional
     leaderNavTypeCode: "...",  // optional — The code of the Nav Type that this Nav Type will follow when set.
-    transactionTemplateScope: "..."  // optional — The Transaction Template Scope used by the NavType. Will default to the scope set on the parent portfolio. If the fund has multiple parent portfolios, then the Transaction Template Scope must be provided.
+    transactionTemplateScope: "..."  // required — The Transaction Template Scope used by the NavType.
 );
 ```
 ### Serializing to JSON

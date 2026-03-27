@@ -12,7 +12,7 @@
     <Description>This is the C# SDK for all of FINBOURNE's APIs</Description>
     <Copyright>FINBOURNE Technology Ltd</Copyright>
     <RootNamespace>Finbourne.Sdk</RootNamespace>
-    <Version>0.0.11</Version>
+    <Version>0.0.13</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Finbourne.Sdk.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/finbourne/finbourne-sdk-csharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
