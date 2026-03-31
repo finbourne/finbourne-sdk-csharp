@@ -20,8 +20,8 @@ The request used to create a Fund.
 | **PrimaryNavType** | [NavTypeDefinition](NavTypeDefinition.md) | Required | *No description available.* |
 | **AdditionalNavTypes** | [List&lt;NavTypeDefinition&gt;](NavTypeDefinition.md) | Optional | The definitions for any additional NAVs on the Fund. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the Fund. |
-| **CreateInstrument** | **bool** | Optional | Whether to create an instrument for the Fund upon creation. Defaults to false. |
-| **ApportionmentMethodProperty** | [AllocationMethodProperty](AllocationMethodProperty.md) | Optional | *No description available.* |
+| **CreateInstrument** | **bool** | Optional | Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false. |
+| **ApportionmentMethodProperty** | [ApportionmentMethodProperty](ApportionmentMethodProperty.md) | Optional | *No description available.* |
 | **ShareClasses** | [List&lt;ShareClassDefinition&gt;](ShareClassDefinition.md) | Optional | An optional list of Share Class definitions for the Fund. |
 
 
@@ -48,8 +48,8 @@ var instance = new FundDefinitionRequest(
     primaryNavType: new NavTypeDefinition(...),  // required
     additionalNavTypes: new List<NavTypeDefinition>(),  // optional — The definitions for any additional NAVs on the Fund.
     properties: new Property(...),  // optional — A set of properties for the Fund.
-    createInstrument: true,  // optional — Whether to create an instrument for the Fund upon creation. Defaults to false.
-    apportionmentMethodProperty: new AllocationMethodProperty(...),  // optional
+    createInstrument: true,  // optional — Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false.
+    apportionmentMethodProperty: new ApportionmentMethodProperty(...),  // optional
     shareClasses: new List<ShareClassDefinition>()  // optional — An optional list of Share Class definitions for the Fund.
 );
 ```
@@ -71,7 +71,7 @@ var instance = JsonConvert.DeserializeObject<FundDefinitionRequest>(json);
 - [NavTypeDefinition](NavTypeDefinition.md)
 - [NavTypeDefinition](NavTypeDefinition.md) — used in `AdditionalNavTypes`
 - [Property](Property.md) — used in `Properties`
-- [AllocationMethodProperty](AllocationMethodProperty.md)
+- [ApportionmentMethodProperty](ApportionmentMethodProperty.md)
 - [ShareClassDefinition](ShareClassDefinition.md) — used in `ShareClasses`
 
 

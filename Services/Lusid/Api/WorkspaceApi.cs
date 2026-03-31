@@ -67,11 +67,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
-        /// <param name="workspaceCreationRequest">The workspace to be created. (optional)</param>
+        /// <param name="workspaceCreationRequest">The workspace to be created.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Workspace</returns>
-        Workspace CreateWorkspace(string visibility, WorkspaceCreationRequest? workspaceCreationRequest = default(WorkspaceCreationRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Workspace CreateWorkspace(string visibility, WorkspaceCreationRequest workspaceCreationRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] CreateWorkspace: Create a new workspace.
@@ -81,11 +82,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
-        /// <param name="workspaceCreationRequest">The workspace to be created. (optional)</param>
+        /// <param name="workspaceCreationRequest">The workspace to be created.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of Workspace</returns>
-        Finbourne.Sdk.Client.ApiResponse<Workspace> CreateWorkspaceWithHttpInfo(string visibility, WorkspaceCreationRequest? workspaceCreationRequest = default(WorkspaceCreationRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<Workspace> CreateWorkspaceWithHttpInfo(string visibility, WorkspaceCreationRequest workspaceCreationRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] DeleteItem: Delete an item from a workspace.
         /// </summary>
@@ -189,10 +191,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Workspace</returns>
-        Workspace GetWorkspace(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Workspace GetWorkspace(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] GetWorkspace: Get a workspace.
@@ -204,10 +207,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of Workspace</returns>
-        Finbourne.Sdk.Client.ApiResponse<Workspace> GetWorkspaceWithHttpInfo(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<Workspace> GetWorkspaceWithHttpInfo(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListItems: List the items in a workspace.
         /// </summary>
@@ -258,10 +262,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfWorkspace</returns>
-        PagedResourceListOfWorkspace ListWorkspaces(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfWorkspace ListWorkspaces(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListWorkspaces: List workspaces.
@@ -276,10 +281,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfWorkspace</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace> ListWorkspacesWithHttpInfo(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace> ListWorkspacesWithHttpInfo(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] SearchItems: List items across all workspaces.
         /// </summary>
@@ -357,11 +363,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
-        /// <param name="workspaceUpdateRequest">The new workspace details. (optional)</param>
+        /// <param name="workspaceUpdateRequest">The new workspace details.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Workspace</returns>
-        Workspace UpdateWorkspace(string visibility, string workspaceName, WorkspaceUpdateRequest? workspaceUpdateRequest = default(WorkspaceUpdateRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Workspace UpdateWorkspace(string visibility, string workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] UpdateWorkspace: Update a workspace.
@@ -372,11 +379,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
-        /// <param name="workspaceUpdateRequest">The new workspace details. (optional)</param>
+        /// <param name="workspaceUpdateRequest">The new workspace details.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of Workspace</returns>
-        Finbourne.Sdk.Client.ApiResponse<Workspace> UpdateWorkspaceWithHttpInfo(string visibility, string workspaceName, WorkspaceUpdateRequest? workspaceUpdateRequest = default(WorkspaceUpdateRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<Workspace> UpdateWorkspaceWithHttpInfo(string visibility, string workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
         #endregion Synchronous Operations
     }
 
@@ -425,12 +433,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
-        /// <param name="workspaceCreationRequest">The workspace to be created. (optional)</param>
+        /// <param name="workspaceCreationRequest">The workspace to be created.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of Workspace</returns>
-        System.Threading.Tasks.Task<Workspace> CreateWorkspaceAsync(string visibility, WorkspaceCreationRequest? workspaceCreationRequest = default(WorkspaceCreationRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Workspace> CreateWorkspaceAsync(string visibility, WorkspaceCreationRequest workspaceCreationRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] CreateWorkspace: Create a new workspace.
@@ -440,12 +449,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
-        /// <param name="workspaceCreationRequest">The workspace to be created. (optional)</param>
+        /// <param name="workspaceCreationRequest">The workspace to be created.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (Workspace)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> CreateWorkspaceWithHttpInfoAsync(string visibility, WorkspaceCreationRequest? workspaceCreationRequest = default(WorkspaceCreationRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> CreateWorkspaceWithHttpInfoAsync(string visibility, WorkspaceCreationRequest workspaceCreationRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] DeleteItem: Delete an item from a workspace.
         /// </summary>
@@ -555,11 +565,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of Workspace</returns>
-        System.Threading.Tasks.Task<Workspace> GetWorkspaceAsync(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Workspace> GetWorkspaceAsync(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] GetWorkspace: Get a workspace.
@@ -571,11 +582,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (Workspace)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> GetWorkspaceWithHttpInfoAsync(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> GetWorkspaceWithHttpInfoAsync(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListItems: List the items in a workspace.
         /// </summary>
@@ -628,11 +640,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfWorkspace</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfWorkspace> ListWorkspacesAsync(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfWorkspace> ListWorkspacesAsync(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListWorkspaces: List workspaces.
@@ -647,11 +660,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfWorkspace)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace>> ListWorkspacesWithHttpInfoAsync(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace>> ListWorkspacesWithHttpInfoAsync(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] SearchItems: List items across all workspaces.
         /// </summary>
@@ -733,12 +747,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
-        /// <param name="workspaceUpdateRequest">The new workspace details. (optional)</param>
+        /// <param name="workspaceUpdateRequest">The new workspace details.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of Workspace</returns>
-        System.Threading.Tasks.Task<Workspace> UpdateWorkspaceAsync(string visibility, string workspaceName, WorkspaceUpdateRequest? workspaceUpdateRequest = default(WorkspaceUpdateRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Workspace> UpdateWorkspaceAsync(string visibility, string workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] UpdateWorkspace: Update a workspace.
@@ -749,12 +764,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
-        /// <param name="workspaceUpdateRequest">The new workspace details. (optional)</param>
+        /// <param name="workspaceUpdateRequest">The new workspace details.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (Workspace)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> UpdateWorkspaceWithHttpInfoAsync(string visibility, string workspaceName, WorkspaceUpdateRequest? workspaceUpdateRequest = default(WorkspaceUpdateRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> UpdateWorkspaceWithHttpInfoAsync(string visibility, string workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         #endregion Asynchronous Operations
     }
 
@@ -1092,13 +1108,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
-        /// <param name="workspaceCreationRequest">The workspace to be created. (optional)</param>
+        /// <param name="workspaceCreationRequest">The workspace to be created.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Workspace</returns>
-        public Workspace CreateWorkspace(string visibility, WorkspaceCreationRequest? workspaceCreationRequest = default(WorkspaceCreationRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Workspace CreateWorkspace(string visibility, WorkspaceCreationRequest workspaceCreationRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = CreateWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = CreateWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, includeItemAccess, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -1108,16 +1125,23 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
-        /// <param name="workspaceCreationRequest">The workspace to be created. (optional)</param>
+        /// <param name="workspaceCreationRequest">The workspace to be created.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of Workspace</returns>
-        public Finbourne.Sdk.Client.ApiResponse<Workspace> CreateWorkspaceWithHttpInfo(string visibility, WorkspaceCreationRequest? workspaceCreationRequest = default(WorkspaceCreationRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<Workspace> CreateWorkspaceWithHttpInfo(string visibility, WorkspaceCreationRequest workspaceCreationRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'visibility' is set
             if (visibility == null)
             {
                 throw new ArgumentNullException("Missing required parameter 'visibility' when calling WorkspaceApi->CreateWorkspace");
+            }
+
+            // verify the required parameter 'workspaceCreationRequest' is set
+            if (workspaceCreationRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'workspaceCreationRequest' when calling WorkspaceApi->CreateWorkspace");
             }
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -1159,6 +1183,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             localVarRequestOptions.PathParameters.Add("visibility", Finbourne.Sdk.Client.ClientUtils.ParameterToString(visibility)); // path parameter
+            if (includeItemAccess != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "includeItemAccess", includeItemAccess));
+            }
             localVarRequestOptions.Data = workspaceCreationRequest;
 
             localVarRequestOptions.Operation = "WorkspaceApi.CreateWorkspace";
@@ -1200,14 +1228,15 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
-        /// <param name="workspaceCreationRequest">The workspace to be created. (optional)</param>
+        /// <param name="workspaceCreationRequest">The workspace to be created.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of Workspace</returns>
-        public async System.Threading.Tasks.Task<Workspace> CreateWorkspaceAsync(string visibility, WorkspaceCreationRequest? workspaceCreationRequest = default(WorkspaceCreationRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Workspace> CreateWorkspaceAsync(string visibility, WorkspaceCreationRequest workspaceCreationRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = await CreateWorkspaceWithHttpInfoAsync(visibility, workspaceCreationRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = await CreateWorkspaceWithHttpInfoAsync(visibility, workspaceCreationRequest, includeItemAccess, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1217,17 +1246,24 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
-        /// <param name="workspaceCreationRequest">The workspace to be created. (optional)</param>
+        /// <param name="workspaceCreationRequest">The workspace to be created.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (Workspace)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> CreateWorkspaceWithHttpInfoAsync(string visibility, WorkspaceCreationRequest? workspaceCreationRequest = default(WorkspaceCreationRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> CreateWorkspaceWithHttpInfoAsync(string visibility, WorkspaceCreationRequest workspaceCreationRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'visibility' is set
             if (visibility == null)
             {
                 throw new ArgumentNullException("Missing required parameter 'visibility' when calling WorkspaceApi->CreateWorkspace");
+            }
+
+            // verify the required parameter 'workspaceCreationRequest' is set
+            if (workspaceCreationRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'workspaceCreationRequest' when calling WorkspaceApi->CreateWorkspace");
             }
 
 
@@ -1270,6 +1306,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             localVarRequestOptions.PathParameters.Add("visibility", Finbourne.Sdk.Client.ClientUtils.ParameterToString(visibility)); // path parameter
+            if (includeItemAccess != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "includeItemAccess", includeItemAccess));
+            }
             localVarRequestOptions.Data = workspaceCreationRequest;
 
             localVarRequestOptions.Operation = "WorkspaceApi.CreateWorkspace";
@@ -2082,12 +2122,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Workspace</returns>
-        public Workspace GetWorkspace(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Workspace GetWorkspace(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = GetWorkspaceWithHttpInfo(visibility, workspaceName, asAt, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = GetWorkspaceWithHttpInfo(visibility, workspaceName, asAt, includeItemAccess, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -2099,10 +2140,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of Workspace</returns>
-        public Finbourne.Sdk.Client.ApiResponse<Workspace> GetWorkspaceWithHttpInfo(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<Workspace> GetWorkspaceWithHttpInfo(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'visibility' is set
             if (visibility == null)
@@ -2155,6 +2197,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (asAt != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (includeItemAccess != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "includeItemAccess", includeItemAccess));
             }
 
             localVarRequestOptions.Operation = "WorkspaceApi.GetWorkspace";
@@ -2198,13 +2244,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of Workspace</returns>
-        public async System.Threading.Tasks.Task<Workspace> GetWorkspaceAsync(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Workspace> GetWorkspaceAsync(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = await GetWorkspaceWithHttpInfoAsync(visibility, workspaceName, asAt, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = await GetWorkspaceWithHttpInfoAsync(visibility, workspaceName, asAt, includeItemAccess, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2216,11 +2263,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (Workspace)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> GetWorkspaceWithHttpInfoAsync(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> GetWorkspaceWithHttpInfoAsync(string visibility, string workspaceName, DateTimeOffset? asAt = default(DateTimeOffset?), bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'visibility' is set
             if (visibility == null)
@@ -2274,6 +2322,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (asAt != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (includeItemAccess != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "includeItemAccess", includeItemAccess));
             }
 
             localVarRequestOptions.Operation = "WorkspaceApi.GetWorkspace";
@@ -2605,12 +2657,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfWorkspace</returns>
-        public PagedResourceListOfWorkspace ListWorkspaces(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfWorkspace ListWorkspaces(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace> localVarResponse = ListWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace> localVarResponse = ListWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -2625,10 +2678,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfWorkspace</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace> ListWorkspacesWithHttpInfo(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace> ListWorkspacesWithHttpInfo(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'visibility' is set
             if (visibility == null)
@@ -2690,6 +2744,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (filter != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (includeItemAccess != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "includeItemAccess", includeItemAccess));
             }
 
             localVarRequestOptions.Operation = "WorkspaceApi.ListWorkspaces";
@@ -2736,13 +2794,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfWorkspace</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfWorkspace> ListWorkspacesAsync(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfWorkspace> ListWorkspacesAsync(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace> localVarResponse = await ListWorkspacesWithHttpInfoAsync(visibility, asAt, page, sortBy, limit, filter, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace> localVarResponse = await ListWorkspacesWithHttpInfoAsync(visibility, asAt, page, sortBy, limit, filter, includeItemAccess, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2757,11 +2816,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfWorkspace)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace>> ListWorkspacesWithHttpInfoAsync(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfWorkspace>> ListWorkspacesWithHttpInfoAsync(string visibility, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'visibility' is set
             if (visibility == null)
@@ -2824,6 +2884,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (filter != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (includeItemAccess != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "includeItemAccess", includeItemAccess));
             }
 
             localVarRequestOptions.Operation = "WorkspaceApi.ListWorkspaces";
@@ -3407,13 +3471,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
-        /// <param name="workspaceUpdateRequest">The new workspace details. (optional)</param>
+        /// <param name="workspaceUpdateRequest">The new workspace details.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Workspace</returns>
-        public Workspace UpdateWorkspace(string visibility, string workspaceName, WorkspaceUpdateRequest? workspaceUpdateRequest = default(WorkspaceUpdateRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Workspace UpdateWorkspace(string visibility, string workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = UpdateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = UpdateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -3424,11 +3489,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
-        /// <param name="workspaceUpdateRequest">The new workspace details. (optional)</param>
+        /// <param name="workspaceUpdateRequest">The new workspace details.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of Workspace</returns>
-        public Finbourne.Sdk.Client.ApiResponse<Workspace> UpdateWorkspaceWithHttpInfo(string visibility, string workspaceName, WorkspaceUpdateRequest? workspaceUpdateRequest = default(WorkspaceUpdateRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<Workspace> UpdateWorkspaceWithHttpInfo(string visibility, string workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'visibility' is set
             if (visibility == null)
@@ -3440,6 +3506,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (workspaceName == null)
             {
                 throw new ArgumentNullException("Missing required parameter 'workspaceName' when calling WorkspaceApi->UpdateWorkspace");
+            }
+
+            // verify the required parameter 'workspaceUpdateRequest' is set
+            if (workspaceUpdateRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'workspaceUpdateRequest' when calling WorkspaceApi->UpdateWorkspace");
             }
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -3482,6 +3554,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
 
             localVarRequestOptions.PathParameters.Add("visibility", Finbourne.Sdk.Client.ClientUtils.ParameterToString(visibility)); // path parameter
             localVarRequestOptions.PathParameters.Add("workspaceName", Finbourne.Sdk.Client.ClientUtils.ParameterToString(workspaceName)); // path parameter
+            if (includeItemAccess != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "includeItemAccess", includeItemAccess));
+            }
             localVarRequestOptions.Data = workspaceUpdateRequest;
 
             localVarRequestOptions.Operation = "WorkspaceApi.UpdateWorkspace";
@@ -3524,14 +3600,15 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
-        /// <param name="workspaceUpdateRequest">The new workspace details. (optional)</param>
+        /// <param name="workspaceUpdateRequest">The new workspace details.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of Workspace</returns>
-        public async System.Threading.Tasks.Task<Workspace> UpdateWorkspaceAsync(string visibility, string workspaceName, WorkspaceUpdateRequest? workspaceUpdateRequest = default(WorkspaceUpdateRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Workspace> UpdateWorkspaceAsync(string visibility, string workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = await UpdateWorkspaceWithHttpInfoAsync(visibility, workspaceName, workspaceUpdateRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<Workspace> localVarResponse = await UpdateWorkspaceWithHttpInfoAsync(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3542,12 +3619,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
         /// <param name="workspaceName">The workspace name.</param>
-        /// <param name="workspaceUpdateRequest">The new workspace details. (optional)</param>
+        /// <param name="workspaceUpdateRequest">The new workspace details.</param>
+        /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (Workspace)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> UpdateWorkspaceWithHttpInfoAsync(string visibility, string workspaceName, WorkspaceUpdateRequest? workspaceUpdateRequest = default(WorkspaceUpdateRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Workspace>> UpdateWorkspaceWithHttpInfoAsync(string visibility, string workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, bool? includeItemAccess = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'visibility' is set
             if (visibility == null)
@@ -3559,6 +3637,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (workspaceName == null)
             {
                 throw new ArgumentNullException("Missing required parameter 'workspaceName' when calling WorkspaceApi->UpdateWorkspace");
+            }
+
+            // verify the required parameter 'workspaceUpdateRequest' is set
+            if (workspaceUpdateRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'workspaceUpdateRequest' when calling WorkspaceApi->UpdateWorkspace");
             }
 
 
@@ -3602,6 +3686,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
 
             localVarRequestOptions.PathParameters.Add("visibility", Finbourne.Sdk.Client.ClientUtils.ParameterToString(visibility)); // path parameter
             localVarRequestOptions.PathParameters.Add("workspaceName", Finbourne.Sdk.Client.ClientUtils.ParameterToString(workspaceName)); // path parameter
+            if (includeItemAccess != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "includeItemAccess", includeItemAccess));
+            }
             localVarRequestOptions.Data = workspaceUpdateRequest;
 
             localVarRequestOptions.Operation = "WorkspaceApi.UpdateWorkspace";

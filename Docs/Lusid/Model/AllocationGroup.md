@@ -9,7 +9,7 @@
 | **Name** | **string** | Required | The display name of the Allocation Group. |
 | **Description** | **string** | Optional | An optional description for the Allocation Group. |
 | **ShareClassShortCode** | **string** | Required | The short code that identifies the Allocation Group. |
-| **ApportionmentMethodProperty** | [AllocationMethodProperty](AllocationMethodProperty.md) | Optional | *No description available.* |
+| **ApportionmentMethodProperty** | [ApportionmentMethodProperty](ApportionmentMethodProperty.md) | Optional | *No description available.* |
 | **Formula** | **string** | Optional | An optional filter expression used to define which classes belong to this group, based on fund grouping criteria. You can provide this or the Classes, but not both. |
 
 
@@ -26,7 +26,7 @@ var instance = new AllocationGroup(
     name: "...",  // required — The display name of the Allocation Group.
     description: "...",  // optional — An optional description for the Allocation Group.
     shareClassShortCode: "...",  // required — The short code that identifies the Allocation Group.
-    apportionmentMethodProperty: new AllocationMethodProperty(...),  // optional
+    apportionmentMethodProperty: new ApportionmentMethodProperty(...),  // optional
     formula: "..."  // optional — An optional filter expression used to define which classes belong to this group, based on fund grouping criteria. You can provide this or the Classes, but not both.
 );
 ```
@@ -46,7 +46,7 @@ var instance = JsonConvert.DeserializeObject<AllocationGroup>(json);
 ## Related Models
 
 - [AllocationGroupClass](AllocationGroupClass.md) — used in `Classes`
-- [AllocationMethodProperty](AllocationMethodProperty.md)
+- [ApportionmentMethodProperty](ApportionmentMethodProperty.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

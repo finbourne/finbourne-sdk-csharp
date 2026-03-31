@@ -18,6 +18,7 @@ Defines a change that occured for an entity, with extra detail about the change
 | **PreviousValue** | [PropertyValue](PropertyValue.md) | Optional | *No description available.* |
 | **NewValue** | [PropertyValue](PropertyValue.md) | Optional | *No description available.* |
 | **EffectiveRange** | [EffectiveRange](EffectiveRange.md) | Optional | *No description available.* |
+| **IsInherited** | **bool** | Optional | Indicates whether this change interval is a result of a change to an ancestor or the entity itself. |
 
 
 ## Usage
@@ -40,7 +41,8 @@ var instance = new ChangeIntervalWithOrderManagementDetail(
     attributeName: "...",  // optional — The name of the field or property that has been changed.
     previousValue: new PropertyValue(...),  // optional
     newValue: new PropertyValue(...),  // optional
-    effectiveRange: new EffectiveRange(...)  // optional
+    effectiveRange: new EffectiveRange(...),  // optional
+    isInherited: true  // optional — Indicates whether this change interval is a result of a change to an ancestor or the entity itself.
 );
 ```
 ### Serializing to JSON

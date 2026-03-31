@@ -66,7 +66,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IntegrationsApi>(
 <a id="createinstance"></a>
 ## CreateInstance
 
-> InstanceIdentifier CreateInstance(CreateInstanceRequest? createInstanceRequest = null)
+> InstanceIdentifier CreateInstance(CreateInstanceRequest createInstanceRequest)
 
 [EXPERIMENTAL] CreateInstance: Create a single integration instance.
 
@@ -76,7 +76,7 @@ Creates a new instance of an integration, returning its identifier. The user mus
 
 ```csharp
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IntegrationsApi>();
-var createInstanceRequest = new CreateInstanceRequest?(); // CreateInstanceRequest? (optional)
+var createInstanceRequest = new CreateInstanceRequest(); // CreateInstanceRequest
 InstanceIdentifier result = apiInstance.CreateInstance(createInstanceRequest);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
@@ -85,7 +85,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createInstanceRequest** | [CreateInstanceRequest?](CreateInstanceRequest?.md) | body | optional | The new integration instance. |
+| **createInstanceRequest** | [CreateInstanceRequest](CreateInstanceRequest.md) | body | **required** | The new integration instance. |
 
 ### Return type
 
@@ -903,7 +903,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="updateinstance"></a>
 ## UpdateInstance
 
-> void UpdateInstance(string instanceId, UpdateInstanceRequest? updateInstanceRequest = null)
+> void UpdateInstance(string instanceId, UpdateInstanceRequest updateInstanceRequest)
 
 [EXPERIMENTAL] UpdateInstance: Update a single integration instance.
 
@@ -914,7 +914,7 @@ Updates an existing instance of an integration, returning its identifier. The us
 ```csharp
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IntegrationsApi>();
 var instanceId = "instanceId_example";  // string
-var updateInstanceRequest = new UpdateInstanceRequest?(); // UpdateInstanceRequest? (optional)
+var updateInstanceRequest = new UpdateInstanceRequest(); // UpdateInstanceRequest
 apiInstance.UpdateInstance(instanceId, updateInstanceRequest);
 ```
 
@@ -923,7 +923,7 @@ apiInstance.UpdateInstance(instanceId, updateInstanceRequest);
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;. |
-| **updateInstanceRequest** | [UpdateInstanceRequest?](UpdateInstanceRequest?.md) | body | optional | The new integration instance. |
+| **updateInstanceRequest** | [UpdateInstanceRequest](UpdateInstanceRequest.md) | body | **required** | The new integration instance. |
 
 ### Return type
 

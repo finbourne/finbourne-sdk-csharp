@@ -24,6 +24,7 @@ All URIs are relative to *http://localhost*
 | [**DeleteSettlementInstructions**](#deletesettlementinstructions) | **DELETE** `/api/api/transactionportfolios/{scope}/{code}/settlementinstructions` | [EARLY ACCESS] DeleteSettlementInstructions: Delete Settlement Instructions. |
 | [**GetA2BData**](#geta2bdata) | **GET** `/api/api/transactionportfolios/{scope}/{code}/a2b` | GetA2BData: Get A2B data |
 | [**GetA2BMovements**](#geta2bmovements) | **GET** `/api/api/transactionportfolios/{scope}/{code}/a2bmovements` | GetA2BMovements: Get an A2B report at the movement level for the given portfolio. |
+| [**GetA2BMovementsTradingVsHolding**](#geta2bmovementstradingvsholding) | **GET** `/api/api/transactionportfolios/{scope}/{code}/a2bmovements/tradingvsholding` | [EXPERIMENTAL] GetA2BMovementsTradingVsHolding: Get an A2B report at the movement level for the given portfolio, with P&amp;L split between holding and trading returns. |
 | [**GetBucketedCashFlows**](#getbucketedcashflows) | **POST** `/api/api/transactionportfolios/{scope}/{code}/bucketedCashFlows` | GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios |
 | [**GetCustodianAccount**](#getcustodianaccount) | **GET** `/api/api/transactionportfolios/{scope}/{code}/custodianaccounts/{custodianAccountScope}/{custodianAccountCode}` | GetCustodianAccount: Get Custodian Account |
 | [**GetDetails**](#getdetails) | **GET** `/api/api/transactionportfolios/{scope}/{code}/details` | GetDetails: Get details |
@@ -1341,6 +1342,80 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="geta2bmovementstradingvsholding"></a>
+## GetA2BMovementsTradingVsHolding
+
+> VersionedResourceListOfA2BMovementRecord GetA2BMovementsTradingVsHolding(string scope, string code, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, DateTimeOffset? asAt = null, string? recipeIdScope = null, string? recipeIdCode = null, List<string>? propertyKeys = null, string? filter = null)
+
+[EXPERIMENTAL] GetA2BMovementsTradingVsHolding: Get an A2B report at the movement level for the given portfolio, with P&L split between holding and trading returns.
+
+Get an A2B report at the movement level for the given portfolio. Each transaction in the period is treated as a  synthetic holding rather than a flow, allowing P&L to be attributed to holding returns (market movement on  the starting position) versus trading returns (profit from buy/sell decisions).
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionPortfoliosApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var fromEffectiveAt = "fromEffectiveAt_example";  // DateTimeOrCutLabel
+var toEffectiveAt = "toEffectiveAt_example";  // DateTimeOrCutLabel
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var recipeIdScope = "recipeIdScope_example";  // string? (optional)
+var recipeIdCode = "recipeIdCode_example";  // string? (optional)
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+var filter = "filter_example";  // string? (optional)
+VersionedResourceListOfA2BMovementRecord result = apiInstance.GetA2BMovementsTradingVsHolding(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the portfolio to retrieve the A2B movement report for. |
+| **code** | **string** | path | **required** | The code of the portfolio to retrieve the A2B movement report for. Together with the scope this              uniquely identifies the portfolio. |
+| **fromEffectiveAt** | **DateTimeOrCutLabel** | query | **required** | The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. |
+| **toEffectiveAt** | **DateTimeOrCutLabel** | query | **required** | The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no upper bound if this is not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. |
+| **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
+| **recipeIdCode** | **string?** | query | optional | The code of the given recipeId |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
+| **filter** | **string?** | query | optional | Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
+
+### Return type
+
+[VersionedResourceListOfA2BMovementRecord](VersionedResourceListOfA2BMovementRecord.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested portfolio A2B movement data |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetA2BMovementsTradingVsHoldingWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<VersionedResourceListOfA2BMovementRecord> response = apiInstance.GetA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="getbucketedcashflows"></a>
 ## GetBucketedCashFlows
 
@@ -2584,7 +2659,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listsettlementinstructions"></a>
 ## ListSettlementInstructions
 
-> VersionedResourceListOfTransactionSettlementInstruction ListSettlementInstructions(string scope, string code, DateTimeOrCutLabel? fromDate = null, DateTimeOrCutLabel? toDate = null, string? page = null, int? limit = null, string? filter = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
+> VersionedResourceListOfTransactionSettlementInstruction ListSettlementInstructions(string scope, string code, DateTimeOrCutLabel? fromDate = null, DateTimeOrCutLabel? toDate = null, string? page = null, int? limit = null, string? filter = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null)
 
 [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions.
 
@@ -2603,7 +2678,10 @@ var limit = 56;  // int? (optional)
 var filter = "filter_example";  // string? (optional)
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var propertyKeys = new List<string>?(); // List<string>? (optional)
-VersionedResourceListOfTransactionSettlementInstruction result = apiInstance.ListSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys);
+var timelineScope = "timelineScope_example";  // string? (optional)
+var timelineCode = "timelineCode_example";  // string? (optional)
+var closedPeriodId = "closedPeriodId_example";  // string? (optional)
+VersionedResourceListOfTransactionSettlementInstruction result = apiInstance.ListSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -2620,6 +2698,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **filter** | **string?** | query | optional | The expression to filter out settlement instructions |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the settlement instructions. Defaults to return the latest if not specified. |
 | **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;SettlementInstruction&#39;, &#39;Instrument&#39; or &#39;Portfolio&#39; domains to decorate onto              settlement instructions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or &#39;SettlementInstruction/strategy/quantsignal&#39;. |
+| **timelineScope** | **string?** | query | optional | The scope of the Timeline. |
+| **timelineCode** | **string?** | query | optional | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. |
+| **closedPeriodId** | **string?** | query | optional | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. Either closedPeriodId or effectiveAt can be used with a Timeline. |
 
 ### Return type
 
@@ -2644,7 +2725,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> response = apiInstance.ListSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys);
+ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> response = apiInstance.ListSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

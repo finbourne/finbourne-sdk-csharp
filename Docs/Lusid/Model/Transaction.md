@@ -31,6 +31,7 @@ A list of transactions.
 | **StrategyTag** | [List&lt;Strategy&gt;](Strategy.md) | Optional | A list of strategies representing the allocation of units across multiple sub-holding keys |
 | **ResolvedTransactionTypeDetails** | [TransactionTypeDetails](TransactionTypeDetails.md) | Optional | *No description available.* |
 | **DataModelMembership** | [DataModelMembership](DataModelMembership.md) | Optional | *No description available.* |
+| **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -66,7 +67,8 @@ var instance = new Transaction(
     transactionGroupId: "...",  // optional — The identifier for grouping economic events across multiple transactions
     strategyTag: new List<Strategy>(),  // optional — A list of strategies representing the allocation of units across multiple sub-holding keys
     resolvedTransactionTypeDetails: new TransactionTypeDetails(...),  // optional
-    dataModelMembership: new DataModelMembership(...)  // optional
+    dataModelMembership: new DataModelMembership(...),  // optional
+    varVersion: new ModelVersion(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -91,6 +93,7 @@ var instance = JsonConvert.DeserializeObject<Transaction>(json);
 - [Strategy](Strategy.md) — used in `StrategyTag`
 - [TransactionTypeDetails](TransactionTypeDetails.md)
 - [DataModelMembership](DataModelMembership.md)
+- [ModelVersion](ModelVersion.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

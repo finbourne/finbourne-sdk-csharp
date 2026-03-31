@@ -1,4 +1,4 @@
-# Finbourne.Sdk.Lusid.Model.AllocationMethodProperty
+# Finbourne.Sdk.Lusid.Model.ApportionmentMethodProperty
 
 ## Properties
 
@@ -15,7 +15,7 @@
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var instance = new AllocationMethodProperty(
+var instance = new ApportionmentMethodProperty(
     code: "...",  // required — The code identifying the allocation method property.
     scope: "..."  // required — The scope of the allocation method property.
 );
@@ -29,7 +29,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<AllocationMethodProperty>(json);
+var instance = JsonConvert.DeserializeObject<ApportionmentMethodProperty>(json);
 ```
 
 

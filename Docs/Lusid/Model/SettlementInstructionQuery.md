@@ -12,6 +12,9 @@
 | **Filter** | **string** | Optional | *No description available.* |
 | **SettlementInstructionPropertyKeys** | **List&lt;string&gt;** | Optional | *No description available.* |
 | **TransactionPropertyKeys** | **List&lt;string&gt;** | Optional | *No description available.* |
+| **TimelineScope** | **string** | Optional | *No description available.* |
+| **TimelineCode** | **string** | Optional | *No description available.* |
+| **ClosedPeriodId** | **string** | Optional | *No description available.* |
 
 
 ## Usage
@@ -29,7 +32,10 @@ var instance = new SettlementInstructionQuery(
     page: "...",  // optional
     filter: "...",  // optional
     settlementInstructionPropertyKeys: ,  // optional
-    transactionPropertyKeys:   // optional
+    transactionPropertyKeys: ,  // optional
+    timelineScope: "...",  // optional
+    timelineCode: "...",  // optional
+    closedPeriodId: "..."  // optional
 );
 ```
 ### Serializing to JSON

@@ -8,6 +8,7 @@ A workspace.
 | **Name** | **string** | Required | A workspace&#39;s name. |
 | **Description** | **string** | Required | A friendly description for the workspace. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **PermittedItemActions** | [WorkspacePermittedItemActions](WorkspacePermittedItemActions.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -22,6 +23,7 @@ var instance = new Workspace(
     name: "...",  // required — A workspace&#39;s name.
     description: "...",  // required — A friendly description for the workspace.
     varVersion: new ModelVersion(...),  // optional
+    permittedItemActions: new WorkspacePermittedItemActions(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -38,6 +40,7 @@ var instance = JsonConvert.DeserializeObject<Workspace>(json);
 ```
 
 - [ModelVersion](ModelVersion.md)
+- [WorkspacePermittedItemActions](WorkspacePermittedItemActions.md)
 - [Link](Link.md)
 
 

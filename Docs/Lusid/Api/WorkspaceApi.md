@@ -124,7 +124,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="createworkspace"></a>
 ## CreateWorkspace
 
-> Workspace CreateWorkspace(string visibility, WorkspaceCreationRequest? workspaceCreationRequest = null)
+> Workspace CreateWorkspace(string visibility, WorkspaceCreationRequest workspaceCreationRequest, bool? includeItemAccess = null)
 
 [EXPERIMENTAL] CreateWorkspace: Create a new workspace.
 
@@ -135,8 +135,9 @@ Create a new workspace.
 ```csharp
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WorkspaceApi>();
 var visibility = "shared";  // string
-var workspaceCreationRequest = new WorkspaceCreationRequest?(); // WorkspaceCreationRequest? (optional)
-Workspace result = apiInstance.CreateWorkspace(visibility, workspaceCreationRequest);
+var workspaceCreationRequest = new WorkspaceCreationRequest(); // WorkspaceCreationRequest
+var includeItemAccess = false;  // bool? (optional)
+Workspace result = apiInstance.CreateWorkspace(visibility, workspaceCreationRequest, includeItemAccess);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -145,7 +146,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **visibility** | **string** | path | **required** | The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
-| **workspaceCreationRequest** | [WorkspaceCreationRequest?](WorkspaceCreationRequest?.md) | body | optional | The workspace to be created. |
+| **workspaceCreationRequest** | [WorkspaceCreationRequest](WorkspaceCreationRequest.md) | body | **required** | The workspace to be created. |
+| **includeItemAccess** | **bool?** | query | optional | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. Default: `false` |
 
 ### Return type
 
@@ -170,7 +172,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<Workspace> response = apiInstance.CreateWorkspaceWithHttpInfo(visibility, workspaceCreationRequest);
+ApiResponse<Workspace> response = apiInstance.CreateWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, includeItemAccess);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -376,7 +378,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getworkspace"></a>
 ## GetWorkspace
 
-> Workspace GetWorkspace(string visibility, string workspaceName, DateTimeOffset? asAt = null)
+> Workspace GetWorkspace(string visibility, string workspaceName, DateTimeOffset? asAt = null, bool? includeItemAccess = null)
 
 [EXPERIMENTAL] GetWorkspace: Get a workspace.
 
@@ -389,7 +391,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WorkspaceApi>();
 var visibility = "shared";  // string
 var workspaceName = "workspaceName_example";  // string
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
-Workspace result = apiInstance.GetWorkspace(visibility, workspaceName, asAt);
+var includeItemAccess = false;  // bool? (optional)
+Workspace result = apiInstance.GetWorkspace(visibility, workspaceName, asAt, includeItemAccess);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -400,6 +403,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **visibility** | **string** | path | **required** | The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
 | **workspaceName** | **string** | path | **required** | The workspace name. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. |
+| **includeItemAccess** | **bool?** | query | optional | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. Default: `false` |
 
 ### Return type
 
@@ -424,7 +428,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<Workspace> response = apiInstance.GetWorkspaceWithHttpInfo(visibility, workspaceName, asAt);
+ApiResponse<Workspace> response = apiInstance.GetWorkspaceWithHttpInfo(visibility, workspaceName, asAt, includeItemAccess);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -508,7 +512,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listworkspaces"></a>
 ## ListWorkspaces
 
-> PagedResourceListOfWorkspace ListWorkspaces(string visibility, DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null)
+> PagedResourceListOfWorkspace ListWorkspaces(string visibility, DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null, bool? includeItemAccess = null)
 
 [EXPERIMENTAL] ListWorkspaces: List workspaces.
 
@@ -524,7 +528,8 @@ var page = "page_example";  // string? (optional)
 var sortBy = new List<string>?(); // List<string>? (optional)
 var limit = 56;  // int? (optional)
 var filter = "filter_example";  // string? (optional)
-PagedResourceListOfWorkspace result = apiInstance.ListWorkspaces(visibility, asAt, page, sortBy, limit, filter);
+var includeItemAccess = false;  // bool? (optional)
+PagedResourceListOfWorkspace result = apiInstance.ListWorkspaces(visibility, asAt, page, sortBy, limit, filter, includeItemAccess);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -538,6 +543,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
+| **includeItemAccess** | **bool?** | query | optional | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. Default: `false` |
 
 ### Return type
 
@@ -562,7 +568,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfWorkspace> response = apiInstance.ListWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter);
+ApiResponse<PagedResourceListOfWorkspace> response = apiInstance.ListWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, includeItemAccess);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -710,7 +716,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="updateworkspace"></a>
 ## UpdateWorkspace
 
-> Workspace UpdateWorkspace(string visibility, string workspaceName, WorkspaceUpdateRequest? workspaceUpdateRequest = null)
+> Workspace UpdateWorkspace(string visibility, string workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, bool? includeItemAccess = null)
 
 [EXPERIMENTAL] UpdateWorkspace: Update a workspace.
 
@@ -722,8 +728,9 @@ Update a workspace.
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WorkspaceApi>();
 var visibility = "shared";  // string
 var workspaceName = "workspaceName_example";  // string
-var workspaceUpdateRequest = new WorkspaceUpdateRequest?(); // WorkspaceUpdateRequest? (optional)
-Workspace result = apiInstance.UpdateWorkspace(visibility, workspaceName, workspaceUpdateRequest);
+var workspaceUpdateRequest = new WorkspaceUpdateRequest(); // WorkspaceUpdateRequest
+var includeItemAccess = false;  // bool? (optional)
+Workspace result = apiInstance.UpdateWorkspace(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -733,7 +740,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **visibility** | **string** | path | **required** | The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
 | **workspaceName** | **string** | path | **required** | The workspace name. |
-| **workspaceUpdateRequest** | [WorkspaceUpdateRequest?](WorkspaceUpdateRequest?.md) | body | optional | The new workspace details. |
+| **workspaceUpdateRequest** | [WorkspaceUpdateRequest](WorkspaceUpdateRequest.md) | body | **required** | The new workspace details. |
+| **includeItemAccess** | **bool?** | query | optional | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. Default: `false` |
 
 ### Return type
 
@@ -758,7 +766,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<Workspace> response = apiInstance.UpdateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest);
+ApiResponse<Workspace> response = apiInstance.UpdateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

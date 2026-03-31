@@ -28,7 +28,7 @@ A list of output transactions.
 | **CancelDateTime** | **DateTimeOffset?** | Optional | If the transaction has been cancelled, the asAt datetime that the transaction was cancelled. |
 | **RealisedGainLoss** | [List&lt;RealisedGainLoss&gt;](RealisedGainLoss.md) | Optional | The collection of realised gains or losses resulting from relevant transactions e.g. a sale transaction. The cost used in calculating the realised gain or loss is determined by the accounting method defined when the transaction portfolio is created. |
 | **HoldingIds** | **List&lt;long&gt;** | Optional | The collection of single identifiers for the holding within the portfolio. The holdingId is constructed from the LusidInstrumentId, sub-holding keys and currrency and is unique within the portfolio. |
-| **SourceType** | **string** | Optional | The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment |
+| **SourceType** | **string** | Optional | The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment, OverriddenVirtualTransaction |
 | **SourceInstrumentEventId** | **string** | Optional | The unique ID of the instrument event that the transaction is related to. |
 | **CustodianAccount** | [CustodianAccount](CustodianAccount.md) | Optional | *No description available.* |
 | **TransactionGroupId** | **string** | Optional | The identifier for grouping economic events across multiple transactions |
@@ -43,6 +43,7 @@ A list of output transactions.
 | **Sequence** | **int?** | Optional | The sequential position in which this transaction was processed. |
 | **SequencePriority** | **int?** | Optional | The calculated priority level for this transaction. |
 | **SettlementSummary** | [TransactionSettlementSummary](TransactionSettlementSummary.md) | Optional | *No description available.* |
+| **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -76,7 +77,7 @@ var instance = new OutputTransaction(
     cancelDateTime: DateTimeOffset.Now,  // optional — If the transaction has been cancelled, the asAt datetime that the transaction was cancelled.
     realisedGainLoss: new List<RealisedGainLoss>(),  // optional — The collection of realised gains or losses resulting from relevant transactions e.g. a sale transaction. The cost used in calculating the realised gain or loss is determined by the accounting method defined when the transaction portfolio is created.
     holdingIds: ,  // optional — The collection of single identifiers for the holding within the portfolio. The holdingId is constructed from the LusidInstrumentId, sub-holding keys and currrency and is unique within the portfolio.
-    sourceType: "...",  // optional — The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment
+    sourceType: "...",  // optional — The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment, OverriddenVirtualTransaction
     sourceInstrumentEventId: "...",  // optional — The unique ID of the instrument event that the transaction is related to.
     custodianAccount: new CustodianAccount(...),  // optional
     transactionGroupId: "...",  // optional — The identifier for grouping economic events across multiple transactions
@@ -90,7 +91,8 @@ var instance = new OutputTransaction(
     dataModelMembership: new DataModelMembership(...),  // optional
     sequence: 0,  // optional — The sequential position in which this transaction was processed.
     sequencePriority: 0,  // optional — The calculated priority level for this transaction.
-    settlementSummary: new TransactionSettlementSummary(...)  // optional
+    settlementSummary: new TransactionSettlementSummary(...),  // optional
+    varVersion: new ModelVersion(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -117,6 +119,7 @@ var instance = JsonConvert.DeserializeObject<OutputTransaction>(json);
 - [Economics](Economics.md) — used in `Economics`
 - [DataModelMembership](DataModelMembership.md)
 - [TransactionSettlementSummary](TransactionSettlementSummary.md)
+- [ModelVersion](ModelVersion.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
