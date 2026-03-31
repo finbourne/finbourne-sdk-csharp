@@ -42,7 +42,7 @@ namespace Finbourne.Sdk.Extensions
             {
                 apiConfig.AdditionalHeaders = additionalHeaders;
             }
-            return new ApiFactory(apiConfig);
+            return new ApiFactory(apiConfig, CreateDefaultConfiguration());
         }
 
         /// <summary>
@@ -61,7 +61,19 @@ namespace Finbourne.Sdk.Extensions
                 BasePath = url
             };
 
-            return new ApiFactory(config, additionalHeaders);
+            return new ApiFactory(config, additionalHeaders, CreateDefaultConfiguration());
+        }
+
+        /// <summary>
+        /// Creates a fresh default configuration with standard SDK headers, avoiding any dependency
+        /// on the GlobalConfiguration singleton.
+        /// </summary>
+        private static SdkConfiguration CreateDefaultConfiguration()
+        {
+            var config = new SdkConfiguration();
+            config.DefaultHeaders["X-LUSID-Sdk-Language"] = "C#-V3";
+            config.DefaultHeaders["X-LUSID-Sdk-Version"] = SdkConfiguration.Version;
+            return config;
         }
     }
 }

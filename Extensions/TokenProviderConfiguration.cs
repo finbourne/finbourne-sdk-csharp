@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Finbourne.Sdk.Client;
 
 namespace Finbourne.Sdk.Extensions
@@ -31,7 +32,7 @@ namespace Finbourne.Sdk.Extensions
         ///</summary>
         public override string AccessToken
         {
-            get => _tokenProvider.GetAuthenticationTokenAsync().Result;
+            get => Task.Run(() => _tokenProvider.GetAuthenticationTokenAsync()).GetAwaiter().GetResult();
             set => throw new InvalidOperationException("AccessToken is not assignable");
         }
     }
@@ -42,11 +43,20 @@ namespace Finbourne.Sdk.Extensions
     public static class ConfigurationExtensionMethods
     {
         /// <summary>
-        /// Merge configuration with the global config.
+        /// Merge configuration with the global config singleton.
         /// </summary>
+        [Obsolete("Use MergeWithConfiguration(IReadableConfiguration) to avoid relying on the global configuration singleton.")]
         public static void MergeWithGlobalConfiguration(this Client.Configuration config)
         {
-            var global = GlobalConfiguration.Instance;
+            config.MergeWithConfiguration(GlobalConfiguration.Instance);
+        }
+
+        /// <summary>
+        /// Merge configuration with the supplied default configuration instance.
+        /// </summary>
+        public static void MergeWithConfiguration(this Client.Configuration config, IReadableConfiguration defaultConfig)
+        {
+            var global = defaultConfig;
 
             Dictionary<string, string> apiKey = global.ApiKey.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
             Dictionary<string, string> apiKeyPrefix = global.ApiKeyPrefix.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);

@@ -41,9 +41,12 @@ namespace Finbourne.Sdk.Extensions
         /// Create a new factory using the specified configuration
         /// </summary>
         /// <param name="apiConfiguration">Configuration for the ClientCredentialsFlowTokenProvider, usually sourced from a "secrets.json" file</param>
-        public ApiFactory(ApiConfiguration apiConfiguration)
+        /// <param name="defaultConfiguration">Default configuration values to use when not specified in <paramref name="apiConfiguration"/>. When null, falls back to <see cref="GlobalConfiguration.Instance"/>.</param>
+        public ApiFactory(ApiConfiguration apiConfiguration, IReadableConfiguration? defaultConfiguration = null)
         {
             if (apiConfiguration == null) throw new ArgumentNullException(nameof(apiConfiguration));
+
+            var effectiveDefaults = defaultConfiguration ?? GlobalConfiguration.Instance;
 
             // Validate Uris
             // note: could employ a factory pattern here to create ITokenProvider in case more branching is required in the future:
@@ -57,7 +60,7 @@ namespace Finbourne.Sdk.Extensions
                 {
                     throw new UriFormatException($"Invalid Token Uri: {apiConfiguration.TokenUrl}");
                 }
-                tokenProvider = new ClientCredentialsFlowTokenProvider(apiConfiguration); 
+                tokenProvider = new ClientCredentialsFlowTokenProvider(apiConfiguration);
             }
 
             if (!Uri.TryCreate(apiConfiguration.BaseUrl, UriKind.Absolute, out var _))
@@ -75,12 +78,12 @@ namespace Finbourne.Sdk.Extensions
             {
                 BasePath = apiConfiguration.BaseUrl
             };
-            
-            // if the timeout config has been specified, use this, else use the value from the global configuration
-            configuration.TimeoutMs = apiConfiguration.TimeoutMs ?? GlobalConfiguration.Instance.TimeoutMs;
-            
-            // if the rate limit retry config has been specified, use this, else use the value from the global configuration
-            configuration.RateLimitRetries = apiConfiguration.RateLimitRetries ?? GlobalConfiguration.Instance.RateLimitRetries;
+
+            // if the timeout config has been specified, use this, else use the value from the effective defaults
+            configuration.TimeoutMs = apiConfiguration.TimeoutMs ?? effectiveDefaults.TimeoutMs;
+
+            // if the rate limit retry config has been specified, use this, else use the value from the effective defaults
+            configuration.RateLimitRetries = apiConfiguration.RateLimitRetries ?? effectiveDefaults.RateLimitRetries;
 
             if(!String.IsNullOrWhiteSpace(apiConfiguration.ApplicationName))
             {
@@ -93,8 +96,8 @@ namespace Finbourne.Sdk.Extensions
                     configuration.DefaultHeaders[header.Key] = header.Value;
                 }
             }
-            configuration.MergeWithGlobalConfiguration();
-            
+            configuration.MergeWithConfiguration(effectiveDefaults);
+
             _apis = Init(configuration);
         }
 
@@ -103,7 +106,8 @@ namespace Finbourne.Sdk.Extensions
         /// </summary>
         /// <param name="configuration">A set of configuration settings</param>
         /// <param name="additionalHeaders">Additional headers to include on every request</param>
-        public ApiFactory(Client.Configuration configuration, IDictionary<string, string>? additionalHeaders = null)
+        /// <param name="defaultConfiguration">Default configuration values to merge. When null, falls back to <see cref="GlobalConfiguration.Instance"/>.</param>
+        public ApiFactory(Client.Configuration configuration, IDictionary<string, string>? additionalHeaders = null, IReadableConfiguration? defaultConfiguration = null)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
             if (additionalHeaders != null)
@@ -113,7 +117,7 @@ namespace Finbourne.Sdk.Extensions
                     configuration.DefaultHeaders[header.Key] = header.Value;
                 }
             }
-            configuration.MergeWithGlobalConfiguration();
+            configuration.MergeWithConfiguration(defaultConfiguration ?? GlobalConfiguration.Instance);
 
             _apis = Init(configuration);
         }
