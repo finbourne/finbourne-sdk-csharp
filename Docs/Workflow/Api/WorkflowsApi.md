@@ -7,6 +7,7 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**CreateWorkflow**](#createworkflow) | **POST** `/workflow/api/workflows` | CreateWorkflow: Create a new Workflow |
 | [**GetWorkflow**](#getworkflow) | **GET** `/workflow/api/workflows/{scope}/{code}` | GetWorkflow: Get a Workflow |
+| [**ListWorkflows**](#listworkflows) | **GET** `/workflow/api/workflows` | ListWorkflows: List Workflows |
 
 ### Example
 
@@ -158,6 +159,71 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<WorkflowResponse> response = apiInstance.GetWorkflowWithHttpInfo(scope, code, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listworkflows"></a>
+## ListWorkflows
+
+> PagedResourceListOfWorkflowResponse ListWorkflows(DateTimeOffset? asAt = null, string? filter = null, List<string>? sortBy = null, int? limit = null, string? page = null)
+
+ListWorkflows: List Workflows
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WorkflowsApi>();
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+var limit = 10;  // int? (optional)
+var page = "page_example";  // string? (optional)
+PagedResourceListOfWorkflowResponse result = apiInstance.ListWorkflows(asAt, filter, sortBy, limit, page);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Workflows. Defaults to return the latest version of each Workflow if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here: https://support.lusid.com/filtering-results-from-lusid. |
+| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Default: `10` |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing workflows from a previous call to list workflows. This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields must not have changed since the original request. |
+
+### Return type
+
+[PagedResourceListOfWorkflowResponse](PagedResourceListOfWorkflowResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | No Workflows found. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListWorkflowsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfWorkflowResponse> response = apiInstance.ListWorkflowsWithHttpInfo(asAt, filter, sortBy, limit, page);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

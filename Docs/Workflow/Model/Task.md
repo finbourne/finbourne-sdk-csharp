@@ -9,6 +9,8 @@ Defines a Task created based on a Task Definition
 | **TaskDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **TaskDefinitionVersion** | [TaskDefinitionVersion](TaskDefinitionVersion.md) | Required | *No description available.* |
 | **TaskDefinitionDisplayName** | **string** | Required | The display name of the Task Definition used by this Task |
+| **WorkflowId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **WorkflowDisplayName** | **string** | Optional | The display name of the Workflow that this Task is a member of, if any |
 | **State** | **string** | Required | Current State |
 | **UltimateParentTask** | [TaskSummary](TaskSummary.md) | Required | *No description available.* |
 | **ParentTask** | [TaskSummary](TaskSummary.md) | Optional | *No description available.* |
@@ -42,6 +44,8 @@ var instance = new Task(
     taskDefinitionId: new ResourceId(...),  // required
     taskDefinitionVersion: new TaskDefinitionVersion(...),  // required
     taskDefinitionDisplayName: "...",  // required — The display name of the Task Definition used by this Task
+    workflowId: new ResourceId(...),  // optional
+    workflowDisplayName: "...",  // optional — The display name of the Workflow that this Task is a member of, if any
     state: "...",  // required — Current State
     ultimateParentTask: new TaskSummary(...),  // required
     parentTask: new TaskSummary(...),  // optional
@@ -77,6 +81,7 @@ var instance = JsonConvert.DeserializeObject<Task>(json);
 
 - [ResourceId](ResourceId.md)
 - [TaskDefinitionVersion](TaskDefinitionVersion.md)
+- [ResourceId](ResourceId.md)
 - [TaskSummary](TaskSummary.md)
 - [TaskSummary](TaskSummary.md)
 - [TaskSummary](TaskSummary.md) — used in `ChildTasks`

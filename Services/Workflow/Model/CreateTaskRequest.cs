@@ -30,23 +30,15 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateTaskRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected CreateTaskRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateTaskRequest" /> class.
-        /// </summary>
-        /// <param name="taskDefinitionId">taskDefinitionId (required).</param>
+        /// <param name="taskDefinitionId">taskDefinitionId.</param>
+        /// <param name="workflowId">workflowId.</param>
         /// <param name="correlationIds">A set of guid identifiers that allow correlation across the application tier.</param>
         /// <param name="fields">Fields and their initial values - should correspond with the Task Definition field schema.</param>
         /// <param name="stackingKey">The key for the Stack that this Task should be added to.</param>
-        public CreateTaskRequest(ResourceId taskDefinitionId = default(ResourceId), List<string> correlationIds = default(List<string>), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string))
+        public CreateTaskRequest(ResourceId taskDefinitionId = default(ResourceId), ResourceId workflowId = default(ResourceId), List<string> correlationIds = default(List<string>), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string))
         {
-            // to ensure "taskDefinitionId" is required (not null)
-            if (taskDefinitionId == null)
-            {
-                throw new ArgumentNullException("taskDefinitionId is a required property for CreateTaskRequest and cannot be null");
-            }
             this.TaskDefinitionId = taskDefinitionId;
+            this.WorkflowId = workflowId;
             this.CorrelationIds = correlationIds;
             this.Fields = fields;
             this.StackingKey = stackingKey;
@@ -55,8 +47,14 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <summary>
         /// Gets or Sets TaskDefinitionId
         /// </summary>
-        [DataMember(Name = "taskDefinitionId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "taskDefinitionId", EmitDefaultValue = false)]
         public ResourceId TaskDefinitionId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WorkflowId
+        /// </summary>
+        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
+        public ResourceId WorkflowId { get; set; }
 
         /// <summary>
         /// A set of guid identifiers that allow correlation across the application tier
@@ -88,6 +86,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateTaskRequest {\n");
             sb.Append("  TaskDefinitionId: ").Append(TaskDefinitionId).Append("\n");
+            sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
             sb.Append("  CorrelationIds: ").Append(CorrelationIds).Append("\n");
             sb.Append("  Fields: ").Append(Fields).Append("\n");
             sb.Append("  StackingKey: ").Append(StackingKey).Append("\n");
@@ -132,6 +131,11 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.TaskDefinitionId.Equals(input.TaskDefinitionId))
                 ) && 
                 (
+                    this.WorkflowId == input.WorkflowId ||
+                    (this.WorkflowId != null &&
+                    this.WorkflowId.Equals(input.WorkflowId))
+                ) && 
+                (
                     this.CorrelationIds == input.CorrelationIds ||
                     this.CorrelationIds != null &&
                     input.CorrelationIds != null &&
@@ -162,6 +166,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.TaskDefinitionId != null)
                 {
                     hashCode = (hashCode * 59) + this.TaskDefinitionId.GetHashCode();
+                }
+                if (this.WorkflowId != null)
+                {
+                    hashCode = (hashCode * 59) + this.WorkflowId.GetHashCode();
                 }
                 if (this.CorrelationIds != null)
                 {

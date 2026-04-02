@@ -39,6 +39,8 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="taskDefinitionId">taskDefinitionId (required).</param>
         /// <param name="taskDefinitionVersion">taskDefinitionVersion (required).</param>
         /// <param name="taskDefinitionDisplayName">The display name of the Task Definition used by this Task (required).</param>
+        /// <param name="workflowId">workflowId.</param>
+        /// <param name="workflowDisplayName">The display name of the Workflow that this Task is a member of, if any.</param>
         /// <param name="state">Current State (required).</param>
         /// <param name="ultimateParentTask">ultimateParentTask (required).</param>
         /// <param name="parentTask">parentTask.</param>
@@ -58,7 +60,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="openDuration">Duration in seconds since the Task was created. If the Task is Completed, this is the duration from creation to the last transition..</param>
         /// <param name="openDurationSinceLastUpdate">Duration in seconds since the Task was last updated. 0 if the Task is Completed..</param>
         /// <param name="openDurationSinceLastTransition">Duration in seconds since the Task last transitioned. 0 if the Task is Completed..</param>
-        public Task(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), string state = default(string), TaskSummary ultimateParentTask = default(TaskSummary), TaskSummary parentTask = default(TaskSummary), List<TaskSummary> childTasks = default(List<TaskSummary>), List<string> correlationIds = default(List<string>), VersionInfo varVersion = default(VersionInfo), bool terminalState = default(bool), DateTimeOffset? asAtLastTransition = default(DateTimeOffset?), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string), Stack stack = default(Stack), Guid? actionLogIdCreated = default(Guid?), Guid? actionLogIdModified = default(Guid?), Guid? actionLogIdSubmitted = default(Guid?), string hierarchicalPosition = default(string), string completionStatus = default(string), long? openDuration = default(long?), long? openDurationSinceLastUpdate = default(long?), long? openDurationSinceLastTransition = default(long?))
+        public Task(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), ResourceId workflowId = default(ResourceId), string workflowDisplayName = default(string), string state = default(string), TaskSummary ultimateParentTask = default(TaskSummary), TaskSummary parentTask = default(TaskSummary), List<TaskSummary> childTasks = default(List<TaskSummary>), List<string> correlationIds = default(List<string>), VersionInfo varVersion = default(VersionInfo), bool terminalState = default(bool), DateTimeOffset? asAtLastTransition = default(DateTimeOffset?), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string), Stack stack = default(Stack), Guid? actionLogIdCreated = default(Guid?), Guid? actionLogIdModified = default(Guid?), Guid? actionLogIdSubmitted = default(Guid?), string hierarchicalPosition = default(string), string completionStatus = default(string), long? openDuration = default(long?), long? openDurationSinceLastUpdate = default(long?), long? openDurationSinceLastTransition = default(long?))
         {
             this.Id = id;
             // to ensure "taskDefinitionId" is required (not null)
@@ -92,6 +94,8 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             }
             this.UltimateParentTask = ultimateParentTask;
             this.TerminalState = terminalState;
+            this.WorkflowId = workflowId;
+            this.WorkflowDisplayName = workflowDisplayName;
             this.ParentTask = parentTask;
             this.ChildTasks = childTasks;
             this.CorrelationIds = correlationIds;
@@ -135,6 +139,19 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <value>The display name of the Task Definition used by this Task</value>
         [DataMember(Name = "taskDefinitionDisplayName", IsRequired = true, EmitDefaultValue = true)]
         public string TaskDefinitionDisplayName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets WorkflowId
+        /// </summary>
+        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
+        public ResourceId WorkflowId { get; set; }
+
+        /// <summary>
+        /// The display name of the Workflow that this Task is a member of, if any
+        /// </summary>
+        /// <value>The display name of the Workflow that this Task is a member of, if any</value>
+        [DataMember(Name = "workflowDisplayName", EmitDefaultValue = true)]
+        public string WorkflowDisplayName { get; set; }
 
         /// <summary>
         /// Current State
@@ -277,6 +294,8 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  TaskDefinitionId: ").Append(TaskDefinitionId).Append("\n");
             sb.Append("  TaskDefinitionVersion: ").Append(TaskDefinitionVersion).Append("\n");
             sb.Append("  TaskDefinitionDisplayName: ").Append(TaskDefinitionDisplayName).Append("\n");
+            sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
+            sb.Append("  WorkflowDisplayName: ").Append(WorkflowDisplayName).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  UltimateParentTask: ").Append(UltimateParentTask).Append("\n");
             sb.Append("  ParentTask: ").Append(ParentTask).Append("\n");
@@ -350,6 +369,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.TaskDefinitionDisplayName == input.TaskDefinitionDisplayName ||
                     (this.TaskDefinitionDisplayName != null &&
                     this.TaskDefinitionDisplayName.Equals(input.TaskDefinitionDisplayName))
+                ) && 
+                (
+                    this.WorkflowId == input.WorkflowId ||
+                    (this.WorkflowId != null &&
+                    this.WorkflowId.Equals(input.WorkflowId))
+                ) && 
+                (
+                    this.WorkflowDisplayName == input.WorkflowDisplayName ||
+                    (this.WorkflowDisplayName != null &&
+                    this.WorkflowDisplayName.Equals(input.WorkflowDisplayName))
                 ) && 
                 (
                     this.State == input.State ||
@@ -474,6 +503,14 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.TaskDefinitionDisplayName != null)
                 {
                     hashCode = (hashCode * 59) + this.TaskDefinitionDisplayName.GetHashCode();
+                }
+                if (this.WorkflowId != null)
+                {
+                    hashCode = (hashCode * 59) + this.WorkflowId.GetHashCode();
+                }
+                if (this.WorkflowDisplayName != null)
+                {
+                    hashCode = (hashCode * 59) + this.WorkflowDisplayName.GetHashCode();
                 }
                 if (this.State != null)
                 {
