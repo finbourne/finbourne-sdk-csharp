@@ -7,6 +7,7 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**AcceptEstimateValuationPoint**](#acceptestimatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$acceptestimate` | [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point. |
 | [**AddAllocationGroups**](#addallocationgroups) | **POST** `/api/api/funds/{scope}/{code}/allocationgroups` | [EXPERIMENTAL] AddAllocationGroups: Add Allocation Groups to a Fund. |
+| [**AddSeries**](#addseries) | **POST** `/api/api/funds/{scope}/{code}/series` | [EXPERIMENTAL] AddSeries: Add Series to a Fund. |
 | [**CreateFee**](#createfee) | **POST** `/api/api/funds/{scope}/{code}/fees` | [EXPERIMENTAL] CreateFee: Create a Fee. |
 | [**CreateFund**](#createfund) | **POST** `/api/api/funds/{scope}` | [EXPERIMENTAL] CreateFund: Create a Fund. |
 | [**CreateFundV2**](#createfundv2) | **POST** `/api/api/funds/v2/{scope}` | [EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview). |
@@ -203,6 +204,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<Fund> response = apiInstance.AddAllocationGroupsWithHttpInfo(scope, code, allocationGroupDefinition);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="addseries"></a>
+## AddSeries
+
+> Fund AddSeries(string scope, string code, List<SeriesDefinitionRequest> seriesDefinitionRequest)
+
+[EXPERIMENTAL] AddSeries: Add Series to a Fund.
+
+Add the given Series definitions to the specified Share Classes of the Fund.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var seriesDefinitionRequest = new List<SeriesDefinitionRequest>(); // List<SeriesDefinitionRequest>
+Fund result = apiInstance.AddSeries(scope, code, seriesDefinitionRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **seriesDefinitionRequest** | [List&lt;SeriesDefinitionRequest&gt;](SeriesDefinitionRequest.md) | body | **required** | The definitions of the Series to add. |
+
+### Return type
+
+[Fund](Fund.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated Fund with the added Series. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the AddSeriesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<Fund> response = apiInstance.AddSeriesWithHttpInfo(scope, code, seriesDefinitionRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

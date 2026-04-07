@@ -7,6 +7,7 @@
 | **ShareClassShortCode** | **string** | Required | A short code that uniquely identifies the share class within the Fund and is attached to the transaction. |
 | **ShareClassFundId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **ApportionmentFactor** | **decimal?** | Optional | The weighting factor used for apportionment across this share class. |
+| **ShareClassSeriesCode** | **string** | Optional | An optional series identifier for the share class. If not provided, the share class will include all series. |
 
 
 ## Usage
@@ -19,7 +20,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new AllocationGroupClass(
     shareClassShortCode: "...",  // required — A short code that uniquely identifies the share class within the Fund and is attached to the transaction.
     shareClassFundId: new ResourceId(...),  // optional
-    apportionmentFactor: 0.0d  // optional — The weighting factor used for apportionment across this share class.
+    apportionmentFactor: 0.0d,  // optional — The weighting factor used for apportionment across this share class.
+    shareClassSeriesCode: "..."  // optional — An optional series identifier for the share class. If not provided, the share class will include all series.
 );
 ```
 ### Serializing to JSON

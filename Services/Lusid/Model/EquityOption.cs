@@ -55,8 +55,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="businessDayConvention">Business day convention for option exercise date to settlement date calculation.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  Defaults to \&quot;F\&quot; if not set..</param>
         /// <param name="settlementCalendars">Holiday calendars for option exercise date to settlement date calculation..</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
+        /// <param name="tradingConventions">tradingConventions.</param>
         /// <param name="instrumentType">The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
-        public EquityOption(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset optionMaturityDate = default(DateTimeOffset), DateTimeOffset? optionSettlementDate = default(DateTimeOffset?), string deliveryType = default(string), string optionType = default(string), decimal strike = default(decimal), string domCcy = default(string), string underlyingIdentifier = default(string), string code = default(string), string equityOptionType = default(string), decimal? numberOfShares = default(decimal?), Premium premium = default(Premium), string exerciseType = default(string), LusidInstrument underlying = default(LusidInstrument), int deliveryDays = default(int), string businessDayConvention = default(string), List<string> settlementCalendars = default(List<string>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
+        public EquityOption(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset optionMaturityDate = default(DateTimeOffset), DateTimeOffset? optionSettlementDate = default(DateTimeOffset?), string deliveryType = default(string), string optionType = default(string), decimal strike = default(decimal), string domCcy = default(string), string underlyingIdentifier = default(string), string code = default(string), string equityOptionType = default(string), decimal? numberOfShares = default(decimal?), Premium premium = default(Premium), string exerciseType = default(string), LusidInstrument underlying = default(LusidInstrument), int deliveryDays = default(int), string businessDayConvention = default(string), List<string> settlementCalendars = default(List<string>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), TradingConventions tradingConventions = default(TradingConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
             this.StartDate = startDate;
             this.OptionMaturityDate = optionMaturityDate;
@@ -92,6 +93,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.BusinessDayConvention = businessDayConvention;
             this.SettlementCalendars = settlementCalendars;
             this.TimeZoneConventions = timeZoneConventions;
+            this.TradingConventions = tradingConventions;
         }
 
         /// <summary>
@@ -218,6 +220,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public TimeZoneConventions TimeZoneConventions { get; set; }
 
         /// <summary>
+        /// Gets or Sets TradingConventions
+        /// </summary>
+        [DataMember(Name = "tradingConventions", EmitDefaultValue = false)]
+        public TradingConventions TradingConventions { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -244,6 +252,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  BusinessDayConvention: ").Append(BusinessDayConvention).Append("\n");
             sb.Append("  SettlementCalendars: ").Append(SettlementCalendars).Append("\n");
             sb.Append("  TimeZoneConventions: ").Append(TimeZoneConventions).Append("\n");
+            sb.Append("  TradingConventions: ").Append(TradingConventions).Append("\n");
             sb.Append("  InstrumentType: ").Append(InstrumentType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -370,6 +379,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.TimeZoneConventions.Equals(input.TimeZoneConventions))
                 ) && base.Equals(input) && 
                 (
+                    this.TradingConventions == input.TradingConventions ||
+                    (this.TradingConventions != null &&
+                    this.TradingConventions.Equals(input.TradingConventions))
+                ) && base.Equals(input) && 
+                (
                     this.InstrumentType == input.InstrumentType ||
                     this.InstrumentType.Equals(input.InstrumentType)
                 );
@@ -449,6 +463,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.TimeZoneConventions != null)
                 {
                     hashCode = (hashCode * 59) + this.TimeZoneConventions.GetHashCode();
+                }
+                if (this.TradingConventions != null)
+                {
+                    hashCode = (hashCode * 59) + this.TradingConventions.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.InstrumentType.GetHashCode();
                 return hashCode;
