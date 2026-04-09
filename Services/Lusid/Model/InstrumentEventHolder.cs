@@ -46,7 +46,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="properties">The properties attached to this instrument event..</param>
         /// <param name="sequenceNumber">The order of the instrument event relative others on the same date (0 being processed first). Must be non negative..</param>
         /// <param name="participationType">Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. (default to &quot;Mandatory&quot;).</param>
-        public InstrumentEventHolder(string instrumentEventId = default(string), ResourceId corporateActionSourceId = default(ResourceId), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string lusidInstrumentId = default(string), string instrumentScope = default(string), string description = default(string), EventDateRange eventDateRange = default(EventDateRange), InstrumentEvent instrumentEvent = default(InstrumentEvent), List<PerpetualProperty> properties = default(List<PerpetualProperty>), int sequenceNumber = default(int), string participationType = @"Mandatory")
+        /// <param name="groupCode">The group code that determines the processing order of instrument events with the same effective datetime..</param>
+        public InstrumentEventHolder(string instrumentEventId = default(string), ResourceId corporateActionSourceId = default(ResourceId), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string lusidInstrumentId = default(string), string instrumentScope = default(string), string description = default(string), EventDateRange eventDateRange = default(EventDateRange), InstrumentEvent instrumentEvent = default(InstrumentEvent), List<PerpetualProperty> properties = default(List<PerpetualProperty>), int sequenceNumber = default(int), string participationType = @"Mandatory", string groupCode = default(string))
         {
             // to ensure "instrumentEventId" is required (not null)
             if (instrumentEventId == null)
@@ -95,6 +96,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.SequenceNumber = sequenceNumber;
             // use default value if no "participationType" provided
             this.ParticipationType = participationType ?? @"Mandatory";
+            this.GroupCode = groupCode;
         }
 
         /// <summary>
@@ -202,6 +204,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             return false;
         }
         /// <summary>
+        /// The group code that determines the processing order of instrument events with the same effective datetime.
+        /// </summary>
+        /// <value>The group code that determines the processing order of instrument events with the same effective datetime.</value>
+        [DataMember(Name = "groupCode", EmitDefaultValue = true)]
+        public string GroupCode { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -222,6 +231,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  SequenceNumber: ").Append(SequenceNumber).Append("\n");
             sb.Append("  ParticipationType: ").Append(ParticipationType).Append("\n");
             sb.Append("  AsAt: ").Append(AsAt).Append("\n");
+            sb.Append("  GroupCode: ").Append(GroupCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -322,6 +332,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.AsAt == input.AsAt ||
                     (this.AsAt != null &&
                     this.AsAt.Equals(input.AsAt))
+                ) && 
+                (
+                    this.GroupCode == input.GroupCode ||
+                    (this.GroupCode != null &&
+                    this.GroupCode.Equals(input.GroupCode))
                 );
         }
 
@@ -382,6 +397,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.AsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.AsAt.GetHashCode();
+                }
+                if (this.GroupCode != null)
+                {
+                    hashCode = (hashCode * 59) + this.GroupCode.GetHashCode();
                 }
                 return hashCode;
             }

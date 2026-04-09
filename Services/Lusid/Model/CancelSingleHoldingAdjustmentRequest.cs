@@ -37,7 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="instrumentIdentifiers">A set of instrument identifiers that can resolve the holding adjustment to a unique instrument. (required).</param>
         /// <param name="subHoldingKeys">The sub-holding properties which identify the holding. Each property must be from the &#39;Transaction&#39; domain..</param>
-        /// <param name="currency">The Holding currency..</param>
+        /// <param name="currency">The Holding currency. (required).</param>
         /// <param name="custodianAccountId">custodianAccountId.</param>
         public CancelSingleHoldingAdjustmentRequest(Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), Dictionary<string, PerpetualProperty> subHoldingKeys = default(Dictionary<string, PerpetualProperty>), string currency = default(string), ResourceId custodianAccountId = default(ResourceId))
         {
@@ -47,8 +47,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentIdentifiers is a required property for CancelSingleHoldingAdjustmentRequest and cannot be null");
             }
             this.InstrumentIdentifiers = instrumentIdentifiers;
-            this.SubHoldingKeys = subHoldingKeys;
+            // to ensure "currency" is required (not null)
+            if (currency == null)
+            {
+                throw new ArgumentNullException("currency is a required property for CancelSingleHoldingAdjustmentRequest and cannot be null");
+            }
             this.Currency = currency;
+            this.SubHoldingKeys = subHoldingKeys;
             this.CustodianAccountId = custodianAccountId;
         }
 
@@ -70,7 +75,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// The Holding currency.
         /// </summary>
         /// <value>The Holding currency.</value>
-        [DataMember(Name = "currency", EmitDefaultValue = true)]
+        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
         public string Currency { get; set; }
 
         /// <summary>

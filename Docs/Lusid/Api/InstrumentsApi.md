@@ -596,7 +596,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getinstrument"></a>
 ## GetInstrument
 
-> Instrument GetInstrument(string identifierType, string identifier, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null, string? scope = null, List<string>? relationshipDefinitionIds = null, string? dataModelScope = null, string? dataModelCode = null)
+> Instrument GetInstrument(string identifierType, string identifier, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null, string? scope = null, List<string>? relationshipDefinitionIds = null, string? dataModelScope = null, string? dataModelCode = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null)
 
 GetInstrument: Get instrument
 
@@ -615,7 +615,10 @@ var scope = "\"default\"";  // string? (optional)
 var relationshipDefinitionIds = new List<string>?(); // List<string>? (optional)
 var dataModelScope = "dataModelScope_example";  // string? (optional)
 var dataModelCode = "dataModelCode_example";  // string? (optional)
-Instrument result = apiInstance.GetInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode);
+var timelineScope = "timelineScope_example";  // string? (optional)
+var timelineCode = "timelineCode_example";  // string? (optional)
+var closedPeriodId = "closedPeriodId_example";  // string? (optional)
+Instrument result = apiInstance.GetInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -632,6 +635,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use. |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use. |
+| **timelineScope** | **string?** | query | optional | The optional scope of a timeline to use for post-close activity. |
+| **timelineCode** | **string?** | query | optional | The optional code of a timeline to use for post-close activity. |
+| **closedPeriodId** | **string?** | query | optional | The optional id of a closed period within the timeline to view. |
 
 ### Return type
 
@@ -656,7 +662,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<Instrument> response = apiInstance.GetInstrumentWithHttpInfo(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode);
+ApiResponse<Instrument> response = apiInstance.GetInstrumentWithHttpInfo(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1147,7 +1153,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listinstruments"></a>
 ## ListInstruments
 
-> PagedResourceListOfInstrument ListInstruments(DateTimeOffset? asAt = null, DateTimeOrCutLabel? effectiveAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null, List<string>? instrumentPropertyKeys = null, string? scope = null, List<string>? relationshipDefinitionIds = null, string? dataModelScope = null, string? dataModelCode = null, string? membershipType = null)
+> PagedResourceListOfInstrument ListInstruments(DateTimeOffset? asAt = null, DateTimeOrCutLabel? effectiveAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null, List<string>? instrumentPropertyKeys = null, string? scope = null, List<string>? relationshipDefinitionIds = null, string? dataModelScope = null, string? dataModelCode = null, string? membershipType = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null)
 
 ListInstruments: List instruments
 
@@ -1169,7 +1175,10 @@ var relationshipDefinitionIds = new List<string>?(); // List<string>? (optional)
 var dataModelScope = "dataModelScope_example";  // string? (optional)
 var dataModelCode = "dataModelCode_example";  // string? (optional)
 var membershipType = "membershipType_example";  // string? (optional)
-PagedResourceListOfInstrument result = apiInstance.ListInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType);
+var timelineScope = "timelineScope_example";  // string? (optional)
+var timelineCode = "timelineCode_example";  // string? (optional)
+var closedPeriodId = "closedPeriodId_example";  // string? (optional)
+PagedResourceListOfInstrument result = apiInstance.ListInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1189,6 +1198,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use. |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use. |
 | **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. |
+| **timelineScope** | **string?** | query | optional | The scope of the timeline to use for PCA (Post Close Activity) support. |
+| **timelineCode** | **string?** | query | optional | The code of the timeline to use for PCA (Post Close Activity) support. |
+| **closedPeriodId** | **string?** | query | optional | The id of the closed period on the timeline to use for PCA (Post Close Activity) support. |
 
 ### Return type
 
@@ -1213,7 +1225,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfInstrument> response = apiInstance.ListInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType);
+ApiResponse<PagedResourceListOfInstrument> response = apiInstance.ListInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

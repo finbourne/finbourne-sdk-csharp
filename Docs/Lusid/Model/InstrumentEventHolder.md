@@ -18,6 +18,7 @@ An instrument event equipped with additional metadata.
 | **SequenceNumber** | **int** | Optional | The order of the instrument event relative others on the same date (0 being processed first). Must be non negative. |
 | **ParticipationType** | **string** | Optional | Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. Default: `"Mandatory"` |
 | **AsAt** | **DateTimeOffset?** | Optional | The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert. *(read-only)* |
+| **GroupCode** | **string** | Optional | The group code that determines the processing order of instrument events with the same effective datetime. |
 
 
 ## Usage
@@ -40,7 +41,8 @@ var instance = new InstrumentEventHolder(
     properties: new List<PerpetualProperty>(),  // optional — The properties attached to this instrument event.
     sequenceNumber: 0,  // optional — The order of the instrument event relative others on the same date (0 being processed first). Must be non negative.
     participationType: "...",  // optional — Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary.
-    asAt: DateTimeOffset.Now  // optional — The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert.
+    asAt: DateTimeOffset.Now,  // optional — The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert.
+    groupCode: "..."  // optional — The group code that determines the processing order of instrument events with the same effective datetime.
 );
 ```
 ### Serializing to JSON

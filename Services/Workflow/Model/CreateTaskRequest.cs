@@ -31,17 +31,17 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// Initializes a new instance of the <see cref="CreateTaskRequest" /> class.
         /// </summary>
         /// <param name="taskDefinitionId">taskDefinitionId.</param>
-        /// <param name="workflowId">workflowId.</param>
         /// <param name="correlationIds">A set of guid identifiers that allow correlation across the application tier.</param>
         /// <param name="fields">Fields and their initial values - should correspond with the Task Definition field schema.</param>
         /// <param name="stackingKey">The key for the Stack that this Task should be added to.</param>
-        public CreateTaskRequest(ResourceId taskDefinitionId = default(ResourceId), ResourceId workflowId = default(ResourceId), List<string> correlationIds = default(List<string>), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string))
+        /// <param name="workflowId">workflowId.</param>
+        public CreateTaskRequest(ResourceId taskDefinitionId = default(ResourceId), List<string> correlationIds = default(List<string>), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string), ResourceId workflowId = default(ResourceId))
         {
             this.TaskDefinitionId = taskDefinitionId;
-            this.WorkflowId = workflowId;
             this.CorrelationIds = correlationIds;
             this.Fields = fields;
             this.StackingKey = stackingKey;
+            this.WorkflowId = workflowId;
         }
 
         /// <summary>
@@ -49,12 +49,6 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// </summary>
         [DataMember(Name = "taskDefinitionId", EmitDefaultValue = false)]
         public ResourceId TaskDefinitionId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WorkflowId
-        /// </summary>
-        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
-        public ResourceId WorkflowId { get; set; }
 
         /// <summary>
         /// A set of guid identifiers that allow correlation across the application tier
@@ -78,6 +72,12 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public string StackingKey { get; set; }
 
         /// <summary>
+        /// Gets or Sets WorkflowId
+        /// </summary>
+        [DataMember(Name = "workflowId", EmitDefaultValue = false)]
+        public ResourceId WorkflowId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -86,10 +86,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateTaskRequest {\n");
             sb.Append("  TaskDefinitionId: ").Append(TaskDefinitionId).Append("\n");
-            sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
             sb.Append("  CorrelationIds: ").Append(CorrelationIds).Append("\n");
             sb.Append("  Fields: ").Append(Fields).Append("\n");
             sb.Append("  StackingKey: ").Append(StackingKey).Append("\n");
+            sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -131,11 +131,6 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.TaskDefinitionId.Equals(input.TaskDefinitionId))
                 ) && 
                 (
-                    this.WorkflowId == input.WorkflowId ||
-                    (this.WorkflowId != null &&
-                    this.WorkflowId.Equals(input.WorkflowId))
-                ) && 
-                (
                     this.CorrelationIds == input.CorrelationIds ||
                     this.CorrelationIds != null &&
                     input.CorrelationIds != null &&
@@ -151,6 +146,11 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.StackingKey == input.StackingKey ||
                     (this.StackingKey != null &&
                     this.StackingKey.Equals(input.StackingKey))
+                ) && 
+                (
+                    this.WorkflowId == input.WorkflowId ||
+                    (this.WorkflowId != null &&
+                    this.WorkflowId.Equals(input.WorkflowId))
                 );
         }
 
@@ -167,10 +167,6 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     hashCode = (hashCode * 59) + this.TaskDefinitionId.GetHashCode();
                 }
-                if (this.WorkflowId != null)
-                {
-                    hashCode = (hashCode * 59) + this.WorkflowId.GetHashCode();
-                }
                 if (this.CorrelationIds != null)
                 {
                     hashCode = (hashCode * 59) + this.CorrelationIds.GetHashCode();
@@ -182,6 +178,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.StackingKey != null)
                 {
                     hashCode = (hashCode * 59) + this.StackingKey.GetHashCode();
+                }
+                if (this.WorkflowId != null)
+                {
+                    hashCode = (hashCode * 59) + this.WorkflowId.GetHashCode();
                 }
                 return hashCode;
             }

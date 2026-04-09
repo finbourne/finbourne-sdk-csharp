@@ -8,6 +8,7 @@ Abstracts the kinds of Actions available
 
 * [CreateChildTasksAction](./CreateChildTasksAction.md)
 * [RunWorkerAction](./RunWorkerAction.md)
+* [TriggerChildTasksAction](./TriggerChildTasksAction.md)
 * [TriggerParentTaskAction](./TriggerParentTaskAction.md)
 
 ## Usage
@@ -37,6 +38,7 @@ var instance = JsonConvert.DeserializeObject<ActionDetails>(json);
 
 - [CreateChildTasksAction](./CreateChildTasksAction.md)
 - [RunWorkerAction](./RunWorkerAction.md)
+- [TriggerChildTasksAction](./TriggerChildTasksAction.md)
 - [TriggerParentTaskAction](./TriggerParentTaskAction.md)
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

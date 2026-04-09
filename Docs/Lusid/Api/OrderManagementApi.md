@@ -14,6 +14,7 @@ All URIs are relative to *http://localhost*
 | [**MoveOrders**](#moveorders) | **POST** `/api/api/ordermanagement/moveorders` | [EARLY ACCESS] MoveOrders: Move orders to new or existing block |
 | [**PlaceBlocks**](#placeblocks) | **POST** `/api/api/ordermanagement/placeblocks` | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests. |
 | [**RunAllocationService**](#runallocationservice) | **POST** `/api/api/ordermanagement/allocate` | RunAllocationService: Runs the Allocation Service |
+| [**RunAllocationServiceWithWeights**](#runallocationservicewithweights) | **POST** `/api/api/ordermanagement/allocate/weighted` | [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights |
 | [**SweepBlocks**](#sweepblocks) | **POST** `/api/api/ordermanagement/SweepBlocks` | [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful. |
 | [**UpdateOrders**](#updateorders) | **POST** `/api/api/ordermanagement/updateorders` | [EARLY ACCESS] UpdateOrders: Update existing orders |
 | [**UpdatePlacements**](#updateplacements) | **POST** `/api/api/ordermanagement/$updateplacements` | [EARLY ACCESS] UpdatePlacements: Update existing placements |
@@ -583,6 +584,66 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<AllocationServiceRunResponse> response = apiInstance.RunAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="runallocationservicewithweights"></a>
+## RunAllocationServiceWithWeights
+
+> AllocationServiceRunResponse RunAllocationServiceWithWeights(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = null)
+
+[EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
+
+Allocates Executions for a given list of placements to a specified set of portfolios by weight,  creating Allocations to record the results. Used for the unsolicited Block and Block Trade booking flows where no Orders exist against the Block.  Weights are relative to each other and are not required to sum to 1 or 100.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<OrderManagementApi>();
+var weightedAllocationServiceRunRequest = new WeightedAllocationServiceRunRequest(); // WeightedAllocationServiceRunRequest
+var allocationAlgorithm = "allocationAlgorithm_example";  // string? (optional)
+AllocationServiceRunResponse result = apiInstance.RunAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **weightedAllocationServiceRunRequest** | [WeightedAllocationServiceRunRequest](WeightedAllocationServiceRunRequest.md) | body | **required** | The placement IDs to allocate against, and the portfolio weights to use for the allocation split. |
+| **allocationAlgorithm** | **string?** | query | optional | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. |
+
+### Return type
+
+[AllocationServiceRunResponse](AllocationServiceRunResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | A list of Allocations |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the RunAllocationServiceWithWeightsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<AllocationServiceRunResponse> response = apiInstance.RunAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

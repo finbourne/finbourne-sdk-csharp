@@ -9,8 +9,8 @@
 | **Description** | **string** | Optional | A description for the Fund Calendar entry. |
 | **EffectiveAt** | **DateTimeOffset** | Optional | The effective at of the Calendar Entry. |
 | **AsAt** | **DateTimeOffset** | Required | The asAt datetime for the Calendar Entry. |
-| **HoldingsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest. |
-| **ValuationsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest. |
+| **HoldingsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt. |
+| **ValuationsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt. |
 
 
 ## Usage
@@ -26,8 +26,8 @@ var instance = new PreviousFundCalendarEntry(
     description: "...",  // optional — A description for the Fund Calendar entry.
     effectiveAt: DateTimeOffset.Now,  // optional — The effective at of the Calendar Entry.
     asAt: DateTimeOffset.Now,  // required — The asAt datetime for the Calendar Entry.
-    holdingsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest.
-    valuationsAsAtOverride: DateTimeOffset.Now  // optional — The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest.
+    holdingsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt.
+    valuationsAsAtOverride: DateTimeOffset.Now  // optional — The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt.
 );
 ```
 ### Serializing to JSON

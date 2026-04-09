@@ -55,6 +55,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ActionDetailsResponse" /> class
+        /// with the <see cref="TriggerChildTasksActionResponse" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of TriggerChildTasksActionResponse.</param>
+        public ActionDetailsResponse(TriggerChildTasksActionResponse actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActionDetailsResponse" /> class
         /// with the <see cref="TriggerParentTaskActionResponse" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of TriggerParentTaskActionResponse.</param>
@@ -87,13 +99,17 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(TriggerChildTasksActionResponse) || value is TriggerChildTasksActionResponse)
+                {
+                    this._actualInstance = value;
+                }
                 else if (value.GetType() == typeof(TriggerParentTaskActionResponse) || value is TriggerParentTaskActionResponse)
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: CreateChildTasksActionResponse, RunWorkerActionResponse, TriggerParentTaskActionResponse");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: CreateChildTasksActionResponse, RunWorkerActionResponse, TriggerChildTasksActionResponse, TriggerParentTaskActionResponse");
                 }
             }
         }
@@ -116,6 +132,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public RunWorkerActionResponse GetRunWorkerActionResponse()
         {
             return (RunWorkerActionResponse)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `TriggerChildTasksActionResponse`. If the actual instance is not `TriggerChildTasksActionResponse`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of TriggerChildTasksActionResponse</returns>
+        public TriggerChildTasksActionResponse GetTriggerChildTasksActionResponse()
+        {
+            return (TriggerChildTasksActionResponse)this.ActualInstance;
         }
 
         /// <summary>
@@ -204,6 +230,26 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into RunWorkerActionResponse: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(TriggerChildTasksActionResponse).GetProperty("AdditionalProperties") == null)
+                {
+                    newActionDetailsResponse = new ActionDetailsResponse(JsonConvert.DeserializeObject<TriggerChildTasksActionResponse>(jsonString, ActionDetailsResponse.SerializerSettings));
+                }
+                else
+                {
+                    newActionDetailsResponse = new ActionDetailsResponse(JsonConvert.DeserializeObject<TriggerChildTasksActionResponse>(jsonString, ActionDetailsResponse.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("TriggerChildTasksActionResponse");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TriggerChildTasksActionResponse: {1}", jsonString, exception.ToString()));
             }
 
             try

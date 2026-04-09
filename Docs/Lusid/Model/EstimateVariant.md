@@ -8,8 +8,8 @@
 | **DisplayName** | **string** | Required | The name of the Fund Calendar entry. |
 | **Description** | **string** | Optional | A description for the Fund Calendar entry. |
 | **AsAt** | **DateTimeOffset** | Required | The asAt datetime for the Calendar Entry. |
-| **HoldingsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest. |
-| **ValuationsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest. |
+| **HoldingsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt. |
+| **ValuationsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | The properties for the Calendar Entry. These will be from the &#39;ClosedPeriod&#39; domain. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Required | *No description available.* |
 
@@ -26,8 +26,8 @@ var instance = new EstimateVariant(
     displayName: "...",  // required — The name of the Fund Calendar entry.
     description: "...",  // optional — A description for the Fund Calendar entry.
     asAt: DateTimeOffset.Now,  // required — The asAt datetime for the Calendar Entry.
-    holdingsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to Latest.
-    valuationsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to Latest.
+    holdingsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt.
+    valuationsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt.
     properties: new Property(...),  // optional — The properties for the Calendar Entry. These will be from the &#39;ClosedPeriod&#39; domain.
     varVersion: new ModelVersion(...)  // required
 );
