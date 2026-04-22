@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 | [**DeleteInstance**](#deleteinstance) | **DELETE** `/horizon/api/integrations/instances/{instanceId}` | [EXPERIMENTAL] DeleteInstance: Delete a single integration instance. |
 | [**ExecuteInstance**](#executeinstance) | **POST** `/horizon/api/integrations/instances/{instanceId}/execute` | [EXPERIMENTAL] ExecuteInstance: Execute an integration instance. |
 | [**ExecuteInstanceWithParams**](#executeinstancewithparams) | **POST** `/horizon/api/integrations/instances/{instanceId}/executewithparams` | [EXPERIMENTAL] ExecuteInstanceWithParams: Execute an integration instance with runtime parameters |
+| [**GetDataflowProcessorSchema**](#getdataflowprocessorschema) | **GET** `/horizon/api/integrations/dataflow/processors/{processorType}/schema` | [EXPERIMENTAL] GetDataflowProcessorSchema: Returns processor configuration schema for a given processor type. This is used by the UI to render the configuration form for a processortype. |
 | [**GetExecutionIdsForInstance**](#getexecutionidsforinstance) | **GET** `/horizon/api/integrations/instances/{instanceId}/executions` | [EXPERIMENTAL] GetExecutionIdsForInstance: Get integration instance execution ids. |
 | [**GetInstance**](#getinstance) | **GET** `/horizon/api/integrations/instances/{instanceId}` | [EXPERIMENTAL] GetInstance: Get a specified Instance for a given integration. |
 | [**GetInstanceOptionalPropertyMapping**](#getinstanceoptionalpropertymapping) | **GET** `/horizon/api/integrations/instances/configuration/{integration}/{instanceId}` | [EXPERIMENTAL] GetInstanceOptionalPropertyMapping: Get the Optional Property Mapping for an Integration Instance |
@@ -16,6 +17,7 @@ All URIs are relative to *http://localhost*
 | [**GetIntegrationConfigurationFields**](#getintegrationconfigurationfields) | **GET** `/horizon/api/integrations/configuration/{integration}/fields` | [EXPERIMENTAL] GetIntegrationConfigurationFields: Get the Field Mapping configuration for a given integration |
 | [**GetIntegrationConfigurationProperties**](#getintegrationconfigurationproperties) | **GET** `/horizon/api/integrations/configuration/{integration}/properties` | [EXPERIMENTAL] GetIntegrationConfigurationProperties: Get the Property Mapping configuration for a given integration |
 | [**GetSchema**](#getschema) | **GET** `/horizon/api/integrations/schema/{integration}` | [EXPERIMENTAL] GetSchema: Get the JSON schema for the details section of an integration instance. |
+| [**ListDataflowProcessors**](#listdataflowprocessors) | **GET** `/horizon/api/integrations/dataflow/processors` | [EXPERIMENTAL] ListDataflowProcessors: List processor types. |
 | [**ListInstances**](#listinstances) | **GET** `/horizon/api/integrations/instances` | [EXPERIMENTAL] ListInstances: List instances across all integrations. |
 | [**ListIntegrations**](#listintegrations) | **GET** `/horizon/api/integrations` | [EXPERIMENTAL] ListIntegrations: List available integrations. |
 | [**SetInstanceOptionalPropertyMapping**](#setinstanceoptionalpropertymapping) | **PUT** `/horizon/api/integrations/instances/configuration/{integration}/{instanceId}` | [EXPERIMENTAL] SetInstanceOptionalPropertyMapping: Set the Optional Property Mapping for an Integration Instance |
@@ -287,6 +289,63 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ExecuteInstanceResponse> response = apiInstance.ExecuteInstanceWithParamsWithHttpInfo(instanceId, requestBody);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getdataflowprocessorschema"></a>
+## GetDataflowProcessorSchema
+
+> ProcessorSchemaResponse GetDataflowProcessorSchema(string processorType)
+
+[EXPERIMENTAL] GetDataflowProcessorSchema: Returns processor configuration schema for a given processor type. This is used by the UI to render the configuration form for a processortype.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IntegrationsApi>();
+var processorType = "processorType_example";  // string
+ProcessorSchemaResponse result = apiInstance.GetDataflowProcessorSchema(processorType);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **processorType** | **string** | path | **required** |  |
+
+### Return type
+
+[ProcessorSchemaResponse](ProcessorSchemaResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **400** | The details of the input related failure |  -  |
+| **200** | OK |  -  |
+| **404** | The processor type does not exist. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetDataflowProcessorSchemaWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ProcessorSchemaResponse> response = apiInstance.GetDataflowProcessorSchemaWithHttpInfo(processorType);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -720,6 +779,60 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<JSchema> response = apiInstance.GetSchemaWithHttpInfo(integration);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listdataflowprocessors"></a>
+## ListDataflowProcessors
+
+> List&lt;ProcessorDescription&gt; ListDataflowProcessors()
+
+[EXPERIMENTAL] ListDataflowProcessors: List processor types.
+
+The user must be authenticated to call this method.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IntegrationsApi>();
+List<ProcessorDescription> result = apiInstance.ListDataflowProcessors();
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[List&lt;ProcessorDescription&gt;](ProcessorDescription.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **404** | The requested processors do not exist. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListDataflowProcessorsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<List<ProcessorDescription>> response = apiInstance.ListDataflowProcessorsWithHttpInfo();
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

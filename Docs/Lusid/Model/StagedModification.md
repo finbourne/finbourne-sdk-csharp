@@ -21,6 +21,7 @@
 | **RequestedChanges** | [RequestedChanges](RequestedChanges.md) | Optional | *No description available.* |
 | **EntityHrefs** | [StagedModificationsEntityHrefs](StagedModificationsEntityHrefs.md) | Optional | *No description available.* |
 | **DisplayName** | **string** | Optional | The display name of the entity the staged modification applies to. |
+| **SourceEntity** | [StagedModificationSourceEntity](StagedModificationSourceEntity.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -49,6 +50,7 @@ var instance = new StagedModification(
     requestedChanges: new RequestedChanges(...),  // optional
     entityHrefs: new StagedModificationsEntityHrefs(...),  // optional
     displayName: "...",  // optional — The display name of the entity the staged modification applies to.
+    sourceEntity: new StagedModificationSourceEntity(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -68,6 +70,7 @@ var instance = JsonConvert.DeserializeObject<StagedModification>(json);
 - [StagedModificationDecision](StagedModificationDecision.md) — used in `Decisions`
 - [RequestedChanges](RequestedChanges.md)
 - [StagedModificationsEntityHrefs](StagedModificationsEntityHrefs.md)
+- [StagedModificationSourceEntity](StagedModificationSourceEntity.md)
 - [Link](Link.md)
 
 

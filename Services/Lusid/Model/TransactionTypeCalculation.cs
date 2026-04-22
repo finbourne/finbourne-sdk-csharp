@@ -38,7 +38,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="type">The type of calculation to perform (required).</param>
         /// <param name="side">The side to which the calculation is applied.</param>
         /// <param name="formula">The formula used to derive the total consideration amount when it is not provided on the transaction.</param>
-        public TransactionTypeCalculation(string type = default(string), string side = default(string), string formula = default(string))
+        /// <param name="transactionFeeId">transactionFeeId.</param>
+        /// <param name="transactionFeeCapitalisation">transactionFeeCapitalisation.</param>
+        public TransactionTypeCalculation(string type = default(string), string side = default(string), string formula = default(string), ResourceId transactionFeeId = default(ResourceId), TransactionFeeCapitalisation transactionFeeCapitalisation = default(TransactionFeeCapitalisation))
         {
             // to ensure "type" is required (not null)
             if (type == null)
@@ -48,6 +50,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Type = type;
             this.Side = side;
             this.Formula = formula;
+            this.TransactionFeeId = transactionFeeId;
+            this.TransactionFeeCapitalisation = transactionFeeCapitalisation;
         }
 
         /// <summary>
@@ -72,6 +76,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Formula { get; set; }
 
         /// <summary>
+        /// Gets or Sets TransactionFeeId
+        /// </summary>
+        [DataMember(Name = "transactionFeeId", EmitDefaultValue = false)]
+        public ResourceId TransactionFeeId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TransactionFeeCapitalisation
+        /// </summary>
+        [DataMember(Name = "transactionFeeCapitalisation", EmitDefaultValue = false)]
+        public TransactionFeeCapitalisation TransactionFeeCapitalisation { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +98,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Side: ").Append(Side).Append("\n");
             sb.Append("  Formula: ").Append(Formula).Append("\n");
+            sb.Append("  TransactionFeeId: ").Append(TransactionFeeId).Append("\n");
+            sb.Append("  TransactionFeeCapitalisation: ").Append(TransactionFeeCapitalisation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -131,6 +149,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Formula == input.Formula ||
                     (this.Formula != null &&
                     this.Formula.Equals(input.Formula))
+                ) && 
+                (
+                    this.TransactionFeeId == input.TransactionFeeId ||
+                    (this.TransactionFeeId != null &&
+                    this.TransactionFeeId.Equals(input.TransactionFeeId))
+                ) && 
+                (
+                    this.TransactionFeeCapitalisation == input.TransactionFeeCapitalisation ||
+                    (this.TransactionFeeCapitalisation != null &&
+                    this.TransactionFeeCapitalisation.Equals(input.TransactionFeeCapitalisation))
                 );
         }
 
@@ -154,6 +182,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Formula != null)
                 {
                     hashCode = (hashCode * 59) + this.Formula.GetHashCode();
+                }
+                if (this.TransactionFeeId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransactionFeeId.GetHashCode();
+                }
+                if (this.TransactionFeeCapitalisation != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransactionFeeCapitalisation.GetHashCode();
                 }
                 return hashCode;
             }

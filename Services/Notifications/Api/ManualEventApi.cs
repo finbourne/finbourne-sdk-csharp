@@ -272,7 +272,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<ManualEvent, AbstractOpenAPISchema>("/notifications/api/manualevent", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<ManualEvent, AbstractOpenAPISchema>("/notification/api/manualevent", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("TriggerManualEvent", localVarResponse);
@@ -378,7 +378,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ManualEvent, AbstractOpenAPISchema>("/notifications/api/manualevent", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ManualEvent, AbstractOpenAPISchema>("/notification/api/manualevent", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

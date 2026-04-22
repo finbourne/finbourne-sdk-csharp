@@ -49,6 +49,9 @@ internal static class RestSharpExtensions
                 case DataFormat.Json:
                     restRequest.AddJsonBody(request.Body);
                     break;
+                case DataFormat.Binary when request.Body is Stream stream:
+                    restRequest.AddStreamBody(stream, request.Headers["Content-Type"][0]);
+                    break;
                 case DataFormat.Binary:
                     restRequest.AddBody(request.Body, request.Headers["Content-Type"][0]);
                     break;

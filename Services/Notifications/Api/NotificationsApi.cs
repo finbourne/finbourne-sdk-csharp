@@ -526,7 +526,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Notification, AbstractOpenAPISchema>("/notifications/api/subscriptions/{scope}/{code}/notifications", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<Notification, AbstractOpenAPISchema>("/notification/api/subscriptions/{scope}/{code}/notifications", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateNotification", localVarResponse);
@@ -650,7 +650,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Notification, AbstractOpenAPISchema>("/notifications/api/subscriptions/{scope}/{code}/notifications", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Notification, AbstractOpenAPISchema>("/notification/api/subscriptions/{scope}/{code}/notifications", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -767,7 +767,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<Object, AbstractOpenAPISchema>("/notifications/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<Object, AbstractOpenAPISchema>("/notification/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteNotification", localVarResponse);
@@ -886,7 +886,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object, AbstractOpenAPISchema>("/notifications/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object, AbstractOpenAPISchema>("/notification/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1004,7 +1004,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Notification, AbstractOpenAPISchema>("/notifications/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<Notification, AbstractOpenAPISchema>("/notification/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetNotification", localVarResponse);
@@ -1124,7 +1124,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Notification, AbstractOpenAPISchema>("/notifications/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<Notification, AbstractOpenAPISchema>("/notification/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1233,7 +1233,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ResourceListOfNotification, AbstractOpenAPISchema>("/notifications/api/subscriptions/{scope}/{code}/notifications", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ResourceListOfNotification, AbstractOpenAPISchema>("/notification/api/subscriptions/{scope}/{code}/notifications", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListNotifications", localVarResponse);
@@ -1344,7 +1344,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ResourceListOfNotification, AbstractOpenAPISchema>("/notifications/api/subscriptions/{scope}/{code}/notifications", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ResourceListOfNotification, AbstractOpenAPISchema>("/notification/api/subscriptions/{scope}/{code}/notifications", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1475,7 +1475,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Put<Notification, AbstractOpenAPISchema>("/notifications/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Put<Notification, AbstractOpenAPISchema>("/notification/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateNotification", localVarResponse);
@@ -1608,7 +1608,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Notification, AbstractOpenAPISchema>("/notifications/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PutAsync<Notification, AbstractOpenAPISchema>("/notification/api/subscriptions/{scope}/{code}/notifications/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

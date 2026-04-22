@@ -67,9 +67,9 @@ namespace Finbourne.Sdk.Extensions
         /// </summary>
         /// <param name="apiSecretsFilename">filename of the secrets.json</param>
         /// <returns>ApiConfiguration object</returns>
-        public ApiConfiguration Build(string? apiSecretsFilename = null, ConfigurationOptions? opts = null)
+        public ApiConfiguration Build(string? apiSecretsFilename = null, string? profileName = null, ConfigurationOptions? opts = null)
         {
-            var result = BuildFromSecretsFile(apiSecretsFilename, opts);
+            var result = BuildFromSecretsFile(apiSecretsFilename, profileName, opts);
             result = result.HasMissingConfig() ? BuildFromEnvironmentVariables(opts) : result;
             return result;
         }
@@ -223,7 +223,7 @@ namespace Finbourne.Sdk.Extensions
             return defaultValue;
         }
 
-        private ApiConfiguration BuildFromSecretsFile(string? apiSecretsFilename, ConfigurationOptions? opts)
+        private ApiConfiguration BuildFromSecretsFile(string? apiSecretsFilename, string? profileName, ConfigurationOptions? opts)
         {
             var errors = new List<string>();
             var apiConfig = new ApiConfiguration();
@@ -238,9 +238,9 @@ namespace Finbourne.Sdk.Extensions
                     .AddJsonFile(apiSecretsFilename)
                     .Build();
                 
-                string profileName = GetProfileName(config);
+                string foundProfileName = GetProfileName(config, profileName);
                 var profiles = config.GetSection("profiles");
-                profiles.GetSection(profileName).Bind(apiConfig);
+                profiles.GetSection(foundProfileName).Bind(apiConfig);
 
                 apiConfig = CheckBaseUrl(apiConfig);
                 
@@ -269,8 +269,10 @@ namespace Finbourne.Sdk.Extensions
             return apiConfig;
         }
 
-        private string GetProfileName(IConfigurationRoot secretsConfig)
+        private string GetProfileName(IConfigurationRoot secretsConfig, string? profileName)
         {
+            if(!string.IsNullOrWhiteSpace(profileName))
+                return profileName;
             string? profileFromConfig = _config?.TryGetValue("FBN_PROFILE", out var val) == true
                 ? val
                 : Environment.GetEnvironmentVariable("FBN_PROFILE");

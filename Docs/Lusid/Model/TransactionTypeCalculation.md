@@ -7,6 +7,8 @@
 | **Type** | **string** | Required | The type of calculation to perform |
 | **Side** | **string** | Optional | The side to which the calculation is applied |
 | **Formula** | **string** | Optional | The formula used to derive the total consideration amount when it is not provided on the transaction |
+| **TransactionFeeId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **TransactionFeeCapitalisation** | [TransactionFeeCapitalisation](TransactionFeeCapitalisation.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -19,7 +21,9 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new TransactionTypeCalculation(
     type: "...",  // required — The type of calculation to perform
     side: "...",  // optional — The side to which the calculation is applied
-    formula: "..."  // optional — The formula used to derive the total consideration amount when it is not provided on the transaction
+    formula: "...",  // optional — The formula used to derive the total consideration amount when it is not provided on the transaction
+    transactionFeeId: new ResourceId(...),  // optional
+    transactionFeeCapitalisation: new TransactionFeeCapitalisation(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -34,6 +38,8 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<TransactionTypeCalculation>(json);
 ```
 
+- [ResourceId](ResourceId.md)
+- [TransactionFeeCapitalisation](TransactionFeeCapitalisation.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

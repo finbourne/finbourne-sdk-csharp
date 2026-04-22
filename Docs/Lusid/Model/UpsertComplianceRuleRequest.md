@@ -10,7 +10,7 @@
 | **Active** | **bool** | Required | *No description available.* |
 | **TemplateId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **Variation** | **string** | Required | *No description available.* |
-| **PortfolioGroupId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
+| **PortfolioGroupId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Parameters** | [Dictionary&lt;string, ComplianceParameter&gt;](ComplianceParameter.md) | Required | *No description available.* |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Required | *No description available.* |
 
@@ -29,7 +29,7 @@ var instance = new UpsertComplianceRuleRequest(
     active: true,  // required
     templateId: new ResourceId(...),  // required
     variation: "...",  // required
-    portfolioGroupId: new ResourceId(...),  // required
+    portfolioGroupId: new ResourceId(...),  // optional
     parameters: new ComplianceParameter(...),  // required
     properties: new PerpetualProperty(...)  // required
 );

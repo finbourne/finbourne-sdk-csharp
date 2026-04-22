@@ -313,7 +313,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<EventTypeSchema, AbstractOpenAPISchema>("/notifications/api/eventtypes/{eventType}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<EventTypeSchema, AbstractOpenAPISchema>("/notification/api/eventtypes/{eventType}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetEventType", localVarResponse);
@@ -415,7 +415,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<EventTypeSchema, AbstractOpenAPISchema>("/notifications/api/eventtypes/{eventType}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<EventTypeSchema, AbstractOpenAPISchema>("/notification/api/eventtypes/{eventType}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -506,7 +506,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ResourceListOfEventTypeSchema, AbstractOpenAPISchema>("/notifications/api/eventtypes", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ResourceListOfEventTypeSchema, AbstractOpenAPISchema>("/notification/api/eventtypes", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListEventTypes", localVarResponse);
@@ -599,7 +599,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ResourceListOfEventTypeSchema, AbstractOpenAPISchema>("/notifications/api/eventtypes", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ResourceListOfEventTypeSchema, AbstractOpenAPISchema>("/notification/api/eventtypes", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ListDeliveries**](#listdeliveries) | **GET** `/notifications/api/deliveries` | ListDeliveries: List Deliveries |
+| [**ListDeliveries**](#listdeliveries) | **GET** `/notification/api/deliveries` | ListDeliveries: List Deliveries |
 
 ### Example
 

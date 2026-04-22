@@ -57,7 +57,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FilesApi>();
 <a id="createfile"></a>
 ## CreateFile
 
-> StorageObject CreateFile(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, byte[] body)
+> StorageObject CreateFile(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, System.IO.Stream body)
 
 CreateFile: Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
 
@@ -68,7 +68,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FilesApi>();
 var xLusidDriveFilename = "xLusidDriveFilename_example";  // string
 var xLusidDrivePath = "xLusidDrivePath_example";  // string
 var contentLength = 56;  // int
-var body = System.Text.Encoding.ASCII.GetBytes("BYTE_ARRAY_DATA_HERE");  // byte[]
+var body = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream
 StorageObject result = apiInstance.CreateFile(xLusidDriveFilename, xLusidDrivePath, contentLength, body);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
@@ -80,7 +80,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **xLusidDriveFilename** | **string** | header | **required** | File name. |
 | **xLusidDrivePath** | **string** | header | **required** | File path. |
 | **contentLength** | **int** | header | **required** | The size in bytes of the file to be uploaded |
-| **body** | **byte[]** | body | **required** |  |
+| **body** | **System.IO.Stream****System.IO.Stream** | body | **required** | Binary file content to upload as a stream |
 
 ### Return type
 
@@ -285,7 +285,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="updatefilecontents"></a>
 ## UpdateFileContents
 
-> StorageObject UpdateFileContents(string id, int contentLength, byte[] body)
+> StorageObject UpdateFileContents(string id, int contentLength, System.IO.Stream body)
 
 [EARLY ACCESS] UpdateFileContents: Updates contents of a file in Drive.
 
@@ -295,7 +295,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FilesApi>();
 var id = "id_example";  // string
 var contentLength = 56;  // int
-var body = System.Text.Encoding.ASCII.GetBytes("BYTE_ARRAY_DATA_HERE");  // byte[]
+var body = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream
 StorageObject result = apiInstance.UpdateFileContents(id, contentLength, body);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
@@ -306,7 +306,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | The unique file identifier |
 | **contentLength** | **int** | header | **required** | The size in bytes of the file to be uploaded |
-| **body** | **byte[]** | body | **required** |  |
+| **body** | **System.IO.Stream****System.IO.Stream** | body | **required** | Binary file content to upload as a stream |
 
 ### Return type
 

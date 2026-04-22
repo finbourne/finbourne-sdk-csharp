@@ -5,11 +5,11 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateNotification**](#createnotification) | **POST** `/notifications/api/subscriptions/{scope}/{code}/notifications` | CreateNotification: Add a Notification to a Subscription. |
-| [**DeleteNotification**](#deletenotification) | **DELETE** `/notifications/api/subscriptions/{scope}/{code}/notifications/{id}` | DeleteNotification: Delete a notification for a given subscription. |
-| [**GetNotification**](#getnotification) | **GET** `/notifications/api/subscriptions/{scope}/{code}/notifications/{id}` | GetNotification: Get a notification on a subscription. |
-| [**ListNotifications**](#listnotifications) | **GET** `/notifications/api/subscriptions/{scope}/{code}/notifications` | ListNotifications: List all notifications on a subscription. |
-| [**UpdateNotification**](#updatenotification) | **PUT** `/notifications/api/subscriptions/{scope}/{code}/notifications/{id}` | UpdateNotification: Update a Notification for a Subscription |
+| [**CreateNotification**](#createnotification) | **POST** `/notification/api/subscriptions/{scope}/{code}/notifications` | CreateNotification: Add a Notification to a Subscription. |
+| [**DeleteNotification**](#deletenotification) | **DELETE** `/notification/api/subscriptions/{scope}/{code}/notifications/{id}` | DeleteNotification: Delete a notification for a given subscription. |
+| [**GetNotification**](#getnotification) | **GET** `/notification/api/subscriptions/{scope}/{code}/notifications/{id}` | GetNotification: Get a notification on a subscription. |
+| [**ListNotifications**](#listnotifications) | **GET** `/notification/api/subscriptions/{scope}/{code}/notifications` | ListNotifications: List all notifications on a subscription. |
+| [**UpdateNotification**](#updatenotification) | **PUT** `/notification/api/subscriptions/{scope}/{code}/notifications/{id}` | UpdateNotification: Update a Notification for a Subscription |
 
 ### Example
 

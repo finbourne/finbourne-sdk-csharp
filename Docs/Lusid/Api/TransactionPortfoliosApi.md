@@ -1778,7 +1778,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getholdingsadjustment"></a>
 ## GetHoldingsAdjustment
 
-> HoldingsAdjustment GetHoldingsAdjustment(string scope, string code, DateTimeOrCutLabel effectiveAt, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
+> HoldingsAdjustment GetHoldingsAdjustment(string scope, string code, DateTimeOrCutLabel effectiveAt, DateTimeOffset? asAt = null, List<string>? propertyKeys = null, string? filter = null)
 
 GetHoldingsAdjustment: Get holdings adjustment
 
@@ -1793,7 +1793,8 @@ var code = "code_example";  // string
 var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var propertyKeys = new List<string>?(); // List<string>? (optional)
-HoldingsAdjustment result = apiInstance.GetHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys);
+var filter = "filter_example";  // string? (optional)
+HoldingsAdjustment result = apiInstance.GetHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys, filter);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1805,7 +1806,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
 | **effectiveAt** | **DateTimeOrCutLabel** | path | **required** | The effective datetime or cut label of the holdings adjustment. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest              version of the holdings adjustment if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding’ domain are automatically returned. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding&#39; domain are automatically returned. |
+| **filter** | **string?** | query | optional | Expression to filter the holding adjustments result set.              Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].              For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
 
 ### Return type
 
@@ -1830,7 +1832,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<HoldingsAdjustment> response = apiInstance.GetHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+ApiResponse<HoldingsAdjustment> response = apiInstance.GetHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, filter);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2594,7 +2596,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listholdingsadjustments"></a>
 ## ListHoldingsAdjustments
 
-> ResourceListOfHoldingsAdjustmentHeader ListHoldingsAdjustments(string scope, string code, DateTimeOrCutLabel? fromEffectiveAt = null, DateTimeOrCutLabel? toEffectiveAt = null, DateTimeOffset? asAt = null)
+> ResourceListOfHoldingsAdjustmentHeader ListHoldingsAdjustments(string scope, string code, DateTimeOrCutLabel? fromEffectiveAt = null, DateTimeOrCutLabel? toEffectiveAt = null, DateTimeOffset? asAt = null, string? filter = null)
 
 ListHoldingsAdjustments: List holdings adjustments
 
@@ -2609,7 +2611,8 @@ var code = "code_example";  // string
 var fromEffectiveAt = "fromEffectiveAt_example";  // DateTimeOrCutLabel? (optional)
 var toEffectiveAt = "toEffectiveAt_example";  // DateTimeOrCutLabel? (optional)
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
-ResourceListOfHoldingsAdjustmentHeader result = apiInstance.ListHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
+var filter = "filter_example";  // string? (optional)
+ResourceListOfHoldingsAdjustmentHeader result = apiInstance.ListHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -2622,6 +2625,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **fromEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings              adjustments. There is no lower bound if this is not specified. |
 | **toEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings              adjustments. There is no upper bound if this is not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the              latest version of each holding adjustment if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the holding adjustments result set.              Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].              For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
 
 ### Return type
 
@@ -2646,7 +2650,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfHoldingsAdjustmentHeader> response = apiInstance.ListHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
+ApiResponse<ResourceListOfHoldingsAdjustmentHeader> response = apiInstance.ListHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

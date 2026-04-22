@@ -96,6 +96,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |-------------|-------------|------------------|
 | **201** | Create MCP Tool |  -  |
 | **400** | The details of the input related failure |  -  |
+| **409** | A tool with the same code or name already exists in this domain |  -  |
 | **0** | Error response |  -  |
 
 <details>
@@ -329,6 +330,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |-------------|-------------|------------------|
 | **200** | Update MCP Tool |  -  |
 | **400** | The details of the input related failure |  -  |
+| **409** | Renaming this tool would conflict with an existing tool name in this domain |  -  |
 | **0** | Error response |  -  |
 
 <details>

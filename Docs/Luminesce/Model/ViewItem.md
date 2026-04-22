@@ -12,6 +12,7 @@
 | **LastUpdatedAt** | **DateTimeOffset?** | Optional | The last updated at time, needed to get the creating Sql out of the logs |
 | **LastUpdatedBy** | **string** | Optional | The last updated by this user |
 | **CreatedByUserId** | **string** | Optional | Originally created by this user |
+| **Notes** | **string** | Optional | Any notes around saving or whatnot |
 
 
 ## Usage
@@ -29,7 +30,8 @@ var instance = new ViewItem(
     lastUpdatedExecutionId: "...",  // optional — The last ExecutionId, needed to get the creating Sql out of the logs
     lastUpdatedAt: DateTimeOffset.Now,  // optional — The last updated at time, needed to get the creating Sql out of the logs
     lastUpdatedBy: "...",  // optional — The last updated by this user
-    createdByUserId: "..."  // optional — Originally created by this user
+    createdByUserId: "...",  // optional — Originally created by this user
+    notes: "..."  // optional — Any notes around saving or whatnot
 );
 ```
 ### Serializing to JSON

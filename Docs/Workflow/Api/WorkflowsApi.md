@@ -6,8 +6,10 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateWorkflow**](#createworkflow) | **POST** `/workflow/api/workflows` | CreateWorkflow: Create a new Workflow |
+| [**DeleteWorkflow**](#deleteworkflow) | **DELETE** `/workflow/api/workflows/{scope}/{code}` | [EXPERIMENTAL] DeleteWorkflow: Delete a Workflow |
 | [**GetWorkflow**](#getworkflow) | **GET** `/workflow/api/workflows/{scope}/{code}` | GetWorkflow: Get a Workflow |
 | [**ListWorkflows**](#listworkflows) | **GET** `/workflow/api/workflows` | ListWorkflows: List Workflows |
+| [**UpdateWorkflow**](#updateworkflow) | **PUT** `/workflow/api/workflows/{scope}/{code}` | [EXPERIMENTAL] UpdateWorkflow: Update an existing Workflow |
 
 ### Example
 
@@ -98,6 +100,65 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<WorkflowResponse> response = apiInstance.CreateWorkflowWithHttpInfo(createWorkflowRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="deleteworkflow"></a>
+## DeleteWorkflow
+
+> DeletedEntityResponse DeleteWorkflow(string scope, string code)
+
+[EXPERIMENTAL] DeleteWorkflow: Delete a Workflow
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WorkflowsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+DeletedEntityResponse result = apiInstance.DeleteWorkflow(scope, code);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope that identifies a Workflow |
+| **code** | **string** | path | **required** | The code that identifies a Workflow |
+
+### Return type
+
+[DeletedEntityResponse](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | Workflow not found. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteWorkflowWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteWorkflowWithHttpInfo(scope, code);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -224,6 +285,67 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PagedResourceListOfWorkflowResponse> response = apiInstance.ListWorkflowsWithHttpInfo(asAt, filter, sortBy, limit, page);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="updateworkflow"></a>
+## UpdateWorkflow
+
+> WorkflowResponse UpdateWorkflow(string scope, string code, UpdateWorkflowRequest updateWorkflowRequest)
+
+[EXPERIMENTAL] UpdateWorkflow: Update an existing Workflow
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WorkflowsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var updateWorkflowRequest = new UpdateWorkflowRequest(); // UpdateWorkflowRequest
+WorkflowResponse result = apiInstance.UpdateWorkflow(scope, code, updateWorkflowRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope that identifies a Workflow |
+| **code** | **string** | path | **required** | The code that identifies a Workflow |
+| **updateWorkflowRequest** | [UpdateWorkflowRequest](UpdateWorkflowRequest.md) | body | **required** | The data to update a Workflow |
+
+### Return type
+
+[WorkflowResponse](WorkflowResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | Workflow not found. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpdateWorkflowWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<WorkflowResponse> response = apiInstance.UpdateWorkflowWithHttpInfo(scope, code, updateWorkflowRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

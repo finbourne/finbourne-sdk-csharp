@@ -35,9 +35,9 @@ namespace Finbourne.Sdk.Extensions
         /// <param name="apiSecretsFilename">Path to a secrets file containing API credentials</param>
         /// <param name="opts">Optional configuration options</param>
         /// <param name="additionalHeaders">Additional headers to include on every request</param>
-        public IApiFactory Build(string? apiSecretsFilename = null, ConfigurationOptions? opts = null, IDictionary<string, string>? additionalHeaders = null)
+        public IApiFactory Build(string? apiSecretsFilename = null, string? profileName = null, ConfigurationOptions? opts = null, IDictionary<string, string>? additionalHeaders = null)
         {
-            var apiConfig = new ApiConfigurationBuilder(_config).Build(apiSecretsFilename, opts);
+            var apiConfig = new ApiConfigurationBuilder(_config).Build(apiSecretsFilename, profileName, opts);
             if (additionalHeaders != null)
             {
                 apiConfig.AdditionalHeaders = additionalHeaders;

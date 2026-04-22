@@ -14,6 +14,7 @@
 * [FoldersApi](Drive/Api/FoldersApi.md)
 * [SearchApi](Drive/Api/SearchApi.md)
 ## Horizon
+* [ClientConfigurationsApi](Horizon/Api/ClientConfigurationsApi.md)
 * [InstrumentApi](Horizon/Api/InstrumentApi.md)
 * [IntegrationsApi](Horizon/Api/IntegrationsApi.md)
 * [LogsApi](Horizon/Api/LogsApi.md)

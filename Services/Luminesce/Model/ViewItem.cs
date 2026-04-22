@@ -38,7 +38,8 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="lastUpdatedAt">The last updated at time, needed to get the creating Sql out of the logs.</param>
         /// <param name="lastUpdatedBy">The last updated by this user.</param>
         /// <param name="createdByUserId">Originally created by this user.</param>
-        public ViewItem(string name = default(string), string domain = default(string), string filePath = default(string), string fileContent = default(string), Guid? lastUpdatedExecutionId = default(Guid?), DateTimeOffset? lastUpdatedAt = default(DateTimeOffset?), string lastUpdatedBy = default(string), string createdByUserId = default(string))
+        /// <param name="notes">Any notes around saving or whatnot.</param>
+        public ViewItem(string name = default(string), string domain = default(string), string filePath = default(string), string fileContent = default(string), Guid? lastUpdatedExecutionId = default(Guid?), DateTimeOffset? lastUpdatedAt = default(DateTimeOffset?), string lastUpdatedBy = default(string), string createdByUserId = default(string), string notes = default(string))
         {
             this.Name = name;
             this.Domain = domain;
@@ -48,6 +49,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
             this.LastUpdatedAt = lastUpdatedAt;
             this.LastUpdatedBy = lastUpdatedBy;
             this.CreatedByUserId = createdByUserId;
+            this.Notes = notes;
         }
 
         /// <summary>
@@ -107,6 +109,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         public string CreatedByUserId { get; set; }
 
         /// <summary>
+        /// Any notes around saving or whatnot
+        /// </summary>
+        /// <value>Any notes around saving or whatnot</value>
+        [DataMember(Name = "notes", EmitDefaultValue = true)]
+        public string Notes { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -122,6 +131,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
             sb.Append("  LastUpdatedAt: ").Append(LastUpdatedAt).Append("\n");
             sb.Append("  LastUpdatedBy: ").Append(LastUpdatedBy).Append("\n");
             sb.Append("  CreatedByUserId: ").Append(CreatedByUserId).Append("\n");
+            sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -196,6 +206,11 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                     this.CreatedByUserId == input.CreatedByUserId ||
                     (this.CreatedByUserId != null &&
                     this.CreatedByUserId.Equals(input.CreatedByUserId))
+                ) && 
+                (
+                    this.Notes == input.Notes ||
+                    (this.Notes != null &&
+                    this.Notes.Equals(input.Notes))
                 );
         }
 
@@ -239,6 +254,10 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 if (this.CreatedByUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedByUserId.GetHashCode();
+                }
+                if (this.Notes != null)
+                {
+                    hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
                 return hashCode;
             }

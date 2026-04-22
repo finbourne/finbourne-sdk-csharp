@@ -260,7 +260,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ResourceListOfAccessControlledResource, AbstractOpenAPISchema>("/notifications/api/metadata/access/resources", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ResourceListOfAccessControlledResource, AbstractOpenAPISchema>("/notification/api/metadata/access/resources", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListAccessControlledResources", localVarResponse);
@@ -355,7 +355,7 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ResourceListOfAccessControlledResource, AbstractOpenAPISchema>("/notifications/api/metadata/access/resources", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ResourceListOfAccessControlledResource, AbstractOpenAPISchema>("/notification/api/metadata/access/resources", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

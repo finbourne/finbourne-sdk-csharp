@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**TriggerManualEvent**](#triggermanualevent) | **POST** `/notifications/api/manualevent` | TriggerManualEvent: Trigger a manual event. |
+| [**TriggerManualEvent**](#triggermanualevent) | **POST** `/notification/api/manualevent` | TriggerManualEvent: Trigger a manual event. |
 
 ### Example
 

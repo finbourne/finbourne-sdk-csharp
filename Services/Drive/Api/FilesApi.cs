@@ -37,11 +37,11 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <param name="xLusidDriveFilename">File name.</param>
         /// <param name="xLusidDrivePath">File path.</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>StorageObject</returns>
-        StorageObject CreateFile(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, byte[] body, int operationIndex = 0, ConfigurationOptions? opts = null);
+        StorageObject CreateFile(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, System.IO.Stream body, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// CreateFile: Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
@@ -53,11 +53,11 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <param name="xLusidDriveFilename">File name.</param>
         /// <param name="xLusidDrivePath">File path.</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of StorageObject</returns>
-        Finbourne.Sdk.Client.ApiResponse<StorageObject> CreateFileWithHttpInfo(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, byte[] body, int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<StorageObject> CreateFileWithHttpInfo(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, System.IO.Stream body, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] DeleteFile: Deletes a file from Drive.
         /// </summary>
@@ -130,11 +130,11 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The unique file identifier</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>StorageObject</returns>
-        StorageObject UpdateFileContents(string id, int contentLength, byte[] body, int operationIndex = 0, ConfigurationOptions? opts = null);
+        StorageObject UpdateFileContents(string id, int contentLength, System.IO.Stream body, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EARLY ACCESS] UpdateFileContents: Updates contents of a file in Drive.
@@ -145,11 +145,11 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The unique file identifier</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of StorageObject</returns>
-        Finbourne.Sdk.Client.ApiResponse<StorageObject> UpdateFileContentsWithHttpInfo(string id, int contentLength, byte[] body, int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<StorageObject> UpdateFileContentsWithHttpInfo(string id, int contentLength, System.IO.Stream body, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] UpdateFileMetadata: Updates metadata for a file in Drive.
         /// </summary>
@@ -193,12 +193,12 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <param name="xLusidDriveFilename">File name.</param>
         /// <param name="xLusidDrivePath">File path.</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of StorageObject</returns>
-        System.Threading.Tasks.Task<StorageObject> CreateFileAsync(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, byte[] body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<StorageObject> CreateFileAsync(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, System.IO.Stream body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// CreateFile: Uploads a file to Lusid Drive. If using an SDK, consider using the UploadAsStreamAsync function for larger files instead.
@@ -210,12 +210,12 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <param name="xLusidDriveFilename">File name.</param>
         /// <param name="xLusidDrivePath">File path.</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (StorageObject)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<StorageObject>> CreateFileWithHttpInfoAsync(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, byte[] body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<StorageObject>> CreateFileWithHttpInfoAsync(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, System.IO.Stream body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] DeleteFile: Deletes a file from Drive.
         /// </summary>
@@ -306,12 +306,12 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The unique file identifier</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of StorageObject</returns>
-        System.Threading.Tasks.Task<StorageObject> UpdateFileContentsAsync(string id, int contentLength, byte[] body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<StorageObject> UpdateFileContentsAsync(string id, int contentLength, System.IO.Stream body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EARLY ACCESS] UpdateFileContents: Updates contents of a file in Drive.
@@ -322,12 +322,12 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The unique file identifier</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (StorageObject)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<StorageObject>> UpdateFileContentsWithHttpInfoAsync(string id, int contentLength, byte[] body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<StorageObject>> UpdateFileContentsWithHttpInfoAsync(string id, int contentLength, System.IO.Stream body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] UpdateFileMetadata: Updates metadata for a file in Drive.
         /// </summary>
@@ -458,11 +458,11 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <param name="xLusidDriveFilename">File name.</param>
         /// <param name="xLusidDrivePath">File path.</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>StorageObject</returns>
-        public StorageObject CreateFile(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, byte[] body, int operationIndex = 0, ConfigurationOptions? opts = null)
+        public StorageObject CreateFile(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, System.IO.Stream body, int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.ApiResponse<StorageObject> localVarResponse = CreateFileWithHttpInfo(xLusidDriveFilename, xLusidDrivePath, contentLength, body, opts: opts);
             return localVarResponse.Data;
@@ -476,11 +476,11 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <param name="xLusidDriveFilename">File name.</param>
         /// <param name="xLusidDrivePath">File path.</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of StorageObject</returns>
-        public Finbourne.Sdk.Client.ApiResponse<StorageObject> CreateFileWithHttpInfo(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, byte[] body, int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<StorageObject> CreateFileWithHttpInfo(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, System.IO.Stream body, int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'xLusidDriveFilename' is set
             if (xLusidDriveFilename == null)
@@ -581,12 +581,12 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <param name="xLusidDriveFilename">File name.</param>
         /// <param name="xLusidDrivePath">File path.</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of StorageObject</returns>
-        public async System.Threading.Tasks.Task<StorageObject> CreateFileAsync(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, byte[] body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<StorageObject> CreateFileAsync(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, System.IO.Stream body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.ApiResponse<StorageObject> localVarResponse = await CreateFileWithHttpInfoAsync(xLusidDriveFilename, xLusidDrivePath, contentLength, body, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -600,12 +600,12 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <param name="xLusidDriveFilename">File name.</param>
         /// <param name="xLusidDrivePath">File path.</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (StorageObject)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<StorageObject>> CreateFileWithHttpInfoAsync(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, byte[] body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<StorageObject>> CreateFileWithHttpInfoAsync(string xLusidDriveFilename, string xLusidDrivePath, int contentLength, System.IO.Stream body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'xLusidDriveFilename' is set
             if (xLusidDriveFilename == null)
@@ -1323,11 +1323,11 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The unique file identifier</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>StorageObject</returns>
-        public StorageObject UpdateFileContents(string id, int contentLength, byte[] body, int operationIndex = 0, ConfigurationOptions? opts = null)
+        public StorageObject UpdateFileContents(string id, int contentLength, System.IO.Stream body, int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.ApiResponse<StorageObject> localVarResponse = UpdateFileContentsWithHttpInfo(id, contentLength, body, opts: opts);
             return localVarResponse.Data;
@@ -1340,11 +1340,11 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="id">The unique file identifier</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of StorageObject</returns>
-        public Finbourne.Sdk.Client.ApiResponse<StorageObject> UpdateFileContentsWithHttpInfo(string id, int contentLength, byte[] body, int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<StorageObject> UpdateFileContentsWithHttpInfo(string id, int contentLength, System.IO.Stream body, int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1437,12 +1437,12 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The unique file identifier</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of StorageObject</returns>
-        public async System.Threading.Tasks.Task<StorageObject> UpdateFileContentsAsync(string id, int contentLength, byte[] body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<StorageObject> UpdateFileContentsAsync(string id, int contentLength, System.IO.Stream body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.ApiResponse<StorageObject> localVarResponse = await UpdateFileContentsWithHttpInfoAsync(id, contentLength, body, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1455,12 +1455,12 @@ namespace Finbourne.Sdk.Services.Drive.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="id">The unique file identifier</param>
         /// <param name="contentLength">The size in bytes of the file to be uploaded</param>
-        /// <param name="body"></param>
+        /// <param name="body">Binary file content to upload as a stream</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (StorageObject)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<StorageObject>> UpdateFileContentsWithHttpInfoAsync(string id, int contentLength, byte[] body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<StorageObject>> UpdateFileContentsWithHttpInfoAsync(string id, int contentLength, System.IO.Stream body, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)

@@ -154,7 +154,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The datetime that the Abor was deleted |  -  |
+| **200** | The datetime that the AborConfiguration was deleted |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -334,7 +334,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID              system datetime if not specified. |
-| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AborConfiguration if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing AborConfiguration; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
