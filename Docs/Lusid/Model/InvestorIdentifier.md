@@ -5,7 +5,7 @@ Identification of an Investor on the LUSID API.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **InvestorType** | **string** | Required | The type of the investor of the Investor Record. Can be either a Person, LegalEntity or Nominee. |
+| **InvestorType** | **string** | Required | The type of the investor of the Investor Record. Available values: Person, LegalEntity, Nominee. |
 | **Identifiers** | **Dictionary&lt;string, string&gt;** | Optional | Single identifier that should target the desired person or legal entity |
 
 
@@ -17,7 +17,7 @@ Identification of an Investor on the LUSID API.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new InvestorIdentifier(
-    investorType: "...",  // required — The type of the investor of the Investor Record. Can be either a Person, LegalEntity or Nominee.
+    investorType: "...",  // required — The type of the investor of the Investor Record. Available values: Person, LegalEntity, Nominee.
     identifiers:   // optional — Single identifier that should target the desired person or legal entity
 );
 ```

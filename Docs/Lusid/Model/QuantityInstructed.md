@@ -5,7 +5,7 @@ The quantity of the event that was instructed, represented either as a percentag
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Type** | **string** | Required | The type of quantity instructed, either Percentage or Units. |
+| **Type** | **string** | Required | The type of quantity instructed. Available values: Percentage, Units, Invalid. |
 | **Amount** | **decimal** | Required | The actual amount instructed. For Type Percentage, this is between 0 and 100. |
 
 
@@ -17,7 +17,7 @@ The quantity of the event that was instructed, represented either as a percentag
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new QuantityInstructed(
-    type: "...",  // required — The type of quantity instructed, either Percentage or Units.
+    type: "...",  // required — The type of quantity instructed. Available values: Percentage, Units, Invalid.
     amount: 0.0d  // required — The actual amount instructed. For Type Percentage, this is between 0 and 100.
 );
 ```

@@ -7,7 +7,7 @@
 | **Id** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **DisplayName** | **string** | Optional | *No description available.* |
 | **Description** | **string** | Optional | *No description available.* |
-| **Type** | **string** | Optional | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText |
+| **Type** | **string** | Optional | Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText. |
 | **DisplayOrder** | **int** | Optional | *No description available.* |
 
 
@@ -22,7 +22,7 @@ var instance = new FieldSchema(
     id: new ResourceId(...),  // optional
     displayName: "...",  // optional
     description: "...",  // optional
-    type: "...",  // optional — The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText
+    type: "...",  // optional — Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.
     displayOrder: 0  // optional
 );
 ```

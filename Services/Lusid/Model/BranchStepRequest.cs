@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="BranchStepRequest" /> class.
         /// </summary>
         /// <param name="label">The label of the compliance step (required).</param>
-        /// <param name="complianceStepTypeRequest">. The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest (required) (default to ComplianceStepTypeRequestEnum.FilterStepRequest).</param>
+        /// <param name="complianceStepTypeRequest">The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest. (required) (default to ComplianceStepTypeRequestEnum.FilterStepRequest).</param>
         public BranchStepRequest(string label = default(string), ComplianceStepTypeRequestEnum complianceStepTypeRequest = default(ComplianceStepTypeRequestEnum)) : base()
         {
             // to ensure "label" is required (not null)

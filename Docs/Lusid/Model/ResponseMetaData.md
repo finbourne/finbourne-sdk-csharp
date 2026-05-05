@@ -6,7 +6,7 @@ Metadata related to an api response
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Type** | **string** | Optional | The type of meta data information being provided |
-| **Description** | **string** | Optional | The description of what occured for this specific piece of meta data |
+| **Description** | **string** | Optional | The description of what occurred for this specific piece of meta data |
 | **IdentifierType** | **string** | Optional | The type of the listed identifiers |
 | **Identifiers** | **List&lt;string&gt;** | Optional | The related identifiers that were impacted by this event |
 
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ResponseMetaData(
     type: "...",  // optional — The type of meta data information being provided
-    description: "...",  // optional — The description of what occured for this specific piece of meta data
+    description: "...",  // optional — The description of what occurred for this specific piece of meta data
     identifierType: "...",  // optional — The type of the listed identifiers
     identifiers:   // optional — The related identifiers that were impacted by this event
 );

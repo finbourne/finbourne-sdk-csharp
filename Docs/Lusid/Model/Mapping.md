@@ -8,7 +8,7 @@ Defines the rule set to be used to determine if entries should be considered as 
 | **Scope** | **string** | Required | The scope for this mapping. |
 | **Code** | **string** | Required | The code for this mapping. |
 | **Name** | **string** | Required | The mapping name |
-| **ReconciliationType** | **string** | Required | What type of reconciliation this mapping is for |
+| **ReconciliationType** | **string** | Required | What type of reconciliation this mapping is for. Available values: Transaction, Holding, Valuation, Cash, CashHolding. |
 | **Rules** | [List&lt;MappingRule&gt;](MappingRule.md) | Optional | The rules in this mapping, keyed by the left field/property name |
 
 
@@ -23,7 +23,7 @@ var instance = new Mapping(
     scope: "...",  // required — The scope for this mapping.
     code: "...",  // required — The code for this mapping.
     name: "...",  // required — The mapping name
-    reconciliationType: "...",  // required — What type of reconciliation this mapping is for
+    reconciliationType: "...",  // required — What type of reconciliation this mapping is for. Available values: Transaction, Holding, Valuation, Cash, CashHolding.
     rules: new List<MappingRule>()  // optional — The rules in this mapping, keyed by the left field/property name
 );
 ```

@@ -5,7 +5,7 @@ The base class for representing a Trade Ticket in LUSID.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **TradeTicketType** | **string** | Required | The available values are: LusidTradeTicket, ExternalTradeTicket |
+| **TradeTicketType** | **string** | Required | Available values: LusidTradeTicket, ExternalTradeTicket. |
 
 
 ## Usage
@@ -16,7 +16,7 @@ The base class for representing a Trade Ticket in LUSID.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new TradeTicket(
-    tradeTicketType: "..."  // required — The available values are: LusidTradeTicket, ExternalTradeTicket
+    tradeTicketType: "..."  // required — Available values: LusidTradeTicket, ExternalTradeTicket.
 );
 ```
 ### Serializing to JSON

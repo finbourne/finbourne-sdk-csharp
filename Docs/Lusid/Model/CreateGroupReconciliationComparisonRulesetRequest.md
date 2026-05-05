@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **DisplayName** | **string** | Required | The name of the ruleset |
-| **ReconciliationType** | **string** | Required | The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot; |
+| **ReconciliationType** | **string** | Required | The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding. |
 | **Filters** | [GroupReconciliationFilters](GroupReconciliationFilters.md) | Optional | *No description available.* |
 | **CoreAttributeRules** | [List&lt;GroupReconciliationCoreAttributeRule&gt;](GroupReconciliationCoreAttributeRule.md) | Required | The core comparison rules |
 | **AggregateAttributeRules** | [List&lt;GroupReconciliationAggregateAttributeRule&gt;](GroupReconciliationAggregateAttributeRule.md) | Required | The aggregate comparison rules |
@@ -22,7 +22,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new CreateGroupReconciliationComparisonRulesetRequest(
     id: new ResourceId(...),  // required
     displayName: "...",  // required — The name of the ruleset
-    reconciliationType: "...",  // required — The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot;
+    reconciliationType: "...",  // required — The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding.
     filters: new GroupReconciliationFilters(...),  // optional
     coreAttributeRules: new List<GroupReconciliationCoreAttributeRule>(),  // required — The core comparison rules
     aggregateAttributeRules: new List<GroupReconciliationAggregateAttributeRule>()  // required — The aggregate comparison rules

@@ -14,7 +14,7 @@
 | **PreviousEntry** | [PreviousFundCalendarEntry](PreviousFundCalendarEntry.md) | Optional | *No description available.* |
 | **EffectiveAt** | **DateTimeOffset** | Optional | The effective at of the Calendar Entry. |
 | **AsAt** | **DateTimeOffset** | Required | The asAt datetime for the Calendar Entry. |
-| **EntryType** | **string** | Required | The type of the Fund Calendar Entry. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry |
+| **EntryType** | **string** | Required | The type of the Fund Calendar Entry. Available values: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry. |
 | **Status** | **string** | Optional | The status of the Fund Calendar Entry. Can be &#39;Estimate&#39;, &#39;Unofficial&#39; or &#39;Final&#39;. |
 | **ApplyClearDown** | **bool** | Optional | Set to true if that closed period should have the clear down applied. |
 | **HoldingsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt. |
@@ -23,7 +23,7 @@
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Required | *No description available.* |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. |
 | **LeaderNavTypeCode** | **string** | Optional | The code of the Nav Type that this Nav Type will follow when set. |
-| **FundCalendarEntriesType** | **string** | Required | The type of the Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark Default: `FundCalendarEntriesTypeEnum.FundBookmark` |
+| **FundCalendarEntriesType** | **string** | Required | The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark. Default: `FundCalendarEntriesTypeEnum.FundBookmark` |
 
 
 ## Usage
@@ -42,7 +42,7 @@ var instance = new FundBookmark(
     previousEntry: new PreviousFundCalendarEntry(...),  // optional
     effectiveAt: DateTimeOffset.Now,  // optional — The effective at of the Calendar Entry.
     asAt: DateTimeOffset.Now,  // required — The asAt datetime for the Calendar Entry.
-    entryType: "...",  // required — The type of the Fund Calendar Entry. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry
+    entryType: "...",  // required — The type of the Fund Calendar Entry. Available values: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry.
     status: "...",  // optional — The status of the Fund Calendar Entry. Can be &#39;Estimate&#39;, &#39;Unofficial&#39; or &#39;Final&#39;.
     applyClearDown: true,  // optional — Set to true if that closed period should have the clear down applied.
     holdingsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt.
@@ -51,7 +51,7 @@ var instance = new FundBookmark(
     varVersion: new ModelVersion(...),  // required
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime.
     leaderNavTypeCode: "...",  // optional — The code of the Nav Type that this Nav Type will follow when set.
-    fundCalendarEntriesType: "..."  // required — The type of the Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark
+    fundCalendarEntriesType: "..."  // required — The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark.
 );
 ```
 ### Serializing to JSON

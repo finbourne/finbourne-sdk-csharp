@@ -15,8 +15,8 @@ A list of instruments.
 | **Properties** | [List&lt;Property&gt;](Property.md) | Optional | The requested instrument properties. These will be from the &#39;Instrument&#39; domain. |
 | **LookthroughPortfolio** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **InstrumentDefinition** | [LusidInstrument](LusidInstrument.md) | Optional | *No description available.* |
-| **State** | **string** | Required | The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive, Deleted |
-| **AssetClass** | **string** | Optional | The nominal asset class of the instrument, e.g. InterestRates, FX, Inflation, Equities, Credit, Commodities, etc. The available values are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown |
+| **State** | **string** | Required | The state of of the instrument at the asAt datetime of this version of the instrument definition. Available values: Active, Inactive, Deleted. |
+| **AssetClass** | **string** | Optional | The nominal asset class of the instrument. Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown. |
 | **DomCcy** | **string** | Optional | The domestic currency, meaning the currency in which the instrument would typically be expected to pay cashflows, e.g. a share in AAPL being USD. |
 | **Relationships** | [List&lt;Relationship&gt;](Relationship.md) | Optional | A set of relationships associated to the instrument. |
 | **SettlementCycle** | [SettlementCycle](SettlementCycle.md) | Optional | *No description available.* |
@@ -42,8 +42,8 @@ var instance = new Instrument(
     properties: new List<Property>(),  // optional — The requested instrument properties. These will be from the &#39;Instrument&#39; domain.
     lookthroughPortfolio: new ResourceId(...),  // optional
     instrumentDefinition: new LusidInstrument(...),  // optional
-    state: "...",  // required — The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive, Deleted
-    assetClass: "...",  // optional — The nominal asset class of the instrument, e.g. InterestRates, FX, Inflation, Equities, Credit, Commodities, etc. The available values are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown
+    state: "...",  // required — The state of of the instrument at the asAt datetime of this version of the instrument definition. Available values: Active, Inactive, Deleted.
+    assetClass: "...",  // optional — The nominal asset class of the instrument. Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown.
     domCcy: "...",  // optional — The domestic currency, meaning the currency in which the instrument would typically be expected to pay cashflows, e.g. a share in AAPL being USD.
     relationships: new List<Relationship>(),  // optional — A set of relationships associated to the instrument.
     settlementCycle: new SettlementCycle(...),  // optional

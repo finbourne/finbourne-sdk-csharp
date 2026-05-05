@@ -13,7 +13,7 @@
 | **AsAt** | **DateTimeOffset?** | Optional | The AsAt predicate specification. |
 | **PortfolioCode** | **string** | Optional | *No description available.* |
 | **PortfolioScope** | **string** | Optional | *No description available.* |
-| **ResultKeyRuleType** | **string** | Required | The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule Default: `ResultKeyRuleTypeEnum.PortfolioResultDataKeyRule` |
+| **ResultKeyRuleType** | **string** | Required | Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule. Default: `ResultKeyRuleTypeEnum.PortfolioResultDataKeyRule` |
 
 
 ## Usage
@@ -31,7 +31,7 @@ var instance = new PortfolioResultDataKeyRule(
     asAt: DateTimeOffset.Now,  // optional — The AsAt predicate specification.
     portfolioCode: "...",  // optional
     portfolioScope: "...",  // optional
-    resultKeyRuleType: "..."  // required — The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule
+    resultKeyRuleType: "..."  // required — Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule.
 );
 ```
 ### Serializing to JSON

@@ -22,26 +22,26 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// Request to update the value of an existing draft client configuration.
+    /// Request to update the value of an existing draft versioned configuration.
     /// </summary>
-    [DataContract(Name = "UpdateClientConfigurationDraftRequest")]
-    public partial class UpdateClientConfigurationDraftRequest : IEquatable<UpdateClientConfigurationDraftRequest>, IValidatableObject
+    [DataContract(Name = "UpdateVersionedConfigurationDraftRequest")]
+    public partial class UpdateVersionedConfigurationDraftRequest : IEquatable<UpdateVersionedConfigurationDraftRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateClientConfigurationDraftRequest" /> class.
+        /// Initializes a new instance of the <see cref="UpdateVersionedConfigurationDraftRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UpdateClientConfigurationDraftRequest() { }
+        protected UpdateVersionedConfigurationDraftRequest() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateClientConfigurationDraftRequest" /> class.
+        /// Initializes a new instance of the <see cref="UpdateVersionedConfigurationDraftRequest" /> class.
         /// </summary>
         /// <param name="value">The new JSON value to store. Must be valid JSON. (required).</param>
-        public UpdateClientConfigurationDraftRequest(string value = default(string))
+        public UpdateVersionedConfigurationDraftRequest(string value = default(string))
         {
             // to ensure "value" is required (not null)
             if (value == null)
             {
-                throw new ArgumentNullException("value is a required property for UpdateClientConfigurationDraftRequest and cannot be null");
+                throw new ArgumentNullException("value is a required property for UpdateVersionedConfigurationDraftRequest and cannot be null");
             }
             this.Value = value;
         }
@@ -60,7 +60,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class UpdateClientConfigurationDraftRequest {\n");
+            sb.Append("class UpdateVersionedConfigurationDraftRequest {\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -82,15 +82,15 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as UpdateClientConfigurationDraftRequest);
+            return this.Equals(input as UpdateVersionedConfigurationDraftRequest);
         }
 
         /// <summary>
-        /// Returns true if UpdateClientConfigurationDraftRequest instances are equal
+        /// Returns true if UpdateVersionedConfigurationDraftRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of UpdateClientConfigurationDraftRequest to be compared</param>
+        /// <param name="input">Instance of UpdateVersionedConfigurationDraftRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UpdateClientConfigurationDraftRequest input)
+        public bool Equals(UpdateVersionedConfigurationDraftRequest input)
         {
             if (input == null)
             {

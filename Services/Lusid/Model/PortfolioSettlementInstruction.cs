@@ -41,7 +41,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="portfolioScope">The portfolio scope of the given entity (required).</param>
         /// <param name="portfolioCode">The portfolio code of the given entity (required).</param>
         /// <param name="settlementInstructionId">The settlement instruction Id of the SettlementInstruction being adjusted (required).</param>
-        /// <param name="navActivityAdjustmentType">. The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity (required) (default to NavActivityAdjustmentTypeEnum.PortfolioTransaction).</param>
+        /// <param name="navActivityAdjustmentType">The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity. (required) (default to NavActivityAdjustmentTypeEnum.PortfolioTransaction).</param>
         public PortfolioSettlementInstruction(DateTimeOffset asAt = default(DateTimeOffset), string portfolioScope = default(string), string portfolioCode = default(string), string settlementInstructionId = default(string), NavActivityAdjustmentTypeEnum navActivityAdjustmentType = default(NavActivityAdjustmentTypeEnum)) : base()
         {
             this.AsAt = asAt;

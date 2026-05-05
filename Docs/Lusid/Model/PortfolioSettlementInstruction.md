@@ -10,7 +10,7 @@
 | **PortfolioScope** | **string** | Required | The portfolio scope of the given entity |
 | **PortfolioCode** | **string** | Required | The portfolio code of the given entity |
 | **SettlementInstructionId** | **string** | Required | The settlement instruction Id of the SettlementInstruction being adjusted |
-| **NavActivityAdjustmentType** | **string** | Required | . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity Default: `NavActivityAdjustmentTypeEnum.PortfolioSettlementInstruction` |
+| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity. Default: `NavActivityAdjustmentTypeEnum.PortfolioSettlementInstruction` |
 
 
 ## Usage
@@ -25,7 +25,7 @@ var instance = new PortfolioSettlementInstruction(
     portfolioScope: "...",  // required — The portfolio scope of the given entity
     portfolioCode: "...",  // required — The portfolio code of the given entity
     settlementInstructionId: "...",  // required — The settlement instruction Id of the SettlementInstruction being adjusted
-    navActivityAdjustmentType: "..."  // required — . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity
+    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity.
 );
 ```
 ### Serializing to JSON

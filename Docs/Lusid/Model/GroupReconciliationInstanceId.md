@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **InstanceIdType** | **string** | Required | Type of the reconciliation run, manual or automatic (via the workflow). \&quot;Manual\&quot; | \&quot;WorkflowServiceTaskId\&quot; |
+| **InstanceIdType** | **string** | Required | Type of the reconciliation run, manual or automatic (via the workflow). Available values: WorkflowServiceTaskId, Manual. |
 | **InstanceIdValue** | **string** | Required | Reconciliation run identifier: a manually-provided key or taskId. |
 
 
@@ -16,7 +16,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new GroupReconciliationInstanceId(
-    instanceIdType: "...",  // required — Type of the reconciliation run, manual or automatic (via the workflow). \&quot;Manual\&quot; | \&quot;WorkflowServiceTaskId\&quot;
+    instanceIdType: "...",  // required — Type of the reconciliation run, manual or automatic (via the workflow). Available values: WorkflowServiceTaskId, Manual.
     instanceIdValue: "..."  // required — Reconciliation run identifier: a manually-provided key or taskId.
 );
 ```

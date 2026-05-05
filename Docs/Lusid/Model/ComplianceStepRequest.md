@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ComplianceStepTypeRequest** | **string** | Required | . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest |
+| **ComplianceStepTypeRequest** | **string** | Required | The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest. |
 
 
 ## Usage
@@ -15,7 +15,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ComplianceStepRequest(
-    complianceStepTypeRequest: "..."  // required — . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest
+    complianceStepTypeRequest: "..."  // required — The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest.
 );
 ```
 ### Serializing to JSON

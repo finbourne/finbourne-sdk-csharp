@@ -406,6 +406,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -541,6 +551,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -690,6 +710,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -833,6 +863,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -958,6 +998,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1089,6 +1139,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {

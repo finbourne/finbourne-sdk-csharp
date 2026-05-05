@@ -11,7 +11,7 @@
 | **Created** | **DateTimeOffset** | Optional | The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date. |
 | **ParentPortfolioId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **IsDerived** | **bool** | Optional | Whether or not this is a derived portfolio. *(read-only)* |
-| **Type** | **string** | Optional | The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition |
+| **Type** | **string** | Optional | The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Required | *No description available.* |
 | **Properties** | [List&lt;Property&gt;](Property.md) | Optional | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |
 | **BaseCurrency** | **string** | Optional | If the portfolio is a transaction portfolio or derived transaction portfolio, this is the base currency of the portfolio. |
@@ -34,7 +34,7 @@ var instance = new CompletePortfolio(
     created: DateTimeOffset.Now,  // optional — The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date.
     parentPortfolioId: new ResourceId(...),  // optional
     isDerived: true,  // optional — Whether or not this is a derived portfolio.
-    type: "...",  // optional — The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition
+    type: "...",  // optional — The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
     varVersion: new ModelVersion(...),  // required
     properties: new List<Property>(),  // optional — The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain.
     baseCurrency: "...",  // optional — If the portfolio is a transaction portfolio or derived transaction portfolio, this is the base currency of the portfolio.

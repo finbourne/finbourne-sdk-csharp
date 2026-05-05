@@ -32,9 +32,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class ResultKeyRule : IEquatable<ResultKeyRule>, IValidatableObject
     {
         /// <summary>
-        /// The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule
+        /// Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule.
         /// </summary>
-        /// <value>The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule</value>
+        /// <value>Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ResultKeyRuleTypeEnum
         {
@@ -58,9 +58,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule
+        /// Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule.
         /// </summary>
-        /// <value>The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule</value>
+        /// <value>Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule.</value>
         [DataMember(Name = "resultKeyRuleType", IsRequired = true, EmitDefaultValue = true)]
         public ResultKeyRuleTypeEnum ResultKeyRuleType { get; set; }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ResultKeyRule" /> class.
         /// </summary>
-        /// <param name="resultKeyRuleType">The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule (required).</param>
+        /// <param name="resultKeyRuleType">Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule. (required).</param>
         public ResultKeyRule(ResultKeyRuleTypeEnum resultKeyRuleType = default(ResultKeyRuleTypeEnum))
         {
             this.ResultKeyRuleType = resultKeyRuleType;

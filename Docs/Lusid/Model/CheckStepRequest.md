@@ -7,7 +7,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Label** | **string** | Required | The label of the compliance step |
-| **ComplianceStepTypeRequest** | **string** | Required | . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest Default: `ComplianceStepTypeRequestEnum.CheckStepRequest` |
+| **ComplianceStepTypeRequest** | **string** | Required | The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest. Default: `ComplianceStepTypeRequestEnum.CheckStepRequest` |
 
 
 ## Usage
@@ -19,7 +19,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CheckStepRequest(
     label: "...",  // required — The label of the compliance step
-    complianceStepTypeRequest: "..."  // required — . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest
+    complianceStepTypeRequest: "..."  // required — The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest.
 );
 ```
 ### Serializing to JSON

@@ -9,7 +9,7 @@ Used to append a new point to an FX curve defined using `FxForwardTenorCurveData
 |------|------|----------|-------------|
 | **Tenor** | **string** | Required | Tenor for which the forward rate applies. |
 | **Rate** | **decimal** | Required | Rate provided for the fx forward (price in FgnCcy per unit of DomCcy). |
-| **MarketDataType** | **string** | Required | The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData Default: `MarketDataTypeEnum.AppendFxForwardTenorCurveData` |
+| **MarketDataType** | **string** | Required | Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData. Default: `MarketDataTypeEnum.AppendFxForwardTenorCurveData` |
 
 
 ## Usage
@@ -22,7 +22,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new AppendFxForwardTenorCurveData(
     tenor: "...",  // required — Tenor for which the forward rate applies.
     rate: 0.0d,  // required — Rate provided for the fx forward (price in FgnCcy per unit of DomCcy).
-    marketDataType: "..."  // required — The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData
+    marketDataType: "..."  // required — Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData.
 );
 ```
 ### Serializing to JSON

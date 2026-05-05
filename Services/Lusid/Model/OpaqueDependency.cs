@@ -37,7 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="OpaqueDependency" /> class.
         /// </summary>
-        /// <param name="dependencyType">The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency (required) (default to DependencyTypeEnum.OpaqueDependency).</param>
+        /// <param name="dependencyType">Available values: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency. (required) (default to DependencyTypeEnum.OpaqueDependency).</param>
         public OpaqueDependency(DependencyTypeEnum dependencyType = default(DependencyTypeEnum)) : base()
         {
             this.DependencyType = dependencyType;

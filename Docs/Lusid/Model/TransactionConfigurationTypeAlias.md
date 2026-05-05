@@ -9,7 +9,7 @@
 | **TransactionClass** | **string** | Required | Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut |
 | **TransactionGroup** | **string** | Optional | Group is a set of codes related to a source, or sync. DEPRECATED: This field will be removed, use &#x60;Source&#x60; instead |
 | **Source** | **string** | Optional | Used to group a set of transaction types |
-| **TransactionRoles** | **string** | Required | . The available values are: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles |
+| **TransactionRoles** | **string** | Required | Transactions role within a class. E.g. Increase a long position. Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles. |
 | **IsDefault** | **bool** | Optional | IsDefault is a flag that denotes the default alias for a source. There can only be, at most, one per source. |
 
 
@@ -26,7 +26,7 @@ var instance = new TransactionConfigurationTypeAlias(
     transactionClass: "...",  // required — Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut
     transactionGroup: "...",  // optional — Group is a set of codes related to a source, or sync. DEPRECATED: This field will be removed, use &#x60;Source&#x60; instead
     source: "...",  // optional — Used to group a set of transaction types
-    transactionRoles: "...",  // required — . The available values are: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles
+    transactionRoles: "...",  // required — Transactions role within a class. E.g. Increase a long position. Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles.
     isDefault: true  // optional — IsDefault is a flag that denotes the default alias for a source. There can only be, at most, one per source.
 );
 ```

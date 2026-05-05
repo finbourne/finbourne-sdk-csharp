@@ -5,10 +5,10 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **FieldName** | **string** | Required | *No description available.* |
-| **Specificity** | **string** | Required | *No description available.* |
+| **Specificity** | **string** | Required | Available values: AllEventsAndHoldings, InstrumentEventType, ElectionType. |
 | **Description** | **string** | Required | *No description available.* |
-| **Type** | **string** | Required | *No description available.* |
-| **Availability** | **string** | Required | *No description available.* |
+| **Type** | **string** | Required | Available values: String, Decimal, InstrumentScope, Currency, DateTime, PriceType, InstrumentId, PropertyKey, Boolean. |
+| **Availability** | **string** | Required | Available values: Guaranteed, DataDependent, Informational. |
 | **Usage** | **List&lt;string&gt;** | Required | *No description available.* |
 
 
@@ -21,10 +21,10 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new TemplateField(
     fieldName: "...",  // required
-    specificity: "...",  // required
+    specificity: "...",  // required — Available values: AllEventsAndHoldings, InstrumentEventType, ElectionType.
     description: "...",  // required
-    type: "...",  // required
-    availability: "...",  // required
+    type: "...",  // required — Available values: String, Decimal, InstrumentScope, Currency, DateTime, PriceType, InstrumentId, PropertyKey, Boolean.
+    availability: "...",  // required — Available values: Guaranteed, DataDependent, Informational.
     usage:   // required
 );
 ```

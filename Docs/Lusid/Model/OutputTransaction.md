@@ -23,12 +23,12 @@ A list of output transactions.
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Set of unique transaction properties and associated values to stored with the transaction. Each property will be from the &#39;Transaction&#39; domain. |
 | **CounterpartyId** | **string** | Optional | The identifier for the counterparty of the transaction. |
 | **Source** | **string** | Optional | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |
-| **TransactionStatus** | **string** | Optional | The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp |
+| **TransactionStatus** | **string** | Optional | The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp. |
 | **EntryDateTime** | **DateTimeOffset** | Optional | The asAt datetime that the transaction was added to LUSID. |
 | **CancelDateTime** | **DateTimeOffset?** | Optional | If the transaction has been cancelled, the asAt datetime that the transaction was cancelled. |
 | **RealisedGainLoss** | [List&lt;RealisedGainLoss&gt;](RealisedGainLoss.md) | Optional | The collection of realised gains or losses resulting from relevant transactions e.g. a sale transaction. The cost used in calculating the realised gain or loss is determined by the accounting method defined when the transaction portfolio is created. |
 | **HoldingIds** | **List&lt;long&gt;** | Optional | The collection of single identifiers for the holding within the portfolio. The holdingId is constructed from the LusidInstrumentId, sub-holding keys and currrency and is unique within the portfolio. |
-| **SourceType** | **string** | Optional | The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment, OverriddenVirtualTransaction |
+| **SourceType** | **string** | Optional | The type of source that the transaction originated from. Available values: Unknown, InputTransaction, InstrumentEvent, HoldingAdjustment, OverriddenVirtualTransaction. |
 | **SourceInstrumentEventId** | **string** | Optional | The unique ID of the instrument event that the transaction is related to. |
 | **CustodianAccount** | [CustodianAccount](CustodianAccount.md) | Optional | *No description available.* |
 | **TransactionGroupId** | **string** | Optional | The identifier for grouping economic events across multiple transactions |
@@ -72,12 +72,12 @@ var instance = new OutputTransaction(
     properties: new PerpetualProperty(...),  // optional — Set of unique transaction properties and associated values to stored with the transaction. Each property will be from the &#39;Transaction&#39; domain.
     counterpartyId: "...",  // optional — The identifier for the counterparty of the transaction.
     source: "...",  // optional — The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration.
-    transactionStatus: "...",  // optional — The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp
+    transactionStatus: "...",  // optional — The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp.
     entryDateTime: DateTimeOffset.Now,  // optional — The asAt datetime that the transaction was added to LUSID.
     cancelDateTime: DateTimeOffset.Now,  // optional — If the transaction has been cancelled, the asAt datetime that the transaction was cancelled.
     realisedGainLoss: new List<RealisedGainLoss>(),  // optional — The collection of realised gains or losses resulting from relevant transactions e.g. a sale transaction. The cost used in calculating the realised gain or loss is determined by the accounting method defined when the transaction portfolio is created.
     holdingIds: ,  // optional — The collection of single identifiers for the holding within the portfolio. The holdingId is constructed from the LusidInstrumentId, sub-holding keys and currrency and is unique within the portfolio.
-    sourceType: "...",  // optional — The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment, OverriddenVirtualTransaction
+    sourceType: "...",  // optional — The type of source that the transaction originated from. Available values: Unknown, InputTransaction, InstrumentEvent, HoldingAdjustment, OverriddenVirtualTransaction.
     sourceInstrumentEventId: "...",  // optional — The unique ID of the instrument event that the transaction is related to.
     custodianAccount: new CustodianAccount(...),  // optional
     transactionGroupId: "...",  // optional — The identifier for grouping economic events across multiple transactions

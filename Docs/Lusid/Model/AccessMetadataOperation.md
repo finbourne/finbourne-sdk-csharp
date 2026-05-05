@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **Value** | [List&lt;AccessMetadataValue&gt;](AccessMetadataValue.md) | Required | *No description available.* |
 | **Path** | **string** | Required | *No description available.* |
-| **Op** | **string** | Required | The available values are: add, remove |
+| **Op** | **string** | Required | Available values: add, remove. |
 | **From** | **string** | Optional | *No description available.* |
 
 
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new AccessMetadataOperation(
     value: new List<AccessMetadataValue>(),  // required
     path: "...",  // required
-    op: "...",  // required — The available values are: add, remove
+    op: "...",  // required — Available values: add, remove.
     from: "..."  // optional
 );
 ```

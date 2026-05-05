@@ -16,7 +16,7 @@ A BondConversionSchedule object represents a class containing the  information r
 | **MandatoryConversion** | **bool** | Optional | Set this to true if a conversion is mandatory if the trigger occurs. Defaults to false. |
 | **NotificationPeriodEnd** | **DateTimeOffset** | Optional | The last day in the notification period for the conversion of the bond |
 | **NotificationPeriodStart** | **DateTimeOffset** | Optional | The first day in the notification period for the conversion of the bond |
-| **ScheduleType** | **string** | Required | The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid Default: `ScheduleTypeEnum.BondConversionSchedule` |
+| **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid. Default: `ScheduleTypeEnum.BondConversionSchedule` |
 
 
 ## Usage
@@ -36,7 +36,7 @@ var instance = new BondConversionSchedule(
     mandatoryConversion: true,  // optional — Set this to true if a conversion is mandatory if the trigger occurs. Defaults to false.
     notificationPeriodEnd: DateTimeOffset.Now,  // optional — The last day in the notification period for the conversion of the bond
     notificationPeriodStart: DateTimeOffset.Now,  // optional — The first day in the notification period for the conversion of the bond
-    scheduleType: "..."  // required — The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid
+    scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid.
 );
 ```
 ### Serializing to JSON

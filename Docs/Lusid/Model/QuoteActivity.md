@@ -10,7 +10,7 @@
 | **EffectiveAt** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Required | The EffectiveAt time of the quote event that need to be added to the closed period. |
 | **EntityUniqueId** | **string** | Required | The EntityUniqueId from the quote which needs to be added as a post close activity. |
 | **InstrumentId** | **string** | Required | The InstrumentId from the quote which needs to be added as a post close activity. |
-| **NavActivityAdjustmentType** | **string** | Required | . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity Default: `NavActivityAdjustmentTypeEnum.QuoteActivity` |
+| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity. Default: `NavActivityAdjustmentTypeEnum.QuoteActivity` |
 
 
 ## Usage
@@ -25,7 +25,7 @@ var instance = new QuoteActivity(
     effectiveAt: new DateTimeOrCutLabel(...),  // required — The EffectiveAt time of the quote event that need to be added to the closed period.
     entityUniqueId: "...",  // required — The EntityUniqueId from the quote which needs to be added as a post close activity.
     instrumentId: "...",  // required — The InstrumentId from the quote which needs to be added as a post close activity.
-    navActivityAdjustmentType: "..."  // required — . The available values are: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity
+    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity.
 );
 ```
 ### Serializing to JSON

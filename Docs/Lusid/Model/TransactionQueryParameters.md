@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **StartDate** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Required | The lower bound effective datetime or cut label (inclusive) from which to build the transactions. |
 | **EndDate** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Required | The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions. |
-| **QueryMode** | **string** | Optional | The date to compare against the upper and lower bounds for the effective datetime or cut label. Defaults to &#39;TradeDate&#39; if not specified. The available values are: TradeDate, SettleDate |
+| **QueryMode** | **string** | Optional | The date to compare against the upper and lower bounds for the effective datetime or cut label. Default value: TradeDate. Available values: TradeDate, SettleDate. |
 | **ShowCancelledTransactions** | **bool** | Optional | Option to specify whether or not to include cancelled transactions in the output. Defaults to False if not specified. |
 | **TimelineScope** | **string** | Optional | Scope of the Timeline for the Portfolio. The Timeline to be used while building transactions |
 | **TimelineCode** | **string** | Optional | Code of the Timeline for the Portfolio. The Timeline to be used while building transactions. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods. |
@@ -25,7 +25,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new TransactionQueryParameters(
     startDate: new DateTimeOrCutLabel(...),  // required — The lower bound effective datetime or cut label (inclusive) from which to build the transactions.
     endDate: new DateTimeOrCutLabel(...),  // required — The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.
-    queryMode: "...",  // optional — The date to compare against the upper and lower bounds for the effective datetime or cut label. Defaults to &#39;TradeDate&#39; if not specified. The available values are: TradeDate, SettleDate
+    queryMode: "...",  // optional — The date to compare against the upper and lower bounds for the effective datetime or cut label. Default value: TradeDate. Available values: TradeDate, SettleDate.
     showCancelledTransactions: true,  // optional — Option to specify whether or not to include cancelled transactions in the output. Defaults to False if not specified.
     timelineScope: "...",  // optional — Scope of the Timeline for the Portfolio. The Timeline to be used while building transactions
     timelineCode: "...",  // optional — Code of the Timeline for the Portfolio. The Timeline to be used while building transactions. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods.

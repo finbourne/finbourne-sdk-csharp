@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="FundValuationPointData" /> class.
         /// </summary>
         /// <param name="backOut">Bucket of detail for the Valuation Point where data points have been &#39;backed out&#39;. (required).</param>
-        /// <param name="dealing">Bucket of detail for any &#39;Dealing&#39; that has occured inside the queried period. (required).</param>
+        /// <param name="dealing">Bucket of detail for any &#39;Dealing&#39; that has occurred inside the queried period. (required).</param>
         /// <param name="pnL">pnL (required).</param>
         /// <param name="gav">The Gross Asset Value of the Fund or Share Class at the Valuation Point. This is effectively a summation of all Trial balance entries linked to accounts of types &#39;Asset&#39; and &#39;Liabilities&#39;. (required).</param>
         /// <param name="fees">Bucket of detail for any &#39;Fees&#39; that have been charged in the selected period. (required).</param>
@@ -83,9 +83,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public Dictionary<string, FundAmount> BackOut { get; set; }
 
         /// <summary>
-        /// Bucket of detail for any &#39;Dealing&#39; that has occured inside the queried period.
+        /// Bucket of detail for any &#39;Dealing&#39; that has occurred inside the queried period.
         /// </summary>
-        /// <value>Bucket of detail for any &#39;Dealing&#39; that has occured inside the queried period.</value>
+        /// <value>Bucket of detail for any &#39;Dealing&#39; that has occurred inside the queried period.</value>
         [DataMember(Name = "dealing", IsRequired = true, EmitDefaultValue = true)]
         public Dictionary<string, FundAmount> Dealing { get; set; }
 

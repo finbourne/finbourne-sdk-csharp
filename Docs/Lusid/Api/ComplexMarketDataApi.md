@@ -116,7 +116,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getcomplexmarketdata"></a>
 ## GetComplexMarketData
 
-> GetComplexMarketDataResponse GetComplexMarketData(string scope, Dictionary<string, ComplexMarketDataId> requestBody, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? maxAge = null)
+> GetComplexMarketDataResponse GetComplexMarketData(string scope, Dictionary<string, ComplexMarketDataId> requestBody, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? maxAge = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null)
 
 GetComplexMarketData: Get complex market data
 
@@ -131,7 +131,10 @@ var requestBody = new Dictionary<string, ComplexMarketDataId>(); // Dictionary<s
 var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var maxAge = "maxAge_example";  // string? (optional)
-GetComplexMarketDataResponse result = apiInstance.GetComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge);
+var timelineScope = "timelineScope_example";  // string? (optional)
+var timelineCode = "timelineCode_example";  // string? (optional)
+var closedPeriodId = "closedPeriodId_example";  // string? (optional)
+GetComplexMarketDataResponse result = apiInstance.GetComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -144,6 +147,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime at which to retrieve the complex market data.               Defaults to the current LUSID system datetime if not specified.               Must match the Effective at of each ComplexMarketDataId given in the request body. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. |
 | **maxAge** | **string?** | query | optional | The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved. |
+| **timelineScope** | **string?** | query | optional | The scope of the Timeline. |
+| **timelineCode** | **string?** | query | optional | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. |
+| **closedPeriodId** | **string?** | query | optional | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. |
 
 ### Return type
 
@@ -168,7 +174,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<GetComplexMarketDataResponse> response = apiInstance.GetComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge);
+ApiResponse<GetComplexMarketDataResponse> response = apiInstance.GetComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -182,7 +188,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listcomplexmarketdata"></a>
 ## ListComplexMarketData
 
-> ResourceListOfListComplexMarketDataWithMetaDataResponse ListComplexMarketData(DateTimeOffset? asAt = null, DateTimeOrCutLabel? effectiveAt = null, string? page = null, int? limit = null)
+> ResourceListOfListComplexMarketDataWithMetaDataResponse ListComplexMarketData(DateTimeOffset? asAt = null, DateTimeOrCutLabel? effectiveAt = null, string? page = null, int? limit = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null)
 
 ListComplexMarketData: List the set of ComplexMarketData
 
@@ -196,7 +202,10 @@ var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset
 var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
 var page = "page_example";  // string? (optional)
 var limit = 56;  // int? (optional)
-ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.ListComplexMarketData(asAt, effectiveAt, page, limit);
+var timelineScope = "timelineScope_example";  // string? (optional)
+var timelineCode = "timelineCode_example";  // string? (optional)
+var closedPeriodId = "closedPeriodId_example";  // string? (optional)
+ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.ListComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -208,6 +217,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effectiveAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. Note  that this parameter is not implemented at this time and the latest version of the ComplexMarketData will  always be returned. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing ComplexMarketData; this              value is returned from the previous call. If a pagination token is provided, the effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. If not specified, no pagination will be applied. It is  highly recommended to supply a value for this parameter as the default behaviour will change in the future. |
+| **timelineScope** | **string?** | query | optional | The scope of the Timeline. |
+| **timelineCode** | **string?** | query | optional | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. |
+| **closedPeriodId** | **string?** | query | optional | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. |
 
 ### Return type
 
@@ -232,7 +244,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> response = apiInstance.ListComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit);
+ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> response = apiInstance.ListComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

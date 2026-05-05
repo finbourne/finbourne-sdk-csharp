@@ -7,7 +7,7 @@
 | **CustomDataModelId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **EntityType** | **string** | Required | The type of the entity that is being added or removed from the Custom Data Model. |
 | **EntityUniqueId** | **string** | Required | The entity unique identifier of the entity that is being added or removed from the Custom Data Model. |
-| **Operation** | **string** | Required | The operation to be performed on the entity&#39;s membership in the Custom Data Model. Either &#39;Add&#39; or &#39;Remove&#39;. |
+| **Operation** | **string** | Required | The operation to be performed on the entity&#39;s membership in the Custom Data Model. Available values: Add, Remove. |
 
 
 ## Usage
@@ -21,7 +21,7 @@ var instance = new MembershipAmendmentRequest(
     customDataModelId: new ResourceId(...),  // required
     entityType: "...",  // required — The type of the entity that is being added or removed from the Custom Data Model.
     entityUniqueId: "...",  // required — The entity unique identifier of the entity that is being added or removed from the Custom Data Model.
-    operation: "..."  // required — The operation to be performed on the entity&#39;s membership in the Custom Data Model. Either &#39;Add&#39; or &#39;Remove&#39;.
+    operation: "..."  // required — The operation to be performed on the entity&#39;s membership in the Custom Data Model. Available values: Add, Remove.
 );
 ```
 ### Serializing to JSON

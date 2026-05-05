@@ -12,13 +12,13 @@ An instrument event equipped with additional metadata.
 | **InstrumentScope** | **string** | Required | The scope of the instrument. |
 | **Description** | **string** | Required | The description of the instrument event. |
 | **EventDateRange** | [EventDateRange](EventDateRange.md) | Required | *No description available.* |
-| **Completeness** | **string** | Optional | Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). *(read-only)* |
+| **Completeness** | **string** | Optional | Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). Available values: Complete, Incomplete. *(read-only)* |
 | **InstrumentEvent** | [InstrumentEvent](InstrumentEvent.md) | Required | *No description available.* |
 | **Properties** | [List&lt;PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The properties attached to this instrument event. |
 | **SequenceNumber** | **int** | Optional | The order of the instrument event relative others on the same date (0 being processed first). Must be non negative. |
-| **ParticipationType** | **string** | Optional | Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. Default: `"Mandatory"` |
+| **ParticipationType** | **string** | Optional | Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary. Default: `"Mandatory"` |
 | **AsAt** | **DateTimeOffset?** | Optional | The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert. *(read-only)* |
-| **GroupCode** | **string** | Optional | The group code that determines the processing order of instrument events with the same effective datetime. |
+| **GroupCode** | **string** | Optional | The group code that determines the processing order of instrument events with the same effective datetime. Available values: Tier1, Tier2, Tier3, Legacy. |
 
 
 ## Usage
@@ -36,13 +36,13 @@ var instance = new InstrumentEventHolder(
     instrumentScope: "...",  // required — The scope of the instrument.
     description: "...",  // required — The description of the instrument event.
     eventDateRange: new EventDateRange(...),  // required
-    completeness: "...",  // optional — Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete).
+    completeness: "...",  // optional — Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). Available values: Complete, Incomplete.
     instrumentEvent: new InstrumentEvent(...),  // required
     properties: new List<PerpetualProperty>(),  // optional — The properties attached to this instrument event.
     sequenceNumber: 0,  // optional — The order of the instrument event relative others on the same date (0 being processed first). Must be non negative.
-    participationType: "...",  // optional — Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary.
+    participationType: "...",  // optional — Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary.
     asAt: DateTimeOffset.Now,  // optional — The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert.
-    groupCode: "..."  // optional — The group code that determines the processing order of instrument events with the same effective datetime.
+    groupCode: "..."  // optional — The group code that determines the processing order of instrument events with the same effective datetime. Available values: Tier1, Tier2, Tier3, Legacy.
 );
 ```
 ### Serializing to JSON

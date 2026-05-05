@@ -5,8 +5,8 @@ Enables price quotes to be created from Holding fields as either overrides or fa
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **FallbackField** | **string** | Optional | The default Holding field to fall back on if the Market Data resolution process fails to find a price quote. |
-| **OverrideField** | **string** | Optional | The default Holding field to be used as an override for instrument price quotes. This cannot be specified  along with a FallbackField or any SpecificFallbacks, since we&#39;ll never attempt Market Data resolution  for price quotes if this field is populated. |
+| **FallbackField** | **string** | Optional | The default Holding field to fall back on if the Market Data resolution process fails to find a price quote. Available values: None, UnitCost, LastTradedPrice, UnitAmortisedCost, UnitCostClean, UnitCostDirty, UnitAmortisedCostClean, UnitAmortisedCostDirty. |
+| **OverrideField** | **string** | Optional | The default Holding field to be used as an override for instrument price quotes. This cannot be specified  along with a FallbackField or any SpecificFallbacks, since we&#39;ll never attempt Market Data resolution  for price quotes if this field is populated. Available values: None, UnitCost, LastTradedPrice, UnitAmortisedCost, UnitCostClean, UnitCostDirty, UnitAmortisedCostClean, UnitAmortisedCostDirty. |
 | **SpecificFallbacks** | [List&lt;SpecificHoldingPricingInfo&gt;](SpecificHoldingPricingInfo.md) | Optional | Allows a user to specify fallbacks using Holding fields for sources that match a particular DependencySourceFilter. |
 | **SpecificOverrides** | [List&lt;SpecificHoldingPricingInfo&gt;](SpecificHoldingPricingInfo.md) | Optional | Allows a user to specify overrides using Holding fields for sources that match a particular DependencySourceFilter. |
 
@@ -19,8 +19,8 @@ Enables price quotes to be created from Holding fields as either overrides or fa
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new HoldingPricingInfo(
-    fallbackField: "...",  // optional — The default Holding field to fall back on if the Market Data resolution process fails to find a price quote.
-    overrideField: "...",  // optional — The default Holding field to be used as an override for instrument price quotes. This cannot be specified  along with a FallbackField or any SpecificFallbacks, since we&#39;ll never attempt Market Data resolution  for price quotes if this field is populated.
+    fallbackField: "...",  // optional — The default Holding field to fall back on if the Market Data resolution process fails to find a price quote. Available values: None, UnitCost, LastTradedPrice, UnitAmortisedCost, UnitCostClean, UnitCostDirty, UnitAmortisedCostClean, UnitAmortisedCostDirty.
+    overrideField: "...",  // optional — The default Holding field to be used as an override for instrument price quotes. This cannot be specified  along with a FallbackField or any SpecificFallbacks, since we&#39;ll never attempt Market Data resolution  for price quotes if this field is populated. Available values: None, UnitCost, LastTradedPrice, UnitAmortisedCost, UnitCostClean, UnitCostDirty, UnitAmortisedCostClean, UnitAmortisedCostDirty.
     specificFallbacks: new List<SpecificHoldingPricingInfo>(),  // optional — Allows a user to specify fallbacks using Holding fields for sources that match a particular DependencySourceFilter.
     specificOverrides: new List<SpecificHoldingPricingInfo>()  // optional — Allows a user to specify overrides using Holding fields for sources that match a particular DependencySourceFilter.
 );

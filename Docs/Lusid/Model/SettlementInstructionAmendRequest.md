@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **SettlementInstructionId** | **string** | Required | *No description available.* |
-| **Operation** | **string** | Optional | *No description available.* |
+| **Operation** | **string** | Optional | Available values: Activate, Deactivate. |
 | **Properties** | [List&lt;PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
 
 
@@ -18,7 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new SettlementInstructionAmendRequest(
     settlementInstructionId: "...",  // required
-    operation: "...",  // optional
+    operation: "...",  // optional — Available values: Activate, Deactivate.
     properties: new List<PerpetualProperty>()  // optional
 );
 ```

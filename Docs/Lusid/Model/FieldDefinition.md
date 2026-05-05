@@ -7,7 +7,7 @@
 | **Key** | **string** | Required | *No description available.* |
 | **IsRequired** | **bool** | Required | *No description available.* |
 | **IsUnique** | **bool** | Required | *No description available.* |
-| **ValueType** | **string** | Optional | *No description available.* |
+| **ValueType** | **string** | Optional | Available values: String, Decimal. |
 
 
 ## Usage
@@ -21,7 +21,7 @@ var instance = new FieldDefinition(
     key: "...",  // required
     isRequired: true,  // required
     isUnique: true,  // required
-    valueType: "..."  // optional
+    valueType: "..."  // optional — Available values: String, Decimal.
 );
 ```
 ### Serializing to JSON

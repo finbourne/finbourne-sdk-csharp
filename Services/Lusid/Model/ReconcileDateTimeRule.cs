@@ -30,9 +30,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class ReconcileDateTimeRule : ReconciliationRule, IEquatable<ReconcileDateTimeRule>, IValidatableObject
     {
         /// <summary>
-        /// The available values are: Exact, AbsoluteDifference
+        /// Available values: Exact, AbsoluteDifference.
         /// </summary>
-        /// <value>The available values are: Exact, AbsoluteDifference</value>
+        /// <value>Available values: Exact, AbsoluteDifference.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ComparisonTypeEnum
         {
@@ -50,9 +50,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The available values are: Exact, AbsoluteDifference
+        /// Available values: Exact, AbsoluteDifference.
         /// </summary>
-        /// <value>The available values are: Exact, AbsoluteDifference</value>
+        /// <value>Available values: Exact, AbsoluteDifference.</value>
         [DataMember(Name = "comparisonType", IsRequired = true, EmitDefaultValue = true)]
         public ComparisonTypeEnum ComparisonType { get; set; }
         /// <summary>
@@ -63,10 +63,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ReconcileDateTimeRule" /> class.
         /// </summary>
-        /// <param name="comparisonType">The available values are: Exact, AbsoluteDifference (required).</param>
+        /// <param name="comparisonType">Available values: Exact, AbsoluteDifference. (required).</param>
         /// <param name="tolerance">For a numeric type only (i.e. decimal, integer, date or datetime offset possibly controversially), this is the quantity used in the comparison.  The units of the tolerance must be set appropriately for the item being compared.  For a number such as a currency or amount that will be a simple quantity, for a DateTime or DateTimeOffset it should be days. If fewer than a single day then this should be  passed as a fraction..</param>
         /// <param name="appliesTo">appliesTo (required).</param>
-        /// <param name="ruleType">The available values are: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact (required) (default to RuleTypeEnum.ReconcileNumericRule).</param>
+        /// <param name="ruleType">Available values: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact. (required) (default to RuleTypeEnum.ReconcileNumericRule).</param>
         public ReconcileDateTimeRule(ComparisonTypeEnum comparisonType = default(ComparisonTypeEnum), decimal tolerance = default(decimal), AggregateSpec appliesTo = default(AggregateSpec), RuleTypeEnum ruleType = default(RuleTypeEnum)) : base()
         {
             this.ComparisonType = comparisonType;

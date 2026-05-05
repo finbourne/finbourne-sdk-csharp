@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="ruleId">ruleId (required).</param>
         /// <param name="templateId">templateId (required).</param>
         /// <param name="variation">variation (required).</param>
-        /// <param name="ruleStatus">ruleStatus (required).</param>
+        /// <param name="ruleStatus">Available values: Passed, Failed, MissingData, Warning. (required).</param>
         /// <param name="affectedPortfolios">affectedPortfolios (required).</param>
         /// <param name="affectedOrders">affectedOrders (required).</param>
         /// <param name="parametersUsed">parametersUsed (required).</param>
@@ -114,8 +114,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Variation { get; set; }
 
         /// <summary>
-        /// Gets or Sets RuleStatus
+        /// Available values: Passed, Failed, MissingData, Warning.
         /// </summary>
+        /// <value>Available values: Passed, Failed, MissingData, Warning.</value>
         [DataMember(Name = "ruleStatus", IsRequired = true, EmitDefaultValue = true)]
         public string RuleStatus { get; set; }
 

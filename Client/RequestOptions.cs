@@ -75,6 +75,16 @@ namespace Finbourne.Sdk.Client
         public int? RateLimitRetries { get; set; }
 
         /// <summary>
+        /// The number of retries on retryable status codes (409, 503, 504). If left unset the default number of retries will be used
+        /// </summary>
+        public int? NumberOfRetries { get; set; }
+
+        /// <summary>
+        /// The fixed backoff duration in milliseconds between retries. If left unset the default exponential backoff will be used
+        /// </summary>
+        public int? RetryBackoffMs { get; set; }
+
+        /// <summary>
         /// Constructs a new instance of <see cref="RequestOptions"/>
         /// </summary>
         public RequestOptions()

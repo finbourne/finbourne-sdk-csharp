@@ -7,8 +7,8 @@ The request used in the GetCompositeBreakdown.
 |------|------|----------|-------------|
 | **ReturnIds** | [List&lt;ResourceId&gt;](ResourceId.md) | Optional | The Scope and code of the returns. |
 | **RecipeId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
-| **CompositeMethod** | **string** | Optional | The method used to calculate the Portfolio performance: Equal/Asset. |
-| **Period** | **string** | Optional | The type of the returns used to calculate the aggregation result: Daily/Monthly. |
+| **CompositeMethod** | **string** | Optional | The method used to calculate the Portfolio performance. Available values: Equal, Asset. |
+| **Period** | **string** | Optional | The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. |
 | **HolidayCalendars** | **List&lt;string&gt;** | Optional | The holiday calendar(s) that should be used in determining the date schedule. Holiday calendar(s) are supplied by their codes, for example, &#39;CoppClark&#39;. Note that when the calendars are not available (e.g. when the user has insufficient permissions), a recipe setting will be used to determine whether the whole batch should then fail or whether the calendar not being available should simply be ignored. |
 | **Currency** | **string** | Optional | Optional - either a string or a property. If provided, the results will be converted to the specified currency |
 
@@ -23,8 +23,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new CompositeBreakdownRequest(
     returnIds: new List<ResourceId>(),  // optional — The Scope and code of the returns.
     recipeId: new ResourceId(...),  // optional
-    compositeMethod: "...",  // optional — The method used to calculate the Portfolio performance: Equal/Asset.
-    period: "...",  // optional — The type of the returns used to calculate the aggregation result: Daily/Monthly.
+    compositeMethod: "...",  // optional — The method used to calculate the Portfolio performance. Available values: Equal, Asset.
+    period: "...",  // optional — The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly.
     holidayCalendars: ,  // optional — The holiday calendar(s) that should be used in determining the date schedule. Holiday calendar(s) are supplied by their codes, for example, &#39;CoppClark&#39;. Note that when the calendars are not available (e.g. when the user has insufficient permissions), a recipe setting will be used to determine whether the whole batch should then fail or whether the calendar not being available should simply be ignored.
     currency: "..."  // optional — Optional - either a string or a property. If provided, the results will be converted to the specified currency
 );

@@ -5,7 +5,7 @@ Base class for representing reconciliation rules in LUSID.  Reconciliation rules
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **RuleType** | **string** | Required | The available values are: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact |
+| **RuleType** | **string** | Required | Available values: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact. |
 
 
 ## Usage
@@ -16,7 +16,7 @@ Base class for representing reconciliation rules in LUSID.  Reconciliation rules
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ReconciliationRule(
-    ruleType: "..."  // required — The available values are: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact
+    ruleType: "..."  // required — Available values: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact.
 );
 ```
 ### Serializing to JSON

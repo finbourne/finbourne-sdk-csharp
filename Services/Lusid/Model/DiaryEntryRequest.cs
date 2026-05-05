@@ -37,7 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="diaryEntryCode">The code of the diary entry. (required).</param>
         /// <param name="name">The name of the diary entry..</param>
-        /// <param name="status">The status of a Diary Entry of Type &#39;Other&#39;. Defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;..</param>
+        /// <param name="status">The status of a Diary Entry of Type &#39;Other&#39;. Defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;. Available values: Undefined, Estimate, Final, Candidate, Unofficial..</param>
         /// <param name="effectiveAt">The effective time of the diary entry. (required).</param>
         /// <param name="queryAsAt">The query time of the diary entry. Defaults to latest..</param>
         /// <param name="properties">A set of properties for the diary entry..</param>
@@ -71,9 +71,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The status of a Diary Entry of Type &#39;Other&#39;. Defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;.
+        /// The status of a Diary Entry of Type &#39;Other&#39;. Defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
         /// </summary>
-        /// <value>The status of a Diary Entry of Type &#39;Other&#39;. Defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;.</value>
+        /// <value>The status of a Diary Entry of Type &#39;Other&#39;. Defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;. Available values: Undefined, Estimate, Final, Candidate, Unofficial.</value>
         [DataMember(Name = "status", EmitDefaultValue = true)]
         public string Status { get; set; }
 

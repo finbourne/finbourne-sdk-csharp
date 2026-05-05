@@ -356,7 +356,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. |
 | **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | The codes of the accounts to delete. |
-| **deleteMode** | **string?** | query | optional | The delete mode to use (defaults to &#39;Soft&#39;). |
+| **deleteMode** | **string?** | query | optional | The delete mode to use. Default value: Soft. Available values: Soft, Hard. |
 
 ### Return type
 

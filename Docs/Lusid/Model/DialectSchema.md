@@ -5,7 +5,7 @@ A schema that a given document must obey. A representation of the validation of 
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Type** | **string** | Required | The type of schema this represents |
+| **Type** | **string** | Required | The type of schema this represents. Available values: None, JsonSchema. |
 | **Body** | **string** | Optional | The body of the schema |
 
 
@@ -17,7 +17,7 @@ A schema that a given document must obey. A representation of the validation of 
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new DialectSchema(
-    type: "...",  // required — The type of schema this represents
+    type: "...",  // required — The type of schema this represents. Available values: None, JsonSchema.
     body: "..."  // optional — The body of the schema
 );
 ```

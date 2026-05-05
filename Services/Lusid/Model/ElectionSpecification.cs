@@ -35,7 +35,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ElectionSpecification" /> class.
         /// </summary>
-        /// <param name="electionType">electionType (required).</param>
+        /// <param name="electionType">Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection. (required).</param>
         /// <param name="cardinality">cardinality (required).</param>
         /// <param name="referencedAs">referencedAs (required).</param>
         public ElectionSpecification(string electionType = default(string), Dictionary<string, string> cardinality = default(Dictionary<string, string>), List<string> referencedAs = default(List<string>))
@@ -61,8 +61,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// Gets or Sets ElectionType
+        /// Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection.
         /// </summary>
+        /// <value>Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection.</value>
         [DataMember(Name = "electionType", IsRequired = true, EmitDefaultValue = true)]
         public string ElectionType { get; set; }
 

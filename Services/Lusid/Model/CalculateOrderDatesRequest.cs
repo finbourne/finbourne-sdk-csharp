@@ -40,7 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentScope">instrumentScope.</param>
         /// <param name="receivedDate">receivedDate.</param>
         /// <param name="priceDate">priceDate.</param>
-        /// <param name="transactionCategory">transactionCategory.</param>
+        /// <param name="transactionCategory">Available values: Subscription, Redemption, SwitchOut, SwitchIn, TransferOut, TransferIn..</param>
         /// <param name="liquidatingShareClassIdentifier">liquidatingShareClassIdentifier.</param>
         /// <param name="liquidatingShareClassIdentifierType">liquidatingShareClassIdentifierType.</param>
         /// <param name="liquidatingShareClassInstrumentScope">liquidatingShareClassInstrumentScope.</param>
@@ -98,8 +98,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public DateTimeOffset? PriceDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets TransactionCategory
+        /// Available values: Subscription, Redemption, SwitchOut, SwitchIn, TransferOut, TransferIn.
         /// </summary>
+        /// <value>Available values: Subscription, Redemption, SwitchOut, SwitchIn, TransferOut, TransferIn.</value>
         [DataMember(Name = "transactionCategory", EmitDefaultValue = true)]
         public string TransactionCategory { get; set; }
 

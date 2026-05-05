@@ -8,7 +8,7 @@ A group of changes made by the same person at the same time.
 | **UserId** | **string** | Required | The unique identifier of the user that made the change. |
 | **ModifiedAsAt** | **DateTimeOffset** | Required | The date/time of the change. |
 | **RequestId** | **string** | Required | The unique identifier of the request that the changes were part of. |
-| **Action** | **string** | Required | The action performed on the transaction, either created, updated, or deleted. The available values are: Create, Update, Delete |
+| **Action** | **string** | Required | The action performed on the transaction. Available values: Create, Update, Delete. |
 | **Changes** | [List&lt;ChangeItem&gt;](ChangeItem.md) | Required | The collection of changes that were made. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
@@ -24,7 +24,7 @@ var instance = new ChangeHistory(
     userId: "...",  // required — The unique identifier of the user that made the change.
     modifiedAsAt: DateTimeOffset.Now,  // required — The date/time of the change.
     requestId: "...",  // required — The unique identifier of the request that the changes were part of.
-    action: "...",  // required — The action performed on the transaction, either created, updated, or deleted. The available values are: Create, Update, Delete
+    action: "...",  // required — The action performed on the transaction. Available values: Create, Update, Delete.
     changes: new List<ChangeItem>(),  // required — The collection of changes that were made.
     links: new List<Link>()  // optional
 );

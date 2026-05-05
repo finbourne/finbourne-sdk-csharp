@@ -87,7 +87,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete the definition of the specified property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property to be deleted.</param>
+        /// <param name="domain">The domain of the property to be deleted. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property to be deleted.</param>
         /// <param name="code">The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -102,7 +102,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete the definition of the specified property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property to be deleted.</param>
+        /// <param name="domain">The domain of the property to be deleted. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property to be deleted.</param>
         /// <param name="code">The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -116,7 +116,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete one or more properties from a single property definition. If the properties are time-variant then an effective date time from which the  properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to delete properties from.</param>
+        /// <param name="domain">The domain of the property definition to delete properties from. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to delete properties from.</param>
         /// <param name="code">The code of the property definition to delete properties from.</param>
         /// <param name="requestBody">The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain.</param>
@@ -133,7 +133,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete one or more properties from a single property definition. If the properties are time-variant then an effective date time from which the  properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to delete properties from.</param>
+        /// <param name="domain">The domain of the property definition to delete properties from. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to delete properties from.</param>
         /// <param name="code">The code of the property definition to delete properties from.</param>
         /// <param name="requestBody">The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain.</param>
@@ -209,7 +209,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Retrieve the definition of a specified property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified. (optional)</param>
@@ -226,7 +226,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Retrieve the definition of a specified property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified. (optional)</param>
@@ -242,7 +242,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List the complete time series of a property definition property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to which the property is attached</param>
+        /// <param name="domain">The domain of the property definition to which the property is attached. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to which the property is attached</param>
         /// <param name="code">The code of the property definition to which the property is attached</param>
         /// <param name="propertyKey">The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format              {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;.</param>
@@ -262,7 +262,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List the complete time series of a property definition property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to which the property is attached</param>
+        /// <param name="domain">The domain of the property definition to which the property is attached. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to which the property is attached</param>
         /// <param name="code">The code of the property definition to which the property is attached</param>
         /// <param name="propertyKey">The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format              {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;.</param>
@@ -318,7 +318,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// This will fail if the property definition does not exist
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">Domain of the property definition</param>
+        /// <param name="domain">Domain of the property definition. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">Scope of the property definition</param>
         /// <param name="code">Code of the property definition</param>
         /// <param name="updateDerivedPropertyDefinitionRequest">Information about the derived property definition being updated</param>
@@ -334,7 +334,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// This will fail if the property definition does not exist
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">Domain of the property definition</param>
+        /// <param name="domain">Domain of the property definition. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">Scope of the property definition</param>
         /// <param name="code">Code of the property definition</param>
         /// <param name="updateDerivedPropertyDefinitionRequest">Information about the derived property definition being updated</param>
@@ -349,7 +349,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update the definition of a specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for values already stored against the property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property being updated.</param>
+        /// <param name="domain">The domain of the property being updated. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property being updated.</param>
         /// <param name="code">The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="updatePropertyDefinitionRequest">The updated definition of the property.</param>
@@ -365,7 +365,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update the definition of a specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for values already stored against the property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property being updated.</param>
+        /// <param name="domain">The domain of the property being updated. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property being updated.</param>
         /// <param name="code">The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="updatePropertyDefinitionRequest">The updated definition of the property.</param>
@@ -380,7 +380,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create or update properties for a particular property definition
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely</param>
         /// <param name="requestBody">The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;.</param>
@@ -397,7 +397,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create or update properties for a particular property definition
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely</param>
         /// <param name="requestBody">The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;.</param>
@@ -476,7 +476,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete the definition of the specified property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property to be deleted.</param>
+        /// <param name="domain">The domain of the property to be deleted. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property to be deleted.</param>
         /// <param name="code">The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -492,7 +492,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete the definition of the specified property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property to be deleted.</param>
+        /// <param name="domain">The domain of the property to be deleted. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property to be deleted.</param>
         /// <param name="code">The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -507,7 +507,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete one or more properties from a single property definition. If the properties are time-variant then an effective date time from which the  properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to delete properties from.</param>
+        /// <param name="domain">The domain of the property definition to delete properties from. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to delete properties from.</param>
         /// <param name="code">The code of the property definition to delete properties from.</param>
         /// <param name="requestBody">The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain.</param>
@@ -525,7 +525,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete one or more properties from a single property definition. If the properties are time-variant then an effective date time from which the  properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to delete properties from.</param>
+        /// <param name="domain">The domain of the property definition to delete properties from. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to delete properties from.</param>
         /// <param name="code">The code of the property definition to delete properties from.</param>
         /// <param name="requestBody">The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain.</param>
@@ -606,7 +606,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Retrieve the definition of a specified property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified. (optional)</param>
@@ -624,7 +624,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Retrieve the definition of a specified property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified. (optional)</param>
@@ -641,7 +641,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List the complete time series of a property definition property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to which the property is attached</param>
+        /// <param name="domain">The domain of the property definition to which the property is attached. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to which the property is attached</param>
         /// <param name="code">The code of the property definition to which the property is attached</param>
         /// <param name="propertyKey">The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format              {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;.</param>
@@ -662,7 +662,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List the complete time series of a property definition property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to which the property is attached</param>
+        /// <param name="domain">The domain of the property definition to which the property is attached. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to which the property is attached</param>
         /// <param name="code">The code of the property definition to which the property is attached</param>
         /// <param name="propertyKey">The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format              {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;.</param>
@@ -721,7 +721,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// This will fail if the property definition does not exist
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">Domain of the property definition</param>
+        /// <param name="domain">Domain of the property definition. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">Scope of the property definition</param>
         /// <param name="code">Code of the property definition</param>
         /// <param name="updateDerivedPropertyDefinitionRequest">Information about the derived property definition being updated</param>
@@ -738,7 +738,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// This will fail if the property definition does not exist
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">Domain of the property definition</param>
+        /// <param name="domain">Domain of the property definition. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">Scope of the property definition</param>
         /// <param name="code">Code of the property definition</param>
         /// <param name="updateDerivedPropertyDefinitionRequest">Information about the derived property definition being updated</param>
@@ -754,7 +754,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update the definition of a specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for values already stored against the property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property being updated.</param>
+        /// <param name="domain">The domain of the property being updated. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property being updated.</param>
         /// <param name="code">The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="updatePropertyDefinitionRequest">The updated definition of the property.</param>
@@ -771,7 +771,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update the definition of a specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for values already stored against the property.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property being updated.</param>
+        /// <param name="domain">The domain of the property being updated. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property being updated.</param>
         /// <param name="code">The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="updatePropertyDefinitionRequest">The updated definition of the property.</param>
@@ -787,7 +787,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create or update properties for a particular property definition
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely</param>
         /// <param name="requestBody">The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;.</param>
@@ -805,7 +805,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create or update properties for a particular property definition
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely</param>
         /// <param name="requestBody">The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;.</param>
@@ -952,6 +952,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -1060,6 +1070,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -1164,6 +1184,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1274,6 +1304,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -1341,7 +1381,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// DeletePropertyDefinition: Delete property definition Delete the definition of the specified property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property to be deleted.</param>
+        /// <param name="domain">The domain of the property to be deleted. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property to be deleted.</param>
         /// <param name="code">The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1358,7 +1398,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the property to be deleted.</param>
+        /// <param name="domain">The domain of the property to be deleted. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property to be deleted.</param>
         /// <param name="code">The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1394,6 +1434,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1460,7 +1510,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// DeletePropertyDefinition: Delete property definition Delete the definition of the specified property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property to be deleted.</param>
+        /// <param name="domain">The domain of the property to be deleted. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property to be deleted.</param>
         /// <param name="code">The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1478,7 +1528,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the property to be deleted.</param>
+        /// <param name="domain">The domain of the property to be deleted. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property to be deleted.</param>
         /// <param name="code">The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1516,6 +1566,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1583,7 +1643,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] DeletePropertyDefinitionProperties: Delete property definition properties Delete one or more properties from a single property definition. If the properties are time-variant then an effective date time from which the  properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to delete properties from.</param>
+        /// <param name="domain">The domain of the property definition to delete properties from. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to delete properties from.</param>
         /// <param name="code">The code of the property definition to delete properties from.</param>
         /// <param name="requestBody">The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain.</param>
@@ -1602,7 +1662,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the property definition to delete properties from.</param>
+        /// <param name="domain">The domain of the property definition to delete properties from. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to delete properties from.</param>
         /// <param name="code">The code of the property definition to delete properties from.</param>
         /// <param name="requestBody">The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain.</param>
@@ -1646,6 +1706,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1721,7 +1791,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] DeletePropertyDefinitionProperties: Delete property definition properties Delete one or more properties from a single property definition. If the properties are time-variant then an effective date time from which the  properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to delete properties from.</param>
+        /// <param name="domain">The domain of the property definition to delete properties from. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to delete properties from.</param>
         /// <param name="code">The code of the property definition to delete properties from.</param>
         /// <param name="requestBody">The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain.</param>
@@ -1741,7 +1811,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the property definition to delete properties from.</param>
+        /// <param name="domain">The domain of the property definition to delete properties from. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to delete properties from.</param>
         /// <param name="code">The code of the property definition to delete properties from.</param>
         /// <param name="requestBody">The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain.</param>
@@ -1787,6 +1857,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1904,6 +1984,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2026,6 +2116,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -2144,6 +2244,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2268,6 +2378,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -2343,7 +2463,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// GetPropertyDefinition: Get property definition Retrieve the definition of a specified property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified. (optional)</param>
@@ -2362,7 +2482,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified. (optional)</param>
@@ -2400,6 +2520,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2474,7 +2604,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// GetPropertyDefinition: Get property definition Retrieve the definition of a specified property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified. (optional)</param>
@@ -2494,7 +2624,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified. (optional)</param>
@@ -2534,6 +2664,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2609,7 +2749,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetPropertyDefinitionPropertyTimeSeries: Get Property Definition Property Time Series List the complete time series of a property definition property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to which the property is attached</param>
+        /// <param name="domain">The domain of the property definition to which the property is attached. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to which the property is attached</param>
         /// <param name="code">The code of the property definition to which the property is attached</param>
         /// <param name="propertyKey">The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format              {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;.</param>
@@ -2631,7 +2771,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the property definition to which the property is attached</param>
+        /// <param name="domain">The domain of the property definition to which the property is attached. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to which the property is attached</param>
         /// <param name="code">The code of the property definition to which the property is attached</param>
         /// <param name="propertyKey">The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format              {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;.</param>
@@ -2678,6 +2818,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2761,7 +2911,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetPropertyDefinitionPropertyTimeSeries: Get Property Definition Property Time Series List the complete time series of a property definition property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property definition to which the property is attached</param>
+        /// <param name="domain">The domain of the property definition to which the property is attached. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to which the property is attached</param>
         /// <param name="code">The code of the property definition to which the property is attached</param>
         /// <param name="propertyKey">The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format              {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;.</param>
@@ -2784,7 +2934,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the property definition to which the property is attached</param>
+        /// <param name="domain">The domain of the property definition to which the property is attached. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property definition to which the property is attached</param>
         /// <param name="code">The code of the property definition to which the property is attached</param>
         /// <param name="propertyKey">The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format              {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;.</param>
@@ -2833,6 +2983,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2960,6 +3120,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3099,6 +3269,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -3189,7 +3369,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] UpdateDerivedPropertyDefinition: Update a pre-existing derived property definition This will fail if the property definition does not exist
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">Domain of the property definition</param>
+        /// <param name="domain">Domain of the property definition. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">Scope of the property definition</param>
         /// <param name="code">Code of the property definition</param>
         /// <param name="updateDerivedPropertyDefinitionRequest">Information about the derived property definition being updated</param>
@@ -3207,7 +3387,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">Domain of the property definition</param>
+        /// <param name="domain">Domain of the property definition. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">Scope of the property definition</param>
         /// <param name="code">Code of the property definition</param>
         /// <param name="updateDerivedPropertyDefinitionRequest">Information about the derived property definition being updated</param>
@@ -3250,6 +3430,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3321,7 +3511,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] UpdateDerivedPropertyDefinition: Update a pre-existing derived property definition This will fail if the property definition does not exist
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">Domain of the property definition</param>
+        /// <param name="domain">Domain of the property definition. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">Scope of the property definition</param>
         /// <param name="code">Code of the property definition</param>
         /// <param name="updateDerivedPropertyDefinitionRequest">Information about the derived property definition being updated</param>
@@ -3340,7 +3530,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">Domain of the property definition</param>
+        /// <param name="domain">Domain of the property definition. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">Scope of the property definition</param>
         /// <param name="code">Code of the property definition</param>
         /// <param name="updateDerivedPropertyDefinitionRequest">Information about the derived property definition being updated</param>
@@ -3385,6 +3575,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3457,7 +3657,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// UpdatePropertyDefinition: Update property definition Update the definition of a specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for values already stored against the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property being updated.</param>
+        /// <param name="domain">The domain of the property being updated. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property being updated.</param>
         /// <param name="code">The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="updatePropertyDefinitionRequest">The updated definition of the property.</param>
@@ -3475,7 +3675,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the property being updated.</param>
+        /// <param name="domain">The domain of the property being updated. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property being updated.</param>
         /// <param name="code">The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="updatePropertyDefinitionRequest">The updated definition of the property.</param>
@@ -3518,6 +3718,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3589,7 +3799,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// UpdatePropertyDefinition: Update property definition Update the definition of a specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for values already stored against the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the property being updated.</param>
+        /// <param name="domain">The domain of the property being updated. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property being updated.</param>
         /// <param name="code">The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="updatePropertyDefinitionRequest">The updated definition of the property.</param>
@@ -3608,7 +3818,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the property being updated.</param>
+        /// <param name="domain">The domain of the property being updated. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the property being updated.</param>
         /// <param name="code">The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.</param>
         /// <param name="updatePropertyDefinitionRequest">The updated definition of the property.</param>
@@ -3653,6 +3863,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3725,7 +3945,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// UpsertPropertyDefinitionProperties: Upsert properties to a property definition Create or update properties for a particular property definition
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely</param>
         /// <param name="requestBody">The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;.</param>
@@ -3744,7 +3964,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely</param>
         /// <param name="requestBody">The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;.</param>
@@ -3788,6 +4008,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3863,7 +4093,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// UpsertPropertyDefinitionProperties: Upsert properties to a property definition Create or update properties for a particular property definition
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely</param>
         /// <param name="requestBody">The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;.</param>
@@ -3883,7 +4113,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="domain">The domain of the specified property.</param>
+        /// <param name="domain">The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee.</param>
         /// <param name="scope">The scope of the specified property.</param>
         /// <param name="code">The code of the specified property. Together with the domain and scope this uniquely</param>
         /// <param name="requestBody">The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;.</param>
@@ -3929,6 +4159,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {

@@ -5,7 +5,7 @@ Base class for representing model options in LUSID, which provide config for ins
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ModelOptionsType** | **string** | Required | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions |
+| **ModelOptionsType** | **string** | Required | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. |
 
 
 ## Usage
@@ -16,7 +16,7 @@ Base class for representing model options in LUSID, which provide config for ins
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ModelOptions(
-    modelOptionsType: "..."  // required — The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions
+    modelOptionsType: "..."  // required — Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions.
 );
 ```
 ### Serializing to JSON

@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Status** | **string** | Required | The Status of the settlement category - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;. |
+| **Status** | **string** | Required | The Status of the settlement category. Available values: Unsettled, PartSettled, Settled, None. |
 | **IsOverdue** | **bool** | Required | Whether the category has any overdue movements |
 | **Problems** | [List&lt;SettlementProblem&gt;](SettlementProblem.md) | Required | Instruction level detail of rejected or invalid settlement instructions |
 
@@ -17,7 +17,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CategorySettlementStatus(
-    status: "...",  // required — The Status of the settlement category - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;.
+    status: "...",  // required — The Status of the settlement category. Available values: Unsettled, PartSettled, Settled, None.
     isOverdue: true,  // required — Whether the category has any overdue movements
     problems: new List<SettlementProblem>()  // required — Instruction level detail of rejected or invalid settlement instructions
 );

@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **Value** | **Object** | Optional | *No description available.* |
 | **Path** | **string** | Required | *No description available.* |
-| **Op** | **string** | Required | *No description available.* |
+| **Op** | **string** | Required | Available values: add, remove. |
 | **From** | **string** | Optional | *No description available.* |
 
 
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new Operation(
     value: ,  // optional
     path: "...",  // required
-    op: "...",  // required
+    op: "...",  // required — Available values: add, remove.
     from: "..."  // optional
 );
 ```

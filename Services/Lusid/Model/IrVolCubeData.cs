@@ -42,7 +42,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="quotes">Access the set of quotes that define the cube. (required).</param>
         /// <param name="lineage">Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;..</param>
         /// <param name="varVersion">varVersion.</param>
-        /// <param name="marketDataType">The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface (required) (default to MarketDataTypeEnum.DiscountFactorCurveData).</param>
+        /// <param name="marketDataType">Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface. (required) (default to MarketDataTypeEnum.DiscountFactorCurveData).</param>
         public IrVolCubeData(DateTimeOffset baseDate = default(DateTimeOffset), List<LusidInstrument> instruments = default(List<LusidInstrument>), List<MarketQuote> quotes = default(List<MarketQuote>), string lineage = default(string), ModelVersion varVersion = default(ModelVersion), MarketDataTypeEnum marketDataType = default(MarketDataTypeEnum)) : base()
         {
             this.BaseDate = baseDate;

@@ -8,7 +8,7 @@ For indicating a dependency upon calendar codes
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Calendars** | **List&lt;string&gt;** | Required | The Codes of the calendars that are depended upon. |
-| **DependencyType** | **string** | Required | The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency Default: `DependencyTypeEnum.CalendarDependency` |
+| **DependencyType** | **string** | Required | Available values: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency. Default: `DependencyTypeEnum.CalendarDependency` |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CalendarDependency(
     calendars: ,  // required — The Codes of the calendars that are depended upon.
-    dependencyType: "..."  // required — The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency
+    dependencyType: "..."  // required — Available values: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency.
 );
 ```
 ### Serializing to JSON

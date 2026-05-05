@@ -45,8 +45,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentEvent">instrumentEvent (required).</param>
         /// <param name="properties">The properties attached to this instrument event..</param>
         /// <param name="sequenceNumber">The order of the instrument event relative others on the same date (0 being processed first). Must be non negative..</param>
-        /// <param name="participationType">Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. (default to &quot;Mandatory&quot;).</param>
-        /// <param name="groupCode">The group code that determines the processing order of instrument events with the same effective datetime..</param>
+        /// <param name="participationType">Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary. (default to &quot;Mandatory&quot;).</param>
+        /// <param name="groupCode">The group code that determines the processing order of instrument events with the same effective datetime. Available values: Tier1, Tier2, Tier3, Legacy..</param>
         public InstrumentEventHolder(string instrumentEventId = default(string), ResourceId corporateActionSourceId = default(ResourceId), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string lusidInstrumentId = default(string), string instrumentScope = default(string), string description = default(string), EventDateRange eventDateRange = default(EventDateRange), InstrumentEvent instrumentEvent = default(InstrumentEvent), List<PerpetualProperty> properties = default(List<PerpetualProperty>), int sequenceNumber = default(int), string participationType = @"Mandatory", string groupCode = default(string))
         {
             // to ensure "instrumentEventId" is required (not null)
@@ -147,9 +147,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public EventDateRange EventDateRange { get; set; }
 
         /// <summary>
-        /// Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete).
+        /// Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). Available values: Complete, Incomplete.
         /// </summary>
-        /// <value>Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete).</value>
+        /// <value>Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). Available values: Complete, Incomplete.</value>
         [DataMember(Name = "completeness", EmitDefaultValue = true)]
         public string Completeness { get; private set; }
 
@@ -182,9 +182,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public int SequenceNumber { get; set; }
 
         /// <summary>
-        /// Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary.
+        /// Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary.
         /// </summary>
-        /// <value>Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary.</value>
+        /// <value>Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary.</value>
         [DataMember(Name = "participationType", EmitDefaultValue = true)]
         public string ParticipationType { get; set; }
 
@@ -204,9 +204,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             return false;
         }
         /// <summary>
-        /// The group code that determines the processing order of instrument events with the same effective datetime.
+        /// The group code that determines the processing order of instrument events with the same effective datetime. Available values: Tier1, Tier2, Tier3, Legacy.
         /// </summary>
-        /// <value>The group code that determines the processing order of instrument events with the same effective datetime.</value>
+        /// <value>The group code that determines the processing order of instrument events with the same effective datetime. Available values: Tier1, Tier2, Tier3, Legacy.</value>
         [DataMember(Name = "groupCode", EmitDefaultValue = true)]
         public string GroupCode { get; set; }
 

@@ -38,6 +38,7 @@ All URIs are relative to *http://localhost*
 | [**ListValuationPointOverview**](#listvaluationpointoverview) | **GET** `/api/api/funds/{scope}/{code}/valuationPointOverview` | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
 | [**PatchFee**](#patchfee) | **PATCH** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EXPERIMENTAL] PatchFee: Patch Fee. |
 | [**PatchFund**](#patchfund) | **PATCH** `/api/api/funds/{scope}/{code}` | [EXPERIMENTAL] PatchFund: Patch a Fund. |
+| [**QueryCashStatement**](#querycashstatement) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/cashstatement/$query` | [EXPERIMENTAL] QueryCashStatement: [EXPERIMENTAL] QueryCashStatement: Query cash statement for a Fund valuation point. |
 | [**RevertValuationPointToEstimate**](#revertvaluationpointtoestimate) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$reverttoestimate` | [EXPERIMENTAL] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate. |
 | [**SetShareClassInstruments**](#setshareclassinstruments) | **PUT** `/api/api/funds/{scope}/{code}/shareclasses` | [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a Fund. |
 | [**UpsertBookmark**](#upsertbookmark) | **POST** `/api/api/funds/{scope}/{code}/bookmarks` | [EXPERIMENTAL] UpsertBookmark: Upsert a bookmark. |
@@ -488,7 +489,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
 | **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | The codes of the nav types to be deactivated. |
-| **deleteMode** | **string?** | query | optional | The delete mode to use (defaults to &#39;Soft&#39;). |
+| **deleteMode** | **string?** | query | optional | The delete mode to use. Default value: Soft. Available values: Soft, Hard. |
 
 ### Return type
 
@@ -1650,7 +1651,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 | **showCancelledTransactions** | **bool?** | query | optional | Option to specify whether or not to include cancelled transactions,              including previous versions of transactions which have since been amended.              Defaults to False if not specified. |
-| **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. |
+| **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. |
 
 ### Return type
 
@@ -2316,6 +2317,80 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<Fund> response = apiInstance.PatchFundWithHttpInfo(scope, code, operation);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="querycashstatement"></a>
+## QueryCashStatement
+
+> ValuationPointResourceListOfFundCashStatementRow QueryCashStatement(string scope, string code, QueryFundCashStatementParameters queryFundCashStatementParameters, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null)
+
+[EXPERIMENTAL] QueryCashStatement: [EXPERIMENTAL] QueryCashStatement: Query cash statement for a Fund valuation point.
+
+Returns settled cash movements with running balance, cost basis, average FX rate, and realised FX PnL  for the specified Fund valuation point period. The cash statement is derived from Journal Entry Lines  filtered to settled cash (HoldType='B', SourceType=LusidTransaction). Use the DisplayMode parameter  on the request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses reversals into AvgRateCorrection rows).
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var queryFundCashStatementParameters = new QueryFundCashStatementParameters(); // QueryFundCashStatementParameters
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var filter = "filter_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+var page = "page_example";  // string? (optional)
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+ValuationPointResourceListOfFundCashStatementRow result = apiInstance.QueryCashStatement(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **queryFundCashStatementParameters** | [QueryFundCashStatementParameters](QueryFundCashStatementParameters.md) | body | **required** | The query parameters specifying the diary entry period and display mode. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the cash statement. Defaults to the latest version if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to get the next page of results. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys to decorate onto the cash statement rows. |
+| **navTypeCode** | **string?** | query | optional | The code of the NAV type to use. Defaults to the primary NAV type if not specified. |
+
+### Return type
+
+[ValuationPointResourceListOfFundCashStatementRow](ValuationPointResourceListOfFundCashStatementRow.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The cash statement for the specified Fund valuation point. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the QueryCashStatementWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ValuationPointResourceListOfFundCashStatementRow> response = apiInstance.QueryCashStatementWithHttpInfo(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -7,7 +7,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Values** | **List&lt;string&gt;** | Required | *No description available.* |
-| **ReferenceListType** | **string** | Required | The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList Default: `ReferenceListTypeEnum.AddressKeyList` |
+| **ReferenceListType** | **string** | Required | The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList. Default: `ReferenceListTypeEnum.AddressKeyList` |
 
 
 ## Usage
@@ -19,7 +19,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new AddressKeyList(
     values: ,  // required
-    referenceListType: "..."  // required — The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList
+    referenceListType: "..."  // required — The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList.
 );
 ```
 ### Serializing to JSON

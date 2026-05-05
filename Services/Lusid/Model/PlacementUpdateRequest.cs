@@ -43,7 +43,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="stopPrice">The optional price, as currency and amount, associated with this placement..</param>
         /// <param name="counterparty">Optionally specifies the market entity this placement is placed with..</param>
         /// <param name="executionSystem">Optionally specifies the execution system in use..</param>
-        /// <param name="entryType">Optionally specifies the entry type of this placement..</param>
+        /// <param name="entryType">Optionally specifies the entry type of this placement. Available values: Undecided, Manual, Direct, Ems, External..</param>
         public PlacementUpdateRequest(ResourceId id = default(ResourceId), decimal? quantity = default(decimal?), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string type = default(string), decimal? limitPrice = default(decimal?), decimal? stopPrice = default(decimal?), string counterparty = default(string), string executionSystem = default(string), string entryType = default(string))
         {
             // to ensure "id" is required (not null)
@@ -118,9 +118,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string ExecutionSystem { get; set; }
 
         /// <summary>
-        /// Optionally specifies the entry type of this placement.
+        /// Optionally specifies the entry type of this placement. Available values: Undecided, Manual, Direct, Ems, External.
         /// </summary>
-        /// <value>Optionally specifies the entry type of this placement.</value>
+        /// <value>Optionally specifies the entry type of this placement. Available values: Undecided, Manual, Direct, Ems, External.</value>
         [DataMember(Name = "entryType", EmitDefaultValue = true)]
         public string EntryType { get; set; }
 

@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **SettlementCategory** | **string** | Required | A category representing the set of movement types that this instruction applies to. |
+| **SettlementCategory** | **string** | Required | A category representing the set of movement types that this instruction applies to. Available values: StockSettlement, CashSettlement, DeferredCashReceipt. |
 | **LusidInstrumentId** | **string** | Required | The LusidInstrumentId of the instrument being settled. |
 | **InstrumentScope** | **string** | Required | The Scope of the instrument being settled. |
 | **ContractualSettlementDate** | **DateTimeOffset?** | Optional | The contractual settlement date. Used to match the instruction to the correct settlement bucket. |
@@ -12,8 +12,8 @@
 | **SettledUnits** | **decimal** | Optional | The settled units. |
 | **UnsettledUnits** | **decimal** | Optional | The unsettled units. |
 | **OverdueUnits** | **decimal** | Optional | The overdue units. |
-| **ConfiguredSettlement** | **string** | Optional | The method of settlement for the settlement bucket, as defined in the portfolio&#39;s SettlementConfiguration |
-| **Status** | **string** | Required | The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;. |
+| **ConfiguredSettlement** | **string** | Optional | The effective method of settlement for the settlement bucket. This reflects any transaction-level settlement method overrides, falling back to the portfolio&#39;s SettlementConfiguration if no override applies. Available values: Automatic, Instructed, NotApplicable. |
+| **Status** | **string** | Required | The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;. Available values: Unsettled, PartSettled, Settled, None. |
 | **SettlementInstructions** | [List&lt;TransactionSettlementInstruction&gt;](TransactionSettlementInstruction.md) | Optional | The settlement instructions received for this settlement bucket. |
 | **Movements** | [List&lt;TransactionSettlementMovement&gt;](TransactionSettlementMovement.md) | Optional | The movements for the settlement bucket. |
 
@@ -26,7 +26,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new TransactionSettlementBucket(
-    settlementCategory: "...",  // required — A category representing the set of movement types that this instruction applies to.
+    settlementCategory: "...",  // required — A category representing the set of movement types that this instruction applies to. Available values: StockSettlement, CashSettlement, DeferredCashReceipt.
     lusidInstrumentId: "...",  // required — The LusidInstrumentId of the instrument being settled.
     instrumentScope: "...",  // required — The Scope of the instrument being settled.
     contractualSettlementDate: DateTimeOffset.Now,  // optional — The contractual settlement date. Used to match the instruction to the correct settlement bucket.
@@ -34,8 +34,8 @@ var instance = new TransactionSettlementBucket(
     settledUnits: 0.0d,  // optional — The settled units.
     unsettledUnits: 0.0d,  // optional — The unsettled units.
     overdueUnits: 0.0d,  // optional — The overdue units.
-    configuredSettlement: "...",  // optional — The method of settlement for the settlement bucket, as defined in the portfolio&#39;s SettlementConfiguration
-    status: "...",  // required — The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;.
+    configuredSettlement: "...",  // optional — The effective method of settlement for the settlement bucket. This reflects any transaction-level settlement method overrides, falling back to the portfolio&#39;s SettlementConfiguration if no override applies. Available values: Automatic, Instructed, NotApplicable.
+    status: "...",  // required — The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;. Available values: Unsettled, PartSettled, Settled, None.
     settlementInstructions: new List<TransactionSettlementInstruction>(),  // optional — The settlement instructions received for this settlement bucket.
     movements: new List<TransactionSettlementMovement>()  // optional — The movements for the settlement bucket.
 );

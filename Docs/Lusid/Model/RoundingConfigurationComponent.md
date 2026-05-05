@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **RoundingType** | **string** | Required | The type of rounding that should be used, eg: Up, Down, NearestRoundHalfAwayFromZero |
+| **RoundingType** | **string** | Required | The type of rounding that should be used. Available values: Up, Down, NearestRoundHalfAwayFromZero. |
 
 
 ## Usage
@@ -15,7 +15,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RoundingConfigurationComponent(
-    roundingType: "..."  // required — The type of rounding that should be used, eg: Up, Down, NearestRoundHalfAwayFromZero
+    roundingType: "..."  // required — The type of rounding that should be used. Available values: Up, Down, NearestRoundHalfAwayFromZero.
 );
 ```
 ### Serializing to JSON

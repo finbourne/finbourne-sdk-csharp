@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **FundCalendarEntriesType** | **string** | Required | The type of the Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark |
+| **FundCalendarEntriesType** | **string** | Required | The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark. |
 
 
 ## Usage
@@ -15,7 +15,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new FundCalendarEntries(
-    fundCalendarEntriesType: "..."  // required — The type of the Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark
+    fundCalendarEntriesType: "..."  // required — The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark.
 );
 ```
 ### Serializing to JSON

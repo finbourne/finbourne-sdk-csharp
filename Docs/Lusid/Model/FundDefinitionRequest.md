@@ -9,12 +9,12 @@ The request used to create a Fund.
 | **DisplayName** | **string** | Required | The name of the Fund. |
 | **Description** | **string** | Optional | A description for the Fund. |
 | **BaseCurrency** | **string** | Required | The base currency of the Fund in ISO 4217 currency code format. All portfolios must be of a matching base currency. |
-| **InvestorStructure** | **string** | Optional | The Investor structure to be used by the Fund. Supported values are &#39;NonUnitised&#39; and &#39;Classes&#39;. |
-| **PortfolioIds** | [List&lt;PortfolioEntityId&gt;](PortfolioEntityId.md) | Required | A list of the Portfolio IDs associated with the fund, which are part of the Fund. Note: These must all have the same base currency, which must also much the Fund Base Currency. |
+| **InvestorStructure** | **string** | Optional | The Investor structure to be used by the Fund. Available values: NonUnitised, Classes. |
+| **PortfolioIds** | [List&lt;PortfolioEntityId&gt;](PortfolioEntityId.md) | Required | A list of the Portfolio IDs associated with the fund, which are part of the Fund. Note: These must all have the same base currency, which must also match the Fund Base Currency. |
 | **FundConfigurationId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **ShareClassInstrumentScopes** | **List&lt;string&gt;** | Optional | The scopes in which the instruments lie, currently limited to one. |
 | **ShareClassInstruments** | [List&lt;InstrumentResolutionDetail&gt;](InstrumentResolutionDetail.md) | Optional | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. |
-| **Type** | **string** | Optional | The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39; |
+| **Type** | **string** | Optional | The type of fund. Available values: Standalone, Master, Feeder. |
 | **InceptionDate** | **DateTimeOffset** | Required | Inception date of the Fund |
 | **DecimalPlaces** | **int?** | Optional | Number of decimal places for reporting |
 | **PrimaryNavType** | [NavTypeDefinition](NavTypeDefinition.md) | Required | *No description available.* |
@@ -37,12 +37,12 @@ var instance = new FundDefinitionRequest(
     displayName: "...",  // required — The name of the Fund.
     description: "...",  // optional — A description for the Fund.
     baseCurrency: "...",  // required — The base currency of the Fund in ISO 4217 currency code format. All portfolios must be of a matching base currency.
-    investorStructure: "...",  // optional — The Investor structure to be used by the Fund. Supported values are &#39;NonUnitised&#39; and &#39;Classes&#39;.
-    portfolioIds: new List<PortfolioEntityId>(),  // required — A list of the Portfolio IDs associated with the fund, which are part of the Fund. Note: These must all have the same base currency, which must also much the Fund Base Currency.
+    investorStructure: "...",  // optional — The Investor structure to be used by the Fund. Available values: NonUnitised, Classes.
+    portfolioIds: new List<PortfolioEntityId>(),  // required — A list of the Portfolio IDs associated with the fund, which are part of the Fund. Note: These must all have the same base currency, which must also match the Fund Base Currency.
     fundConfigurationId: new ResourceId(...),  // required
     shareClassInstrumentScopes: ,  // optional — The scopes in which the instruments lie, currently limited to one.
     shareClassInstruments: new List<InstrumentResolutionDetail>(),  // optional — Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
-    type: "...",  // optional — The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39;
+    type: "...",  // optional — The type of fund. Available values: Standalone, Master, Feeder.
     inceptionDate: DateTimeOffset.Now,  // required — Inception date of the Fund
     decimalPlaces: 0,  // optional — Number of decimal places for reporting
     primaryNavType: new NavTypeDefinition(...),  // required

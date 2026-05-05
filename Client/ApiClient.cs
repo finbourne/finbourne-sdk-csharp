@@ -521,8 +521,8 @@ namespace Finbourne.Sdk.Client
         public static Policy<ResponseBase>? GetSyncPolicy(RequestOptions options)
         {
             int rateLimitRetries = options.RateLimitRetries ?? 3;
-            Policy<ResponseBase> pollyPolicy = PollyApiRetryHandler.GetDefaultRetryPolicyWithRateLimitWithFallback(rateLimitRetries);
-            _retryConfiguration.RetryPolicy = pollyPolicy; 
+            Policy<ResponseBase> pollyPolicy = PollyApiRetryHandler.GetDefaultRetryPolicyWithRateLimitWithFallback(rateLimitRetries, options.NumberOfRetries, options.RetryBackoffMs);
+            _retryConfiguration.RetryPolicy = pollyPolicy;
             return pollyPolicy;
         }
 
@@ -644,7 +644,7 @@ namespace Finbourne.Sdk.Client
         public static AsyncPolicy<ResponseBase>? GetAsyncPolicy(RequestOptions options)
         {
             int rateLimitRetries = options.RateLimitRetries ?? 3;
-            AsyncPolicy<ResponseBase> pollyPolicy = PollyApiRetryHandler.GetDefaultRetryPolicyWithRateLimitRetryWithFallbackAsync(rateLimitRetries);
+            AsyncPolicy<ResponseBase> pollyPolicy = PollyApiRetryHandler.GetDefaultRetryPolicyWithRateLimitRetryWithFallbackAsync(rateLimitRetries, options.NumberOfRetries, options.RetryBackoffMs);
             _retryConfiguration.AsyncRetryPolicy = pollyPolicy;
             return _retryConfiguration.AsyncRetryPolicy;
         }

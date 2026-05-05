@@ -6,13 +6,13 @@
 |------|------|----------|-------------|
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **RelationshipDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
-| **SourceEntityType** | **string** | Required | The entity type of the source entity object. |
-| **TargetEntityType** | **string** | Required | The entity type of the target entity object. |
+| **SourceEntityType** | **string** | Required | The entity type of the source entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction. |
+| **TargetEntityType** | **string** | Required | The entity type of the target entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction. |
 | **DisplayName** | **string** | Required | The display name of the relationship. |
 | **OutwardDescription** | **string** | Required | The description to relate source entity object and target entity object |
 | **InwardDescription** | **string** | Required | The description to relate target entity object and source entity object |
-| **LifeTime** | **string** | Required | Describes how the relationships can change over time. |
-| **RelationshipCardinality** | **string** | Required | Describes the cardinality of the relationship between source entity and target entity. |
+| **LifeTime** | **string** | Required | Describes how the relationships can change over time. Available values: Perpetual, TimeVariant. |
+| **RelationshipCardinality** | **string** | Required | Describes the cardinality of the relationship between source entity and target entity. Available values: ManyToOne, ManyToMany. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -26,13 +26,13 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new RelationshipDefinition(
     varVersion: new ModelVersion(...),  // optional
     relationshipDefinitionId: new ResourceId(...),  // required
-    sourceEntityType: "...",  // required — The entity type of the source entity object.
-    targetEntityType: "...",  // required — The entity type of the target entity object.
+    sourceEntityType: "...",  // required — The entity type of the source entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction.
+    targetEntityType: "...",  // required — The entity type of the target entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction.
     displayName: "...",  // required — The display name of the relationship.
     outwardDescription: "...",  // required — The description to relate source entity object and target entity object
     inwardDescription: "...",  // required — The description to relate target entity object and source entity object
-    lifeTime: "...",  // required — Describes how the relationships can change over time.
-    relationshipCardinality: "...",  // required — Describes the cardinality of the relationship between source entity and target entity.
+    lifeTime: "...",  // required — Describes how the relationships can change over time. Available values: Perpetual, TimeVariant.
+    relationshipCardinality: "...",  // required — Describes the cardinality of the relationship between source entity and target entity. Available values: ManyToOne, ManyToMany.
     links: new List<Link>()  // optional
 );
 ```

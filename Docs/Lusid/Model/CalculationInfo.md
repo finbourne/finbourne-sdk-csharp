@@ -4,8 +4,8 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **CalculationMethod** | **string** | Required | Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc. |
-| **Multiplier** | **string** | Required | Field by which to multiply the numerical amount. Eg: Quantity, Value |
+| **CalculationMethod** | **string** | Required | Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc. Available values: Rate, BasisPoints, Percentage, Flat. |
+| **Multiplier** | **string** | Required | Field by which to multiply the numerical amount. Available values: None, Quantity, Value. |
 | **CalculationAmount** | **decimal** | Required | Numerical fee amount |
 
 
@@ -17,8 +17,8 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CalculationInfo(
-    calculationMethod: "...",  // required — Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc.
-    multiplier: "...",  // required — Field by which to multiply the numerical amount. Eg: Quantity, Value
+    calculationMethod: "...",  // required — Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc. Available values: Rate, BasisPoints, Percentage, Flat.
+    multiplier: "...",  // required — Field by which to multiply the numerical amount. Available values: None, Quantity, Value.
     calculationAmount: 0.0d  // required — Numerical fee amount
 );
 ```

@@ -135,7 +135,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **domain** | **string** | path | **required** | The type of entity to which the identifier relates |
+| **domain** | **string** | path | **required** | The type of entity to which the identifier relates. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee. |
 | **identifierScope** | **string** | path | **required** | The scope that the identifier exists in |
 | **identifierType** | **string** | path | **required** | What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the identifier definition |
 
@@ -200,7 +200,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **domain** | **string** | path | **required** | The type of entity to which the identifier relates. |
+| **domain** | **string** | path | **required** | The type of entity to which the identifier relates. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee. |
 | **identifierScope** | **string** | path | **required** | The scope that the identifier exists in |
 | **identifierType** | **string** | path | **required** | What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the identifier definition |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Identifier Definition. Defaults to return              the latest version of the definition if not specified. |
@@ -336,7 +336,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **domain** | **string** | path | **required** | The type of entity to which the identifier relates |
+| **domain** | **string** | path | **required** | The type of entity to which the identifier relates. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, IdentifierDefinition, SettlementInstruction, TransactionFee. |
 | **identifierScope** | **string** | path | **required** | The scope that the identifier exists in |
 | **identifierType** | **string** | path | **required** | What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the Identifier Definition |
 | **updateIdentifierDefinitionRequest** | [UpdateIdentifierDefinitionRequest?](UpdateIdentifierDefinitionRequest?.md) | body | optional | The request containing the updated details of the Identifier Definition. |

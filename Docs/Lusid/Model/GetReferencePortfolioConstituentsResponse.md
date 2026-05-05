@@ -5,8 +5,8 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **EffectiveFrom** | **DateTimeOffset** | Required | *No description available.* |
-| **WeightType** | **string** | Required | The available values are: Static, Floating, Periodical |
-| **PeriodType** | **string** | Optional | The available values are: Daily, Weekly, Monthly, Quarterly, Annually |
+| **WeightType** | **string** | Required | Available values: Static, Floating, Periodical. |
+| **PeriodType** | **string** | Optional | Available values: Daily, Weekly, Monthly, Quarterly, Annually. |
 | **PeriodCount** | **int?** | Optional | *No description available.* |
 | **Constituents** | [List&lt;ReferencePortfolioConstituent&gt;](ReferencePortfolioConstituent.md) | Required | Set of constituents (instrument/weight pairings) |
 | **Href** | **string** | Optional | The Uri that returns the same result as the original request,  but may include resolved as at time(s). |
@@ -22,8 +22,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new GetReferencePortfolioConstituentsResponse(
     effectiveFrom: DateTimeOffset.Now,  // required
-    weightType: "...",  // required — The available values are: Static, Floating, Periodical
-    periodType: "...",  // optional — The available values are: Daily, Weekly, Monthly, Quarterly, Annually
+    weightType: "...",  // required — Available values: Static, Floating, Periodical.
+    periodType: "...",  // optional — Available values: Daily, Weekly, Monthly, Quarterly, Annually.
     periodCount: 0,  // optional
     constituents: new List<ReferencePortfolioConstituent>(),  // required — Set of constituents (instrument/weight pairings)
     href: "...",  // optional — The Uri that returns the same result as the original request,  but may include resolved as at time(s).

@@ -37,7 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create a new item in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="workspaceItemCreationRequest">The item to be created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -52,7 +52,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create a new item in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="workspaceItemCreationRequest">The item to be created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -66,7 +66,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create a new workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace being created; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceCreationRequest">The workspace to be created.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -81,7 +81,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create a new workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace being created; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceCreationRequest">The workspace to be created.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -95,7 +95,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete an item from a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -111,7 +111,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete an item from a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -126,7 +126,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="recurse">If true, recursively delete items in the workspace. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -141,7 +141,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="recurse">If true, recursively delete items in the workspace. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -155,7 +155,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Get a single workspace item.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -172,7 +172,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Get a single workspace item.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -188,7 +188,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Get a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -204,7 +204,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Get a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -219,7 +219,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List the items in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
@@ -238,7 +238,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List the items in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
@@ -256,7 +256,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List workspaces.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspaces; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces from a previous call to list workspaces.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -275,7 +275,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List workspaces.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspaces; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces from a previous call to list workspaces.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -293,7 +293,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List items across all workspaces.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -311,7 +311,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List items across all workspaces.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -328,7 +328,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update an item in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The item name.</param>
@@ -345,7 +345,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update an item in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The item name.</param>
@@ -361,7 +361,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="workspaceUpdateRequest">The new workspace details.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -377,7 +377,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="workspaceUpdateRequest">The new workspace details.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -401,7 +401,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create a new item in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="workspaceItemCreationRequest">The item to be created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -417,7 +417,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create a new item in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="workspaceItemCreationRequest">The item to be created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -432,7 +432,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create a new workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace being created; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceCreationRequest">The workspace to be created.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -448,7 +448,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Create a new workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace being created; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceCreationRequest">The workspace to be created.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -463,7 +463,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete an item from a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -480,7 +480,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete an item from a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -496,7 +496,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="recurse">If true, recursively delete items in the workspace. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -512,7 +512,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Delete a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="recurse">If true, recursively delete items in the workspace. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -527,7 +527,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Get a single workspace item.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -545,7 +545,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Get a single workspace item.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -562,7 +562,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Get a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -579,7 +579,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Get a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -595,7 +595,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List the items in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
@@ -615,7 +615,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List the items in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
@@ -634,7 +634,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List workspaces.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspaces; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces from a previous call to list workspaces.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -654,7 +654,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List workspaces.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspaces; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces from a previous call to list workspaces.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -673,7 +673,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List items across all workspaces.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -692,7 +692,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// List items across all workspaces.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -710,7 +710,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update an item in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The item name.</param>
@@ -728,7 +728,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update an item in a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The item name.</param>
@@ -745,7 +745,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="workspaceUpdateRequest">The new workspace details.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -762,7 +762,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// Update a workspace.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="workspaceUpdateRequest">The new workspace details.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -869,7 +869,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] CreateItem: Create a new item in a workspace. Create a new item in a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="workspaceItemCreationRequest">The item to be created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -886,7 +886,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="workspaceItemCreationRequest">The item to be created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -916,6 +916,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -986,7 +996,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] CreateItem: Create a new item in a workspace. Create a new item in a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="workspaceItemCreationRequest">The item to be created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1004,7 +1014,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="workspaceItemCreationRequest">The item to be created. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1036,6 +1046,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1107,7 +1127,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] CreateWorkspace: Create a new workspace. Create a new workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace being created; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceCreationRequest">The workspace to be created.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1124,7 +1144,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace being created; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceCreationRequest">The workspace to be created.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1154,6 +1174,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1227,7 +1257,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] CreateWorkspace: Create a new workspace. Create a new workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace being created; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceCreationRequest">The workspace to be created.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1245,7 +1275,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace being created; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceCreationRequest">The workspace to be created.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1277,6 +1307,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1351,7 +1391,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DeleteItem: Delete an item from a workspace. Delete an item from a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -1369,7 +1409,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -1412,6 +1452,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1479,7 +1529,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DeleteItem: Delete an item from a workspace. Delete an item from a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -1498,7 +1548,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -1543,6 +1593,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1611,7 +1671,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DeleteWorkspace: Delete a workspace. Delete a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="recurse">If true, recursively delete items in the workspace. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1628,7 +1688,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="recurse">If true, recursively delete items in the workspace. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1658,6 +1718,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1727,7 +1797,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DeleteWorkspace: Delete a workspace. Delete a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="recurse">If true, recursively delete items in the workspace. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1745,7 +1815,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="recurse">If true, recursively delete items in the workspace. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1777,6 +1847,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1847,7 +1927,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] GetItem: Get a single workspace item. Get a single workspace item.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -1866,7 +1946,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -1910,6 +1990,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1981,7 +2071,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] GetItem: Get a single workspace item. Get a single workspace item.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -2001,7 +2091,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The name of the workspace.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The name of the item.</param>
@@ -2047,6 +2137,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2119,7 +2219,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] GetWorkspace: Get a workspace. Get a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -2137,7 +2237,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -2168,6 +2268,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2241,7 +2351,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] GetWorkspace: Get a workspace. Get a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -2260,7 +2370,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -2293,6 +2403,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2367,7 +2487,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListItems: List the items in a workspace. List the items in a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
@@ -2388,7 +2508,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
@@ -2422,6 +2542,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2507,7 +2637,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListItems: List the items in a workspace. List the items in a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
@@ -2529,7 +2659,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The item&#39;s workspace name.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
@@ -2565,6 +2695,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2651,7 +2791,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListWorkspaces: List workspaces. List workspaces.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspaces; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces from a previous call to list workspaces.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -2672,7 +2812,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspaces; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces from a previous call to list workspaces.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -2700,6 +2840,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2788,7 +2938,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListWorkspaces: List workspaces. List workspaces.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspaces; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces from a previous call to list workspaces.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -2810,7 +2960,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspaces; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces from a previous call to list workspaces.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -2840,6 +2990,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2929,7 +3089,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] SearchItems: List items across all workspaces. List items across all workspaces.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -2949,7 +3109,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -2976,6 +3136,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3060,7 +3230,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] SearchItems: List items across all workspaces. List items across all workspaces.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -3081,7 +3251,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. (optional)</param>
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
@@ -3110,6 +3280,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3195,7 +3375,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] UpdateItem: Update an item in a workspace. Update an item in a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The item name.</param>
@@ -3214,7 +3394,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The item name.</param>
@@ -3258,6 +3438,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3330,7 +3520,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] UpdateItem: Update an item in a workspace. Update an item in a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The item name.</param>
@@ -3350,7 +3540,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the containing workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="groupName">The group containing the item.</param>
         /// <param name="itemName">The item name.</param>
@@ -3396,6 +3586,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3469,7 +3669,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] UpdateWorkspace: Update a workspace. Update a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="workspaceUpdateRequest">The new workspace details.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -3487,7 +3687,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="workspaceUpdateRequest">The new workspace details.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -3524,6 +3724,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3598,7 +3808,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] UpdateWorkspace: Update a workspace. Update a workspace.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="workspaceUpdateRequest">The new workspace details.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -3617,7 +3827,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="visibility">The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important.</param>
+        /// <param name="visibility">The visibility for the workspace; case is important. Available values: shared, personal.</param>
         /// <param name="workspaceName">The workspace name.</param>
         /// <param name="workspaceUpdateRequest">The new workspace details.</param>
         /// <param name="includeItemAccess">If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. (optional, default to false)</param>
@@ -3656,6 +3866,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {

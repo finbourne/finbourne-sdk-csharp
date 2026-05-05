@@ -28,9 +28,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class IUnitDefinitionDto : IEquatable<IUnitDefinitionDto>, IValidatableObject
     {
         /// <summary>
-        /// The available values are: NoUnits, Basic, Iso4217Currency
+        /// Available values: NoUnits, Basic, Iso4217Currency.
         /// </summary>
-        /// <value>The available values are: NoUnits, Basic, Iso4217Currency</value>
+        /// <value>Available values: NoUnits, Basic, Iso4217Currency.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum SchemaEnum
         {
@@ -54,15 +54,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The available values are: NoUnits, Basic, Iso4217Currency
+        /// Available values: NoUnits, Basic, Iso4217Currency.
         /// </summary>
-        /// <value>The available values are: NoUnits, Basic, Iso4217Currency</value>
+        /// <value>Available values: NoUnits, Basic, Iso4217Currency.</value>
         [DataMember(Name = "schema", EmitDefaultValue = false)]
         public SchemaEnum? Schema { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="IUnitDefinitionDto" /> class.
         /// </summary>
-        /// <param name="schema">The available values are: NoUnits, Basic, Iso4217Currency.</param>
+        /// <param name="schema">Available values: NoUnits, Basic, Iso4217Currency..</param>
         public IUnitDefinitionDto(SchemaEnum ?schema = default(SchemaEnum?))
         {
             this.Schema = schema;

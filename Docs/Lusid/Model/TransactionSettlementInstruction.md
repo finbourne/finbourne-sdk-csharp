@@ -5,17 +5,17 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **SettlementInstructionId** | **string** | Required | The instruction identifier. Unique within the portfolio. |
-| **InstructionType** | **string** | Required | The type of instruction which can be Complete or CancelAutomatic. Complete means that the instruction is intended to completely settle a settlement bucket. CancelAutomatic means that it is intended to cancel Automatic settlement. |
+| **InstructionType** | **string** | Required | The type of instruction which can be Complete or CancelAutomatic. Complete means that the instruction is intended to completely settle a settlement bucket. CancelAutomatic means that it is intended to cancel Automatic settlement. Available values: Complete, CancelAutomatic, Partial. |
 | **ActualSettlementDate** | **DateTimeOffset** | Required | The date that settlement takes place. |
 | **Units** | **decimal** | Required | The number of units for the instruction. |
 | **TransactionId** | **string** | Required | The ID for the transaction being instructed. |
-| **SettlementCategory** | **string** | Required | A category representing the set of movement types that this instruction applies to. |
+| **SettlementCategory** | **string** | Required | A category representing the set of movement types that this instruction applies to. Available values: StockSettlement, CashSettlement, DeferredCashReceipt, NotApplicable. |
 | **LusidInstrumentId** | **string** | Required | The LusidInstrumentId of the instrument being settled. |
 | **ContractualSettlementDate** | **DateTimeOffset?** | Optional | The contractual settlement date. Used to match the instruction to the correct settlement bucket. |
 | **SubHoldingKeyOverrides** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Allows one or more sub-holding keys to be overridden for any movement being settled by an instruction. Providing a key and value will set the sub-holding key to the specified value; Providing a key only will nullify the sub-holding key. Not referenced sub-holding keys will not be impacted.  |
 | **CustodianAccountOverride** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **InstrumentIdentifiers** | **Dictionary&lt;string, string&gt;** | Required | A set of instrument identifiers that can resolve the settlement instruction to a unique instrument. |
-| **Status** | **string** | Optional | The status of the settlement instruction - &#39;Invalid&#39;, &#39;Rejected&#39; &#39;Applied&#39; or &#39;Orphan&#39;. |
+| **Status** | **string** | Optional | The status of the settlement instruction. Available values: Applied, Inactive, Invalid, Orphan, Rejected. Available values: Invalid, Rejected, Applied, Orphan. |
 | **InstructionToPortfolioRate** | **decimal?** | Optional | The exchange rate between the Settlement Instruction and Portfolio. |
 | **SettlementInLieu** | [SettlementInLieu](SettlementInLieu.md) | Optional | *No description available.* |
 | **IsActive** | **bool** | Optional | Indicates whether the settlement instruction is active. When false, the instruction has no impact on settlement positions, but remains visible. Defaults to true. |
@@ -32,17 +32,17 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new TransactionSettlementInstruction(
     settlementInstructionId: "...",  // required — The instruction identifier. Unique within the portfolio.
-    instructionType: "...",  // required — The type of instruction which can be Complete or CancelAutomatic. Complete means that the instruction is intended to completely settle a settlement bucket. CancelAutomatic means that it is intended to cancel Automatic settlement.
+    instructionType: "...",  // required — The type of instruction which can be Complete or CancelAutomatic. Complete means that the instruction is intended to completely settle a settlement bucket. CancelAutomatic means that it is intended to cancel Automatic settlement. Available values: Complete, CancelAutomatic, Partial.
     actualSettlementDate: DateTimeOffset.Now,  // required — The date that settlement takes place.
     units: 0.0d,  // required — The number of units for the instruction.
     transactionId: "...",  // required — The ID for the transaction being instructed.
-    settlementCategory: "...",  // required — A category representing the set of movement types that this instruction applies to.
+    settlementCategory: "...",  // required — A category representing the set of movement types that this instruction applies to. Available values: StockSettlement, CashSettlement, DeferredCashReceipt, NotApplicable.
     lusidInstrumentId: "...",  // required — The LusidInstrumentId of the instrument being settled.
     contractualSettlementDate: DateTimeOffset.Now,  // optional — The contractual settlement date. Used to match the instruction to the correct settlement bucket.
     subHoldingKeyOverrides: new PerpetualProperty(...),  // optional — Allows one or more sub-holding keys to be overridden for any movement being settled by an instruction. Providing a key and value will set the sub-holding key to the specified value; Providing a key only will nullify the sub-holding key. Not referenced sub-holding keys will not be impacted. 
     custodianAccountOverride: new ResourceId(...),  // optional
     instrumentIdentifiers: ,  // required — A set of instrument identifiers that can resolve the settlement instruction to a unique instrument.
-    status: "...",  // optional — The status of the settlement instruction - &#39;Invalid&#39;, &#39;Rejected&#39; &#39;Applied&#39; or &#39;Orphan&#39;.
+    status: "...",  // optional — The status of the settlement instruction. Available values: Applied, Inactive, Invalid, Orphan, Rejected. Available values: Invalid, Rejected, Applied, Orphan.
     instructionToPortfolioRate: 0.0d,  // optional — The exchange rate between the Settlement Instruction and Portfolio.
     settlementInLieu: new SettlementInLieu(...),  // optional
     isActive: true,  // optional — Indicates whether the settlement instruction is active. When false, the instruction has no impact on settlement positions, but remains visible. Defaults to true.

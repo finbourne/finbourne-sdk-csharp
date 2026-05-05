@@ -10,7 +10,7 @@
 | **InstrumentEvent** | [InstrumentEvent](InstrumentEvent.md) | Required | *No description available.* |
 | **Properties** | [List&lt;PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The properties attached to this instrument event. |
 | **SequenceNumber** | **int?** | Optional | The order of the instrument event relative others on the same date (0 being processed first). Must be non negative. |
-| **ParticipationType** | **string** | Optional | Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. Default: `"Mandatory"` |
+| **ParticipationType** | **string** | Optional | Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary. Default: `"Mandatory"` |
 | **EventDateStamps** | [Dictionary&lt;string, YearMonthDay&gt;](YearMonthDay.md) | Optional | The date stamps corresponding to the relevant date-time fields for the instrument event. The key for each provided date stamp must match the field name of a valid datetime field from the InstrumentEvent DTO. |
 
 
@@ -28,7 +28,7 @@ var instance = new UpsertInstrumentEventRequest(
     instrumentEvent: new InstrumentEvent(...),  // required
     properties: new List<PerpetualProperty>(),  // optional — The properties attached to this instrument event.
     sequenceNumber: 0,  // optional — The order of the instrument event relative others on the same date (0 being processed first). Must be non negative.
-    participationType: "...",  // optional — Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary.
+    participationType: "...",  // optional — Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary.
     eventDateStamps: new YearMonthDay(...)  // optional — The date stamps corresponding to the relevant date-time fields for the instrument event. The key for each provided date stamp must match the field name of a valid datetime field from the InstrumentEvent DTO.
 );
 ```

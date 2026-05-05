@@ -37,7 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="settlementInstructionId">The id of the problematic settlement instruction. Combined with the portfolio id this uniquely identifies a settlement instruction (required).</param>
         /// <param name="category">The category this instruction belongs to (required).</param>
-        /// <param name="status">The status of the settlement instruction. Possible values are &#39;Invalid&#39; or &#39;Rejected&#39;. (required).</param>
+        /// <param name="status">The status of the settlement instruction. Available values: Invalid, Rejected, Applied, Orphan. (required).</param>
         public SettlementProblem(string settlementInstructionId = default(string), string category = default(string), string status = default(string))
         {
             // to ensure "settlementInstructionId" is required (not null)
@@ -75,9 +75,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Category { get; set; }
 
         /// <summary>
-        /// The status of the settlement instruction. Possible values are &#39;Invalid&#39; or &#39;Rejected&#39;.
+        /// The status of the settlement instruction. Available values: Invalid, Rejected, Applied, Orphan.
         /// </summary>
-        /// <value>The status of the settlement instruction. Possible values are &#39;Invalid&#39; or &#39;Rejected&#39;.</value>
+        /// <value>The status of the settlement instruction. Available values: Invalid, Rejected, Applied, Orphan.</value>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
         public string Status { get; set; }
 

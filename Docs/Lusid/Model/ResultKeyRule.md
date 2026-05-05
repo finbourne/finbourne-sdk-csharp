@@ -5,7 +5,7 @@ Base class for representing result key rules in LUSID, which describe how to res
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ResultKeyRuleType** | **string** | Required | The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule |
+| **ResultKeyRuleType** | **string** | Required | Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule. |
 
 
 ## Usage
@@ -16,7 +16,7 @@ Base class for representing result key rules in LUSID, which describe how to res
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ResultKeyRule(
-    resultKeyRuleType: "..."  // required — The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule
+    resultKeyRuleType: "..."  // required — Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule.
 );
 ```
 ### Serializing to JSON

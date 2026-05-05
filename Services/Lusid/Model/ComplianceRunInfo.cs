@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="runId">The unique identifier of a compliance run (required).</param>
         /// <param name="instigatedAt">The time the compliance run was launched (e.g. button pressed). Currently it is also both the as at and effective at time in whichthe rule set and portfolio data (including any pending trades if the run is pretrade) is taken for the caluation, although it may be possible to run compliance for historical effective at and as at dates in the future. (required).</param>
         /// <param name="completedAt">The time the compliance run calculation was completed (required).</param>
-        /// <param name="schedule">Whether the compliance run was pre or post trade (required).</param>
+        /// <param name="schedule">Whether the compliance run was pre or post trade. Available values: PreTrade, PostTrade, PreAndPostTrade. (required).</param>
         /// <param name="allRulesPassed">True if all rules passed, for all the portfolios they were assigned to (required).</param>
         /// <param name="hasResults">False when no results have been returned eg. when no rules exist (required).</param>
         /// <param name="asAt">Legacy AsAt time for backwards compatibility (required).</param>
@@ -85,9 +85,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public DateTimeOffset CompletedAt { get; set; }
 
         /// <summary>
-        /// Whether the compliance run was pre or post trade
+        /// Whether the compliance run was pre or post trade. Available values: PreTrade, PostTrade, PreAndPostTrade.
         /// </summary>
-        /// <value>Whether the compliance run was pre or post trade</value>
+        /// <value>Whether the compliance run was pre or post trade. Available values: PreTrade, PostTrade, PreAndPostTrade.</value>
         [DataMember(Name = "schedule", IsRequired = true, EmitDefaultValue = true)]
         public string Schedule { get; set; }
 

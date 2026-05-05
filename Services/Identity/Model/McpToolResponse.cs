@@ -44,11 +44,12 @@ namespace Finbourne.Sdk.Services.Identity.Model
         /// <param name="payloadType">The type of payload (Luminesce or Scheduler).</param>
         /// <param name="luminescePayload">luminescePayload.</param>
         /// <param name="schedulerPayload">schedulerPayload.</param>
+        /// <param name="destructiveActionSummaryTemplate">Template for human-readable destructive action summary (e.g. \&quot;Delete file &#39;{filePath}&#39;\&quot;).</param>
         /// <param name="createdAt">When the MCP tool was created.</param>
         /// <param name="createdBy">Who created the MCP tool.</param>
         /// <param name="updatedAt">When the MCP tool was last updated.</param>
         /// <param name="updatedBy">Who last updated the MCP tool.</param>
-        public McpToolResponse(string scope = default(string), string code = default(string), string name = default(string), int varVersion = default(int), string title = default(string), string description = default(string), bool destructive = default(bool), bool idempotent = default(bool), bool openWorld = default(bool), bool readOnly = default(bool), List<McpToolParameter> parameters = default(List<McpToolParameter>), string payloadType = default(string), McpToolLuminescePayload luminescePayload = default(McpToolLuminescePayload), McpToolSchedulerPayload schedulerPayload = default(McpToolSchedulerPayload), DateTimeOffset createdAt = default(DateTimeOffset), string createdBy = default(string), DateTimeOffset updatedAt = default(DateTimeOffset), string updatedBy = default(string))
+        public McpToolResponse(string scope = default(string), string code = default(string), string name = default(string), int varVersion = default(int), string title = default(string), string description = default(string), bool destructive = default(bool), bool idempotent = default(bool), bool openWorld = default(bool), bool readOnly = default(bool), List<McpToolParameter> parameters = default(List<McpToolParameter>), string payloadType = default(string), McpToolLuminescePayload luminescePayload = default(McpToolLuminescePayload), McpToolSchedulerPayload schedulerPayload = default(McpToolSchedulerPayload), string destructiveActionSummaryTemplate = default(string), DateTimeOffset createdAt = default(DateTimeOffset), string createdBy = default(string), DateTimeOffset updatedAt = default(DateTimeOffset), string updatedBy = default(string))
         {
             this.Scope = scope;
             this.Code = code;
@@ -64,6 +65,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
             this.PayloadType = payloadType;
             this.LuminescePayload = luminescePayload;
             this.SchedulerPayload = schedulerPayload;
+            this.DestructiveActionSummaryTemplate = destructiveActionSummaryTemplate;
             this.CreatedAt = createdAt;
             this.CreatedBy = createdBy;
             this.UpdatedAt = updatedAt;
@@ -167,6 +169,13 @@ namespace Finbourne.Sdk.Services.Identity.Model
         public McpToolSchedulerPayload SchedulerPayload { get; set; }
 
         /// <summary>
+        /// Template for human-readable destructive action summary (e.g. \&quot;Delete file &#39;{filePath}&#39;\&quot;)
+        /// </summary>
+        /// <value>Template for human-readable destructive action summary (e.g. \&quot;Delete file &#39;{filePath}&#39;\&quot;)</value>
+        [DataMember(Name = "destructiveActionSummaryTemplate", EmitDefaultValue = true)]
+        public string DestructiveActionSummaryTemplate { get; set; }
+
+        /// <summary>
         /// When the MCP tool was created
         /// </summary>
         /// <value>When the MCP tool was created</value>
@@ -216,6 +225,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
             sb.Append("  PayloadType: ").Append(PayloadType).Append("\n");
             sb.Append("  LuminescePayload: ").Append(LuminescePayload).Append("\n");
             sb.Append("  SchedulerPayload: ").Append(SchedulerPayload).Append("\n");
+            sb.Append("  DestructiveActionSummaryTemplate: ").Append(DestructiveActionSummaryTemplate).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
@@ -322,6 +332,11 @@ namespace Finbourne.Sdk.Services.Identity.Model
                     this.SchedulerPayload.Equals(input.SchedulerPayload))
                 ) && 
                 (
+                    this.DestructiveActionSummaryTemplate == input.DestructiveActionSummaryTemplate ||
+                    (this.DestructiveActionSummaryTemplate != null &&
+                    this.DestructiveActionSummaryTemplate.Equals(input.DestructiveActionSummaryTemplate))
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -392,6 +407,10 @@ namespace Finbourne.Sdk.Services.Identity.Model
                 if (this.SchedulerPayload != null)
                 {
                     hashCode = (hashCode * 59) + this.SchedulerPayload.GetHashCode();
+                }
+                if (this.DestructiveActionSummaryTemplate != null)
+                {
+                    hashCode = (hashCode * 59) + this.DestructiveActionSummaryTemplate.GetHashCode();
                 }
                 if (this.CreatedAt != null)
                 {

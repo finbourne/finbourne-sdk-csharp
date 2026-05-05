@@ -11,7 +11,7 @@ Schedule to define fx conversion of cashflows on complex bonds. If an fx schedul
 | **FxConversionTypes** | **List&lt;string&gt;** | Optional | List of flags to indicate if coupon payments, principal payments or both are converted |
 | **Rate** | **decimal** | Optional | FxRate used to convert payments. Assumed to be in units of the ToCurrency so conversion is paymentAmount x fxRate |
 | **ToCurrency** | **string** | Optional | Currency that payments are converted to |
-| **ScheduleType** | **string** | Required | The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid Default: `ScheduleTypeEnum.FxRateSchedule` |
+| **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid. Default: `ScheduleTypeEnum.FxRateSchedule` |
 
 
 ## Usage
@@ -26,7 +26,7 @@ var instance = new FxRateSchedule(
     fxConversionTypes: ,  // optional — List of flags to indicate if coupon payments, principal payments or both are converted
     rate: 0.0d,  // optional — FxRate used to convert payments. Assumed to be in units of the ToCurrency so conversion is paymentAmount x fxRate
     toCurrency: "...",  // optional — Currency that payments are converted to
-    scheduleType: "..."  // required — The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid
+    scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid.
 );
 ```
 ### Serializing to JSON

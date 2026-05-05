@@ -6,7 +6,7 @@ A list of portfolios.
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
-| **Type** | **string** | Required | The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition |
+| **Type** | **string** | Required | The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition. |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
 | **Description** | **string** | Optional | The long form description of the portfolio. |
 | **DisplayName** | **string** | Required | The name of the portfolio. |
@@ -27,7 +27,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new PortfolioSearchResult(
     id: new ResourceId(...),  // required
-    type: "...",  // required — The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition
+    type: "...",  // required — The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
     description: "...",  // optional — The long form description of the portfolio.
     displayName: "...",  // required — The name of the portfolio.

@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **Start** | [DateOrDiaryEntry](DateOrDiaryEntry.md) | Optional | *No description available.* |
 | **End** | [DateOrDiaryEntry](DateOrDiaryEntry.md) | Optional | *No description available.* |
-| **DateMode** | **string** | Optional | The mode of calculation of the trial balance. The available values are: ActivityDate, AccountingDate. |
+| **DateMode** | **string** | Optional | The mode of calculation of the trial balance. Available values: ActivityDate, AccountingDate. |
 | **GeneralLedgerProfileCode** | **string** | Optional | The optional code of a general ledger profile used to decorate trial balance with levels. |
 | **PropertyKeys** | **List&lt;string&gt;** | Optional | A list of property keys from the &#39;Account&#39; domain to decorate onto the trial balance. |
 | **ExcludeCleardownModule** | **bool** | Optional | By deafult this flag is set to false, if this is set to true, no cleardown module will be applied to the trial balance. |
@@ -22,7 +22,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new TrialBalanceQueryParameters(
     start: new DateOrDiaryEntry(...),  // optional
     end: new DateOrDiaryEntry(...),  // optional
-    dateMode: "...",  // optional — The mode of calculation of the trial balance. The available values are: ActivityDate, AccountingDate.
+    dateMode: "...",  // optional — The mode of calculation of the trial balance. Available values: ActivityDate, AccountingDate.
     generalLedgerProfileCode: "...",  // optional — The optional code of a general ledger profile used to decorate trial balance with levels.
     propertyKeys: ,  // optional — A list of property keys from the &#39;Account&#39; domain to decorate onto the trial balance.
     excludeCleardownModule: true  // optional — By deafult this flag is set to false, if this is set to true, no cleardown module will be applied to the trial balance.

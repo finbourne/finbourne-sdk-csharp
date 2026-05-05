@@ -42,7 +42,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="lineage">lineage.</param>
         /// <param name="volatility">Volatility value. (required).</param>
         /// <param name="varVersion">varVersion.</param>
-        /// <param name="marketDataType">The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface (required) (default to MarketDataTypeEnum.DiscountFactorCurveData).</param>
+        /// <param name="marketDataType">Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface. (required) (default to MarketDataTypeEnum.DiscountFactorCurveData).</param>
         public ConstantVolatilitySurface(DateTimeOffset baseDate = default(DateTimeOffset), string assetType = default(string), string lineage = default(string), decimal volatility = default(decimal), ModelVersion varVersion = default(ModelVersion), MarketDataTypeEnum marketDataType = default(MarketDataTypeEnum)) : base()
         {
             this.BaseDate = baseDate;

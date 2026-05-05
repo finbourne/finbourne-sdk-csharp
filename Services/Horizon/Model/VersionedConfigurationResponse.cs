@@ -22,18 +22,18 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// Represents a versioned client configuration record.
+    /// Represents a versioned configuration record.
     /// </summary>
-    [DataContract(Name = "ClientConfigurationResponse")]
-    public partial class ClientConfigurationResponse : IEquatable<ClientConfigurationResponse>, IValidatableObject
+    [DataContract(Name = "VersionedConfigurationResponse")]
+    public partial class VersionedConfigurationResponse : IEquatable<VersionedConfigurationResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClientConfigurationResponse" /> class.
+        /// Initializes a new instance of the <see cref="VersionedConfigurationResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ClientConfigurationResponse() { }
+        protected VersionedConfigurationResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClientConfigurationResponse" /> class.
+        /// Initializes a new instance of the <see cref="VersionedConfigurationResponse" /> class.
         /// </summary>
         /// <param name="name">The logical name of the configuration. (required).</param>
         /// <param name="configType">The category of configuration. (required).</param>
@@ -41,18 +41,18 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="minorVersion">The minor version number. (required).</param>
         /// <param name="value">The JSON configuration value. (required).</param>
         /// <param name="isDraft">Whether this version is still in draft state. Draft versions can be edited; locked versions cannot. (required).</param>
-        public ClientConfigurationResponse(string name = default(string), string configType = default(string), int majorVersion = default(int), int minorVersion = default(int), string value = default(string), bool isDraft = default(bool))
+        public VersionedConfigurationResponse(string name = default(string), string configType = default(string), int majorVersion = default(int), int minorVersion = default(int), string value = default(string), bool isDraft = default(bool))
         {
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for ClientConfigurationResponse and cannot be null");
+                throw new ArgumentNullException("name is a required property for VersionedConfigurationResponse and cannot be null");
             }
             this.Name = name;
             // to ensure "configType" is required (not null)
             if (configType == null)
             {
-                throw new ArgumentNullException("configType is a required property for ClientConfigurationResponse and cannot be null");
+                throw new ArgumentNullException("configType is a required property for VersionedConfigurationResponse and cannot be null");
             }
             this.ConfigType = configType;
             this.MajorVersion = majorVersion;
@@ -60,7 +60,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             // to ensure "value" is required (not null)
             if (value == null)
             {
-                throw new ArgumentNullException("value is a required property for ClientConfigurationResponse and cannot be null");
+                throw new ArgumentNullException("value is a required property for VersionedConfigurationResponse and cannot be null");
             }
             this.Value = value;
             this.IsDraft = isDraft;
@@ -115,7 +115,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ClientConfigurationResponse {\n");
+            sb.Append("class VersionedConfigurationResponse {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ConfigType: ").Append(ConfigType).Append("\n");
             sb.Append("  MajorVersion: ").Append(MajorVersion).Append("\n");
@@ -142,15 +142,15 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ClientConfigurationResponse);
+            return this.Equals(input as VersionedConfigurationResponse);
         }
 
         /// <summary>
-        /// Returns true if ClientConfigurationResponse instances are equal
+        /// Returns true if VersionedConfigurationResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of ClientConfigurationResponse to be compared</param>
+        /// <param name="input">Instance of VersionedConfigurationResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ClientConfigurationResponse input)
+        public bool Equals(VersionedConfigurationResponse input)
         {
             if (input == null)
             {

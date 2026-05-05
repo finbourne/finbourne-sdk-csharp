@@ -35,8 +35,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CalculationInfo" /> class.
         /// </summary>
-        /// <param name="calculationMethod">Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc. (required).</param>
-        /// <param name="multiplier">Field by which to multiply the numerical amount. Eg: Quantity, Value (required).</param>
+        /// <param name="calculationMethod">Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc. Available values: Rate, BasisPoints, Percentage, Flat. (required).</param>
+        /// <param name="multiplier">Field by which to multiply the numerical amount. Available values: None, Quantity, Value. (required).</param>
         /// <param name="calculationAmount">Numerical fee amount (required).</param>
         public CalculationInfo(string calculationMethod = default(string), string multiplier = default(string), decimal calculationAmount = default(decimal))
         {
@@ -56,16 +56,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc.
+        /// Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc. Available values: Rate, BasisPoints, Percentage, Flat.
         /// </summary>
-        /// <value>Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc.</value>
+        /// <value>Method of calculating the fees or commission among: BasisPoints, Percentage, Rate, Flat etc. Available values: Rate, BasisPoints, Percentage, Flat.</value>
         [DataMember(Name = "calculationMethod", IsRequired = true, EmitDefaultValue = true)]
         public string CalculationMethod { get; set; }
 
         /// <summary>
-        /// Field by which to multiply the numerical amount. Eg: Quantity, Value
+        /// Field by which to multiply the numerical amount. Available values: None, Quantity, Value.
         /// </summary>
-        /// <value>Field by which to multiply the numerical amount. Eg: Quantity, Value</value>
+        /// <value>Field by which to multiply the numerical amount. Available values: None, Quantity, Value.</value>
         [DataMember(Name = "multiplier", IsRequired = true, EmitDefaultValue = true)]
         public string Multiplier { get; set; }
 

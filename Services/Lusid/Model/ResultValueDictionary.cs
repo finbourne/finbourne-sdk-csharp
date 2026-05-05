@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="ResultValueDictionary" /> class.
         /// </summary>
         /// <param name="elements">The dictionary elements.</param>
-        /// <param name="resultValueType">The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset (required) (default to ResultValueTypeEnum.ResultValue).</param>
+        /// <param name="resultValueType">Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset. (required) (default to ResultValueTypeEnum.ResultValue).</param>
         public ResultValueDictionary(Dictionary<string, ResultValue> elements = default(Dictionary<string, ResultValue>), ResultValueTypeEnum resultValueType = default(ResultValueTypeEnum)) : base()
         {
             this.ResultValueType = resultValueType;

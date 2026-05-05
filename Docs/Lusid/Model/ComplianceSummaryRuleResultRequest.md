@@ -7,7 +7,7 @@
 | **RuleId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **TemplateId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **Variation** | **string** | Required | *No description available.* |
-| **RuleStatus** | **string** | Required | *No description available.* |
+| **RuleStatus** | **string** | Required | Available values: Passed, Failed, MissingData, Warning. |
 | **AffectedPortfolios** | [List&lt;ResourceId&gt;](ResourceId.md) | Required | *No description available.* |
 | **AffectedOrders** | [List&lt;ResourceId&gt;](ResourceId.md) | Required | *No description available.* |
 | **ParametersUsed** | **Dictionary&lt;string, string&gt;** | Required | *No description available.* |
@@ -25,7 +25,7 @@ var instance = new ComplianceSummaryRuleResultRequest(
     ruleId: new ResourceId(...),  // required
     templateId: new ResourceId(...),  // required
     variation: "...",  // required
-    ruleStatus: "...",  // required
+    ruleStatus: "...",  // required — Available values: Passed, Failed, MissingData, Warning.
     affectedPortfolios: new List<ResourceId>(),  // required
     affectedOrders: new List<ResourceId>(),  // required
     parametersUsed: ,  // required

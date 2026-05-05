@@ -11,12 +11,12 @@
 | **TimelineId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **PreviousEntry** | [PreviousFundCalendarEntry](PreviousFundCalendarEntry.md) | Optional | *No description available.* |
 | **EffectiveAt** | **DateTimeOffset** | Optional | The effective at of the Calendar Entry. |
-| **EntryType** | **string** | Required | The type of the Fund Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark |
+| **EntryType** | **string** | Required | The type of the Fund Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark. |
 | **Status** | **string** | Optional | The status of the Fund Calendar Entry. Can be &#39;Estimate&#39;, &#39;Unofficial&#39; or &#39;Final&#39;. |
 | **ApplyClearDown** | **bool** | Optional | Set to true if that closed period should have the clear down applied. |
 | **LeaderNavTypeCode** | **string** | Optional | The code of the Nav Type that this Nav Type will follow when set. |
 | **Variants** | [List&lt;EstimateVariant&gt;](EstimateVariant.md) | Optional | The variants of the Estimate Valuation Point.  |
-| **FundCalendarEntriesType** | **string** | Required | The type of the Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark Default: `FundCalendarEntriesTypeEnum.FundEstimateValuationPoint` |
+| **FundCalendarEntriesType** | **string** | Required | The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark. Default: `FundCalendarEntriesTypeEnum.FundEstimateValuationPoint` |
 
 
 ## Usage
@@ -32,12 +32,12 @@ var instance = new FundEstimateValuationPoint(
     timelineId: new ResourceId(...),  // optional
     previousEntry: new PreviousFundCalendarEntry(...),  // optional
     effectiveAt: DateTimeOffset.Now,  // optional — The effective at of the Calendar Entry.
-    entryType: "...",  // required — The type of the Fund Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark
+    entryType: "...",  // required — The type of the Fund Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark.
     status: "...",  // optional — The status of the Fund Calendar Entry. Can be &#39;Estimate&#39;, &#39;Unofficial&#39; or &#39;Final&#39;.
     applyClearDown: true,  // optional — Set to true if that closed period should have the clear down applied.
     leaderNavTypeCode: "...",  // optional — The code of the Nav Type that this Nav Type will follow when set.
     variants: new List<EstimateVariant>(),  // optional — The variants of the Estimate Valuation Point. 
-    fundCalendarEntriesType: "..."  // required — The type of the Calendar Entry. The available values are: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark
+    fundCalendarEntriesType: "..."  // required — The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark.
 );
 ```
 ### Serializing to JSON

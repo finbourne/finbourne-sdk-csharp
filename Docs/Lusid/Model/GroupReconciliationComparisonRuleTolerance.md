@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Type** | **string** | Required | The type of tolerance to allow. \&quot;Relative\&quot; | \&quot;Absolute\&quot; |
+| **Type** | **string** | Required | The type of tolerance to allow. Available values: Relative, Absolute. |
 | **Value** | **decimal** | Required | The decimal value of how much tolerance to allow when comparing in relative (i.e percentage) or absolute terms depending on the ToleranceType specified |
 
 
@@ -16,7 +16,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new GroupReconciliationComparisonRuleTolerance(
-    type: "...",  // required — The type of tolerance to allow. \&quot;Relative\&quot; | \&quot;Absolute\&quot;
+    type: "...",  // required — The type of tolerance to allow. Available values: Relative, Absolute.
     value: 0.0d  // required — The decimal value of how much tolerance to allow when comparing in relative (i.e percentage) or absolute terms depending on the ToleranceType specified
 );
 ```

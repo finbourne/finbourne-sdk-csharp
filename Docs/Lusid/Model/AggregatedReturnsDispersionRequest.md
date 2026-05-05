@@ -9,7 +9,7 @@ The request used in the AggregatedReturnsDispersionMetric.
 | **YearsCount** | **int** | Optional | For how many years to calculate the dispersion. Default to 10. |
 | **ReturnIds** | [List&lt;ResourceId&gt;](ResourceId.md) | Optional | The Scope and code of the returns. |
 | **RecipeId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
-| **CompositeMethod** | **string** | Optional | The method used to calculate the Portfolio performance: Equal/Asset. |
+| **CompositeMethod** | **string** | Optional | The method used to calculate the Portfolio performance. Available values: Equal, Asset. |
 | **AlternativeInceptionDate** | **string** | Optional | Optional - either a date, or the key for a portfolio property containing a date. If provided, the given date will override the inception date for this request. |
 
 
@@ -25,7 +25,7 @@ var instance = new AggregatedReturnsDispersionRequest(
     yearsCount: 0,  // optional — For how many years to calculate the dispersion. Default to 10.
     returnIds: new List<ResourceId>(),  // optional — The Scope and code of the returns.
     recipeId: new ResourceId(...),  // optional
-    compositeMethod: "...",  // optional — The method used to calculate the Portfolio performance: Equal/Asset.
+    compositeMethod: "...",  // optional — The method used to calculate the Portfolio performance. Available values: Equal, Asset.
     alternativeInceptionDate: "..."  // optional — Optional - either a date, or the key for a portfolio property containing a date. If provided, the given date will override the inception date for this request.
 );
 ```

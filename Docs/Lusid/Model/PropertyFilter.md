@@ -5,9 +5,9 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Left** | **string** | Optional | The key that uniquely identifies a queryable address in Lusid. |
-| **Operator** | **string** | Optional | The available values are: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith |
+| **Operator** | **string** | Optional | Available values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith. |
 | **Right** | **Object** | Optional | *No description available.* |
-| **RightOperandType** | **string** | Optional | The available values are: Absolute, Property |
+| **RightOperandType** | **string** | Optional | Available values: Absolute, Property. |
 
 
 ## Usage
@@ -19,9 +19,9 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new PropertyFilter(
     left: "...",  // optional — The key that uniquely identifies a queryable address in Lusid.
-    varOperator: "...",  // optional — The available values are: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith
+    varOperator: "...",  // optional — Available values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, In, StartsWith.
     right: ,  // optional
-    rightOperandType: "..."  // optional — The available values are: Absolute, Property
+    rightOperandType: "..."  // optional — Available values: Absolute, Property.
 );
 ```
 ### Serializing to JSON

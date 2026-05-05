@@ -12,7 +12,7 @@ Market Data for an equity vol surface, represented by a list of instruments and 
 | **Quotes** | [List&lt;MarketQuote&gt;](MarketQuote.md) | Required | The set of market quotes that define the surface, in NormalVol or LogNormalVol terms. |
 | **Lineage** | **string** | Optional | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
-| **MarketDataType** | **string** | Required | The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface Default: `MarketDataTypeEnum.EquityVolSurfaceData` |
+| **MarketDataType** | **string** | Required | Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface. Default: `MarketDataTypeEnum.EquityVolSurfaceData` |
 
 
 ## Usage
@@ -28,7 +28,7 @@ var instance = new EquityVolSurfaceData(
     quotes: new List<MarketQuote>(),  // required — The set of market quotes that define the surface, in NormalVol or LogNormalVol terms.
     lineage: "...",  // optional — Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;.
     varVersion: new ModelVersion(...),  // optional
-    marketDataType: "..."  // required — The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface
+    marketDataType: "..."  // required — Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface.
 );
 ```
 ### Serializing to JSON

@@ -9,7 +9,7 @@
 | **Description** | **string** | Optional | A detailed description of the field and its purpose. |
 | **DataTypeId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **Required** | **bool** | Optional | Whether this field is mandatory in the dataset. |
-| **Category** | **string** | Required | The intended category of the field (SeriesIdentifier, Value, or Metadata). |
+| **Category** | **string** | Required | The intended category of the field (SeriesIdentifier, Value, or Metadata). Available values: SeriesIdentifier, Value, Metadata. |
 
 
 ## Usage
@@ -25,7 +25,7 @@ var instance = new RelationalDatasetFieldDefinition(
     description: "...",  // optional — A detailed description of the field and its purpose.
     dataTypeId: new ResourceId(...),  // required
     required: true,  // optional — Whether this field is mandatory in the dataset.
-    category: "..."  // required — The intended category of the field (SeriesIdentifier, Value, or Metadata).
+    category: "..."  // required — The intended category of the field (SeriesIdentifier, Value, or Metadata). Available values: SeriesIdentifier, Value, Metadata.
 );
 ```
 ### Serializing to JSON

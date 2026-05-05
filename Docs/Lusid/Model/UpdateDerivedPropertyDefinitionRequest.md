@@ -9,7 +9,7 @@
 | **PropertyDescription** | **string** | Optional | Describes the property |
 | **DerivationFormula** | **string** | Required | The rule that defines how data is composed for a derived property. |
 | **IsFilterable** | **bool** | Required | Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions.  For a derived definition this must be set true to enable filtering. |
-| **ValueFormat** | **string** | Optional | The format in which values for this property definition should be represented. |
+| **ValueFormat** | **string** | Optional | The format in which values for this property definition should be represented. Available values: Text, Html. |
 | **CustomEntityType** | **string** | Optional | The custom entity type that this derived property definition can be applied to. |
 
 
@@ -26,7 +26,7 @@ var instance = new UpdateDerivedPropertyDefinitionRequest(
     propertyDescription: "...",  // optional — Describes the property
     derivationFormula: "...",  // required — The rule that defines how data is composed for a derived property.
     isFilterable: true,  // required — Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions.  For a derived definition this must be set true to enable filtering.
-    valueFormat: "...",  // optional — The format in which values for this property definition should be represented.
+    valueFormat: "...",  // optional — The format in which values for this property definition should be represented. Available values: Text, Html.
     customEntityType: "..."  // optional — The custom entity type that this derived property definition can be applied to.
 );
 ```

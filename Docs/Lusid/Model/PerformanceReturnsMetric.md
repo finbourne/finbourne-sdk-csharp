@@ -5,7 +5,7 @@ The request used in the AggregatedReturns.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Type** | **string** | Optional | The type of the metric. Default to Return |
+| **Type** | **string** | Optional | The type of the metric. Default value: Return. Available values: Return, Volatility, IndicativeAmount, Dispersion. |
 | **Window** | **string** | Optional | The given metric for the calculation i.e. 1Y, 1D. |
 | **AllowPartial** | **bool** | Optional | Bool if the metric is allowed partial results. Default to false. |
 | **Annualised** | **bool** | Optional | Bool if the metric is annualized. Default to false. |
@@ -22,7 +22,7 @@ The request used in the AggregatedReturns.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new PerformanceReturnsMetric(
-    type: "...",  // optional — The type of the metric. Default to Return
+    type: "...",  // optional — The type of the metric. Default value: Return. Available values: Return, Volatility, IndicativeAmount, Dispersion.
     window: "...",  // optional — The given metric for the calculation i.e. 1Y, 1D.
     allowPartial: true,  // optional — Bool if the metric is allowed partial results. Default to false.
     annualised: true,  // optional — Bool if the metric is annualized. Default to false.

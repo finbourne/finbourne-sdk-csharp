@@ -13,7 +13,7 @@ Contains data (i.e. dates and prices + metadata) for building Equity curves
 | **Prices** | **List&lt;decimal&gt;** | Required | Prices provided for the forward price of the Equity at the corresponding date in Dates. |
 | **MarketDataOptions** | [MarketDataOptions](MarketDataOptions.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
-| **MarketDataType** | **string** | Required | The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface Default: `MarketDataTypeEnum.EquityCurveByPricesData` |
+| **MarketDataType** | **string** | Required | Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface. Default: `MarketDataTypeEnum.EquityCurveByPricesData` |
 
 
 ## Usage
@@ -30,7 +30,7 @@ var instance = new EquityCurveByPricesData(
     prices: ,  // required — Prices provided for the forward price of the Equity at the corresponding date in Dates.
     marketDataOptions: new MarketDataOptions(...),  // optional
     varVersion: new ModelVersion(...),  // optional
-    marketDataType: "..."  // required — The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface
+    marketDataType: "..."  // required — Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface.
 );
 ```
 ### Serializing to JSON

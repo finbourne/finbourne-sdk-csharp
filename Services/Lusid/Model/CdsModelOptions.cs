@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="CdsModelOptions" /> class.
         /// </summary>
         /// <param name="useFactorsForCurrentNotional">Determines if calculations that use current notional apply use a constituent weight factor from a quote representing a default. (required).</param>
-        /// <param name="modelOptionsType">The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions (required) (default to ModelOptionsTypeEnum.Invalid).</param>
+        /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
         public CdsModelOptions(bool useFactorsForCurrentNotional = default(bool), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
         {
             this.UseFactorsForCurrentNotional = useFactorsForCurrentNotional;

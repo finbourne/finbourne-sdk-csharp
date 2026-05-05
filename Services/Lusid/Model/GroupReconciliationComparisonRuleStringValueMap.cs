@@ -37,7 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="leftValue">The left string to map (required).</param>
         /// <param name="rightValue">The right string to map (required).</param>
-        /// <param name="direction">The direction to map. \&quot;UniDirectional\&quot; | \&quot;BiDirectional\&quot; (required).</param>
+        /// <param name="direction">The direction to map. Available values: BiDirectional, UniDirectional. (required).</param>
         public GroupReconciliationComparisonRuleStringValueMap(string leftValue = default(string), string rightValue = default(string), string direction = default(string))
         {
             // to ensure "leftValue" is required (not null)
@@ -75,9 +75,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string RightValue { get; set; }
 
         /// <summary>
-        /// The direction to map. \&quot;UniDirectional\&quot; | \&quot;BiDirectional\&quot;
+        /// The direction to map. Available values: BiDirectional, UniDirectional.
         /// </summary>
-        /// <value>The direction to map. \&quot;UniDirectional\&quot; | \&quot;BiDirectional\&quot;</value>
+        /// <value>The direction to map. Available values: BiDirectional, UniDirectional.</value>
         [DataMember(Name = "direction", IsRequired = true, EmitDefaultValue = true)]
         public string Direction { get; set; }
 

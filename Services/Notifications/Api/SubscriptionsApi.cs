@@ -449,6 +449,16 @@ namespace Finbourne.Sdk.Services.Notifications.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -553,6 +563,16 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -666,6 +686,16 @@ namespace Finbourne.Sdk.Services.Notifications.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -776,6 +806,16 @@ namespace Finbourne.Sdk.Services.Notifications.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -883,6 +923,16 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -996,6 +1046,16 @@ namespace Finbourne.Sdk.Services.Notifications.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -1095,6 +1155,16 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1212,6 +1282,16 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1345,6 +1425,16 @@ namespace Finbourne.Sdk.Services.Notifications.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -1467,6 +1557,16 @@ namespace Finbourne.Sdk.Services.Notifications.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {

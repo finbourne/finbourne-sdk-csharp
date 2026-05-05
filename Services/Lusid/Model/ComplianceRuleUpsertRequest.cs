@@ -38,12 +38,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="scope">scope (required).</param>
         /// <param name="code">code.</param>
         /// <param name="displayName">displayName.</param>
-        /// <param name="type">type (required).</param>
+        /// <param name="type">Available values: RangeNumberSecurities, RangePercentSecurityType, RangePercentCash, RangePercentPropertyKey. (required).</param>
         /// <param name="propertyKey">propertyKey.</param>
         /// <param name="value">value.</param>
         /// <param name="lowerBound">lowerBound (required).</param>
         /// <param name="upperBound">upperBound (required).</param>
-        /// <param name="schedule">schedule (required).</param>
+        /// <param name="schedule">Available values: PreTrade, PostTrade, PreAndPostTrade. (required).</param>
         /// <param name="hardRequirement">hardRequirement (required).</param>
         /// <param name="targetPortfolioIds">targetPortfolioIds (required).</param>
         /// <param name="description">description.</param>
@@ -104,8 +104,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// Available values: RangeNumberSecurities, RangePercentSecurityType, RangePercentCash, RangePercentPropertyKey.
         /// </summary>
+        /// <value>Available values: RangeNumberSecurities, RangePercentSecurityType, RangePercentCash, RangePercentPropertyKey.</value>
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public string Type { get; set; }
 
@@ -134,8 +135,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal UpperBound { get; set; }
 
         /// <summary>
-        /// Gets or Sets Schedule
+        /// Available values: PreTrade, PostTrade, PreAndPostTrade.
         /// </summary>
+        /// <value>Available values: PreTrade, PostTrade, PreAndPostTrade.</value>
         [DataMember(Name = "schedule", IsRequired = true, EmitDefaultValue = true)]
         public string Schedule { get; set; }
 

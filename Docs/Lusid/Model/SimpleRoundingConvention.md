@@ -6,7 +6,7 @@ Certain bonds will follow certain rounding conventions.  For example, Thai gover
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Precision** | **int** | Optional | The precision of the rounding. The decimal places or significant figures to which the rounding takes place.  Defaults to 0 if not set. |
-| **RoundingType** | **string** | Optional | The type of rounding.  e.g. Round Up, Round Down    Supported string (enumeration) values are: [Down, Up, Nearest].  Defaults to \&quot;None\&quot; if not set. |
+| **RoundingType** | **string** | Optional | The type of rounding.  Default value: None. Available values: None, Down, Up, Nearest. |
 
 
 ## Usage
@@ -18,7 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new SimpleRoundingConvention(
     precision: 0,  // optional — The precision of the rounding. The decimal places or significant figures to which the rounding takes place.  Defaults to 0 if not set.
-    roundingType: "..."  // optional — The type of rounding.  e.g. Round Up, Round Down    Supported string (enumeration) values are: [Down, Up, Nearest].  Defaults to \&quot;None\&quot; if not set.
+    roundingType: "..."  // optional — The type of rounding.  Default value: None. Available values: None, Down, Up, Nearest.
 );
 ```
 ### Serializing to JSON

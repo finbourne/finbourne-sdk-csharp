@@ -5,7 +5,7 @@ The market quote for an observable which will be used to calibrate the market da
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **QuoteType** | **string** | Required | The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor |
+| **QuoteType** | **string** | Required | Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor. |
 | **Value** | **decimal** | Required | Numeric value of the quote |
 
 
@@ -17,7 +17,7 @@ The market quote for an observable which will be used to calibrate the market da
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new MarketQuote(
-    quoteType: "...",  // required — The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor
+    quoteType: "...",  // required — Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor.
     value: 0.0d  // required — Numeric value of the quote
 );
 ```

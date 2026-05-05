@@ -87,8 +87,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the dialect. |
 | **vendor** | **string** | path | **required** | The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE. |
 | **sourceSystem** | **string** | path | **required** | The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib. |
-| **entityType** | **string** | path | **required** | The type of entity this dialect describes e.g. Instrument. |
-| **serialisationFormat** | **string** | path | **required** | The serialisation format of a document in this dialect. e.g. JSON, XML. |
+| **entityType** | **string** | path | **required** | The type of entity this dialect describes e.g. Instrument. Available values: Instrument. |
+| **serialisationFormat** | **string** | path | **required** | The serialisation format of a document in this dialect. Available values: Json, Xml. |
 | **version** | **string** | path | **required** | The semantic version of the dialect: MAJOR.MINOR.PATCH. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. |
 

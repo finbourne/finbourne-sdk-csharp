@@ -1,6 +1,6 @@
-# Finbourne.Sdk.Horizon.Model.UpdateClientConfigurationDraftRequest
+# Finbourne.Sdk.Horizon.Model.UpdateVersionedConfigurationDraftRequest
 
-Request to update the value of an existing draft client configuration.
+Request to update the value of an existing draft versioned configuration.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -15,7 +15,7 @@ Request to update the value of an existing draft client configuration.
 ```csharp
 using Finbourne.Sdk.Services.Horizon.Model;
 
-var instance = new UpdateClientConfigurationDraftRequest(
+var instance = new UpdateVersionedConfigurationDraftRequest(
     value: "..."  // required — The new JSON value to store. Must be valid JSON.
 );
 ```
@@ -28,7 +28,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<UpdateClientConfigurationDraftRequest>(json);
+var instance = JsonConvert.DeserializeObject<UpdateVersionedConfigurationDraftRequest>(json);
 ```
 
 

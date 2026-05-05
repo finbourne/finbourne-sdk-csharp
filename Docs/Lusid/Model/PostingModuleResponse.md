@@ -11,7 +11,7 @@ A Posting Module definition
 | **DisplayName** | **string** | Required | The name of the Posting Module. |
 | **Description** | **string** | Optional | A description for the Posting Module. |
 | **Rules** | [List&lt;PostingModuleRule&gt;](PostingModuleRule.md) | Optional | The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection. |
-| **Status** | **string** | Required | The Posting Module status. Can be Active, Inactive or Deleted. Defaults to Active. |
+| **Status** | **string** | Required | The Posting Module status. Default value: Active. Available values: Active, Inactive, Deleted. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
@@ -30,7 +30,7 @@ var instance = new PostingModuleResponse(
     displayName: "...",  // required — The name of the Posting Module.
     description: "...",  // optional — A description for the Posting Module.
     rules: new List<PostingModuleRule>(),  // optional — The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
-    status: "...",  // required — The Posting Module status. Can be Active, Inactive or Deleted. Defaults to Active.
+    status: "...",  // required — The Posting Module status. Default value: Active. Available values: Active, Inactive, Deleted.
     varVersion: new ModelVersion(...),  // optional
     links: new List<Link>()  // optional
 );

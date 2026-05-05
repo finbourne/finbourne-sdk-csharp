@@ -39,7 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="date">Date for which the forward rate applies. (required).</param>
         /// <param name="pipRate">Rate provided for the fx forward (price in FgnCcy per unit of DomCcy), expressed in pips. (required).</param>
-        /// <param name="marketDataType">The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData (required) (default to MarketDataTypeEnum.AppendFxForwardCurveByQuoteReference).</param>
+        /// <param name="marketDataType">Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData. (required) (default to MarketDataTypeEnum.AppendFxForwardCurveByQuoteReference).</param>
         public AppendFxForwardPipsCurveData(DateTimeOffset date = default(DateTimeOffset), decimal pipRate = default(decimal), MarketDataTypeEnum marketDataType = default(MarketDataTypeEnum)) : base()
         {
             this.Date = date;

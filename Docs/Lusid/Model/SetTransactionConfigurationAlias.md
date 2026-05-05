@@ -7,7 +7,7 @@
 | **Type** | **string** | Required | *No description available.* |
 | **Description** | **string** | Required | *No description available.* |
 | **TransactionClass** | **string** | Required | *No description available.* |
-| **TransactionRole** | **string** | Required | *No description available.* |
+| **TransactionRole** | **string** | Required | Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles. |
 | **IsDefault** | **bool** | Optional | *No description available.* |
 
 
@@ -22,7 +22,7 @@ var instance = new SetTransactionConfigurationAlias(
     type: "...",  // required
     description: "...",  // required
     transactionClass: "...",  // required
-    transactionRole: "...",  // required
+    transactionRole: "...",  // required — Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles.
     isDefault: true  // optional
 );
 ```

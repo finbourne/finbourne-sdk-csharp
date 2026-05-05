@@ -8,7 +8,7 @@ Model options for credit default instrument.
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **UseFactorsForCurrentNotional** | **bool** | Required | Determines if calculations that use current notional apply use a constituent weight factor from a quote representing a default. |
-| **ModelOptionsType** | **string** | Required | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions Default: `ModelOptionsTypeEnum.CdsModelOptions` |
+| **ModelOptionsType** | **string** | Required | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. Default: `ModelOptionsTypeEnum.CdsModelOptions` |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CdsModelOptions(
     useFactorsForCurrentNotional: true,  // required — Determines if calculations that use current notional apply use a constituent weight factor from a quote representing a default.
-    modelOptionsType: "..."  // required — The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions
+    modelOptionsType: "..."  // required — Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions.
 );
 ```
 ### Serializing to JSON

@@ -7,7 +7,7 @@ The instrument life cycle event result value type
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ResultValueType** | **string** | Required | The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset *(inherited)* |
+| **ResultValueType** | **string** | Required | Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset. *(inherited)* |
 | **EffectiveDate** | **DateTimeOffset** | Optional | The effective date of the event |
 | **EventValues** | [ResultValueDictionary](ResultValueDictionary.md) | Optional | *No description available.* |
 | **EventLineage** | [LifeCycleEventLineage](LifeCycleEventLineage.md) | Optional | *No description available.* |

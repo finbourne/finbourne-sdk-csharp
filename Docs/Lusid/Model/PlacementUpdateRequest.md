@@ -13,7 +13,7 @@ A request to create or update a Placement.
 | **StopPrice** | **decimal?** | Optional | The optional price, as currency and amount, associated with this placement. |
 | **Counterparty** | **string** | Optional | Optionally specifies the market entity this placement is placed with. |
 | **ExecutionSystem** | **string** | Optional | Optionally specifies the execution system in use. |
-| **EntryType** | **string** | Optional | Optionally specifies the entry type of this placement. |
+| **EntryType** | **string** | Optional | Optionally specifies the entry type of this placement. Available values: Undecided, Manual, Direct, Ems, External. |
 
 
 ## Usage
@@ -32,7 +32,7 @@ var instance = new PlacementUpdateRequest(
     stopPrice: 0.0d,  // optional — The optional price, as currency and amount, associated with this placement.
     counterparty: "...",  // optional — Optionally specifies the market entity this placement is placed with.
     executionSystem: "...",  // optional — Optionally specifies the execution system in use.
-    entryType: "..."  // optional — Optionally specifies the entry type of this placement.
+    entryType: "..."  // optional — Optionally specifies the entry type of this placement. Available values: Undecided, Manual, Direct, Ems, External.
 );
 ```
 ### Serializing to JSON

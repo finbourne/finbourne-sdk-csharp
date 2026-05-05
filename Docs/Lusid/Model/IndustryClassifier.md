@@ -5,7 +5,7 @@ Object describing a particular industry classifier,  which comprises a classific
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ClassificationSystemName** | **string** | Required | The name of the classification system to which the classification code belongs (e.g. GICS). |
+| **ClassificationSystemName** | **string** | Required | The name of the classification system to which the classification code belongs (e.g. GICS). Available values: GICS2018. |
 | **ClassificationCode** | **string** | Required | The specific industry classification code assigned to the legal entity. |
 
 
@@ -17,7 +17,7 @@ Object describing a particular industry classifier,  which comprises a classific
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new IndustryClassifier(
-    classificationSystemName: "...",  // required — The name of the classification system to which the classification code belongs (e.g. GICS).
+    classificationSystemName: "...",  // required — The name of the classification system to which the classification code belongs (e.g. GICS). Available values: GICS2018.
     classificationCode: "..."  // required — The specific industry classification code assigned to the legal entity.
 );
 ```

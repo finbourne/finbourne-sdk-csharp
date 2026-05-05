@@ -7,7 +7,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Values** | **List&lt;decimal&gt;** | Required | *No description available.* |
-| **ReferenceListType** | **string** | Required | The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList Default: `ReferenceListTypeEnum.DecimalList` |
+| **ReferenceListType** | **string** | Required | The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList. Default: `ReferenceListTypeEnum.DecimalList` |
 
 
 ## Usage
@@ -19,7 +19,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new DecimalList(
     values: ,  // required
-    referenceListType: "..."  // required — The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList
+    referenceListType: "..."  // required — The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList.
 );
 ```
 ### Serializing to JSON

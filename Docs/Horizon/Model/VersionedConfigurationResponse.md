@@ -1,6 +1,6 @@
-# Finbourne.Sdk.Horizon.Model.ClientConfigurationResponse
+# Finbourne.Sdk.Horizon.Model.VersionedConfigurationResponse
 
-Represents a versioned client configuration record.
+Represents a versioned configuration record.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -20,7 +20,7 @@ Represents a versioned client configuration record.
 ```csharp
 using Finbourne.Sdk.Services.Horizon.Model;
 
-var instance = new ClientConfigurationResponse(
+var instance = new VersionedConfigurationResponse(
     name: "...",  // required — The logical name of the configuration.
     configType: "...",  // required — The category of configuration.
     majorVersion: 0,  // required — The major version number.
@@ -38,7 +38,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<ClientConfigurationResponse>(json);
+var instance = JsonConvert.DeserializeObject<VersionedConfigurationResponse>(json);
 ```
 
 

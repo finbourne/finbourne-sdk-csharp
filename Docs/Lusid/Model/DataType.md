@@ -4,13 +4,13 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **TypeValueRange** | **string** | Required | The available values are: Open, Closed |
+| **TypeValueRange** | **string** | Required | Available values: Open, Closed. |
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **DisplayName** | **string** | Required | *No description available.* |
 | **Description** | **string** | Required | *No description available.* |
-| **ValueType** | **string** | Required | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText |
+| **ValueType** | **string** | Required | Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText. |
 | **AcceptableValues** | **List&lt;string&gt;** | Optional | *No description available.* |
-| **UnitSchema** | **string** | Optional | The available values are: NoUnits, Basic, Iso4217Currency |
+| **UnitSchema** | **string** | Optional | Available values: NoUnits, Basic, Iso4217Currency. |
 | **AcceptableUnits** | [List&lt;IUnitDefinitionDto&gt;](IUnitDefinitionDto.md) | Optional | *No description available.* |
 | **ReferenceData** | [ReferenceData](ReferenceData.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
@@ -27,13 +27,13 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new DataType(
-    typeValueRange: "...",  // required — The available values are: Open, Closed
+    typeValueRange: "...",  // required — Available values: Open, Closed.
     id: new ResourceId(...),  // required
     displayName: "...",  // required
     description: "...",  // required
-    valueType: "...",  // required — The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText
+    valueType: "...",  // required — Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.
     acceptableValues: ,  // optional
-    unitSchema: "...",  // optional — The available values are: NoUnits, Basic, Iso4217Currency
+    unitSchema: "...",  // optional — Available values: NoUnits, Basic, Iso4217Currency.
     acceptableUnits: new List<IUnitDefinitionDto>(),  // optional
     referenceData: new ReferenceData(...),  // optional
     varVersion: new ModelVersion(...),  // optional

@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **AddressKey** | **string** | Required | The address key of the address key definition. |
-| **Type** | **string** | Required | The type of the address key definition |
+| **Type** | **string** | Required | The type of the address key definition. Available values: Text, Integer, Decimal, Boolean, DateTime, Result0D. |
 
 
 ## Usage
@@ -17,7 +17,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CreateAddressKeyDefinitionRequest(
     addressKey: "...",  // required — The address key of the address key definition.
-    type: "..."  // required — The type of the address key definition
+    type: "..."  // required — The type of the address key definition. Available values: Text, Integer, Decimal, Boolean, DateTime, Result0D.
 );
 ```
 ### Serializing to JSON

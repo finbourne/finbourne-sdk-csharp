@@ -429,7 +429,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **returnCode** | **string** | path | **required** | The code of the Returns. |
 | **fromEffectiveAt** | **DateTimeOrCutLabel** | query | **required** | The start date from which to delete the Returns. |
 | **toEffectiveAt** | **DateTimeOrCutLabel** | query | **required** | The end date from which to delete the Returns. |
-| **period** | **string?** | query | optional | The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. |
+| **period** | **string?** | query | optional | The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. |
 
 ### Return type
 
@@ -780,9 +780,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **recipeIdCode** | **string?** | query | optional | The Recipe Code for getting the fx rates |
 | **fromEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The start date from which to calculate the Returns. |
 | **toEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The end date for which to calculate the Returns. |
-| **compositeMethod** | **string?** | query | optional | The method used to calculate the Portfolio performance:              Equal/Asset. |
-| **period** | **string?** | query | optional | The type of the returns used to calculate the aggregation result: Daily/Monthly. |
-| **outputFrequency** | **string?** | query | optional | The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. |
+| **compositeMethod** | **string?** | query | optional | The method used to calculate the Portfolio performance. Available values: Equal, Asset. |
+| **period** | **string?** | query | optional | The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. |
+| **outputFrequency** | **string?** | query | optional | The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. |
 | **metrics** | [List&lt;string&gt;?](string.md) | query | optional | Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Returns. Defaults to the latest. |
 | **alternativeIncDate** | **DateTimeOrCutLabel?** | query | optional | The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. |
@@ -1330,7 +1330,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **returnCode** | **string** | path | **required** | The code of the Returns. |
 | **fromEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The start date from which to get the Returns. |
 | **toEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The end date from which to get the Returns. |
-| **period** | **string?** | query | optional | Show the Returns on a Daily or Monthly period. Defaults to Daily. |
+| **period** | **string?** | query | optional | The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Returns. Defaults to the latest. |
 
 ### Return type

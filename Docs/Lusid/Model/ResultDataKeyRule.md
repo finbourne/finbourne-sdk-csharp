@@ -14,7 +14,7 @@
 | **ResourceKey** | **string** | Required | The result data key that identifies the address pattern that this is a rule for |
 | **DocumentResultType** | **string** | Required | *No description available.* |
 | **UseDocumentToInferHoldings** | **bool** | Optional | Indicates whether the relevant document should be used to infer the set of holdings in the valuation. |
-| **ResultKeyRuleType** | **string** | Required | The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule Default: `ResultKeyRuleTypeEnum.ResultDataKeyRule` |
+| **ResultKeyRuleType** | **string** | Required | Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule. Default: `ResultKeyRuleTypeEnum.ResultDataKeyRule` |
 
 
 ## Usage
@@ -33,7 +33,7 @@ var instance = new ResultDataKeyRule(
     resourceKey: "...",  // required — The result data key that identifies the address pattern that this is a rule for
     documentResultType: "...",  // required
     useDocumentToInferHoldings: true,  // optional — Indicates whether the relevant document should be used to infer the set of holdings in the valuation.
-    resultKeyRuleType: "..."  // required — The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule
+    resultKeyRuleType: "..."  // required — Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule.
 );
 ```
 ### Serializing to JSON

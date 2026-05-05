@@ -5,8 +5,8 @@ The compounding settings used on interest rate.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **AveragingMethod** | **string** | Optional | Defines whether a weighted or unweighted average is used when calculating the average rate.  It applies only when CompoundingMethod &#x3D; ‘Averaging‘.    Supported string (enumeration) values are: [Unweighted, UnweightedIncludingWeekends, Weighted].  Defaults to \&quot;None\&quot; if not set. |
-| **CalculationShiftMethod** | **string** | Optional | Defines which resets and day counts are used for the rate calculation    Supported string (enumeration) values are: [Lookback, NoShift, ObservationPeriodShift, Lockout].  Defaults to \&quot;NoShift\&quot; if not set. |
+| **AveragingMethod** | **string** | Optional | Defines whether a weighted or unweighted average is used when calculating the average rate.  It applies only when CompoundingMethod &#x3D; ‘Averaging‘.    Default value: None. Available values: None, Unweighted, Weighted, UnweightedIncludingWeekends. |
+| **CalculationShiftMethod** | **string** | Optional | Defines which resets and day counts are used for the rate calculation    Default value: NoShift. Available values: Lookback, NoShift, ObservationPeriodShift, Lockout. |
 | **CompoundingMethod** | **string** | Required | If the interest rate is simple, compounded or using a pre-computed compounded index.    Supported string (enumeration) values are: [Averaging, Compounding, CompoundedIndex, NonCumulativeCompounding]. |
 | **ResetFrequency** | **string** | Required | The interest payment frequency.    For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097) |
 | **Shift** | **int** | Optional | Defines the number of days to lockout or shift observation period by - should be a non-negative integer.  Defaults to 0 if not set. |
@@ -22,8 +22,8 @@ The compounding settings used on interest rate.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new Compounding(
-    averagingMethod: "...",  // optional — Defines whether a weighted or unweighted average is used when calculating the average rate.  It applies only when CompoundingMethod &#x3D; ‘Averaging‘.    Supported string (enumeration) values are: [Unweighted, UnweightedIncludingWeekends, Weighted].  Defaults to \&quot;None\&quot; if not set.
-    calculationShiftMethod: "...",  // optional — Defines which resets and day counts are used for the rate calculation    Supported string (enumeration) values are: [Lookback, NoShift, ObservationPeriodShift, Lockout].  Defaults to \&quot;NoShift\&quot; if not set.
+    averagingMethod: "...",  // optional — Defines whether a weighted or unweighted average is used when calculating the average rate.  It applies only when CompoundingMethod &#x3D; ‘Averaging‘.    Default value: None. Available values: None, Unweighted, Weighted, UnweightedIncludingWeekends.
+    calculationShiftMethod: "...",  // optional — Defines which resets and day counts are used for the rate calculation    Default value: NoShift. Available values: Lookback, NoShift, ObservationPeriodShift, Lockout.
     compoundingMethod: "...",  // required — If the interest rate is simple, compounded or using a pre-computed compounded index.    Supported string (enumeration) values are: [Averaging, Compounding, CompoundedIndex, NonCumulativeCompounding].
     resetFrequency: "...",  // required — The interest payment frequency.    For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
     shift: 0,  // optional — Defines the number of days to lockout or shift observation period by - should be a non-negative integer.  Defaults to 0 if not set.

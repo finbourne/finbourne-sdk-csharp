@@ -17,6 +17,7 @@ All URIs are relative to *http://localhost*
 | [**GetIntegrationConfigurationFields**](#getintegrationconfigurationfields) | **GET** `/horizon/api/integrations/configuration/{integration}/fields` | [EXPERIMENTAL] GetIntegrationConfigurationFields: Get the Field Mapping configuration for a given integration |
 | [**GetIntegrationConfigurationProperties**](#getintegrationconfigurationproperties) | **GET** `/horizon/api/integrations/configuration/{integration}/properties` | [EXPERIMENTAL] GetIntegrationConfigurationProperties: Get the Property Mapping configuration for a given integration |
 | [**GetSchema**](#getschema) | **GET** `/horizon/api/integrations/schema/{integration}` | [EXPERIMENTAL] GetSchema: Get the JSON schema for the details section of an integration instance. |
+| [**GetTpfTransactionHistorySearch**](#gettpftransactionhistorysearch) | **GET** `/horizon/api/integrations/trade-publication-framework/transactions/search` | [EARLY ACCESS] GetTpfTransactionHistorySearch: Endpoint to search TPF transaction by transaction ID and/or instrument identifier, with filtering by instance and date range |
 | [**ListDataflowProcessors**](#listdataflowprocessors) | **GET** `/horizon/api/integrations/dataflow/processors` | [EXPERIMENTAL] ListDataflowProcessors: List processor types. |
 | [**ListInstances**](#listinstances) | **GET** `/horizon/api/integrations/instances` | [EXPERIMENTAL] ListInstances: List instances across all integrations. |
 | [**ListIntegrations**](#listintegrations) | **GET** `/horizon/api/integrations` | [EXPERIMENTAL] ListIntegrations: List available integrations. |
@@ -779,6 +780,76 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<JSchema> response = apiInstance.GetSchemaWithHttpInfo(integration);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="gettpftransactionhistorysearch"></a>
+## GetTpfTransactionHistorySearch
+
+> PagedResourceListOfTpfTransactionSearchResponse GetTpfTransactionHistorySearch(string? transactionId = null, string? instrumentId = null, string? dateFrom = null, string? dateTo = null, string? status = null, string? instanceId = null, int? pageSize = null, string? pageToken = null)
+
+[EARLY ACCESS] GetTpfTransactionHistorySearch: Endpoint to search TPF transaction by transaction ID and/or instrument identifier, with filtering by instance and date range
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IntegrationsApi>();
+var transactionId = "transactionId_example";  // string? (optional)
+var instrumentId = "instrumentId_example";  // string? (optional)
+var dateFrom = "dateFrom_example";  // string? (optional)
+var dateTo = "dateTo_example";  // string? (optional)
+var status = "status_example";  // string? (optional)
+var instanceId = "instanceId_example";  // string? (optional)
+var pageSize = 400;  // int? (optional)
+var pageToken = "\"\"";  // string? (optional)
+PagedResourceListOfTpfTransactionSearchResponse result = apiInstance.GetTpfTransactionHistorySearch(transactionId, instrumentId, dateFrom, dateTo, status, instanceId, pageSize, pageToken);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **transactionId** | **string?** | query | optional |  |
+| **instrumentId** | **string?** | query | optional |  |
+| **dateFrom** | **string?** | query | optional |  |
+| **dateTo** | **string?** | query | optional |  |
+| **status** | **string?** | query | optional |  |
+| **instanceId** | **string?** | query | optional |  |
+| **pageSize** | **int?** | query | optional |  Default: `400` |
+| **pageToken** | **string?** | query | optional |  Default: `&quot;&quot;` |
+
+### Return type
+
+[PagedResourceListOfTpfTransactionSearchResponse](PagedResourceListOfTpfTransactionSearchResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetTpfTransactionHistorySearchWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfTpfTransactionSearchResponse> response = apiInstance.GetTpfTransactionHistorySearchWithHttpInfo(transactionId, instrumentId, dateFrom, dateTo, status, instanceId, pageSize, pageToken);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

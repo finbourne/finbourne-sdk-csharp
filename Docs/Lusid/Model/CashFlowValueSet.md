@@ -8,7 +8,7 @@ Result value for a collection of cash flow values
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Cashflows** | [List&lt;CashFlowValue&gt;](CashFlowValue.md) | Optional | The set of cash flows in the result |
-| **ResultValueType** | **string** | Required | The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset Default: `ResultValueTypeEnum.CashFlowValueSet` |
+| **ResultValueType** | **string** | Required | Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset. Default: `ResultValueTypeEnum.CashFlowValueSet` |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CashFlowValueSet(
     cashflows: new List<CashFlowValue>(),  // optional — The set of cash flows in the result
-    resultValueType: "..."  // required — The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset
+    resultValueType: "..."  // required — Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset.
 );
 ```
 ### Serializing to JSON

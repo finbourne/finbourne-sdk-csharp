@@ -7,7 +7,7 @@
 | **RunId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **InstigatedAt** | **DateTimeOffset** | Required | *No description available.* |
 | **CompletedAt** | **DateTimeOffset** | Required | *No description available.* |
-| **Schedule** | **string** | Required | *No description available.* |
+| **Schedule** | **string** | Required | Available values: PreTrade, PostTrade, PreAndPostTrade. |
 | **RuleResult** | [ComplianceSummaryRuleResult](ComplianceSummaryRuleResult.md) | Required | *No description available.* |
 
 
@@ -22,7 +22,7 @@ var instance = new ComplianceRuleResultV2(
     runId: new ResourceId(...),  // required
     instigatedAt: DateTimeOffset.Now,  // required
     completedAt: DateTimeOffset.Now,  // required
-    schedule: "...",  // required
+    schedule: "...",  // required — Available values: PreTrade, PostTrade, PreAndPostTrade.
     ruleResult: new ComplianceSummaryRuleResult(...)  // required
 );
 ```

@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="PropertyList" /> class.
         /// </summary>
         /// <param name="values">values (required).</param>
-        /// <param name="referenceListType">The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList (required) (default to ReferenceListTypeEnum.PortfolioGroupIdList).</param>
+        /// <param name="referenceListType">The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList. (required) (default to ReferenceListTypeEnum.PortfolioGroupIdList).</param>
         public PropertyList(List<Property> values = default(List<Property>), ReferenceListTypeEnum referenceListType = default(ReferenceListTypeEnum)) : base()
         {
             // to ensure "values" is required (not null)

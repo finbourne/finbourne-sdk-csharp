@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="FundingLegOptions" /> class.
         /// </summary>
         /// <param name="expectedFundingLegNotional">Assumption made on future expected notional of the funding leg. (required).</param>
-        /// <param name="modelOptionsType">The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions (required) (default to ModelOptionsTypeEnum.Invalid).</param>
+        /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
         public FundingLegOptions(string expectedFundingLegNotional = default(string), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base(modelOptionsType)
         {
             // to ensure "expectedFundingLegNotional" is required (not null)

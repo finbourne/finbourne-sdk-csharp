@@ -6,7 +6,7 @@ A definition for the period you wish to lock
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **DiaryEntryCode** | **string** | Optional | Unique code assigned to a period. When left blank last closed period will be located. |
-| **ClosingOptions** | **List&lt;string&gt;** | Optional | The options which will be executed once a period is closed or locked. |
+| **ClosingOptions** | **List&lt;string&gt;** | Optional | The options which will be executed once a period is closed or locked. Available values: ApplyClearDown. |
 
 
 ## Usage
@@ -18,7 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new LockPeriodDiaryEntryRequest(
     diaryEntryCode: "...",  // optional — Unique code assigned to a period. When left blank last closed period will be located.
-    closingOptions:   // optional — The options which will be executed once a period is closed or locked.
+    closingOptions:   // optional — The options which will be executed once a period is closed or locked. Available values: ApplyClearDown.
 );
 ```
 ### Serializing to JSON

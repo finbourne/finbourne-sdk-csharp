@@ -38,9 +38,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class ComplianceStep : IEquatable<ComplianceStep>, IValidatableObject
     {
         /// <summary>
-        /// . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep
+        /// The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep.
         /// </summary>
-        /// <value>. The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep</value>
+        /// <value>The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ComplianceStepTypeEnum
         {
@@ -88,9 +88,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep
+        /// The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep.
         /// </summary>
-        /// <value>. The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep</value>
+        /// <value>The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep.</value>
         [DataMember(Name = "complianceStepType", IsRequired = true, EmitDefaultValue = true)]
         public ComplianceStepTypeEnum ComplianceStepType { get; set; }
         /// <summary>
@@ -101,7 +101,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ComplianceStep" /> class.
         /// </summary>
-        /// <param name="complianceStepType">. The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep (required).</param>
+        /// <param name="complianceStepType">The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep. (required).</param>
         public ComplianceStep(ComplianceStepTypeEnum complianceStepType = default(ComplianceStepTypeEnum))
         {
             this.ComplianceStepType = complianceStepType;

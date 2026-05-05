@@ -360,7 +360,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | The list of lusidInstrumentId&#39;s to delete. |
-| **deleteMode** | **string?** | query | optional | The delete mode to use (defaults to &#39;Soft&#39;). |
+| **deleteMode** | **string?** | query | optional | The delete mode to use. Default value: Soft. Available values: Soft, Hard. |
 | **scope** | **string?** | query | optional | The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 
 ### Return type
@@ -635,9 +635,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use. |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use. |
-| **timelineScope** | **string?** | query | optional | The optional scope of a timeline to use for post-close activity. |
-| **timelineCode** | **string?** | query | optional | The optional code of a timeline to use for post-close activity. |
-| **closedPeriodId** | **string?** | query | optional | The optional id of a closed period within the timeline to view. |
+| **timelineScope** | **string?** | query | optional | The scope of the Timeline. |
+| **timelineCode** | **string?** | query | optional | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. |
+| **closedPeriodId** | **string?** | query | optional | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. |
 
 ### Return type
 
@@ -1157,7 +1157,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ListInstruments: List instruments
 
-List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope '*' to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
 
 ### Example
 
@@ -1193,14 +1193,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. Default: `&quot;State eq &#39;Active&#39;&quot;` |
 | **instrumentPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. |
-| **scope** | **string?** | query | optional | The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
+| **scope** | **string?** | query | optional | The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.                 Use &#39;*&#39; to list instruments across all scopes. Default: `&quot;default&quot;` |
 | **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use. |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use. |
-| **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. |
-| **timelineScope** | **string?** | query | optional | The scope of the timeline to use for PCA (Post Close Activity) support. |
-| **timelineCode** | **string?** | query | optional | The code of the timeline to use for PCA (Post Close Activity) support. |
-| **closedPeriodId** | **string?** | query | optional | The id of the closed period on the timeline to use for PCA (Post Close Activity) support. |
+| **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. |
+| **timelineScope** | **string?** | query | optional | The scope of the Timeline. |
+| **timelineCode** | **string?** | query | optional | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. |
+| **closedPeriodId** | **string?** | query | optional | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. |
 
 ### Return type
 

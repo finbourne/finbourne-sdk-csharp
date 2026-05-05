@@ -7,14 +7,14 @@
 | **Href** | **string** | Required | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
 | **EntityUniqueId** | **string** | Required | The unique id of the entity. |
 | **AsAtVersionNumber** | **int?** | Optional | The integer version number for the entity (the entity was created at version 1) |
-| **Status** | **string** | Required | The status of the entity at the current time. |
+| **Status** | **string** | Required | The status of the entity at the current time. Available values: Prevailing, Deleted, DoesNotExist. |
 | **AsAtDeleted** | **DateTimeOffset?** | Optional | The asAt datetime at which the entity was deleted. |
 | **UserIdDeleted** | **string** | Optional | The unique id of the user who deleted the entity. |
 | **RequestIdDeleted** | **string** | Optional | The unique request id of the command that deleted the entity. |
 | **EffectiveAtCreated** | **DateTimeOffset?** | Optional | The EffectiveAt this Entity is created, if entity does not currently exist in EffectiveAt. |
 | **PrevailingCustomEntity** | [CustomEntityResponse](CustomEntityResponse.md) | Optional | *No description available.* |
 | **DeletedCustomEntity** | [CustomEntityResponse](CustomEntityResponse.md) | Optional | *No description available.* |
-| **PreviewedStatus** | **string** | Optional | The status of the previewed entity. |
+| **PreviewedStatus** | **string** | Optional | The status of the previewed entity. Available values: Prevailing, Deleted, DoesNotExist. |
 | **PreviewedCustomEntity** | [CustomEntityResponse](CustomEntityResponse.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
@@ -30,14 +30,14 @@ var instance = new CustomEntityEntity(
     href: "...",  // required — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
     entityUniqueId: "...",  // required — The unique id of the entity.
     asAtVersionNumber: 0,  // optional — The integer version number for the entity (the entity was created at version 1)
-    status: "...",  // required — The status of the entity at the current time.
+    status: "...",  // required — The status of the entity at the current time. Available values: Prevailing, Deleted, DoesNotExist.
     asAtDeleted: DateTimeOffset.Now,  // optional — The asAt datetime at which the entity was deleted.
     userIdDeleted: "...",  // optional — The unique id of the user who deleted the entity.
     requestIdDeleted: "...",  // optional — The unique request id of the command that deleted the entity.
     effectiveAtCreated: DateTimeOffset.Now,  // optional — The EffectiveAt this Entity is created, if entity does not currently exist in EffectiveAt.
     prevailingCustomEntity: new CustomEntityResponse(...),  // optional
     deletedCustomEntity: new CustomEntityResponse(...),  // optional
-    previewedStatus: "...",  // optional — The status of the previewed entity.
+    previewedStatus: "...",  // optional — The status of the previewed entity. Available values: Prevailing, Deleted, DoesNotExist.
     previewedCustomEntity: new CustomEntityResponse(...),  // optional
     links: new List<Link>()  // optional
 );

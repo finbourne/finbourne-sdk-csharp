@@ -214,7 +214,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Orders\&quot; domain to decorate onto each order.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;.                  All properties, except derived properties, are returned by default, without specifying here. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
-| **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. |
+| **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. |
 
 ### Return type
 

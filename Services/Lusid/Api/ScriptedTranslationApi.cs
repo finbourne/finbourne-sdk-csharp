@@ -40,8 +40,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the dialect.</param>
         /// <param name="vendor">The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE.</param>
         /// <param name="sourceSystem">The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib.</param>
-        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument.</param>
-        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. e.g. JSON, XML.</param>
+        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument. Available values: Instrument.</param>
+        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. Available values: Json, Xml.</param>
         /// <param name="version">The semantic version of the dialect: MAJOR.MINOR.PATCH.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -59,8 +59,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the dialect.</param>
         /// <param name="vendor">The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE.</param>
         /// <param name="sourceSystem">The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib.</param>
-        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument.</param>
-        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. e.g. JSON, XML.</param>
+        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument. Available values: Instrument.</param>
+        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. Available values: Json, Xml.</param>
         /// <param name="version">The semantic version of the dialect: MAJOR.MINOR.PATCH.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -279,8 +279,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the dialect.</param>
         /// <param name="vendor">The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE.</param>
         /// <param name="sourceSystem">The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib.</param>
-        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument.</param>
-        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. e.g. JSON, XML.</param>
+        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument. Available values: Instrument.</param>
+        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. Available values: Json, Xml.</param>
         /// <param name="version">The semantic version of the dialect: MAJOR.MINOR.PATCH.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -299,8 +299,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the dialect.</param>
         /// <param name="vendor">The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE.</param>
         /// <param name="sourceSystem">The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib.</param>
-        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument.</param>
-        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. e.g. JSON, XML.</param>
+        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument. Available values: Instrument.</param>
+        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. Available values: Json, Xml.</param>
         /// <param name="version">The semantic version of the dialect: MAJOR.MINOR.PATCH.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -616,8 +616,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the dialect.</param>
         /// <param name="vendor">The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE.</param>
         /// <param name="sourceSystem">The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib.</param>
-        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument.</param>
-        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. e.g. JSON, XML.</param>
+        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument. Available values: Instrument.</param>
+        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. Available values: Json, Xml.</param>
         /// <param name="version">The semantic version of the dialect: MAJOR.MINOR.PATCH.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -637,8 +637,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the dialect.</param>
         /// <param name="vendor">The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE.</param>
         /// <param name="sourceSystem">The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib.</param>
-        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument.</param>
-        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. e.g. JSON, XML.</param>
+        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument. Available values: Instrument.</param>
+        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. Available values: Json, Xml.</param>
         /// <param name="version">The semantic version of the dialect: MAJOR.MINOR.PATCH.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -692,6 +692,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -768,8 +778,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the dialect.</param>
         /// <param name="vendor">The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE.</param>
         /// <param name="sourceSystem">The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib.</param>
-        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument.</param>
-        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. e.g. JSON, XML.</param>
+        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument. Available values: Instrument.</param>
+        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. Available values: Json, Xml.</param>
         /// <param name="version">The semantic version of the dialect: MAJOR.MINOR.PATCH.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -790,8 +800,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the dialect.</param>
         /// <param name="vendor">The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE.</param>
         /// <param name="sourceSystem">The source system of the dialect, the system that understands it. e.g. LUSID, QuantLib.</param>
-        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument.</param>
-        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. e.g. JSON, XML.</param>
+        /// <param name="entityType">The type of entity this dialect describes e.g. Instrument. Available values: Instrument.</param>
+        /// <param name="serialisationFormat">The serialisation format of a document in this dialect. Available values: Json, Xml.</param>
         /// <param name="version">The semantic version of the dialect: MAJOR.MINOR.PATCH.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -847,6 +857,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -978,6 +998,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -1106,6 +1136,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -1212,6 +1252,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1333,6 +1383,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -1448,6 +1508,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1569,6 +1639,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -1686,6 +1766,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -1794,6 +1884,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -1898,6 +1998,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2008,6 +2118,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -2112,6 +2232,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2222,6 +2352,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -2326,6 +2466,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2434,6 +2584,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {

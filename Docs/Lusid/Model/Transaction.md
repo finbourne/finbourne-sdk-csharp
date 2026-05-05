@@ -22,7 +22,7 @@ A list of transactions.
 | **Source** | **string** | Optional | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |
 | **EntryDateTime** | **DateTimeOffset** | Optional | The asAt datetime that the transaction was added to LUSID. |
 | **OtcConfirmation** | [OtcConfirmation](OtcConfirmation.md) | Optional | *No description available.* |
-| **TransactionStatus** | **string** | Optional | The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp |
+| **TransactionStatus** | **string** | Optional | The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp. |
 | **CancelDateTime** | **DateTimeOffset?** | Optional | If the transaction has been cancelled, the asAt datetime that the transaction was cancelled. |
 | **OrderId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **AllocationId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
@@ -59,7 +59,7 @@ var instance = new Transaction(
     source: "...",  // optional — The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration.
     entryDateTime: DateTimeOffset.Now,  // optional — The asAt datetime that the transaction was added to LUSID.
     otcConfirmation: new OtcConfirmation(...),  // optional
-    transactionStatus: "...",  // optional — The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp
+    transactionStatus: "...",  // optional — The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp.
     cancelDateTime: DateTimeOffset.Now,  // optional — If the transaction has been cancelled, the asAt datetime that the transaction was cancelled.
     orderId: new ResourceId(...),  // optional
     allocationId: new ResourceId(...),  // optional

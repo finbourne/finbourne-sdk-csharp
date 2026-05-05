@@ -8,7 +8,7 @@
 | **Description** | **string** | Optional | *No description available.* |
 | **Scope** | **string** | Required | The scope within which the portfolio or portfolio group lives. |
 | **Code** | **string** | Required | Portfolio name or code. |
-| **PortfolioEntityType** | **string** | Optional | String identifier for portfolio e.g. \&quot;SinglePortfolio\&quot; and \&quot;GroupPortfolio\&quot;. If not specified, it is assumed to be a single portfolio. |
+| **PortfolioEntityType** | **string** | Optional | String identifier for portfolio e.g. \&quot;SinglePortfolio\&quot; and \&quot;GroupPortfolio\&quot;. If not specified, it is assumed to be a single portfolio. Available values: SinglePortfolio, GroupPortfolio. |
 
 
 ## Usage
@@ -23,7 +23,7 @@ var instance = new PortfolioEntityIdWithDetails(
     description: "...",  // optional
     scope: "...",  // required — The scope within which the portfolio or portfolio group lives.
     code: "...",  // required — Portfolio name or code.
-    portfolioEntityType: "..."  // optional — String identifier for portfolio e.g. \&quot;SinglePortfolio\&quot; and \&quot;GroupPortfolio\&quot;. If not specified, it is assumed to be a single portfolio.
+    portfolioEntityType: "..."  // optional — String identifier for portfolio e.g. \&quot;SinglePortfolio\&quot; and \&quot;GroupPortfolio\&quot;. If not specified, it is assumed to be a single portfolio. Available values: SinglePortfolio, GroupPortfolio.
 );
 ```
 ### Serializing to JSON

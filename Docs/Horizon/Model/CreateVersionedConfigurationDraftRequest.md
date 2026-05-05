@@ -1,6 +1,6 @@
-# Finbourne.Sdk.Horizon.Model.CreateClientConfigurationDraftRequest
+# Finbourne.Sdk.Horizon.Model.CreateVersionedConfigurationDraftRequest
 
-Request to create a new draft client configuration.
+Request to create a new draft versioned configuration.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -18,7 +18,7 @@ Request to create a new draft client configuration.
 ```csharp
 using Finbourne.Sdk.Services.Horizon.Model;
 
-var instance = new CreateClientConfigurationDraftRequest(
+var instance = new CreateVersionedConfigurationDraftRequest(
     majorVersion: 0,  // optional — The major version for the new draft. Must be supplied together with minorVersion, or both omitted to auto-assign the next version.
     minorVersion: 0,  // optional — The minor version for the new draft. Must be supplied together with MajorVersion, or both omitted to auto-assign the next version.
     sourceMajorVersion: 0,  // optional — The major version of an existing record to copy the value from. Must be supplied together with SourceMinorVersion. If omitted, the new draft is initialised with an empty JSON object.
@@ -34,7 +34,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<CreateClientConfigurationDraftRequest>(json);
+var instance = JsonConvert.DeserializeObject<CreateVersionedConfigurationDraftRequest>(json);
 ```
 
 

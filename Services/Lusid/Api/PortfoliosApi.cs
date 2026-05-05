@@ -194,7 +194,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
         /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
-        /// <param name="period">The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>DeletedEntityResponse</returns>
@@ -213,7 +213,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
         /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
-        /// <param name="period">The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
@@ -373,9 +373,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="recipeIdCode">The Recipe Code for getting the fx rates (optional)</param>
         /// <param name="fromEffectiveAt">The start date from which to calculate the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date for which to calculate the Returns. (optional)</param>
-        /// <param name="compositeMethod">The method used to calculate the Portfolio performance:              Equal/Asset. (optional)</param>
-        /// <param name="period">The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)</param>
-        /// <param name="outputFrequency">The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)</param>
+        /// <param name="compositeMethod">The method used to calculate the Portfolio performance. Available values: Equal, Asset. (optional)</param>
+        /// <param name="period">The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="outputFrequency">The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. (optional)</param>
         /// <param name="metrics">Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="alternativeIncDate">The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)</param>
@@ -399,9 +399,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="recipeIdCode">The Recipe Code for getting the fx rates (optional)</param>
         /// <param name="fromEffectiveAt">The start date from which to calculate the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date for which to calculate the Returns. (optional)</param>
-        /// <param name="compositeMethod">The method used to calculate the Portfolio performance:              Equal/Asset. (optional)</param>
-        /// <param name="period">The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)</param>
-        /// <param name="outputFrequency">The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)</param>
+        /// <param name="compositeMethod">The method used to calculate the Portfolio performance. Available values: Equal, Asset. (optional)</param>
+        /// <param name="period">The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="outputFrequency">The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. (optional)</param>
         /// <param name="metrics">Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="alternativeIncDate">The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)</param>
@@ -665,7 +665,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
-        /// <param name="period">Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -685,7 +685,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
-        /// <param name="period">Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1292,7 +1292,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
         /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
-        /// <param name="period">The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1312,7 +1312,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
         /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
-        /// <param name="period">The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1481,9 +1481,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="recipeIdCode">The Recipe Code for getting the fx rates (optional)</param>
         /// <param name="fromEffectiveAt">The start date from which to calculate the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date for which to calculate the Returns. (optional)</param>
-        /// <param name="compositeMethod">The method used to calculate the Portfolio performance:              Equal/Asset. (optional)</param>
-        /// <param name="period">The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)</param>
-        /// <param name="outputFrequency">The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)</param>
+        /// <param name="compositeMethod">The method used to calculate the Portfolio performance. Available values: Equal, Asset. (optional)</param>
+        /// <param name="period">The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="outputFrequency">The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. (optional)</param>
         /// <param name="metrics">Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="alternativeIncDate">The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)</param>
@@ -1508,9 +1508,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="recipeIdCode">The Recipe Code for getting the fx rates (optional)</param>
         /// <param name="fromEffectiveAt">The start date from which to calculate the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date for which to calculate the Returns. (optional)</param>
-        /// <param name="compositeMethod">The method used to calculate the Portfolio performance:              Equal/Asset. (optional)</param>
-        /// <param name="period">The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)</param>
-        /// <param name="outputFrequency">The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)</param>
+        /// <param name="compositeMethod">The method used to calculate the Portfolio performance. Available values: Equal, Asset. (optional)</param>
+        /// <param name="period">The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="outputFrequency">The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. (optional)</param>
         /// <param name="metrics">Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="alternativeIncDate">The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)</param>
@@ -1789,7 +1789,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
-        /// <param name="period">Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1810,7 +1810,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
-        /// <param name="period">Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2400,6 +2400,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -2518,6 +2528,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2652,6 +2672,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -2780,6 +2810,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -2906,6 +2946,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3042,6 +3092,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -3162,6 +3222,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -3273,6 +3343,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3394,6 +3474,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3524,6 +3614,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -3599,7 +3699,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
         /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
-        /// <param name="period">The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>DeletedEntityResponse</returns>
@@ -3620,7 +3720,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
         /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
-        /// <param name="period">The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
@@ -3672,6 +3772,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3751,7 +3861,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
         /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
-        /// <param name="period">The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -3773,7 +3883,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
         /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
-        /// <param name="period">The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -3827,6 +3937,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3956,6 +4076,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -4090,6 +4220,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -4222,6 +4362,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -4368,6 +4518,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -4512,6 +4672,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -4666,6 +4836,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -4806,6 +4986,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -4943,6 +5133,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -5031,9 +5231,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="recipeIdCode">The Recipe Code for getting the fx rates (optional)</param>
         /// <param name="fromEffectiveAt">The start date from which to calculate the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date for which to calculate the Returns. (optional)</param>
-        /// <param name="compositeMethod">The method used to calculate the Portfolio performance:              Equal/Asset. (optional)</param>
-        /// <param name="period">The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)</param>
-        /// <param name="outputFrequency">The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)</param>
+        /// <param name="compositeMethod">The method used to calculate the Portfolio performance. Available values: Equal, Asset. (optional)</param>
+        /// <param name="period">The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="outputFrequency">The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. (optional)</param>
         /// <param name="metrics">Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="alternativeIncDate">The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)</param>
@@ -5059,9 +5259,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="recipeIdCode">The Recipe Code for getting the fx rates (optional)</param>
         /// <param name="fromEffectiveAt">The start date from which to calculate the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date for which to calculate the Returns. (optional)</param>
-        /// <param name="compositeMethod">The method used to calculate the Portfolio performance:              Equal/Asset. (optional)</param>
-        /// <param name="period">The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)</param>
-        /// <param name="outputFrequency">The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)</param>
+        /// <param name="compositeMethod">The method used to calculate the Portfolio performance. Available values: Equal, Asset. (optional)</param>
+        /// <param name="period">The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="outputFrequency">The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. (optional)</param>
         /// <param name="metrics">Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="alternativeIncDate">The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)</param>
@@ -5104,6 +5304,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -5219,9 +5429,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="recipeIdCode">The Recipe Code for getting the fx rates (optional)</param>
         /// <param name="fromEffectiveAt">The start date from which to calculate the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date for which to calculate the Returns. (optional)</param>
-        /// <param name="compositeMethod">The method used to calculate the Portfolio performance:              Equal/Asset. (optional)</param>
-        /// <param name="period">The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)</param>
-        /// <param name="outputFrequency">The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)</param>
+        /// <param name="compositeMethod">The method used to calculate the Portfolio performance. Available values: Equal, Asset. (optional)</param>
+        /// <param name="period">The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="outputFrequency">The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. (optional)</param>
         /// <param name="metrics">Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="alternativeIncDate">The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)</param>
@@ -5248,9 +5458,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="recipeIdCode">The Recipe Code for getting the fx rates (optional)</param>
         /// <param name="fromEffectiveAt">The start date from which to calculate the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date for which to calculate the Returns. (optional)</param>
-        /// <param name="compositeMethod">The method used to calculate the Portfolio performance:              Equal/Asset. (optional)</param>
-        /// <param name="period">The type of the returns used to calculate the aggregation result: Daily/Monthly. (optional)</param>
-        /// <param name="outputFrequency">The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. (optional)</param>
+        /// <param name="compositeMethod">The method used to calculate the Portfolio performance. Available values: Equal, Asset. (optional)</param>
+        /// <param name="period">The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="outputFrequency">The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. (optional)</param>
         /// <param name="metrics">Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="alternativeIncDate">The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. (optional)</param>
@@ -5295,6 +5505,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -5464,6 +5684,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -5608,6 +5838,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -5744,6 +5984,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -5889,6 +6139,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -6024,6 +6284,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -6149,6 +6419,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -6270,6 +6550,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -6395,6 +6685,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -6532,6 +6832,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -6686,6 +6996,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -6826,6 +7146,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -6963,6 +7293,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -7096,6 +7436,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -7235,6 +7585,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -7321,7 +7681,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
-        /// <param name="period">Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -7343,7 +7703,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
-        /// <param name="period">Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -7384,6 +7744,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -7473,7 +7843,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
-        /// <param name="period">Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -7496,7 +7866,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="returnCode">The code of the Returns.</param>
         /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
         /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
-        /// <param name="period">Show the Returns on a Daily or Monthly period. Defaults to Daily. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -7539,6 +7909,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -7682,6 +8062,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -7814,6 +8204,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -7952,6 +8352,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -8121,6 +8531,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -8276,6 +8696,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -8413,6 +8843,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -8540,6 +8980,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -8689,6 +9139,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -8844,6 +9304,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -8996,6 +9466,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -9146,6 +9626,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -9270,6 +9760,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -9398,6 +9898,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -9538,6 +10048,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -9672,6 +10192,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -9802,6 +10332,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -9940,6 +10480,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -10083,6 +10633,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -10222,6 +10782,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -10371,6 +10941,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -10504,6 +11084,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -10628,6 +11218,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -10768,6 +11368,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -10912,6 +11522,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {

@@ -11,7 +11,7 @@ For indicating a dependency on an EquityCurve.  E.g. When pricing an EquitySwap 
 | **Code** | **string** | Required | The code identifying the corresponding equity, e.g. US0378331005 if the MarketIdentifier was set to ISIN |
 | **CurveType** | **string** | Required | The curve type of the EquityCurve required. E.g. EquityCurveByPrices |
 | **Date** | **DateTimeOffset** | Required | The effectiveDate of the entity that this is a dependency for.  Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date. |
-| **DependencyType** | **string** | Required | The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency Default: `DependencyTypeEnum.EquityCurveDependency` |
+| **DependencyType** | **string** | Required | Available values: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency. Default: `DependencyTypeEnum.EquityCurveDependency` |
 
 
 ## Usage
@@ -26,7 +26,7 @@ var instance = new EquityCurveDependency(
     code: "...",  // required — The code identifying the corresponding equity, e.g. US0378331005 if the MarketIdentifier was set to ISIN
     curveType: "...",  // required — The curve type of the EquityCurve required. E.g. EquityCurveByPrices
     date: DateTimeOffset.Now,  // required — The effectiveDate of the entity that this is a dependency for.  Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
-    dependencyType: "..."  // required — The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency
+    dependencyType: "..."  // required — Available values: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency.
 );
 ```
 ### Serializing to JSON

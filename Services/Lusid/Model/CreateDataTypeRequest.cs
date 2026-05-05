@@ -28,9 +28,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class CreateDataTypeRequest : IEquatable<CreateDataTypeRequest>, IValidatableObject
     {
         /// <summary>
-        /// Indicates the range of data acceptable by a data type. The available values are: Open, Closed
+        /// Indicates the range of data acceptable by a data type. Available values: Open, Closed.
         /// </summary>
-        /// <value>Indicates the range of data acceptable by a data type. The available values are: Open, Closed</value>
+        /// <value>Indicates the range of data acceptable by a data type. Available values: Open, Closed.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeValueRangeEnum
         {
@@ -48,15 +48,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// Indicates the range of data acceptable by a data type. The available values are: Open, Closed
+        /// Indicates the range of data acceptable by a data type. Available values: Open, Closed.
         /// </summary>
-        /// <value>Indicates the range of data acceptable by a data type. The available values are: Open, Closed</value>
+        /// <value>Indicates the range of data acceptable by a data type. Available values: Open, Closed.</value>
         [DataMember(Name = "typeValueRange", IsRequired = true, EmitDefaultValue = true)]
         public TypeValueRangeEnum TypeValueRange { get; set; }
         /// <summary>
-        /// The expected type of the values. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText
+        /// The expected type of the values. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.
         /// </summary>
-        /// <value>The expected type of the values. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText</value>
+        /// <value>The expected type of the values. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ValueTypeEnum
         {
@@ -188,15 +188,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The expected type of the values. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText
+        /// The expected type of the values. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.
         /// </summary>
-        /// <value>The expected type of the values. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText</value>
+        /// <value>The expected type of the values. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText.</value>
         [DataMember(Name = "valueType", IsRequired = true, EmitDefaultValue = true)]
         public ValueTypeEnum ValueType { get; set; }
         /// <summary>
-        /// The schema of the data type&#39;s units. The available values are: NoUnits, Basic, Iso4217Currency
+        /// The schema of the data type&#39;s units. Available values: NoUnits, Basic, Iso4217Currency.
         /// </summary>
-        /// <value>The schema of the data type&#39;s units. The available values are: NoUnits, Basic, Iso4217Currency</value>
+        /// <value>The schema of the data type&#39;s units. Available values: NoUnits, Basic, Iso4217Currency.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum UnitSchemaEnum
         {
@@ -220,9 +220,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The schema of the data type&#39;s units. The available values are: NoUnits, Basic, Iso4217Currency
+        /// The schema of the data type&#39;s units. Available values: NoUnits, Basic, Iso4217Currency.
         /// </summary>
-        /// <value>The schema of the data type&#39;s units. The available values are: NoUnits, Basic, Iso4217Currency</value>
+        /// <value>The schema of the data type&#39;s units. Available values: NoUnits, Basic, Iso4217Currency.</value>
         [DataMember(Name = "unitSchema", EmitDefaultValue = false)]
         public UnitSchemaEnum? UnitSchema { get; set; }
         /// <summary>
@@ -235,12 +235,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="scope">The scope that the data type will be created in. (required).</param>
         /// <param name="code">The code of the data type. Together with the scope this uniquely defines the data type. (required).</param>
-        /// <param name="typeValueRange">Indicates the range of data acceptable by a data type. The available values are: Open, Closed (required).</param>
+        /// <param name="typeValueRange">Indicates the range of data acceptable by a data type. Available values: Open, Closed. (required).</param>
         /// <param name="displayName">The display name of the data type. (required).</param>
         /// <param name="description">The description of the data type. (required).</param>
-        /// <param name="valueType">The expected type of the values. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText (required).</param>
+        /// <param name="valueType">The expected type of the values. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText. (required).</param>
         /// <param name="acceptableValues">The acceptable set of values for this data type. Only applies to &#39;open&#39; value type range..</param>
-        /// <param name="unitSchema">The schema of the data type&#39;s units. The available values are: NoUnits, Basic, Iso4217Currency.</param>
+        /// <param name="unitSchema">The schema of the data type&#39;s units. Available values: NoUnits, Basic, Iso4217Currency..</param>
         /// <param name="acceptableUnits">The definitions of the acceptable units..</param>
         /// <param name="referenceData">referenceData.</param>
         public CreateDataTypeRequest(string scope = default(string), string code = default(string), TypeValueRangeEnum typeValueRange = default(TypeValueRangeEnum), string displayName = default(string), string description = default(string), ValueTypeEnum valueType = default(ValueTypeEnum), List<string> acceptableValues = default(List<string>), UnitSchemaEnum ?unitSchema = default(UnitSchemaEnum?), List<CreateUnitDefinition> acceptableUnits = default(List<CreateUnitDefinition>), ReferenceData referenceData = default(ReferenceData))

@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **SettlementInstructionId** | **string** | Required | The id of the problematic settlement instruction. Combined with the portfolio id this uniquely identifies a settlement instruction |
 | **Category** | **string** | Required | The category this instruction belongs to |
-| **Status** | **string** | Required | The status of the settlement instruction. Possible values are &#39;Invalid&#39; or &#39;Rejected&#39;. |
+| **Status** | **string** | Required | The status of the settlement instruction. Available values: Invalid, Rejected, Applied, Orphan. |
 
 
 ## Usage
@@ -19,7 +19,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new SettlementProblem(
     settlementInstructionId: "...",  // required — The id of the problematic settlement instruction. Combined with the portfolio id this uniquely identifies a settlement instruction
     category: "...",  // required — The category this instruction belongs to
-    status: "..."  // required — The status of the settlement instruction. Possible values are &#39;Invalid&#39; or &#39;Rejected&#39;.
+    status: "..."  // required — The status of the settlement instruction. Available values: Invalid, Rejected, Applied, Orphan.
 );
 ```
 ### Serializing to JSON

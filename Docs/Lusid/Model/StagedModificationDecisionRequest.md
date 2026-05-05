@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Decision** | **string** | Required | The decision on the requested staged modification, can be &#39;Approve&#39; or &#39;Reject&#39;. |
+| **Decision** | **string** | Required | The decision on the requested staged modification, can be &#39;Approve&#39; or &#39;Reject&#39;. Available values: Approve, Reject. |
 | **Comment** | **string** | Required | Comment on decision. |
 
 
@@ -16,7 +16,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new StagedModificationDecisionRequest(
-    decision: "...",  // required — The decision on the requested staged modification, can be &#39;Approve&#39; or &#39;Reject&#39;.
+    decision: "...",  // required — The decision on the requested staged modification, can be &#39;Approve&#39; or &#39;Reject&#39;. Available values: Approve, Reject.
     comment: "..."  // required — Comment on decision.
 );
 ```

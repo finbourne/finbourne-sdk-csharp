@@ -7,7 +7,7 @@
 | **Name** | **string** | Required | The name of the rule. |
 | **Description** | **string** | Optional | A description of the rule. |
 | **Filter** | **string** | Required | The filter for this rule. |
-| **AmortisationMethod** | **string** | Required | The filter for this rule. |
+| **AmortisationMethod** | **string** | Required | The filter for this rule. Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate. |
 
 
 ## Usage
@@ -21,7 +21,7 @@ var instance = new AmortisationRule(
     name: "...",  // required — The name of the rule.
     description: "...",  // optional — A description of the rule.
     filter: "...",  // required — The filter for this rule.
-    amortisationMethod: "..."  // required — The filter for this rule.
+    amortisationMethod: "..."  // required — The filter for this rule. Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate.
 );
 ```
 ### Serializing to JSON

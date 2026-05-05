@@ -9,9 +9,9 @@ A definition for the period you wish to close
 | **Name** | **string** | Optional | Identifiable Name assigned to the period. Where left blank, the system will generate a name in the format &#39;yyyyMMDD&#39;. |
 | **EffectiveAt** | **DateTimeOffset?** | Optional | The effective time of the diary entry. |
 | **QueryAsAt** | **DateTimeOffset?** | Optional | The query time of the diary entry. Defaults to latest. |
-| **Status** | **string** | Optional | The status of a Diary Entry of Type &#39;PeriodBoundary&#39;. Defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods. |
+| **Status** | **string** | Optional | The status of a Diary Entry of Type &#39;PeriodBoundary&#39;. Defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods. Available values: Undefined, Estimate, Final, Candidate, Unofficial. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the diary entry. |
-| **ClosingOptions** | **List&lt;string&gt;** | Optional | The options which will be executed once a period is closed or locked. |
+| **ClosingOptions** | **List&lt;string&gt;** | Optional | The options which will be executed once a period is closed or locked. Available values: ApplyClearDown. |
 
 
 ## Usage
@@ -26,9 +26,9 @@ var instance = new ClosePeriodDiaryEntryRequest(
     name: "...",  // optional — Identifiable Name assigned to the period. Where left blank, the system will generate a name in the format &#39;yyyyMMDD&#39;.
     effectiveAt: DateTimeOffset.Now,  // optional — The effective time of the diary entry.
     queryAsAt: DateTimeOffset.Now,  // optional — The query time of the diary entry. Defaults to latest.
-    status: "...",  // optional — The status of a Diary Entry of Type &#39;PeriodBoundary&#39;. Defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods.
+    status: "...",  // optional — The status of a Diary Entry of Type &#39;PeriodBoundary&#39;. Defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
     properties: new Property(...),  // optional — A set of properties for the diary entry.
-    closingOptions:   // optional — The options which will be executed once a period is closed or locked.
+    closingOptions:   // optional — The options which will be executed once a period is closed or locked. Available values: ApplyClearDown.
 );
 ```
 ### Serializing to JSON

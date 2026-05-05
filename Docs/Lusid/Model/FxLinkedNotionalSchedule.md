@@ -11,7 +11,7 @@ Schedule for notional changes based on the change in FX rate.  Used in the repre
 | **VaryingNotionalCurrency** | **string** | Required | The currency of the varying notional amount. |
 | **VaryingNotionalFixingDates** | [RelativeDateOffset](RelativeDateOffset.md) | Required | *No description available.* |
 | **VaryingNotionalInterimExchangePaymentDates** | [RelativeDateOffset](RelativeDateOffset.md) | Optional | *No description available.* |
-| **ScheduleType** | **string** | Required | The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid Default: `ScheduleTypeEnum.FxLinkedNotionalSchedule` |
+| **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid. Default: `ScheduleTypeEnum.FxLinkedNotionalSchedule` |
 
 
 ## Usage
@@ -26,7 +26,7 @@ var instance = new FxLinkedNotionalSchedule(
     varyingNotionalCurrency: "...",  // required — The currency of the varying notional amount.
     varyingNotionalFixingDates: new RelativeDateOffset(...),  // required
     varyingNotionalInterimExchangePaymentDates: new RelativeDateOffset(...),  // optional
-    scheduleType: "..."  // required — The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid
+    scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid.
 );
 ```
 ### Serializing to JSON

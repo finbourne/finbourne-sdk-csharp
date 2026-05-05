@@ -9,7 +9,7 @@ A criterion that checks whether a SubHoldingKey Value is equal to the given stri
 |------|------|----------|-------------|
 | **SubHoldingKey** | **string** | Required | The sub holding key whose value will form the left-hand side of the operation |
 | **Value** | **string** | Required | The value to be compared against |
-| **CriterionType** | **string** | Required | The available values are: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals Default: `CriterionTypeEnum.SubHoldingKeyValueEquals` |
+| **CriterionType** | **string** | Required | Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals. Default: `CriterionTypeEnum.SubHoldingKeyValueEquals` |
 
 
 ## Usage
@@ -22,7 +22,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new SubHoldingKeyValueEquals(
     subHoldingKey: "...",  // required — The sub holding key whose value will form the left-hand side of the operation
     value: "...",  // required — The value to be compared against
-    criterionType: "..."  // required — The available values are: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals
+    criterionType: "..."  // required — Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals.
 );
 ```
 ### Serializing to JSON

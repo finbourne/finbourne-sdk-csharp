@@ -37,9 +37,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class ComplianceStepRequest : IEquatable<ComplianceStepRequest>, IValidatableObject
     {
         /// <summary>
-        /// . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest
+        /// The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest.
         /// </summary>
-        /// <value>. The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest</value>
+        /// <value>The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ComplianceStepTypeRequestEnum
         {
@@ -81,9 +81,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest
+        /// The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest.
         /// </summary>
-        /// <value>. The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest</value>
+        /// <value>The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest.</value>
         [DataMember(Name = "complianceStepTypeRequest", IsRequired = true, EmitDefaultValue = true)]
         public ComplianceStepTypeRequestEnum ComplianceStepTypeRequest { get; set; }
         /// <summary>
@@ -94,7 +94,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ComplianceStepRequest" /> class.
         /// </summary>
-        /// <param name="complianceStepTypeRequest">. The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest (required).</param>
+        /// <param name="complianceStepTypeRequest">The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest. (required).</param>
         public ComplianceStepRequest(ComplianceStepTypeRequestEnum complianceStepTypeRequest = default(ComplianceStepTypeRequestEnum))
         {
             this.ComplianceStepTypeRequest = complianceStepTypeRequest;

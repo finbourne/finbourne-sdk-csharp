@@ -7,7 +7,7 @@
 | **DisplayName** | **string** | Required | The display name of the property. |
 | **PropertyDescription** | **string** | Optional | Describes the property |
 | **CustomEntityTypes** | **List&lt;string&gt;** | Optional | The custom entity types that properties relating to this property definition can be applied to. |
-| **ValueFormat** | **string** | Optional | The format in which values for this property definition should be represented. |
+| **ValueFormat** | **string** | Optional | The format in which values for this property definition should be represented. Available values: Text, Html. |
 
 
 ## Usage
@@ -21,7 +21,7 @@ var instance = new UpdatePropertyDefinitionRequest(
     displayName: "...",  // required — The display name of the property.
     propertyDescription: "...",  // optional — Describes the property
     customEntityTypes: ,  // optional — The custom entity types that properties relating to this property definition can be applied to.
-    valueFormat: "..."  // optional — The format in which values for this property definition should be represented.
+    valueFormat: "..."  // optional — The format in which values for this property definition should be represented. Available values: Text, Html.
 );
 ```
 ### Serializing to JSON

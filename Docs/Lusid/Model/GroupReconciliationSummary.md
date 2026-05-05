@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **RunDetails** | [GroupReconciliationRunDetails](GroupReconciliationRunDetails.md) | Optional | *No description available.* |
 | **GroupReconciliationDefinitionId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
-| **ReconciliationType** | **string** | Required | The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot; |
+| **ReconciliationType** | **string** | Required | The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding. |
 | **InstanceId** | [GroupReconciliationInstanceId](GroupReconciliationInstanceId.md) | Required | *No description available.* |
 | **DatesReconciled** | [GroupReconciliationDates](GroupReconciliationDates.md) | Required | *No description available.* |
 | **ReconciliationRunAsAt** | **DateTimeOffset** | Required | The date and time the reconciliation was run |
@@ -27,7 +27,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new GroupReconciliationSummary(
     runDetails: new GroupReconciliationRunDetails(...),  // optional
     groupReconciliationDefinitionId: new ResourceId(...),  // optional
-    reconciliationType: "...",  // required — The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot;
+    reconciliationType: "...",  // required — The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding.
     instanceId: new GroupReconciliationInstanceId(...),  // required
     datesReconciled: new GroupReconciliationDates(...),  // required
     reconciliationRunAsAt: DateTimeOffset.Now,  // required — The date and time the reconciliation was run

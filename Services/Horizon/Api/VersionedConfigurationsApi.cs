@@ -27,11 +27,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IClientConfigurationsApiSync : IApiAccessor
+    public interface IVersionedConfigurationsApiSync : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateClientConfigurationDraft: Create a draft client configuration.
+        /// [EXPERIMENTAL] CreateVersionedConfigurationDraft: Create a draft versioned configuration.
         /// </summary>
         /// <remarks>
         /// Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
@@ -39,14 +39,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
         /// <param name="name">The logical name of the configuration.</param>
-        /// <param name="createClientConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
+        /// <param name="createVersionedConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ClientConfigurationResponse</returns>
-        ClientConfigurationResponse CreateClientConfigurationDraft(string configType, string name, CreateClientConfigurationDraftRequest? createClientConfigurationDraftRequest = default(CreateClientConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>VersionedConfigurationResponse</returns>
+        VersionedConfigurationResponse CreateVersionedConfigurationDraft(string configType, string name, CreateVersionedConfigurationDraftRequest? createVersionedConfigurationDraftRequest = default(CreateVersionedConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateClientConfigurationDraft: Create a draft client configuration.
+        /// [EXPERIMENTAL] CreateVersionedConfigurationDraft: Create a draft versioned configuration.
         /// </summary>
         /// <remarks>
         /// Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
@@ -54,13 +54,13 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
         /// <param name="name">The logical name of the configuration.</param>
-        /// <param name="createClientConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
+        /// <param name="createVersionedConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ClientConfigurationResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> CreateClientConfigurationDraftWithHttpInfo(string configType, string name, CreateClientConfigurationDraftRequest? createClientConfigurationDraftRequest = default(CreateClientConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> CreateVersionedConfigurationDraftWithHttpInfo(string configType, string name, CreateVersionedConfigurationDraftRequest? createVersionedConfigurationDraftRequest = default(CreateVersionedConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetClientConfiguration: Get a client configuration.
+        /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration.
         /// </summary>
         /// <remarks>
         /// Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
@@ -72,11 +72,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="minorVersion">The minor version to retrieve. Must be supplied together with majorVersion, or both omitted. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ClientConfigurationResponse</returns>
-        ClientConfigurationResponse GetClientConfiguration(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>VersionedConfigurationResponse</returns>
+        VersionedConfigurationResponse GetVersionedConfiguration(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetClientConfiguration: Get a client configuration.
+        /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration.
         /// </summary>
         /// <remarks>
         /// Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
@@ -88,10 +88,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="minorVersion">The minor version to retrieve. Must be supplied together with majorVersion, or both omitted. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ClientConfigurationResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> GetClientConfigurationWithHttpInfo(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> GetVersionedConfigurationWithHttpInfo(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListClientConfigurations: List client configurations.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations.
         /// </summary>
         /// <remarks>
         /// Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
@@ -100,11 +100,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="configType">The category of configuration to list.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>List&lt;ClientConfigurationResponse&gt;</returns>
-        List<ClientConfigurationResponse> ListClientConfigurations(string configType, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>List&lt;VersionedConfigurationResponse&gt;</returns>
+        List<VersionedConfigurationResponse> ListVersionedConfigurations(string configType, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListClientConfigurations: List client configurations.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations.
         /// </summary>
         /// <remarks>
         /// Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
@@ -113,10 +113,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="configType">The category of configuration to list.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of List&lt;ClientConfigurationResponse&gt;</returns>
-        Finbourne.Sdk.Client.ApiResponse<List<ClientConfigurationResponse>> ListClientConfigurationsWithHttpInfo(string configType, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>ApiResponse of List&lt;VersionedConfigurationResponse&gt;</returns>
+        Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>> ListVersionedConfigurationsWithHttpInfo(string configType, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] LockClientConfigurationVersion: Lock a client configuration version.
+        /// [EXPERIMENTAL] LockVersionedConfigurationVersion: Lock a versioned configuration version.
         /// </summary>
         /// <remarks>
         /// Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
@@ -128,11 +128,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="minorVersion">The minor version to lock.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ClientConfigurationResponse</returns>
-        ClientConfigurationResponse LockClientConfigurationVersion(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>VersionedConfigurationResponse</returns>
+        VersionedConfigurationResponse LockVersionedConfigurationVersion(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] LockClientConfigurationVersion: Lock a client configuration version.
+        /// [EXPERIMENTAL] LockVersionedConfigurationVersion: Lock a versioned configuration version.
         /// </summary>
         /// <remarks>
         /// Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
@@ -144,10 +144,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="minorVersion">The minor version to lock.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ClientConfigurationResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> LockClientConfigurationVersionWithHttpInfo(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> LockVersionedConfigurationVersionWithHttpInfo(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpdateClientConfigurationDraft: Update a draft client configuration.
+        /// [EXPERIMENTAL] UpdateVersionedConfigurationDraft: Update a draft versioned configuration.
         /// </summary>
         /// <remarks>
         /// Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
@@ -157,14 +157,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="name">The logical name of the configuration.</param>
         /// <param name="majorVersion">The major version of the draft to update.</param>
         /// <param name="minorVersion">The minor version of the draft to update.</param>
-        /// <param name="updateClientConfigurationDraftRequest">The updated value. (optional)</param>
+        /// <param name="updateVersionedConfigurationDraftRequest">The updated value. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ClientConfigurationResponse</returns>
-        ClientConfigurationResponse UpdateClientConfigurationDraft(string configType, string name, int majorVersion, int minorVersion, UpdateClientConfigurationDraftRequest? updateClientConfigurationDraftRequest = default(UpdateClientConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>VersionedConfigurationResponse</returns>
+        VersionedConfigurationResponse UpdateVersionedConfigurationDraft(string configType, string name, int majorVersion, int minorVersion, UpdateVersionedConfigurationDraftRequest? updateVersionedConfigurationDraftRequest = default(UpdateVersionedConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateClientConfigurationDraft: Update a draft client configuration.
+        /// [EXPERIMENTAL] UpdateVersionedConfigurationDraft: Update a draft versioned configuration.
         /// </summary>
         /// <remarks>
         /// Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
@@ -174,22 +174,22 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="name">The logical name of the configuration.</param>
         /// <param name="majorVersion">The major version of the draft to update.</param>
         /// <param name="minorVersion">The minor version of the draft to update.</param>
-        /// <param name="updateClientConfigurationDraftRequest">The updated value. (optional)</param>
+        /// <param name="updateVersionedConfigurationDraftRequest">The updated value. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ClientConfigurationResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> UpdateClientConfigurationDraftWithHttpInfo(string configType, string name, int majorVersion, int minorVersion, UpdateClientConfigurationDraftRequest? updateClientConfigurationDraftRequest = default(UpdateClientConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> UpdateVersionedConfigurationDraftWithHttpInfo(string configType, string name, int majorVersion, int minorVersion, UpdateVersionedConfigurationDraftRequest? updateVersionedConfigurationDraftRequest = default(UpdateVersionedConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
         #endregion Synchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IClientConfigurationsApiAsync : IApiAccessor
+    public interface IVersionedConfigurationsApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateClientConfigurationDraft: Create a draft client configuration.
+        /// [EXPERIMENTAL] CreateVersionedConfigurationDraft: Create a draft versioned configuration.
         /// </summary>
         /// <remarks>
         /// Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
@@ -197,15 +197,15 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
         /// <param name="name">The logical name of the configuration.</param>
-        /// <param name="createClientConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
+        /// <param name="createVersionedConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ClientConfigurationResponse</returns>
-        System.Threading.Tasks.Task<ClientConfigurationResponse> CreateClientConfigurationDraftAsync(string configType, string name, CreateClientConfigurationDraftRequest? createClientConfigurationDraftRequest = default(CreateClientConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of VersionedConfigurationResponse</returns>
+        System.Threading.Tasks.Task<VersionedConfigurationResponse> CreateVersionedConfigurationDraftAsync(string configType, string name, CreateVersionedConfigurationDraftRequest? createVersionedConfigurationDraftRequest = default(CreateVersionedConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateClientConfigurationDraft: Create a draft client configuration.
+        /// [EXPERIMENTAL] CreateVersionedConfigurationDraft: Create a draft versioned configuration.
         /// </summary>
         /// <remarks>
         /// Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
@@ -213,14 +213,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
         /// <param name="name">The logical name of the configuration.</param>
-        /// <param name="createClientConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
+        /// <param name="createVersionedConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ClientConfigurationResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse>> CreateClientConfigurationDraftWithHttpInfoAsync(string configType, string name, CreateClientConfigurationDraftRequest? createClientConfigurationDraftRequest = default(CreateClientConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> CreateVersionedConfigurationDraftWithHttpInfoAsync(string configType, string name, CreateVersionedConfigurationDraftRequest? createVersionedConfigurationDraftRequest = default(CreateVersionedConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetClientConfiguration: Get a client configuration.
+        /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration.
         /// </summary>
         /// <remarks>
         /// Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
@@ -233,11 +233,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ClientConfigurationResponse</returns>
-        System.Threading.Tasks.Task<ClientConfigurationResponse> GetClientConfigurationAsync(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of VersionedConfigurationResponse</returns>
+        System.Threading.Tasks.Task<VersionedConfigurationResponse> GetVersionedConfigurationAsync(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetClientConfiguration: Get a client configuration.
+        /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration.
         /// </summary>
         /// <remarks>
         /// Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
@@ -250,10 +250,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ClientConfigurationResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse>> GetClientConfigurationWithHttpInfoAsync(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> GetVersionedConfigurationWithHttpInfoAsync(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListClientConfigurations: List client configurations.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations.
         /// </summary>
         /// <remarks>
         /// Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
@@ -263,11 +263,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of List&lt;ClientConfigurationResponse&gt;</returns>
-        System.Threading.Tasks.Task<List<ClientConfigurationResponse>> ListClientConfigurationsAsync(string configType, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of List&lt;VersionedConfigurationResponse&gt;</returns>
+        System.Threading.Tasks.Task<List<VersionedConfigurationResponse>> ListVersionedConfigurationsAsync(string configType, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListClientConfigurations: List client configurations.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations.
         /// </summary>
         /// <remarks>
         /// Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
@@ -277,10 +277,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (List&lt;ClientConfigurationResponse&gt;)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<List<ClientConfigurationResponse>>> ListClientConfigurationsWithHttpInfoAsync(string configType, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of ApiResponse (List&lt;VersionedConfigurationResponse&gt;)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>>> ListVersionedConfigurationsWithHttpInfoAsync(string configType, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] LockClientConfigurationVersion: Lock a client configuration version.
+        /// [EXPERIMENTAL] LockVersionedConfigurationVersion: Lock a versioned configuration version.
         /// </summary>
         /// <remarks>
         /// Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
@@ -293,11 +293,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ClientConfigurationResponse</returns>
-        System.Threading.Tasks.Task<ClientConfigurationResponse> LockClientConfigurationVersionAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of VersionedConfigurationResponse</returns>
+        System.Threading.Tasks.Task<VersionedConfigurationResponse> LockVersionedConfigurationVersionAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] LockClientConfigurationVersion: Lock a client configuration version.
+        /// [EXPERIMENTAL] LockVersionedConfigurationVersion: Lock a versioned configuration version.
         /// </summary>
         /// <remarks>
         /// Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
@@ -310,10 +310,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ClientConfigurationResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse>> LockClientConfigurationVersionWithHttpInfoAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> LockVersionedConfigurationVersionWithHttpInfoAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpdateClientConfigurationDraft: Update a draft client configuration.
+        /// [EXPERIMENTAL] UpdateVersionedConfigurationDraft: Update a draft versioned configuration.
         /// </summary>
         /// <remarks>
         /// Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
@@ -323,15 +323,15 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="name">The logical name of the configuration.</param>
         /// <param name="majorVersion">The major version of the draft to update.</param>
         /// <param name="minorVersion">The minor version of the draft to update.</param>
-        /// <param name="updateClientConfigurationDraftRequest">The updated value. (optional)</param>
+        /// <param name="updateVersionedConfigurationDraftRequest">The updated value. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ClientConfigurationResponse</returns>
-        System.Threading.Tasks.Task<ClientConfigurationResponse> UpdateClientConfigurationDraftAsync(string configType, string name, int majorVersion, int minorVersion, UpdateClientConfigurationDraftRequest? updateClientConfigurationDraftRequest = default(UpdateClientConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of VersionedConfigurationResponse</returns>
+        System.Threading.Tasks.Task<VersionedConfigurationResponse> UpdateVersionedConfigurationDraftAsync(string configType, string name, int majorVersion, int minorVersion, UpdateVersionedConfigurationDraftRequest? updateVersionedConfigurationDraftRequest = default(UpdateVersionedConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateClientConfigurationDraft: Update a draft client configuration.
+        /// [EXPERIMENTAL] UpdateVersionedConfigurationDraft: Update a draft versioned configuration.
         /// </summary>
         /// <remarks>
         /// Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
@@ -341,19 +341,19 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="name">The logical name of the configuration.</param>
         /// <param name="majorVersion">The major version of the draft to update.</param>
         /// <param name="minorVersion">The minor version of the draft to update.</param>
-        /// <param name="updateClientConfigurationDraftRequest">The updated value. (optional)</param>
+        /// <param name="updateVersionedConfigurationDraftRequest">The updated value. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ClientConfigurationResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse>> UpdateClientConfigurationDraftWithHttpInfoAsync(string configType, string name, int majorVersion, int minorVersion, UpdateClientConfigurationDraftRequest? updateClientConfigurationDraftRequest = default(UpdateClientConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> UpdateVersionedConfigurationDraftWithHttpInfoAsync(string configType, string name, int majorVersion, int minorVersion, UpdateVersionedConfigurationDraftRequest? updateVersionedConfigurationDraftRequest = default(UpdateVersionedConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IClientConfigurationsApi : IClientConfigurationsApiSync, IClientConfigurationsApiAsync
+    public interface IVersionedConfigurationsApi : IVersionedConfigurationsApiSync, IVersionedConfigurationsApiAsync
     {
 
     }
@@ -361,17 +361,17 @@ namespace Finbourne.Sdk.Services.Horizon.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class ClientConfigurationsApi : IClientConfigurationsApi
+    public partial class VersionedConfigurationsApi : IVersionedConfigurationsApi
     {
         private Finbourne.Sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClientConfigurationsApi"/> class
+        /// Initializes a new instance of the <see cref="VersionedConfigurationsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public ClientConfigurationsApi(Finbourne.Sdk.Client.Configuration configuration)
+        public VersionedConfigurationsApi(Finbourne.Sdk.Client.Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -382,13 +382,13 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClientConfigurationsApi"/> class
+        /// Initializes a new instance of the <see cref="VersionedConfigurationsApi"/> class
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public ClientConfigurationsApi(Finbourne.Sdk.Client.ISynchronousClient client, Finbourne.Sdk.Client.IAsynchronousClient asyncClient, Finbourne.Sdk.Client.IReadableConfiguration configuration)
+        public VersionedConfigurationsApi(Finbourne.Sdk.Client.ISynchronousClient client, Finbourne.Sdk.Client.IAsynchronousClient asyncClient, Finbourne.Sdk.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -442,44 +442,44 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateClientConfigurationDraft: Create a draft client configuration. Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] CreateVersionedConfigurationDraft: Create a draft versioned configuration. Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
         /// <param name="name">The logical name of the configuration.</param>
-        /// <param name="createClientConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
+        /// <param name="createVersionedConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ClientConfigurationResponse</returns>
-        public ClientConfigurationResponse CreateClientConfigurationDraft(string configType, string name, CreateClientConfigurationDraftRequest? createClientConfigurationDraftRequest = default(CreateClientConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>VersionedConfigurationResponse</returns>
+        public VersionedConfigurationResponse CreateVersionedConfigurationDraft(string configType, string name, CreateVersionedConfigurationDraftRequest? createVersionedConfigurationDraftRequest = default(CreateVersionedConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> localVarResponse = CreateClientConfigurationDraftWithHttpInfo(configType, name, createClientConfigurationDraftRequest, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> localVarResponse = CreateVersionedConfigurationDraftWithHttpInfo(configType, name, createVersionedConfigurationDraftRequest, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateClientConfigurationDraft: Create a draft client configuration. Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] CreateVersionedConfigurationDraft: Create a draft versioned configuration. Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="configType">The category of configuration.</param>
         /// <param name="name">The logical name of the configuration.</param>
-        /// <param name="createClientConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
+        /// <param name="createVersionedConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ClientConfigurationResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> CreateClientConfigurationDraftWithHttpInfo(string configType, string name, CreateClientConfigurationDraftRequest? createClientConfigurationDraftRequest = default(CreateClientConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> CreateVersionedConfigurationDraftWithHttpInfo(string configType, string name, CreateVersionedConfigurationDraftRequest? createVersionedConfigurationDraftRequest = default(CreateVersionedConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'configType' is set
             if (configType == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'configType' when calling ClientConfigurationsApi->CreateClientConfigurationDraft");
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->CreateVersionedConfigurationDraft");
             }
 
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'name' when calling ClientConfigurationsApi->CreateClientConfigurationDraft");
+                throw new ArgumentNullException("Missing required parameter 'name' when calling VersionedConfigurationsApi->CreateVersionedConfigurationDraft");
             }
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -492,6 +492,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -517,9 +527,9 @@ namespace Finbourne.Sdk.Services.Horizon.Api
 
             localVarRequestOptions.PathParameters.Add("configType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(configType)); // path parameter
             localVarRequestOptions.PathParameters.Add("name", Finbourne.Sdk.Client.ClientUtils.ParameterToString(name)); // path parameter
-            localVarRequestOptions.Data = createClientConfigurationDraftRequest;
+            localVarRequestOptions.Data = createVersionedConfigurationDraftRequest;
 
-            localVarRequestOptions.Operation = "ClientConfigurationsApi.CreateClientConfigurationDraft";
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.CreateVersionedConfigurationDraft";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -540,10 +550,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<ClientConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/clientconfiguration/{configType}/{name}/draft", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<VersionedConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}/{name}/draft", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateClientConfigurationDraft", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateVersionedConfigurationDraft", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -554,46 +564,46 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateClientConfigurationDraft: Create a draft client configuration. Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] CreateVersionedConfigurationDraft: Create a draft versioned configuration. Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
         /// <param name="name">The logical name of the configuration.</param>
-        /// <param name="createClientConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
+        /// <param name="createVersionedConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ClientConfigurationResponse</returns>
-        public async System.Threading.Tasks.Task<ClientConfigurationResponse> CreateClientConfigurationDraftAsync(string configType, string name, CreateClientConfigurationDraftRequest? createClientConfigurationDraftRequest = default(CreateClientConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of VersionedConfigurationResponse</returns>
+        public async System.Threading.Tasks.Task<VersionedConfigurationResponse> CreateVersionedConfigurationDraftAsync(string configType, string name, CreateVersionedConfigurationDraftRequest? createVersionedConfigurationDraftRequest = default(CreateVersionedConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> localVarResponse = await CreateClientConfigurationDraftWithHttpInfoAsync(configType, name, createClientConfigurationDraftRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> localVarResponse = await CreateVersionedConfigurationDraftWithHttpInfoAsync(configType, name, createVersionedConfigurationDraftRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateClientConfigurationDraft: Create a draft client configuration. Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] CreateVersionedConfigurationDraft: Create a draft versioned configuration. Creates a new draft configuration record. Configurations follow a draft/locked lifecycle: create a draft here, refine it with the update endpoint, then commit it with the lock endpoint. If both majorVersion and minorVersion are omitted in the request body, the next version is assigned automatically by incrementing the minor version of the current highest version (starting at 1.0 if none exists). The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="configType">The category of configuration.</param>
         /// <param name="name">The logical name of the configuration.</param>
-        /// <param name="createClientConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
+        /// <param name="createVersionedConfigurationDraftRequest">Options for the new draft, including optional explicit version and source version. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ClientConfigurationResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse>> CreateClientConfigurationDraftWithHttpInfoAsync(string configType, string name, CreateClientConfigurationDraftRequest? createClientConfigurationDraftRequest = default(CreateClientConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> CreateVersionedConfigurationDraftWithHttpInfoAsync(string configType, string name, CreateVersionedConfigurationDraftRequest? createVersionedConfigurationDraftRequest = default(CreateVersionedConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'configType' is set
             if (configType == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'configType' when calling ClientConfigurationsApi->CreateClientConfigurationDraft");
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->CreateVersionedConfigurationDraft");
             }
 
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'name' when calling ClientConfigurationsApi->CreateClientConfigurationDraft");
+                throw new ArgumentNullException("Missing required parameter 'name' when calling VersionedConfigurationsApi->CreateVersionedConfigurationDraft");
             }
 
 
@@ -607,6 +617,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -632,9 +652,9 @@ namespace Finbourne.Sdk.Services.Horizon.Api
 
             localVarRequestOptions.PathParameters.Add("configType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(configType)); // path parameter
             localVarRequestOptions.PathParameters.Add("name", Finbourne.Sdk.Client.ClientUtils.ParameterToString(name)); // path parameter
-            localVarRequestOptions.Data = createClientConfigurationDraftRequest;
+            localVarRequestOptions.Data = createVersionedConfigurationDraftRequest;
 
-            localVarRequestOptions.Operation = "ClientConfigurationsApi.CreateClientConfigurationDraft";
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.CreateVersionedConfigurationDraft";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -655,11 +675,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ClientConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/clientconfiguration/{configType}/{name}/draft", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<VersionedConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}/{name}/draft", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateClientConfigurationDraft", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateVersionedConfigurationDraft", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -670,7 +690,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetClientConfiguration: Get a client configuration. Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration. Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
@@ -679,15 +699,15 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="minorVersion">The minor version to retrieve. Must be supplied together with majorVersion, or both omitted. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ClientConfigurationResponse</returns>
-        public ClientConfigurationResponse GetClientConfiguration(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>VersionedConfigurationResponse</returns>
+        public VersionedConfigurationResponse GetVersionedConfiguration(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> localVarResponse = GetClientConfigurationWithHttpInfo(configType, name, majorVersion, minorVersion, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> localVarResponse = GetVersionedConfigurationWithHttpInfo(configType, name, majorVersion, minorVersion, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetClientConfiguration: Get a client configuration. Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration. Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -697,19 +717,19 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="minorVersion">The minor version to retrieve. Must be supplied together with majorVersion, or both omitted. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ClientConfigurationResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> GetClientConfigurationWithHttpInfo(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> GetVersionedConfigurationWithHttpInfo(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'configType' is set
             if (configType == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'configType' when calling ClientConfigurationsApi->GetClientConfiguration");
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->GetVersionedConfiguration");
             }
 
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'name' when calling ClientConfigurationsApi->GetClientConfiguration");
+                throw new ArgumentNullException("Missing required parameter 'name' when calling VersionedConfigurationsApi->GetVersionedConfiguration");
             }
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -722,6 +742,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -755,7 +785,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "minorVersion", minorVersion));
             }
 
-            localVarRequestOptions.Operation = "ClientConfigurationsApi.GetClientConfiguration";
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.GetVersionedConfiguration";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -776,10 +806,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ClientConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/clientconfiguration/{configType}/{name}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<VersionedConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}/{name}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetClientConfiguration", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetVersionedConfiguration", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -790,7 +820,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetClientConfiguration: Get a client configuration. Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration. Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
@@ -800,15 +830,15 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ClientConfigurationResponse</returns>
-        public async System.Threading.Tasks.Task<ClientConfigurationResponse> GetClientConfigurationAsync(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of VersionedConfigurationResponse</returns>
+        public async System.Threading.Tasks.Task<VersionedConfigurationResponse> GetVersionedConfigurationAsync(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> localVarResponse = await GetClientConfigurationWithHttpInfoAsync(configType, name, majorVersion, minorVersion, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> localVarResponse = await GetVersionedConfigurationWithHttpInfoAsync(configType, name, majorVersion, minorVersion, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetClientConfiguration: Get a client configuration. Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration. Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -819,19 +849,19 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ClientConfigurationResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse>> GetClientConfigurationWithHttpInfoAsync(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> GetVersionedConfigurationWithHttpInfoAsync(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'configType' is set
             if (configType == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'configType' when calling ClientConfigurationsApi->GetClientConfiguration");
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->GetVersionedConfiguration");
             }
 
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'name' when calling ClientConfigurationsApi->GetClientConfiguration");
+                throw new ArgumentNullException("Missing required parameter 'name' when calling VersionedConfigurationsApi->GetVersionedConfiguration");
             }
 
 
@@ -845,6 +875,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -878,7 +918,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "minorVersion", minorVersion));
             }
 
-            localVarRequestOptions.Operation = "ClientConfigurationsApi.GetClientConfiguration";
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.GetVersionedConfiguration";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -899,11 +939,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ClientConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/clientconfiguration/{configType}/{name}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<VersionedConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}/{name}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetClientConfiguration", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetVersionedConfiguration", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -914,34 +954,34 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListClientConfigurations: List client configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration to list.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>List&lt;ClientConfigurationResponse&gt;</returns>
-        public List<ClientConfigurationResponse> ListClientConfigurations(string configType, int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>List&lt;VersionedConfigurationResponse&gt;</returns>
+        public List<VersionedConfigurationResponse> ListVersionedConfigurations(string configType, int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<List<ClientConfigurationResponse>> localVarResponse = ListClientConfigurationsWithHttpInfo(configType, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>> localVarResponse = ListVersionedConfigurationsWithHttpInfo(configType, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListClientConfigurations: List client configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="configType">The category of configuration to list.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of List&lt;ClientConfigurationResponse&gt;</returns>
-        public Finbourne.Sdk.Client.ApiResponse<List<ClientConfigurationResponse>> ListClientConfigurationsWithHttpInfo(string configType, int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>ApiResponse of List&lt;VersionedConfigurationResponse&gt;</returns>
+        public Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>> ListVersionedConfigurationsWithHttpInfo(string configType, int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'configType' is set
             if (configType == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'configType' when calling ClientConfigurationsApi->ListClientConfigurations");
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->ListVersionedConfigurations");
             }
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -954,6 +994,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -978,7 +1028,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
 
             localVarRequestOptions.PathParameters.Add("configType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(configType)); // path parameter
 
-            localVarRequestOptions.Operation = "ClientConfigurationsApi.ListClientConfigurations";
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.ListVersionedConfigurations";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -999,10 +1049,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<List<ClientConfigurationResponse>, AbstractOpenAPISchema>("/horizon/api/clientconfiguration/{configType}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<List<VersionedConfigurationResponse>, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListClientConfigurations", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListVersionedConfigurations", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1013,22 +1063,22 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListClientConfigurations: List client configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration to list.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of List&lt;ClientConfigurationResponse&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ClientConfigurationResponse>> ListClientConfigurationsAsync(string configType, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of List&lt;VersionedConfigurationResponse&gt;</returns>
+        public async System.Threading.Tasks.Task<List<VersionedConfigurationResponse>> ListVersionedConfigurationsAsync(string configType, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<List<ClientConfigurationResponse>> localVarResponse = await ListClientConfigurationsWithHttpInfoAsync(configType, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>> localVarResponse = await ListVersionedConfigurationsWithHttpInfoAsync(configType, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListClientConfigurations: List client configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1036,13 +1086,13 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (List&lt;ClientConfigurationResponse&gt;)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<List<ClientConfigurationResponse>>> ListClientConfigurationsWithHttpInfoAsync(string configType, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of ApiResponse (List&lt;VersionedConfigurationResponse&gt;)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>>> ListVersionedConfigurationsWithHttpInfoAsync(string configType, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'configType' is set
             if (configType == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'configType' when calling ClientConfigurationsApi->ListClientConfigurations");
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->ListVersionedConfigurations");
             }
 
 
@@ -1056,6 +1106,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1080,7 +1140,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
 
             localVarRequestOptions.PathParameters.Add("configType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(configType)); // path parameter
 
-            localVarRequestOptions.Operation = "ClientConfigurationsApi.ListClientConfigurations";
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.ListVersionedConfigurations";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -1101,11 +1161,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<ClientConfigurationResponse>, AbstractOpenAPISchema>("/horizon/api/clientconfiguration/{configType}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<List<VersionedConfigurationResponse>, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListClientConfigurations", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListVersionedConfigurations", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1116,7 +1176,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] LockClientConfigurationVersion: Lock a client configuration version. Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] LockVersionedConfigurationVersion: Lock a versioned configuration version. Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
@@ -1125,15 +1185,15 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="minorVersion">The minor version to lock.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ClientConfigurationResponse</returns>
-        public ClientConfigurationResponse LockClientConfigurationVersion(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>VersionedConfigurationResponse</returns>
+        public VersionedConfigurationResponse LockVersionedConfigurationVersion(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> localVarResponse = LockClientConfigurationVersionWithHttpInfo(configType, name, majorVersion, minorVersion, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> localVarResponse = LockVersionedConfigurationVersionWithHttpInfo(configType, name, majorVersion, minorVersion, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] LockClientConfigurationVersion: Lock a client configuration version. Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] LockVersionedConfigurationVersion: Lock a versioned configuration version. Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1143,19 +1203,19 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="minorVersion">The minor version to lock.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ClientConfigurationResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> LockClientConfigurationVersionWithHttpInfo(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> LockVersionedConfigurationVersionWithHttpInfo(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'configType' is set
             if (configType == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'configType' when calling ClientConfigurationsApi->LockClientConfigurationVersion");
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->LockVersionedConfigurationVersion");
             }
 
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'name' when calling ClientConfigurationsApi->LockClientConfigurationVersion");
+                throw new ArgumentNullException("Missing required parameter 'name' when calling VersionedConfigurationsApi->LockVersionedConfigurationVersion");
             }
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -1168,6 +1228,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1195,7 +1265,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             localVarRequestOptions.PathParameters.Add("majorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(majorVersion)); // path parameter
             localVarRequestOptions.PathParameters.Add("minorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(minorVersion)); // path parameter
 
-            localVarRequestOptions.Operation = "ClientConfigurationsApi.LockClientConfigurationVersion";
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.LockVersionedConfigurationVersion";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -1216,10 +1286,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<ClientConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/clientconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}/lock", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<VersionedConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}/lock", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("LockClientConfigurationVersion", localVarResponse);
+                Exception _exception = this.ExceptionFactory("LockVersionedConfigurationVersion", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1230,7 +1300,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] LockClientConfigurationVersion: Lock a client configuration version. Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] LockVersionedConfigurationVersion: Lock a versioned configuration version. Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
@@ -1240,15 +1310,15 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ClientConfigurationResponse</returns>
-        public async System.Threading.Tasks.Task<ClientConfigurationResponse> LockClientConfigurationVersionAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of VersionedConfigurationResponse</returns>
+        public async System.Threading.Tasks.Task<VersionedConfigurationResponse> LockVersionedConfigurationVersionAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> localVarResponse = await LockClientConfigurationVersionWithHttpInfoAsync(configType, name, majorVersion, minorVersion, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> localVarResponse = await LockVersionedConfigurationVersionWithHttpInfoAsync(configType, name, majorVersion, minorVersion, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] LockClientConfigurationVersion: Lock a client configuration version. Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] LockVersionedConfigurationVersion: Lock a versioned configuration version. Locks a draft configuration version, making it immutable and ready for use. Once locked, a version cannot be edited or unlocked. All versions are retained permanently. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1259,19 +1329,19 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ClientConfigurationResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse>> LockClientConfigurationVersionWithHttpInfoAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> LockVersionedConfigurationVersionWithHttpInfoAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'configType' is set
             if (configType == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'configType' when calling ClientConfigurationsApi->LockClientConfigurationVersion");
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->LockVersionedConfigurationVersion");
             }
 
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'name' when calling ClientConfigurationsApi->LockClientConfigurationVersion");
+                throw new ArgumentNullException("Missing required parameter 'name' when calling VersionedConfigurationsApi->LockVersionedConfigurationVersion");
             }
 
 
@@ -1285,6 +1355,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1312,7 +1392,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             localVarRequestOptions.PathParameters.Add("majorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(majorVersion)); // path parameter
             localVarRequestOptions.PathParameters.Add("minorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(minorVersion)); // path parameter
 
-            localVarRequestOptions.Operation = "ClientConfigurationsApi.LockClientConfigurationVersion";
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.LockVersionedConfigurationVersion";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -1333,11 +1413,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ClientConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/clientconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}/lock", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<VersionedConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}/lock", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("LockClientConfigurationVersion", localVarResponse);
+                Exception _exception = this.ExceptionFactory("LockVersionedConfigurationVersion", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1348,25 +1428,25 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateClientConfigurationDraft: Update a draft client configuration. Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] UpdateVersionedConfigurationDraft: Update a draft versioned configuration. Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
         /// <param name="name">The logical name of the configuration.</param>
         /// <param name="majorVersion">The major version of the draft to update.</param>
         /// <param name="minorVersion">The minor version of the draft to update.</param>
-        /// <param name="updateClientConfigurationDraftRequest">The updated value. (optional)</param>
+        /// <param name="updateVersionedConfigurationDraftRequest">The updated value. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ClientConfigurationResponse</returns>
-        public ClientConfigurationResponse UpdateClientConfigurationDraft(string configType, string name, int majorVersion, int minorVersion, UpdateClientConfigurationDraftRequest? updateClientConfigurationDraftRequest = default(UpdateClientConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>VersionedConfigurationResponse</returns>
+        public VersionedConfigurationResponse UpdateVersionedConfigurationDraft(string configType, string name, int majorVersion, int minorVersion, UpdateVersionedConfigurationDraftRequest? updateVersionedConfigurationDraftRequest = default(UpdateVersionedConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> localVarResponse = UpdateClientConfigurationDraftWithHttpInfo(configType, name, majorVersion, minorVersion, updateClientConfigurationDraftRequest, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> localVarResponse = UpdateVersionedConfigurationDraftWithHttpInfo(configType, name, majorVersion, minorVersion, updateVersionedConfigurationDraftRequest, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateClientConfigurationDraft: Update a draft client configuration. Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] UpdateVersionedConfigurationDraft: Update a draft versioned configuration. Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1374,22 +1454,22 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="name">The logical name of the configuration.</param>
         /// <param name="majorVersion">The major version of the draft to update.</param>
         /// <param name="minorVersion">The minor version of the draft to update.</param>
-        /// <param name="updateClientConfigurationDraftRequest">The updated value. (optional)</param>
+        /// <param name="updateVersionedConfigurationDraftRequest">The updated value. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ClientConfigurationResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> UpdateClientConfigurationDraftWithHttpInfo(string configType, string name, int majorVersion, int minorVersion, UpdateClientConfigurationDraftRequest? updateClientConfigurationDraftRequest = default(UpdateClientConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> UpdateVersionedConfigurationDraftWithHttpInfo(string configType, string name, int majorVersion, int minorVersion, UpdateVersionedConfigurationDraftRequest? updateVersionedConfigurationDraftRequest = default(UpdateVersionedConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'configType' is set
             if (configType == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'configType' when calling ClientConfigurationsApi->UpdateClientConfigurationDraft");
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->UpdateVersionedConfigurationDraft");
             }
 
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'name' when calling ClientConfigurationsApi->UpdateClientConfigurationDraft");
+                throw new ArgumentNullException("Missing required parameter 'name' when calling VersionedConfigurationsApi->UpdateVersionedConfigurationDraft");
             }
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -1402,6 +1482,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1429,9 +1519,9 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             localVarRequestOptions.PathParameters.Add("name", Finbourne.Sdk.Client.ClientUtils.ParameterToString(name)); // path parameter
             localVarRequestOptions.PathParameters.Add("majorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(majorVersion)); // path parameter
             localVarRequestOptions.PathParameters.Add("minorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(minorVersion)); // path parameter
-            localVarRequestOptions.Data = updateClientConfigurationDraftRequest;
+            localVarRequestOptions.Data = updateVersionedConfigurationDraftRequest;
 
-            localVarRequestOptions.Operation = "ClientConfigurationsApi.UpdateClientConfigurationDraft";
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.UpdateVersionedConfigurationDraft";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -1452,10 +1542,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Put<ClientConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/clientconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}/draft", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Put<VersionedConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}/draft", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("UpdateClientConfigurationDraft", localVarResponse);
+                Exception _exception = this.ExceptionFactory("UpdateVersionedConfigurationDraft", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1466,26 +1556,26 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateClientConfigurationDraft: Update a draft client configuration. Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] UpdateVersionedConfigurationDraft: Update a draft versioned configuration. Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration.</param>
         /// <param name="name">The logical name of the configuration.</param>
         /// <param name="majorVersion">The major version of the draft to update.</param>
         /// <param name="minorVersion">The minor version of the draft to update.</param>
-        /// <param name="updateClientConfigurationDraftRequest">The updated value. (optional)</param>
+        /// <param name="updateVersionedConfigurationDraftRequest">The updated value. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ClientConfigurationResponse</returns>
-        public async System.Threading.Tasks.Task<ClientConfigurationResponse> UpdateClientConfigurationDraftAsync(string configType, string name, int majorVersion, int minorVersion, UpdateClientConfigurationDraftRequest? updateClientConfigurationDraftRequest = default(UpdateClientConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of VersionedConfigurationResponse</returns>
+        public async System.Threading.Tasks.Task<VersionedConfigurationResponse> UpdateVersionedConfigurationDraftAsync(string configType, string name, int majorVersion, int minorVersion, UpdateVersionedConfigurationDraftRequest? updateVersionedConfigurationDraftRequest = default(UpdateVersionedConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse> localVarResponse = await UpdateClientConfigurationDraftWithHttpInfoAsync(configType, name, majorVersion, minorVersion, updateClientConfigurationDraftRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> localVarResponse = await UpdateVersionedConfigurationDraftWithHttpInfoAsync(configType, name, majorVersion, minorVersion, updateVersionedConfigurationDraftRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateClientConfigurationDraft: Update a draft client configuration. Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] UpdateVersionedConfigurationDraft: Update a draft versioned configuration. Updates the value of an existing draft configuration. Only draft versions can be updated; locked versions are immutable. This endpoint can be called multiple times before locking. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1493,23 +1583,23 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="name">The logical name of the configuration.</param>
         /// <param name="majorVersion">The major version of the draft to update.</param>
         /// <param name="minorVersion">The minor version of the draft to update.</param>
-        /// <param name="updateClientConfigurationDraftRequest">The updated value. (optional)</param>
+        /// <param name="updateVersionedConfigurationDraftRequest">The updated value. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ClientConfigurationResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClientConfigurationResponse>> UpdateClientConfigurationDraftWithHttpInfoAsync(string configType, string name, int majorVersion, int minorVersion, UpdateClientConfigurationDraftRequest? updateClientConfigurationDraftRequest = default(UpdateClientConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> UpdateVersionedConfigurationDraftWithHttpInfoAsync(string configType, string name, int majorVersion, int minorVersion, UpdateVersionedConfigurationDraftRequest? updateVersionedConfigurationDraftRequest = default(UpdateVersionedConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'configType' is set
             if (configType == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'configType' when calling ClientConfigurationsApi->UpdateClientConfigurationDraft");
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->UpdateVersionedConfigurationDraft");
             }
 
             // verify the required parameter 'name' is set
             if (name == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'name' when calling ClientConfigurationsApi->UpdateClientConfigurationDraft");
+                throw new ArgumentNullException("Missing required parameter 'name' when calling VersionedConfigurationsApi->UpdateVersionedConfigurationDraft");
             }
 
 
@@ -1523,6 +1613,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1550,9 +1650,9 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             localVarRequestOptions.PathParameters.Add("name", Finbourne.Sdk.Client.ClientUtils.ParameterToString(name)); // path parameter
             localVarRequestOptions.PathParameters.Add("majorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(majorVersion)); // path parameter
             localVarRequestOptions.PathParameters.Add("minorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(minorVersion)); // path parameter
-            localVarRequestOptions.Data = updateClientConfigurationDraftRequest;
+            localVarRequestOptions.Data = updateVersionedConfigurationDraftRequest;
 
-            localVarRequestOptions.Operation = "ClientConfigurationsApi.UpdateClientConfigurationDraft";
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.UpdateVersionedConfigurationDraft";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -1573,11 +1673,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<ClientConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/clientconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}/draft", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PutAsync<VersionedConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}/draft", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("UpdateClientConfigurationDraft", localVarResponse);
+                Exception _exception = this.ExceptionFactory("UpdateVersionedConfigurationDraft", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

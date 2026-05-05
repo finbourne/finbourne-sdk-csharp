@@ -9,7 +9,7 @@
 | **InstrumentScope** | **string** | Optional | *No description available.* |
 | **ReceivedDate** | **DateTimeOffset?** | Optional | *No description available.* |
 | **PriceDate** | **DateTimeOffset?** | Optional | *No description available.* |
-| **TransactionCategory** | **string** | Optional | *No description available.* |
+| **TransactionCategory** | **string** | Optional | Available values: Subscription, Redemption, SwitchOut, SwitchIn, TransferOut, TransferIn. |
 | **LiquidatingShareClassIdentifier** | **string** | Optional | *No description available.* |
 | **LiquidatingShareClassIdentifierType** | **string** | Optional | *No description available.* |
 | **LiquidatingShareClassInstrumentScope** | **string** | Optional | *No description available.* |
@@ -28,7 +28,7 @@ var instance = new CalculateOrderDatesRequest(
     instrumentScope: "...",  // optional
     receivedDate: DateTimeOffset.Now,  // optional
     priceDate: DateTimeOffset.Now,  // optional
-    transactionCategory: "...",  // optional
+    transactionCategory: "...",  // optional — Available values: Subscription, Redemption, SwitchOut, SwitchIn, TransferOut, TransferIn.
     liquidatingShareClassIdentifier: "...",  // optional
     liquidatingShareClassIdentifierType: "...",  // optional
     liquidatingShareClassInstrumentScope: "..."  // optional

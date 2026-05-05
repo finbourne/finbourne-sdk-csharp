@@ -9,7 +9,7 @@
 | **Label** | **string** | Required | The label of the compliance step |
 | **LimitCheckParameters** | [List&lt;ComplianceTemplateParameter&gt;](ComplianceTemplateParameter.md) | Required | Parameters required for an absolute limit check |
 | **WarningCheckParameters** | [List&lt;ComplianceTemplateParameter&gt;](ComplianceTemplateParameter.md) | Required | Parameters required for a warning limit check |
-| **ComplianceStepType** | **string** | Required | . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep Default: `ComplianceStepTypeEnum.PercentCheckStep` |
+| **ComplianceStepType** | **string** | Required | The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep. Default: `ComplianceStepTypeEnum.PercentCheckStep` |
 
 
 ## Usage
@@ -23,7 +23,7 @@ var instance = new PercentCheckStep(
     label: "...",  // required — The label of the compliance step
     limitCheckParameters: new List<ComplianceTemplateParameter>(),  // required — Parameters required for an absolute limit check
     warningCheckParameters: new List<ComplianceTemplateParameter>(),  // required — Parameters required for a warning limit check
-    complianceStepType: "..."  // required — . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep
+    complianceStepType: "..."  // required — The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep.
 );
 ```
 ### Serializing to JSON

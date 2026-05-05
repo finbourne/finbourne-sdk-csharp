@@ -35,9 +35,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class AppendMarketData : IEquatable<AppendMarketData>, IValidatableObject
     {
         /// <summary>
-        /// The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData
+        /// Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData.
         /// </summary>
-        /// <value>The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData</value>
+        /// <value>Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum MarketDataTypeEnum
         {
@@ -73,9 +73,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData
+        /// Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData.
         /// </summary>
-        /// <value>The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData</value>
+        /// <value>Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData.</value>
         [DataMember(Name = "marketDataType", IsRequired = true, EmitDefaultValue = true)]
         public MarketDataTypeEnum MarketDataType { get; set; }
         /// <summary>
@@ -86,7 +86,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AppendMarketData" /> class.
         /// </summary>
-        /// <param name="marketDataType">The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData (required).</param>
+        /// <param name="marketDataType">Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData. (required).</param>
         public AppendMarketData(MarketDataTypeEnum marketDataType = default(MarketDataTypeEnum))
         {
             this.MarketDataType = marketDataType;

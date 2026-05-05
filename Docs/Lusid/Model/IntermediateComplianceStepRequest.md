@@ -6,7 +6,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ComplianceStepTypeRequest** | **string** | Required | . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest *(inherited)* |
+| **ComplianceStepTypeRequest** | **string** | Required | The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest. *(inherited)* |
 | **Label** | **string** | Required | The label of the compliance step |
 
 

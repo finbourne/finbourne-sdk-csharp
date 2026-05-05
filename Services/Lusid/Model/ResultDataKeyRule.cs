@@ -45,7 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="resourceKey">The result data key that identifies the address pattern that this is a rule for (required).</param>
         /// <param name="documentResultType">documentResultType (required).</param>
         /// <param name="useDocumentToInferHoldings">Indicates whether the relevant document should be used to infer the set of holdings in the valuation..</param>
-        /// <param name="resultKeyRuleType">The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule (required) (default to ResultKeyRuleTypeEnum.Invalid).</param>
+        /// <param name="resultKeyRuleType">Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule. (required) (default to ResultKeyRuleTypeEnum.Invalid).</param>
         public ResultDataKeyRule(string supplier = default(string), string dataScope = default(string), string documentCode = default(string), string quoteInterval = default(string), DateTimeOffset? asAt = default(DateTimeOffset?), string resourceKey = default(string), string documentResultType = default(string), bool useDocumentToInferHoldings = default(bool), ResultKeyRuleTypeEnum resultKeyRuleType = default(ResultKeyRuleTypeEnum)) : base()
         {
             // to ensure "supplier" is required (not null)

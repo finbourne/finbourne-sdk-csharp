@@ -7,7 +7,7 @@ A Cleardown Module request definition
 |------|------|----------|-------------|
 | **DisplayName** | **string** | Required | The name of the Cleardown Module. |
 | **Description** | **string** | Optional | A description for the Cleardown Module. |
-| **Status** | **string** | Required | The Cleardown Module status. Can be Active or Inactive. Defaults to Active. |
+| **Status** | **string** | Required | The Cleardown Module status. Default value: Active. Available values: Active, Inactive. |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new CleardownModuleDetails(
     displayName: "...",  // required — The name of the Cleardown Module.
     description: "...",  // optional — A description for the Cleardown Module.
-    status: "..."  // required — The Cleardown Module status. Can be Active or Inactive. Defaults to Active.
+    status: "..."  // required — The Cleardown Module status. Default value: Active. Available values: Active, Inactive.
 );
 ```
 ### Serializing to JSON

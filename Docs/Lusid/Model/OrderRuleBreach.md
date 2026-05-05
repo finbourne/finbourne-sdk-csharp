@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **BreachTaskId** | **string** | Required | Uniquely identifies this historical order breach workflow task. |
-| **ComplianceState** | **string** | Required | The compliance state of this order breach. Possible values are &#39;Pending&#39;, &#39;Failed&#39;, &#39;Manually approved&#39;, &#39;Passed&#39; and &#39;Warning&#39;. |
+| **ComplianceState** | **string** | Required | The compliance state of this order breach. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning. |
 
 
 ## Usage
@@ -17,7 +17,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new OrderRuleBreach(
     breachTaskId: "...",  // required — Uniquely identifies this historical order breach workflow task.
-    complianceState: "..."  // required — The compliance state of this order breach. Possible values are &#39;Pending&#39;, &#39;Failed&#39;, &#39;Manually approved&#39;, &#39;Passed&#39; and &#39;Warning&#39;.
+    complianceState: "..."  // required — The compliance state of this order breach. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning.
 );
 ```
 ### Serializing to JSON

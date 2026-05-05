@@ -5,7 +5,7 @@ Base class for representing schedules in LUSID.  This base class should not be d
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ScheduleType** | **string** | Required | The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid |
+| **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid. |
 
 
 ## Usage
@@ -16,7 +16,7 @@ Base class for representing schedules in LUSID.  This base class should not be d
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new Schedule(
-    scheduleType: "..."  // required — The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid
+    scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid.
 );
 ```
 ### Serializing to JSON

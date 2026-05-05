@@ -83,7 +83,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the containing workspace; case is important. Available values: shared, personal. |
 | **workspaceName** | **string** | path | **required** | The item&#39;s workspace name. |
 | **workspaceItemCreationRequest** | [WorkspaceItemCreationRequest?](WorkspaceItemCreationRequest?.md) | body | optional | The item to be created. |
 
@@ -145,7 +145,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the workspace being created; case is important. Available values: shared, personal. |
 | **workspaceCreationRequest** | [WorkspaceCreationRequest](WorkspaceCreationRequest.md) | body | **required** | The workspace to be created. |
 | **includeItemAccess** | **bool?** | query | optional | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. Default: `false` |
 
@@ -208,7 +208,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the containing workspace; case is important. Available values: shared, personal. |
 | **workspaceName** | **string** | path | **required** | The name of the workspace. |
 | **groupName** | **string** | path | **required** | The group containing the item. |
 | **itemName** | **string** | path | **required** | The name of the item. |
@@ -271,7 +271,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the workspace; case is important. Available values: shared, personal. |
 | **workspaceName** | **string** | path | **required** | The name of the workspace. |
 | **recurse** | **bool?** | query | optional | If true, recursively delete items in the workspace. Default: `false` |
 
@@ -335,7 +335,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the containing workspace; case is important. Available values: shared, personal. |
 | **workspaceName** | **string** | path | **required** | The name of the workspace. |
 | **groupName** | **string** | path | **required** | The group containing the item. |
 | **itemName** | **string** | path | **required** | The name of the item. |
@@ -400,7 +400,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the workspace; case is important. Available values: shared, personal. |
 | **workspaceName** | **string** | path | **required** | The workspace name. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. |
 | **includeItemAccess** | **bool?** | query | optional | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. Default: `false` |
@@ -467,7 +467,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the containing workspace; case is important. Available values: shared, personal. |
 | **workspaceName** | **string** | path | **required** | The item&#39;s workspace name. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. |
@@ -537,7 +537,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the workspaces; case is important. Available values: shared, personal. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing workspaces from a previous call to list workspaces.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. |
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
@@ -606,7 +606,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the containing workspace; case is important. Available values: shared, personal. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. |
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
@@ -673,7 +673,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the containing workspace; case is important. Available values: shared, personal. |
 | **workspaceName** | **string** | path | **required** | The workspace name. |
 | **groupName** | **string** | path | **required** | The group containing the item. |
 | **itemName** | **string** | path | **required** | The item name. |
@@ -738,7 +738,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **visibility** | **string** | path | **required** | The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. |
+| **visibility** | **string** | path | **required** | The visibility for the workspace; case is important. Available values: shared, personal. |
 | **workspaceName** | **string** | path | **required** | The workspace name. |
 | **workspaceUpdateRequest** | [WorkspaceUpdateRequest](WorkspaceUpdateRequest.md) | body | **required** | The new workspace details. |
 | **includeItemAccess** | **bool?** | query | optional | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. Default: `false` |

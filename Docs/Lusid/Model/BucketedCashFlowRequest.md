@@ -5,7 +5,7 @@ Specification class consisting of parameters for BucketedCashFlow endpoint.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **RoundingMethod** | **string** | Required | When bucketing, there is not a unique way to allocate the bucket points.  RoundingMethod Supported string (enumeration) values are: [RoundDown, RoundUp]. |
+| **RoundingMethod** | **string** | Required | When bucketing, there is not a unique way to allocate the bucket points. Available values: RoundUp, RoundDown. |
 | **BucketingDates** | **List&lt;DateTimeOffset&gt;** | Optional | A list of dates to perform cashflow bucketing upon.  If this is provided, the list of tenors for bucketing should be empty. |
 | **BucketTenors** | **List&lt;string&gt;** | Optional | A list of tenors to perform cashflow bucketing upon.  If this is provided, the list of dates for bucketing should be empty. |
 | **EffectiveAt** | **string** | Optional | The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. |
@@ -18,7 +18,7 @@ Specification class consisting of parameters for BucketedCashFlow endpoint.
 | **EquipWithSubtotals** | **bool** | Optional | Flag directing the Valuation call to populate the results with subtotals of aggregates. |
 | **AsAt** | **DateTimeOffset?** | Optional | The time of the system at which to query for bucketed cashflows. |
 | **ExcludeUnsettledTrades** | **bool** | Optional | Flag directing the Valuation call to exclude cashflows from unsettled trades.  If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. |
-| **CashFlowType** | **string** | Optional | Indicate the requested cash flow representation InstrumentCashFlows or PortfolioCashFlows (GetCashLadder uses this)  Options: [InstrumentCashFlow, PortfolioCashFlow] |
+| **CashFlowType** | **string** | Optional | Indicate the requested cash flow representation InstrumentCashFlows or PortfolioCashFlows (GetCashLadder uses this). Available values: InstrumentCashFlow, PortfolioCashFlow, TransactionCashFlow. |
 | **BucketingSchedule** | [BucketingSchedule](BucketingSchedule.md) | Optional | *No description available.* |
 | **Filter** | **string** | Optional | *No description available.* |
 
@@ -31,7 +31,7 @@ Specification class consisting of parameters for BucketedCashFlow endpoint.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new BucketedCashFlowRequest(
-    roundingMethod: "...",  // required — When bucketing, there is not a unique way to allocate the bucket points.  RoundingMethod Supported string (enumeration) values are: [RoundDown, RoundUp].
+    roundingMethod: "...",  // required — When bucketing, there is not a unique way to allocate the bucket points. Available values: RoundUp, RoundDown.
     bucketingDates: ,  // optional — A list of dates to perform cashflow bucketing upon.  If this is provided, the list of tenors for bucketing should be empty.
     bucketTenors: ,  // optional — A list of tenors to perform cashflow bucketing upon.  If this is provided, the list of dates for bucketing should be empty.
     effectiveAt: "...",  // optional — The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today.
@@ -44,7 +44,7 @@ var instance = new BucketedCashFlowRequest(
     equipWithSubtotals: true,  // optional — Flag directing the Valuation call to populate the results with subtotals of aggregates.
     asAt: DateTimeOffset.Now,  // optional — The time of the system at which to query for bucketed cashflows.
     excludeUnsettledTrades: true,  // optional — Flag directing the Valuation call to exclude cashflows from unsettled trades.  If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set.
-    cashFlowType: "...",  // optional — Indicate the requested cash flow representation InstrumentCashFlows or PortfolioCashFlows (GetCashLadder uses this)  Options: [InstrumentCashFlow, PortfolioCashFlow]
+    cashFlowType: "...",  // optional — Indicate the requested cash flow representation InstrumentCashFlows or PortfolioCashFlows (GetCashLadder uses this). Available values: InstrumentCashFlow, PortfolioCashFlow, TransactionCashFlow.
     bucketingSchedule: new BucketingSchedule(...),  // optional
     filter: "..."  // optional
 );

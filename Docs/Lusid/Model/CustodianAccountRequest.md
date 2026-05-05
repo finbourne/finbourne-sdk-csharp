@@ -6,14 +6,14 @@
 |------|------|----------|-------------|
 | **Scope** | **string** | Optional | The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used |
 | **Code** | **string** | Required | Unique Code representing the Custodian Account |
-| **Status** | **string** | Optional | The Account status. Can be Active, Inactive or Deleted. |
+| **Status** | **string** | Optional | The Account status. Available values: Active, Inactive, Deleted. |
 | **AccountNumber** | **string** | Required | The Custodian Account Number |
 | **AccountName** | **string** | Required | The identifiable name given to the Custodian Account |
-| **AccountingMethod** | **string** | Required | The Accounting method to be used |
+| **AccountingMethod** | **string** | Required | The Accounting method to be used. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. |
 | **Currency** | **string** | Required | The Currency for the Account |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain. |
 | **CustodianIdentifier** | [TypedResourceId](TypedResourceId.md) | Required | *No description available.* |
-| **AccountType** | **string** | Optional | The Type of the Custodian Account. Can be Margin, Cash or Swap. Defaults to Margin. |
+| **AccountType** | **string** | Optional | The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap. |
 
 
 ## Usage
@@ -26,14 +26,14 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new CustodianAccountRequest(
     scope: "...",  // optional — The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used
     code: "...",  // required — Unique Code representing the Custodian Account
-    status: "...",  // optional — The Account status. Can be Active, Inactive or Deleted.
+    status: "...",  // optional — The Account status. Available values: Active, Inactive, Deleted.
     accountNumber: "...",  // required — The Custodian Account Number
     accountName: "...",  // required — The identifiable name given to the Custodian Account
-    accountingMethod: "...",  // required — The Accounting method to be used
+    accountingMethod: "...",  // required — The Accounting method to be used. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
     currency: "...",  // required — The Currency for the Account
     properties: new Property(...),  // optional — Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain.
     custodianIdentifier: new TypedResourceId(...),  // required
-    accountType: "..."  // optional — The Type of the Custodian Account. Can be Margin, Cash or Swap. Defaults to Margin.
+    accountType: "..."  // optional — The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap.
 );
 ```
 ### Serializing to JSON

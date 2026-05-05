@@ -39,7 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="subHoldingKey">The sub holding key whose value will form the left-hand side of the operation (required).</param>
         /// <param name="value">The value to be compared against (required).</param>
-        /// <param name="criterionType">The available values are: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals (required) (default to CriterionTypeEnum.PropertyValueEquals).</param>
+        /// <param name="criterionType">Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals. (required) (default to CriterionTypeEnum.PropertyValueEquals).</param>
         public SubHoldingKeyValueEquals(string subHoldingKey = default(string), string value = default(string), CriterionTypeEnum criterionType = default(CriterionTypeEnum)) : base()
         {
             // to ensure "subHoldingKey" is required (not null)

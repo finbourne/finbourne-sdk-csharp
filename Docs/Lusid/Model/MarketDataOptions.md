@@ -5,7 +5,7 @@ Base class for representing market data options in LUSID.  Abstractly, these are
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **MarketDataOptionsType** | **string** | Required | The available values are: CurveOptions |
+| **MarketDataOptionsType** | **string** | Required | Available values: CurveOptions. Available values: CurveOptions. |
 
 
 ## Usage
@@ -16,7 +16,7 @@ Base class for representing market data options in LUSID.  Abstractly, these are
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new MarketDataOptions(
-    marketDataOptionsType: "..."  // required — The available values are: CurveOptions
+    marketDataOptionsType: "..."  // required — Available values: CurveOptions. Available values: CurveOptions.
 );
 ```
 ### Serializing to JSON

@@ -11,11 +11,11 @@
 | **Origin** | **string** | Optional | The origin or source of the Fee accrual. |
 | **CalculationBase** | **string** | Optional | The calculation base for a Fee that is calculated using a percentage (TotalAnnualAccrualAmount and CalculationBase cannot both be present). When the Fee is a ShareClass Fee (i.e: when ShareClasses contains at least one value), each of the following would be a valid CalculationBase: \&quot;10000.00\&quot;, \&quot;ShareClass.GAV\&quot;, \&quot;ShareClass.GAV - ShareClass.Fees[ShareClassFeeCode1].Amount\&quot;, \&quot;ShareClass.Fees[ShareClassFeeCode1].CalculationBase\&quot;. When the Fee is a NonShareClassSpecific Fee (i.e: when ShareClasses contains no values), each of the following would be a valid CalculationBase: \&quot;10000.00\&quot;, \&quot;GAV\&quot;, \&quot;GAV - Fees[NonClassSpecificFeeCode1].Amount\&quot;, \&quot;Fees[NonClassSpecificFeeCode1].CalculationBase\&quot;.  |
 | **AccrualCurrency** | **string** | Required | The accrual currency. |
-| **Treatment** | **string** | Required | The accrual period of the Fee; &#39;Monthly&#39; or &#39;Daily&#39;. |
+| **Treatment** | **string** | Required | The accrual period of the Fee. Available values: Daily, Monthly. |
 | **TotalAnnualAccrualAmount** | **decimal?** | Optional | The total annual accrued amount for the Fee. (TotalAnnualAccrualAmount and CalculationBase cannot both be present) |
 | **FeeRatePercentage** | **decimal?** | Optional | The fee rate percentage. (Required when CalculationBase is present and not compatible with TotalAnnualAccrualAmount) |
-| **PayableFrequency** | **string** | Required | The payable frequency for the Fee; &#39;Annually&#39;, &#39;Quarterly&#39; or &#39;Monthly&#39;. |
-| **BusinessDayConvention** | **string** | Required | The business day convention to use for Fee calculations on weekends or holidays. Supported string values are: [Previous, P, Following, F, None]. |
+| **PayableFrequency** | **string** | Required | The payable frequency for the Fee. Available values: Annually, Quarterly, Monthly. |
+| **BusinessDayConvention** | **string** | Required | The business day convention to use for Fee calculations on weekends or holidays. Available values: None, P, Previous, F, Following. |
 | **StartDate** | **DateTimeOffset** | Required | The start date of the Fee. |
 | **EndDate** | **DateTimeOffset?** | Optional | The end date of the Fee. |
 | **AnchorDate** | [DayMonth](DayMonth.md) | Optional | *No description available.* |
@@ -39,11 +39,11 @@ var instance = new FeeRequest(
     origin: "...",  // optional — The origin or source of the Fee accrual.
     calculationBase: "...",  // optional — The calculation base for a Fee that is calculated using a percentage (TotalAnnualAccrualAmount and CalculationBase cannot both be present). When the Fee is a ShareClass Fee (i.e: when ShareClasses contains at least one value), each of the following would be a valid CalculationBase: \&quot;10000.00\&quot;, \&quot;ShareClass.GAV\&quot;, \&quot;ShareClass.GAV - ShareClass.Fees[ShareClassFeeCode1].Amount\&quot;, \&quot;ShareClass.Fees[ShareClassFeeCode1].CalculationBase\&quot;. When the Fee is a NonShareClassSpecific Fee (i.e: when ShareClasses contains no values), each of the following would be a valid CalculationBase: \&quot;10000.00\&quot;, \&quot;GAV\&quot;, \&quot;GAV - Fees[NonClassSpecificFeeCode1].Amount\&quot;, \&quot;Fees[NonClassSpecificFeeCode1].CalculationBase\&quot;. 
     accrualCurrency: "...",  // required — The accrual currency.
-    treatment: "...",  // required — The accrual period of the Fee; &#39;Monthly&#39; or &#39;Daily&#39;.
+    treatment: "...",  // required — The accrual period of the Fee. Available values: Daily, Monthly.
     totalAnnualAccrualAmount: 0.0d,  // optional — The total annual accrued amount for the Fee. (TotalAnnualAccrualAmount and CalculationBase cannot both be present)
     feeRatePercentage: 0.0d,  // optional — The fee rate percentage. (Required when CalculationBase is present and not compatible with TotalAnnualAccrualAmount)
-    payableFrequency: "...",  // required — The payable frequency for the Fee; &#39;Annually&#39;, &#39;Quarterly&#39; or &#39;Monthly&#39;.
-    businessDayConvention: "...",  // required — The business day convention to use for Fee calculations on weekends or holidays. Supported string values are: [Previous, P, Following, F, None].
+    payableFrequency: "...",  // required — The payable frequency for the Fee. Available values: Annually, Quarterly, Monthly.
+    businessDayConvention: "...",  // required — The business day convention to use for Fee calculations on weekends or holidays. Available values: None, P, Previous, F, Following.
     startDate: DateTimeOffset.Now,  // required — The start date of the Fee.
     endDate: DateTimeOffset.Now,  // optional — The end date of the Fee.
     anchorDate: new DayMonth(...),  // optional

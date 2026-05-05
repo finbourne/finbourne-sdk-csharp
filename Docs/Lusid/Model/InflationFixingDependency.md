@@ -10,7 +10,7 @@ For indicating a dependency upon an inflation fixing
 | **Type** | **string** | Required | The Type of fixing (index, ratio or assumption) |
 | **Code** | **string** | Required | The Code of the fixing, typically the index name |
 | **Date** | **DateTimeOffset** | Required | The effectiveAt of the inflation fixing |
-| **DependencyType** | **string** | Required | The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency Default: `DependencyTypeEnum.InflationFixingDependency` |
+| **DependencyType** | **string** | Required | Available values: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency. Default: `DependencyTypeEnum.InflationFixingDependency` |
 
 
 ## Usage
@@ -24,7 +24,7 @@ var instance = new InflationFixingDependency(
     type: "...",  // required — The Type of fixing (index, ratio or assumption)
     code: "...",  // required — The Code of the fixing, typically the index name
     date: DateTimeOffset.Now,  // required — The effectiveAt of the inflation fixing
-    dependencyType: "..."  // required — The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency
+    dependencyType: "..."  // required — Available values: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency.
 );
 ```
 ### Serializing to JSON

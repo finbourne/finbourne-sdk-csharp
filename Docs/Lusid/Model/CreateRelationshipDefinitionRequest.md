@@ -11,8 +11,8 @@
 | **DisplayName** | **string** | Required | The display name of the relationship definition. |
 | **OutwardDescription** | **string** | Required | The description to relate source entity object and target entity object. |
 | **InwardDescription** | **string** | Required | The description to relate target entity object and source entity object. |
-| **LifeTime** | **string** | Optional | Describes how the relationships can change over time. Allowed values are &#39;Perpetual&#39; and &#39;TimeVariant&#39;, defaults to &#39;Perpetual&#39; if not specified. |
-| **RelationshipCardinality** | **string** | Optional | Describes the cardinality of the relationship with a specific source entity object and relationships under this definition. Allowed values are &#39;ManyToMany&#39; and &#39;ManyToOne&#39;, defaults to &#39;ManyToMany&#39; if not specified. |
+| **LifeTime** | **string** | Optional | Describes how the relationships can change over time. Default value: Perpetual. Available values: Perpetual, TimeVariant. |
+| **RelationshipCardinality** | **string** | Optional | Describes the cardinality of the relationship with a specific source entity object and relationships under this definition. Default value: ManyToMany. Available values: ManyToOne, ManyToMany. |
 
 
 ## Usage
@@ -30,8 +30,8 @@ var instance = new CreateRelationshipDefinitionRequest(
     displayName: "...",  // required — The display name of the relationship definition.
     outwardDescription: "...",  // required — The description to relate source entity object and target entity object.
     inwardDescription: "...",  // required — The description to relate target entity object and source entity object.
-    lifeTime: "...",  // optional — Describes how the relationships can change over time. Allowed values are &#39;Perpetual&#39; and &#39;TimeVariant&#39;, defaults to &#39;Perpetual&#39; if not specified.
-    relationshipCardinality: "..."  // optional — Describes the cardinality of the relationship with a specific source entity object and relationships under this definition. Allowed values are &#39;ManyToMany&#39; and &#39;ManyToOne&#39;, defaults to &#39;ManyToMany&#39; if not specified.
+    lifeTime: "...",  // optional — Describes how the relationships can change over time. Default value: Perpetual. Available values: Perpetual, TimeVariant.
+    relationshipCardinality: "..."  // optional — Describes the cardinality of the relationship with a specific source entity object and relationships under this definition. Default value: ManyToMany. Available values: ManyToOne, ManyToMany.
 );
 ```
 ### Serializing to JSON

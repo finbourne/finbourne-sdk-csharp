@@ -30,7 +30,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="StagingRuleMatchCriteria" /> class.
         /// </summary>
-        /// <param name="actionIn">actionIn.</param>
+        /// <param name="actionIn">Available values: Create, Update, Delete..</param>
         /// <param name="requestingUser">requestingUser.</param>
         /// <param name="entityAttributes">entityAttributes.</param>
         /// <param name="changedAttributeNameIn">changedAttributeNameIn.</param>
@@ -43,8 +43,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// Gets or Sets ActionIn
+        /// Available values: Create, Update, Delete.
         /// </summary>
+        /// <value>Available values: Create, Update, Delete.</value>
         [DataMember(Name = "actionIn", EmitDefaultValue = true)]
         public List<string> ActionIn { get; set; }
 

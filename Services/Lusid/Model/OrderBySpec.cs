@@ -28,9 +28,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class OrderBySpec : IEquatable<OrderBySpec>, IValidatableObject
     {
         /// <summary>
-        /// The available values are: Ascending, Descending
+        /// Available values: Ascending, Descending.
         /// </summary>
-        /// <value>The available values are: Ascending, Descending</value>
+        /// <value>Available values: Ascending, Descending.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum SortOrderEnum
         {
@@ -48,9 +48,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The available values are: Ascending, Descending
+        /// Available values: Ascending, Descending.
         /// </summary>
-        /// <value>The available values are: Ascending, Descending</value>
+        /// <value>Available values: Ascending, Descending.</value>
         [DataMember(Name = "sortOrder", IsRequired = true, EmitDefaultValue = true)]
         public SortOrderEnum SortOrder { get; set; }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="OrderBySpec" /> class.
         /// </summary>
         /// <param name="key">The key that uniquely identifies a queryable address in Lusid. (required).</param>
-        /// <param name="sortOrder">The available values are: Ascending, Descending (required).</param>
+        /// <param name="sortOrder">Available values: Ascending, Descending. (required).</param>
         public OrderBySpec(string key = default(string), SortOrderEnum sortOrder = default(SortOrderEnum))
         {
             // to ensure "key" is required (not null)

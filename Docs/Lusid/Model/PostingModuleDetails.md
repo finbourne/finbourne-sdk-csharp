@@ -7,7 +7,7 @@ A posting Module request definition
 |------|------|----------|-------------|
 | **DisplayName** | **string** | Required | The name of the Posting Module. |
 | **Description** | **string** | Optional | A description for the Posting Module. |
-| **Status** | **string** | Required | The Posting Module status. Can be Active or Inactive. Defaults to Active. |
+| **Status** | **string** | Required | The Posting Module status. Default value: Active. Available values: Active, Inactive. |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new PostingModuleDetails(
     displayName: "...",  // required — The name of the Posting Module.
     description: "...",  // optional — A description for the Posting Module.
-    status: "..."  // required — The Posting Module status. Can be Active or Inactive. Defaults to Active.
+    status: "..."  // required — The Posting Module status. Default value: Active. Available values: Active, Inactive.
 );
 ```
 ### Serializing to JSON

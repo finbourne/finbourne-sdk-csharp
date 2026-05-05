@@ -9,7 +9,7 @@ A criterion that checks whether a Property Value is equal to the given string va
 |------|------|----------|-------------|
 | **PropertyKey** | **string** | Required | The property key whose value will form the left-hand side of the operation |
 | **Value** | **string** | Required | The value to be compared against |
-| **CriterionType** | **string** | Required | The available values are: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals Default: `CriterionTypeEnum.PropertyValueEquals` |
+| **CriterionType** | **string** | Required | Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals. Default: `CriterionTypeEnum.PropertyValueEquals` |
 
 
 ## Usage
@@ -22,7 +22,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new PropertyValueEquals(
     propertyKey: "...",  // required — The property key whose value will form the left-hand side of the operation
     value: "...",  // required — The value to be compared against
-    criterionType: "..."  // required — The available values are: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals
+    criterionType: "..."  // required — Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals.
 );
 ```
 ### Serializing to JSON

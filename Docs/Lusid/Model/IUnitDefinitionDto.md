@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Schema** | **string** | Optional | The available values are: NoUnits, Basic, Iso4217Currency |
+| **Schema** | **string** | Optional | Available values: NoUnits, Basic, Iso4217Currency. |
 | **Code** | **string** | Optional | *No description available.* *(read-only)* |
 | **DisplayName** | **string** | Optional | *No description available.* *(read-only)* |
 | **Description** | **string** | Optional | *No description available.* *(read-only)* |
@@ -18,7 +18,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new IUnitDefinitionDto(
-    schema: "...",  // optional — The available values are: NoUnits, Basic, Iso4217Currency
+    schema: "...",  // optional — Available values: NoUnits, Basic, Iso4217Currency.
     code: "...",  // optional
     displayName: "...",  // optional
     description: "..."  // optional

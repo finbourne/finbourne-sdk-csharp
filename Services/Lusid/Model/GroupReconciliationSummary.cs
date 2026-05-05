@@ -37,7 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="runDetails">runDetails.</param>
         /// <param name="groupReconciliationDefinitionId">groupReconciliationDefinitionId.</param>
-        /// <param name="reconciliationType">The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot; (required).</param>
+        /// <param name="reconciliationType">The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding. (required).</param>
         /// <param name="instanceId">instanceId (required).</param>
         /// <param name="datesReconciled">datesReconciled (required).</param>
         /// <param name="reconciliationRunAsAt">The date and time the reconciliation was run (required).</param>
@@ -89,9 +89,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ResourceId GroupReconciliationDefinitionId { get; set; }
 
         /// <summary>
-        /// The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot;
+        /// The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding.
         /// </summary>
-        /// <value>The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot;</value>
+        /// <value>The type of reconciliation to perform. Available values: Holding, Transaction, Valuation, CashHolding.</value>
         [DataMember(Name = "reconciliationType", IsRequired = true, EmitDefaultValue = true)]
         public string ReconciliationType { get; set; }
 

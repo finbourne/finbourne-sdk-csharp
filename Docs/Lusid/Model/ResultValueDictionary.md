@@ -8,7 +8,7 @@ Result value for a collection of key-value pairs. Used for diagnostics associate
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Elements** | [Dictionary&lt;string, ResultValue&gt;](ResultValue.md) | Optional | The dictionary elements |
-| **ResultValueType** | **string** | Required | The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset Default: `ResultValueTypeEnum.ResultValueDictionary` |
+| **ResultValueType** | **string** | Required | Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset. Default: `ResultValueTypeEnum.ResultValueDictionary` |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ResultValueDictionary(
     elements: new ResultValue(...),  // optional — The dictionary elements
-    resultValueType: "..."  // required — The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset
+    resultValueType: "..."  // required — Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset.
 );
 ```
 ### Serializing to JSON

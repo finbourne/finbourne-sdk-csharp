@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="type">type (required).</param>
         /// <param name="description">description (required).</param>
         /// <param name="transactionClass">transactionClass (required).</param>
-        /// <param name="transactionRole">transactionRole (required).</param>
+        /// <param name="transactionRole">Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles. (required).</param>
         /// <param name="isDefault">isDefault.</param>
         public SetTransactionConfigurationAlias(string type = default(string), string description = default(string), string transactionClass = default(string), string transactionRole = default(string), bool isDefault = default(bool))
         {
@@ -88,8 +88,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string TransactionClass { get; set; }
 
         /// <summary>
-        /// Gets or Sets TransactionRole
+        /// Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles.
         /// </summary>
+        /// <value>Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles.</value>
         [DataMember(Name = "transactionRole", IsRequired = true, EmitDefaultValue = true)]
         public string TransactionRole { get; set; }
 

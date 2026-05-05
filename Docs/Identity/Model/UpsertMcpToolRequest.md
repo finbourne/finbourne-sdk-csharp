@@ -15,6 +15,7 @@ Request to create or update an MCP tool
 | **Parameters** | [List&lt;McpToolParameter&gt;](McpToolParameter.md) | Optional | The parameters for this MCP tool |
 | **LuminescePayload** | [McpToolLuminescePayload](McpToolLuminescePayload.md) | Optional | *No description available.* |
 | **SchedulerPayload** | [McpToolSchedulerPayload](McpToolSchedulerPayload.md) | Optional | *No description available.* |
+| **DestructiveActionSummaryTemplate** | **string** | Optional | Template for human-readable destructive action summary. Uses {paramName} single-brace placeholders (e.g. \&quot;Delete file &#39;{filePath}&#39;\&quot;). Required when Destructive is true. |
 
 
 ## Usage
@@ -34,7 +35,8 @@ var instance = new UpsertMcpToolRequest(
     readOnly: true,  // optional — Whether the tool is read-only
     parameters: new List<McpToolParameter>(),  // optional — The parameters for this MCP tool
     luminescePayload: new McpToolLuminescePayload(...),  // optional
-    schedulerPayload: new McpToolSchedulerPayload(...)  // optional
+    schedulerPayload: new McpToolSchedulerPayload(...),  // optional
+    destructiveActionSummaryTemplate: "..."  // optional — Template for human-readable destructive action summary. Uses {paramName} single-brace placeholders (e.g. \&quot;Delete file &#39;{filePath}&#39;\&quot;). Required when Destructive is true.
 );
 ```
 ### Serializing to JSON

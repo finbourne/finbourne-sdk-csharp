@@ -172,7 +172,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The list of lusidInstrumentId&#39;s to delete.</param>
-        /// <param name="deleteMode">The delete mode to use (defaults to &#39;Soft&#39;). (optional)</param>
+        /// <param name="deleteMode">The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)</param>
         /// <param name="scope">The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -187,7 +187,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The list of lusidInstrumentId&#39;s to delete.</param>
-        /// <param name="deleteMode">The delete mode to use (defaults to &#39;Soft&#39;). (optional)</param>
+        /// <param name="deleteMode">The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)</param>
         /// <param name="scope">The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -306,9 +306,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="timelineScope">The optional scope of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="timelineCode">The optional code of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="closedPeriodId">The optional id of a closed period within the timeline to view. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Instrument</returns>
@@ -330,9 +330,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="timelineScope">The optional scope of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="timelineCode">The optional code of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="closedPeriodId">The optional id of a closed period within the timeline to view. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of Instrument</returns>
@@ -590,7 +590,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// ListInstruments: List instruments
         /// </summary>
         /// <remarks>
-        /// List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+        /// List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope &#39;*&#39; to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. (optional)</param>
@@ -600,14 +600,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="limit">When paginating, limit the results to this number. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to &quot;State eq &#39;Active&#39;&quot;)</param>
         /// <param name="instrumentPropertyKeys">A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)</param>
-        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.                 Use &#39;*&#39; to list instruments across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)</param>
-        /// <param name="timelineScope">The scope of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="timelineCode">The code of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="closedPeriodId">The id of the closed period on the timeline to use for PCA (Post Close Activity) support. (optional)</param>
+        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfInstrument</returns>
@@ -617,7 +617,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// ListInstruments: List instruments
         /// </summary>
         /// <remarks>
-        /// List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+        /// List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope &#39;*&#39; to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. (optional)</param>
@@ -627,14 +627,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="limit">When paginating, limit the results to this number. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to &quot;State eq &#39;Active&#39;&quot;)</param>
         /// <param name="instrumentPropertyKeys">A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)</param>
-        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.                 Use &#39;*&#39; to list instruments across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)</param>
-        /// <param name="timelineScope">The scope of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="timelineCode">The code of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="closedPeriodId">The id of the closed period on the timeline to use for PCA (Post Close Activity) support. (optional)</param>
+        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfInstrument</returns>
@@ -922,7 +922,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The list of lusidInstrumentId&#39;s to delete.</param>
-        /// <param name="deleteMode">The delete mode to use (defaults to &#39;Soft&#39;). (optional)</param>
+        /// <param name="deleteMode">The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)</param>
         /// <param name="scope">The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -938,7 +938,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The list of lusidInstrumentId&#39;s to delete.</param>
-        /// <param name="deleteMode">The delete mode to use (defaults to &#39;Soft&#39;). (optional)</param>
+        /// <param name="deleteMode">The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)</param>
         /// <param name="scope">The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1064,9 +1064,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="timelineScope">The optional scope of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="timelineCode">The optional code of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="closedPeriodId">The optional id of a closed period within the timeline to view. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1089,9 +1089,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="timelineScope">The optional scope of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="timelineCode">The optional code of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="closedPeriodId">The optional id of a closed period within the timeline to view. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1364,7 +1364,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// ListInstruments: List instruments
         /// </summary>
         /// <remarks>
-        /// List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+        /// List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope &#39;*&#39; to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. (optional)</param>
@@ -1374,14 +1374,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="limit">When paginating, limit the results to this number. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to &quot;State eq &#39;Active&#39;&quot;)</param>
         /// <param name="instrumentPropertyKeys">A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)</param>
-        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.                 Use &#39;*&#39; to list instruments across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)</param>
-        /// <param name="timelineScope">The scope of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="timelineCode">The code of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="closedPeriodId">The id of the closed period on the timeline to use for PCA (Post Close Activity) support. (optional)</param>
+        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1392,7 +1392,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// ListInstruments: List instruments
         /// </summary>
         /// <remarks>
-        /// List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+        /// List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope &#39;*&#39; to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. (optional)</param>
@@ -1402,14 +1402,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="limit">When paginating, limit the results to this number. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to &quot;State eq &#39;Active&#39;&quot;)</param>
         /// <param name="instrumentPropertyKeys">A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)</param>
-        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.                 Use &#39;*&#39; to list instruments across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)</param>
-        /// <param name="timelineScope">The scope of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="timelineCode">The code of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="closedPeriodId">The id of the closed period on the timeline to use for PCA (Post Close Activity) support. (optional)</param>
+        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1694,6 +1694,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -1830,6 +1840,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -1972,6 +1992,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -2103,6 +2133,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -2228,6 +2268,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -2345,6 +2395,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2476,6 +2536,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2628,6 +2698,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -2714,7 +2794,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The list of lusidInstrumentId&#39;s to delete.</param>
-        /// <param name="deleteMode">The delete mode to use (defaults to &#39;Soft&#39;). (optional)</param>
+        /// <param name="deleteMode">The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)</param>
         /// <param name="scope">The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -2731,7 +2811,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="requestBody">The list of lusidInstrumentId&#39;s to delete.</param>
-        /// <param name="deleteMode">The delete mode to use (defaults to &#39;Soft&#39;). (optional)</param>
+        /// <param name="deleteMode">The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)</param>
         /// <param name="scope">The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -2754,6 +2834,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2831,7 +2921,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The list of lusidInstrumentId&#39;s to delete.</param>
-        /// <param name="deleteMode">The delete mode to use (defaults to &#39;Soft&#39;). (optional)</param>
+        /// <param name="deleteMode">The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)</param>
         /// <param name="scope">The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2849,7 +2939,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="requestBody">The list of lusidInstrumentId&#39;s to delete.</param>
-        /// <param name="deleteMode">The delete mode to use (defaults to &#39;Soft&#39;). (optional)</param>
+        /// <param name="deleteMode">The delete mode to use. Default value: Soft. Available values: Soft, Hard. (optional)</param>
         /// <param name="scope">The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2874,6 +2964,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -2990,6 +3090,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -3092,6 +3202,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3206,6 +3326,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3348,6 +3478,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -3484,6 +3624,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -3618,6 +3768,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -3710,9 +3870,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="timelineScope">The optional scope of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="timelineCode">The optional code of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="closedPeriodId">The optional id of a closed period within the timeline to view. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Instrument</returns>
@@ -3736,9 +3896,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="timelineScope">The optional scope of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="timelineCode">The optional code of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="closedPeriodId">The optional id of a closed period within the timeline to view. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of Instrument</returns>
@@ -3766,6 +3926,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -3880,9 +4050,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="timelineScope">The optional scope of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="timelineCode">The optional code of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="closedPeriodId">The optional id of a closed period within the timeline to view. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -3907,9 +4077,9 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="timelineScope">The optional scope of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="timelineCode">The optional code of a timeline to use for post-close activity. (optional)</param>
-        /// <param name="closedPeriodId">The optional id of a closed period within the timeline to view. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -3939,6 +4109,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -4076,6 +4256,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -4169,6 +4359,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -4300,6 +4500,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -4451,6 +4661,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -4582,6 +4802,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -4711,6 +4941,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -4854,6 +5094,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -5014,6 +5264,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -5160,6 +5420,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -5301,6 +5571,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -5446,6 +5726,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -5607,6 +5897,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -5760,6 +6060,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -5903,6 +6213,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
             };
 
@@ -5984,7 +6304,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// ListInstruments: List instruments List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+        /// ListInstruments: List instruments List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope &#39;*&#39; to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. (optional)</param>
@@ -5994,14 +6314,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="limit">When paginating, limit the results to this number. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to &quot;State eq &#39;Active&#39;&quot;)</param>
         /// <param name="instrumentPropertyKeys">A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)</param>
-        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.                 Use &#39;*&#39; to list instruments across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)</param>
-        /// <param name="timelineScope">The scope of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="timelineCode">The code of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="closedPeriodId">The id of the closed period on the timeline to use for PCA (Post Close Activity) support. (optional)</param>
+        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfInstrument</returns>
@@ -6012,7 +6332,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// ListInstruments: List instruments List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+        /// ListInstruments: List instruments List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope &#39;*&#39; to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -6023,14 +6343,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="limit">When paginating, limit the results to this number. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to &quot;State eq &#39;Active&#39;&quot;)</param>
         /// <param name="instrumentPropertyKeys">A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)</param>
-        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.                 Use &#39;*&#39; to list instruments across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)</param>
-        /// <param name="timelineScope">The scope of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="timelineCode">The code of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="closedPeriodId">The id of the closed period on the timeline to use for PCA (Post Close Activity) support. (optional)</param>
+        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfInstrument</returns>
@@ -6046,6 +6366,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -6166,7 +6496,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// ListInstruments: List instruments List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+        /// ListInstruments: List instruments List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope &#39;*&#39; to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. (optional)</param>
@@ -6176,14 +6506,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="limit">When paginating, limit the results to this number. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to &quot;State eq &#39;Active&#39;&quot;)</param>
         /// <param name="instrumentPropertyKeys">A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)</param>
-        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.                 Use &#39;*&#39; to list instruments across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)</param>
-        /// <param name="timelineScope">The scope of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="timelineCode">The code of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="closedPeriodId">The id of the closed period on the timeline to use for PCA (Post Close Activity) support. (optional)</param>
+        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -6195,7 +6525,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// ListInstruments: List instruments List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+        /// ListInstruments: List instruments List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.    Use scope &#39;*&#39; to list instruments across all scopes.  The maximum number of instruments that this method can list per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -6206,14 +6536,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="limit">When paginating, limit the results to this number. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to &quot;State eq &#39;Active&#39;&quot;)</param>
         /// <param name="instrumentPropertyKeys">A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)</param>
-        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.                 Use &#39;*&#39; to list instruments across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="relationshipDefinitionIds">A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use. (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use. (optional)</param>
-        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)</param>
-        /// <param name="timelineScope">The scope of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="timelineCode">The code of the timeline to use for PCA (Post Close Activity) support. (optional)</param>
-        /// <param name="closedPeriodId">The id of the closed period on the timeline to use for PCA (Post Close Activity) support. (optional)</param>
+        /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="timelineScope">The scope of the Timeline. (optional)</param>
+        /// <param name="timelineCode">The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. (optional)</param>
+        /// <param name="closedPeriodId">The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -6231,6 +6561,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -6396,6 +6736,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json",
                 "application/json",
@@ -6508,6 +6858,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -6640,6 +7000,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -6786,6 +7156,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -6910,6 +7290,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -7038,6 +7428,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
             }
 
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
             string[] _contentTypes = new string[] {
                 "application/json-patch+json", 
                 "application/json", 
@@ -7160,6 +7560,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {
@@ -7286,6 +7696,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (opts is { RateLimitRetries: not null })
             {
                 localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             string[] _contentTypes = new string[] {

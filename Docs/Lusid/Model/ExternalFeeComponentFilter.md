@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **FilterId** | **string** | Required | *No description available.* |
 | **Filter** | **string** | Required | *No description available.* |
-| **AppliesTo** | **string** | Required | *No description available.* |
+| **AppliesTo** | **string** | Required | Available values: Undefined, PnLBucket, Fees. |
 
 
 ## Usage
@@ -19,7 +19,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new ExternalFeeComponentFilter(
     filterId: "...",  // required
     filter: "...",  // required
-    appliesTo: "..."  // required
+    appliesTo: "..."  // required — Available values: Undefined, PnLBucket, Fees.
 );
 ```
 ### Serializing to JSON

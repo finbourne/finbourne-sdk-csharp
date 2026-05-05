@@ -391,7 +391,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **reconciliationType** | **string?** | query | optional | Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided. |
+| **reconciliationType** | **string?** | query | optional | Optional parameter to specify which type of mappings should be returned.  Default value: Transaction. Available values: Transaction, Holding, Valuation, Cash, CashHolding. |
 
 ### Return type
 

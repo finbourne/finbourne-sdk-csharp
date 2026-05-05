@@ -6,7 +6,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ComplianceStepType** | **string** | Required | . The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep *(inherited)* |
+| **ComplianceStepType** | **string** | Required | The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep. *(inherited)* |
 | **Label** | **string** | Required | The label of the compliance step |
 | **GroupedParameters** | **Dictionary&lt;string, List&lt;ComplianceTemplateParameter&gt;&gt;** | Required | Parameters required for the step |
 

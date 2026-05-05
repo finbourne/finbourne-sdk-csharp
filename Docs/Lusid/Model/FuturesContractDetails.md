@@ -19,7 +19,7 @@ Most, if not all, information about contracts is standardized. See, e.g. https:/
 | **TickerStep** | **decimal** | Optional | Minimal step size change in ticker. |
 | **UnitValue** | **decimal** | Optional | The value in the currency of a 1 unit change in the contract price. |
 | **Calendars** | **List&lt;string&gt;** | Optional | Holiday calendars that apply to yield-to-price conversions (i.e. for BRL futures). |
-| **DeliveryType** | **string** | Optional | Delivery type to be used on settling the contract.  Optional: Defaults to DeliveryType.Physical if not provided.    Supported string (enumeration) values are: [Cash, Physical]. |
+| **DeliveryType** | **string** | Optional | Delivery type to be used on settling the contract.  Default value: Physical. Available values: Cash, Physical. |
 
 
 ## Usage
@@ -44,7 +44,7 @@ var instance = new FuturesContractDetails(
     tickerStep: 0.0d,  // optional — Minimal step size change in ticker.
     unitValue: 0.0d,  // optional — The value in the currency of a 1 unit change in the contract price.
     calendars: ,  // optional — Holiday calendars that apply to yield-to-price conversions (i.e. for BRL futures).
-    deliveryType: "..."  // optional — Delivery type to be used on settling the contract.  Optional: Defaults to DeliveryType.Physical if not provided.    Supported string (enumeration) values are: [Cash, Physical].
+    deliveryType: "..."  // optional — Delivery type to be used on settling the contract.  Default value: Physical. Available values: Cash, Physical.
 );
 ```
 ### Serializing to JSON

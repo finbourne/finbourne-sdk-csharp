@@ -45,7 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="resetDays">The number of Good Business Days between determination and payment of reset. Defaulted to 0 if not set..</param>
         /// <param name="leapDaysIncluded">If this flag is set to true, the 29th of February is included in the date schedule when the business roll convention is applied.  If this flag is set to false, the business roll convention ignores February 29 for date schedules, cash flow payments etc.  This flag defaults to true if not specified, i.e., leap days are included in a date schedule generation..</param>
         /// <param name="accrualDateAdjustment">Indicates if the accrual dates are adjusted using the business day convention. The default value is &#39;Adjusted&#39;.    Supported string (enumeration) values are: [Adjusted, Unadjusted]..</param>
-        /// <param name="businessDayConvention">When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.    Supported string (enumeration) values are: [NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  If not set, defaults to the value of RollConvention..</param>
+        /// <param name="businessDayConvention">When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.                If not set, defaults to the value of RollConvention. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid..</param>
         /// <param name="accrualDayCountConvention">Optional, if not set the main DayCountConvention is used for all accrual calculations.  This only needs to be set when accrual uses a different day count to the coupon calculation..</param>
         /// <param name="couponPaymentLag">couponPaymentLag.</param>
         /// <param name="scope">The scope used when updating or inserting the convention..</param>
@@ -170,9 +170,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string AccrualDateAdjustment { get; set; }
 
         /// <summary>
-        /// When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.    Supported string (enumeration) values are: [NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  If not set, defaults to the value of RollConvention.
+        /// When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.                If not set, defaults to the value of RollConvention. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid.
         /// </summary>
-        /// <value>When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.    Supported string (enumeration) values are: [NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  If not set, defaults to the value of RollConvention.</value>
+        /// <value>When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.                If not set, defaults to the value of RollConvention. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid.</value>
         [DataMember(Name = "businessDayConvention", EmitDefaultValue = true)]
         public string BusinessDayConvention { get; set; }
 

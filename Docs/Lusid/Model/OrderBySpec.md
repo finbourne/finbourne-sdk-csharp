@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Key** | **string** | Required | The key that uniquely identifies a queryable address in Lusid. |
-| **SortOrder** | **string** | Required | The available values are: Ascending, Descending |
+| **SortOrder** | **string** | Required | Available values: Ascending, Descending. |
 
 
 ## Usage
@@ -17,7 +17,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new OrderBySpec(
     key: "...",  // required — The key that uniquely identifies a queryable address in Lusid.
-    sortOrder: "..."  // required — The available values are: Ascending, Descending
+    sortOrder: "..."  // required — Available values: Ascending, Descending.
 );
 ```
 ### Serializing to JSON

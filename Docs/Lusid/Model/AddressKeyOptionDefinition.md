@@ -6,7 +6,7 @@ The definition of an Address Key Option
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Name** | **string** | Required | The name of the option |
-| **Type** | **string** | Required | The type of the option |
+| **Type** | **string** | Required | The type of the option. Available values: Bool, Int, Decimal, DateTimeOffset, String, Enum, TimeZoneId, Invalid. |
 | **Description** | **string** | Required | The description of the option |
 | **Optional** | **bool** | Required | Is this option required or optional? |
 | **AllowedValueSet** | **List&lt;string&gt;** | Optional | If the option is a string or enum, the allowed set of values it can take. |
@@ -22,7 +22,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new AddressKeyOptionDefinition(
     name: "...",  // required — The name of the option
-    type: "...",  // required — The type of the option
+    type: "...",  // required — The type of the option. Available values: Bool, Int, Decimal, DateTimeOffset, String, Enum, TimeZoneId, Invalid.
     description: "...",  // required — The description of the option
     optional: true,  // required — Is this option required or optional?
     allowedValueSet: ,  // optional — If the option is a string or enum, the allowed set of values it can take.

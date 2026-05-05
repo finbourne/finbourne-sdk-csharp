@@ -5,7 +5,7 @@ A condition to be evaluated.  Each supported CriterionType has a corresponding s
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **CriterionType** | **string** | Required | The available values are: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals |
+| **CriterionType** | **string** | Required | Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals. |
 
 
 ## Usage
@@ -16,7 +16,7 @@ A condition to be evaluated.  Each supported CriterionType has a corresponding s
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new MatchCriterion(
-    criterionType: "..."  // required — The available values are: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals
+    criterionType: "..."  // required — Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals.
 );
 ```
 ### Serializing to JSON

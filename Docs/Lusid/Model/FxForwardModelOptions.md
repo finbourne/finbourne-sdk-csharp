@@ -6,10 +6,10 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ForwardRateObservableType** | **string** | Required | The available values are: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid |
-| **DiscountingMethod** | **string** | Required | The available values are: Standard, ConstantTimeValueOfMoney, Invalid |
+| **ForwardRateObservableType** | **string** | Required | Available values: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid. |
+| **DiscountingMethod** | **string** | Required | Available values: Standard, ConstantTimeValueOfMoney, Invalid. |
 | **ConvertToReportCcy** | **bool** | Required | Convert all FX flows to the report currency  By setting this all FX forwards will be priced using Forward Curves that have Report Currency as the base. |
-| **ModelOptionsType** | **string** | Required | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions Default: `ModelOptionsTypeEnum.FxForwardModelOptions` |
+| **ModelOptionsType** | **string** | Required | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. Default: `ModelOptionsTypeEnum.FxForwardModelOptions` |
 
 
 ## Usage
@@ -20,10 +20,10 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new FxForwardModelOptions(
-    forwardRateObservableType: "...",  // required — The available values are: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid
-    discountingMethod: "...",  // required — The available values are: Standard, ConstantTimeValueOfMoney, Invalid
+    forwardRateObservableType: "...",  // required — Available values: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid.
+    discountingMethod: "...",  // required — Available values: Standard, ConstantTimeValueOfMoney, Invalid.
     convertToReportCcy: true,  // required — Convert all FX flows to the report currency  By setting this all FX forwards will be priced using Forward Curves that have Report Currency as the base.
-    modelOptionsType: "..."  // required — The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions
+    modelOptionsType: "..."  // required — Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions.
 );
 ```
 ### Serializing to JSON

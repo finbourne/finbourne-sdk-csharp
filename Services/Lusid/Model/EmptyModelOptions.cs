@@ -37,7 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EmptyModelOptions" /> class.
         /// </summary>
-        /// <param name="modelOptionsType">The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions (required) (default to ModelOptionsTypeEnum.Invalid).</param>
+        /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
         public EmptyModelOptions(ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
         {
             this.ModelOptionsType = modelOptionsType;

@@ -7,7 +7,7 @@
 | **Start** | [DateOrDiaryEntry](DateOrDiaryEntry.md) | Optional | *No description available.* |
 | **End** | [DateOrDiaryEntry](DateOrDiaryEntry.md) | Optional | *No description available.* |
 | **Variant** | **string** | Optional | Unique Variant for the given Valuation points. If not provided, defaults to empty string. |
-| **DateMode** | **string** | Optional | The mode of calculation of the journal entry lines. The available values are: ActivityDate, AccountingDate. |
+| **DateMode** | **string** | Optional | The mode of calculation of the journal entry lines. Available values: ActivityDate, AccountingDate. |
 | **GeneralLedgerProfileCode** | **string** | Optional | The optional code of a general ledger profile used to decorate journal entry lines with levels. |
 | **PropertyKeys** | **List&lt;string&gt;** | Optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39; domain to decorate onto the journal entry lines. |
 
@@ -23,7 +23,7 @@ var instance = new JournalEntryLinesQueryParameters(
     start: new DateOrDiaryEntry(...),  // optional
     end: new DateOrDiaryEntry(...),  // optional
     variant: "...",  // optional — Unique Variant for the given Valuation points. If not provided, defaults to empty string.
-    dateMode: "...",  // optional — The mode of calculation of the journal entry lines. The available values are: ActivityDate, AccountingDate.
+    dateMode: "...",  // optional — The mode of calculation of the journal entry lines. Available values: ActivityDate, AccountingDate.
     generalLedgerProfileCode: "...",  // optional — The optional code of a general ledger profile used to decorate journal entry lines with levels.
     propertyKeys:   // optional — A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39; domain to decorate onto the journal entry lines.
 );

@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **EntitlementDate** | **string** | Required | *No description available.* |
-| **EligibleUnits** | **string** | Required | *No description available.* |
+| **EligibleUnits** | **string** | Required | Available values: TotalUnits, SettledUnits, NotApplicable. |
 | **DateModifiableByInstruction** | **bool** | Optional | *No description available.* |
 
 
@@ -18,7 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new EligibilityCalculation(
     entitlementDate: "...",  // required
-    eligibleUnits: "...",  // required
+    eligibleUnits: "...",  // required — Available values: TotalUnits, SettledUnits, NotApplicable.
     dateModifiableByInstruction: true  // optional
 );
 ```

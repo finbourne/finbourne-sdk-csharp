@@ -7,7 +7,7 @@ A portfolio of a particular type.
 |------|------|----------|-------------|
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
-| **Type** | **string** | Required | The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition |
+| **Type** | **string** | Required | The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition. |
 | **DisplayName** | **string** | Required | The name of the portfolio. |
 | **Description** | **string** | Optional | The long form description of the portfolio. |
 | **Created** | **DateTimeOffset** | Required | The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date. |
@@ -19,8 +19,8 @@ A portfolio of a particular type.
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |
 | **Relationships** | [List&lt;Relationship&gt;](Relationship.md) | Optional | A set of relationships associated to the portfolio. |
 | **InstrumentScopes** | **List&lt;string&gt;** | Optional | The instrument scope resolution strategy of this portfolio. |
-| **AccountingMethod** | **string** | Optional | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency |
-| **AmortisationMethod** | **string** | Optional | The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate |
+| **AccountingMethod** | **string** | Optional | The AccountingMethod used for the portfolio. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. |
+| **AmortisationMethod** | **string** | Optional | The amortisation method used by the portfolio for the calculation. Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate. |
 | **TransactionTypeScope** | **string** | Optional | The scope of the transaction types. |
 | **CashGainLossCalculationDate** | **string** | Optional | The scope of the transaction types. |
 | **InstrumentEventConfiguration** | [InstrumentEventConfiguration](InstrumentEventConfiguration.md) | Optional | *No description available.* |
@@ -40,7 +40,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new Portfolio(
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
     id: new ResourceId(...),  // required
-    type: "...",  // required — The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition
+    type: "...",  // required — The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
     displayName: "...",  // required — The name of the portfolio.
     description: "...",  // optional — The long form description of the portfolio.
     created: DateTimeOffset.Now,  // required — The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date.
@@ -52,8 +52,8 @@ var instance = new Portfolio(
     properties: new Property(...),  // optional — The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain.
     relationships: new List<Relationship>(),  // optional — A set of relationships associated to the portfolio.
     instrumentScopes: ,  // optional — The instrument scope resolution strategy of this portfolio.
-    accountingMethod: "...",  // optional — . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency
-    amortisationMethod: "...",  // optional — The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate
+    accountingMethod: "...",  // optional — The AccountingMethod used for the portfolio. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
+    amortisationMethod: "...",  // optional — The amortisation method used by the portfolio for the calculation. Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate.
     transactionTypeScope: "...",  // optional — The scope of the transaction types.
     cashGainLossCalculationDate: "...",  // optional — The scope of the transaction types.
     instrumentEventConfiguration: new InstrumentEventConfiguration(...),  // optional

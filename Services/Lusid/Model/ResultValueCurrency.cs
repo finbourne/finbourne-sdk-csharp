@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="ResultValueCurrency" /> class.
         /// </summary>
         /// <param name="value">The value itself.</param>
-        /// <param name="resultValueType">The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset (required) (default to ResultValueTypeEnum.ResultValue).</param>
+        /// <param name="resultValueType">Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset. (required) (default to ResultValueTypeEnum.ResultValue).</param>
         public ResultValueCurrency(string value = default(string), ResultValueTypeEnum resultValueType = default(ResultValueTypeEnum)) : base()
         {
             this.ResultValueType = resultValueType;

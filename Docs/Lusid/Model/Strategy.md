@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Keys** | [List&lt;PerpetualProperty&gt;](PerpetualProperty.md) | Required | *No description available.* |
-| **ValueType** | **string** | Required | *No description available.* |
+| **ValueType** | **string** | Required | Available values: Units, Weight. |
 | **Value** | **decimal** | Required | *No description available.* |
 
 
@@ -18,7 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new Strategy(
     keys: new List<PerpetualProperty>(),  // required
-    valueType: "...",  // required
+    valueType: "...",  // required — Available values: Units, Weight.
     value: 0.0d  // required
 );
 ```

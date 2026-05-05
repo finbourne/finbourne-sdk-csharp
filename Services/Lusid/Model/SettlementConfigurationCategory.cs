@@ -30,7 +30,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SettlementConfigurationCategory" /> class.
         /// </summary>
-        /// <param name="method">The method of settlement for the movements of the relevant type(s). Allowed values: &#39;Automatic&#39; and &#39;Instructed&#39;. A value of &#39;Instructed&#39; means that such movements can only be settled with a SettlementInstruction. A value of &#39;Automatic&#39; means that such movements will settle automatically but a SettlementInstruction will still override automatic settlement..</param>
+        /// <param name="method">The method of settlement for the movements of the relevant type(s). A value of Instructed means that such movements can only be settled with a SettlementInstruction. A value of Automatic means that such movements will settle automatically but a SettlementInstruction will still override automatic settlement. Available values: Automatic, Instructed..</param>
         /// <param name="calculateInstructionToPortfolioRate">An optional flag that allows for the calculation of the instruction to portfolio rate for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction. Defaults to false if not specified..</param>
         /// <param name="calculateInLieuSettlementAmount">An optional flag that allows for the calculation of the in lieu amount for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction. Defaults to false if not specified..</param>
         /// <param name="methodOverride">methodOverride.</param>
@@ -45,9 +45,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The method of settlement for the movements of the relevant type(s). Allowed values: &#39;Automatic&#39; and &#39;Instructed&#39;. A value of &#39;Instructed&#39; means that such movements can only be settled with a SettlementInstruction. A value of &#39;Automatic&#39; means that such movements will settle automatically but a SettlementInstruction will still override automatic settlement.
+        /// The method of settlement for the movements of the relevant type(s). A value of Instructed means that such movements can only be settled with a SettlementInstruction. A value of Automatic means that such movements will settle automatically but a SettlementInstruction will still override automatic settlement. Available values: Automatic, Instructed.
         /// </summary>
-        /// <value>The method of settlement for the movements of the relevant type(s). Allowed values: &#39;Automatic&#39; and &#39;Instructed&#39;. A value of &#39;Instructed&#39; means that such movements can only be settled with a SettlementInstruction. A value of &#39;Automatic&#39; means that such movements will settle automatically but a SettlementInstruction will still override automatic settlement.</value>
+        /// <value>The method of settlement for the movements of the relevant type(s). A value of Instructed means that such movements can only be settled with a SettlementInstruction. A value of Automatic means that such movements will settle automatically but a SettlementInstruction will still override automatic settlement. Available values: Automatic, Instructed.</value>
         [DataMember(Name = "method", EmitDefaultValue = true)]
         public string Method { get; set; }
 

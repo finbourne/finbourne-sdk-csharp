@@ -5,8 +5,8 @@ CDSs generally conform to fairly standard definitions, but can be tweaked in a n
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Seniority** | **string** | Optional | The seniority level of the CDS.  Supported string (enumeration) values are: [SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2].  Defaults to \&quot;SUB\&quot; if not set. Default: `"SUB"` |
-| **RestructuringType** | **string** | Optional | The restructuring clause.  Supported string (enumeration) values are: [CR, MR, MM, XR]. Defaults to \&quot;MM\&quot; if not set. Default: `"MM"` |
+| **Seniority** | **string** | Optional | The seniority level of the CDS. Default value: SUB. Available values: Unknown, SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2. Default: `"SUB"` |
+| **RestructuringType** | **string** | Optional | The restructuring clause. Default value: MM. Available values: Unknown, CR, MR, MM, XR, XR14, CR14, MR14, MM14. Default: `"MM"` |
 | **ProtectStartDay** | **bool** | Optional | Does the protection leg pay out in the case of default on the start date. Defaults to true if not set. Default: `true` |
 | **PayAccruedInterestOnDefault** | **bool** | Optional | Should accrued interest on the premium leg be paid if a credit event occurs. Defaults to true if not set. Default: `true` |
 
@@ -19,8 +19,8 @@ CDSs generally conform to fairly standard definitions, but can be tweaked in a n
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CdsProtectionDetailSpecification(
-    seniority: "...",  // optional — The seniority level of the CDS.  Supported string (enumeration) values are: [SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2].  Defaults to \&quot;SUB\&quot; if not set.
-    restructuringType: "...",  // optional — The restructuring clause.  Supported string (enumeration) values are: [CR, MR, MM, XR]. Defaults to \&quot;MM\&quot; if not set.
+    seniority: "...",  // optional — The seniority level of the CDS. Default value: SUB. Available values: Unknown, SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2.
+    restructuringType: "...",  // optional — The restructuring clause. Default value: MM. Available values: Unknown, CR, MR, MM, XR, XR14, CR14, MR14, MM14.
     protectStartDay: true,  // optional — Does the protection leg pay out in the case of default on the start date. Defaults to true if not set.
     payAccruedInterestOnDefault: true  // optional — Should accrued interest on the premium leg be paid if a credit event occurs. Defaults to true if not set.
 );

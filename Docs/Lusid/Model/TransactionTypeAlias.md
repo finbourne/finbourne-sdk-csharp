@@ -7,7 +7,7 @@
 | **Type** | **string** | Required | The transaction type |
 | **Description** | **string** | Required | Brief description of the transaction |
 | **TransactionClass** | **string** | Required | Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut |
-| **TransactionRoles** | **string** | Required | Transactions role within a class. E.g. Increase a long position |
+| **TransactionRoles** | **string** | Required | Transactions role within a class. E.g. Increase a long position. Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles. |
 | **IsDefault** | **bool** | Optional | IsDefault is a flag that denotes the default alias for a source. There can only be, at most, one per source. |
 
 
@@ -22,7 +22,7 @@ var instance = new TransactionTypeAlias(
     type: "...",  // required — The transaction type
     description: "...",  // required — Brief description of the transaction
     transactionClass: "...",  // required — Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut
-    transactionRoles: "...",  // required — Transactions role within a class. E.g. Increase a long position
+    transactionRoles: "...",  // required — Transactions role within a class. E.g. Increase a long position. Available values: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles.
     isDefault: true  // optional — IsDefault is a flag that denotes the default alias for a source. There can only be, at most, one per source.
 );
 ```

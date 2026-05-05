@@ -20,7 +20,7 @@ A request to create or update a Placement.
 | **StopPrice** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **Counterparty** | **string** | Optional | Optionally specifies the market entity this placement is placed with. |
 | **ExecutionSystem** | **string** | Optional | Optionally specifies the execution system in use. |
-| **EntryType** | **string** | Optional | Optionally specifies the entry type of this placement. |
+| **EntryType** | **string** | Optional | Optionally specifies the entry type of this placement. Available values: Undecided, Manual, Direct, Ems, External. |
 
 
 ## Usage
@@ -46,7 +46,7 @@ var instance = new PlacementRequest(
     stopPrice: new CurrencyAndAmount(...),  // optional
     counterparty: "...",  // optional — Optionally specifies the market entity this placement is placed with.
     executionSystem: "...",  // optional — Optionally specifies the execution system in use.
-    entryType: "..."  // optional — Optionally specifies the entry type of this placement.
+    entryType: "..."  // optional — Optionally specifies the entry type of this placement. Available values: Undecided, Manual, Direct, Ems, External.
 );
 ```
 ### Serializing to JSON

@@ -28,9 +28,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class AccessMetadataOperation : IEquatable<AccessMetadataOperation>, IValidatableObject
     {
         /// <summary>
-        /// The available values are: add, remove
+        /// Available values: add, remove.
         /// </summary>
-        /// <value>The available values are: add, remove</value>
+        /// <value>Available values: add, remove.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum OpEnum
         {
@@ -48,9 +48,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The available values are: add, remove
+        /// Available values: add, remove.
         /// </summary>
-        /// <value>The available values are: add, remove</value>
+        /// <value>Available values: add, remove.</value>
         [DataMember(Name = "op", IsRequired = true, EmitDefaultValue = true)]
         public OpEnum Op { get; set; }
         /// <summary>
@@ -63,7 +63,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="value">value (required).</param>
         /// <param name="path">path (required).</param>
-        /// <param name="op">The available values are: add, remove (required).</param>
+        /// <param name="op">Available values: add, remove. (required).</param>
         /// <param name="from">from.</param>
         public AccessMetadataOperation(List<AccessMetadataValue> value = default(List<AccessMetadataValue>), string path = default(string), OpEnum op = default(OpEnum), string from = default(string))
         {

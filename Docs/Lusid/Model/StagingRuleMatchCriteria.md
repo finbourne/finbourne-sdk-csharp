@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ActionIn** | **List&lt;string&gt;** | Optional | *No description available.* |
+| **ActionIn** | **List&lt;string&gt;** | Optional | Available values: Create, Update, Delete. |
 | **RequestingUser** | **string** | Optional | *No description available.* |
 | **EntityAttributes** | **string** | Optional | *No description available.* |
 | **ChangedAttributeNameIn** | **List&lt;string&gt;** | Optional | *No description available.* |
@@ -18,7 +18,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new StagingRuleMatchCriteria(
-    actionIn: ,  // optional
+    actionIn: ,  // optional — Available values: Create, Update, Delete.
     requestingUser: "...",  // optional
     entityAttributes: "...",  // optional
     changedAttributeNameIn:   // optional

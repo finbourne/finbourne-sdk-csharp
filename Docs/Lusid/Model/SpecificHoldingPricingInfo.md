@@ -6,7 +6,7 @@ Allows a user to specify fallbacks/overrides using Holding fields for sources th
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **DependencySourceFilter** | [DependencySourceFilter](DependencySourceFilter.md) | Required | *No description available.* |
-| **Field** | **string** | Required | The Holding field which the fallback/override should use to create a price quote. |
+| **Field** | **string** | Required | The Holding field which the fallback/override should use to create a price quote. Available values: None, UnitCost, LastTradedPrice, UnitAmortisedCost, UnitCostClean, UnitCostDirty, UnitAmortisedCostClean, UnitAmortisedCostDirty. |
 
 
 ## Usage
@@ -18,7 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new SpecificHoldingPricingInfo(
     dependencySourceFilter: new DependencySourceFilter(...),  // required
-    field: "..."  // required — The Holding field which the fallback/override should use to create a price quote.
+    field: "..."  // required — The Holding field which the fallback/override should use to create a price quote. Available values: None, UnitCost, LastTradedPrice, UnitAmortisedCost, UnitCostClean, UnitCostDirty, UnitAmortisedCostClean, UnitAmortisedCostDirty.
 );
 ```
 ### Serializing to JSON

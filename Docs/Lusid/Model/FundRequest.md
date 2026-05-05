@@ -12,7 +12,7 @@ The request used to create a Fund.
 | **AborId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **ShareClassInstrumentScopes** | **List&lt;string&gt;** | Optional | The scopes in which the instruments lie, currently limited to one. |
 | **ShareClassInstruments** | [List&lt;InstrumentResolutionDetail&gt;](InstrumentResolutionDetail.md) | Optional | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. |
-| **Type** | **string** | Required | The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39; |
+| **Type** | **string** | Required | The type of fund. Available values: Standalone, Master, Feeder. |
 | **InceptionDate** | **DateTimeOffset** | Required | Inception date of the Fund |
 | **DecimalPlaces** | **int?** | Optional | Number of decimal places for reporting |
 | **YearEndDate** | [DayMonth](DayMonth.md) | Required | *No description available.* |
@@ -34,7 +34,7 @@ var instance = new FundRequest(
     aborId: new ResourceId(...),  // required
     shareClassInstrumentScopes: ,  // optional — The scopes in which the instruments lie, currently limited to one.
     shareClassInstruments: new List<InstrumentResolutionDetail>(),  // optional — Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
-    type: "...",  // required — The type of fund; &#39;Standalone&#39;, &#39;Master&#39; or &#39;Feeder&#39;
+    type: "...",  // required — The type of fund. Available values: Standalone, Master, Feeder.
     inceptionDate: DateTimeOffset.Now,  // required — Inception date of the Fund
     decimalPlaces: 0,  // optional — Number of decimal places for reporting
     yearEndDate: new DayMonth(...),  // required

@@ -19,7 +19,7 @@ Most, if not all, information about contracts is standardised. See, e.g. https:/
 | **Underlying** | [LusidInstrument](LusidInstrument.md) | Required | *No description available.* |
 | **UnderlyingCode** | **string** | Required | Code of the underlying, for an option on futures this should be the futures code. |
 | **DeliveryDays** | **int** | Optional | Number of business days between exercise date and settlement of the option payoff or underlying.  Defaults to 0 if not set. |
-| **BusinessDayConvention** | **string** | Optional | The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  Defaults to \&quot;F\&quot; if not set. |
+| **BusinessDayConvention** | **string** | Optional | The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Default value: F. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid. |
 | **SettlementCalendars** | **List&lt;string&gt;** | Optional | An array of strings denoting calendars used in calculating the option settlement date. |
 
 
@@ -45,7 +45,7 @@ var instance = new ExchangeTradedOptionContractDetails(
     underlying: new LusidInstrument(...),  // required
     underlyingCode: "...",  // required — Code of the underlying, for an option on futures this should be the futures code.
     deliveryDays: 0,  // optional — Number of business days between exercise date and settlement of the option payoff or underlying.  Defaults to 0 if not set.
-    businessDayConvention: "...",  // optional — The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  Defaults to \&quot;F\&quot; if not set.
+    businessDayConvention: "...",  // optional — The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Default value: F. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid.
     settlementCalendars:   // optional — An array of strings denoting calendars used in calculating the option settlement date.
 );
 ```

@@ -118,11 +118,13 @@ namespace Finbourne.Sdk.Extensions
         /// Use .Wrap() method to combine this policy with your other custom policies
         /// </summary>
         /// <param name="rateLimitRetries"></param>
+        /// <param name="numberOfRetries"></param>
+        /// <param name="retryBackoffMs"></param>
         /// <returns></returns>
-        public static PolicyWrap<ResponseBase> GetDefaultRetryPolicyWithRateLimitWithFallback(int rateLimitRetries)
+        public static PolicyWrap<ResponseBase> GetDefaultRetryPolicyWithRateLimitWithFallback(int rateLimitRetries, int? numberOfRetries = null, int? retryBackoffMs = null)
         {
             // Order of wraps matters. We must wrap the retry policy ON the fallback policy, not the other way around.
-            return DefaultFallbackPolicy.Wrap(GetDefaultRetryPolicyWithRateLimit(rateLimitRetries));
+            return DefaultFallbackPolicy.Wrap(GetDefaultRetryPolicyWithRateLimit(rateLimitRetries, numberOfRetries, retryBackoffMs));
         }
 
         /// <summary>
@@ -143,17 +145,32 @@ namespace Finbourne.Sdk.Extensions
         /// Define Polly retry policy for synchronous API calls.
         /// </summary>
         public static Policy<ResponseBase> DefaultRetryPolicy =>
-            Policy
+            GetRetryPolicy(DefaultNumberOfRetries, null);
+
+        /// <summary>
+        /// Creates a Polly retry policy for synchronous API calls with configurable retry count and backoff.
+        /// </summary>
+        /// <param name="retryCount">Number of retry attempts</param>
+        /// <param name="retryBackoffMs">Fixed backoff duration in milliseconds. If null, uses exponential backoff.</param>
+        /// <returns></returns>
+        public static Policy<ResponseBase> GetRetryPolicy(int retryCount, int? retryBackoffMs)
+        {
+            return Policy
                 .HandleResult<ResponseBase>(GetPollyRetryCondition)
-                .WaitAndRetry(retryCount: DefaultNumberOfRetries, retryAttempt =>
+                .WaitAndRetry(retryCount: retryCount, retryAttempt =>
                     {
-                        var jitter = TimeSpan.FromMilliseconds(Random.Shared.Next(0, 1000));
+                        if (retryBackoffMs.HasValue)
+                        {
+                            var jitter = TimeSpan.FromMilliseconds(Random.Shared.Next(0, Math.Max(1, retryBackoffMs.Value / 10)));
+                            return TimeSpan.FromMilliseconds(retryBackoffMs.Value) + jitter;
+                        }
+                        var defaultJitter = TimeSpan.FromMilliseconds(Random.Shared.Next(0, 1000));
                         var exponentialBackoff = TimeSpan.FromTicks(Math.Min(TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)).Ticks,
                             TimeSpan.FromSeconds(3).Ticks));
-                        return exponentialBackoff + jitter;
-
+                        return exponentialBackoff + defaultJitter;
                     },
                     onRetry: HandleRetryAction);
+        }
 
         /// <summary>
         /// Retry policy wrap that handles rate limit codes (409) as well as the default retry policy.
@@ -164,9 +181,10 @@ namespace Finbourne.Sdk.Extensions
             // Order of wraps matters. We must wrap the retry policy ON the fallback policy, not the other way around.
             GetDefaultRetryPolicyWithRateLimit(SdkConfiguration.DefaultRateLimitRetries);
 
-        private static PolicyWrap<ResponseBase> GetDefaultRetryPolicyWithRateLimit(int rateLimitRetries)
+        private static PolicyWrap<ResponseBase> GetDefaultRetryPolicyWithRateLimit(int rateLimitRetries, int? numberOfRetries = null, int? retryBackoffMs = null)
         {
-            return DefaultRetryPolicy.Wrap(GetRateLimitRetryPolicy(rateLimitRetries));
+            var retryPolicy = GetRetryPolicy(numberOfRetries ?? DefaultNumberOfRetries, retryBackoffMs);
+            return retryPolicy.Wrap(GetRateLimitRetryPolicy(rateLimitRetries));
         }
 
         /// <summary>
@@ -202,27 +220,45 @@ namespace Finbourne.Sdk.Extensions
         /// Use .Wrap() method to combine this policy with your other custom policies
         /// </summary>
         /// <param name="rateLimitRetries"></param>
+        /// <param name="numberOfRetries"></param>
+        /// <param name="retryBackoffMs"></param>
         /// <returns></returns>
-        public static AsyncPolicyWrap<ResponseBase> GetDefaultRetryPolicyWithRateLimitRetryWithFallbackAsync(int rateLimitRetries)
+        public static AsyncPolicyWrap<ResponseBase> GetDefaultRetryPolicyWithRateLimitRetryWithFallbackAsync(int rateLimitRetries, int? numberOfRetries = null, int? retryBackoffMs = null)
         {
             // Order of wraps matters. We must wrap the retry policy ON the fallback policy, not the other way around.
-            return DefaultFallbackPolicyAsync.WrapAsync(GetAsyncDefaultRetryPolicyWithRateLimit(rateLimitRetries));
+            return DefaultFallbackPolicyAsync.WrapAsync(GetAsyncDefaultRetryPolicyWithRateLimit(rateLimitRetries, numberOfRetries, retryBackoffMs));
         }
 
         /// <summary>
         /// Define Polly retry policy for asynchronous API calls.
         /// </summary>
         public static AsyncPolicy<ResponseBase> DefaultRetryPolicyAsync =>
-            Policy
+            GetRetryPolicyAsync(DefaultNumberOfRetries, null);
+
+        /// <summary>
+        /// Creates a Polly retry policy for asynchronous API calls with configurable retry count and backoff.
+        /// </summary>
+        /// <param name="retryCount">Number of retry attempts</param>
+        /// <param name="retryBackoffMs">Fixed backoff duration in milliseconds. If null, uses exponential backoff.</param>
+        /// <returns></returns>
+        public static AsyncPolicy<ResponseBase> GetRetryPolicyAsync(int retryCount, int? retryBackoffMs)
+        {
+            return Policy
                 .HandleResult<ResponseBase>(GetPollyRetryCondition)
-                .WaitAndRetryAsync(retryCount: DefaultNumberOfRetries, retryAttempt =>
+                .WaitAndRetryAsync(retryCount: retryCount, retryAttempt =>
                     {
-                        var jitter = TimeSpan.FromMilliseconds(Random.Shared.Next(0, 1000));
+                        if (retryBackoffMs.HasValue)
+                        {
+                            var jitter = TimeSpan.FromMilliseconds(Random.Shared.Next(0, Math.Max(1, retryBackoffMs.Value / 10)));
+                            return TimeSpan.FromMilliseconds(retryBackoffMs.Value) + jitter;
+                        }
+                        var defaultJitter = TimeSpan.FromMilliseconds(Random.Shared.Next(0, 1000));
                         var exponentialBackoff = TimeSpan.FromTicks(Math.Min(
                             TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)).Ticks, TimeSpan.FromSeconds(3).Ticks));
-                        return exponentialBackoff + jitter;
+                        return exponentialBackoff + defaultJitter;
                     },
                     onRetry: HandleRetryAction);
+        }
 
         /// <summary>
         /// Defines async policy for handling rate limit (429) http response codes.
@@ -271,10 +307,11 @@ namespace Finbourne.Sdk.Extensions
         public static AsyncPolicyWrap<ResponseBase> AsyncDefaultRetryPolicyWithRateLimit =>
             GetAsyncDefaultRetryPolicyWithRateLimit(GlobalConfiguration.Instance.RateLimitRetries);
 
-        private static AsyncPolicyWrap<ResponseBase> GetAsyncDefaultRetryPolicyWithRateLimit(int rateLimitRetries)
+        private static AsyncPolicyWrap<ResponseBase> GetAsyncDefaultRetryPolicyWithRateLimit(int rateLimitRetries, int? numberOfRetries = null, int? retryBackoffMs = null)
         {
             // Order of wraps matters. We must wrap the retry policy ON the fallback policy, not the other way around.
-            return DefaultRetryPolicyAsync.WrapAsync(GetAsyncRateLimitRetryPolicy(rateLimitRetries));
+            var retryPolicy = GetRetryPolicyAsync(numberOfRetries ?? DefaultNumberOfRetries, retryBackoffMs);
+            return retryPolicy.WrapAsync(GetAsyncRateLimitRetryPolicy(rateLimitRetries));
         }
 
         #endregion

@@ -12,7 +12,7 @@ Result class for a cash flow value
 | **CashFlowLineage** | [CashFlowLineage](CashFlowLineage.md) | Optional | *No description available.* |
 | **PaymentAmount** | **decimal** | Required | The amount paid or received |
 | **PaymentCcy** | **string** | Required | The currency of the transaction |
-| **ResultValueType** | **string** | Required | The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset Default: `ResultValueTypeEnum.CashFlowValue` |
+| **ResultValueType** | **string** | Required | Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset. Default: `ResultValueTypeEnum.CashFlowValue` |
 
 
 ## Usage
@@ -28,7 +28,7 @@ var instance = new CashFlowValue(
     cashFlowLineage: new CashFlowLineage(...),  // optional
     paymentAmount: 0.0d,  // required — The amount paid or received
     paymentCcy: "...",  // required — The currency of the transaction
-    resultValueType: "..."  // required — The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset
+    resultValueType: "..."  // required — Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset.
 );
 ```
 ### Serializing to JSON

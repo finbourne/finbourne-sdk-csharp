@@ -5,7 +5,7 @@ Base class for types containing required data to append to complex market data.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **MarketDataType** | **string** | Required | The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData |
+| **MarketDataType** | **string** | Required | Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData. |
 
 
 ## Usage
@@ -16,7 +16,7 @@ Base class for types containing required data to append to complex market data.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new AppendMarketData(
-    marketDataType: "..."  // required — The available values are: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData
+    marketDataType: "..."  // required — Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData.
 );
 ```
 ### Serializing to JSON

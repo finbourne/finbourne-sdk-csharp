@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **Component** | **string** | Optional | The component of the formula which is being evaluated. |
 | **DisplayName** | **string** | Optional | The display name of the component being evaluated. |
-| **Type** | **string** | Optional | The type of the formula component. This can be a Literal, Variable, DerivedProperty, or PartialFormula. |
+| **Type** | **string** | Optional | The type of the formula component. Available values: Variable, DerivedProperty, Literal, PartialFormula. |
 | **Value** | [PropertyValue](PropertyValue.md) | Optional | *No description available.* |
 | **DerivationFormula** | **string** | Optional | The derivation formula of the component. This field will only be populated if the component is a derived property. |
 | **SubComponents** | [List&lt;DerivedPropertyComponent&gt;](DerivedPropertyComponent.md) | Optional | Any sub-components of this formula. If this formula cannot be further decomposed, this collection will be null. |
@@ -23,7 +23,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new DerivedPropertyComponent(
     component: "...",  // optional — The component of the formula which is being evaluated.
     displayName: "...",  // optional — The display name of the component being evaluated.
-    type: "...",  // optional — The type of the formula component. This can be a Literal, Variable, DerivedProperty, or PartialFormula.
+    type: "...",  // optional — The type of the formula component. Available values: Variable, DerivedProperty, Literal, PartialFormula.
     value: new PropertyValue(...),  // optional
     derivationFormula: "...",  // optional — The derivation formula of the component. This field will only be populated if the component is a derived property.
     subComponents: new List<DerivedPropertyComponent>(),  // optional — Any sub-components of this formula. If this formula cannot be further decomposed, this collection will be null.

@@ -20,7 +20,7 @@ A LUSID Trade Ticket comprising an instrument, a transaction, and a counterparty
 | **Counterparty** | **string** | Optional | Counterparty |
 | **InstrumentProperties** | [List&lt;Property&gt;](Property.md) | Optional | Set of instrument properties (as defined by client/user). |
 | **TransactionProperties** | [List&lt;Property&gt;](Property.md) | Optional | Set of transaction properties (as defined by client/user). |
-| **TradeTicketType** | **string** | Required | The available values are: LusidTradeTicket, ExternalTradeTicket |
+| **TradeTicketType** | **string** | Required | Available values: LusidTradeTicket, ExternalTradeTicket. |
 
 
 ## Usage
@@ -46,7 +46,7 @@ var instance = new LusidTradeTicket(
     counterparty: "...",  // optional — Counterparty
     instrumentProperties: new List<Property>(),  // optional — Set of instrument properties (as defined by client/user).
     transactionProperties: new List<Property>(),  // optional — Set of transaction properties (as defined by client/user).
-    tradeTicketType: "..."  // required — The available values are: LusidTradeTicket, ExternalTradeTicket
+    tradeTicketType: "..."  // required — Available values: LusidTradeTicket, ExternalTradeTicket.
 );
 ```
 ### Serializing to JSON

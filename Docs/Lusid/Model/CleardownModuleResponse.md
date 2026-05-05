@@ -11,7 +11,7 @@ A Cleardown Module definition
 | **DisplayName** | **string** | Required | The name of the Cleardown Module. |
 | **Description** | **string** | Optional | A description for the Cleardown Module. |
 | **Rules** | [List&lt;CleardownModuleRule&gt;](CleardownModuleRule.md) | Optional | The Cleardown Rules that apply for the Cleardown Module. Rules are evaluated in the order they occur in this collection. |
-| **Status** | **string** | Required | The Cleardown Module status. Can be Active, Inactive or Deleted. Defaults to Active. |
+| **Status** | **string** | Required | The Cleardown Module status. Default value: Active. Available values: Active, Inactive, Deleted. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
@@ -30,7 +30,7 @@ var instance = new CleardownModuleResponse(
     displayName: "...",  // required — The name of the Cleardown Module.
     description: "...",  // optional — A description for the Cleardown Module.
     rules: new List<CleardownModuleRule>(),  // optional — The Cleardown Rules that apply for the Cleardown Module. Rules are evaluated in the order they occur in this collection.
-    status: "...",  // required — The Cleardown Module status. Can be Active, Inactive or Deleted. Defaults to Active.
+    status: "...",  // required — The Cleardown Module status. Default value: Active. Available values: Active, Inactive, Deleted.
     varVersion: new ModelVersion(...),  // optional
     links: new List<Link>()  // optional
 );

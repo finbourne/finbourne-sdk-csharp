@@ -29,6 +29,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     [JsonConverter(typeof(JsonSubtypes), "ReferenceListType")]
     [JsonSubtypes.KnownSubType(typeof(AddressKeyList), "AddressKeyList")]
     [JsonSubtypes.KnownSubType(typeof(DecimalList), "DecimalList")]
+    [JsonSubtypes.KnownSubType(typeof(FilteredFundIdList), "FilteredFundIdList")]
     [JsonSubtypes.KnownSubType(typeof(FundIdList), "FundIdList")]
     [JsonSubtypes.KnownSubType(typeof(InstrumentList), "InstrumentList")]
     [JsonSubtypes.KnownSubType(typeof(PortfolioGroupIdList), "PortfolioGroupIdList")]
@@ -38,9 +39,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class ReferenceList : IEquatable<ReferenceList>, IValidatableObject
     {
         /// <summary>
-        /// The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList
+        /// The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList.
         /// </summary>
-        /// <value>The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList</value>
+        /// <value>The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ReferenceListTypeEnum
         {
@@ -90,13 +91,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             /// Enum FundIdList for value: FundIdList
             /// </summary>
             [EnumMember(Value = "FundIdList")]
-            FundIdList = 8
+            FundIdList = 8,
+
+            /// <summary>
+            /// Enum FilteredFundIdList for value: FilteredFundIdList
+            /// </summary>
+            [EnumMember(Value = "FilteredFundIdList")]
+            FilteredFundIdList = 9
         }
 
         /// <summary>
-        /// The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList
+        /// The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList.
         /// </summary>
-        /// <value>The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList</value>
+        /// <value>The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList.</value>
         [DataMember(Name = "referenceListType", IsRequired = true, EmitDefaultValue = true)]
         public ReferenceListTypeEnum ReferenceListType { get; set; }
         /// <summary>
@@ -107,7 +114,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ReferenceList" /> class.
         /// </summary>
-        /// <param name="referenceListType">The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList (required).</param>
+        /// <param name="referenceListType">The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList. (required).</param>
         public ReferenceList(ReferenceListTypeEnum referenceListType = default(ReferenceListTypeEnum))
         {
             this.ReferenceListType = referenceListType;

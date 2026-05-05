@@ -6,8 +6,8 @@
 |------|------|----------|-------------|
 | **SettlementInstructionId** | **string** | Required | *No description available.* |
 | **TransactionId** | **string** | Required | *No description available.* |
-| **SettlementCategory** | **string** | Required | *No description available.* |
-| **InstructionType** | **string** | Optional | *No description available.* |
+| **SettlementCategory** | **string** | Required | Available values: StockSettlement, CashSettlement, DeferredCashReceipt. |
+| **InstructionType** | **string** | Optional | Available values: Complete, CancelAutomatic, Partial. |
 | **InstrumentIdentifiers** | **Dictionary&lt;string, string&gt;** | Required | *No description available.* |
 | **ContractualSettlementDate** | **DateTimeOffset?** | Optional | *No description available.* |
 | **ActualSettlementDate** | **DateTimeOffset** | Required | *No description available.* |
@@ -29,8 +29,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new SettlementInstructionRequest(
     settlementInstructionId: "...",  // required
     transactionId: "...",  // required
-    settlementCategory: "...",  // required
-    instructionType: "...",  // optional
+    settlementCategory: "...",  // required — Available values: StockSettlement, CashSettlement, DeferredCashReceipt.
+    instructionType: "...",  // optional — Available values: Complete, CancelAutomatic, Partial.
     instrumentIdentifiers: ,  // required
     contractualSettlementDate: DateTimeOffset.Now,  // optional
     actualSettlementDate: DateTimeOffset.Now,  // required

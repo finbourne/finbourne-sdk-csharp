@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="CalendarDependency" /> class.
         /// </summary>
         /// <param name="calendars">The Codes of the calendars that are depended upon. (required).</param>
-        /// <param name="dependencyType">The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency (required) (default to DependencyTypeEnum.OpaqueDependency).</param>
+        /// <param name="dependencyType">Available values: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency. (required) (default to DependencyTypeEnum.OpaqueDependency).</param>
         public CalendarDependency(List<string> calendars = default(List<string>), DependencyTypeEnum dependencyType = default(DependencyTypeEnum)) : base()
         {
             // to ensure "calendars" is required (not null)

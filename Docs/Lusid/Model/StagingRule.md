@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **RuleId** | **string** | Required | The ID of the staging rule. |
 | **Description** | **string** | Optional | A description for the staging rule. |
-| **Status** | **string** | Required | Whether the rule is &#39;Active&#39; or &#39;Inactive&#39;. |
+| **Status** | **string** | Required | Status of the rule. Available values: Active, Inactive. |
 | **MatchCriteria** | [StagingRuleMatchCriteria](StagingRuleMatchCriteria.md) | Required | *No description available.* |
 | **ApprovalCriteria** | [StagingRuleApprovalCriteria](StagingRuleApprovalCriteria.md) | Required | *No description available.* |
 
@@ -21,7 +21,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new StagingRule(
     ruleId: "...",  // required — The ID of the staging rule.
     description: "...",  // optional — A description for the staging rule.
-    status: "...",  // required — Whether the rule is &#39;Active&#39; or &#39;Inactive&#39;.
+    status: "...",  // required — Status of the rule. Available values: Active, Inactive.
     matchCriteria: new StagingRuleMatchCriteria(...),  // required
     approvalCriteria: new StagingRuleApprovalCriteria(...)  // required
 );

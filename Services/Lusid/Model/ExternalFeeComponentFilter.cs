@@ -37,7 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="filterId">filterId (required).</param>
         /// <param name="filter">filter (required).</param>
-        /// <param name="appliesTo">appliesTo (required).</param>
+        /// <param name="appliesTo">Available values: Undefined, PnLBucket, Fees. (required).</param>
         public ExternalFeeComponentFilter(string filterId = default(string), string filter = default(string), string appliesTo = default(string))
         {
             // to ensure "filterId" is required (not null)
@@ -73,8 +73,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Filter { get; set; }
 
         /// <summary>
-        /// Gets or Sets AppliesTo
+        /// Available values: Undefined, PnLBucket, Fees.
         /// </summary>
+        /// <value>Available values: Undefined, PnLBucket, Fees.</value>
         [DataMember(Name = "appliesTo", IsRequired = true, EmitDefaultValue = true)]
         public string AppliesTo { get; set; }
 

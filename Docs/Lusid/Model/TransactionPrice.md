@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Price** | **decimal** | Optional | *No description available.* |
-| **Type** | **string** | Optional | The available values are: Price, Yield, Spread, CashFlowPerUnit, CleanPrice, DirtyPrice, CdsPrice |
+| **Type** | **string** | Optional | Available values: Price, Yield, Spread, CashFlowPerUnit, CleanPrice, DirtyPrice, CdsPrice. |
 
 
 ## Usage
@@ -17,7 +17,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new TransactionPrice(
     price: 0.0d,  // optional
-    type: "..."  // optional — The available values are: Price, Yield, Spread, CashFlowPerUnit, CleanPrice, DirtyPrice, CdsPrice
+    type: "..."  // optional — Available values: Price, Yield, Spread, CashFlowPerUnit, CleanPrice, DirtyPrice, CdsPrice.
 );
 ```
 ### Serializing to JSON

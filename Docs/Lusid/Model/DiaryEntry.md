@@ -7,10 +7,10 @@
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
 | **AborId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **DiaryEntryCode** | **string** | Optional | The code of the diary entry. |
-| **Type** | **string** | Required | The type of the diary entry. |
+| **Type** | **string** | Required | The type of the diary entry. Available values: PeriodBoundary, ValuationPoint, Other. |
 | **Name** | **string** | Optional | The name of the diary entry. |
-| **Status** | **string** | Required | The status of the diary entry. Statuses are constrained and defaulted by &#39;Type&#39; specified.   Type &#39;Other&#39; defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;.  Type &#39;PeriodBoundary&#39; defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods.  Type &#39;ValuationPoint&#39; defaults to &#39;Estimate&#39; when upserting a diary entry, moves to &#39;Candidate&#39; or &#39;Final&#39; when a ValuationPoint is accepted, and &#39;Final&#39; when it is finalised. |
-| **ApplyClearDown** | **bool** | Optional | Defaults to false. Set to true if you want that the closed period to have the clear down applied. |
+| **Status** | **string** | Required | The status of the diary entry. Statuses are constrained and defaulted by &#39;Type&#39; specified.   Type &#39;Other&#39; defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;.  Type &#39;PeriodBoundary&#39; defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods.  Type &#39;ValuationPoint&#39; defaults to &#39;Estimate&#39; when upserting a diary entry, moves to &#39;Candidate&#39; or &#39;Final&#39; when a ValuationPoint is accepted, and &#39;Final&#39; when it is finalised. Available values: Undefined, Estimate, Final, Candidate, Unofficial. |
+| **ApplyClearDown** | **bool** | Optional | Defaults to false. Set to true if you want that the closed period to have the clear down applied. Available values: Undefined, Estimate, Final, Candidate, Unofficial. |
 | **EffectiveAt** | **DateTimeOffset** | Required | The effective time of the diary entry. |
 | **QueryAsAt** | **DateTimeOffset** | Optional | The query time of the diary entry. Defaults to latest. |
 | **PreviousEntryTime** | **DateTimeOffset** | Optional | The entry time of the previous diary entry. |
@@ -30,10 +30,10 @@ var instance = new DiaryEntry(
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
     aborId: new ResourceId(...),  // optional
     diaryEntryCode: "...",  // optional — The code of the diary entry.
-    type: "...",  // required — The type of the diary entry.
+    type: "...",  // required — The type of the diary entry. Available values: PeriodBoundary, ValuationPoint, Other.
     name: "...",  // optional — The name of the diary entry.
-    status: "...",  // required — The status of the diary entry. Statuses are constrained and defaulted by &#39;Type&#39; specified.   Type &#39;Other&#39; defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;.  Type &#39;PeriodBoundary&#39; defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods.  Type &#39;ValuationPoint&#39; defaults to &#39;Estimate&#39; when upserting a diary entry, moves to &#39;Candidate&#39; or &#39;Final&#39; when a ValuationPoint is accepted, and &#39;Final&#39; when it is finalised.
-    applyClearDown: true,  // optional — Defaults to false. Set to true if you want that the closed period to have the clear down applied.
+    status: "...",  // required — The status of the diary entry. Statuses are constrained and defaulted by &#39;Type&#39; specified.   Type &#39;Other&#39; defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;.  Type &#39;PeriodBoundary&#39; defaults to &#39;Estimate&#39; when closing a period, and supports &#39;Estimate&#39; and &#39;Final&#39; for closing periods and &#39;Final&#39; for locking periods.  Type &#39;ValuationPoint&#39; defaults to &#39;Estimate&#39; when upserting a diary entry, moves to &#39;Candidate&#39; or &#39;Final&#39; when a ValuationPoint is accepted, and &#39;Final&#39; when it is finalised. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
+    applyClearDown: true,  // optional — Defaults to false. Set to true if you want that the closed period to have the clear down applied. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
     effectiveAt: DateTimeOffset.Now,  // required — The effective time of the diary entry.
     queryAsAt: DateTimeOffset.Now,  // optional — The query time of the diary entry. Defaults to latest.
     previousEntryTime: DateTimeOffset.Now,  // optional — The entry time of the previous diary entry.

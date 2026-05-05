@@ -39,7 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="label">The label of the compliance step (required).</param>
         /// <param name="parameters">Parameters required for the step (required).</param>
-        /// <param name="complianceStepType">. The available values are: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep (required) (default to ComplianceStepTypeEnum.FilterStep).</param>
+        /// <param name="complianceStepType">The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep. (required) (default to ComplianceStepTypeEnum.FilterStep).</param>
         public RecombineStep(string label = default(string), List<ComplianceTemplateParameter> parameters = default(List<ComplianceTemplateParameter>), ComplianceStepTypeEnum complianceStepType = default(ComplianceStepTypeEnum)) : base()
         {
             // to ensure "label" is required (not null)

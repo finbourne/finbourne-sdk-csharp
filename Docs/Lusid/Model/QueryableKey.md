@@ -15,7 +15,7 @@
 | **LifeCycleStatus** | **string** | Required | Within an API where an item can be accessed through an address or property, there is an associated status that determines whether the item is stable or likely to change. This status is one of [Experimental, Beta, EAP, Prod,  Deprecated]. If the item is deprecated it will be removed on or after the associated DateTime RemovalDate field. That field will not otherwise be set. |
 | **RemovalDate** | **DateTimeOffset?** | Optional | If the life cycle status is set to deprecated then this will be populated with the date on or after which removal of the address query will happen |
 | **ApplicableOptions** | [Dictionary&lt;string, AddressKeyOptionDefinition&gt;](AddressKeyOptionDefinition.md) | Optional | A mapping from option names to the definition that the corresponding option value must match. |
-| **DerivationFormula** | **string** | Optional | Derivation formula for when the for when the query key represents a DerivedValuation property. |
+| **DerivationFormula** | **string** | Optional | Derivation formula for when the query key represents a DerivedValuation property. |
 
 
 ## Usage
@@ -37,7 +37,7 @@ var instance = new QueryableKey(
     lifeCycleStatus: "...",  // required — Within an API where an item can be accessed through an address or property, there is an associated status that determines whether the item is stable or likely to change. This status is one of [Experimental, Beta, EAP, Prod,  Deprecated]. If the item is deprecated it will be removed on or after the associated DateTime RemovalDate field. That field will not otherwise be set.
     removalDate: DateTimeOffset.Now,  // optional — If the life cycle status is set to deprecated then this will be populated with the date on or after which removal of the address query will happen
     applicableOptions: new AddressKeyOptionDefinition(...),  // optional — A mapping from option names to the definition that the corresponding option value must match.
-    derivationFormula: "..."  // optional — Derivation formula for when the for when the query key represents a DerivedValuation property.
+    derivationFormula: "..."  // optional — Derivation formula for when the query key represents a DerivedValuation property.
 );
 ```
 ### Serializing to JSON

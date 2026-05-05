@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Status** | **string** | Required | The Status of the Nav Type. Can be &#39;Active&#39; or &#39;Inactive&#39;. |
+| **Status** | **string** | Required | The Status of the Nav Type. Available values: Active, Inactive. |
 | **Code** | **string** | Optional | The Code for the Nav Type. Must be unique within the Fund. |
 | **DisplayName** | **string** | Optional | The Display Name for the Nav Type. Must be unique within the Fund. |
 | **Description** | **string** | Optional | The Description for the Nav Type. |
@@ -13,11 +13,11 @@
 | **CleardownModuleCodes** | **List&lt;string&gt;** | Optional | The Cleardown Module Codes from which the rules to be applied are retrieved. |
 | **ValuationRecipeId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **HoldingRecipeId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
-| **AccountingMethod** | **string** | Required | Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. A non-default value is required. |
+| **AccountingMethod** | **string** | Required | Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. A non-default value is required. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. |
 | **SubHoldingKeys** | **List&lt;string&gt;** | Optional | A set of unique transaction properties to group the derived transaction portfolio&#39;s holdings by, perhaps for strategy tagging. Each property must be from the &#39;Transaction&#39; domain and identified by a key in the format {domain}/{scope}/{code}, for example &#39;Transaction/strategies/quantsignal&#39;. See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for more information. |
-| **AmortisationMethod** | **string** | Required | The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate |
+| **AmortisationMethod** | **string** | Required | The amortisation method used by the portfolio for the calculation. Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate. |
 | **TransactionTypeScope** | **string** | Required | The scope of the transaction types. |
-| **CashGainLossCalculationDate** | **string** | Required | The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. A non-default value is required. |
+| **CashGainLossCalculationDate** | **string** | Required | The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. A non-default value is required. Available values: SettlementDate, TransactionDate. |
 | **AmortisationRuleSetId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **LeaderNavTypeCode** | **string** | Optional | The code of the Nav Type that this Nav Type will follow when set. |
 | **TransactionTemplateScope** | **string** | Optional | The Transaction Template Scope used by the NavType. Will default to the scope set on the parent portfolio. If the fund has multiple parent portfolios, then the Transaction Template Scope must be provided. |
@@ -31,7 +31,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new NavType(
-    status: "...",  // required — The Status of the Nav Type. Can be &#39;Active&#39; or &#39;Inactive&#39;.
+    status: "...",  // required — The Status of the Nav Type. Available values: Active, Inactive.
     code: "...",  // optional — The Code for the Nav Type. Must be unique within the Fund.
     displayName: "...",  // optional — The Display Name for the Nav Type. Must be unique within the Fund.
     description: "...",  // optional — The Description for the Nav Type.
@@ -40,11 +40,11 @@ var instance = new NavType(
     cleardownModuleCodes: ,  // optional — The Cleardown Module Codes from which the rules to be applied are retrieved.
     valuationRecipeId: new ResourceId(...),  // required
     holdingRecipeId: new ResourceId(...),  // required
-    accountingMethod: "...",  // required — Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. A non-default value is required.
+    accountingMethod: "...",  // required — Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. A non-default value is required. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
     subHoldingKeys: ,  // optional — A set of unique transaction properties to group the derived transaction portfolio&#39;s holdings by, perhaps for strategy tagging. Each property must be from the &#39;Transaction&#39; domain and identified by a key in the format {domain}/{scope}/{code}, for example &#39;Transaction/strategies/quantsignal&#39;. See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for more information.
-    amortisationMethod: "...",  // required — The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate
+    amortisationMethod: "...",  // required — The amortisation method used by the portfolio for the calculation. Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate.
     transactionTypeScope: "...",  // required — The scope of the transaction types.
-    cashGainLossCalculationDate: "...",  // required — The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. A non-default value is required.
+    cashGainLossCalculationDate: "...",  // required — The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. A non-default value is required. Available values: SettlementDate, TransactionDate.
     amortisationRuleSetId: new ResourceId(...),  // optional
     leaderNavTypeCode: "...",  // optional — The code of the Nav Type that this Nav Type will follow when set.
     transactionTemplateScope: "..."  // optional — The Transaction Template Scope used by the NavType. Will default to the scope set on the parent portfolio. If the fund has multiple parent portfolios, then the Transaction Template Scope must be provided.

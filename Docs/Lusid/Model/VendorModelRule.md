@@ -5,7 +5,7 @@ A rule that identifies the set of preferences to be used for a given library, mo
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Supplier** | **string** | Required | The available values are: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc |
+| **Supplier** | **string** | Required | Available values: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc. |
 | **ModelName** | **string** | Required | The vendor library model name |
 | **InstrumentType** | **string** | Required | The vendor library instrument type |
 | **Parameters** | **string** | Optional | THIS FIELD IS DEPRECATED - use ModelOptions  The set of opaque model parameters, provided as a Json object, that is a string object which will internally be converted to a dictionary of string to object.  Note that this is not intended as the final form of this object. It will be replaced with a more structured object as the set of parameters that are possible is  better understood. |
@@ -22,7 +22,7 @@ A rule that identifies the set of preferences to be used for a given library, mo
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new VendorModelRule(
-    supplier: "...",  // required — The available values are: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc
+    supplier: "...",  // required — Available values: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc.
     modelName: "...",  // required — The vendor library model name
     instrumentType: "...",  // required — The vendor library instrument type
     parameters: "...",  // optional — THIS FIELD IS DEPRECATED - use ModelOptions  The set of opaque model parameters, provided as a Json object, that is a string object which will internally be converted to a dictionary of string to object.  Note that this is not intended as the final form of this object. It will be replaced with a more structured object as the set of parameters that are possible is  better understood.

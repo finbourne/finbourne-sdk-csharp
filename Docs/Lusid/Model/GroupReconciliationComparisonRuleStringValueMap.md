@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **LeftValue** | **string** | Required | The left string to map |
 | **RightValue** | **string** | Required | The right string to map |
-| **Direction** | **string** | Required | The direction to map. \&quot;UniDirectional\&quot; | \&quot;BiDirectional\&quot; |
+| **Direction** | **string** | Required | The direction to map. Available values: BiDirectional, UniDirectional. |
 
 
 ## Usage
@@ -19,7 +19,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new GroupReconciliationComparisonRuleStringValueMap(
     leftValue: "...",  // required — The left string to map
     rightValue: "...",  // required — The right string to map
-    direction: "..."  // required — The direction to map. \&quot;UniDirectional\&quot; | \&quot;BiDirectional\&quot;
+    direction: "..."  // required — The direction to map. Available values: BiDirectional, UniDirectional.
 );
 ```
 ### Serializing to JSON

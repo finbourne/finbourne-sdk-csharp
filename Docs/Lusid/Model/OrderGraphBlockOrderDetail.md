@@ -5,8 +5,8 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
-| **ComplianceState** | **string** | Required | The compliance state of this order. Possible values are &#39;Pending&#39;, &#39;Failed&#39;, &#39;Manually approved&#39;, &#39;Passed&#39; and &#39;Warning&#39;. |
-| **ApprovalState** | **string** | Required | The approval state of this order. Possible values are &#39;Pending&#39;, &#39;Rejected&#39; and &#39;Approved&#39;. |
+| **ComplianceState** | **string** | Required | The compliance state of this order. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning. |
+| **ApprovalState** | **string** | Required | The approval state of this order. Available values: Pending, Rejected, Approved. |
 | **PortfolioId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **PortfolioName** | **string** | Optional | The name of the order&#39;s referenced Portfolio. |
 | **OrderApprovalTaskId** | **string** | Optional | The task id associated with the approval state of the order. |
@@ -23,8 +23,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new OrderGraphBlockOrderDetail(
     id: new ResourceId(...),  // required
-    complianceState: "...",  // required — The compliance state of this order. Possible values are &#39;Pending&#39;, &#39;Failed&#39;, &#39;Manually approved&#39;, &#39;Passed&#39; and &#39;Warning&#39;.
-    approvalState: "...",  // required — The approval state of this order. Possible values are &#39;Pending&#39;, &#39;Rejected&#39; and &#39;Approved&#39;.
+    complianceState: "...",  // required — The compliance state of this order. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning.
+    approvalState: "...",  // required — The approval state of this order. Available values: Pending, Rejected, Approved.
     portfolioId: new ResourceId(...),  // optional
     portfolioName: "...",  // optional — The name of the order&#39;s referenced Portfolio.
     orderApprovalTaskId: "...",  // optional — The task id associated with the approval state of the order.
