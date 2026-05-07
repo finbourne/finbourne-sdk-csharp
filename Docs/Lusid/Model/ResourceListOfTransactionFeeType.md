@@ -1,10 +1,10 @@
-# Finbourne.Sdk.Lusid.Model.ResourceListOfTransactionFee
+# Finbourne.Sdk.Lusid.Model.ResourceListOfTransactionFeeType
 
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Values** | [List&lt;TransactionFee&gt;](TransactionFee.md) | Required | *No description available.* |
+| **Values** | [List&lt;TransactionFeeType&gt;](TransactionFeeType.md) | Required | *No description available.* |
 | **Href** | **string** | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 | **NextPage** | **string** | Optional | *No description available.* |
@@ -18,8 +18,8 @@
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var instance = new ResourceListOfTransactionFee(
-    values: new List<TransactionFee>(),  // required
+var instance = new ResourceListOfTransactionFeeType(
+    values: new List<TransactionFeeType>(),  // required
     href: "...",  // optional
     links: new List<Link>(),  // optional
     nextPage: "...",  // optional
@@ -35,13 +35,13 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<ResourceListOfTransactionFee>(json);
+var instance = JsonConvert.DeserializeObject<ResourceListOfTransactionFeeType>(json);
 ```
 
 
 ## Related Models
 
-- [TransactionFee](TransactionFee.md)
+- [TransactionFeeType](TransactionFeeType.md)
 - [Link](Link.md)
 
 

@@ -22,109 +22,112 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// CreateTransactionFeeRequest
+    /// TransactionFeeType
     /// </summary>
-    [DataContract(Name = "CreateTransactionFeeRequest")]
-    public partial class CreateTransactionFeeRequest : IEquatable<CreateTransactionFeeRequest>, IValidatableObject
+    [DataContract(Name = "TransactionFeeType")]
+    public partial class TransactionFeeType : IEquatable<TransactionFeeType>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateTransactionFeeRequest" /> class.
+        /// Initializes a new instance of the <see cref="TransactionFeeType" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected CreateTransactionFeeRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateTransactionFeeRequest" /> class.
-        /// </summary>
-        /// <param name="name">The display name of the transaction fee. (required).</param>
-        /// <param name="description">A description of the transaction fee. (required).</param>
-        /// <param name="calculation">calculation (required).</param>
-        /// <param name="condition">The condition that the transaction must meet in order for the fee to be applied. (required).</param>
-        /// <param name="txnPropertyKey">The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. (required).</param>
-        /// <param name="properties">A set of properties for the transaction fee..</param>
-        /// <param name="isActive">Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided..</param>
-        public CreateTransactionFeeRequest(string name = default(string), string description = default(string), FeeCalculationRequest calculation = default(FeeCalculationRequest), string condition = default(string), string txnPropertyKey = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool isActive = default(bool))
+        /// <param name="id">id.</param>
+        /// <param name="displayName">The display name of the transaction fee type..</param>
+        /// <param name="description">A description of the transaction fee type..</param>
+        /// <param name="calculation">calculation.</param>
+        /// <param name="condition">The condition that the transaction must meet in order for the fee to be applied..</param>
+        /// <param name="txnPropertyKey">The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain..</param>
+        /// <param name="properties">A set of properties for the transaction fee type..</param>
+        /// <param name="varVersion">varVersion.</param>
+        /// <param name="href">The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime..</param>
+        /// <param name="isActive">Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided..</param>
+        /// <param name="links">links.</param>
+        public TransactionFeeType(ResourceId id = default(ResourceId), string displayName = default(string), string description = default(string), FeeCalculationRequest calculation = default(FeeCalculationRequest), string condition = default(string), string txnPropertyKey = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), ModelVersion varVersion = default(ModelVersion), string href = default(string), bool isActive = default(bool), List<Link> links = default(List<Link>))
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for CreateTransactionFeeRequest and cannot be null");
-            }
-            this.Name = name;
-            // to ensure "description" is required (not null)
-            if (description == null)
-            {
-                throw new ArgumentNullException("description is a required property for CreateTransactionFeeRequest and cannot be null");
-            }
+            this.Id = id;
+            this.DisplayName = displayName;
             this.Description = description;
-            // to ensure "calculation" is required (not null)
-            if (calculation == null)
-            {
-                throw new ArgumentNullException("calculation is a required property for CreateTransactionFeeRequest and cannot be null");
-            }
             this.Calculation = calculation;
-            // to ensure "condition" is required (not null)
-            if (condition == null)
-            {
-                throw new ArgumentNullException("condition is a required property for CreateTransactionFeeRequest and cannot be null");
-            }
             this.Condition = condition;
-            // to ensure "txnPropertyKey" is required (not null)
-            if (txnPropertyKey == null)
-            {
-                throw new ArgumentNullException("txnPropertyKey is a required property for CreateTransactionFeeRequest and cannot be null");
-            }
             this.TxnPropertyKey = txnPropertyKey;
             this.Properties = properties;
+            this.VarVersion = varVersion;
+            this.Href = href;
             this.IsActive = isActive;
+            this.Links = links;
         }
 
         /// <summary>
-        /// The display name of the transaction fee.
+        /// Gets or Sets Id
         /// </summary>
-        /// <value>The display name of the transaction fee.</value>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
-        public string Name { get; set; }
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public ResourceId Id { get; set; }
 
         /// <summary>
-        /// A description of the transaction fee.
+        /// The display name of the transaction fee type.
         /// </summary>
-        /// <value>A description of the transaction fee.</value>
-        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The display name of the transaction fee type.</value>
+        [DataMember(Name = "displayName", EmitDefaultValue = true)]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// A description of the transaction fee type.
+        /// </summary>
+        /// <value>A description of the transaction fee type.</value>
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Calculation
         /// </summary>
-        [DataMember(Name = "calculation", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "calculation", EmitDefaultValue = false)]
         public FeeCalculationRequest Calculation { get; set; }
 
         /// <summary>
         /// The condition that the transaction must meet in order for the fee to be applied.
         /// </summary>
         /// <value>The condition that the transaction must meet in order for the fee to be applied.</value>
-        [DataMember(Name = "condition", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "condition", EmitDefaultValue = true)]
         public string Condition { get; set; }
 
         /// <summary>
         /// The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain.
         /// </summary>
         /// <value>The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain.</value>
-        [DataMember(Name = "txnPropertyKey", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "txnPropertyKey", EmitDefaultValue = true)]
         public string TxnPropertyKey { get; set; }
 
         /// <summary>
-        /// A set of properties for the transaction fee.
+        /// A set of properties for the transaction fee type.
         /// </summary>
-        /// <value>A set of properties for the transaction fee.</value>
+        /// <value>A set of properties for the transaction fee type.</value>
         [DataMember(Name = "properties", EmitDefaultValue = true)]
         public Dictionary<string, Property> Properties { get; set; }
 
         /// <summary>
-        /// Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided.
+        /// Gets or Sets VarVersion
         /// </summary>
-        /// <value>Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided.</value>
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public ModelVersion VarVersion { get; set; }
+
+        /// <summary>
+        /// The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
+        /// </summary>
+        /// <value>The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.</value>
+        [DataMember(Name = "href", EmitDefaultValue = true)]
+        public string Href { get; set; }
+
+        /// <summary>
+        /// Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided.
+        /// </summary>
+        /// <value>Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided.</value>
         [DataMember(Name = "isActive", EmitDefaultValue = true)]
         public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Links
+        /// </summary>
+        [DataMember(Name = "links", EmitDefaultValue = true)]
+        public List<Link> Links { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -133,14 +136,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CreateTransactionFeeRequest {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("class TransactionFeeType {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Calculation: ").Append(Calculation).Append("\n");
             sb.Append("  Condition: ").Append(Condition).Append("\n");
             sb.Append("  TxnPropertyKey: ").Append(TxnPropertyKey).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  Href: ").Append(Href).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -161,15 +168,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateTransactionFeeRequest);
+            return this.Equals(input as TransactionFeeType);
         }
 
         /// <summary>
-        /// Returns true if CreateTransactionFeeRequest instances are equal
+        /// Returns true if TransactionFeeType instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateTransactionFeeRequest to be compared</param>
+        /// <param name="input">Instance of TransactionFeeType to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateTransactionFeeRequest input)
+        public bool Equals(TransactionFeeType input)
         {
             if (input == null)
             {
@@ -177,9 +184,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             return 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.DisplayName == input.DisplayName ||
+                    (this.DisplayName != null &&
+                    this.DisplayName.Equals(input.DisplayName))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -208,8 +220,24 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Properties.SequenceEqual(input.Properties)
                 ) && 
                 (
+                    this.VarVersion == input.VarVersion ||
+                    (this.VarVersion != null &&
+                    this.VarVersion.Equals(input.VarVersion))
+                ) && 
+                (
+                    this.Href == input.Href ||
+                    (this.Href != null &&
+                    this.Href.Equals(input.Href))
+                ) && 
+                (
                     this.IsActive == input.IsActive ||
                     this.IsActive.Equals(input.IsActive)
+                ) && 
+                (
+                    this.Links == input.Links ||
+                    this.Links != null &&
+                    input.Links != null &&
+                    this.Links.SequenceEqual(input.Links)
                 );
         }
 
@@ -222,9 +250,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Name != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.DisplayName != null)
+                {
+                    hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
                 }
                 if (this.Description != null)
                 {
@@ -246,7 +278,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Properties.GetHashCode();
                 }
+                if (this.VarVersion != null)
+                {
+                    hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
+                }
+                if (this.Href != null)
+                {
+                    hashCode = (hashCode * 59) + this.Href.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.IsActive.GetHashCode();
+                if (this.Links != null)
+                {
+                    hashCode = (hashCode * 59) + this.Links.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -258,13 +302,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Description (string) pattern
-            Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
-            }
-
             yield break;
         }
     }

@@ -1,19 +1,19 @@
-# Finbourne.Sdk.Lusid.Model.TransactionFee
+# Finbourne.Sdk.Lusid.Model.TransactionFeeType
 
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Id** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
-| **Name** | **string** | Optional | The display name of the transaction fee. |
-| **Description** | **string** | Optional | A description of the transaction fee. |
+| **DisplayName** | **string** | Optional | The display name of the transaction fee type. |
+| **Description** | **string** | Optional | A description of the transaction fee type. |
 | **Calculation** | [FeeCalculationRequest](FeeCalculationRequest.md) | Optional | *No description available.* |
 | **Condition** | **string** | Optional | The condition that the transaction must meet in order for the fee to be applied. |
 | **TxnPropertyKey** | **string** | Optional | The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. |
-| **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the transaction fee. |
+| **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the transaction fee type. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
-| **IsActive** | **bool** | Optional | Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided. |
+| **IsActive** | **bool** | Optional | Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -24,17 +24,17 @@
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var instance = new TransactionFee(
+var instance = new TransactionFeeType(
     id: new ResourceId(...),  // optional
-    name: "...",  // optional — The display name of the transaction fee.
-    description: "...",  // optional — A description of the transaction fee.
+    displayName: "...",  // optional — The display name of the transaction fee type.
+    description: "...",  // optional — A description of the transaction fee type.
     calculation: new FeeCalculationRequest(...),  // optional
     condition: "...",  // optional — The condition that the transaction must meet in order for the fee to be applied.
     txnPropertyKey: "...",  // optional — The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain.
-    properties: new Property(...),  // optional — A set of properties for the transaction fee.
+    properties: new Property(...),  // optional — A set of properties for the transaction fee type.
     varVersion: new ModelVersion(...),  // optional
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
-    isActive: true,  // optional — Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided.
+    isActive: true,  // optional — Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided.
     links: new List<Link>()  // optional
 );
 ```
@@ -47,7 +47,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<TransactionFee>(json);
+var instance = JsonConvert.DeserializeObject<TransactionFeeType>(json);
 ```
 
 

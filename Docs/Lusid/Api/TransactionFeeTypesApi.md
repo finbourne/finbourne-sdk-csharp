@@ -1,15 +1,15 @@
-# Finbourne.Sdk.Lusid.Api.TransactionTransactionFeesApi
+# Finbourne.Sdk.Lusid.Api.TransactionFeeTypesApi
 
 
 All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateTransactionFee**](#createtransactionfee) | **POST** `/api/api/transactions/transactionfees/{scope}/{code}` | [EXPERIMENTAL] CreateTransactionFee: Create a TransactionFee |
-| [**DeleteTransactionFee**](#deletetransactionfee) | **DELETE** `/api/api/transactions/transactionfees/{scope}/{code}` | [EXPERIMENTAL] DeleteTransactionFee: Delete a TransactionFee |
-| [**GetTransactionFee**](#gettransactionfee) | **GET** `/api/api/transactions/transactionfees/{scope}/{code}` | [EXPERIMENTAL] GetTransactionFee: Get a TransactionFee |
-| [**ListTransactionFees**](#listtransactionfees) | **GET** `/api/api/transactions/transactionfees` | [EXPERIMENTAL] ListTransactionFees: List TransactionFees |
-| [**UpdateTransactionFee**](#updatetransactionfee) | **PUT** `/api/api/transactions/transactionfees/{scope}/{code}` | [EXPERIMENTAL] UpdateTransactionFee: Update a TransactionFee |
+| [**CreateTransactionFeeType**](#createtransactionfeetype) | **POST** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type |
+| [**DeleteTransactionFeeType**](#deletetransactionfeetype) | **DELETE** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type |
+| [**GetTransactionFeeType**](#gettransactionfeetype) | **GET** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type |
+| [**ListTransactionFeeTypes**](#listtransactionfeetypes) | **GET** `/api/api/transactions/transactionfeetypes` | [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types |
+| [**UpdateTransactionFeeType**](#updatetransactionfeetype) | **PUT** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type |
 
 ### Example
 
@@ -46,30 +46,30 @@ File.WriteAllText(
 // opts.TimeoutMs = 30_000;
 
 // uncomment the below to use an api factory with overrides
-// var apiInstance = ApiFactoryBuilder.Build(secretsFilename, opts: opts).Api<TransactionTransactionFeesApi>();
+// var apiInstance = ApiFactoryBuilder.Build(secretsFilename, opts: opts).Api<TransactionFeeTypesApi>();
 
-var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionTransactionFeesApi>();
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionFeeTypesApi>();
 ```
 
 ---
 
-<a id="createtransactionfee"></a>
-## CreateTransactionFee
+<a id="createtransactionfeetype"></a>
+## CreateTransactionFeeType
 
-> TransactionFee CreateTransactionFee(string scope, string code, CreateTransactionFeeRequest createTransactionFeeRequest)
+> TransactionFeeType CreateTransactionFeeType(string scope, string code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest)
 
-[EXPERIMENTAL] CreateTransactionFee: Create a TransactionFee
+[EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type
 
-Create a TransactionFee for the specified scope and code.
+Create a transaction fee type for the specified scope and code.
 
 ### Example
 
 ```csharp
-var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionTransactionFeesApi>();
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionFeeTypesApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
-var createTransactionFeeRequest = new CreateTransactionFeeRequest(); // CreateTransactionFeeRequest
-TransactionFee result = apiInstance.CreateTransactionFee(scope, code, createTransactionFeeRequest);
+var createTransactionFeeTypeRequest = new CreateTransactionFeeTypeRequest(); // CreateTransactionFeeTypeRequest
+TransactionFeeType result = apiInstance.CreateTransactionFeeType(scope, code, createTransactionFeeTypeRequest);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -77,13 +77,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **scope** | **string** | path | **required** | The scope of the TransactionFee. |
-| **code** | **string** | path | **required** | The code of the TransactionFee.              Together with the scope this uniquely identifies the TransactionFee. |
-| **createTransactionFeeRequest** | [CreateTransactionFeeRequest](CreateTransactionFeeRequest.md) | body | **required** | The contents of the TransactionFee. |
+| **scope** | **string** | path | **required** | The scope of the transaction fee type. |
+| **code** | **string** | path | **required** | The code of the transaction fee type.              Together with the scope this uniquely identifies the transaction fee type. |
+| **createTransactionFeeTypeRequest** | [CreateTransactionFeeTypeRequest](CreateTransactionFeeTypeRequest.md) | body | **required** | The contents of the transaction fee type. |
 
 ### Return type
 
-[TransactionFee](TransactionFee.md)
+[TransactionFeeType](TransactionFeeType.md)
 
 ### HTTP request headers
 
@@ -94,17 +94,17 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | The newly created TransactionFee. |  -  |
+| **201** | The newly created transaction fee type. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
 <details>
-<summary>Using the CreateTransactionFeeWithHttpInfo variant</summary>
+<summary>Using the CreateTransactionFeeTypeWithHttpInfo variant</summary>
 
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<TransactionFee> response = apiInstance.CreateTransactionFeeWithHttpInfo(scope, code, createTransactionFeeRequest);
+ApiResponse<TransactionFeeType> response = apiInstance.CreateTransactionFeeTypeWithHttpInfo(scope, code, createTransactionFeeTypeRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -115,22 +115,22 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
-<a id="deletetransactionfee"></a>
-## DeleteTransactionFee
+<a id="deletetransactionfeetype"></a>
+## DeleteTransactionFeeType
 
-> DeletedEntityResponse DeleteTransactionFee(string scope, string code)
+> DeletedEntityResponse DeleteTransactionFeeType(string scope, string code)
 
-[EXPERIMENTAL] DeleteTransactionFee: Delete a TransactionFee
+[EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type
 
-Delete a TransactionFee for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the TransactionFee will be deleted for all effective time (including past and future versions of the TransactionFee).
+Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
 
 ### Example
 
 ```csharp
-var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionTransactionFeesApi>();
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionFeeTypesApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
-DeletedEntityResponse result = apiInstance.DeleteTransactionFee(scope, code);
+DeletedEntityResponse result = apiInstance.DeleteTransactionFeeType(scope, code);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -138,8 +138,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **scope** | **string** | path | **required** | The scope of the TransactionFee. |
-| **code** | **string** | path | **required** | The code of the specified TransactionFee.              Together with the scope this uniquely identifies the TransactionFee. |
+| **scope** | **string** | path | **required** | The scope of the transaction fee type. |
+| **code** | **string** | path | **required** | The code of the specified transaction fee type.              Together with the scope this uniquely identifies the transaction fee type. |
 
 ### Return type
 
@@ -154,17 +154,17 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Delete a TransactionFee. |  -  |
+| **200** | Delete a transaction fee type. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
 <details>
-<summary>Using the DeleteTransactionFeeWithHttpInfo variant</summary>
+<summary>Using the DeleteTransactionFeeTypeWithHttpInfo variant</summary>
 
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteTransactionFeeWithHttpInfo(scope, code);
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteTransactionFeeTypeWithHttpInfo(scope, code);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -175,25 +175,25 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
-<a id="gettransactionfee"></a>
-## GetTransactionFee
+<a id="gettransactionfeetype"></a>
+## GetTransactionFeeType
 
-> TransactionFee GetTransactionFee(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
+> TransactionFeeType GetTransactionFeeType(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetTransactionFee: Get a TransactionFee
+[EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type
 
-Get the TransactionFee for the specified scope and code.
+Get the transaction fee type for the specified scope and code.
 
 ### Example
 
 ```csharp
-var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionTransactionFeesApi>();
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionFeeTypesApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var propertyKeys = new List<string>?(); // List<string>? (optional)
-TransactionFee result = apiInstance.GetTransactionFee(scope, code, effectiveAt, asAt, propertyKeys);
+TransactionFeeType result = apiInstance.GetTransactionFeeType(scope, code, effectiveAt, asAt, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -201,15 +201,15 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **scope** | **string** | path | **required** | The scope of the TransactionFee. |
-| **code** | **string** | path | **required** | The code of the TransactionFee.              Together with the scope this uniquely identifies the TransactionFee. |
-| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime at which to retrieve the TransactionFee properties.              Defaults to the current LUSID system datetime if not specified. |
-| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the TransactionFees.              Defaults to latest if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The collection of &#x60;PropertyKey&#x60;s that we want to decorate on identifies the TransactionFee. |
+| **scope** | **string** | path | **required** | The scope of the transaction fee type. |
+| **code** | **string** | path | **required** | The code of the transaction fee type.              Together with the scope this uniquely identifies the transaction fee type. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime at which to retrieve the transaction fee type properties.              Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction fee types.              Defaults to latest if not specified. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The collection of &#x60;PropertyKey&#x60;s that we want to decorate on the transaction fee type. |
 
 ### Return type
 
-[TransactionFee](TransactionFee.md)
+[TransactionFeeType](TransactionFeeType.md)
 
 ### HTTP request headers
 
@@ -220,17 +220,17 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The TransactionFee matching the specified scope and code. |  -  |
+| **200** | The transaction fee type matching the specified scope and code. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
 <details>
-<summary>Using the GetTransactionFeeWithHttpInfo variant</summary>
+<summary>Using the GetTransactionFeeTypeWithHttpInfo variant</summary>
 
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<TransactionFee> response = apiInstance.GetTransactionFeeWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+ApiResponse<TransactionFeeType> response = apiInstance.GetTransactionFeeTypeWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -241,19 +241,19 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
-<a id="listtransactionfees"></a>
-## ListTransactionFees
+<a id="listtransactionfeetypes"></a>
+## ListTransactionFeeTypes
 
-> ResourceListOfTransactionFee ListTransactionFees(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
+> ResourceListOfTransactionFeeType ListTransactionFeeTypes(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListTransactionFees: List TransactionFees
+[EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types
 
-List TransactionFees that match the specified criteria.
+List transaction fee types that match the specified criteria.
 
 ### Example
 
 ```csharp
-var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionTransactionFeesApi>();
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionFeeTypesApi>();
 var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var page = "page_example";  // string? (optional)
@@ -261,7 +261,7 @@ var limit = 56;  // int? (optional)
 var filter = "filter_example";  // string? (optional)
 var sortBy = new List<string>?(); // List<string>? (optional)
 var propertyKeys = new List<string>?(); // List<string>? (optional)
-ResourceListOfTransactionFee result = apiInstance.ListTransactionFees(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
+ResourceListOfTransactionFeeType result = apiInstance.ListTransactionFeeTypes(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -269,9 +269,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime at which to retrieve TransactionFee properties.              Defaults to the current LUSID system datetime if not specified. |
-| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the TransactionFees.              Defaults to latest if not specified. |
-| **page** | **string?** | query | optional | The pagination token to use to continue listing TransactionFees from a previous call to list TransactionFees.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy, effectiveAt and asAt field must not have changed since the original request. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime at which to retrieve transaction fee type properties.              Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction fee types.              Defaults to latest if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing transaction fee types from a previous call to list transaction fee types.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy, effectiveAt and asAt field must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
@@ -279,7 +279,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfTransactionFee](ResourceListOfTransactionFee.md)
+[ResourceListOfTransactionFeeType](ResourceListOfTransactionFeeType.md)
 
 ### HTTP request headers
 
@@ -290,17 +290,17 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | A collection of TransactionFees matching the specified criteria. |  -  |
+| **200** | A collection of transaction fee types matching the specified criteria. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
 <details>
-<summary>Using the ListTransactionFeesWithHttpInfo variant</summary>
+<summary>Using the ListTransactionFeeTypesWithHttpInfo variant</summary>
 
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfTransactionFee> response = apiInstance.ListTransactionFeesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
+ApiResponse<ResourceListOfTransactionFeeType> response = apiInstance.ListTransactionFeeTypesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -311,23 +311,23 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
-<a id="updatetransactionfee"></a>
-## UpdateTransactionFee
+<a id="updatetransactionfeetype"></a>
+## UpdateTransactionFeeType
 
-> TransactionFee UpdateTransactionFee(string scope, string code, UpdateTransactionFeeRequest updateTransactionFeeRequest)
+> TransactionFeeType UpdateTransactionFeeType(string scope, string code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest)
 
-[EXPERIMENTAL] UpdateTransactionFee: Update a TransactionFee
+[EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type
 
-Update a TransactionFee by providing the new contents of the TransactionFee.  The name field and the capitalisation field can not be updated.
+Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
 
 ### Example
 
 ```csharp
-var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionTransactionFeesApi>();
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionFeeTypesApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
-var updateTransactionFeeRequest = new UpdateTransactionFeeRequest(); // UpdateTransactionFeeRequest
-TransactionFee result = apiInstance.UpdateTransactionFee(scope, code, updateTransactionFeeRequest);
+var updateTransactionFeeTypeRequest = new UpdateTransactionFeeTypeRequest(); // UpdateTransactionFeeTypeRequest
+TransactionFeeType result = apiInstance.UpdateTransactionFeeType(scope, code, updateTransactionFeeTypeRequest);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -335,13 +335,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **scope** | **string** | path | **required** | The scope of the TransactionFee. |
-| **code** | **string** | path | **required** | The code of the specified TransactionFee.              Together with the scope this uniquely identifies the TransactionFee. |
-| **updateTransactionFeeRequest** | [UpdateTransactionFeeRequest](UpdateTransactionFeeRequest.md) | body | **required** | The updated contents of the TransactionFee. |
+| **scope** | **string** | path | **required** | The scope of the transaction fee type. |
+| **code** | **string** | path | **required** | The code of the specified transaction fee type.              Together with the scope this uniquely identifies the transaction fee type. |
+| **updateTransactionFeeTypeRequest** | [UpdateTransactionFeeTypeRequest](UpdateTransactionFeeTypeRequest.md) | body | **required** | The updated contents of the transaction fee type. |
 
 ### Return type
 
-[TransactionFee](TransactionFee.md)
+[TransactionFeeType](TransactionFeeType.md)
 
 ### HTTP request headers
 
@@ -352,17 +352,17 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The updated TransactionFee. |  -  |
+| **200** | The updated transaction fee type. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
 <details>
-<summary>Using the UpdateTransactionFeeWithHttpInfo variant</summary>
+<summary>Using the UpdateTransactionFeeTypeWithHttpInfo variant</summary>
 
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<TransactionFee> response = apiInstance.UpdateTransactionFeeWithHttpInfo(scope, code, updateTransactionFeeRequest);
+ApiResponse<TransactionFeeType> response = apiInstance.UpdateTransactionFeeTypeWithHttpInfo(scope, code, updateTransactionFeeTypeRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

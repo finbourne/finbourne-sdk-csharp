@@ -1346,7 +1346,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="geta2bmovementstradingvsholding"></a>
 ## GetA2BMovementsTradingVsHolding
 
-> VersionedResourceListOfA2BMovementRecord GetA2BMovementsTradingVsHolding(string scope, string code, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, DateTimeOffset? asAt = null, string? recipeIdScope = null, string? recipeIdCode = null, List<string>? propertyKeys = null, string? filter = null)
+> VersionedResourceListOfA2BMovementRecord GetA2BMovementsTradingVsHolding(string scope, string code, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, DateTimeOffset? asAt = null, string? recipeIdScope = null, string? recipeIdCode = null, List<string>? propertyKeys = null, string? filter = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null)
 
 [EXPERIMENTAL] GetA2BMovementsTradingVsHolding: Get an A2B report at the movement level for the given portfolio, with P&L split between holding and trading returns.
 
@@ -1365,7 +1365,10 @@ var recipeIdScope = "recipeIdScope_example";  // string? (optional)
 var recipeIdCode = "recipeIdCode_example";  // string? (optional)
 var propertyKeys = new List<string>?(); // List<string>? (optional)
 var filter = "filter_example";  // string? (optional)
-VersionedResourceListOfA2BMovementRecord result = apiInstance.GetA2BMovementsTradingVsHolding(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+var timelineScope = "timelineScope_example";  // string? (optional)
+var timelineCode = "timelineCode_example";  // string? (optional)
+var closedPeriodId = "closedPeriodId_example";  // string? (optional)
+VersionedResourceListOfA2BMovementRecord result = apiInstance.GetA2BMovementsTradingVsHolding(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1382,6 +1385,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeId |
 | **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
+| **timelineScope** | **string?** | query | optional | The scope of the timeline to use for loading data per closed period. |
+| **timelineCode** | **string?** | query | optional | The code of the timeline to use for loading data per closed period. |
+| **closedPeriodId** | **string?** | query | optional | The closed period ID. If specified, both timelineScope and timelineCode must also be specified.              When provided, the timeline A2B is filtered to only the matching closed period. The fromEffectiveAt and toEffectiveAt              parameters still define the overall query window; the closedPeriodId restricts which closed period&#39;s data is returned within that window. |
 
 ### Return type
 
@@ -1406,7 +1412,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<VersionedResourceListOfA2BMovementRecord> response = apiInstance.GetA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+ApiResponse<VersionedResourceListOfA2BMovementRecord> response = apiInstance.GetA2BMovementsTradingVsHoldingWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, timelineScope, timelineCode, closedPeriodId);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

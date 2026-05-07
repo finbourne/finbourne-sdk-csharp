@@ -15,6 +15,9 @@ A2B Movement Record - shows A2B category based changes relating to a specific mo
 | **MovementName** | **string** | Optional | The name of the movement. |
 | **EffectiveDate** | **DateTimeOffset** | Optional | The date of the movement. |
 | **Units** | **decimal** | Optional | The number of units of the instrument that are affected by the movement. |
+| **RunningUnits** | **decimal?** | Optional | The cumulative number of units for this sub-holding, as at this movement. |
+| **RunningBalance** | [A2BCategory](A2BCategory.md) | Optional | *No description available.* |
+| **RunningCost** | **decimal?** | Optional | The running cost in portfolio currency for this sub-holding, as at this movement. |
 | **Start** | [A2BCategory](A2BCategory.md) | Optional | *No description available.* |
 | **Flows** | [A2BCategory](A2BCategory.md) | Optional | *No description available.* |
 | **Gains** | [A2BCategory](A2BCategory.md) | Optional | *No description available.* |
@@ -43,6 +46,9 @@ var instance = new A2BMovementRecord(
     movementName: "...",  // optional — The name of the movement.
     effectiveDate: DateTimeOffset.Now,  // optional — The date of the movement.
     units: 0.0d,  // optional — The number of units of the instrument that are affected by the movement.
+    runningUnits: 0.0d,  // optional — The cumulative number of units for this sub-holding, as at this movement.
+    runningBalance: new A2BCategory(...),  // optional
+    runningCost: 0.0d,  // optional — The running cost in portfolio currency for this sub-holding, as at this movement.
     start: new A2BCategory(...),  // optional
     flows: new A2BCategory(...),  // optional
     gains: new A2BCategory(...),  // optional
@@ -70,6 +76,7 @@ var instance = JsonConvert.DeserializeObject<A2BMovementRecord>(json);
 
 - [ResourceId](ResourceId.md)
 - [PerpetualProperty](PerpetualProperty.md) — used in `SubHoldingKeys`
+- [A2BCategory](A2BCategory.md)
 - [A2BCategory](A2BCategory.md)
 - [A2BCategory](A2BCategory.md)
 - [A2BCategory](A2BCategory.md)

@@ -22,70 +22,109 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// UpdateTransactionFeeRequest
+    /// CreateTransactionFeeTypeRequest
     /// </summary>
-    [DataContract(Name = "UpdateTransactionFeeRequest")]
-    public partial class UpdateTransactionFeeRequest : IEquatable<UpdateTransactionFeeRequest>, IValidatableObject
+    [DataContract(Name = "CreateTransactionFeeTypeRequest")]
+    public partial class CreateTransactionFeeTypeRequest : IEquatable<CreateTransactionFeeTypeRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateTransactionFeeRequest" /> class.
+        /// Initializes a new instance of the <see cref="CreateTransactionFeeTypeRequest" /> class.
         /// </summary>
-        /// <param name="description">A description of the transaction fee..</param>
-        /// <param name="calculation">calculation.</param>
-        /// <param name="condition">The condition that the transaction must meet in order for the fee to be applied..</param>
-        /// <param name="txnPropertyKey">The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain..</param>
-        /// <param name="properties">A set of properties for the transaction fee..</param>
-        /// <param name="isActive">Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided..</param>
-        public UpdateTransactionFeeRequest(string description = default(string), FeeCalculationRequest calculation = default(FeeCalculationRequest), string condition = default(string), string txnPropertyKey = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool? isActive = default(bool?))
+        [JsonConstructorAttribute]
+        protected CreateTransactionFeeTypeRequest() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateTransactionFeeTypeRequest" /> class.
+        /// </summary>
+        /// <param name="displayName">The display name of the transaction fee type. (required).</param>
+        /// <param name="description">A description of the transaction fee type. (required).</param>
+        /// <param name="calculation">calculation (required).</param>
+        /// <param name="condition">The condition that the transaction must meet in order for the fee to be applied. (required).</param>
+        /// <param name="txnPropertyKey">The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. (required).</param>
+        /// <param name="properties">A set of properties for the transaction fee type..</param>
+        /// <param name="isActive">Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided..</param>
+        public CreateTransactionFeeTypeRequest(string displayName = default(string), string description = default(string), FeeCalculationRequest calculation = default(FeeCalculationRequest), string condition = default(string), string txnPropertyKey = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool isActive = default(bool))
         {
+            // to ensure "displayName" is required (not null)
+            if (displayName == null)
+            {
+                throw new ArgumentNullException("displayName is a required property for CreateTransactionFeeTypeRequest and cannot be null");
+            }
+            this.DisplayName = displayName;
+            // to ensure "description" is required (not null)
+            if (description == null)
+            {
+                throw new ArgumentNullException("description is a required property for CreateTransactionFeeTypeRequest and cannot be null");
+            }
             this.Description = description;
+            // to ensure "calculation" is required (not null)
+            if (calculation == null)
+            {
+                throw new ArgumentNullException("calculation is a required property for CreateTransactionFeeTypeRequest and cannot be null");
+            }
             this.Calculation = calculation;
+            // to ensure "condition" is required (not null)
+            if (condition == null)
+            {
+                throw new ArgumentNullException("condition is a required property for CreateTransactionFeeTypeRequest and cannot be null");
+            }
             this.Condition = condition;
+            // to ensure "txnPropertyKey" is required (not null)
+            if (txnPropertyKey == null)
+            {
+                throw new ArgumentNullException("txnPropertyKey is a required property for CreateTransactionFeeTypeRequest and cannot be null");
+            }
             this.TxnPropertyKey = txnPropertyKey;
             this.Properties = properties;
             this.IsActive = isActive;
         }
 
         /// <summary>
-        /// A description of the transaction fee.
+        /// The display name of the transaction fee type.
         /// </summary>
-        /// <value>A description of the transaction fee.</value>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
+        /// <value>The display name of the transaction fee type.</value>
+        [DataMember(Name = "displayName", IsRequired = true, EmitDefaultValue = true)]
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// A description of the transaction fee type.
+        /// </summary>
+        /// <value>A description of the transaction fee type.</value>
+        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Calculation
         /// </summary>
-        [DataMember(Name = "calculation", EmitDefaultValue = false)]
+        [DataMember(Name = "calculation", IsRequired = true, EmitDefaultValue = true)]
         public FeeCalculationRequest Calculation { get; set; }
 
         /// <summary>
         /// The condition that the transaction must meet in order for the fee to be applied.
         /// </summary>
         /// <value>The condition that the transaction must meet in order for the fee to be applied.</value>
-        [DataMember(Name = "condition", EmitDefaultValue = true)]
+        [DataMember(Name = "condition", IsRequired = true, EmitDefaultValue = true)]
         public string Condition { get; set; }
 
         /// <summary>
         /// The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain.
         /// </summary>
         /// <value>The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain.</value>
-        [DataMember(Name = "txnPropertyKey", EmitDefaultValue = true)]
+        [DataMember(Name = "txnPropertyKey", IsRequired = true, EmitDefaultValue = true)]
         public string TxnPropertyKey { get; set; }
 
         /// <summary>
-        /// A set of properties for the transaction fee.
+        /// A set of properties for the transaction fee type.
         /// </summary>
-        /// <value>A set of properties for the transaction fee.</value>
+        /// <value>A set of properties for the transaction fee type.</value>
         [DataMember(Name = "properties", EmitDefaultValue = true)]
         public Dictionary<string, Property> Properties { get; set; }
 
         /// <summary>
-        /// Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided.
+        /// Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided.
         /// </summary>
-        /// <value>Indicates whether the transaction fee is currently active and should be applied to transactions. Optional when creating a transaction fee, defaults to true, if a value is not provided.</value>
+        /// <value>Indicates whether the transaction fee type is currently active and should be applied to transactions. Optional when creating a transaction fee type, defaults to true, if a value is not provided.</value>
         [DataMember(Name = "isActive", EmitDefaultValue = true)]
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,7 +133,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class UpdateTransactionFeeRequest {\n");
+            sb.Append("class CreateTransactionFeeTypeRequest {\n");
+            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Calculation: ").Append(Calculation).Append("\n");
             sb.Append("  Condition: ").Append(Condition).Append("\n");
@@ -121,21 +161,26 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as UpdateTransactionFeeRequest);
+            return this.Equals(input as CreateTransactionFeeTypeRequest);
         }
 
         /// <summary>
-        /// Returns true if UpdateTransactionFeeRequest instances are equal
+        /// Returns true if CreateTransactionFeeTypeRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of UpdateTransactionFeeRequest to be compared</param>
+        /// <param name="input">Instance of CreateTransactionFeeTypeRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UpdateTransactionFeeRequest input)
+        public bool Equals(CreateTransactionFeeTypeRequest input)
         {
             if (input == null)
             {
                 return false;
             }
             return 
+                (
+                    this.DisplayName == input.DisplayName ||
+                    (this.DisplayName != null &&
+                    this.DisplayName.Equals(input.DisplayName))
+                ) && 
                 (
                     this.Description == input.Description ||
                     (this.Description != null &&
@@ -164,8 +209,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 ) && 
                 (
                     this.IsActive == input.IsActive ||
-                    (this.IsActive != null &&
-                    this.IsActive.Equals(input.IsActive))
+                    this.IsActive.Equals(input.IsActive)
                 );
         }
 
@@ -178,6 +222,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.DisplayName != null)
+                {
+                    hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
+                }
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
@@ -198,10 +246,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Properties.GetHashCode();
                 }
-                if (this.IsActive != null)
-                {
-                    hashCode = (hashCode * 59) + this.IsActive.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.IsActive.GetHashCode();
                 return hashCode;
             }
         }
