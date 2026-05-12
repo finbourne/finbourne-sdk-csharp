@@ -332,13 +332,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope is the unique identifier for the given Fund.</param>
         /// <param name="valuationPointCode">The valuation point Code to delete the adjustment from</param>
-        /// <param name="navActivityAdjustment">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
+        /// <param name="navActivityAdjustmentResponse">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>DeletedEntityResponse</returns>
-        DeletedEntityResponse DeleteNavActivityAdjustments(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        DeletedEntityResponse DeleteNavActivityAdjustments(string scope, string code, string valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
@@ -350,13 +350,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope is the unique identifier for the given Fund.</param>
         /// <param name="valuationPointCode">The valuation point Code to delete the adjustment from</param>
-        /// <param name="navActivityAdjustment">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
+        /// <param name="navActivityAdjustmentResponse">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteNavActivityAdjustmentsWithHttpInfo(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteNavActivityAdjustmentsWithHttpInfo(string scope, string code, string valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point.
         /// </summary>
@@ -421,6 +421,80 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ValuationPointDataResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<ValuationPointDataResponse> FinaliseCandidateValuationPointWithHttpInfo(string scope, string code, ValuationPointDataRequest valuationPointDataRequest, string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Get the A2B data for transaction portfolios in a specified Fund.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B data. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>VersionedResourceListOfFundA2BDataRecord</returns>
+        VersionedResourceListOfFundA2BDataRecord GetA2BDataForFund(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Get the A2B data for transaction portfolios in a specified Fund.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B data. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of VersionedResourceListOfFundA2BDataRecord</returns>
+        Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BDataRecord> GetA2BDataForFundWithHttpInfo(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Get the A2B movement records of transaction portfolios in a specified Fund.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B movements. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>VersionedResourceListOfFundA2BMovementRecord</returns>
+        VersionedResourceListOfFundA2BMovementRecord GetA2BMovementsForFund(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Get the A2B movement records of transaction portfolios in a specified Fund.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B movements. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of VersionedResourceListOfFundA2BMovementRecord</returns>
+        Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BMovementRecord> GetA2BMovementsForFundWithHttpInfo(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund.
         /// </summary>
@@ -1055,8 +1129,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ResourceListOfNavActivityAdjustment</returns>
-        ResourceListOfNavActivityAdjustment ListNavActivityAdjustments(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>ResourceListOfNavActivityAdjustmentResponse</returns>
+        ResourceListOfNavActivityAdjustmentResponse ListNavActivityAdjustments(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
@@ -1076,8 +1150,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ResourceListOfNavActivityAdjustment</returns>
-        Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustment> ListNavActivityAdjustmentsWithHttpInfo(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>ApiResponse of ResourceListOfNavActivityAdjustmentResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustmentResponse> ListNavActivityAdjustmentsWithHttpInfo(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
         /// </summary>
@@ -1768,14 +1842,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope is the unique identifier for the given Fund.</param>
         /// <param name="valuationPointCode">The valuation point Code to delete the adjustment from</param>
-        /// <param name="navActivityAdjustment">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
+        /// <param name="navActivityAdjustmentResponse">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of DeletedEntityResponse</returns>
-        System.Threading.Tasks.Task<DeletedEntityResponse> DeleteNavActivityAdjustmentsAsync(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<DeletedEntityResponse> DeleteNavActivityAdjustmentsAsync(string scope, string code, string valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
@@ -1787,14 +1861,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope is the unique identifier for the given Fund.</param>
         /// <param name="valuationPointCode">The valuation point Code to delete the adjustment from</param>
-        /// <param name="navActivityAdjustment">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
+        /// <param name="navActivityAdjustmentResponse">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteNavActivityAdjustmentsWithHttpInfoAsync(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteNavActivityAdjustmentsWithHttpInfoAsync(string scope, string code, string valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point.
         /// </summary>
@@ -1863,6 +1937,84 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (ValuationPointDataResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ValuationPointDataResponse>> FinaliseCandidateValuationPointWithHttpInfoAsync(string scope, string code, ValuationPointDataRequest valuationPointDataRequest, string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Get the A2B data for transaction portfolios in a specified Fund.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B data. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of VersionedResourceListOfFundA2BDataRecord</returns>
+        System.Threading.Tasks.Task<VersionedResourceListOfFundA2BDataRecord> GetA2BDataForFundAsync(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Get the A2B data for transaction portfolios in a specified Fund.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B data. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (VersionedResourceListOfFundA2BDataRecord)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BDataRecord>> GetA2BDataForFundWithHttpInfoAsync(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Get the A2B movement records of transaction portfolios in a specified Fund.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B movements. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of VersionedResourceListOfFundA2BMovementRecord</returns>
+        System.Threading.Tasks.Task<VersionedResourceListOfFundA2BMovementRecord> GetA2BMovementsForFundAsync(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Get the A2B movement records of transaction portfolios in a specified Fund.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B movements. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (VersionedResourceListOfFundA2BMovementRecord)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BMovementRecord>> GetA2BMovementsForFundWithHttpInfoAsync(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund.
         /// </summary>
@@ -2530,8 +2682,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ResourceListOfNavActivityAdjustment</returns>
-        System.Threading.Tasks.Task<ResourceListOfNavActivityAdjustment> ListNavActivityAdjustmentsAsync(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of ResourceListOfNavActivityAdjustmentResponse</returns>
+        System.Threading.Tasks.Task<ResourceListOfNavActivityAdjustmentResponse> ListNavActivityAdjustmentsAsync(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
@@ -2552,8 +2704,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ResourceListOfNavActivityAdjustment)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustment>> ListNavActivityAdjustmentsWithHttpInfoAsync(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of ApiResponse (ResourceListOfNavActivityAdjustmentResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustmentResponse>> ListNavActivityAdjustmentsWithHttpInfoAsync(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
         /// </summary>
@@ -5706,15 +5858,15 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope is the unique identifier for the given Fund.</param>
         /// <param name="valuationPointCode">The valuation point Code to delete the adjustment from</param>
-        /// <param name="navActivityAdjustment">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
+        /// <param name="navActivityAdjustmentResponse">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>DeletedEntityResponse</returns>
-        public DeletedEntityResponse DeleteNavActivityAdjustments(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public DeletedEntityResponse DeleteNavActivityAdjustments(string scope, string code, string valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> localVarResponse = DeleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> localVarResponse = DeleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -5726,13 +5878,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope is the unique identifier for the given Fund.</param>
         /// <param name="valuationPointCode">The valuation point Code to delete the adjustment from</param>
-        /// <param name="navActivityAdjustment">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
+        /// <param name="navActivityAdjustmentResponse">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteNavActivityAdjustmentsWithHttpInfo(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteNavActivityAdjustmentsWithHttpInfo(string scope, string code, string valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -5752,10 +5904,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 throw new ArgumentNullException("Missing required parameter 'valuationPointCode' when calling FundsApi->DeleteNavActivityAdjustments");
             }
 
-            // verify the required parameter 'navActivityAdjustment' is set
-            if (navActivityAdjustment == null)
+            // verify the required parameter 'navActivityAdjustmentResponse' is set
+            if (navActivityAdjustmentResponse == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'navActivityAdjustment' when calling FundsApi->DeleteNavActivityAdjustments");
+                throw new ArgumentNullException("Missing required parameter 'navActivityAdjustmentResponse' when calling FundsApi->DeleteNavActivityAdjustments");
             }
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -5817,7 +5969,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "valuationPointCodeVariant", valuationPointCodeVariant));
             }
-            localVarRequestOptions.Data = navActivityAdjustment;
+            localVarRequestOptions.Data = navActivityAdjustmentResponse;
 
             localVarRequestOptions.Operation = "FundsApi.DeleteNavActivityAdjustments";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -5860,16 +6012,16 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope is the unique identifier for the given Fund.</param>
         /// <param name="valuationPointCode">The valuation point Code to delete the adjustment from</param>
-        /// <param name="navActivityAdjustment">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
+        /// <param name="navActivityAdjustmentResponse">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of DeletedEntityResponse</returns>
-        public async System.Threading.Tasks.Task<DeletedEntityResponse> DeleteNavActivityAdjustmentsAsync(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<DeletedEntityResponse> DeleteNavActivityAdjustmentsAsync(string scope, string code, string valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> localVarResponse = await DeleteNavActivityAdjustmentsWithHttpInfoAsync(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> localVarResponse = await DeleteNavActivityAdjustmentsWithHttpInfoAsync(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5881,14 +6033,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope is the unique identifier for the given Fund.</param>
         /// <param name="valuationPointCode">The valuation point Code to delete the adjustment from</param>
-        /// <param name="navActivityAdjustment">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
+        /// <param name="navActivityAdjustmentResponse">The request describing the Nav activity adjustments to delete from a specific valuation point and nav type</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteNavActivityAdjustmentsWithHttpInfoAsync(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteNavActivityAdjustmentsWithHttpInfoAsync(string scope, string code, string valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -5908,10 +6060,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 throw new ArgumentNullException("Missing required parameter 'valuationPointCode' when calling FundsApi->DeleteNavActivityAdjustments");
             }
 
-            // verify the required parameter 'navActivityAdjustment' is set
-            if (navActivityAdjustment == null)
+            // verify the required parameter 'navActivityAdjustmentResponse' is set
+            if (navActivityAdjustmentResponse == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'navActivityAdjustment' when calling FundsApi->DeleteNavActivityAdjustments");
+                throw new ArgumentNullException("Missing required parameter 'navActivityAdjustmentResponse' when calling FundsApi->DeleteNavActivityAdjustments");
             }
 
 
@@ -5974,7 +6126,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "valuationPointCodeVariant", valuationPointCodeVariant));
             }
-            localVarRequestOptions.Data = navActivityAdjustment;
+            localVarRequestOptions.Data = navActivityAdjustmentResponse;
 
             localVarRequestOptions.Operation = "FundsApi.DeleteNavActivityAdjustments";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -6570,6 +6722,642 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("FinaliseCandidateValuationPoint", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund. Get the A2B data for transaction portfolios in a specified Fund.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B data. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>VersionedResourceListOfFundA2BDataRecord</returns>
+        public VersionedResourceListOfFundA2BDataRecord GetA2BDataForFund(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BDataRecord> localVarResponse = GetA2BDataForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund. Get the A2B data for transaction portfolios in a specified Fund.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B data. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of VersionedResourceListOfFundA2BDataRecord</returns>
+        public Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BDataRecord> GetA2BDataForFundWithHttpInfo(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetA2BDataForFund");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetA2BDataForFund");
+            }
+
+            // verify the required parameter 'valuationPointDataQueryParameters' is set
+            if (valuationPointDataQueryParameters == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'valuationPointDataQueryParameters' when calling FundsApi->GetA2BDataForFund");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (navTypeCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "navTypeCode", navTypeCode));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
+            }
+            localVarRequestOptions.Data = valuationPointDataQueryParameters;
+
+            localVarRequestOptions.Operation = "FundsApi.GetA2BDataForFund";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<VersionedResourceListOfFundA2BDataRecord, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/valuationpoints/a2b/$query", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetA2BDataForFund", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund. Get the A2B data for transaction portfolios in a specified Fund.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B data. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of VersionedResourceListOfFundA2BDataRecord</returns>
+        public async System.Threading.Tasks.Task<VersionedResourceListOfFundA2BDataRecord> GetA2BDataForFundAsync(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BDataRecord> localVarResponse = await GetA2BDataForFundWithHttpInfoAsync(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund. Get the A2B data for transaction portfolios in a specified Fund.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B data. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (VersionedResourceListOfFundA2BDataRecord)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BDataRecord>> GetA2BDataForFundWithHttpInfoAsync(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetA2BDataForFund");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetA2BDataForFund");
+            }
+
+            // verify the required parameter 'valuationPointDataQueryParameters' is set
+            if (valuationPointDataQueryParameters == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'valuationPointDataQueryParameters' when calling FundsApi->GetA2BDataForFund");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (navTypeCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "navTypeCode", navTypeCode));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
+            }
+            localVarRequestOptions.Data = valuationPointDataQueryParameters;
+
+            localVarRequestOptions.Operation = "FundsApi.GetA2BDataForFund";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<VersionedResourceListOfFundA2BDataRecord, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/valuationpoints/a2b/$query", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetA2BDataForFund", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. Get the A2B movement records of transaction portfolios in a specified Fund.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B movements. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>VersionedResourceListOfFundA2BMovementRecord</returns>
+        public VersionedResourceListOfFundA2BMovementRecord GetA2BMovementsForFund(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BMovementRecord> localVarResponse = GetA2BMovementsForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. Get the A2B movement records of transaction portfolios in a specified Fund.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B movements. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of VersionedResourceListOfFundA2BMovementRecord</returns>
+        public Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BMovementRecord> GetA2BMovementsForFundWithHttpInfo(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetA2BMovementsForFund");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetA2BMovementsForFund");
+            }
+
+            // verify the required parameter 'valuationPointDataQueryParameters' is set
+            if (valuationPointDataQueryParameters == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'valuationPointDataQueryParameters' when calling FundsApi->GetA2BMovementsForFund");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (navTypeCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "navTypeCode", navTypeCode));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
+            }
+            localVarRequestOptions.Data = valuationPointDataQueryParameters;
+
+            localVarRequestOptions.Operation = "FundsApi.GetA2BMovementsForFund";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<VersionedResourceListOfFundA2BMovementRecord, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/valuationpoints/a2bmovements/$query", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetA2BMovementsForFund", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. Get the A2B movement records of transaction portfolios in a specified Fund.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B movements. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of VersionedResourceListOfFundA2BMovementRecord</returns>
+        public async System.Threading.Tasks.Task<VersionedResourceListOfFundA2BMovementRecord> GetA2BMovementsForFundAsync(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BMovementRecord> localVarResponse = await GetA2BMovementsForFundWithHttpInfoAsync(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. Get the A2B movement records of transaction portfolios in a specified Fund.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the A2B movements. This includes start and end dates.</param>
+        /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (VersionedResourceListOfFundA2BMovementRecord)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfFundA2BMovementRecord>> GetA2BMovementsForFundWithHttpInfoAsync(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetA2BMovementsForFund");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetA2BMovementsForFund");
+            }
+
+            // verify the required parameter 'valuationPointDataQueryParameters' is set
+            if (valuationPointDataQueryParameters == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'valuationPointDataQueryParameters' when calling FundsApi->GetA2BMovementsForFund");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (navTypeCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "navTypeCode", navTypeCode));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
+            }
+            localVarRequestOptions.Data = valuationPointDataQueryParameters;
+
+            localVarRequestOptions.Operation = "FundsApi.GetA2BMovementsForFund";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<VersionedResourceListOfFundA2BMovementRecord, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/valuationpoints/a2bmovements/$query", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetA2BMovementsForFund", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -11696,10 +12484,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ResourceListOfNavActivityAdjustment</returns>
-        public ResourceListOfNavActivityAdjustment ListNavActivityAdjustments(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>ResourceListOfNavActivityAdjustmentResponse</returns>
+        public ResourceListOfNavActivityAdjustmentResponse ListNavActivityAdjustments(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustment> localVarResponse = ListNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustmentResponse> localVarResponse = ListNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -11719,8 +12507,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="valuationPointCodeVariant">The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ResourceListOfNavActivityAdjustment</returns>
-        public Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustment> ListNavActivityAdjustmentsWithHttpInfo(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>ApiResponse of ResourceListOfNavActivityAdjustmentResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustmentResponse> ListNavActivityAdjustmentsWithHttpInfo(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -11833,7 +12621,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ResourceListOfNavActivityAdjustment, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/navAdjustment", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ResourceListOfNavActivityAdjustmentResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/navAdjustment", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListNavActivityAdjustments", localVarResponse);
@@ -11862,10 +12650,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ResourceListOfNavActivityAdjustment</returns>
-        public async System.Threading.Tasks.Task<ResourceListOfNavActivityAdjustment> ListNavActivityAdjustmentsAsync(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of ResourceListOfNavActivityAdjustmentResponse</returns>
+        public async System.Threading.Tasks.Task<ResourceListOfNavActivityAdjustmentResponse> ListNavActivityAdjustmentsAsync(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustment> localVarResponse = await ListNavActivityAdjustmentsWithHttpInfoAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustmentResponse> localVarResponse = await ListNavActivityAdjustmentsWithHttpInfoAsync(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -11886,8 +12674,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ResourceListOfNavActivityAdjustment)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustment>> ListNavActivityAdjustmentsWithHttpInfoAsync(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of ApiResponse (ResourceListOfNavActivityAdjustmentResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfNavActivityAdjustmentResponse>> ListNavActivityAdjustmentsWithHttpInfoAsync(string scope, string code, string valuationPointCode, string? navTypeCode = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -12001,7 +12789,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ResourceListOfNavActivityAdjustment, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/navAdjustment", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ResourceListOfNavActivityAdjustmentResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/navAdjustment", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

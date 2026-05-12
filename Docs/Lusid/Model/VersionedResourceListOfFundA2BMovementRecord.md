@@ -1,14 +1,15 @@
-# Finbourne.Sdk.Lusid.Model.ResourceListOfNavActivityAdjustment
+# Finbourne.Sdk.Lusid.Model.VersionedResourceListOfFundA2BMovementRecord
 
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Values** | [List&lt;NavActivityAdjustment&gt;](NavActivityAdjustment.md) | Required | *No description available.* |
+| **VarVersion** | [ModelVersion](ModelVersion.md) | Required | *No description available.* |
+| **Values** | [List&lt;FundA2BMovementRecord&gt;](FundA2BMovementRecord.md) | Required | *No description available.* |
 | **Href** | **string** | Optional | *No description available.* |
-| **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 | **NextPage** | **string** | Optional | *No description available.* |
 | **PreviousPage** | **string** | Optional | *No description available.* |
+| **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -18,12 +19,13 @@
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var instance = new ResourceListOfNavActivityAdjustment(
-    values: new List<NavActivityAdjustment>(),  // required
+var instance = new VersionedResourceListOfFundA2BMovementRecord(
+    varVersion: new ModelVersion(...),  // required
+    values: new List<FundA2BMovementRecord>(),  // required
     href: "...",  // optional
-    links: new List<Link>(),  // optional
     nextPage: "...",  // optional
-    previousPage: "..."  // optional
+    previousPage: "...",  // optional
+    links: new List<Link>()  // optional
 );
 ```
 ### Serializing to JSON
@@ -35,13 +37,14 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<ResourceListOfNavActivityAdjustment>(json);
+var instance = JsonConvert.DeserializeObject<VersionedResourceListOfFundA2BMovementRecord>(json);
 ```
 
 
 ## Related Models
 
-- [NavActivityAdjustment](NavActivityAdjustment.md)
+- [ModelVersion](ModelVersion.md)
+- [FundA2BMovementRecord](FundA2BMovementRecord.md)
 - [Link](Link.md)
 
 

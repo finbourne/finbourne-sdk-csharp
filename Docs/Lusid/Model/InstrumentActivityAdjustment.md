@@ -1,0 +1,47 @@
+# Finbourne.Sdk.Lusid.Model.InstrumentActivityAdjustment
+
+> **Inherits from:** [NavActivityAdjustmentResponse](NavActivityAdjustmentResponse.md)
+
+## Properties
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| **NavActivityAdjustmentSource** | **string** | Required | The post closed activity source of the given entity, for example Manual. Available values: Undefined, Manual, Auto. |
+| **AsAt** | **DateTimeOffset** | Required | The asAt time for which the adjustment is being applied. |
+| **Scope** | **string** | Required | The Scope of the given entity |
+| **LusidInstrumentId** | **string** | Required | The LusidInstrumentId of the given entity |
+| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.InstrumentActivityAdjustment` |
+
+
+## Usage
+
+### Creating an instance
+
+```csharp
+using Finbourne.Sdk.Services.Lusid.Model;
+
+var instance = new InstrumentActivityAdjustment(
+    navActivityAdjustmentSource: "...",  // required — The post closed activity source of the given entity, for example Manual. Available values: Undefined, Manual, Auto.
+    asAt: DateTimeOffset.Now,  // required — The asAt time for which the adjustment is being applied.
+    scope: "...",  // required — The Scope of the given entity
+    lusidInstrumentId: "...",  // required — The LusidInstrumentId of the given entity
+    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment.
+);
+```
+### Serializing to JSON
+
+```csharp
+var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
+```
+
+### Deserializing from JSON
+
+```csharp
+var instance = JsonConvert.DeserializeObject<InstrumentActivityAdjustment>(json);
+```
+
+
+
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+

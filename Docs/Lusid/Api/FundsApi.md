@@ -18,6 +18,8 @@ All URIs are relative to *http://localhost*
 | [**DeleteNavActivityAdjustments**](#deletenavactivityadjustments) | **POST** `/api/api/funds/{scope}/{code}/navAdjustment/$delete` | [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments. |
 | [**DeleteValuationPoint**](#deletevaluationpoint) | **DELETE** `/api/api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}` | [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point. |
 | [**FinaliseCandidateValuationPoint**](#finalisecandidatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$finalisecandidate` | [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point. |
+| [**GetA2BDataForFund**](#geta2bdataforfund) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/a2b/$query` | [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund. |
+| [**GetA2BMovementsForFund**](#geta2bmovementsforfund) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/a2bmovements/$query` | [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. |
 | [**GetFee**](#getfee) | **GET** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund. |
 | [**GetFeeProperties**](#getfeeproperties) | **GET** `/api/api/funds/{scope}/{code}/fees/{feeCode}/properties` | [EXPERIMENTAL] GetFeeProperties: Get Fee properties. |
 | [**GetFund**](#getfund) | **GET** `/api/api/funds/{scope}/{code}` | [EXPERIMENTAL] GetFund: Get a Fund. |
@@ -714,7 +716,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="deletenavactivityadjustments"></a>
 ## DeleteNavActivityAdjustments
 
-> DeletedEntityResponse DeleteNavActivityAdjustments(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = null, string? valuationPointCodeVariant = null)
+> DeletedEntityResponse DeleteNavActivityAdjustments(string scope, string code, string valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, string? navTypeCode = null, string? valuationPointCodeVariant = null)
 
 [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
 
@@ -727,10 +729,10 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var valuationPointCode = "valuationPointCode_example";  // string
-var navActivityAdjustment = new List<NavActivityAdjustment>(); // List<NavActivityAdjustment>
+var navActivityAdjustmentResponse = new List<NavActivityAdjustmentResponse>(); // List<NavActivityAdjustmentResponse>
 var navTypeCode = "navTypeCode_example";  // string? (optional)
 var valuationPointCodeVariant = "valuationPointCodeVariant_example";  // string? (optional)
-DeletedEntityResponse result = apiInstance.DeleteNavActivityAdjustments(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant);
+DeletedEntityResponse result = apiInstance.DeleteNavActivityAdjustments(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -741,7 +743,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope is the unique identifier for the given Fund. |
 | **valuationPointCode** | **string** | query | **required** | The valuation point Code to delete the adjustment from |
-| **navActivityAdjustment** | [List&lt;NavActivityAdjustment&gt;](NavActivityAdjustment.md) | body | **required** | The request describing the Nav activity adjustments to delete from a specific valuation point and nav type |
+| **navActivityAdjustmentResponse** | [List&lt;NavActivityAdjustmentResponse&gt;](NavActivityAdjustmentResponse.md) | body | **required** | The request describing the Nav activity adjustments to delete from a specific valuation point and nav type |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 | **valuationPointCodeVariant** | **string?** | query | optional | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. |
 
@@ -768,7 +770,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant);
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustmentResponse, navTypeCode, valuationPointCodeVariant);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -899,6 +901,146 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ValuationPointDataResponse> response = apiInstance.FinaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="geta2bdataforfund"></a>
+## GetA2BDataForFund
+
+> VersionedResourceListOfFundA2BDataRecord GetA2BDataForFund(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null)
+
+[EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund.
+
+Get the A2B data for transaction portfolios in a specified Fund.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var filter = "filter_example";  // string? (optional)
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+VersionedResourceListOfFundA2BDataRecord result = apiInstance.GetA2BDataForFund(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the A2B data. This includes start and end dates. |
+| **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
+
+### Return type
+
+[VersionedResourceListOfFundA2BDataRecord](VersionedResourceListOfFundA2BDataRecord.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The A2B data for transaction portfolios in a Fund |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetA2BDataForFundWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<VersionedResourceListOfFundA2BDataRecord> response = apiInstance.GetA2BDataForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="geta2bmovementsforfund"></a>
+## GetA2BMovementsForFund
+
+> VersionedResourceListOfFundA2BMovementRecord GetA2BMovementsForFund(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null)
+
+[EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
+
+Get the A2B movement records of transaction portfolios in a specified Fund.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var filter = "filter_example";  // string? (optional)
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+VersionedResourceListOfFundA2BMovementRecord result = apiInstance.GetA2BMovementsForFund(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the A2B movements. This includes start and end dates. |
+| **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
+
+### Return type
+
+[VersionedResourceListOfFundA2BMovementRecord](VersionedResourceListOfFundA2BMovementRecord.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The A2B movement records of transaction portfolios for a Fund |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetA2BMovementsForFundWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<VersionedResourceListOfFundA2BMovementRecord> response = apiInstance.GetA2BMovementsForFundWithHttpInfo(scope, code, valuationPointDataQueryParameters, navTypeCode, asAt, filter, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2056,7 +2198,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listnavactivityadjustments"></a>
 ## ListNavActivityAdjustments
 
-> ResourceListOfNavActivityAdjustment ListNavActivityAdjustments(string scope, string code, string valuationPointCode, string? navTypeCode = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, string? valuationPointCodeVariant = null)
+> ResourceListOfNavActivityAdjustmentResponse ListNavActivityAdjustments(string scope, string code, string valuationPointCode, string? navTypeCode = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, string? valuationPointCodeVariant = null)
 
 [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
 
@@ -2075,7 +2217,7 @@ var page = "page_example";  // string? (optional)
 var limit = 56;  // int? (optional)
 var filter = "filter_example";  // string? (optional)
 var valuationPointCodeVariant = "valuationPointCodeVariant_example";  // string? (optional)
-ResourceListOfNavActivityAdjustment result = apiInstance.ListNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant);
+ResourceListOfNavActivityAdjustmentResponse result = apiInstance.ListNavActivityAdjustments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -2095,7 +2237,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfNavActivityAdjustment](ResourceListOfNavActivityAdjustment.md)
+[ResourceListOfNavActivityAdjustmentResponse](ResourceListOfNavActivityAdjustmentResponse.md)
 
 ### HTTP request headers
 
@@ -2116,7 +2258,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfNavActivityAdjustment> response = apiInstance.ListNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant);
+ApiResponse<ResourceListOfNavActivityAdjustmentResponse> response = apiInstance.ListNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -22,55 +22,62 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// ResourceListOfNavActivityAdjustment
+    /// VersionedResourceListOfFundA2BDataRecord
     /// </summary>
-    [DataContract(Name = "ResourceListOfNavActivityAdjustment")]
-    public partial class ResourceListOfNavActivityAdjustment : IEquatable<ResourceListOfNavActivityAdjustment>, IValidatableObject
+    [DataContract(Name = "VersionedResourceListOfFundA2BDataRecord")]
+    public partial class VersionedResourceListOfFundA2BDataRecord : IEquatable<VersionedResourceListOfFundA2BDataRecord>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ResourceListOfNavActivityAdjustment" /> class.
+        /// Initializes a new instance of the <see cref="VersionedResourceListOfFundA2BDataRecord" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ResourceListOfNavActivityAdjustment() { }
+        protected VersionedResourceListOfFundA2BDataRecord() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ResourceListOfNavActivityAdjustment" /> class.
+        /// Initializes a new instance of the <see cref="VersionedResourceListOfFundA2BDataRecord" /> class.
         /// </summary>
+        /// <param name="varVersion">varVersion (required).</param>
         /// <param name="values">values (required).</param>
         /// <param name="href">href.</param>
-        /// <param name="links">links.</param>
         /// <param name="nextPage">nextPage.</param>
         /// <param name="previousPage">previousPage.</param>
-        public ResourceListOfNavActivityAdjustment(List<NavActivityAdjustment> values = default(List<NavActivityAdjustment>), string href = default(string), List<Link> links = default(List<Link>), string nextPage = default(string), string previousPage = default(string))
+        /// <param name="links">links.</param>
+        public VersionedResourceListOfFundA2BDataRecord(ModelVersion varVersion = default(ModelVersion), List<FundA2BDataRecord> values = default(List<FundA2BDataRecord>), string href = default(string), string nextPage = default(string), string previousPage = default(string), List<Link> links = default(List<Link>))
         {
+            // to ensure "varVersion" is required (not null)
+            if (varVersion == null)
+            {
+                throw new ArgumentNullException("varVersion is a required property for VersionedResourceListOfFundA2BDataRecord and cannot be null");
+            }
+            this.VarVersion = varVersion;
             // to ensure "values" is required (not null)
             if (values == null)
             {
-                throw new ArgumentNullException("values is a required property for ResourceListOfNavActivityAdjustment and cannot be null");
+                throw new ArgumentNullException("values is a required property for VersionedResourceListOfFundA2BDataRecord and cannot be null");
             }
             this.Values = values;
             this.Href = href;
-            this.Links = links;
             this.NextPage = nextPage;
             this.PreviousPage = previousPage;
+            this.Links = links;
         }
+
+        /// <summary>
+        /// Gets or Sets VarVersion
+        /// </summary>
+        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
+        public ModelVersion VarVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets Values
         /// </summary>
         [DataMember(Name = "values", IsRequired = true, EmitDefaultValue = true)]
-        public List<NavActivityAdjustment> Values { get; set; }
+        public List<FundA2BDataRecord> Values { get; set; }
 
         /// <summary>
         /// Gets or Sets Href
         /// </summary>
         [DataMember(Name = "href", EmitDefaultValue = true)]
         public string Href { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Links
-        /// </summary>
-        [DataMember(Name = "links", EmitDefaultValue = true)]
-        public List<Link> Links { get; set; }
 
         /// <summary>
         /// Gets or Sets NextPage
@@ -85,18 +92,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string PreviousPage { get; set; }
 
         /// <summary>
+        /// Gets or Sets Links
+        /// </summary>
+        [DataMember(Name = "links", EmitDefaultValue = true)]
+        public List<Link> Links { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ResourceListOfNavActivityAdjustment {\n");
+            sb.Append("class VersionedResourceListOfFundA2BDataRecord {\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
             sb.Append("  Href: ").Append(Href).Append("\n");
-            sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("  NextPage: ").Append(NextPage).Append("\n");
             sb.Append("  PreviousPage: ").Append(PreviousPage).Append("\n");
+            sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -117,21 +131,26 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ResourceListOfNavActivityAdjustment);
+            return this.Equals(input as VersionedResourceListOfFundA2BDataRecord);
         }
 
         /// <summary>
-        /// Returns true if ResourceListOfNavActivityAdjustment instances are equal
+        /// Returns true if VersionedResourceListOfFundA2BDataRecord instances are equal
         /// </summary>
-        /// <param name="input">Instance of ResourceListOfNavActivityAdjustment to be compared</param>
+        /// <param name="input">Instance of VersionedResourceListOfFundA2BDataRecord to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ResourceListOfNavActivityAdjustment input)
+        public bool Equals(VersionedResourceListOfFundA2BDataRecord input)
         {
             if (input == null)
             {
                 return false;
             }
             return 
+                (
+                    this.VarVersion == input.VarVersion ||
+                    (this.VarVersion != null &&
+                    this.VarVersion.Equals(input.VarVersion))
+                ) && 
                 (
                     this.Values == input.Values ||
                     this.Values != null &&
@@ -144,12 +163,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Href.Equals(input.Href))
                 ) && 
                 (
-                    this.Links == input.Links ||
-                    this.Links != null &&
-                    input.Links != null &&
-                    this.Links.SequenceEqual(input.Links)
-                ) && 
-                (
                     this.NextPage == input.NextPage ||
                     (this.NextPage != null &&
                     this.NextPage.Equals(input.NextPage))
@@ -158,6 +171,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PreviousPage == input.PreviousPage ||
                     (this.PreviousPage != null &&
                     this.PreviousPage.Equals(input.PreviousPage))
+                ) && 
+                (
+                    this.Links == input.Links ||
+                    this.Links != null &&
+                    input.Links != null &&
+                    this.Links.SequenceEqual(input.Links)
                 );
         }
 
@@ -170,6 +189,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.VarVersion != null)
+                {
+                    hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
+                }
                 if (this.Values != null)
                 {
                     hashCode = (hashCode * 59) + this.Values.GetHashCode();
@@ -178,10 +201,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Href.GetHashCode();
                 }
-                if (this.Links != null)
-                {
-                    hashCode = (hashCode * 59) + this.Links.GetHashCode();
-                }
                 if (this.NextPage != null)
                 {
                     hashCode = (hashCode * 59) + this.NextPage.GetHashCode();
@@ -189,6 +208,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.PreviousPage != null)
                 {
                     hashCode = (hashCode * 59) + this.PreviousPage.GetHashCode();
+                }
+                if (this.Links != null)
+                {
+                    hashCode = (hashCode * 59) + this.Links.GetHashCode();
                 }
                 return hashCode;
             }
