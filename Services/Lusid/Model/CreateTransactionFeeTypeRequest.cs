@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="CreateTransactionFeeTypeRequest" /> class.
         /// </summary>
         /// <param name="displayName">The display name of the transaction fee type. (required).</param>
-        /// <param name="description">A description of the transaction fee type. (required).</param>
+        /// <param name="description">A description of the transaction fee type..</param>
         /// <param name="calculation">calculation (required).</param>
         /// <param name="condition">The condition that the transaction must meet in order for the fee to be applied. (required).</param>
         /// <param name="txnPropertyKey">The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. (required).</param>
@@ -50,12 +50,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("displayName is a required property for CreateTransactionFeeTypeRequest and cannot be null");
             }
             this.DisplayName = displayName;
-            // to ensure "description" is required (not null)
-            if (description == null)
-            {
-                throw new ArgumentNullException("description is a required property for CreateTransactionFeeTypeRequest and cannot be null");
-            }
-            this.Description = description;
             // to ensure "calculation" is required (not null)
             if (calculation == null)
             {
@@ -74,6 +68,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("txnPropertyKey is a required property for CreateTransactionFeeTypeRequest and cannot be null");
             }
             this.TxnPropertyKey = txnPropertyKey;
+            this.Description = description;
             this.Properties = properties;
             this.IsActive = isActive;
         }
@@ -89,7 +84,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// A description of the transaction fee type.
         /// </summary>
         /// <value>A description of the transaction fee type.</value>
-        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>

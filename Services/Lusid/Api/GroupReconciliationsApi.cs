@@ -366,11 +366,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the group reconciliation definition to use for the reconciliation.</param>
         /// <param name="code">The code of the group reconciliation definition to use for the reconciliation.</param>
-        /// <param name="groupReconciliationRunRequest"> (optional)</param>
+        /// <param name="groupReconciliationRunRequest"></param>
+        /// <param name="instanceRunType">The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>GroupReconciliationRunResponse</returns>
-        GroupReconciliationRunResponse RunReconciliation(string scope, string code, GroupReconciliationRunRequest? groupReconciliationRunRequest = default(GroupReconciliationRunRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        GroupReconciliationRunResponse RunReconciliation(string scope, string code, GroupReconciliationRunRequest groupReconciliationRunRequest, string? instanceRunType = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] RunReconciliation: Runs a Group Reconciliation
@@ -381,11 +382,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the group reconciliation definition to use for the reconciliation.</param>
         /// <param name="code">The code of the group reconciliation definition to use for the reconciliation.</param>
-        /// <param name="groupReconciliationRunRequest"> (optional)</param>
+        /// <param name="groupReconciliationRunRequest"></param>
+        /// <param name="instanceRunType">The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of GroupReconciliationRunResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse> RunReconciliationWithHttpInfo(string scope, string code, GroupReconciliationRunRequest? groupReconciliationRunRequest = default(GroupReconciliationRunRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse> RunReconciliationWithHttpInfo(string scope, string code, GroupReconciliationRunRequest groupReconciliationRunRequest, string? instanceRunType = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] UpdateComparisonRuleset: Update Group Reconciliation Comparison Ruleset defined by scope and code
         /// </summary>
@@ -811,12 +813,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the group reconciliation definition to use for the reconciliation.</param>
         /// <param name="code">The code of the group reconciliation definition to use for the reconciliation.</param>
-        /// <param name="groupReconciliationRunRequest"> (optional)</param>
+        /// <param name="groupReconciliationRunRequest"></param>
+        /// <param name="instanceRunType">The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of GroupReconciliationRunResponse</returns>
-        System.Threading.Tasks.Task<GroupReconciliationRunResponse> RunReconciliationAsync(string scope, string code, GroupReconciliationRunRequest? groupReconciliationRunRequest = default(GroupReconciliationRunRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<GroupReconciliationRunResponse> RunReconciliationAsync(string scope, string code, GroupReconciliationRunRequest groupReconciliationRunRequest, string? instanceRunType = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] RunReconciliation: Runs a Group Reconciliation
@@ -827,12 +830,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the group reconciliation definition to use for the reconciliation.</param>
         /// <param name="code">The code of the group reconciliation definition to use for the reconciliation.</param>
-        /// <param name="groupReconciliationRunRequest"> (optional)</param>
+        /// <param name="groupReconciliationRunRequest"></param>
+        /// <param name="instanceRunType">The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (GroupReconciliationRunResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse>> RunReconciliationWithHttpInfoAsync(string scope, string code, GroupReconciliationRunRequest? groupReconciliationRunRequest = default(GroupReconciliationRunRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse>> RunReconciliationWithHttpInfoAsync(string scope, string code, GroupReconciliationRunRequest groupReconciliationRunRequest, string? instanceRunType = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] UpdateComparisonRuleset: Update Group Reconciliation Comparison Ruleset defined by scope and code
         /// </summary>
@@ -3823,13 +3827,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the group reconciliation definition to use for the reconciliation.</param>
         /// <param name="code">The code of the group reconciliation definition to use for the reconciliation.</param>
-        /// <param name="groupReconciliationRunRequest"> (optional)</param>
+        /// <param name="groupReconciliationRunRequest"></param>
+        /// <param name="instanceRunType">The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>GroupReconciliationRunResponse</returns>
-        public GroupReconciliationRunResponse RunReconciliation(string scope, string code, GroupReconciliationRunRequest? groupReconciliationRunRequest = default(GroupReconciliationRunRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public GroupReconciliationRunResponse RunReconciliation(string scope, string code, GroupReconciliationRunRequest groupReconciliationRunRequest, string? instanceRunType = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse> localVarResponse = RunReconciliationWithHttpInfo(scope, code, groupReconciliationRunRequest, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse> localVarResponse = RunReconciliationWithHttpInfo(scope, code, groupReconciliationRunRequest, instanceRunType, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -3840,11 +3845,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="scope">The scope of the group reconciliation definition to use for the reconciliation.</param>
         /// <param name="code">The code of the group reconciliation definition to use for the reconciliation.</param>
-        /// <param name="groupReconciliationRunRequest"> (optional)</param>
+        /// <param name="groupReconciliationRunRequest"></param>
+        /// <param name="instanceRunType">The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of GroupReconciliationRunResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse> RunReconciliationWithHttpInfo(string scope, string code, GroupReconciliationRunRequest? groupReconciliationRunRequest = default(GroupReconciliationRunRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse> RunReconciliationWithHttpInfo(string scope, string code, GroupReconciliationRunRequest groupReconciliationRunRequest, string? instanceRunType = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -3856,6 +3862,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (code == null)
             {
                 throw new ArgumentNullException("Missing required parameter 'code' when calling GroupReconciliationsApi->RunReconciliation");
+            }
+
+            // verify the required parameter 'groupReconciliationRunRequest' is set
+            if (groupReconciliationRunRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'groupReconciliationRunRequest' when calling GroupReconciliationsApi->RunReconciliation");
             }
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -3908,6 +3920,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
 
             localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
             localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (instanceRunType != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "instanceRunType", instanceRunType));
+            }
             localVarRequestOptions.Data = groupReconciliationRunRequest;
 
             localVarRequestOptions.Operation = "GroupReconciliationsApi.RunReconciliation";
@@ -3950,14 +3966,15 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the group reconciliation definition to use for the reconciliation.</param>
         /// <param name="code">The code of the group reconciliation definition to use for the reconciliation.</param>
-        /// <param name="groupReconciliationRunRequest"> (optional)</param>
+        /// <param name="groupReconciliationRunRequest"></param>
+        /// <param name="instanceRunType">The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of GroupReconciliationRunResponse</returns>
-        public async System.Threading.Tasks.Task<GroupReconciliationRunResponse> RunReconciliationAsync(string scope, string code, GroupReconciliationRunRequest? groupReconciliationRunRequest = default(GroupReconciliationRunRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<GroupReconciliationRunResponse> RunReconciliationAsync(string scope, string code, GroupReconciliationRunRequest groupReconciliationRunRequest, string? instanceRunType = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse> localVarResponse = await RunReconciliationWithHttpInfoAsync(scope, code, groupReconciliationRunRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse> localVarResponse = await RunReconciliationWithHttpInfoAsync(scope, code, groupReconciliationRunRequest, instanceRunType, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3968,12 +3985,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="scope">The scope of the group reconciliation definition to use for the reconciliation.</param>
         /// <param name="code">The code of the group reconciliation definition to use for the reconciliation.</param>
-        /// <param name="groupReconciliationRunRequest"> (optional)</param>
+        /// <param name="groupReconciliationRunRequest"></param>
+        /// <param name="instanceRunType">The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (GroupReconciliationRunResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse>> RunReconciliationWithHttpInfoAsync(string scope, string code, GroupReconciliationRunRequest? groupReconciliationRunRequest = default(GroupReconciliationRunRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<GroupReconciliationRunResponse>> RunReconciliationWithHttpInfoAsync(string scope, string code, GroupReconciliationRunRequest groupReconciliationRunRequest, string? instanceRunType = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -3985,6 +4003,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (code == null)
             {
                 throw new ArgumentNullException("Missing required parameter 'code' when calling GroupReconciliationsApi->RunReconciliation");
+            }
+
+            // verify the required parameter 'groupReconciliationRunRequest' is set
+            if (groupReconciliationRunRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'groupReconciliationRunRequest' when calling GroupReconciliationsApi->RunReconciliation");
             }
 
 
@@ -4038,6 +4062,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
 
             localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
             localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (instanceRunType != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "instanceRunType", instanceRunType));
+            }
             localVarRequestOptions.Data = groupReconciliationRunRequest;
 
             localVarRequestOptions.Operation = "GroupReconciliationsApi.RunReconciliation";

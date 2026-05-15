@@ -26,6 +26,7 @@ All URIs are relative to *http://localhost*
 | [**GetPortfolioGroupRelations**](#getportfoliogrouprelations) | **GET** `/api/api/portfoliogroups/{scope}/{code}/relations` | [EXPERIMENTAL] GetPortfolioGroupRelations: Get Relations for Portfolio Group |
 | [**GetPortfolioGroupRelationships**](#getportfoliogrouprelationships) | **GET** `/api/api/portfoliogroups/{scope}/{code}/relationships` | [EARLY ACCESS] GetPortfolioGroupRelationships: Get Relationships for Portfolio Group |
 | [**GetTransactionsForPortfolioGroup**](#gettransactionsforportfoliogroup) | **GET** `/api/api/portfoliogroups/{scope}/{code}/transactions` | GetTransactionsForPortfolioGroup: Get transactions for transaction portfolios in a portfolio group |
+| [**ListAllPortfolioGroups**](#listallportfoliogroups) | **GET** `/api/api/portfoliogroups` | ListAllPortfolioGroups: List all portfolio groups |
 | [**ListPortfolioGroups**](#listportfoliogroups) | **GET** `/api/api/portfoliogroups/{scope}` | ListPortfolioGroups: List portfolio groups |
 | [**PatchPortfolioGroupAccessMetadata**](#patchportfoliogroupaccessmetadata) | **PATCH** `/api/api/portfoliogroups/{scope}/{code}/metadata` | [EARLY ACCESS] PatchPortfolioGroupAccessMetadata: Patch Access Metadata rules for a Portfolio Group. |
 | [**UpdatePortfolioGroup**](#updateportfoliogroup) | **PUT** `/api/api/portfoliogroups/{scope}/{code}` | [EARLY ACCESS] UpdatePortfolioGroup: Update portfolio group |
@@ -1484,6 +1485,78 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<VersionedResourceListOfTransaction> response = apiInstance.GetTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, membershipType);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listallportfoliogroups"></a>
+## ListAllPortfolioGroups
+
+> PagedResourceListOfPortfolioGroup ListAllPortfolioGroups(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? relatedEntityPropertyKeys = null, List<string>? relationshipDefinitionIds = null)
+
+ListAllPortfolioGroups: List all portfolio groups
+
+List all portfolio groups across all scopes.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<PortfolioGroupsApi>();
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var page = "page_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+var relatedEntityPropertyKeys = new List<string>?(); // List<string>? (optional)
+var relationshipDefinitionIds = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfPortfolioGroup result = apiInstance.ListAllPortfolioGroups(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to list the portfolio groups. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the portfolio groups. Defaults to return the latest version of each portfolio group if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing portfolio groups from a previous call to list portfolio groups. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to no limit if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
+| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+
+### Return type
+
+[PagedResourceListOfPortfolioGroup](PagedResourceListOfPortfolioGroup.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The portfolio groups matching the request |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListAllPortfolioGroupsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfPortfolioGroup> response = apiInstance.ListAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -7,11 +7,13 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**GetAuthenticationInformation**](#getauthenticationinformation) | **GET** `/identity/api/authentication/information` | GetAuthenticationInformation: Gets AuthenticationInformation |
 | [**GetPasswordPolicy**](#getpasswordpolicy) | **GET** `/identity/api/authentication/password-policy/{userType}` | GetPasswordPolicy: Gets password policy for a user type |
+| [**GetSessionPolicy**](#getsessionpolicy) | **GET** `/identity/api/authentication/session-policy` | [EXPERIMENTAL] GetSessionPolicy: Get session policy |
 | [**GetSupportAccessHistory**](#getsupportaccesshistory) | **GET** `/identity/api/authentication/support` | GetSupportAccessHistory: Get the history of all support access granted and any information pertaining to their termination |
 | [**GetSupportRoles**](#getsupportroles) | **GET** `/identity/api/authentication/support-roles` | GetSupportRoles: Get mapping of support roles, the internal representation to a human friendly representation |
 | [**GrantSupportAccess**](#grantsupportaccess) | **POST** `/identity/api/authentication/support` | GrantSupportAccess: Grants FINBOURNE support access to your account |
 | [**InvalidateSupportAccess**](#invalidatesupportaccess) | **DELETE** `/identity/api/authentication/support` | InvalidateSupportAccess: Revoke any FINBOURNE support access to your account |
 | [**UpdatePasswordPolicy**](#updatepasswordpolicy) | **PUT** `/identity/api/authentication/password-policy/{userType}` | UpdatePasswordPolicy: Updates password policy for a user type |
+| [**UpdateSessionPolicy**](#updatesessionpolicy) | **PUT** `/identity/api/authentication/session-policy` | [EXPERIMENTAL] UpdateSessionPolicy: Update session policy |
 
 ### Example
 
@@ -156,6 +158,59 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PasswordPolicyResponse> response = apiInstance.GetPasswordPolicyWithHttpInfo(userType);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getsessionpolicy"></a>
+## GetSessionPolicy
+
+> SessionPolicyResponse GetSessionPolicy()
+
+[EXPERIMENTAL] GetSessionPolicy: Get session policy
+
+Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AuthenticationApi>();
+SessionPolicyResponse result = apiInstance.GetSessionPolicy();
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[SessionPolicyResponse](SessionPolicyResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The current session policy |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetSessionPolicyWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<SessionPolicyResponse> response = apiInstance.GetSessionPolicyWithHttpInfo();
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -440,6 +495,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PasswordPolicyResponse> response = apiInstance.UpdatePasswordPolicyWithHttpInfo(userType, updatePasswordPolicyRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="updatesessionpolicy"></a>
+## UpdateSessionPolicy
+
+> SessionPolicyResponse UpdateSessionPolicy(UpdateSessionPolicyRequest updateSessionPolicyRequest)
+
+[EXPERIMENTAL] UpdateSessionPolicy: Update session policy
+
+Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AuthenticationApi>();
+var updateSessionPolicyRequest = new UpdateSessionPolicyRequest(); // UpdateSessionPolicyRequest
+SessionPolicyResponse result = apiInstance.UpdateSessionPolicy(updateSessionPolicyRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **updateSessionPolicyRequest** | [UpdateSessionPolicyRequest](UpdateSessionPolicyRequest.md) | body | **required** | The desired session timing settings |
+
+### Return type
+
+[SessionPolicyResponse](SessionPolicyResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The session policy as persisted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpdateSessionPolicyWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<SessionPolicyResponse> response = apiInstance.UpdateSessionPolicyWithHttpInfo(updateSessionPolicyRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

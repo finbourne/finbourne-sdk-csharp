@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **DisplayName** | **string** | Required | The display name of the transaction fee type. |
-| **Description** | **string** | Required | A description of the transaction fee type. |
+| **Description** | **string** | Optional | A description of the transaction fee type. |
 | **Calculation** | [FeeCalculationRequest](FeeCalculationRequest.md) | Required | *No description available.* |
 | **Condition** | **string** | Required | The condition that the transaction must meet in order for the fee to be applied. |
 | **TxnPropertyKey** | **string** | Required | The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain. |
@@ -22,7 +22,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CreateTransactionFeeTypeRequest(
     displayName: "...",  // required — The display name of the transaction fee type.
-    description: "...",  // required — A description of the transaction fee type.
+    description: "...",  // optional — A description of the transaction fee type.
     calculation: new FeeCalculationRequest(...),  // required
     condition: "...",  // required — The condition that the transaction must meet in order for the fee to be applied.
     txnPropertyKey: "...",  // required — The property key to which the fee value will be applied and decorated onto the transaction. Must be in the &#39;Transaction&#39; property domain.

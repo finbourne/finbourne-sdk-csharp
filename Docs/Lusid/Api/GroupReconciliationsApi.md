@@ -755,7 +755,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="runreconciliation"></a>
 ## RunReconciliation
 
-> GroupReconciliationRunResponse RunReconciliation(string scope, string code, GroupReconciliationRunRequest? groupReconciliationRunRequest = null)
+> GroupReconciliationRunResponse RunReconciliation(string scope, string code, GroupReconciliationRunRequest groupReconciliationRunRequest, string? instanceRunType = null)
 
 [EXPERIMENTAL] RunReconciliation: Runs a Group Reconciliation
 
@@ -767,8 +767,9 @@ Runs a Group Reconciliation using the definition specified by the Scope and Code
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<GroupReconciliationsApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
-var groupReconciliationRunRequest = new GroupReconciliationRunRequest?(); // GroupReconciliationRunRequest? (optional)
-GroupReconciliationRunResponse result = apiInstance.RunReconciliation(scope, code, groupReconciliationRunRequest);
+var groupReconciliationRunRequest = new GroupReconciliationRunRequest(); // GroupReconciliationRunRequest
+var instanceRunType = "instanceRunType_example";  // string? (optional)
+GroupReconciliationRunResponse result = apiInstance.RunReconciliation(scope, code, groupReconciliationRunRequest, instanceRunType);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -778,7 +779,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the group reconciliation definition to use for the reconciliation. |
 | **code** | **string** | path | **required** | The code of the group reconciliation definition to use for the reconciliation. |
-| **groupReconciliationRunRequest** | [GroupReconciliationRunRequest?](GroupReconciliationRunRequest?.md) | body | optional |  |
+| **groupReconciliationRunRequest** | [GroupReconciliationRunRequest](GroupReconciliationRunRequest.md) | body | **required** |  |
+| **instanceRunType** | **string?** | query | optional | The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. |
 
 ### Return type
 
@@ -803,7 +805,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<GroupReconciliationRunResponse> response = apiInstance.RunReconciliationWithHttpInfo(scope, code, groupReconciliationRunRequest);
+ApiResponse<GroupReconciliationRunResponse> response = apiInstance.RunReconciliationWithHttpInfo(scope, code, groupReconciliationRunRequest, instanceRunType);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

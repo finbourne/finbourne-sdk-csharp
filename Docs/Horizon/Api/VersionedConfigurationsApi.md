@@ -6,8 +6,11 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateVersionedConfigurationDraft**](#createversionedconfigurationdraft) | **POST** `/horizon/api/versionedconfiguration/{configType}/{name}/draft` | [EXPERIMENTAL] CreateVersionedConfigurationDraft: Create a draft versioned configuration. |
+| [**DeleteVersionedConfigurationVersion**](#deleteversionedconfigurationversion) | **DELETE** `/horizon/api/versionedconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}` | [EXPERIMENTAL] DeleteVersionedConfigurationVersion: Delete a versioned configuration version. |
 | [**GetVersionedConfiguration**](#getversionedconfiguration) | **GET** `/horizon/api/versionedconfiguration/{configType}/{name}` | [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration. |
-| [**ListVersionedConfigurations**](#listversionedconfigurations) | **GET** `/horizon/api/versionedconfiguration/{configType}` | [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations. |
+| [**GetVersionedConfigurationTypes**](#getversionedconfigurationtypes) | **GET** `/horizon/api/versionedconfiguration/config-types` | [EXPERIMENTAL] GetVersionedConfigurationTypes: List available versioned configuration types. |
+| [**ListAllVersionedConfigurations**](#listallversionedconfigurations) | **GET** `/horizon/api/versionedconfiguration/all` | [EXPERIMENTAL] ListAllVersionedConfigurations: List all versioned configurations. |
+| [**ListVersionedConfigurations**](#listversionedconfigurations) | **GET** `/horizon/api/versionedconfiguration/{configType}` | [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations for a config type. |
 | [**LockVersionedConfigurationVersion**](#lockversionedconfigurationversion) | **POST** `/horizon/api/versionedconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}/lock` | [EXPERIMENTAL] LockVersionedConfigurationVersion: Lock a versioned configuration version. |
 | [**UpdateVersionedConfigurationDraft**](#updateversionedconfigurationdraft) | **PUT** `/horizon/api/versionedconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}/draft` | [EXPERIMENTAL] UpdateVersionedConfigurationDraft: Update a draft versioned configuration. |
 
@@ -117,6 +120,71 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="deleteversionedconfigurationversion"></a>
+## DeleteVersionedConfigurationVersion
+
+> VersionedConfigurationResponse DeleteVersionedConfigurationVersion(string configType, string name, int majorVersion, int minorVersion)
+
+[EXPERIMENTAL] DeleteVersionedConfigurationVersion: Delete a versioned configuration version.
+
+Permanently deletes the specified configuration version regardless of whether it is locked. Returns the deleted record. The user must be authenticated and entitled to call this method.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<VersionedConfigurationsApi>();
+var configType = "configType_example";  // string
+var name = "name_example";  // string
+var majorVersion = 56;  // int
+var minorVersion = 56;  // int
+VersionedConfigurationResponse result = apiInstance.DeleteVersionedConfigurationVersion(configType, name, majorVersion, minorVersion);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **configType** | **string** | path | **required** | The category of configuration. |
+| **name** | **string** | path | **required** | The logical name of the configuration. |
+| **majorVersion** | **int** | path | **required** | The major version to delete. |
+| **minorVersion** | **int** | path | **required** | The minor version to delete. |
+
+### Return type
+
+[VersionedConfigurationResponse](VersionedConfigurationResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | The client or configuration version does not exist. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteVersionedConfigurationVersionWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<VersionedConfigurationResponse> response = apiInstance.DeleteVersionedConfigurationVersionWithHttpInfo(configType, name, majorVersion, minorVersion);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="getversionedconfiguration"></a>
 ## GetVersionedConfiguration
 
@@ -182,12 +250,120 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="getversionedconfigurationtypes"></a>
+## GetVersionedConfigurationTypes
+
+> List&lt;VersionedConfigurationTypeResponse&gt; GetVersionedConfigurationTypes()
+
+[EXPERIMENTAL] GetVersionedConfigurationTypes: List available versioned configuration types.
+
+Returns all registered configuration types with their display names. The user must be authenticated and entitled to call this method.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<VersionedConfigurationsApi>();
+List<VersionedConfigurationTypeResponse> result = apiInstance.GetVersionedConfigurationTypes();
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[List&lt;VersionedConfigurationTypeResponse&gt;](VersionedConfigurationTypeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **404** | The client does not exist. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetVersionedConfigurationTypesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<List<VersionedConfigurationTypeResponse>> response = apiInstance.GetVersionedConfigurationTypesWithHttpInfo();
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listallversionedconfigurations"></a>
+## ListAllVersionedConfigurations
+
+> List&lt;VersionedConfigurationResponse&gt; ListAllVersionedConfigurations()
+
+[EXPERIMENTAL] ListAllVersionedConfigurations: List all versioned configurations.
+
+Returns all configuration records across all config types, versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<VersionedConfigurationsApi>();
+List<VersionedConfigurationResponse> result = apiInstance.ListAllVersionedConfigurations();
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[List&lt;VersionedConfigurationResponse&gt;](VersionedConfigurationResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **404** | The client does not exist. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListAllVersionedConfigurationsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<List<VersionedConfigurationResponse>> response = apiInstance.ListAllVersionedConfigurationsWithHttpInfo();
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="listversionedconfigurations"></a>
 ## ListVersionedConfigurations
 
 > List&lt;VersionedConfigurationResponse&gt; ListVersionedConfigurations(string configType)
 
-[EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations.
+[EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations for a config type.
 
 Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
 

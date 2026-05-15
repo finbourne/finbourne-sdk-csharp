@@ -458,7 +458,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum ConsentEvent for value: ConsentEvent
         /// </summary>
         [EnumMember(Value = "ConsentEvent")]
-        ConsentEvent = 72
+        ConsentEvent = 72,
+
+        /// <summary>
+        /// Enum DrawingEvent for value: DrawingEvent
+        /// </summary>
+        [EnumMember(Value = "DrawingEvent")]
+        DrawingEvent = 73
     }
 
 }

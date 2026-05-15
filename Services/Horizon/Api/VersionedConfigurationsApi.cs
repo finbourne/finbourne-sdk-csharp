@@ -60,6 +60,37 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> CreateVersionedConfigurationDraftWithHttpInfo(string configType, string name, CreateVersionedConfigurationDraftRequest? createVersionedConfigurationDraftRequest = default(CreateVersionedConfigurationDraftRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EXPERIMENTAL] DeleteVersionedConfigurationVersion: Delete a versioned configuration version.
+        /// </summary>
+        /// <remarks>
+        /// Permanently deletes the specified configuration version regardless of whether it is locked. Returns the deleted record. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="configType">The category of configuration.</param>
+        /// <param name="name">The logical name of the configuration.</param>
+        /// <param name="majorVersion">The major version to delete.</param>
+        /// <param name="minorVersion">The minor version to delete.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>VersionedConfigurationResponse</returns>
+        VersionedConfigurationResponse DeleteVersionedConfigurationVersion(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteVersionedConfigurationVersion: Delete a versioned configuration version.
+        /// </summary>
+        /// <remarks>
+        /// Permanently deletes the specified configuration version regardless of whether it is locked. Returns the deleted record. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="configType">The category of configuration.</param>
+        /// <param name="name">The logical name of the configuration.</param>
+        /// <param name="majorVersion">The major version to delete.</param>
+        /// <param name="minorVersion">The minor version to delete.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> DeleteVersionedConfigurationVersionWithHttpInfo(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration.
         /// </summary>
         /// <remarks>
@@ -91,7 +122,53 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> GetVersionedConfigurationWithHttpInfo(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations.
+        /// [EXPERIMENTAL] GetVersionedConfigurationTypes: List available versioned configuration types.
+        /// </summary>
+        /// <remarks>
+        /// Returns all registered configuration types with their display names. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>List&lt;VersionedConfigurationTypeResponse&gt;</returns>
+        List<VersionedConfigurationTypeResponse> GetVersionedConfigurationTypes(int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetVersionedConfigurationTypes: List available versioned configuration types.
+        /// </summary>
+        /// <remarks>
+        /// Returns all registered configuration types with their display names. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of List&lt;VersionedConfigurationTypeResponse&gt;</returns>
+        Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationTypeResponse>> GetVersionedConfigurationTypesWithHttpInfo(int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ListAllVersionedConfigurations: List all versioned configurations.
+        /// </summary>
+        /// <remarks>
+        /// Returns all configuration records across all config types, versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>List&lt;VersionedConfigurationResponse&gt;</returns>
+        List<VersionedConfigurationResponse> ListAllVersionedConfigurations(int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListAllVersionedConfigurations: List all versioned configurations.
+        /// </summary>
+        /// <remarks>
+        /// Returns all configuration records across all config types, versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of List&lt;VersionedConfigurationResponse&gt;</returns>
+        Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>> ListAllVersionedConfigurationsWithHttpInfo(int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations for a config type.
         /// </summary>
         /// <remarks>
         /// Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
@@ -104,7 +181,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         List<VersionedConfigurationResponse> ListVersionedConfigurations(string configType, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations for a config type.
         /// </summary>
         /// <remarks>
         /// Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
@@ -220,6 +297,39 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> CreateVersionedConfigurationDraftWithHttpInfoAsync(string configType, string name, CreateVersionedConfigurationDraftRequest? createVersionedConfigurationDraftRequest = default(CreateVersionedConfigurationDraftRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EXPERIMENTAL] DeleteVersionedConfigurationVersion: Delete a versioned configuration version.
+        /// </summary>
+        /// <remarks>
+        /// Permanently deletes the specified configuration version regardless of whether it is locked. Returns the deleted record. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="configType">The category of configuration.</param>
+        /// <param name="name">The logical name of the configuration.</param>
+        /// <param name="majorVersion">The major version to delete.</param>
+        /// <param name="minorVersion">The minor version to delete.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of VersionedConfigurationResponse</returns>
+        System.Threading.Tasks.Task<VersionedConfigurationResponse> DeleteVersionedConfigurationVersionAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteVersionedConfigurationVersion: Delete a versioned configuration version.
+        /// </summary>
+        /// <remarks>
+        /// Permanently deletes the specified configuration version regardless of whether it is locked. Returns the deleted record. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="configType">The category of configuration.</param>
+        /// <param name="name">The logical name of the configuration.</param>
+        /// <param name="majorVersion">The major version to delete.</param>
+        /// <param name="minorVersion">The minor version to delete.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> DeleteVersionedConfigurationVersionWithHttpInfoAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration.
         /// </summary>
         /// <remarks>
@@ -253,7 +363,57 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> GetVersionedConfigurationWithHttpInfoAsync(string configType, string name, int? majorVersion = default(int?), int? minorVersion = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations.
+        /// [EXPERIMENTAL] GetVersionedConfigurationTypes: List available versioned configuration types.
+        /// </summary>
+        /// <remarks>
+        /// Returns all registered configuration types with their display names. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of List&lt;VersionedConfigurationTypeResponse&gt;</returns>
+        System.Threading.Tasks.Task<List<VersionedConfigurationTypeResponse>> GetVersionedConfigurationTypesAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetVersionedConfigurationTypes: List available versioned configuration types.
+        /// </summary>
+        /// <remarks>
+        /// Returns all registered configuration types with their display names. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (List&lt;VersionedConfigurationTypeResponse&gt;)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationTypeResponse>>> GetVersionedConfigurationTypesWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ListAllVersionedConfigurations: List all versioned configurations.
+        /// </summary>
+        /// <remarks>
+        /// Returns all configuration records across all config types, versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of List&lt;VersionedConfigurationResponse&gt;</returns>
+        System.Threading.Tasks.Task<List<VersionedConfigurationResponse>> ListAllVersionedConfigurationsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListAllVersionedConfigurations: List all versioned configurations.
+        /// </summary>
+        /// <remarks>
+        /// Returns all configuration records across all config types, versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (List&lt;VersionedConfigurationResponse&gt;)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>>> ListAllVersionedConfigurationsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations for a config type.
         /// </summary>
         /// <remarks>
         /// Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
@@ -267,7 +427,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         System.Threading.Tasks.Task<List<VersionedConfigurationResponse>> ListVersionedConfigurationsAsync(string configType, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations for a config type.
         /// </summary>
         /// <remarks>
         /// Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
@@ -690,6 +850,258 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
+        /// [EXPERIMENTAL] DeleteVersionedConfigurationVersion: Delete a versioned configuration version. Permanently deletes the specified configuration version regardless of whether it is locked. Returns the deleted record. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="configType">The category of configuration.</param>
+        /// <param name="name">The logical name of the configuration.</param>
+        /// <param name="majorVersion">The major version to delete.</param>
+        /// <param name="minorVersion">The minor version to delete.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>VersionedConfigurationResponse</returns>
+        public VersionedConfigurationResponse DeleteVersionedConfigurationVersion(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> localVarResponse = DeleteVersionedConfigurationVersionWithHttpInfo(configType, name, majorVersion, minorVersion, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteVersionedConfigurationVersion: Delete a versioned configuration version. Permanently deletes the specified configuration version regardless of whether it is locked. Returns the deleted record. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="configType">The category of configuration.</param>
+        /// <param name="name">The logical name of the configuration.</param>
+        /// <param name="majorVersion">The major version to delete.</param>
+        /// <param name="minorVersion">The minor version to delete.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of VersionedConfigurationResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> DeleteVersionedConfigurationVersionWithHttpInfo(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'configType' is set
+            if (configType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->DeleteVersionedConfigurationVersion");
+            }
+
+            // verify the required parameter 'name' is set
+            if (name == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'name' when calling VersionedConfigurationsApi->DeleteVersionedConfigurationVersion");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("configType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(configType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("name", Finbourne.Sdk.Client.ClientUtils.ParameterToString(name)); // path parameter
+            localVarRequestOptions.PathParameters.Add("majorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(majorVersion)); // path parameter
+            localVarRequestOptions.PathParameters.Add("minorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(minorVersion)); // path parameter
+
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.DeleteVersionedConfigurationVersion";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<VersionedConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteVersionedConfigurationVersion", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteVersionedConfigurationVersion: Delete a versioned configuration version. Permanently deletes the specified configuration version regardless of whether it is locked. Returns the deleted record. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="configType">The category of configuration.</param>
+        /// <param name="name">The logical name of the configuration.</param>
+        /// <param name="majorVersion">The major version to delete.</param>
+        /// <param name="minorVersion">The minor version to delete.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of VersionedConfigurationResponse</returns>
+        public async System.Threading.Tasks.Task<VersionedConfigurationResponse> DeleteVersionedConfigurationVersionAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse> localVarResponse = await DeleteVersionedConfigurationVersionWithHttpInfoAsync(configType, name, majorVersion, minorVersion, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteVersionedConfigurationVersion: Delete a versioned configuration version. Permanently deletes the specified configuration version regardless of whether it is locked. Returns the deleted record. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="configType">The category of configuration.</param>
+        /// <param name="name">The logical name of the configuration.</param>
+        /// <param name="majorVersion">The major version to delete.</param>
+        /// <param name="minorVersion">The minor version to delete.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (VersionedConfigurationResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedConfigurationResponse>> DeleteVersionedConfigurationVersionWithHttpInfoAsync(string configType, string name, int majorVersion, int minorVersion, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'configType' is set
+            if (configType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'configType' when calling VersionedConfigurationsApi->DeleteVersionedConfigurationVersion");
+            }
+
+            // verify the required parameter 'name' is set
+            if (name == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'name' when calling VersionedConfigurationsApi->DeleteVersionedConfigurationVersion");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("configType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(configType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("name", Finbourne.Sdk.Client.ClientUtils.ParameterToString(name)); // path parameter
+            localVarRequestOptions.PathParameters.Add("majorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(majorVersion)); // path parameter
+            localVarRequestOptions.PathParameters.Add("minorVersion", Finbourne.Sdk.Client.ClientUtils.ParameterToString(minorVersion)); // path parameter
+
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.DeleteVersionedConfigurationVersion";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<VersionedConfigurationResponse, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/{configType}/{name}/{majorVersion}/{minorVersion}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteVersionedConfigurationVersion", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration. Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -954,7 +1366,415 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] GetVersionedConfigurationTypes: List available versioned configuration types. Returns all registered configuration types with their display names. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>List&lt;VersionedConfigurationTypeResponse&gt;</returns>
+        public List<VersionedConfigurationTypeResponse> GetVersionedConfigurationTypes(int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationTypeResponse>> localVarResponse = GetVersionedConfigurationTypesWithHttpInfo(opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetVersionedConfigurationTypes: List available versioned configuration types. Returns all registered configuration types with their display names. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of List&lt;VersionedConfigurationTypeResponse&gt;</returns>
+        public Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationTypeResponse>> GetVersionedConfigurationTypesWithHttpInfo(int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.GetVersionedConfigurationTypes";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<List<VersionedConfigurationTypeResponse>, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/config-types", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetVersionedConfigurationTypes", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetVersionedConfigurationTypes: List available versioned configuration types. Returns all registered configuration types with their display names. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of List&lt;VersionedConfigurationTypeResponse&gt;</returns>
+        public async System.Threading.Tasks.Task<List<VersionedConfigurationTypeResponse>> GetVersionedConfigurationTypesAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationTypeResponse>> localVarResponse = await GetVersionedConfigurationTypesWithHttpInfoAsync(operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetVersionedConfigurationTypes: List available versioned configuration types. Returns all registered configuration types with their display names. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (List&lt;VersionedConfigurationTypeResponse&gt;)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationTypeResponse>>> GetVersionedConfigurationTypesWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.GetVersionedConfigurationTypes";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<List<VersionedConfigurationTypeResponse>, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/config-types", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetVersionedConfigurationTypes", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListAllVersionedConfigurations: List all versioned configurations. Returns all configuration records across all config types, versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>List&lt;VersionedConfigurationResponse&gt;</returns>
+        public List<VersionedConfigurationResponse> ListAllVersionedConfigurations(int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>> localVarResponse = ListAllVersionedConfigurationsWithHttpInfo(opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListAllVersionedConfigurations: List all versioned configurations. Returns all configuration records across all config types, versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of List&lt;VersionedConfigurationResponse&gt;</returns>
+        public Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>> ListAllVersionedConfigurationsWithHttpInfo(int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.ListAllVersionedConfigurations";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<List<VersionedConfigurationResponse>, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/all", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListAllVersionedConfigurations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListAllVersionedConfigurations: List all versioned configurations. Returns all configuration records across all config types, versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of List&lt;VersionedConfigurationResponse&gt;</returns>
+        public async System.Threading.Tasks.Task<List<VersionedConfigurationResponse>> ListAllVersionedConfigurationsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>> localVarResponse = await ListAllVersionedConfigurationsWithHttpInfoAsync(operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListAllVersionedConfigurations: List all versioned configurations. Returns all configuration records across all config types, versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (List&lt;VersionedConfigurationResponse&gt;)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<List<VersionedConfigurationResponse>>> ListAllVersionedConfigurationsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "VersionedConfigurationsApi.ListAllVersionedConfigurations";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<List<VersionedConfigurationResponse>, AbstractOpenAPISchema>("/horizon/api/versionedconfiguration/all", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListAllVersionedConfigurations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations for a config type. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration to list.</param>
@@ -968,7 +1788,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations for a config type. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1063,7 +1883,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations for a config type. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="configType">The category of configuration to list.</param>
@@ -1078,7 +1898,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
+        /// [EXPERIMENTAL] ListVersionedConfigurations: List versioned configurations for a config type. Returns all configuration records for the given config type, across all versions and states (both draft and locked), ordered by version descending. The user must be authenticated and entitled to call this method.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
