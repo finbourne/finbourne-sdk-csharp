@@ -32,11 +32,13 @@ All URIs are relative to *http://localhost*
 | [**GetValuationPointPnlSummary**](#getvaluationpointpnlsummary) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/pnlsummary/$query` | [EXPERIMENTAL] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. |
 | [**GetValuationPointTransactions**](#getvaluationpointtransactions) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/transactions/$query` | [EXPERIMENTAL] GetValuationPointTransactions: Get the Transactions for the given Fund. |
 | [**GetValuationPointTrialBalance**](#getvaluationpointtrialbalance) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/trialbalance/$query` | [EXPERIMENTAL] GetValuationPointTrialBalance: Get Trial Balance for the given Fund. |
+| [**GetValuationPointUnsettledTransactions**](#getvaluationpointunsettledtransactions) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/unsettledtransactions/$query` | [EXPERIMENTAL] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. |
 | [**ListFees**](#listfees) | **GET** `/api/api/funds/{scope}/{code}/fees` | [EXPERIMENTAL] ListFees: List Fees for a specified Fund. |
 | [**ListFundCalendar**](#listfundcalendar) | **GET** `/api/api/funds/{scope}/{code}/calendar` | [EXPERIMENTAL] ListFundCalendar: List Fund Calendar. |
 | [**ListFundCalendarEntries**](#listfundcalendarentries) | **GET** `/api/api/funds/{scope}/{code}/calendars` | [EXPERIMENTAL] ListFundCalendarEntries: List Fund Calendar Entries. |
 | [**ListFunds**](#listfunds) | **GET** `/api/api/funds` | [EXPERIMENTAL] ListFunds: List Funds. |
 | [**ListNavActivityAdjustments**](#listnavactivityadjustments) | **GET** `/api/api/funds/{scope}/{code}/navAdjustment` | [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point |
+| [**ListValuationPointInstruments**](#listvaluationpointinstruments) | **GET** `/api/api/funds/{scope}/{code}/valuationpoints/instruments/$query` | [EXPERIMENTAL] ListValuationPointInstruments: List Instruments inside a valuation point |
 | [**ListValuationPointOverview**](#listvaluationpointoverview) | **GET** `/api/api/funds/{scope}/{code}/valuationPointOverview` | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
 | [**PatchFee**](#patchfee) | **PATCH** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EXPERIMENTAL] PatchFee: Patch Fee. |
 | [**PatchFund**](#patchfund) | **PATCH** `/api/api/funds/{scope}/{code}` | [EXPERIMENTAL] PatchFund: Patch a Fund. |
@@ -1907,6 +1909,78 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="getvaluationpointunsettledtransactions"></a>
+## GetValuationPointUnsettledTransactions
+
+> ValuationPointResourceListOfUnsettledTransaction GetValuationPointUnsettledTransactions(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, DateTimeOffset? asAt = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null)
+
+[EXPERIMENTAL] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
+
+Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var limit = 56;  // int? (optional)
+var page = "page_example";  // string? (optional)
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+ValuationPointResourceListOfUnsettledTransaction result = apiInstance.GetValuationPointUnsettledTransactions(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the unsettled transactions. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the report. Defaults to latest. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing from a previous call. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. |
+| **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
+
+### Return type
+
+[ValuationPointResourceListOfUnsettledTransaction](ValuationPointResourceListOfUnsettledTransaction.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The unsettled transactions for the specified Valuation Point for a Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetValuationPointUnsettledTransactionsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ValuationPointResourceListOfUnsettledTransaction> response = apiInstance.GetValuationPointUnsettledTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="listfees"></a>
 ## ListFees
 
@@ -2259,6 +2333,84 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ResourceListOfNavActivityAdjustmentResponse> response = apiInstance.ListNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listvaluationpointinstruments"></a>
+## ListValuationPointInstruments
+
+> PagedResourceListOfValuationPointInstrument ListValuationPointInstruments(string scope, string code, string valuationPointCode, string? navTypeCode = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? instrumentPropertyKeys = null, string? valuationPointCodeVariant = null)
+
+[EXPERIMENTAL] ListValuationPointInstruments: List Instruments inside a valuation point
+
+Lists the Instruments linked to Transactions within a Valuation Point for a Fund.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var valuationPointCode = "valuationPointCode_example";  // string
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var page = "page_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+var instrumentPropertyKeys = new List<string>?(); // List<string>? (optional)
+var valuationPointCodeVariant = "valuationPointCodeVariant_example";  // string? (optional)
+PagedResourceListOfValuationPointInstrument result = apiInstance.ListValuationPointInstruments(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope is the unique identifier for the given Fund. |
+| **valuationPointCode** | **string** | query | **required** | Fetch all instruments for this valuation point. |
+| **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the instruments. Defaults to returning the latest version of each instrument if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing instruments; this              value is returned from the previous call. If a pagination token is provided, the filter,              and asAt fields must not have changed since the original request. |
+| **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
+| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **instrumentPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto              instruments, or from any domain that supports relationships to decorate onto related entities.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. |
+| **valuationPointCodeVariant** | **string?** | query | optional | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. |
+
+### Return type
+
+[PagedResourceListOfValuationPointInstrument](PagedResourceListOfValuationPointInstrument.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The instruments held at the specified valuation point for the Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListValuationPointInstrumentsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfValuationPointInstrument> response = apiInstance.ListValuationPointInstrumentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, sortBy, instrumentPropertyKeys, valuationPointCodeVariant);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
