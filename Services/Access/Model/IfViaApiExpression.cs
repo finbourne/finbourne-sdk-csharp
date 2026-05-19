@@ -36,7 +36,8 @@ namespace Finbourne.Sdk.Services.Access.Model
         /// Initializes a new instance of the <see cref="IfViaApiExpression" /> class.
         /// </summary>
         /// <param name="apiFeatureCodes">apiFeatureCodes (required).</param>
-        public IfViaApiExpression(List<string> apiFeatureCodes = default(List<string>))
+        /// <param name="varOperator">varOperator (required).</param>
+        public IfViaApiExpression(List<string> apiFeatureCodes = default(List<string>), string varOperator = default(string))
         {
             // to ensure "apiFeatureCodes" is required (not null)
             if (apiFeatureCodes == null)
@@ -44,6 +45,12 @@ namespace Finbourne.Sdk.Services.Access.Model
                 throw new ArgumentNullException("apiFeatureCodes is a required property for IfViaApiExpression and cannot be null");
             }
             this.ApiFeatureCodes = apiFeatureCodes;
+            // to ensure "varOperator" is required (not null)
+            if (varOperator == null)
+            {
+                throw new ArgumentNullException("varOperator is a required property for IfViaApiExpression and cannot be null");
+            }
+            this.Operator = varOperator;
         }
 
         /// <summary>
@@ -51,6 +58,12 @@ namespace Finbourne.Sdk.Services.Access.Model
         /// </summary>
         [DataMember(Name = "apiFeatureCodes", IsRequired = true, EmitDefaultValue = true)]
         public List<string> ApiFeatureCodes { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Operator
+        /// </summary>
+        [DataMember(Name = "operator", IsRequired = true, EmitDefaultValue = true)]
+        public string Operator { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,6 +74,7 @@ namespace Finbourne.Sdk.Services.Access.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class IfViaApiExpression {\n");
             sb.Append("  ApiFeatureCodes: ").Append(ApiFeatureCodes).Append("\n");
+            sb.Append("  Operator: ").Append(Operator).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -101,6 +115,11 @@ namespace Finbourne.Sdk.Services.Access.Model
                     this.ApiFeatureCodes != null &&
                     input.ApiFeatureCodes != null &&
                     this.ApiFeatureCodes.SequenceEqual(input.ApiFeatureCodes)
+                ) && 
+                (
+                    this.Operator == input.Operator ||
+                    (this.Operator != null &&
+                    this.Operator.Equals(input.Operator))
                 );
         }
 
@@ -116,6 +135,10 @@ namespace Finbourne.Sdk.Services.Access.Model
                 if (this.ApiFeatureCodes != null)
                 {
                     hashCode = (hashCode * 59) + this.ApiFeatureCodes.GetHashCode();
+                }
+                if (this.Operator != null)
+                {
+                    hashCode = (hashCode * 59) + this.Operator.GetHashCode();
                 }
                 return hashCode;
             }

@@ -5,6 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **ApiFeatureCodes** | **List&lt;string&gt;** | Required | *No description available.* |
+| **Operator** | **string** | Required | *No description available.* |
 
 
 ## Usage
@@ -15,7 +16,8 @@
 using Finbourne.Sdk.Services.Access.Model;
 
 var instance = new IfViaApiExpression(
-    apiFeatureCodes:   // required
+    apiFeatureCodes: ,  // required
+    varOperator: "..."  // required
 );
 ```
 ### Serializing to JSON
