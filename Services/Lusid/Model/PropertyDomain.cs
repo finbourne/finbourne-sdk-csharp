@@ -530,7 +530,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum TransactionFeeType for value: TransactionFeeType
         /// </summary>
         [EnumMember(Value = "TransactionFeeType")]
-        TransactionFeeType = 84
+        TransactionFeeType = 84,
+
+        /// <summary>
+        /// Enum TransactionFee for value: TransactionFee
+        /// </summary>
+        [EnumMember(Value = "TransactionFee")]
+        TransactionFee = 85
     }
 
 }

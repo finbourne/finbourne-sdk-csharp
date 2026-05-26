@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CalculateOrderDates**](#calculateorderdates) | **POST** `/api/api/transferagency/orderdates` | [EXPERIMENTAL] CalculateOrderDates: Calculate the key dates associated with transfer agency orders |
+| [**UpsertTransferAgencyOrders**](#upserttransferagencyorders) | **POST** `/api/api/transferagency/orders` | [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders |
 
 ### Example
 
@@ -97,6 +98,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<CalculateOrderDatesResponse> response = apiInstance.CalculateOrderDatesWithHttpInfo(requestBody);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="upserttransferagencyorders"></a>
+## UpsertTransferAgencyOrders
+
+> TransferAgencyOrdersResponse UpsertTransferAgencyOrders(Dictionary<string, UpsertTransferAgencyOrderRequest> requestBody)
+
+[EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders
+
+Creates a transaction and updates the relevant order for each order supplied.  The response contains both successfully processed orders and any failures, each in the form of a  dictionary keyed by the request's keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransferAgencyApi>();
+var requestBody = new Dictionary<string, UpsertTransferAgencyOrderRequest>(); // Dictionary<string, UpsertTransferAgencyOrderRequest>
+TransferAgencyOrdersResponse result = apiInstance.UpsertTransferAgencyOrders(requestBody);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **requestBody** | [Dictionary&lt;string, UpsertTransferAgencyOrderRequest&gt;](UpsertTransferAgencyOrderRequest.md) | body | **required** | The transfer agency orders to upsert, keyed by a unique request identifier. |
+
+### Return type
+
+[TransferAgencyOrdersResponse](TransferAgencyOrdersResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully processed orders and any failures. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpsertTransferAgencyOrdersWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<TransferAgencyOrdersResponse> response = apiInstance.UpsertTransferAgencyOrdersWithHttpInfo(requestBody);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

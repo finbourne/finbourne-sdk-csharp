@@ -15,7 +15,7 @@ Create a schedule definition
 | **Trigger** | [Trigger](Trigger.md) | Optional | *No description available.* |
 | **Notifications** | [List&lt;Notification&gt;](Notification.md) | Optional | Notifications for this Schedule |
 | **Enabled** | **bool** | Optional | Specify whether schedule is enabled or not Defaults to true |
-| **UseAsAuth** | **string** | Optional | Id of user associated with schedule. All calls to FINBOURNE services as part of execution of this schedule will be authenticated as this  user. Can be null, in which case we&#39;ll default to that of the user  making this request |
+| **UseAsAuth** | **string** | Optional | ID of user associated with schedule. All calls to FINBOURNE services as part of processing this schedule (such as calls to Config Service) will be authenticated as this  user. Can be null, in which case we&#39;ll default to that of the user  making this request. Given the image is a trusted image, we will also supply an FBN_PAT to the environment variables of the image which will hold the System PAT of this UseAsAuth user |
 
 
 ## Usage
@@ -36,7 +36,7 @@ var instance = new CreateScheduleRequest(
     trigger: new Trigger(...),  // optional
     notifications: new List<Notification>(),  // optional — Notifications for this Schedule
     enabled: true,  // optional — Specify whether schedule is enabled or not Defaults to true
-    useAsAuth: "..."  // optional — Id of user associated with schedule. All calls to FINBOURNE services as part of execution of this schedule will be authenticated as this  user. Can be null, in which case we&#39;ll default to that of the user  making this request
+    useAsAuth: "..."  // optional — ID of user associated with schedule. All calls to FINBOURNE services as part of processing this schedule (such as calls to Config Service) will be authenticated as this  user. Can be null, in which case we&#39;ll default to that of the user  making this request. Given the image is a trusted image, we will also supply an FBN_PAT to the environment variables of the image which will hold the System PAT of this UseAsAuth user
 );
 ```
 ### Serializing to JSON

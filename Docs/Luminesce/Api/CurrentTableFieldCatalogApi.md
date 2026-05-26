@@ -175,7 +175,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getfields"></a>
 ## GetFields
 
-> string GetFields(string? tableLike = null, bool? addLineage = null)
+> string GetFields(string? tableLike = null, bool? addLineage = null, bool? addLineageMarker = null)
 
 GetFields: List field and parameters for providers
 
@@ -187,7 +187,8 @@ GetFields: List field and parameters for providers
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<CurrentTableFieldCatalogApi>();
 var tableLike = "\"%\"";  // string? (optional)
 var addLineage = false;  // bool? (optional)
-string result = apiInstance.GetFields(tableLike, addLineage);
+var addLineageMarker = false;  // bool? (optional)
+string result = apiInstance.GetFields(tableLike, addLineage, addLineageMarker);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -197,6 +198,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **tableLike** | **string?** | query | optional | Allows for SQL-LIKE style filtering of which Providers you want the fields for. Default: `&quot;%&quot;` |
 | **addLineage** | **bool?** | query | optional | Adds in any column lineage which is registered in the catalog to the results. Default: `false` |
+| **addLineageMarker** | **bool?** | query | optional | Adds in a marker for column lineage which is registered in the catalog to the results: hasLineage true/false Default: `false` |
 
 ### Return type
 
@@ -219,7 +221,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<string> response = apiInstance.GetFieldsWithHttpInfo(tableLike, addLineage);
+ApiResponse<string> response = apiInstance.GetFieldsWithHttpInfo(tableLike, addLineage, addLineageMarker);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -289,7 +291,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getproviders"></a>
 ## GetProviders
 
-> string GetProviders(string? freeTextSearch = null, bool? addLineage = null)
+> string GetProviders(string? freeTextSearch = null, string? tableLike = null, bool? addLineage = null, bool? addLineageMarker = null)
 
 GetProviders: List available providers
 
@@ -300,8 +302,10 @@ GetProviders: List available providers
 ```csharp
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<CurrentTableFieldCatalogApi>();
 var freeTextSearch = "freeTextSearch_example";  // string? (optional)
+var tableLike = "tableLike_example";  // string? (optional)
 var addLineage = false;  // bool? (optional)
-string result = apiInstance.GetProviders(freeTextSearch, addLineage);
+var addLineageMarker = false;  // bool? (optional)
+string result = apiInstance.GetProviders(freeTextSearch, tableLike, addLineage, addLineageMarker);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -310,7 +314,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **freeTextSearch** | **string?** | query | optional | Limit the catalog to only things in some way dealing with the passed in text string |
-| **addLineage** | **bool?** | query | optional | Adds in any column lineage which is registered in the catalog to the results. Default: `false` |
+| **tableLike** | **string?** | query | optional | Allows for SQL-LIKE style filtering of which Providers you want the data for. |
+| **addLineage** | **bool?** | query | optional | Adds in any provider lineage which is registered in the catalog to the results (can produce very large responses). Default: `false` |
+| **addLineageMarker** | **bool?** | query | optional | Adds in a marker for provider lineage which is registered in the catalog to the results: hasLineage true/false Default: `false` |
 
 ### Return type
 
@@ -333,7 +339,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<string> response = apiInstance.GetProvidersWithHttpInfo(freeTextSearch, addLineage);
+ApiResponse<string> response = apiInstance.GetProvidersWithHttpInfo(freeTextSearch, tableLike, addLineage, addLineageMarker);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

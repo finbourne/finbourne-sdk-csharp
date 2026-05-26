@@ -45,7 +45,7 @@ namespace Finbourne.Sdk.Services.Scheduler.Model
         /// <param name="trigger">trigger.</param>
         /// <param name="notifications">Notifications for this Schedule.</param>
         /// <param name="enabled">Specify whether schedule is enabled or not Defaults to true.</param>
-        /// <param name="useAsAuth">Id of user associated with schedule. All calls to FINBOURNE services as part of execution of this schedule will be authenticated as this  user. Can be null, in which case we&#39;ll default to that of the user  making this request.</param>
+        /// <param name="useAsAuth">ID of user associated with schedule. All calls to FINBOURNE services as part of processing this schedule (such as calls to Config Service) will be authenticated as this  user. Can be null, in which case we&#39;ll default to that of the user  making this request. Given the image is a trusted image, we will also supply an FBN_PAT to the environment variables of the image which will hold the System PAT of this UseAsAuth user.</param>
         public CreateScheduleRequest(ResourceId scheduleId = default(ResourceId), ResourceId jobId = default(ResourceId), string name = default(string), string description = default(string), string author = default(string), string owner = default(string), Dictionary<string, string> arguments = default(Dictionary<string, string>), Trigger trigger = default(Trigger), List<Notification> notifications = default(List<Notification>), bool enabled = default(bool), string useAsAuth = default(string))
         {
             // to ensure "scheduleId" is required (not null)
@@ -149,9 +149,9 @@ namespace Finbourne.Sdk.Services.Scheduler.Model
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// Id of user associated with schedule. All calls to FINBOURNE services as part of execution of this schedule will be authenticated as this  user. Can be null, in which case we&#39;ll default to that of the user  making this request
+        /// ID of user associated with schedule. All calls to FINBOURNE services as part of processing this schedule (such as calls to Config Service) will be authenticated as this  user. Can be null, in which case we&#39;ll default to that of the user  making this request. Given the image is a trusted image, we will also supply an FBN_PAT to the environment variables of the image which will hold the System PAT of this UseAsAuth user
         /// </summary>
-        /// <value>Id of user associated with schedule. All calls to FINBOURNE services as part of execution of this schedule will be authenticated as this  user. Can be null, in which case we&#39;ll default to that of the user  making this request</value>
+        /// <value>ID of user associated with schedule. All calls to FINBOURNE services as part of processing this schedule (such as calls to Config Service) will be authenticated as this  user. Can be null, in which case we&#39;ll default to that of the user  making this request. Given the image is a trusted image, we will also supply an FBN_PAT to the environment variables of the image which will hold the System PAT of this UseAsAuth user</value>
         [DataMember(Name = "useAsAuth", EmitDefaultValue = true)]
         public string UseAsAuth { get; set; }
 
