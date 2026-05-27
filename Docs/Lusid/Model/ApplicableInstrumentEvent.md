@@ -18,6 +18,8 @@ Represents applicable instrument event.
 | **AppliedInstrumentEventInstructionId** | **string** | Optional | *No description available.* |
 | **Transactions** | [List&lt;Transaction&gt;](Transaction.md) | Optional | *No description available.* |
 | **TransactionDiagnostics** | [TransactionDiagnostics](TransactionDiagnostics.md) | Optional | *No description available.* |
+| **AppliedInstrumentEventInstruction** | [InstrumentEventInstruction](InstrumentEventInstruction.md) | Optional | *No description available.* |
+| **EligibleBalance** | **decimal?** | Optional | *No description available.* |
 
 
 ## Usage
@@ -40,7 +42,9 @@ var instance = new ApplicableInstrumentEvent(
     loadedEvent: new InstrumentEventHolder(...),  // optional
     appliedInstrumentEventInstructionId: "...",  // optional
     transactions: new List<Transaction>(),  // optional
-    transactionDiagnostics: new TransactionDiagnostics(...)  // optional
+    transactionDiagnostics: new TransactionDiagnostics(...),  // optional
+    appliedInstrumentEventInstruction: new InstrumentEventInstruction(...),  // optional
+    eligibleBalance: 0.0d  // optional
 );
 ```
 ### Serializing to JSON
@@ -64,6 +68,7 @@ var instance = JsonConvert.DeserializeObject<ApplicableInstrumentEvent>(json);
 - [InstrumentEventHolder](InstrumentEventHolder.md)
 - [Transaction](Transaction.md)
 - [TransactionDiagnostics](TransactionDiagnostics.md)
+- [InstrumentEventInstruction](InstrumentEventInstruction.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -9,6 +9,7 @@ Represents LUSID entity details for a data quality check result
 | **EffectiveAt** | **DateTimeOffset** | Optional | The effective-at timestamp for the entity |
 | **EntityType** | **string** | Optional | The type of the LUSID entity |
 | **Scope** | **string** | Optional | The scope of the entity |
+| **Code** | **string** | Optional | The code of the entity. Populated for scope+code entities (e.g. Portfolio). Null for identifier-based entities (e.g. Instrument). |
 | **IdentifierKey** | **string** | Optional | The identifier key for the entity |
 | **IdentifierValue** | **string** | Optional | The identifier value for the entity |
 | **EntityUniqueId** | **string** | Optional | The unique identifier for the entity |
@@ -27,6 +28,7 @@ var instance = new LusidEntityResult(
     effectiveAt: DateTimeOffset.Now,  // optional — The effective-at timestamp for the entity
     entityType: "...",  // optional — The type of the LUSID entity
     scope: "...",  // optional — The scope of the entity
+    code: "...",  // optional — The code of the entity. Populated for scope+code entities (e.g. Portfolio). Null for identifier-based entities (e.g. Instrument).
     identifierKey: "...",  // optional — The identifier key for the entity
     identifierValue: "...",  // optional — The identifier value for the entity
     entityUniqueId: "...",  // optional — The unique identifier for the entity

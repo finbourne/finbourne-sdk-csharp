@@ -42,8 +42,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="lusidInstrumentId">The LUSID instrument id for the instrument ordered. (required).</param>
         /// <param name="quantity">The total quantity of given instrument ordered. (required).</param>
         /// <param name="side">The client&#39;s representation of the block&#39;s side (buy, sell, short, etc) (required).</param>
-        /// <param name="type">The block order&#39;s type (examples: Limit, Market, ...) (required).</param>
-        /// <param name="timeInForce">The block orders&#39; time in force (examples: Day, GoodTilCancel, ...) (required).</param>
+        /// <param name="type">The block order&#39;s type (examples: Limit, Market, ...).</param>
+        /// <param name="timeInForce">The block orders&#39; time in force (examples: Day, GoodTilCancel, ...).</param>
         /// <param name="createdDate">The date on which the block was made (required).</param>
         /// <param name="limitPrice">limitPrice.</param>
         /// <param name="stopPrice">stopPrice.</param>
@@ -84,21 +84,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("side is a required property for Block and cannot be null");
             }
             this.Side = side;
-            // to ensure "type" is required (not null)
-            if (type == null)
-            {
-                throw new ArgumentNullException("type is a required property for Block and cannot be null");
-            }
-            this.Type = type;
-            // to ensure "timeInForce" is required (not null)
-            if (timeInForce == null)
-            {
-                throw new ArgumentNullException("timeInForce is a required property for Block and cannot be null");
-            }
-            this.TimeInForce = timeInForce;
             this.CreatedDate = createdDate;
             this.IsSwept = isSwept;
             this.Properties = properties;
+            this.Type = type;
+            this.TimeInForce = timeInForce;
             this.LimitPrice = limitPrice;
             this.StopPrice = stopPrice;
             this.VarVersion = varVersion;
@@ -158,14 +148,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// The block order&#39;s type (examples: Limit, Market, ...)
         /// </summary>
         /// <value>The block order&#39;s type (examples: Limit, Market, ...)</value>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "type", EmitDefaultValue = true)]
         public string Type { get; set; }
 
         /// <summary>
         /// The block orders&#39; time in force (examples: Day, GoodTilCancel, ...)
         /// </summary>
         /// <value>The block orders&#39; time in force (examples: Day, GoodTilCancel, ...)</value>
-        [DataMember(Name = "timeInForce", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "timeInForce", EmitDefaultValue = true)]
         public string TimeInForce { get; set; }
 
         /// <summary>

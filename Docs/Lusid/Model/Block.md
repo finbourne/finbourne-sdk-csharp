@@ -12,8 +12,8 @@ A block of orders for the same instrument, intended to record for example a trad
 | **LusidInstrumentId** | **string** | Required | The LUSID instrument id for the instrument ordered. |
 | **Quantity** | **decimal** | Required | The total quantity of given instrument ordered. |
 | **Side** | **string** | Required | The client&#39;s representation of the block&#39;s side (buy, sell, short, etc) |
-| **Type** | **string** | Required | The block order&#39;s type (examples: Limit, Market, ...) |
-| **TimeInForce** | **string** | Required | The block orders&#39; time in force (examples: Day, GoodTilCancel, ...) |
+| **Type** | **string** | Optional | The block order&#39;s type (examples: Limit, Market, ...) |
+| **TimeInForce** | **string** | Optional | The block orders&#39; time in force (examples: Day, GoodTilCancel, ...) |
 | **CreatedDate** | **DateTimeOffset** | Required | The date on which the block was made |
 | **LimitPrice** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **StopPrice** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
@@ -38,8 +38,8 @@ var instance = new Block(
     lusidInstrumentId: "...",  // required — The LUSID instrument id for the instrument ordered.
     quantity: 0.0d,  // required — The total quantity of given instrument ordered.
     side: "...",  // required — The client&#39;s representation of the block&#39;s side (buy, sell, short, etc)
-    type: "...",  // required — The block order&#39;s type (examples: Limit, Market, ...)
-    timeInForce: "...",  // required — The block orders&#39; time in force (examples: Day, GoodTilCancel, ...)
+    type: "...",  // optional — The block order&#39;s type (examples: Limit, Market, ...)
+    timeInForce: "...",  // optional — The block orders&#39; time in force (examples: Day, GoodTilCancel, ...)
     createdDate: DateTimeOffset.Now,  // required — The date on which the block was made
     limitPrice: new CurrencyAndAmount(...),  // optional
     stopPrice: new CurrencyAndAmount(...),  // optional

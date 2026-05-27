@@ -10,6 +10,7 @@
 | **ChartOfAccountsId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **PostingModuleCodes** | **List&lt;string&gt;** | Optional | The Posting Module Codes from which the rules to be applied are retrieved. |
 | **CleardownModuleCodes** | **List&lt;string&gt;** | Optional | The Cleardown Module Codes from which the rules to be applied are retrieved. |
+| **SettlementConfiguration** | [NavSettlementConfiguration](NavSettlementConfiguration.md) | Optional | *No description available.* |
 | **ValuationRecipeId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **HoldingRecipeId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **AccountingMethod** | **string** | Required | Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. A non-default value is required. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. |
@@ -36,6 +37,7 @@ var instance = new NavTypeDefinition(
     chartOfAccountsId: new ResourceId(...),  // required
     postingModuleCodes: ,  // optional — The Posting Module Codes from which the rules to be applied are retrieved.
     cleardownModuleCodes: ,  // optional — The Cleardown Module Codes from which the rules to be applied are retrieved.
+    settlementConfiguration: new NavSettlementConfiguration(...),  // optional
     valuationRecipeId: new ResourceId(...),  // required
     holdingRecipeId: new ResourceId(...),  // required
     accountingMethod: "...",  // required — Determines the accounting treatment given to the simple position portfolio&#39;s tax lots. A non-default value is required. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
@@ -61,6 +63,7 @@ var instance = JsonConvert.DeserializeObject<NavTypeDefinition>(json);
 ```
 
 - [ResourceId](ResourceId.md)
+- [NavSettlementConfiguration](NavSettlementConfiguration.md)
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
