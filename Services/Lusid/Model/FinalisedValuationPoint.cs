@@ -87,8 +87,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="varVersion">varVersion (required).</param>
         /// <param name="href">The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime..</param>
         /// <param name="leaderNavTypeCode">The code of the Nav Type that this Nav Type will follow when set..</param>
+        /// <param name="dateOfLastPcaScan">The last date a PCA scan was conducted for a Valuation Point.</param>
         /// <param name="fundCalendarEntriesType">The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark. (required) (default to FundCalendarEntriesTypeEnum.FinalisedValuationPoint).</param>
-        public FinalisedValuationPoint(string code = default(string), string finalisedFromVariant = default(string), string displayName = default(string), string description = default(string), string navTypeCode = default(string), ResourceId timelineId = default(ResourceId), PreviousFundCalendarEntry previousEntry = default(PreviousFundCalendarEntry), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset asAt = default(DateTimeOffset), EntryTypeEnum entryType = default(EntryTypeEnum), string status = default(string), bool applyClearDown = default(bool), DateTimeOffset? holdingsAsAtOverride = default(DateTimeOffset?), DateTimeOffset? valuationsAsAtOverride = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), ModelVersion varVersion = default(ModelVersion), string href = default(string), string leaderNavTypeCode = default(string), FundCalendarEntriesTypeEnum fundCalendarEntriesType = default(FundCalendarEntriesTypeEnum)) : base()
+        public FinalisedValuationPoint(string code = default(string), string finalisedFromVariant = default(string), string displayName = default(string), string description = default(string), string navTypeCode = default(string), ResourceId timelineId = default(ResourceId), PreviousFundCalendarEntry previousEntry = default(PreviousFundCalendarEntry), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset asAt = default(DateTimeOffset), EntryTypeEnum entryType = default(EntryTypeEnum), string status = default(string), bool applyClearDown = default(bool), DateTimeOffset? holdingsAsAtOverride = default(DateTimeOffset?), DateTimeOffset? valuationsAsAtOverride = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), ModelVersion varVersion = default(ModelVersion), string href = default(string), string leaderNavTypeCode = default(string), DateTimeOffset? dateOfLastPcaScan = default(DateTimeOffset?), FundCalendarEntriesTypeEnum fundCalendarEntriesType = default(FundCalendarEntriesTypeEnum)) : base()
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -129,6 +130,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Properties = properties;
             this.Href = href;
             this.LeaderNavTypeCode = leaderNavTypeCode;
+            this.DateOfLastPcaScan = dateOfLastPcaScan;
         }
 
         /// <summary>
@@ -248,6 +250,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string LeaderNavTypeCode { get; set; }
 
         /// <summary>
+        /// The last date a PCA scan was conducted for a Valuation Point
+        /// </summary>
+        /// <value>The last date a PCA scan was conducted for a Valuation Point</value>
+        [DataMember(Name = "dateOfLastPcaScan", EmitDefaultValue = true)]
+        public DateTimeOffset? DateOfLastPcaScan { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -274,6 +283,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  Href: ").Append(Href).Append("\n");
             sb.Append("  LeaderNavTypeCode: ").Append(LeaderNavTypeCode).Append("\n");
+            sb.Append("  DateOfLastPcaScan: ").Append(DateOfLastPcaScan).Append("\n");
             sb.Append("  FundCalendarEntriesType: ").Append(FundCalendarEntriesType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -400,6 +410,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.LeaderNavTypeCode.Equals(input.LeaderNavTypeCode))
                 ) && base.Equals(input) && 
                 (
+                    this.DateOfLastPcaScan == input.DateOfLastPcaScan ||
+                    (this.DateOfLastPcaScan != null &&
+                    this.DateOfLastPcaScan.Equals(input.DateOfLastPcaScan))
+                ) && base.Equals(input) && 
+                (
                     this.FundCalendarEntriesType == input.FundCalendarEntriesType ||
                     this.FundCalendarEntriesType.Equals(input.FundCalendarEntriesType)
                 );
@@ -479,6 +494,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.LeaderNavTypeCode != null)
                 {
                     hashCode = (hashCode * 59) + this.LeaderNavTypeCode.GetHashCode();
+                }
+                if (this.DateOfLastPcaScan != null)
+                {
+                    hashCode = (hashCode * 59) + this.DateOfLastPcaScan.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.FundCalendarEntriesType.GetHashCode();
                 return hashCode;

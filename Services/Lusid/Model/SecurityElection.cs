@@ -40,7 +40,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="isDefault">Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided..</param>
         /// <param name="price">Price per unit of the security. At least one of UnitsRatio or Price must be provided.  Price must non-zero..</param>
         /// <param name="unitsRatio">unitsRatio.</param>
-        public SecurityElection(string electionKey = default(string), bool isChosen = default(bool), bool isDefault = default(bool), decimal? price = default(decimal?), UnitsRatio unitsRatio = default(UnitsRatio))
+        /// <param name="securityElectionCurrency">Optional currency in which the security election&#39;s price is denominated.</param>
+        public SecurityElection(string electionKey = default(string), bool isChosen = default(bool), bool isDefault = default(bool), decimal? price = default(decimal?), UnitsRatio unitsRatio = default(UnitsRatio), string securityElectionCurrency = default(string))
         {
             // to ensure "electionKey" is required (not null)
             if (electionKey == null)
@@ -52,6 +53,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.IsDefault = isDefault;
             this.Price = price;
             this.UnitsRatio = unitsRatio;
+            this.SecurityElectionCurrency = securityElectionCurrency;
         }
 
         /// <summary>
@@ -89,6 +91,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public UnitsRatio UnitsRatio { get; set; }
 
         /// <summary>
+        /// Optional currency in which the security election&#39;s price is denominated
+        /// </summary>
+        /// <value>Optional currency in which the security election&#39;s price is denominated</value>
+        [DataMember(Name = "securityElectionCurrency", EmitDefaultValue = true)]
+        public string SecurityElectionCurrency { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -101,6 +110,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
             sb.Append("  UnitsRatio: ").Append(UnitsRatio).Append("\n");
+            sb.Append("  SecurityElectionCurrency: ").Append(SecurityElectionCurrency).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -158,6 +168,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.UnitsRatio == input.UnitsRatio ||
                     (this.UnitsRatio != null &&
                     this.UnitsRatio.Equals(input.UnitsRatio))
+                ) && 
+                (
+                    this.SecurityElectionCurrency == input.SecurityElectionCurrency ||
+                    (this.SecurityElectionCurrency != null &&
+                    this.SecurityElectionCurrency.Equals(input.SecurityElectionCurrency))
                 );
         }
 
@@ -183,6 +198,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.UnitsRatio != null)
                 {
                     hashCode = (hashCode * 59) + this.UnitsRatio.GetHashCode();
+                }
+                if (this.SecurityElectionCurrency != null)
+                {
+                    hashCode = (hashCode * 59) + this.SecurityElectionCurrency.GetHashCode();
                 }
                 return hashCode;
             }

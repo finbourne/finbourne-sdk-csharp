@@ -7,6 +7,7 @@ Defines a Trigger Child Tasks Action
 |------|------|----------|-------------|
 | **Type** | **string** | Required | Type name for this Action |
 | **Trigger** | **string** | Required | Trigger on child tasks to be invoked |
+| **Filter** | **string** | Optional | Optional LUSID filter expression to limit the action to a subset of the child tasks |
 
 
 ## Usage
@@ -18,7 +19,8 @@ using Finbourne.Sdk.Services.Workflow.Model;
 
 var instance = new TriggerChildTasksAction(
     type: "...",  // required — Type name for this Action
-    trigger: "..."  // required — Trigger on child tasks to be invoked
+    trigger: "...",  // required — Trigger on child tasks to be invoked
+    filter: "..."  // optional — Optional LUSID filter expression to limit the action to a subset of the child tasks
 );
 ```
 ### Serializing to JSON

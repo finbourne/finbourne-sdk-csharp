@@ -24,6 +24,7 @@
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Required | *No description available.* |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. |
 | **LeaderNavTypeCode** | **string** | Optional | The code of the Nav Type that this Nav Type will follow when set. |
+| **DateOfLastPcaScan** | **DateTimeOffset?** | Optional | The last date a PCA scan was conducted for a Valuation Point |
 | **FundCalendarEntriesType** | **string** | Required | The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark. Default: `FundCalendarEntriesTypeEnum.FinalisedValuationPoint` |
 
 
@@ -53,6 +54,7 @@ var instance = new FinalisedValuationPoint(
     varVersion: new ModelVersion(...),  // required
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime.
     leaderNavTypeCode: "...",  // optional — The code of the Nav Type that this Nav Type will follow when set.
+    dateOfLastPcaScan: DateTimeOffset.Now,  // optional — The last date a PCA scan was conducted for a Valuation Point
     fundCalendarEntriesType: "..."  // required — The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark.
 );
 ```

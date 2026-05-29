@@ -196,6 +196,30 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfTransactionResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> ListRunTransactionsWithHttpInfo(string instanceId, string runId, string status, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="replayTransactionsRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ReplayTransactionsResponse</returns>
+        ReplayTransactionsResponse ReplayTransactions(string instanceId, ReplayTransactionsRequest replayTransactionsRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="replayTransactionsRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ReplayTransactionsResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<ReplayTransactionsResponse> ReplayTransactionsWithHttpInfo(string instanceId, ReplayTransactionsRequest replayTransactionsRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         #endregion Synchronous Operations
     }
 
@@ -401,6 +425,35 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfTransactionResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse>> ListRunTransactionsWithHttpInfoAsync(string instanceId, string runId, string status, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="replayTransactionsRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ReplayTransactionsResponse</returns>
+        System.Threading.Tasks.Task<ReplayTransactionsResponse> ReplayTransactionsAsync(string instanceId, ReplayTransactionsRequest replayTransactionsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="replayTransactionsRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ReplayTransactionsResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ReplayTransactionsResponse>> ReplayTransactionsWithHttpInfoAsync(string instanceId, ReplayTransactionsRequest replayTransactionsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         #endregion Asynchronous Operations
     }
 
@@ -2040,6 +2093,254 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListRunTransactions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="replayTransactionsRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ReplayTransactionsResponse</returns>
+        public ReplayTransactionsResponse ReplayTransactions(string instanceId, ReplayTransactionsRequest replayTransactionsRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ReplayTransactionsResponse> localVarResponse = ReplayTransactionsWithHttpInfo(instanceId, replayTransactionsRequest, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="replayTransactionsRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ReplayTransactionsResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ReplayTransactionsResponse> ReplayTransactionsWithHttpInfo(string instanceId, ReplayTransactionsRequest replayTransactionsRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->ReplayTransactions");
+            }
+
+            // verify the required parameter 'replayTransactionsRequest' is set
+            if (replayTransactionsRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'replayTransactionsRequest' when calling TradePublicationFrameworkApi->ReplayTransactions");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+            localVarRequestOptions.Data = replayTransactionsRequest;
+
+            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ReplayTransactions";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ReplayTransactionsResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/replay", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReplayTransactions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="replayTransactionsRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ReplayTransactionsResponse</returns>
+        public async System.Threading.Tasks.Task<ReplayTransactionsResponse> ReplayTransactionsAsync(string instanceId, ReplayTransactionsRequest replayTransactionsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ReplayTransactionsResponse> localVarResponse = await ReplayTransactionsWithHttpInfoAsync(instanceId, replayTransactionsRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="replayTransactionsRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ReplayTransactionsResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ReplayTransactionsResponse>> ReplayTransactionsWithHttpInfoAsync(string instanceId, ReplayTransactionsRequest replayTransactionsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->ReplayTransactions");
+            }
+
+            // verify the required parameter 'replayTransactionsRequest' is set
+            if (replayTransactionsRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'replayTransactionsRequest' when calling TradePublicationFrameworkApi->ReplayTransactions");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+            localVarRequestOptions.Data = replayTransactionsRequest;
+
+            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ReplayTransactions";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ReplayTransactionsResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/replay", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReplayTransactions", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

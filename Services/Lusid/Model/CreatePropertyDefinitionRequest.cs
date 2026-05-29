@@ -539,10 +539,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             TransactionFeeType = 84,
 
             /// <summary>
+            /// Enum AllocationMethod for value: AllocationMethod
+            /// </summary>
+            [EnumMember(Value = "AllocationMethod")]
+            AllocationMethod = 85,
+
+            /// <summary>
             /// Enum TransactionFee for value: TransactionFee
             /// </summary>
             [EnumMember(Value = "TransactionFee")]
-            TransactionFee = 85
+            TransactionFee = 86
         }
 
         /// <summary>

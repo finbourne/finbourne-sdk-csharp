@@ -11,6 +11,7 @@ All URIs are relative to *http://localhost*
 | [**ListInstancesWithStatus**](#listinstanceswithstatus) | **GET** `/horizon/api/trade-publication-framework/instances` | [EXPERIMENTAL] ListInstancesWithStatus: Lists all instances of the Trade Publication Framework (TPF). |
 | [**ListRunFiles**](#listrunfiles) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs/{runId}/files` | [EXPERIMENTAL] ListRunFiles: List Files in a run |
 | [**ListRunTransactions**](#listruntransactions) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs/{runId}/transactions` | [EXPERIMENTAL] ListRunTransactions: List Transactions in a run. |
+| [**ReplayTransactions**](#replaytransactions) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/replay` | [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance |
 
 ### Example
 
@@ -414,6 +415,65 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PagedResourceListOfTransactionResponse> response = apiInstance.ListRunTransactionsWithHttpInfo(instanceId, runId, status, page, pageSize);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="replaytransactions"></a>
+## ReplayTransactions
+
+> ReplayTransactionsResponse ReplayTransactions(string instanceId, ReplayTransactionsRequest replayTransactionsRequest)
+
+[EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
+var instanceId = "instanceId_example";  // string
+var replayTransactionsRequest = new ReplayTransactionsRequest(); // ReplayTransactionsRequest
+ReplayTransactionsResponse result = apiInstance.ReplayTransactions(instanceId, replayTransactionsRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **instanceId** | **string** | path | **required** |  |
+| **replayTransactionsRequest** | [ReplayTransactionsRequest](ReplayTransactionsRequest.md) | body | **required** |  |
+
+### Return type
+
+[ReplayTransactionsResponse](ReplayTransactionsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | The requested TPF instance does not exist. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ReplayTransactionsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ReplayTransactionsResponse> response = apiInstance.ReplayTransactionsWithHttpInfo(instanceId, replayTransactionsRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

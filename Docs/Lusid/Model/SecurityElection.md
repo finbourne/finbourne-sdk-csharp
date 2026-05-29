@@ -10,6 +10,7 @@ Security election for Events that result in equity
 | **IsDefault** | **bool** | Optional | Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided. |
 | **Price** | **decimal?** | Optional | Price per unit of the security. At least one of UnitsRatio or Price must be provided.  Price must non-zero. |
 | **UnitsRatio** | [UnitsRatio](UnitsRatio.md) | Optional | *No description available.* |
+| **SecurityElectionCurrency** | **string** | Optional | Optional currency in which the security election&#39;s price is denominated |
 
 
 ## Usage
@@ -24,7 +25,8 @@ var instance = new SecurityElection(
     isChosen: true,  // optional — Is this the election that has been explicitly chosen from multiple options.
     isDefault: true,  // optional — Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided.
     price: 0.0d,  // optional — Price per unit of the security. At least one of UnitsRatio or Price must be provided.  Price must non-zero.
-    unitsRatio: new UnitsRatio(...)  // optional
+    unitsRatio: new UnitsRatio(...),  // optional
+    securityElectionCurrency: "..."  // optional — Optional currency in which the security election&#39;s price is denominated
 );
 ```
 ### Serializing to JSON

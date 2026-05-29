@@ -876,7 +876,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getportfoliogroup"></a>
 ## GetPortfolioGroup
 
-> PortfolioGroup GetPortfolioGroup(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? relatedEntityPropertyKeys = null, List<string>? relationshipDefinitionIds = null)
+> PortfolioGroup GetPortfolioGroup(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? relatedEntityPropertyKeys = null, List<string>? relationshipDefinitionIds = null, List<string>? propertyKeys = null)
 
 GetPortfolioGroup: Get portfolio group
 
@@ -892,7 +892,8 @@ var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var relatedEntityPropertyKeys = new List<string>?(); // List<string>? (optional)
 var relationshipDefinitionIds = new List<string>?(); // List<string>? (optional)
-PortfolioGroup result = apiInstance.GetPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+PortfolioGroup result = apiInstance.GetPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -906,6 +907,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the portfolio group definition. Defaults to return              the latest version of the portfolio group definition if not specified. |
 | **relatedEntityPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
 | **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio group. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. |
 
 ### Return type
 
@@ -930,7 +932,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PortfolioGroup> response = apiInstance.GetPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds);
+ApiResponse<PortfolioGroup> response = apiInstance.GetPortfolioGroupWithHttpInfo(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1498,7 +1500,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listallportfoliogroups"></a>
 ## ListAllPortfolioGroups
 
-> PagedResourceListOfPortfolioGroup ListAllPortfolioGroups(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? relatedEntityPropertyKeys = null, List<string>? relationshipDefinitionIds = null)
+> PagedResourceListOfPortfolioGroup ListAllPortfolioGroups(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? relatedEntityPropertyKeys = null, List<string>? relationshipDefinitionIds = null, List<string>? propertyKeys = null)
 
 ListAllPortfolioGroups: List all portfolio groups
 
@@ -1516,7 +1518,8 @@ var filter = "filter_example";  // string? (optional)
 var sortBy = new List<string>?(); // List<string>? (optional)
 var relatedEntityPropertyKeys = new List<string>?(); // List<string>? (optional)
 var relationshipDefinitionIds = new List<string>?(); // List<string>? (optional)
-PagedResourceListOfPortfolioGroup result = apiInstance.ListAllPortfolioGroups(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfPortfolioGroup result = apiInstance.ListAllPortfolioGroups(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1532,6 +1535,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **relatedEntityPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
 | **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. |
 
 ### Return type
 
@@ -1556,7 +1560,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfPortfolioGroup> response = apiInstance.ListAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
+ApiResponse<PagedResourceListOfPortfolioGroup> response = apiInstance.ListAllPortfolioGroupsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1570,7 +1574,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listportfoliogroups"></a>
 ## ListPortfolioGroups
 
-> PagedResourceListOfPortfolioGroup ListPortfolioGroups(string scope, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? relatedEntityPropertyKeys = null, List<string>? relationshipDefinitionIds = null)
+> PagedResourceListOfPortfolioGroup ListPortfolioGroups(string scope, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? relatedEntityPropertyKeys = null, List<string>? relationshipDefinitionIds = null, List<string>? propertyKeys = null)
 
 ListPortfolioGroups: List portfolio groups
 
@@ -1589,7 +1593,8 @@ var filter = "filter_example";  // string? (optional)
 var sortBy = new List<string>?(); // List<string>? (optional)
 var relatedEntityPropertyKeys = new List<string>?(); // List<string>? (optional)
 var relationshipDefinitionIds = new List<string>?(); // List<string>? (optional)
-PagedResourceListOfPortfolioGroup result = apiInstance.ListPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfPortfolioGroup result = apiInstance.ListPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1606,6 +1611,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **relatedEntityPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
 | **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. |
 
 ### Return type
 
@@ -1630,7 +1636,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfPortfolioGroup> response = apiInstance.ListPortfolioGroupsWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds);
+ApiResponse<PagedResourceListOfPortfolioGroup> response = apiInstance.ListPortfolioGroupsWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

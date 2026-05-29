@@ -11,6 +11,7 @@
 | **Created** | **DateTimeOffset** | Optional | The effective datetime at which the portfolio group was created. No portfolios or sub groups can be added to the group before this date. |
 | **Portfolios** | [List&lt;ResourceId&gt;](ResourceId.md) | Optional | The collection of resource identifiers for the portfolios contained in the portfolio group. |
 | **SubGroups** | [List&lt;ResourceId&gt;](ResourceId.md) | Optional | The collection of resource identifiers for the portfolio groups contained in the portfolio group as sub groups. |
+| **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A collection of properties from the &#39;PortfolioGroup&#39; domain decorating the portfolio group. Returned only when the request specifies propertyKeys. |
 | **Relationships** | [List&lt;Relationship&gt;](Relationship.md) | Optional | A set of relationships associated to the portfolio group. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
@@ -31,6 +32,7 @@ var instance = new PortfolioGroup(
     created: DateTimeOffset.Now,  // optional — The effective datetime at which the portfolio group was created. No portfolios or sub groups can be added to the group before this date.
     portfolios: new List<ResourceId>(),  // optional — The collection of resource identifiers for the portfolios contained in the portfolio group.
     subGroups: new List<ResourceId>(),  // optional — The collection of resource identifiers for the portfolio groups contained in the portfolio group as sub groups.
+    properties: new Property(...),  // optional — A collection of properties from the &#39;PortfolioGroup&#39; domain decorating the portfolio group. Returned only when the request specifies propertyKeys.
     relationships: new List<Relationship>(),  // optional — A set of relationships associated to the portfolio group.
     varVersion: new ModelVersion(...),  // optional
     links: new List<Link>()  // optional
@@ -51,6 +53,7 @@ var instance = JsonConvert.DeserializeObject<PortfolioGroup>(json);
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md) — used in `Portfolios`
 - [ResourceId](ResourceId.md) — used in `SubGroups`
+- [Property](Property.md) — used in `Properties`
 - [Relationship](Relationship.md) — used in `Relationships`
 - [ModelVersion](ModelVersion.md)
 - [Link](Link.md)

@@ -42,10 +42,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="created">The effective datetime at which the portfolio group was created. No portfolios or sub groups can be added to the group before this date..</param>
         /// <param name="portfolios">The collection of resource identifiers for the portfolios contained in the portfolio group..</param>
         /// <param name="subGroups">The collection of resource identifiers for the portfolio groups contained in the portfolio group as sub groups..</param>
+        /// <param name="properties">A collection of properties from the &#39;PortfolioGroup&#39; domain decorating the portfolio group. Returned only when the request specifies propertyKeys..</param>
         /// <param name="relationships">A set of relationships associated to the portfolio group..</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="links">links.</param>
-        public PortfolioGroup(string href = default(string), ResourceId id = default(ResourceId), string displayName = default(string), string description = default(string), DateTimeOffset created = default(DateTimeOffset), List<ResourceId> portfolios = default(List<ResourceId>), List<ResourceId> subGroups = default(List<ResourceId>), List<Relationship> relationships = default(List<Relationship>), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
+        public PortfolioGroup(string href = default(string), ResourceId id = default(ResourceId), string displayName = default(string), string description = default(string), DateTimeOffset created = default(DateTimeOffset), List<ResourceId> portfolios = default(List<ResourceId>), List<ResourceId> subGroups = default(List<ResourceId>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), List<Relationship> relationships = default(List<Relationship>), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -64,6 +65,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Created = created;
             this.Portfolios = portfolios;
             this.SubGroups = subGroups;
+            this.Properties = properties;
             this.Relationships = relationships;
             this.VarVersion = varVersion;
             this.Links = links;
@@ -118,6 +120,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<ResourceId> SubGroups { get; set; }
 
         /// <summary>
+        /// A collection of properties from the &#39;PortfolioGroup&#39; domain decorating the portfolio group. Returned only when the request specifies propertyKeys.
+        /// </summary>
+        /// <value>A collection of properties from the &#39;PortfolioGroup&#39; domain decorating the portfolio group. Returned only when the request specifies propertyKeys.</value>
+        [DataMember(Name = "properties", EmitDefaultValue = true)]
+        public Dictionary<string, Property> Properties { get; set; }
+
+        /// <summary>
         /// A set of relationships associated to the portfolio group.
         /// </summary>
         /// <value>A set of relationships associated to the portfolio group.</value>
@@ -151,6 +160,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Portfolios: ").Append(Portfolios).Append("\n");
             sb.Append("  SubGroups: ").Append(SubGroups).Append("\n");
+            sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  Relationships: ").Append(Relationships).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
@@ -227,6 +237,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.SubGroups.SequenceEqual(input.SubGroups)
                 ) && 
                 (
+                    this.Properties == input.Properties ||
+                    this.Properties != null &&
+                    input.Properties != null &&
+                    this.Properties.SequenceEqual(input.Properties)
+                ) && 
+                (
                     this.Relationships == input.Relationships ||
                     this.Relationships != null &&
                     input.Relationships != null &&
@@ -281,6 +297,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.SubGroups != null)
                 {
                     hashCode = (hashCode * 59) + this.SubGroups.GetHashCode();
+                }
+                if (this.Properties != null)
+                {
+                    hashCode = (hashCode * 59) + this.Properties.GetHashCode();
                 }
                 if (this.Relationships != null)
                 {
