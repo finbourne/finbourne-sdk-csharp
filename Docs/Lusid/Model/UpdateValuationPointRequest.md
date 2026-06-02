@@ -5,12 +5,12 @@ A definition for the period you wish to close
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **DiaryEntryCode** | **string** | Required | Unique code for the Valuation Point. |
-| **DiaryEntryVariant** | **string** | Required | Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates. |
+| **ValuationPointCode** | **string** | Required | Unique code for the Valuation Point. |
+| **Variant** | **string** | Optional | Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates. |
 | **Name** | **string** | Optional | Identifiable Name assigned to the Valuation Point. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the diary entry. |
-| **ApplyClearDown** | **bool?** | Optional | Defaults to false. Set to true if you want that the closed period to have the clear down applied. |
-| **UpdateInclusionDateNavAdjustments** | **bool?** | Optional | Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities. |
+| **ApplyClearDown** | **bool?** | Optional | Defaults to null. Set to true if you want the closed period to have the clear down applied. |
+| **UpdateInclusionDateNavAdjustments** | **bool?** | Optional | Defaults to null. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities. |
 
 
 ## Usage
@@ -21,12 +21,12 @@ A definition for the period you wish to close
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new UpdateValuationPointRequest(
-    diaryEntryCode: "...",  // required — Unique code for the Valuation Point.
-    diaryEntryVariant: "...",  // required — Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates.
+    valuationPointCode: "...",  // required — Unique code for the Valuation Point.
+    variant: "...",  // optional — Optional variant code. Only required when it is necessary to choose between scenarios with multiple estimates.
     name: "...",  // optional — Identifiable Name assigned to the Valuation Point.
     properties: new Property(...),  // optional — A set of properties for the diary entry.
-    applyClearDown: true,  // optional — Defaults to false. Set to true if you want that the closed period to have the clear down applied.
-    updateInclusionDateNavAdjustments: true  // optional — Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities.
+    applyClearDown: true,  // optional — Defaults to null. Set to true if you want the closed period to have the clear down applied.
+    updateInclusionDateNavAdjustments: true  // optional — Defaults to null. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities.
 );
 ```
 ### Serializing to JSON

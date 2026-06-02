@@ -11,6 +11,7 @@ All URIs are relative to *http://localhost*
 | [**CreateFee**](#createfee) | **POST** `/api/api/funds/{scope}/{code}/fees` | [EXPERIMENTAL] CreateFee: Create a Fee. |
 | [**CreateFund**](#createfund) | **POST** `/api/api/funds/{scope}` | [EXPERIMENTAL] CreateFund: Create a Fund. |
 | [**CreateFundV2**](#createfundv2) | **POST** `/api/api/funds/v2/{scope}` | [EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview). |
+| [**CreateValuationPoint**](#createvaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$create` | [EXPERIMENTAL] CreateValuationPoint: Create a Valuation Point. |
 | [**DeactivateNavTypes**](#deactivatenavtypes) | **POST** `/api/api/funds/{scope}/{code}/deactivateNavTypes` | [EXPERIMENTAL] DeactivateNavTypes: Deactivate NAV types on a Fund. |
 | [**DeleteBookmark**](#deletebookmark) | **DELETE** `/api/api/funds/{scope}/{code}/bookmarks/{bookmarkCode}` | [EXPERIMENTAL] DeleteBookmark: Delete a Bookmark. |
 | [**DeleteFee**](#deletefee) | **DELETE** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EXPERIMENTAL] DeleteFee: Delete a Fee. |
@@ -456,6 +457,70 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<Fund> response = apiInstance.CreateFundV2WithHttpInfo(scope, fundDefinitionRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="createvaluationpoint"></a>
+## CreateValuationPoint
+
+> ValuationPoint CreateValuationPoint(string scope, string code, CreateValuationPointRequest createValuationPointRequest, string? navTypeCode = null)
+
+[EXPERIMENTAL] CreateValuationPoint: Create a Valuation Point.
+
+Insert the estimate Valuation Point.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var createValuationPointRequest = new CreateValuationPointRequest(); // CreateValuationPointRequest
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+ValuationPoint result = apiInstance.CreateValuationPoint(scope, code, createValuationPointRequest, navTypeCode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **createValuationPointRequest** | [CreateValuationPointRequest](CreateValuationPointRequest.md) | body | **required** | The Valuation Point Estimate definition to create. |
+| **navTypeCode** | **string?** | query | optional | When provided, creates the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. |
+
+### Return type
+
+[ValuationPoint](ValuationPoint.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The created estimated Valuation Point |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the CreateValuationPointWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ValuationPoint> response = apiInstance.CreateValuationPointWithHttpInfo(scope, code, createValuationPointRequest, navTypeCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2825,7 +2890,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="updatevaluationpoint"></a>
 ## UpdateValuationPoint
 
-> DiaryEntry UpdateValuationPoint(string scope, string code, UpdateValuationPointRequest updateValuationPointRequest, string? navTypeCode = null)
+> ValuationPoint UpdateValuationPoint(string scope, string code, UpdateValuationPointRequest updateValuationPointRequest, string? navTypeCode = null)
 
 [EXPERIMENTAL] UpdateValuationPoint: Update a Valuation Point.
 
@@ -2839,7 +2904,7 @@ var scope = "scope_example";  // string
 var code = "code_example";  // string
 var updateValuationPointRequest = new UpdateValuationPointRequest(); // UpdateValuationPointRequest
 var navTypeCode = "navTypeCode_example";  // string? (optional)
-DiaryEntry result = apiInstance.UpdateValuationPoint(scope, code, updateValuationPointRequest, navTypeCode);
+ValuationPoint result = apiInstance.UpdateValuationPoint(scope, code, updateValuationPointRequest, navTypeCode);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -2854,7 +2919,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DiaryEntry](DiaryEntry.md)
+[ValuationPoint](ValuationPoint.md)
 
 ### HTTP request headers
 
@@ -2876,7 +2941,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<DiaryEntry> response = apiInstance.UpdateValuationPointWithHttpInfo(scope, code, updateValuationPointRequest, navTypeCode);
+ApiResponse<ValuationPoint> response = apiInstance.UpdateValuationPointWithHttpInfo(scope, code, updateValuationPointRequest, navTypeCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

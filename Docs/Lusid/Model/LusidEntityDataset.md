@@ -7,7 +7,7 @@ Contains the run-time parameters that are appropriate for check definitions  wit
 |------|------|----------|-------------|
 | **AsAt** | **DateTimeOffset?** | Optional | The asAt date to fetch the data. Nullable. Defaults to latest. |
 | **EffectiveAt** | **DateTimeOffset?** | Optional | The effectiveAt date to fetch the data. Nullable. Defaults to latest. |
-| **Scope** | **string** | Optional | The scope of the entities to check. Required. |
+| **Scope** | **string** | Optional | The scope of the entities to check. Required for scoped entity types (Instrument, Portfolio).  Must not be provided for unscoped entity types (LegalEntity). |
 | **AsAtModifiedSince** | **DateTimeOffset?** | Optional | Nullable. Filters the dataset for version.asAtModified greater than or equal to this value. |
 | **SelectorAttribute** | **string** | Optional | An attribute (field name, propertyKey or identifierKey) to use to sub-divide the dataset. |
 | **SelectorValue** | **string** | Optional | The value of the above attribute used to sub-divide the dataset. |
@@ -24,7 +24,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new LusidEntityDataset(
     asAt: DateTimeOffset.Now,  // optional — The asAt date to fetch the data. Nullable. Defaults to latest.
     effectiveAt: DateTimeOffset.Now,  // optional — The effectiveAt date to fetch the data. Nullable. Defaults to latest.
-    scope: "...",  // optional — The scope of the entities to check. Required.
+    scope: "...",  // optional — The scope of the entities to check. Required for scoped entity types (Instrument, Portfolio).  Must not be provided for unscoped entity types (LegalEntity).
     asAtModifiedSince: DateTimeOffset.Now,  // optional — Nullable. Filters the dataset for version.asAtModified greater than or equal to this value.
     selectorAttribute: "...",  // optional — An attribute (field name, propertyKey or identifierKey) to use to sub-divide the dataset.
     selectorValue: "...",  // optional — The value of the above attribute used to sub-divide the dataset.

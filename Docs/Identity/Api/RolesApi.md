@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 | [**CreateRole**](#createrole) | **POST** `/identity/api/roles` | CreateRole: Create Role |
 | [**DeleteRole**](#deleterole) | **DELETE** `/identity/api/roles/{id}` | DeleteRole: Delete Role |
 | [**GetRole**](#getrole) | **GET** `/identity/api/roles/{id}` | GetRole: Get Role |
+| [**GetRoleByCode**](#getrolebycode) | **GET** `/identity/api/roles/byCode/{code}` | GetRoleByCode: Get Role By Code |
 | [**ListRoles**](#listroles) | **GET** `/identity/api/roles` | ListRoles: List Roles |
 | [**ListUsersInRole**](#listusersinrole) | **GET** `/identity/api/roles/{id}/users` | ListUsersInRole: Get the users in the specified role. |
 | [**RemoveUserFromRole**](#removeuserfromrole) | **DELETE** `/identity/api/roles/{id}/users/{userId}` | RemoveUserFromRole: Remove User from Role |
@@ -275,6 +276,67 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<RoleResponse> response = apiInstance.GetRoleWithHttpInfo(id);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getrolebycode"></a>
+## GetRoleByCode
+
+> RoleResponse GetRoleByCode(string code, string? scope = null)
+
+GetRoleByCode: Get Role By Code
+
+Get the specified role by its code, optionally scoped. Scope defaults to \"default\". The \"code\" is the same value supplied as \"name\" when the role was created via CreateRole.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RolesApi>();
+var code = "code_example";  // string
+var scope = "\"default\"";  // string? (optional)
+RoleResponse result = apiInstance.GetRoleByCode(code, scope);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **code** | **string** | path | **required** | The role code (the value supplied as \&quot;name\&quot; when the role was created). |
+| **scope** | **string?** | query | optional | The scope the role lives in. Defaults to \&quot;default\&quot;. Default: `&quot;default&quot;` |
+
+### Return type
+
+[RoleResponse](RoleResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Get the specified role |  -  |
+| **404** | Not Found |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetRoleByCodeWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<RoleResponse> response = apiInstance.GetRoleByCodeWithHttpInfo(code, scope);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

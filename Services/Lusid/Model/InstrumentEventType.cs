@@ -464,7 +464,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum DrawingEvent for value: DrawingEvent
         /// </summary>
         [EnumMember(Value = "DrawingEvent")]
-        DrawingEvent = 73
+        DrawingEvent = 73,
+
+        /// <summary>
+        /// Enum CapitalGainsDistributionEvent for value: CapitalGainsDistributionEvent
+        /// </summary>
+        [EnumMember(Value = "CapitalGainsDistributionEvent")]
+        CapitalGainsDistributionEvent = 74,
+
+        /// <summary>
+        /// Enum ExchangeOfferEvent for value: ExchangeOfferEvent
+        /// </summary>
+        [EnumMember(Value = "ExchangeOfferEvent")]
+        ExchangeOfferEvent = 75
     }
 
 }
