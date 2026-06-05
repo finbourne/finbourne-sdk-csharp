@@ -11,7 +11,7 @@
 | **EffectiveTo** | **DateTimeOffset** | Required | The effective time of the current Valuation Point. |
 | **QueryAsAt** | **DateTimeOffset** | Optional | The query time of the Valuation Point. Defaults to latest. |
 | **Type** | **string** | Required | The type of the diary entry. This is &#39;ValuationPoint&#39;. Available values: PeriodBoundary, ValuationPoint, Other. |
-| **Status** | **string** | Required | The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial. |
+| **Status** | **string** | Required | The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial, Rejected. |
 | **Gav** | **decimal** | Required | The Gross Asset Value of the Fund or Share Class at the Valuation Point. This is effectively a summation of all Trial balance entries linked to accounts of types &#39;Asset&#39; and &#39;Liabilities&#39;. |
 | **Nav** | **decimal** | Required | The Net Asset Value of the Fund or Share Class at the Valuation Point. This represents the GAV with any fees applied in the period. |
 | **HoldingsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt. |
@@ -35,7 +35,7 @@ var instance = new ValuationPointOverview(
     effectiveTo: DateTimeOffset.Now,  // required — The effective time of the current Valuation Point.
     queryAsAt: DateTimeOffset.Now,  // optional — The query time of the Valuation Point. Defaults to latest.
     type: "...",  // required — The type of the diary entry. This is &#39;ValuationPoint&#39;. Available values: PeriodBoundary, ValuationPoint, Other.
-    status: "...",  // required — The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
+    status: "...",  // required — The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial, Rejected.
     gav: 0.0d,  // required — The Gross Asset Value of the Fund or Share Class at the Valuation Point. This is effectively a summation of all Trial balance entries linked to accounts of types &#39;Asset&#39; and &#39;Liabilities&#39;.
     nav: 0.0d,  // required — The Net Asset Value of the Fund or Share Class at the Valuation Point. This represents the GAV with any fees applied in the period.
     holdingsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt.

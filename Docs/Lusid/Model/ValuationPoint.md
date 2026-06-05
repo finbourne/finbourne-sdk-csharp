@@ -8,7 +8,7 @@
 | **ValuationPointCode** | **string** | Optional | The code of the Valuation Point. |
 | **Variant** | **string** | Optional | The Variant name for the Valuation Point. |
 | **Name** | **string** | Optional | Identifiable Name assigned to the Valuation Point. |
-| **Status** | **string** | Required | The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial. |
+| **Status** | **string** | Required | The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial, Rejected. |
 | **ApplyClearDown** | **bool** | Optional | Indicates whether a clear down was applied when the Valuation Point was created. |
 | **EffectiveAt** | **DateTimeOffset** | Required | The effective time of the Valuation Point. |
 | **QueryAsAt** | **DateTimeOffset** | Optional | The AsAt time of the Valuation Point. This is the AsAt time that will be used when requests are made using the entry. |
@@ -32,7 +32,7 @@ var instance = new ValuationPoint(
     valuationPointCode: "...",  // optional — The code of the Valuation Point.
     variant: "...",  // optional — The Variant name for the Valuation Point.
     name: "...",  // optional — Identifiable Name assigned to the Valuation Point.
-    status: "...",  // required — The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial.
+    status: "...",  // required — The status of the Valuation Point. Available values: Undefined, Estimate, Final, Candidate, Unofficial, Rejected.
     applyClearDown: true,  // optional — Indicates whether a clear down was applied when the Valuation Point was created.
     effectiveAt: DateTimeOffset.Now,  // required — The effective time of the Valuation Point.
     queryAsAt: DateTimeOffset.Now,  // optional — The AsAt time of the Valuation Point. This is the AsAt time that will be used when requests are made using the entry.

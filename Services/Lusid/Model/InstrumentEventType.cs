@@ -476,7 +476,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum ExchangeOfferEvent for value: ExchangeOfferEvent
         /// </summary>
         [EnumMember(Value = "ExchangeOfferEvent")]
-        ExchangeOfferEvent = 75
+        ExchangeOfferEvent = 75,
+
+        /// <summary>
+        /// Enum DutchAuctionEvent for value: DutchAuctionEvent
+        /// </summary>
+        [EnumMember(Value = "DutchAuctionEvent")]
+        DutchAuctionEvent = 76
     }
 
 }

@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost*
 | [**ExpirePassword**](#expirepassword) | **POST** `/identity/api/users/{id}/lifecycle/$expirepassword` | ExpirePassword: Reset the user&#39;s password to a temporary one |
 | [**FindUsersById**](#findusersbyid) | **GET** `/identity/api/directory` | FindUsersById: Find users by id endpoint |
 | [**GetUser**](#getuser) | **GET** `/identity/api/users/{id}` | GetUser: Get User |
+| [**GetUserFromLogin**](#getuserfromlogin) | **GET** `/identity/api/users/fromlogin/{login}` | GetUserFromLogin: Get User From Login |
 | [**GetUserSchema**](#getuserschema) | **GET** `/identity/api/users/schema` | [EARLY ACCESS] GetUserSchema: Get User Schema |
 | [**ListRunnableUsers**](#listrunnableusers) | **GET** `/identity/api/users/$runnable` | [EARLY ACCESS] ListRunnableUsers: List Runable Users |
 | [**ListUsers**](#listusers) | **GET** `/identity/api/users` | ListUsers: List Users |
@@ -345,6 +346,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<UserResponse> response = apiInstance.GetUserWithHttpInfo(id, includeRoles);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getuserfromlogin"></a>
+## GetUserFromLogin
+
+> UserResponse GetUserFromLogin(string login)
+
+GetUserFromLogin: Get User From Login
+
+Get the userId of a specified User
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<UsersApi>();
+var login = "login_example";  // string
+UserResponse result = apiInstance.GetUserFromLogin(login);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **login** | **string** | path | **required** | The unique login for the User |
+
+### Return type
+
+[UserResponse](UserResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Get the specified user from login |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetUserFromLoginWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<UserResponse> response = apiInstance.GetUserFromLoginWithHttpInfo(login);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

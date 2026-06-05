@@ -44,6 +44,7 @@ A list of output transactions.
 | **SequencePriority** | **int?** | Optional | The calculated priority level for this transaction. |
 | **SettlementSummary** | [TransactionSettlementSummary](TransactionSettlementSummary.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -92,7 +93,8 @@ var instance = new OutputTransaction(
     sequence: 0,  // optional — The sequential position in which this transaction was processed.
     sequencePriority: 0,  // optional — The calculated priority level for this transaction.
     settlementSummary: new TransactionSettlementSummary(...),  // optional
-    varVersion: new ModelVersion(...)  // optional
+    varVersion: new ModelVersion(...),  // optional
+    stagedModifications: new StagedModificationsInfo(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -120,6 +122,7 @@ var instance = JsonConvert.DeserializeObject<OutputTransaction>(json);
 - [DataModelMembership](DataModelMembership.md)
 - [TransactionSettlementSummary](TransactionSettlementSummary.md)
 - [ModelVersion](ModelVersion.md)
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

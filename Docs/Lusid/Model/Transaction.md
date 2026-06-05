@@ -32,6 +32,7 @@ A list of transactions.
 | **ResolvedTransactionTypeDetails** | [TransactionTypeDetails](TransactionTypeDetails.md) | Optional | *No description available.* |
 | **DataModelMembership** | [DataModelMembership](DataModelMembership.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -68,7 +69,8 @@ var instance = new Transaction(
     strategyTag: new List<Strategy>(),  // optional — A list of strategies representing the allocation of units across multiple sub-holding keys
     resolvedTransactionTypeDetails: new TransactionTypeDetails(...),  // optional
     dataModelMembership: new DataModelMembership(...),  // optional
-    varVersion: new ModelVersion(...)  // optional
+    varVersion: new ModelVersion(...),  // optional
+    stagedModifications: new StagedModificationsInfo(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -94,6 +96,7 @@ var instance = JsonConvert.DeserializeObject<Transaction>(json);
 - [TransactionTypeDetails](TransactionTypeDetails.md)
 - [DataModelMembership](DataModelMembership.md)
 - [ModelVersion](ModelVersion.md)
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
