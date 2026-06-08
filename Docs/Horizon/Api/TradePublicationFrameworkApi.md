@@ -12,6 +12,7 @@ All URIs are relative to *http://localhost*
 | [**ListRunFiles**](#listrunfiles) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs/{runId}/files` | [EXPERIMENTAL] ListRunFiles: List Files in a run |
 | [**ListRunTransactions**](#listruntransactions) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs/{runId}/transactions` | [EXPERIMENTAL] ListRunTransactions: List Transactions in a run. |
 | [**ReplayTransactions**](#replaytransactions) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/replay` | [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance |
+| [**RetryTpfSftpDelivery**](#retrytpfsftpdelivery) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/files/{fileId}/retry-sftp` | [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file |
 
 ### Example
 
@@ -474,6 +475,66 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ReplayTransactionsResponse> response = apiInstance.ReplayTransactionsWithHttpInfo(instanceId, replayTransactionsRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="retrytpfsftpdelivery"></a>
+## RetryTpfSftpDelivery
+
+> TpfRetrySftpResponse RetryTpfSftpDelivery(string instanceId, long fileId)
+
+[EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
+var instanceId = "instanceId_example";  // string
+var fileId = 789L;  // long
+TpfRetrySftpResponse result = apiInstance.RetryTpfSftpDelivery(instanceId, fileId);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **instanceId** | **string** | path | **required** | Integration instance ID |
+| **fileId** | **long** | path | **required** | File delivery ID to retry |
+
+### Return type
+
+[TpfRetrySftpResponse](TpfRetrySftpResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Retry succeeded - file re-sent to SFTP |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | File delivery record not found |  -  |
+| **409** | Duplicate file detected - same hash already delivered to destination |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the RetryTpfSftpDeliveryWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<TpfRetrySftpResponse> response = apiInstance.RetryTpfSftpDeliveryWithHttpInfo(instanceId, fileId);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
