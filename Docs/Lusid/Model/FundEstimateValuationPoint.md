@@ -16,7 +16,6 @@
 | **ApplyClearDown** | **bool** | Optional | Set to true if that closed period should have the clear down applied. |
 | **LeaderNavTypeCode** | **string** | Optional | The code of the Nav Type that this Nav Type will follow when set. |
 | **Variants** | [List&lt;EstimateVariant&gt;](EstimateVariant.md) | Optional | The variants of the Estimate Valuation Point.  |
-| **DateOfLastPcaScan** | **DateTimeOffset?** | Optional | The last date a PCA scan was conducted for a Valuation Point |
 | **FundCalendarEntriesType** | **string** | Required | The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark. Default: `FundCalendarEntriesTypeEnum.FundEstimateValuationPoint` |
 
 
@@ -38,7 +37,6 @@ var instance = new FundEstimateValuationPoint(
     applyClearDown: true,  // optional — Set to true if that closed period should have the clear down applied.
     leaderNavTypeCode: "...",  // optional — The code of the Nav Type that this Nav Type will follow when set.
     variants: new List<EstimateVariant>(),  // optional — The variants of the Estimate Valuation Point. 
-    dateOfLastPcaScan: DateTimeOffset.Now,  // optional — The last date a PCA scan was conducted for a Valuation Point
     fundCalendarEntriesType: "..."  // required — The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark.
 );
 ```

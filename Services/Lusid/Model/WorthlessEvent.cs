@@ -23,75 +23,52 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// Mandatory partial bond redemption (DRAW) where the issuer lottery-selects specific bonds for early redemption.  The affected face amount (AFFB) is pre-determined externally from the vendor notification and supplied on the event.
+    /// Mandatory corporate action that removes a security holding from the portfolio at zero proceeds (zero-recovery write-off, WRTH).  The full eligible holding is debited on the PaymentDate; no cash is received and no new security is credited.
     /// </summary>
-    [DataContract(Name = "DrawingEvent")]
+    [DataContract(Name = "WorthlessEvent")]
     [JsonConverter(typeof(JsonSubtypes), "InstrumentEventType")]
-    public partial class DrawingEvent : InstrumentEvent, IEquatable<DrawingEvent>, IValidatableObject
+    public partial class WorthlessEvent : InstrumentEvent, IEquatable<WorthlessEvent>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DrawingEvent" /> class.
+        /// Initializes a new instance of the <see cref="WorthlessEvent" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected DrawingEvent() { }
+        protected WorthlessEvent() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="DrawingEvent" /> class.
+        /// Initializes a new instance of the <see cref="WorthlessEvent" /> class.
         /// </summary>
-        /// <param name="paymentDate">Date the cash actually flows for the drawn portion of the holding..</param>
-        /// <param name="effectiveDate">Lottery Date (&#x3D; Record Date). Holdings are snapshotted at the close of this date to determine the affected balance..</param>
-        /// <param name="affectedAmount">Affected face amount (AFFB) — the lottery-selected portion of the holding that is redeemed. Must be strictly positive. (required).</param>
-        /// <param name="pricePerUnit">Redemption price per unit (OFFR / 100). Clean price convention.  Optional: AFFB is typically known before the issuer publishes OFFR, so a null price is permitted on upsert..</param>
-        /// <param name="currency">Settlement currency for the redemption. (required).</param>
+        /// <param name="recordDate">Positions are struck at close of business on this date to determine eligible holdings..</param>
+        /// <param name="paymentDate">The date the security debit is processed in LUSID; no cash payment is associated. Must be &gt;&#x3D; RecordDate..</param>
+        /// <param name="announcementDate">The date the issuer or agent announces the write-off. Optional — null when no separate announcement date is provided.  When populated, must be &lt;&#x3D; RecordDate..</param>
         /// <param name="instrumentEventType">The Type of Event. Available values: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent, CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent, BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent, MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent, IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent, OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent, TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent, AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent, LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent, DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent, RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent, FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent, ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent, CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent, ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent. (required) (default to InstrumentEventTypeEnum.TransitionEvent).</param>
-        public DrawingEvent(DateTimeOffset paymentDate = default(DateTimeOffset), DateTimeOffset effectiveDate = default(DateTimeOffset), decimal affectedAmount = default(decimal), decimal? pricePerUnit = default(decimal?), string currency = default(string), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
+        public WorthlessEvent(DateTimeOffset recordDate = default(DateTimeOffset), DateTimeOffset paymentDate = default(DateTimeOffset), DateTimeOffset? announcementDate = default(DateTimeOffset?), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
         {
-            this.AffectedAmount = affectedAmount;
-            // to ensure "currency" is required (not null)
-            if (currency == null)
-            {
-                throw new ArgumentNullException("currency is a required property for DrawingEvent and cannot be null");
-            }
-            this.Currency = currency;
             this.InstrumentEventType = instrumentEventType;
+            this.RecordDate = recordDate;
             this.PaymentDate = paymentDate;
-            this.EffectiveDate = effectiveDate;
-            this.PricePerUnit = pricePerUnit;
+            this.AnnouncementDate = announcementDate;
         }
 
         /// <summary>
-        /// Date the cash actually flows for the drawn portion of the holding.
+        /// Positions are struck at close of business on this date to determine eligible holdings.
         /// </summary>
-        /// <value>Date the cash actually flows for the drawn portion of the holding.</value>
+        /// <value>Positions are struck at close of business on this date to determine eligible holdings.</value>
+        [DataMember(Name = "recordDate", EmitDefaultValue = false)]
+        public DateTimeOffset RecordDate { get; set; }
+
+        /// <summary>
+        /// The date the security debit is processed in LUSID; no cash payment is associated. Must be &gt;&#x3D; RecordDate.
+        /// </summary>
+        /// <value>The date the security debit is processed in LUSID; no cash payment is associated. Must be &gt;&#x3D; RecordDate.</value>
         [DataMember(Name = "paymentDate", EmitDefaultValue = false)]
         public DateTimeOffset PaymentDate { get; set; }
 
         /// <summary>
-        /// Lottery Date (&#x3D; Record Date). Holdings are snapshotted at the close of this date to determine the affected balance.
+        /// The date the issuer or agent announces the write-off. Optional — null when no separate announcement date is provided.  When populated, must be &lt;&#x3D; RecordDate.
         /// </summary>
-        /// <value>Lottery Date (&#x3D; Record Date). Holdings are snapshotted at the close of this date to determine the affected balance.</value>
-        [DataMember(Name = "effectiveDate", EmitDefaultValue = false)]
-        public DateTimeOffset EffectiveDate { get; set; }
-
-        /// <summary>
-        /// Affected face amount (AFFB) — the lottery-selected portion of the holding that is redeemed. Must be strictly positive.
-        /// </summary>
-        /// <value>Affected face amount (AFFB) — the lottery-selected portion of the holding that is redeemed. Must be strictly positive.</value>
-        [DataMember(Name = "affectedAmount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal AffectedAmount { get; set; }
-
-        /// <summary>
-        /// Redemption price per unit (OFFR / 100). Clean price convention.  Optional: AFFB is typically known before the issuer publishes OFFR, so a null price is permitted on upsert.
-        /// </summary>
-        /// <value>Redemption price per unit (OFFR / 100). Clean price convention.  Optional: AFFB is typically known before the issuer publishes OFFR, so a null price is permitted on upsert.</value>
-        [DataMember(Name = "pricePerUnit", EmitDefaultValue = true)]
-        public decimal? PricePerUnit { get; set; }
-
-        /// <summary>
-        /// Settlement currency for the redemption.
-        /// </summary>
-        /// <value>Settlement currency for the redemption.</value>
-        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
-        public string Currency { get; set; }
+        /// <value>The date the issuer or agent announces the write-off. Optional — null when no separate announcement date is provided.  When populated, must be &lt;&#x3D; RecordDate.</value>
+        [DataMember(Name = "announcementDate", EmitDefaultValue = true)]
+        public DateTimeOffset? AnnouncementDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,13 +77,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DrawingEvent {\n");
+            sb.Append("class WorthlessEvent {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
+            sb.Append("  RecordDate: ").Append(RecordDate).Append("\n");
             sb.Append("  PaymentDate: ").Append(PaymentDate).Append("\n");
-            sb.Append("  EffectiveDate: ").Append(EffectiveDate).Append("\n");
-            sb.Append("  AffectedAmount: ").Append(AffectedAmount).Append("\n");
-            sb.Append("  PricePerUnit: ").Append(PricePerUnit).Append("\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  AnnouncementDate: ").Append(AnnouncementDate).Append("\n");
             sb.Append("  InstrumentEventType: ").Append(InstrumentEventType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -128,15 +103,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DrawingEvent);
+            return this.Equals(input as WorthlessEvent);
         }
 
         /// <summary>
-        /// Returns true if DrawingEvent instances are equal
+        /// Returns true if WorthlessEvent instances are equal
         /// </summary>
-        /// <param name="input">Instance of DrawingEvent to be compared</param>
+        /// <param name="input">Instance of WorthlessEvent to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DrawingEvent input)
+        public bool Equals(WorthlessEvent input)
         {
             if (input == null)
             {
@@ -144,28 +119,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             return base.Equals(input) && 
                 (
+                    this.RecordDate == input.RecordDate ||
+                    (this.RecordDate != null &&
+                    this.RecordDate.Equals(input.RecordDate))
+                ) && base.Equals(input) && 
+                (
                     this.PaymentDate == input.PaymentDate ||
                     (this.PaymentDate != null &&
                     this.PaymentDate.Equals(input.PaymentDate))
                 ) && base.Equals(input) && 
                 (
-                    this.EffectiveDate == input.EffectiveDate ||
-                    (this.EffectiveDate != null &&
-                    this.EffectiveDate.Equals(input.EffectiveDate))
-                ) && base.Equals(input) && 
-                (
-                    this.AffectedAmount == input.AffectedAmount ||
-                    this.AffectedAmount.Equals(input.AffectedAmount)
-                ) && base.Equals(input) && 
-                (
-                    this.PricePerUnit == input.PricePerUnit ||
-                    (this.PricePerUnit != null &&
-                    this.PricePerUnit.Equals(input.PricePerUnit))
-                ) && base.Equals(input) && 
-                (
-                    this.Currency == input.Currency ||
-                    (this.Currency != null &&
-                    this.Currency.Equals(input.Currency))
+                    this.AnnouncementDate == input.AnnouncementDate ||
+                    (this.AnnouncementDate != null &&
+                    this.AnnouncementDate.Equals(input.AnnouncementDate))
                 ) && base.Equals(input) && 
                 (
                     this.InstrumentEventType == input.InstrumentEventType ||
@@ -182,22 +148,17 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = base.GetHashCode();
+                if (this.RecordDate != null)
+                {
+                    hashCode = (hashCode * 59) + this.RecordDate.GetHashCode();
+                }
                 if (this.PaymentDate != null)
                 {
                     hashCode = (hashCode * 59) + this.PaymentDate.GetHashCode();
                 }
-                if (this.EffectiveDate != null)
+                if (this.AnnouncementDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.EffectiveDate.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.AffectedAmount.GetHashCode();
-                if (this.PricePerUnit != null)
-                {
-                    hashCode = (hashCode * 59) + this.PricePerUnit.GetHashCode();
-                }
-                if (this.Currency != null)
-                {
-                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AnnouncementDate.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.InstrumentEventType.GetHashCode();
                 return hashCode;
