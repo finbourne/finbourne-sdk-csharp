@@ -10,6 +10,7 @@
 | **EntityType** | **string** | Optional | The type of the entity that the deleted response applies to. |
 | **EntityUniqueId** | **string** | Optional | The unique Id of the entity that the deleted response applies to. |
 | **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
+| **Metadata** | **Dictionary&lt;string, List&lt;ResponseMetaData&gt;&gt;** | Optional | Contains warnings or additional information related to the delete operation. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -27,6 +28,7 @@ var instance = new DeletedEntityResponse(
     entityType: "...",  // optional — The type of the entity that the deleted response applies to.
     entityUniqueId: "...",  // optional — The unique Id of the entity that the deleted response applies to.
     stagedModifications: new StagedModificationsInfo(...),  // optional
+    metadata: ,  // optional — Contains warnings or additional information related to the delete operation.
     links: new List<Link>()  // optional
 );
 ```

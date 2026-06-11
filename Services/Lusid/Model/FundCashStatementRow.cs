@@ -49,8 +49,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="costBasisBase">costBasisBase.</param>
         /// <param name="avgRate">Weighted average FX rate (costBasisBase / balanceLocal). Null when balance is zero..</param>
         /// <param name="fxRateMovement">FX rate for this specific movement (CashflowBase / CashFlowLocal). Null when localAmount is zero..</param>
+        /// <param name="properties">The requested properties decorated onto the cash statement row..</param>
         /// <param name="links">links.</param>
-        public FundCashStatementRow(int groupById = default(int), int sequenceNumber = default(int), Dictionary<string, PerpetualProperty> subHoldingKeys = default(Dictionary<string, PerpetualProperty>), string sourceId = default(string), string cashStatementActionType = default(string), DateTimeOffset accountingDate = default(DateTimeOffset), DateTimeOffset activityDate = default(DateTimeOffset), string movementName = default(string), ResourceId portfolioId = default(ResourceId), string instructionType = default(string), string diaryEntryCode = default(string), string originDiaryEntryCode = default(string), CurrencyAndAmount cashflowLocal = default(CurrencyAndAmount), CurrencyAndAmount balanceLocal = default(CurrencyAndAmount), CurrencyAndAmount cashflowBase = default(CurrencyAndAmount), CurrencyAndAmount realisedFxPnl = default(CurrencyAndAmount), CurrencyAndAmount costBasisBase = default(CurrencyAndAmount), decimal? avgRate = default(decimal?), decimal? fxRateMovement = default(decimal?), List<Link> links = default(List<Link>))
+        public FundCashStatementRow(int groupById = default(int), int sequenceNumber = default(int), Dictionary<string, PerpetualProperty> subHoldingKeys = default(Dictionary<string, PerpetualProperty>), string sourceId = default(string), string cashStatementActionType = default(string), DateTimeOffset accountingDate = default(DateTimeOffset), DateTimeOffset activityDate = default(DateTimeOffset), string movementName = default(string), ResourceId portfolioId = default(ResourceId), string instructionType = default(string), string diaryEntryCode = default(string), string originDiaryEntryCode = default(string), CurrencyAndAmount cashflowLocal = default(CurrencyAndAmount), CurrencyAndAmount balanceLocal = default(CurrencyAndAmount), CurrencyAndAmount cashflowBase = default(CurrencyAndAmount), CurrencyAndAmount realisedFxPnl = default(CurrencyAndAmount), CurrencyAndAmount costBasisBase = default(CurrencyAndAmount), decimal? avgRate = default(decimal?), decimal? fxRateMovement = default(decimal?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), List<Link> links = default(List<Link>))
         {
             this.GroupById = groupById;
             this.SequenceNumber = sequenceNumber;
@@ -71,6 +72,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.CostBasisBase = costBasisBase;
             this.AvgRate = avgRate;
             this.FxRateMovement = fxRateMovement;
+            this.Properties = properties;
             this.Links = links;
         }
 
@@ -202,6 +204,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal? FxRateMovement { get; set; }
 
         /// <summary>
+        /// The requested properties decorated onto the cash statement row.
+        /// </summary>
+        /// <value>The requested properties decorated onto the cash statement row.</value>
+        [DataMember(Name = "properties", EmitDefaultValue = true)]
+        public Dictionary<string, Property> Properties { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -234,6 +243,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  CostBasisBase: ").Append(CostBasisBase).Append("\n");
             sb.Append("  AvgRate: ").Append(AvgRate).Append("\n");
             sb.Append("  FxRateMovement: ").Append(FxRateMovement).Append("\n");
+            sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -365,6 +375,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.FxRateMovement.Equals(input.FxRateMovement))
                 ) && 
                 (
+                    this.Properties == input.Properties ||
+                    this.Properties != null &&
+                    input.Properties != null &&
+                    this.Properties.SequenceEqual(input.Properties)
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -450,6 +466,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.FxRateMovement != null)
                 {
                     hashCode = (hashCode * 59) + this.FxRateMovement.GetHashCode();
+                }
+                if (this.Properties != null)
+                {
+                    hashCode = (hashCode * 59) + this.Properties.GetHashCode();
                 }
                 if (this.Links != null)
                 {

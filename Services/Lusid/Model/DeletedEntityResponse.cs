@@ -41,8 +41,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="entityType">The type of the entity that the deleted response applies to..</param>
         /// <param name="entityUniqueId">The unique Id of the entity that the deleted response applies to..</param>
         /// <param name="stagedModifications">stagedModifications.</param>
+        /// <param name="metadata">Contains warnings or additional information related to the delete operation..</param>
         /// <param name="links">links.</param>
-        public DeletedEntityResponse(string href = default(string), DateTimeOffset? effectiveFrom = default(DateTimeOffset?), DateTimeOffset asAt = default(DateTimeOffset), string entityType = default(string), string entityUniqueId = default(string), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), List<Link> links = default(List<Link>))
+        public DeletedEntityResponse(string href = default(string), DateTimeOffset? effectiveFrom = default(DateTimeOffset?), DateTimeOffset asAt = default(DateTimeOffset), string entityType = default(string), string entityUniqueId = default(string), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), Dictionary<string, List<ResponseMetaData>> metadata = default(Dictionary<string, List<ResponseMetaData>>), List<Link> links = default(List<Link>))
         {
             this.AsAt = asAt;
             this.Href = href;
@@ -50,6 +51,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.EntityType = entityType;
             this.EntityUniqueId = entityUniqueId;
             this.StagedModifications = stagedModifications;
+            this.Metadata = metadata;
             this.Links = links;
         }
 
@@ -95,6 +97,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public StagedModificationsInfo StagedModifications { get; set; }
 
         /// <summary>
+        /// Contains warnings or additional information related to the delete operation.
+        /// </summary>
+        /// <value>Contains warnings or additional information related to the delete operation.</value>
+        [DataMember(Name = "metadata", EmitDefaultValue = true)]
+        public Dictionary<string, List<ResponseMetaData>> Metadata { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -114,6 +123,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  EntityType: ").Append(EntityType).Append("\n");
             sb.Append("  EntityUniqueId: ").Append(EntityUniqueId).Append("\n");
             sb.Append("  StagedModifications: ").Append(StagedModifications).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -181,6 +191,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.StagedModifications.Equals(input.StagedModifications))
                 ) && 
                 (
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -220,6 +236,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.StagedModifications != null)
                 {
                     hashCode = (hashCode * 59) + this.StagedModifications.GetHashCode();
+                }
+                if (this.Metadata != null)
+                {
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
                 }
                 if (this.Links != null)
                 {

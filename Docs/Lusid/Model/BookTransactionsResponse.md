@@ -6,6 +6,7 @@
 |------|------|----------|-------------|
 | **Values** | [Dictionary&lt;string, Transaction&gt;](Transaction.md) | Optional | *No description available.* |
 | **Failed** | [Dictionary&lt;string, ErrorDetail&gt;](ErrorDetail.md) | Optional | *No description available.* |
+| **FxOrders** | [List&lt;BlockAndOrders&gt;](BlockAndOrders.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -17,7 +18,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new BookTransactionsResponse(
     values: new Transaction(...),  // optional
-    failed: new ErrorDetail(...)  // optional
+    failed: new ErrorDetail(...),  // optional
+    fxOrders: new List<BlockAndOrders>()  // optional
 );
 ```
 ### Serializing to JSON
@@ -37,6 +39,7 @@ var instance = JsonConvert.DeserializeObject<BookTransactionsResponse>(json);
 
 - [Transaction](Transaction.md)
 - [ErrorDetail](ErrorDetail.md)
+- [BlockAndOrders](BlockAndOrders.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

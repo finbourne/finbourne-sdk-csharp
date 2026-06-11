@@ -488,7 +488,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum WorthlessEvent for value: WorthlessEvent
         /// </summary>
         [EnumMember(Value = "WorthlessEvent")]
-        WorthlessEvent = 77
+        WorthlessEvent = 77,
+
+        /// <summary>
+        /// Enum PutRedemptionEvent for value: PutRedemptionEvent
+        /// </summary>
+        [EnumMember(Value = "PutRedemptionEvent")]
+        PutRedemptionEvent = 78
     }
 
 }

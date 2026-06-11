@@ -6,6 +6,7 @@
 |------|------|----------|-------------|
 | **AllocationIds** | [List&lt;ResourceId&gt;](ResourceId.md) | Required | A collection of Allocation IDs |
 | **TransactionProperties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | A collection of properties |
+| **FxInstrumentType** | **string** | Optional | The type of FX instrument to create when settlement currency differs from portfolio base currency. Use None to suppress FX instrument and order creation. Defaults to None. Available values: None, FxForward, FxSpot. |
 
 
 ## Usage
@@ -17,7 +18,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new BookTransactionsRequest(
     allocationIds: new List<ResourceId>(),  // required — A collection of Allocation IDs
-    transactionProperties: new PerpetualProperty(...)  // optional — A collection of properties
+    transactionProperties: new PerpetualProperty(...),  // optional — A collection of properties
+    fxInstrumentType: "..."  // optional — The type of FX instrument to create when settlement currency differs from portfolio base currency. Use None to suppress FX instrument and order creation. Defaults to None. Available values: None, FxForward, FxSpot.
 );
 ```
 ### Serializing to JSON

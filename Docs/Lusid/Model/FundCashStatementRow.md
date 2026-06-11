@@ -24,6 +24,7 @@ A single row in a Fund Cash Statement report.  Each row represents a settled cas
 | **CostBasisBase** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **AvgRate** | **decimal?** | Optional | Weighted average FX rate (costBasisBase / balanceLocal). Null when balance is zero. |
 | **FxRateMovement** | **decimal?** | Optional | FX rate for this specific movement (CashflowBase / CashFlowLocal). Null when localAmount is zero. |
+| **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | The requested properties decorated onto the cash statement row. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -54,6 +55,7 @@ var instance = new FundCashStatementRow(
     costBasisBase: new CurrencyAndAmount(...),  // optional
     avgRate: 0.0d,  // optional — Weighted average FX rate (costBasisBase / balanceLocal). Null when balance is zero.
     fxRateMovement: 0.0d,  // optional — FX rate for this specific movement (CashflowBase / CashFlowLocal). Null when localAmount is zero.
+    properties: new Property(...),  // optional — The requested properties decorated onto the cash statement row.
     links: new List<Link>()  // optional
 );
 ```
@@ -76,6 +78,7 @@ var instance = JsonConvert.DeserializeObject<FundCashStatementRow>(json);
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
+- [Property](Property.md) — used in `Properties`
 - [Link](Link.md)
 
 

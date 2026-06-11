@@ -1369,6 +1369,7 @@
 * [PropertyValueEquals](Lusid/Model/PropertyValueEquals.md)
 * [PropertyValueIn](Lusid/Model/PropertyValueIn.md)
 * [ProtectionPayoutCashFlowEvent](Lusid/Model/ProtectionPayoutCashFlowEvent.md)
+* [PutRedemptionEvent](Lusid/Model/PutRedemptionEvent.md)
 * [QuantityInstructed](Lusid/Model/QuantityInstructed.md)
 * [QueryApplicableInstrumentEventsRequest](Lusid/Model/QueryApplicableInstrumentEventsRequest.md)
 * [QueryBucketedCashFlowsRequest](Lusid/Model/QueryBucketedCashFlowsRequest.md)

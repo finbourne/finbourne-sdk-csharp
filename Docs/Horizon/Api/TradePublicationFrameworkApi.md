@@ -364,7 +364,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listruntransactions"></a>
 ## ListRunTransactions
 
-> PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string status, string? page = null, int? pageSize = null)
+> PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string? status = null, string? page = null, int? pageSize = null)
 
 [EXPERIMENTAL] ListRunTransactions: List Transactions in a run.
 
@@ -374,7 +374,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
 var instanceId = "instanceId_example";  // string
 var runId = "runId_example";  // string
-var status = "status_example";  // string
+var status = "status_example";  // string? (optional)
 var page = "\"\"";  // string? (optional)
 var pageSize = 100;  // int? (optional)
 PagedResourceListOfTransactionResponse result = apiInstance.ListRunTransactions(instanceId, runId, status, page, pageSize);
@@ -387,7 +387,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** |  |
 | **runId** | **string** | path | **required** |  |
-| **status** | **string** | query | **required** |  |
+| **status** | **string?** | query | optional |  |
 | **page** | **string?** | query | optional |  Default: `&quot;&quot;` |
 | **pageSize** | **int?** | query | optional |  Default: `100` |
 

@@ -23,148 +23,148 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// Representation of a repurchase offer corporate action.  Represents an offer by the issuer to repurchase its own shares from a shareholder at a given price.
+    /// Put Redemption (BPUT) — early redemption of a bond at the holder&#39;s election under an  indenture-defined put option. Supports both Voluntary (the AMI-SeCo canonical shape) and  Mandatory (a deliberate market extension beyond SCoRE) participation on Bond, ComplexBond,  and InflationLinkedBond instruments. Cloned from RepurchaseOfferEvent (BIDS) and narrowed  to debt with a fixed event-level OfferPrice instead of a per-election holder-bid price.
     /// </summary>
-    [DataContract(Name = "RepurchaseOfferEvent")]
+    [DataContract(Name = "PutRedemptionEvent")]
     [JsonConverter(typeof(JsonSubtypes), "InstrumentEventType")]
-    public partial class RepurchaseOfferEvent : InstrumentEvent, IEquatable<RepurchaseOfferEvent>, IValidatableObject
+    public partial class PutRedemptionEvent : InstrumentEvent, IEquatable<PutRedemptionEvent>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RepurchaseOfferEvent" /> class.
+        /// Initializes a new instance of the <see cref="PutRedemptionEvent" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RepurchaseOfferEvent() { }
+        protected PutRedemptionEvent() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RepurchaseOfferEvent" /> class.
+        /// Initializes a new instance of the <see cref="PutRedemptionEvent" /> class.
         /// </summary>
-        /// <param name="paymentDate">Payment date of the event..</param>
-        /// <param name="marketDeadlineDate">Date set by the issuer or by an agent of the issuer as the latest date to respond to the offer. Must be before or equal to the PaymentDate..</param>
-        /// <param name="repurchaseQuantity">Quantity of the security to be repurchased. (required).</param>
-        /// <param name="cashOfferElections">List of possible CashOfferElections for this event. Only 1 should be provided. (required).</param>
-        /// <param name="lapseElections">List of possible LapseElections for this event. Only 1 should be provided.  Allows the user to opt out of the offer. (required).</param>
-        /// <param name="tenderOfferElections">List of possible TenderOfferElections for this event. Only 1 should be provided. (required).</param>
-        /// <param name="prorationRate">The fraction used to calculate a proportional adjustment for RepurchaseQuantity when a full period is not used.  Defaults to 1 if not set. Must be greater than 0 and less than or equal to 1. (default to 1D).</param>
-        /// <param name="responseDeadlineDate">Date set by the account servicer as the latest date to respond to the offer.  Optional. If set, must be before or equal to MarketDeadlineDate.  Defaults to MarketDeadlineDate if not set..</param>
-        /// <param name="earlyResponseDeadline">Optional CTEN early-tender deadline. If set, must be on or before ResponseDeadlineDate.  Used for bond tender offers where early tenders attract a premium..</param>
-        /// <param name="minPieceSize">Bond-specific minimum instructable face amount. Optional.  Must be strictly positive when set..</param>
-        /// <param name="minIncrement">Bond-specific increment above MinPieceSize. Optional.  When set, MinPieceSize must also be set. Must be strictly positive..</param>
-        /// <param name="accruedInterestPerUnit">Optional per-unit accrued interest on the accepted face amount, from the last coupon date  up to (but excluding) PaymentDate. Bond-like instruments only. If left empty,  resolves it internally at event time from the bond&#39;s coupon schedule and market data..</param>
+        /// <param name="paymentDate">Settlement date for the cash + security legs of the put redemption..</param>
+        /// <param name="offerPrice">Put price per unit of face value (AMI-SeCo OFFR). Per-100 PRCT semantics —  &#x60;OfferPrice &#x3D; 100.00&#x60; means par; &#x60;97.50&#x60; means 97.5% of par. Must be strictly positive. (required).</param>
+        /// <param name="currency">Settlement currency of the cash leg (ISO 4217 3-letter code). (required).</param>
+        /// <param name="cashOfferElections">List of possible CashOfferElections. Exactly one entry per event in both Mandatory and Voluntary paths. (required).</param>
+        /// <param name="lapseElections">List of possible LapseElections. Exactly one entry for Voluntary (NOAC default). Empty for Mandatory. (required).</param>
+        /// <param name="marketDeadlineDate">Issuer / agent deadline for holder instructions. Required for Voluntary participation;  optional for Mandatory (no holder-deadline concept)..</param>
+        /// <param name="responseDeadlineDate">Account-servicer deadline. Defaults to MarketDeadlineDate when omitted.  If set, must be on or before MarketDeadlineDate..</param>
+        /// <param name="earlyResponseDeadline">Early-participation deadline. Rare on BPUT; carried for cross-event consistency.  If set, must be on or before ResponseDeadlineDate..</param>
+        /// <param name="exDate">AMI-SeCo §4.6 does not list this for BPUT; carried for cross-event consistency.  If set, must be on or before MarketDeadlineDate..</param>
+        /// <param name="announcementDate">Public announcement date. If set, must be on or before ExDate..</param>
+        /// <param name="accruedInterestPerUnit">Per-unit accrued interest. Optional — loader / post-processor derives from the bond&#39;s coupon  schedule and day-count when not supplied. EconomicallyComplete enforces non-null for  accrual-bearing instruments via InstrumentTypeAccruesInterest..</param>
+        /// <param name="prorationRate">Issuer-side aggregate proration cap (AMI-SeCo PROR). Default 1.0; range (0, 1]..</param>
         /// <param name="instrumentEventType">The Type of Event. Available values: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent, CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent, BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent, MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent, IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent, OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent, TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent, AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent, LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent, DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent, RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent, FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent, ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent, CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent, ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent. (required) (default to InstrumentEventTypeEnum.TransitionEvent).</param>
-        public RepurchaseOfferEvent(DateTimeOffset paymentDate = default(DateTimeOffset), DateTimeOffset marketDeadlineDate = default(DateTimeOffset), decimal repurchaseQuantity = default(decimal), List<CashOfferElection> cashOfferElections = default(List<CashOfferElection>), List<LapseElection> lapseElections = default(List<LapseElection>), List<TenderOfferElection> tenderOfferElections = default(List<TenderOfferElection>), decimal prorationRate = (decimal)1D, DateTimeOffset? responseDeadlineDate = default(DateTimeOffset?), DateTimeOffset? earlyResponseDeadline = default(DateTimeOffset?), decimal? minPieceSize = default(decimal?), decimal? minIncrement = default(decimal?), decimal? accruedInterestPerUnit = default(decimal?), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
+        public PutRedemptionEvent(DateTimeOffset paymentDate = default(DateTimeOffset), decimal offerPrice = default(decimal), string currency = default(string), List<CashOfferElection> cashOfferElections = default(List<CashOfferElection>), List<LapseElection> lapseElections = default(List<LapseElection>), DateTimeOffset? marketDeadlineDate = default(DateTimeOffset?), DateTimeOffset? responseDeadlineDate = default(DateTimeOffset?), DateTimeOffset? earlyResponseDeadline = default(DateTimeOffset?), DateTimeOffset? exDate = default(DateTimeOffset?), DateTimeOffset? announcementDate = default(DateTimeOffset?), decimal? accruedInterestPerUnit = default(decimal?), decimal prorationRate = default(decimal), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
         {
-            this.RepurchaseQuantity = repurchaseQuantity;
+            this.OfferPrice = offerPrice;
+            // to ensure "currency" is required (not null)
+            if (currency == null)
+            {
+                throw new ArgumentNullException("currency is a required property for PutRedemptionEvent and cannot be null");
+            }
+            this.Currency = currency;
             // to ensure "cashOfferElections" is required (not null)
             if (cashOfferElections == null)
             {
-                throw new ArgumentNullException("cashOfferElections is a required property for RepurchaseOfferEvent and cannot be null");
+                throw new ArgumentNullException("cashOfferElections is a required property for PutRedemptionEvent and cannot be null");
             }
             this.CashOfferElections = cashOfferElections;
             // to ensure "lapseElections" is required (not null)
             if (lapseElections == null)
             {
-                throw new ArgumentNullException("lapseElections is a required property for RepurchaseOfferEvent and cannot be null");
+                throw new ArgumentNullException("lapseElections is a required property for PutRedemptionEvent and cannot be null");
             }
             this.LapseElections = lapseElections;
-            // to ensure "tenderOfferElections" is required (not null)
-            if (tenderOfferElections == null)
-            {
-                throw new ArgumentNullException("tenderOfferElections is a required property for RepurchaseOfferEvent and cannot be null");
-            }
-            this.TenderOfferElections = tenderOfferElections;
             this.InstrumentEventType = instrumentEventType;
             this.PaymentDate = paymentDate;
             this.MarketDeadlineDate = marketDeadlineDate;
-            this.ProrationRate = prorationRate;
             this.ResponseDeadlineDate = responseDeadlineDate;
             this.EarlyResponseDeadline = earlyResponseDeadline;
-            this.MinPieceSize = minPieceSize;
-            this.MinIncrement = minIncrement;
+            this.ExDate = exDate;
+            this.AnnouncementDate = announcementDate;
             this.AccruedInterestPerUnit = accruedInterestPerUnit;
+            this.ProrationRate = prorationRate;
         }
 
         /// <summary>
-        /// Payment date of the event.
+        /// Settlement date for the cash + security legs of the put redemption.
         /// </summary>
-        /// <value>Payment date of the event.</value>
+        /// <value>Settlement date for the cash + security legs of the put redemption.</value>
         [DataMember(Name = "paymentDate", EmitDefaultValue = false)]
         public DateTimeOffset PaymentDate { get; set; }
 
         /// <summary>
-        /// Date set by the issuer or by an agent of the issuer as the latest date to respond to the offer. Must be before or equal to the PaymentDate.
+        /// Put price per unit of face value (AMI-SeCo OFFR). Per-100 PRCT semantics —  &#x60;OfferPrice &#x3D; 100.00&#x60; means par; &#x60;97.50&#x60; means 97.5% of par. Must be strictly positive.
         /// </summary>
-        /// <value>Date set by the issuer or by an agent of the issuer as the latest date to respond to the offer. Must be before or equal to the PaymentDate.</value>
-        [DataMember(Name = "marketDeadlineDate", EmitDefaultValue = false)]
-        public DateTimeOffset MarketDeadlineDate { get; set; }
+        /// <value>Put price per unit of face value (AMI-SeCo OFFR). Per-100 PRCT semantics —  &#x60;OfferPrice &#x3D; 100.00&#x60; means par; &#x60;97.50&#x60; means 97.5% of par. Must be strictly positive.</value>
+        [DataMember(Name = "offerPrice", IsRequired = true, EmitDefaultValue = true)]
+        public decimal OfferPrice { get; set; }
 
         /// <summary>
-        /// Quantity of the security to be repurchased.
+        /// Settlement currency of the cash leg (ISO 4217 3-letter code).
         /// </summary>
-        /// <value>Quantity of the security to be repurchased.</value>
-        [DataMember(Name = "repurchaseQuantity", IsRequired = true, EmitDefaultValue = true)]
-        public decimal RepurchaseQuantity { get; set; }
+        /// <value>Settlement currency of the cash leg (ISO 4217 3-letter code).</value>
+        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
+        public string Currency { get; set; }
 
         /// <summary>
-        /// List of possible CashOfferElections for this event. Only 1 should be provided.
+        /// List of possible CashOfferElections. Exactly one entry per event in both Mandatory and Voluntary paths.
         /// </summary>
-        /// <value>List of possible CashOfferElections for this event. Only 1 should be provided.</value>
+        /// <value>List of possible CashOfferElections. Exactly one entry per event in both Mandatory and Voluntary paths.</value>
         [DataMember(Name = "cashOfferElections", IsRequired = true, EmitDefaultValue = true)]
         public List<CashOfferElection> CashOfferElections { get; set; }
 
         /// <summary>
-        /// List of possible LapseElections for this event. Only 1 should be provided.  Allows the user to opt out of the offer.
+        /// List of possible LapseElections. Exactly one entry for Voluntary (NOAC default). Empty for Mandatory.
         /// </summary>
-        /// <value>List of possible LapseElections for this event. Only 1 should be provided.  Allows the user to opt out of the offer.</value>
+        /// <value>List of possible LapseElections. Exactly one entry for Voluntary (NOAC default). Empty for Mandatory.</value>
         [DataMember(Name = "lapseElections", IsRequired = true, EmitDefaultValue = true)]
         public List<LapseElection> LapseElections { get; set; }
 
         /// <summary>
-        /// List of possible TenderOfferElections for this event. Only 1 should be provided.
+        /// Issuer / agent deadline for holder instructions. Required for Voluntary participation;  optional for Mandatory (no holder-deadline concept).
         /// </summary>
-        /// <value>List of possible TenderOfferElections for this event. Only 1 should be provided.</value>
-        [DataMember(Name = "tenderOfferElections", IsRequired = true, EmitDefaultValue = true)]
-        public List<TenderOfferElection> TenderOfferElections { get; set; }
+        /// <value>Issuer / agent deadline for holder instructions. Required for Voluntary participation;  optional for Mandatory (no holder-deadline concept).</value>
+        [DataMember(Name = "marketDeadlineDate", EmitDefaultValue = true)]
+        public DateTimeOffset? MarketDeadlineDate { get; set; }
 
         /// <summary>
-        /// The fraction used to calculate a proportional adjustment for RepurchaseQuantity when a full period is not used.  Defaults to 1 if not set. Must be greater than 0 and less than or equal to 1.
+        /// Account-servicer deadline. Defaults to MarketDeadlineDate when omitted.  If set, must be on or before MarketDeadlineDate.
         /// </summary>
-        /// <value>The fraction used to calculate a proportional adjustment for RepurchaseQuantity when a full period is not used.  Defaults to 1 if not set. Must be greater than 0 and less than or equal to 1.</value>
-        [DataMember(Name = "prorationRate", EmitDefaultValue = true)]
-        public decimal ProrationRate { get; set; }
-
-        /// <summary>
-        /// Date set by the account servicer as the latest date to respond to the offer.  Optional. If set, must be before or equal to MarketDeadlineDate.  Defaults to MarketDeadlineDate if not set.
-        /// </summary>
-        /// <value>Date set by the account servicer as the latest date to respond to the offer.  Optional. If set, must be before or equal to MarketDeadlineDate.  Defaults to MarketDeadlineDate if not set.</value>
+        /// <value>Account-servicer deadline. Defaults to MarketDeadlineDate when omitted.  If set, must be on or before MarketDeadlineDate.</value>
         [DataMember(Name = "responseDeadlineDate", EmitDefaultValue = true)]
         public DateTimeOffset? ResponseDeadlineDate { get; set; }
 
         /// <summary>
-        /// Optional CTEN early-tender deadline. If set, must be on or before ResponseDeadlineDate.  Used for bond tender offers where early tenders attract a premium.
+        /// Early-participation deadline. Rare on BPUT; carried for cross-event consistency.  If set, must be on or before ResponseDeadlineDate.
         /// </summary>
-        /// <value>Optional CTEN early-tender deadline. If set, must be on or before ResponseDeadlineDate.  Used for bond tender offers where early tenders attract a premium.</value>
+        /// <value>Early-participation deadline. Rare on BPUT; carried for cross-event consistency.  If set, must be on or before ResponseDeadlineDate.</value>
         [DataMember(Name = "earlyResponseDeadline", EmitDefaultValue = true)]
         public DateTimeOffset? EarlyResponseDeadline { get; set; }
 
         /// <summary>
-        /// Bond-specific minimum instructable face amount. Optional.  Must be strictly positive when set.
+        /// AMI-SeCo §4.6 does not list this for BPUT; carried for cross-event consistency.  If set, must be on or before MarketDeadlineDate.
         /// </summary>
-        /// <value>Bond-specific minimum instructable face amount. Optional.  Must be strictly positive when set.</value>
-        [DataMember(Name = "minPieceSize", EmitDefaultValue = true)]
-        public decimal? MinPieceSize { get; set; }
+        /// <value>AMI-SeCo §4.6 does not list this for BPUT; carried for cross-event consistency.  If set, must be on or before MarketDeadlineDate.</value>
+        [DataMember(Name = "exDate", EmitDefaultValue = true)]
+        public DateTimeOffset? ExDate { get; set; }
 
         /// <summary>
-        /// Bond-specific increment above MinPieceSize. Optional.  When set, MinPieceSize must also be set. Must be strictly positive.
+        /// Public announcement date. If set, must be on or before ExDate.
         /// </summary>
-        /// <value>Bond-specific increment above MinPieceSize. Optional.  When set, MinPieceSize must also be set. Must be strictly positive.</value>
-        [DataMember(Name = "minIncrement", EmitDefaultValue = true)]
-        public decimal? MinIncrement { get; set; }
+        /// <value>Public announcement date. If set, must be on or before ExDate.</value>
+        [DataMember(Name = "announcementDate", EmitDefaultValue = true)]
+        public DateTimeOffset? AnnouncementDate { get; set; }
 
         /// <summary>
-        /// Optional per-unit accrued interest on the accepted face amount, from the last coupon date  up to (but excluding) PaymentDate. Bond-like instruments only. If left empty,  resolves it internally at event time from the bond&#39;s coupon schedule and market data.
+        /// Per-unit accrued interest. Optional — loader / post-processor derives from the bond&#39;s coupon  schedule and day-count when not supplied. EconomicallyComplete enforces non-null for  accrual-bearing instruments via InstrumentTypeAccruesInterest.
         /// </summary>
-        /// <value>Optional per-unit accrued interest on the accepted face amount, from the last coupon date  up to (but excluding) PaymentDate. Bond-like instruments only. If left empty,  resolves it internally at event time from the bond&#39;s coupon schedule and market data.</value>
+        /// <value>Per-unit accrued interest. Optional — loader / post-processor derives from the bond&#39;s coupon  schedule and day-count when not supplied. EconomicallyComplete enforces non-null for  accrual-bearing instruments via InstrumentTypeAccruesInterest.</value>
         [DataMember(Name = "accruedInterestPerUnit", EmitDefaultValue = true)]
         public decimal? AccruedInterestPerUnit { get; set; }
+
+        /// <summary>
+        /// Issuer-side aggregate proration cap (AMI-SeCo PROR). Default 1.0; range (0, 1].
+        /// </summary>
+        /// <value>Issuer-side aggregate proration cap (AMI-SeCo PROR). Default 1.0; range (0, 1].</value>
+        [DataMember(Name = "prorationRate", EmitDefaultValue = true)]
+        public decimal ProrationRate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -173,20 +173,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RepurchaseOfferEvent {\n");
+            sb.Append("class PutRedemptionEvent {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  PaymentDate: ").Append(PaymentDate).Append("\n");
-            sb.Append("  MarketDeadlineDate: ").Append(MarketDeadlineDate).Append("\n");
-            sb.Append("  RepurchaseQuantity: ").Append(RepurchaseQuantity).Append("\n");
+            sb.Append("  OfferPrice: ").Append(OfferPrice).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  CashOfferElections: ").Append(CashOfferElections).Append("\n");
             sb.Append("  LapseElections: ").Append(LapseElections).Append("\n");
-            sb.Append("  TenderOfferElections: ").Append(TenderOfferElections).Append("\n");
-            sb.Append("  ProrationRate: ").Append(ProrationRate).Append("\n");
+            sb.Append("  MarketDeadlineDate: ").Append(MarketDeadlineDate).Append("\n");
             sb.Append("  ResponseDeadlineDate: ").Append(ResponseDeadlineDate).Append("\n");
             sb.Append("  EarlyResponseDeadline: ").Append(EarlyResponseDeadline).Append("\n");
-            sb.Append("  MinPieceSize: ").Append(MinPieceSize).Append("\n");
-            sb.Append("  MinIncrement: ").Append(MinIncrement).Append("\n");
+            sb.Append("  ExDate: ").Append(ExDate).Append("\n");
+            sb.Append("  AnnouncementDate: ").Append(AnnouncementDate).Append("\n");
             sb.Append("  AccruedInterestPerUnit: ").Append(AccruedInterestPerUnit).Append("\n");
+            sb.Append("  ProrationRate: ").Append(ProrationRate).Append("\n");
             sb.Append("  InstrumentEventType: ").Append(InstrumentEventType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -208,15 +208,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as RepurchaseOfferEvent);
+            return this.Equals(input as PutRedemptionEvent);
         }
 
         /// <summary>
-        /// Returns true if RepurchaseOfferEvent instances are equal
+        /// Returns true if PutRedemptionEvent instances are equal
         /// </summary>
-        /// <param name="input">Instance of RepurchaseOfferEvent to be compared</param>
+        /// <param name="input">Instance of PutRedemptionEvent to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(RepurchaseOfferEvent input)
+        public bool Equals(PutRedemptionEvent input)
         {
             if (input == null)
             {
@@ -229,13 +229,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PaymentDate.Equals(input.PaymentDate))
                 ) && base.Equals(input) && 
                 (
-                    this.MarketDeadlineDate == input.MarketDeadlineDate ||
-                    (this.MarketDeadlineDate != null &&
-                    this.MarketDeadlineDate.Equals(input.MarketDeadlineDate))
+                    this.OfferPrice == input.OfferPrice ||
+                    this.OfferPrice.Equals(input.OfferPrice)
                 ) && base.Equals(input) && 
                 (
-                    this.RepurchaseQuantity == input.RepurchaseQuantity ||
-                    this.RepurchaseQuantity.Equals(input.RepurchaseQuantity)
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
                 ) && base.Equals(input) && 
                 (
                     this.CashOfferElections == input.CashOfferElections ||
@@ -250,14 +250,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.LapseElections.SequenceEqual(input.LapseElections)
                 ) && base.Equals(input) && 
                 (
-                    this.TenderOfferElections == input.TenderOfferElections ||
-                    this.TenderOfferElections != null &&
-                    input.TenderOfferElections != null &&
-                    this.TenderOfferElections.SequenceEqual(input.TenderOfferElections)
-                ) && base.Equals(input) && 
-                (
-                    this.ProrationRate == input.ProrationRate ||
-                    this.ProrationRate.Equals(input.ProrationRate)
+                    this.MarketDeadlineDate == input.MarketDeadlineDate ||
+                    (this.MarketDeadlineDate != null &&
+                    this.MarketDeadlineDate.Equals(input.MarketDeadlineDate))
                 ) && base.Equals(input) && 
                 (
                     this.ResponseDeadlineDate == input.ResponseDeadlineDate ||
@@ -270,19 +265,23 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.EarlyResponseDeadline.Equals(input.EarlyResponseDeadline))
                 ) && base.Equals(input) && 
                 (
-                    this.MinPieceSize == input.MinPieceSize ||
-                    (this.MinPieceSize != null &&
-                    this.MinPieceSize.Equals(input.MinPieceSize))
+                    this.ExDate == input.ExDate ||
+                    (this.ExDate != null &&
+                    this.ExDate.Equals(input.ExDate))
                 ) && base.Equals(input) && 
                 (
-                    this.MinIncrement == input.MinIncrement ||
-                    (this.MinIncrement != null &&
-                    this.MinIncrement.Equals(input.MinIncrement))
+                    this.AnnouncementDate == input.AnnouncementDate ||
+                    (this.AnnouncementDate != null &&
+                    this.AnnouncementDate.Equals(input.AnnouncementDate))
                 ) && base.Equals(input) && 
                 (
                     this.AccruedInterestPerUnit == input.AccruedInterestPerUnit ||
                     (this.AccruedInterestPerUnit != null &&
                     this.AccruedInterestPerUnit.Equals(input.AccruedInterestPerUnit))
+                ) && base.Equals(input) && 
+                (
+                    this.ProrationRate == input.ProrationRate ||
+                    this.ProrationRate.Equals(input.ProrationRate)
                 ) && base.Equals(input) && 
                 (
                     this.InstrumentEventType == input.InstrumentEventType ||
@@ -303,11 +302,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.PaymentDate.GetHashCode();
                 }
-                if (this.MarketDeadlineDate != null)
+                hashCode = (hashCode * 59) + this.OfferPrice.GetHashCode();
+                if (this.Currency != null)
                 {
-                    hashCode = (hashCode * 59) + this.MarketDeadlineDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.RepurchaseQuantity.GetHashCode();
                 if (this.CashOfferElections != null)
                 {
                     hashCode = (hashCode * 59) + this.CashOfferElections.GetHashCode();
@@ -316,11 +315,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.LapseElections.GetHashCode();
                 }
-                if (this.TenderOfferElections != null)
+                if (this.MarketDeadlineDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.TenderOfferElections.GetHashCode();
+                    hashCode = (hashCode * 59) + this.MarketDeadlineDate.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.ProrationRate.GetHashCode();
                 if (this.ResponseDeadlineDate != null)
                 {
                     hashCode = (hashCode * 59) + this.ResponseDeadlineDate.GetHashCode();
@@ -329,18 +327,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.EarlyResponseDeadline.GetHashCode();
                 }
-                if (this.MinPieceSize != null)
+                if (this.ExDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.MinPieceSize.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ExDate.GetHashCode();
                 }
-                if (this.MinIncrement != null)
+                if (this.AnnouncementDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.MinIncrement.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AnnouncementDate.GetHashCode();
                 }
                 if (this.AccruedInterestPerUnit != null)
                 {
                     hashCode = (hashCode * 59) + this.AccruedInterestPerUnit.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ProrationRate.GetHashCode();
                 hashCode = (hashCode * 59) + this.InstrumentEventType.GetHashCode();
                 return hashCode;
             }

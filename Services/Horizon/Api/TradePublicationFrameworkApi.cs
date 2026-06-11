@@ -172,13 +172,13 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId"></param>
         /// <param name="runId"></param>
-        /// <param name="status"></param>
+        /// <param name="status"> (optional)</param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfTransactionResponse</returns>
-        PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string status, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListRunTransactions: List Transactions in a run.
@@ -189,13 +189,13 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId"></param>
         /// <param name="runId"></param>
-        /// <param name="status"></param>
+        /// <param name="status"> (optional)</param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfTransactionResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> ListRunTransactionsWithHttpInfo(string instanceId, string runId, string status, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> ListRunTransactionsWithHttpInfo(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance
         /// </summary>
@@ -423,14 +423,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId"></param>
         /// <param name="runId"></param>
-        /// <param name="status"></param>
+        /// <param name="status"> (optional)</param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfTransactionResponse</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfTransactionResponse> ListRunTransactionsAsync(string instanceId, string runId, string status, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfTransactionResponse> ListRunTransactionsAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListRunTransactions: List Transactions in a run.
@@ -441,14 +441,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId"></param>
         /// <param name="runId"></param>
-        /// <param name="status"></param>
+        /// <param name="status"> (optional)</param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfTransactionResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse>> ListRunTransactionsWithHttpInfoAsync(string instanceId, string runId, string status, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse>> ListRunTransactionsWithHttpInfoAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance
         /// </summary>
@@ -1879,13 +1879,13 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId"></param>
         /// <param name="runId"></param>
-        /// <param name="status"></param>
+        /// <param name="status"> (optional)</param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfTransactionResponse</returns>
-        public PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string status, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> localVarResponse = ListRunTransactionsWithHttpInfo(instanceId, runId, status, page, pageSize, opts: opts);
             return localVarResponse.Data;
@@ -1898,13 +1898,13 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="instanceId"></param>
         /// <param name="runId"></param>
-        /// <param name="status"></param>
+        /// <param name="status"> (optional)</param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfTransactionResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> ListRunTransactionsWithHttpInfo(string instanceId, string runId, string status, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> ListRunTransactionsWithHttpInfo(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -1916,12 +1916,6 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (runId == null)
             {
                 throw new ArgumentNullException("Missing required parameter 'runId' when calling TradePublicationFrameworkApi->ListRunTransactions");
-            }
-
-            // verify the required parameter 'status' is set
-            if (status == null)
-            {
-                throw new ArgumentNullException("Missing required parameter 'status' when calling TradePublicationFrameworkApi->ListRunTransactions");
             }
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -1968,7 +1962,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
 
             localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
-            localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -2018,14 +2015,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId"></param>
         /// <param name="runId"></param>
-        /// <param name="status"></param>
+        /// <param name="status"> (optional)</param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfTransactionResponse</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfTransactionResponse> ListRunTransactionsAsync(string instanceId, string runId, string status, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfTransactionResponse> ListRunTransactionsAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> localVarResponse = await ListRunTransactionsWithHttpInfoAsync(instanceId, runId, status, page, pageSize, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2038,14 +2035,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="instanceId"></param>
         /// <param name="runId"></param>
-        /// <param name="status"></param>
+        /// <param name="status"> (optional)</param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfTransactionResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse>> ListRunTransactionsWithHttpInfoAsync(string instanceId, string runId, string status, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse>> ListRunTransactionsWithHttpInfoAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -2057,12 +2054,6 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (runId == null)
             {
                 throw new ArgumentNullException("Missing required parameter 'runId' when calling TradePublicationFrameworkApi->ListRunTransactions");
-            }
-
-            // verify the required parameter 'status' is set
-            if (status == null)
-            {
-                throw new ArgumentNullException("Missing required parameter 'status' when calling TradePublicationFrameworkApi->ListRunTransactions");
             }
 
 
@@ -2110,7 +2101,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
 
             localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
-            localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
