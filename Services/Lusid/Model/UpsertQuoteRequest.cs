@@ -39,7 +39,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="metricValue">metricValue.</param>
         /// <param name="lineage">Description of the quote&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;..</param>
         /// <param name="scaleFactor">An optional scale factor for non-standard scaling of quotes against the instrument. For example, if you wish the quote&#39;s Value to be scaled down by a factor of 100, enter 100. If not supplied, the default ScaleFactor is 1..</param>
-        public UpsertQuoteRequest(QuoteId quoteId = default(QuoteId), MetricValue metricValue = default(MetricValue), string lineage = default(string), decimal? scaleFactor = default(decimal?))
+        /// <param name="metadataFields">The metadata field values for this quote, keyed by field name..</param>
+        public UpsertQuoteRequest(QuoteId quoteId = default(QuoteId), MetricValue metricValue = default(MetricValue), string lineage = default(string), decimal? scaleFactor = default(decimal?), Dictionary<string, Object> metadataFields = default(Dictionary<string, Object>))
         {
             // to ensure "quoteId" is required (not null)
             if (quoteId == null)
@@ -50,6 +51,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.MetricValue = metricValue;
             this.Lineage = lineage;
             this.ScaleFactor = scaleFactor;
+            this.MetadataFields = metadataFields;
         }
 
         /// <summary>
@@ -79,6 +81,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal? ScaleFactor { get; set; }
 
         /// <summary>
+        /// The metadata field values for this quote, keyed by field name.
+        /// </summary>
+        /// <value>The metadata field values for this quote, keyed by field name.</value>
+        [DataMember(Name = "metadataFields", EmitDefaultValue = true)]
+        public Dictionary<string, Object> MetadataFields { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -90,6 +99,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  MetricValue: ").Append(MetricValue).Append("\n");
             sb.Append("  Lineage: ").Append(Lineage).Append("\n");
             sb.Append("  ScaleFactor: ").Append(ScaleFactor).Append("\n");
+            sb.Append("  MetadataFields: ").Append(MetadataFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -144,6 +154,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ScaleFactor == input.ScaleFactor ||
                     (this.ScaleFactor != null &&
                     this.ScaleFactor.Equals(input.ScaleFactor))
+                ) && 
+                (
+                    this.MetadataFields == input.MetadataFields ||
+                    this.MetadataFields != null &&
+                    input.MetadataFields != null &&
+                    this.MetadataFields.SequenceEqual(input.MetadataFields)
                 );
         }
 
@@ -171,6 +187,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.ScaleFactor != null)
                 {
                     hashCode = (hashCode * 59) + this.ScaleFactor.GetHashCode();
+                }
+                if (this.MetadataFields != null)
+                {
+                    hashCode = (hashCode * 59) + this.MetadataFields.GetHashCode();
                 }
                 return hashCode;
             }

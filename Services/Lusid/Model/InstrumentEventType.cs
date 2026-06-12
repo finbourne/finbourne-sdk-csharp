@@ -494,7 +494,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum PutRedemptionEvent for value: PutRedemptionEvent
         /// </summary>
         [EnumMember(Value = "PutRedemptionEvent")]
-        PutRedemptionEvent = 78
+        PutRedemptionEvent = 78,
+
+        /// <summary>
+        /// Enum LoanFacilityDelayedCompensationPaymentEvent for value: LoanFacilityDelayedCompensationPaymentEvent
+        /// </summary>
+        [EnumMember(Value = "LoanFacilityDelayedCompensationPaymentEvent")]
+        LoanFacilityDelayedCompensationPaymentEvent = 79
     }
 
 }

@@ -9,6 +9,7 @@ The details of the quote including its unique identifier, value and lineage.  Pl
 | **MetricValue** | [MetricValue](MetricValue.md) | Optional | *No description available.* |
 | **Lineage** | **string** | Optional | Description of the quote&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. |
 | **ScaleFactor** | **decimal?** | Optional | An optional scale factor for non-standard scaling of quotes against the instrument. For example, if you wish the quote&#39;s Value to be scaled down by a factor of 100, enter 100. If not supplied, the default ScaleFactor is 1. |
+| **MetadataFields** | **Dictionary&lt;string, Object&gt;** | Optional | The metadata field values for this quote, keyed by field name. |
 
 
 ## Usage
@@ -22,7 +23,8 @@ var instance = new UpsertQuoteRequest(
     quoteId: new QuoteId(...),  // required
     metricValue: new MetricValue(...),  // optional
     lineage: "...",  // optional — Description of the quote&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;.
-    scaleFactor: 0.0d  // optional — An optional scale factor for non-standard scaling of quotes against the instrument. For example, if you wish the quote&#39;s Value to be scaled down by a factor of 100, enter 100. If not supplied, the default ScaleFactor is 1.
+    scaleFactor: 0.0d,  // optional — An optional scale factor for non-standard scaling of quotes against the instrument. For example, if you wish the quote&#39;s Value to be scaled down by a factor of 100, enter 100. If not supplied, the default ScaleFactor is 1.
+    metadataFields:   // optional — The metadata field values for this quote, keyed by field name.
 );
 ```
 ### Serializing to JSON

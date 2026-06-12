@@ -12,6 +12,7 @@ The quote id, value and lineage of the quotes all keyed by a unique correlation 
 | **UploadedBy** | **string** | Required | The unique id of the user that updated or inserted the quote. |
 | **AsAt** | **DateTimeOffset** | Required | The asAt datetime at which the quote was committed to LUSID. |
 | **ScaleFactor** | **decimal?** | Optional | An optional scale factor for non-standard scaling of quotes against the instrument. For example, if you wish the quote&#39;s Value to be scaled down by a factor of 100, enter 100. If not supplied, the default ScaleFactor is 1. |
+| **MetadataFields** | **Dictionary&lt;string, Object&gt;** | Optional | The metadata field values for this quote, keyed by field name. |
 
 
 ## Usage
@@ -28,7 +29,8 @@ var instance = new Quote(
     cutLabel: "...",  // optional — The cut label that this quote was updated or inserted with.
     uploadedBy: "...",  // required — The unique id of the user that updated or inserted the quote.
     asAt: DateTimeOffset.Now,  // required — The asAt datetime at which the quote was committed to LUSID.
-    scaleFactor: 0.0d  // optional — An optional scale factor for non-standard scaling of quotes against the instrument. For example, if you wish the quote&#39;s Value to be scaled down by a factor of 100, enter 100. If not supplied, the default ScaleFactor is 1.
+    scaleFactor: 0.0d,  // optional — An optional scale factor for non-standard scaling of quotes against the instrument. For example, if you wish the quote&#39;s Value to be scaled down by a factor of 100, enter 100. If not supplied, the default ScaleFactor is 1.
+    metadataFields:   // optional — The metadata field values for this quote, keyed by field name.
 );
 ```
 ### Serializing to JSON
