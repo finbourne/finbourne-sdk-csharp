@@ -9,7 +9,7 @@ The Valuation Point Data Response for the Fund and specified date.
 | **JournalEntryAction** | **string** | Optional | The journal entry line action associated with this transaction. |
 | **Transaction** | [OutputTransaction](OutputTransaction.md) | Optional | *No description available.* |
 | **PortfolioId** | [PortfolioId](PortfolioId.md) | Optional | *No description available.* |
-| **ValuationPointOrigin** | **string** | Optional | Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added. |
+| **ValuationPointOrigin** | **string** | Optional | Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added, OriginalAndAdded. |
 | **AddedOriginValuationPointCode** | **string** | Optional | The Valuation Point, only for transaction added as part of a Complex Close action. |
 | **AddedOriginValuationPointVariantCode** | **string** | Optional | The Valuation Point variant, only for transactions added as part of a Complex Close action. |
 
@@ -26,7 +26,7 @@ var instance = new AccountedTransaction(
     journalEntryAction: "...",  // optional — The journal entry line action associated with this transaction.
     transaction: new OutputTransaction(...),  // optional
     portfolioId: new PortfolioId(...),  // optional
-    valuationPointOrigin: "...",  // optional — Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added.
+    valuationPointOrigin: "...",  // optional — Designates if the transaction was originally part of the Valuation Point or if it was added as part of a Complex Close action. Available values: None, Original, Added, OriginalAndAdded.
     addedOriginValuationPointCode: "...",  // optional — The Valuation Point, only for transaction added as part of a Complex Close action.
     addedOriginValuationPointVariantCode: "..."  // optional — The Valuation Point variant, only for transactions added as part of a Complex Close action.
 );

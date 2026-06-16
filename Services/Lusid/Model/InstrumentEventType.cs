@@ -500,7 +500,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum LoanFacilityDelayedCompensationPaymentEvent for value: LoanFacilityDelayedCompensationPaymentEvent
         /// </summary>
         [EnumMember(Value = "LoanFacilityDelayedCompensationPaymentEvent")]
-        LoanFacilityDelayedCompensationPaymentEvent = 79
+        LoanFacilityDelayedCompensationPaymentEvent = 79,
+
+        /// <summary>
+        /// Enum InterestPaymentEvent for value: InterestPaymentEvent
+        /// </summary>
+        [EnumMember(Value = "InterestPaymentEvent")]
+        InterestPaymentEvent = 80
     }
 
 }

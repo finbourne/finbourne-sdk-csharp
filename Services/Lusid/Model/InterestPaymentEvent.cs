@@ -23,92 +23,84 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// A split in the company&#39;s shares. Shareholders are given additional company shares based on the terms of the stock split.
+    /// Interest Payment event (INTR). A cash distribution of interest from a debt issuer to its noteholders,  carrying a per-unit absolute interest rate on each CashElection. Supports Mandatory  (single declared election) and MandatoryWithChoices (one election per offered currency) participation.
     /// </summary>
-    [DataContract(Name = "StockSplitEvent")]
+    [DataContract(Name = "InterestPaymentEvent")]
     [JsonConverter(typeof(JsonSubtypes), "InstrumentEventType")]
-    public partial class StockSplitEvent : InstrumentEvent, IEquatable<StockSplitEvent>, IValidatableObject
+    public partial class InterestPaymentEvent : InstrumentEvent, IEquatable<InterestPaymentEvent>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StockSplitEvent" /> class.
+        /// Initializes a new instance of the <see cref="InterestPaymentEvent" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected StockSplitEvent() { }
+        protected InterestPaymentEvent() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="StockSplitEvent" /> class.
+        /// Initializes a new instance of the <see cref="InterestPaymentEvent" /> class.
         /// </summary>
-        /// <param name="paymentDate">Date on which the stock split takes effect..</param>
-        /// <param name="exDate">The first date on which the shares will trade at the post-split price..</param>
-        /// <param name="unitsRatio">unitsRatio (required).</param>
-        /// <param name="recordDate">Date you have to be the holder of record in order to receive the additional shares..</param>
-        /// <param name="announcementDate">Date the stock split was announced..</param>
-        /// <param name="fractionalUnitsCashPrice">The cash price per unit paid in lieu when fractional units can not be distributed..</param>
-        /// <param name="fractionalUnitsCashCurrency">The currency of the cash paid in lieu of fractional units..</param>
+        /// <param name="recordDate">The record-date cut-off determining entitlement. Required. Map from the vendor RecordDate (NOT the  ExDate sentinel)..</param>
+        /// <param name="paymentDate">The date the interest is paid to noteholders. Required. Also the effective date of the event..</param>
+        /// <param name="responseDeadline">The holder-instruction deadline. Required for MandatoryWithChoices; must be null for Mandatory..</param>
+        /// <param name="marketDeadline">The market-organisation deadline. Required for MandatoryWithChoices; must be null for Mandatory..</param>
+        /// <param name="announcementDate">The date the event was announced by the issuer. Optional..</param>
+        /// <param name="cashElections">The cash elections for this event. For Mandatory participation a single declared election is supplied  with IsDeclared, IsDefault and IsChosen all true; for MandatoryWithChoices one entry per offered  currency is supplied, with exactly one declared, one default and one chosen. Every election carries a  per-unit absolute (signed) DividendRate and an ExchangeRate of 1. (required).</param>
         /// <param name="instrumentEventType">The Type of Event. Available values: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent, CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent, BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent, MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent, IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent, OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent, TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent, AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent, LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent, DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent, RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent, FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent, ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent, CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent, ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent. (required) (default to InstrumentEventTypeEnum.TransitionEvent).</param>
-        public StockSplitEvent(DateTimeOffset paymentDate = default(DateTimeOffset), DateTimeOffset exDate = default(DateTimeOffset), UnitsRatio unitsRatio = default(UnitsRatio), DateTimeOffset? recordDate = default(DateTimeOffset?), DateTimeOffset? announcementDate = default(DateTimeOffset?), decimal? fractionalUnitsCashPrice = default(decimal?), string fractionalUnitsCashCurrency = default(string), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
+        public InterestPaymentEvent(DateTimeOffset recordDate = default(DateTimeOffset), DateTimeOffset paymentDate = default(DateTimeOffset), DateTimeOffset? responseDeadline = default(DateTimeOffset?), DateTimeOffset? marketDeadline = default(DateTimeOffset?), DateTimeOffset? announcementDate = default(DateTimeOffset?), List<CashElection> cashElections = default(List<CashElection>), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
         {
-            // to ensure "unitsRatio" is required (not null)
-            if (unitsRatio == null)
+            // to ensure "cashElections" is required (not null)
+            if (cashElections == null)
             {
-                throw new ArgumentNullException("unitsRatio is a required property for StockSplitEvent and cannot be null");
+                throw new ArgumentNullException("cashElections is a required property for InterestPaymentEvent and cannot be null");
             }
-            this.UnitsRatio = unitsRatio;
+            this.CashElections = cashElections;
             this.InstrumentEventType = instrumentEventType;
-            this.PaymentDate = paymentDate;
-            this.ExDate = exDate;
             this.RecordDate = recordDate;
+            this.PaymentDate = paymentDate;
+            this.ResponseDeadline = responseDeadline;
+            this.MarketDeadline = marketDeadline;
             this.AnnouncementDate = announcementDate;
-            this.FractionalUnitsCashPrice = fractionalUnitsCashPrice;
-            this.FractionalUnitsCashCurrency = fractionalUnitsCashCurrency;
         }
 
         /// <summary>
-        /// Date on which the stock split takes effect.
+        /// The record-date cut-off determining entitlement. Required. Map from the vendor RecordDate (NOT the  ExDate sentinel).
         /// </summary>
-        /// <value>Date on which the stock split takes effect.</value>
+        /// <value>The record-date cut-off determining entitlement. Required. Map from the vendor RecordDate (NOT the  ExDate sentinel).</value>
+        [DataMember(Name = "recordDate", EmitDefaultValue = false)]
+        public DateTimeOffset RecordDate { get; set; }
+
+        /// <summary>
+        /// The date the interest is paid to noteholders. Required. Also the effective date of the event.
+        /// </summary>
+        /// <value>The date the interest is paid to noteholders. Required. Also the effective date of the event.</value>
         [DataMember(Name = "paymentDate", EmitDefaultValue = false)]
         public DateTimeOffset PaymentDate { get; set; }
 
         /// <summary>
-        /// The first date on which the shares will trade at the post-split price.
+        /// The holder-instruction deadline. Required for MandatoryWithChoices; must be null for Mandatory.
         /// </summary>
-        /// <value>The first date on which the shares will trade at the post-split price.</value>
-        [DataMember(Name = "exDate", EmitDefaultValue = false)]
-        public DateTimeOffset ExDate { get; set; }
+        /// <value>The holder-instruction deadline. Required for MandatoryWithChoices; must be null for Mandatory.</value>
+        [DataMember(Name = "responseDeadline", EmitDefaultValue = true)]
+        public DateTimeOffset? ResponseDeadline { get; set; }
 
         /// <summary>
-        /// Gets or Sets UnitsRatio
+        /// The market-organisation deadline. Required for MandatoryWithChoices; must be null for Mandatory.
         /// </summary>
-        [DataMember(Name = "unitsRatio", IsRequired = true, EmitDefaultValue = true)]
-        public UnitsRatio UnitsRatio { get; set; }
+        /// <value>The market-organisation deadline. Required for MandatoryWithChoices; must be null for Mandatory.</value>
+        [DataMember(Name = "marketDeadline", EmitDefaultValue = true)]
+        public DateTimeOffset? MarketDeadline { get; set; }
 
         /// <summary>
-        /// Date you have to be the holder of record in order to receive the additional shares.
+        /// The date the event was announced by the issuer. Optional.
         /// </summary>
-        /// <value>Date you have to be the holder of record in order to receive the additional shares.</value>
-        [DataMember(Name = "recordDate", EmitDefaultValue = true)]
-        public DateTimeOffset? RecordDate { get; set; }
-
-        /// <summary>
-        /// Date the stock split was announced.
-        /// </summary>
-        /// <value>Date the stock split was announced.</value>
+        /// <value>The date the event was announced by the issuer. Optional.</value>
         [DataMember(Name = "announcementDate", EmitDefaultValue = true)]
         public DateTimeOffset? AnnouncementDate { get; set; }
 
         /// <summary>
-        /// The cash price per unit paid in lieu when fractional units can not be distributed.
+        /// The cash elections for this event. For Mandatory participation a single declared election is supplied  with IsDeclared, IsDefault and IsChosen all true; for MandatoryWithChoices one entry per offered  currency is supplied, with exactly one declared, one default and one chosen. Every election carries a  per-unit absolute (signed) DividendRate and an ExchangeRate of 1.
         /// </summary>
-        /// <value>The cash price per unit paid in lieu when fractional units can not be distributed.</value>
-        [DataMember(Name = "fractionalUnitsCashPrice", EmitDefaultValue = true)]
-        public decimal? FractionalUnitsCashPrice { get; set; }
-
-        /// <summary>
-        /// The currency of the cash paid in lieu of fractional units.
-        /// </summary>
-        /// <value>The currency of the cash paid in lieu of fractional units.</value>
-        [DataMember(Name = "fractionalUnitsCashCurrency", EmitDefaultValue = true)]
-        public string FractionalUnitsCashCurrency { get; set; }
+        /// <value>The cash elections for this event. For Mandatory participation a single declared election is supplied  with IsDeclared, IsDefault and IsChosen all true; for MandatoryWithChoices one entry per offered  currency is supplied, with exactly one declared, one default and one chosen. Every election carries a  per-unit absolute (signed) DividendRate and an ExchangeRate of 1.</value>
+        [DataMember(Name = "cashElections", IsRequired = true, EmitDefaultValue = true)]
+        public List<CashElection> CashElections { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,15 +109,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class StockSplitEvent {\n");
+            sb.Append("class InterestPaymentEvent {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  PaymentDate: ").Append(PaymentDate).Append("\n");
-            sb.Append("  ExDate: ").Append(ExDate).Append("\n");
-            sb.Append("  UnitsRatio: ").Append(UnitsRatio).Append("\n");
             sb.Append("  RecordDate: ").Append(RecordDate).Append("\n");
+            sb.Append("  PaymentDate: ").Append(PaymentDate).Append("\n");
+            sb.Append("  ResponseDeadline: ").Append(ResponseDeadline).Append("\n");
+            sb.Append("  MarketDeadline: ").Append(MarketDeadline).Append("\n");
             sb.Append("  AnnouncementDate: ").Append(AnnouncementDate).Append("\n");
-            sb.Append("  FractionalUnitsCashPrice: ").Append(FractionalUnitsCashPrice).Append("\n");
-            sb.Append("  FractionalUnitsCashCurrency: ").Append(FractionalUnitsCashCurrency).Append("\n");
+            sb.Append("  CashElections: ").Append(CashElections).Append("\n");
             sb.Append("  InstrumentEventType: ").Append(InstrumentEventType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -147,15 +138,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as StockSplitEvent);
+            return this.Equals(input as InterestPaymentEvent);
         }
 
         /// <summary>
-        /// Returns true if StockSplitEvent instances are equal
+        /// Returns true if InterestPaymentEvent instances are equal
         /// </summary>
-        /// <param name="input">Instance of StockSplitEvent to be compared</param>
+        /// <param name="input">Instance of InterestPaymentEvent to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(StockSplitEvent input)
+        public bool Equals(InterestPaymentEvent input)
         {
             if (input == null)
             {
@@ -163,24 +154,24 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             return base.Equals(input) && 
                 (
+                    this.RecordDate == input.RecordDate ||
+                    (this.RecordDate != null &&
+                    this.RecordDate.Equals(input.RecordDate))
+                ) && base.Equals(input) && 
+                (
                     this.PaymentDate == input.PaymentDate ||
                     (this.PaymentDate != null &&
                     this.PaymentDate.Equals(input.PaymentDate))
                 ) && base.Equals(input) && 
                 (
-                    this.ExDate == input.ExDate ||
-                    (this.ExDate != null &&
-                    this.ExDate.Equals(input.ExDate))
+                    this.ResponseDeadline == input.ResponseDeadline ||
+                    (this.ResponseDeadline != null &&
+                    this.ResponseDeadline.Equals(input.ResponseDeadline))
                 ) && base.Equals(input) && 
                 (
-                    this.UnitsRatio == input.UnitsRatio ||
-                    (this.UnitsRatio != null &&
-                    this.UnitsRatio.Equals(input.UnitsRatio))
-                ) && base.Equals(input) && 
-                (
-                    this.RecordDate == input.RecordDate ||
-                    (this.RecordDate != null &&
-                    this.RecordDate.Equals(input.RecordDate))
+                    this.MarketDeadline == input.MarketDeadline ||
+                    (this.MarketDeadline != null &&
+                    this.MarketDeadline.Equals(input.MarketDeadline))
                 ) && base.Equals(input) && 
                 (
                     this.AnnouncementDate == input.AnnouncementDate ||
@@ -188,14 +179,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.AnnouncementDate.Equals(input.AnnouncementDate))
                 ) && base.Equals(input) && 
                 (
-                    this.FractionalUnitsCashPrice == input.FractionalUnitsCashPrice ||
-                    (this.FractionalUnitsCashPrice != null &&
-                    this.FractionalUnitsCashPrice.Equals(input.FractionalUnitsCashPrice))
-                ) && base.Equals(input) && 
-                (
-                    this.FractionalUnitsCashCurrency == input.FractionalUnitsCashCurrency ||
-                    (this.FractionalUnitsCashCurrency != null &&
-                    this.FractionalUnitsCashCurrency.Equals(input.FractionalUnitsCashCurrency))
+                    this.CashElections == input.CashElections ||
+                    this.CashElections != null &&
+                    input.CashElections != null &&
+                    this.CashElections.SequenceEqual(input.CashElections)
                 ) && base.Equals(input) && 
                 (
                     this.InstrumentEventType == input.InstrumentEventType ||
@@ -212,33 +199,29 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = base.GetHashCode();
+                if (this.RecordDate != null)
+                {
+                    hashCode = (hashCode * 59) + this.RecordDate.GetHashCode();
+                }
                 if (this.PaymentDate != null)
                 {
                     hashCode = (hashCode * 59) + this.PaymentDate.GetHashCode();
                 }
-                if (this.ExDate != null)
+                if (this.ResponseDeadline != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ResponseDeadline.GetHashCode();
                 }
-                if (this.UnitsRatio != null)
+                if (this.MarketDeadline != null)
                 {
-                    hashCode = (hashCode * 59) + this.UnitsRatio.GetHashCode();
-                }
-                if (this.RecordDate != null)
-                {
-                    hashCode = (hashCode * 59) + this.RecordDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.MarketDeadline.GetHashCode();
                 }
                 if (this.AnnouncementDate != null)
                 {
                     hashCode = (hashCode * 59) + this.AnnouncementDate.GetHashCode();
                 }
-                if (this.FractionalUnitsCashPrice != null)
+                if (this.CashElections != null)
                 {
-                    hashCode = (hashCode * 59) + this.FractionalUnitsCashPrice.GetHashCode();
-                }
-                if (this.FractionalUnitsCashCurrency != null)
-                {
-                    hashCode = (hashCode * 59) + this.FractionalUnitsCashCurrency.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CashElections.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.InstrumentEventType.GetHashCode();
                 return hashCode;
