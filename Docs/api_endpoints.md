@@ -59,6 +59,7 @@
 ## Lusid
 * [AborApi](Lusid/Api/AborApi.md)
 * [AborConfigurationApi](Lusid/Api/AborConfigurationApi.md)
+* [AddressKeyAliasApi](Lusid/Api/AddressKeyAliasApi.md)
 * [AddressKeyDefinitionApi](Lusid/Api/AddressKeyDefinitionApi.md)
 * [AggregatedReturnsApi](Lusid/Api/AggregatedReturnsApi.md)
 * [AggregationApi](Lusid/Api/AggregationApi.md)

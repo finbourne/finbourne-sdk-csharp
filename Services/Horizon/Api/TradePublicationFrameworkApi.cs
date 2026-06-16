@@ -31,6 +31,41 @@ namespace Finbourne.Sdk.Services.Horizon.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance
+        /// </summary>
+        /// <remarks>
+        /// Retrieve file delivery records for a Trade Publication Framework instance. Returns an aggregated view of file delivery outcomes across all runs. Filterable by delivery status and date range. Supports pagination for large result sets.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance ID</param>
+        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
+        /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
+        /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
+        /// <param name="page">Pagination token from previous response (optional, default to &quot;&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>PagedResourceListOfTpfFileDeliveryResponse</returns>
+        PagedResourceListOfTpfFileDeliveryResponse GetTpfFileDeliveries(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance
+        /// </summary>
+        /// <remarks>
+        /// Retrieve file delivery records for a Trade Publication Framework instance. Returns an aggregated view of file delivery outcomes across all runs. Filterable by delivery status and date range. Supports pagination for large result sets.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance ID</param>
+        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
+        /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
+        /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
+        /// <param name="page">Pagination token from previous response (optional, default to &quot;&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of PagedResourceListOfTpfFileDeliveryResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesWithHttpInfo(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] GetTpfTransactionHistorySearch: Endpoint to search TPF transaction by transaction ID and/or instrument identifier, with filtering by instance and date range
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -92,6 +127,34 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of TransactionPayloadResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<TransactionPayloadResponse> GetTransactionPayloadWithHttpInfo(string instanceId, string runId, string transactionId, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ListFailedDeliveries: List failed deliveries for a given TPF instance, filtered by resolved state, with pagination support.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="resolved"> (optional, default to false)</param>
+        /// <param name="page"> (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>PagedResourceListOfFailedDeliveryResponse</returns>
+        PagedResourceListOfFailedDeliveryResponse ListFailedDeliveries(string instanceId, bool? resolved = default(bool?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListFailedDeliveries: List failed deliveries for a given TPF instance, filtered by resolved state, with pagination support.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="resolved"> (optional, default to false)</param>
+        /// <param name="page"> (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of PagedResourceListOfFailedDeliveryResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFailedDeliveryResponse> ListFailedDeliveriesWithHttpInfo(string instanceId, bool? resolved = default(bool?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListInstanceRunHistory: List run history for a given TPF instance, with pagination support.
         /// </summary>
@@ -221,6 +284,32 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <returns>ApiResponse of ReplayTransactionsResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<ReplayTransactionsResponse> ReplayTransactionsWithHttpInfo(string instanceId, ReplayTransactionsRequest replayTransactionsRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="batchReferenceId"></param>
+        /// <param name="resolveFailedDeliveryRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResolveFailedDeliveryResponse</returns>
+        ResolveFailedDeliveryResponse ResolveFailedDelivery(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="batchReferenceId"></param>
+        /// <param name="resolveFailedDeliveryRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResolveFailedDeliveryResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<ResolveFailedDeliveryResponse> ResolveFailedDeliveryWithHttpInfo(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -253,6 +342,43 @@ namespace Finbourne.Sdk.Services.Horizon.Api
     public interface ITradePublicationFrameworkApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance
+        /// </summary>
+        /// <remarks>
+        /// Retrieve file delivery records for a Trade Publication Framework instance. Returns an aggregated view of file delivery outcomes across all runs. Filterable by delivery status and date range. Supports pagination for large result sets.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance ID</param>
+        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
+        /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
+        /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
+        /// <param name="page">Pagination token from previous response (optional, default to &quot;&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of PagedResourceListOfTpfFileDeliveryResponse</returns>
+        System.Threading.Tasks.Task<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesAsync(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance
+        /// </summary>
+        /// <remarks>
+        /// Retrieve file delivery records for a Trade Publication Framework instance. Returns an aggregated view of file delivery outcomes across all runs. Filterable by delivery status and date range. Supports pagination for large result sets.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance ID</param>
+        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
+        /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
+        /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
+        /// <param name="page">Pagination token from previous response (optional, default to &quot;&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (PagedResourceListOfTpfFileDeliveryResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse>> GetTpfFileDeliveriesWithHttpInfoAsync(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetTpfTransactionHistorySearch: Endpoint to search TPF transaction by transaction ID and/or instrument identifier, with filtering by instance and date range
         /// </summary>
@@ -325,6 +451,39 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (TransactionPayloadResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TransactionPayloadResponse>> GetTransactionPayloadWithHttpInfoAsync(string instanceId, string runId, string transactionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ListFailedDeliveries: List failed deliveries for a given TPF instance, filtered by resolved state, with pagination support.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="resolved"> (optional, default to false)</param>
+        /// <param name="page"> (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of PagedResourceListOfFailedDeliveryResponse</returns>
+        System.Threading.Tasks.Task<PagedResourceListOfFailedDeliveryResponse> ListFailedDeliveriesAsync(string instanceId, bool? resolved = default(bool?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListFailedDeliveries: List failed deliveries for a given TPF instance, filtered by resolved state, with pagination support.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="resolved"> (optional, default to false)</param>
+        /// <param name="page"> (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (PagedResourceListOfFailedDeliveryResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFailedDeliveryResponse>> ListFailedDeliveriesWithHttpInfoAsync(string instanceId, bool? resolved = default(bool?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListInstanceRunHistory: List run history for a given TPF instance, with pagination support.
         /// </summary>
@@ -479,6 +638,37 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <returns>Task of ApiResponse (ReplayTransactionsResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ReplayTransactionsResponse>> ReplayTransactionsWithHttpInfoAsync(string instanceId, ReplayTransactionsRequest replayTransactionsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="batchReferenceId"></param>
+        /// <param name="resolveFailedDeliveryRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResolveFailedDeliveryResponse</returns>
+        System.Threading.Tasks.Task<ResolveFailedDeliveryResponse> ResolveFailedDeliveryAsync(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="batchReferenceId"></param>
+        /// <param name="resolveFailedDeliveryRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResolveFailedDeliveryResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResolveFailedDeliveryResponse>> ResolveFailedDeliveryWithHttpInfoAsync(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
         /// </summary>
         /// <remarks>
@@ -599,6 +789,288 @@ namespace Finbourne.Sdk.Services.Horizon.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance Retrieve file delivery records for a Trade Publication Framework instance. Returns an aggregated view of file delivery outcomes across all runs. Filterable by delivery status and date range. Supports pagination for large result sets.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance ID</param>
+        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
+        /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
+        /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
+        /// <param name="page">Pagination token from previous response (optional, default to &quot;&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>PagedResourceListOfTpfFileDeliveryResponse</returns>
+        public PagedResourceListOfTpfFileDeliveryResponse GetTpfFileDeliveries(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> localVarResponse = GetTpfFileDeliveriesWithHttpInfo(instanceId, status, dateFrom, dateTo, limit, page, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance Retrieve file delivery records for a Trade Publication Framework instance. Returns an aggregated view of file delivery outcomes across all runs. Filterable by delivery status and date range. Supports pagination for large result sets.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId">Integration instance ID</param>
+        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
+        /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
+        /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
+        /// <param name="page">Pagination token from previous response (optional, default to &quot;&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of PagedResourceListOfTpfFileDeliveryResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesWithHttpInfo(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->GetTpfFileDeliveries");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (dateFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "dateFrom", dateFrom));
+            }
+            if (dateTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "dateTo", dateTo));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+
+            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.GetTpfFileDeliveries";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<PagedResourceListOfTpfFileDeliveryResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/deliveries", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTpfFileDeliveries", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance Retrieve file delivery records for a Trade Publication Framework instance. Returns an aggregated view of file delivery outcomes across all runs. Filterable by delivery status and date range. Supports pagination for large result sets.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance ID</param>
+        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
+        /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
+        /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
+        /// <param name="page">Pagination token from previous response (optional, default to &quot;&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of PagedResourceListOfTpfFileDeliveryResponse</returns>
+        public async System.Threading.Tasks.Task<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesAsync(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> localVarResponse = await GetTpfFileDeliveriesWithHttpInfoAsync(instanceId, status, dateFrom, dateTo, limit, page, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance Retrieve file delivery records for a Trade Publication Framework instance. Returns an aggregated view of file delivery outcomes across all runs. Filterable by delivery status and date range. Supports pagination for large result sets.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId">Integration instance ID</param>
+        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
+        /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
+        /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
+        /// <param name="page">Pagination token from previous response (optional, default to &quot;&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (PagedResourceListOfTpfFileDeliveryResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse>> GetTpfFileDeliveriesWithHttpInfoAsync(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->GetTpfFileDeliveries");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (dateFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "dateFrom", dateFrom));
+            }
+            if (dateTo != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "dateTo", dateTo));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+
+            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.GetTpfFileDeliveries";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<PagedResourceListOfTpfFileDeliveryResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/deliveries", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTpfFileDeliveries", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>
@@ -1150,6 +1622,264 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetTransactionPayload", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListFailedDeliveries: List failed deliveries for a given TPF instance, filtered by resolved state, with pagination support. 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="resolved"> (optional, default to false)</param>
+        /// <param name="page"> (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>PagedResourceListOfFailedDeliveryResponse</returns>
+        public PagedResourceListOfFailedDeliveryResponse ListFailedDeliveries(string instanceId, bool? resolved = default(bool?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFailedDeliveryResponse> localVarResponse = ListFailedDeliveriesWithHttpInfo(instanceId, resolved, page, pageSize, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListFailedDeliveries: List failed deliveries for a given TPF instance, filtered by resolved state, with pagination support. 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="resolved"> (optional, default to false)</param>
+        /// <param name="page"> (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of PagedResourceListOfFailedDeliveryResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFailedDeliveryResponse> ListFailedDeliveriesWithHttpInfo(string instanceId, bool? resolved = default(bool?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->ListFailedDeliveries");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+            if (resolved != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "resolved", resolved));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+
+            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ListFailedDeliveries";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<PagedResourceListOfFailedDeliveryResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/failed", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListFailedDeliveries", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListFailedDeliveries: List failed deliveries for a given TPF instance, filtered by resolved state, with pagination support. 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="resolved"> (optional, default to false)</param>
+        /// <param name="page"> (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of PagedResourceListOfFailedDeliveryResponse</returns>
+        public async System.Threading.Tasks.Task<PagedResourceListOfFailedDeliveryResponse> ListFailedDeliveriesAsync(string instanceId, bool? resolved = default(bool?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFailedDeliveryResponse> localVarResponse = await ListFailedDeliveriesWithHttpInfoAsync(instanceId, resolved, page, pageSize, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListFailedDeliveries: List failed deliveries for a given TPF instance, filtered by resolved state, with pagination support. 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="resolved"> (optional, default to false)</param>
+        /// <param name="page"> (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (PagedResourceListOfFailedDeliveryResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFailedDeliveryResponse>> ListFailedDeliveriesWithHttpInfoAsync(string instanceId, bool? resolved = default(bool?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->ListFailedDeliveries");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+            if (resolved != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "resolved", resolved));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+
+            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ListFailedDeliveries";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<PagedResourceListOfFailedDeliveryResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/failed", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListFailedDeliveries", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2388,6 +3118,272 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ReplayTransactions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="batchReferenceId"></param>
+        /// <param name="resolveFailedDeliveryRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResolveFailedDeliveryResponse</returns>
+        public ResolveFailedDeliveryResponse ResolveFailedDelivery(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResolveFailedDeliveryResponse> localVarResponse = ResolveFailedDeliveryWithHttpInfo(instanceId, batchReferenceId, resolveFailedDeliveryRequest, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="batchReferenceId"></param>
+        /// <param name="resolveFailedDeliveryRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResolveFailedDeliveryResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ResolveFailedDeliveryResponse> ResolveFailedDeliveryWithHttpInfo(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->ResolveFailedDelivery");
+            }
+
+            // verify the required parameter 'batchReferenceId' is set
+            if (batchReferenceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'batchReferenceId' when calling TradePublicationFrameworkApi->ResolveFailedDelivery");
+            }
+
+            // verify the required parameter 'resolveFailedDeliveryRequest' is set
+            if (resolveFailedDeliveryRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'resolveFailedDeliveryRequest' when calling TradePublicationFrameworkApi->ResolveFailedDelivery");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("batchReferenceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(batchReferenceId)); // path parameter
+            localVarRequestOptions.Data = resolveFailedDeliveryRequest;
+
+            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ResolveFailedDelivery";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<ResolveFailedDeliveryResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/failed/{batchReferenceId}/resolve", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ResolveFailedDelivery", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="batchReferenceId"></param>
+        /// <param name="resolveFailedDeliveryRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResolveFailedDeliveryResponse</returns>
+        public async System.Threading.Tasks.Task<ResolveFailedDeliveryResponse> ResolveFailedDeliveryAsync(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResolveFailedDeliveryResponse> localVarResponse = await ResolveFailedDeliveryWithHttpInfoAsync(instanceId, batchReferenceId, resolveFailedDeliveryRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId"></param>
+        /// <param name="batchReferenceId"></param>
+        /// <param name="resolveFailedDeliveryRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResolveFailedDeliveryResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResolveFailedDeliveryResponse>> ResolveFailedDeliveryWithHttpInfoAsync(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->ResolveFailedDelivery");
+            }
+
+            // verify the required parameter 'batchReferenceId' is set
+            if (batchReferenceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'batchReferenceId' when calling TradePublicationFrameworkApi->ResolveFailedDelivery");
+            }
+
+            // verify the required parameter 'resolveFailedDeliveryRequest' is set
+            if (resolveFailedDeliveryRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'resolveFailedDeliveryRequest' when calling TradePublicationFrameworkApi->ResolveFailedDelivery");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("batchReferenceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(batchReferenceId)); // path parameter
+            localVarRequestOptions.Data = resolveFailedDeliveryRequest;
+
+            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ResolveFailedDelivery";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<ResolveFailedDeliveryResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/failed/{batchReferenceId}/resolve", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ResolveFailedDelivery", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
