@@ -43,7 +43,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="currency">The Currency for the Account (required).</param>
         /// <param name="properties">Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain..</param>
         /// <param name="custodian">custodian (required).</param>
-        /// <param name="accountType">The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap. (required).</param>
+        /// <param name="accountType">The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default..</param>
         public CustodianAccount(ResourceId custodianAccountId = default(ResourceId), string status = default(string), string accountNumber = default(string), string accountName = default(string), string accountingMethod = default(string), string currency = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), LegalEntity custodian = default(LegalEntity), string accountType = default(string))
         {
             // to ensure "custodianAccountId" is required (not null)
@@ -88,13 +88,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("custodian is a required property for CustodianAccount and cannot be null");
             }
             this.Custodian = custodian;
-            // to ensure "accountType" is required (not null)
-            if (accountType == null)
-            {
-                throw new ArgumentNullException("accountType is a required property for CustodianAccount and cannot be null");
-            }
-            this.AccountType = accountType;
             this.Properties = properties;
+            this.AccountType = accountType;
         }
 
         /// <summary>
@@ -152,10 +147,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public LegalEntity Custodian { get; set; }
 
         /// <summary>
-        /// The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap.
+        /// The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default.
         /// </summary>
-        /// <value>The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap.</value>
-        [DataMember(Name = "accountType", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default.</value>
+        [DataMember(Name = "accountType", EmitDefaultValue = true)]
         public string AccountType { get; set; }
 
         /// <summary>
@@ -314,6 +309,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // AccountType (string) pattern
+            Regex regexAccountType = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
+            if (false == regexAccountType.Match(this.AccountType).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccountType, must match a pattern of " + regexAccountType, new [] { "AccountType" });
+            }
+
             yield break;
         }
     }

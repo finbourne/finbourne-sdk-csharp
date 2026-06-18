@@ -13,7 +13,7 @@
 | **Currency** | **string** | Required | The Currency for the Account |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain. |
 | **CustodianIdentifier** | [TypedResourceId](TypedResourceId.md) | Required | *No description available.* |
-| **AccountType** | **string** | Optional | The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap. |
+| **AccountType** | **string** | Optional | The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default. |
 
 
 ## Usage
@@ -33,7 +33,7 @@ var instance = new CustodianAccountRequest(
     currency: "...",  // required — The Currency for the Account
     properties: new Property(...),  // optional — Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain.
     custodianIdentifier: new TypedResourceId(...),  // required
-    accountType: "..."  // optional — The Type of the Custodian Account. Default value: Margin. Available values: Margin, Cash, Swap.
+    accountType: "..."  // optional — The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default.
 );
 ```
 ### Serializing to JSON
