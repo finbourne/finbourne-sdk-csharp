@@ -6,7 +6,6 @@ Holding context node.  Contains settings that control how LUSID handles holdings
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **TaxLotLevelHoldings** | **bool** | Optional | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to True. |
-| **AggregateCashCommitments** | **bool** | Optional | When true, cash commitment holdings sharing a SubHoldingKey are folded into a single aggregated  row per portfolio, mirroring how cash balances are already aggregated. Defaults to false to  preserve existing behaviour. Ignored when TaxLotLevelHoldings is true — tax-lot granularity  takes precedence. Aggregation is per-portfolio: cross-portfolio rows in portfolio-group / fund  responses stay separate, matching the behaviour of positions and cash balances. |
 
 
 ## Usage
@@ -17,8 +16,7 @@ Holding context node.  Contains settings that control how LUSID handles holdings
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new HoldingContext(
-    taxLotLevelHoldings: true,  // optional — Whether or not to expand the holdings to return the underlying tax-lots. Defaults to True.
-    aggregateCashCommitments: true  // optional — When true, cash commitment holdings sharing a SubHoldingKey are folded into a single aggregated  row per portfolio, mirroring how cash balances are already aggregated. Defaults to false to  preserve existing behaviour. Ignored when TaxLotLevelHoldings is true — tax-lot granularity  takes precedence. Aggregation is per-portfolio: cross-portfolio rows in portfolio-group / fund  responses stay separate, matching the behaviour of positions and cash balances.
+    taxLotLevelHoldings: true  // optional — Whether or not to expand the holdings to return the underlying tax-lots. Defaults to True.
 );
 ```
 ### Serializing to JSON

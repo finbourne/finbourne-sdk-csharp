@@ -1706,7 +1706,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getholdings"></a>
 ## GetHoldings
 
-> VersionedResourceListOfPortfolioHolding GetHoldings(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null, bool? byTaxlots = null, int? includeSettlementEventsAfterDays = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null)
+> VersionedResourceListOfPortfolioHolding GetHoldings(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null, bool? byTaxlots = null, int? includeSettlementEventsAfterDays = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null, bool? aggregateCashCommitments = null)
 
 GetHoldings: Get holdings
 
@@ -1727,7 +1727,8 @@ var includeSettlementEventsAfterDays = 56;  // int? (optional)
 var timelineScope = "timelineScope_example";  // string? (optional)
 var timelineCode = "timelineCode_example";  // string? (optional)
 var closedPeriodId = "closedPeriodId_example";  // string? (optional)
-VersionedResourceListOfPortfolioHolding result = apiInstance.GetHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId);
+var aggregateCashCommitments = true;  // bool? (optional)
+VersionedResourceListOfPortfolioHolding result = apiInstance.GetHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1746,6 +1747,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **timelineScope** | **string?** | query | optional | The scope of the Timeline. |
 | **timelineCode** | **string?** | query | optional | The code of the Timeline. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods. |
 | **closedPeriodId** | **string?** | query | optional | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. Either closedPeriodId or effectiveAt can be used with a Timeline. |
+| **aggregateCashCommitments** | **bool?** | query | optional | When true, collapses cash-commitment rows that share a sub-holding key              into a single aggregated row per portfolio with summed units/cost and the per-leg breakdown retained on the              settlement schedule. Ignored when byTaxlots is true. Defaults to False. |
 
 ### Return type
 
@@ -1770,7 +1772,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<VersionedResourceListOfPortfolioHolding> response = apiInstance.GetHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId);
+ApiResponse<VersionedResourceListOfPortfolioHolding> response = apiInstance.GetHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1852,7 +1854,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getholdingswithorders"></a>
 ## GetHoldingsWithOrders
 
-> VersionedResourceListWithWarningsOfPortfolioHolding GetHoldingsWithOrders(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null, bool? byTaxlots = null, string? recipeIdScope = null, string? recipeIdCode = null, int? includeSettlementEventsAfterDays = null)
+> VersionedResourceListWithWarningsOfPortfolioHolding GetHoldingsWithOrders(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null, bool? byTaxlots = null, string? recipeIdScope = null, string? recipeIdCode = null, int? includeSettlementEventsAfterDays = null, bool? aggregateCashCommitments = null)
 
 GetHoldingsWithOrders: Get holdings with orders
 
@@ -1872,7 +1874,8 @@ var byTaxlots = true;  // bool? (optional)
 var recipeIdScope = "recipeIdScope_example";  // string? (optional)
 var recipeIdCode = "recipeIdCode_example";  // string? (optional)
 var includeSettlementEventsAfterDays = 56;  // int? (optional)
-VersionedResourceListWithWarningsOfPortfolioHolding result = apiInstance.GetHoldingsWithOrders(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays);
+var aggregateCashCommitments = true;  // bool? (optional)
+VersionedResourceListWithWarningsOfPortfolioHolding result = apiInstance.GetHoldingsWithOrders(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1890,6 +1893,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeId |
 | **includeSettlementEventsAfterDays** | **int?** | query | optional | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt |
+| **aggregateCashCommitments** | **bool?** | query | optional | When true, collapses cash-commitment rows that share a sub-holding key              into a single aggregated row per portfolio with summed units/cost and the per-leg breakdown retained on the              settlement schedule. Ignored when byTaxlots is true. Defaults to False. |
 
 ### Return type
 
@@ -1914,7 +1918,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> response = apiInstance.GetHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays);
+ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> response = apiInstance.GetHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, aggregateCashCommitments);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

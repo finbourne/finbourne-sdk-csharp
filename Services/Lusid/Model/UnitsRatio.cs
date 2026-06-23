@@ -37,10 +37,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="input">Input amount.  Denominator of the Ratio (required).</param>
         /// <param name="output">Output amount. Numerator of the Ratio (required).</param>
-        public UnitsRatio(decimal input = default(decimal), decimal output = default(decimal))
+        /// <param name="unitScaleType">Determines how units are scaled when processing the event.  Supported values: [NEWO, ADEX]. Available values: NEWO, ADEX..</param>
+        public UnitsRatio(decimal input = default(decimal), decimal output = default(decimal), string unitScaleType = default(string))
         {
             this.Input = input;
             this.Output = output;
+            this.UnitScaleType = unitScaleType;
         }
 
         /// <summary>
@@ -58,6 +60,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal Output { get; set; }
 
         /// <summary>
+        /// Determines how units are scaled when processing the event.  Supported values: [NEWO, ADEX]. Available values: NEWO, ADEX.
+        /// </summary>
+        /// <value>Determines how units are scaled when processing the event.  Supported values: [NEWO, ADEX]. Available values: NEWO, ADEX.</value>
+        [DataMember(Name = "unitScaleType", EmitDefaultValue = true)]
+        public string UnitScaleType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -67,6 +76,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class UnitsRatio {\n");
             sb.Append("  Input: ").Append(Input).Append("\n");
             sb.Append("  Output: ").Append(Output).Append("\n");
+            sb.Append("  UnitScaleType: ").Append(UnitScaleType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,6 +119,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.Output == input.Output ||
                     this.Output.Equals(input.Output)
+                ) && 
+                (
+                    this.UnitScaleType == input.UnitScaleType ||
+                    (this.UnitScaleType != null &&
+                    this.UnitScaleType.Equals(input.UnitScaleType))
                 );
         }
 
@@ -123,6 +138,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Input.GetHashCode();
                 hashCode = (hashCode * 59) + this.Output.GetHashCode();
+                if (this.UnitScaleType != null)
+                {
+                    hashCode = (hashCode * 59) + this.UnitScaleType.GetHashCode();
+                }
                 return hashCode;
             }
         }

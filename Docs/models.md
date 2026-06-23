@@ -1360,6 +1360,7 @@
 * [PricingModel](Lusid/Model/PricingModel.md)
 * [PricingOptions](Lusid/Model/PricingOptions.md)
 * [PrimarySchedule](Lusid/Model/PrimarySchedule.md)
+* [PriorityIssueEvent](Lusid/Model/PriorityIssueEvent.md)
 * [ProcessedCommand](Lusid/Model/ProcessedCommand.md)
 * [Property](Lusid/Model/Property.md)
 * [PropertyDefinition](Lusid/Model/PropertyDefinition.md)

@@ -7,6 +7,7 @@ The number of units you have after the event (output) for a given number of unit
 |------|------|----------|-------------|
 | **Input** | **decimal** | Required | Input amount.  Denominator of the Ratio |
 | **Output** | **decimal** | Required | Output amount. Numerator of the Ratio |
+| **UnitScaleType** | **string** | Optional | Determines how units are scaled when processing the event.  Supported values: [NEWO, ADEX]. Available values: NEWO, ADEX. |
 
 
 ## Usage
@@ -18,7 +19,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new UnitsRatio(
     input: 0.0d,  // required — Input amount.  Denominator of the Ratio
-    output: 0.0d  // required — Output amount. Numerator of the Ratio
+    output: 0.0d,  // required — Output amount. Numerator of the Ratio
+    unitScaleType: "..."  // optional — Determines how units are scaled when processing the event.  Supported values: [NEWO, ADEX]. Available values: NEWO, ADEX.
 );
 ```
 ### Serializing to JSON
