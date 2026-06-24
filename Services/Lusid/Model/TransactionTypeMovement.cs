@@ -46,7 +46,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="condition">The condition that the transaction must satisfy to generate the movement, such as: Portfolio.BaseCurrency eq &#39;GBP&#39;. The condition can contain fields and properties from transactions and portfolios. If no condition is provided, the movement will apply for all transactions of this type..</param>
         /// <param name="settlementMode">Configures how movements should settle. Allowed values: &#39;Internal&#39; and &#39;External&#39;. A movement with &#39;Internal&#39; settlement mode will settle automatically on the contractual settlement date regardlesss of portfolio configuration or settlement instruction. An &#39;External&#39; movement can be settled automatically or by a settlement instruction. Available values: Internal, External..</param>
         /// <param name="calculateTradeDateToSettlementFxPnL">Configures whether Trade To Settlement Date Realised Gain Loss should be calculated. This overrides the value set at the Portfolio level.If null, then the Portfolio Settlement Configuration TradeToSettlementDateRealisedFxPnl setting will be used.If false, then no TradeToSettlementDateRealisedFxPnl will apply for this movement and if true, then TradeToSettlementDateRealisedFxPnlwill be calculated for this movement..</param>
-        public TransactionTypeMovement(string movementTypes = default(string), string side = default(string), int direction = default(int), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), List<TransactionTypePropertyMapping> mappings = default(List<TransactionTypePropertyMapping>), string name = default(string), List<string> movementOptions = default(List<string>), string settlementDateOverride = default(string), string condition = default(string), string settlementMode = default(string), bool? calculateTradeDateToSettlementFxPnL = default(bool?))
+        /// <param name="custodianAccountType">The type of custodian account this movement targets, e.g. Cash or Margin. Free text, optional..</param>
+        /// <param name="accountSelector">An optional selector expression used to identify the specific account this movement targets. E.g. From/To..</param>
+        public TransactionTypeMovement(string movementTypes = default(string), string side = default(string), int direction = default(int), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), List<TransactionTypePropertyMapping> mappings = default(List<TransactionTypePropertyMapping>), string name = default(string), List<string> movementOptions = default(List<string>), string settlementDateOverride = default(string), string condition = default(string), string settlementMode = default(string), bool? calculateTradeDateToSettlementFxPnL = default(bool?), string custodianAccountType = default(string), string accountSelector = default(string))
         {
             // to ensure "movementTypes" is required (not null)
             if (movementTypes == null)
@@ -69,6 +71,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Condition = condition;
             this.SettlementMode = settlementMode;
             this.CalculateTradeDateToSettlementFxPnL = calculateTradeDateToSettlementFxPnL;
+            this.CustodianAccountType = custodianAccountType;
+            this.AccountSelector = accountSelector;
         }
 
         /// <summary>
@@ -149,6 +153,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public bool? CalculateTradeDateToSettlementFxPnL { get; set; }
 
         /// <summary>
+        /// The type of custodian account this movement targets, e.g. Cash or Margin. Free text, optional.
+        /// </summary>
+        /// <value>The type of custodian account this movement targets, e.g. Cash or Margin. Free text, optional.</value>
+        [DataMember(Name = "custodianAccountType", EmitDefaultValue = true)]
+        public string CustodianAccountType { get; set; }
+
+        /// <summary>
+        /// An optional selector expression used to identify the specific account this movement targets. E.g. From/To.
+        /// </summary>
+        /// <value>An optional selector expression used to identify the specific account this movement targets. E.g. From/To.</value>
+        [DataMember(Name = "accountSelector", EmitDefaultValue = true)]
+        public string AccountSelector { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -167,6 +185,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Condition: ").Append(Condition).Append("\n");
             sb.Append("  SettlementMode: ").Append(SettlementMode).Append("\n");
             sb.Append("  CalculateTradeDateToSettlementFxPnL: ").Append(CalculateTradeDateToSettlementFxPnL).Append("\n");
+            sb.Append("  CustodianAccountType: ").Append(CustodianAccountType).Append("\n");
+            sb.Append("  AccountSelector: ").Append(AccountSelector).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -258,6 +278,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.CalculateTradeDateToSettlementFxPnL == input.CalculateTradeDateToSettlementFxPnL ||
                     (this.CalculateTradeDateToSettlementFxPnL != null &&
                     this.CalculateTradeDateToSettlementFxPnL.Equals(input.CalculateTradeDateToSettlementFxPnL))
+                ) && 
+                (
+                    this.CustodianAccountType == input.CustodianAccountType ||
+                    (this.CustodianAccountType != null &&
+                    this.CustodianAccountType.Equals(input.CustodianAccountType))
+                ) && 
+                (
+                    this.AccountSelector == input.AccountSelector ||
+                    (this.AccountSelector != null &&
+                    this.AccountSelector.Equals(input.AccountSelector))
                 );
         }
 
@@ -311,6 +341,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.CalculateTradeDateToSettlementFxPnL.GetHashCode();
                 }
+                if (this.CustodianAccountType != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustodianAccountType.GetHashCode();
+                }
+                if (this.AccountSelector != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccountSelector.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -341,6 +379,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             if (false == regexCondition.Match(this.Condition).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Condition, must match a pattern of " + regexCondition, new [] { "Condition" });
+            }
+
+            // CustodianAccountType (string) pattern
+            Regex regexCustodianAccountType = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
+            if (false == regexCustodianAccountType.Match(this.CustodianAccountType).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CustodianAccountType, must match a pattern of " + regexCustodianAccountType, new [] { "CustodianAccountType" });
+            }
+
+            // AccountSelector (string) pattern
+            Regex regexAccountSelector = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
+            if (false == regexAccountSelector.Match(this.AccountSelector).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccountSelector, must match a pattern of " + regexAccountSelector, new [] { "AccountSelector" });
             }
 
             yield break;
