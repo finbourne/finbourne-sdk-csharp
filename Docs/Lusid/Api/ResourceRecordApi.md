@@ -5,12 +5,12 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**DeleteResourceRecord**](#deleteresourcerecord) | **DELETE** `/api/api/resourcerecords/{scope}/{code}/{resourceId}` | [EARLY ACCESS] DeleteResourceRecord: Delete a Resource Record |
-| [**GetResourceRecord**](#getresourcerecord) | **GET** `/api/api/resourcerecords/{scope}/{code}/{resourceId}` | [EARLY ACCESS] GetResourceRecord: Get a Resource Record |
-| [**ListResourceRecordCodes**](#listresourcerecordcodes) | **GET** `/api/api/resourcerecords/{scope}` | [EARLY ACCESS] ListResourceRecordCodes: List Resource Records Codes for Scope |
-| [**ListResourceRecordScopes**](#listresourcerecordscopes) | **GET** `/api/api/resourcerecords` | [EARLY ACCESS] ListResourceRecordScopes: List Resource Record Scopes |
-| [**ListResourceRecords**](#listresourcerecords) | **GET** `/api/api/resourcerecords/{scope}/{code}` | [EARLY ACCESS] ListResourceRecords: List Resource Records |
-| [**UpsertResourceRecord**](#upsertresourcerecord) | **POST** `/api/api/resourcerecords` | [EARLY ACCESS] UpsertResourceRecord: Upsert a Resource Record |
+| [**DeleteResourceRecord**](#deleteresourcerecord) | **DELETE** `/api/api/resourcerecords/{scope}/{code}/{resourceId}` | DeleteResourceRecord: Delete a Resource Record |
+| [**GetResourceRecord**](#getresourcerecord) | **GET** `/api/api/resourcerecords/{scope}/{code}/{resourceId}` | GetResourceRecord: Get a Resource Record |
+| [**ListResourceRecordCodes**](#listresourcerecordcodes) | **GET** `/api/api/resourcerecords/{scope}` | ListResourceRecordCodes: List Resource Records Codes for Scope |
+| [**ListResourceRecordScopes**](#listresourcerecordscopes) | **GET** `/api/api/resourcerecords` | ListResourceRecordScopes: List Resource Record Scopes |
+| [**ListResourceRecords**](#listresourcerecords) | **GET** `/api/api/resourcerecords/{scope}/{code}` | ListResourceRecords: List Resource Records |
+| [**UpsertResourceRecord**](#upsertresourcerecord) | **POST** `/api/api/resourcerecords` | UpsertResourceRecord: Upsert a Resource Record |
 
 ### Example
 
@@ -59,7 +59,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ResourceRecordApi
 
 > DeletedEntityResponse DeleteResourceRecord(string scope, string code, string resourceId)
 
-[EARLY ACCESS] DeleteResourceRecord: Delete a Resource Record
+DeleteResourceRecord: Delete a Resource Record
 
 Delete a resource record.
 
@@ -121,7 +121,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ResourceRecord GetResourceRecord(string scope, string code, string resourceId, DateTimeOffset? asAt = null)
 
-[EARLY ACCESS] GetResourceRecord: Get a Resource Record
+GetResourceRecord: Get a Resource Record
 
 Retrieve a resource record by its identifier.
 
@@ -185,7 +185,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ResourceListOfString ListResourceRecordCodes(string scope, DateTimeOffset? asAt = null, string? sortOrder = null)
 
-[EARLY ACCESS] ListResourceRecordCodes: List Resource Records Codes for Scope
+ListResourceRecordCodes: List Resource Records Codes for Scope
 
 List all resource records matching particular criteria.
 
@@ -247,7 +247,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ResourceListOfScopeDefinition ListResourceRecordScopes(DateTimeOffset? asAt = null, string? page = null, int? limit = null)
 
-[EARLY ACCESS] ListResourceRecordScopes: List Resource Record Scopes
+ListResourceRecordScopes: List Resource Record Scopes
 
 List all resource records matching particular criteria.
 
@@ -309,7 +309,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfResourceRecord ListResourceRecords(string scope, string code, DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null)
 
-[EARLY ACCESS] ListResourceRecords: List Resource Records
+ListResourceRecords: List Resource Records
 
 List all resource records matching particular criteria.
 
@@ -379,7 +379,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ResourceRecord UpsertResourceRecord(UpsertResourceRecordRequest upsertResourceRecordRequest)
 
-[EARLY ACCESS] UpsertResourceRecord: Upsert a Resource Record
+UpsertResourceRecord: Upsert a Resource Record
 
 Create or update a resource record.
 

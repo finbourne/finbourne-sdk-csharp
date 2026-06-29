@@ -12,6 +12,7 @@
 | **Amount** | **string** | Required | The value, field or property key defining the side&#39;s amount |
 | **NotionalAmount** | **string** | Optional | The value, field or property key defining the side&#39;s notional amount |
 | **CurrentFace** | **string** | Optional | The value, field or property key defining the side&#39;s current face / outstanding notional. |
+| **Scope** | **string** | Optional | The scope in which the side definition exists. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -31,6 +32,7 @@ var instance = new SideDefinition(
     amount: "...",  // required — The value, field or property key defining the side&#39;s amount
     notionalAmount: "...",  // optional — The value, field or property key defining the side&#39;s notional amount
     currentFace: "...",  // optional — The value, field or property key defining the side&#39;s current face / outstanding notional.
+    scope: "...",  // optional — The scope in which the side definition exists.
     links: new List<Link>()  // optional
 );
 ```

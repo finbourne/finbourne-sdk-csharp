@@ -518,7 +518,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum ClassActionEvent for value: ClassActionEvent
         /// </summary>
         [EnumMember(Value = "ClassActionEvent")]
-        ClassActionEvent = 82
+        ClassActionEvent = 82,
+
+        /// <summary>
+        /// Enum BankruptcyEvent for value: BankruptcyEvent
+        /// </summary>
+        [EnumMember(Value = "BankruptcyEvent")]
+        BankruptcyEvent = 83,
+
+        /// <summary>
+        /// Enum LiquidationPaymentEvent for value: LiquidationPaymentEvent
+        /// </summary>
+        [EnumMember(Value = "LiquidationPaymentEvent")]
+        LiquidationPaymentEvent = 84
     }
 
 }

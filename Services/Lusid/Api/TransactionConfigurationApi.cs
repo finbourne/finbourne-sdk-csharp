@@ -177,11 +177,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// ListSideDefinitions: List the side definitions
         /// </summary>
         /// <remarks>
-        /// List all the side definitions in the given scope
+        /// List all the side definitions in the given scope, or across all scopes when scope is &#39;*&#39;.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ResourceListOfSideDefinition</returns>
@@ -191,11 +191,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// ListSideDefinitions: List the side definitions
         /// </summary>
         /// <remarks>
-        /// List all the side definitions in the given scope
+        /// List all the side definitions in the given scope, or across all scopes when scope is &#39;*&#39;.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ResourceListOfSideDefinition</returns>
@@ -208,7 +208,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Dictionary&lt;string, List&lt;TransactionType&gt;&gt;</returns>
@@ -222,7 +222,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of Dictionary&lt;string, List&lt;TransactionType&gt;&gt;</returns>
@@ -509,11 +509,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// ListSideDefinitions: List the side definitions
         /// </summary>
         /// <remarks>
-        /// List all the side definitions in the given scope
+        /// List all the side definitions in the given scope, or across all scopes when scope is &#39;*&#39;.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -524,11 +524,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// ListSideDefinitions: List the side definitions
         /// </summary>
         /// <remarks>
-        /// List all the side definitions in the given scope
+        /// List all the side definitions in the given scope, or across all scopes when scope is &#39;*&#39;.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -542,7 +542,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -557,7 +557,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -2032,11 +2032,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// ListSideDefinitions: List the side definitions List all the side definitions in the given scope
+        /// ListSideDefinitions: List the side definitions List all the side definitions in the given scope, or across all scopes when scope is &#39;*&#39;.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ResourceListOfSideDefinition</returns>
@@ -2047,12 +2047,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// ListSideDefinitions: List the side definitions List all the side definitions in the given scope
+        /// ListSideDefinitions: List the side definitions List all the side definitions in the given scope, or across all scopes when scope is &#39;*&#39;.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ResourceListOfSideDefinition</returns>
@@ -2146,11 +2146,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// ListSideDefinitions: List the side definitions List all the side definitions in the given scope
+        /// ListSideDefinitions: List the side definitions List all the side definitions in the given scope, or across all scopes when scope is &#39;*&#39;.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -2162,12 +2162,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// ListSideDefinitions: List the side definitions List all the side definitions in the given scope
+        /// ListSideDefinitions: List the side definitions List all the side definitions in the given scope, or across all scopes when scope is &#39;*&#39;.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -2268,7 +2268,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Dictionary&lt;string, List&lt;TransactionType&gt;&gt;</returns>
@@ -2284,7 +2284,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of Dictionary&lt;string, List&lt;TransactionType&gt;&gt;</returns>
@@ -2382,7 +2382,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -2399,7 +2399,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="asAt">The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. (optional)</param>
-        /// <param name="scope">The scope in which the side exists. When not supplied the scope is &#39;default&#39;. (optional, default to &quot;default&quot;)</param>
+        /// <param name="scope">The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. (optional, default to &quot;default&quot;)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>

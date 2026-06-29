@@ -374,7 +374,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ListSideDefinitions: List the side definitions
 
-List all the side definitions in the given scope
+List all the side definitions in the given scope, or across all scopes when scope is '*'.
 
 ### Example
 
@@ -391,7 +391,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. |
-| **scope** | **string?** | query | optional | The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
+| **scope** | **string?** | query | optional | The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. Default: `&quot;default&quot;` |
 
 ### Return type
 
@@ -451,7 +451,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. |
-| **scope** | **string?** | query | optional | The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
+| **scope** | **string?** | query | optional | The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. Default: `&quot;default&quot;` |
 
 ### Return type
 

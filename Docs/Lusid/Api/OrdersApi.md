@@ -179,7 +179,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listorders"></a>
 ## ListOrders
 
-> PagedResourceListOfOrder ListOrders(DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null, List<string>? propertyKeys = null, string? dataModelScope = null, string? dataModelCode = null, string? membershipType = null)
+> PagedResourceListOfOrder ListOrders(DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null, List<string>? propertyKeys = null, string? dataModelScope = null, string? dataModelCode = null, string? membershipType = null, bool? getDerivedComplianceStatuses = null)
 
 ListOrders: List Orders
 
@@ -198,7 +198,8 @@ var propertyKeys = new List<string>?(); // List<string>? (optional)
 var dataModelScope = "dataModelScope_example";  // string? (optional)
 var dataModelCode = "dataModelCode_example";  // string? (optional)
 var membershipType = "membershipType_example";  // string? (optional)
-PagedResourceListOfOrder result = apiInstance.ListOrders(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType);
+var getDerivedComplianceStatuses = false;  // bool? (optional)
+PagedResourceListOfOrder result = apiInstance.ListOrders(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, getDerivedComplianceStatuses);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -215,6 +216,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 | **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. |
+| **getDerivedComplianceStatuses** | **bool?** | query | optional | If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false. Default: `false` |
 
 ### Return type
 
@@ -239,7 +241,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfOrder> response = apiInstance.ListOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType);
+ApiResponse<PagedResourceListOfOrder> response = apiInstance.ListOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, getDerivedComplianceStatuses);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

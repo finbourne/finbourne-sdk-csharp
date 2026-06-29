@@ -1418,7 +1418,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions.
         /// </summary>
         /// <remarks>
-        /// Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be ued to return instructions for an individual transaction.
+        /// Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be used to return instructions for an individual transaction.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the portfolio to retrieve settlement instructions for.</param>
@@ -1442,7 +1442,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions.
         /// </summary>
         /// <remarks>
-        /// Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be ued to return instructions for an individual transaction.
+        /// Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be used to return instructions for an individual transaction.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the portfolio to retrieve settlement instructions for.</param>
@@ -3305,7 +3305,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions.
         /// </summary>
         /// <remarks>
-        /// Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be ued to return instructions for an individual transaction.
+        /// Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be used to return instructions for an individual transaction.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the portfolio to retrieve settlement instructions for.</param>
@@ -3330,7 +3330,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions.
         /// </summary>
         /// <remarks>
-        /// Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be ued to return instructions for an individual transaction.
+        /// Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be used to return instructions for an individual transaction.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the portfolio to retrieve settlement instructions for.</param>
@@ -15594,7 +15594,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be ued to return instructions for an individual transaction.
+        /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be used to return instructions for an individual transaction.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the portfolio to retrieve settlement instructions for.</param>
@@ -15619,7 +15619,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be ued to return instructions for an individual transaction.
+        /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be used to return instructions for an individual transaction.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -15774,7 +15774,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be ued to return instructions for an individual transaction.
+        /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be used to return instructions for an individual transaction.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the portfolio to retrieve settlement instructions for.</param>
@@ -15800,7 +15800,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be ued to return instructions for an individual transaction.
+        /// [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be used to return instructions for an individual transaction.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

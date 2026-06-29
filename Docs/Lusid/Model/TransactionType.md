@@ -8,6 +8,7 @@
 | **Movements** | [List&lt;TransactionTypeMovement&gt;](TransactionTypeMovement.md) | Required | Movement data for the transaction type |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Properties attached to the transaction type |
 | **Calculations** | [List&lt;TransactionTypeCalculation&gt;](TransactionTypeCalculation.md) | Optional | Calculations to be performed for the transaction type |
+| **Scope** | **string** | Optional | The scope in which the transaction type exists. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -23,6 +24,7 @@ var instance = new TransactionType(
     movements: new List<TransactionTypeMovement>(),  // required — Movement data for the transaction type
     properties: new PerpetualProperty(...),  // optional — Properties attached to the transaction type
     calculations: new List<TransactionTypeCalculation>(),  // optional — Calculations to be performed for the transaction type
+    scope: "...",  // optional — The scope in which the transaction type exists.
     links: new List<Link>()  // optional
 );
 ```

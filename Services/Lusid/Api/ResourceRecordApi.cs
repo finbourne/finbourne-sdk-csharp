@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EARLY ACCESS] DeleteResourceRecord: Delete a Resource Record
+        /// DeleteResourceRecord: Delete a Resource Record
         /// </summary>
         /// <remarks>
         /// Delete a resource record.
@@ -46,7 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeleteResourceRecord(string scope, string code, string resourceId, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] DeleteResourceRecord: Delete a Resource Record
+        /// DeleteResourceRecord: Delete a Resource Record
         /// </summary>
         /// <remarks>
         /// Delete a resource record.
@@ -60,7 +60,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteResourceRecordWithHttpInfo(string scope, string code, string resourceId, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] GetResourceRecord: Get a Resource Record
+        /// GetResourceRecord: Get a Resource Record
         /// </summary>
         /// <remarks>
         /// Retrieve a resource record by its identifier.
@@ -76,7 +76,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         ResourceRecord GetResourceRecord(string scope, string code, string resourceId, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] GetResourceRecord: Get a Resource Record
+        /// GetResourceRecord: Get a Resource Record
         /// </summary>
         /// <remarks>
         /// Retrieve a resource record by its identifier.
@@ -91,7 +91,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceRecord</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceRecord> GetResourceRecordWithHttpInfo(string scope, string code, string resourceId, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordCodes: List Resource Records Codes for Scope
+        /// ListResourceRecordCodes: List Resource Records Codes for Scope
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -106,7 +106,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         ResourceListOfString ListResourceRecordCodes(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? sortOrder = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordCodes: List Resource Records Codes for Scope
+        /// ListResourceRecordCodes: List Resource Records Codes for Scope
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -120,7 +120,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfString</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfString> ListResourceRecordCodesWithHttpInfo(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? sortOrder = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordScopes: List Resource Record Scopes
+        /// ListResourceRecordScopes: List Resource Record Scopes
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -135,7 +135,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         ResourceListOfScopeDefinition ListResourceRecordScopes(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordScopes: List Resource Record Scopes
+        /// ListResourceRecordScopes: List Resource Record Scopes
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -149,7 +149,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfScopeDefinition</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfScopeDefinition> ListResourceRecordScopesWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecords: List Resource Records
+        /// ListResourceRecords: List Resource Records
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -168,7 +168,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfResourceRecord ListResourceRecords(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecords: List Resource Records
+        /// ListResourceRecords: List Resource Records
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -186,7 +186,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfResourceRecord</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfResourceRecord> ListResourceRecordsWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] UpsertResourceRecord: Upsert a Resource Record
+        /// UpsertResourceRecord: Upsert a Resource Record
         /// </summary>
         /// <remarks>
         /// Create or update a resource record.
@@ -199,7 +199,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         ResourceRecord UpsertResourceRecord(UpsertResourceRecordRequest upsertResourceRecordRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] UpsertResourceRecord: Upsert a Resource Record
+        /// UpsertResourceRecord: Upsert a Resource Record
         /// </summary>
         /// <remarks>
         /// Create or update a resource record.
@@ -220,7 +220,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EARLY ACCESS] DeleteResourceRecord: Delete a Resource Record
+        /// DeleteResourceRecord: Delete a Resource Record
         /// </summary>
         /// <remarks>
         /// Delete a resource record.
@@ -236,7 +236,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeleteResourceRecordAsync(string scope, string code, string resourceId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] DeleteResourceRecord: Delete a Resource Record
+        /// DeleteResourceRecord: Delete a Resource Record
         /// </summary>
         /// <remarks>
         /// Delete a resource record.
@@ -251,7 +251,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteResourceRecordWithHttpInfoAsync(string scope, string code, string resourceId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] GetResourceRecord: Get a Resource Record
+        /// GetResourceRecord: Get a Resource Record
         /// </summary>
         /// <remarks>
         /// Retrieve a resource record by its identifier.
@@ -268,7 +268,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<ResourceRecord> GetResourceRecordAsync(string scope, string code, string resourceId, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] GetResourceRecord: Get a Resource Record
+        /// GetResourceRecord: Get a Resource Record
         /// </summary>
         /// <remarks>
         /// Retrieve a resource record by its identifier.
@@ -284,7 +284,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ResourceRecord)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceRecord>> GetResourceRecordWithHttpInfoAsync(string scope, string code, string resourceId, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordCodes: List Resource Records Codes for Scope
+        /// ListResourceRecordCodes: List Resource Records Codes for Scope
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -300,7 +300,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<ResourceListOfString> ListResourceRecordCodesAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? sortOrder = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordCodes: List Resource Records Codes for Scope
+        /// ListResourceRecordCodes: List Resource Records Codes for Scope
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -315,7 +315,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ResourceListOfString)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfString>> ListResourceRecordCodesWithHttpInfoAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? sortOrder = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordScopes: List Resource Record Scopes
+        /// ListResourceRecordScopes: List Resource Record Scopes
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -331,7 +331,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<ResourceListOfScopeDefinition> ListResourceRecordScopesAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordScopes: List Resource Record Scopes
+        /// ListResourceRecordScopes: List Resource Record Scopes
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -346,7 +346,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ResourceListOfScopeDefinition)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfScopeDefinition>> ListResourceRecordScopesWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecords: List Resource Records
+        /// ListResourceRecords: List Resource Records
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -366,7 +366,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfResourceRecord> ListResourceRecordsAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecords: List Resource Records
+        /// ListResourceRecords: List Resource Records
         /// </summary>
         /// <remarks>
         /// List all resource records matching particular criteria.
@@ -385,7 +385,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfResourceRecord)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfResourceRecord>> ListResourceRecordsWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] UpsertResourceRecord: Upsert a Resource Record
+        /// UpsertResourceRecord: Upsert a Resource Record
         /// </summary>
         /// <remarks>
         /// Create or update a resource record.
@@ -399,7 +399,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<ResourceRecord> UpsertResourceRecordAsync(UpsertResourceRecordRequest upsertResourceRecordRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] UpsertResourceRecord: Upsert a Resource Record
+        /// UpsertResourceRecord: Upsert a Resource Record
         /// </summary>
         /// <remarks>
         /// Create or update a resource record.
@@ -506,7 +506,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] DeleteResourceRecord: Delete a Resource Record Delete a resource record.
+        /// DeleteResourceRecord: Delete a Resource Record Delete a resource record.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the resource record.</param>
@@ -522,7 +522,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] DeleteResourceRecord: Delete a Resource Record Delete a resource record.
+        /// DeleteResourceRecord: Delete a Resource Record Delete a resource record.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -635,7 +635,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] DeleteResourceRecord: Delete a Resource Record Delete a resource record.
+        /// DeleteResourceRecord: Delete a Resource Record Delete a resource record.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the resource record.</param>
@@ -652,7 +652,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] DeleteResourceRecord: Delete a Resource Record Delete a resource record.
+        /// DeleteResourceRecord: Delete a Resource Record Delete a resource record.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -768,7 +768,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetResourceRecord: Get a Resource Record Retrieve a resource record by its identifier.
+        /// GetResourceRecord: Get a Resource Record Retrieve a resource record by its identifier.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the resource record.</param>
@@ -785,7 +785,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetResourceRecord: Get a Resource Record Retrieve a resource record by its identifier.
+        /// GetResourceRecord: Get a Resource Record Retrieve a resource record by its identifier.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -903,7 +903,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetResourceRecord: Get a Resource Record Retrieve a resource record by its identifier.
+        /// GetResourceRecord: Get a Resource Record Retrieve a resource record by its identifier.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the resource record.</param>
@@ -921,7 +921,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetResourceRecord: Get a Resource Record Retrieve a resource record by its identifier.
+        /// GetResourceRecord: Get a Resource Record Retrieve a resource record by its identifier.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1042,7 +1042,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordCodes: List Resource Records Codes for Scope List all resource records matching particular criteria.
+        /// ListResourceRecordCodes: List Resource Records Codes for Scope List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the resource record.</param>
@@ -1058,7 +1058,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordCodes: List Resource Records Codes for Scope List all resource records matching particular criteria.
+        /// ListResourceRecordCodes: List Resource Records Codes for Scope List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1165,7 +1165,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordCodes: List Resource Records Codes for Scope List all resource records matching particular criteria.
+        /// ListResourceRecordCodes: List Resource Records Codes for Scope List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the resource record.</param>
@@ -1182,7 +1182,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordCodes: List Resource Records Codes for Scope List all resource records matching particular criteria.
+        /// ListResourceRecordCodes: List Resource Records Codes for Scope List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1292,7 +1292,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordScopes: List Resource Record Scopes List all resource records matching particular criteria.
+        /// ListResourceRecordScopes: List Resource Record Scopes List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list the resource record. Defaults to return the latest version if not specified. (optional)</param>
@@ -1308,7 +1308,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordScopes: List Resource Record Scopes List all resource records matching particular criteria.
+        /// ListResourceRecordScopes: List Resource Record Scopes List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1412,7 +1412,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordScopes: List Resource Record Scopes List all resource records matching particular criteria.
+        /// ListResourceRecordScopes: List Resource Record Scopes List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list the resource record. Defaults to return the latest version if not specified. (optional)</param>
@@ -1429,7 +1429,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecordScopes: List Resource Record Scopes List all resource records matching particular criteria.
+        /// ListResourceRecordScopes: List Resource Record Scopes List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1536,7 +1536,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecords: List Resource Records List all resource records matching particular criteria.
+        /// ListResourceRecords: List Resource Records List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the resource record.</param>
@@ -1556,7 +1556,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecords: List Resource Records List all resource records matching particular criteria.
+        /// ListResourceRecords: List Resource Records List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1686,7 +1686,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecords: List Resource Records List all resource records matching particular criteria.
+        /// ListResourceRecords: List Resource Records List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the resource record.</param>
@@ -1707,7 +1707,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListResourceRecords: List Resource Records List all resource records matching particular criteria.
+        /// ListResourceRecords: List Resource Records List all resource records matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1840,7 +1840,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] UpsertResourceRecord: Upsert a Resource Record Create or update a resource record.
+        /// UpsertResourceRecord: Upsert a Resource Record Create or update a resource record.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="upsertResourceRecordRequest">The resource record to upsert.</param>
@@ -1854,7 +1854,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] UpsertResourceRecord: Upsert a Resource Record Create or update a resource record.
+        /// UpsertResourceRecord: Upsert a Resource Record Create or update a resource record.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1955,7 +1955,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] UpsertResourceRecord: Upsert a Resource Record Create or update a resource record.
+        /// UpsertResourceRecord: Upsert a Resource Record Create or update a resource record.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="upsertResourceRecordRequest">The resource record to upsert.</param>
@@ -1970,7 +1970,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] UpsertResourceRecord: Upsert a Resource Record Create or update a resource record.
+        /// UpsertResourceRecord: Upsert a Resource Record Create or update a resource record.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

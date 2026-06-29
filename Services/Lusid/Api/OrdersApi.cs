@@ -104,10 +104,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="getDerivedComplianceStatuses">If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfOrder</returns>
-        PagedResourceListOfOrder ListOrders(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfOrder ListOrders(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), bool? getDerivedComplianceStatuses = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// ListOrders: List Orders
@@ -125,10 +126,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="getDerivedComplianceStatuses">If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfOrder</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder> ListOrdersWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder> ListOrdersWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), bool? getDerivedComplianceStatuses = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// UpsertOrders: Upsert Order
         /// </summary>
@@ -245,11 +247,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="getDerivedComplianceStatuses">If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfOrder</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfOrder> ListOrdersAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfOrder> ListOrdersAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), bool? getDerivedComplianceStatuses = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// ListOrders: List Orders
@@ -267,11 +270,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="getDerivedComplianceStatuses">If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfOrder)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder>> ListOrdersWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder>> ListOrdersWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), bool? getDerivedComplianceStatuses = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// UpsertOrders: Upsert Order
         /// </summary>
@@ -922,12 +926,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="getDerivedComplianceStatuses">If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfOrder</returns>
-        public PagedResourceListOfOrder ListOrders(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfOrder ListOrders(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), bool? getDerivedComplianceStatuses = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder> localVarResponse = ListOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder> localVarResponse = ListOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, getDerivedComplianceStatuses, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -945,10 +950,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="getDerivedComplianceStatuses">If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfOrder</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder> ListOrdersWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder> ListOrdersWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), bool? getDerivedComplianceStatuses = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
 
@@ -1029,6 +1035,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (membershipType != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "membershipType", membershipType));
+            }
+            if (getDerivedComplianceStatuses != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "getDerivedComplianceStatuses", getDerivedComplianceStatuses));
             }
 
             localVarRequestOptions.Operation = "OrdersApi.ListOrders";
@@ -1078,13 +1088,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="getDerivedComplianceStatuses">If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfOrder</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfOrder> ListOrdersAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfOrder> ListOrdersAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), bool? getDerivedComplianceStatuses = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder> localVarResponse = await ListOrdersWithHttpInfoAsync(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder> localVarResponse = await ListOrdersWithHttpInfoAsync(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, getDerivedComplianceStatuses, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1102,11 +1113,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
+        /// <param name="getDerivedComplianceStatuses">If true, derives and decorates ComplianceState and ApprovalState onto each order using the V2 compliance engine. Defaults to false. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfOrder)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder>> ListOrdersWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfOrder>> ListOrdersWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), string? membershipType = default(string?), bool? getDerivedComplianceStatuses = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -1188,6 +1200,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (membershipType != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "membershipType", membershipType));
+            }
+            if (getDerivedComplianceStatuses != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "getDerivedComplianceStatuses", getDerivedComplianceStatuses));
             }
 
             localVarRequestOptions.Operation = "OrdersApi.ListOrders";

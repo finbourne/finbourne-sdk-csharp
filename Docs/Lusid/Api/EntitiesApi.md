@@ -12,6 +12,7 @@ All URIs are relative to *http://localhost*
 | [**GetPortfolioByEntityUniqueId**](#getportfoliobyentityuniqueid) | **GET** `/api/api/entities/portfolios/{entityUniqueId}` | GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId |
 | [**GetPortfolioChanges**](#getportfoliochanges) | **GET** `/api/api/entities/changes/portfolios` | GetPortfolioChanges: Get the next change to each portfolio in a scope. |
 | [**GetPropertyDefinitionByEntityUniqueId**](#getpropertydefinitionbyentityuniqueid) | **GET** `/api/api/entities/propertydefinitions/{entityUniqueId}` | GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId |
+| [**GetTransactionByEntityUniqueId**](#gettransactionbyentityuniqueid) | **GET** `/api/api/entities/transactions/{entityUniqueId}` | GetTransactionByEntityUniqueId: Get transaction by EntityUniqueId |
 
 ### Example
 
@@ -499,6 +500,72 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PropertyDefinitionEntity> response = apiInstance.GetPropertyDefinitionByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="gettransactionbyentityuniqueid"></a>
+## GetTransactionByEntityUniqueId
+
+> TransactionEntity GetTransactionByEntityUniqueId(string entityUniqueId, DateTimeOffset? asAt = null, List<string>? previews = null, string? dataModelScope = null, string? dataModelCode = null)
+
+GetTransactionByEntityUniqueId: Get transaction by EntityUniqueId
+
+Retrieve a transaction by its entity unique identifier.    If the transaction's portfolio is deleted, this will return the state of the transaction immediately prior to portfolio deletion.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<EntitiesApi>();
+var entityUniqueId = "entityUniqueId_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var previews = new List<string>?(); // List<string>? (optional)
+var dataModelScope = "dataModelScope_example";  // string? (optional)
+var dataModelCode = "dataModelCode_example";  // string? (optional)
+TransactionEntity result = apiInstance.GetTransactionByEntityUniqueId(entityUniqueId, asAt, previews, dataModelScope, dataModelCode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **entityUniqueId** | **string** | path | **required** | The entity unique identifier of the transaction. The expected format is &#39;{portfolioEntityUniqueId}_{transactionId}&#39;. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction. Defaults to returning the latest version of the transaction if not specified. |
+| **previews** | [List&lt;string&gt;?](string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+| **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use. |
+| **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use. |
+
+### Return type
+
+[TransactionEntity](TransactionEntity.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested transaction entity |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetTransactionByEntityUniqueIdWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<TransactionEntity> response = apiInstance.GetTransactionByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, previews, dataModelScope, dataModelCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

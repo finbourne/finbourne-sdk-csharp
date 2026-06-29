@@ -31,6 +31,7 @@ All URIs are relative to *http://localhost*
 | [**GetValuationPointData**](#getvaluationpointdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$query` | [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund. |
 | [**GetValuationPointJournalEntryLines**](#getvaluationpointjournalentrylines) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query` | [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. |
 | [**GetValuationPointPnlSummary**](#getvaluationpointpnlsummary) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/pnlsummary/$query` | [EXPERIMENTAL] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. |
+| [**GetValuationPointQuotes**](#getvaluationpointquotes) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/quotes/$query` | [EXPERIMENTAL] GetValuationPointQuotes: Get the Quotes for the given Fund and Valuation Point. |
 | [**GetValuationPointTransactions**](#getvaluationpointtransactions) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/transactions/$query` | [EXPERIMENTAL] GetValuationPointTransactions: Get the Transactions for the given Fund. |
 | [**GetValuationPointTrialBalance**](#getvaluationpointtrialbalance) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/trialbalance/$query` | [EXPERIMENTAL] GetValuationPointTrialBalance: Get Trial Balance for the given Fund. |
 | [**GetValuationPointUnsettledTransactions**](#getvaluationpointunsettledtransactions) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/unsettledtransactions/$query` | [EXPERIMENTAL] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. |
@@ -1805,6 +1806,76 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> response = apiInstance.GetValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getvaluationpointquotes"></a>
+## GetValuationPointQuotes
+
+> ValuationPointResourceListOfAccountedQuote GetValuationPointQuotes(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, DateTimeOffset? asAt = null, int? limit = null, string? page = null, string? navTypeCode = null)
+
+[EXPERIMENTAL] GetValuationPointQuotes: Get the Quotes for the given Fund and Valuation Point.
+
+Gets all quotes within the effective date range of the specified Valuation Point for a Fund,  including any quotes added via a Complex Close (Post-Close Activity).
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var limit = 56;  // int? (optional)
+var page = "page_example";  // string? (optional)
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+ValuationPointResourceListOfAccountedQuote result = apiInstance.GetValuationPointQuotes(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the quotes. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve quotes. Defaults to returning the latest version              of each quote if not specified. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing quotes from a previous call to GetValuationPointQuotes. |
+| **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
+
+### Return type
+
+[ValuationPointResourceListOfAccountedQuote](ValuationPointResourceListOfAccountedQuote.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested quotes for the specified Valuation Point for a Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetValuationPointQuotesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ValuationPointResourceListOfAccountedQuote> response = apiInstance.GetValuationPointQuotesWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

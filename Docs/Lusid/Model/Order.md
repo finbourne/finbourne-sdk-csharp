@@ -27,6 +27,8 @@ An Order for a certain quantity of a specific instrument
 | **Weight** | **decimal?** | Optional | The proportion of the total portfolio value ordered for the given instrument ordered. |
 | **Amount** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **DataModelMembership** | [DataModelMembership](DataModelMembership.md) | Optional | *No description available.* |
+| **DerivedComplianceState** | **string** | Optional | The compliance state of the order, derived from pre-trade compliance runs. |
+| **DerivedApprovalState** | **string** | Optional | The approval state of the order. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -60,6 +62,8 @@ var instance = new Order(
     weight: 0.0d,  // optional — The proportion of the total portfolio value ordered for the given instrument ordered.
     amount: new CurrencyAndAmount(...),  // optional
     dataModelMembership: new DataModelMembership(...),  // optional
+    derivedComplianceState: "...",  // optional — The compliance state of the order, derived from pre-trade compliance runs.
+    derivedApprovalState: "...",  // optional — The approval state of the order.
     links: new List<Link>()  // optional
 );
 ```
