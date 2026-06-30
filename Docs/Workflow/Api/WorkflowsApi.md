@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost*
 | [**GetWorkflow**](#getworkflow) | **GET** `/workflow/api/workflows/{scope}/{code}` | GetWorkflow: Get a Workflow |
 | [**ListWorkflows**](#listworkflows) | **GET** `/workflow/api/workflows` | ListWorkflows: List Workflows |
 | [**UpdateWorkflow**](#updateworkflow) | **PUT** `/workflow/api/workflows/{scope}/{code}` | [EXPERIMENTAL] UpdateWorkflow: Update an existing Workflow |
+| [**UpsertWorkflowProperties**](#upsertworkflowproperties) | **POST** `/workflow/api/workflows/{scope}/{code}/properties` | [EXPERIMENTAL] UpsertWorkflowProperties: Add, update and remove properties on an existing Workflow in bulk. |
 
 ### Example
 
@@ -346,6 +347,69 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<WorkflowResponse> response = apiInstance.UpdateWorkflowWithHttpInfo(scope, code, updateWorkflowRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="upsertworkflowproperties"></a>
+## UpsertWorkflowProperties
+
+> BatchUpsertWorkflowPropertiesResponse UpsertWorkflowProperties(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, string? successMode = null)
+
+[EXPERIMENTAL] UpsertWorkflowProperties: Add, update and remove properties on an existing Workflow in bulk.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WorkflowsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var requestBody = new Dictionary<string, PerpetualProperty>(); // Dictionary<string, PerpetualProperty>
+var successMode = "\"Partial\"";  // string? (optional)
+BatchUpsertWorkflowPropertiesResponse result = apiInstance.UpsertWorkflowProperties(scope, code, requestBody, successMode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope that identifies a Workflow |
+| **code** | **string** | path | **required** | The code that identifies a Workflow |
+| **requestBody** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | body | **required** | The properties to upsert, keyed by property key. A null value deletes the property. |
+| **successMode** | **string?** | query | optional | Whether the batch should fail Atomically or Partially. Defaults to Partial. Default: `&quot;Partial&quot;` |
+
+### Return type
+
+[BatchUpsertWorkflowPropertiesResponse](BatchUpsertWorkflowPropertiesResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | Workflow not found. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpsertWorkflowPropertiesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<BatchUpsertWorkflowPropertiesResponse> response = apiInstance.UpsertWorkflowPropertiesWithHttpInfo(scope, code, requestBody, successMode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

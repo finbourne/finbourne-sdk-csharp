@@ -15,6 +15,7 @@ All URIs are relative to *http://localhost*
 | [**ListRunTransactions**](#listruntransactions) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs/{runId}/transactions` | [EXPERIMENTAL] ListRunTransactions: List Transactions in a run. |
 | [**ReplayTransactions**](#replaytransactions) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/replay` | [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance |
 | [**ResolveFailedDelivery**](#resolvefaileddelivery) | **PUT** `/horizon/api/trade-publication-framework/instances/{instanceId}/failed/{batchReferenceId}/resolve` | [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry |
+| [**RetryFailedDelivery**](#retryfaileddelivery) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/failed/retry` | [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework |
 | [**RetryTpfSftpDelivery**](#retrytpfsftpdelivery) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/files/{fileId}/retry-sftp` | [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file |
 
 ### Example
@@ -671,6 +672,67 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ResolveFailedDeliveryResponse> response = apiInstance.ResolveFailedDeliveryWithHttpInfo(instanceId, batchReferenceId, resolveFailedDeliveryRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="retryfaileddelivery"></a>
+## RetryFailedDelivery
+
+> TpfFailedDeliveryResponse RetryFailedDelivery(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest)
+
+[EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework
+
+Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
+var instanceId = "instanceId_example";  // string
+var tpfRetryFailedDeliveryRequest = new TpfRetryFailedDeliveryRequest(); // TpfRetryFailedDeliveryRequest
+TpfFailedDeliveryResponse result = apiInstance.RetryFailedDelivery(instanceId, tpfRetryFailedDeliveryRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **instanceId** | **string** | path | **required** | Integration instance identifier |
+| **tpfRetryFailedDeliveryRequest** | [TpfRetryFailedDeliveryRequest](TpfRetryFailedDeliveryRequest.md) | body | **required** | Request containing batch element reference identifiers to retry |
+
+### Return type
+
+[TpfFailedDeliveryResponse](TpfFailedDeliveryResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | The requested instance does not exist. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the RetryFailedDeliveryWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<TpfFailedDeliveryResponse> response = apiInstance.RetryFailedDeliveryWithHttpInfo(instanceId, tpfRetryFailedDeliveryRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

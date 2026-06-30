@@ -310,6 +310,33 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <returns>ApiResponse of ResolveFailedDeliveryResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<ResolveFailedDeliveryResponse> ResolveFailedDeliveryWithHttpInfo(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework
+        /// </summary>
+        /// <remarks>
+        /// Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance identifier</param>
+        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TpfFailedDeliveryResponse</returns>
+        TpfFailedDeliveryResponse RetryFailedDelivery(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework
+        /// </summary>
+        /// <remarks>
+        /// Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance identifier</param>
+        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TpfFailedDeliveryResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse> RetryFailedDeliveryWithHttpInfo(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -668,6 +695,35 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (ResolveFailedDeliveryResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResolveFailedDeliveryResponse>> ResolveFailedDeliveryWithHttpInfoAsync(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework
+        /// </summary>
+        /// <remarks>
+        /// Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance identifier</param>
+        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TpfFailedDeliveryResponse</returns>
+        System.Threading.Tasks.Task<TpfFailedDeliveryResponse> RetryFailedDeliveryAsync(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework
+        /// </summary>
+        /// <remarks>
+        /// Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance identifier</param>
+        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TpfFailedDeliveryResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse>> RetryFailedDeliveryWithHttpInfoAsync(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
         /// </summary>
@@ -3384,6 +3440,254 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ResolveFailedDelivery", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance identifier</param>
+        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TpfFailedDeliveryResponse</returns>
+        public TpfFailedDeliveryResponse RetryFailedDelivery(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse> localVarResponse = RetryFailedDeliveryWithHttpInfo(instanceId, tpfRetryFailedDeliveryRequest, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId">Integration instance identifier</param>
+        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TpfFailedDeliveryResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse> RetryFailedDeliveryWithHttpInfo(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->RetryFailedDelivery");
+            }
+
+            // verify the required parameter 'tpfRetryFailedDeliveryRequest' is set
+            if (tpfRetryFailedDeliveryRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'tpfRetryFailedDeliveryRequest' when calling TradePublicationFrameworkApi->RetryFailedDelivery");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+            localVarRequestOptions.Data = tpfRetryFailedDeliveryRequest;
+
+            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.RetryFailedDelivery";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TpfFailedDeliveryResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/failed/retry", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RetryFailedDelivery", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Integration instance identifier</param>
+        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TpfFailedDeliveryResponse</returns>
+        public async System.Threading.Tasks.Task<TpfFailedDeliveryResponse> RetryFailedDeliveryAsync(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse> localVarResponse = await RetryFailedDeliveryWithHttpInfoAsync(instanceId, tpfRetryFailedDeliveryRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId">Integration instance identifier</param>
+        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TpfFailedDeliveryResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse>> RetryFailedDeliveryWithHttpInfoAsync(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->RetryFailedDelivery");
+            }
+
+            // verify the required parameter 'tpfRetryFailedDeliveryRequest' is set
+            if (tpfRetryFailedDeliveryRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'tpfRetryFailedDeliveryRequest' when calling TradePublicationFrameworkApi->RetryFailedDelivery");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+            localVarRequestOptions.Data = tpfRetryFailedDeliveryRequest;
+
+            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.RetryFailedDelivery";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TpfFailedDeliveryResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/failed/retry", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RetryFailedDelivery", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
