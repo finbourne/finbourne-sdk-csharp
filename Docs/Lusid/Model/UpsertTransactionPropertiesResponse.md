@@ -6,7 +6,8 @@
 |------|------|----------|-------------|
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
-| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The properties that were upserted on the transaction. |
+| **Metadata** | **Dictionary&lt;string, List&lt;ResponseMetaData&gt;&gt;** | Optional | Contains warnings related to the upsert event. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -20,7 +21,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new UpsertTransactionPropertiesResponse(
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
     varVersion: new ModelVersion(...),  // optional
-    properties: new PerpetualProperty(...),  // optional
+    properties: new PerpetualProperty(...),  // optional — The properties that were upserted on the transaction.
+    metadata: ,  // optional — Contains warnings related to the upsert event.
     links: new List<Link>()  // optional
 );
 ```
@@ -37,7 +39,7 @@ var instance = JsonConvert.DeserializeObject<UpsertTransactionPropertiesResponse
 ```
 
 - [ModelVersion](ModelVersion.md)
-- [PerpetualProperty](PerpetualProperty.md)
+- [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
 - [Link](Link.md)
 
 

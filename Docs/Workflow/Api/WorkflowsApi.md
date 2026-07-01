@@ -173,7 +173,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getworkflow"></a>
 ## GetWorkflow
 
-> WorkflowResponse GetWorkflow(string scope, string code, DateTimeOffset? asAt = null)
+> WorkflowResponse GetWorkflow(string scope, string code, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
 GetWorkflow: Get a Workflow
 
@@ -184,7 +184,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WorkflowsApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
-WorkflowResponse result = apiInstance.GetWorkflow(scope, code, asAt);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+WorkflowResponse result = apiInstance.GetWorkflow(scope, code, asAt, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -195,6 +196,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope that identifies a Workflow |
 | **code** | **string** | path | **required** | The code that identifies a Workflow |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Workflow. Defaults to returning the latest version if not specified. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the Workflow or TaskDefinition domain) whose values to return on the Workflow. |
 
 ### Return type
 
@@ -220,7 +222,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<WorkflowResponse> response = apiInstance.GetWorkflowWithHttpInfo(scope, code, asAt);
+ApiResponse<WorkflowResponse> response = apiInstance.GetWorkflowWithHttpInfo(scope, code, asAt, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -18,6 +18,7 @@ All URIs are relative to *http://localhost*
 | [**IsBusinessDateTime**](#isbusinessdatetime) | **GET** `/api/api/calendars/businessday/{scope}/{code}` | [EARLY ACCESS] IsBusinessDateTime: Check whether a DateTime is a \&quot;Business DateTime\&quot; |
 | [**ListCalendars**](#listcalendars) | **GET** `/api/api/calendars/generic` | [EARLY ACCESS] ListCalendars: List Calendars |
 | [**ListCalendarsInScope**](#listcalendarsinscope) | **GET** `/api/api/calendars/generic/{scope}` | ListCalendarsInScope: List all calenders in a specified scope |
+| [**ResolveTenors**](#resolvetenors) | **POST** `/api/api/calendars/tenors/resolve` | [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates. |
 | [**UpdateCalendar**](#updatecalendar) | **POST** `/api/api/calendars/generic/{scope}/{code}` | [EARLY ACCESS] UpdateCalendar: Update a calendar |
 
 ### Example
@@ -872,6 +873,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PagedResourceListOfCalendar> response = apiInstance.ListCalendarsInScopeWithHttpInfo(scope, asAt, page, limit, propertyKeys, filter);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="resolvetenors"></a>
+## ResolveTenors
+
+> ResolveTenorsResponse ResolveTenors(ResolveTenorsRequest resolveTenorsRequest)
+
+[EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates.
+
+Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.                The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.                Unrecognised tenor strings cause a validation error.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<CalendarsApi>();
+var resolveTenorsRequest = new ResolveTenorsRequest(); // ResolveTenorsRequest
+ResolveTenorsResponse result = apiInstance.ResolveTenors(resolveTenorsRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **resolveTenorsRequest** | [ResolveTenorsRequest](ResolveTenorsRequest.md) | body | **required** | Request containing start date, calendars, spot days, tenors, and optional conventions |
+
+### Return type
+
+[ResolveTenorsResponse](ResolveTenorsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The resolved settlement dates for each tenor |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ResolveTenorsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResolveTenorsResponse> response = apiInstance.ResolveTenorsWithHttpInfo(resolveTenorsRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

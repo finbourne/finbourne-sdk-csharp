@@ -44,7 +44,8 @@ All URIs are relative to *http://localhost*
 | [**ListValuationPointOverview**](#listvaluationpointoverview) | **GET** `/api/api/funds/{scope}/{code}/valuationPointOverview` | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
 | [**PatchFee**](#patchfee) | **PATCH** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EXPERIMENTAL] PatchFee: Patch Fee. |
 | [**PatchFund**](#patchfund) | **PATCH** `/api/api/funds/{scope}/{code}` | [EXPERIMENTAL] PatchFund: Patch a Fund. |
-| [**QueryCashStatement**](#querycashstatement) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/cashstatement/$query` | [EXPERIMENTAL] QueryCashStatement: [EXPERIMENTAL] QueryCashStatement: Query cash statement for a Fund valuation point. |
+| [**QueryCashStatement**](#querycashstatement) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/cashstatement/$query` | [DEPRECATED] QueryCashStatement: [DEPRECATED] QueryCashStatement: Query cash statement for a Fund valuation point. |
+| [**QueryCashStatementLocalCurrency**](#querycashstatementlocalcurrency) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/cashstatementlocalcurrency/$query` | [EXPERIMENTAL] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point. |
 | [**RevertValuationPointToEstimate**](#revertvaluationpointtoestimate) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$reverttoestimate` | [EXPERIMENTAL] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate. |
 | [**SetShareClassInstruments**](#setshareclassinstruments) | **PUT** `/api/api/funds/{scope}/{code}/shareclasses` | [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a Fund. |
 | [**UpdateValuationPoint**](#updatevaluationpoint) | **PUT** `/api/api/funds/{scope}/{code}/valuationpoints` | [EXPERIMENTAL] UpdateValuationPoint: Update a Valuation Point. |
@@ -2763,9 +2764,9 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointResourceListOfFundCashStatementRow QueryCashStatement(string scope, string code, QueryFundCashStatementParameters queryFundCashStatementParameters, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null)
 
-[EXPERIMENTAL] QueryCashStatement: [EXPERIMENTAL] QueryCashStatement: Query cash statement for a Fund valuation point.
+[DEPRECATED] QueryCashStatement: [DEPRECATED] QueryCashStatement: Query cash statement for a Fund valuation point.
 
-Returns settled cash movements with running balance, cost basis, average FX rate, and realised FX PnL  for the specified Fund valuation point period. The cash statement is derived from Journal Entry Lines  filtered to settled cash (HoldType='B', SourceType=LusidTransaction). Use the DisplayMode parameter  on the request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses reversals into AvgRateCorrection rows).
+Deprecated: use QueryCashStatementLocalCurrency instead. Returns settled cash movements with  running balance, cost basis, average FX rate, and realised FX PnL for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType='B', SourceType=LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses reversals into AvgRateCorrection rows).
 
 ### Example
 
@@ -2822,6 +2823,80 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ValuationPointResourceListOfFundCashStatementRow> response = apiInstance.QueryCashStatementWithHttpInfo(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="querycashstatementlocalcurrency"></a>
+## QueryCashStatementLocalCurrency
+
+> ValuationPointResourceListOfFundCashStatementLocalCurrency QueryCashStatementLocalCurrency(string scope, string code, QueryFundCashStatementParameters queryFundCashStatementParameters, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null)
+
+[EXPERIMENTAL] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
+
+Returns settled cash movements with a running balance in local currency for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType='B', SourceType=LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses system-generated zero-net reversal/TrueUp pairs into SystemCorrection rows). Base  currency columns are out of scope for this variant and are not returned.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var queryFundCashStatementParameters = new QueryFundCashStatementParameters(); // QueryFundCashStatementParameters
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var filter = "filter_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+var page = "page_example";  // string? (optional)
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+ValuationPointResourceListOfFundCashStatementLocalCurrency result = apiInstance.QueryCashStatementLocalCurrency(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **queryFundCashStatementParameters** | [QueryFundCashStatementParameters](QueryFundCashStatementParameters.md) | body | **required** | The query parameters specifying the diary entry period and display mode. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the cash statement. Defaults to the latest version if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to get the next page of results. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys to decorate onto the cash statement rows. |
+| **navTypeCode** | **string?** | query | optional | The code of the NAV type to use. Defaults to the primary NAV type if not specified. |
+
+### Return type
+
+[ValuationPointResourceListOfFundCashStatementLocalCurrency](ValuationPointResourceListOfFundCashStatementLocalCurrency.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The local-currency cash statement for the specified Fund valuation point. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the QueryCashStatementLocalCurrencyWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ValuationPointResourceListOfFundCashStatementLocalCurrency> response = apiInstance.QueryCashStatementLocalCurrencyWithHttpInfo(scope, code, queryFundCashStatementParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

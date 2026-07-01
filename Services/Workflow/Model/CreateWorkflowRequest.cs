@@ -39,7 +39,8 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="displayName">Human readable name (required).</param>
         /// <param name="description">Human readable description.</param>
         /// <param name="rootTaskDefinitionId">rootTaskDefinitionId (required).</param>
-        public CreateWorkflowRequest(ResourceId id = default(ResourceId), string displayName = default(string), string description = default(string), ResourceId rootTaskDefinitionId = default(ResourceId))
+        /// <param name="properties">The properties to set on the Workflow, keyed by property key. Optional..</param>
+        public CreateWorkflowRequest(ResourceId id = default(ResourceId), string displayName = default(string), string description = default(string), ResourceId rootTaskDefinitionId = default(ResourceId), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -60,6 +61,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             }
             this.RootTaskDefinitionId = rootTaskDefinitionId;
             this.Description = description;
+            this.Properties = properties;
         }
 
         /// <summary>
@@ -89,6 +91,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public ResourceId RootTaskDefinitionId { get; set; }
 
         /// <summary>
+        /// The properties to set on the Workflow, keyed by property key. Optional.
+        /// </summary>
+        /// <value>The properties to set on the Workflow, keyed by property key. Optional.</value>
+        [DataMember(Name = "properties", EmitDefaultValue = true)]
+        public Dictionary<string, PerpetualProperty> Properties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -100,6 +109,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  RootTaskDefinitionId: ").Append(RootTaskDefinitionId).Append("\n");
+            sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -154,6 +164,12 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.RootTaskDefinitionId == input.RootTaskDefinitionId ||
                     (this.RootTaskDefinitionId != null &&
                     this.RootTaskDefinitionId.Equals(input.RootTaskDefinitionId))
+                ) && 
+                (
+                    this.Properties == input.Properties ||
+                    this.Properties != null &&
+                    input.Properties != null &&
+                    this.Properties.SequenceEqual(input.Properties)
                 );
         }
 
@@ -181,6 +197,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.RootTaskDefinitionId != null)
                 {
                     hashCode = (hashCode * 59) + this.RootTaskDefinitionId.GetHashCode();
+                }
+                if (this.Properties != null)
+                {
+                    hashCode = (hashCode * 59) + this.Properties.GetHashCode();
                 }
                 return hashCode;
             }

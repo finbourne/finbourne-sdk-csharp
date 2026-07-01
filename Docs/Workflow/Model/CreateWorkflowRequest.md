@@ -9,6 +9,7 @@ Contains required info to create a new Workflow
 | **DisplayName** | **string** | Required | Human readable name |
 | **Description** | **string** | Optional | Human readable description |
 | **RootTaskDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The properties to set on the Workflow, keyed by property key. Optional. |
 
 
 ## Usage
@@ -22,7 +23,8 @@ var instance = new CreateWorkflowRequest(
     id: new ResourceId(...),  // required
     displayName: "...",  // required — Human readable name
     description: "...",  // optional — Human readable description
-    rootTaskDefinitionId: new ResourceId(...)  // required
+    rootTaskDefinitionId: new ResourceId(...),  // required
+    properties: new PerpetualProperty(...)  // optional — The properties to set on the Workflow, keyed by property key. Optional.
 );
 ```
 ### Serializing to JSON
@@ -42,6 +44,7 @@ var instance = JsonConvert.DeserializeObject<CreateWorkflowRequest>(json);
 
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
+- [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

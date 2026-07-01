@@ -422,6 +422,31 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfCalendar</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfCalendar> ListCalendarsInScopeWithHttpInfo(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), List<string>? propertyKeys = default(List<string>?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates.
+        /// </summary>
+        /// <remarks>
+        /// Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.                The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.                Unrecognised tenor strings cause a validation error.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveTenorsRequest">Request containing start date, calendars, spot days, tenors, and optional conventions</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResolveTenorsResponse</returns>
+        ResolveTenorsResponse ResolveTenors(ResolveTenorsRequest resolveTenorsRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates.
+        /// </summary>
+        /// <remarks>
+        /// Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.                The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.                Unrecognised tenor strings cause a validation error.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveTenorsRequest">Request containing start date, calendars, spot days, tenors, and optional conventions</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResolveTenorsResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<ResolveTenorsResponse> ResolveTenorsWithHttpInfo(ResolveTenorsRequest resolveTenorsRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EARLY ACCESS] UpdateCalendar: Update a calendar
         /// </summary>
         /// <remarks>
@@ -876,6 +901,33 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfCalendar)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfCalendar>> ListCalendarsInScopeWithHttpInfoAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), List<string>? propertyKeys = default(List<string>?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates.
+        /// </summary>
+        /// <remarks>
+        /// Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.                The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.                Unrecognised tenor strings cause a validation error.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveTenorsRequest">Request containing start date, calendars, spot days, tenors, and optional conventions</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResolveTenorsResponse</returns>
+        System.Threading.Tasks.Task<ResolveTenorsResponse> ResolveTenorsAsync(ResolveTenorsRequest resolveTenorsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates.
+        /// </summary>
+        /// <remarks>
+        /// Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.                The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.                Unrecognised tenor strings cause a validation error.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveTenorsRequest">Request containing start date, calendars, spot days, tenors, and optional conventions</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResolveTenorsResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResolveTenorsResponse>> ResolveTenorsWithHttpInfoAsync(ResolveTenorsRequest resolveTenorsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] UpdateCalendar: Update a calendar
         /// </summary>
@@ -4452,6 +4504,240 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListCalendarsInScope", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates. Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.                The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.                Unrecognised tenor strings cause a validation error.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveTenorsRequest">Request containing start date, calendars, spot days, tenors, and optional conventions</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResolveTenorsResponse</returns>
+        public ResolveTenorsResponse ResolveTenors(ResolveTenorsRequest resolveTenorsRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResolveTenorsResponse> localVarResponse = ResolveTenorsWithHttpInfo(resolveTenorsRequest, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates. Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.                The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.                Unrecognised tenor strings cause a validation error.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="resolveTenorsRequest">Request containing start date, calendars, spot days, tenors, and optional conventions</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResolveTenorsResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ResolveTenorsResponse> ResolveTenorsWithHttpInfo(ResolveTenorsRequest resolveTenorsRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'resolveTenorsRequest' is set
+            if (resolveTenorsRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'resolveTenorsRequest' when calling CalendarsApi->ResolveTenors");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = resolveTenorsRequest;
+
+            localVarRequestOptions.Operation = "CalendarsApi.ResolveTenors";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ResolveTenorsResponse, AbstractOpenAPISchema>("/api/api/calendars/tenors/resolve", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ResolveTenors", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates. Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.                The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.                Unrecognised tenor strings cause a validation error.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveTenorsRequest">Request containing start date, calendars, spot days, tenors, and optional conventions</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResolveTenorsResponse</returns>
+        public async System.Threading.Tasks.Task<ResolveTenorsResponse> ResolveTenorsAsync(ResolveTenorsRequest resolveTenorsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResolveTenorsResponse> localVarResponse = await ResolveTenorsWithHttpInfoAsync(resolveTenorsRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates. Resolves a list of tenor strings (e.g. ON, TN, SP, SN, 1W, 1M, 3M, 6M, 1Y) to settlement dates  using the specified holiday calendars, spot days, business day convention, and end-of-month rule.                The spot date is calculated by adding the specified number of business days (SpotDays) to the start date.  Day and week tenors ({N}D, {N}W) are resolved relative to the start or spot date respectively.  Month and year tenors ({N}M, {N}Y) are resolved relative to the spot date and adjusted  according to the business day convention and end-of-month rule.                Unrecognised tenor strings cause a validation error.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="resolveTenorsRequest">Request containing start date, calendars, spot days, tenors, and optional conventions</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResolveTenorsResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResolveTenorsResponse>> ResolveTenorsWithHttpInfoAsync(ResolveTenorsRequest resolveTenorsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'resolveTenorsRequest' is set
+            if (resolveTenorsRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'resolveTenorsRequest' when calling CalendarsApi->ResolveTenors");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = resolveTenorsRequest;
+
+            localVarRequestOptions.Operation = "CalendarsApi.ResolveTenors";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ResolveTenorsResponse, AbstractOpenAPISchema>("/api/api/calendars/tenors/resolve", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ResolveTenors", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

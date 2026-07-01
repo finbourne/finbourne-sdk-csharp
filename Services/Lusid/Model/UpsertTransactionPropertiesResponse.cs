@@ -32,13 +32,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="href">The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime..</param>
         /// <param name="varVersion">varVersion.</param>
-        /// <param name="properties">properties.</param>
+        /// <param name="properties">The properties that were upserted on the transaction..</param>
+        /// <param name="metadata">Contains warnings related to the upsert event..</param>
         /// <param name="links">links.</param>
-        public UpsertTransactionPropertiesResponse(string href = default(string), ModelVersion varVersion = default(ModelVersion), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), List<Link> links = default(List<Link>))
+        public UpsertTransactionPropertiesResponse(string href = default(string), ModelVersion varVersion = default(ModelVersion), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), Dictionary<string, List<ResponseMetaData>> metadata = default(Dictionary<string, List<ResponseMetaData>>), List<Link> links = default(List<Link>))
         {
             this.Href = href;
             this.VarVersion = varVersion;
             this.Properties = properties;
+            this.Metadata = metadata;
             this.Links = links;
         }
 
@@ -56,10 +58,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ModelVersion VarVersion { get; set; }
 
         /// <summary>
-        /// Gets or Sets Properties
+        /// The properties that were upserted on the transaction.
         /// </summary>
+        /// <value>The properties that were upserted on the transaction.</value>
         [DataMember(Name = "properties", EmitDefaultValue = true)]
         public Dictionary<string, PerpetualProperty> Properties { get; set; }
+
+        /// <summary>
+        /// Contains warnings related to the upsert event.
+        /// </summary>
+        /// <value>Contains warnings related to the upsert event.</value>
+        [DataMember(Name = "metadata", EmitDefaultValue = true)]
+        public Dictionary<string, List<ResponseMetaData>> Metadata { get; set; }
 
         /// <summary>
         /// Gets or Sets Links
@@ -78,6 +88,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Href: ").Append(Href).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -131,6 +142,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Properties.SequenceEqual(input.Properties)
                 ) && 
                 (
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -158,6 +175,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Properties != null)
                 {
                     hashCode = (hashCode * 59) + this.Properties.GetHashCode();
+                }
+                if (this.Metadata != null)
+                {
+                    hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
                 }
                 if (this.Links != null)
                 {

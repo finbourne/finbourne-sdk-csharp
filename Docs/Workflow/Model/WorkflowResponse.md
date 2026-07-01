@@ -11,6 +11,7 @@ A Workflow
 | **Description** | **string** | Optional | Human readable description |
 | **RootTaskDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **WorkflowStructure** | [WorkflowStructure](WorkflowStructure.md) | Optional | *No description available.* |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The properties of the Workflow, keyed by property key. |
 
 
 ## Usage
@@ -26,7 +27,8 @@ var instance = new WorkflowResponse(
     displayName: "...",  // required — Human readable name
     description: "...",  // optional — Human readable description
     rootTaskDefinitionId: new ResourceId(...),  // required
-    workflowStructure: new WorkflowStructure(...)  // optional
+    workflowStructure: new WorkflowStructure(...),  // optional
+    properties: new PerpetualProperty(...)  // optional — The properties of the Workflow, keyed by property key.
 );
 ```
 ### Serializing to JSON
@@ -48,6 +50,7 @@ var instance = JsonConvert.DeserializeObject<WorkflowResponse>(json);
 - [VersionInfo](VersionInfo.md)
 - [ResourceId](ResourceId.md)
 - [WorkflowStructure](WorkflowStructure.md)
+- [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
