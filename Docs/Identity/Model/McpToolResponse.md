@@ -19,7 +19,7 @@ The response representation of an MCP tool
 | **PayloadType** | **string** | Optional | The type of payload (Luminesce or Scheduler) |
 | **LuminescePayload** | [McpToolLuminescePayload](McpToolLuminescePayload.md) | Optional | *No description available.* |
 | **SchedulerPayload** | [McpToolSchedulerPayload](McpToolSchedulerPayload.md) | Optional | *No description available.* |
-| **DestructiveActionSummaryTemplate** | **string** | Optional | Template for human-readable destructive action summary (e.g. \&quot;Delete file &#39;{filePath}&#39;\&quot;) |
+| **DestructiveActionSummaryTemplate** | **string** | Optional | Template for human-readable destructive action summary. Uses {paramName} single-brace placeholders (e.g. \&quot;Delete file &#39;{filePath}&#39;\&quot;). Required when Destructive is true. |
 | **CreatedAt** | **DateTimeOffset** | Optional | When the MCP tool was created |
 | **CreatedBy** | **string** | Optional | Who created the MCP tool |
 | **UpdatedAt** | **DateTimeOffset** | Optional | When the MCP tool was last updated |
@@ -48,7 +48,7 @@ var instance = new McpToolResponse(
     payloadType: "...",  // optional — The type of payload (Luminesce or Scheduler)
     luminescePayload: new McpToolLuminescePayload(...),  // optional
     schedulerPayload: new McpToolSchedulerPayload(...),  // optional
-    destructiveActionSummaryTemplate: "...",  // optional — Template for human-readable destructive action summary (e.g. \&quot;Delete file &#39;{filePath}&#39;\&quot;)
+    destructiveActionSummaryTemplate: "...",  // optional — Template for human-readable destructive action summary. Uses {paramName} single-brace placeholders (e.g. \&quot;Delete file &#39;{filePath}&#39;\&quot;). Required when Destructive is true.
     createdAt: DateTimeOffset.Now,  // optional — When the MCP tool was created
     createdBy: "...",  // optional — Who created the MCP tool
     updatedAt: DateTimeOffset.Now,  // optional — When the MCP tool was last updated

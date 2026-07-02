@@ -8,7 +8,7 @@ Request to create or update an MCP tool
 | **Name** | **string** | Required | The name of the MCP tool (alphanumeric, underscore, and hyphen) |
 | **Title** | **string** | Required | The title of the MCP tool |
 | **Description** | **string** | Required | The description of the MCP tool |
-| **Destructive** | **bool** | Optional | Whether the tool is destructive |
+| **Destructive** | **bool** | Optional | Whether the tool is destructive. When true, DestructiveActionSummaryTemplate is required and is shown to the user at the destructive-action consent gate before the tool runs. |
 | **Idempotent** | **bool** | Optional | Whether the tool is idempotent |
 | **OpenWorld** | **bool** | Optional | Whether the tool operates in open world |
 | **ReadOnly** | **bool** | Optional | Whether the tool is read-only |
@@ -29,7 +29,7 @@ var instance = new UpsertMcpToolRequest(
     name: "...",  // required — The name of the MCP tool (alphanumeric, underscore, and hyphen)
     title: "...",  // required — The title of the MCP tool
     description: "...",  // required — The description of the MCP tool
-    destructive: true,  // optional — Whether the tool is destructive
+    destructive: true,  // optional — Whether the tool is destructive. When true, DestructiveActionSummaryTemplate is required and is shown to the user at the destructive-action consent gate before the tool runs.
     idempotent: true,  // optional — Whether the tool is idempotent
     openWorld: true,  // optional — Whether the tool operates in open world
     readOnly: true,  // optional — Whether the tool is read-only
