@@ -94,7 +94,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("navTypeCode is a required property for FundEstimateValuationPoint and cannot be null");
             }
             this.NavTypeCode = navTypeCode;
+            
+            // to ensure "entryType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(EntryTypeEnum), entryType))
+            {
+                throw new ArgumentException("entryType is a required property for FundEstimateValuationPoint and must be a defined value");
+            }
+            
             this.EntryType = entryType;
+            
+            // to ensure "fundCalendarEntriesType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(FundCalendarEntriesTypeEnum), fundCalendarEntriesType))
+            {
+                throw new ArgumentException("fundCalendarEntriesType is a required property for FundEstimateValuationPoint and must be a defined value");
+            }
+            
             this.FundCalendarEntriesType = fundCalendarEntriesType;
             this.TimelineId = timelineId;
             this.PreviousEntry = previousEntry;

@@ -68,7 +68,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("schedulerRunId is a required property for AuditCompleteRequest and cannot be null");
             }
             this.SchedulerRunId = schedulerRunId;
+            
             this.StartTime = startTime;
+            
             this.EndTime = endTime;
             // to ensure "message" is required (not null)
             if (message == null)
@@ -82,9 +84,13 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("status is a required property for AuditCompleteRequest and cannot be null");
             }
             this.Status = status;
+            
             this.RowsTotal = rowsTotal;
+            
             this.RowsSucceeded = rowsSucceeded;
+            
             this.RowsFailed = rowsFailed;
+            
             this.RowsIgnored = rowsIgnored;
             // to ensure "auditFiles" is required (not null)
             if (auditFiles == null)

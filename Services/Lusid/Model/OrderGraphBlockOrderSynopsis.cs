@@ -40,6 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="details">Identifiers and other info for each order in this block. (required).</param>
         public OrderGraphBlockOrderSynopsis(decimal quantity = default(decimal), Dictionary<string, decimal> quantityByState = default(Dictionary<string, decimal>), List<OrderGraphBlockOrderDetail> details = default(List<OrderGraphBlockOrderDetail>))
         {
+            
             this.Quantity = quantity;
             // to ensure "details" is required (not null)
             if (details == null)

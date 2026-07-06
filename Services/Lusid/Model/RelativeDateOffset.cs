@@ -40,6 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="dayType">Indicates if consideration is given to whether a day is a good business day or not when calculating the offset date.    Default value: Business. Available values: Business, Calendar..</param>
         public RelativeDateOffset(int days = default(int), string businessDayConvention = default(string), string dayType = default(string))
         {
+            
             this.Days = days;
             // to ensure "businessDayConvention" is required (not null)
             if (businessDayConvention == null)

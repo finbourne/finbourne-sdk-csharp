@@ -139,7 +139,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // DiaryEntry (string) pattern
             Regex regexDiaryEntry = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexDiaryEntry.Match(this.DiaryEntry).Success)
+            if (this.DiaryEntry != null && false == regexDiaryEntry.Match(this.DiaryEntry).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DiaryEntry, must match a pattern of " + regexDiaryEntry, new [] { "DiaryEntry" });
             }

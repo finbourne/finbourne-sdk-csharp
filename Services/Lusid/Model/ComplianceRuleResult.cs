@@ -71,7 +71,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("portfolio is a required property for ComplianceRuleResult and cannot be null");
             }
             this.Portfolio = portfolio;
+            
             this.Passed = passed;
+            
             this.ResultValue = resultValue;
             // to ensure "ruleInformationMatch" is required (not null)
             if (ruleInformationMatch == null)
@@ -85,7 +87,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("ruleInformationKey is a required property for ComplianceRuleResult and cannot be null");
             }
             this.RuleInformationKey = ruleInformationKey;
+            
             this.RuleLowerLimit = ruleLowerLimit;
+            
             this.RuleUpperLimit = ruleUpperLimit;
         }
 

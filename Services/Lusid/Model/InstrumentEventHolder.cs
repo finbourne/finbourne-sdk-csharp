@@ -415,14 +415,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // InstrumentEventId (string) pattern
             Regex regexInstrumentEventId = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexInstrumentEventId.Match(this.InstrumentEventId).Success)
+            if (this.InstrumentEventId != null && false == regexInstrumentEventId.Match(this.InstrumentEventId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InstrumentEventId, must match a pattern of " + regexInstrumentEventId, new [] { "InstrumentEventId" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }

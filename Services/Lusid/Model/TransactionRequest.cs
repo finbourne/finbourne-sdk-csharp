@@ -86,6 +86,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("settlementDate is a required property for TransactionRequest and cannot be null");
             }
             this.SettlementDate = settlementDate;
+            
             this.Units = units;
             // to ensure "totalConsideration" is required (not null)
             if (totalConsideration == null)

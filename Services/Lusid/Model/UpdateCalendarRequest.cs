@@ -176,7 +176,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // SourceProvider (string) pattern
             Regex regexSourceProvider = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexSourceProvider.Match(this.SourceProvider).Success)
+            if (this.SourceProvider != null && false == regexSourceProvider.Match(this.SourceProvider).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SourceProvider, must match a pattern of " + regexSourceProvider, new [] { "SourceProvider" });
             }

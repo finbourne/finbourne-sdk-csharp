@@ -217,14 +217,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // CalendarType (string) pattern
             Regex regexCalendarType = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCalendarType.Match(this.CalendarType).Success)
+            if (this.CalendarType != null && false == regexCalendarType.Match(this.CalendarType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CalendarType, must match a pattern of " + regexCalendarType, new [] { "CalendarType" });
             }
 
             // SourceProvider (string) pattern
             Regex regexSourceProvider = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexSourceProvider.Match(this.SourceProvider).Success)
+            if (this.SourceProvider != null && false == regexSourceProvider.Match(this.SourceProvider).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SourceProvider, must match a pattern of " + regexSourceProvider, new [] { "SourceProvider" });
             }

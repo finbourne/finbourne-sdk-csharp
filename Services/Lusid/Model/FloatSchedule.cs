@@ -63,6 +63,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("paymentCurrency is a required property for FloatSchedule and cannot be null");
             }
             this.PaymentCurrency = paymentCurrency;
+            
+            // to ensure "scheduleType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ScheduleTypeEnum), scheduleType))
+            {
+                throw new ArgumentException("scheduleType is a required property for FloatSchedule and must be a defined value");
+            }
+            
             this.ScheduleType = scheduleType;
             this.StartDate = startDate;
             this.MaturityDate = maturityDate;

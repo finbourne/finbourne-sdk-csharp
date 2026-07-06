@@ -50,7 +50,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("runId is a required property for ComplianceRunInfo and cannot be null");
             }
             this.RunId = runId;
+            
             this.InstigatedAt = instigatedAt;
+            
             this.CompletedAt = completedAt;
             // to ensure "schedule" is required (not null)
             if (schedule == null)
@@ -58,8 +60,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("schedule is a required property for ComplianceRunInfo and cannot be null");
             }
             this.Schedule = schedule;
+            
             this.AllRulesPassed = allRulesPassed;
+            
             this.HasResults = hasResults;
+            
             this.AsAt = asAt;
         }
 

@@ -303,21 +303,21 @@ namespace Finbourne.Sdk.Services.Identity.Model
         {
             // FirstName (string) pattern
             Regex regexFirstName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexFirstName.Match(this.FirstName).Success)
+            if (this.FirstName != null && false == regexFirstName.Match(this.FirstName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FirstName, must match a pattern of " + regexFirstName, new [] { "FirstName" });
             }
 
             // LastName (string) pattern
             Regex regexLastName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexLastName.Match(this.LastName).Success)
+            if (this.LastName != null && false == regexLastName.Match(this.LastName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LastName, must match a pattern of " + regexLastName, new [] { "LastName" });
             }
 
             // Type (string) pattern
             Regex regexType = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
-            if (false == regexType.Match(this.Type).Success)
+            if (this.Type != null && false == regexType.Match(this.Type).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Type, must match a pattern of " + regexType, new [] { "Type" });
             }

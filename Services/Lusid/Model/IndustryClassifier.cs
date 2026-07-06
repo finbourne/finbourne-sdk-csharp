@@ -154,7 +154,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // ClassificationCode (string) pattern
             Regex regexClassificationCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexClassificationCode.Match(this.ClassificationCode).Success)
+            if (this.ClassificationCode != null && false == regexClassificationCode.Match(this.ClassificationCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ClassificationCode, must match a pattern of " + regexClassificationCode, new [] { "ClassificationCode" });
             }

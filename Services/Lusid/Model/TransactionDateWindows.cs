@@ -154,14 +154,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Left (string) pattern
             Regex regexLeft = new Regex(@"^P(?!$)((\d+Y)|(\d+\.\d+Y$))?((\d+M)|(\d+\.\d+M$))?((\d+W)|(\d+\.\d+W$))?((\d+D)|(\d+\.\d+D$))?(T(?=\d)((\d+H)|(\d+\.\d+H$))?((\d+M)|(\d+\.\d+M$))?(\d+(\.\d+)?S)?)??$", RegexOptions.CultureInvariant);
-            if (false == regexLeft.Match(this.Left).Success)
+            if (this.Left != null && false == regexLeft.Match(this.Left).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Left, must match a pattern of " + regexLeft, new [] { "Left" });
             }
 
             // Right (string) pattern
             Regex regexRight = new Regex(@"^P(?!$)((\d+Y)|(\d+\.\d+Y$))?((\d+M)|(\d+\.\d+M$))?((\d+W)|(\d+\.\d+W$))?((\d+D)|(\d+\.\d+D$))?(T(?=\d)((\d+H)|(\d+\.\d+H$))?((\d+M)|(\d+\.\d+M$))?(\d+(\.\d+)?S)?)??$", RegexOptions.CultureInvariant);
-            if (false == regexRight.Match(this.Right).Success)
+            if (this.Right != null && false == regexRight.Match(this.Right).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Right, must match a pattern of " + regexRight, new [] { "Right" });
             }

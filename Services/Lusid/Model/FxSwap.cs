@@ -56,6 +56,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("farFxForward is a required property for FxSwap and cannot be null");
             }
             this.FarFxForward = farFxForward;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for FxSwap and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.NotionalSymmetry = notionalSymmetry;
             this.TimeZoneConventions = timeZoneConventions;

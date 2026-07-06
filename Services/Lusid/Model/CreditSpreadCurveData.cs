@@ -50,6 +50,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="marketDataType">Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface. (required) (default to MarketDataTypeEnum.DiscountFactorCurveData).</param>
         public CreditSpreadCurveData(DateTimeOffset baseDate = default(DateTimeOffset), string domCcy = default(string), List<string> tenors = default(List<string>), List<decimal> spreads = default(List<decimal>), decimal recoveryRate = default(decimal), DateTimeOffset? referenceDate = default(DateTimeOffset?), List<DateTimeOffset> maturities = default(List<DateTimeOffset>), string lineage = default(string), MarketDataOptions marketDataOptions = default(MarketDataOptions), ModelVersion varVersion = default(ModelVersion), MarketDataTypeEnum marketDataType = default(MarketDataTypeEnum)) : base()
         {
+            
             this.BaseDate = baseDate;
             // to ensure "domCcy" is required (not null)
             if (domCcy == null)
@@ -69,7 +70,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("spreads is a required property for CreditSpreadCurveData and cannot be null");
             }
             this.Spreads = spreads;
+            
             this.RecoveryRate = recoveryRate;
+            
+            // to ensure "marketDataType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(MarketDataTypeEnum), marketDataType))
+            {
+                throw new ArgumentException("marketDataType is a required property for CreditSpreadCurveData and must be a defined value");
+            }
+            
             this.MarketDataType = marketDataType;
             this.ReferenceDate = referenceDate;
             this.Maturities = maturities;

@@ -44,6 +44,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="navActivityAdjustmentType">The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity. (required) (default to NavActivityAdjustmentTypeEnum.PortfolioTransaction).</param>
         public QuoteActivity(DateTimeOffset asAt = default(DateTimeOffset), DateTimeOrCutLabel effectiveAt = default(DateTimeOrCutLabel), string entityUniqueId = default(string), string instrumentId = default(string), NavActivityAdjustmentTypeEnum navActivityAdjustmentType = default(NavActivityAdjustmentTypeEnum)) : base()
         {
+            
             this.AsAt = asAt;
             // to ensure "effectiveAt" is required (not null)
             if (effectiveAt == null)
@@ -63,6 +64,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentId is a required property for QuoteActivity and cannot be null");
             }
             this.InstrumentId = instrumentId;
+            
+            // to ensure "navActivityAdjustmentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(NavActivityAdjustmentTypeEnum), navActivityAdjustmentType))
+            {
+                throw new ArgumentException("navActivityAdjustmentType is a required property for QuoteActivity and must be a defined value");
+            }
+            
             this.NavActivityAdjustmentType = navActivityAdjustmentType;
         }
 
@@ -222,7 +230,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             // EffectiveAt (DateTimeOrCutLabel) pattern
             Regex regexEffectiveAt = new Regex(@"^[a-zA-Z0-9\-_\+:\.]+$", RegexOptions.CultureInvariant);
-            if (false == regexEffectiveAt.Match(this.EffectiveAt).Success)
+            if (this.EffectiveAt != null && false == regexEffectiveAt.Match(this.EffectiveAt).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EffectiveAt, must match a pattern of " + regexEffectiveAt, new [] { "EffectiveAt" });
             }

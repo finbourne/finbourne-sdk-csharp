@@ -57,7 +57,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("diaryEntryCode is a required property for ValuationPointOverview and cannot be null");
             }
             this.DiaryEntryCode = diaryEntryCode;
+            
             this.EffectiveFrom = effectiveFrom;
+            
             this.EffectiveTo = effectiveTo;
             // to ensure "type" is required (not null)
             if (type == null)
@@ -71,7 +73,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("status is a required property for ValuationPointOverview and cannot be null");
             }
             this.Status = status;
+            
             this.Gav = gav;
+            
             this.Nav = nav;
             this.Href = href;
             this.DiaryEntryVariant = diaryEntryVariant;
@@ -380,7 +384,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // DiaryEntryVariant (string) pattern
             Regex regexDiaryEntryVariant = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexDiaryEntryVariant.Match(this.DiaryEntryVariant).Success)
+            if (this.DiaryEntryVariant != null && false == regexDiaryEntryVariant.Match(this.DiaryEntryVariant).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DiaryEntryVariant, must match a pattern of " + regexDiaryEntryVariant, new [] { "DiaryEntryVariant" });
             }

@@ -46,6 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="marketDataType">Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface. (required) (default to MarketDataTypeEnum.DiscountFactorCurveData).</param>
         public DiscountFactorCurveData(DateTimeOffset baseDate = default(DateTimeOffset), List<DateTimeOffset> dates = default(List<DateTimeOffset>), List<decimal> discountFactors = default(List<decimal>), string lineage = default(string), MarketDataOptions marketDataOptions = default(MarketDataOptions), ModelVersion varVersion = default(ModelVersion), MarketDataTypeEnum marketDataType = default(MarketDataTypeEnum)) : base()
         {
+            
             this.BaseDate = baseDate;
             // to ensure "dates" is required (not null)
             if (dates == null)
@@ -59,6 +60,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("discountFactors is a required property for DiscountFactorCurveData and cannot be null");
             }
             this.DiscountFactors = discountFactors;
+            
+            // to ensure "marketDataType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(MarketDataTypeEnum), marketDataType))
+            {
+                throw new ArgumentException("marketDataType is a required property for DiscountFactorCurveData and must be a defined value");
+            }
+            
             this.MarketDataType = marketDataType;
             this.Lineage = lineage;
             this.MarketDataOptions = marketDataOptions;

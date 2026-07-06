@@ -59,7 +59,15 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="type">The type of Date Regularity (required).</param>
         public DayRegularity(int frequency = default(int), TypeEnum type = default(TypeEnum))
         {
+            
             this.Frequency = frequency;
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for DayRegularity and must be a defined value");
+            }
+            
             this.Type = type;
         }
 

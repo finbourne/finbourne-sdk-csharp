@@ -59,6 +59,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="jobId">jobId (required).</param>
         public SchedulerJob(TypeEnum type = default(TypeEnum), ResourceId jobId = default(ResourceId))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for SchedulerJob and must be a defined value");
+            }
+            
             this.Type = type;
             // to ensure "jobId" is required (not null)
             if (jobId == null)

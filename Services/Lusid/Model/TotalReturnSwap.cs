@@ -46,7 +46,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public TotalReturnSwap(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), AssetLeg assetLeg = default(AssetLeg), InstrumentLeg fundingLeg = default(InstrumentLeg), List<AdditionalPayment> additionalPayments = default(List<AdditionalPayment>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
+            
             this.StartDate = startDate;
+            
             this.MaturityDate = maturityDate;
             // to ensure "assetLeg" is required (not null)
             if (assetLeg == null)
@@ -60,6 +62,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("fundingLeg is a required property for TotalReturnSwap and cannot be null");
             }
             this.FundingLeg = fundingLeg;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for TotalReturnSwap and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.AdditionalPayments = additionalPayments;
             this.TimeZoneConventions = timeZoneConventions;

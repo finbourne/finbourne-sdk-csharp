@@ -61,6 +61,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("weightedInstruments is a required property for Basket and cannot be null");
             }
             this.WeightedInstruments = weightedInstruments;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for Basket and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
         }
 

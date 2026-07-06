@@ -290,14 +290,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // TimelineScope (string) pattern
             Regex regexTimelineScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexTimelineScope.Match(this.TimelineScope).Success)
+            if (this.TimelineScope != null && false == regexTimelineScope.Match(this.TimelineScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TimelineScope, must match a pattern of " + regexTimelineScope, new [] { "TimelineScope" });
             }
 
             // TimelineCode (string) pattern
             Regex regexTimelineCode = new Regex(@"^[a-zA-Z0-9\-_]+(:[a-zA-Z0-9\-_]+)?$", RegexOptions.CultureInvariant);
-            if (false == regexTimelineCode.Match(this.TimelineCode).Success)
+            if (this.TimelineCode != null && false == regexTimelineCode.Match(this.TimelineCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TimelineCode, must match a pattern of " + regexTimelineCode, new [] { "TimelineCode" });
             }

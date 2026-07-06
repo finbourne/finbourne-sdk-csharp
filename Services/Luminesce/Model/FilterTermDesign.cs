@@ -45,6 +45,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="value">The value to compare against (always as a string, but will be formatted to the correct type) (required).</param>
         public FilterTermDesign(QueryDesignerBinaryOperator varOperator = default(QueryDesignerBinaryOperator), string value = default(string))
         {
+            
+            // to ensure "varOperator" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(QueryDesignerBinaryOperator), varOperator))
+            {
+                throw new ArgumentException("varOperator is a required property for FilterTermDesign and must be a defined value");
+            }
+            
             this.Operator = varOperator;
             // to ensure "value" is required (not null)
             if (value == null)

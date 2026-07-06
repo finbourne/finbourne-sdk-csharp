@@ -62,6 +62,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("varyingNotionalFixingDates is a required property for FxLinkedNotionalSchedule and cannot be null");
             }
             this.VaryingNotionalFixingDates = varyingNotionalFixingDates;
+            
+            // to ensure "scheduleType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ScheduleTypeEnum), scheduleType))
+            {
+                throw new ArgumentException("scheduleType is a required property for FxLinkedNotionalSchedule and must be a defined value");
+            }
+            
             this.ScheduleType = scheduleType;
             this.VaryingNotionalInterimExchangePaymentDates = varyingNotionalInterimExchangePaymentDates;
         }

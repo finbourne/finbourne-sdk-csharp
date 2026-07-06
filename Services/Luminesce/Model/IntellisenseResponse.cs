@@ -48,6 +48,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 throw new ArgumentNullException("autoCompleteList is a required property for IntellisenseResponse and cannot be null");
             }
             this.AutoCompleteList = autoCompleteList;
+            
             this.TryAgainSoonForMore = tryAgainSoonForMore;
             // to ensure "sqlWithMarker" is required (not null)
             if (sqlWithMarker == null)

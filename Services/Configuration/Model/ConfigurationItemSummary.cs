@@ -61,7 +61,9 @@ namespace Finbourne.Sdk.Services.Configuration.Model
                 throw new ArgumentNullException("valueType is a required property for ConfigurationItemSummary and cannot be null");
             }
             this.ValueType = valueType;
+            
             this.IsSecret = isSecret;
+            
             this.BlockReveal = blockReveal;
             this.Links = links;
         }

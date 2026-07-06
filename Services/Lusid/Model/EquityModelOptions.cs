@@ -47,6 +47,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("equityForwardProjectionType is a required property for EquityModelOptions and cannot be null");
             }
             this.EquityForwardProjectionType = equityForwardProjectionType;
+            
+            // to ensure "modelOptionsType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ModelOptionsTypeEnum), modelOptionsType))
+            {
+                throw new ArgumentException("modelOptionsType is a required property for EquityModelOptions and must be a defined value");
+            }
+            
             this.ModelOptionsType = modelOptionsType;
         }
 

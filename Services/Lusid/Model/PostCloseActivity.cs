@@ -53,6 +53,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("entityUniqueId is a required property for PostCloseActivity and cannot be null");
             }
             this.EntityUniqueId = entityUniqueId;
+            
             this.AsAt = asAt;
             this.EffectiveAt = effectiveAt;
         }
@@ -192,14 +193,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // EntityType (string) pattern
             Regex regexEntityType = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
-            if (false == regexEntityType.Match(this.EntityType).Success)
+            if (this.EntityType != null && false == regexEntityType.Match(this.EntityType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EntityType, must match a pattern of " + regexEntityType, new [] { "EntityType" });
             }
 
             // EffectiveAt (DateTimeOrCutLabel) pattern
             Regex regexEffectiveAt = new Regex(@"^[a-zA-Z0-9\-_\+:\.]+$", RegexOptions.CultureInvariant);
-            if (false == regexEffectiveAt.Match(this.EffectiveAt).Success)
+            if (this.EffectiveAt != null && false == regexEffectiveAt.Match(this.EffectiveAt).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EffectiveAt, must match a pattern of " + regexEffectiveAt, new [] { "EffectiveAt" });
             }

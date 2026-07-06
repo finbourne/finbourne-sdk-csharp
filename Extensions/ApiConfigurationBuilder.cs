@@ -108,6 +108,16 @@ namespace Finbourne.Sdk.Extensions
                 {
                     apiConfig.RateLimitRetries = opts.RateLimitRetries;
                 }
+
+                if (opts.NumberOfRetries != null)
+                {
+                    apiConfig.NumberOfRetries = opts.NumberOfRetries;
+                }
+
+                if (opts.RetryBackoffMs != null)
+                {
+                    apiConfig.RetryBackoffMs = opts.RetryBackoffMs;
+                }
             }
             
             if (apiConfig.TimeoutMs is < 1)
@@ -160,6 +170,16 @@ namespace Finbourne.Sdk.Extensions
             if (opts?.RateLimitRetries != null)
             {
                 apiConfig.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts?.NumberOfRetries != null)
+            {
+                apiConfig.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts?.RetryBackoffMs != null)
+            {
+                apiConfig.RetryBackoffMs = opts.RetryBackoffMs.Value;
             }
 
             if (apiConfig.HasMissingConfig())

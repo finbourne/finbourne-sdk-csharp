@@ -46,6 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public FeeAccrual(DateTimeOffset effectiveAt = default(DateTimeOffset), string code = default(string), string name = default(string), decimal calculationBase = default(decimal), decimal amount = default(decimal), decimal previousAccrual = default(decimal), decimal previousTotalAccrual = default(decimal), decimal totalAccrual = default(decimal), List<Link> links = default(List<Link>))
         {
+            
             this.EffectiveAt = effectiveAt;
             // to ensure "code" is required (not null)
             if (code == null)
@@ -267,7 +268,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Code (string) pattern
             Regex regexCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCode.Match(this.Code).Success)
+            if (this.Code != null && false == regexCode.Match(this.Code).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, must match a pattern of " + regexCode, new [] { "Code" });
             }

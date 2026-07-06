@@ -41,6 +41,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="type">The type of the workspace item. (required).</param>
         public WorkspaceItemUpdateRequest(int format = default(int), string description = default(string), Object content = default(Object), string type = default(string))
         {
+            
             this.Format = format;
             // to ensure "description" is required (not null)
             if (description == null)
@@ -193,14 +194,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
             // Type (string) pattern
             Regex regexType = new Regex(@"^(luminesce-saved-query|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$", RegexOptions.CultureInvariant);
-            if (false == regexType.Match(this.Type).Success)
+            if (this.Type != null && false == regexType.Match(this.Type).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Type, must match a pattern of " + regexType, new [] { "Type" });
             }

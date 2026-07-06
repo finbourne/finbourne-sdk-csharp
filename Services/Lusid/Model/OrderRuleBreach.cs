@@ -154,7 +154,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // BreachTaskId (string) pattern
             Regex regexBreachTaskId = new Regex(@"^[a-zA-Z0-9\-]+$", RegexOptions.CultureInvariant);
-            if (false == regexBreachTaskId.Match(this.BreachTaskId).Success)
+            if (this.BreachTaskId != null && false == regexBreachTaskId.Match(this.BreachTaskId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for BreachTaskId, must match a pattern of " + regexBreachTaskId, new [] { "BreachTaskId" });
             }

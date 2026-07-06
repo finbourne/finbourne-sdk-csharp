@@ -172,6 +172,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("identifiers is a required property for Instrument and cannot be null");
             }
             this.Identifiers = identifiers;
+            
+            // to ensure "state" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(StateEnum), state))
+            {
+                throw new ArgumentException("state is a required property for Instrument and must be a defined value");
+            }
+            
             this.State = state;
             this.Href = href;
             this.Scope = scope;

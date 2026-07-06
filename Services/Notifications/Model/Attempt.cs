@@ -40,7 +40,9 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="status">status (required).</param>
         public Attempt(int attemptNumber = default(int), DateTimeOffset attemptTime = default(DateTimeOffset), AttemptStatus status = default(AttemptStatus))
         {
+            
             this.AttemptNumber = attemptNumber;
+            
             this.AttemptTime = attemptTime;
             // to ensure "status" is required (not null)
             if (status == null)

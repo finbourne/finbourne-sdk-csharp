@@ -169,7 +169,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
         {
             // ParentDomainName (string) pattern
             Regex regexParentDomainName = new Regex(@"^[a-zA-Z]([a-zA-Z0-9-]*[a-zA-Z0-9])?$", RegexOptions.CultureInvariant);
-            if (false == regexParentDomainName.Match(this.ParentDomainName).Success)
+            if (this.ParentDomainName != null && false == regexParentDomainName.Match(this.ParentDomainName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ParentDomainName, must match a pattern of " + regexParentDomainName, new [] { "ParentDomainName" });
             }

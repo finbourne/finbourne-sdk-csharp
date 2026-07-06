@@ -80,6 +80,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("lusidInstrumentId is a required property for Execution and cannot be null");
             }
             this.LusidInstrumentId = lusidInstrumentId;
+            
             this.Quantity = quantity;
             // to ensure "state" is required (not null)
             if (state == null)
@@ -99,6 +100,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("type is a required property for Execution and cannot be null");
             }
             this.Type = type;
+            
             this.CreatedDate = createdDate;
             // to ensure "price" is required (not null)
             if (price == null)
@@ -112,6 +114,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("settlementCurrency is a required property for Execution and cannot be null");
             }
             this.SettlementCurrency = settlementCurrency;
+            
             this.SettlementCurrencyFxRate = settlementCurrencyFxRate;
             // to ensure "counterparty" is required (not null)
             if (counterparty == null)

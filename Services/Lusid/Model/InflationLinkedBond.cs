@@ -58,7 +58,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public InflationLinkedBond(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), FlowConventions flowConventions = default(FlowConventions), InflationIndexConventions inflationIndexConventions = default(InflationIndexConventions), decimal couponRate = default(decimal), Dictionary<string, string> identifiers = default(Dictionary<string, string>), decimal? baseCPI = default(decimal?), DateTimeOffset? baseCPIDate = default(DateTimeOffset?), string calculationType = default(string), int? exDividendDays = default(int?), int indexPrecision = default(int), decimal principal = default(decimal), bool principalProtection = default(bool), string stubType = default(string), List<RoundingConvention> roundingConventions = default(List<RoundingConvention>), TradingConventions tradingConventions = default(TradingConventions), decimal? originalIssuePrice = default(decimal?), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
+            
             this.StartDate = startDate;
+            
             this.MaturityDate = maturityDate;
             // to ensure "flowConventions" is required (not null)
             if (flowConventions == null)
@@ -72,8 +74,17 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("inflationIndexConventions is a required property for InflationLinkedBond and cannot be null");
             }
             this.InflationIndexConventions = inflationIndexConventions;
+            
             this.CouponRate = couponRate;
+            
             this.Principal = principal;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for InflationLinkedBond and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.Identifiers = identifiers;
             this.BaseCPI = baseCPI;

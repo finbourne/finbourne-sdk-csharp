@@ -79,6 +79,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("path is a required property for AccessMetadataOperation and cannot be null");
             }
             this.Path = path;
+            
+            // to ensure "op" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(OpEnum), op))
+            {
+                throw new ArgumentException("op is a required property for AccessMetadataOperation and must be a defined value");
+            }
+            
             this.Op = op;
             this.From = from;
         }
@@ -205,7 +212,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Path (string) pattern
             Regex regexPath = new Regex(@"^/.+", RegexOptions.CultureInvariant);
-            if (false == regexPath.Match(this.Path).Success)
+            if (this.Path != null && false == regexPath.Match(this.Path).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Path, must match a pattern of " + regexPath, new [] { "Path" });
             }

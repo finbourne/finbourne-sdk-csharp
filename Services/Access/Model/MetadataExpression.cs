@@ -52,6 +52,13 @@ namespace Finbourne.Sdk.Services.Access.Model
                 throw new ArgumentNullException("metadataKey is a required property for MetadataExpression and cannot be null");
             }
             this.MetadataKey = metadataKey;
+            
+            // to ensure "varOperator" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(Operator), varOperator))
+            {
+                throw new ArgumentException("varOperator is a required property for MetadataExpression and must be a defined value");
+            }
+            
             this.Operator = varOperator;
             this.TextValue = textValue;
         }

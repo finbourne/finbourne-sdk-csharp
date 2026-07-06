@@ -53,7 +53,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public PortfolioCashFlow(int groupById = default(int), int sequenceNumber = default(int), DateTimeOffset effectiveDate = default(DateTimeOffset), Dictionary<string, PerpetualProperty> subHoldingKeys = default(Dictionary<string, PerpetualProperty>), string type = default(string), string movementName = default(string), CurrencyAndAmount cashflow = default(CurrencyAndAmount), CurrencyAndAmount balance = default(CurrencyAndAmount), decimal fxRate = default(decimal), CurrencyAndAmount cashflowReportingCurrency = default(CurrencyAndAmount), CurrencyAndAmount balanceReportingCurrency = default(CurrencyAndAmount), CurrencyAndAmount translationGainLoss = default(CurrencyAndAmount), CurrencyAndAmount costBasisReportingCurrency = default(CurrencyAndAmount), Transaction transaction = default(Transaction), CurrencyAndAmount unrealisedGainLossReportingCurrency = default(CurrencyAndAmount), List<Link> links = default(List<Link>))
         {
+            
             this.GroupById = groupById;
+            
             this.SequenceNumber = sequenceNumber;
             // to ensure "type" is required (not null)
             if (type == null)
@@ -79,6 +81,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("balance is a required property for PortfolioCashFlow and cannot be null");
             }
             this.Balance = balance;
+            
             this.FxRate = fxRate;
             // to ensure "cashflowReportingCurrency" is required (not null)
             if (cashflowReportingCurrency == null)

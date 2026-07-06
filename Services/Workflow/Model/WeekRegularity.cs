@@ -60,6 +60,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="type">The type of Date Regularity (required).</param>
         public WeekRegularity(int frequency = default(int), List<string> daysOfWeek = default(List<string>), TypeEnum type = default(TypeEnum))
         {
+            
             this.Frequency = frequency;
             // to ensure "daysOfWeek" is required (not null)
             if (daysOfWeek == null)
@@ -67,6 +68,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("daysOfWeek is a required property for WeekRegularity and cannot be null");
             }
             this.DaysOfWeek = daysOfWeek;
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for WeekRegularity and must be a defined value");
+            }
+            
             this.Type = type;
         }
 

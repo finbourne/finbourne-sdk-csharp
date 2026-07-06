@@ -61,6 +61,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentIdentifiers is a required property for BlockRequest and cannot be null");
             }
             this.InstrumentIdentifiers = instrumentIdentifiers;
+            
             this.Quantity = quantity;
             // to ensure "side" is required (not null)
             if (side == null)
@@ -68,6 +69,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("side is a required property for BlockRequest and cannot be null");
             }
             this.Side = side;
+            
             this.CreatedDate = createdDate;
             this.OrderIds = orderIds;
             this.Properties = properties;

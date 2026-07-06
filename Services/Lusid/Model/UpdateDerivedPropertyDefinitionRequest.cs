@@ -62,6 +62,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("derivationFormula is a required property for UpdateDerivedPropertyDefinitionRequest and cannot be null");
             }
             this.DerivationFormula = derivationFormula;
+            
             this.IsFilterable = isFilterable;
             this.PropertyDescription = propertyDescription;
             this.ValueFormat = valueFormat;

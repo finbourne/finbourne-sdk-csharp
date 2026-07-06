@@ -48,6 +48,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("cashOfferCurrency is a required property for CashOfferElection and cannot be null");
             }
             this.CashOfferCurrency = cashOfferCurrency;
+            
             this.CashOfferPrice = cashOfferPrice;
             // to ensure "electionKey" is required (not null)
             if (electionKey == null)

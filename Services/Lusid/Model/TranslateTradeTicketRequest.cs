@@ -155,7 +155,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Dialect (string) pattern
             Regex regexDialect = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
-            if (false == regexDialect.Match(this.Dialect).Success)
+            if (this.Dialect != null && false == regexDialect.Match(this.Dialect).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Dialect, must match a pattern of " + regexDialect, new [] { "Dialect" });
             }

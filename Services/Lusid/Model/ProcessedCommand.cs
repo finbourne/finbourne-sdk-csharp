@@ -53,6 +53,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("userId is a required property for ProcessedCommand and cannot be null");
             }
             this.UserId = userId;
+            
             this.ProcessedTime = processedTime;
             this.Path = path;
         }

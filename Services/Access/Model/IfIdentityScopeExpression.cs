@@ -129,7 +129,7 @@ namespace Finbourne.Sdk.Services.Access.Model
         {
             // ScopeName (string) pattern
             Regex regexScopeName = new Regex(@"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", RegexOptions.CultureInvariant);
-            if (false == regexScopeName.Match(this.ScopeName).Success)
+            if (this.ScopeName != null && false == regexScopeName.Match(this.ScopeName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeName, must match a pattern of " + regexScopeName, new [] { "ScopeName" });
             }

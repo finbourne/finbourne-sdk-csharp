@@ -64,6 +64,13 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="clientSecret">Reference to client secret from Configuration Store (required).</param>
         public AzureServiceBusNotificationType(TypeEnum type = default(TypeEnum), string varNamespace = default(string), string queueName = default(string), string body = default(string), string tenantId = default(string), string clientId = default(string), string clientSecret = default(string))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for AzureServiceBusNotificationType and must be a defined value");
+            }
+            
             this.Type = type;
             // to ensure "varNamespace" is required (not null)
             if (varNamespace == null)
@@ -278,7 +285,7 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         {
             // Body (string) pattern
             Regex regexBody = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexBody.Match(this.Body).Success)
+            if (this.Body != null && false == regexBody.Match(this.Body).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Body, must match a pattern of " + regexBody, new [] { "Body" });
             }

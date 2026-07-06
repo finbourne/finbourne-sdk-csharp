@@ -225,7 +225,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // EntityType (string) pattern
             Regex regexEntityType = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
-            if (false == regexEntityType.Match(this.EntityType).Success)
+            if (this.EntityType != null && false == regexEntityType.Match(this.EntityType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EntityType, must match a pattern of " + regexEntityType, new [] { "EntityType" });
             }

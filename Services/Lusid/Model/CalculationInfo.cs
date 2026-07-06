@@ -52,6 +52,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("multiplier is a required property for CalculationInfo and cannot be null");
             }
             this.Multiplier = multiplier;
+            
             this.CalculationAmount = calculationAmount;
         }
 

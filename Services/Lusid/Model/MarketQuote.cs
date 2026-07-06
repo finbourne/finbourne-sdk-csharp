@@ -161,7 +161,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="value">Numeric value of the quote (required).</param>
         public MarketQuote(QuoteTypeEnum quoteType = default(QuoteTypeEnum), decimal value = default(decimal))
         {
+            
+            // to ensure "quoteType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(QuoteTypeEnum), quoteType))
+            {
+                throw new ArgumentException("quoteType is a required property for MarketQuote and must be a defined value");
+            }
+            
             this.QuoteType = quoteType;
+            
             this.Value = value;
         }
 

@@ -307,35 +307,35 @@ namespace Finbourne.Sdk.Services.Scheduler.Model
         {
             // Name (string) pattern
             Regex regexName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexName.Match(this.Name).Success)
+            if (this.Name != null && false == regexName.Match(this.Name).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
             // Author (string) pattern
             Regex regexAuthor = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexAuthor.Match(this.Author).Success)
+            if (this.Author != null && false == regexAuthor.Match(this.Author).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Author, must match a pattern of " + regexAuthor, new [] { "Author" });
             }
 
             // Owner (string) pattern
             Regex regexOwner = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexOwner.Match(this.Owner).Success)
+            if (this.Owner != null && false == regexOwner.Match(this.Owner).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Owner, must match a pattern of " + regexOwner, new [] { "Owner" });
             }
 
             // UseAsAuth (string) pattern
             Regex regexUseAsAuth = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexUseAsAuth.Match(this.UseAsAuth).Success)
+            if (this.UseAsAuth != null && false == regexUseAsAuth.Match(this.UseAsAuth).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for UseAsAuth, must match a pattern of " + regexUseAsAuth, new [] { "UseAsAuth" });
             }

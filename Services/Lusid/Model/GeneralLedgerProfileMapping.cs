@@ -155,7 +155,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // MappingFilter (string) pattern
             Regex regexMappingFilter = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexMappingFilter.Match(this.MappingFilter).Success)
+            if (this.MappingFilter != null && false == regexMappingFilter.Match(this.MappingFilter).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for MappingFilter, must match a pattern of " + regexMappingFilter, new [] { "MappingFilter" });
             }

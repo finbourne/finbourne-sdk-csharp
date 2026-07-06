@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="details">Identifiers for each allocation in this block. (required).</param>
         public OrderGraphBlockAllocationSynopsis(decimal quantity = default(decimal), List<OrderGraphBlockAllocationDetail> details = default(List<OrderGraphBlockAllocationDetail>))
         {
+            
             this.Quantity = quantity;
             // to ensure "details" is required (not null)
             if (details == null)

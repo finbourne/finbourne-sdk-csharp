@@ -167,7 +167,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Value (string) pattern
             Regex regexValue = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexValue.Match(this.Value).Success)
+            if (this.Value != null && false == regexValue.Match(this.Value).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Value, must match a pattern of " + regexValue, new [] { "Value" });
             }

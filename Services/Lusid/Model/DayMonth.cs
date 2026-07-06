@@ -39,7 +39,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="month">Month part of Day, Month for Year End date specification. (required).</param>
         public DayMonth(int day = default(int), int month = default(int))
         {
+            
             this.Day = day;
+            
             this.Month = month;
         }
 

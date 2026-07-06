@@ -206,14 +206,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // SetTo (string) pattern
             Regex regexSetTo = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexSetTo.Match(this.SetTo).Success)
+            if (this.SetTo != null && false == regexSetTo.Match(this.SetTo).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SetTo, must match a pattern of " + regexSetTo, new [] { "SetTo" });
             }
 
             // TemplateFrom (string) pattern
             Regex regexTemplateFrom = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexTemplateFrom.Match(this.TemplateFrom).Success)
+            if (this.TemplateFrom != null && false == regexTemplateFrom.Match(this.TemplateFrom).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TemplateFrom, must match a pattern of " + regexTemplateFrom, new [] { "TemplateFrom" });
             }

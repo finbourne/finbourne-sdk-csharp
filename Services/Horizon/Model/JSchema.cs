@@ -91,13 +91,21 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="format">format.</param>
         public JSchema(string schemaVersion = default(string), bool? valid = default(bool?), string reference = default(string), JSchema varRef = default(JSchema), string recursiveReference = default(string), bool? recursiveAnchor = default(bool?), string id = default(string), string anchor = default(string), JSchemaType ?type = default(JSchemaType?), Object varDefault = default(Object), bool itemsPositionValidation = default(bool), JSchema varIf = default(JSchema), JSchema then = default(JSchema), JSchema varElse = default(JSchema), JSchema not = default(JSchema), JSchema contains = default(JSchema), JSchema propertyNames = default(JSchema), Object varConst = default(Object), bool uniqueItems = default(bool), long? minimumLength = default(long?), long? maximumLength = default(long?), bool exclusiveMinimum = default(bool), bool exclusiveMaximum = default(bool), long? minimumItems = default(long?), long? maximumItems = default(long?), long? minimumProperties = default(long?), long? maximumProperties = default(long?), long? minimumContains = default(long?), long? maximumContains = default(long?), string contentEncoding = default(string), string contentMediaType = default(string), bool? writeOnly = default(bool?), bool? readOnly = default(bool?), string title = default(string), string description = default(string), decimal? multipleOf = default(decimal?), string pattern = default(string), JSchema additionalProperties = default(JSchema), bool allowAdditionalProperties = default(bool), bool allowAdditionalPropertiesSpecified = default(bool), JSchema unevaluatedProperties = default(JSchema), bool? allowUnevaluatedProperties = default(bool?), JSchema additionalItems = default(JSchema), bool allowAdditionalItems = default(bool), bool allowAdditionalItemsSpecified = default(bool), JSchema unevaluatedItems = default(JSchema), bool? allowUnevaluatedItems = default(bool?), string format = default(string))
         {
+            
             this.ItemsPositionValidation = itemsPositionValidation;
+            
             this.UniqueItems = uniqueItems;
+            
             this.ExclusiveMinimum = exclusiveMinimum;
+            
             this.ExclusiveMaximum = exclusiveMaximum;
+            
             this.AllowAdditionalProperties = allowAdditionalProperties;
+            
             this.AllowAdditionalPropertiesSpecified = allowAdditionalPropertiesSpecified;
+            
             this.AllowAdditionalItems = allowAdditionalItems;
+            
             this.AllowAdditionalItemsSpecified = allowAdditionalItemsSpecified;
             this.SchemaVersion = schemaVersion;
             this.Valid = valid;

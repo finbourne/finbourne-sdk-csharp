@@ -39,7 +39,9 @@ namespace Finbourne.Sdk.Services.Identity.Model
         /// <param name="historyCount">The number of unique passwords that need to be used before a previous password is permitted again (required).</param>
         public PasswordPolicyResponseAge(int maxAgeDays = default(int), int historyCount = default(int))
         {
+            
             this.MaxAgeDays = maxAgeDays;
+            
             this.HistoryCount = historyCount;
         }
 

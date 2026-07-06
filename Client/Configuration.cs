@@ -41,7 +41,7 @@ namespace Finbourne.Sdk.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "0.1.65";
+        public const string Version = "0.1.66";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -169,7 +169,7 @@ namespace Finbourne.Sdk.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/0.1.65/csharp");
+            UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/0.1.66/csharp");
             BasePath = "http://localhost";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -612,6 +612,15 @@ namespace Finbourne.Sdk.Client
             }
         }
 
+        /// <summary>Number of transport/5xx retries; null uses the SDK default.</summary>
+        public virtual int? NumberOfRetries { get; set; }
+
+        /// <summary>Fixed backoff in milliseconds between retries; null uses exponential backoff.</summary>
+        public virtual int? RetryBackoffMs { get; set; }
+
+        /// <summary>Custom retry policies applied to requests; null uses the SDK default retry policy.</summary>
+        public virtual RetryConfiguration? RetryConfiguration { get; set; }
+
         #endregion Properties
 
         #region Methods
@@ -625,7 +634,7 @@ namespace Finbourne.Sdk.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 1.0.0\n";
-            report += "    SDK Package Version: 0.1.65\n";
+            report += "    SDK Package Version: 0.1.66\n";
 
             return report;
         }
@@ -672,15 +681,19 @@ namespace Finbourne.Sdk.Client
             foreach (var kvp in second.ApiKeyPrefix) apiKeyPrefix[kvp.Key] = kvp.Value;
             foreach (var kvp in second.DefaultHeaders) defaultHeaders[kvp.Key] = kvp.Value;
 
+            // Prefer second's value only where it differs from a default Configuration; otherwise keep first's
+            // (a default-constructed second has non-null defaults, so "second ?? first" can't fall through).
+            var defaults = new Configuration();
+
             var config = new Configuration
             {
                 ApiKey = apiKey,
                 ApiKeyPrefix = apiKeyPrefix,
                 DefaultHeaders = defaultHeaders,
-                BasePath = second.BasePath ?? first.BasePath,
-                TimeoutMs = second.TimeoutMs,
+                BasePath = second.BasePath != defaults.BasePath ? second.BasePath : first.BasePath,
+                TimeoutMs = second.TimeoutMs != defaults.TimeoutMs ? second.TimeoutMs : first.TimeoutMs,
                 Proxy = second.Proxy ?? first.Proxy,
-                UserAgent = second.UserAgent ?? first.UserAgent,
+                UserAgent = second.UserAgent != defaults.UserAgent ? second.UserAgent : first.UserAgent,
                 Username = second.Username ?? first.Username,
                 Password = second.Password ?? first.Password,
                 AccessToken = second.AccessToken ?? first.AccessToken,
@@ -688,10 +701,13 @@ namespace Finbourne.Sdk.Client
                 OAuthClientId = second.OAuthClientId ?? first.OAuthClientId,
                 OAuthClientSecret = second.OAuthClientSecret ?? first.OAuthClientSecret,
                 OAuthFlow = second.OAuthFlow ?? first.OAuthFlow,
-                TempFolderPath = second.TempFolderPath ?? first.TempFolderPath,
-                DateTimeFormat = second.DateTimeFormat ?? first.DateTimeFormat,
+                TempFolderPath = second.TempFolderPath != defaults.TempFolderPath ? second.TempFolderPath : first.TempFolderPath,
+                DateTimeFormat = second.DateTimeFormat != defaults.DateTimeFormat ? second.DateTimeFormat : first.DateTimeFormat,
                 ClientCertificates = second.ClientCertificates ?? first.ClientCertificates,
-                RateLimitRetries = second.RateLimitRetries
+                RateLimitRetries = second.RateLimitRetries != defaults.RateLimitRetries ? second.RateLimitRetries : first.RateLimitRetries,
+                NumberOfRetries = second.NumberOfRetries ?? first.NumberOfRetries,
+                RetryBackoffMs = second.RetryBackoffMs ?? first.RetryBackoffMs,
+                RetryConfiguration = second.RetryConfiguration ?? first.RetryConfiguration
             };
             return config;
         }

@@ -178,7 +178,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // CountryOfRisk (string) pattern
             Regex regexCountryOfRisk = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCountryOfRisk.Match(this.CountryOfRisk).Success)
+            if (this.CountryOfRisk != null && false == regexCountryOfRisk.Match(this.CountryOfRisk).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CountryOfRisk, must match a pattern of " + regexCountryOfRisk, new [] { "CountryOfRisk" });
             }

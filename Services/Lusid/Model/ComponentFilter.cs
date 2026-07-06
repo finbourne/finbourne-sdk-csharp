@@ -152,14 +152,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // FilterId (string) pattern
             Regex regexFilterId = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexFilterId.Match(this.FilterId).Success)
+            if (this.FilterId != null && false == regexFilterId.Match(this.FilterId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FilterId, must match a pattern of " + regexFilterId, new [] { "FilterId" });
             }
 
             // Filter (string) pattern
             Regex regexFilter = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexFilter.Match(this.Filter).Success)
+            if (this.Filter != null && false == regexFilter.Match(this.Filter).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Filter, must match a pattern of " + regexFilter, new [] { "Filter" });
             }

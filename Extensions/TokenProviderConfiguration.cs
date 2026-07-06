@@ -81,6 +81,7 @@ namespace Finbourne.Sdk.Extensions
             config.TempFolderPath = config.TempFolderPath ?? global.TempFolderPath;
             config.DateTimeFormat = config.DateTimeFormat ?? global.DateTimeFormat;
             config.ClientCertificates = config.ClientCertificates ?? global.ClientCertificates;
+            config.RetryConfiguration = config.RetryConfiguration ?? global.RetryConfiguration;
         }
     }
 }

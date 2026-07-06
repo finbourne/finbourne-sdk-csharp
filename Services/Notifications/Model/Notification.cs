@@ -64,6 +64,7 @@ namespace Finbourne.Sdk.Services.Notifications.Model
                 throw new ArgumentNullException("notificationType is a required property for Notification and cannot be null");
             }
             this.NotificationType = notificationType;
+            
             this.CreatedAt = createdAt;
             // to ensure "userIdCreated" is required (not null)
             if (userIdCreated == null)
@@ -71,6 +72,7 @@ namespace Finbourne.Sdk.Services.Notifications.Model
                 throw new ArgumentNullException("userIdCreated is a required property for Notification and cannot be null");
             }
             this.UserIdCreated = userIdCreated;
+            
             this.ModifiedAt = modifiedAt;
             // to ensure "userIdModified" is required (not null)
             if (userIdModified == null)
@@ -301,14 +303,14 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         {
             // DisplayName (string) pattern
             Regex regexDisplayName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayName.Match(this.DisplayName).Success)
+            if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }

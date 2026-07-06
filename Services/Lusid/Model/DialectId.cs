@@ -250,28 +250,28 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Scope (string) pattern
             Regex regexScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexScope.Match(this.Scope).Success)
+            if (this.Scope != null && false == regexScope.Match(this.Scope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Scope, must match a pattern of " + regexScope, new [] { "Scope" });
             }
 
             // Vendor (string) pattern
             Regex regexVendor = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexVendor.Match(this.Vendor).Success)
+            if (this.Vendor != null && false == regexVendor.Match(this.Vendor).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Vendor, must match a pattern of " + regexVendor, new [] { "Vendor" });
             }
 
             // SourceSystem (string) pattern
             Regex regexSourceSystem = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexSourceSystem.Match(this.SourceSystem).Success)
+            if (this.SourceSystem != null && false == regexSourceSystem.Match(this.SourceSystem).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SourceSystem, must match a pattern of " + regexSourceSystem, new [] { "SourceSystem" });
             }
 
             // VarVersion (string) pattern
             Regex regexVarVersion = new Regex(@"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$", RegexOptions.CultureInvariant);
-            if (false == regexVarVersion.Match(this.VarVersion).Success)
+            if (this.VarVersion != null && false == regexVarVersion.Match(this.VarVersion).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for VarVersion, must match a pattern of " + regexVarVersion, new [] { "VarVersion" });
             }

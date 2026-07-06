@@ -334,21 +334,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // DisplayName (string) pattern
             Regex regexDisplayName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayName.Match(this.DisplayName).Success)
+            if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
             }
 
             // OutwardDescription (string) pattern
             Regex regexOutwardDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexOutwardDescription.Match(this.OutwardDescription).Success)
+            if (this.OutwardDescription != null && false == regexOutwardDescription.Match(this.OutwardDescription).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OutwardDescription, must match a pattern of " + regexOutwardDescription, new [] { "OutwardDescription" });
             }
 
             // InwardDescription (string) pattern
             Regex regexInwardDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexInwardDescription.Match(this.InwardDescription).Success)
+            if (this.InwardDescription != null && false == regexInwardDescription.Match(this.InwardDescription).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InwardDescription, must match a pattern of " + regexInwardDescription, new [] { "InwardDescription" });
             }

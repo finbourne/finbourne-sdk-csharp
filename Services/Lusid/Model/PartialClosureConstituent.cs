@@ -40,6 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrument">instrument (required).</param>
         public PartialClosureConstituent(decimal amount = default(decimal), string amountType = default(string), NewInstrument instrument = default(NewInstrument))
         {
+            
             this.Amount = amount;
             // to ensure "amountType" is required (not null)
             if (amountType == null)

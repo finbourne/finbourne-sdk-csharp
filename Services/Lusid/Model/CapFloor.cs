@@ -53,6 +53,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("capFloorType is a required property for CapFloor and cannot be null");
             }
             this.CapFloorType = capFloorType;
+            
             this.IncludeFirstCaplet = includeFirstCaplet;
             // to ensure "underlyingFloatingLeg" is required (not null)
             if (underlyingFloatingLeg == null)
@@ -60,6 +61,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("underlyingFloatingLeg is a required property for CapFloor and cannot be null");
             }
             this.UnderlyingFloatingLeg = underlyingFloatingLeg;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for CapFloor and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.CapStrike = capStrike;
             this.FloorStrike = floorStrike;

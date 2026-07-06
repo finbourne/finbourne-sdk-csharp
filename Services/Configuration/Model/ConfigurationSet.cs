@@ -46,6 +46,7 @@ namespace Finbourne.Sdk.Services.Configuration.Model
         /// <param name="links">links.</param>
         public ConfigurationSet(DateTimeOffset createdAt = default(DateTimeOffset), string createdBy = default(string), DateTimeOffset lastModifiedAt = default(DateTimeOffset), string lastModifiedBy = default(string), string description = default(string), List<ConfigurationItemSummary> items = default(List<ConfigurationItemSummary>), ResourceId id = default(ResourceId), string type = default(string), List<Link> links = default(List<Link>))
         {
+            
             this.CreatedAt = createdAt;
             // to ensure "createdBy" is required (not null)
             if (createdBy == null)
@@ -53,6 +54,7 @@ namespace Finbourne.Sdk.Services.Configuration.Model
                 throw new ArgumentNullException("createdBy is a required property for ConfigurationSet and cannot be null");
             }
             this.CreatedBy = createdBy;
+            
             this.LastModifiedAt = lastModifiedAt;
             // to ensure "lastModifiedBy" is required (not null)
             if (lastModifiedBy == null)

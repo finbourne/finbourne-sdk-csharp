@@ -50,9 +50,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public CreditDefaultSwap(string ticker = @"DefaultCDSTicker", DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), CdsFlowConventions flowConventions = default(CdsFlowConventions), decimal couponRate = default(decimal), FlowConventionName conventionName = default(FlowConventionName), decimal? notional = default(decimal?), CdsProtectionDetailSpecification protectionDetailSpecification = default(CdsProtectionDetailSpecification), List<AdditionalPayment> additionalPayments = default(List<AdditionalPayment>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
+            
             this.StartDate = startDate;
+            
             this.MaturityDate = maturityDate;
+            
             this.CouponRate = couponRate;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for CreditDefaultSwap and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             // use default value if no "ticker" provided
             this.Ticker = ticker ?? @"DefaultCDSTicker";

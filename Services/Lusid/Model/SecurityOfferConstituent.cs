@@ -54,6 +54,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("unitsRatio is a required property for SecurityOfferConstituent and cannot be null");
             }
             this.UnitsRatio = unitsRatio;
+            
             this.SettlementDate = settlementDate;
             this.MinPieceSize = minPieceSize;
             this.MinIncrement = minIncrement;

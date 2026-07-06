@@ -64,6 +64,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="tradeTicketType">Available values: LusidTradeTicket, ExternalTradeTicket. (required).</param>
         public TradeTicket(TradeTicketTypeEnum tradeTicketType = default(TradeTicketTypeEnum))
         {
+            
+            // to ensure "tradeTicketType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TradeTicketTypeEnum), tradeTicketType))
+            {
+                throw new ArgumentException("tradeTicketType is a required property for TradeTicket and must be a defined value");
+            }
+            
             this.TradeTicketType = tradeTicketType;
         }
 

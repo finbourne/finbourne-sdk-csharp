@@ -41,6 +41,7 @@ namespace Finbourne.Sdk.Extensions
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
         private const int RefreshExpires = 5400; // Refresh token expires in 90 minutes - Speak to Xan if you think this has changed
         private const string ExpireMessage = "refresh token is invalid or expired";
+        private const int DefaultTokenEndpointRetries = 5;
 
         internal class AuthenticationToken
         {
@@ -57,7 +58,10 @@ namespace Finbourne.Sdk.Extensions
             public DateTimeOffset RefreshExpiresOn { get; internal set; }
         }
 
-        
+        // Thrown when the IdP rejects the refresh token (400 invalid_grant).
+        private class RefreshTokenExpiredException : Exception { }
+
+
         private AuthenticationToken _lastIssuedToken;
 
         /// <summary>
@@ -71,11 +75,15 @@ namespace Finbourne.Sdk.Extensions
         /// <inheritdoc />
         public async Task<string> GetAuthenticationTokenAsync()
         {
-            var policy = 
+            // Retry count/backoff from config; defaults to 5 retries with exponential backoff.
+            var retryCount = _apiConfig.NumberOfRetries ?? DefaultTokenEndpointRetries;
+            var policy =
                 Policy
                     .Handle<HttpRequestException>()
-                    .WaitAndRetryAsync(5, retryAttempt =>
-                        TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), OnRetry);
+                    .WaitAndRetryAsync(retryCount, retryAttempt =>
+                        _apiConfig.RetryBackoffMs.HasValue
+                            ? TimeSpan.FromMilliseconds(_apiConfig.RetryBackoffMs.Value)
+                            : TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
             
             return await policy.ExecuteAsync(context => GetAuthenticationTokenAsyncInternal(), CancellationToken.None);
 
@@ -88,7 +96,15 @@ namespace Finbourne.Sdk.Extensions
                     {
                         if (_lastIssuedToken?.RefreshToken != null && _lastIssuedToken?.RefreshExpiresOn > DateTimeOffset.UtcNow)
                         {
-                            _lastIssuedToken = await RefreshToken(_apiConfig, _lastIssuedToken?.RefreshToken);
+                            try
+                            {
+                                _lastIssuedToken = await RefreshToken(_apiConfig, _lastIssuedToken?.RefreshToken);
+                            }
+                            catch (RefreshTokenExpiredException)
+                            {
+                                // refresh token rejected; fall back to a fresh login
+                                _lastIssuedToken = await GetNewToken(_apiConfig);
+                            }
                         }
                         else
                         {
@@ -109,14 +125,6 @@ namespace Finbourne.Sdk.Extensions
         {
             string token = await GetAuthenticationTokenAsync();
             return new AuthenticationHeaderValue("Bearer", token);
-        }
-
-        private void OnRetry(Exception arg1, TimeSpan arg2)
-        {
-            if (arg1.Message.ToLower().Contains(ExpireMessage))
-            {
-                ExpireRefreshToken();
-            }
         }
 
         /// <summary>
@@ -161,8 +169,13 @@ namespace Finbourne.Sdk.Extensions
                 
                 var parsed = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
 
-                var apiToken = parsed["access_token"];
-                var expires = parsed["expires_in"];
+                if (parsed == null || !parsed.TryGetValue("access_token", out var apiToken) || string.IsNullOrEmpty(apiToken))
+                {
+                    throw new InvalidOperationException(
+                        $"The identity provider at {tokenRequest.RequestUri} returned a successful status code but the response did not contain an access_token.");
+                }
+
+                parsed.TryGetValue("expires_in", out var expires);
 
                 parsed.TryGetValue("refresh_token", out var refresh_token);
 
@@ -219,14 +232,25 @@ namespace Finbourne.Sdk.Extensions
                 
                 if (!response.IsSuccessStatusCode)
                 {
+                    // 400 invalid_grant => the refresh token is dead; signal a fresh-login fallback.
+                    if ((int)response.StatusCode == 400 && IsInvalidGrant(body))
+                    {
+                        throw new RefreshTokenExpiredException();
+                    }
+
                     throw new HttpRequestException(
                         $"Could not refresh the authentication token from the specified identity provider. The request to {tokenRequest.RequestUri} returned an unsuccessful status code of {response.StatusCode} and the response body: {body}");
                 }
 
                 var parsed = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
 
-                var apiToken = parsed["access_token"];                
-                var expires = parsed["expires_in"];
+                if (parsed == null || !parsed.TryGetValue("access_token", out var apiToken) || string.IsNullOrEmpty(apiToken))
+                {
+                    throw new InvalidOperationException(
+                        $"The identity provider at {tokenRequest.RequestUri} returned a successful status code but the response did not contain an access_token.");
+                }
+
+                parsed.TryGetValue("expires_in", out var expires);
 
                 parsed.TryGetValue("refresh_token", out var refresh_token);
 
@@ -246,6 +270,38 @@ namespace Finbourne.Sdk.Extensions
                 refreshExpiresAt = DateTimeOffset.UtcNow.AddSeconds(RefreshExpires - 30);
 
                 return new AuthenticationToken(apiToken, expiresAt, refresh_token, refreshExpiresAt);
+            }
+        }
+
+        // True if the IdP error body is an OAuth2 invalid_grant (by error code, or description fallback).
+        private static bool IsInvalidGrant(string body)
+        {
+            if (string.IsNullOrEmpty(body))
+            {
+                return false;
+            }
+
+            try
+            {
+                var error = JsonConvert.DeserializeObject<Dictionary<string, string>>(body);
+                if (error == null)
+                {
+                    return false;
+                }
+
+                if (error.TryGetValue("error", out var errorCode) &&
+                    string.Equals(errorCode, "invalid_grant", StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+
+                return error.TryGetValue("error_description", out var description) &&
+                       description != null &&
+                       description.ToLowerInvariant().Contains(ExpireMessage);
+            }
+            catch (JsonException)
+            {
+                return false;
             }
         }
 

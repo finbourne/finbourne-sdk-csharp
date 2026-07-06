@@ -198,7 +198,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         {
             // TaskInstanceId (string) pattern
             Regex regexTaskInstanceId = new Regex(@"^[a-zA-Z0-9\-]+$", RegexOptions.CultureInvariant);
-            if (false == regexTaskInstanceId.Match(this.TaskInstanceId).Success)
+            if (this.TaskInstanceId != null && false == regexTaskInstanceId.Match(this.TaskInstanceId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaskInstanceId, must match a pattern of " + regexTaskInstanceId, new [] { "TaskInstanceId" });
             }

@@ -51,6 +51,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("navActivityAdjustmentSource is a required property for PortfolioTransactionAdjustment and cannot be null");
             }
             this.NavActivityAdjustmentSource = navActivityAdjustmentSource;
+            
             this.AsAt = asAt;
             // to ensure "portfolioScope" is required (not null)
             if (portfolioScope == null)
@@ -70,6 +71,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("transactionId is a required property for PortfolioTransactionAdjustment and cannot be null");
             }
             this.TransactionId = transactionId;
+            
+            // to ensure "navActivityAdjustmentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(NavActivityAdjustmentTypeEnum), navActivityAdjustmentType))
+            {
+                throw new ArgumentException("navActivityAdjustmentType is a required property for PortfolioTransactionAdjustment and must be a defined value");
+            }
+            
             this.NavActivityAdjustmentType = navActivityAdjustmentType;
         }
 
@@ -246,21 +254,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             // PortfolioScope (string) pattern
             Regex regexPortfolioScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexPortfolioScope.Match(this.PortfolioScope).Success)
+            if (this.PortfolioScope != null && false == regexPortfolioScope.Match(this.PortfolioScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PortfolioScope, must match a pattern of " + regexPortfolioScope, new [] { "PortfolioScope" });
             }
 
             // PortfolioCode (string) pattern
             Regex regexPortfolioCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexPortfolioCode.Match(this.PortfolioCode).Success)
+            if (this.PortfolioCode != null && false == regexPortfolioCode.Match(this.PortfolioCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PortfolioCode, must match a pattern of " + regexPortfolioCode, new [] { "PortfolioCode" });
             }
 
             // TransactionId (string) pattern
             Regex regexTransactionId = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexTransactionId.Match(this.TransactionId).Success)
+            if (this.TransactionId != null && false == regexTransactionId.Match(this.TransactionId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TransactionId, must match a pattern of " + regexTransactionId, new [] { "TransactionId" });
             }

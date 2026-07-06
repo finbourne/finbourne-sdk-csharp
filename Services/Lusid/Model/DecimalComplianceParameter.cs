@@ -41,7 +41,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="complianceParameterType">The parameter type. Available values: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter, FilterPredicateComplianceParameter, GroupFilterPredicateComplianceParameter, GroupBySelectorComplianceParameter, PropertyListComplianceParameter, GroupCalculationComplianceParameter. (required) (default to ComplianceParameterTypeEnum.BoolComplianceParameter).</param>
         public DecimalComplianceParameter(decimal value = default(decimal), ComplianceParameterTypeEnum complianceParameterType = default(ComplianceParameterTypeEnum)) : base()
         {
+            
             this.Value = value;
+            
+            // to ensure "complianceParameterType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ComplianceParameterTypeEnum), complianceParameterType))
+            {
+                throw new ArgumentException("complianceParameterType is a required property for DecimalComplianceParameter and must be a defined value");
+            }
+            
             this.ComplianceParameterType = complianceParameterType;
         }
 

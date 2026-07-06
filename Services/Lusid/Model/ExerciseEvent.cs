@@ -48,7 +48,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrument is a required property for ExerciseEvent and cannot be null");
             }
             this.Instrument = instrument;
+            
             this.AnchorDate = anchorDate;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for ExerciseEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
         }
 

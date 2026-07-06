@@ -54,6 +54,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="filterValueDataType">filterValueDataType.</param>
         public OnClauseTermDesign(string leftTableField = default(string), string rightTableField = default(string), QueryDesignerBinaryOperator varOperator = default(QueryDesignerBinaryOperator), string filterValue = default(string), DataType ?filterValueDataType = default(DataType?))
         {
+            
+            // to ensure "varOperator" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(QueryDesignerBinaryOperator), varOperator))
+            {
+                throw new ArgumentException("varOperator is a required property for OnClauseTermDesign and must be a defined value");
+            }
+            
             this.Operator = varOperator;
             this.LeftTableField = leftTableField;
             this.RightTableField = rightTableField;

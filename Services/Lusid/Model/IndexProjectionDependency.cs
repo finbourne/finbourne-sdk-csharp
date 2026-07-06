@@ -62,7 +62,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("indexName is a required property for IndexProjectionDependency and cannot be null");
             }
             this.IndexName = indexName;
+            
             this.Date = date;
+            
+            // to ensure "dependencyType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DependencyTypeEnum), dependencyType))
+            {
+                throw new ArgumentException("dependencyType is a required property for IndexProjectionDependency and must be a defined value");
+            }
+            
             this.DependencyType = dependencyType;
         }
 

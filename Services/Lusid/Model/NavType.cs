@@ -491,35 +491,35 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Code (string) pattern
             Regex regexCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCode.Match(this.Code).Success)
+            if (this.Code != null && false == regexCode.Match(this.Code).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, must match a pattern of " + regexCode, new [] { "Code" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
             // TransactionTypeScope (string) pattern
             Regex regexTransactionTypeScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexTransactionTypeScope.Match(this.TransactionTypeScope).Success)
+            if (this.TransactionTypeScope != null && false == regexTransactionTypeScope.Match(this.TransactionTypeScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TransactionTypeScope, must match a pattern of " + regexTransactionTypeScope, new [] { "TransactionTypeScope" });
             }
 
             // LeaderNavTypeCode (string) pattern
             Regex regexLeaderNavTypeCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLeaderNavTypeCode.Match(this.LeaderNavTypeCode).Success)
+            if (this.LeaderNavTypeCode != null && false == regexLeaderNavTypeCode.Match(this.LeaderNavTypeCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LeaderNavTypeCode, must match a pattern of " + regexLeaderNavTypeCode, new [] { "LeaderNavTypeCode" });
             }
 
             // TransactionTemplateScope (string) pattern
             Regex regexTransactionTemplateScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexTransactionTemplateScope.Match(this.TransactionTemplateScope).Success)
+            if (this.TransactionTemplateScope != null && false == regexTransactionTemplateScope.Match(this.TransactionTemplateScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TransactionTemplateScope, must match a pattern of " + regexTransactionTemplateScope, new [] { "TransactionTemplateScope" });
             }

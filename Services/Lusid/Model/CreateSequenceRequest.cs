@@ -240,14 +240,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Code (string) pattern
             Regex regexCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCode.Match(this.Code).Success)
+            if (this.Code != null && false == regexCode.Match(this.Code).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, must match a pattern of " + regexCode, new [] { "Code" });
             }
 
             // Pattern (string) pattern
             Regex regexPattern = new Regex(@"^[A-Za-z0-9_-]*\{\{seqValue\}\}[A-Za-z0-9_-]*$", RegexOptions.CultureInvariant);
-            if (false == regexPattern.Match(this.Pattern).Success)
+            if (this.Pattern != null && false == regexPattern.Match(this.Pattern).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Pattern, must match a pattern of " + regexPattern, new [] { "Pattern" });
             }

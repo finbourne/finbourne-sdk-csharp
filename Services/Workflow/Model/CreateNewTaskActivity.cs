@@ -62,6 +62,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="scheduleDependentTaskFields">The Schedule dependent task field mappings. Only relevant if a Finbourne.Workflow.WebApi.Common.Dto.Json.EventHandlers.ScheduleMatchingPattern is specified.</param>
         public CreateNewTaskActivity(string initialTrigger = default(string), TypeEnum type = default(TypeEnum), List<EventHandlerMapping> correlationIds = default(List<EventHandlerMapping>), Dictionary<string, FieldMapping> taskFields = default(Dictionary<string, FieldMapping>), Dictionary<string, ScheduledTimeAdjustment> scheduleDependentTaskFields = default(Dictionary<string, ScheduledTimeAdjustment>))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for CreateNewTaskActivity and must be a defined value");
+            }
+            
             this.Type = type;
             this.InitialTrigger = initialTrigger;
             this.CorrelationIds = correlationIds;

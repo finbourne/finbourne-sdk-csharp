@@ -40,6 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="constituents">The constituents with their information which are part of the composite..</param>
         public CompositeBreakdown(DateTimeOffset effectiveAt = default(DateTimeOffset), PortfolioReturnBreakdown composite = default(PortfolioReturnBreakdown), List<PortfolioReturnBreakdown> constituents = default(List<PortfolioReturnBreakdown>))
         {
+            
             this.EffectiveAt = effectiveAt;
             this.Composite = composite;
             this.Constituents = constituents;

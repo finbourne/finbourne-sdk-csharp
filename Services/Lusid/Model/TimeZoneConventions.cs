@@ -168,14 +168,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // StartOfDay (string) pattern
             Regex regexStartOfDay = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexStartOfDay.Match(this.StartOfDay).Success)
+            if (this.StartOfDay != null && false == regexStartOfDay.Match(this.StartOfDay).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for StartOfDay, must match a pattern of " + regexStartOfDay, new [] { "StartOfDay" });
             }
 
             // PrimaryMarketOpen (string) pattern
             Regex regexPrimaryMarketOpen = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexPrimaryMarketOpen.Match(this.PrimaryMarketOpen).Success)
+            if (this.PrimaryMarketOpen != null && false == regexPrimaryMarketOpen.Match(this.PrimaryMarketOpen).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PrimaryMarketOpen, must match a pattern of " + regexPrimaryMarketOpen, new [] { "PrimaryMarketOpen" });
             }

@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="link">link (required).</param>
         public IntegrationRunLog(long count = default(long), IntegrationRunLogLink link = default(IntegrationRunLogLink))
         {
+            
             this.Count = count;
             // to ensure "link" is required (not null)
             if (link == null)

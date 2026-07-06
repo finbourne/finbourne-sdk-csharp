@@ -54,6 +54,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
                 throw new ArgumentNullException("applyRules is a required property for UpdateNetworkZoneRequest and cannot be null");
             }
             this.ApplyRules = applyRules;
+            
             this.Hierarchy = hierarchy;
             this.Description = description;
             this.Action = action;

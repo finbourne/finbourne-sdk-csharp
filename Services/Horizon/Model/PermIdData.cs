@@ -67,6 +67,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("quotePermId is a required property for PermIdData and cannot be null");
             }
             this.QuotePermId = quotePermId;
+            
             this.IsPrimaryQuote = isPrimaryQuote;
             this.LegalEntityIdentifier = legalEntityIdentifier;
         }

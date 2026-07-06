@@ -47,6 +47,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("filter is a required property for FilteredFundIdList and cannot be null");
             }
             this.Filter = filter;
+            
+            // to ensure "referenceListType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ReferenceListTypeEnum), referenceListType))
+            {
+                throw new ArgumentException("referenceListType is a required property for FilteredFundIdList and must be a defined value");
+            }
+            
             this.ReferenceListType = referenceListType;
         }
 
@@ -179,7 +186,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             // Filter (string) pattern
             Regex regexFilter = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexFilter.Match(this.Filter).Success)
+            if (this.Filter != null && false == regexFilter.Match(this.Filter).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Filter, must match a pattern of " + regexFilter, new [] { "Filter" });
             }

@@ -70,6 +70,16 @@ namespace Finbourne.Sdk.Extensions
         public int? RateLimitRetries { get; set; }
 
         /// <summary>
+        /// The number of transport/5xx retries. If left unset the SDK default will be used
+        /// </summary>
+        public int? NumberOfRetries { get; set; }
+
+        /// <summary>
+        /// Fixed backoff in milliseconds between retries. If left unset exponential backoff will be used
+        /// </summary>
+        public int? RetryBackoffMs { get; set; }
+
+        /// <summary>
         /// Additional headers to include on every request
         /// </summary>
         public IDictionary<string, string>? AdditionalHeaders { get; set; }

@@ -51,7 +51,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("dividendCurrency is a required property for AccumulationEvent and cannot be null");
             }
             this.DividendCurrency = dividendCurrency;
+            
             this.DividendRate = dividendRate;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for AccumulationEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.AnnouncementDate = announcementDate;
             this.ExDate = exDate;

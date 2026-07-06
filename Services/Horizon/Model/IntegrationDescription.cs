@@ -66,6 +66,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("supportedTriggerTypes is a required property for IntegrationDescription and cannot be null");
             }
             this.SupportedTriggerTypes = supportedTriggerTypes;
+            
             this.Licensed = licensed;
         }
 

@@ -56,7 +56,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public Bond(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), string domCcy = default(string), FlowConventions flowConventions = default(FlowConventions), decimal principal = default(decimal), decimal couponRate = default(decimal), Dictionary<string, string> identifiers = default(Dictionary<string, string>), int? exDividendDays = default(int?), DateTimeOffset? initialCouponDate = default(DateTimeOffset?), DateTimeOffset? firstCouponPayDate = default(DateTimeOffset?), string calculationType = default(string), List<RoundingConvention> roundingConventions = default(List<RoundingConvention>), ExDividendConfiguration exDividendConfiguration = default(ExDividendConfiguration), decimal? originalIssuePrice = default(decimal?), TradingConventions tradingConventions = default(TradingConventions), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
+            
             this.StartDate = startDate;
+            
             this.MaturityDate = maturityDate;
             // to ensure "domCcy" is required (not null)
             if (domCcy == null)
@@ -70,8 +72,17 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("flowConventions is a required property for Bond and cannot be null");
             }
             this.FlowConventions = flowConventions;
+            
             this.Principal = principal;
+            
             this.CouponRate = couponRate;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for Bond and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.Identifiers = identifiers;
             this.ExDividendDays = exDividendDays;

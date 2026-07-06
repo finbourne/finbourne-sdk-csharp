@@ -286,21 +286,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // DisplayName (string) pattern
             Regex regexDisplayName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayName.Match(this.DisplayName).Success)
+            if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
             // Conditions (string) pattern
             Regex regexConditions = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexConditions.Match(this.Conditions).Success)
+            if (this.Conditions != null && false == regexConditions.Match(this.Conditions).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Conditions, must match a pattern of " + regexConditions, new [] { "Conditions" });
             }

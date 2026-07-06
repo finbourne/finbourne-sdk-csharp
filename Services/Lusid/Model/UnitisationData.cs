@@ -40,8 +40,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="netDealingUnits">The net dealing in units for the share class at a valuation point. This could be the sum of negative redemptions (in units) and positive subscriptions (in units). (required).</param>
         public UnitisationData(decimal sharesInIssue = default(decimal), decimal unitPrice = default(decimal), decimal netDealingUnits = default(decimal))
         {
+            
             this.SharesInIssue = sharesInIssue;
+            
             this.UnitPrice = unitPrice;
+            
             this.NetDealingUnits = netDealingUnits;
         }
 

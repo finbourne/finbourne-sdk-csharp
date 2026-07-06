@@ -61,6 +61,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("scope is a required property for ReferenceInstrument and cannot be null");
             }
             this.Scope = scope;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for ReferenceInstrument and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
         }
 

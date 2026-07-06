@@ -59,6 +59,13 @@ namespace Finbourne.Sdk.Services.Access.Model
                 throw new ArgumentNullException("code is a required property for PolicyCreationRequest and cannot be null");
             }
             this.Code = code;
+            
+            // to ensure "grant" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(Grant), grant))
+            {
+                throw new ArgumentException("grant is a required property for PolicyCreationRequest and must be a defined value");
+            }
+            
             this.Grant = grant;
             // to ensure "selectors" is required (not null)
             if (selectors == null)
@@ -307,7 +314,7 @@ namespace Finbourne.Sdk.Services.Access.Model
         {
             // Code (string) pattern
             Regex regexCode = new Regex(@"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", RegexOptions.CultureInvariant);
-            if (false == regexCode.Match(this.Code).Success)
+            if (this.Code != null && false == regexCode.Match(this.Code).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, must match a pattern of " + regexCode, new [] { "Code" });
             }

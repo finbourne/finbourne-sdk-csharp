@@ -41,6 +41,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="payReceive">Is it pay or receive.    Supported string (enumeration) values are: [Pay, Receive]. (required).</param>
         public AdditionalPayment(decimal amount = default(decimal), string currency = default(string), DateTimeOffset payDate = default(DateTimeOffset), string payReceive = default(string))
         {
+            
             this.Amount = amount;
             // to ensure "currency" is required (not null)
             if (currency == null)
@@ -48,6 +49,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("currency is a required property for AdditionalPayment and cannot be null");
             }
             this.Currency = currency;
+            
             this.PayDate = payDate;
             // to ensure "payReceive" is required (not null)
             if (payReceive == null)

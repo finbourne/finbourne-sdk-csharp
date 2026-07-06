@@ -40,8 +40,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="day">The day in month of the date. (required).</param>
         public YearMonthDay(int year = default(int), int month = default(int), int day = default(int))
         {
+            
             this.Year = year;
+            
             this.Month = month;
+            
             this.Day = day;
         }
 

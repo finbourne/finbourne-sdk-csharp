@@ -52,6 +52,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("id is a required property for UpsertComplianceRuleRequest and cannot be null");
             }
             this.Id = id;
+            
             this.Active = active;
             // to ensure "templateId" is required (not null)
             if (templateId == null)

@@ -97,6 +97,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="complianceStepTypeRequest">The type of the compliance step. Available values: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest. (required).</param>
         public ComplianceStepRequest(ComplianceStepTypeRequestEnum complianceStepTypeRequest = default(ComplianceStepTypeRequestEnum))
         {
+            
+            // to ensure "complianceStepTypeRequest" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ComplianceStepTypeRequestEnum), complianceStepTypeRequest))
+            {
+                throw new ArgumentException("complianceStepTypeRequest is a required property for ComplianceStepRequest and must be a defined value");
+            }
+            
             this.ComplianceStepTypeRequest = complianceStepTypeRequest;
         }
 

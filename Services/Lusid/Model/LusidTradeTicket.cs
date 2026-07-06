@@ -109,6 +109,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("totalConsideration is a required property for LusidTradeTicket and cannot be null");
             }
             this.TotalConsideration = totalConsideration;
+            
             this.Units = units;
             // to ensure "instrumentIdentifiers" is required (not null)
             if (instrumentIdentifiers == null)
@@ -116,6 +117,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentIdentifiers is a required property for LusidTradeTicket and cannot be null");
             }
             this.InstrumentIdentifiers = instrumentIdentifiers;
+            
+            // to ensure "tradeTicketType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TradeTicketTypeEnum), tradeTicketType))
+            {
+                throw new ArgumentException("tradeTicketType is a required property for LusidTradeTicket and must be a defined value");
+            }
+            
             this.TradeTicketType = tradeTicketType;
             this.Source = source;
             this.InstrumentScope = instrumentScope;
@@ -451,7 +459,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // InstrumentScope (string) pattern
             Regex regexInstrumentScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexInstrumentScope.Match(this.InstrumentScope).Success)
+            if (this.InstrumentScope != null && false == regexInstrumentScope.Match(this.InstrumentScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InstrumentScope, must match a pattern of " + regexInstrumentScope, new [] { "InstrumentScope" });
             }

@@ -52,6 +52,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("propertyKey is a required property for InstrumentIdTypeDescriptor and cannot be null");
             }
             this.PropertyKey = propertyKey;
+            
             this.IsUniqueIdentifierType = isUniqueIdentifierType;
         }
 

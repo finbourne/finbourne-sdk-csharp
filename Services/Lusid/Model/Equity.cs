@@ -51,6 +51,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("domCcy is a required property for Equity and cannot be null");
             }
             this.DomCcy = domCcy;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for Equity and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.Identifiers = identifiers;
             this.LotSize = lotSize;

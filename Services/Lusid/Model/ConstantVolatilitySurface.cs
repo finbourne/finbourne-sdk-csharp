@@ -45,6 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="marketDataType">Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface. (required) (default to MarketDataTypeEnum.DiscountFactorCurveData).</param>
         public ConstantVolatilitySurface(DateTimeOffset baseDate = default(DateTimeOffset), string assetType = default(string), string lineage = default(string), decimal volatility = default(decimal), ModelVersion varVersion = default(ModelVersion), MarketDataTypeEnum marketDataType = default(MarketDataTypeEnum)) : base()
         {
+            
             this.BaseDate = baseDate;
             // to ensure "assetType" is required (not null)
             if (assetType == null)
@@ -52,7 +53,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("assetType is a required property for ConstantVolatilitySurface and cannot be null");
             }
             this.AssetType = assetType;
+            
             this.Volatility = volatility;
+            
+            // to ensure "marketDataType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(MarketDataTypeEnum), marketDataType))
+            {
+                throw new ArgumentException("marketDataType is a required property for ConstantVolatilitySurface and must be a defined value");
+            }
+            
             this.MarketDataType = marketDataType;
             this.Lineage = lineage;
             this.VarVersion = varVersion;

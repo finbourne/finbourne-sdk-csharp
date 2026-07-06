@@ -46,7 +46,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="sort">sort.</param>
         public AggregatedTransactionsRequest(DateTimeOffset fromTransactionDate = default(DateTimeOffset), DateTimeOffset toTransactionDate = default(DateTimeOffset), ResourceId portfolioId = default(ResourceId), List<PortfolioEntityId> portfolioEntityIds = default(List<PortfolioEntityId>), DateTimeOffset? asAt = default(DateTimeOffset?), List<AggregateSpec> metrics = default(List<AggregateSpec>), List<string> groupBy = default(List<string>), List<PropertyFilter> filters = default(List<PropertyFilter>), List<OrderBySpec> sort = default(List<OrderBySpec>))
         {
+            
             this.FromTransactionDate = fromTransactionDate;
+            
             this.ToTransactionDate = toTransactionDate;
             // to ensure "metrics" is required (not null)
             if (metrics == null)

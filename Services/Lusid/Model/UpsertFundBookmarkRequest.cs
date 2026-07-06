@@ -57,6 +57,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("displayName is a required property for UpsertFundBookmarkRequest and cannot be null");
             }
             this.DisplayName = displayName;
+            
             this.EffectiveAt = effectiveAt;
             this.Description = description;
             this.QueryAsAt = queryAsAt;
@@ -269,21 +270,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // BookmarkCode (string) pattern
             Regex regexBookmarkCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexBookmarkCode.Match(this.BookmarkCode).Success)
+            if (this.BookmarkCode != null && false == regexBookmarkCode.Match(this.BookmarkCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for BookmarkCode, must match a pattern of " + regexBookmarkCode, new [] { "BookmarkCode" });
             }
 
             // DisplayName (string) pattern
             Regex regexDisplayName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayName.Match(this.DisplayName).Success)
+            if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }

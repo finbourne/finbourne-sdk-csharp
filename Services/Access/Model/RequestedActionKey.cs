@@ -178,14 +178,14 @@ namespace Finbourne.Sdk.Services.Access.Model
         {
             // EntityCode (string) pattern
             Regex regexEntityCode = new Regex(@"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", RegexOptions.CultureInvariant);
-            if (false == regexEntityCode.Match(this.EntityCode).Success)
+            if (this.EntityCode != null && false == regexEntityCode.Match(this.EntityCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EntityCode, must match a pattern of " + regexEntityCode, new [] { "EntityCode" });
             }
 
             // Scope (string) pattern
             Regex regexScope = new Regex(@"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", RegexOptions.CultureInvariant);
-            if (false == regexScope.Match(this.Scope).Success)
+            if (this.Scope != null && false == regexScope.Match(this.Scope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Scope, must match a pattern of " + regexScope, new [] { "Scope" });
             }

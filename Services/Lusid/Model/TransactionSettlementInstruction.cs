@@ -66,7 +66,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instructionType is a required property for TransactionSettlementInstruction and cannot be null");
             }
             this.InstructionType = instructionType;
+            
             this.ActualSettlementDate = actualSettlementDate;
+            
             this.Units = units;
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)

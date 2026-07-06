@@ -611,6 +611,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="valueFormat">The format in which values for this property definition should be represented. Available values: Text, Html..</param>
         public CreatePropertyDefinitionRequest(DomainEnum domain = default(DomainEnum), string scope = default(string), string code = default(string), bool valueRequired = default(bool), string displayName = default(string), ResourceId dataTypeId = default(ResourceId), LifeTimeEnum ?lifeTime = default(LifeTimeEnum?), string constraintStyle = default(string), string propertyDescription = default(string), string collectionType = default(string), List<string> customEntityTypes = default(List<string>), string valueFormat = default(string))
         {
+            
+            // to ensure "domain" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DomainEnum), domain))
+            {
+                throw new ArgumentException("domain is a required property for CreatePropertyDefinitionRequest and must be a defined value");
+            }
+            
             this.Domain = domain;
             // to ensure "scope" is required (not null)
             if (scope == null)

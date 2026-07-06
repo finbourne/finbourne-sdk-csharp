@@ -46,6 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("status is a required property for CategorySettlementStatus and cannot be null");
             }
             this.Status = status;
+            
             this.IsOverdue = isOverdue;
             // to ensure "problems" is required (not null)
             if (problems == null)

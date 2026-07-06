@@ -40,7 +40,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="unitScaleType">Determines how units are scaled when processing the event.  Supported values: [NEWO, ADEX]. Available values: NEWO, ADEX..</param>
         public UnitsRatio(decimal input = default(decimal), decimal output = default(decimal), string unitScaleType = default(string))
         {
+            
             this.Input = input;
+            
             this.Output = output;
             this.UnitScaleType = unitScaleType;
         }

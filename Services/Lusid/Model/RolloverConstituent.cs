@@ -45,6 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("contractDetails is a required property for RolloverConstituent and cannot be null");
             }
             this.ContractDetails = contractDetails;
+            
             this.BalanceChange = balanceChange;
         }
 

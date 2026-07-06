@@ -47,6 +47,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("data is a required property for OpaqueModelOptions and cannot be null");
             }
             this.Data = data;
+            
+            // to ensure "modelOptionsType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ModelOptionsTypeEnum), modelOptionsType))
+            {
+                throw new ArgumentException("modelOptionsType is a required property for OpaqueModelOptions and must be a defined value");
+            }
+            
             this.ModelOptionsType = modelOptionsType;
         }
 

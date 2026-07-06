@@ -75,6 +75,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="criterionType">Available values: PropertyValueEquals, PropertyValueIn, SubHoldingKeyValueEquals. (required).</param>
         public MatchCriterion(CriterionTypeEnum criterionType = default(CriterionTypeEnum))
         {
+            
+            // to ensure "criterionType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(CriterionTypeEnum), criterionType))
+            {
+                throw new ArgumentException("criterionType is a required property for MatchCriterion and must be a defined value");
+            }
+            
             this.CriterionType = criterionType;
         }
 

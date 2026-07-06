@@ -42,7 +42,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="deferManufacturedPayments">Indicates whether manufactured collateral payments are capitalised (i.e. deferred). Capitalised payments will  be deferred to the maturity date of the repo and if applicable interest will be accrued at the repo rate.  Defaults to false..</param>
         public Collateral(bool buyerReceivesCashflows = default(bool), bool buyerReceivesCorporateActionPayments = default(bool), List<CollateralInstrument> collateralInstruments = default(List<CollateralInstrument>), decimal? collateralValue = default(decimal?), bool deferManufacturedPayments = default(bool))
         {
+            
             this.BuyerReceivesCashflows = buyerReceivesCashflows;
+            
             this.BuyerReceivesCorporateActionPayments = buyerReceivesCorporateActionPayments;
             this.CollateralInstruments = collateralInstruments;
             this.CollateralValue = collateralValue;

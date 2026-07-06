@@ -57,6 +57,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public FxOption(DateTimeOffset startDate = default(DateTimeOffset), string domCcy = default(string), decimal? domAmount = default(decimal?), string fgnCcy = default(string), decimal? fgnAmount = default(decimal?), decimal? strike = default(decimal?), List<Barrier> barriers = default(List<Barrier>), string exerciseType = default(string), bool isCallNotPut = default(bool), bool isDeliveryNotCash = default(bool), bool isPayoffDigital = default(bool), DateTimeOffset optionMaturityDate = default(DateTimeOffset), DateTimeOffset optionSettlementDate = default(DateTimeOffset), string payoutStyle = default(string), Premium premium = default(Premium), List<Touch> touches = default(List<Touch>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
+            
             this.StartDate = startDate;
             // to ensure "domCcy" is required (not null)
             if (domCcy == null)
@@ -70,10 +71,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("fgnCcy is a required property for FxOption and cannot be null");
             }
             this.FgnCcy = fgnCcy;
+            
             this.IsCallNotPut = isCallNotPut;
+            
             this.IsDeliveryNotCash = isDeliveryNotCash;
+            
             this.OptionMaturityDate = optionMaturityDate;
+            
             this.OptionSettlementDate = optionSettlementDate;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for FxOption and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.DomAmount = domAmount;
             this.FgnAmount = fgnAmount;

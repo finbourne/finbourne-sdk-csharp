@@ -42,8 +42,17 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="marketDataType">Available values: AppendFxForwardCurveByQuoteReference, AppendFxForwardCurveData, AppendFxForwardPipsCurveData, AppendFxForwardTenorCurveData, AppendFxForwardTenorPipsCurveData. (required) (default to MarketDataTypeEnum.AppendFxForwardCurveByQuoteReference).</param>
         public AppendFxForwardCurveData(DateTimeOffset date = default(DateTimeOffset), decimal rate = default(decimal), MarketDataTypeEnum marketDataType = default(MarketDataTypeEnum)) : base()
         {
+            
             this.Date = date;
+            
             this.Rate = rate;
+            
+            // to ensure "marketDataType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(MarketDataTypeEnum), marketDataType))
+            {
+                throw new ArgumentException("marketDataType is a required property for AppendFxForwardCurveData and must be a defined value");
+            }
+            
             this.MarketDataType = marketDataType;
         }
 

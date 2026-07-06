@@ -75,6 +75,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="fundCalendarEntriesType">The type of the Calendar Entry. Available values: FinalisedValuationPoint, FundEstimateValuationPoint, FundBookmark. (required).</param>
         public FundCalendarEntries(FundCalendarEntriesTypeEnum fundCalendarEntriesType = default(FundCalendarEntriesTypeEnum))
         {
+            
+            // to ensure "fundCalendarEntriesType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(FundCalendarEntriesTypeEnum), fundCalendarEntriesType))
+            {
+                throw new ArgumentException("fundCalendarEntriesType is a required property for FundCalendarEntries and must be a defined value");
+            }
+            
             this.FundCalendarEntriesType = fundCalendarEntriesType;
         }
 

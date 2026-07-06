@@ -45,6 +45,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="alias">Alias, if any, for the Aggregate expression when selected.</param>
         public Aggregation(AggregateFunction type = default(AggregateFunction), string alias = default(string))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(AggregateFunction), type))
+            {
+                throw new ArgumentException("type is a required property for Aggregation and must be a defined value");
+            }
+            
             this.Type = type;
             this.Alias = alias;
         }

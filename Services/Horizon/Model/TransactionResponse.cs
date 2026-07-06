@@ -82,7 +82,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("instrumentName is a required property for TransactionResponse and cannot be null");
             }
             this.InstrumentName = instrumentName;
+            
             this.TradeDate = tradeDate;
+            
             this.SettlementDate = settlementDate;
             // to ensure "status" is required (not null)
             if (status == null)

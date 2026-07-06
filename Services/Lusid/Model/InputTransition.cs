@@ -39,7 +39,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="costFactor">The factor to scale cost by (required).</param>
         public InputTransition(decimal unitsFactor = default(decimal), decimal costFactor = default(decimal))
         {
+            
             this.UnitsFactor = unitsFactor;
+            
             this.CostFactor = costFactor;
         }
 

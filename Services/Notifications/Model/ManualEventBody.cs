@@ -173,14 +173,14 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         {
             // Subject (string) pattern
             Regex regexSubject = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexSubject.Match(this.Subject).Success)
+            if (this.Subject != null && false == regexSubject.Match(this.Subject).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Subject, must match a pattern of " + regexSubject, new [] { "Subject" });
             }
 
             // Message (string) pattern
             Regex regexMessage = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexMessage.Match(this.Message).Success)
+            if (this.Message != null && false == regexMessage.Match(this.Message).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Message, must match a pattern of " + regexMessage, new [] { "Message" });
             }

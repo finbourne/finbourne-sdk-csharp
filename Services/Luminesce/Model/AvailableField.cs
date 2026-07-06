@@ -60,6 +60,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 throw new ArgumentNullException("name is a required property for AvailableField and cannot be null");
             }
             this.Name = name;
+            
+            // to ensure "fieldType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(FieldType), fieldType))
+            {
+                throw new ArgumentException("fieldType is a required property for AvailableField and must be a defined value");
+            }
+            
             this.FieldType = fieldType;
             this.DataType = dataType;
             this.IsMain = isMain;

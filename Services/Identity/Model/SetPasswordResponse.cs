@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
         /// <param name="links">links.</param>
         public SetPasswordResponse(DateTimeOffset updatedAt = default(DateTimeOffset), List<Link> links = default(List<Link>))
         {
+            
             this.UpdatedAt = updatedAt;
             this.Links = links;
         }

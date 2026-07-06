@@ -50,6 +50,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public InterestRateSwaption(DateTimeOffset startDate = default(DateTimeOffset), string payOrReceiveFixed = default(string), Premium premium = default(Premium), string deliveryMethod = default(string), InterestRateSwap swap = default(InterestRateSwap), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), LusidInstrument underlying = default(LusidInstrument), int deliveryDays = default(int), string businessDayConvention = default(string), List<string> settlementCalendars = default(List<string>), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
+            
             this.StartDate = startDate;
             // to ensure "payOrReceiveFixed" is required (not null)
             if (payOrReceiveFixed == null)
@@ -63,6 +64,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("deliveryMethod is a required property for InterestRateSwaption and cannot be null");
             }
             this.DeliveryMethod = deliveryMethod;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for InterestRateSwaption and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.Premium = premium;
             this.Swap = swap;

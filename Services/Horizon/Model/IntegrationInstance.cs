@@ -68,6 +68,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("description is a required property for IntegrationInstance and cannot be null");
             }
             this.Description = description;
+            
             this.Enabled = enabled;
             // to ensure "triggers" is required (not null)
             if (triggers == null)

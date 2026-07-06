@@ -71,6 +71,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("key is a required property for OrderBySpec and cannot be null");
             }
             this.Key = key;
+            
+            // to ensure "sortOrder" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(SortOrderEnum), sortOrder))
+            {
+                throw new ArgumentException("sortOrder is a required property for OrderBySpec and must be a defined value");
+            }
+            
             this.SortOrder = sortOrder;
         }
 

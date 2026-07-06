@@ -47,6 +47,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("calendars is a required property for CalendarDependency and cannot be null");
             }
             this.Calendars = calendars;
+            
+            // to ensure "dependencyType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DependencyTypeEnum), dependencyType))
+            {
+                throw new ArgumentException("dependencyType is a required property for CalendarDependency and must be a defined value");
+            }
+            
             this.DependencyType = dependencyType;
         }
 

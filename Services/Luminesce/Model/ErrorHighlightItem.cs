@@ -54,6 +54,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 throw new ArgumentNullException("stop is a required property for ErrorHighlightItem and cannot be null");
             }
             this.Stop = stop;
+            
             this.Length = length;
             // to ensure "message" is required (not null)
             if (message == null)

@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Access.Model
         /// <param name="deactivate">deactivate.</param>
         public WhenSpec(DateTimeOffset activate = default(DateTimeOffset), DateTimeOffset? deactivate = default(DateTimeOffset?))
         {
+            
             this.Activate = activate;
             this.Deactivate = deactivate;
         }

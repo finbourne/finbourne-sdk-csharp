@@ -53,7 +53,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public EquitySwap(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), string code = default(string), FlowConventions equityFlowConventions = default(FlowConventions), InstrumentLeg fundingLeg = default(InstrumentLeg), bool includeDividends = default(bool), decimal initialPrice = default(decimal), bool notionalReset = default(bool), decimal quantity = default(decimal), string underlyingIdentifier = default(string), string equitySwapDividendPaymentTiming = default(string), List<AdditionalPayment> additionalPayments = default(List<AdditionalPayment>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
+            
             this.StartDate = startDate;
+            
             this.MaturityDate = maturityDate;
             // to ensure "code" is required (not null)
             if (code == null)
@@ -73,9 +75,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("fundingLeg is a required property for EquitySwap and cannot be null");
             }
             this.FundingLeg = fundingLeg;
+            
             this.IncludeDividends = includeDividends;
+            
             this.InitialPrice = initialPrice;
+            
             this.NotionalReset = notionalReset;
+            
             this.Quantity = quantity;
             // to ensure "underlyingIdentifier" is required (not null)
             if (underlyingIdentifier == null)
@@ -83,6 +89,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("underlyingIdentifier is a required property for EquitySwap and cannot be null");
             }
             this.UnderlyingIdentifier = underlyingIdentifier;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for EquitySwap and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.EquitySwapDividendPaymentTiming = equitySwapDividendPaymentTiming;
             this.AdditionalPayments = additionalPayments;

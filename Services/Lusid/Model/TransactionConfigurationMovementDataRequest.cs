@@ -196,6 +196,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="movementOptions">Allows extra specifications for the movement. The options currently available are &#39;DirectAdjustment&#39;, &#39;IncludesTradedInterest&#39;, &#39;Virtual&#39;, &#39;Income&#39; and &#39;Expense&#39;. A movement type of &#39;StockMovement&#39; with an option of &#39;DirectAdjusment&#39; will allow you to adjust the units of a holding without affecting its cost base. You will, therefore, be able to reflect the impact of a stock split by loading a Transaction. A movement type of &#39;Carry&#39; with the option as &#39;Expense&#39; will not impact the interest accrual for cash-type holdings such loans, loan facilities and deposits..</param>
         public TransactionConfigurationMovementDataRequest(MovementTypesEnum movementTypes = default(MovementTypesEnum), string side = default(string), int direction = default(int), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), List<TransactionPropertyMappingRequest> mappings = default(List<TransactionPropertyMappingRequest>), string name = default(string), List<string> movementOptions = default(List<string>))
         {
+            
+            // to ensure "movementTypes" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(MovementTypesEnum), movementTypes))
+            {
+                throw new ArgumentException("movementTypes is a required property for TransactionConfigurationMovementDataRequest and must be a defined value");
+            }
+            
             this.MovementTypes = movementTypes;
             // to ensure "side" is required (not null)
             if (side == null)
@@ -203,6 +210,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("side is a required property for TransactionConfigurationMovementDataRequest and cannot be null");
             }
             this.Side = side;
+            
             this.Direction = direction;
             this.Properties = properties;
             this.Mappings = mappings;

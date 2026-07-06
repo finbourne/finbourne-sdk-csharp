@@ -47,6 +47,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentIdentifiers is a required property for ReferencePortfolioConstituentRequest and cannot be null");
             }
             this.InstrumentIdentifiers = instrumentIdentifiers;
+            
             this.Weight = weight;
             this.Properties = properties;
             this.Currency = currency;

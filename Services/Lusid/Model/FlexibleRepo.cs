@@ -56,6 +56,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public FlexibleRepo(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset? maturityDate = default(DateTimeOffset?), string buyerOrSeller = default(string), string repoCcy = default(string), string repoType = default(string), string accrualBasis = default(string), Collateral collateral = default(Collateral), decimal? haircut = default(decimal?), decimal? margin = default(decimal?), string openRepoRollingPeriod = default(string), decimal? purchasePrice = default(decimal?), List<Schedule> repoRateSchedules = default(List<Schedule>), decimal? repurchasePrice = default(decimal?), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), TradingConventions tradingConventions = default(TradingConventions), bool isCollateralTransferActivated = default(bool), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
+            
             this.StartDate = startDate;
             // to ensure "buyerOrSeller" is required (not null)
             if (buyerOrSeller == null)
@@ -75,6 +76,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("repoType is a required property for FlexibleRepo and cannot be null");
             }
             this.RepoType = repoType;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for FlexibleRepo and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.MaturityDate = maturityDate;
             this.AccrualBasis = accrualBasis;

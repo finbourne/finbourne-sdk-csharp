@@ -45,6 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("type is a required property for GroupReconciliationComparisonRuleTolerance and cannot be null");
             }
             this.Type = type;
+            
             this.Value = value;
         }
 

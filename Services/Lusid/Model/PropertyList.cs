@@ -47,6 +47,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("values is a required property for PropertyList and cannot be null");
             }
             this.Values = values;
+            
+            // to ensure "referenceListType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ReferenceListTypeEnum), referenceListType))
+            {
+                throw new ArgumentException("referenceListType is a required property for PropertyList and must be a defined value");
+            }
+            
             this.ReferenceListType = referenceListType;
         }
 

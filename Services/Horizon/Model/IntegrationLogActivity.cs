@@ -41,6 +41,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="description">description.</param>
         public IntegrationLogActivity(DateTimeOffset timestamp = default(DateTimeOffset), string resultingStatus = default(string), string messageType = default(string), string description = default(string))
         {
+            
             this.Timestamp = timestamp;
             // to ensure "resultingStatus" is required (not null)
             if (resultingStatus == null)

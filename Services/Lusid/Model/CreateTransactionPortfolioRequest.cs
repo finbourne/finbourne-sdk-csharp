@@ -542,14 +542,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // TransactionTypeScope (string) pattern
             Regex regexTransactionTypeScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexTransactionTypeScope.Match(this.TransactionTypeScope).Success)
+            if (this.TransactionTypeScope != null && false == regexTransactionTypeScope.Match(this.TransactionTypeScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TransactionTypeScope, must match a pattern of " + regexTransactionTypeScope, new [] { "TransactionTypeScope" });
             }
 
             // TaxRuleSetScope (string) pattern
             Regex regexTaxRuleSetScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexTaxRuleSetScope.Match(this.TaxRuleSetScope).Success)
+            if (this.TaxRuleSetScope != null && false == regexTaxRuleSetScope.Match(this.TaxRuleSetScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TaxRuleSetScope, must match a pattern of " + regexTaxRuleSetScope, new [] { "TaxRuleSetScope" });
             }

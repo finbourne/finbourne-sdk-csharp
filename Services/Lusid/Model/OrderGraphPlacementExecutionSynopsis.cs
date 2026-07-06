@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="details">Identifiers info for each execution against this placement. (required).</param>
         public OrderGraphPlacementExecutionSynopsis(decimal quantity = default(decimal), List<OrderGraphPlacementExecutionDetail> details = default(List<OrderGraphPlacementExecutionDetail>))
         {
+            
             this.Quantity = quantity;
             // to ensure "details" is required (not null)
             if (details == null)

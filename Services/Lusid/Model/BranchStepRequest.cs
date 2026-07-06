@@ -47,6 +47,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("label is a required property for BranchStepRequest and cannot be null");
             }
             this.Label = label;
+            
+            // to ensure "complianceStepTypeRequest" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ComplianceStepTypeRequestEnum), complianceStepTypeRequest))
+            {
+                throw new ArgumentException("complianceStepTypeRequest is a required property for BranchStepRequest and must be a defined value");
+            }
+            
             this.ComplianceStepTypeRequest = complianceStepTypeRequest;
         }
 
@@ -155,7 +162,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             // Label (string) pattern
             Regex regexLabel = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLabel.Match(this.Label).Success)
+            if (this.Label != null && false == regexLabel.Match(this.Label).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Label, must match a pattern of " + regexLabel, new [] { "Label" });
             }

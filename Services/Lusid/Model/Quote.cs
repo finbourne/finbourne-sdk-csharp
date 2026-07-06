@@ -57,6 +57,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("uploadedBy is a required property for Quote and cannot be null");
             }
             this.UploadedBy = uploadedBy;
+            
             this.AsAt = asAt;
             this.MetricValue = metricValue;
             this.Lineage = lineage;

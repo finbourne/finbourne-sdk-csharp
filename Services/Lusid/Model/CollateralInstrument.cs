@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrument">instrument (required).</param>
         public CollateralInstrument(decimal units = default(decimal), MasteredInstrument instrument = default(MasteredInstrument))
         {
+            
             this.Units = units;
             // to ensure "instrument" is required (not null)
             if (instrument == null)

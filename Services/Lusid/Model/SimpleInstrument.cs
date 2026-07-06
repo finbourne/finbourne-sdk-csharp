@@ -115,6 +115,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("domCcy is a required property for SimpleInstrument and cannot be null");
             }
             this.DomCcy = domCcy;
+            
+            // to ensure "assetClass" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(AssetClassEnum), assetClass))
+            {
+                throw new ArgumentException("assetClass is a required property for SimpleInstrument and must be a defined value");
+            }
+            
             this.AssetClass = assetClass;
             // to ensure "simpleInstrumentType" is required (not null)
             if (simpleInstrumentType == null)
@@ -122,6 +129,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("simpleInstrumentType is a required property for SimpleInstrument and cannot be null");
             }
             this.SimpleInstrumentType = simpleInstrumentType;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for SimpleInstrument and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
             this.MaturityDate = maturityDate;
             this.FgnCcys = fgnCcys;

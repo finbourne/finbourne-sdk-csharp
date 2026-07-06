@@ -42,6 +42,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="state">Current State (required).</param>
         public TaskSummary(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), string state = default(string))
         {
+            
             this.Id = id;
             // to ensure "taskDefinitionId" is required (not null)
             if (taskDefinitionId == null)

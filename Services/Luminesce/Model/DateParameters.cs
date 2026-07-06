@@ -42,6 +42,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="asAt">AsAt of the dashboard (required).</param>
         public DateParameters(DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), DateTimeOffset? effectiveAt = default(DateTimeOffset?), DateTimeOffset? effectiveFrom = default(DateTimeOffset?), DateTimeOffset asAt = default(DateTimeOffset))
         {
+            
             this.AsAt = asAt;
             this.DateFrom = dateFrom;
             this.DateTo = dateTo;

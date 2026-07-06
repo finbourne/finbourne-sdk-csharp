@@ -53,6 +53,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("diaryEntryCode is a required property for UpsertValuationPointRequest and cannot be null");
             }
             this.DiaryEntryCode = diaryEntryCode;
+            
             this.EffectiveAt = effectiveAt;
             this.DiaryEntryVariant = diaryEntryVariant;
             this.Name = name;
@@ -294,21 +295,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // DiaryEntryCode (string) pattern
             Regex regexDiaryEntryCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexDiaryEntryCode.Match(this.DiaryEntryCode).Success)
+            if (this.DiaryEntryCode != null && false == regexDiaryEntryCode.Match(this.DiaryEntryCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DiaryEntryCode, must match a pattern of " + regexDiaryEntryCode, new [] { "DiaryEntryCode" });
             }
 
             // DiaryEntryVariant (string) pattern
             Regex regexDiaryEntryVariant = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexDiaryEntryVariant.Match(this.DiaryEntryVariant).Success)
+            if (this.DiaryEntryVariant != null && false == regexDiaryEntryVariant.Match(this.DiaryEntryVariant).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DiaryEntryVariant, must match a pattern of " + regexDiaryEntryVariant, new [] { "DiaryEntryVariant" });
             }
 
             // Name (string) pattern
             Regex regexName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexName.Match(this.Name).Success)
+            if (this.Name != null && false == regexName.Match(this.Name).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
             }

@@ -55,6 +55,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("name is a required property for Parameter and cannot be null");
             }
             this.Name = name;
+            
             this.Required = required;
             this.DisplayName = displayName;
             this.Description = description;

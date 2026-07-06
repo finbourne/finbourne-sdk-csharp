@@ -57,6 +57,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
         /// <param name="links">links.</param>
         public RequestLog(DateTimeOffset timestamp = default(DateTimeOffset), string application = default(string), string id = default(string), string sessionId = default(string), string verb = default(string), string url = default(string), string domain = default(string), string user = default(string), string userType = default(string), string operation = default(string), string outcome = default(string), decimal duration = default(decimal), int httpStatusCode = default(int), string errorCode = default(string), string sdkLanguage = default(string), string sdkVersion = default(string), string sourceApplication = default(string), List<string> correlationId = default(List<string>), string impersonatingUser = default(string), List<Link> links = default(List<Link>))
         {
+            
             this.Timestamp = timestamp;
             // to ensure "application" is required (not null)
             if (application == null)
@@ -94,7 +95,9 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("outcome is a required property for RequestLog and cannot be null");
             }
             this.Outcome = outcome;
+            
             this.Duration = duration;
+            
             this.HttpStatusCode = httpStatusCode;
             this.SessionId = sessionId;
             this.Domain = domain;

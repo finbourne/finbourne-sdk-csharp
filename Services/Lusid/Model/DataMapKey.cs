@@ -139,14 +139,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // VarVersion (string) pattern
             Regex regexVarVersion = new Regex(@"^\d+\.\d+(\.\d+)?(-[a-zA-Z0-9\.-]{1,30})?$", RegexOptions.CultureInvariant);
-            if (false == regexVarVersion.Match(this.VarVersion).Success)
+            if (this.VarVersion != null && false == regexVarVersion.Match(this.VarVersion).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for VarVersion, must match a pattern of " + regexVarVersion, new [] { "VarVersion" });
             }
 
             // Code (string) pattern
             Regex regexCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCode.Match(this.Code).Success)
+            if (this.Code != null && false == regexCode.Match(this.Code).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, must match a pattern of " + regexCode, new [] { "Code" });
             }

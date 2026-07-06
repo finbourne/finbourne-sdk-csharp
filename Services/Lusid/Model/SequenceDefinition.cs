@@ -52,10 +52,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("id is a required property for SequenceDefinition and cannot be null");
             }
             this.Id = id;
+            
             this.Increment = increment;
+            
             this.MinValue = minValue;
+            
             this.MaxValue = maxValue;
+            
             this.Start = start;
+            
             this.Cycle = cycle;
             this.Value = value;
             this.Pattern = pattern;

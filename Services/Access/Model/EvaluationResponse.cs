@@ -45,6 +45,13 @@ namespace Finbourne.Sdk.Services.Access.Model
         /// <param name="detailedMessage">In the case of the evaluation being denied a message may be returned.</param>
         public EvaluationResponse(EvaluationResult result = default(EvaluationResult), string detailedMessage = default(string))
         {
+            
+            // to ensure "result" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(EvaluationResult), result))
+            {
+                throw new ArgumentException("result is a required property for EvaluationResponse and must be a defined value");
+            }
+            
             this.Result = result;
             this.DetailedMessage = detailedMessage;
         }

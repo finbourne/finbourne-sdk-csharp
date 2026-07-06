@@ -81,6 +81,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="ruleType">Available values: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact. (required).</param>
         public ReconciliationRule(RuleTypeEnum ruleType = default(RuleTypeEnum))
         {
+            
+            // to ensure "ruleType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(RuleTypeEnum), ruleType))
+            {
+                throw new ArgumentException("ruleType is a required property for ReconciliationRule and must be a defined value");
+            }
+            
             this.RuleType = ruleType;
         }
 

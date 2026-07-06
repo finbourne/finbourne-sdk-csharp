@@ -41,6 +41,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public DeleteInstrumentResponse(string href = default(string), DateTimeOffset asAt = default(DateTimeOffset), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), List<Link> links = default(List<Link>))
         {
+            
             this.AsAt = asAt;
             this.Href = href;
             this.StagedModifications = stagedModifications;

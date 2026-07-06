@@ -279,42 +279,42 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // InstrumentIdentifierType (string) pattern
             Regex regexInstrumentIdentifierType = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexInstrumentIdentifierType.Match(this.InstrumentIdentifierType).Success)
+            if (this.InstrumentIdentifierType != null && false == regexInstrumentIdentifierType.Match(this.InstrumentIdentifierType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InstrumentIdentifierType, must match a pattern of " + regexInstrumentIdentifierType, new [] { "InstrumentIdentifierType" });
             }
 
             // InstrumentIdentifier (string) pattern
             Regex regexInstrumentIdentifier = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexInstrumentIdentifier.Match(this.InstrumentIdentifier).Success)
+            if (this.InstrumentIdentifier != null && false == regexInstrumentIdentifier.Match(this.InstrumentIdentifier).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InstrumentIdentifier, must match a pattern of " + regexInstrumentIdentifier, new [] { "InstrumentIdentifier" });
             }
 
             // InstrumentScope (string) pattern
             Regex regexInstrumentScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexInstrumentScope.Match(this.InstrumentScope).Success)
+            if (this.InstrumentScope != null && false == regexInstrumentScope.Match(this.InstrumentScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InstrumentScope, must match a pattern of " + regexInstrumentScope, new [] { "InstrumentScope" });
             }
 
             // LiquidatingShareClassIdentifier (string) pattern
             Regex regexLiquidatingShareClassIdentifier = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLiquidatingShareClassIdentifier.Match(this.LiquidatingShareClassIdentifier).Success)
+            if (this.LiquidatingShareClassIdentifier != null && false == regexLiquidatingShareClassIdentifier.Match(this.LiquidatingShareClassIdentifier).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LiquidatingShareClassIdentifier, must match a pattern of " + regexLiquidatingShareClassIdentifier, new [] { "LiquidatingShareClassIdentifier" });
             }
 
             // LiquidatingShareClassIdentifierType (string) pattern
             Regex regexLiquidatingShareClassIdentifierType = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLiquidatingShareClassIdentifierType.Match(this.LiquidatingShareClassIdentifierType).Success)
+            if (this.LiquidatingShareClassIdentifierType != null && false == regexLiquidatingShareClassIdentifierType.Match(this.LiquidatingShareClassIdentifierType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LiquidatingShareClassIdentifierType, must match a pattern of " + regexLiquidatingShareClassIdentifierType, new [] { "LiquidatingShareClassIdentifierType" });
             }
 
             // LiquidatingShareClassInstrumentScope (string) pattern
             Regex regexLiquidatingShareClassInstrumentScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLiquidatingShareClassInstrumentScope.Match(this.LiquidatingShareClassInstrumentScope).Success)
+            if (this.LiquidatingShareClassInstrumentScope != null && false == regexLiquidatingShareClassInstrumentScope.Match(this.LiquidatingShareClassInstrumentScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LiquidatingShareClassInstrumentScope, must match a pattern of " + regexLiquidatingShareClassInstrumentScope, new [] { "LiquidatingShareClassInstrumentScope" });
             }

@@ -61,6 +61,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("provider is a required property for VendorLog and cannot be null");
             }
             this.Provider = provider;
+            
             this.Timestamp = timestamp;
             // to ensure "type" is required (not null)
             if (type == null)
@@ -86,7 +87,9 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("outcome is a required property for VendorLog and cannot be null");
             }
             this.Outcome = outcome;
+            
             this.Duration = duration;
+            
             this.HttpStatusCode = httpStatusCode;
             // to ensure "userId" is required (not null)
             if (userId == null)

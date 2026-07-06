@@ -44,6 +44,7 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="attempts">A list of all the delivery attempts made for this message. (required).</param>
         public Delivery(Guid id = default(Guid), string eventId = default(string), ResourceId subscriptionId = default(ResourceId), string notificationId = default(string), string deliveryChannel = default(string), string messageDetails = default(string), List<Attempt> attempts = default(List<Attempt>))
         {
+            
             this.Id = id;
             // to ensure "eventId" is required (not null)
             if (eventId == null)

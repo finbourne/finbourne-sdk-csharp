@@ -206,7 +206,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         {
             // InitialTrigger (string) pattern
             Regex regexInitialTrigger = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexInitialTrigger.Match(this.InitialTrigger).Success)
+            if (this.InitialTrigger != null && false == regexInitialTrigger.Match(this.InitialTrigger).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InitialTrigger, must match a pattern of " + regexInitialTrigger, new [] { "InitialTrigger" });
             }

@@ -189,8 +189,23 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("displayName is a required property for AggregationQuery and cannot be null");
             }
             this.DisplayName = displayName;
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for AggregationQuery and must be a defined value");
+            }
+            
             this.Type = type;
+            
+            // to ensure "flattenedType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(FlattenedTypeEnum), flattenedType))
+            {
+                throw new ArgumentException("flattenedType is a required property for AggregationQuery and must be a defined value");
+            }
+            
             this.FlattenedType = flattenedType;
+            
             this.ScalesWithHoldingQuantity = scalesWithHoldingQuantity;
             // to ensure "supportedOperations" is required (not null)
             if (supportedOperations == null)

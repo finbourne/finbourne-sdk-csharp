@@ -292,49 +292,49 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         {
             // FromState (string) pattern
             Regex regexFromState = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexFromState.Match(this.FromState).Success)
+            if (this.FromState != null && false == regexFromState.Match(this.FromState).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FromState, must match a pattern of " + regexFromState, new [] { "FromState" });
             }
 
             // ToState (string) pattern
             Regex regexToState = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexToState.Match(this.ToState).Success)
+            if (this.ToState != null && false == regexToState.Match(this.ToState).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ToState, must match a pattern of " + regexToState, new [] { "ToState" });
             }
 
             // Trigger (string) pattern
             Regex regexTrigger = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexTrigger.Match(this.Trigger).Success)
+            if (this.Trigger != null && false == regexTrigger.Match(this.Trigger).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Trigger, must match a pattern of " + regexTrigger, new [] { "Trigger" });
             }
 
             // Guard (string) pattern
             Regex regexGuard = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexGuard.Match(this.Guard).Success)
+            if (this.Guard != null && false == regexGuard.Match(this.Guard).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Guard, must match a pattern of " + regexGuard, new [] { "Guard" });
             }
 
             // Action (string) pattern
             Regex regexAction = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexAction.Match(this.Action).Success)
+            if (this.Action != null && false == regexAction.Match(this.Action).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Action, must match a pattern of " + regexAction, new [] { "Action" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
             // GuardDescription (string) pattern
             Regex regexGuardDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexGuardDescription.Match(this.GuardDescription).Success)
+            if (this.GuardDescription != null && false == regexGuardDescription.Match(this.GuardDescription).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for GuardDescription, must match a pattern of " + regexGuardDescription, new [] { "GuardDescription" });
             }

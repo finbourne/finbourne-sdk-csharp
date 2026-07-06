@@ -62,7 +62,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("volType is a required property for FxVolDependency and cannot be null");
             }
             this.VolType = volType;
+            
             this.Date = date;
+            
+            // to ensure "dependencyType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DependencyTypeEnum), dependencyType))
+            {
+                throw new ArgumentException("dependencyType is a required property for FxVolDependency and must be a defined value");
+            }
+            
             this.DependencyType = dependencyType;
         }
 

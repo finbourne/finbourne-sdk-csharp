@@ -42,8 +42,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="forecastingRecipeId">forecastingRecipeId (required).</param>
         public QueryApplicableInstrumentEventsRequest(DateTimeOffset windowStart = default(DateTimeOffset), DateTimeOffset windowEnd = default(DateTimeOffset), DateTimeOffset effectiveAt = default(DateTimeOffset), List<PortfolioEntityId> portfolioEntityIds = default(List<PortfolioEntityId>), ResourceId forecastingRecipeId = default(ResourceId))
         {
+            
             this.WindowStart = windowStart;
+            
             this.WindowEnd = windowEnd;
+            
             this.EffectiveAt = effectiveAt;
             // to ensure "portfolioEntityIds" is required (not null)
             if (portfolioEntityIds == null)

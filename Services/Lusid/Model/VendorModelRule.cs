@@ -100,6 +100,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="addressKeyFilters">Condition for model selection. If a condition is satisfied the default model for valuation is overridden (for that instrument)..</param>
         public VendorModelRule(SupplierEnum supplier = default(SupplierEnum), string modelName = default(string), string instrumentType = default(string), string parameters = default(string), ModelOptions modelOptions = default(ModelOptions), string instrumentId = default(string), List<AddressKeyFilter> addressKeyFilters = default(List<AddressKeyFilter>))
         {
+            
+            // to ensure "supplier" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(SupplierEnum), supplier))
+            {
+                throw new ArgumentException("supplier is a required property for VendorModelRule and must be a defined value");
+            }
+            
             this.Supplier = supplier;
             // to ensure "modelName" is required (not null)
             if (modelName == null)

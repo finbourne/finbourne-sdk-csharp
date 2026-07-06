@@ -186,7 +186,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // ShareClassShortCode (string) pattern
             Regex regexShareClassShortCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexShareClassShortCode.Match(this.ShareClassShortCode).Success)
+            if (this.ShareClassShortCode != null && false == regexShareClassShortCode.Match(this.ShareClassShortCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ShareClassShortCode, must match a pattern of " + regexShareClassShortCode, new [] { "ShareClassShortCode" });
             }

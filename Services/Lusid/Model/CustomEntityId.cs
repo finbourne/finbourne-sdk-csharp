@@ -216,21 +216,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // IdentifierScope (string) pattern
             Regex regexIdentifierScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexIdentifierScope.Match(this.IdentifierScope).Success)
+            if (this.IdentifierScope != null && false == regexIdentifierScope.Match(this.IdentifierScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for IdentifierScope, must match a pattern of " + regexIdentifierScope, new [] { "IdentifierScope" });
             }
 
             // IdentifierType (string) pattern
             Regex regexIdentifierType = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexIdentifierType.Match(this.IdentifierType).Success)
+            if (this.IdentifierType != null && false == regexIdentifierType.Match(this.IdentifierType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for IdentifierType, must match a pattern of " + regexIdentifierType, new [] { "IdentifierType" });
             }
 
             // IdentifierValue (string) pattern
             Regex regexIdentifierValue = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexIdentifierValue.Match(this.IdentifierValue).Success)
+            if (this.IdentifierValue != null && false == regexIdentifierValue.Match(this.IdentifierValue).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for IdentifierValue, must match a pattern of " + regexIdentifierValue, new [] { "IdentifierValue" });
             }

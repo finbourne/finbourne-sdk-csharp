@@ -58,6 +58,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("portfolioId is a required property for ApplicableInstrumentEvent and cannot be null");
             }
             this.PortfolioId = portfolioId;
+            
             this.HoldingId = holdingId;
             // to ensure "lusidInstrumentId" is required (not null)
             if (lusidInstrumentId == null)

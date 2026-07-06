@@ -40,8 +40,11 @@ namespace Finbourne.Sdk.Services.Identity.Model
         /// <param name="excludeLastName">Rule determining whether a user&#39;s last name should be permitted in their password (required).</param>
         public PasswordPolicyResponseComplexity(int minLength = default(int), bool excludeFirstName = default(bool), bool excludeLastName = default(bool))
         {
+            
             this.MinLength = minLength;
+            
             this.ExcludeFirstName = excludeFirstName;
+            
             this.ExcludeLastName = excludeLastName;
         }
 

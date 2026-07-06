@@ -45,7 +45,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="resultValueType">Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset. (required) (default to ResultValueTypeEnum.ResultValue).</param>
         public CashFlowValue(DateTimeOffset paymentDate = default(DateTimeOffset), ResultValueDictionary diagnostics = default(ResultValueDictionary), CashFlowLineage cashFlowLineage = default(CashFlowLineage), decimal paymentAmount = default(decimal), string paymentCcy = default(string), ResultValueTypeEnum resultValueType = default(ResultValueTypeEnum)) : base()
         {
+            
             this.PaymentDate = paymentDate;
+            
             this.PaymentAmount = paymentAmount;
             // to ensure "paymentCcy" is required (not null)
             if (paymentCcy == null)
@@ -53,6 +55,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("paymentCcy is a required property for CashFlowValue and cannot be null");
             }
             this.PaymentCcy = paymentCcy;
+            
+            // to ensure "resultValueType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ResultValueTypeEnum), resultValueType))
+            {
+                throw new ArgumentException("resultValueType is a required property for CashFlowValue and must be a defined value");
+            }
+            
             this.ResultValueType = resultValueType;
             this.Diagnostics = diagnostics;
             this.CashFlowLineage = cashFlowLineage;

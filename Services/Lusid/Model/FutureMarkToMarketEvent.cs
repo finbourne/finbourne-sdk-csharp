@@ -49,6 +49,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("settlementCurrency is a required property for FutureMarkToMarketEvent and cannot be null");
             }
             this.SettlementCurrency = settlementCurrency;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for FutureMarkToMarketEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.EffectiveDate = effectiveDate;
             this.NotionalAmountPerUnit = notionalAmountPerUnit;

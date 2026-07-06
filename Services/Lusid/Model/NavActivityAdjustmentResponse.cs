@@ -82,6 +82,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="navActivityAdjustmentType">The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment. (required).</param>
         public NavActivityAdjustmentResponse(NavActivityAdjustmentTypeEnum navActivityAdjustmentType = default(NavActivityAdjustmentTypeEnum))
         {
+            
+            // to ensure "navActivityAdjustmentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(NavActivityAdjustmentTypeEnum), navActivityAdjustmentType))
+            {
+                throw new ArgumentException("navActivityAdjustmentType is a required property for NavActivityAdjustmentResponse and must be a defined value");
+            }
+            
             this.NavActivityAdjustmentType = navActivityAdjustmentType;
         }
 

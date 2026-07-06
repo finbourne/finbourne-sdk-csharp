@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="businessDayAdjustment">The Business Day Adjustment (required).</param>
         public DateAdjustment(int deltaDays = default(int), string businessDayAdjustment = default(string))
         {
+            
             this.DeltaDays = deltaDays;
             // to ensure "businessDayAdjustment" is required (not null)
             if (businessDayAdjustment == null)

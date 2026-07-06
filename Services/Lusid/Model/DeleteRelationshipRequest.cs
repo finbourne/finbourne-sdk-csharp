@@ -194,14 +194,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // EffectiveFrom (DateTimeOrCutLabel) pattern
             Regex regexEffectiveFrom = new Regex(@"^[a-zA-Z0-9\-_\+:\.]+$", RegexOptions.CultureInvariant);
-            if (false == regexEffectiveFrom.Match(this.EffectiveFrom).Success)
+            if (this.EffectiveFrom != null && false == regexEffectiveFrom.Match(this.EffectiveFrom).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EffectiveFrom, must match a pattern of " + regexEffectiveFrom, new [] { "EffectiveFrom" });
             }
 
             // EffectiveUntil (DateTimeOrCutLabel) pattern
             Regex regexEffectiveUntil = new Regex(@"^[a-zA-Z0-9\-_\+:\.]+$", RegexOptions.CultureInvariant);
-            if (false == regexEffectiveUntil.Match(this.EffectiveUntil).Success)
+            if (this.EffectiveUntil != null && false == regexEffectiveUntil.Match(this.EffectiveUntil).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EffectiveUntil, must match a pattern of " + regexEffectiveUntil, new [] { "EffectiveUntil" });
             }

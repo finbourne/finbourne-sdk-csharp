@@ -130,7 +130,7 @@ namespace Finbourne.Sdk.Services.Scheduler.Model
         {
             // ImageName (string) pattern
             Regex regexImageName = new Regex(@"^[a-z\d]+((([.]{1}|[_]{1,2}|[-])+)([a-z\d]+))*:[a-z\d]+((([.]{1}|[_]{1,2}|[-])+)([a-z\d]+))*$", RegexOptions.CultureInvariant);
-            if (false == regexImageName.Match(this.ImageName).Success)
+            if (this.ImageName != null && false == regexImageName.Match(this.ImageName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ImageName, must match a pattern of " + regexImageName, new [] { "ImageName" });
             }

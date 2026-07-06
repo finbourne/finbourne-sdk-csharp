@@ -48,7 +48,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("runId is a required property for UpsertComplianceRunSummaryRequest and cannot be null");
             }
             this.RunId = runId;
+            
             this.InstigatedAt = instigatedAt;
+            
             this.CompletedAt = completedAt;
             // to ensure "schedule" is required (not null)
             if (schedule == null)

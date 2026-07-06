@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="calendars">calendars (required).</param>
         public SettlementCycle(int businessDayOffset = default(int), List<ResourceId> calendars = default(List<ResourceId>))
         {
+            
             this.BusinessDayOffset = businessDayOffset;
             // to ensure "calendars" is required (not null)
             if (calendars == null)

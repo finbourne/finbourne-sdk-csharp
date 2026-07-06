@@ -58,6 +58,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("earlyRedemptionElections is a required property for EarlyRedemptionEvent and cannot be null");
             }
             this.EarlyRedemptionElections = earlyRedemptionElections;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for EarlyRedemptionEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.EffectiveDate = effectiveDate;
             this.RedemptionPercentage = redemptionPercentage;

@@ -64,6 +64,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("contractCode is a required property for FuturesContractDetails and cannot be null");
             }
             this.ContractCode = contractCode;
+            
             this.ContractSize = contractSize;
             // to ensure "exchangeCode" is required (not null)
             if (exchangeCode == null)

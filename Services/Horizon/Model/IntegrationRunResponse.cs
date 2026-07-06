@@ -47,7 +47,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="integrationLogs">integrationLogs.</param>
         public IntegrationRunResponse(Guid runId = default(Guid), Guid? refRunId = default(Guid?), int attempt = default(int), Guid? instanceId = default(Guid?), string instanceName = default(string), string status = default(string), string message = default(string), IntegrationRunIntegration integration = default(IntegrationRunIntegration), IntegrationRunVersion varVersion = default(IntegrationRunVersion), Dictionary<string, Dictionary<string, IntegrationRunLog>> integrationLogs = default(Dictionary<string, Dictionary<string, IntegrationRunLog>>))
         {
+            
             this.RunId = runId;
+            
             this.Attempt = attempt;
             // to ensure "integration" is required (not null)
             if (integration == null)

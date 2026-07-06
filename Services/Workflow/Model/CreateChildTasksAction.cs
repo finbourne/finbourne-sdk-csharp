@@ -59,6 +59,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="childTaskConfigurations">The Child Task Configurations (required).</param>
         public CreateChildTasksAction(TypeEnum type = default(TypeEnum), List<CreateChildTaskConfiguration> childTaskConfigurations = default(List<CreateChildTaskConfiguration>))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for CreateChildTasksAction and must be a defined value");
+            }
+            
             this.Type = type;
             // to ensure "childTaskConfigurations" is required (not null)
             if (childTaskConfigurations == null)

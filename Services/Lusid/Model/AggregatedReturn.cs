@@ -46,7 +46,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="warnings">List of the warnings about the calculation of the aggregated return..</param>
         public AggregatedReturn(DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset endOfPeriod = default(DateTimeOffset), decimal? openingMarketValue = default(decimal?), decimal? closingMarketValue = default(decimal?), Dictionary<string, decimal> metricsValue = default(Dictionary<string, decimal>), string frequency = default(string), int? compositeMembers = default(int?), List<ResourceId> compositeMembersWithoutReturn = default(List<ResourceId>), List<string> warnings = default(List<string>))
         {
+            
             this.EffectiveAt = effectiveAt;
+            
             this.EndOfPeriod = endOfPeriod;
             // to ensure "metricsValue" is required (not null)
             if (metricsValue == null)

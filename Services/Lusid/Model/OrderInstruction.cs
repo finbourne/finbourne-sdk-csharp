@@ -56,6 +56,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("id is a required property for OrderInstruction and cannot be null");
             }
             this.Id = id;
+            
             this.CreatedDate = createdDate;
             // to ensure "instrumentIdentifiers" is required (not null)
             if (instrumentIdentifiers == null)

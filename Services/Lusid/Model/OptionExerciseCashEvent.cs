@@ -70,7 +70,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("strikeCurrency is a required property for OptionExerciseCashEvent and cannot be null");
             }
             this.StrikeCurrency = strikeCurrency;
+            
             this.StrikePerUnit = strikePerUnit;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for OptionExerciseCashEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.CashFlowPerUnit = cashFlowPerUnit;
             this.ExerciseDate = exerciseDate;

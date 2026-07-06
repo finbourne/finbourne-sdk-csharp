@@ -61,6 +61,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("counterpartySignatory is a required property for CounterpartyAgreement and cannot be null");
             }
             this.CounterpartySignatory = counterpartySignatory;
+            
             this.DatedAsOf = datedAsOf;
             // to ensure "creditSupportAnnexId" is required (not null)
             if (creditSupportAnnexId == null)

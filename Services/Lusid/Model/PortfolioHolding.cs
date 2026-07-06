@@ -72,7 +72,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("holdingType is a required property for PortfolioHolding and cannot be null");
             }
             this.HoldingType = holdingType;
+            
             this.Units = units;
+            
             this.SettledUnits = settledUnits;
             // to ensure "cost" is required (not null)
             if (cost == null)

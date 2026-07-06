@@ -68,7 +68,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public FundJournalEntryLine(DateTimeOffset accountingDate = default(DateTimeOffset), DateTimeOffset activityDate = default(DateTimeOffset), ResourceId portfolioId = default(ResourceId), string instrumentId = default(string), string instrumentScope = default(string), Dictionary<string, PerpetualProperty> subHoldingKeys = default(Dictionary<string, PerpetualProperty>), string taxLotId = default(string), string generalLedgerAccountCode = default(string), CurrencyAndAmount local = default(CurrencyAndAmount), CurrencyAndAmount varBase = default(CurrencyAndAmount), decimal units = default(decimal), string postingModuleCode = default(string), string postingRule = default(string), DateTimeOffset asAtDate = default(DateTimeOffset), string activitiesDescription = default(string), string sourceType = default(string), string sourceId = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string movementName = default(string), string holdingType = default(string), string economicBucket = default(string), string economicBucketComponent = default(string), string economicBucketVariant = default(string), List<string> levels = default(List<string>), List<string> sourceLevels = default(List<string>), string movementSign = default(string), string holdingSign = default(string), string ledgerColumn = default(string), string journalEntryLineType = default(string), List<JournalEntryLineShareClassBreakdown> shareClassBreakdowns = default(List<JournalEntryLineShareClassBreakdown>), List<Link> links = default(List<Link>))
         {
+            
             this.AccountingDate = accountingDate;
+            
             this.ActivityDate = activityDate;
             // to ensure "portfolioId" is required (not null)
             if (portfolioId == null)
@@ -106,6 +108,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("varBase is a required property for FundJournalEntryLine and cannot be null");
             }
             this.Base = varBase;
+            
             this.Units = units;
             // to ensure "postingRule" is required (not null)
             if (postingRule == null)
@@ -113,6 +116,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("postingRule is a required property for FundJournalEntryLine and cannot be null");
             }
             this.PostingRule = postingRule;
+            
             this.AsAtDate = asAtDate;
             // to ensure "sourceType" is required (not null)
             if (sourceType == null)

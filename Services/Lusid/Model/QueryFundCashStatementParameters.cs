@@ -185,14 +185,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Variant (string) pattern
             Regex regexVariant = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexVariant.Match(this.Variant).Success)
+            if (this.Variant != null && false == regexVariant.Match(this.Variant).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Variant, must match a pattern of " + regexVariant, new [] { "Variant" });
             }
 
             // DisplayMode (string) pattern
             Regex regexDisplayMode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayMode.Match(this.DisplayMode).Success)
+            if (this.DisplayMode != null && false == regexDisplayMode.Match(this.DisplayMode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayMode, must match a pattern of " + regexDisplayMode, new [] { "DisplayMode" });
             }

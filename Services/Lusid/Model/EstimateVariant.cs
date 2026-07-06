@@ -52,6 +52,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("displayName is a required property for EstimateVariant and cannot be null");
             }
             this.DisplayName = displayName;
+            
             this.AsAt = asAt;
             // to ensure "varVersion" is required (not null)
             if (varVersion == null)

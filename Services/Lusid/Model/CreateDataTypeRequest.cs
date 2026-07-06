@@ -257,6 +257,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("code is a required property for CreateDataTypeRequest and cannot be null");
             }
             this.Code = code;
+            
+            // to ensure "typeValueRange" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeValueRangeEnum), typeValueRange))
+            {
+                throw new ArgumentException("typeValueRange is a required property for CreateDataTypeRequest and must be a defined value");
+            }
+            
             this.TypeValueRange = typeValueRange;
             // to ensure "displayName" is required (not null)
             if (displayName == null)
@@ -270,6 +277,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("description is a required property for CreateDataTypeRequest and cannot be null");
             }
             this.Description = description;
+            
+            // to ensure "valueType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ValueTypeEnum), valueType))
+            {
+                throw new ArgumentException("valueType is a required property for CreateDataTypeRequest and must be a defined value");
+            }
+            
             this.ValueType = valueType;
             this.AcceptableValues = acceptableValues;
             this.UnitSchema = unitSchema;
@@ -482,28 +496,28 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Scope (string) pattern
             Regex regexScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexScope.Match(this.Scope).Success)
+            if (this.Scope != null && false == regexScope.Match(this.Scope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Scope, must match a pattern of " + regexScope, new [] { "Scope" });
             }
 
             // Code (string) pattern
             Regex regexCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCode.Match(this.Code).Success)
+            if (this.Code != null && false == regexCode.Match(this.Code).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, must match a pattern of " + regexCode, new [] { "Code" });
             }
 
             // DisplayName (string) pattern
             Regex regexDisplayName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayName.Match(this.DisplayName).Success)
+            if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }

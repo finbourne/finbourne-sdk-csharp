@@ -42,6 +42,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="loggedItems">The logged items for this Action (required).</param>
         public ActionLog(Guid id = default(Guid), ActionLogOrigin origin = default(ActionLogOrigin), string actionType = default(string), string runAsUserId = default(string), List<ActionLogItem> loggedItems = default(List<ActionLogItem>))
         {
+            
             this.Id = id;
             // to ensure "origin" is required (not null)
             if (origin == null)
@@ -223,7 +224,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
 
             // RunAsUserId (string) pattern
             Regex regexRunAsUserId = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexRunAsUserId.Match(this.RunAsUserId).Success)
+            if (this.RunAsUserId != null && false == regexRunAsUserId.Match(this.RunAsUserId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RunAsUserId, must match a pattern of " + regexRunAsUserId, new [] { "RunAsUserId" });
             }

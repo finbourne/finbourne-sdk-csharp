@@ -211,21 +211,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // DefaultScope (string) pattern
             Regex regexDefaultScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexDefaultScope.Match(this.DefaultScope).Success)
+            if (this.DefaultScope != null && false == regexDefaultScope.Match(this.DefaultScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DefaultScope, must match a pattern of " + regexDefaultScope, new [] { "DefaultScope" });
             }
 
             // CalendarScope (string) pattern
             Regex regexCalendarScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCalendarScope.Match(this.CalendarScope).Success)
+            if (this.CalendarScope != null && false == regexCalendarScope.Match(this.CalendarScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CalendarScope, must match a pattern of " + regexCalendarScope, new [] { "CalendarScope" });
             }
 
             // ConventionScope (string) pattern
             Regex regexConventionScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexConventionScope.Match(this.ConventionScope).Success)
+            if (this.ConventionScope != null && false == regexConventionScope.Match(this.ConventionScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ConventionScope, must match a pattern of " + regexConventionScope, new [] { "ConventionScope" });
             }

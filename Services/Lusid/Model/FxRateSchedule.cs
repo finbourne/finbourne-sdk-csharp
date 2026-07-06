@@ -44,6 +44,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid. (required) (default to ScheduleTypeEnum.FixedSchedule).</param>
         public FxRateSchedule(FlowConventions flowConventions = default(FlowConventions), List<string> fxConversionTypes = default(List<string>), decimal rate = default(decimal), string toCurrency = default(string), ScheduleTypeEnum scheduleType = default(ScheduleTypeEnum)) : base()
         {
+            
+            // to ensure "scheduleType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ScheduleTypeEnum), scheduleType))
+            {
+                throw new ArgumentException("scheduleType is a required property for FxRateSchedule and must be a defined value");
+            }
+            
             this.ScheduleType = scheduleType;
             this.FlowConventions = flowConventions;
             this.FxConversionTypes = fxConversionTypes;

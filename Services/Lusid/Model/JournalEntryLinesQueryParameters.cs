@@ -214,14 +214,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Variant (string) pattern
             Regex regexVariant = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexVariant.Match(this.Variant).Success)
+            if (this.Variant != null && false == regexVariant.Match(this.Variant).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Variant, must match a pattern of " + regexVariant, new [] { "Variant" });
             }
 
             // GeneralLedgerProfileCode (string) pattern
             Regex regexGeneralLedgerProfileCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexGeneralLedgerProfileCode.Match(this.GeneralLedgerProfileCode).Success)
+            if (this.GeneralLedgerProfileCode != null && false == regexGeneralLedgerProfileCode.Match(this.GeneralLedgerProfileCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for GeneralLedgerProfileCode, must match a pattern of " + regexGeneralLedgerProfileCode, new [] { "GeneralLedgerProfileCode" });
             }

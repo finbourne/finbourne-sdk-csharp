@@ -226,21 +226,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // ValuationPointCode (string) pattern
             Regex regexValuationPointCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexValuationPointCode.Match(this.ValuationPointCode).Success)
+            if (this.ValuationPointCode != null && false == regexValuationPointCode.Match(this.ValuationPointCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ValuationPointCode, must match a pattern of " + regexValuationPointCode, new [] { "ValuationPointCode" });
             }
 
             // Variant (string) pattern
             Regex regexVariant = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexVariant.Match(this.Variant).Success)
+            if (this.Variant != null && false == regexVariant.Match(this.Variant).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Variant, must match a pattern of " + regexVariant, new [] { "Variant" });
             }
 
             // Name (string) pattern
             Regex regexName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexName.Match(this.Name).Success)
+            if (this.Name != null && false == regexName.Match(this.Name).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
             }

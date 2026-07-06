@@ -154,14 +154,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // AttributeName (string) pattern
             Regex regexAttributeName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexAttributeName.Match(this.AttributeName).Success)
+            if (this.AttributeName != null && false == regexAttributeName.Match(this.AttributeName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AttributeName, must match a pattern of " + regexAttributeName, new [] { "AttributeName" });
             }
 
             // AttributeAlias (string) pattern
             Regex regexAttributeAlias = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexAttributeAlias.Match(this.AttributeAlias).Success)
+            if (this.AttributeAlias != null && false == regexAttributeAlias.Match(this.AttributeAlias).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AttributeAlias, must match a pattern of " + regexAttributeAlias, new [] { "AttributeAlias" });
             }

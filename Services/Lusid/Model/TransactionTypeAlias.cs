@@ -217,14 +217,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
             // TransactionClass (string) pattern
             Regex regexTransactionClass = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexTransactionClass.Match(this.TransactionClass).Success)
+            if (this.TransactionClass != null && false == regexTransactionClass.Match(this.TransactionClass).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TransactionClass, must match a pattern of " + regexTransactionClass, new [] { "TransactionClass" });
             }

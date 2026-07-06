@@ -50,8 +50,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="failedFiles">failedFiles (required).</param>
         public InstanceRunResponse(Guid runId = default(Guid), Guid batchReferenceId = default(Guid), int? attempt = default(int?), DateTimeOffset startTime = default(DateTimeOffset), DateTimeOffset? endTime = default(DateTimeOffset?), string duration = default(string), string status = default(string), string triggeredBy = default(string), int total = default(int), long sentCount = default(long), long skippedCount = default(long), long failedCount = default(long), int failedFiles = default(int))
         {
+            
             this.RunId = runId;
+            
             this.BatchReferenceId = batchReferenceId;
+            
             this.StartTime = startTime;
             // to ensure "status" is required (not null)
             if (status == null)
@@ -59,10 +62,15 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("status is a required property for InstanceRunResponse and cannot be null");
             }
             this.Status = status;
+            
             this.Total = total;
+            
             this.SentCount = sentCount;
+            
             this.SkippedCount = skippedCount;
+            
             this.FailedCount = failedCount;
+            
             this.FailedFiles = failedFiles;
             this.Attempt = attempt;
             this.EndTime = endTime;

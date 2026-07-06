@@ -41,6 +41,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="links">links.</param>
         public DeletedEntityResponse(string href = default(string), DateTimeOffset? effectiveFrom = default(DateTimeOffset?), DateTimeOffset asAt = default(DateTimeOffset), List<Link> links = default(List<Link>))
         {
+            
             this.AsAt = asAt;
             this.Href = href;
             this.EffectiveFrom = effectiveFrom;

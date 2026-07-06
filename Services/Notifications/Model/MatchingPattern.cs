@@ -149,14 +149,14 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         {
             // EventType (string) pattern
             Regex regexEventType = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
-            if (false == regexEventType.Match(this.EventType).Success)
+            if (this.EventType != null && false == regexEventType.Match(this.EventType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EventType, must match a pattern of " + regexEventType, new [] { "EventType" });
             }
 
             // Filter (string) pattern
             Regex regexFilter = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexFilter.Match(this.Filter).Success)
+            if (this.Filter != null && false == regexFilter.Match(this.Filter).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Filter, must match a pattern of " + regexFilter, new [] { "Filter" });
             }

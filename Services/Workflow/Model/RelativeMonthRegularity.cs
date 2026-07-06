@@ -61,6 +61,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="type">The type of Date Regularity (required).</param>
         public RelativeMonthRegularity(int frequency = default(int), List<string> daysOfWeek = default(List<string>), string index = default(string), TypeEnum type = default(TypeEnum))
         {
+            
             this.Frequency = frequency;
             // to ensure "daysOfWeek" is required (not null)
             if (daysOfWeek == null)
@@ -74,6 +75,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("index is a required property for RelativeMonthRegularity and cannot be null");
             }
             this.Index = index;
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for RelativeMonthRegularity and must be a defined value");
+            }
+            
             this.Type = type;
         }
 

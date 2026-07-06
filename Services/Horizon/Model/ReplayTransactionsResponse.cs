@@ -54,6 +54,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("mode is a required property for ReplayTransactionsResponse and cannot be null");
             }
             this.Mode = mode;
+            
             this.TransactionCount = transactionCount;
             // to ensure "csvOutput" is required (not null)
             if (csvOutput == null)

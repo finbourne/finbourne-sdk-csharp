@@ -63,6 +63,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("name is a required property for OpaqueMarketData and cannot be null");
             }
             this.Name = name;
+            
+            // to ensure "marketDataType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(MarketDataTypeEnum), marketDataType))
+            {
+                throw new ArgumentException("marketDataType is a required property for OpaqueMarketData and must be a defined value");
+            }
+            
             this.MarketDataType = marketDataType;
             this.Lineage = lineage;
             this.VarVersion = varVersion;

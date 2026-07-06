@@ -45,6 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="constituentsExcluded">List containing the Composite members which are not part of the dispersion calculation.</param>
         public CompositeDispersion(DateTimeOffset effectiveAt = default(DateTimeOffset), decimal? dispersionCalculation = default(decimal?), decimal? variance = default(decimal?), decimal? firstQuartile = default(decimal?), decimal? thirdQuartile = default(decimal?), decimal? range = default(decimal?), List<ResourceId> constituentsInScope = default(List<ResourceId>), List<ResourceId> constituentsExcluded = default(List<ResourceId>))
         {
+            
             this.EffectiveAt = effectiveAt;
             this.DispersionCalculation = dispersionCalculation;
             this.Variance = variance;

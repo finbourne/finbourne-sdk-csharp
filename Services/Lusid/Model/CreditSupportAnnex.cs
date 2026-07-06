@@ -77,9 +77,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("valuationAgent is a required property for CreditSupportAnnex and cannot be null");
             }
             this.ValuationAgent = valuationAgent;
+            
             this.ThresholdAmount = thresholdAmount;
+            
             this.RoundingDecimalPlaces = roundingDecimalPlaces;
+            
             this.InitialMarginAmount = initialMarginAmount;
+            
             this.MinimumTransferAmount = minimumTransferAmount;
             // to ensure "id" is required (not null)
             if (id == null)

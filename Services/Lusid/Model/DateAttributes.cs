@@ -45,8 +45,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="lastClose">lastClose.</param>
         public DateAttributes(bool irregular = default(bool), bool irregularSession = default(bool), bool newHours = default(bool), string activity = default(string), string firstOpen = default(string), string lastOpen = default(string), string firstClose = default(string), string lastClose = default(string))
         {
+            
             this.Irregular = irregular;
+            
             this.IrregularSession = irregularSession;
+            
             this.NewHours = newHours;
             this.Activity = activity;
             this.FirstOpen = firstOpen;
@@ -238,35 +241,35 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Activity (string) pattern
             Regex regexActivity = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexActivity.Match(this.Activity).Success)
+            if (this.Activity != null && false == regexActivity.Match(this.Activity).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Activity, must match a pattern of " + regexActivity, new [] { "Activity" });
             }
 
             // FirstOpen (string) pattern
             Regex regexFirstOpen = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexFirstOpen.Match(this.FirstOpen).Success)
+            if (this.FirstOpen != null && false == regexFirstOpen.Match(this.FirstOpen).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FirstOpen, must match a pattern of " + regexFirstOpen, new [] { "FirstOpen" });
             }
 
             // LastOpen (string) pattern
             Regex regexLastOpen = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLastOpen.Match(this.LastOpen).Success)
+            if (this.LastOpen != null && false == regexLastOpen.Match(this.LastOpen).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LastOpen, must match a pattern of " + regexLastOpen, new [] { "LastOpen" });
             }
 
             // FirstClose (string) pattern
             Regex regexFirstClose = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexFirstClose.Match(this.FirstClose).Success)
+            if (this.FirstClose != null && false == regexFirstClose.Match(this.FirstClose).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FirstClose, must match a pattern of " + regexFirstClose, new [] { "FirstClose" });
             }
 
             // LastClose (string) pattern
             Regex regexLastClose = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLastClose.Match(this.LastClose).Success)
+            if (this.LastClose != null && false == regexLastClose.Match(this.LastClose).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LastClose, must match a pattern of " + regexLastClose, new [] { "LastClose" });
             }

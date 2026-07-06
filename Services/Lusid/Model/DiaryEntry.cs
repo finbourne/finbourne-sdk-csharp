@@ -62,6 +62,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("status is a required property for DiaryEntry and cannot be null");
             }
             this.Status = status;
+            
             this.EffectiveAt = effectiveAt;
             this.Href = href;
             this.AborId = aborId;
@@ -358,7 +359,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Name (string) pattern
             Regex regexName = new Regex(@"^[^\\<>&\""]+$", RegexOptions.CultureInvariant);
-            if (false == regexName.Match(this.Name).Success)
+            if (this.Name != null && false == regexName.Match(this.Name).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
             }

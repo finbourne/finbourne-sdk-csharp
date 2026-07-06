@@ -45,6 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="linkInvalid">linkInvalid (required).</param>
         public GroupReconciliationReviewStatuses(int countPending = default(int), Link linkPending = default(Link), int countReviewed = default(int), Link linkReviewed = default(Link), int countMatched = default(int), Link linkMatched = default(Link), int countInvalid = default(int), Link linkInvalid = default(Link))
         {
+            
             this.CountPending = countPending;
             // to ensure "linkPending" is required (not null)
             if (linkPending == null)
@@ -52,6 +53,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("linkPending is a required property for GroupReconciliationReviewStatuses and cannot be null");
             }
             this.LinkPending = linkPending;
+            
             this.CountReviewed = countReviewed;
             // to ensure "linkReviewed" is required (not null)
             if (linkReviewed == null)
@@ -59,6 +61,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("linkReviewed is a required property for GroupReconciliationReviewStatuses and cannot be null");
             }
             this.LinkReviewed = linkReviewed;
+            
             this.CountMatched = countMatched;
             // to ensure "linkMatched" is required (not null)
             if (linkMatched == null)
@@ -66,6 +69,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("linkMatched is a required property for GroupReconciliationReviewStatuses and cannot be null");
             }
             this.LinkMatched = linkMatched;
+            
             this.CountInvalid = countInvalid;
             // to ensure "linkInvalid" is required (not null)
             if (linkInvalid == null)

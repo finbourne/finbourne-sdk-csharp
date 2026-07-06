@@ -47,6 +47,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("value is a required property for StringComplianceParameter and cannot be null");
             }
             this.Value = value;
+            
+            // to ensure "complianceParameterType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ComplianceParameterTypeEnum), complianceParameterType))
+            {
+                throw new ArgumentException("complianceParameterType is a required property for StringComplianceParameter and must be a defined value");
+            }
+            
             this.ComplianceParameterType = complianceParameterType;
         }
 

@@ -60,6 +60,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentIdentifiers is a required property for AllocationRequest and cannot be null");
             }
             this.InstrumentIdentifiers = instrumentIdentifiers;
+            
             this.Quantity = quantity;
             // to ensure "portfolioId" is required (not null)
             if (portfolioId == null)

@@ -61,6 +61,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("schedulerRunId is a required property for AuditUpdateRequest and cannot be null");
             }
             this.SchedulerRunId = schedulerRunId;
+            
             this.StartTime = startTime;
             // to ensure "message" is required (not null)
             if (message == null)

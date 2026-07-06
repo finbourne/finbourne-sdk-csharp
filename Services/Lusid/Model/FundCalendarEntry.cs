@@ -99,8 +99,17 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("navTypeCode is a required property for FundCalendarEntry and cannot be null");
             }
             this.NavTypeCode = navTypeCode;
+            
             this.AsAt = asAt;
+            
+            // to ensure "entryType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(EntryTypeEnum), entryType))
+            {
+                throw new ArgumentException("entryType is a required property for FundCalendarEntry and must be a defined value");
+            }
+            
             this.EntryType = entryType;
+            
             this.ApplyClearDown = applyClearDown;
             // to ensure "varVersion" is required (not null)
             if (varVersion == null)

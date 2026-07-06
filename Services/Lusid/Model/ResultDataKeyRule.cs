@@ -78,6 +78,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("documentResultType is a required property for ResultDataKeyRule and cannot be null");
             }
             this.DocumentResultType = documentResultType;
+            
+            // to ensure "resultKeyRuleType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ResultKeyRuleTypeEnum), resultKeyRuleType))
+            {
+                throw new ArgumentException("resultKeyRuleType is a required property for ResultDataKeyRule and must be a defined value");
+            }
+            
             this.ResultKeyRuleType = resultKeyRuleType;
             this.QuoteInterval = quoteInterval;
             this.AsAt = asAt;
@@ -303,7 +310,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             // DataScope (string) pattern
             Regex regexDataScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexDataScope.Match(this.DataScope).Success)
+            if (this.DataScope != null && false == regexDataScope.Match(this.DataScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DataScope, must match a pattern of " + regexDataScope, new [] { "DataScope" });
             }

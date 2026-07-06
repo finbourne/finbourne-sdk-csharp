@@ -68,6 +68,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public HoldingsAdjustment(DateTimeOffset effectiveAt = default(DateTimeOffset), ModelVersion varVersion = default(ModelVersion), UnmatchedHoldingMethodEnum unmatchedHoldingMethod = default(UnmatchedHoldingMethodEnum), List<HoldingAdjustment> adjustments = default(List<HoldingAdjustment>), List<Link> links = default(List<Link>))
         {
+            
             this.EffectiveAt = effectiveAt;
             // to ensure "varVersion" is required (not null)
             if (varVersion == null)
@@ -75,6 +76,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("varVersion is a required property for HoldingsAdjustment and cannot be null");
             }
             this.VarVersion = varVersion;
+            
+            // to ensure "unmatchedHoldingMethod" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(UnmatchedHoldingMethodEnum), unmatchedHoldingMethod))
+            {
+                throw new ArgumentException("unmatchedHoldingMethod is a required property for HoldingsAdjustment and must be a defined value");
+            }
+            
             this.UnmatchedHoldingMethod = unmatchedHoldingMethod;
             // to ensure "adjustments" is required (not null)
             if (adjustments == null)

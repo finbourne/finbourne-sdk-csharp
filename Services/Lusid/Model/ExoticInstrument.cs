@@ -54,6 +54,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("content is a required property for ExoticInstrument and cannot be null");
             }
             this.Content = content;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for ExoticInstrument and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
         }
 

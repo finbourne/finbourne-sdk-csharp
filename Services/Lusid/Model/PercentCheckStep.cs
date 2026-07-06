@@ -61,6 +61,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("warningCheckParameters is a required property for PercentCheckStep and cannot be null");
             }
             this.WarningCheckParameters = warningCheckParameters;
+            
+            // to ensure "complianceStepType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ComplianceStepTypeEnum), complianceStepType))
+            {
+                throw new ArgumentException("complianceStepType is a required property for PercentCheckStep and must be a defined value");
+            }
+            
             this.ComplianceStepType = complianceStepType;
         }
 

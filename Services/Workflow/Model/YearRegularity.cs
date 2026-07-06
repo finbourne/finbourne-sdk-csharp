@@ -65,6 +65,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("dates is a required property for YearRegularity and cannot be null");
             }
             this.Dates = dates;
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for YearRegularity and must be a defined value");
+            }
+            
             this.Type = type;
         }
 

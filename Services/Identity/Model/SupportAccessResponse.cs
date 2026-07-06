@@ -59,7 +59,9 @@ namespace Finbourne.Sdk.Services.Identity.Model
                 throw new ArgumentNullException("duration is a required property for SupportAccessResponse and cannot be null");
             }
             this.Duration = duration;
+            
             this.CreatedAt = createdAt;
+            
             this.Expiry = expiry;
             // to ensure "createdBy" is required (not null)
             if (createdBy == null)
@@ -308,7 +310,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
         {
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }

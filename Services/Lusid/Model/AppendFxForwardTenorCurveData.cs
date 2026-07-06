@@ -48,7 +48,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("tenor is a required property for AppendFxForwardTenorCurveData and cannot be null");
             }
             this.Tenor = tenor;
+            
             this.Rate = rate;
+            
+            // to ensure "marketDataType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(MarketDataTypeEnum), marketDataType))
+            {
+                throw new ArgumentException("marketDataType is a required property for AppendFxForwardTenorCurveData and must be a defined value");
+            }
+            
             this.MarketDataType = marketDataType;
         }
 

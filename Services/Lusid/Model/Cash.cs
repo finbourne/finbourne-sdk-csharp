@@ -48,7 +48,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("domCcy is a required property for Cash and cannot be null");
             }
             this.DomCcy = domCcy;
+            
             this.Amount = amount;
+            
+            // to ensure "instrumentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
+            {
+                throw new ArgumentException("instrumentType is a required property for Cash and must be a defined value");
+            }
+            
             this.InstrumentType = instrumentType;
         }
 

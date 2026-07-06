@@ -168,14 +168,14 @@ namespace Finbourne.Sdk.Services.Identity.Model
         {
             // Duration (string) pattern
             Regex regexDuration = new Regex(@"^P(?!$)((\d+Y)|(\d+\.\d+Y$))?((\d+M)|(\d+\.\d+M$))?((\d+W)|(\d+\.\d+W$))?((\d+D)|(\d+\.\d+D$))?(T(?=\d)((\d+H)|(\d+\.\d+H$))?((\d+M)|(\d+\.\d+M$))?(\d+(\.\d+)?S)?)??$", RegexOptions.CultureInvariant);
-            if (false == regexDuration.Match(this.Duration).Success)
+            if (this.Duration != null && false == regexDuration.Match(this.Duration).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Duration, must match a pattern of " + regexDuration, new [] { "Duration" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }

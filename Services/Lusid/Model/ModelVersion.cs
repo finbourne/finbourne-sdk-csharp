@@ -50,7 +50,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="stagedModificationIdModified">The ID of the staged change that resulted in the most recent modification..</param>
         public ModelVersion(DateTimeOffset effectiveFrom = default(DateTimeOffset), DateTimeOffset asAtDate = default(DateTimeOffset), DateTimeOffset? asAtCreated = default(DateTimeOffset?), string userIdCreated = default(string), string requestIdCreated = default(string), string reasonCreated = default(string), DateTimeOffset? asAtModified = default(DateTimeOffset?), string userIdModified = default(string), string requestIdModified = default(string), string reasonModified = default(string), int? asAtVersionNumber = default(int?), string entityUniqueId = default(string), string stagedModificationIdModified = default(string))
         {
+            
             this.EffectiveFrom = effectiveFrom;
+            
             this.AsAtDate = asAtDate;
             this.AsAtCreated = asAtCreated;
             this.UserIdCreated = userIdCreated;

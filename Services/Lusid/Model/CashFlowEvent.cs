@@ -47,6 +47,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("cashFlowValue is a required property for CashFlowEvent and cannot be null");
             }
             this.CashFlowValue = cashFlowValue;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for CashFlowEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
         }
 

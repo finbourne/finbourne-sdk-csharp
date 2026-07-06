@@ -43,7 +43,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="effectiveAt">The Effective date used in the valuation of the tradetickets. (required).</param>
         public QueryTradeTicketsRequest(DateTimeOffset? asAt = default(DateTimeOffset?), DateTimeOffset windowStart = default(DateTimeOffset), DateTimeOffset windowEnd = default(DateTimeOffset), List<PortfolioEntityId> portfolioEntityIds = default(List<PortfolioEntityId>), ResourceId recipeId = default(ResourceId), DateTimeOffset effectiveAt = default(DateTimeOffset))
         {
+            
             this.WindowStart = windowStart;
+            
             this.WindowEnd = windowEnd;
             // to ensure "portfolioEntityIds" is required (not null)
             if (portfolioEntityIds == null)
@@ -57,6 +59,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("recipeId is a required property for QueryTradeTicketsRequest and cannot be null");
             }
             this.RecipeId = recipeId;
+            
             this.EffectiveAt = effectiveAt;
             this.AsAt = asAt;
         }

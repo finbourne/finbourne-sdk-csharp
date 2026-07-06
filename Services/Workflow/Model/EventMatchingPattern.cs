@@ -149,7 +149,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         {
             // EventType (string) pattern
             Regex regexEventType = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
-            if (false == regexEventType.Match(this.EventType).Success)
+            if (this.EventType != null && false == regexEventType.Match(this.EventType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EventType, must match a pattern of " + regexEventType, new [] { "EventType" });
             }

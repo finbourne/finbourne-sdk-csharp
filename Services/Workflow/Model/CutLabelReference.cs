@@ -65,6 +65,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("code is a required property for CutLabelReference and cannot be null");
             }
             this.Code = code;
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for CutLabelReference and must be a defined value");
+            }
+            
             this.Type = type;
         }
 
@@ -158,7 +165,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         {
             // Code (string) pattern
             Regex regexCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCode.Match(this.Code).Success)
+            if (this.Code != null && false == regexCode.Match(this.Code).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, must match a pattern of " + regexCode, new [] { "Code" });
             }

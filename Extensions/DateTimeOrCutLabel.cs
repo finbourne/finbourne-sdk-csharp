@@ -138,6 +138,9 @@ namespace Finbourne.Sdk
 
             switch (o)
             {
+                case null:
+                    return null;
+
                 case DateTime dt:
                     return new DateTimeOrCutLabel(dt);
 

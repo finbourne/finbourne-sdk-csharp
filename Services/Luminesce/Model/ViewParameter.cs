@@ -54,6 +54,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 throw new ArgumentNullException("name is a required property for ViewParameter and cannot be null");
             }
             this.Name = name;
+            
+            // to ensure "dataType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DataType), dataType))
+            {
+                throw new ArgumentException("dataType is a required property for ViewParameter and must be a defined value");
+            }
+            
             this.DataType = dataType;
             // to ensure "value" is required (not null)
             if (value == null)

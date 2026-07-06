@@ -54,6 +54,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("quoteReference is a required property for AppendFxForwardCurveByQuoteReference and cannot be null");
             }
             this.QuoteReference = quoteReference;
+            
+            // to ensure "marketDataType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(MarketDataTypeEnum), marketDataType))
+            {
+                throw new ArgumentException("marketDataType is a required property for AppendFxForwardCurveByQuoteReference and must be a defined value");
+            }
+            
             this.MarketDataType = marketDataType;
         }
 

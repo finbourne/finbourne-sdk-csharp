@@ -52,7 +52,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("cashOfferElections is a required property for LiquidationPaymentEvent and cannot be null");
             }
             this.CashOfferElections = cashOfferElections;
+            
             this.IsFinal = isFinal;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for LiquidationPaymentEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.AnnouncementDate = announcementDate;
             this.ExDate = exDate;

@@ -154,14 +154,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // RatingSource (string) pattern
             Regex regexRatingSource = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexRatingSource.Match(this.RatingSource).Success)
+            if (this.RatingSource != null && false == regexRatingSource.Match(this.RatingSource).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RatingSource, must match a pattern of " + regexRatingSource, new [] { "RatingSource" });
             }
 
             // Rating (string) pattern
             Regex regexRating = new Regex(@"^[a-zA-Z0-9\-+\/]+$", RegexOptions.CultureInvariant);
-            if (false == regexRating.Match(this.Rating).Success)
+            if (this.Rating != null && false == regexRating.Match(this.Rating).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Rating, must match a pattern of " + regexRating, new [] { "Rating" });
             }

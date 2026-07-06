@@ -59,7 +59,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("domCcy is a required property for ExchangeTradedOptionContractDetails and cannot be null");
             }
             this.DomCcy = domCcy;
+            
             this.Strike = strike;
+            
             this.ContractSize = contractSize;
             // to ensure "country" is required (not null)
             if (country == null)
@@ -85,6 +87,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("exchangeCode is a required property for ExchangeTradedOptionContractDetails and cannot be null");
             }
             this.ExchangeCode = exchangeCode;
+            
             this.ExerciseDate = exerciseDate;
             // to ensure "exerciseType" is required (not null)
             if (exerciseType == null)

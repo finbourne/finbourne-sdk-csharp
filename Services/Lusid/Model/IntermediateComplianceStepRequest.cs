@@ -148,7 +148,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             // Label (string) pattern
             Regex regexLabel = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLabel.Match(this.Label).Success)
+            if (this.Label != null && false == regexLabel.Match(this.Label).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Label, must match a pattern of " + regexLabel, new [] { "Label" });
             }

@@ -61,6 +61,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("exerciseType is a required property for BondConversionSchedule and cannot be null");
             }
             this.ExerciseType = exerciseType;
+            
+            // to ensure "scheduleType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ScheduleTypeEnum), scheduleType))
+            {
+                throw new ArgumentException("scheduleType is a required property for BondConversionSchedule and must be a defined value");
+            }
+            
             this.ScheduleType = scheduleType;
             this.Identifiers = identifiers;
             this.BondConversionEntries = bondConversionEntries;

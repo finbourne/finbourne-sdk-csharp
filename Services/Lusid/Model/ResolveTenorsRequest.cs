@@ -44,6 +44,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="asAt">asAt.</param>
         public ResolveTenorsRequest(DateTimeOffset startDate = default(DateTimeOffset), List<ResourceId> calendars = default(List<ResourceId>), int spotDays = default(int), List<string> tenors = default(List<string>), string businessDayConvention = default(string), string eomRule = default(string), DateTimeOffset? asAt = default(DateTimeOffset?))
         {
+            
             this.StartDate = startDate;
             // to ensure "calendars" is required (not null)
             if (calendars == null)
@@ -51,6 +52,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("calendars is a required property for ResolveTenorsRequest and cannot be null");
             }
             this.Calendars = calendars;
+            
             this.SpotDays = spotDays;
             // to ensure "tenors" is required (not null)
             if (tenors == null)

@@ -77,6 +77,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("portfolioId is a required property for Allocation and cannot be null");
             }
             this.PortfolioId = portfolioId;
+            
             this.Quantity = quantity;
             // to ensure "instrumentIdentifiers" is required (not null)
             if (instrumentIdentifiers == null)

@@ -30,7 +30,6 @@ namespace Finbourne.Sdk.Extensions
     /// <inheritdoc />
     public class ApiFactory : IApiFactory
     {
-        private RetryConfiguration _retryConfiguration = new RetryConfiguration();
         private static readonly IEnumerable<Type> ApiTypes = Assembly.GetAssembly(typeof(ApiClient))
             .GetTypes()
             .Where(t => typeof(IApiAccessor).IsAssignableFrom(t) && t.IsClass);
@@ -42,7 +41,8 @@ namespace Finbourne.Sdk.Extensions
         /// </summary>
         /// <param name="apiConfiguration">Configuration for the ClientCredentialsFlowTokenProvider, usually sourced from a "secrets.json" file</param>
         /// <param name="defaultConfiguration">Default configuration values to use when not specified in <paramref name="apiConfiguration"/>. When null, falls back to <see cref="GlobalConfiguration.Instance"/>.</param>
-        public ApiFactory(ApiConfiguration apiConfiguration, IReadableConfiguration? defaultConfiguration = null)
+        /// <param name="retryConfiguration">Custom retry policies applied to every request made through this factory. When null, falls back to <paramref name="defaultConfiguration"/>'s RetryConfiguration, else the SDK default retry policy.</param>
+        public ApiFactory(ApiConfiguration apiConfiguration, IReadableConfiguration? defaultConfiguration = null, RetryConfiguration? retryConfiguration = null)
         {
             if (apiConfiguration == null) throw new ArgumentNullException(nameof(apiConfiguration));
 
@@ -85,6 +85,12 @@ namespace Finbourne.Sdk.Extensions
             // if the rate limit retry config has been specified, use this, else use the value from the effective defaults
             configuration.RateLimitRetries = apiConfiguration.RateLimitRetries ?? effectiveDefaults.RateLimitRetries;
 
+            configuration.NumberOfRetries = apiConfiguration.NumberOfRetries;
+            configuration.RetryBackoffMs = apiConfiguration.RetryBackoffMs;
+
+            // if not set here, MergeWithConfiguration below falls through to the effective defaults' RetryConfiguration
+            configuration.RetryConfiguration = retryConfiguration;
+
             if(!String.IsNullOrWhiteSpace(apiConfiguration.ApplicationName))
             {
                 configuration.DefaultHeaders.Add("X-LUSID-Application", apiConfiguration.ApplicationName);
@@ -107,7 +113,8 @@ namespace Finbourne.Sdk.Extensions
         /// <param name="configuration">A set of configuration settings</param>
         /// <param name="additionalHeaders">Additional headers to include on every request</param>
         /// <param name="defaultConfiguration">Default configuration values to merge. When null, falls back to <see cref="GlobalConfiguration.Instance"/>.</param>
-        public ApiFactory(Client.Configuration configuration, IDictionary<string, string>? additionalHeaders = null, IReadableConfiguration? defaultConfiguration = null)
+        /// <param name="retryConfiguration">Custom retry policies applied to every request made through this factory. A RetryConfiguration already set on <paramref name="configuration"/> takes precedence.</param>
+        public ApiFactory(Client.Configuration configuration, IDictionary<string, string>? additionalHeaders = null, IReadableConfiguration? defaultConfiguration = null, RetryConfiguration? retryConfiguration = null)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
             if (additionalHeaders != null)
@@ -117,6 +124,7 @@ namespace Finbourne.Sdk.Extensions
                     configuration.DefaultHeaders[header.Key] = header.Value;
                 }
             }
+            configuration.RetryConfiguration = configuration.RetryConfiguration ?? retryConfiguration;
             configuration.MergeWithConfiguration(defaultConfiguration ?? GlobalConfiguration.Instance);
 
             _apis = Init(configuration);

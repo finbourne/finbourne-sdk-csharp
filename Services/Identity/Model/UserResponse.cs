@@ -96,6 +96,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
                 throw new ArgumentNullException("status is a required property for UserResponse and cannot be null");
             }
             this.Status = status;
+            
             this.External = external;
             this.AlternativeUserIds = alternativeUserIds;
             this.SecondEmailAddress = secondEmailAddress;

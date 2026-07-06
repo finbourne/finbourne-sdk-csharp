@@ -55,7 +55,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("foreignCurrency is a required property for FxDependency and cannot be null");
             }
             this.ForeignCurrency = foreignCurrency;
+            
             this.Date = date;
+            
+            // to ensure "dependencyType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DependencyTypeEnum), dependencyType))
+            {
+                throw new ArgumentException("dependencyType is a required property for FxDependency and must be a defined value");
+            }
+            
             this.DependencyType = dependencyType;
         }
 

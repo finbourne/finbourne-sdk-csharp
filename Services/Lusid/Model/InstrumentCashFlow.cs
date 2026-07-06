@@ -46,6 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public InstrumentCashFlow(DateTimeOffset paymentDate = default(DateTimeOffset), decimal? amount = default(decimal?), string currency = default(string), ResourceId sourcePortfolioId = default(ResourceId), string sourceTransactionId = default(string), string sourceInstrumentScope = default(string), string sourceInstrumentId = default(string), Dictionary<string, string> diagnostics = default(Dictionary<string, string>), List<Link> links = default(List<Link>))
         {
+            
             this.PaymentDate = paymentDate;
             // to ensure "currency" is required (not null)
             if (currency == null)

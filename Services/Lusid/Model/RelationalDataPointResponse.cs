@@ -56,6 +56,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("dataSeries is a required property for RelationalDataPointResponse and cannot be null");
             }
             this.DataSeries = dataSeries;
+            
             this.EffectiveAt = effectiveAt;
             // to ensure "valueFields" is required (not null)
             if (valueFields == null)

@@ -253,13 +253,15 @@ namespace Finbourne.Sdk.Client
     /// Provides a default implementation of an Api client (both synchronous and asynchronous implementations),
     /// encapsulating general REST accessor use cases.
     /// </summary>
-    public partial class ApiClient : ISynchronousClient, IAsynchronousClient
+    public partial class ApiClient : ISynchronousClient, IAsynchronousClient, IDisposable
     {
-        private static RetryConfiguration _retryConfiguration = new RetryConfiguration();
         private readonly string _baseUrl;
         private readonly Func<ClientOptions, HttpMessageHandler> _createHttpMessageHandler;
         private readonly bool _disposeHandler;
         private readonly Func<ClientOptions, IReadableConfiguration, IClient> _createRestClient;
+        // Created once on first use and reused (the handler owns the connection pool).
+        private volatile IClient _client;
+        private readonly object _clientLock = new object();
 
         /// <summary>
         /// Specifies the settings on a <see cref="JsonSerializer" /> object.
@@ -320,17 +322,40 @@ namespace Finbourne.Sdk.Client
             _createRestClient = createRestClientFunc ?? DefaultCreateRestClient;
         }
 
+        private IClient GetOrCreateClient(ClientOptions clientOptions, IReadableConfiguration configuration)
+        {
+            var client = _client;
+            if (client != null)
+            {
+                return client;
+            }
+            lock (_clientLock)
+            {
+                return _client ??= _createRestClient(clientOptions, configuration);
+            }
+        }
+
         private IClient DefaultCreateRestClient(ClientOptions clientOptions, IReadableConfiguration configuration)
         {
             var httpClient = new HttpClient(_createHttpMessageHandler(clientOptions), _disposeHandler);
-            // A new HttpClient is created per API call, so this timeout is effectively per-request.
-            // This ensures the request is cancelled even if RestSharp's internal timeout is not honoured
-            // (e.g. in the sync-over-async path via AsyncHelpers.RunSync).
-            httpClient.Timeout = clientOptions.Timeout ?? Timeout.InfiniteTimeSpan;
+            // Per-request timeouts come from RestSharp's Request.Timeout, not the shared HttpClient.
+            httpClient.Timeout = Timeout.InfiniteTimeSpan;
             return new RestClientWrapper(httpClient,
                 options: clientOptions,
+                disposeHttpClient: true,
                 configureSerialization: s =>
                     s.UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration)));
+        }
+
+        /// <summary>Disposes the cached HTTP client and its handler.</summary>
+        public void Dispose()
+        {
+            if (_client is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+            _client = null;
+            GC.SuppressFinalize(this);
         }
 
 
@@ -456,7 +481,7 @@ namespace Finbourne.Sdk.Client
                     configuration);
             }
 
-            var client = _createRestClient(clientOptions, configuration);
+            var client = GetOrCreateClient(clientOptions, configuration);
 
             InterceptRequest(request);
 
@@ -467,12 +492,7 @@ namespace Finbourne.Sdk.Client
             var policy = GetSyncPolicy(mergedOptions);
             if (policy != null)
             {
-                var policyResult = policy.ExecuteAndCapture(() => {
-                    var responseInner = client.Execute<T>(request);
-                    if (responseInner.ErrorException != null)
-                        client = _createRestClient(clientOptions, configuration);
-                    return responseInner;
-                });
+                var policyResult = policy.ExecuteAndCapture(() => client.Execute<T>(request));
                 response = policyResult.Result as Response<T>;
                 if (response == null)
                 {
@@ -518,16 +538,24 @@ namespace Finbourne.Sdk.Client
         }
 
         /// <summary>
-        /// Returns the policy configured for executing synchronous requests
+        /// Returns the policy configured for executing synchronous requests.
+        /// A RetryPolicy on the options' RetryConfiguration wins, then GetRetryPolicyFunc, then the default policy.
         /// </summary>
         /// <param name="options"></param>
         /// <returns></returns>
         public static Policy<ResponseBase>? GetSyncPolicy(RequestOptions options)
         {
+            var retryConfiguration = options.RetryConfiguration;
+            if (retryConfiguration?.RetryPolicy != null)
+            {
+                return retryConfiguration.RetryPolicy;
+            }
+            if (retryConfiguration?.GetRetryPolicyFunc != null)
+            {
+                return retryConfiguration.GetRetryPolicyFunc(options);
+            }
             int rateLimitRetries = options.RateLimitRetries ?? 3;
-            Policy<ResponseBase> pollyPolicy = PollyApiRetryHandler.GetDefaultRetryPolicyWithRateLimitWithFallback(rateLimitRetries, options.NumberOfRetries, options.RetryBackoffMs);
-            _retryConfiguration.RetryPolicy = pollyPolicy;
-            return pollyPolicy;
+            return PollyApiRetryHandler.GetDefaultRetryPolicyWithRateLimitWithFallback(rateLimitRetries, options.NumberOfRetries, options.RetryBackoffMs);
         }
 
         /// <summary>
@@ -559,6 +587,15 @@ namespace Finbourne.Sdk.Client
             if (requestOptions.RateLimitRetries == null)
                 requestOptions.RateLimitRetries = configuration.RateLimitRetries;
 
+            if (requestOptions.NumberOfRetries == null)
+                requestOptions.NumberOfRetries = configuration.NumberOfRetries;
+
+            if (requestOptions.RetryBackoffMs == null)
+                requestOptions.RetryBackoffMs = configuration.RetryBackoffMs;
+
+            if (requestOptions.RetryConfiguration == null)
+                requestOptions.RetryConfiguration = configuration.RetryConfiguration;
+
             return requestOptions;
         }
 
@@ -588,7 +625,7 @@ namespace Finbourne.Sdk.Client
                     configuration);
             }
             
-            var client = _createRestClient(clientOptions, configuration);
+            var client = GetOrCreateClient(clientOptions, configuration);
             InterceptRequest(request);
 
             Response<T> response;
@@ -599,18 +636,13 @@ namespace Finbourne.Sdk.Client
             if (policy != null)
             {
                 Func<CancellationToken, Task<ResponseBase>> action = async ct =>
-                {
-                    var responseInner = await client.ExecuteAsync<T>(request, ct).ConfigureAwait(false);
-                    if (responseInner.ErrorException != null)
-                        client = _createRestClient(clientOptions, configuration);
-                    return responseInner;
-                };
+                    await client.ExecuteAsync<T>(request, ct).ConfigureAwait(false);
 
                 var policyResult = await policy.ExecuteAndCaptureAsync(action, cancellationToken).ConfigureAwait(false);
                 response = policyResult.Result as Response<T>;
                 if (response == null)
                 {
-                    throw new Exception($"error casting response to {typeof(Response<T>)}");
+                    throw new InvalidResponseCastException($"error casting response to {typeof(Response<T>)}");
                 }
             }
             else
@@ -623,7 +655,14 @@ namespace Finbourne.Sdk.Client
                 // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
                 if (typeof(TAbstract).IsAssignableFrom(typeof(T)))
                 {
-                    response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
+                    try
+                    {
+                        response.Data = (T) typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex.InnerException != null ? ex.InnerException : ex;
+                    }
                 }
                 else if (typeof(T).Name == "Stream") // for binary response
                 {
@@ -641,16 +680,24 @@ namespace Finbourne.Sdk.Client
         }
 
         /// <summary>
-        /// Returns the policy configured for executing asynchronous requests
+        /// Returns the policy configured for executing asynchronous requests.
+        /// An AsyncRetryPolicy on the options' RetryConfiguration wins, then GetAsyncRetryPolicyFunc, then the default policy.
         /// </summary>
         /// <param name="options"></param>
         /// <returns></returns>
         public static AsyncPolicy<ResponseBase>? GetAsyncPolicy(RequestOptions options)
         {
+            var retryConfiguration = options.RetryConfiguration;
+            if (retryConfiguration?.AsyncRetryPolicy != null)
+            {
+                return retryConfiguration.AsyncRetryPolicy;
+            }
+            if (retryConfiguration?.GetAsyncRetryPolicyFunc != null)
+            {
+                return retryConfiguration.GetAsyncRetryPolicyFunc(options);
+            }
             int rateLimitRetries = options.RateLimitRetries ?? 3;
-            AsyncPolicy<ResponseBase> pollyPolicy = PollyApiRetryHandler.GetDefaultRetryPolicyWithRateLimitRetryWithFallbackAsync(rateLimitRetries, options.NumberOfRetries, options.RetryBackoffMs);
-            _retryConfiguration.AsyncRetryPolicy = pollyPolicy;
-            return _retryConfiguration.AsyncRetryPolicy;
+            return PollyApiRetryHandler.GetDefaultRetryPolicyWithRateLimitRetryWithFallbackAsync(rateLimitRetries, options.NumberOfRetries, options.RetryBackoffMs);
         }
 
         #region IAsynchronousClient

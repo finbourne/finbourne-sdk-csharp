@@ -42,7 +42,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="period">Upsert the returns on a Daily or Monthly period. Defaults to Daily..</param>
         public PerformanceReturn(DateTimeOffset effectiveAt = default(DateTimeOffset), decimal rateOfReturn = default(decimal), decimal? openingMarketValue = default(decimal?), decimal? closingMarketValue = default(decimal?), string period = default(string))
         {
+            
             this.EffectiveAt = effectiveAt;
+            
             this.RateOfReturn = rateOfReturn;
             this.OpeningMarketValue = openingMarketValue;
             this.ClosingMarketValue = closingMarketValue;

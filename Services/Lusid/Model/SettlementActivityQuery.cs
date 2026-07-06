@@ -275,14 +275,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Filter (string) pattern
             Regex regexFilter = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexFilter.Match(this.Filter).Success)
+            if (this.Filter != null && false == regexFilter.Match(this.Filter).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Filter, must match a pattern of " + regexFilter, new [] { "Filter" });
             }
 
             // Page (string) pattern
             Regex regexPage = new Regex(@"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.CultureInvariant);
-            if (false == regexPage.Match(this.Page).Success)
+            if (this.Page != null && false == regexPage.Match(this.Page).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Page, must match a pattern of " + regexPage, new [] { "Page" });
             }

@@ -45,6 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("details is a required property for OrderGraphPlacementPlacementSynopsis and cannot be null");
             }
             this.Details = details;
+            
             this.Quantity = quantity;
         }
 

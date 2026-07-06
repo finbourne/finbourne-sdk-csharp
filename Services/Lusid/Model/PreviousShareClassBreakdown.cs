@@ -46,6 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("nav is a required property for PreviousShareClassBreakdown and cannot be null");
             }
             this.Nav = nav;
+            
             this.ShareClassToFundFxRate = shareClassToFundFxRate;
             this.Unitisation = unitisation;
         }

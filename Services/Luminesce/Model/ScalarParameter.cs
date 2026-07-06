@@ -54,6 +54,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 throw new ArgumentNullException("name is a required property for ScalarParameter and cannot be null");
             }
             this.Name = name;
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DataType), type))
+            {
+                throw new ArgumentException("type is a required property for ScalarParameter and must be a defined value");
+            }
+            
             this.Type = type;
             this.Value = value;
             this.ValueOptions = valueOptions;

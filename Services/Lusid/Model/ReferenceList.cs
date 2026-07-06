@@ -117,6 +117,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="referenceListType">The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList. (required).</param>
         public ReferenceList(ReferenceListTypeEnum referenceListType = default(ReferenceListTypeEnum))
         {
+            
+            // to ensure "referenceListType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ReferenceListTypeEnum), referenceListType))
+            {
+                throw new ArgumentException("referenceListType is a required property for ReferenceList and must be a defined value");
+            }
+            
             this.ReferenceListType = referenceListType;
         }
 

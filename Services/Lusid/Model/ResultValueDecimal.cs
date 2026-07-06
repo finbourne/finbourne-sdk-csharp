@@ -42,6 +42,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="resultValueType">Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset. (required) (default to ResultValueTypeEnum.ResultValue).</param>
         public ResultValueDecimal(decimal value = default(decimal), int? dimension = default(int?), ResultValueTypeEnum resultValueType = default(ResultValueTypeEnum)) : base()
         {
+            
+            // to ensure "resultValueType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ResultValueTypeEnum), resultValueType))
+            {
+                throw new ArgumentException("resultValueType is a required property for ResultValueDecimal and must be a defined value");
+            }
+            
             this.ResultValueType = resultValueType;
             this.Value = value;
             this.Dimension = dimension;

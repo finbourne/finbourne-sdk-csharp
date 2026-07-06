@@ -119,9 +119,31 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
         public FxForwardModelOptions(ForwardRateObservableTypeEnum forwardRateObservableType = default(ForwardRateObservableTypeEnum), DiscountingMethodEnum discountingMethod = default(DiscountingMethodEnum), bool convertToReportCcy = default(bool), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
         {
+            
+            // to ensure "forwardRateObservableType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ForwardRateObservableTypeEnum), forwardRateObservableType))
+            {
+                throw new ArgumentException("forwardRateObservableType is a required property for FxForwardModelOptions and must be a defined value");
+            }
+            
             this.ForwardRateObservableType = forwardRateObservableType;
+            
+            // to ensure "discountingMethod" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DiscountingMethodEnum), discountingMethod))
+            {
+                throw new ArgumentException("discountingMethod is a required property for FxForwardModelOptions and must be a defined value");
+            }
+            
             this.DiscountingMethod = discountingMethod;
+            
             this.ConvertToReportCcy = convertToReportCcy;
+            
+            // to ensure "modelOptionsType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ModelOptionsTypeEnum), modelOptionsType))
+            {
+                throw new ArgumentException("modelOptionsType is a required property for FxForwardModelOptions and must be a defined value");
+            }
+            
             this.ModelOptionsType = modelOptionsType;
         }
 

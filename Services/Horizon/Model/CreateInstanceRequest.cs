@@ -63,6 +63,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("description is a required property for CreateInstanceRequest and cannot be null");
             }
             this.Description = description;
+            
             this.Enabled = enabled;
             // to ensure "triggers" is required (not null)
             if (triggers == null)
@@ -280,7 +281,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         {
             // IntegrationType (string) pattern
             Regex regexIntegrationType = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexIntegrationType.Match(this.IntegrationType).Success)
+            if (this.IntegrationType != null && false == regexIntegrationType.Match(this.IntegrationType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for IntegrationType, must match a pattern of " + regexIntegrationType, new [] { "IntegrationType" });
             }

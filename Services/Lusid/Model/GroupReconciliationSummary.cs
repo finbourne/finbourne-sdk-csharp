@@ -66,7 +66,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("datesReconciled is a required property for GroupReconciliationSummary and cannot be null");
             }
             this.DatesReconciled = datesReconciled;
+            
             this.ReconciliationRunAsAt = reconciliationRunAsAt;
+            
             this.CountComparisonResults = countComparisonResults;
             this.RunDetails = runDetails;
             this.GroupReconciliationDefinitionId = groupReconciliationDefinitionId;

@@ -62,7 +62,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("curveType is a required property for EquityCurveDependency and cannot be null");
             }
             this.CurveType = curveType;
+            
             this.Date = date;
+            
+            // to ensure "dependencyType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DependencyTypeEnum), dependencyType))
+            {
+                throw new ArgumentException("dependencyType is a required property for EquityCurveDependency and must be a defined value");
+            }
+            
             this.DependencyType = dependencyType;
         }
 

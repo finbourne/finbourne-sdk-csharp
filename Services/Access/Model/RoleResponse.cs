@@ -51,6 +51,7 @@ namespace Finbourne.Sdk.Services.Access.Model
                 throw new ArgumentNullException("id is a required property for RoleResponse and cannot be null");
             }
             this.Id = id;
+            
             this.RoleHierarchyIndex = roleHierarchyIndex;
             // to ensure "resource" is required (not null)
             if (resource == null)

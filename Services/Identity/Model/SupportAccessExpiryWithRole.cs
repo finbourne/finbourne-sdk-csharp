@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
         /// <param name="permittedRole">Unique identifier for permitted role.  Use GET /identity/api/authentication/support-roles to lookup role label/code from identifier. (required).</param>
         public SupportAccessExpiryWithRole(DateTimeOffset expiry = default(DateTimeOffset), string permittedRole = default(string))
         {
+            
             this.Expiry = expiry;
             // to ensure "permittedRole" is required (not null)
             if (permittedRole == null)

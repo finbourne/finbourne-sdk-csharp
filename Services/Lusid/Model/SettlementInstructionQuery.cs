@@ -301,35 +301,35 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Page (string) pattern
             Regex regexPage = new Regex(@"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.CultureInvariant);
-            if (false == regexPage.Match(this.Page).Success)
+            if (this.Page != null && false == regexPage.Match(this.Page).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Page, must match a pattern of " + regexPage, new [] { "Page" });
             }
 
             // Filter (string) pattern
             Regex regexFilter = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexFilter.Match(this.Filter).Success)
+            if (this.Filter != null && false == regexFilter.Match(this.Filter).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Filter, must match a pattern of " + regexFilter, new [] { "Filter" });
             }
 
             // TimelineScope (string) pattern
             Regex regexTimelineScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexTimelineScope.Match(this.TimelineScope).Success)
+            if (this.TimelineScope != null && false == regexTimelineScope.Match(this.TimelineScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TimelineScope, must match a pattern of " + regexTimelineScope, new [] { "TimelineScope" });
             }
 
             // TimelineCode (string) pattern
             Regex regexTimelineCode = new Regex(@"^[a-zA-Z0-9\-_]+(:[a-zA-Z0-9\-_]+)?$", RegexOptions.CultureInvariant);
-            if (false == regexTimelineCode.Match(this.TimelineCode).Success)
+            if (this.TimelineCode != null && false == regexTimelineCode.Match(this.TimelineCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TimelineCode, must match a pattern of " + regexTimelineCode, new [] { "TimelineCode" });
             }
 
             // ClosedPeriodId (string) pattern
             Regex regexClosedPeriodId = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexClosedPeriodId.Match(this.ClosedPeriodId).Success)
+            if (this.ClosedPeriodId != null && false == regexClosedPeriodId.Match(this.ClosedPeriodId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ClosedPeriodId, must match a pattern of " + regexClosedPeriodId, new [] { "ClosedPeriodId" });
             }

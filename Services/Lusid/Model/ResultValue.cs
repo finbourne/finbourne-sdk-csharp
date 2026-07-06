@@ -137,6 +137,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="resultValueType">Available values: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset. (required) (default to ResultValueTypeEnum.ResultValue).</param>
         public ResultValue(ResultValueTypeEnum resultValueType = default(ResultValueTypeEnum))
         {
+            
+            // to ensure "resultValueType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ResultValueTypeEnum), resultValueType))
+            {
+                throw new ArgumentException("resultValueType is a required property for ResultValue and must be a defined value");
+            }
+            
             this.ResultValueType = resultValueType;
         }
 

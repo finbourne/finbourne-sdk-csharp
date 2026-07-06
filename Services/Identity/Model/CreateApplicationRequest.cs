@@ -218,21 +218,21 @@ namespace Finbourne.Sdk.Services.Identity.Model
         {
             // DisplayName (string) pattern
             Regex regexDisplayName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayName.Match(this.DisplayName).Success)
+            if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
             }
 
             // ClientId (string) pattern
             Regex regexClientId = new Regex(@"^[a-zA-Z][a-zA-Z0-9-]{5,49}", RegexOptions.CultureInvariant);
-            if (false == regexClientId.Match(this.ClientId).Success)
+            if (this.ClientId != null && false == regexClientId.Match(this.ClientId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ClientId, must match a pattern of " + regexClientId, new [] { "ClientId" });
             }
 
             // Type (string) pattern
             Regex regexType = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
-            if (false == regexType.Match(this.Type).Success)
+            if (this.Type != null && false == regexType.Match(this.Type).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Type, must match a pattern of " + regexType, new [] { "Type" });
             }

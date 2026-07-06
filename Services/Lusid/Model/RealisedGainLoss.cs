@@ -56,6 +56,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentUid is a required property for RealisedGainLoss and cannot be null");
             }
             this.InstrumentUid = instrumentUid;
+            
             this.Units = units;
             // to ensure "costTradeCcy" is required (not null)
             if (costTradeCcy == null)

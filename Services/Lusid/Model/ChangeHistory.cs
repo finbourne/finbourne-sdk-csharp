@@ -81,6 +81,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("userId is a required property for ChangeHistory and cannot be null");
             }
             this.UserId = userId;
+            
             this.ModifiedAsAt = modifiedAsAt;
             // to ensure "requestId" is required (not null)
             if (requestId == null)
@@ -88,6 +89,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("requestId is a required property for ChangeHistory and cannot be null");
             }
             this.RequestId = requestId;
+            
+            // to ensure "action" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ActionEnum), action))
+            {
+                throw new ArgumentException("action is a required property for ChangeHistory and must be a defined value");
+            }
+            
             this.Action = action;
             // to ensure "changes" is required (not null)
             if (changes == null)

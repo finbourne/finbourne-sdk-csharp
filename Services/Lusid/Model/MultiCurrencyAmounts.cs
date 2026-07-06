@@ -39,7 +39,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="baseAmount">baseAmount (required).</param>
         public MultiCurrencyAmounts(decimal localAmount = default(decimal), decimal baseAmount = default(decimal))
         {
+            
             this.LocalAmount = localAmount;
+            
             this.BaseAmount = baseAmount;
         }
 

@@ -47,7 +47,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentIdentifiers is a required property for OutputTransition and cannot be null");
             }
             this.InstrumentIdentifiers = instrumentIdentifiers;
+            
             this.UnitsFactor = unitsFactor;
+            
             this.CostFactor = costFactor;
             this.Rounding = rounding;
         }

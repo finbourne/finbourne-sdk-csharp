@@ -67,6 +67,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 throw new ArgumentNullException("leftTableAlias is a required property for JoinedTableDesign and cannot be null");
             }
             this.LeftTableAlias = leftTableAlias;
+            
+            // to ensure "joinType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DesignJoinType), joinType))
+            {
+                throw new ArgumentException("joinType is a required property for JoinedTableDesign and must be a defined value");
+            }
+            
             this.JoinType = joinType;
             // to ensure "onClauseTerms" is required (not null)
             if (onClauseTerms == null)

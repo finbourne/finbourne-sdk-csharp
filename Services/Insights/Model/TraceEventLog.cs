@@ -60,6 +60,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("traceId is a required property for TraceEventLog and cannot be null");
             }
             this.TraceId = traceId;
+            
             this.CreatedAt = createdAt;
             // to ensure "eventType" is required (not null)
             if (eventType == null)
@@ -91,6 +92,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("agentCode is a required property for TraceEventLog and cannot be null");
             }
             this.AgentCode = agentCode;
+            
             this.AgentVersion = agentVersion;
             // to ensure "nodeId" is required (not null)
             if (nodeId == null)

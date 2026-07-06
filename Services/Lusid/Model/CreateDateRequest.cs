@@ -51,7 +51,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("dateId is a required property for CreateDateRequest and cannot be null");
             }
             this.DateId = dateId;
+            
             this.FromUtc = fromUtc;
+            
             this.ToUtc = toUtc;
             // to ensure "varTimeZone" is required (not null)
             if (varTimeZone == null)
@@ -266,28 +268,28 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // DateId (string) pattern
             Regex regexDateId = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexDateId.Match(this.DateId).Success)
+            if (this.DateId != null && false == regexDateId.Match(this.DateId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DateId, must match a pattern of " + regexDateId, new [] { "DateId" });
             }
 
             // VarTimeZone (string) pattern
             Regex regexVarTimeZone = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexVarTimeZone.Match(this.VarTimeZone).Success)
+            if (this.VarTimeZone != null && false == regexVarTimeZone.Match(this.VarTimeZone).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for VarTimeZone, must match a pattern of " + regexVarTimeZone, new [] { "VarTimeZone" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
             // Type (string) pattern
             Regex regexType = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexType.Match(this.Type).Success)
+            if (this.Type != null && false == regexType.Match(this.Type).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Type, must match a pattern of " + regexType, new [] { "Type" });
             }

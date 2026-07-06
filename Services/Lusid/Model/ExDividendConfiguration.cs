@@ -41,6 +41,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="applyThirty360PayDelay">Set this flag to true if the ex-dividend days represent a pay delay from the accrual end date in calendar  days under the 30/360 day count convention. The typical use case for this flag are Mortgage Backed Securities  with pay delay between 1 and 60 days, such as FreddieMac and FannieMae. If this flag is set, the useBusinessDays  setting will be ignored.  Defaults to false if not provided..</param>
         public ExDividendConfiguration(bool useBusinessDays = default(bool), int exDividendDays = default(int), bool returnNegativeAccrued = default(bool), bool applyThirty360PayDelay = default(bool))
         {
+            
             this.ExDividendDays = exDividendDays;
             this.UseBusinessDays = useBusinessDays;
             this.ReturnNegativeAccrued = returnNegativeAccrued;

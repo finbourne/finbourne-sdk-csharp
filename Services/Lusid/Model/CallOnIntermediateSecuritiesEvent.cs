@@ -60,6 +60,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("unitsRatio is a required property for CallOnIntermediateSecuritiesEvent and cannot be null");
             }
             this.UnitsRatio = unitsRatio;
+            
             this.Price = price;
             // to ensure "exerciseCurrency" is required (not null)
             if (exerciseCurrency == null)
@@ -67,6 +68,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("exerciseCurrency is a required property for CallOnIntermediateSecuritiesEvent and cannot be null");
             }
             this.ExerciseCurrency = exerciseCurrency;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for CallOnIntermediateSecuritiesEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.ExpiryDate = expiryDate;
             this.PaymentDate = paymentDate;

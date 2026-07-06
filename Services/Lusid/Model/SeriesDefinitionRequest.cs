@@ -155,7 +155,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // ShareClassCode (string) pattern
             Regex regexShareClassCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexShareClassCode.Match(this.ShareClassCode).Success)
+            if (this.ShareClassCode != null && false == regexShareClassCode.Match(this.ShareClassCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ShareClassCode, must match a pattern of " + regexShareClassCode, new [] { "ShareClassCode" });
             }

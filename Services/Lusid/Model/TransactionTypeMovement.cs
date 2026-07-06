@@ -62,6 +62,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("side is a required property for TransactionTypeMovement and cannot be null");
             }
             this.Side = side;
+            
             this.Direction = direction;
             this.Properties = properties;
             this.Mappings = mappings;
@@ -362,35 +363,35 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Side (string) pattern
             Regex regexSide = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexSide.Match(this.Side).Success)
+            if (this.Side != null && false == regexSide.Match(this.Side).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Side, must match a pattern of " + regexSide, new [] { "Side" });
             }
 
             // Name (string) pattern
             Regex regexName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexName.Match(this.Name).Success)
+            if (this.Name != null && false == regexName.Match(this.Name).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
             }
 
             // Condition (string) pattern
             Regex regexCondition = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexCondition.Match(this.Condition).Success)
+            if (this.Condition != null && false == regexCondition.Match(this.Condition).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Condition, must match a pattern of " + regexCondition, new [] { "Condition" });
             }
 
             // CustodianAccountType (string) pattern
             Regex regexCustodianAccountType = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexCustodianAccountType.Match(this.CustodianAccountType).Success)
+            if (this.CustodianAccountType != null && false == regexCustodianAccountType.Match(this.CustodianAccountType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CustodianAccountType, must match a pattern of " + regexCustodianAccountType, new [] { "CustodianAccountType" });
             }
 
             // AccountSelector (string) pattern
             Regex regexAccountSelector = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexAccountSelector.Match(this.AccountSelector).Success)
+            if (this.AccountSelector != null && false == regexAccountSelector.Match(this.AccountSelector).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccountSelector, must match a pattern of " + regexAccountSelector, new [] { "AccountSelector" });
             }

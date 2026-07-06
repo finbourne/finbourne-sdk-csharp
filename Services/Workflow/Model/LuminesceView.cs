@@ -59,6 +59,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="name">Name of the view in Luminesce (required).</param>
         public LuminesceView(TypeEnum type = default(TypeEnum), string name = default(string))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for LuminesceView and must be a defined value");
+            }
+            
             this.Type = type;
             // to ensure "name" is required (not null)
             if (name == null)
@@ -158,7 +165,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         {
             // Name (string) pattern
             Regex regexName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexName.Match(this.Name).Success)
+            if (this.Name != null && false == regexName.Match(this.Name).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
             }

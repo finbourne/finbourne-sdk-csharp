@@ -45,6 +45,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
                 throw new ArgumentNullException("adminDomainName is a required property for SetParentCellRequest and cannot be null");
             }
             this.AdminDomainName = adminDomainName;
+            
             this.Confirm = confirm;
         }
 
@@ -145,7 +146,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
         {
             // AdminDomainName (string) pattern
             Regex regexAdminDomainName = new Regex(@"^[a-zA-Z]([a-zA-Z0-9-]*[a-zA-Z0-9])?$", RegexOptions.CultureInvariant);
-            if (false == regexAdminDomainName.Match(this.AdminDomainName).Success)
+            if (this.AdminDomainName != null && false == regexAdminDomainName.Match(this.AdminDomainName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminDomainName, must match a pattern of " + regexAdminDomainName, new [] { "AdminDomainName" });
             }

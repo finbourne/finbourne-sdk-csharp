@@ -212,14 +212,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
             // OutcomeDescription (string) pattern
             Regex regexOutcomeDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexOutcomeDescription.Match(this.OutcomeDescription).Success)
+            if (this.OutcomeDescription != null && false == regexOutcomeDescription.Match(this.OutcomeDescription).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OutcomeDescription, must match a pattern of " + regexOutcomeDescription, new [] { "OutcomeDescription" });
             }

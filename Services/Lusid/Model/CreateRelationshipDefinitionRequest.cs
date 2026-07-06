@@ -312,35 +312,35 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Scope (string) pattern
             Regex regexScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexScope.Match(this.Scope).Success)
+            if (this.Scope != null && false == regexScope.Match(this.Scope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Scope, must match a pattern of " + regexScope, new [] { "Scope" });
             }
 
             // Code (string) pattern
             Regex regexCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCode.Match(this.Code).Success)
+            if (this.Code != null && false == regexCode.Match(this.Code).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, must match a pattern of " + regexCode, new [] { "Code" });
             }
 
             // DisplayName (string) pattern
             Regex regexDisplayName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayName.Match(this.DisplayName).Success)
+            if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
             }
 
             // OutwardDescription (string) pattern
             Regex regexOutwardDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexOutwardDescription.Match(this.OutwardDescription).Success)
+            if (this.OutwardDescription != null && false == regexOutwardDescription.Match(this.OutwardDescription).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for OutwardDescription, must match a pattern of " + regexOutwardDescription, new [] { "OutwardDescription" });
             }
 
             // InwardDescription (string) pattern
             Regex regexInwardDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexInwardDescription.Match(this.InwardDescription).Success)
+            if (this.InwardDescription != null && false == regexInwardDescription.Match(this.InwardDescription).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InwardDescription, must match a pattern of " + regexInwardDescription, new [] { "InwardDescription" });
             }

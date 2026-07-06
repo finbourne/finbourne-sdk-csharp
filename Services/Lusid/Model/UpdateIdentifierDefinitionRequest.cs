@@ -178,21 +178,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // HierarchyLevel (string) pattern
             Regex regexHierarchyLevel = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexHierarchyLevel.Match(this.HierarchyLevel).Success)
+            if (this.HierarchyLevel != null && false == regexHierarchyLevel.Match(this.HierarchyLevel).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for HierarchyLevel, must match a pattern of " + regexHierarchyLevel, new [] { "HierarchyLevel" });
             }
 
             // DisplayName (string) pattern
             Regex regexDisplayName = new Regex(@"^[^\\<>&\""]+$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayName.Match(this.DisplayName).Success)
+            if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }

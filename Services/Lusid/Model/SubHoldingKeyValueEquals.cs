@@ -54,6 +54,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("value is a required property for SubHoldingKeyValueEquals and cannot be null");
             }
             this.Value = value;
+            
+            // to ensure "criterionType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(CriterionTypeEnum), criterionType))
+            {
+                throw new ArgumentException("criterionType is a required property for SubHoldingKeyValueEquals and must be a defined value");
+            }
+            
             this.CriterionType = criterionType;
         }
 

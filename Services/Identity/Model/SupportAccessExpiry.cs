@@ -38,6 +38,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
         /// <param name="expiry">DateTimeOffset at which the access will be revoked (required).</param>
         public SupportAccessExpiry(DateTimeOffset expiry = default(DateTimeOffset))
         {
+            
             this.Expiry = expiry;
         }
 

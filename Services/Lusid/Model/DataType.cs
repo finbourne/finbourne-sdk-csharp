@@ -248,6 +248,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public DataType(TypeValueRangeEnum typeValueRange = default(TypeValueRangeEnum), ResourceId id = default(ResourceId), string displayName = default(string), string description = default(string), ValueTypeEnum valueType = default(ValueTypeEnum), List<string> acceptableValues = default(List<string>), UnitSchemaEnum ?unitSchema = default(UnitSchemaEnum?), List<IUnitDefinitionDto> acceptableUnits = default(List<IUnitDefinitionDto>), ReferenceData referenceData = default(ReferenceData), ModelVersion varVersion = default(ModelVersion), string href = default(string), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), List<Link> links = default(List<Link>))
         {
+            
+            // to ensure "typeValueRange" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeValueRangeEnum), typeValueRange))
+            {
+                throw new ArgumentException("typeValueRange is a required property for DataType and must be a defined value");
+            }
+            
             this.TypeValueRange = typeValueRange;
             // to ensure "id" is required (not null)
             if (id == null)
@@ -267,6 +274,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("description is a required property for DataType and cannot be null");
             }
             this.Description = description;
+            
+            // to ensure "valueType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ValueTypeEnum), valueType))
+            {
+                throw new ArgumentException("valueType is a required property for DataType and must be a defined value");
+            }
+            
             this.ValueType = valueType;
             this.AcceptableValues = acceptableValues;
             this.UnitSchema = unitSchema;

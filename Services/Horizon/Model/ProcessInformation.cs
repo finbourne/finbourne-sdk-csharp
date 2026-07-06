@@ -63,6 +63,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("runId is a required property for ProcessInformation and cannot be null");
             }
             this.RunId = runId;
+            
             this.StartTime = startTime;
             // to ensure "dataAction" is required (not null)
             if (dataAction == null)

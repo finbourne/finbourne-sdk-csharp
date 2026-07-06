@@ -247,7 +247,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="model">Available values: SimpleStatic, Discounting, VendorDefault, BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints, ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted, IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted, BlackScholesDigital, BjerksundStensland1993, BondLookupPricer, FlexibleLoanPricer, CdsLookupPricer, LoanFacilityPricer, OverrideOnlyPricer, FlexibleRepoSimplePricer. (required).</param>
         public ModelSelection(LibraryEnum library = default(LibraryEnum), ModelEnum model = default(ModelEnum))
         {
+            
+            // to ensure "library" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(LibraryEnum), library))
+            {
+                throw new ArgumentException("library is a required property for ModelSelection and must be a defined value");
+            }
+            
             this.Library = library;
+            
+            // to ensure "model" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ModelEnum), model))
+            {
+                throw new ArgumentException("model is a required property for ModelSelection and must be a defined value");
+            }
+            
             this.Model = model;
         }
 

@@ -52,6 +52,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("currency is a required property for LoanPrincipalRepaymentEvent and cannot be null");
             }
             this.Currency = currency;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for LoanPrincipalRepaymentEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.PaymentDate = paymentDate;
             this.LapseElections = lapseElections;

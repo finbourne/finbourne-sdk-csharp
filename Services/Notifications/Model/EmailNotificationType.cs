@@ -64,6 +64,13 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="emailAddressBcc">&#39;Bcc&#39; recipients of the email.</param>
         public EmailNotificationType(TypeEnum type = default(TypeEnum), string subject = default(string), string plainTextBody = default(string), string htmlBody = default(string), List<string> emailAddressTo = default(List<string>), List<string> emailAddressCc = default(List<string>), List<string> emailAddressBcc = default(List<string>))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for EmailNotificationType and must be a defined value");
+            }
+            
             this.Type = type;
             // to ensure "subject" is required (not null)
             if (subject == null)
@@ -266,21 +273,21 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         {
             // Subject (string) pattern
             Regex regexSubject = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexSubject.Match(this.Subject).Success)
+            if (this.Subject != null && false == regexSubject.Match(this.Subject).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Subject, must match a pattern of " + regexSubject, new [] { "Subject" });
             }
 
             // PlainTextBody (string) pattern
             Regex regexPlainTextBody = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexPlainTextBody.Match(this.PlainTextBody).Success)
+            if (this.PlainTextBody != null && false == regexPlainTextBody.Match(this.PlainTextBody).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PlainTextBody, must match a pattern of " + regexPlainTextBody, new [] { "PlainTextBody" });
             }
 
             // HtmlBody (string) pattern
             Regex regexHtmlBody = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexHtmlBody.Match(this.HtmlBody).Success)
+            if (this.HtmlBody != null && false == regexHtmlBody.Match(this.HtmlBody).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for HtmlBody, must match a pattern of " + regexHtmlBody, new [] { "HtmlBody" });
             }

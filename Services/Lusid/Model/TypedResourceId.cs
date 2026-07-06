@@ -178,21 +178,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // IdTypeScope (string) pattern
             Regex regexIdTypeScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexIdTypeScope.Match(this.IdTypeScope).Success)
+            if (this.IdTypeScope != null && false == regexIdTypeScope.Match(this.IdTypeScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for IdTypeScope, must match a pattern of " + regexIdTypeScope, new [] { "IdTypeScope" });
             }
 
             // IdTypeCode (string) pattern
             Regex regexIdTypeCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexIdTypeCode.Match(this.IdTypeCode).Success)
+            if (this.IdTypeCode != null && false == regexIdTypeCode.Match(this.IdTypeCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for IdTypeCode, must match a pattern of " + regexIdTypeCode, new [] { "IdTypeCode" });
             }
 
             // Code (string) pattern
             Regex regexCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCode.Match(this.Code).Success)
+            if (this.Code != null && false == regexCode.Match(this.Code).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, must match a pattern of " + regexCode, new [] { "Code" });
             }

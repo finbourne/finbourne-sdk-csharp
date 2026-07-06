@@ -213,6 +213,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("id is a required property for PortfolioWithoutHref and cannot be null");
             }
             this.Id = id;
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for PortfolioWithoutHref and must be a defined value");
+            }
+            
             this.Type = type;
             // to ensure "displayName" is required (not null)
             if (displayName == null)
@@ -220,6 +227,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("displayName is a required property for PortfolioWithoutHref and cannot be null");
             }
             this.DisplayName = displayName;
+            
             this.Created = created;
             this.Description = description;
             this.ParentPortfolioId = parentPortfolioId;

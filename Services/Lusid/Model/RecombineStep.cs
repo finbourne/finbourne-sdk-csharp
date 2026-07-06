@@ -54,6 +54,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("parameters is a required property for RecombineStep and cannot be null");
             }
             this.Parameters = parameters;
+            
+            // to ensure "complianceStepType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ComplianceStepTypeEnum), complianceStepType))
+            {
+                throw new ArgumentException("complianceStepType is a required property for RecombineStep and must be a defined value");
+            }
+            
             this.ComplianceStepType = complianceStepType;
         }
 

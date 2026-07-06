@@ -234,7 +234,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Scope (string) pattern
             Regex regexScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexScope.Match(this.Scope).Success)
+            if (this.Scope != null && false == regexScope.Match(this.Scope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Scope, must match a pattern of " + regexScope, new [] { "Scope" });
             }

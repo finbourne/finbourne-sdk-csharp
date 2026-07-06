@@ -286,7 +286,8 @@ namespace Finbourne.Sdk.Extensions
             Policy<ResponseBase>
                 .Handle<Exception>()
                 .FallbackAsync(
-                    (outcome, b, c) => Task.FromException<ResponseBase>(outcome.Exception),
+                    // Return the captured result (like the sync fallback), not the raw exception.
+                    (outcome, b, c) => Task.FromResult(outcome.Result),
                     (outcome, ctx) =>
                     {
                         // Add logging or other logic here 

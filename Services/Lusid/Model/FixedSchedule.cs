@@ -50,7 +50,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid. (required) (default to ScheduleTypeEnum.FixedSchedule).</param>
         public FixedSchedule(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), FlowConventions flowConventions = default(FlowConventions), decimal couponRate = default(decimal), FlowConventionName conventionName = default(FlowConventionName), int? exDividendDays = default(int?), decimal notional = default(decimal), string paymentCurrency = default(string), string stubType = default(string), ExDividendConfiguration exDividendConfiguration = default(ExDividendConfiguration), ScheduleTypeEnum scheduleType = default(ScheduleTypeEnum)) : base()
         {
+            
             this.StartDate = startDate;
+            
             this.MaturityDate = maturityDate;
             // to ensure "paymentCurrency" is required (not null)
             if (paymentCurrency == null)
@@ -58,6 +60,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("paymentCurrency is a required property for FixedSchedule and cannot be null");
             }
             this.PaymentCurrency = paymentCurrency;
+            
+            // to ensure "scheduleType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ScheduleTypeEnum), scheduleType))
+            {
+                throw new ArgumentException("scheduleType is a required property for FixedSchedule and must be a defined value");
+            }
+            
             this.ScheduleType = scheduleType;
             this.FlowConventions = flowConventions;
             this.CouponRate = couponRate;

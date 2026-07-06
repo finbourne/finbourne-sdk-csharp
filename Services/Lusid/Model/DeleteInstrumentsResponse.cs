@@ -40,6 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public DeleteInstrumentsResponse(string href = default(string), DateTimeOffset asAt = default(DateTimeOffset), List<Link> links = default(List<Link>))
         {
+            
             this.AsAt = asAt;
             this.Href = href;
             this.Links = links;

@@ -74,7 +74,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentIdentifiers is a required property for SettlementInstructionRequest and cannot be null");
             }
             this.InstrumentIdentifiers = instrumentIdentifiers;
+            
             this.ActualSettlementDate = actualSettlementDate;
+            
             this.Units = units;
             this.InstructionType = instructionType;
             this.ContractualSettlementDate = contractualSettlementDate;

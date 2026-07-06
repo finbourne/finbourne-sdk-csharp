@@ -50,9 +50,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("corporateActionCode is a required property for UpsertCorporateActionRequest and cannot be null");
             }
             this.CorporateActionCode = corporateActionCode;
+            
             this.AnnouncementDate = announcementDate;
+            
             this.ExDate = exDate;
+            
             this.RecordDate = recordDate;
+            
             this.PaymentDate = paymentDate;
             // to ensure "transitions" is required (not null)
             if (transitions == null)
@@ -250,14 +254,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // CorporateActionCode (string) pattern
             Regex regexCorporateActionCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexCorporateActionCode.Match(this.CorporateActionCode).Success)
+            if (this.CorporateActionCode != null && false == regexCorporateActionCode.Match(this.CorporateActionCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CorporateActionCode, must match a pattern of " + regexCorporateActionCode, new [] { "CorporateActionCode" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }

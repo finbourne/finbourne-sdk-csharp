@@ -215,14 +215,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // InstrumentIdType (string) pattern
             Regex regexInstrumentIdType = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
-            if (false == regexInstrumentIdType.Match(this.InstrumentIdType).Success)
+            if (this.InstrumentIdType != null && false == regexInstrumentIdType.Match(this.InstrumentIdType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InstrumentIdType, must match a pattern of " + regexInstrumentIdType, new [] { "InstrumentIdType" });
             }
 
             // QuoteType (string) pattern
             Regex regexQuoteType = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
-            if (false == regexQuoteType.Match(this.QuoteType).Success)
+            if (this.QuoteType != null && false == regexQuoteType.Match(this.QuoteType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for QuoteType, must match a pattern of " + regexQuoteType, new [] { "QuoteType" });
             }

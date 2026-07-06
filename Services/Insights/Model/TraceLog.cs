@@ -48,6 +48,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("traceId is a required property for TraceLog and cannot be null");
             }
             this.TraceId = traceId;
+            
             this.CreatedAt = createdAt;
             // to ensure "userId" is required (not null)
             if (userId == null)

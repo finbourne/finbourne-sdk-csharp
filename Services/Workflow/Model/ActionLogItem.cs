@@ -40,6 +40,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="details">The details of the log item.</param>
         public ActionLogItem(DateTimeOffset timestamp = default(DateTimeOffset), string logType = default(string), string details = default(string))
         {
+            
             this.Timestamp = timestamp;
             // to ensure "logType" is required (not null)
             if (logType == null)

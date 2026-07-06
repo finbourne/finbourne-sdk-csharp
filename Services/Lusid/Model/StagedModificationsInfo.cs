@@ -40,6 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="idsPreviewed">An array of the ids of any StagedModifications being previewed..</param>
         public StagedModificationsInfo(int countPending = default(int), string hrefPending = default(string), List<string> idsPreviewed = default(List<string>))
         {
+            
             this.CountPending = countPending;
             // to ensure "hrefPending" is required (not null)
             if (hrefPending == null)

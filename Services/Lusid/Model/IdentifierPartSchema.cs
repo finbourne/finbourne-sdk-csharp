@@ -43,6 +43,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public IdentifierPartSchema(int index = default(int), string name = default(string), string displayName = default(string), string description = default(string), bool required = default(bool), List<Link> links = default(List<Link>))
         {
+            
             this.Index = index;
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,6 +63,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("description is a required property for IdentifierPartSchema and cannot be null");
             }
             this.Description = description;
+            
             this.Required = required;
             this.Links = links;
         }

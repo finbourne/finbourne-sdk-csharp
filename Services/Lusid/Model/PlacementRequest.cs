@@ -71,6 +71,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentIdentifiers is a required property for PlacementRequest and cannot be null");
             }
             this.InstrumentIdentifiers = instrumentIdentifiers;
+            
             this.Quantity = quantity;
             // to ensure "side" is required (not null)
             if (side == null)
@@ -90,6 +91,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("type is a required property for PlacementRequest and cannot be null");
             }
             this.Type = type;
+            
             this.CreatedDate = createdDate;
             this.ParentPlacementId = parentPlacementId;
             this.Properties = properties;

@@ -610,6 +610,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="varVersion">varVersion.</param>
         public IdentifierDefinition(string href = default(string), DomainEnum domain = default(DomainEnum), string identifierScope = default(string), string identifierType = default(string), LifeTimeEnum lifeTime = default(LifeTimeEnum), string hierarchyUsage = default(string), string hierarchyLevel = default(string), string displayName = default(string), string description = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), ModelVersion varVersion = default(ModelVersion))
         {
+            
+            // to ensure "domain" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DomainEnum), domain))
+            {
+                throw new ArgumentException("domain is a required property for IdentifierDefinition and must be a defined value");
+            }
+            
             this.Domain = domain;
             // to ensure "identifierScope" is required (not null)
             if (identifierScope == null)
@@ -623,6 +630,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("identifierType is a required property for IdentifierDefinition and cannot be null");
             }
             this.IdentifierType = identifierType;
+            
+            // to ensure "lifeTime" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(LifeTimeEnum), lifeTime))
+            {
+                throw new ArgumentException("lifeTime is a required property for IdentifierDefinition and must be a defined value");
+            }
+            
             this.LifeTime = lifeTime;
             this.Href = href;
             this.HierarchyUsage = hierarchyUsage;
@@ -865,35 +879,35 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // IdentifierScope (string) pattern
             Regex regexIdentifierScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexIdentifierScope.Match(this.IdentifierScope).Success)
+            if (this.IdentifierScope != null && false == regexIdentifierScope.Match(this.IdentifierScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for IdentifierScope, must match a pattern of " + regexIdentifierScope, new [] { "IdentifierScope" });
             }
 
             // IdentifierType (string) pattern
             Regex regexIdentifierType = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexIdentifierType.Match(this.IdentifierType).Success)
+            if (this.IdentifierType != null && false == regexIdentifierType.Match(this.IdentifierType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for IdentifierType, must match a pattern of " + regexIdentifierType, new [] { "IdentifierType" });
             }
 
             // HierarchyLevel (string) pattern
             Regex regexHierarchyLevel = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexHierarchyLevel.Match(this.HierarchyLevel).Success)
+            if (this.HierarchyLevel != null && false == regexHierarchyLevel.Match(this.HierarchyLevel).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for HierarchyLevel, must match a pattern of " + regexHierarchyLevel, new [] { "HierarchyLevel" });
             }
 
             // DisplayName (string) pattern
             Regex regexDisplayName = new Regex(@"^[^\\<>&\""]+$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayName.Match(this.DisplayName).Success)
+            if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }

@@ -60,7 +60,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentUid is a required property for CorporateActionTransitionComponent and cannot be null");
             }
             this.InstrumentUid = instrumentUid;
+            
             this.UnitsFactor = unitsFactor;
+            
             this.CostFactor = costFactor;
         }
 

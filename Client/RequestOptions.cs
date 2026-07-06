@@ -85,6 +85,11 @@ namespace Finbourne.Sdk.Client
         public int? RetryBackoffMs { get; set; }
 
         /// <summary>
+        /// Custom retry policies for this request. If left unset the configuration's RetryConfiguration will be used
+        /// </summary>
+        public RetryConfiguration? RetryConfiguration { get; set; }
+
+        /// <summary>
         /// Constructs a new instance of <see cref="RequestOptions"/>
         /// </summary>
         public RequestOptions()

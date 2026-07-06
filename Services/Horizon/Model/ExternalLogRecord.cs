@@ -51,6 +51,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="timestamp">The timestamp of the log record. (required).</param>
         public ExternalLogRecord(long logid = default(long), long? parentlogid = default(long?), string loglevel = default(string), string logstatus = default(string), string sourcerecordtype = default(string), string sourceprimaryidtype = default(string), string sourceprimaryidvalue = default(string), string targetrecordtype = default(string), string targetrecordaction = default(string), string targetprimaryidtype = default(string), string targetprimaryidvalue = default(string), string message = default(string), string messagetype = default(string), string timestamp = default(string))
         {
+            
             this.Logid = logid;
             // to ensure "loglevel" is required (not null)
             if (loglevel == null)

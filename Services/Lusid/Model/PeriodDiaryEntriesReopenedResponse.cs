@@ -44,9 +44,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public PeriodDiaryEntriesReopenedResponse(string href = default(string), DateTimeOffset? effectiveFrom = default(DateTimeOffset?), DateTimeOffset asAt = default(DateTimeOffset), int periodDiaryEntriesRemoved = default(int), DateTimeOffset periodDiaryEntriesFrom = default(DateTimeOffset), DateTimeOffset periodDiaryEntriesTo = default(DateTimeOffset), List<Link> links = default(List<Link>))
         {
+            
             this.AsAt = asAt;
+            
             this.PeriodDiaryEntriesRemoved = periodDiaryEntriesRemoved;
+            
             this.PeriodDiaryEntriesFrom = periodDiaryEntriesFrom;
+            
             this.PeriodDiaryEntriesTo = periodDiaryEntriesTo;
             this.Href = href;
             this.EffectiveFrom = effectiveFrom;

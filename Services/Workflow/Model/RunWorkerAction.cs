@@ -64,6 +64,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="workerTimeout">Worker WorkerTimeout in seconds.</param>
         public RunWorkerAction(TypeEnum type = default(TypeEnum), ResourceId workerId = default(ResourceId), DateTimeOffset? workerAsAt = default(DateTimeOffset?), Dictionary<string, FieldMapping> workerParameters = default(Dictionary<string, FieldMapping>), WorkerStatusTriggers workerStatusTriggers = default(WorkerStatusTriggers), List<ResultantChildTaskConfiguration> childTaskConfigurations = default(List<ResultantChildTaskConfiguration>), int? workerTimeout = default(int?))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for RunWorkerAction and must be a defined value");
+            }
+            
             this.Type = type;
             // to ensure "workerId" is required (not null)
             if (workerId == null)

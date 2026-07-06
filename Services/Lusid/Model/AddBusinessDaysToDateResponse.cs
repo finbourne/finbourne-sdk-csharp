@@ -38,6 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="value">value (required).</param>
         public AddBusinessDaysToDateResponse(DateTimeOffset value = default(DateTimeOffset))
         {
+            
             this.Value = value;
         }
 

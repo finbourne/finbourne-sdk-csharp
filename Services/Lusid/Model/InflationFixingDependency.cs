@@ -55,7 +55,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("code is a required property for InflationFixingDependency and cannot be null");
             }
             this.Code = code;
+            
             this.Date = date;
+            
+            // to ensure "dependencyType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DependencyTypeEnum), dependencyType))
+            {
+                throw new ArgumentException("dependencyType is a required property for InflationFixingDependency and must be a defined value");
+            }
+            
             this.DependencyType = dependencyType;
         }
 

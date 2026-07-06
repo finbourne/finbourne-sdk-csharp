@@ -77,6 +77,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("strikeCurrency is a required property for OptionExercisePhysicalEvent and cannot be null");
             }
             this.StrikeCurrency = strikeCurrency;
+            
             this.StrikePerUnit = strikePerUnit;
             // to ensure "unitsRatio" is required (not null)
             if (unitsRatio == null)
@@ -84,6 +85,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("unitsRatio is a required property for OptionExercisePhysicalEvent and cannot be null");
             }
             this.UnitsRatio = unitsRatio;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for OptionExercisePhysicalEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.ExerciseDate = exerciseDate;
             this.DeliveryDate = deliveryDate;

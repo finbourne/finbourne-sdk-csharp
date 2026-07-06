@@ -59,6 +59,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="url">The URL to check, eg: https://www.google.com/ (required).</param>
         public HealthCheck(TypeEnum type = default(TypeEnum), string url = default(string))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for HealthCheck and must be a defined value");
+            }
+            
             this.Type = type;
             // to ensure "url" is required (not null)
             if (url == null)

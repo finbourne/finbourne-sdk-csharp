@@ -77,6 +77,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("lusidInstrumentId is a required property for Block and cannot be null");
             }
             this.LusidInstrumentId = lusidInstrumentId;
+            
             this.Quantity = quantity;
             // to ensure "side" is required (not null)
             if (side == null)
@@ -84,7 +85,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("side is a required property for Block and cannot be null");
             }
             this.Side = side;
+            
             this.CreatedDate = createdDate;
+            
             this.IsSwept = isSwept;
             this.Properties = properties;
             this.Type = type;

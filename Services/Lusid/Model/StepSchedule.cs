@@ -61,6 +61,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("steps is a required property for StepSchedule and cannot be null");
             }
             this.Steps = steps;
+            
+            // to ensure "scheduleType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ScheduleTypeEnum), scheduleType))
+            {
+                throw new ArgumentException("scheduleType is a required property for StepSchedule and must be a defined value");
+            }
+            
             this.ScheduleType = scheduleType;
         }
 

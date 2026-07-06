@@ -64,6 +64,13 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="content">The content of the request.</param>
         public WebhookNotificationType(TypeEnum type = default(TypeEnum), string httpMethod = default(string), string url = default(string), string authenticationType = default(string), Dictionary<string, string> authenticationConfigurationItemPaths = default(Dictionary<string, string>), string contentType = default(string), Object content = default(Object))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for WebhookNotificationType and must be a defined value");
+            }
+            
             this.Type = type;
             // to ensure "httpMethod" is required (not null)
             if (httpMethod == null)
@@ -269,7 +276,7 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         {
             // Url (string) pattern
             Regex regexUrl = new Regex(@"^([A-Za-z0-9-._~:\/?#[\]@!$&'()*+,;%=]|(\{\{([a-zA-Z0-9\s.])*\}\}))*$", RegexOptions.CultureInvariant);
-            if (false == regexUrl.Match(this.Url).Success)
+            if (this.Url != null && false == regexUrl.Match(this.Url).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Url, must match a pattern of " + regexUrl, new [] { "Url" });
             }

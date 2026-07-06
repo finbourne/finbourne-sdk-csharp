@@ -43,6 +43,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="duplicateFile">duplicateFile.</param>
         public TpfRetrySftpResponse(bool success = default(bool), string message = default(string), long? newFileDeliveryId = default(long?), DateTimeOffset? retriedAt = default(DateTimeOffset?), TpfFileDeliveryInfo originalFile = default(TpfFileDeliveryInfo), TpfFileDeliveryInfo duplicateFile = default(TpfFileDeliveryInfo))
         {
+            
             this.Success = success;
             // to ensure "message" is required (not null)
             if (message == null)

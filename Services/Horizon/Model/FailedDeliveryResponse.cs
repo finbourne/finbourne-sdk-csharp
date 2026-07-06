@@ -53,8 +53,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("batchReferenceId is a required property for FailedDeliveryResponse and cannot be null");
             }
             this.BatchReferenceId = batchReferenceId;
+            
             this.RunId = runId;
+            
             this.RunStartTime = runStartTime;
+            
             this.FailedCount = failedCount;
             // to ensure "failureReason" is required (not null)
             if (failureReason == null)
@@ -62,8 +65,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("failureReason is a required property for FailedDeliveryResponse and cannot be null");
             }
             this.FailureReason = failureReason;
+            
             this.LastAttemptAt = lastAttemptAt;
+            
             this.AttemptCount = attemptCount;
+            
             this.Resolved = resolved;
             this.ResolvedAt = resolvedAt;
             this.ResolutionReason = resolutionReason;

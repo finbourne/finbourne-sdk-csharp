@@ -49,7 +49,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("valuationPointCode is a required property for PreviousValuationPoint and cannot be null");
             }
             this.ValuationPointCode = valuationPointCode;
+            
             this.EffectiveAt = effectiveAt;
+            
             this.QueryAsAt = queryAsAt;
             this.Name = name;
             this.HoldingsAsAt = holdingsAsAt;

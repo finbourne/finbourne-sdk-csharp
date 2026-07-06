@@ -60,8 +60,17 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="type">The type of Time of Day (required).</param>
         public SpecifiedTime(int hours = default(int), int minutes = default(int), TypeEnum type = default(TypeEnum))
         {
+            
             this.Hours = hours;
+            
             this.Minutes = minutes;
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for SpecifiedTime and must be a defined value");
+            }
+            
             this.Type = type;
         }
 

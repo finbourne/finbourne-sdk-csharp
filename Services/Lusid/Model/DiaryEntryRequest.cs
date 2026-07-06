@@ -49,6 +49,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("diaryEntryCode is a required property for DiaryEntryRequest and cannot be null");
             }
             this.DiaryEntryCode = diaryEntryCode;
+            
             this.EffectiveAt = effectiveAt;
             this.Name = name;
             this.Status = status;
@@ -226,14 +227,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // DiaryEntryCode (string) pattern
             Regex regexDiaryEntryCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexDiaryEntryCode.Match(this.DiaryEntryCode).Success)
+            if (this.DiaryEntryCode != null && false == regexDiaryEntryCode.Match(this.DiaryEntryCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DiaryEntryCode, must match a pattern of " + regexDiaryEntryCode, new [] { "DiaryEntryCode" });
             }
 
             // Name (string) pattern
             Regex regexName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexName.Match(this.Name).Success)
+            if (this.Name != null && false == regexName.Match(this.Name).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
             }

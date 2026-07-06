@@ -153,7 +153,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // VarTimeZone (string) pattern
             Regex regexVarTimeZone = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexVarTimeZone.Match(this.VarTimeZone).Success)
+            if (this.VarTimeZone != null && false == regexVarTimeZone.Match(this.VarTimeZone).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for VarTimeZone, must match a pattern of " + regexVarTimeZone, new [] { "VarTimeZone" });
             }

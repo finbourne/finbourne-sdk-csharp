@@ -45,6 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public DeletedEntityResponse(string href = default(string), DateTimeOffset? effectiveFrom = default(DateTimeOffset?), DateTimeOffset asAt = default(DateTimeOffset), string entityType = default(string), string entityUniqueId = default(string), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), Dictionary<string, List<ResponseMetaData>> metadata = default(Dictionary<string, List<ResponseMetaData>>), List<Link> links = default(List<Link>))
         {
+            
             this.AsAt = asAt;
             this.Href = href;
             this.EffectiveFrom = effectiveFrom;

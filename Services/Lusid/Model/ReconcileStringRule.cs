@@ -93,6 +93,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="ruleType">Available values: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact. (required) (default to RuleTypeEnum.ReconcileNumericRule).</param>
         public ReconcileStringRule(ComparisonTypeEnum comparisonType = default(ComparisonTypeEnum), Dictionary<string, List<string>> oneOfCandidates = default(Dictionary<string, List<string>>), AggregateSpec appliesTo = default(AggregateSpec), RuleTypeEnum ruleType = default(RuleTypeEnum)) : base()
         {
+            
+            // to ensure "comparisonType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ComparisonTypeEnum), comparisonType))
+            {
+                throw new ArgumentException("comparisonType is a required property for ReconcileStringRule and must be a defined value");
+            }
+            
             this.ComparisonType = comparisonType;
             // to ensure "appliesTo" is required (not null)
             if (appliesTo == null)
@@ -100,6 +107,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("appliesTo is a required property for ReconcileStringRule and cannot be null");
             }
             this.AppliesTo = appliesTo;
+            
+            // to ensure "ruleType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(RuleTypeEnum), ruleType))
+            {
+                throw new ArgumentException("ruleType is a required property for ReconcileStringRule and must be a defined value");
+            }
+            
             this.RuleType = ruleType;
             this.OneOfCandidates = oneOfCandidates;
         }

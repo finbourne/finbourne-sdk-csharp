@@ -45,6 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("calendarCode is a required property for FxTenorConvention and cannot be null");
             }
             this.CalendarCode = calendarCode;
+            
             this.SpotDays = spotDays;
         }
 

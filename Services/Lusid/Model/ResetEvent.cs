@@ -50,7 +50,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("resetType is a required property for ResetEvent and cannot be null");
             }
             this.ResetType = resetType;
+            
             this.FixingDate = fixingDate;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for ResetEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.Value = value;
             this.FixingSource = fixingSource;

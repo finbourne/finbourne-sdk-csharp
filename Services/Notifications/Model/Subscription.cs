@@ -72,6 +72,7 @@ namespace Finbourne.Sdk.Services.Notifications.Model
                 throw new ArgumentNullException("matchingPattern is a required property for Subscription and cannot be null");
             }
             this.MatchingPattern = matchingPattern;
+            
             this.CreatedAt = createdAt;
             // to ensure "userIdCreated" is required (not null)
             if (userIdCreated == null)
@@ -79,6 +80,7 @@ namespace Finbourne.Sdk.Services.Notifications.Model
                 throw new ArgumentNullException("userIdCreated is a required property for Subscription and cannot be null");
             }
             this.UserIdCreated = userIdCreated;
+            
             this.ModifiedAt = modifiedAt;
             // to ensure "userIdModified" is required (not null)
             if (userIdModified == null)

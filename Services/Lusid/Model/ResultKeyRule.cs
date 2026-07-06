@@ -74,6 +74,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="resultKeyRuleType">Available values: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule. (required).</param>
         public ResultKeyRule(ResultKeyRuleTypeEnum resultKeyRuleType = default(ResultKeyRuleTypeEnum))
         {
+            
+            // to ensure "resultKeyRuleType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ResultKeyRuleTypeEnum), resultKeyRuleType))
+            {
+                throw new ArgumentException("resultKeyRuleType is a required property for ResultKeyRule and must be a defined value");
+            }
+            
             this.ResultKeyRuleType = resultKeyRuleType;
         }
 

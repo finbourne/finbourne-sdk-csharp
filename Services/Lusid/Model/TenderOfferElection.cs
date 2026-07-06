@@ -48,6 +48,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("tenderOfferCurrency is a required property for TenderOfferElection and cannot be null");
             }
             this.TenderOfferCurrency = tenderOfferCurrency;
+            
             this.TenderOfferPrice = tenderOfferPrice;
             // to ensure "electionKey" is required (not null)
             if (electionKey == null)

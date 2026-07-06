@@ -48,6 +48,7 @@ namespace Finbourne.Sdk.Services.Configuration.Model
         /// <param name="links">links.</param>
         public ConfigurationItem(DateTimeOffset createdAt = default(DateTimeOffset), string createdBy = default(string), DateTimeOffset lastModifiedAt = default(DateTimeOffset), string lastModifiedBy = default(string), string description = default(string), string key = default(string), string value = default(string), string valueType = default(string), bool isSecret = default(bool), bool blockReveal = default(bool), List<Link> links = default(List<Link>))
         {
+            
             this.CreatedAt = createdAt;
             // to ensure "createdBy" is required (not null)
             if (createdBy == null)
@@ -55,6 +56,7 @@ namespace Finbourne.Sdk.Services.Configuration.Model
                 throw new ArgumentNullException("createdBy is a required property for ConfigurationItem and cannot be null");
             }
             this.CreatedBy = createdBy;
+            
             this.LastModifiedAt = lastModifiedAt;
             // to ensure "lastModifiedBy" is required (not null)
             if (lastModifiedBy == null)
@@ -80,7 +82,9 @@ namespace Finbourne.Sdk.Services.Configuration.Model
                 throw new ArgumentNullException("valueType is a required property for ConfigurationItem and cannot be null");
             }
             this.ValueType = valueType;
+            
             this.IsSecret = isSecret;
+            
             this.BlockReveal = blockReveal;
             this.Description = description;
             this.Links = links;

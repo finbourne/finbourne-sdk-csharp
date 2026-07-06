@@ -50,7 +50,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("currency is a required property for CapletFloorletCashFlowEvent and cannot be null");
             }
             this.Currency = currency;
+            
             this.CashFlowPerUnit = cashFlowPerUnit;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for CapletFloorletCashFlowEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.EntitlementDate = entitlementDate;
             this.PaymentDate = paymentDate;

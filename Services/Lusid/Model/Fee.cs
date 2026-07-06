@@ -95,6 +95,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("businessDayConvention is a required property for Fee and cannot be null");
             }
             this.BusinessDayConvention = businessDayConvention;
+            
             this.StartDate = startDate;
             this.Href = href;
             this.FeeCode = feeCode;
@@ -552,14 +553,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // FeeCode (string) pattern
             Regex regexFeeCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexFeeCode.Match(this.FeeCode).Success)
+            if (this.FeeCode != null && false == regexFeeCode.Match(this.FeeCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FeeCode, must match a pattern of " + regexFeeCode, new [] { "FeeCode" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }

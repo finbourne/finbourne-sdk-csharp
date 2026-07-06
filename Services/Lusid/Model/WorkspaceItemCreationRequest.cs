@@ -43,6 +43,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="type">The type of the workspace item. (required).</param>
         public WorkspaceItemCreationRequest(int format = default(int), string name = default(string), string group = default(string), string description = default(string), Object content = default(Object), string type = default(string))
         {
+            
             this.Format = format;
             // to ensure "name" is required (not null)
             if (name == null)
@@ -241,28 +242,28 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // Name (string) pattern
             Regex regexName = new Regex(@"^[^/]+$", RegexOptions.CultureInvariant);
-            if (false == regexName.Match(this.Name).Success)
+            if (this.Name != null && false == regexName.Match(this.Name).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
             }
 
             // Group (string) pattern
             Regex regexGroup = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexGroup.Match(this.Group).Success)
+            if (this.Group != null && false == regexGroup.Match(this.Group).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Group, must match a pattern of " + regexGroup, new [] { "Group" });
             }
 
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDescription.Match(this.Description).Success)
+            if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
             // Type (string) pattern
             Regex regexType = new Regex(@"^(luminesce-saved-query|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$", RegexOptions.CultureInvariant);
-            if (false == regexType.Match(this.Type).Success)
+            if (this.Type != null && false == regexType.Match(this.Type).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Type, must match a pattern of " + regexType, new [] { "Type" });
             }

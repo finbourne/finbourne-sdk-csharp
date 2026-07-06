@@ -55,6 +55,7 @@ namespace Finbourne.Sdk.Services.Configuration.Model
                 throw new ArgumentNullException("value is a required property for CreateConfigurationItem and cannot be null");
             }
             this.Value = value;
+            
             this.IsSecret = isSecret;
             this.ValueType = valueType;
             this.Description = description;
@@ -222,14 +223,14 @@ namespace Finbourne.Sdk.Services.Configuration.Model
         {
             // Key (string) pattern
             Regex regexKey = new Regex(@"^[^_][a-zA-Z0-9\-_]*$", RegexOptions.CultureInvariant);
-            if (false == regexKey.Match(this.Key).Success)
+            if (this.Key != null && false == regexKey.Match(this.Key).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Key, must match a pattern of " + regexKey, new [] { "Key" });
             }
 
             // Value (string) pattern
             Regex regexValue = new Regex(@"(?s).*", RegexOptions.CultureInvariant);
-            if (false == regexValue.Match(this.Value).Success)
+            if (this.Value != null && false == regexValue.Match(this.Value).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Value, must match a pattern of " + regexValue, new [] { "Value" });
             }

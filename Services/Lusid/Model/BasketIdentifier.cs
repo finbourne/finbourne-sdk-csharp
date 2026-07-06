@@ -59,6 +59,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("region is a required property for BasketIdentifier and cannot be null");
             }
             this.Region = region;
+            
             this.SeriesId = seriesId;
         }
 

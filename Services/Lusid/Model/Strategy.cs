@@ -52,6 +52,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("valueType is a required property for Strategy and cannot be null");
             }
             this.ValueType = valueType;
+            
             this.Value = value;
         }
 

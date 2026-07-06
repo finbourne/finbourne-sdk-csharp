@@ -201,14 +201,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // EntityType (string) pattern
             Regex regexEntityType = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
-            if (false == regexEntityType.Match(this.EntityType).Success)
+            if (this.EntityType != null && false == regexEntityType.Match(this.EntityType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EntityType, must match a pattern of " + regexEntityType, new [] { "EntityType" });
             }
 
             // EntityUniqueId (string) pattern
             Regex regexEntityUniqueId = new Regex(@"^[a-zA-Z0-9\-]+$", RegexOptions.CultureInvariant);
-            if (false == regexEntityUniqueId.Match(this.EntityUniqueId).Success)
+            if (this.EntityUniqueId != null && false == regexEntityUniqueId.Match(this.EntityUniqueId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EntityUniqueId, must match a pattern of " + regexEntityUniqueId, new [] { "EntityUniqueId" });
             }

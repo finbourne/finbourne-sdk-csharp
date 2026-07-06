@@ -153,7 +153,7 @@ namespace Finbourne.Sdk.Services.Access.Model
         {
             // UserId (string) pattern
             Regex regexUserId = new Regex(@"^(?=.*[a-zA-Z])[\w][\w +-]{2,100}$", RegexOptions.CultureInvariant);
-            if (false == regexUserId.Match(this.UserId).Success)
+            if (this.UserId != null && false == regexUserId.Match(this.UserId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for UserId, must match a pattern of " + regexUserId, new [] { "UserId" });
             }

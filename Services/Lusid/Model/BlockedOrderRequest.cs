@@ -48,6 +48,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="side">The client&#39;s representation of the order&#39;s side (buy, sell, short, etc).</param>
         public BlockedOrderRequest(Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), decimal quantity = default(decimal), ResourceId orderBookId = default(ResourceId), ResourceId portfolioId = default(ResourceId), ResourceId id = default(ResourceId), string state = default(string), DateTimeOffset date = default(DateTimeOffset), CurrencyAndAmount price = default(CurrencyAndAmount), ResourceId orderInstruction = default(ResourceId), ResourceId package = default(ResourceId), string side = default(string))
         {
+            
             this.Quantity = quantity;
             // to ensure "id" is required (not null)
             if (id == null)

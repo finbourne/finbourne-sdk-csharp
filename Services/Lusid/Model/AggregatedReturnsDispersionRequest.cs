@@ -211,7 +211,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // ToEffectiveAt (DateTimeOrCutLabel) pattern
             Regex regexToEffectiveAt = new Regex(@"^[a-zA-Z0-9\-_\+:\.]+$", RegexOptions.CultureInvariant);
-            if (false == regexToEffectiveAt.Match(this.ToEffectiveAt).Success)
+            if (this.ToEffectiveAt != null && false == regexToEffectiveAt.Match(this.ToEffectiveAt).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ToEffectiveAt, must match a pattern of " + regexToEffectiveAt, new [] { "ToEffectiveAt" });
             }

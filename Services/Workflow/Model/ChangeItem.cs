@@ -45,6 +45,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="newValue">The value of the attribute following the change (required).</param>
         public ChangeItem(DateTimeOffset asAtModified = default(DateTimeOffset), string userIdModified = default(string), string requestIdModified = default(string), int asAtVersionNumber = default(int), string action = default(string), string attributeName = default(string), Object previousValue = default(Object), Object newValue = default(Object))
         {
+            
             this.AsAtModified = asAtModified;
             // to ensure "userIdModified" is required (not null)
             if (userIdModified == null)
@@ -58,6 +59,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("requestIdModified is a required property for ChangeItem and cannot be null");
             }
             this.RequestIdModified = requestIdModified;
+            
             this.AsAtVersionNumber = asAtVersionNumber;
             // to ensure "action" is required (not null)
             if (action == null)

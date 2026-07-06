@@ -40,6 +40,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="dependencyType">Available values: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency. (required) (default to DependencyTypeEnum.OpaqueDependency).</param>
         public OpaqueDependency(DependencyTypeEnum dependencyType = default(DependencyTypeEnum)) : base()
         {
+            
+            // to ensure "dependencyType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DependencyTypeEnum), dependencyType))
+            {
+                throw new ArgumentException("dependencyType is a required property for OpaqueDependency and must be a defined value");
+            }
+            
             this.DependencyType = dependencyType;
         }
 

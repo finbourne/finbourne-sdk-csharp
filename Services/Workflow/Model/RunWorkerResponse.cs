@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="statusDetail">Detail on the final status.</param>
         public RunWorkerResponse(Guid runId = default(Guid), string statusDetail = default(string))
         {
+            
             this.RunId = runId;
             this.StatusDetail = statusDetail;
         }

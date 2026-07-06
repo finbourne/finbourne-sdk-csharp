@@ -54,6 +54,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("limitCheckParameters is a required property for GroupFilterStep and cannot be null");
             }
             this.LimitCheckParameters = limitCheckParameters;
+            
+            // to ensure "complianceStepType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ComplianceStepTypeEnum), complianceStepType))
+            {
+                throw new ArgumentException("complianceStepType is a required property for GroupFilterStep and must be a defined value");
+            }
+            
             this.ComplianceStepType = complianceStepType;
         }
 

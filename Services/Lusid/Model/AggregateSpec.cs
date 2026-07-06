@@ -144,6 +144,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("key is a required property for AggregateSpec and cannot be null");
             }
             this.Key = key;
+            
+            // to ensure "op" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(OpEnum), op))
+            {
+                throw new ArgumentException("op is a required property for AggregateSpec and must be a defined value");
+            }
+            
             this.Op = op;
             this.Options = options;
         }

@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="untilDate">untilDate.</param>
         public DateRange(DateTimeOffset fromDate = default(DateTimeOffset), DateTimeOffset? untilDate = default(DateTimeOffset?))
         {
+            
             this.FromDate = fromDate;
             this.UntilDate = untilDate;
         }

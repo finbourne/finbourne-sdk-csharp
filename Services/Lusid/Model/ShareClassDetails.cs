@@ -192,21 +192,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // LusidInstrumentId (string) pattern
             Regex regexLusidInstrumentId = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLusidInstrumentId.Match(this.LusidInstrumentId).Success)
+            if (this.LusidInstrumentId != null && false == regexLusidInstrumentId.Match(this.LusidInstrumentId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LusidInstrumentId, must match a pattern of " + regexLusidInstrumentId, new [] { "LusidInstrumentId" });
             }
 
             // InstrumentScope (string) pattern
             Regex regexInstrumentScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexInstrumentScope.Match(this.InstrumentScope).Success)
+            if (this.InstrumentScope != null && false == regexInstrumentScope.Match(this.InstrumentScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InstrumentScope, must match a pattern of " + regexInstrumentScope, new [] { "InstrumentScope" });
             }
 
             // ShortCode (string) pattern
             Regex regexShortCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexShortCode.Match(this.ShortCode).Success)
+            if (this.ShortCode != null && false == regexShortCode.Match(this.ShortCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ShortCode, must match a pattern of " + regexShortCode, new [] { "ShortCode" });
             }

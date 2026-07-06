@@ -178,21 +178,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // RuleId (string) pattern
             Regex regexRuleId = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexRuleId.Match(this.RuleId).Success)
+            if (this.RuleId != null && false == regexRuleId.Match(this.RuleId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RuleId, must match a pattern of " + regexRuleId, new [] { "RuleId" });
             }
 
             // GeneralLedgerAccountCode (string) pattern
             Regex regexGeneralLedgerAccountCode = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexGeneralLedgerAccountCode.Match(this.GeneralLedgerAccountCode).Success)
+            if (this.GeneralLedgerAccountCode != null && false == regexGeneralLedgerAccountCode.Match(this.GeneralLedgerAccountCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for GeneralLedgerAccountCode, must match a pattern of " + regexGeneralLedgerAccountCode, new [] { "GeneralLedgerAccountCode" });
             }
 
             // RuleFilter (string) pattern
             Regex regexRuleFilter = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexRuleFilter.Match(this.RuleFilter).Success)
+            if (this.RuleFilter != null && false == regexRuleFilter.Match(this.RuleFilter).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RuleFilter, must match a pattern of " + regexRuleFilter, new [] { "RuleFilter" });
             }

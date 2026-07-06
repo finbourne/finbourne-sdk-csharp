@@ -53,6 +53,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
                 throw new ArgumentNullException("displayName is a required property for ApiKey and cannot be null");
             }
             this.DisplayName = displayName;
+            
             this.CreatedDate = createdDate;
             this.DeactivationDate = deactivationDate;
         }
@@ -192,14 +193,14 @@ namespace Finbourne.Sdk.Services.Identity.Model
         {
             // Id (string) pattern
             Regex regexId = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexId.Match(this.Id).Success)
+            if (this.Id != null && false == regexId.Match(this.Id).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
             }
 
             // DisplayName (string) pattern
             Regex regexDisplayName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexDisplayName.Match(this.DisplayName).Success)
+            if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
             }

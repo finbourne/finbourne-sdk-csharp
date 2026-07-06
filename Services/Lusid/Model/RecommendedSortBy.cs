@@ -149,7 +149,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // AttributeName (string) pattern
             Regex regexAttributeName = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexAttributeName.Match(this.AttributeName).Success)
+            if (this.AttributeName != null && false == regexAttributeName.Match(this.AttributeName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AttributeName, must match a pattern of " + regexAttributeName, new [] { "AttributeName" });
             }

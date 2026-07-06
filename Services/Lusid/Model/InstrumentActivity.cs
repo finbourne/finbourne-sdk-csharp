@@ -43,6 +43,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="navActivityAdjustmentType">The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity. (required) (default to NavActivityAdjustmentTypeEnum.PortfolioTransaction).</param>
         public InstrumentActivity(DateTimeOffset asAt = default(DateTimeOffset), string scope = default(string), string lusidInstrumentId = default(string), NavActivityAdjustmentTypeEnum navActivityAdjustmentType = default(NavActivityAdjustmentTypeEnum)) : base()
         {
+            
             this.AsAt = asAt;
             // to ensure "scope" is required (not null)
             if (scope == null)
@@ -56,6 +57,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("lusidInstrumentId is a required property for InstrumentActivity and cannot be null");
             }
             this.LusidInstrumentId = lusidInstrumentId;
+            
+            // to ensure "navActivityAdjustmentType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(NavActivityAdjustmentTypeEnum), navActivityAdjustmentType))
+            {
+                throw new ArgumentException("navActivityAdjustmentType is a required property for InstrumentActivity and must be a defined value");
+            }
+            
             this.NavActivityAdjustmentType = navActivityAdjustmentType;
         }
 
@@ -198,14 +206,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             // Scope (string) pattern
             Regex regexScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexScope.Match(this.Scope).Success)
+            if (this.Scope != null && false == regexScope.Match(this.Scope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Scope, must match a pattern of " + regexScope, new [] { "Scope" });
             }
 
             // LusidInstrumentId (string) pattern
             Regex regexLusidInstrumentId = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexLusidInstrumentId.Match(this.LusidInstrumentId).Success)
+            if (this.LusidInstrumentId != null && false == regexLusidInstrumentId.Match(this.LusidInstrumentId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LusidInstrumentId, must match a pattern of " + regexLusidInstrumentId, new [] { "LusidInstrumentId" });
             }

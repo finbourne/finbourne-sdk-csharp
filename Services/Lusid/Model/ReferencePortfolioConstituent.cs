@@ -56,6 +56,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("currency is a required property for ReferencePortfolioConstituent and cannot be null");
             }
             this.Currency = currency;
+            
             this.Weight = weight;
             this.InstrumentIdentifiers = instrumentIdentifiers;
             this.Properties = properties;

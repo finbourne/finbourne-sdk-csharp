@@ -53,7 +53,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("dateIdentifier is a required property for CalendarDate and cannot be null");
             }
             this.DateIdentifier = dateIdentifier;
+            
             this.FromUtc = fromUtc;
+            
             this.ToUtc = toUtc;
             // to ensure "localDate" is required (not null)
             if (localDate == null)

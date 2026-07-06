@@ -46,6 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="variationMarginPortfolioCcy">The variation margin in portfolio currency of the tax-lot&#39;s opening transaction..</param>
         public TargetTaxLot(decimal units = default(decimal), CurrencyAndAmount cost = default(CurrencyAndAmount), decimal? portfolioCost = default(decimal?), decimal? price = default(decimal?), DateTimeOffset? purchaseDate = default(DateTimeOffset?), DateTimeOffset? settlementDate = default(DateTimeOffset?), decimal? notionalCost = default(decimal?), decimal? variationMargin = default(decimal?), decimal? variationMarginPortfolioCcy = default(decimal?))
         {
+            
             this.Units = units;
             this.Cost = cost;
             this.PortfolioCost = portfolioCost;

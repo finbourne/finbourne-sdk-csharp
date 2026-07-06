@@ -43,6 +43,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="marketDataOptionsType">Available values: CurveOptions. Available values: CurveOptions. (required) (default to MarketDataOptionsTypeEnum.CurveOptions).</param>
         public CurveOptions(string dayCountConvention = default(string), string frontExtrapolationType = default(string), string backExtrapolationType = default(string), MarketDataOptionsTypeEnum marketDataOptionsType = default(MarketDataOptionsTypeEnum)) : base()
         {
+            
+            // to ensure "marketDataOptionsType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(MarketDataOptionsTypeEnum), marketDataOptionsType))
+            {
+                throw new ArgumentException("marketDataOptionsType is a required property for CurveOptions and must be a defined value");
+            }
+            
             this.MarketDataOptionsType = marketDataOptionsType;
             this.DayCountConvention = dayCountConvention;
             this.FrontExtrapolationType = frontExtrapolationType;

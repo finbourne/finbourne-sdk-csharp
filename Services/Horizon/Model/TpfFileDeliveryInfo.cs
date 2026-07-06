@@ -43,6 +43,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="generatedAt">Timestamp when the file was originally generated (required).</param>
         public TpfFileDeliveryInfo(long id = default(long), string fileName = default(string), string fileHash = default(string), string destinationPath = default(string), string status = default(string), DateTimeOffset generatedAt = default(DateTimeOffset))
         {
+            
             this.Id = id;
             // to ensure "fileName" is required (not null)
             if (fileName == null)
@@ -68,6 +69,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("status is a required property for TpfFileDeliveryInfo and cannot be null");
             }
             this.Status = status;
+            
             this.GeneratedAt = generatedAt;
         }
 

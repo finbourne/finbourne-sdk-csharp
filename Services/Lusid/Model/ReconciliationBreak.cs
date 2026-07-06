@@ -59,8 +59,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("subHoldingKeys is a required property for ReconciliationBreak and cannot be null");
             }
             this.SubHoldingKeys = subHoldingKeys;
+            
             this.LeftUnits = leftUnits;
+            
             this.RightUnits = rightUnits;
+            
             this.DifferenceUnits = differenceUnits;
             // to ensure "leftCost" is required (not null)
             if (leftCost == null)

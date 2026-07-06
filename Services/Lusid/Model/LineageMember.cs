@@ -42,6 +42,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="information">Optional. Information for the step corresponding to this lineage member, of type InfoType.</param>
         public LineageMember(int index = default(int), string label = default(string), string subLabel = default(string), string infoType = default(string), string information = default(string))
         {
+            
             this.Index = index;
             // to ensure "label" is required (not null)
             if (label == null)

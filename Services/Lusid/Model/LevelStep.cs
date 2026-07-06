@@ -39,7 +39,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="quantity">The quantity which is applied. This might be an absolute, percentage, fractional or other value. (required).</param>
         public LevelStep(DateTimeOffset date = default(DateTimeOffset), decimal quantity = default(decimal))
         {
+            
             this.Date = date;
+            
             this.Quantity = quantity;
         }
 

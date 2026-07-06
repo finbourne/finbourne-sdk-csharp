@@ -52,6 +52,13 @@ namespace Finbourne.Sdk.Services.Access.Model
                 throw new ArgumentNullException("headerName is a required property for IfRequestHeaderExpression and cannot be null");
             }
             this.HeaderName = headerName;
+            
+            // to ensure "varOperator" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TextOperator), varOperator))
+            {
+                throw new ArgumentException("varOperator is a required property for IfRequestHeaderExpression and must be a defined value");
+            }
+            
             this.Operator = varOperator;
             this.Value = value;
         }

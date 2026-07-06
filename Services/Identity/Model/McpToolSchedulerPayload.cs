@@ -213,21 +213,21 @@ namespace Finbourne.Sdk.Services.Identity.Model
         {
             // JobScope (string) pattern
             Regex regexJobScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexJobScope.Match(this.JobScope).Success)
+            if (this.JobScope != null && false == regexJobScope.Match(this.JobScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for JobScope, must match a pattern of " + regexJobScope, new [] { "JobScope" });
             }
 
             // JobCode (string) pattern
             Regex regexJobCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexJobCode.Match(this.JobCode).Success)
+            if (this.JobCode != null && false == regexJobCode.Match(this.JobCode).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for JobCode, must match a pattern of " + regexJobCode, new [] { "JobCode" });
             }
 
             // RunAs (string) pattern
             Regex regexRunAs = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexRunAs.Match(this.RunAs).Success)
+            if (this.RunAs != null && false == regexRunAs.Match(this.RunAs).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RunAs, must match a pattern of " + regexRunAs, new [] { "RunAs" });
             }

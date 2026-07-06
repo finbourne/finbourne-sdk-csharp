@@ -145,5 +145,20 @@ namespace Finbourne.Sdk.Client
         /// Gets the number of retries when being rate limited
         /// </summary>
         int RateLimitRetries { get; }
+
+        /// <summary>
+        /// Gets the number of transport/5xx retries, or null to use the SDK default
+        /// </summary>
+        int? NumberOfRetries { get; }
+
+        /// <summary>
+        /// Gets the fixed backoff in milliseconds between retries, or null for exponential backoff
+        /// </summary>
+        int? RetryBackoffMs { get; }
+
+        /// <summary>
+        /// Gets the custom retry policies applied to requests, or null to use the SDK default retry policy
+        /// </summary>
+        RetryConfiguration? RetryConfiguration { get; }
     }
 }

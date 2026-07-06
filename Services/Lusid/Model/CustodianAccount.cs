@@ -311,7 +311,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // AccountType (string) pattern
             Regex regexAccountType = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
-            if (false == regexAccountType.Match(this.AccountType).Success)
+            if (this.AccountType != null && false == regexAccountType.Match(this.AccountType).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccountType, must match a pattern of " + regexAccountType, new [] { "AccountType" });
             }

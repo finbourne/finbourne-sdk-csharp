@@ -104,6 +104,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="complianceStepType">The type of the compliance step. Available values: FilterStep, GroupByStep, GroupFilterStep, BranchStep, RecombineStep, CheckStep, PercentCheckStep. (required).</param>
         public ComplianceStep(ComplianceStepTypeEnum complianceStepType = default(ComplianceStepTypeEnum))
         {
+            
+            // to ensure "complianceStepType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ComplianceStepTypeEnum), complianceStepType))
+            {
+                throw new ArgumentException("complianceStepType is a required property for ComplianceStep and must be a defined value");
+            }
+            
             this.ComplianceStepType = complianceStepType;
         }
 

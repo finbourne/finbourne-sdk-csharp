@@ -49,7 +49,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("rolloverConstituents is a required property for LoanFacilityContractRolloverEvent and cannot be null");
             }
             this.RolloverConstituents = rolloverConstituents;
+            
             this.WithInterest = withInterest;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for LoanFacilityContractRolloverEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.Date = date;
         }

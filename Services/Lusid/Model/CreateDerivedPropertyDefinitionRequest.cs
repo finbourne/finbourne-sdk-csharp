@@ -583,6 +583,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="customEntityType">The custom entity type that this derived property definition can be applied to..</param>
         public CreateDerivedPropertyDefinitionRequest(DomainEnum domain = default(DomainEnum), string scope = default(string), string code = default(string), string displayName = default(string), ResourceId dataTypeId = default(ResourceId), string propertyDescription = default(string), string derivationFormula = default(string), bool isFilterable = default(bool), string valueFormat = default(string), string customEntityType = default(string))
         {
+            
+            // to ensure "domain" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(DomainEnum), domain))
+            {
+                throw new ArgumentException("domain is a required property for CreateDerivedPropertyDefinitionRequest and must be a defined value");
+            }
+            
             this.Domain = domain;
             // to ensure "scope" is required (not null)
             if (scope == null)
@@ -614,6 +621,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("derivationFormula is a required property for CreateDerivedPropertyDefinitionRequest and cannot be null");
             }
             this.DerivationFormula = derivationFormula;
+            
             this.IsFilterable = isFilterable;
             this.PropertyDescription = propertyDescription;
             this.ValueFormat = valueFormat;

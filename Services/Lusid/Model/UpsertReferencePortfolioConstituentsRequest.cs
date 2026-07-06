@@ -124,6 +124,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("effectiveFrom is a required property for UpsertReferencePortfolioConstituentsRequest and cannot be null");
             }
             this.EffectiveFrom = effectiveFrom;
+            
+            // to ensure "weightType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(WeightTypeEnum), weightType))
+            {
+                throw new ArgumentException("weightType is a required property for UpsertReferencePortfolioConstituentsRequest and must be a defined value");
+            }
+            
             this.WeightType = weightType;
             // to ensure "constituents" is required (not null)
             if (constituents == null)

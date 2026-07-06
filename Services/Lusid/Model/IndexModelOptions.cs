@@ -74,7 +74,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
         public IndexModelOptions(PortfolioScalingEnum portfolioScaling = default(PortfolioScalingEnum), ResourceId lookthroughPortfolioRelationshipId = default(ResourceId), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
         {
+            
+            // to ensure "portfolioScaling" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(PortfolioScalingEnum), portfolioScaling))
+            {
+                throw new ArgumentException("portfolioScaling is a required property for IndexModelOptions and must be a defined value");
+            }
+            
             this.PortfolioScaling = portfolioScaling;
+            
+            // to ensure "modelOptionsType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(ModelOptionsTypeEnum), modelOptionsType))
+            {
+                throw new ArgumentException("modelOptionsType is a required property for IndexModelOptions and must be a defined value");
+            }
+            
             this.ModelOptionsType = modelOptionsType;
             this.LookthroughPortfolioRelationshipId = lookthroughPortfolioRelationshipId;
         }

@@ -101,7 +101,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("navTypeCode is a required property for FundBookmark and cannot be null");
             }
             this.NavTypeCode = navTypeCode;
+            
             this.AsAt = asAt;
+            
+            // to ensure "entryType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(EntryTypeEnum), entryType))
+            {
+                throw new ArgumentException("entryType is a required property for FundBookmark and must be a defined value");
+            }
+            
             this.EntryType = entryType;
             // to ensure "varVersion" is required (not null)
             if (varVersion == null)
@@ -109,6 +117,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("varVersion is a required property for FundBookmark and cannot be null");
             }
             this.VarVersion = varVersion;
+            
+            // to ensure "fundCalendarEntriesType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(FundCalendarEntriesTypeEnum), fundCalendarEntriesType))
+            {
+                throw new ArgumentException("fundCalendarEntriesType is a required property for FundBookmark and must be a defined value");
+            }
+            
             this.FundCalendarEntriesType = fundCalendarEntriesType;
             this.Description = description;
             this.TimelineId = timelineId;

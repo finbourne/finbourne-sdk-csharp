@@ -149,14 +149,14 @@ namespace Finbourne.Sdk.Services.Drive.Model
         {
             // WithPath (string) pattern
             Regex regexWithPath = new Regex(@"^[\/a-zA-Z0-9 \-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexWithPath.Match(this.WithPath).Success)
+            if (this.WithPath != null && false == regexWithPath.Match(this.WithPath).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for WithPath, must match a pattern of " + regexWithPath, new [] { "WithPath" });
             }
 
             // Name (string) pattern
             Regex regexName = new Regex(@"^[A-Za-z0-9_\-\.]+[A-Za-z0-9_\-\. ]*$", RegexOptions.CultureInvariant);
-            if (false == regexName.Match(this.Name).Success)
+            if (this.Name != null && false == regexName.Match(this.Name).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
             }

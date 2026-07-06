@@ -39,6 +39,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
         /// <param name="maxSessionLifetimeMinutes">Maximum minutes a user&#39;s session can live in total. Omit to disable session expiry; otherwise must be between 5 minutes and 24 hours (1440 minutes)..</param>
         public UpdateSessionPolicyRequest(long maxSessionIdleMinutes = default(long), long? maxSessionLifetimeMinutes = default(long?))
         {
+            
             this.MaxSessionIdleMinutes = maxSessionIdleMinutes;
             this.MaxSessionLifetimeMinutes = maxSessionLifetimeMinutes;
         }

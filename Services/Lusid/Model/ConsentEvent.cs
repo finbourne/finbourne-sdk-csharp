@@ -54,6 +54,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("consentType is a required property for ConsentEvent and cannot be null");
             }
             this.ConsentType = consentType;
+            
+            // to ensure "instrumentEventType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
+            {
+                throw new ArgumentException("instrumentEventType is a required property for ConsentEvent and must be a defined value");
+            }
+            
             this.InstrumentEventType = instrumentEventType;
             this.RecordDate = recordDate;
             this.ResponseDeadline = responseDeadline;

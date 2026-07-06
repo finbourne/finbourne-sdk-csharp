@@ -120,7 +120,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public GetReferencePortfolioConstituentsResponse(DateTimeOffset effectiveFrom = default(DateTimeOffset), WeightTypeEnum weightType = default(WeightTypeEnum), PeriodTypeEnum ?periodType = default(PeriodTypeEnum?), int? periodCount = default(int?), List<ReferencePortfolioConstituent> constituents = default(List<ReferencePortfolioConstituent>), string href = default(string), List<Link> links = default(List<Link>))
         {
+            
             this.EffectiveFrom = effectiveFrom;
+            
+            // to ensure "weightType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(WeightTypeEnum), weightType))
+            {
+                throw new ArgumentException("weightType is a required property for GetReferencePortfolioConstituentsResponse and must be a defined value");
+            }
+            
             this.WeightType = weightType;
             // to ensure "constituents" is required (not null)
             if (constituents == null)

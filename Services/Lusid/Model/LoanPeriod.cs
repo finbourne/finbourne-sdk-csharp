@@ -40,8 +40,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="interestAmount">interestAmount (required).</param>
         public LoanPeriod(DateTimeOffset paymentDate = default(DateTimeOffset), decimal notional = default(decimal), decimal interestAmount = default(decimal))
         {
+            
             this.PaymentDate = paymentDate;
+            
             this.Notional = notional;
+            
             this.InterestAmount = interestAmount;
         }
 

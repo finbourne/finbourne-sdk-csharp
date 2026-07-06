@@ -58,6 +58,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="type">The type of worker (required).</param>
         public SleepResponse(TypeEnum type = default(TypeEnum))
         {
+            
+            // to ensure "type" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
+            {
+                throw new ArgumentException("type is a required property for SleepResponse and must be a defined value");
+            }
+            
             this.Type = type;
         }
 

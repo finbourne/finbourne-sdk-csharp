@@ -60,6 +60,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
         /// <param name="links">links.</param>
         public AccessEvaluationLog(DateTimeOffset timestamp = default(DateTimeOffset), string application = default(string), string id = default(string), string requestId = default(string), string sessionId = default(string), string user = default(string), string userType = default(string), decimal duration = default(decimal), string result = default(string), string authoritativeRoleId = default(string), string authoritativePolicyId = default(string), string authoritativeSelector = default(string), string resourceType = default(string), string action = default(string), Dictionary<string, string> resource = default(Dictionary<string, string>), string resourceFromEffectiveDate = default(string), string resourceToEffectiveDate = default(string), string resourceFromAsAt = default(string), string resourceToAsAt = default(string), string accessExecutionTime = default(string), string accessAsAtTime = default(string), string requiredLicencePolicyId = default(string), List<Link> links = default(List<Link>))
         {
+            
             this.Timestamp = timestamp;
             // to ensure "application" is required (not null)
             if (application == null)
@@ -79,6 +80,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("user is a required property for AccessEvaluationLog and cannot be null");
             }
             this.User = user;
+            
             this.Duration = duration;
             this.RequestId = requestId;
             this.SessionId = sessionId;
@@ -555,7 +557,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
         {
             // RequiredLicencePolicyId (string) pattern
             Regex regexRequiredLicencePolicyId = new Regex(@"^[a-zA-Z0-9\-_:\+]+$", RegexOptions.CultureInvariant);
-            if (false == regexRequiredLicencePolicyId.Match(this.RequiredLicencePolicyId).Success)
+            if (this.RequiredLicencePolicyId != null && false == regexRequiredLicencePolicyId.Match(this.RequiredLicencePolicyId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RequiredLicencePolicyId, must match a pattern of " + regexRequiredLicencePolicyId, new [] { "RequiredLicencePolicyId" });
             }

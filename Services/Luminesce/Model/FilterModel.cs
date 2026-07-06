@@ -56,6 +56,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="dateTo">An upper bound date for the date filter type.</param>
         public FilterModel(FilterType filterType = default(FilterType), Type ?type = default(Type?), string filter = default(string), decimal? filterTo = default(decimal?), List<string> values = default(List<string>), string dateFrom = default(string), string dateTo = default(string))
         {
+            
+            // to ensure "filterType" is a defined enum value
+            if (!System.Enum.IsDefined(typeof(FilterType), filterType))
+            {
+                throw new ArgumentException("filterType is a required property for FilterModel and must be a defined value");
+            }
+            
             this.FilterType = filterType;
             this.Type = type;
             this.Filter = filter;

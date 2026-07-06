@@ -55,6 +55,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("seriesType is a required property for SeriesDefinition and cannot be null");
             }
             this.SeriesType = seriesType;
+            
             this.LaunchDate = launchDate;
             // to ensure "launchPriceType" is required (not null)
             if (launchPriceType == null)
@@ -241,7 +242,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             // SeriesIdentifier (string) pattern
             Regex regexSeriesIdentifier = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (false == regexSeriesIdentifier.Match(this.SeriesIdentifier).Success)
+            if (this.SeriesIdentifier != null && false == regexSeriesIdentifier.Match(this.SeriesIdentifier).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SeriesIdentifier, must match a pattern of " + regexSeriesIdentifier, new [] { "SeriesIdentifier" });
             }

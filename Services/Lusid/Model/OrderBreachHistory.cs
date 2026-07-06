@@ -60,6 +60,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("runId is a required property for OrderBreachHistory and cannot be null");
             }
             this.RunId = runId;
+            
             this.AsAt = asAt;
             this.BreachesByRule = breachesByRule;
         }

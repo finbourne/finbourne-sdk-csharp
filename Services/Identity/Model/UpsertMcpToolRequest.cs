@@ -313,7 +313,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
         {
             // Name (string) pattern
             Regex regexName = new Regex(@"^[a-zA-Z0-9_-]+$", RegexOptions.CultureInvariant);
-            if (false == regexName.Match(this.Name).Success)
+            if (this.Name != null && false == regexName.Match(this.Name).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, must match a pattern of " + regexName, new [] { "Name" });
             }
