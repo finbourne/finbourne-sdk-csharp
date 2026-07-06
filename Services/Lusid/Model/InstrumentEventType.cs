@@ -536,7 +536,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum PartialDefeasanceEvent for value: PartialDefeasanceEvent
         /// </summary>
         [EnumMember(Value = "PartialDefeasanceEvent")]
-        PartialDefeasanceEvent = 85
+        PartialDefeasanceEvent = 85,
+
+        /// <summary>
+        /// Enum SecurityWriteOffEvent for value: SecurityWriteOffEvent
+        /// </summary>
+        [EnumMember(Value = "SecurityWriteOffEvent")]
+        SecurityWriteOffEvent = 86
     }
 
 }

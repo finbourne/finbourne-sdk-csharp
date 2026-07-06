@@ -5,11 +5,11 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateTransactionFeeType**](#createtransactionfeetype) | **POST** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type |
-| [**DeleteTransactionFeeType**](#deletetransactionfeetype) | **DELETE** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type |
-| [**GetTransactionFeeType**](#gettransactionfeetype) | **GET** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type |
-| [**ListTransactionFeeTypes**](#listtransactionfeetypes) | **GET** `/api/api/transactions/transactionfeetypes` | [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types |
-| [**UpdateTransactionFeeType**](#updatetransactionfeetype) | **PUT** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type |
+| [**CreateTransactionFeeType**](#createtransactionfeetype) | **POST** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type |
+| [**DeleteTransactionFeeType**](#deletetransactionfeetype) | **DELETE** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type |
+| [**GetTransactionFeeType**](#gettransactionfeetype) | **GET** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type |
+| [**ListTransactionFeeTypes**](#listtransactionfeetypes) | **GET** `/api/api/transactions/transactionfeetypes` | [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types |
+| [**UpdateTransactionFeeType**](#updatetransactionfeetype) | **PUT** `/api/api/transactions/transactionfeetypes/{scope}/{code}` | [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type |
 
 ### Example
 
@@ -58,7 +58,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionFeeTyp
 
 > TransactionFeeType CreateTransactionFeeType(string scope, string code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest)
 
-[EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type
+[EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type
 
 Create a transaction fee type for the specified scope and code.
 
@@ -120,7 +120,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteTransactionFeeType(string scope, string code)
 
-[EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type
+[EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type
 
 Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
 
@@ -180,7 +180,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > TransactionFeeType GetTransactionFeeType(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type
+[EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type
 
 Get the transaction fee type for the specified scope and code.
 
@@ -246,7 +246,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ResourceListOfTransactionFeeType ListTransactionFeeTypes(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types
+[EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types
 
 List transaction fee types that match the specified criteria.
 
@@ -316,7 +316,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > TransactionFeeType UpdateTransactionFeeType(string scope, string code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest)
 
-[EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type
+[EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type
 
 Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
 

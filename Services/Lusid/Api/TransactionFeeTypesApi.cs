@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type
+        /// [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type
         /// </summary>
         /// <remarks>
         /// Create a transaction fee type for the specified scope and code.
@@ -46,7 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         TransactionFeeType CreateTransactionFeeType(string scope, string code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type
+        /// [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type
         /// </summary>
         /// <remarks>
         /// Create a transaction fee type for the specified scope and code.
@@ -60,7 +60,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of TransactionFeeType</returns>
         Finbourne.Sdk.Client.ApiResponse<TransactionFeeType> CreateTransactionFeeTypeWithHttpInfo(string scope, string code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type
+        /// [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type
         /// </summary>
         /// <remarks>
         /// Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
@@ -74,7 +74,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeleteTransactionFeeType(string scope, string code, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type
+        /// [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type
         /// </summary>
         /// <remarks>
         /// Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
@@ -87,7 +87,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteTransactionFeeTypeWithHttpInfo(string scope, string code, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type
+        /// [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type
         /// </summary>
         /// <remarks>
         /// Get the transaction fee type for the specified scope and code.
@@ -104,7 +104,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         TransactionFeeType GetTransactionFeeType(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type
+        /// [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type
         /// </summary>
         /// <remarks>
         /// Get the transaction fee type for the specified scope and code.
@@ -120,7 +120,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of TransactionFeeType</returns>
         Finbourne.Sdk.Client.ApiResponse<TransactionFeeType> GetTransactionFeeTypeWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types
+        /// [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types
         /// </summary>
         /// <remarks>
         /// List transaction fee types that match the specified criteria.
@@ -139,7 +139,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         ResourceListOfTransactionFeeType ListTransactionFeeTypes(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types
+        /// [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types
         /// </summary>
         /// <remarks>
         /// List transaction fee types that match the specified criteria.
@@ -157,7 +157,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfTransactionFeeType</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfTransactionFeeType> ListTransactionFeeTypesWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type
+        /// [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type
         /// </summary>
         /// <remarks>
         /// Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
@@ -172,7 +172,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         TransactionFeeType UpdateTransactionFeeType(string scope, string code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type
+        /// [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type
         /// </summary>
         /// <remarks>
         /// Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
@@ -195,7 +195,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type
+        /// [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type
         /// </summary>
         /// <remarks>
         /// Create a transaction fee type for the specified scope and code.
@@ -211,7 +211,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<TransactionFeeType> CreateTransactionFeeTypeAsync(string scope, string code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type
+        /// [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type
         /// </summary>
         /// <remarks>
         /// Create a transaction fee type for the specified scope and code.
@@ -226,7 +226,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (TransactionFeeType)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TransactionFeeType>> CreateTransactionFeeTypeWithHttpInfoAsync(string scope, string code, CreateTransactionFeeTypeRequest createTransactionFeeTypeRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type
+        /// [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type
         /// </summary>
         /// <remarks>
         /// Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
@@ -241,7 +241,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeleteTransactionFeeTypeAsync(string scope, string code, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type
+        /// [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type
         /// </summary>
         /// <remarks>
         /// Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
@@ -255,7 +255,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteTransactionFeeTypeWithHttpInfoAsync(string scope, string code, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type
+        /// [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type
         /// </summary>
         /// <remarks>
         /// Get the transaction fee type for the specified scope and code.
@@ -273,7 +273,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<TransactionFeeType> GetTransactionFeeTypeAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type
+        /// [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type
         /// </summary>
         /// <remarks>
         /// Get the transaction fee type for the specified scope and code.
@@ -290,7 +290,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (TransactionFeeType)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TransactionFeeType>> GetTransactionFeeTypeWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types
+        /// [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types
         /// </summary>
         /// <remarks>
         /// List transaction fee types that match the specified criteria.
@@ -310,7 +310,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<ResourceListOfTransactionFeeType> ListTransactionFeeTypesAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types
+        /// [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types
         /// </summary>
         /// <remarks>
         /// List transaction fee types that match the specified criteria.
@@ -329,7 +329,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ResourceListOfTransactionFeeType)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfTransactionFeeType>> ListTransactionFeeTypesWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type
+        /// [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type
         /// </summary>
         /// <remarks>
         /// Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
@@ -345,7 +345,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<TransactionFeeType> UpdateTransactionFeeTypeAsync(string scope, string code, UpdateTransactionFeeTypeRequest updateTransactionFeeTypeRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type
+        /// [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type
         /// </summary>
         /// <remarks>
         /// Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
@@ -454,7 +454,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type Create a transaction fee type for the specified scope and code.
+        /// [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type Create a transaction fee type for the specified scope and code.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the transaction fee type.</param>
@@ -470,7 +470,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type Create a transaction fee type for the specified scope and code.
+        /// [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type Create a transaction fee type for the specified scope and code.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -587,7 +587,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type Create a transaction fee type for the specified scope and code.
+        /// [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type Create a transaction fee type for the specified scope and code.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the transaction fee type.</param>
@@ -604,7 +604,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateTransactionFeeType: Create a transaction fee type Create a transaction fee type for the specified scope and code.
+        /// [EARLY ACCESS] CreateTransactionFeeType: Create a transaction fee type Create a transaction fee type for the specified scope and code.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -724,7 +724,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
+        /// [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the transaction fee type.</param>
@@ -739,7 +739,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
+        /// [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -844,7 +844,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
+        /// [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the transaction fee type.</param>
@@ -860,7 +860,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteTransactionFeeType: Delete a transaction fee type Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
+        /// [EARLY ACCESS] DeleteTransactionFeeType: Delete a transaction fee type Delete a transaction fee type for the specified scope and code. To note, this will be a monotemporal delete, meaning that  the transaction fee type will be deleted for all effective time (including past and future versions of the transaction fee type).
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -968,7 +968,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type Get the transaction fee type for the specified scope and code.
+        /// [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type Get the transaction fee type for the specified scope and code.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the transaction fee type.</param>
@@ -986,7 +986,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type Get the transaction fee type for the specified scope and code.
+        /// [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type Get the transaction fee type for the specified scope and code.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1106,7 +1106,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type Get the transaction fee type for the specified scope and code.
+        /// [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type Get the transaction fee type for the specified scope and code.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the transaction fee type.</param>
@@ -1125,7 +1125,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetTransactionFeeType: Get a transaction fee type Get the transaction fee type for the specified scope and code.
+        /// [EARLY ACCESS] GetTransactionFeeType: Get a transaction fee type Get the transaction fee type for the specified scope and code.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1248,7 +1248,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types List transaction fee types that match the specified criteria.
+        /// [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types List transaction fee types that match the specified criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime at which to retrieve transaction fee type properties.              Defaults to the current LUSID system datetime if not specified. (optional)</param>
@@ -1268,7 +1268,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types List transaction fee types that match the specified criteria.
+        /// [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types List transaction fee types that match the specified criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1392,7 +1392,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types List transaction fee types that match the specified criteria.
+        /// [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types List transaction fee types that match the specified criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime at which to retrieve transaction fee type properties.              Defaults to the current LUSID system datetime if not specified. (optional)</param>
@@ -1413,7 +1413,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListTransactionFeeTypes: List transaction fee types List transaction fee types that match the specified criteria.
+        /// [EARLY ACCESS] ListTransactionFeeTypes: List transaction fee types List transaction fee types that match the specified criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1540,7 +1540,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
+        /// [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the transaction fee type.</param>
@@ -1556,7 +1556,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
+        /// [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1673,7 +1673,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
+        /// [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the transaction fee type.</param>
@@ -1690,7 +1690,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateTransactionFeeType: Update a transaction fee type Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
+        /// [EARLY ACCESS] UpdateTransactionFeeType: Update a transaction fee type Update a transaction fee type by providing the new contents of the transaction fee type.  The displayName field cannot be updated.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

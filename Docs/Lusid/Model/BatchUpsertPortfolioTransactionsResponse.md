@@ -7,6 +7,7 @@
 | **Values** | [Dictionary&lt;string, Transaction&gt;](Transaction.md) | Optional | The transactions which have been successfully upserted. |
 | **Failed** | [Dictionary&lt;string, ErrorDetail&gt;](ErrorDetail.md) | Optional | The transactions that could not be upserted along with a reason for their failure. |
 | **Metadata** | **Dictionary&lt;string, List&lt;ResponseMetaData&gt;&gt;** | Optional | Contains warnings related to unresolved instruments or non-existent transaction types for the upserted trades |
+| **Staged** | [Dictionary&lt;string, Transaction&gt;](Transaction.md) | Optional | The transactions that have been staged pending approval. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -21,6 +22,7 @@ var instance = new BatchUpsertPortfolioTransactionsResponse(
     values: new Transaction(...),  // optional — The transactions which have been successfully upserted.
     failed: new ErrorDetail(...),  // optional — The transactions that could not be upserted along with a reason for their failure.
     metadata: ,  // optional — Contains warnings related to unresolved instruments or non-existent transaction types for the upserted trades
+    staged: new Transaction(...),  // optional — The transactions that have been staged pending approval.
     links: new List<Link>()  // optional
 );
 ```
@@ -41,6 +43,7 @@ var instance = JsonConvert.DeserializeObject<BatchUpsertPortfolioTransactionsRes
 
 - [Transaction](Transaction.md) — used in `Values`
 - [ErrorDetail](ErrorDetail.md) — used in `Failed`
+- [Transaction](Transaction.md) — used in `Staged`
 - [Link](Link.md)
 
 

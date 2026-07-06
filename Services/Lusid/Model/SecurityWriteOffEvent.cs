@@ -23,66 +23,61 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// Definition of a Bond Coupon Event  This is an event that describes the occurence of a cashflow due to a fixed rate bond coupon payment.
+    /// Security write-off (WOFF) — removes a security holding from the portfolio at zero proceeds following an  issuer-, lender-, or regulator-declared write-off. The full eligible holding is debited on the PaymentDate;  no cash is received and no new security is credited. Supports Mandatory and Voluntary participation; on the  Voluntary path the holder submits a SubscribeElection to recognise (apply) the write-off.
     /// </summary>
-    [DataContract(Name = "BondCouponEvent")]
+    [DataContract(Name = "SecurityWriteOffEvent")]
     [JsonConverter(typeof(JsonSubtypes), "InstrumentEventType")]
-    public partial class BondCouponEvent : InstrumentEvent, IEquatable<BondCouponEvent>, IValidatableObject
+    public partial class SecurityWriteOffEvent : InstrumentEvent, IEquatable<SecurityWriteOffEvent>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BondCouponEvent" /> class.
+        /// Initializes a new instance of the <see cref="SecurityWriteOffEvent" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected BondCouponEvent() { }
+        protected SecurityWriteOffEvent() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="BondCouponEvent" /> class.
+        /// Initializes a new instance of the <see cref="SecurityWriteOffEvent" /> class.
         /// </summary>
-        /// <param name="exDate">Ex-Dividend date of the coupon payment.</param>
-        /// <param name="paymentDate">Payment date of the coupon payment.</param>
-        /// <param name="currency">Currency of the coupon payment (required).</param>
-        /// <param name="couponPerUnit">CouponRate*Principal.</param>
+        /// <param name="recordDate">Positions are struck at close of business on this date to determine eligible holdings..</param>
+        /// <param name="paymentDate">The date the security debit is processed in LUSID; no cash payment is associated. Must be &gt;&#x3D; RecordDate..</param>
+        /// <param name="announcementDate">The date the issuer, agent or regulator announces the write-off. Optional — null when no separate  announcement date is provided. When populated, must be &lt;&#x3D; RecordDate..</param>
+        /// <param name="subscribeElections">List of possible subscribe elections for this event. Populated on the Voluntary path only, where the  holder elects to recognise (apply) the write-off. Ignored on the Mandatory path..</param>
         /// <param name="instrumentEventType">The Type of Event. Available values: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent, CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent, BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent, MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent, IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent, OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent, TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent, AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent, LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent, DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent, RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent, FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent, ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent, CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent, ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent. (required) (default to InstrumentEventTypeEnum.TransitionEvent).</param>
-        public BondCouponEvent(DateTimeOffset exDate = default(DateTimeOffset), DateTimeOffset paymentDate = default(DateTimeOffset), string currency = default(string), decimal? couponPerUnit = default(decimal?), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
+        public SecurityWriteOffEvent(DateTimeOffset recordDate = default(DateTimeOffset), DateTimeOffset paymentDate = default(DateTimeOffset), DateTimeOffset? announcementDate = default(DateTimeOffset?), List<SubscribeElection> subscribeElections = default(List<SubscribeElection>), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
         {
-            // to ensure "currency" is required (not null)
-            if (currency == null)
-            {
-                throw new ArgumentNullException("currency is a required property for BondCouponEvent and cannot be null");
-            }
-            this.Currency = currency;
             this.InstrumentEventType = instrumentEventType;
-            this.ExDate = exDate;
+            this.RecordDate = recordDate;
             this.PaymentDate = paymentDate;
-            this.CouponPerUnit = couponPerUnit;
+            this.AnnouncementDate = announcementDate;
+            this.SubscribeElections = subscribeElections;
         }
 
         /// <summary>
-        /// Ex-Dividend date of the coupon payment
+        /// Positions are struck at close of business on this date to determine eligible holdings.
         /// </summary>
-        /// <value>Ex-Dividend date of the coupon payment</value>
-        [DataMember(Name = "exDate", EmitDefaultValue = false)]
-        public DateTimeOffset ExDate { get; set; }
+        /// <value>Positions are struck at close of business on this date to determine eligible holdings.</value>
+        [DataMember(Name = "recordDate", EmitDefaultValue = false)]
+        public DateTimeOffset RecordDate { get; set; }
 
         /// <summary>
-        /// Payment date of the coupon payment
+        /// The date the security debit is processed in LUSID; no cash payment is associated. Must be &gt;&#x3D; RecordDate.
         /// </summary>
-        /// <value>Payment date of the coupon payment</value>
+        /// <value>The date the security debit is processed in LUSID; no cash payment is associated. Must be &gt;&#x3D; RecordDate.</value>
         [DataMember(Name = "paymentDate", EmitDefaultValue = false)]
         public DateTimeOffset PaymentDate { get; set; }
 
         /// <summary>
-        /// Currency of the coupon payment
+        /// The date the issuer, agent or regulator announces the write-off. Optional — null when no separate  announcement date is provided. When populated, must be &lt;&#x3D; RecordDate.
         /// </summary>
-        /// <value>Currency of the coupon payment</value>
-        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
-        public string Currency { get; set; }
+        /// <value>The date the issuer, agent or regulator announces the write-off. Optional — null when no separate  announcement date is provided. When populated, must be &lt;&#x3D; RecordDate.</value>
+        [DataMember(Name = "announcementDate", EmitDefaultValue = true)]
+        public DateTimeOffset? AnnouncementDate { get; set; }
 
         /// <summary>
-        /// CouponRate*Principal
+        /// List of possible subscribe elections for this event. Populated on the Voluntary path only, where the  holder elects to recognise (apply) the write-off. Ignored on the Mandatory path.
         /// </summary>
-        /// <value>CouponRate*Principal</value>
-        [DataMember(Name = "couponPerUnit", EmitDefaultValue = true)]
-        public decimal? CouponPerUnit { get; set; }
+        /// <value>List of possible subscribe elections for this event. Populated on the Voluntary path only, where the  holder elects to recognise (apply) the write-off. Ignored on the Mandatory path.</value>
+        [DataMember(Name = "subscribeElections", EmitDefaultValue = true)]
+        public List<SubscribeElection> SubscribeElections { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,12 +86,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class BondCouponEvent {\n");
+            sb.Append("class SecurityWriteOffEvent {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  ExDate: ").Append(ExDate).Append("\n");
+            sb.Append("  RecordDate: ").Append(RecordDate).Append("\n");
             sb.Append("  PaymentDate: ").Append(PaymentDate).Append("\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
-            sb.Append("  CouponPerUnit: ").Append(CouponPerUnit).Append("\n");
+            sb.Append("  AnnouncementDate: ").Append(AnnouncementDate).Append("\n");
+            sb.Append("  SubscribeElections: ").Append(SubscribeElections).Append("\n");
             sb.Append("  InstrumentEventType: ").Append(InstrumentEventType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -118,15 +113,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as BondCouponEvent);
+            return this.Equals(input as SecurityWriteOffEvent);
         }
 
         /// <summary>
-        /// Returns true if BondCouponEvent instances are equal
+        /// Returns true if SecurityWriteOffEvent instances are equal
         /// </summary>
-        /// <param name="input">Instance of BondCouponEvent to be compared</param>
+        /// <param name="input">Instance of SecurityWriteOffEvent to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(BondCouponEvent input)
+        public bool Equals(SecurityWriteOffEvent input)
         {
             if (input == null)
             {
@@ -134,9 +129,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             return base.Equals(input) && 
                 (
-                    this.ExDate == input.ExDate ||
-                    (this.ExDate != null &&
-                    this.ExDate.Equals(input.ExDate))
+                    this.RecordDate == input.RecordDate ||
+                    (this.RecordDate != null &&
+                    this.RecordDate.Equals(input.RecordDate))
                 ) && base.Equals(input) && 
                 (
                     this.PaymentDate == input.PaymentDate ||
@@ -144,14 +139,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PaymentDate.Equals(input.PaymentDate))
                 ) && base.Equals(input) && 
                 (
-                    this.Currency == input.Currency ||
-                    (this.Currency != null &&
-                    this.Currency.Equals(input.Currency))
+                    this.AnnouncementDate == input.AnnouncementDate ||
+                    (this.AnnouncementDate != null &&
+                    this.AnnouncementDate.Equals(input.AnnouncementDate))
                 ) && base.Equals(input) && 
                 (
-                    this.CouponPerUnit == input.CouponPerUnit ||
-                    (this.CouponPerUnit != null &&
-                    this.CouponPerUnit.Equals(input.CouponPerUnit))
+                    this.SubscribeElections == input.SubscribeElections ||
+                    this.SubscribeElections != null &&
+                    input.SubscribeElections != null &&
+                    this.SubscribeElections.SequenceEqual(input.SubscribeElections)
                 ) && base.Equals(input) && 
                 (
                     this.InstrumentEventType == input.InstrumentEventType ||
@@ -168,21 +164,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = base.GetHashCode();
-                if (this.ExDate != null)
+                if (this.RecordDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.RecordDate.GetHashCode();
                 }
                 if (this.PaymentDate != null)
                 {
                     hashCode = (hashCode * 59) + this.PaymentDate.GetHashCode();
                 }
-                if (this.Currency != null)
+                if (this.AnnouncementDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AnnouncementDate.GetHashCode();
                 }
-                if (this.CouponPerUnit != null)
+                if (this.SubscribeElections != null)
                 {
-                    hashCode = (hashCode * 59) + this.CouponPerUnit.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SubscribeElections.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.InstrumentEventType.GetHashCode();
                 return hashCode;

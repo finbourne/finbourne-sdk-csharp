@@ -493,7 +493,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="batchupserttransactions"></a>
 ## BatchUpsertTransactions
 
-> BatchUpsertPortfolioTransactionsResponse BatchUpsertTransactions(string scope, string code, string successMode, Dictionary<string, TransactionRequest> requestBody, bool? preserveProperties = null)
+> BatchUpsertPortfolioTransactionsResponse BatchUpsertTransactions(string scope, string code, string successMode, Dictionary<string, TransactionRequest> requestBody, bool? preserveProperties = null, string? dataModelScope = null, string? dataModelCode = null)
 
 BatchUpsertTransactions: Batch upsert transactions
 
@@ -508,7 +508,9 @@ var code = "code_example";  // string
 var successMode = "\"Partial\"";  // string
 var requestBody = new Dictionary<string, TransactionRequest>(); // Dictionary<string, TransactionRequest>
 var preserveProperties = true;  // bool? (optional)
-BatchUpsertPortfolioTransactionsResponse result = apiInstance.BatchUpsertTransactions(scope, code, successMode, requestBody, preserveProperties);
+var dataModelScope = "dataModelScope_example";  // string? (optional)
+var dataModelCode = "dataModelCode_example";  // string? (optional)
+BatchUpsertPortfolioTransactionsResponse result = apiInstance.BatchUpsertTransactions(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -521,6 +523,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **successMode** | **string** | query | **required** | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. Default: `&quot;Partial&quot;` |
 | **requestBody** | [Dictionary&lt;string, TransactionRequest&gt;](TransactionRequest.md) | body | **required** | The payload describing the transactions to be created or updated. |
 | **preserveProperties** | **bool?** | query | optional | If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. Default: `true` |
+| **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
+| **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 
 ### Return type
 
@@ -545,7 +549,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<BatchUpsertPortfolioTransactionsResponse> response = apiInstance.BatchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties);
+ApiResponse<BatchUpsertPortfolioTransactionsResponse> response = apiInstance.BatchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties, dataModelScope, dataModelCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -33,12 +33,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="values">The transactions which have been successfully upserted..</param>
         /// <param name="failed">The transactions that could not be upserted along with a reason for their failure..</param>
         /// <param name="metadata">Contains warnings related to unresolved instruments or non-existent transaction types for the upserted trades.</param>
+        /// <param name="staged">The transactions that have been staged pending approval..</param>
         /// <param name="links">links.</param>
-        public BatchUpsertPortfolioTransactionsResponse(Dictionary<string, Transaction> values = default(Dictionary<string, Transaction>), Dictionary<string, ErrorDetail> failed = default(Dictionary<string, ErrorDetail>), Dictionary<string, List<ResponseMetaData>> metadata = default(Dictionary<string, List<ResponseMetaData>>), List<Link> links = default(List<Link>))
+        public BatchUpsertPortfolioTransactionsResponse(Dictionary<string, Transaction> values = default(Dictionary<string, Transaction>), Dictionary<string, ErrorDetail> failed = default(Dictionary<string, ErrorDetail>), Dictionary<string, List<ResponseMetaData>> metadata = default(Dictionary<string, List<ResponseMetaData>>), Dictionary<string, Transaction> staged = default(Dictionary<string, Transaction>), List<Link> links = default(List<Link>))
         {
             this.Values = values;
             this.Failed = failed;
             this.Metadata = metadata;
+            this.Staged = staged;
             this.Links = links;
         }
 
@@ -64,6 +66,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public Dictionary<string, List<ResponseMetaData>> Metadata { get; set; }
 
         /// <summary>
+        /// The transactions that have been staged pending approval.
+        /// </summary>
+        /// <value>The transactions that have been staged pending approval.</value>
+        [DataMember(Name = "staged", EmitDefaultValue = true)]
+        public Dictionary<string, Transaction> Staged { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -80,6 +89,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Values: ").Append(Values).Append("\n");
             sb.Append("  Failed: ").Append(Failed).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+            sb.Append("  Staged: ").Append(Staged).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -135,6 +145,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Metadata.SequenceEqual(input.Metadata)
                 ) && 
                 (
+                    this.Staged == input.Staged ||
+                    this.Staged != null &&
+                    input.Staged != null &&
+                    this.Staged.SequenceEqual(input.Staged)
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -162,6 +178,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Metadata != null)
                 {
                     hashCode = (hashCode * 59) + this.Metadata.GetHashCode();
+                }
+                if (this.Staged != null)
+                {
+                    hashCode = (hashCode * 59) + this.Staged.GetHashCode();
                 }
                 if (this.Links != null)
                 {

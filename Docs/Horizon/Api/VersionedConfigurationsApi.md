@@ -188,11 +188,11 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getversionedconfiguration"></a>
 ## GetVersionedConfiguration
 
-> VersionedConfigurationResponse GetVersionedConfiguration(string configType, string name, int? majorVersion = null, int? minorVersion = null)
+> VersionedConfigurationResponse GetVersionedConfiguration(string configType, string name, int? majorVersion = null, int? minorVersion = null, bool? includeDrafts = null)
 
 [EXPERIMENTAL] GetVersionedConfiguration: Get a versioned configuration.
 
-Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available version is returned. Both must be supplied together or both omitted. The user must be authenticated and entitled to call this method.
+Returns a specific configuration record. When both majorVersion and minorVersion are omitted, the highest available locked version is returned. Both must be supplied together or both omitted. When includeDrafts is true and no version is specified, the highest available version regardless of draft state is returned. When an explicit version is supplied via majorVersion and minorVersion, includeDrafts is ignored and the exact version is returned regardless of its draft state. The user must be authenticated and entitled to call this method.
 
 ### Example
 
@@ -202,7 +202,8 @@ var configType = "configType_example";  // string
 var name = "name_example";  // string
 var majorVersion = 56;  // int? (optional)
 var minorVersion = 56;  // int? (optional)
-VersionedConfigurationResponse result = apiInstance.GetVersionedConfiguration(configType, name, majorVersion, minorVersion);
+var includeDrafts = false;  // bool? (optional)
+VersionedConfigurationResponse result = apiInstance.GetVersionedConfiguration(configType, name, majorVersion, minorVersion, includeDrafts);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -214,6 +215,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **name** | **string** | path | **required** | The logical name of the configuration. |
 | **majorVersion** | **int?** | query | optional | The major version to retrieve. Must be supplied together with minorVersion, or both omitted. |
 | **minorVersion** | **int?** | query | optional | The minor version to retrieve. Must be supplied together with majorVersion, or both omitted. |
+| **includeDrafts** | **bool?** | query | optional | When true and no explicit version is supplied, includes draft versions when determining the highest available version. Defaults to false. Default: `false` |
 
 ### Return type
 
@@ -239,7 +241,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<VersionedConfigurationResponse> response = apiInstance.GetVersionedConfigurationWithHttpInfo(configType, name, majorVersion, minorVersion);
+ApiResponse<VersionedConfigurationResponse> response = apiInstance.GetVersionedConfigurationWithHttpInfo(configType, name, majorVersion, minorVersion, includeDrafts);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
