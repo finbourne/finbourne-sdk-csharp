@@ -45,7 +45,8 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="triggers">The Triggers for State transition.</param>
         /// <param name="actions">The Actions of this Task - executed after a Transition completion.</param>
         /// <param name="transitions">The Transitions between States.</param>
-        public TaskDefinition(ResourceId id = default(ResourceId), VersionInfo varVersion = default(VersionInfo), string displayName = default(string), string description = default(string), List<TaskStateDefinition> states = default(List<TaskStateDefinition>), List<TaskFieldDefinition> fieldSchema = default(List<TaskFieldDefinition>), InitialState initialState = default(InitialState), List<TransitionTriggerDefinition> triggers = default(List<TransitionTriggerDefinition>), List<ActionDefinitionResponse> actions = default(List<ActionDefinitionResponse>), List<TaskTransitionDefinition> transitions = default(List<TaskTransitionDefinition>))
+        /// <param name="properties">The properties of the Task Definition, keyed by property key. Only populated when set on the request (Create/Update) or when property keys are requested (Get/List)..</param>
+        public TaskDefinition(ResourceId id = default(ResourceId), VersionInfo varVersion = default(VersionInfo), string displayName = default(string), string description = default(string), List<TaskStateDefinition> states = default(List<TaskStateDefinition>), List<TaskFieldDefinition> fieldSchema = default(List<TaskFieldDefinition>), InitialState initialState = default(InitialState), List<TransitionTriggerDefinition> triggers = default(List<TransitionTriggerDefinition>), List<ActionDefinitionResponse> actions = default(List<ActionDefinitionResponse>), List<TaskTransitionDefinition> transitions = default(List<TaskTransitionDefinition>), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -77,6 +78,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             this.Triggers = triggers;
             this.Actions = actions;
             this.Transitions = transitions;
+            this.Properties = properties;
         }
 
         /// <summary>
@@ -147,6 +149,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public List<TaskTransitionDefinition> Transitions { get; set; }
 
         /// <summary>
+        /// The properties of the Task Definition, keyed by property key. Only populated when set on the request (Create/Update) or when property keys are requested (Get/List).
+        /// </summary>
+        /// <value>The properties of the Task Definition, keyed by property key. Only populated when set on the request (Create/Update) or when property keys are requested (Get/List).</value>
+        [DataMember(Name = "properties", EmitDefaultValue = true)]
+        public Dictionary<string, PerpetualProperty> Properties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -164,6 +173,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  Triggers: ").Append(Triggers).Append("\n");
             sb.Append("  Actions: ").Append(Actions).Append("\n");
             sb.Append("  Transitions: ").Append(Transitions).Append("\n");
+            sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -253,6 +263,12 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.Transitions != null &&
                     input.Transitions != null &&
                     this.Transitions.SequenceEqual(input.Transitions)
+                ) && 
+                (
+                    this.Properties == input.Properties ||
+                    this.Properties != null &&
+                    input.Properties != null &&
+                    this.Properties.SequenceEqual(input.Properties)
                 );
         }
 
@@ -304,6 +320,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.Transitions != null)
                 {
                     hashCode = (hashCode * 59) + this.Transitions.GetHashCode();
+                }
+                if (this.Properties != null)
+                {
+                    hashCode = (hashCode * 59) + this.Properties.GetHashCode();
                 }
                 return hashCode;
             }

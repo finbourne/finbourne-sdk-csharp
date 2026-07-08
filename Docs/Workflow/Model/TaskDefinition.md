@@ -15,6 +15,7 @@ Task Definition
 | **Triggers** | [List&lt;TransitionTriggerDefinition&gt;](TransitionTriggerDefinition.md) | Optional | The Triggers for State transition |
 | **Actions** | [List&lt;ActionDefinitionResponse&gt;](ActionDefinitionResponse.md) | Optional | The Actions of this Task - executed after a Transition completion |
 | **Transitions** | [List&lt;TaskTransitionDefinition&gt;](TaskTransitionDefinition.md) | Optional | The Transitions between States |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The properties of the Task Definition, keyed by property key. Only populated when set on the request (Create/Update) or when property keys are requested (Get/List). |
 
 
 ## Usage
@@ -34,7 +35,8 @@ var instance = new TaskDefinition(
     initialState: new InitialState(...),  // required
     triggers: new List<TransitionTriggerDefinition>(),  // optional — The Triggers for State transition
     actions: new List<ActionDefinitionResponse>(),  // optional — The Actions of this Task - executed after a Transition completion
-    transitions: new List<TaskTransitionDefinition>()  // optional — The Transitions between States
+    transitions: new List<TaskTransitionDefinition>(),  // optional — The Transitions between States
+    properties: new PerpetualProperty(...)  // optional — The properties of the Task Definition, keyed by property key. Only populated when set on the request (Create/Update) or when property keys are requested (Get/List).
 );
 ```
 ### Serializing to JSON
@@ -60,6 +62,7 @@ var instance = JsonConvert.DeserializeObject<TaskDefinition>(json);
 - [TransitionTriggerDefinition](TransitionTriggerDefinition.md) — used in `Triggers`
 - [ActionDefinitionResponse](ActionDefinitionResponse.md) — used in `Actions`
 - [TaskTransitionDefinition](TaskTransitionDefinition.md) — used in `Transitions`
+- [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
