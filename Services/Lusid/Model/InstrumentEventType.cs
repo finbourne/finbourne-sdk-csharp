@@ -542,7 +542,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum SecurityWriteOffEvent for value: SecurityWriteOffEvent
         /// </summary>
         [EnumMember(Value = "SecurityWriteOffEvent")]
-        SecurityWriteOffEvent = 86
+        SecurityWriteOffEvent = 86,
+
+        /// <summary>
+        /// Enum WarrantsExerciseEvent for value: WarrantsExerciseEvent
+        /// </summary>
+        [EnumMember(Value = "WarrantsExerciseEvent")]
+        WarrantsExerciseEvent = 87
     }
 
 }

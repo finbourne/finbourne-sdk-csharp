@@ -33,6 +33,7 @@ A list of transactions.
 | **DataModelMembership** | [DataModelMembership](DataModelMembership.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
+| **CustodianEntries** | [List&lt;CustodianEntry&gt;](CustodianEntry.md) | Optional | A list of Custodian Entries associated with the transaction. |
 
 
 ## Usage
@@ -70,7 +71,8 @@ var instance = new Transaction(
     resolvedTransactionTypeDetails: new TransactionTypeDetails(...),  // optional
     dataModelMembership: new DataModelMembership(...),  // optional
     varVersion: new ModelVersion(...),  // optional
-    stagedModifications: new StagedModificationsInfo(...)  // optional
+    stagedModifications: new StagedModificationsInfo(...),  // optional
+    custodianEntries: new List<CustodianEntry>()  // optional — A list of Custodian Entries associated with the transaction.
 );
 ```
 ### Serializing to JSON
@@ -97,6 +99,7 @@ var instance = JsonConvert.DeserializeObject<Transaction>(json);
 - [DataModelMembership](DataModelMembership.md)
 - [ModelVersion](ModelVersion.md)
 - [StagedModificationsInfo](StagedModificationsInfo.md)
+- [CustodianEntry](CustodianEntry.md) — used in `CustodianEntries`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -113,7 +113,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="dataModelMembership">dataModelMembership.</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="stagedModifications">stagedModifications.</param>
-        public Transaction(string transactionId = default(string), string type = default(string), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string instrumentScope = default(string), string instrumentUid = default(string), DateTimeOffset transactionDate = default(DateTimeOffset), DateTimeOffset settlementDate = default(DateTimeOffset), decimal units = default(decimal), TransactionPrice transactionPrice = default(TransactionPrice), CurrencyAndAmount totalConsideration = default(CurrencyAndAmount), decimal? exchangeRate = default(decimal?), string transactionCurrency = default(string), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string counterpartyId = default(string), string source = default(string), DateTimeOffset entryDateTime = default(DateTimeOffset), OtcConfirmation otcConfirmation = default(OtcConfirmation), TransactionStatusEnum ?transactionStatus = default(TransactionStatusEnum?), DateTimeOffset? cancelDateTime = default(DateTimeOffset?), ResourceId orderId = default(ResourceId), ResourceId allocationId = default(ResourceId), CustodianAccount custodianAccount = default(CustodianAccount), string transactionGroupId = default(string), List<Strategy> strategyTag = default(List<Strategy>), TransactionTypeDetails resolvedTransactionTypeDetails = default(TransactionTypeDetails), DataModelMembership dataModelMembership = default(DataModelMembership), ModelVersion varVersion = default(ModelVersion), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo))
+        /// <param name="custodianEntries">A list of Custodian Entries associated with the transaction..</param>
+        public Transaction(string transactionId = default(string), string type = default(string), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string instrumentScope = default(string), string instrumentUid = default(string), DateTimeOffset transactionDate = default(DateTimeOffset), DateTimeOffset settlementDate = default(DateTimeOffset), decimal units = default(decimal), TransactionPrice transactionPrice = default(TransactionPrice), CurrencyAndAmount totalConsideration = default(CurrencyAndAmount), decimal? exchangeRate = default(decimal?), string transactionCurrency = default(string), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string counterpartyId = default(string), string source = default(string), DateTimeOffset entryDateTime = default(DateTimeOffset), OtcConfirmation otcConfirmation = default(OtcConfirmation), TransactionStatusEnum ?transactionStatus = default(TransactionStatusEnum?), DateTimeOffset? cancelDateTime = default(DateTimeOffset?), ResourceId orderId = default(ResourceId), ResourceId allocationId = default(ResourceId), CustodianAccount custodianAccount = default(CustodianAccount), string transactionGroupId = default(string), List<Strategy> strategyTag = default(List<Strategy>), TransactionTypeDetails resolvedTransactionTypeDetails = default(TransactionTypeDetails), DataModelMembership dataModelMembership = default(DataModelMembership), ModelVersion varVersion = default(ModelVersion), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), List<CustodianEntry> custodianEntries = default(List<CustodianEntry>))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -166,6 +167,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.DataModelMembership = dataModelMembership;
             this.VarVersion = varVersion;
             this.StagedModifications = stagedModifications;
+            this.CustodianEntries = custodianEntries;
         }
 
         /// <summary>
@@ -348,6 +350,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public StagedModificationsInfo StagedModifications { get; set; }
 
         /// <summary>
+        /// A list of Custodian Entries associated with the transaction.
+        /// </summary>
+        /// <value>A list of Custodian Entries associated with the transaction.</value>
+        [DataMember(Name = "custodianEntries", EmitDefaultValue = true)]
+        public List<CustodianEntry> CustodianEntries { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -383,6 +392,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  DataModelMembership: ").Append(DataModelMembership).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  StagedModifications: ").Append(StagedModifications).Append("\n");
+            sb.Append("  CustodianEntries: ").Append(CustodianEntries).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -558,6 +568,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.StagedModifications == input.StagedModifications ||
                     (this.StagedModifications != null &&
                     this.StagedModifications.Equals(input.StagedModifications))
+                ) && 
+                (
+                    this.CustodianEntries == input.CustodianEntries ||
+                    this.CustodianEntries != null &&
+                    input.CustodianEntries != null &&
+                    this.CustodianEntries.SequenceEqual(input.CustodianEntries)
                 );
         }
 
@@ -675,6 +691,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.StagedModifications != null)
                 {
                     hashCode = (hashCode * 59) + this.StagedModifications.GetHashCode();
+                }
+                if (this.CustodianEntries != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustodianEntries.GetHashCode();
                 }
                 return hashCode;
             }

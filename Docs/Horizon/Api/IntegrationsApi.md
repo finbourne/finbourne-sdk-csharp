@@ -11,8 +11,8 @@ All URIs are relative to *http://localhost*
 | [**ExecuteInstanceWithParams**](#executeinstancewithparams) | **POST** `/horizon/api/integrations/instances/{instanceId}/executewithparams` | [EXPERIMENTAL] ExecuteInstanceWithParams: Execute an integration instance with runtime parameters |
 | [**GetDataflowProcessorSchema**](#getdataflowprocessorschema) | **GET** `/horizon/api/integrations/dataflow/processors/{processorType}/schema` | [EXPERIMENTAL] GetDataflowProcessorSchema: Returns processor configuration schema for a given processor type. This is used by the UI to render the configuration form for a processortype. |
 | [**GetExecutionIdsForInstance**](#getexecutionidsforinstance) | **GET** `/horizon/api/integrations/instances/{instanceId}/executions` | [EXPERIMENTAL] GetExecutionIdsForInstance: Get integration instance execution ids. |
-| [**GetInstance**](#getinstance) | **GET** `/horizon/api/integrations/instances/{instanceId}` | [EXPERIMENTAL] GetInstance: Get a specified Instance for a given integration. |
-| [**GetInstanceOptionalPropertyMapping**](#getinstanceoptionalpropertymapping) | **GET** `/horizon/api/integrations/instances/configuration/{integration}/{instanceId}` | [EXPERIMENTAL] GetInstanceOptionalPropertyMapping: Get the Optional Property Mapping for an Integration Instance |
+| [**GetInstance**](#getinstance) | **GET** `/horizon/api/integrations/instances/{instanceId}` | [EXPERIMENTAL] GetInstance: Get a specified instance for a given integration. |
+| [**GetInstanceOptionalPropertyMapping**](#getinstanceoptionalpropertymapping) | **GET** `/horizon/api/integrations/instances/configuration/{integration}/{instanceId}` | [EXPERIMENTAL] GetInstanceOptionalPropertyMapping: Get the Optional Property Mapping for an integration instance |
 | [**GetIntegrationConfiguration**](#getintegrationconfiguration) | **GET** `/horizon/api/integrations/configuration/{integration}` | [EXPERIMENTAL] GetIntegrationConfiguration: Get the Field and Property Mapping configuration for a given integration |
 | [**GetIntegrationConfigurationFields**](#getintegrationconfigurationfields) | **GET** `/horizon/api/integrations/configuration/{integration}/fields` | [EXPERIMENTAL] GetIntegrationConfigurationFields: Get the Field Mapping configuration for a given integration |
 | [**GetIntegrationConfigurationProperties**](#getintegrationconfigurationproperties) | **GET** `/horizon/api/integrations/configuration/{integration}/properties` | [EXPERIMENTAL] GetIntegrationConfigurationProperties: Get the Property Mapping configuration for a given integration |
@@ -20,7 +20,7 @@ All URIs are relative to *http://localhost*
 | [**ListDataflowProcessors**](#listdataflowprocessors) | **GET** `/horizon/api/integrations/dataflow/processors` | [EXPERIMENTAL] ListDataflowProcessors: List processor types. |
 | [**ListInstances**](#listinstances) | **GET** `/horizon/api/integrations/instances` | [EXPERIMENTAL] ListInstances: List instances across all integrations. |
 | [**ListIntegrations**](#listintegrations) | **GET** `/horizon/api/integrations` | [EXPERIMENTAL] ListIntegrations: List available integrations. |
-| [**SetInstanceOptionalPropertyMapping**](#setinstanceoptionalpropertymapping) | **PUT** `/horizon/api/integrations/instances/configuration/{integration}/{instanceId}` | [EXPERIMENTAL] SetInstanceOptionalPropertyMapping: Set the Optional Property Mapping for an Integration Instance |
+| [**SetInstanceOptionalPropertyMapping**](#setinstanceoptionalpropertymapping) | **PUT** `/horizon/api/integrations/instances/configuration/{integration}/{instanceId}` | [EXPERIMENTAL] SetInstanceOptionalPropertyMapping: Set the Optional Property Mapping for an integration instance |
 | [**UpdateInstance**](#updateinstance) | **PUT** `/horizon/api/integrations/instances/{instanceId}` | [EXPERIMENTAL] UpdateInstance: Update a single integration instance. |
 
 ### Example
@@ -422,7 +422,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > IntegrationInstanceResponse GetInstance(string instanceId)
 
-[EXPERIMENTAL] GetInstance: Get a specified Instance for a given integration.
+[EXPERIMENTAL] GetInstance: Get a specified instance for a given integration.
 
 The user must be authenticated to call this method.
 
@@ -481,7 +481,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Dictionary&lt;string, LusidPropertyDefinitionOverridesByType&gt; GetInstanceOptionalPropertyMapping(string integration, string instanceId)
 
-[EXPERIMENTAL] GetInstanceOptionalPropertyMapping: Get the Optional Property Mapping for an Integration Instance
+[EXPERIMENTAL] GetInstanceOptionalPropertyMapping: Get the Optional Property Mapping for an integration instance
 
 Will return the full list of optional properties configured for this integration instance and any naming overrides
 
@@ -955,7 +955,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Dictionary&lt;string, LusidPropertyDefinitionOverridesByType&gt; SetInstanceOptionalPropertyMapping(string instanceId, string integration, Dictionary<string, LusidPropertyDefinitionOverridesByType>? requestBody = null)
 
-[EXPERIMENTAL] SetInstanceOptionalPropertyMapping: Set the Optional Property Mapping for an Integration Instance
+[EXPERIMENTAL] SetInstanceOptionalPropertyMapping: Set the Optional Property Mapping for an integration instance
 
 The full list of properties must be supplied, the removal of a property from this list will remove it from the integration instance
 

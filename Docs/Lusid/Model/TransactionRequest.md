@@ -23,6 +23,7 @@
 | **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **TransactionGroupId** | **string** | Optional | The identifier for grouping economic events across multiple transactions |
 | **StrategyTag** | [List&lt;Strategy&gt;](Strategy.md) | Optional | A list of strategies representing the allocation of units across multiple sub-holding keys |
+| **CustodianEntries** | [List&lt;CustodianEntry&gt;](CustodianEntry.md) | Optional | A list of Custodian Entries associated with the transaction. |
 
 
 ## Usage
@@ -51,7 +52,8 @@ var instance = new TransactionRequest(
     allocationId: new ResourceId(...),  // optional
     custodianAccountId: new ResourceId(...),  // optional
     transactionGroupId: "...",  // optional — The identifier for grouping economic events across multiple transactions
-    strategyTag: new List<Strategy>()  // optional — A list of strategies representing the allocation of units across multiple sub-holding keys
+    strategyTag: new List<Strategy>(),  // optional — A list of strategies representing the allocation of units across multiple sub-holding keys
+    custodianEntries: new List<CustodianEntry>()  // optional — A list of Custodian Entries associated with the transaction.
 );
 ```
 ### Serializing to JSON
@@ -76,6 +78,7 @@ var instance = JsonConvert.DeserializeObject<TransactionRequest>(json);
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 - [Strategy](Strategy.md) — used in `StrategyTag`
+- [CustodianEntry](CustodianEntry.md) — used in `CustodianEntries`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

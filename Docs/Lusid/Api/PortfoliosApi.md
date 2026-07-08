@@ -20,6 +20,7 @@ All URIs are relative to *http://localhost*
 | [**GetPortfolioCommands**](#getportfoliocommands) | **GET** `/api/api/portfolios/{scope}/{code}/commands` | GetPortfolioCommands: Get portfolio commands |
 | [**GetPortfolioMetadata**](#getportfoliometadata) | **GET** `/api/api/portfolios/{scope}/{code}/metadata` | GetPortfolioMetadata: Get access metadata rules for a portfolio |
 | [**GetPortfolioProperties**](#getportfolioproperties) | **GET** `/api/api/portfolios/{scope}/{code}/properties` | GetPortfolioProperties: Get portfolio properties |
+| [**GetPortfolioPropertiesTimeSeries**](#getportfoliopropertiestimeseries) | **GET** `/api/api/portfolios/{scope}/{code}/properties/time-series/batch` | [BETA] GetPortfolioPropertiesTimeSeries: Get portfolio properties time series |
 | [**GetPortfolioPropertyTimeSeries**](#getportfoliopropertytimeseries) | **GET** `/api/api/portfolios/{scope}/{code}/properties/time-series` | GetPortfolioPropertyTimeSeries: Get portfolio property time series |
 | [**GetPortfolioRelations**](#getportfoliorelations) | **GET** `/api/api/portfolios/{scope}/{code}/relations` | [EXPERIMENTAL] GetPortfolioRelations: Get portfolio relations |
 | [**GetPortfolioRelationships**](#getportfoliorelationships) | **GET** `/api/api/portfolios/{scope}/{code}/relationships` | GetPortfolioRelationships: Get portfolio relationships |
@@ -1077,6 +1078,78 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PortfolioProperties> response = apiInstance.GetPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getportfoliopropertiestimeseries"></a>
+## GetPortfolioPropertiesTimeSeries
+
+> ResourceListOfPropertyIntervalTimeSeries GetPortfolioPropertiesTimeSeries(string scope, string code, List<string> propertyKeys, string? portfolioEffectiveAt = null, DateTimeOffset? asAt = null, string? filter = null, string? page = null, int? limit = null)
+
+[BETA] GetPortfolioPropertiesTimeSeries: Get portfolio properties time series
+
+Show the complete time series (history) for multiple portfolio properties at once, grouped by property key.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<PortfoliosApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var propertyKeys = new List<string>(); // List<string>
+var portfolioEffectiveAt = "portfolioEffectiveAt_example";  // string? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var filter = "filter_example";  // string? (optional)
+var page = "page_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+ResourceListOfPropertyIntervalTimeSeries result = apiInstance.GetPortfolioPropertiesTimeSeries(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the portfolio. |
+| **code** | **string** | path | **required** | The code of the portfolio. Together with the scope this uniquely identifies the portfolio. |
+| **propertyKeys** | [List&lt;string&gt;](string.md) | query | **required** | The property keys of the properties whose history to show. These must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **portfolioEffectiveAt** | **string?** | query | optional | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. |
+| **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the propertyKeys, filter, portfolioEffectiveAt, and asAt              fields must not have changed since the original request. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of property keys returned per page to this number. |
+
+### Return type
+
+[ResourceListOfPropertyIntervalTimeSeries](ResourceListOfPropertyIntervalTimeSeries.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The time series of the properties, grouped by property key |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetPortfolioPropertiesTimeSeriesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfPropertyIntervalTimeSeries> response = apiInstance.GetPortfolioPropertiesTimeSeriesWithHttpInfo(scope, code, propertyKeys, portfolioEffectiveAt, asAt, filter, page, limit);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

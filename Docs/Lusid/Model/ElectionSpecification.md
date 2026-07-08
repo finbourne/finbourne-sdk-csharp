@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ElectionType** | **string** | Required | Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection. |
+| **ElectionType** | **string** | Required | Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection, SubscribeElection. |
 | **Cardinality** | **Dictionary&lt;string, string&gt;** | Required | *No description available.* |
 | **ReferencedAs** | **List&lt;string&gt;** | Required | *No description available.* |
 
@@ -17,7 +17,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ElectionSpecification(
-    electionType: "...",  // required — Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection.
+    electionType: "...",  // required — Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection, SubscribeElection.
     cardinality: ,  // required
     referencedAs:   // required
 );
