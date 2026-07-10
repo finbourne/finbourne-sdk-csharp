@@ -12,6 +12,7 @@ The information required to create or update an Azure Service Bus notification
 | **TenantId** | **string** | Required | Reference to tenant id from Configuration Store |
 | **ClientId** | **string** | Required | Reference to client id from Configuration Store |
 | **ClientSecret** | **string** | Required | Reference to client secret from Configuration Store |
+| **ApplicationProperties** | **Dictionary&lt;string, string&gt;** | Optional | Optional key-value pairs to attach to the Azure Service Bus message envelope. |
 
 
 ## Usage
@@ -28,7 +29,8 @@ var instance = new AzureServiceBusNotificationType(
     body: "...",  // required — The body of the Azure Service Bus Message
     tenantId: "...",  // required — Reference to tenant id from Configuration Store
     clientId: "...",  // required — Reference to client id from Configuration Store
-    clientSecret: "..."  // required — Reference to client secret from Configuration Store
+    clientSecret: "...",  // required — Reference to client secret from Configuration Store
+    applicationProperties:   // optional — Optional key-value pairs to attach to the Azure Service Bus message envelope.
 );
 ```
 ### Serializing to JSON

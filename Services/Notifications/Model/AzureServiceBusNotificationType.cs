@@ -62,7 +62,8 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="tenantId">Reference to tenant id from Configuration Store (required).</param>
         /// <param name="clientId">Reference to client id from Configuration Store (required).</param>
         /// <param name="clientSecret">Reference to client secret from Configuration Store (required).</param>
-        public AzureServiceBusNotificationType(TypeEnum type = default(TypeEnum), string varNamespace = default(string), string queueName = default(string), string body = default(string), string tenantId = default(string), string clientId = default(string), string clientSecret = default(string))
+        /// <param name="applicationProperties">Optional key-value pairs to attach to the Azure Service Bus message envelope..</param>
+        public AzureServiceBusNotificationType(TypeEnum type = default(TypeEnum), string varNamespace = default(string), string queueName = default(string), string body = default(string), string tenantId = default(string), string clientId = default(string), string clientSecret = default(string), Dictionary<string, string> applicationProperties = default(Dictionary<string, string>))
         {
             
             // to ensure "type" is a defined enum value
@@ -108,6 +109,7 @@ namespace Finbourne.Sdk.Services.Notifications.Model
                 throw new ArgumentNullException("clientSecret is a required property for AzureServiceBusNotificationType and cannot be null");
             }
             this.ClientSecret = clientSecret;
+            this.ApplicationProperties = applicationProperties;
         }
 
         /// <summary>
@@ -153,6 +155,13 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         public string ClientSecret { get; set; }
 
         /// <summary>
+        /// Optional key-value pairs to attach to the Azure Service Bus message envelope.
+        /// </summary>
+        /// <value>Optional key-value pairs to attach to the Azure Service Bus message envelope.</value>
+        [DataMember(Name = "applicationProperties", EmitDefaultValue = true)]
+        public Dictionary<string, string> ApplicationProperties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -167,6 +176,7 @@ namespace Finbourne.Sdk.Services.Notifications.Model
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  ClientId: ").Append(ClientId).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
+            sb.Append("  ApplicationProperties: ").Append(ApplicationProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -235,6 +245,12 @@ namespace Finbourne.Sdk.Services.Notifications.Model
                     this.ClientSecret == input.ClientSecret ||
                     (this.ClientSecret != null &&
                     this.ClientSecret.Equals(input.ClientSecret))
+                ) && 
+                (
+                    this.ApplicationProperties == input.ApplicationProperties ||
+                    this.ApplicationProperties != null &&
+                    input.ApplicationProperties != null &&
+                    this.ApplicationProperties.SequenceEqual(input.ApplicationProperties)
                 );
         }
 
@@ -271,6 +287,10 @@ namespace Finbourne.Sdk.Services.Notifications.Model
                 if (this.ClientSecret != null)
                 {
                     hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
+                }
+                if (this.ApplicationProperties != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApplicationProperties.GetHashCode();
                 }
                 return hashCode;
             }

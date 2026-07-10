@@ -12,6 +12,7 @@ Holds readonly information about an Azure Service Bus notification
 | **TenantIdRef** | **string** | Optional | Reference to tenant id  from Configuration Store |
 | **ClientIdRef** | **string** | Optional | Reference to client id from Configuration Store |
 | **ClientSecretRef** | **string** | Optional | Reference to client secret from Configuration Store |
+| **ApplicationProperties** | **Dictionary&lt;string, string&gt;** | Optional | Optional key-value pairs attached to the Azure Service Bus message envelope. |
 
 
 ## Usage
@@ -28,7 +29,8 @@ var instance = new AzureServiceBusTypeResponse(
     body: "...",  // optional — The body of the Azure service bus Message
     tenantIdRef: "...",  // optional — Reference to tenant id  from Configuration Store
     clientIdRef: "...",  // optional — Reference to client id from Configuration Store
-    clientSecretRef: "..."  // optional — Reference to client secret from Configuration Store
+    clientSecretRef: "...",  // optional — Reference to client secret from Configuration Store
+    applicationProperties:   // optional — Optional key-value pairs attached to the Azure Service Bus message envelope.
 );
 ```
 ### Serializing to JSON
