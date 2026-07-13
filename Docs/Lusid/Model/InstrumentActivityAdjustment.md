@@ -10,7 +10,7 @@
 | **AsAt** | **DateTimeOffset** | Required | The asAt time for which the adjustment is being applied. |
 | **Scope** | **string** | Required | The Scope of the given entity |
 | **LusidInstrumentId** | **string** | Required | The LusidInstrumentId of the given entity |
-| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.InstrumentActivityAdjustment` |
+| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.InstrumentActivityAdjustment` |
 
 
 ## Usage
@@ -25,7 +25,7 @@ var instance = new InstrumentActivityAdjustment(
     asAt: DateTimeOffset.Now,  // required — The asAt time for which the adjustment is being applied.
     scope: "...",  // required — The Scope of the given entity
     lusidInstrumentId: "...",  // required — The LusidInstrumentId of the given entity
-    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment.
+    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
 );
 ```
 ### Serializing to JSON

@@ -1,10 +1,11 @@
-# Finbourne.Sdk.Horizon.Model.TransactionPayloadResponse
+# Finbourne.Sdk.Horizon.Model.TransactionPayload
 
-record containing details of a transaction payload.
+record containing the payload for a single transaction. Columns is compiled once from the TPF instance configuration and is identical across every item in the paginated result.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
+| **TransactionId** | **string** | Required | *No description available.* |
 | **Columns** | **List&lt;string&gt;** | Required | *No description available.* |
 | **Values** | **Dictionary&lt;string, string&gt;** | Required | *No description available.* |
 | **RawCsvRow** | **string** | Required | *No description available.* |
@@ -17,7 +18,8 @@ record containing details of a transaction payload.
 ```csharp
 using Finbourne.Sdk.Services.Horizon.Model;
 
-var instance = new TransactionPayloadResponse(
+var instance = new TransactionPayload(
+    transactionId: "...",  // required
     columns: ,  // required
     values: ,  // required
     rawCsvRow: "..."  // required
@@ -32,7 +34,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<TransactionPayloadResponse>(json);
+var instance = JsonConvert.DeserializeObject<TransactionPayload>(json);
 ```
 
 

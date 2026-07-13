@@ -7,7 +7,7 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**GetTpfFileDeliveries**](#gettpffiledeliveries) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/deliveries` | [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance |
 | [**GetTpfTransactionHistorySearch**](#gettpftransactionhistorysearch) | **GET** `/horizon/api/trade-publication-framework/transactions/search` | [EXPERIMENTAL] GetTpfTransactionHistorySearch: Endpoint to search TPF transaction by transaction ID and/or instrument identifier, with filtering by instance and date range |
-| [**GetTransactionPayload**](#gettransactionpayload) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs/{runId}/transactions/{transactionId}/payload` | [EXPERIMENTAL] GetTransactionPayload: Transaction payload detail |
+| [**GetTransactionPayload**](#gettransactionpayload) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs/{runId}/transactions/payload` | [EXPERIMENTAL] GetTransactionPayload: Transaction payloads for a run, with pagination support. When transactionId is supplied the single matching payload is returned; otherwise all payloads for the instance/run are returned. |
 | [**ListFailedDeliveries**](#listfaileddeliveries) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/failed` | [EXPERIMENTAL] ListFailedDeliveries: List failed deliveries for a given TPF instance, filtered by resolved state, with pagination support. |
 | [**ListInstanceRunHistory**](#listinstancerunhistory) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs` | [EXPERIMENTAL] ListInstanceRunHistory: List run history for a given TPF instance, with pagination support. |
 | [**ListInstancesWithStatus**](#listinstanceswithstatus) | **GET** `/horizon/api/trade-publication-framework/instances` | [EXPERIMENTAL] ListInstancesWithStatus: Lists all instances of the Trade Publication Framework (TPF). |
@@ -201,9 +201,9 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="gettransactionpayload"></a>
 ## GetTransactionPayload
 
-> TransactionPayloadResponse GetTransactionPayload(string instanceId, string runId, string transactionId)
+> PagedResourceListOfTransactionPayload GetTransactionPayload(string instanceId, string runId, string? transactionId = null, string? page = null, int? pageSize = null)
 
-[EXPERIMENTAL] GetTransactionPayload: Transaction payload detail
+[EXPERIMENTAL] GetTransactionPayload: Transaction payloads for a run, with pagination support. When transactionId is supplied the single matching payload is returned; otherwise all payloads for the instance/run are returned.
 
 ### Example
 
@@ -211,8 +211,10 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
 var instanceId = "instanceId_example";  // string
 var runId = "runId_example";  // string
-var transactionId = "transactionId_example";  // string
-TransactionPayloadResponse result = apiInstance.GetTransactionPayload(instanceId, runId, transactionId);
+var transactionId = "transactionId_example";  // string? (optional)
+var page = "\"\"";  // string? (optional)
+var pageSize = 100;  // int? (optional)
+PagedResourceListOfTransactionPayload result = apiInstance.GetTransactionPayload(instanceId, runId, transactionId, page, pageSize);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -222,11 +224,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** |  |
 | **runId** | **string** | path | **required** |  |
-| **transactionId** | **string** | path | **required** |  |
+| **transactionId** | **string?** | query | optional |  |
+| **page** | **string?** | query | optional |  Default: `&quot;&quot;` |
+| **pageSize** | **int?** | query | optional |  Default: `100` |
 
 ### Return type
 
-[TransactionPayloadResponse](TransactionPayloadResponse.md)
+[PagedResourceListOfTransactionPayload](PagedResourceListOfTransactionPayload.md)
 
 ### HTTP request headers
 
@@ -239,7 +243,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
 | **400** | The details of the input related failure |  -  |
-| **404** | The requested TPF instance, run, or transaction payload does not exist. |  -  |
+| **404** | The requested TPF instance or run does not exist. |  -  |
 | **0** | Error response |  -  |
 
 <details>
@@ -248,7 +252,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<TransactionPayloadResponse> response = apiInstance.GetTransactionPayloadWithHttpInfo(instanceId, runId, transactionId);
+ApiResponse<PagedResourceListOfTransactionPayload> response = apiInstance.GetTransactionPayloadWithHttpInfo(instanceId, runId, transactionId, page, pageSize);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

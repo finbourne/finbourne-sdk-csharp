@@ -40,6 +40,7 @@ All URIs are relative to *http://localhost*
 | [**ListFundCalendarEntries**](#listfundcalendarentries) | **GET** `/api/api/funds/{scope}/{code}/calendars` | [EXPERIMENTAL] ListFundCalendarEntries: List Fund Calendar Entries. |
 | [**ListFunds**](#listfunds) | **GET** `/api/api/funds` | [EXPERIMENTAL] ListFunds: List Funds. |
 | [**ListNavActivityAdjustments**](#listnavactivityadjustments) | **GET** `/api/api/funds/{scope}/{code}/navAdjustment` | [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point |
+| [**ListValuationPointComplexMarketData**](#listvaluationpointcomplexmarketdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/complexmarketdata/$query` | [EXPERIMENTAL] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point. |
 | [**ListValuationPointInstruments**](#listvaluationpointinstruments) | **GET** `/api/api/funds/{scope}/{code}/valuationpoints/instruments/$query` | [EXPERIMENTAL] ListValuationPointInstruments: List Instruments inside a valuation point |
 | [**ListValuationPointOverview**](#listvaluationpointoverview) | **GET** `/api/api/funds/{scope}/{code}/valuationPointOverview` | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
 | [**PatchFee**](#patchfee) | **PATCH** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EXPERIMENTAL] PatchFee: Patch Fee. |
@@ -2471,6 +2472,76 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ResourceListOfNavActivityAdjustmentResponse> response = apiInstance.ListNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navTypeCode, asAt, page, limit, filter, valuationPointCodeVariant);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listvaluationpointcomplexmarketdata"></a>
+## ListValuationPointComplexMarketData
+
+> ValuationPointResourceListOfAccountedComplexMarketData ListValuationPointComplexMarketData(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, DateTimeOffset? asAt = null, int? limit = null, string? page = null, string? navTypeCode = null)
+
+[EXPERIMENTAL] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
+
+Lists all complex market data within the effective date range of the specified Valuation Point for a Fund,  including any items added via a Complex Close (Post-Close Activity).
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var limit = 56;  // int? (optional)
+var page = "page_example";  // string? (optional)
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+ValuationPointResourceListOfAccountedComplexMarketData result = apiInstance.ListValuationPointComplexMarketData(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the complex market data. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve complex market data. Defaults to returning the latest version              of each item if not specified. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing complex market data from a previous call to ListValuationPointComplexMarketData. |
+| **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
+
+### Return type
+
+[ValuationPointResourceListOfAccountedComplexMarketData](ValuationPointResourceListOfAccountedComplexMarketData.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested complex market data for the specified Valuation Point for a Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListValuationPointComplexMarketDataWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ValuationPointResourceListOfAccountedComplexMarketData> response = apiInstance.ListValuationPointComplexMarketDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

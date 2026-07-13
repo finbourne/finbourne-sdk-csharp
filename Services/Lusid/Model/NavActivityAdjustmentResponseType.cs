@@ -50,7 +50,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum QuoteActivityAdjustment for value: QuoteActivityAdjustment
         /// </summary>
         [EnumMember(Value = "QuoteActivityAdjustment")]
-        QuoteActivityAdjustment = 4
+        QuoteActivityAdjustment = 4,
+
+        /// <summary>
+        /// Enum ComplexMarketDataActivityAdjustment for value: ComplexMarketDataActivityAdjustment
+        /// </summary>
+        [EnumMember(Value = "ComplexMarketDataActivityAdjustment")]
+        ComplexMarketDataActivityAdjustment = 5
     }
 
 }

@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Code** | **string** | Required | The unique code for the Share Class. Must be unique within the Fund. |
+| **InstrumentIdentifiers** | **Dictionary&lt;string, string&gt;** | Required | Unique instrument identifiers |
 | **Name** | **string** | Required | The display name of the Share Class. |
 | **Description** | **string** | Optional | An optional description for the Share Class. |
 | **ShareClassShortCode** | **string** | Required | A short code that uniquely identifies the share class within the Fund. |
@@ -33,7 +33,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ShareClassDefinition(
-    code: "...",  // required — The unique code for the Share Class. Must be unique within the Fund.
+    instrumentIdentifiers: ,  // required — Unique instrument identifiers
     name: "...",  // required — The display name of the Share Class.
     description: "...",  // optional — An optional description for the Share Class.
     shareClassShortCode: "...",  // required — A short code that uniquely identifies the share class within the Fund.

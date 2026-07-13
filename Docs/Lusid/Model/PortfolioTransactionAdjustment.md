@@ -11,7 +11,7 @@
 | **PortfolioScope** | **string** | Required | The portfolio scope of the given entity |
 | **PortfolioCode** | **string** | Required | The portfolio code of the given entity |
 | **TransactionId** | **string** | Required | The transaction Id of the PortfolioTransaction being adjusted |
-| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.PortfolioTransactionAdjustment` |
+| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.PortfolioTransactionAdjustment` |
 
 
 ## Usage
@@ -27,7 +27,7 @@ var instance = new PortfolioTransactionAdjustment(
     portfolioScope: "...",  // required — The portfolio scope of the given entity
     portfolioCode: "...",  // required — The portfolio code of the given entity
     transactionId: "...",  // required — The transaction Id of the PortfolioTransaction being adjusted
-    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment.
+    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
 );
 ```
 ### Serializing to JSON

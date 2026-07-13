@@ -11,7 +11,7 @@
 | **PortfolioScope** | **string** | Required | The portfolio scope of the given entity |
 | **PortfolioCode** | **string** | Required | The portfolio code of the given entity |
 | **SettlementInstructionId** | **string** | Required | The settlement instruction Id of the SettlementInstruction being adjusted |
-| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.PortfolioSettlementInstructionAdjustment` |
+| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.PortfolioSettlementInstructionAdjustment` |
 
 
 ## Usage
@@ -27,7 +27,7 @@ var instance = new PortfolioSettlementInstructionAdjustment(
     portfolioScope: "...",  // required — The portfolio scope of the given entity
     portfolioCode: "...",  // required — The portfolio code of the given entity
     settlementInstructionId: "...",  // required — The settlement instruction Id of the SettlementInstruction being adjusted
-    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment.
+    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
 );
 ```
 ### Serializing to JSON

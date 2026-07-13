@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**DeleteReturnsEntity**](#deletereturnsentity) | **DELETE** `/api/api/returns/{scope}/{code}` | [EXPERIMENTAL] DeleteReturnsEntity: Delete returns entity. |
+| [**GetAggregatedReturns**](#getaggregatedreturns) | **POST** `/api/api/returns/$aggregated` | [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity. |
 | [**GetReturnsEntity**](#getreturnsentity) | **GET** `/api/api/returns/{scope}/{code}` | [EXPERIMENTAL] GetReturnsEntity: Get returns entity. |
 | [**ListReturnsEntities**](#listreturnsentities) | **GET** `/api/api/returns` | [EXPERIMENTAL] ListReturnsEntities: List returns entities. |
 | [**UpsertReturnsEntity**](#upsertreturnsentity) | **POST** `/api/api/returns` | [EXPERIMENTAL] UpsertReturnsEntity: Upsert returns entity. |
@@ -102,6 +103,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteReturnsEntityWithHttpInfo(scope, code);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getaggregatedreturns"></a>
+## GetAggregatedReturns
+
+> AggregatedReturnsResponse GetAggregatedReturns(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest)
+
+[EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity.
+
+Calculate time-weighted returns for the entity specified in the request body over the              effective window. Currently, supports a single entity of type Portfolio and calculates a daily              return grid. The recipe, fee handling, and flow-discrepancy handling are taken from the persisted              Returns entity identified by the supplied scope/code; the request fails if no such entity exists.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AggregatedReturnsApi>();
+var aggregatedReturnsEntityRequest = new AggregatedReturnsEntityRequest(); // AggregatedReturnsEntityRequest
+AggregatedReturnsResponse result = apiInstance.GetAggregatedReturns(aggregatedReturnsEntityRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **aggregatedReturnsEntityRequest** | [AggregatedReturnsEntityRequest](AggregatedReturnsEntityRequest.md) | body | **required** | The entity to calculate returns for, the Returns entity that configures the              calculation, the effective window and the metrics to calculate. |
+
+### Return type
+
+[AggregatedReturnsResponse](AggregatedReturnsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The aggregated returns grouped by entity. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetAggregatedReturnsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<AggregatedReturnsResponse> response = apiInstance.GetAggregatedReturnsWithHttpInfo(aggregatedReturnsEntityRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

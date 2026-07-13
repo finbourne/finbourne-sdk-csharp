@@ -22,43 +22,56 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// record containing details of a transaction payload.
+    /// record containing the payload for a single transaction. Columns is compiled once from the TPF instance configuration and is identical across every item in the paginated result.
     /// </summary>
-    [DataContract(Name = "TransactionPayloadResponse")]
-    public partial class TransactionPayloadResponse : IEquatable<TransactionPayloadResponse>, IValidatableObject
+    [DataContract(Name = "TransactionPayload")]
+    public partial class TransactionPayload : IEquatable<TransactionPayload>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransactionPayloadResponse" /> class.
+        /// Initializes a new instance of the <see cref="TransactionPayload" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected TransactionPayloadResponse() { }
+        protected TransactionPayload() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransactionPayloadResponse" /> class.
+        /// Initializes a new instance of the <see cref="TransactionPayload" /> class.
         /// </summary>
+        /// <param name="transactionId">transactionId (required).</param>
         /// <param name="columns">columns (required).</param>
         /// <param name="values">values (required).</param>
         /// <param name="rawCsvRow">rawCsvRow (required).</param>
-        public TransactionPayloadResponse(List<string> columns = default(List<string>), Dictionary<string, string> values = default(Dictionary<string, string>), string rawCsvRow = default(string))
+        public TransactionPayload(string transactionId = default(string), List<string> columns = default(List<string>), Dictionary<string, string> values = default(Dictionary<string, string>), string rawCsvRow = default(string))
         {
+            // to ensure "transactionId" is required (not null)
+            if (transactionId == null)
+            {
+                throw new ArgumentNullException("transactionId is a required property for TransactionPayload and cannot be null");
+            }
+            this.TransactionId = transactionId;
             // to ensure "columns" is required (not null)
             if (columns == null)
             {
-                throw new ArgumentNullException("columns is a required property for TransactionPayloadResponse and cannot be null");
+                throw new ArgumentNullException("columns is a required property for TransactionPayload and cannot be null");
             }
             this.Columns = columns;
             // to ensure "values" is required (not null)
             if (values == null)
             {
-                throw new ArgumentNullException("values is a required property for TransactionPayloadResponse and cannot be null");
+                throw new ArgumentNullException("values is a required property for TransactionPayload and cannot be null");
             }
             this.Values = values;
             // to ensure "rawCsvRow" is required (not null)
             if (rawCsvRow == null)
             {
-                throw new ArgumentNullException("rawCsvRow is a required property for TransactionPayloadResponse and cannot be null");
+                throw new ArgumentNullException("rawCsvRow is a required property for TransactionPayload and cannot be null");
             }
             this.RawCsvRow = rawCsvRow;
         }
+
+        /// <summary>
+        /// Gets or Sets TransactionId
+        /// </summary>
+        [DataMember(Name = "transactionId", IsRequired = true, EmitDefaultValue = true)]
+        public string TransactionId { get; set; }
 
         /// <summary>
         /// Gets or Sets Columns
@@ -85,7 +98,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class TransactionPayloadResponse {\n");
+            sb.Append("class TransactionPayload {\n");
+            sb.Append("  TransactionId: ").Append(TransactionId).Append("\n");
             sb.Append("  Columns: ").Append(Columns).Append("\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
             sb.Append("  RawCsvRow: ").Append(RawCsvRow).Append("\n");
@@ -109,21 +123,26 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TransactionPayloadResponse);
+            return this.Equals(input as TransactionPayload);
         }
 
         /// <summary>
-        /// Returns true if TransactionPayloadResponse instances are equal
+        /// Returns true if TransactionPayload instances are equal
         /// </summary>
-        /// <param name="input">Instance of TransactionPayloadResponse to be compared</param>
+        /// <param name="input">Instance of TransactionPayload to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TransactionPayloadResponse input)
+        public bool Equals(TransactionPayload input)
         {
             if (input == null)
             {
                 return false;
             }
             return 
+                (
+                    this.TransactionId == input.TransactionId ||
+                    (this.TransactionId != null &&
+                    this.TransactionId.Equals(input.TransactionId))
+                ) && 
                 (
                     this.Columns == input.Columns ||
                     this.Columns != null &&
@@ -152,6 +171,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.TransactionId != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransactionId.GetHashCode();
+                }
                 if (this.Columns != null)
                 {
                     hashCode = (hashCode * 59) + this.Columns.GetHashCode();

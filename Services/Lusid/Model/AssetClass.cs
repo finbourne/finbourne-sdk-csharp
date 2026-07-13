@@ -73,7 +73,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum Unknown for value: Unknown
         /// </summary>
         [EnumMember(Value = "Unknown")]
-        Unknown = 8
+        Unknown = 8,
+
+        /// <summary>
+        /// Enum RealEstate for value: RealEstate
+        /// </summary>
+        [EnumMember(Value = "RealEstate")]
+        RealEstate = 9
     }
 
 }

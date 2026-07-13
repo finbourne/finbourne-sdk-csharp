@@ -36,20 +36,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="AllocationGroup" /> class.
         /// </summary>
         /// <param name="classes">An optional list of share classes that belong to this group. Each entry must reference a ShareClass already present on the Fund. You can provide this or the Formula, but not both..</param>
-        /// <param name="code">The unique code for the Allocation Group. Must be unique within the Fund. (required).</param>
         /// <param name="name">The display name of the Allocation Group. (required).</param>
         /// <param name="description">An optional description for the Allocation Group..</param>
         /// <param name="shareClassShortCode">The short code that identifies the Allocation Group. (required).</param>
         /// <param name="apportionmentMethodProperty">apportionmentMethodProperty.</param>
         /// <param name="formula">An optional filter expression used to define which classes belong to this group, based on fund grouping criteria. You can provide this or the Classes, but not both..</param>
-        public AllocationGroup(List<AllocationGroupClass> classes = default(List<AllocationGroupClass>), string code = default(string), string name = default(string), string description = default(string), string shareClassShortCode = default(string), ApportionmentMethodProperty apportionmentMethodProperty = default(ApportionmentMethodProperty), string formula = default(string))
+        public AllocationGroup(List<AllocationGroupClass> classes = default(List<AllocationGroupClass>), string name = default(string), string description = default(string), string shareClassShortCode = default(string), ApportionmentMethodProperty apportionmentMethodProperty = default(ApportionmentMethodProperty), string formula = default(string))
         {
-            // to ensure "code" is required (not null)
-            if (code == null)
-            {
-                throw new ArgumentNullException("code is a required property for AllocationGroup and cannot be null");
-            }
-            this.Code = code;
             // to ensure "name" is required (not null)
             if (name == null)
             {
@@ -74,13 +67,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>An optional list of share classes that belong to this group. Each entry must reference a ShareClass already present on the Fund. You can provide this or the Formula, but not both.</value>
         [DataMember(Name = "classes", EmitDefaultValue = true)]
         public List<AllocationGroupClass> Classes { get; set; }
-
-        /// <summary>
-        /// The unique code for the Allocation Group. Must be unique within the Fund.
-        /// </summary>
-        /// <value>The unique code for the Allocation Group. Must be unique within the Fund.</value>
-        [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = true)]
-        public string Code { get; set; }
 
         /// <summary>
         /// The display name of the Allocation Group.
@@ -125,7 +111,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AllocationGroup {\n");
             sb.Append("  Classes: ").Append(Classes).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ShareClassShortCode: ").Append(ShareClassShortCode).Append("\n");
@@ -173,11 +158,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Classes.SequenceEqual(input.Classes)
                 ) && 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -217,10 +197,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Classes.GetHashCode();
                 }
-                if (this.Code != null)
-                {
-                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
-                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -252,13 +228,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Code (string) pattern
-            Regex regexCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (this.Code != null && false == regexCode.Match(this.Code).Success)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Code, must match a pattern of " + regexCode, new [] { "Code" });
-            }
-
             // Description (string) pattern
             Regex regexDescription = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
             if (this.Description != null && false == regexDescription.Match(this.Description).Success)

@@ -8,10 +8,10 @@
 |------|------|----------|-------------|
 | **NavActivityAdjustmentSource** | **string** | Required | The post closed activity source of the given entity, for example Manual. Available values: Undefined, Manual, Auto. |
 | **AsAt** | **DateTimeOffset** | Required | The asAt time for which the adjustment is being applied. |
-| **EffectiveAt** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Required | The EffectiveAt time of the quote event that need to be added to the closed period. |
-| **EntityUniqueId** | **string** | Required | The EntityUniqueId from the quote which needs to be added as a post close activity. |
+| **EffectiveAt** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Required | The EffectiveAt time of the entity event that need to be added to the closed period. |
+| **EntityUniqueId** | **string** | Required | The EntityUniqueId from the entity which needs to be added as a post close activity. |
 | **InstrumentId** | **string** | Required | The InstrumentId from the quote which needs to be added as a post close activity. |
-| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.QuoteActivityAdjustment` |
+| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.QuoteActivityAdjustment` |
 
 
 ## Usage
@@ -24,10 +24,10 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new QuoteActivityAdjustment(
     navActivityAdjustmentSource: "...",  // required — The post closed activity source of the given entity, for example Manual. Available values: Undefined, Manual, Auto.
     asAt: DateTimeOffset.Now,  // required — The asAt time for which the adjustment is being applied.
-    effectiveAt: new DateTimeOrCutLabel(...),  // required — The EffectiveAt time of the quote event that need to be added to the closed period.
-    entityUniqueId: "...",  // required — The EntityUniqueId from the quote which needs to be added as a post close activity.
+    effectiveAt: new DateTimeOrCutLabel(...),  // required — The EffectiveAt time of the entity event that need to be added to the closed period.
+    entityUniqueId: "...",  // required — The EntityUniqueId from the entity which needs to be added as a post close activity.
     instrumentId: "...",  // required — The InstrumentId from the quote which needs to be added as a post close activity.
-    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment.
+    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
 );
 ```
 ### Serializing to JSON
