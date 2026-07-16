@@ -11,6 +11,7 @@ All URIs are relative to *http://localhost*
 | [**ListTaskDefinitions**](#listtaskdefinitions) | **GET** `/workflow/api/taskdefinitions` | ListTaskDefinitions: List Task Definitions |
 | [**ListTasksForTaskDefinition**](#listtasksfortaskdefinition) | **GET** `/workflow/api/taskdefinitions/{scope}/{code}/tasks` | ListTasksForTaskDefinition: List Tasks for a Task Definition |
 | [**UpdateTaskDefinition**](#updatetaskdefinition) | **PUT** `/workflow/api/taskdefinitions/{scope}/{code}` | UpdateTaskDefinition: Update an existing Task Definition |
+| [**UpsertTaskDefinitionProperties**](#upserttaskdefinitionproperties) | **POST** `/workflow/api/taskdefinitions/{scope}/{code}/properties` | [EXPERIMENTAL] UpsertTaskDefinitionProperties: Add, update and remove properties on an existing Task Definition in bulk. |
 
 ### Example
 
@@ -172,7 +173,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="gettaskdefinition"></a>
 ## GetTaskDefinition
 
-> TaskDefinition GetTaskDefinition(string scope, string code, DateTimeOffset? asAt = null)
+> TaskDefinition GetTaskDefinition(string scope, string code, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
 GetTaskDefinition: Get a Task Definition
 
@@ -183,7 +184,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TaskDefinitionsAp
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
-TaskDefinition result = apiInstance.GetTaskDefinition(scope, code, asAt);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+TaskDefinition result = apiInstance.GetTaskDefinition(scope, code, asAt, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -194,6 +196,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope that identifies a Task Definition |
 | **code** | **string** | path | **required** | The code that identifies a Task Definition |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Task Definition. Defaults to returning the latest version of the Task Definition if not specified. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys whose values to return on the Task Definition. |
 
 ### Return type
 
@@ -219,7 +222,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<TaskDefinition> response = apiInstance.GetTaskDefinitionWithHttpInfo(scope, code, asAt);
+ApiResponse<TaskDefinition> response = apiInstance.GetTaskDefinitionWithHttpInfo(scope, code, asAt, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -298,7 +301,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listtasksfortaskdefinition"></a>
 ## ListTasksForTaskDefinition
 
-> ResourceListOfTask ListTasksForTaskDefinition(string scope, string code, DateTimeOffset? asAt = null)
+> ResourceListOfTask ListTasksForTaskDefinition(string scope, string code, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
 ListTasksForTaskDefinition: List Tasks for a Task Definition
 
@@ -309,7 +312,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TaskDefinitionsAp
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
-ResourceListOfTask result = apiInstance.ListTasksForTaskDefinition(scope, code, asAt);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+ResourceListOfTask result = apiInstance.ListTasksForTaskDefinition(scope, code, asAt, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -320,6 +324,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope that identifies a Task Definition |
 | **code** | **string** | path | **required** | The code that identifies a Task Definition |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. |
 
 ### Return type
 
@@ -345,7 +350,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfTask> response = apiInstance.ListTasksForTaskDefinitionWithHttpInfo(scope, code, asAt);
+ApiResponse<ResourceListOfTask> response = apiInstance.ListTasksForTaskDefinitionWithHttpInfo(scope, code, asAt, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -407,6 +412,69 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<TaskDefinition> response = apiInstance.UpdateTaskDefinitionWithHttpInfo(scope, code, updateTaskDefinitionRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="upserttaskdefinitionproperties"></a>
+## UpsertTaskDefinitionProperties
+
+> BatchUpsertTaskDefinitionPropertiesResponse UpsertTaskDefinitionProperties(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, string? successMode = null)
+
+[EXPERIMENTAL] UpsertTaskDefinitionProperties: Add, update and remove properties on an existing Task Definition in bulk.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TaskDefinitionsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var requestBody = new Dictionary<string, PerpetualProperty>(); // Dictionary<string, PerpetualProperty>
+var successMode = "\"Partial\"";  // string? (optional)
+BatchUpsertTaskDefinitionPropertiesResponse result = apiInstance.UpsertTaskDefinitionProperties(scope, code, requestBody, successMode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope that identifies a Task Definition |
+| **code** | **string** | path | **required** | The code that identifies a Task Definition |
+| **requestBody** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | body | **required** | The properties to upsert, keyed by property key. A null value deletes the property. |
+| **successMode** | **string?** | query | optional | Whether the batch should fail Atomically or Partially. Defaults to Partial. Default: `&quot;Partial&quot;` |
+
+### Return type
+
+[BatchUpsertTaskDefinitionPropertiesResponse](BatchUpsertTaskDefinitionPropertiesResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | Task Definition not found. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpsertTaskDefinitionPropertiesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<BatchUpsertTaskDefinitionPropertiesResponse> response = apiInstance.UpsertTaskDefinitionPropertiesWithHttpInfo(scope, code, requestBody, successMode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

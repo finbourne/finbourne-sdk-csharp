@@ -42,6 +42,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="workflowId">workflowId.</param>
         /// <param name="workflowDisplayName">The display name of the Workflow that this Task is a member of, if any.</param>
         /// <param name="state">Current State (required).</param>
+        /// <param name="stateDisplayName">The display name of the current State, from the Task Definition, if one is provided.</param>
         /// <param name="ultimateParentTask">ultimateParentTask (required).</param>
         /// <param name="parentTask">parentTask.</param>
         /// <param name="childTasks">This Task&#39;s child tasks.</param>
@@ -60,7 +61,8 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="openDuration">Duration in seconds since the Task was created. If the Task is Completed, this is the duration from creation to the last transition..</param>
         /// <param name="openDurationSinceLastUpdate">Duration in seconds since the Task was last updated. 0 if the Task is Completed..</param>
         /// <param name="openDurationSinceLastTransition">Duration in seconds since the Task last transitioned. 0 if the Task is Completed..</param>
-        public Task(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), ResourceId workflowId = default(ResourceId), string workflowDisplayName = default(string), string state = default(string), TaskSummary ultimateParentTask = default(TaskSummary), TaskSummary parentTask = default(TaskSummary), List<TaskSummary> childTasks = default(List<TaskSummary>), List<string> correlationIds = default(List<string>), VersionInfo varVersion = default(VersionInfo), bool terminalState = default(bool), DateTimeOffset? asAtLastTransition = default(DateTimeOffset?), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string), Stack stack = default(Stack), Guid? actionLogIdCreated = default(Guid?), Guid? actionLogIdModified = default(Guid?), Guid? actionLogIdSubmitted = default(Guid?), string hierarchicalPosition = default(string), string completionStatus = default(string), long? openDuration = default(long?), long? openDurationSinceLastUpdate = default(long?), long? openDurationSinceLastTransition = default(long?))
+        /// <param name="properties">The requested TaskDefinition and Workflow properties decorated onto this Task, keyed by property key. Only populated when property keys were requested..</param>
+        public Task(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), ResourceId workflowId = default(ResourceId), string workflowDisplayName = default(string), string state = default(string), string stateDisplayName = default(string), TaskSummary ultimateParentTask = default(TaskSummary), TaskSummary parentTask = default(TaskSummary), List<TaskSummary> childTasks = default(List<TaskSummary>), List<string> correlationIds = default(List<string>), VersionInfo varVersion = default(VersionInfo), bool terminalState = default(bool), DateTimeOffset? asAtLastTransition = default(DateTimeOffset?), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string), Stack stack = default(Stack), Guid? actionLogIdCreated = default(Guid?), Guid? actionLogIdModified = default(Guid?), Guid? actionLogIdSubmitted = default(Guid?), string hierarchicalPosition = default(string), string completionStatus = default(string), long? openDuration = default(long?), long? openDurationSinceLastUpdate = default(long?), long? openDurationSinceLastTransition = default(long?), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>))
         {
             
             this.Id = id;
@@ -98,6 +100,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             this.TerminalState = terminalState;
             this.WorkflowId = workflowId;
             this.WorkflowDisplayName = workflowDisplayName;
+            this.StateDisplayName = stateDisplayName;
             this.ParentTask = parentTask;
             this.ChildTasks = childTasks;
             this.CorrelationIds = correlationIds;
@@ -114,6 +117,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             this.OpenDuration = openDuration;
             this.OpenDurationSinceLastUpdate = openDurationSinceLastUpdate;
             this.OpenDurationSinceLastTransition = openDurationSinceLastTransition;
+            this.Properties = properties;
         }
 
         /// <summary>
@@ -161,6 +165,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <value>Current State</value>
         [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
         public string State { get; set; }
+
+        /// <summary>
+        /// The display name of the current State, from the Task Definition, if one is provided
+        /// </summary>
+        /// <value>The display name of the current State, from the Task Definition, if one is provided</value>
+        [DataMember(Name = "stateDisplayName", EmitDefaultValue = true)]
+        public string StateDisplayName { get; set; }
 
         /// <summary>
         /// Gets or Sets UltimateParentTask
@@ -285,6 +296,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public long? OpenDurationSinceLastTransition { get; set; }
 
         /// <summary>
+        /// The requested TaskDefinition and Workflow properties decorated onto this Task, keyed by property key. Only populated when property keys were requested.
+        /// </summary>
+        /// <value>The requested TaskDefinition and Workflow properties decorated onto this Task, keyed by property key. Only populated when property keys were requested.</value>
+        [DataMember(Name = "properties", EmitDefaultValue = true)]
+        public Dictionary<string, PerpetualProperty> Properties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -299,6 +317,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  WorkflowId: ").Append(WorkflowId).Append("\n");
             sb.Append("  WorkflowDisplayName: ").Append(WorkflowDisplayName).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  StateDisplayName: ").Append(StateDisplayName).Append("\n");
             sb.Append("  UltimateParentTask: ").Append(UltimateParentTask).Append("\n");
             sb.Append("  ParentTask: ").Append(ParentTask).Append("\n");
             sb.Append("  ChildTasks: ").Append(ChildTasks).Append("\n");
@@ -317,6 +336,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  OpenDuration: ").Append(OpenDuration).Append("\n");
             sb.Append("  OpenDurationSinceLastUpdate: ").Append(OpenDurationSinceLastUpdate).Append("\n");
             sb.Append("  OpenDurationSinceLastTransition: ").Append(OpenDurationSinceLastTransition).Append("\n");
+            sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -386,6 +406,11 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
+                ) && 
+                (
+                    this.StateDisplayName == input.StateDisplayName ||
+                    (this.StateDisplayName != null &&
+                    this.StateDisplayName.Equals(input.StateDisplayName))
                 ) && 
                 (
                     this.UltimateParentTask == input.UltimateParentTask ||
@@ -478,6 +503,12 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.OpenDurationSinceLastTransition == input.OpenDurationSinceLastTransition ||
                     (this.OpenDurationSinceLastTransition != null &&
                     this.OpenDurationSinceLastTransition.Equals(input.OpenDurationSinceLastTransition))
+                ) && 
+                (
+                    this.Properties == input.Properties ||
+                    this.Properties != null &&
+                    input.Properties != null &&
+                    this.Properties.SequenceEqual(input.Properties)
                 );
         }
 
@@ -517,6 +548,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.State != null)
                 {
                     hashCode = (hashCode * 59) + this.State.GetHashCode();
+                }
+                if (this.StateDisplayName != null)
+                {
+                    hashCode = (hashCode * 59) + this.StateDisplayName.GetHashCode();
                 }
                 if (this.UltimateParentTask != null)
                 {
@@ -586,6 +621,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.OpenDurationSinceLastTransition != null)
                 {
                     hashCode = (hashCode * 59) + this.OpenDurationSinceLastTransition.GetHashCode();
+                }
+                if (this.Properties != null)
+                {
+                    hashCode = (hashCode * 59) + this.Properties.GetHashCode();
                 }
                 return hashCode;
             }

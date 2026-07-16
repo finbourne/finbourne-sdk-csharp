@@ -83,10 +83,11 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Task Definition. Defaults to returning the latest version of the Task Definition if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys whose values to return on the Task Definition. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>TaskDefinition</returns>
-        TaskDefinition GetTaskDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        TaskDefinition GetTaskDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// GetTaskDefinition: Get a Task Definition
@@ -98,10 +99,11 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Task Definition. Defaults to returning the latest version of the Task Definition if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys whose values to return on the Task Definition. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of TaskDefinition</returns>
-        Finbourne.Sdk.Client.ApiResponse<TaskDefinition> GetTaskDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<TaskDefinition> GetTaskDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// ListTaskDefinitions: List Task Definitions
         /// </summary>
@@ -139,10 +141,11 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ResourceListOfTask</returns>
-        ResourceListOfTask ListTasksForTaskDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        ResourceListOfTask ListTasksForTaskDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// ListTasksForTaskDefinition: List Tasks for a Task Definition
@@ -154,10 +157,11 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ResourceListOfTask</returns>
-        Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask> ListTasksForTaskDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask> ListTasksForTaskDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// UpdateTaskDefinition: Update an existing Task Definition
         /// </summary>
@@ -184,6 +188,34 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of TaskDefinition</returns>
         Finbourne.Sdk.Client.ApiResponse<TaskDefinition> UpdateTaskDefinitionWithHttpInfo(string scope, string code, UpdateTaskDefinitionRequest updateTaskDefinitionRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertTaskDefinitionProperties: Add, update and remove properties on an existing Task Definition in bulk.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope that identifies a Task Definition</param>
+        /// <param name="code">The code that identifies a Task Definition</param>
+        /// <param name="requestBody">The properties to upsert, keyed by property key. A null value deletes the property.</param>
+        /// <param name="successMode">Whether the batch should fail Atomically or Partially. Defaults to Partial. (optional, default to &quot;Partial&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>BatchUpsertTaskDefinitionPropertiesResponse</returns>
+        BatchUpsertTaskDefinitionPropertiesResponse UpsertTaskDefinitionProperties(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertTaskDefinitionProperties: Add, update and remove properties on an existing Task Definition in bulk.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope that identifies a Task Definition</param>
+        /// <param name="code">The code that identifies a Task Definition</param>
+        /// <param name="requestBody">The properties to upsert, keyed by property key. A null value deletes the property.</param>
+        /// <param name="successMode">Whether the batch should fail Atomically or Partially. Defaults to Partial. (optional, default to &quot;Partial&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of BatchUpsertTaskDefinitionPropertiesResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<BatchUpsertTaskDefinitionPropertiesResponse> UpsertTaskDefinitionPropertiesWithHttpInfo(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         #endregion Synchronous Operations
     }
 
@@ -259,11 +291,12 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Task Definition. Defaults to returning the latest version of the Task Definition if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys whose values to return on the Task Definition. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of TaskDefinition</returns>
-        System.Threading.Tasks.Task<TaskDefinition> GetTaskDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<TaskDefinition> GetTaskDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// GetTaskDefinition: Get a Task Definition
@@ -275,11 +308,12 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Task Definition. Defaults to returning the latest version of the Task Definition if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys whose values to return on the Task Definition. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (TaskDefinition)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaskDefinition>> GetTaskDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaskDefinition>> GetTaskDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// ListTaskDefinitions: List Task Definitions
         /// </summary>
@@ -325,11 +359,12 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ResourceListOfTask</returns>
-        System.Threading.Tasks.Task<ResourceListOfTask> ListTasksForTaskDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<ResourceListOfTask> ListTasksForTaskDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// ListTasksForTaskDefinition: List Tasks for a Task Definition
@@ -341,11 +376,12 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (ResourceListOfTask)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask>> ListTasksForTaskDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask>> ListTasksForTaskDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// UpdateTaskDefinition: Update an existing Task Definition
         /// </summary>
@@ -377,6 +413,39 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (TaskDefinition)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaskDefinition>> UpdateTaskDefinitionWithHttpInfoAsync(string scope, string code, UpdateTaskDefinitionRequest updateTaskDefinitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertTaskDefinitionProperties: Add, update and remove properties on an existing Task Definition in bulk.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope that identifies a Task Definition</param>
+        /// <param name="code">The code that identifies a Task Definition</param>
+        /// <param name="requestBody">The properties to upsert, keyed by property key. A null value deletes the property.</param>
+        /// <param name="successMode">Whether the batch should fail Atomically or Partially. Defaults to Partial. (optional, default to &quot;Partial&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of BatchUpsertTaskDefinitionPropertiesResponse</returns>
+        System.Threading.Tasks.Task<BatchUpsertTaskDefinitionPropertiesResponse> UpsertTaskDefinitionPropertiesAsync(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertTaskDefinitionProperties: Add, update and remove properties on an existing Task Definition in bulk.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope that identifies a Task Definition</param>
+        /// <param name="code">The code that identifies a Task Definition</param>
+        /// <param name="requestBody">The properties to upsert, keyed by property key. A null value deletes the property.</param>
+        /// <param name="successMode">Whether the batch should fail Atomically or Partially. Defaults to Partial. (optional, default to &quot;Partial&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (BatchUpsertTaskDefinitionPropertiesResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BatchUpsertTaskDefinitionPropertiesResponse>> UpsertTaskDefinitionPropertiesWithHttpInfoAsync(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         #endregion Asynchronous Operations
     }
 
@@ -948,12 +1017,13 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Task Definition. Defaults to returning the latest version of the Task Definition if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys whose values to return on the Task Definition. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>TaskDefinition</returns>
-        public TaskDefinition GetTaskDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public TaskDefinition GetTaskDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<TaskDefinition> localVarResponse = GetTaskDefinitionWithHttpInfo(scope, code, asAt, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<TaskDefinition> localVarResponse = GetTaskDefinitionWithHttpInfo(scope, code, asAt, propertyKeys, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -965,10 +1035,11 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Task Definition. Defaults to returning the latest version of the Task Definition if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys whose values to return on the Task Definition. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of TaskDefinition</returns>
-        public Finbourne.Sdk.Client.ApiResponse<TaskDefinition> GetTaskDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<TaskDefinition> GetTaskDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -1029,6 +1100,10 @@ namespace Finbourne.Sdk.Services.Workflow.Api
             if (asAt != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
             }
 
             localVarRequestOptions.Operation = "TaskDefinitionsApi.GetTaskDefinition";
@@ -1072,13 +1147,14 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Task Definition. Defaults to returning the latest version of the Task Definition if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys whose values to return on the Task Definition. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of TaskDefinition</returns>
-        public async System.Threading.Tasks.Task<TaskDefinition> GetTaskDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<TaskDefinition> GetTaskDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<TaskDefinition> localVarResponse = await GetTaskDefinitionWithHttpInfoAsync(scope, code, asAt, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<TaskDefinition> localVarResponse = await GetTaskDefinitionWithHttpInfoAsync(scope, code, asAt, propertyKeys, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1090,11 +1166,12 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the Task Definition. Defaults to returning the latest version of the Task Definition if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys whose values to return on the Task Definition. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (TaskDefinition)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaskDefinition>> GetTaskDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaskDefinition>> GetTaskDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -1156,6 +1233,10 @@ namespace Finbourne.Sdk.Services.Workflow.Api
             if (asAt != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
             }
 
             localVarRequestOptions.Operation = "TaskDefinitionsApi.GetTaskDefinition";
@@ -1464,12 +1545,13 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ResourceListOfTask</returns>
-        public ResourceListOfTask ListTasksForTaskDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public ResourceListOfTask ListTasksForTaskDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask> localVarResponse = ListTasksForTaskDefinitionWithHttpInfo(scope, code, asAt, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask> localVarResponse = ListTasksForTaskDefinitionWithHttpInfo(scope, code, asAt, propertyKeys, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -1481,10 +1563,11 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ResourceListOfTask</returns>
-        public Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask> ListTasksForTaskDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask> ListTasksForTaskDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -1545,6 +1628,10 @@ namespace Finbourne.Sdk.Services.Workflow.Api
             if (asAt != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
             }
 
             localVarRequestOptions.Operation = "TaskDefinitionsApi.ListTasksForTaskDefinition";
@@ -1588,13 +1675,14 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ResourceListOfTask</returns>
-        public async System.Threading.Tasks.Task<ResourceListOfTask> ListTasksForTaskDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<ResourceListOfTask> ListTasksForTaskDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask> localVarResponse = await ListTasksForTaskDefinitionWithHttpInfoAsync(scope, code, asAt, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask> localVarResponse = await ListTasksForTaskDefinitionWithHttpInfoAsync(scope, code, asAt, propertyKeys, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1606,11 +1694,12 @@ namespace Finbourne.Sdk.Services.Workflow.Api
         /// <param name="scope">The scope that identifies a Task Definition</param>
         /// <param name="code">The code that identifies a Task Definition</param>
         /// <param name="asAt">The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. (optional)</param>
+        /// <param name="propertyKeys">The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (ResourceListOfTask)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask>> ListTasksForTaskDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfTask>> ListTasksForTaskDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -1672,6 +1761,10 @@ namespace Finbourne.Sdk.Services.Workflow.Api
             if (asAt != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
             }
 
             localVarRequestOptions.Operation = "TaskDefinitionsApi.ListTasksForTaskDefinition";
@@ -1966,6 +2059,284 @@ namespace Finbourne.Sdk.Services.Workflow.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateTaskDefinition", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertTaskDefinitionProperties: Add, update and remove properties on an existing Task Definition in bulk. 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope that identifies a Task Definition</param>
+        /// <param name="code">The code that identifies a Task Definition</param>
+        /// <param name="requestBody">The properties to upsert, keyed by property key. A null value deletes the property.</param>
+        /// <param name="successMode">Whether the batch should fail Atomically or Partially. Defaults to Partial. (optional, default to &quot;Partial&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>BatchUpsertTaskDefinitionPropertiesResponse</returns>
+        public BatchUpsertTaskDefinitionPropertiesResponse UpsertTaskDefinitionProperties(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<BatchUpsertTaskDefinitionPropertiesResponse> localVarResponse = UpsertTaskDefinitionPropertiesWithHttpInfo(scope, code, requestBody, successMode, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertTaskDefinitionProperties: Add, update and remove properties on an existing Task Definition in bulk. 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope that identifies a Task Definition</param>
+        /// <param name="code">The code that identifies a Task Definition</param>
+        /// <param name="requestBody">The properties to upsert, keyed by property key. A null value deletes the property.</param>
+        /// <param name="successMode">Whether the batch should fail Atomically or Partially. Defaults to Partial. (optional, default to &quot;Partial&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of BatchUpsertTaskDefinitionPropertiesResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<BatchUpsertTaskDefinitionPropertiesResponse> UpsertTaskDefinitionPropertiesWithHttpInfo(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling TaskDefinitionsApi->UpsertTaskDefinitionProperties");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling TaskDefinitionsApi->UpsertTaskDefinitionProperties");
+            }
+
+            // verify the required parameter 'requestBody' is set
+            if (requestBody == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'requestBody' when calling TaskDefinitionsApi->UpsertTaskDefinitionProperties");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (successMode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "successMode", successMode));
+            }
+            localVarRequestOptions.Data = requestBody;
+
+            localVarRequestOptions.Operation = "TaskDefinitionsApi.UpsertTaskDefinitionProperties";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<BatchUpsertTaskDefinitionPropertiesResponse, AbstractOpenAPISchema>("/workflow/api/taskdefinitions/{scope}/{code}/properties", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpsertTaskDefinitionProperties", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertTaskDefinitionProperties: Add, update and remove properties on an existing Task Definition in bulk. 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope that identifies a Task Definition</param>
+        /// <param name="code">The code that identifies a Task Definition</param>
+        /// <param name="requestBody">The properties to upsert, keyed by property key. A null value deletes the property.</param>
+        /// <param name="successMode">Whether the batch should fail Atomically or Partially. Defaults to Partial. (optional, default to &quot;Partial&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of BatchUpsertTaskDefinitionPropertiesResponse</returns>
+        public async System.Threading.Tasks.Task<BatchUpsertTaskDefinitionPropertiesResponse> UpsertTaskDefinitionPropertiesAsync(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<BatchUpsertTaskDefinitionPropertiesResponse> localVarResponse = await UpsertTaskDefinitionPropertiesWithHttpInfoAsync(scope, code, requestBody, successMode, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertTaskDefinitionProperties: Add, update and remove properties on an existing Task Definition in bulk. 
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope that identifies a Task Definition</param>
+        /// <param name="code">The code that identifies a Task Definition</param>
+        /// <param name="requestBody">The properties to upsert, keyed by property key. A null value deletes the property.</param>
+        /// <param name="successMode">Whether the batch should fail Atomically or Partially. Defaults to Partial. (optional, default to &quot;Partial&quot;)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (BatchUpsertTaskDefinitionPropertiesResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BatchUpsertTaskDefinitionPropertiesResponse>> UpsertTaskDefinitionPropertiesWithHttpInfoAsync(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling TaskDefinitionsApi->UpsertTaskDefinitionProperties");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling TaskDefinitionsApi->UpsertTaskDefinitionProperties");
+            }
+
+            // verify the required parameter 'requestBody' is set
+            if (requestBody == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'requestBody' when calling TaskDefinitionsApi->UpsertTaskDefinitionProperties");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (successMode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "successMode", successMode));
+            }
+            localVarRequestOptions.Data = requestBody;
+
+            localVarRequestOptions.Operation = "TaskDefinitionsApi.UpsertTaskDefinitionProperties";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<BatchUpsertTaskDefinitionPropertiesResponse, AbstractOpenAPISchema>("/workflow/api/taskdefinitions/{scope}/{code}/properties", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpsertTaskDefinitionProperties", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

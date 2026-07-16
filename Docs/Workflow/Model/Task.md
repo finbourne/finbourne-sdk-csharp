@@ -12,6 +12,7 @@ Defines a Task created based on a Task Definition
 | **WorkflowId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **WorkflowDisplayName** | **string** | Optional | The display name of the Workflow that this Task is a member of, if any |
 | **State** | **string** | Required | Current State |
+| **StateDisplayName** | **string** | Optional | The display name of the current State, from the Task Definition, if one is provided |
 | **UltimateParentTask** | [TaskSummary](TaskSummary.md) | Required | *No description available.* |
 | **ParentTask** | [TaskSummary](TaskSummary.md) | Optional | *No description available.* |
 | **ChildTasks** | [List&lt;TaskSummary&gt;](TaskSummary.md) | Optional | This Task&#39;s child tasks |
@@ -30,6 +31,7 @@ Defines a Task created based on a Task Definition
 | **OpenDuration** | **long?** | Optional | Duration in seconds since the Task was created. If the Task is Completed, this is the duration from creation to the last transition. |
 | **OpenDurationSinceLastUpdate** | **long?** | Optional | Duration in seconds since the Task was last updated. 0 if the Task is Completed. |
 | **OpenDurationSinceLastTransition** | **long?** | Optional | Duration in seconds since the Task last transitioned. 0 if the Task is Completed. |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The requested TaskDefinition and Workflow properties decorated onto this Task, keyed by property key. Only populated when property keys were requested. |
 
 
 ## Usage
@@ -47,6 +49,7 @@ var instance = new Task(
     workflowId: new ResourceId(...),  // optional
     workflowDisplayName: "...",  // optional — The display name of the Workflow that this Task is a member of, if any
     state: "...",  // required — Current State
+    stateDisplayName: "...",  // optional — The display name of the current State, from the Task Definition, if one is provided
     ultimateParentTask: new TaskSummary(...),  // required
     parentTask: new TaskSummary(...),  // optional
     childTasks: new List<TaskSummary>(),  // optional — This Task&#39;s child tasks
@@ -64,7 +67,8 @@ var instance = new Task(
     completionStatus: "...",  // optional — The completion status of this Task: NotStarted, InProgress, or Completed
     openDuration: 0L,  // optional — Duration in seconds since the Task was created. If the Task is Completed, this is the duration from creation to the last transition.
     openDurationSinceLastUpdate: 0L,  // optional — Duration in seconds since the Task was last updated. 0 if the Task is Completed.
-    openDurationSinceLastTransition: 0L  // optional — Duration in seconds since the Task last transitioned. 0 if the Task is Completed.
+    openDurationSinceLastTransition: 0L,  // optional — Duration in seconds since the Task last transitioned. 0 if the Task is Completed.
+    properties: new PerpetualProperty(...)  // optional — The requested TaskDefinition and Workflow properties decorated onto this Task, keyed by property key. Only populated when property keys were requested.
 );
 ```
 ### Serializing to JSON
@@ -88,6 +92,7 @@ var instance = JsonConvert.DeserializeObject<Task>(json);
 - [VersionInfo](VersionInfo.md)
 - [TaskInstanceField](TaskInstanceField.md) — used in `Fields`
 - [Stack](Stack.md)
+- [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

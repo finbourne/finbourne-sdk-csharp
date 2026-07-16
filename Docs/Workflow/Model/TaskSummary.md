@@ -10,6 +10,8 @@ Summary of a Task created based on a Task Definition
 | **TaskDefinitionVersion** | [TaskDefinitionVersion](TaskDefinitionVersion.md) | Required | *No description available.* |
 | **TaskDefinitionDisplayName** | **string** | Required | The display name of the Task Definition used by this Task |
 | **State** | **string** | Required | Current State |
+| **StateDisplayName** | **string** | Optional | The display name of the current State, from the Task Definition, if one is provided |
+| **CorrelationIds** | **List&lt;string&gt;** | Optional | User-provided ID used to link entities and tasks |
 
 
 ## Usage
@@ -24,7 +26,9 @@ var instance = new TaskSummary(
     taskDefinitionId: new ResourceId(...),  // required
     taskDefinitionVersion: new TaskDefinitionVersion(...),  // required
     taskDefinitionDisplayName: "...",  // required — The display name of the Task Definition used by this Task
-    state: "..."  // required — Current State
+    state: "...",  // required — Current State
+    stateDisplayName: "...",  // optional — The display name of the current State, from the Task Definition, if one is provided
+    correlationIds:   // optional — User-provided ID used to link entities and tasks
 );
 ```
 ### Serializing to JSON

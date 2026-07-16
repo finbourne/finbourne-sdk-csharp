@@ -287,7 +287,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="gettask"></a>
 ## GetTask
 
-> Task GetTask(string id, DateTimeOffset? asAt = null)
+> Task GetTask(string id, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
 GetTask: Get a Task
 
@@ -297,7 +297,8 @@ GetTask: Get a Task
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TasksApi>();
 var id = "id_example";  // string
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
-Task result = apiInstance.GetTask(id, asAt);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+Task result = apiInstance.GetTask(id, asAt, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -307,6 +308,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | Id of the Task to retrieve |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Task. Defaults to returning the latest version of the Task if not specified. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on the Task. |
 
 ### Return type
 
@@ -332,7 +334,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<Task> response = apiInstance.GetTaskWithHttpInfo(id, asAt);
+ApiResponse<Task> response = apiInstance.GetTaskWithHttpInfo(id, asAt, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -405,7 +407,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listtasks"></a>
 ## ListTasks
 
-> PagedResourceListOfTask ListTasks(DateTimeOffset? asAt = null, string? filter = null, List<string>? sortBy = null, int? limit = null, string? page = null)
+> PagedResourceListOfTask ListTasks(DateTimeOffset? asAt = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null, int? limit = null, string? page = null)
 
 ListTasks: List Tasks
 
@@ -416,9 +418,10 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TasksApi>();
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var filter = "filter_example";  // string? (optional)
 var sortBy = new List<string>?(); // List<string>? (optional)
+var propertyKeys = new List<string>?(); // List<string>? (optional)
 var limit = 10;  // int? (optional)
 var page = "page_example";  // string? (optional)
-PagedResourceListOfTask result = apiInstance.ListTasks(asAt, filter, sortBy, limit, page);
+PagedResourceListOfTask result = apiInstance.ListTasks(asAt, filter, sortBy, propertyKeys, limit, page);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -429,6 +432,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here: https://support.lusid.com/filtering-results-from-lusid. |
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each optionally suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Default: `10` |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing tasks from a previous call to list tasks. This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields must not have changed since the original request. |
 
@@ -456,7 +460,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfTask> response = apiInstance.ListTasksWithHttpInfo(asAt, filter, sortBy, limit, page);
+ApiResponse<PagedResourceListOfTask> response = apiInstance.ListTasksWithHttpInfo(asAt, filter, sortBy, propertyKeys, limit, page);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

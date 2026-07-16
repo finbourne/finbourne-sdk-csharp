@@ -40,7 +40,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="taskDefinitionVersion">taskDefinitionVersion (required).</param>
         /// <param name="taskDefinitionDisplayName">The display name of the Task Definition used by this Task (required).</param>
         /// <param name="state">Current State (required).</param>
-        public TaskSummary(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), string state = default(string))
+        /// <param name="stateDisplayName">The display name of the current State, from the Task Definition, if one is provided.</param>
+        /// <param name="correlationIds">User-provided ID used to link entities and tasks.</param>
+        public TaskSummary(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), string state = default(string), string stateDisplayName = default(string), List<string> correlationIds = default(List<string>))
         {
             
             this.Id = id;
@@ -68,6 +70,8 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("state is a required property for TaskSummary and cannot be null");
             }
             this.State = state;
+            this.StateDisplayName = stateDisplayName;
+            this.CorrelationIds = correlationIds;
         }
 
         /// <summary>
@@ -104,6 +108,20 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public string State { get; set; }
 
         /// <summary>
+        /// The display name of the current State, from the Task Definition, if one is provided
+        /// </summary>
+        /// <value>The display name of the current State, from the Task Definition, if one is provided</value>
+        [DataMember(Name = "stateDisplayName", EmitDefaultValue = true)]
+        public string StateDisplayName { get; set; }
+
+        /// <summary>
+        /// User-provided ID used to link entities and tasks
+        /// </summary>
+        /// <value>User-provided ID used to link entities and tasks</value>
+        [DataMember(Name = "correlationIds", EmitDefaultValue = true)]
+        public List<string> CorrelationIds { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -116,6 +134,8 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  TaskDefinitionVersion: ").Append(TaskDefinitionVersion).Append("\n");
             sb.Append("  TaskDefinitionDisplayName: ").Append(TaskDefinitionDisplayName).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  StateDisplayName: ").Append(StateDisplayName).Append("\n");
+            sb.Append("  CorrelationIds: ").Append(CorrelationIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -175,6 +195,17 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
+                ) && 
+                (
+                    this.StateDisplayName == input.StateDisplayName ||
+                    (this.StateDisplayName != null &&
+                    this.StateDisplayName.Equals(input.StateDisplayName))
+                ) && 
+                (
+                    this.CorrelationIds == input.CorrelationIds ||
+                    this.CorrelationIds != null &&
+                    input.CorrelationIds != null &&
+                    this.CorrelationIds.SequenceEqual(input.CorrelationIds)
                 );
         }
 
@@ -206,6 +237,14 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.State != null)
                 {
                     hashCode = (hashCode * 59) + this.State.GetHashCode();
+                }
+                if (this.StateDisplayName != null)
+                {
+                    hashCode = (hashCode * 59) + this.StateDisplayName.GetHashCode();
+                }
+                if (this.CorrelationIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.CorrelationIds.GetHashCode();
                 }
                 return hashCode;
             }
