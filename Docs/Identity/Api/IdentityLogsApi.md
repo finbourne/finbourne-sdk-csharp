@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**ListLogs**](#listlogs) | **GET** `/identity/api/logs` | [BETA] ListLogs: Lists system logs for a domain |
+| [**ListLogs**](#listlogs) | **GET** `/identity/api/logs` | ListLogs: Lists system logs for a domain |
 | [**ListUserLogs**](#listuserlogs) | **GET** `/identity/api/logs/me` | ListUserLogs: Lists user logs |
 
 ### Example
@@ -55,7 +55,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IdentityLogsApi>(
 
 > ResourceListOfSystemLog ListLogs(DateTimeOffset? oktaSince = null, DateTimeOffset? oktaUntil = null, string? oktaFilter = null, string? oktaQuery = null, int? oktaLimit = null, string? oktaSortOrder = null, string? oktaAfter = null)
 
-[BETA] ListLogs: Lists system logs for a domain
+ListLogs: Lists system logs for a domain
 
 Lists system logs for a domain
 

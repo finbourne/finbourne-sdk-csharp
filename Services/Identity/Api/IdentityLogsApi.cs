@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [BETA] ListLogs: Lists system logs for a domain
+        /// ListLogs: Lists system logs for a domain
         /// </summary>
         /// <remarks>
         /// Lists system logs for a domain
@@ -50,7 +50,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         ResourceListOfSystemLog ListLogs(DateTimeOffset? oktaSince = default(DateTimeOffset?), DateTimeOffset? oktaUntil = default(DateTimeOffset?), string? oktaFilter = default(string?), string? oktaQuery = default(string?), int? oktaLimit = default(int?), string? oktaSortOrder = default(string?), string? oktaAfter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [BETA] ListLogs: Lists system logs for a domain
+        /// ListLogs: Lists system logs for a domain
         /// </summary>
         /// <remarks>
         /// Lists system logs for a domain
@@ -110,7 +110,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [BETA] ListLogs: Lists system logs for a domain
+        /// ListLogs: Lists system logs for a domain
         /// </summary>
         /// <remarks>
         /// Lists system logs for a domain
@@ -130,7 +130,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         System.Threading.Tasks.Task<ResourceListOfSystemLog> ListLogsAsync(DateTimeOffset? oktaSince = default(DateTimeOffset?), DateTimeOffset? oktaUntil = default(DateTimeOffset?), string? oktaFilter = default(string?), string? oktaQuery = default(string?), int? oktaLimit = default(int?), string? oktaSortOrder = default(string?), string? oktaAfter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [BETA] ListLogs: Lists system logs for a domain
+        /// ListLogs: Lists system logs for a domain
         /// </summary>
         /// <remarks>
         /// Lists system logs for a domain
@@ -278,7 +278,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [BETA] ListLogs: Lists system logs for a domain Lists system logs for a domain
+        /// ListLogs: Lists system logs for a domain Lists system logs for a domain
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="oktaSince">Lower bound of log events published property (optional)</param>
@@ -298,7 +298,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [BETA] ListLogs: Lists system logs for a domain Lists system logs for a domain
+        /// ListLogs: Lists system logs for a domain Lists system logs for a domain
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -420,7 +420,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [BETA] ListLogs: Lists system logs for a domain Lists system logs for a domain
+        /// ListLogs: Lists system logs for a domain Lists system logs for a domain
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="oktaSince">Lower bound of log events published property (optional)</param>
@@ -441,7 +441,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [BETA] ListLogs: Lists system logs for a domain Lists system logs for a domain
+        /// ListLogs: Lists system logs for a domain Lists system logs for a domain
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
