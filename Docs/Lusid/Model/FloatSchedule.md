@@ -24,6 +24,7 @@ Schedule for floating rate coupon payments.
 | **UseAnnualisedDirectRates** | **bool** | Optional | Flag indicating whether to use daily updated annualised interest  rates for calculating the accrued interest. Defaults to false. |
 | **CapRate** | **decimal?** | Optional | The maximum floating rate which a cashflow can accrue. |
 | **FloorRate** | **decimal?** | Optional | The minimum floating rate which a cashflow can accrue. |
+| **ScheduleId** | **string** | Optional | Optional: identifier for the Schedule. This is only used for Schedules on FlexibleDeposit instruments where the list of Schedules  on the instrument definition can be modified by upsert of a DepositRollEvent. |
 | **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid. Default: `ScheduleTypeEnum.FloatSchedule` |
 
 
@@ -52,6 +53,7 @@ var instance = new FloatSchedule(
     useAnnualisedDirectRates: true,  // optional — Flag indicating whether to use daily updated annualised interest  rates for calculating the accrued interest. Defaults to false.
     capRate: 0.0d,  // optional — The maximum floating rate which a cashflow can accrue.
     floorRate: 0.0d,  // optional — The minimum floating rate which a cashflow can accrue.
+    scheduleId: "...",  // optional — Optional: identifier for the Schedule. This is only used for Schedules on FlexibleDeposit instruments where the list of Schedules  on the instrument definition can be modified by upsert of a DepositRollEvent.
     scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid.
 );
 ```

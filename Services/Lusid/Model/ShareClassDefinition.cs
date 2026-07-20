@@ -41,7 +41,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="shareClassShortCode">A short code that uniquely identifies the share class within the Fund. (required).</param>
         /// <param name="launchPrice">The launch price set when a shareclass is added to the fund. Defaults to 1..</param>
         /// <param name="launchDate">The launch date set when a shareclass is added to the fund. Defaults to Fund Inception Date..</param>
-        /// <param name="apportionmentFactor">The weighting factor used for apportionment across this share class..</param>
+        /// <param name="apportionmentFactor">Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund..</param>
         /// <param name="properties">An optional set of properties to attach to the auto-created Instrument. Only applied when createInstrument is true..</param>
         /// <param name="fundShareClassType">The Type of Share Class. Available values: Unitised, Inactive, Series, PrivateEquity, Partnership. (required).</param>
         /// <param name="distributionType">The type of distribution the ShareClass will calculate. Available values: Income, Accumulation. (required).</param>
@@ -155,9 +155,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public DateTimeOffset? LaunchDate { get; set; }
 
         /// <summary>
-        /// The weighting factor used for apportionment across this share class.
+        /// Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.
         /// </summary>
-        /// <value>The weighting factor used for apportionment across this share class.</value>
+        /// <value>Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.</value>
         [DataMember(Name = "apportionmentFactor", EmitDefaultValue = true)]
         public decimal? ApportionmentFactor { get; set; }
 

@@ -22,45 +22,50 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// AllocationGroupClass
+    /// The target of a Fund Structure edge, identifying the master node and share class the feeder invests into.
     /// </summary>
-    [DataContract(Name = "AllocationGroupClass")]
-    public partial class AllocationGroupClass : IEquatable<AllocationGroupClass>, IValidatableObject
+    [DataContract(Name = "FundStructureEdgeTarget")]
+    public partial class FundStructureEdgeTarget : IEquatable<FundStructureEdgeTarget>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AllocationGroupClass" /> class.
+        /// Initializes a new instance of the <see cref="FundStructureEdgeTarget" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AllocationGroupClass() { }
+        protected FundStructureEdgeTarget() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AllocationGroupClass" /> class.
+        /// Initializes a new instance of the <see cref="FundStructureEdgeTarget" /> class.
         /// </summary>
-        /// <param name="shareClassShortCode">A short code that uniquely identifies the share class within the Fund and is attached to the transaction. (required).</param>
-        /// <param name="apportionmentFactor">Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund..</param>
-        public AllocationGroupClass(string shareClassShortCode = default(string), decimal? apportionmentFactor = default(decimal?))
+        /// <param name="node">The node code of the master node that is the target of this relationship. (required).</param>
+        /// <param name="shareClassShortCode">The short code of the share class on the master fund that the feeder invests into. (required).</param>
+        public FundStructureEdgeTarget(string node = default(string), string shareClassShortCode = default(string))
         {
+            // to ensure "node" is required (not null)
+            if (node == null)
+            {
+                throw new ArgumentNullException("node is a required property for FundStructureEdgeTarget and cannot be null");
+            }
+            this.Node = node;
             // to ensure "shareClassShortCode" is required (not null)
             if (shareClassShortCode == null)
             {
-                throw new ArgumentNullException("shareClassShortCode is a required property for AllocationGroupClass and cannot be null");
+                throw new ArgumentNullException("shareClassShortCode is a required property for FundStructureEdgeTarget and cannot be null");
             }
             this.ShareClassShortCode = shareClassShortCode;
-            this.ApportionmentFactor = apportionmentFactor;
         }
 
         /// <summary>
-        /// A short code that uniquely identifies the share class within the Fund and is attached to the transaction.
+        /// The node code of the master node that is the target of this relationship.
         /// </summary>
-        /// <value>A short code that uniquely identifies the share class within the Fund and is attached to the transaction.</value>
-        [DataMember(Name = "shareClassShortCode", IsRequired = true, EmitDefaultValue = true)]
-        public string ShareClassShortCode { get; set; }
+        /// <value>The node code of the master node that is the target of this relationship.</value>
+        [DataMember(Name = "node", IsRequired = true, EmitDefaultValue = true)]
+        public string Node { get; set; }
 
         /// <summary>
-        /// Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.
+        /// The short code of the share class on the master fund that the feeder invests into.
         /// </summary>
-        /// <value>Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.</value>
-        [DataMember(Name = "apportionmentFactor", EmitDefaultValue = true)]
-        public decimal? ApportionmentFactor { get; set; }
+        /// <value>The short code of the share class on the master fund that the feeder invests into.</value>
+        [DataMember(Name = "shareClassShortCode", IsRequired = true, EmitDefaultValue = true)]
+        public string ShareClassShortCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,9 +74,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class AllocationGroupClass {\n");
+            sb.Append("class FundStructureEdgeTarget {\n");
+            sb.Append("  Node: ").Append(Node).Append("\n");
             sb.Append("  ShareClassShortCode: ").Append(ShareClassShortCode).Append("\n");
-            sb.Append("  ApportionmentFactor: ").Append(ApportionmentFactor).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,15 +97,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AllocationGroupClass);
+            return this.Equals(input as FundStructureEdgeTarget);
         }
 
         /// <summary>
-        /// Returns true if AllocationGroupClass instances are equal
+        /// Returns true if FundStructureEdgeTarget instances are equal
         /// </summary>
-        /// <param name="input">Instance of AllocationGroupClass to be compared</param>
+        /// <param name="input">Instance of FundStructureEdgeTarget to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AllocationGroupClass input)
+        public bool Equals(FundStructureEdgeTarget input)
         {
             if (input == null)
             {
@@ -108,14 +113,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             return 
                 (
+                    this.Node == input.Node ||
+                    (this.Node != null &&
+                    this.Node.Equals(input.Node))
+                ) && 
+                (
                     this.ShareClassShortCode == input.ShareClassShortCode ||
                     (this.ShareClassShortCode != null &&
                     this.ShareClassShortCode.Equals(input.ShareClassShortCode))
-                ) && 
-                (
-                    this.ApportionmentFactor == input.ApportionmentFactor ||
-                    (this.ApportionmentFactor != null &&
-                    this.ApportionmentFactor.Equals(input.ApportionmentFactor))
                 );
         }
 
@@ -128,13 +133,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Node != null)
+                {
+                    hashCode = (hashCode * 59) + this.Node.GetHashCode();
+                }
                 if (this.ShareClassShortCode != null)
                 {
                     hashCode = (hashCode * 59) + this.ShareClassShortCode.GetHashCode();
-                }
-                if (this.ApportionmentFactor != null)
-                {
-                    hashCode = (hashCode * 59) + this.ApportionmentFactor.GetHashCode();
                 }
                 return hashCode;
             }
@@ -147,6 +152,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // Node (string) pattern
+            Regex regexNode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
+            if (this.Node != null && false == regexNode.Match(this.Node).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Node, must match a pattern of " + regexNode, new [] { "Node" });
+            }
+
             // ShareClassShortCode (string) pattern
             Regex regexShareClassShortCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
             if (this.ShareClassShortCode != null && false == regexShareClassShortCode.Match(this.ShareClassShortCode).Success)

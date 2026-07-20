@@ -125,7 +125,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="settlementSummary">settlementSummary.</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="stagedModifications">stagedModifications.</param>
-        public OutputTransaction(string transactionId = default(string), string type = default(string), string description = default(string), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string instrumentScope = default(string), string instrumentUid = default(string), DateTimeOffset transactionDate = default(DateTimeOffset), DateTimeOffset settlementDate = default(DateTimeOffset), decimal units = default(decimal), decimal transactionAmount = default(decimal), TransactionPrice transactionPrice = default(TransactionPrice), CurrencyAndAmount totalConsideration = default(CurrencyAndAmount), decimal exchangeRate = default(decimal), decimal? transactionToPortfolioRate = default(decimal?), string transactionCurrency = default(string), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string counterpartyId = default(string), string source = default(string), TransactionStatusEnum ?transactionStatus = default(TransactionStatusEnum?), DateTimeOffset entryDateTime = default(DateTimeOffset), DateTimeOffset? cancelDateTime = default(DateTimeOffset?), List<RealisedGainLoss> realisedGainLoss = default(List<RealisedGainLoss>), List<long> holdingIds = default(List<long>), string sourceType = default(string), string sourceInstrumentEventId = default(string), CustodianAccount custodianAccount = default(CustodianAccount), string transactionGroupId = default(string), TransactionTypeDetails resolvedTransactionTypeDetails = default(TransactionTypeDetails), decimal grossTransactionAmount = default(decimal), OtcConfirmation otcConfirmation = default(OtcConfirmation), ResourceId orderId = default(ResourceId), ResourceId allocationId = default(ResourceId), DateTimeOffset? accountingDate = default(DateTimeOffset?), List<Economics> economics = default(List<Economics>), DataModelMembership dataModelMembership = default(DataModelMembership), int? sequence = default(int?), int? sequencePriority = default(int?), TransactionSettlementSummary settlementSummary = default(TransactionSettlementSummary), ModelVersion varVersion = default(ModelVersion), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo))
+        /// <param name="custodianEntries">Set of of Custodian Entries associated with the transaction..</param>
+        /// <param name="resolvedCustodianAccounts">Set of Custodian Accounts resolved from each movement on the Transaction..</param>
+        public OutputTransaction(string transactionId = default(string), string type = default(string), string description = default(string), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string instrumentScope = default(string), string instrumentUid = default(string), DateTimeOffset transactionDate = default(DateTimeOffset), DateTimeOffset settlementDate = default(DateTimeOffset), decimal units = default(decimal), decimal transactionAmount = default(decimal), TransactionPrice transactionPrice = default(TransactionPrice), CurrencyAndAmount totalConsideration = default(CurrencyAndAmount), decimal exchangeRate = default(decimal), decimal? transactionToPortfolioRate = default(decimal?), string transactionCurrency = default(string), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string counterpartyId = default(string), string source = default(string), TransactionStatusEnum ?transactionStatus = default(TransactionStatusEnum?), DateTimeOffset entryDateTime = default(DateTimeOffset), DateTimeOffset? cancelDateTime = default(DateTimeOffset?), List<RealisedGainLoss> realisedGainLoss = default(List<RealisedGainLoss>), List<long> holdingIds = default(List<long>), string sourceType = default(string), string sourceInstrumentEventId = default(string), CustodianAccount custodianAccount = default(CustodianAccount), string transactionGroupId = default(string), TransactionTypeDetails resolvedTransactionTypeDetails = default(TransactionTypeDetails), decimal grossTransactionAmount = default(decimal), OtcConfirmation otcConfirmation = default(OtcConfirmation), ResourceId orderId = default(ResourceId), ResourceId allocationId = default(ResourceId), DateTimeOffset? accountingDate = default(DateTimeOffset?), List<Economics> economics = default(List<Economics>), DataModelMembership dataModelMembership = default(DataModelMembership), int? sequence = default(int?), int? sequencePriority = default(int?), TransactionSettlementSummary settlementSummary = default(TransactionSettlementSummary), ModelVersion varVersion = default(ModelVersion), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), List<CustodianEntry> custodianEntries = default(List<CustodianEntry>), List<ResolvedCustodianAccount> resolvedCustodianAccounts = default(List<ResolvedCustodianAccount>))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -185,6 +187,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.SettlementSummary = settlementSummary;
             this.VarVersion = varVersion;
             this.StagedModifications = stagedModifications;
+            this.CustodianEntries = custodianEntries;
+            this.ResolvedCustodianAccounts = resolvedCustodianAccounts;
         }
 
         /// <summary>
@@ -450,6 +454,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public StagedModificationsInfo StagedModifications { get; set; }
 
         /// <summary>
+        /// Set of of Custodian Entries associated with the transaction.
+        /// </summary>
+        /// <value>Set of of Custodian Entries associated with the transaction.</value>
+        [DataMember(Name = "custodianEntries", EmitDefaultValue = true)]
+        public List<CustodianEntry> CustodianEntries { get; set; }
+
+        /// <summary>
+        /// Set of Custodian Accounts resolved from each movement on the Transaction.
+        /// </summary>
+        /// <value>Set of Custodian Accounts resolved from each movement on the Transaction.</value>
+        [DataMember(Name = "resolvedCustodianAccounts", EmitDefaultValue = true)]
+        public List<ResolvedCustodianAccount> ResolvedCustodianAccounts { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -497,6 +515,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  SettlementSummary: ").Append(SettlementSummary).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  StagedModifications: ").Append(StagedModifications).Append("\n");
+            sb.Append("  CustodianEntries: ").Append(CustodianEntries).Append("\n");
+            sb.Append("  ResolvedCustodianAccounts: ").Append(ResolvedCustodianAccounts).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -731,6 +751,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.StagedModifications == input.StagedModifications ||
                     (this.StagedModifications != null &&
                     this.StagedModifications.Equals(input.StagedModifications))
+                ) && 
+                (
+                    this.CustodianEntries == input.CustodianEntries ||
+                    this.CustodianEntries != null &&
+                    input.CustodianEntries != null &&
+                    this.CustodianEntries.SequenceEqual(input.CustodianEntries)
+                ) && 
+                (
+                    this.ResolvedCustodianAccounts == input.ResolvedCustodianAccounts ||
+                    this.ResolvedCustodianAccounts != null &&
+                    input.ResolvedCustodianAccounts != null &&
+                    this.ResolvedCustodianAccounts.SequenceEqual(input.ResolvedCustodianAccounts)
                 );
         }
 
@@ -887,6 +919,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.StagedModifications != null)
                 {
                     hashCode = (hashCode * 59) + this.StagedModifications.GetHashCode();
+                }
+                if (this.CustodianEntries != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustodianEntries.GetHashCode();
+                }
+                if (this.ResolvedCustodianAccounts != null)
+                {
+                    hashCode = (hashCode * 59) + this.ResolvedCustodianAccounts.GetHashCode();
                 }
                 return hashCode;
             }

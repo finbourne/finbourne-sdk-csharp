@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="AllocationGroupClassDefinition" /> class.
         /// </summary>
         /// <param name="shareClassShortCode">A short code that uniquely identifies the share class within the Fund and is attached to the transaction. (required).</param>
-        /// <param name="apportionmentFactor">The weighting factor used for apportionment across this share class..</param>
+        /// <param name="apportionmentFactor">Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund..</param>
         public AllocationGroupClassDefinition(string shareClassShortCode = default(string), decimal? apportionmentFactor = default(decimal?))
         {
             // to ensure "shareClassShortCode" is required (not null)
@@ -56,9 +56,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string ShareClassShortCode { get; set; }
 
         /// <summary>
-        /// The weighting factor used for apportionment across this share class.
+        /// Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.
         /// </summary>
-        /// <value>The weighting factor used for apportionment across this share class.</value>
+        /// <value>Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.</value>
         [DataMember(Name = "apportionmentFactor", EmitDefaultValue = true)]
         public decimal? ApportionmentFactor { get; set; }
 

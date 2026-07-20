@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **ShareClassShortCode** | **string** | Required | A short code that uniquely identifies the share class within the Fund and is attached to the transaction. |
-| **ApportionmentFactor** | **decimal?** | Optional | The weighting factor used for apportionment across this share class. |
+| **ApportionmentFactor** | **decimal?** | Optional | Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund. |
 
 
 ## Usage
@@ -17,7 +17,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new AllocationGroupClass(
     shareClassShortCode: "...",  // required — A short code that uniquely identifies the share class within the Fund and is attached to the transaction.
-    apportionmentFactor: 0.0d  // optional — The weighting factor used for apportionment across this share class.
+    apportionmentFactor: 0.0d  // optional — Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.
 );
 ```
 ### Serializing to JSON

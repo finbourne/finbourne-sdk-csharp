@@ -10,7 +10,7 @@
 | **ShareClassShortCode** | **string** | Required | A short code that uniquely identifies the share class within the Fund. |
 | **LaunchPrice** | **decimal?** | Optional | The launch price set when a shareclass is added to the fund. Defaults to 1. |
 | **LaunchDate** | **DateTimeOffset?** | Optional | The launch date set when a shareclass is added to the fund. Defaults to Fund Inception Date. |
-| **ApportionmentFactor** | **decimal?** | Optional | The weighting factor used for apportionment across this share class. |
+| **ApportionmentFactor** | **decimal?** | Optional | Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | An optional set of properties to attach to the auto-created Instrument. Only applied when createInstrument is true. |
 | **FundShareClassType** | **string** | Required | The Type of Share Class. Available values: Unitised, Inactive, Series, PrivateEquity, Partnership. |
 | **DistributionType** | **string** | Required | The type of distribution the ShareClass will calculate. Available values: Income, Accumulation. |
@@ -39,7 +39,7 @@ var instance = new ShareClass(
     shareClassShortCode: "...",  // required — A short code that uniquely identifies the share class within the Fund.
     launchPrice: 0.0d,  // optional — The launch price set when a shareclass is added to the fund. Defaults to 1.
     launchDate: DateTimeOffset.Now,  // optional — The launch date set when a shareclass is added to the fund. Defaults to Fund Inception Date.
-    apportionmentFactor: 0.0d,  // optional — The weighting factor used for apportionment across this share class.
+    apportionmentFactor: 0.0d,  // optional — Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.
     properties: new Property(...),  // optional — An optional set of properties to attach to the auto-created Instrument. Only applied when createInstrument is true.
     fundShareClassType: "...",  // required — The Type of Share Class. Available values: Unitised, Inactive, Series, PrivateEquity, Partnership.
     distributionType: "...",  // required — The type of distribution the ShareClass will calculate. Available values: Income, Accumulation.

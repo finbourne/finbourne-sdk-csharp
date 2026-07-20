@@ -87,6 +87,7 @@
 * [ExecutionsApi](Lusid/Api/ExecutionsApi.md)
 * [FeeTypesApi](Lusid/Api/FeeTypesApi.md)
 * [FundConfigurationApi](Lusid/Api/FundConfigurationApi.md)
+* [FundStructuresApi](Lusid/Api/FundStructuresApi.md)
 * [FundsApi](Lusid/Api/FundsApi.md)
 * [GroupReconciliationsApi](Lusid/Api/GroupReconciliationsApi.md)
 * [IdentifierDefinitionsApi](Lusid/Api/IdentifierDefinitionsApi.md)
