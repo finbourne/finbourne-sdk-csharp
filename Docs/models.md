@@ -529,6 +529,8 @@
 * [ApplicableEntity](Lusid/Model/ApplicableEntity.md)
 * [ApplicableEntityTypes](Lusid/Model/ApplicableEntityTypes.md)
 * [ApplicableInstrumentEvent](Lusid/Model/ApplicableInstrumentEvent.md)
+* [ApportionmentBreakdown](Lusid/Model/ApportionmentBreakdown.md)
+* [ApportionmentMemberFactor](Lusid/Model/ApportionmentMemberFactor.md)
 * [ApportionmentMethodProperty](Lusid/Model/ApportionmentMethodProperty.md)
 * [AssetClass](Lusid/Model/AssetClass.md)
 * [AssetLeg](Lusid/Model/AssetLeg.md)

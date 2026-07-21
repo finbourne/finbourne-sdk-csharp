@@ -13,6 +13,7 @@ Contains required info to update a Task Definition
 | **Triggers** | [List&lt;TransitionTriggerDefinition&gt;](TransitionTriggerDefinition.md) | Optional | Triggers |
 | **Transitions** | [List&lt;TaskTransitionDefinition&gt;](TaskTransitionDefinition.md) | Optional | Transitions |
 | **Actions** | [List&lt;ActionDefinition&gt;](ActionDefinition.md) | Optional | Actions |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The properties to set on the Task Definition, keyed by property key. Optional. A null property value deletes the property. |
 
 
 ## Usage
@@ -30,7 +31,8 @@ var instance = new UpdateTaskDefinitionRequest(
     initialState: new InitialState(...),  // required
     triggers: new List<TransitionTriggerDefinition>(),  // optional — Triggers
     transitions: new List<TaskTransitionDefinition>(),  // optional — Transitions
-    actions: new List<ActionDefinition>()  // optional — Actions
+    actions: new List<ActionDefinition>(),  // optional — Actions
+    properties: new PerpetualProperty(...)  // optional — The properties to set on the Task Definition, keyed by property key. Optional. A null property value deletes the property.
 );
 ```
 ### Serializing to JSON
@@ -51,6 +53,7 @@ var instance = JsonConvert.DeserializeObject<UpdateTaskDefinitionRequest>(json);
 - [TransitionTriggerDefinition](TransitionTriggerDefinition.md) — used in `Triggers`
 - [TaskTransitionDefinition](TaskTransitionDefinition.md) — used in `Transitions`
 - [ActionDefinition](ActionDefinition.md) — used in `Actions`
+- [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -236,7 +236,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listtaskdefinitions"></a>
 ## ListTaskDefinitions
 
-> PagedResourceListOfTaskDefinition ListTaskDefinitions(DateTimeOffset? asAt = null, string? filter = null, List<string>? sortBy = null, int? limit = null, string? page = null)
+> PagedResourceListOfTaskDefinition ListTaskDefinitions(DateTimeOffset? asAt = null, string? filter = null, List<string>? sortBy = null, int? limit = null, string? page = null, List<string>? propertyKeys = null)
 
 ListTaskDefinitions: List Task Definitions
 
@@ -249,7 +249,8 @@ var filter = "filter_example";  // string? (optional)
 var sortBy = new List<string>?(); // List<string>? (optional)
 var limit = 10;  // int? (optional)
 var page = "page_example";  // string? (optional)
-PagedResourceListOfTaskDefinition result = apiInstance.ListTaskDefinitions(asAt, filter, sortBy, limit, page);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfTaskDefinition result = apiInstance.ListTaskDefinitions(asAt, filter, sortBy, limit, page, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -262,6 +263,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Default: `10` |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing task definitions from a previous call to list task definitions. This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields must not have changed since the original request. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys whose values to return on each Task Definition. |
 
 ### Return type
 
@@ -287,7 +289,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfTaskDefinition> response = apiInstance.ListTaskDefinitionsWithHttpInfo(asAt, filter, sortBy, limit, page);
+ApiResponse<PagedResourceListOfTaskDefinition> response = apiInstance.ListTaskDefinitionsWithHttpInfo(asAt, filter, sortBy, limit, page, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

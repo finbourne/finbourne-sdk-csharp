@@ -13,6 +13,7 @@ The Valuation Point Data Response for the Fund and specified date.
 | **ShareClassData** | [List&lt;ShareClassData&gt;](ShareClassData.md) | Required | The data for all share classes in fund. Share classes are identified by their short codes. |
 | **ValuationPointCode** | **string** | Optional | The code of the valuation point. |
 | **PreviousValuationPointCode** | **string** | Optional | The code of the previous valuation point. |
+| **ApportionmentResults** | [List&lt;ApportionmentBreakdown&gt;](ApportionmentBreakdown.md) | Optional | The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -32,6 +33,7 @@ var instance = new ValuationPointDataResponse(
     shareClassData: new List<ShareClassData>(),  // required — The data for all share classes in fund. Share classes are identified by their short codes.
     valuationPointCode: "...",  // optional — The code of the valuation point.
     previousValuationPointCode: "...",  // optional — The code of the previous valuation point.
+    apportionmentResults: new List<ApportionmentBreakdown>(),  // optional — The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group.
     links: new List<Link>()  // optional
 );
 ```
@@ -50,6 +52,7 @@ var instance = JsonConvert.DeserializeObject<ValuationPointDataResponse>(json);
 - [FundDetails](FundDetails.md)
 - [FundValuationPointData](FundValuationPointData.md)
 - [ShareClassData](ShareClassData.md) — used in `ShareClassData`
+- [ApportionmentBreakdown](ApportionmentBreakdown.md) — used in `ApportionmentResults`
 - [Link](Link.md)
 
 
