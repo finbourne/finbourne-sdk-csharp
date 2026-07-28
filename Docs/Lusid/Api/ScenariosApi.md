@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**CreateScenarioFromTemplate**](#createscenariofromtemplate) | **POST** `/api/api/scenarios/{scope}/$fromTemplate` | [EARLY ACCESS] CreateScenarioFromTemplate: [EARLY ACCESS] CreateScenarioFromTemplate: Create a Scenario from a pre-built template. |
 | [**DeleteScenario**](#deletescenario) | **DELETE** `/api/api/scenarios/{scope}/{code}` | [EARLY ACCESS] DeleteScenario: Delete a Scenario, assuming that it is present. |
 | [**GetScenario**](#getscenario) | **GET** `/api/api/scenarios/{scope}/{code}` | [EARLY ACCESS] GetScenario: Get Scenario |
 | [**ListScenarios**](#listscenarios) | **GET** `/api/api/scenarios/{scope}` | [EARLY ACCESS] ListScenarios: List the set of Scenario definitions |
@@ -49,6 +50,66 @@ File.WriteAllText(
 
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ScenariosApi>();
 ```
+
+---
+
+<a id="createscenariofromtemplate"></a>
+## CreateScenarioFromTemplate
+
+> UpsertSingleStructuredDataResponse CreateScenarioFromTemplate(string scope, CreateScenarioFromTemplateRequest createScenarioFromTemplateRequest)
+
+[EARLY ACCESS] CreateScenarioFromTemplate: [EARLY ACCESS] CreateScenarioFromTemplate: Create a Scenario from a pre-built template.
+
+Creates and stores a scenario built from a pre-defined parameterised template, for example a  parallel rates shift or an equity crash. The template determines the scenario's shifts; the  parameters supply the targets (e.g. currency or instrument) and optionally override the default  shift size. The created scenario is stored in the given scope and behaves exactly like a  hand-built scenario.                Available templates: RatesUp, RatesDown, CurveSteepener, CurveFlattener, VolSpike, EquityCrash,  FxShock, RiskOff.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ScenariosApi>();
+var scope = "scope_example";  // string
+var createScenarioFromTemplateRequest = new CreateScenarioFromTemplateRequest(); // CreateScenarioFromTemplateRequest
+UpsertSingleStructuredDataResponse result = apiInstance.CreateScenarioFromTemplate(scope, createScenarioFromTemplateRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope in which to create the scenario |
+| **createScenarioFromTemplateRequest** | [CreateScenarioFromTemplateRequest](CreateScenarioFromTemplateRequest.md) | body | **required** | The template, code and parameters to create the scenario from |
+
+### Return type
+
+[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The successfully created scenario or any failure |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the CreateScenarioFromTemplateWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<UpsertSingleStructuredDataResponse> response = apiInstance.CreateScenarioFromTemplateWithHttpInfo(scope, createScenarioFromTemplateRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
 
 ---
 

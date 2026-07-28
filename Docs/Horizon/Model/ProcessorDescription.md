@@ -10,6 +10,8 @@ Represents a processor in the Horizon integration system.
 | **Description** | **string** | Required | *No description available.* |
 | **Category** | **string** | Required | *No description available.* |
 | **IsActive** | **bool** | Required | *No description available.* |
+| **IsConnectionRequired** | **bool** | Required | *No description available.* |
+| **Relationships** | **List&lt;string&gt;** | Required | *No description available.* |
 
 
 ## Usage
@@ -24,7 +26,9 @@ var instance = new ProcessorDescription(
     displayName: "...",  // required
     description: "...",  // required
     category: "...",  // required
-    isActive: true  // required
+    isActive: true,  // required
+    isConnectionRequired: true,  // required
+    relationships:   // required
 );
 ```
 ### Serializing to JSON

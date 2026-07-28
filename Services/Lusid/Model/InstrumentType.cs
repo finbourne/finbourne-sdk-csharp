@@ -289,7 +289,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum FlexibleRepo for value: FlexibleRepo
         /// </summary>
         [EnumMember(Value = "FlexibleRepo")]
-        FlexibleRepo = 44
+        FlexibleRepo = 44,
+
+        /// <summary>
+        /// Enum ToBeAnnounced for value: ToBeAnnounced
+        /// </summary>
+        [EnumMember(Value = "ToBeAnnounced")]
+        ToBeAnnounced = 45,
+
+        /// <summary>
+        /// Enum VolatilitySwap for value: VolatilitySwap
+        /// </summary>
+        [EnumMember(Value = "VolatilitySwap")]
+        VolatilitySwap = 46
     }
 
 }

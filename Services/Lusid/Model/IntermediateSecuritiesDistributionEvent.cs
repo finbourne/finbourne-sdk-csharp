@@ -46,8 +46,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="costFactor">Optional. The fraction of cost that is transferred from the existing shares to the new shares..</param>
         /// <param name="fractionalUnitsCashPrice">Optional. Used in calculating cash-in-lieu of fractional shares..</param>
         /// <param name="fractionalUnitsCashCurrency">Optional. Used in calculating cash-in-lieu of fractional shares..</param>
-        /// <param name="instrumentEventType">The Type of Event. Available values: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent, CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent, BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent, MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent, IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent, OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent, TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent, AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent, LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent, DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent, RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent, FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent, ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent, CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent, ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent. (required) (default to InstrumentEventTypeEnum.TransitionEvent).</param>
-        public IntermediateSecuritiesDistributionEvent(DateTimeOffset? announcementDate = default(DateTimeOffset?), DateTimeOffset exDate = default(DateTimeOffset), DateTimeOffset? recordDate = default(DateTimeOffset?), DateTimeOffset paymentDate = default(DateTimeOffset), NewInstrument newInstrument = default(NewInstrument), UnitsRatio unitsRatio = default(UnitsRatio), decimal? costFactor = default(decimal?), decimal? fractionalUnitsCashPrice = default(decimal?), string fractionalUnitsCashCurrency = default(string), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
+        /// <param name="fractionalUnitsRoundingConvention">The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding..</param>
+        /// <param name="fractionalUnitsDecimalPlaces">The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces..</param>
+        /// <param name="instrumentEventType">The Type of Event. Available values: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent, CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent, BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent, MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent, IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent, OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent, TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent, AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent, LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent, DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent, RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent, FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent, ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent, CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent, ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent. (required) (default to InstrumentEventTypeEnum.TransitionEvent).</param>
+        public IntermediateSecuritiesDistributionEvent(DateTimeOffset? announcementDate = default(DateTimeOffset?), DateTimeOffset exDate = default(DateTimeOffset), DateTimeOffset? recordDate = default(DateTimeOffset?), DateTimeOffset paymentDate = default(DateTimeOffset), NewInstrument newInstrument = default(NewInstrument), UnitsRatio unitsRatio = default(UnitsRatio), decimal? costFactor = default(decimal?), decimal? fractionalUnitsCashPrice = default(decimal?), string fractionalUnitsCashCurrency = default(string), string fractionalUnitsRoundingConvention = default(string), int? fractionalUnitsDecimalPlaces = default(int?), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
         {
             // to ensure "newInstrument" is required (not null)
             if (newInstrument == null)
@@ -76,6 +78,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.CostFactor = costFactor;
             this.FractionalUnitsCashPrice = fractionalUnitsCashPrice;
             this.FractionalUnitsCashCurrency = fractionalUnitsCashCurrency;
+            this.FractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+            this.FractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
         }
 
         /// <summary>
@@ -140,6 +144,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string FractionalUnitsCashCurrency { get; set; }
 
         /// <summary>
+        /// The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.
+        /// </summary>
+        /// <value>The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.</value>
+        [DataMember(Name = "fractionalUnitsRoundingConvention", EmitDefaultValue = true)]
+        public string FractionalUnitsRoundingConvention { get; set; }
+
+        /// <summary>
+        /// The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces.
+        /// </summary>
+        /// <value>The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces.</value>
+        [DataMember(Name = "fractionalUnitsDecimalPlaces", EmitDefaultValue = true)]
+        public int? FractionalUnitsDecimalPlaces { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -157,6 +175,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  CostFactor: ").Append(CostFactor).Append("\n");
             sb.Append("  FractionalUnitsCashPrice: ").Append(FractionalUnitsCashPrice).Append("\n");
             sb.Append("  FractionalUnitsCashCurrency: ").Append(FractionalUnitsCashCurrency).Append("\n");
+            sb.Append("  FractionalUnitsRoundingConvention: ").Append(FractionalUnitsRoundingConvention).Append("\n");
+            sb.Append("  FractionalUnitsDecimalPlaces: ").Append(FractionalUnitsDecimalPlaces).Append("\n");
             sb.Append("  InstrumentEventType: ").Append(InstrumentEventType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -239,6 +259,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.FractionalUnitsCashCurrency.Equals(input.FractionalUnitsCashCurrency))
                 ) && base.Equals(input) && 
                 (
+                    this.FractionalUnitsRoundingConvention == input.FractionalUnitsRoundingConvention ||
+                    (this.FractionalUnitsRoundingConvention != null &&
+                    this.FractionalUnitsRoundingConvention.Equals(input.FractionalUnitsRoundingConvention))
+                ) && base.Equals(input) && 
+                (
+                    this.FractionalUnitsDecimalPlaces == input.FractionalUnitsDecimalPlaces ||
+                    (this.FractionalUnitsDecimalPlaces != null &&
+                    this.FractionalUnitsDecimalPlaces.Equals(input.FractionalUnitsDecimalPlaces))
+                ) && base.Equals(input) && 
+                (
                     this.InstrumentEventType == input.InstrumentEventType ||
                     this.InstrumentEventType.Equals(input.InstrumentEventType)
                 );
@@ -288,6 +318,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.FractionalUnitsCashCurrency != null)
                 {
                     hashCode = (hashCode * 59) + this.FractionalUnitsCashCurrency.GetHashCode();
+                }
+                if (this.FractionalUnitsRoundingConvention != null)
+                {
+                    hashCode = (hashCode * 59) + this.FractionalUnitsRoundingConvention.GetHashCode();
+                }
+                if (this.FractionalUnitsDecimalPlaces != null)
+                {
+                    hashCode = (hashCode * 59) + this.FractionalUnitsDecimalPlaces.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.InstrumentEventType.GetHashCode();
                 return hashCode;

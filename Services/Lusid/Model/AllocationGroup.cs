@@ -235,13 +235,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
-            // ShareClassShortCode (string) pattern
-            Regex regexShareClassShortCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (this.ShareClassShortCode != null && false == regexShareClassShortCode.Match(this.ShareClassShortCode).Success)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ShareClassShortCode, must match a pattern of " + regexShareClassShortCode, new [] { "ShareClassShortCode" });
-            }
-
             yield break;
         }
     }

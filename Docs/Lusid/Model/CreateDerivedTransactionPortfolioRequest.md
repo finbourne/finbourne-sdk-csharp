@@ -9,6 +9,7 @@
 | **Code** | **string** | Required | The code of the derived transaction portfolio. Together with the scope this uniquely identifies the derived transaction portfolio. |
 | **ParentPortfolioId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **Created** | **DateTimeOffset?** | Optional | This will be auto-populated to be the parent portfolio creation date. |
+| **EnablementDate** | **DateTimeOffset?** | Optional | The effective datetime from which transactions booked to the derived transaction portfolio begin contributing to holdings, valuations and other computed results. Transactions with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified. |
 | **CorporateActionSourceId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **AccountingMethod** | **string** | Optional | Determines the accounting treatment given to the transaction portfolio&#39;s tax lots. Default value: AverageCost. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. |
 | **SubHoldingKeys** | **List&lt;string&gt;** | Optional | A set of unique transaction properties to group the derived transaction portfolio&#39;s holdings by, perhaps for strategy tagging. Each property must be from the &#39;Transaction&#39; domain and identified by a key in the format {domain}/{scope}/{code}, for example &#39;Transaction/strategies/quantsignal&#39;. See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for more information. |
@@ -19,6 +20,7 @@
 | **AmortisationRuleSetId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **InstrumentEventConfiguration** | [InstrumentEventConfiguration](InstrumentEventConfiguration.md) | Optional | *No description available.* |
 | **SettlementConfiguration** | [PortfolioSettlementConfiguration](PortfolioSettlementConfiguration.md) | Optional | *No description available.* |
+| **TransactionExclusionFilter** | **string** | Optional | A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded. |
 
 
 ## Usage
@@ -34,6 +36,7 @@ var instance = new CreateDerivedTransactionPortfolioRequest(
     code: "...",  // required — The code of the derived transaction portfolio. Together with the scope this uniquely identifies the derived transaction portfolio.
     parentPortfolioId: new ResourceId(...),  // required
     created: DateTimeOffset.Now,  // optional — This will be auto-populated to be the parent portfolio creation date.
+    enablementDate: DateTimeOffset.Now,  // optional — The effective datetime from which transactions booked to the derived transaction portfolio begin contributing to holdings, valuations and other computed results. Transactions with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified.
     corporateActionSourceId: new ResourceId(...),  // optional
     accountingMethod: "...",  // optional — Determines the accounting treatment given to the transaction portfolio&#39;s tax lots. Default value: AverageCost. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
     subHoldingKeys: ,  // optional — A set of unique transaction properties to group the derived transaction portfolio&#39;s holdings by, perhaps for strategy tagging. Each property must be from the &#39;Transaction&#39; domain and identified by a key in the format {domain}/{scope}/{code}, for example &#39;Transaction/strategies/quantsignal&#39;. See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for more information.
@@ -43,7 +46,8 @@ var instance = new CreateDerivedTransactionPortfolioRequest(
     cashGainLossCalculationDate: "...",  // optional — The option when the Cash Gain Loss to be calulated. Default value: SettlementDate. Available values: Default, SettlementDate, TransactionDate.
     amortisationRuleSetId: new ResourceId(...),  // optional
     instrumentEventConfiguration: new InstrumentEventConfiguration(...),  // optional
-    settlementConfiguration: new PortfolioSettlementConfiguration(...)  // optional
+    settlementConfiguration: new PortfolioSettlementConfiguration(...),  // optional
+    transactionExclusionFilter: "..."  // optional — A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.
 );
 ```
 ### Serializing to JSON

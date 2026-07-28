@@ -44,8 +44,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="valuationPointCode">The code of the valuation point..</param>
         /// <param name="previousValuationPointCode">The code of the previous valuation point..</param>
         /// <param name="apportionmentResults">The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group..</param>
+        /// <param name="bucketSetResults">The bucket set results for the valuation point: for each bucket set, the per-node (fund and share class) buckets and NAV..</param>
         /// <param name="links">links.</param>
-        public ValuationPointDataResponse(string href = default(string), string type = default(string), string status = default(string), FundDetails fundDetails = default(FundDetails), FundValuationPointData fundValuationPointData = default(FundValuationPointData), List<ShareClassData> shareClassData = default(List<ShareClassData>), string valuationPointCode = default(string), string previousValuationPointCode = default(string), List<ApportionmentBreakdown> apportionmentResults = default(List<ApportionmentBreakdown>), List<Link> links = default(List<Link>))
+        public ValuationPointDataResponse(string href = default(string), string type = default(string), string status = default(string), FundDetails fundDetails = default(FundDetails), FundValuationPointData fundValuationPointData = default(FundValuationPointData), List<ShareClassData> shareClassData = default(List<ShareClassData>), string valuationPointCode = default(string), string previousValuationPointCode = default(string), List<ApportionmentBreakdown> apportionmentResults = default(List<ApportionmentBreakdown>), List<BucketSetResult> bucketSetResults = default(List<BucketSetResult>), List<Link> links = default(List<Link>))
         {
             // to ensure "type" is required (not null)
             if (type == null)
@@ -81,6 +82,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.ValuationPointCode = valuationPointCode;
             this.PreviousValuationPointCode = previousValuationPointCode;
             this.ApportionmentResults = apportionmentResults;
+            this.BucketSetResults = bucketSetResults;
             this.Links = links;
         }
 
@@ -146,6 +148,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<ApportionmentBreakdown> ApportionmentResults { get; set; }
 
         /// <summary>
+        /// The bucket set results for the valuation point: for each bucket set, the per-node (fund and share class) buckets and NAV.
+        /// </summary>
+        /// <value>The bucket set results for the valuation point: for each bucket set, the per-node (fund and share class) buckets and NAV.</value>
+        [DataMember(Name = "bucketSetResults", EmitDefaultValue = true)]
+        public List<BucketSetResult> BucketSetResults { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -168,6 +177,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ValuationPointCode: ").Append(ValuationPointCode).Append("\n");
             sb.Append("  PreviousValuationPointCode: ").Append(PreviousValuationPointCode).Append("\n");
             sb.Append("  ApportionmentResults: ").Append(ApportionmentResults).Append("\n");
+            sb.Append("  BucketSetResults: ").Append(BucketSetResults).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -252,6 +262,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ApportionmentResults.SequenceEqual(input.ApportionmentResults)
                 ) && 
                 (
+                    this.BucketSetResults == input.BucketSetResults ||
+                    this.BucketSetResults != null &&
+                    input.BucketSetResults != null &&
+                    this.BucketSetResults.SequenceEqual(input.BucketSetResults)
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -303,6 +319,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.ApportionmentResults != null)
                 {
                     hashCode = (hashCode * 59) + this.ApportionmentResults.GetHashCode();
+                }
+                if (this.BucketSetResults != null)
+                {
+                    hashCode = (hashCode * 59) + this.BucketSetResults.GetHashCode();
                 }
                 if (this.Links != null)
                 {

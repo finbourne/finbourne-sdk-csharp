@@ -37,8 +37,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="nonClassSpecificPnl">Bucket of detail for PnL within the queried period that is not specific to any share class. (required).</param>
         /// <param name="aggregatedClassPnl">Bucket of detail for the sum of class PnL across all share classes in a fund and within the queried period. (required).</param>
-        /// <param name="totalPnl">Bucket of detail for the sum of class PnL and PnL not specific to a class within the queried period. (required).</param>
-        public FundPnlBreakdown(Dictionary<string, FundAmount> nonClassSpecificPnl = default(Dictionary<string, FundAmount>), Dictionary<string, FundAmount> aggregatedClassPnl = default(Dictionary<string, FundAmount>), Dictionary<string, FundAmount> totalPnl = default(Dictionary<string, FundAmount>))
+        /// <param name="aggregatedGroupPnl">Bucket of detail for the sum, across all share classes, of PnL allocated to allocation groups and apportioned to their member share classes, within the queried period. (required).</param>
+        /// <param name="totalPnl">Bucket of detail for the total PnL within the queried period: the sum of the class-specific, apportioned non-class-specific and allocation-group-apportioned PnL. (required).</param>
+        public FundPnlBreakdown(Dictionary<string, FundAmount> nonClassSpecificPnl = default(Dictionary<string, FundAmount>), Dictionary<string, FundAmount> aggregatedClassPnl = default(Dictionary<string, FundAmount>), Dictionary<string, FundAmount> aggregatedGroupPnl = default(Dictionary<string, FundAmount>), Dictionary<string, FundAmount> totalPnl = default(Dictionary<string, FundAmount>))
         {
             // to ensure "nonClassSpecificPnl" is required (not null)
             if (nonClassSpecificPnl == null)
@@ -52,6 +53,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("aggregatedClassPnl is a required property for FundPnlBreakdown and cannot be null");
             }
             this.AggregatedClassPnl = aggregatedClassPnl;
+            // to ensure "aggregatedGroupPnl" is required (not null)
+            if (aggregatedGroupPnl == null)
+            {
+                throw new ArgumentNullException("aggregatedGroupPnl is a required property for FundPnlBreakdown and cannot be null");
+            }
+            this.AggregatedGroupPnl = aggregatedGroupPnl;
             // to ensure "totalPnl" is required (not null)
             if (totalPnl == null)
             {
@@ -75,9 +82,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public Dictionary<string, FundAmount> AggregatedClassPnl { get; set; }
 
         /// <summary>
-        /// Bucket of detail for the sum of class PnL and PnL not specific to a class within the queried period.
+        /// Bucket of detail for the sum, across all share classes, of PnL allocated to allocation groups and apportioned to their member share classes, within the queried period.
         /// </summary>
-        /// <value>Bucket of detail for the sum of class PnL and PnL not specific to a class within the queried period.</value>
+        /// <value>Bucket of detail for the sum, across all share classes, of PnL allocated to allocation groups and apportioned to their member share classes, within the queried period.</value>
+        [DataMember(Name = "aggregatedGroupPnl", IsRequired = true, EmitDefaultValue = true)]
+        public Dictionary<string, FundAmount> AggregatedGroupPnl { get; set; }
+
+        /// <summary>
+        /// Bucket of detail for the total PnL within the queried period: the sum of the class-specific, apportioned non-class-specific and allocation-group-apportioned PnL.
+        /// </summary>
+        /// <value>Bucket of detail for the total PnL within the queried period: the sum of the class-specific, apportioned non-class-specific and allocation-group-apportioned PnL.</value>
         [DataMember(Name = "totalPnl", IsRequired = true, EmitDefaultValue = true)]
         public Dictionary<string, FundAmount> TotalPnl { get; set; }
 
@@ -91,6 +105,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class FundPnlBreakdown {\n");
             sb.Append("  NonClassSpecificPnl: ").Append(NonClassSpecificPnl).Append("\n");
             sb.Append("  AggregatedClassPnl: ").Append(AggregatedClassPnl).Append("\n");
+            sb.Append("  AggregatedGroupPnl: ").Append(AggregatedGroupPnl).Append("\n");
             sb.Append("  TotalPnl: ").Append(TotalPnl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -140,6 +155,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.AggregatedClassPnl.SequenceEqual(input.AggregatedClassPnl)
                 ) && 
                 (
+                    this.AggregatedGroupPnl == input.AggregatedGroupPnl ||
+                    this.AggregatedGroupPnl != null &&
+                    input.AggregatedGroupPnl != null &&
+                    this.AggregatedGroupPnl.SequenceEqual(input.AggregatedGroupPnl)
+                ) && 
+                (
                     this.TotalPnl == input.TotalPnl ||
                     this.TotalPnl != null &&
                     input.TotalPnl != null &&
@@ -163,6 +184,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.AggregatedClassPnl != null)
                 {
                     hashCode = (hashCode * 59) + this.AggregatedClassPnl.GetHashCode();
+                }
+                if (this.AggregatedGroupPnl != null)
+                {
+                    hashCode = (hashCode * 59) + this.AggregatedGroupPnl.GetHashCode();
                 }
                 if (this.TotalPnl != null)
                 {

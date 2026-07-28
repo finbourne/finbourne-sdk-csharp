@@ -150,6 +150,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="code">The code of the derived transaction portfolio. Together with the scope this uniquely identifies the derived transaction portfolio. (required).</param>
         /// <param name="parentPortfolioId">parentPortfolioId (required).</param>
         /// <param name="created">This will be auto-populated to be the parent portfolio creation date..</param>
+        /// <param name="enablementDate">The effective datetime from which transactions booked to the derived transaction portfolio begin contributing to holdings, valuations and other computed results. Transactions with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified..</param>
         /// <param name="corporateActionSourceId">corporateActionSourceId.</param>
         /// <param name="accountingMethod">Determines the accounting treatment given to the transaction portfolio&#39;s tax lots. Default value: AverageCost. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency..</param>
         /// <param name="subHoldingKeys">A set of unique transaction properties to group the derived transaction portfolio&#39;s holdings by, perhaps for strategy tagging. Each property must be from the &#39;Transaction&#39; domain and identified by a key in the format {domain}/{scope}/{code}, for example &#39;Transaction/strategies/quantsignal&#39;. See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for more information..</param>
@@ -160,7 +161,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="amortisationRuleSetId">amortisationRuleSetId.</param>
         /// <param name="instrumentEventConfiguration">instrumentEventConfiguration.</param>
         /// <param name="settlementConfiguration">settlementConfiguration.</param>
-        public CreateDerivedTransactionPortfolioRequest(string displayName = default(string), string description = default(string), string code = default(string), ResourceId parentPortfolioId = default(ResourceId), DateTimeOffset? created = default(DateTimeOffset?), ResourceId corporateActionSourceId = default(ResourceId), AccountingMethodEnum ?accountingMethod = default(AccountingMethodEnum?), List<string> subHoldingKeys = default(List<string>), List<string> instrumentScopes = default(List<string>), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), ResourceId amortisationRuleSetId = default(ResourceId), InstrumentEventConfiguration instrumentEventConfiguration = default(InstrumentEventConfiguration), PortfolioSettlementConfiguration settlementConfiguration = default(PortfolioSettlementConfiguration))
+        /// <param name="transactionExclusionFilter">A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded..</param>
+        public CreateDerivedTransactionPortfolioRequest(string displayName = default(string), string description = default(string), string code = default(string), ResourceId parentPortfolioId = default(ResourceId), DateTimeOffset? created = default(DateTimeOffset?), DateTimeOffset? enablementDate = default(DateTimeOffset?), ResourceId corporateActionSourceId = default(ResourceId), AccountingMethodEnum ?accountingMethod = default(AccountingMethodEnum?), List<string> subHoldingKeys = default(List<string>), List<string> instrumentScopes = default(List<string>), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), ResourceId amortisationRuleSetId = default(ResourceId), InstrumentEventConfiguration instrumentEventConfiguration = default(InstrumentEventConfiguration), PortfolioSettlementConfiguration settlementConfiguration = default(PortfolioSettlementConfiguration), string transactionExclusionFilter = default(string))
         {
             // to ensure "displayName" is required (not null)
             if (displayName == null)
@@ -182,6 +184,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.ParentPortfolioId = parentPortfolioId;
             this.Description = description;
             this.Created = created;
+            this.EnablementDate = enablementDate;
             this.CorporateActionSourceId = corporateActionSourceId;
             this.AccountingMethod = accountingMethod;
             this.SubHoldingKeys = subHoldingKeys;
@@ -192,6 +195,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.AmortisationRuleSetId = amortisationRuleSetId;
             this.InstrumentEventConfiguration = instrumentEventConfiguration;
             this.SettlementConfiguration = settlementConfiguration;
+            this.TransactionExclusionFilter = transactionExclusionFilter;
         }
 
         /// <summary>
@@ -227,6 +231,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>This will be auto-populated to be the parent portfolio creation date.</value>
         [DataMember(Name = "created", EmitDefaultValue = true)]
         public DateTimeOffset? Created { get; set; }
+
+        /// <summary>
+        /// The effective datetime from which transactions booked to the derived transaction portfolio begin contributing to holdings, valuations and other computed results. Transactions with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified.
+        /// </summary>
+        /// <value>The effective datetime from which transactions booked to the derived transaction portfolio begin contributing to holdings, valuations and other computed results. Transactions with an earlier effective date are still accepted and stored, but do not affect any computed results until this date. Defaults to the portfolio&#39;s creation date if not specified.</value>
+        [DataMember(Name = "enablementDate", EmitDefaultValue = true)]
+        public DateTimeOffset? EnablementDate { get; set; }
 
         /// <summary>
         /// Gets or Sets CorporateActionSourceId
@@ -288,6 +299,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public PortfolioSettlementConfiguration SettlementConfiguration { get; set; }
 
         /// <summary>
+        /// A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.
+        /// </summary>
+        /// <value>A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.</value>
+        [DataMember(Name = "transactionExclusionFilter", EmitDefaultValue = true)]
+        public string TransactionExclusionFilter { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -300,6 +318,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  ParentPortfolioId: ").Append(ParentPortfolioId).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
+            sb.Append("  EnablementDate: ").Append(EnablementDate).Append("\n");
             sb.Append("  CorporateActionSourceId: ").Append(CorporateActionSourceId).Append("\n");
             sb.Append("  AccountingMethod: ").Append(AccountingMethod).Append("\n");
             sb.Append("  SubHoldingKeys: ").Append(SubHoldingKeys).Append("\n");
@@ -310,6 +329,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  AmortisationRuleSetId: ").Append(AmortisationRuleSetId).Append("\n");
             sb.Append("  InstrumentEventConfiguration: ").Append(InstrumentEventConfiguration).Append("\n");
             sb.Append("  SettlementConfiguration: ").Append(SettlementConfiguration).Append("\n");
+            sb.Append("  TransactionExclusionFilter: ").Append(TransactionExclusionFilter).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -371,6 +391,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Created.Equals(input.Created))
                 ) && 
                 (
+                    this.EnablementDate == input.EnablementDate ||
+                    (this.EnablementDate != null &&
+                    this.EnablementDate.Equals(input.EnablementDate))
+                ) && 
+                (
                     this.CorporateActionSourceId == input.CorporateActionSourceId ||
                     (this.CorporateActionSourceId != null &&
                     this.CorporateActionSourceId.Equals(input.CorporateActionSourceId))
@@ -420,6 +445,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.SettlementConfiguration == input.SettlementConfiguration ||
                     (this.SettlementConfiguration != null &&
                     this.SettlementConfiguration.Equals(input.SettlementConfiguration))
+                ) && 
+                (
+                    this.TransactionExclusionFilter == input.TransactionExclusionFilter ||
+                    (this.TransactionExclusionFilter != null &&
+                    this.TransactionExclusionFilter.Equals(input.TransactionExclusionFilter))
                 );
         }
 
@@ -451,6 +481,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Created != null)
                 {
                     hashCode = (hashCode * 59) + this.Created.GetHashCode();
+                }
+                if (this.EnablementDate != null)
+                {
+                    hashCode = (hashCode * 59) + this.EnablementDate.GetHashCode();
                 }
                 if (this.CorporateActionSourceId != null)
                 {
@@ -489,6 +523,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.SettlementConfiguration.GetHashCode();
                 }
+                if (this.TransactionExclusionFilter != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransactionExclusionFilter.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -526,6 +564,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             if (this.TransactionTypeScope != null && false == regexTransactionTypeScope.Match(this.TransactionTypeScope).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TransactionTypeScope, must match a pattern of " + regexTransactionTypeScope, new [] { "TransactionTypeScope" });
+            }
+
+            // TransactionExclusionFilter (string) pattern
+            Regex regexTransactionExclusionFilter = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
+            if (this.TransactionExclusionFilter != null && false == regexTransactionExclusionFilter.Match(this.TransactionExclusionFilter).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TransactionExclusionFilter, must match a pattern of " + regexTransactionExclusionFilter, new [] { "TransactionExclusionFilter" });
             }
 
             yield break;

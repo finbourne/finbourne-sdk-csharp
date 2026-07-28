@@ -105,6 +105,7 @@
 * [OrdersApi](Lusid/Api/OrdersApi.md)
 * [PackagesApi](Lusid/Api/PackagesApi.md)
 * [ParticipationsApi](Lusid/Api/ParticipationsApi.md)
+* [PaymentInstructionsApi](Lusid/Api/PaymentInstructionsApi.md)
 * [PersonsApi](Lusid/Api/PersonsApi.md)
 * [PlacementsApi](Lusid/Api/PlacementsApi.md)
 * [PortfolioGroupsApi](Lusid/Api/PortfolioGroupsApi.md)

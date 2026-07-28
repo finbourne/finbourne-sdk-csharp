@@ -71,7 +71,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="portfolioScaling">Available values: Sum, AbsoluteSum, Unity. (required).</param>
         /// <param name="lookthroughPortfolioRelationshipId">lookthroughPortfolioRelationshipId.</param>
-        /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
+        /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
         public IndexModelOptions(PortfolioScalingEnum portfolioScaling = default(PortfolioScalingEnum), ResourceId lookthroughPortfolioRelationshipId = default(ResourceId), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
         {
             

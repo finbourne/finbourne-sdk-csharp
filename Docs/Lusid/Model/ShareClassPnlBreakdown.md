@@ -7,7 +7,8 @@ The breakdown of PnL for a Share Class on a specified date.
 |------|------|----------|-------------|
 | **ApportionedNonClassSpecificPnl** | [Dictionary&lt;string, ShareClassAmount&gt;](ShareClassAmount.md) | Required | Bucket of detail for PnL within the queried period not explicitly allocated to any share class but has been apportioned to the share class. |
 | **ClassPnl** | [Dictionary&lt;string, ShareClassAmount&gt;](ShareClassAmount.md) | Required | Bucket of detail for PnL specific to the share class within the queried period. |
-| **TotalPnl** | [Dictionary&lt;string, ShareClassAmount&gt;](ShareClassAmount.md) | Required | Bucket of detail for the sum of class PnL and PnL not specific to a class within the queried period. |
+| **GroupApportionedPnl** | [Dictionary&lt;string, ShareClassAmount&gt;](ShareClassAmount.md) | Required | Bucket of detail for the share class&#39;s apportioned share of PnL allocated to the allocation groups it belongs to, within the queried period. |
+| **TotalPnl** | [Dictionary&lt;string, ShareClassAmount&gt;](ShareClassAmount.md) | Required | Bucket of detail for the total PnL within the queried period: the sum of the class-specific, apportioned non-class-specific and allocation-group-apportioned PnL. |
 
 
 ## Usage
@@ -20,7 +21,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new ShareClassPnlBreakdown(
     apportionedNonClassSpecificPnl: new ShareClassAmount(...),  // required — Bucket of detail for PnL within the queried period not explicitly allocated to any share class but has been apportioned to the share class.
     classPnl: new ShareClassAmount(...),  // required — Bucket of detail for PnL specific to the share class within the queried period.
-    totalPnl: new ShareClassAmount(...)  // required — Bucket of detail for the sum of class PnL and PnL not specific to a class within the queried period.
+    groupApportionedPnl: new ShareClassAmount(...),  // required — Bucket of detail for the share class&#39;s apportioned share of PnL allocated to the allocation groups it belongs to, within the queried period.
+    totalPnl: new ShareClassAmount(...)  // required — Bucket of detail for the total PnL within the queried period: the sum of the class-specific, apportioned non-class-specific and allocation-group-apportioned PnL.
 );
 ```
 ### Serializing to JSON
@@ -40,6 +42,7 @@ var instance = JsonConvert.DeserializeObject<ShareClassPnlBreakdown>(json);
 
 - [ShareClassAmount](ShareClassAmount.md) — used in `ApportionedNonClassSpecificPnl`
 - [ShareClassAmount](ShareClassAmount.md) — used in `ClassPnl`
+- [ShareClassAmount](ShareClassAmount.md) — used in `GroupApportionedPnl`
 - [ShareClassAmount](ShareClassAmount.md) — used in `TotalPnl`
 
 

@@ -8,7 +8,7 @@
 |------|------|----------|-------------|
 | **PortfolioScaling** | **string** | Required | Available values: Sum, AbsoluteSum, Unity. |
 | **LookthroughPortfolioRelationshipId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
-| **ModelOptionsType** | **string** | Required | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. Default: `ModelOptionsTypeEnum.IndexModelOptions` |
+| **ModelOptionsType** | **string** | Required | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions. Default: `ModelOptionsTypeEnum.IndexModelOptions` |
 
 
 ## Usage
@@ -21,7 +21,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new IndexModelOptions(
     portfolioScaling: "...",  // required — Available values: Sum, AbsoluteSum, Unity.
     lookthroughPortfolioRelationshipId: new ResourceId(...),  // optional
-    modelOptionsType: "..."  // required — Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions.
+    modelOptionsType: "..."  // required — Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions.
 );
 ```
 ### Serializing to JSON

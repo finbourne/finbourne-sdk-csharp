@@ -308,7 +308,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | Id of the Task to retrieve |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Task. Defaults to returning the latest version of the Task if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on the Task. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on the Task. These values are a snapshot copied from the TaskDefinition and Workflow when the Task was created, so they reflect the state at creation time and are not affected by subsequent changes to the TaskDefinition or Workflow. |
 
 ### Return type
 
@@ -432,7 +432,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here: https://support.lusid.com/filtering-results-from-lusid. |
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each optionally suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. These values are a snapshot copied from the TaskDefinition and Workflow when each Task was created, so they reflect the state at creation time and are not affected by subsequent changes to the TaskDefinition or Workflow. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Default: `10` |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing tasks from a previous call to list tasks. This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields must not have changed since the original request. |
 

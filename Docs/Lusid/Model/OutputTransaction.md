@@ -47,6 +47,7 @@ A list of output transactions.
 | **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 | **CustodianEntries** | [List&lt;CustodianEntry&gt;](CustodianEntry.md) | Optional | Set of of Custodian Entries associated with the transaction. |
 | **ResolvedCustodianAccounts** | [List&lt;ResolvedCustodianAccount&gt;](ResolvedCustodianAccount.md) | Optional | Set of Custodian Accounts resolved from each movement on the Transaction. |
+| **IsExcluded** | **bool** | Optional | Whether the transaction was excluded from the portfolio&#39;s holdings by the portfolio&#39;s transaction exclusion filter. |
 
 
 ## Usage
@@ -98,7 +99,8 @@ var instance = new OutputTransaction(
     varVersion: new ModelVersion(...),  // optional
     stagedModifications: new StagedModificationsInfo(...),  // optional
     custodianEntries: new List<CustodianEntry>(),  // optional — Set of of Custodian Entries associated with the transaction.
-    resolvedCustodianAccounts: new List<ResolvedCustodianAccount>()  // optional — Set of Custodian Accounts resolved from each movement on the Transaction.
+    resolvedCustodianAccounts: new List<ResolvedCustodianAccount>(),  // optional — Set of Custodian Accounts resolved from each movement on the Transaction.
+    isExcluded: true  // optional — Whether the transaction was excluded from the portfolio&#39;s holdings by the portfolio&#39;s transaction exclusion filter.
 );
 ```
 ### Serializing to JSON

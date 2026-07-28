@@ -11,6 +11,7 @@ A portfolio of a particular type.
 | **DisplayName** | **string** | Required | The name of the portfolio. |
 | **Description** | **string** | Optional | The long form description of the portfolio. |
 | **Created** | **DateTimeOffset** | Required | The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date. |
+| **EnablementDate** | **DateTimeOffset?** | Optional | The effective datetime from which transactions or holdings booked to the portfolio begin contributing to holdings, valuations and other computed results. Data with an earlier effective date is still accepted and stored, but does not affect any computed results until this date. Defaults to the portfolio&#39;s creation date when not explicitly set. |
 | **ParentPortfolioId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
@@ -27,6 +28,7 @@ A portfolio of a particular type.
 | **AmortisationRuleSetId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **TaxRuleSetScope** | **string** | Optional | The scope of the tax rule sets for this portfolio. |
 | **SettlementConfiguration** | [PortfolioSettlementConfiguration](PortfolioSettlementConfiguration.md) | Optional | *No description available.* |
+| **TransactionExclusionFilter** | **string** | Optional | A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -44,6 +46,7 @@ var instance = new Portfolio(
     displayName: "...",  // required — The name of the portfolio.
     description: "...",  // optional — The long form description of the portfolio.
     created: DateTimeOffset.Now,  // required — The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date.
+    enablementDate: DateTimeOffset.Now,  // optional — The effective datetime from which transactions or holdings booked to the portfolio begin contributing to holdings, valuations and other computed results. Data with an earlier effective date is still accepted and stored, but does not affect any computed results until this date. Defaults to the portfolio&#39;s creation date when not explicitly set.
     parentPortfolioId: new ResourceId(...),  // optional
     varVersion: new ModelVersion(...),  // optional
     stagedModifications: new StagedModificationsInfo(...),  // optional
@@ -60,6 +63,7 @@ var instance = new Portfolio(
     amortisationRuleSetId: new ResourceId(...),  // optional
     taxRuleSetScope: "...",  // optional — The scope of the tax rule sets for this portfolio.
     settlementConfiguration: new PortfolioSettlementConfiguration(...),  // optional
+    transactionExclusionFilter: "...",  // optional — A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.
     links: new List<Link>()  // optional
 );
 ```

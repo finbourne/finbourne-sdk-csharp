@@ -28,6 +28,7 @@ A list of holdings.
 | **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **UnsettledUnits** | **decimal** | Optional | The number of unsettled units for the holding. |
 | **OverdueUnits** | **decimal** | Optional | The number of unsettled units for the holding that are beyond their contractual settlement date. |
+| **ResolvedCustodianAccount** | [ResolvedCustodianAccount](ResolvedCustodianAccount.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -60,7 +61,8 @@ var instance = new PortfolioHolding(
     currentFace: 0.0d,  // optional — Current face value of the holding.
     custodianAccountId: new ResourceId(...),  // optional
     unsettledUnits: 0.0d,  // optional — The number of unsettled units for the holding.
-    overdueUnits: 0.0d  // optional — The number of unsettled units for the holding that are beyond their contractual settlement date.
+    overdueUnits: 0.0d,  // optional — The number of unsettled units for the holding that are beyond their contractual settlement date.
+    resolvedCustodianAccount: new ResolvedCustodianAccount(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -87,6 +89,7 @@ var instance = JsonConvert.DeserializeObject<PortfolioHolding>(json);
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [SettlementSchedule](SettlementSchedule.md) — used in `SettlementSchedule`
 - [ResourceId](ResourceId.md)
+- [ResolvedCustodianAccount](ResolvedCustodianAccount.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

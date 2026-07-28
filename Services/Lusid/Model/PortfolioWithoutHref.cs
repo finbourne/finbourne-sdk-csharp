@@ -188,6 +188,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="displayName">The name of the portfolio. (required).</param>
         /// <param name="description">The long form description of the portfolio..</param>
         /// <param name="created">The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date. (required).</param>
+        /// <param name="enablementDate">The effective datetime from which transactions or holdings booked to the portfolio begin contributing to holdings, valuations and other computed results. Data with an earlier effective date is still accepted and stored, but does not affect any computed results until this date. Defaults to the portfolio&#39;s creation date when not explicitly set..</param>
         /// <param name="parentPortfolioId">parentPortfolioId.</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="stagedModifications">stagedModifications.</param>
@@ -204,8 +205,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="amortisationRuleSetId">amortisationRuleSetId.</param>
         /// <param name="taxRuleSetScope">The scope of the tax rule sets for this portfolio..</param>
         /// <param name="settlementConfiguration">settlementConfiguration.</param>
+        /// <param name="transactionExclusionFilter">A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded..</param>
         /// <param name="links">links.</param>
-        public PortfolioWithoutHref(ResourceId id = default(ResourceId), TypeEnum type = default(TypeEnum), string displayName = default(string), string description = default(string), DateTimeOffset created = default(DateTimeOffset), ResourceId parentPortfolioId = default(ResourceId), ModelVersion varVersion = default(ModelVersion), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), bool isDerived = default(bool), string baseCurrency = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), List<Relationship> relationships = default(List<Relationship>), List<string> instrumentScopes = default(List<string>), AccountingMethodEnum ?accountingMethod = default(AccountingMethodEnum?), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), InstrumentEventConfiguration instrumentEventConfiguration = default(InstrumentEventConfiguration), ResourceId amortisationRuleSetId = default(ResourceId), string taxRuleSetScope = default(string), PortfolioSettlementConfiguration settlementConfiguration = default(PortfolioSettlementConfiguration), List<Link> links = default(List<Link>))
+        public PortfolioWithoutHref(ResourceId id = default(ResourceId), TypeEnum type = default(TypeEnum), string displayName = default(string), string description = default(string), DateTimeOffset created = default(DateTimeOffset), DateTimeOffset? enablementDate = default(DateTimeOffset?), ResourceId parentPortfolioId = default(ResourceId), ModelVersion varVersion = default(ModelVersion), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), bool isDerived = default(bool), string baseCurrency = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), List<Relationship> relationships = default(List<Relationship>), List<string> instrumentScopes = default(List<string>), AccountingMethodEnum ?accountingMethod = default(AccountingMethodEnum?), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), InstrumentEventConfiguration instrumentEventConfiguration = default(InstrumentEventConfiguration), ResourceId amortisationRuleSetId = default(ResourceId), string taxRuleSetScope = default(string), PortfolioSettlementConfiguration settlementConfiguration = default(PortfolioSettlementConfiguration), string transactionExclusionFilter = default(string), List<Link> links = default(List<Link>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -230,6 +232,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             
             this.Created = created;
             this.Description = description;
+            this.EnablementDate = enablementDate;
             this.ParentPortfolioId = parentPortfolioId;
             this.VarVersion = varVersion;
             this.StagedModifications = stagedModifications;
@@ -246,6 +249,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.AmortisationRuleSetId = amortisationRuleSetId;
             this.TaxRuleSetScope = taxRuleSetScope;
             this.SettlementConfiguration = settlementConfiguration;
+            this.TransactionExclusionFilter = transactionExclusionFilter;
             this.Links = links;
         }
 
@@ -275,6 +279,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date.</value>
         [DataMember(Name = "created", IsRequired = true, EmitDefaultValue = true)]
         public DateTimeOffset Created { get; set; }
+
+        /// <summary>
+        /// The effective datetime from which transactions or holdings booked to the portfolio begin contributing to holdings, valuations and other computed results. Data with an earlier effective date is still accepted and stored, but does not affect any computed results until this date. Defaults to the portfolio&#39;s creation date when not explicitly set.
+        /// </summary>
+        /// <value>The effective datetime from which transactions or holdings booked to the portfolio begin contributing to holdings, valuations and other computed results. Data with an earlier effective date is still accepted and stored, but does not affect any computed results until this date. Defaults to the portfolio&#39;s creation date when not explicitly set.</value>
+        [DataMember(Name = "enablementDate", EmitDefaultValue = true)]
+        public DateTimeOffset? EnablementDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ParentPortfolioId
@@ -376,6 +387,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public PortfolioSettlementConfiguration SettlementConfiguration { get; set; }
 
         /// <summary>
+        /// A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.
+        /// </summary>
+        /// <value>A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.</value>
+        [DataMember(Name = "transactionExclusionFilter", EmitDefaultValue = true)]
+        public string TransactionExclusionFilter { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -394,6 +412,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
+            sb.Append("  EnablementDate: ").Append(EnablementDate).Append("\n");
             sb.Append("  ParentPortfolioId: ").Append(ParentPortfolioId).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  StagedModifications: ").Append(StagedModifications).Append("\n");
@@ -410,6 +429,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  AmortisationRuleSetId: ").Append(AmortisationRuleSetId).Append("\n");
             sb.Append("  TaxRuleSetScope: ").Append(TaxRuleSetScope).Append("\n");
             sb.Append("  SettlementConfiguration: ").Append(SettlementConfiguration).Append("\n");
+            sb.Append("  TransactionExclusionFilter: ").Append(TransactionExclusionFilter).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -469,6 +489,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Created == input.Created ||
                     (this.Created != null &&
                     this.Created.Equals(input.Created))
+                ) && 
+                (
+                    this.EnablementDate == input.EnablementDate ||
+                    (this.EnablementDate != null &&
+                    this.EnablementDate.Equals(input.EnablementDate))
                 ) && 
                 (
                     this.ParentPortfolioId == input.ParentPortfolioId ||
@@ -552,6 +577,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.SettlementConfiguration.Equals(input.SettlementConfiguration))
                 ) && 
                 (
+                    this.TransactionExclusionFilter == input.TransactionExclusionFilter ||
+                    (this.TransactionExclusionFilter != null &&
+                    this.TransactionExclusionFilter.Equals(input.TransactionExclusionFilter))
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -584,6 +614,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Created != null)
                 {
                     hashCode = (hashCode * 59) + this.Created.GetHashCode();
+                }
+                if (this.EnablementDate != null)
+                {
+                    hashCode = (hashCode * 59) + this.EnablementDate.GetHashCode();
                 }
                 if (this.ParentPortfolioId != null)
                 {
@@ -642,6 +676,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.SettlementConfiguration != null)
                 {
                     hashCode = (hashCode * 59) + this.SettlementConfiguration.GetHashCode();
+                }
+                if (this.TransactionExclusionFilter != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransactionExclusionFilter.GetHashCode();
                 }
                 if (this.Links != null)
                 {

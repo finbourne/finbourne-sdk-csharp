@@ -6,7 +6,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **ModelOptionsType** | **string** | Required | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions. *(inherited)* |
+| **ModelOptionsType** | **string** | Required | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions. *(inherited)* |
 | **ExpectedFundingLegNotional** | **string** | Required | Assumption made on future expected notional of the funding leg. |
 
 

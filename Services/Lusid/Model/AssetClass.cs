@@ -79,7 +79,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum RealEstate for value: RealEstate
         /// </summary>
         [EnumMember(Value = "RealEstate")]
-        RealEstate = 9
+        RealEstate = 9,
+
+        /// <summary>
+        /// Enum Exotic for value: Exotic
+        /// </summary>
+        [EnumMember(Value = "Exotic")]
+        Exotic = 10
     }
 
 }

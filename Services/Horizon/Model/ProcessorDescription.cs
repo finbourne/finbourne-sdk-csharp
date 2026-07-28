@@ -40,7 +40,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="description">description (required).</param>
         /// <param name="category">category (required).</param>
         /// <param name="isActive">isActive (required).</param>
-        public ProcessorDescription(string name = default(string), string displayName = default(string), string description = default(string), string category = default(string), bool isActive = default(bool))
+        /// <param name="isConnectionRequired">isConnectionRequired (required).</param>
+        /// <param name="relationships">relationships (required).</param>
+        public ProcessorDescription(string name = default(string), string displayName = default(string), string description = default(string), string category = default(string), bool isActive = default(bool), bool isConnectionRequired = default(bool), List<string> relationships = default(List<string>))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -68,6 +70,14 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             this.Category = category;
             
             this.IsActive = isActive;
+            
+            this.IsConnectionRequired = isConnectionRequired;
+            // to ensure "relationships" is required (not null)
+            if (relationships == null)
+            {
+                throw new ArgumentNullException("relationships is a required property for ProcessorDescription and cannot be null");
+            }
+            this.Relationships = relationships;
         }
 
         /// <summary>
@@ -101,6 +111,18 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public bool IsActive { get; set; }
 
         /// <summary>
+        /// Gets or Sets IsConnectionRequired
+        /// </summary>
+        [DataMember(Name = "isConnectionRequired", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsConnectionRequired { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Relationships
+        /// </summary>
+        [DataMember(Name = "relationships", IsRequired = true, EmitDefaultValue = true)]
+        public List<string> Relationships { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -113,6 +135,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  IsConnectionRequired: ").Append(IsConnectionRequired).Append("\n");
+            sb.Append("  Relationships: ").Append(Relationships).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -171,6 +195,16 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 (
                     this.IsActive == input.IsActive ||
                     this.IsActive.Equals(input.IsActive)
+                ) && 
+                (
+                    this.IsConnectionRequired == input.IsConnectionRequired ||
+                    this.IsConnectionRequired.Equals(input.IsConnectionRequired)
+                ) && 
+                (
+                    this.Relationships == input.Relationships ||
+                    this.Relationships != null &&
+                    input.Relationships != null &&
+                    this.Relationships.SequenceEqual(input.Relationships)
                 );
         }
 
@@ -200,6 +234,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     hashCode = (hashCode * 59) + this.Category.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IsActive.GetHashCode();
+                hashCode = (hashCode * 59) + this.IsConnectionRequired.GetHashCode();
+                if (this.Relationships != null)
+                {
+                    hashCode = (hashCode * 59) + this.Relationships.GetHashCode();
+                }
                 return hashCode;
             }
         }
