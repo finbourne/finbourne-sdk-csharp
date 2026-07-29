@@ -43,10 +43,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="timelineId">timelineId.</param>
         /// <param name="addressKeys">The set of addresses the subscriber wishes to receive..</param>
         /// <param name="byTaxLots">byTaxLots.</param>
+        /// <param name="subscriptionType">The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions..</param>
         /// <param name="startEffectiveAt">startEffectiveAt.</param>
         /// <param name="endEffectiveAt">endEffectiveAt.</param>
         /// <param name="startAsAt">startAsAt.</param>
-        public SubscriptionDefinition(string scope = default(string), string code = default(string), string displayName = default(string), string description = default(string), ResourceId portfolioId = default(ResourceId), ResourceId timelineId = default(ResourceId), List<string> addressKeys = default(List<string>), bool byTaxLots = default(bool), DateTimeOffset? startEffectiveAt = default(DateTimeOffset?), DateTimeOffset? endEffectiveAt = default(DateTimeOffset?), DateTimeOffset? startAsAt = default(DateTimeOffset?))
+        public SubscriptionDefinition(string scope = default(string), string code = default(string), string displayName = default(string), string description = default(string), ResourceId portfolioId = default(ResourceId), ResourceId timelineId = default(ResourceId), List<string> addressKeys = default(List<string>), bool byTaxLots = default(bool), string subscriptionType = default(string), DateTimeOffset? startEffectiveAt = default(DateTimeOffset?), DateTimeOffset? endEffectiveAt = default(DateTimeOffset?), DateTimeOffset? startAsAt = default(DateTimeOffset?))
         {
             // to ensure "scope" is required (not null)
             if (scope == null)
@@ -71,6 +72,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.TimelineId = timelineId;
             this.AddressKeys = addressKeys;
             this.ByTaxLots = byTaxLots;
+            this.SubscriptionType = subscriptionType;
             this.StartEffectiveAt = startEffectiveAt;
             this.EndEffectiveAt = endEffectiveAt;
             this.StartAsAt = startAsAt;
@@ -126,6 +128,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public bool ByTaxLots { get; set; }
 
         /// <summary>
+        /// The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions.
+        /// </summary>
+        /// <value>The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions.</value>
+        [DataMember(Name = "subscriptionType", EmitDefaultValue = true)]
+        public string SubscriptionType { get; set; }
+
+        /// <summary>
         /// Gets or Sets StartEffectiveAt
         /// </summary>
         [DataMember(Name = "startEffectiveAt", EmitDefaultValue = true)]
@@ -159,6 +168,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  TimelineId: ").Append(TimelineId).Append("\n");
             sb.Append("  AddressKeys: ").Append(AddressKeys).Append("\n");
             sb.Append("  ByTaxLots: ").Append(ByTaxLots).Append("\n");
+            sb.Append("  SubscriptionType: ").Append(SubscriptionType).Append("\n");
             sb.Append("  StartEffectiveAt: ").Append(StartEffectiveAt).Append("\n");
             sb.Append("  EndEffectiveAt: ").Append(EndEffectiveAt).Append("\n");
             sb.Append("  StartAsAt: ").Append(StartAsAt).Append("\n");
@@ -238,6 +248,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ByTaxLots.Equals(input.ByTaxLots)
                 ) && 
                 (
+                    this.SubscriptionType == input.SubscriptionType ||
+                    (this.SubscriptionType != null &&
+                    this.SubscriptionType.Equals(input.SubscriptionType))
+                ) && 
+                (
                     this.StartEffectiveAt == input.StartEffectiveAt ||
                     (this.StartEffectiveAt != null &&
                     this.StartEffectiveAt.Equals(input.StartEffectiveAt))
@@ -292,6 +307,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     hashCode = (hashCode * 59) + this.AddressKeys.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ByTaxLots.GetHashCode();
+                if (this.SubscriptionType != null)
+                {
+                    hashCode = (hashCode * 59) + this.SubscriptionType.GetHashCode();
+                }
                 if (this.StartEffectiveAt != null)
                 {
                     hashCode = (hashCode * 59) + this.StartEffectiveAt.GetHashCode();

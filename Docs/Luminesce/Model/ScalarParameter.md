@@ -10,6 +10,8 @@ Describes a scalar parameter as defined in the SQL
 | **Value** | **Object** | Optional | the default value of the parameter |
 | **ValueOptions** | **List&lt;Object&gt;** | Optional | Values of the parameter listed as being available for choosing from. |
 | **ValueMustBeFromOptions** | **bool** | Optional | Must Value be one of ValueOptions (if any)? |
+| **ParameterValueOptionsQuery** | **string** | Optional | SQL that might have been used for generating the options list |
+| **ParameterValueOptionsQueryError** | **string** | Optional | Error generated but executing ParameterValueOptionsQuery, if any |
 
 
 ## Usage
@@ -24,7 +26,9 @@ var instance = new ScalarParameter(
     type: ,  // required
     value: ,  // optional — the default value of the parameter
     valueOptions: ,  // optional — Values of the parameter listed as being available for choosing from.
-    valueMustBeFromOptions: true  // optional — Must Value be one of ValueOptions (if any)?
+    valueMustBeFromOptions: true,  // optional — Must Value be one of ValueOptions (if any)?
+    parameterValueOptionsQuery: "...",  // optional — SQL that might have been used for generating the options list
+    parameterValueOptionsQueryError: "..."  // optional — Error generated but executing ParameterValueOptionsQuery, if any
 );
 ```
 ### Serializing to JSON

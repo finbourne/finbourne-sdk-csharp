@@ -19,6 +19,7 @@ Specification object for the parameters of a valuation
 | **ValuationSchedule** | [ValuationSchedule](ValuationSchedule.md) | Required | *No description available.* |
 | **MarketDataOverrides** | [MarketDataOverrides](MarketDataOverrides.md) | Optional | *No description available.* |
 | **CorporateActionSourceId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **Scenario** | [ScenarioReference](ScenarioReference.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -42,7 +43,8 @@ var instance = new ValuationRequest(
     portfolioEntityIds: new List<PortfolioEntityId>(),  // required — The set of portfolio or portfolio group identifier(s) that is to be valued.
     valuationSchedule: new ValuationSchedule(...),  // required
     marketDataOverrides: new MarketDataOverrides(...),  // optional
-    corporateActionSourceId: new ResourceId(...)  // optional
+    corporateActionSourceId: new ResourceId(...),  // optional
+    scenario: new ScenarioReference(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -69,6 +71,7 @@ var instance = JsonConvert.DeserializeObject<ValuationRequest>(json);
 - [ValuationSchedule](ValuationSchedule.md)
 - [MarketDataOverrides](MarketDataOverrides.md)
 - [ResourceId](ResourceId.md)
+- [ScenarioReference](ScenarioReference.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -49,7 +49,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="valuationSchedule">valuationSchedule (required).</param>
         /// <param name="marketDataOverrides">marketDataOverrides.</param>
         /// <param name="corporateActionSourceId">corporateActionSourceId.</param>
-        public ValuationRequest(ResourceId recipeId = default(ResourceId), DateTimeOffset? asAt = default(DateTimeOffset?), List<AggregateSpec> metrics = default(List<AggregateSpec>), List<string> groupBy = default(List<string>), List<PropertyFilter> filters = default(List<PropertyFilter>), List<OrderBySpec> sort = default(List<OrderBySpec>), string reportCurrency = default(string), bool equipWithSubtotals = default(bool), bool returnResultAsExpandedTypes = default(bool), OrderFlowConfiguration includeOrderFlow = default(OrderFlowConfiguration), List<PortfolioEntityId> portfolioEntityIds = default(List<PortfolioEntityId>), ValuationSchedule valuationSchedule = default(ValuationSchedule), MarketDataOverrides marketDataOverrides = default(MarketDataOverrides), ResourceId corporateActionSourceId = default(ResourceId))
+        /// <param name="scenario">scenario.</param>
+        public ValuationRequest(ResourceId recipeId = default(ResourceId), DateTimeOffset? asAt = default(DateTimeOffset?), List<AggregateSpec> metrics = default(List<AggregateSpec>), List<string> groupBy = default(List<string>), List<PropertyFilter> filters = default(List<PropertyFilter>), List<OrderBySpec> sort = default(List<OrderBySpec>), string reportCurrency = default(string), bool equipWithSubtotals = default(bool), bool returnResultAsExpandedTypes = default(bool), OrderFlowConfiguration includeOrderFlow = default(OrderFlowConfiguration), List<PortfolioEntityId> portfolioEntityIds = default(List<PortfolioEntityId>), ValuationSchedule valuationSchedule = default(ValuationSchedule), MarketDataOverrides marketDataOverrides = default(MarketDataOverrides), ResourceId corporateActionSourceId = default(ResourceId), ScenarioReference scenario = default(ScenarioReference))
         {
             // to ensure "recipeId" is required (not null)
             if (recipeId == null)
@@ -85,6 +86,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.IncludeOrderFlow = includeOrderFlow;
             this.MarketDataOverrides = marketDataOverrides;
             this.CorporateActionSourceId = corporateActionSourceId;
+            this.Scenario = scenario;
         }
 
         /// <summary>
@@ -181,6 +183,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ResourceId CorporateActionSourceId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Scenario
+        /// </summary>
+        [DataMember(Name = "scenario", EmitDefaultValue = false)]
+        public ScenarioReference Scenario { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -202,6 +210,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ValuationSchedule: ").Append(ValuationSchedule).Append("\n");
             sb.Append("  MarketDataOverrides: ").Append(MarketDataOverrides).Append("\n");
             sb.Append("  CorporateActionSourceId: ").Append(CorporateActionSourceId).Append("\n");
+            sb.Append("  Scenario: ").Append(Scenario).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -309,6 +318,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.CorporateActionSourceId == input.CorporateActionSourceId ||
                     (this.CorporateActionSourceId != null &&
                     this.CorporateActionSourceId.Equals(input.CorporateActionSourceId))
+                ) && 
+                (
+                    this.Scenario == input.Scenario ||
+                    (this.Scenario != null &&
+                    this.Scenario.Equals(input.Scenario))
                 );
         }
 
@@ -370,6 +384,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.CorporateActionSourceId != null)
                 {
                     hashCode = (hashCode * 59) + this.CorporateActionSourceId.GetHashCode();
+                }
+                if (this.Scenario != null)
+                {
+                    hashCode = (hashCode * 59) + this.Scenario.GetHashCode();
                 }
                 return hashCode;
             }
