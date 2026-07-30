@@ -4,8 +4,10 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Quantity** | **decimal** | Required | Total number of units ordered. |
+| **Quantity** | **decimal?** | Optional | Total number of units ordered. |
 | **QuantityByState** | **Dictionary&lt;string, decimal&gt;** | Optional | Total number of units placed. |
+| **Amount** | **decimal?** | Optional | Total monetary value ordered, in the block currency. |
+| **AmountByState** | **Dictionary&lt;string, decimal&gt;** | Optional | Total monetary value ordered, broken down by order state. |
 | **Details** | [List&lt;OrderGraphBlockOrderDetail&gt;](OrderGraphBlockOrderDetail.md) | Required | Identifiers and other info for each order in this block. |
 
 
@@ -17,8 +19,10 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new OrderGraphBlockOrderSynopsis(
-    quantity: 0.0d,  // required — Total number of units ordered.
+    quantity: 0.0d,  // optional — Total number of units ordered.
     quantityByState: ,  // optional — Total number of units placed.
+    amount: 0.0d,  // optional — Total monetary value ordered, in the block currency.
+    amountByState: ,  // optional — Total monetary value ordered, broken down by order state.
     details: new List<OrderGraphBlockOrderDetail>()  // required — Identifiers and other info for each order in this block.
 );
 ```

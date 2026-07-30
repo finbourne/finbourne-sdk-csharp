@@ -5,7 +5,8 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Client-defined properties associated with this order. |
-| **Quantity** | **decimal** | Required | The quantity of the given instrument ordered. |
+| **Quantity** | **decimal?** | Optional | The quantity of the given instrument ordered. |
+| **Amount** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **OrderBookId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **PortfolioId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
@@ -26,7 +27,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new BlockedOrderRequest(
     properties: new PerpetualProperty(...),  // optional — Client-defined properties associated with this order.
-    quantity: 0.0d,  // required — The quantity of the given instrument ordered.
+    quantity: 0.0d,  // optional — The quantity of the given instrument ordered.
+    amount: new CurrencyAndAmount(...),  // optional
     orderBookId: new ResourceId(...),  // optional
     portfolioId: new ResourceId(...),  // optional
     id: new ResourceId(...),  // required
@@ -54,6 +56,7 @@ var instance = JsonConvert.DeserializeObject<BlockedOrderRequest>(json);
 ## Related Models
 
 - [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
+- [CurrencyAndAmount](CurrencyAndAmount.md)
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)

@@ -10,7 +10,8 @@ A block of orders for the same instrument, intended to record for example a trad
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Client-defined properties associated with this block. |
 | **InstrumentIdentifiers** | **Dictionary&lt;string, string&gt;** | Required | The instrument ordered. |
 | **LusidInstrumentId** | **string** | Required | The LUSID instrument id for the instrument ordered. |
-| **Quantity** | **decimal** | Required | The total quantity of given instrument ordered. |
+| **Quantity** | **decimal?** | Optional | The total quantity of given instrument ordered. |
+| **Amount** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **Side** | **string** | Required | The client&#39;s representation of the block&#39;s side (buy, sell, short, etc) |
 | **Type** | **string** | Optional | The block order&#39;s type (examples: Limit, Market, ...) |
 | **TimeInForce** | **string** | Optional | The block orders&#39; time in force (examples: Day, GoodTilCancel, ...) |
@@ -36,7 +37,8 @@ var instance = new Block(
     properties: new PerpetualProperty(...),  // optional — Client-defined properties associated with this block.
     instrumentIdentifiers: ,  // required — The instrument ordered.
     lusidInstrumentId: "...",  // required — The LUSID instrument id for the instrument ordered.
-    quantity: 0.0d,  // required — The total quantity of given instrument ordered.
+    quantity: 0.0d,  // optional — The total quantity of given instrument ordered.
+    amount: new CurrencyAndAmount(...),  // optional
     side: "...",  // required — The client&#39;s representation of the block&#39;s side (buy, sell, short, etc)
     type: "...",  // optional — The block order&#39;s type (examples: Limit, Market, ...)
     timeInForce: "...",  // optional — The block orders&#39; time in force (examples: Day, GoodTilCancel, ...)
@@ -67,6 +69,7 @@ var instance = JsonConvert.DeserializeObject<Block>(json);
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md) — used in `OrderIds`
 - [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
+- [CurrencyAndAmount](CurrencyAndAmount.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [ModelVersion](ModelVersion.md)

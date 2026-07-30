@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 | [**CancelOrders**](#cancelorders) | **POST** `/api/api/ordermanagement/cancelorders` | [EARLY ACCESS] CancelOrders: Cancel existing orders |
 | [**CancelOrdersAndMoveRemaining**](#cancelordersandmoveremaining) | **POST** `/api/api/ordermanagement/cancelordersandmoveremaining` | [EARLY ACCESS] CancelOrdersAndMoveRemaining: Cancel existing orders and move any unplaced quantities to new orders in new blocks |
 | [**CancelPlacements**](#cancelplacements) | **POST** `/api/api/ordermanagement/$cancelplacements` | [EARLY ACCESS] CancelPlacements: Cancel existing placements |
-| [**CreateOrders**](#createorders) | **POST** `/api/api/ordermanagement/createorders` | CreateOrders: Upsert a Block and associated orders |
+| [**CreateOrders**](#createorders) | **POST** `/api/api/ordermanagement/createorders` | CreateOrders: Create Orders and create/update Block |
 | [**GetOrderHistory**](#getorderhistory) | **GET** `/api/api/ordermanagement/order/{scope}/{code}/$history` | GetOrderHistory: Get the history of an order and related entity changes |
 | [**MoveOrders**](#moveorders) | **POST** `/api/api/ordermanagement/moveorders` | [EARLY ACCESS] MoveOrders: Move orders to new or existing block |
 | [**PlaceBlocks**](#placeblocks) | **POST** `/api/api/ordermanagement/placeblocks` | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests. |
@@ -302,7 +302,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ResourceListOfBlockAndOrders CreateOrders(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest)
 
-CreateOrders: Upsert a Block and associated orders
+CreateOrders: Create Orders and create/update Block
 
 Create orders, and blocks if they don't already exist.  This will fail if the block exists and already references orders with differing blocking fields.
 

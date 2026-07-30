@@ -113,6 +113,7 @@
 * [PropertyDefinitionsApi](Lusid/Api/PropertyDefinitionsApi.md)
 * [QueryableKeysApi](Lusid/Api/QueryableKeysApi.md)
 * [QuotesApi](Lusid/Api/QuotesApi.md)
+* [RecResultSetsApi](Lusid/Api/RecResultSetsApi.md)
 * [ReconciliationsApi](Lusid/Api/ReconciliationsApi.md)
 * [ReferenceListsApi](Lusid/Api/ReferenceListsApi.md)
 * [ReferencePortfolioApi](Lusid/Api/ReferencePortfolioApi.md)
