@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 | [**GetRequestLog**](#getrequestlog) | **GET** `/insights/api/requests/{id}` | GetRequestLog: Get the log for a specific API request. |
 | [**GetResponse**](#getresponse) | **GET** `/insights/api/requests/{id}/response` | GetResponse: Get the response for a specific API request. |
 | [**ListRequestLogs**](#listrequestlogs) | **GET** `/insights/api/requests` | ListRequestLogs: Get the logs for API requests. |
+| [**QueryRequestLogs**](#queryrequestlogs) | **POST** `/insights/api/requests/$query` | QueryRequestLogs: Query the logs for API requests, returning only the caller-specified fields in addition to the always-required fields (Timestamp, Id, Application, Operation). The server fetches only the requested columns from the underlying data source to minimise payload and query time. |
 
 ### Example
 
@@ -274,6 +275,62 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ResourceListWithHistogramOfRequestLog> response = apiInstance.ListRequestLogsWithHttpInfo(filter, sortBy, limit, page, histogramInterval);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="queryrequestlogs"></a>
+## QueryRequestLogs
+
+> ResourceListOfQueriedRequestLog QueryRequestLogs(QueryRequestLogsRequest queryRequestLogsRequest)
+
+QueryRequestLogs: Query the logs for API requests, returning only the caller-specified fields in addition to the always-required fields (Timestamp, Id, Application, Operation). The server fetches only the requested columns from the underlying data source to minimise payload and query time.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RequestsApi>();
+var queryRequestLogsRequest = new QueryRequestLogsRequest(); // QueryRequestLogsRequest
+ResourceListOfQueriedRequestLog result = apiInstance.QueryRequestLogs(queryRequestLogsRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **queryRequestLogsRequest** | [QueryRequestLogsRequest](QueryRequestLogsRequest.md) | body | **required** | The query parameters in the request body. |
+
+### Return type
+
+[ResourceListOfQueriedRequestLog](ResourceListOfQueriedRequestLog.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the QueryRequestLogsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfQueriedRequestLog> response = apiInstance.QueryRequestLogsWithHttpInfo(queryRequestLogsRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -236,7 +236,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listworkflows"></a>
 ## ListWorkflows
 
-> PagedResourceListOfWorkflowResponse ListWorkflows(DateTimeOffset? asAt = null, string? filter = null, List<string>? sortBy = null, int? limit = null, string? page = null)
+> PagedResourceListOfWorkflowResponse ListWorkflows(DateTimeOffset? asAt = null, string? filter = null, List<string>? sortBy = null, int? limit = null, string? page = null, List<string>? propertyKeys = null)
 
 ListWorkflows: List Workflows
 
@@ -249,7 +249,8 @@ var filter = "filter_example";  // string? (optional)
 var sortBy = new List<string>?(); // List<string>? (optional)
 var limit = 10;  // int? (optional)
 var page = "page_example";  // string? (optional)
-PagedResourceListOfWorkflowResponse result = apiInstance.ListWorkflows(asAt, filter, sortBy, limit, page);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfWorkflowResponse result = apiInstance.ListWorkflows(asAt, filter, sortBy, limit, page, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -262,6 +263,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Default: `10` |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing workflows from a previous call to list workflows. This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields must not have changed since the original request. |
+| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the Workflow or TaskDefinition domain) whose values to return on each Workflow. |
 
 ### Return type
 
@@ -287,7 +289,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfWorkflowResponse> response = apiInstance.ListWorkflowsWithHttpInfo(asAt, filter, sortBy, limit, page);
+ApiResponse<PagedResourceListOfWorkflowResponse> response = apiInstance.ListWorkflowsWithHttpInfo(asAt, filter, sortBy, limit, page, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
