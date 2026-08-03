@@ -12,7 +12,7 @@
 | **EndTenor** | **string** | Optional | *No description available.* |
 | **ShiftType** | **string** | Required | Available values: Parallel, Steepen, Flatten, Twist. |
 | **Scale** | **string** | Optional | Available values: Bps, Percentage. |
-| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition. Default: `ScenarioShiftTypeEnum.RateCurveShiftDefinition` |
+| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. Default: `ScenarioShiftTypeEnum.RateCurveShiftDefinition` |
 
 
 ## Usage
@@ -29,7 +29,7 @@ var instance = new RateCurveShiftDefinition(
     endTenor: "...",  // optional
     shiftType: "...",  // required — Available values: Parallel, Steepen, Flatten, Twist.
     scale: "...",  // optional — Available values: Bps, Percentage.
-    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition.
+    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
 );
 ```
 ### Serializing to JSON

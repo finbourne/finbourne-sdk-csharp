@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **ComplianceState** | **string** | Required | The compliance state of this order. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning. |
-| **ApprovalState** | **string** | Required | The approval state of this order. Available values: Pending, Rejected, Approved. |
+| **ApprovalState** | **string** | Required | The approval state of this order. Available values: Pending, Rejected, Approved, Placed. |
 | **PortfolioId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **PortfolioName** | **string** | Optional | The name of the order&#39;s referenced Portfolio. |
 | **OrderApprovalTaskId** | **string** | Optional | The task id associated with the approval state of the order. |
@@ -24,7 +24,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new OrderGraphBlockOrderDetail(
     id: new ResourceId(...),  // required
     complianceState: "...",  // required — The compliance state of this order. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning.
-    approvalState: "...",  // required — The approval state of this order. Available values: Pending, Rejected, Approved.
+    approvalState: "...",  // required — The approval state of this order. Available values: Pending, Rejected, Approved, Placed.
     portfolioId: new ResourceId(...),  // optional
     portfolioName: "...",  // optional — The name of the order&#39;s referenced Portfolio.
     orderApprovalTaskId: "...",  // optional — The task id associated with the approval state of the order.

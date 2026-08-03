@@ -72,7 +72,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrument">instrument (required).</param>
         /// <param name="amount">amount (required).</param>
         /// <param name="shiftType">Available values: Absolute, Relative, Percentage. (required).</param>
-        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
+        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
         public EquityShiftDefinition(string instrument = default(string), decimal amount = default(decimal), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
         {
             // to ensure "instrument" is required (not null)

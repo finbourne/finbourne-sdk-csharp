@@ -4,8 +4,10 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Quantity** | **decimal** | Required | Total number of units placed. |
+| **Quantity** | **decimal?** | Optional | Total number of units placed. |
 | **QuantityByState** | **Dictionary&lt;string, decimal&gt;** | Optional | Total number of units placed. |
+| **Amount** | **decimal?** | Optional | Total monetary value placed, in the block currency. |
+| **AmountByState** | **Dictionary&lt;string, decimal&gt;** | Optional | Total monetary value placed, broken down by placement state. |
 | **Details** | [List&lt;OrderGraphBlockPlacementDetail&gt;](OrderGraphBlockPlacementDetail.md) | Required | Identifiers for each placement in this block. |
 
 
@@ -17,8 +19,10 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new OrderGraphBlockPlacementSynopsis(
-    quantity: 0.0d,  // required — Total number of units placed.
+    quantity: 0.0d,  // optional — Total number of units placed.
     quantityByState: ,  // optional — Total number of units placed.
+    amount: 0.0d,  // optional — Total monetary value placed, in the block currency.
+    amountByState: ,  // optional — Total monetary value placed, broken down by placement state.
     details: new List<OrderGraphBlockPlacementDetail>()  // required — Identifiers for each placement in this block.
 );
 ```

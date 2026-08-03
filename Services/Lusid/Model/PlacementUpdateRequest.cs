@@ -37,6 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="quantity">The quantity of given instrument ordered..</param>
+        /// <param name="amount">amount.</param>
         /// <param name="properties">Client-defined properties associated with this placement..</param>
         /// <param name="type">The type of this placement (Market, Limit, etc)..</param>
         /// <param name="limitPrice">The optional price, as currency and amount, associated with this placement..</param>
@@ -44,7 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="counterparty">Optionally specifies the market entity this placement is placed with..</param>
         /// <param name="executionSystem">Optionally specifies the execution system in use..</param>
         /// <param name="entryType">Optionally specifies the entry type of this placement. Available values: Undecided, Manual, Direct, Ems, External..</param>
-        public PlacementUpdateRequest(ResourceId id = default(ResourceId), decimal? quantity = default(decimal?), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string type = default(string), decimal? limitPrice = default(decimal?), decimal? stopPrice = default(decimal?), string counterparty = default(string), string executionSystem = default(string), string entryType = default(string))
+        public PlacementUpdateRequest(ResourceId id = default(ResourceId), decimal? quantity = default(decimal?), CurrencyAndAmount amount = default(CurrencyAndAmount), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string type = default(string), decimal? limitPrice = default(decimal?), decimal? stopPrice = default(decimal?), string counterparty = default(string), string executionSystem = default(string), string entryType = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -53,6 +54,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.Id = id;
             this.Quantity = quantity;
+            this.Amount = amount;
             this.Properties = properties;
             this.Type = type;
             this.LimitPrice = limitPrice;
@@ -74,6 +76,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>The quantity of given instrument ordered.</value>
         [DataMember(Name = "quantity", EmitDefaultValue = true)]
         public decimal? Quantity { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Amount
+        /// </summary>
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
+        public CurrencyAndAmount Amount { get; set; }
 
         /// <summary>
         /// Client-defined properties associated with this placement.
@@ -134,6 +142,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class PlacementUpdateRequest {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  LimitPrice: ").Append(LimitPrice).Append("\n");
@@ -185,6 +194,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Quantity == input.Quantity ||
                     (this.Quantity != null &&
                     this.Quantity.Equals(input.Quantity))
+                ) && 
+                (
+                    this.Amount == input.Amount ||
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 ) && 
                 (
                     this.Properties == input.Properties ||
@@ -240,6 +254,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Quantity != null)
                 {
                     hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
+                }
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
                 }
                 if (this.Properties != null)
                 {

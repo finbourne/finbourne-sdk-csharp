@@ -315,6 +315,35 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of TransactionEntity</returns>
         Finbourne.Sdk.Client.ApiResponse<TransactionEntity> GetTransactionByEntityUniqueIdWithHttpInfo(string entityUniqueId, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? previews = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the definition of a particular valuation point.    If the valuation point is deleted, this will return the state of the valuation point immediately prior to deletion.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityUniqueId">The universally unique identifier of the valuation point.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. (optional)</param>
+        /// <param name="previews">The ids of the staged modifications to be previewed in the response. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ValuationPointEntity</returns>
+        ValuationPointEntity GetValuationPointByEntityUniqueId(string entityUniqueId, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? previews = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the definition of a particular valuation point.    If the valuation point is deleted, this will return the state of the valuation point immediately prior to deletion.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityUniqueId">The universally unique identifier of the valuation point.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. (optional)</param>
+        /// <param name="previews">The ids of the staged modifications to be previewed in the response. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ValuationPointEntity</returns>
+        Finbourne.Sdk.Client.ApiResponse<ValuationPointEntity> GetValuationPointByEntityUniqueIdWithHttpInfo(string entityUniqueId, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? previews = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         #endregion Synchronous Operations
     }
 
@@ -627,6 +656,37 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (TransactionEntity)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TransactionEntity>> GetTransactionByEntityUniqueIdWithHttpInfoAsync(string entityUniqueId, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? previews = default(List<string>?), string? dataModelScope = default(string?), string? dataModelCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the definition of a particular valuation point.    If the valuation point is deleted, this will return the state of the valuation point immediately prior to deletion.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityUniqueId">The universally unique identifier of the valuation point.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. (optional)</param>
+        /// <param name="previews">The ids of the staged modifications to be previewed in the response. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ValuationPointEntity</returns>
+        System.Threading.Tasks.Task<ValuationPointEntity> GetValuationPointByEntityUniqueIdAsync(string entityUniqueId, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? previews = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the definition of a particular valuation point.    If the valuation point is deleted, this will return the state of the valuation point immediately prior to deletion.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityUniqueId">The universally unique identifier of the valuation point.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. (optional)</param>
+        /// <param name="previews">The ids of the staged modifications to be previewed in the response. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ValuationPointEntity)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ValuationPointEntity>> GetValuationPointByEntityUniqueIdWithHttpInfoAsync(string entityUniqueId, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? previews = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         #endregion Asynchronous Operations
     }
 
@@ -3118,6 +3178,256 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetTransactionByEntityUniqueId", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId Retrieve the definition of a particular valuation point.    If the valuation point is deleted, this will return the state of the valuation point immediately prior to deletion.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityUniqueId">The universally unique identifier of the valuation point.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. (optional)</param>
+        /// <param name="previews">The ids of the staged modifications to be previewed in the response. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ValuationPointEntity</returns>
+        public ValuationPointEntity GetValuationPointByEntityUniqueId(string entityUniqueId, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? previews = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ValuationPointEntity> localVarResponse = GetValuationPointByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, previews, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId Retrieve the definition of a particular valuation point.    If the valuation point is deleted, this will return the state of the valuation point immediately prior to deletion.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="entityUniqueId">The universally unique identifier of the valuation point.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. (optional)</param>
+        /// <param name="previews">The ids of the staged modifications to be previewed in the response. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ValuationPointEntity</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ValuationPointEntity> GetValuationPointByEntityUniqueIdWithHttpInfo(string entityUniqueId, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? previews = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'entityUniqueId' is set
+            if (entityUniqueId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityUniqueId' when calling EntitiesApi->GetValuationPointByEntityUniqueId");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("entityUniqueId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityUniqueId)); // path parameter
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (previews != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "previews", previews));
+            }
+
+            localVarRequestOptions.Operation = "EntitiesApi.GetValuationPointByEntityUniqueId";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ValuationPointEntity, AbstractOpenAPISchema>("/api/api/entities/valuationpoints/{entityUniqueId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetValuationPointByEntityUniqueId", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId Retrieve the definition of a particular valuation point.    If the valuation point is deleted, this will return the state of the valuation point immediately prior to deletion.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityUniqueId">The universally unique identifier of the valuation point.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. (optional)</param>
+        /// <param name="previews">The ids of the staged modifications to be previewed in the response. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ValuationPointEntity</returns>
+        public async System.Threading.Tasks.Task<ValuationPointEntity> GetValuationPointByEntityUniqueIdAsync(string entityUniqueId, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? previews = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ValuationPointEntity> localVarResponse = await GetValuationPointByEntityUniqueIdWithHttpInfoAsync(entityUniqueId, asAt, previews, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId Retrieve the definition of a particular valuation point.    If the valuation point is deleted, this will return the state of the valuation point immediately prior to deletion.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="entityUniqueId">The universally unique identifier of the valuation point.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. (optional)</param>
+        /// <param name="previews">The ids of the staged modifications to be previewed in the response. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ValuationPointEntity)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ValuationPointEntity>> GetValuationPointByEntityUniqueIdWithHttpInfoAsync(string entityUniqueId, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? previews = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'entityUniqueId' is set
+            if (entityUniqueId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityUniqueId' when calling EntitiesApi->GetValuationPointByEntityUniqueId");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("entityUniqueId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityUniqueId)); // path parameter
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (previews != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "previews", previews));
+            }
+
+            localVarRequestOptions.Operation = "EntitiesApi.GetValuationPointByEntityUniqueId";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ValuationPointEntity, AbstractOpenAPISchema>("/api/api/entities/valuationpoints/{entityUniqueId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetValuationPointByEntityUniqueId", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

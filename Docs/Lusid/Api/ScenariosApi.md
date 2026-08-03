@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 | [**DeleteScenario**](#deletescenario) | **DELETE** `/api/api/scenarios/{scope}/{code}` | [EARLY ACCESS] DeleteScenario: Delete a Scenario, assuming that it is present. |
 | [**GetScenario**](#getscenario) | **GET** `/api/api/scenarios/{scope}/{code}` | [EARLY ACCESS] GetScenario: Get Scenario |
 | [**ListScenarios**](#listscenarios) | **GET** `/api/api/scenarios/{scope}` | [EARLY ACCESS] ListScenarios: List the set of Scenario definitions |
+| [**PreviewScenario**](#previewscenario) | **POST** `/api/api/scenarios/$preview` | [EARLY ACCESS] PreviewScenario: Preview a Scenario |
 | [**UpsertScenario**](#upsertscenario) | **POST** `/api/api/scenarios` | [EARLY ACCESS] UpsertScenario: Upsert a Scenario. This creates or updates the scenario definition in LUSID. |
 
 ### Example
@@ -291,6 +292,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PagedResourceListOfGetScenarioResponse> response = apiInstance.ListScenariosWithHttpInfo(scope, asAt, filter, limit, page);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="previewscenario"></a>
+## PreviewScenario
+
+> ScenarioPreviewResponse PreviewScenario(ScenarioPreviewRequest scenarioPreviewRequest)
+
+[EARLY ACCESS] PreviewScenario: Preview a Scenario
+
+Preview what a scenario would do to a portfolio's market data, without running a valuation.                The portfolio's market data dependencies are resolved through the given recipe and the scenario's  shifts are applied; the response lists every market data target the shifts changed, with values  before and after, plus any market data that matched a shift but could not honour it. Supply  either a reference to a stored scenario, or inline shift definitions to test a definition before  saving it.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ScenariosApi>();
+var scenarioPreviewRequest = new ScenarioPreviewRequest(); // ScenarioPreviewRequest
+ScenarioPreviewResponse result = apiInstance.PreviewScenario(scenarioPreviewRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scenarioPreviewRequest** | [ScenarioPreviewRequest](ScenarioPreviewRequest.md) | body | **required** | The recipe, portfolios, effective date and scenario (stored reference or inline shifts) to preview |
+
+### Return type
+
+[ScenarioPreviewResponse](ScenarioPreviewResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The preview of the scenario&#39;s effect on the portfolio&#39;s market data, or any failure |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the PreviewScenarioWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ScenarioPreviewResponse> response = apiInstance.PreviewScenarioWithHttpInfo(scenarioPreviewRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

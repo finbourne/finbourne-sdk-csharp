@@ -68,7 +68,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="strike">strike.</param>
         /// <param name="expiry">expiry.</param>
         /// <param name="shiftType">Available values: Absolute, Relative. (required).</param>
-        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
+        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
         public VolSurfaceShiftDefinition(string instrument = default(string), decimal amount = default(decimal), decimal? strike = default(decimal?), string expiry = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
         {
             // to ensure "instrument" is required (not null)

@@ -10,7 +10,8 @@ A request to create or update a Placement.
 | **BlockIds** | [List&lt;ResourceId&gt;](ResourceId.md) | Required | The IDs of the Blocks associated with this placement. |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Client-defined properties associated with this order. |
 | **InstrumentIdentifiers** | **Dictionary&lt;string, string&gt;** | Required | The instrument ordered. |
-| **Quantity** | **decimal** | Required | The quantity of given instrument ordered. |
+| **Quantity** | **decimal?** | Optional | The quantity of given instrument ordered. |
+| **Amount** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **State** | **string** | Optional | The state of this placement (typically a FIX state; Open, Filled, etc). |
 | **Side** | **string** | Required | The side (Buy, Sell, ...) of this placement. |
 | **TimeInForce** | **string** | Required | The time in force applicable to this placement (GTC, FOK, Day, etc) |
@@ -36,7 +37,8 @@ var instance = new PlacementRequest(
     blockIds: new List<ResourceId>(),  // required — The IDs of the Blocks associated with this placement.
     properties: new PerpetualProperty(...),  // optional — Client-defined properties associated with this order.
     instrumentIdentifiers: ,  // required — The instrument ordered.
-    quantity: 0.0d,  // required — The quantity of given instrument ordered.
+    quantity: 0.0d,  // optional — The quantity of given instrument ordered.
+    amount: new CurrencyAndAmount(...),  // optional
     state: "...",  // optional — The state of this placement (typically a FIX state; Open, Filled, etc).
     side: "...",  // required — The side (Buy, Sell, ...) of this placement.
     timeInForce: "...",  // required — The time in force applicable to this placement (GTC, FOK, Day, etc)
@@ -68,6 +70,7 @@ var instance = JsonConvert.DeserializeObject<PlacementRequest>(json);
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md) — used in `BlockIds`
 - [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
+- [CurrencyAndAmount](CurrencyAndAmount.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 

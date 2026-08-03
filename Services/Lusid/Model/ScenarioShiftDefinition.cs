@@ -29,14 +29,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     [JsonConverter(typeof(JsonSubtypes), "ScenarioShiftType")]
     [JsonSubtypes.KnownSubType(typeof(EquityShiftDefinition), "EquityShiftDefinition")]
     [JsonSubtypes.KnownSubType(typeof(FxShiftDefinition), "FxShiftDefinition")]
+    [JsonSubtypes.KnownSubType(typeof(MdkrGroupShiftDefinition), "MdkrGroupShiftDefinition")]
     [JsonSubtypes.KnownSubType(typeof(RateCurveShiftDefinition), "RateCurveShiftDefinition")]
     [JsonSubtypes.KnownSubType(typeof(VolSurfaceShiftDefinition), "VolSurfaceShiftDefinition")]
     public partial class ScenarioShiftDefinition : IEquatable<ScenarioShiftDefinition>, IValidatableObject
     {
         /// <summary>
-        /// Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition.
+        /// Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
         /// </summary>
-        /// <value>Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition.</value>
+        /// <value>Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ScenarioShiftTypeEnum
         {
@@ -62,13 +63,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             /// Enum VolSurfaceShiftDefinition for value: VolSurfaceShiftDefinition
             /// </summary>
             [EnumMember(Value = "VolSurfaceShiftDefinition")]
-            VolSurfaceShiftDefinition = 4
+            VolSurfaceShiftDefinition = 4,
+
+            /// <summary>
+            /// Enum MdkrGroupShiftDefinition for value: MdkrGroupShiftDefinition
+            /// </summary>
+            [EnumMember(Value = "MdkrGroupShiftDefinition")]
+            MdkrGroupShiftDefinition = 5
         }
 
         /// <summary>
-        /// Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition.
+        /// Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
         /// </summary>
-        /// <value>Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition.</value>
+        /// <value>Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.</value>
         [DataMember(Name = "scenarioShiftType", IsRequired = true, EmitDefaultValue = true)]
         public ScenarioShiftTypeEnum ScenarioShiftType { get; set; }
         /// <summary>
@@ -79,7 +86,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ScenarioShiftDefinition" /> class.
         /// </summary>
-        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition. (required).</param>
+        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. (required).</param>
         public ScenarioShiftDefinition(ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum))
         {
             

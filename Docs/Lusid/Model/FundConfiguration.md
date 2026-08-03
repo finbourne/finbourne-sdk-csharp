@@ -14,6 +14,9 @@
 | **ExternalFeeFilters** | [List&lt;ExternalFeeComponentFilter&gt;](ExternalFeeComponentFilter.md) | Optional | The set of filters used to decide which JE lines are used for inputting fees from an external source. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the Fund Configuration. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **BucketSets** | [List&lt;BucketSetDefinition&gt;](BucketSetDefinition.md) | Optional | The ordered set of component bucket set definitions for this fund configuration. Each bucket set defines how JE lines are grouped into buckets at VP finalisation. |
+| **ApportionmentBucketSet** | **string** | Optional | The code of the bucket set definition within this fund configuration that is designated as the apportionment bucket set. Must reference a BucketSetDefinition code within the BucketSets collection. |
+| **ApportionmentMethodProperty** | [ApportionmentMethodProperty](ApportionmentMethodProperty.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -35,6 +38,9 @@ var instance = new FundConfiguration(
     externalFeeFilters: new List<ExternalFeeComponentFilter>(),  // optional — The set of filters used to decide which JE lines are used for inputting fees from an external source.
     properties: new Property(...),  // optional — A set of properties for the Fund Configuration.
     varVersion: new ModelVersion(...),  // optional
+    bucketSets: new List<BucketSetDefinition>(),  // optional — The ordered set of component bucket set definitions for this fund configuration. Each bucket set defines how JE lines are grouped into buckets at VP finalisation.
+    apportionmentBucketSet: "...",  // optional — The code of the bucket set definition within this fund configuration that is designated as the apportionment bucket set. Must reference a BucketSetDefinition code within the BucketSets collection.
+    apportionmentMethodProperty: new ApportionmentMethodProperty(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -57,6 +63,8 @@ var instance = JsonConvert.DeserializeObject<FundConfiguration>(json);
 - [ExternalFeeComponentFilter](ExternalFeeComponentFilter.md) — used in `ExternalFeeFilters`
 - [Property](Property.md) — used in `Properties`
 - [ModelVersion](ModelVersion.md)
+- [BucketSetDefinition](BucketSetDefinition.md) — used in `BucketSets`
+- [ApportionmentMethodProperty](ApportionmentMethodProperty.md)
 - [Link](Link.md)
 
 

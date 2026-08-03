@@ -49,7 +49,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum VolSurfaceShiftDefinition for value: VolSurfaceShiftDefinition
         /// </summary>
         [EnumMember(Value = "VolSurfaceShiftDefinition")]
-        VolSurfaceShiftDefinition = 4
+        VolSurfaceShiftDefinition = 4,
+
+        /// <summary>
+        /// Enum MdkrGroupShiftDefinition for value: MdkrGroupShiftDefinition
+        /// </summary>
+        [EnumMember(Value = "MdkrGroupShiftDefinition")]
+        MdkrGroupShiftDefinition = 5
     }
 
 }

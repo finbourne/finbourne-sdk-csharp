@@ -5,7 +5,8 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Details** | [List&lt;OrderGraphPlacementChildPlacementDetail&gt;](OrderGraphPlacementChildPlacementDetail.md) | Required | Identifiers for each child placement for this placement. |
-| **Quantity** | **decimal** | Required | Total number of units placed. |
+| **Quantity** | **decimal?** | Optional | Total number of units placed. |
+| **Amount** | **decimal?** | Optional | Total monetary value placed, in the block currency. |
 
 
 ## Usage
@@ -17,7 +18,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new OrderGraphPlacementPlacementSynopsis(
     details: new List<OrderGraphPlacementChildPlacementDetail>(),  // required — Identifiers for each child placement for this placement.
-    quantity: 0.0d  // required — Total number of units placed.
+    quantity: 0.0d,  // optional — Total number of units placed.
+    amount: 0.0d  // optional — Total monetary value placed, in the block currency.
 );
 ```
 ### Serializing to JSON

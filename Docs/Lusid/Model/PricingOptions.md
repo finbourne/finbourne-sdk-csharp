@@ -22,6 +22,7 @@ Options for controlling the default aspects and behaviour of the pricing engine.
 | **ReturnZeroPv** | [ReturnZeroPvOptions](ReturnZeroPvOptions.md) | Optional | *No description available.* |
 | **EnableLegLevelInferenceForCustomSrsColumns** | **bool** | Optional | When enabled, allows inference between leg-level and  instrument-level data during portfolio valuation. If  data is missing at one level, it may be inferred from  the other level. For example, missing leg-level data   may be inferred from existing leg-level and instrument-  level data when ProduceSeparateResultForLinearOtcLegs  is enabled, and vice versa. Explicitly provided data  always takes precedence. |
 | **UseInstrumentScaleFactorAsDefault** | **bool** | Optional | When enabled, priceScaleFactor defined at the instrument level will  be used in the absence of quote scaleFactor when resolving quotes. |
+| **ScaleInstrumentAccruedOverrideByContractSize** | **bool** | Optional | When enabled, an SRS InstrumentAccrued override is multiplied by the instrument contractSize (legacy behaviour).  By default this is disabled, and the override is treated as the accrued for a single unit, keeping the  holding-level identity PV &#x3D; CleanPv + Accrued consistent. |
 
 
 ## Usage
@@ -48,7 +49,8 @@ var instance = new PricingOptions(
     conservedQuantityForLookthroughExpansion: "...",  // optional — When performing lookthrough portfolio expansion with ScalingMethodology set to \&quot;Sum\&quot; or \&quot;AbsoluteSum\&quot;,  the quantity specified here will be conserved and apportioned to lookthrough constituents.  For example, an equal-weighting index with 100 constituents can be modelled as a reference portfolio with 1% weights on each equity.  When expanding a $9000 holding of that index into its constituents while conserving PV, we end up with $90 of each equity.  The number of units of each equity held is then implied.  Note that conservation of one quantity may imply non-conservation of others, especially when some constituents are OTCs.                Allowed values are: \&quot;PV\&quot; (default), \&quot;Exposure\&quot;. Available values: PV, Exposure.
     returnZeroPv: new ReturnZeroPvOptions(...),  // optional
     enableLegLevelInferenceForCustomSrsColumns: true,  // optional — When enabled, allows inference between leg-level and  instrument-level data during portfolio valuation. If  data is missing at one level, it may be inferred from  the other level. For example, missing leg-level data   may be inferred from existing leg-level and instrument-  level data when ProduceSeparateResultForLinearOtcLegs  is enabled, and vice versa. Explicitly provided data  always takes precedence.
-    useInstrumentScaleFactorAsDefault: true  // optional — When enabled, priceScaleFactor defined at the instrument level will  be used in the absence of quote scaleFactor when resolving quotes.
+    useInstrumentScaleFactorAsDefault: true,  // optional — When enabled, priceScaleFactor defined at the instrument level will  be used in the absence of quote scaleFactor when resolving quotes.
+    scaleInstrumentAccruedOverrideByContractSize: true  // optional — When enabled, an SRS InstrumentAccrued override is multiplied by the instrument contractSize (legacy behaviour).  By default this is disabled, and the override is treated as the accrued for a single unit, keeping the  holding-level identity PV &#x3D; CleanPv + Accrued consistent.
 );
 ```
 ### Serializing to JSON

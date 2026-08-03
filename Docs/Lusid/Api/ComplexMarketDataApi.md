@@ -188,7 +188,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listcomplexmarketdata"></a>
 ## ListComplexMarketData
 
-> ResourceListOfListComplexMarketDataWithMetaDataResponse ListComplexMarketData(DateTimeOffset? asAt = null, DateTimeOrCutLabel? effectiveAt = null, string? page = null, int? limit = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null)
+> ResourceListOfListComplexMarketDataWithMetaDataResponse ListComplexMarketData(DateTimeOffset? asAt = null, DateTimeOrCutLabel? effectiveAt = null, string? page = null, int? limit = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null, string? filter = null, string? scope = null)
 
 ListComplexMarketData: List the set of ComplexMarketData
 
@@ -205,7 +205,9 @@ var limit = 56;  // int? (optional)
 var timelineScope = "timelineScope_example";  // string? (optional)
 var timelineCode = "timelineCode_example";  // string? (optional)
 var closedPeriodId = "closedPeriodId_example";  // string? (optional)
-ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.ListComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId);
+var filter = "filter_example";  // string? (optional)
+var scope = "scope_example";  // string? (optional)
+ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.ListComplexMarketData(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, filter, scope);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -214,12 +216,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. |
-| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effectiveAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. Note  that this parameter is not implemented at this time and the latest version of the ComplexMarketData will  always be returned. |
-| **page** | **string?** | query | optional | The pagination token to use to continue listing ComplexMarketData; this              value is returned from the previous call. If a pagination token is provided, the effectiveAt              and asAt fields must not have changed since the original request. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effectiveAt datetime or cut label at which to list the ComplexMarketData. Defaults to latest if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing ComplexMarketData; this              value is returned from the previous call. If a pagination token is provided, the filter, scope, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. If not specified, no pagination will be applied. It is  highly recommended to supply a value for this parameter as the default behaviour will change in the future. |
 | **timelineScope** | **string?** | query | optional | The scope of the Timeline. |
 | **timelineCode** | **string?** | query | optional | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. |
 | **closedPeriodId** | **string?** | query | optional | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. The following fields are supported:              &#39;Scope&#39;, &#39;MarketDataId.MarketAsset&#39;, &#39;MarketDataId.Provider&#39;, &#39;MarketDataId.PriceSource&#39;,              &#39;MarketDataId.Lineage&#39; (the lineage of the stored market data) and &#39;MarketData.MarketDataType&#39;.              The market data document contents are not filterable.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
+| **scope** | **string?** | query | optional | Optionally restrict the results to ComplexMarketData in a single scope. If not              specified, ComplexMarketData from all scopes will be returned. |
 
 ### Return type
 
@@ -244,7 +248,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> response = apiInstance.ListComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId);
+ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> response = apiInstance.ListComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, timelineScope, timelineCode, closedPeriodId, filter, scope);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -38,12 +38,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="code">code (required).</param>
         /// <param name="displayName">The name of the Fund..</param>
         /// <param name="description">A description for the Fund..</param>
-        /// <param name="dealingFilters">The set of filters used to decide which JE lines are included in the dealing. (required).</param>
-        /// <param name="pnlFilters">The set of filters used to decide which JE lines are included in the PnL. (required).</param>
-        /// <param name="backOutFilters">The set of filters used to decide which JE lines are included in the back outs. (required).</param>
+        /// <param name="dealingFilters">The set of filters used to decide which JE lines are included in the dealing..</param>
+        /// <param name="pnlFilters">The set of filters used to decide which JE lines are included in the PnL..</param>
+        /// <param name="backOutFilters">The set of filters used to decide which JE lines are included in the back outs..</param>
         /// <param name="externalFeeFilters">The set of filters used to decide which JE lines are used for inputting fees from an external source..</param>
+        /// <param name="bucketSets">The ordered set of component bucket set definitions for this fund configuration. Each bucket set defines how JE lines are grouped into buckets at VP finalisation..</param>
         /// <param name="properties">A set of properties for the Fund Configuration..</param>
-        public FundConfigurationRequest(string code = default(string), string displayName = default(string), string description = default(string), List<ComponentFilter> dealingFilters = default(List<ComponentFilter>), List<ComponentFilter> pnlFilters = default(List<ComponentFilter>), List<ComponentFilter> backOutFilters = default(List<ComponentFilter>), List<ExternalFeeComponentFilter> externalFeeFilters = default(List<ExternalFeeComponentFilter>), Dictionary<string, Property> properties = default(Dictionary<string, Property>))
+        /// <param name="apportionmentBucketSet">The code of the bucket set definition within this fund configuration that is designated as the apportionment bucket set. Must reference a BucketSetDefinition code within the BucketSets collection..</param>
+        /// <param name="apportionmentMethodProperty">apportionmentMethodProperty.</param>
+        public FundConfigurationRequest(string code = default(string), string displayName = default(string), string description = default(string), List<ComponentFilter> dealingFilters = default(List<ComponentFilter>), List<ComponentFilter> pnlFilters = default(List<ComponentFilter>), List<ComponentFilter> backOutFilters = default(List<ComponentFilter>), List<ExternalFeeComponentFilter> externalFeeFilters = default(List<ExternalFeeComponentFilter>), List<BucketSetDefinition> bucketSets = default(List<BucketSetDefinition>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string apportionmentBucketSet = default(string), ApportionmentMethodProperty apportionmentMethodProperty = default(ApportionmentMethodProperty))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -51,28 +54,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("code is a required property for FundConfigurationRequest and cannot be null");
             }
             this.Code = code;
-            // to ensure "dealingFilters" is required (not null)
-            if (dealingFilters == null)
-            {
-                throw new ArgumentNullException("dealingFilters is a required property for FundConfigurationRequest and cannot be null");
-            }
-            this.DealingFilters = dealingFilters;
-            // to ensure "pnlFilters" is required (not null)
-            if (pnlFilters == null)
-            {
-                throw new ArgumentNullException("pnlFilters is a required property for FundConfigurationRequest and cannot be null");
-            }
-            this.PnlFilters = pnlFilters;
-            // to ensure "backOutFilters" is required (not null)
-            if (backOutFilters == null)
-            {
-                throw new ArgumentNullException("backOutFilters is a required property for FundConfigurationRequest and cannot be null");
-            }
-            this.BackOutFilters = backOutFilters;
             this.DisplayName = displayName;
             this.Description = description;
+            this.DealingFilters = dealingFilters;
+            this.PnlFilters = pnlFilters;
+            this.BackOutFilters = backOutFilters;
             this.ExternalFeeFilters = externalFeeFilters;
+            this.BucketSets = bucketSets;
             this.Properties = properties;
+            this.ApportionmentBucketSet = apportionmentBucketSet;
+            this.ApportionmentMethodProperty = apportionmentMethodProperty;
         }
 
         /// <summary>
@@ -99,21 +90,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// The set of filters used to decide which JE lines are included in the dealing.
         /// </summary>
         /// <value>The set of filters used to decide which JE lines are included in the dealing.</value>
-        [DataMember(Name = "dealingFilters", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "dealingFilters", EmitDefaultValue = true)]
         public List<ComponentFilter> DealingFilters { get; set; }
 
         /// <summary>
         /// The set of filters used to decide which JE lines are included in the PnL.
         /// </summary>
         /// <value>The set of filters used to decide which JE lines are included in the PnL.</value>
-        [DataMember(Name = "pnlFilters", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "pnlFilters", EmitDefaultValue = true)]
         public List<ComponentFilter> PnlFilters { get; set; }
 
         /// <summary>
         /// The set of filters used to decide which JE lines are included in the back outs.
         /// </summary>
         /// <value>The set of filters used to decide which JE lines are included in the back outs.</value>
-        [DataMember(Name = "backOutFilters", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "backOutFilters", EmitDefaultValue = true)]
         public List<ComponentFilter> BackOutFilters { get; set; }
 
         /// <summary>
@@ -124,11 +115,31 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<ExternalFeeComponentFilter> ExternalFeeFilters { get; set; }
 
         /// <summary>
+        /// The ordered set of component bucket set definitions for this fund configuration. Each bucket set defines how JE lines are grouped into buckets at VP finalisation.
+        /// </summary>
+        /// <value>The ordered set of component bucket set definitions for this fund configuration. Each bucket set defines how JE lines are grouped into buckets at VP finalisation.</value>
+        [DataMember(Name = "bucketSets", EmitDefaultValue = true)]
+        public List<BucketSetDefinition> BucketSets { get; set; }
+
+        /// <summary>
         /// A set of properties for the Fund Configuration.
         /// </summary>
         /// <value>A set of properties for the Fund Configuration.</value>
         [DataMember(Name = "properties", EmitDefaultValue = true)]
         public Dictionary<string, Property> Properties { get; set; }
+
+        /// <summary>
+        /// The code of the bucket set definition within this fund configuration that is designated as the apportionment bucket set. Must reference a BucketSetDefinition code within the BucketSets collection.
+        /// </summary>
+        /// <value>The code of the bucket set definition within this fund configuration that is designated as the apportionment bucket set. Must reference a BucketSetDefinition code within the BucketSets collection.</value>
+        [DataMember(Name = "apportionmentBucketSet", EmitDefaultValue = true)]
+        public string ApportionmentBucketSet { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ApportionmentMethodProperty
+        /// </summary>
+        [DataMember(Name = "apportionmentMethodProperty", EmitDefaultValue = false)]
+        public ApportionmentMethodProperty ApportionmentMethodProperty { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -145,7 +156,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  PnlFilters: ").Append(PnlFilters).Append("\n");
             sb.Append("  BackOutFilters: ").Append(BackOutFilters).Append("\n");
             sb.Append("  ExternalFeeFilters: ").Append(ExternalFeeFilters).Append("\n");
+            sb.Append("  BucketSets: ").Append(BucketSets).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
+            sb.Append("  ApportionmentBucketSet: ").Append(ApportionmentBucketSet).Append("\n");
+            sb.Append("  ApportionmentMethodProperty: ").Append(ApportionmentMethodProperty).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -221,10 +235,26 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ExternalFeeFilters.SequenceEqual(input.ExternalFeeFilters)
                 ) && 
                 (
+                    this.BucketSets == input.BucketSets ||
+                    this.BucketSets != null &&
+                    input.BucketSets != null &&
+                    this.BucketSets.SequenceEqual(input.BucketSets)
+                ) && 
+                (
                     this.Properties == input.Properties ||
                     this.Properties != null &&
                     input.Properties != null &&
                     this.Properties.SequenceEqual(input.Properties)
+                ) && 
+                (
+                    this.ApportionmentBucketSet == input.ApportionmentBucketSet ||
+                    (this.ApportionmentBucketSet != null &&
+                    this.ApportionmentBucketSet.Equals(input.ApportionmentBucketSet))
+                ) && 
+                (
+                    this.ApportionmentMethodProperty == input.ApportionmentMethodProperty ||
+                    (this.ApportionmentMethodProperty != null &&
+                    this.ApportionmentMethodProperty.Equals(input.ApportionmentMethodProperty))
                 );
         }
 
@@ -265,9 +295,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.ExternalFeeFilters.GetHashCode();
                 }
+                if (this.BucketSets != null)
+                {
+                    hashCode = (hashCode * 59) + this.BucketSets.GetHashCode();
+                }
                 if (this.Properties != null)
                 {
                     hashCode = (hashCode * 59) + this.Properties.GetHashCode();
+                }
+                if (this.ApportionmentBucketSet != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApportionmentBucketSet.GetHashCode();
+                }
+                if (this.ApportionmentMethodProperty != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApportionmentMethodProperty.GetHashCode();
                 }
                 return hashCode;
             }

@@ -36,8 +36,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="OrderGraphPlacementPlacementSynopsis" /> class.
         /// </summary>
         /// <param name="details">Identifiers for each child placement for this placement. (required).</param>
-        /// <param name="quantity">Total number of units placed. (required).</param>
-        public OrderGraphPlacementPlacementSynopsis(List<OrderGraphPlacementChildPlacementDetail> details = default(List<OrderGraphPlacementChildPlacementDetail>), decimal quantity = default(decimal))
+        /// <param name="quantity">Total number of units placed..</param>
+        /// <param name="amount">Total monetary value placed, in the block currency..</param>
+        public OrderGraphPlacementPlacementSynopsis(List<OrderGraphPlacementChildPlacementDetail> details = default(List<OrderGraphPlacementChildPlacementDetail>), decimal? quantity = default(decimal?), decimal? amount = default(decimal?))
         {
             // to ensure "details" is required (not null)
             if (details == null)
@@ -45,8 +46,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("details is a required property for OrderGraphPlacementPlacementSynopsis and cannot be null");
             }
             this.Details = details;
-            
             this.Quantity = quantity;
+            this.Amount = amount;
         }
 
         /// <summary>
@@ -60,8 +61,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Total number of units placed.
         /// </summary>
         /// <value>Total number of units placed.</value>
-        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public decimal Quantity { get; set; }
+        [DataMember(Name = "quantity", EmitDefaultValue = true)]
+        public decimal? Quantity { get; set; }
+
+        /// <summary>
+        /// Total monetary value placed, in the block currency.
+        /// </summary>
+        /// <value>Total monetary value placed, in the block currency.</value>
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public decimal? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,6 +81,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class OrderGraphPlacementPlacementSynopsis {\n");
             sb.Append("  Details: ").Append(Details).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,7 +125,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 ) && 
                 (
                     this.Quantity == input.Quantity ||
-                    this.Quantity.Equals(input.Quantity)
+                    (this.Quantity != null &&
+                    this.Quantity.Equals(input.Quantity))
+                ) && 
+                (
+                    this.Amount == input.Amount ||
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 );
         }
 
@@ -133,7 +148,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Details.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
+                if (this.Quantity != null)
+                {
+                    hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
+                }
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
                 return hashCode;
             }
         }

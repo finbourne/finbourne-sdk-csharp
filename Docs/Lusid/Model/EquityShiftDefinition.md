@@ -9,7 +9,7 @@
 | **Instrument** | **string** | Required | *No description available.* |
 | **Amount** | **decimal** | Required | *No description available.* |
 | **ShiftType** | **string** | Required | Available values: Absolute, Relative, Percentage. |
-| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition. Default: `ScenarioShiftTypeEnum.EquityShiftDefinition` |
+| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. Default: `ScenarioShiftTypeEnum.EquityShiftDefinition` |
 
 
 ## Usage
@@ -23,7 +23,7 @@ var instance = new EquityShiftDefinition(
     instrument: "...",  // required
     amount: 0.0d,  // required
     shiftType: "...",  // required — Available values: Absolute, Relative, Percentage.
-    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition.
+    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
 );
 ```
 ### Serializing to JSON

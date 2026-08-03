@@ -12,7 +12,7 @@
 | **Booked** | [OrderGraphBlockTransactionSynopsis](OrderGraphBlockTransactionSynopsis.md) | Required | *No description available.* |
 | **DerivedState** | **string** | Required | A simple description of the overall state of a block. |
 | **DerivedComplianceState** | **string** | Required | The overall compliance state of a block, derived from the block&#39;s orders. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning. |
-| **DerivedApprovalState** | **string** | Required | The overall approval state of a block, derived from approval of the block&#39;s orders. Available values: Pending, Rejected, Approved. |
+| **DerivedApprovalState** | **string** | Required | The overall approval state of a block, derived from approval of the block&#39;s orders. Available values: Pending, Rejected, Approved, Placed. |
 
 
 ## Usage
@@ -31,7 +31,7 @@ var instance = new OrderGraphBlock(
     booked: new OrderGraphBlockTransactionSynopsis(...),  // required
     derivedState: "...",  // required — A simple description of the overall state of a block.
     derivedComplianceState: "...",  // required — The overall compliance state of a block, derived from the block&#39;s orders. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning.
-    derivedApprovalState: "..."  // required — The overall approval state of a block, derived from approval of the block&#39;s orders. Available values: Pending, Rejected, Approved.
+    derivedApprovalState: "..."  // required — The overall approval state of a block, derived from approval of the block&#39;s orders. Available values: Pending, Rejected, Approved, Placed.
 );
 ```
 ### Serializing to JSON

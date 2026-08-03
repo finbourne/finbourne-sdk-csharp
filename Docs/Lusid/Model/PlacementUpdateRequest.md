@@ -7,6 +7,7 @@ A request to create or update a Placement.
 |------|------|----------|-------------|
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **Quantity** | **decimal?** | Optional | The quantity of given instrument ordered. |
+| **Amount** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Client-defined properties associated with this placement. |
 | **Type** | **string** | Optional | The type of this placement (Market, Limit, etc). |
 | **LimitPrice** | **decimal?** | Optional | The optional price, as currency and amount, associated with this placement. |
@@ -26,6 +27,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new PlacementUpdateRequest(
     id: new ResourceId(...),  // required
     quantity: 0.0d,  // optional — The quantity of given instrument ordered.
+    amount: new CurrencyAndAmount(...),  // optional
     properties: new PerpetualProperty(...),  // optional — Client-defined properties associated with this placement.
     type: "...",  // optional — The type of this placement (Market, Limit, etc).
     limitPrice: 0.0d,  // optional — The optional price, as currency and amount, associated with this placement.
@@ -51,6 +53,7 @@ var instance = JsonConvert.DeserializeObject<PlacementUpdateRequest>(json);
 ## Related Models
 
 - [ResourceId](ResourceId.md)
+- [CurrencyAndAmount](CurrencyAndAmount.md)
 - [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
 
 

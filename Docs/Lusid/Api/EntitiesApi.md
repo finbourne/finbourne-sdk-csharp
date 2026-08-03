@@ -14,6 +14,7 @@ All URIs are relative to *http://localhost*
 | [**GetPortfolioChanges**](#getportfoliochanges) | **GET** `/api/api/entities/changes/portfolios` | GetPortfolioChanges: Get the next change to each portfolio in a scope. |
 | [**GetPropertyDefinitionByEntityUniqueId**](#getpropertydefinitionbyentityuniqueid) | **GET** `/api/api/entities/propertydefinitions/{entityUniqueId}` | GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId |
 | [**GetTransactionByEntityUniqueId**](#gettransactionbyentityuniqueid) | **GET** `/api/api/entities/transactions/{entityUniqueId}` | GetTransactionByEntityUniqueId: Get transaction by EntityUniqueId |
+| [**GetValuationPointByEntityUniqueId**](#getvaluationpointbyentityuniqueid) | **GET** `/api/api/entities/valuationpoints/{entityUniqueId}` | GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId |
 
 ### Example
 
@@ -629,6 +630,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<TransactionEntity> response = apiInstance.GetTransactionByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, previews, dataModelScope, dataModelCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getvaluationpointbyentityuniqueid"></a>
+## GetValuationPointByEntityUniqueId
+
+> ValuationPointEntity GetValuationPointByEntityUniqueId(string entityUniqueId, DateTimeOffset? asAt = null, List<string>? previews = null)
+
+GetValuationPointByEntityUniqueId: Get valuation point by EntityUniqueId
+
+Retrieve the definition of a particular valuation point.    If the valuation point is deleted, this will return the state of the valuation point immediately prior to deletion.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<EntitiesApi>();
+var entityUniqueId = "entityUniqueId_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var previews = new List<string>?(); // List<string>? (optional)
+ValuationPointEntity result = apiInstance.GetValuationPointByEntityUniqueId(entityUniqueId, asAt, previews);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **entityUniqueId** | **string** | path | **required** | The universally unique identifier of the valuation point. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. |
+| **previews** | [List&lt;string&gt;?](string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+
+### Return type
+
+[ValuationPointEntity](ValuationPointEntity.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested valuation point entity |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetValuationPointByEntityUniqueIdWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ValuationPointEntity> response = apiInstance.GetValuationPointByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, previews);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
