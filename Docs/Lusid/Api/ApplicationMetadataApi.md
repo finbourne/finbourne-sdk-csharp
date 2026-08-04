@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**GetExcelAddin**](#getexceladdin) | **GET** `/api/api/metadata/downloads/exceladdin` | GetExcelAddin: Download Excel Addin |
+| [**GetLatestAsAt**](#getlatestasat) | **GET** `/api/api/metadata/asat` | [EXPERIMENTAL] GetLatestAsAt: Get latest AsAt |
 | [**GetLusidVersions**](#getlusidversions) | **GET** `/api/api/metadata/versions` | GetLusidVersions: Get LUSID versions |
 | [**ListAccessControlledResources**](#listaccesscontrolledresources) | **GET** `/api/api/metadata/access/resources` | ListAccessControlledResources: Get resources available for access control |
 
@@ -99,6 +100,59 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<FileResponse> response = apiInstance.GetExcelAddinWithHttpInfo(version);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getlatestasat"></a>
+## GetLatestAsAt
+
+> LatestAsAt GetLatestAsAt()
+
+[EXPERIMENTAL] GetLatestAsAt: Get latest AsAt
+
+Get the latest asAt datetime of the system, i.e. the asAt datetime of the most recent write.  This is the asAt datetime that a request made without an explicit asAt resolves to.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ApplicationMetadataApi>();
+LatestAsAt result = apiInstance.GetLatestAsAt();
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[LatestAsAt](LatestAsAt.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The latest asAt datetime of the system |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetLatestAsAtWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<LatestAsAt> response = apiInstance.GetLatestAsAtWithHttpInfo();
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

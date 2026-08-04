@@ -584,7 +584,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum PikBondPrincipalEvent for value: PikBondPrincipalEvent
         /// </summary>
         [EnumMember(Value = "PikBondPrincipalEvent")]
-        PikBondPrincipalEvent = 93
+        PikBondPrincipalEvent = 93,
+
+        /// <summary>
+        /// Enum DelistingEvent for value: DelistingEvent
+        /// </summary>
+        [EnumMember(Value = "DelistingEvent")]
+        DelistingEvent = 94
     }
 
 }

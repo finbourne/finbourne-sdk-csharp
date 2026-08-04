@@ -6,7 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**GetTpfFileDeliveries**](#gettpffiledeliveries) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/deliveries` | [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance |
-| [**GetTpfTransactionHistorySearch**](#gettpftransactionhistorysearch) | **GET** `/horizon/api/trade-publication-framework/transactions/search` | [EXPERIMENTAL] GetTpfTransactionHistorySearch: Endpoint to search TPF transaction by transaction ID and/or instrument identifier, with filtering by instance and date range |
+| [**GetTpfTransactionHistorySearch**](#gettpftransactionhistorysearch) | **POST** `/horizon/api/trade-publication-framework/transactions/search` | [EXPERIMENTAL] GetTpfTransactionHistorySearch: Search TPF transactions by transaction ID(s) and/or instrument identifier(s), with optional filtering by instance, date range, and publication status. Accepts multiple values in TransactionIds and InstrumentIdentifiers (OR&#39;d within each filter, AND&#39;d between filters). |
 | [**GetTransactionPayload**](#gettransactionpayload) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs/{runId}/transactions/payload` | [EXPERIMENTAL] GetTransactionPayload: Transaction payloads for a run, with pagination support. When transactionId is supplied the single matching payload is returned; otherwise all payloads for the instance/run are returned. |
 | [**ListFailedDeliveries**](#listfaileddeliveries) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/failed` | [EXPERIMENTAL] ListFailedDeliveries: List failed deliveries for a given TPF instance, filtered by resolved state, with pagination support. |
 | [**ListInstanceRunHistory**](#listinstancerunhistory) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs` | [EXPERIMENTAL] ListInstanceRunHistory: List run history for a given TPF instance, with pagination support. |
@@ -131,23 +131,16 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="gettpftransactionhistorysearch"></a>
 ## GetTpfTransactionHistorySearch
 
-> PagedResourceListOfTpfTransactionSearchResponse GetTpfTransactionHistorySearch(string? transactionId = null, string? instrumentId = null, string? dateFrom = null, string? dateTo = null, string? status = null, string? instanceId = null, int? pageSize = null, string? pageToken = null)
+> PagedResourceListOfTpfTransactionSearchResponse GetTpfTransactionHistorySearch(TpfTransactionSearchRequest? tpfTransactionSearchRequest = null)
 
-[EXPERIMENTAL] GetTpfTransactionHistorySearch: Endpoint to search TPF transaction by transaction ID and/or instrument identifier, with filtering by instance and date range
+[EXPERIMENTAL] GetTpfTransactionHistorySearch: Search TPF transactions by transaction ID(s) and/or instrument identifier(s), with optional filtering by instance, date range, and publication status. Accepts multiple values in TransactionIds and InstrumentIdentifiers (OR'd within each filter, AND'd between filters).
 
 ### Example
 
 ```csharp
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
-var transactionId = "transactionId_example";  // string? (optional)
-var instrumentId = "instrumentId_example";  // string? (optional)
-var dateFrom = "dateFrom_example";  // string? (optional)
-var dateTo = "dateTo_example";  // string? (optional)
-var status = "status_example";  // string? (optional)
-var instanceId = "instanceId_example";  // string? (optional)
-var pageSize = 400;  // int? (optional)
-var pageToken = "\"\"";  // string? (optional)
-PagedResourceListOfTpfTransactionSearchResponse result = apiInstance.GetTpfTransactionHistorySearch(transactionId, instrumentId, dateFrom, dateTo, status, instanceId, pageSize, pageToken);
+var tpfTransactionSearchRequest = new TpfTransactionSearchRequest?(); // TpfTransactionSearchRequest? (optional)
+PagedResourceListOfTpfTransactionSearchResponse result = apiInstance.GetTpfTransactionHistorySearch(tpfTransactionSearchRequest);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -155,14 +148,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **transactionId** | **string?** | query | optional |  |
-| **instrumentId** | **string?** | query | optional |  |
-| **dateFrom** | **string?** | query | optional |  |
-| **dateTo** | **string?** | query | optional |  |
-| **status** | **string?** | query | optional |  |
-| **instanceId** | **string?** | query | optional |  |
-| **pageSize** | **int?** | query | optional |  Default: `400` |
-| **pageToken** | **string?** | query | optional |  Default: `&quot;&quot;` |
+| **tpfTransactionSearchRequest** | [TpfTransactionSearchRequest?](TpfTransactionSearchRequest?.md) | body | optional | Search filters and pagination options. |
 
 ### Return type
 
@@ -170,7 +156,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
  - **Accept**: `application/json`
 
 ### HTTP response details
@@ -187,7 +173,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfTpfTransactionSearchResponse> response = apiInstance.GetTpfTransactionHistorySearchWithHttpInfo(transactionId, instrumentId, dateFrom, dateTo, status, instanceId, pageSize, pageToken);
+ApiResponse<PagedResourceListOfTpfTransactionSearchResponse> response = apiInstance.GetTpfTransactionHistorySearchWithHttpInfo(tpfTransactionSearchRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
