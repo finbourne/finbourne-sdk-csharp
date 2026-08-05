@@ -44,7 +44,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="unitisation">unitisation.</param>
         /// <param name="miscellaneous">Not used directly by the LUSID engines but serves as a holding area for any custom derived data points that may be useful in, for example, fee calculations)..</param>
         /// <param name="shareClassToFundFxRate">The fx rate from the Share Class currency to the fund currency at this valuation point. (required).</param>
-        /// <param name="capitalRatio">The proportion of the fund&#39;s adjusted beginning equity (ie: the sum of the previous NAV and the net dealing) that is invested in the share class. (required).</param>
+        /// <param name="capitalRatio">The proportion of the fund&#39;s non-class-specific P&amp;L apportioned to this share class. Sums to 1 across the fund&#39;s share classes. (required).</param>
         /// <param name="previousShareClassBreakdown">previousShareClassBreakdown (required).</param>
         public ShareClassBreakdown(Dictionary<string, ShareClassAmount> backOut = default(Dictionary<string, ShareClassAmount>), ShareClassDealingBreakdown dealing = default(ShareClassDealingBreakdown), ShareClassPnlBreakdown pnL = default(ShareClassPnlBreakdown), ShareClassAmount gav = default(ShareClassAmount), Dictionary<string, FeeAccrual> fees = default(Dictionary<string, FeeAccrual>), ShareClassAmount nav = default(ShareClassAmount), UnitisationData unitisation = default(UnitisationData), Dictionary<string, ShareClassAmount> miscellaneous = default(Dictionary<string, ShareClassAmount>), decimal shareClassToFundFxRate = default(decimal), decimal capitalRatio = default(decimal), PreviousShareClassBreakdown previousShareClassBreakdown = default(PreviousShareClassBreakdown))
         {
@@ -157,9 +157,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal ShareClassToFundFxRate { get; set; }
 
         /// <summary>
-        /// The proportion of the fund&#39;s adjusted beginning equity (ie: the sum of the previous NAV and the net dealing) that is invested in the share class.
+        /// The proportion of the fund&#39;s non-class-specific P&amp;L apportioned to this share class. Sums to 1 across the fund&#39;s share classes.
         /// </summary>
-        /// <value>The proportion of the fund&#39;s adjusted beginning equity (ie: the sum of the previous NAV and the net dealing) that is invested in the share class.</value>
+        /// <value>The proportion of the fund&#39;s non-class-specific P&amp;L apportioned to this share class. Sums to 1 across the fund&#39;s share classes.</value>
         [DataMember(Name = "capitalRatio", IsRequired = true, EmitDefaultValue = true)]
         public decimal CapitalRatio { get; set; }
 

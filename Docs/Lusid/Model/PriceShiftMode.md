@@ -1,4 +1,4 @@
-# Finbourne.Sdk.Lusid.Model.EquityShiftMode
+# Finbourne.Sdk.Lusid.Model.PriceShiftMode
 
 ## Properties
 

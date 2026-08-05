@@ -12,7 +12,8 @@
 | **EndTenor** | **string** | Optional | *No description available.* |
 | **ShiftType** | **string** | Required | Available values: Parallel, Steepen, Flatten, Twist. |
 | **Scale** | **string** | Optional | Available values: Bps, Percentage. |
-| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. Default: `ScenarioShiftTypeEnum.RateCurveShiftDefinition` |
+| **ApplyTo** | **string** | Optional | A LUSID filter expression over the instrument entity scoping which instruments this shift is  for, e.g. \&quot;properties[Instrument/default/CountryOfIssue] eq &#39;Italy&#39;\&quot;. The shifted market data  is used by the whole valuation run, but when the scenario is requested as a result column the  column is only populated for matching instruments. Only usable when the scenario is applied as  a per-metric column. |
+| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. Default: `ScenarioShiftTypeEnum.RateCurveShiftDefinition` |
 
 
 ## Usage
@@ -29,7 +30,8 @@ var instance = new RateCurveShiftDefinition(
     endTenor: "...",  // optional
     shiftType: "...",  // required — Available values: Parallel, Steepen, Flatten, Twist.
     scale: "...",  // optional — Available values: Bps, Percentage.
-    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
+    applyTo: "...",  // optional — A LUSID filter expression over the instrument entity scoping which instruments this shift is  for, e.g. \&quot;properties[Instrument/default/CountryOfIssue] eq &#39;Italy&#39;\&quot;. The shifted market data  is used by the whole valuation run, but when the scenario is requested as a result column the  column is only populated for matching instruments. Only usable when the scenario is applied as  a per-metric column.
+    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
 );
 ```
 ### Serializing to JSON

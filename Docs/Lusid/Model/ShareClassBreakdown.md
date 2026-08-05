@@ -14,7 +14,7 @@ The Valuation Point Data for a Share Class on a specified date.
 | **Unitisation** | [UnitisationData](UnitisationData.md) | Optional | *No description available.* |
 | **Miscellaneous** | [Dictionary&lt;string, ShareClassAmount&gt;](ShareClassAmount.md) | Optional | Not used directly by the LUSID engines but serves as a holding area for any custom derived data points that may be useful in, for example, fee calculations). |
 | **ShareClassToFundFxRate** | **decimal** | Required | The fx rate from the Share Class currency to the fund currency at this valuation point. |
-| **CapitalRatio** | **decimal** | Required | The proportion of the fund&#39;s adjusted beginning equity (ie: the sum of the previous NAV and the net dealing) that is invested in the share class. |
+| **CapitalRatio** | **decimal** | Required | The proportion of the fund&#39;s non-class-specific P&amp;L apportioned to this share class. Sums to 1 across the fund&#39;s share classes. |
 | **PreviousShareClassBreakdown** | [PreviousShareClassBreakdown](PreviousShareClassBreakdown.md) | Required | *No description available.* |
 
 
@@ -35,7 +35,7 @@ var instance = new ShareClassBreakdown(
     unitisation: new UnitisationData(...),  // optional
     miscellaneous: new ShareClassAmount(...),  // optional — Not used directly by the LUSID engines but serves as a holding area for any custom derived data points that may be useful in, for example, fee calculations).
     shareClassToFundFxRate: 0.0d,  // required — The fx rate from the Share Class currency to the fund currency at this valuation point.
-    capitalRatio: 0.0d,  // required — The proportion of the fund&#39;s adjusted beginning equity (ie: the sum of the previous NAV and the net dealing) that is invested in the share class.
+    capitalRatio: 0.0d,  // required — The proportion of the fund&#39;s non-class-specific P&amp;L apportioned to this share class. Sums to 1 across the fund&#39;s share classes.
     previousShareClassBreakdown: new PreviousShareClassBreakdown(...)  // required
 );
 ```

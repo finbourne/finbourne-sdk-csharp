@@ -22,10 +22,10 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// Defines EquityShiftMode
+    /// Defines PriceShiftMode
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum EquityShiftMode
+    public enum PriceShiftMode
     {
         /// <summary>
         /// Enum Absolute for value: absolute

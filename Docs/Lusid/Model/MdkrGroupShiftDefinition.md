@@ -8,7 +8,7 @@ A group of keyed market data key rules (e.g. bid/mid/ask). When the scenario is 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Rules** | [List&lt;KeyedMarketDataKeyRule&gt;](KeyedMarketDataKeyRule.md) | Required | The keyed rules of the group. Keys must be unique within the group; each key produces one  result column. |
-| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. Default: `ScenarioShiftTypeEnum.MdkrGroupShiftDefinition` |
+| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. Default: `ScenarioShiftTypeEnum.MdkrGroupShiftDefinition` |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new MdkrGroupShiftDefinition(
     rules: new List<KeyedMarketDataKeyRule>(),  // required — The keyed rules of the group. Keys must be unique within the group; each key produces one  result column.
-    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
+    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
 );
 ```
 ### Serializing to JSON

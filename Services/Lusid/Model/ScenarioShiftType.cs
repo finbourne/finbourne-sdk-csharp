@@ -40,10 +40,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         FxShiftDefinition = 2,
 
         /// <summary>
-        /// Enum EquityShiftDefinition for value: EquityShiftDefinition
+        /// Enum PriceShiftDefinition for value: PriceShiftDefinition
         /// </summary>
-        [EnumMember(Value = "EquityShiftDefinition")]
-        EquityShiftDefinition = 3,
+        [EnumMember(Value = "PriceShiftDefinition")]
+        PriceShiftDefinition = 3,
 
         /// <summary>
         /// Enum VolSurfaceShiftDefinition for value: VolSurfaceShiftDefinition

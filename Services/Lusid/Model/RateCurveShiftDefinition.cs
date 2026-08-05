@@ -107,8 +107,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="endTenor">endTenor.</param>
         /// <param name="shiftType">Available values: Parallel, Steepen, Flatten, Twist. (required).</param>
         /// <param name="scale">Available values: Bps, Percentage..</param>
-        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, EquityShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
-        public RateCurveShiftDefinition(string ccy = default(string), decimal amount = default(decimal), string startTenor = default(string), string endTenor = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScaleEnum ?scale = default(ScaleEnum?), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
+        /// <param name="applyTo">A LUSID filter expression over the instrument entity scoping which instruments this shift is  for, e.g. \&quot;properties[Instrument/default/CountryOfIssue] eq &#39;Italy&#39;\&quot;. The shifted market data  is used by the whole valuation run, but when the scenario is requested as a result column the  column is only populated for matching instruments. Only usable when the scenario is applied as  a per-metric column..</param>
+        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
+        public RateCurveShiftDefinition(string ccy = default(string), decimal amount = default(decimal), string startTenor = default(string), string endTenor = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScaleEnum ?scale = default(ScaleEnum?), string applyTo = default(string), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
         {
             // to ensure "ccy" is required (not null)
             if (ccy == null)
@@ -137,6 +138,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.StartTenor = startTenor;
             this.EndTenor = endTenor;
             this.Scale = scale;
+            this.ApplyTo = applyTo;
         }
 
         /// <summary>
@@ -165,6 +167,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string EndTenor { get; set; }
 
         /// <summary>
+        /// A LUSID filter expression over the instrument entity scoping which instruments this shift is  for, e.g. \&quot;properties[Instrument/default/CountryOfIssue] eq &#39;Italy&#39;\&quot;. The shifted market data  is used by the whole valuation run, but when the scenario is requested as a result column the  column is only populated for matching instruments. Only usable when the scenario is applied as  a per-metric column.
+        /// </summary>
+        /// <value>A LUSID filter expression over the instrument entity scoping which instruments this shift is  for, e.g. \&quot;properties[Instrument/default/CountryOfIssue] eq &#39;Italy&#39;\&quot;. The shifted market data  is used by the whole valuation run, but when the scenario is requested as a result column the  column is only populated for matching instruments. Only usable when the scenario is applied as  a per-metric column.</value>
+        [DataMember(Name = "applyTo", EmitDefaultValue = true)]
+        public string ApplyTo { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -179,6 +188,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  EndTenor: ").Append(EndTenor).Append("\n");
             sb.Append("  ShiftType: ").Append(ShiftType).Append("\n");
             sb.Append("  Scale: ").Append(Scale).Append("\n");
+            sb.Append("  ApplyTo: ").Append(ApplyTo).Append("\n");
             sb.Append("  ScenarioShiftType: ").Append(ScenarioShiftType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -243,6 +253,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Scale.Equals(input.Scale)
                 ) && base.Equals(input) && 
                 (
+                    this.ApplyTo == input.ApplyTo ||
+                    (this.ApplyTo != null &&
+                    this.ApplyTo.Equals(input.ApplyTo))
+                ) && base.Equals(input) && 
+                (
                     this.ScenarioShiftType == input.ScenarioShiftType ||
                     this.ScenarioShiftType.Equals(input.ScenarioShiftType)
                 );
@@ -272,6 +287,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 }
                 hashCode = (hashCode * 59) + this.ShiftType.GetHashCode();
                 hashCode = (hashCode * 59) + this.Scale.GetHashCode();
+                if (this.ApplyTo != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApplyTo.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.ScenarioShiftType.GetHashCode();
                 return hashCode;
             }
