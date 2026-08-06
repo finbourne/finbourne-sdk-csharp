@@ -590,7 +590,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum DelistingEvent for value: DelistingEvent
         /// </summary>
         [EnumMember(Value = "DelistingEvent")]
-        DelistingEvent = 94
+        DelistingEvent = 94,
+
+        /// <summary>
+        /// Enum PikBondInterestEvent for value: PikBondInterestEvent
+        /// </summary>
+        [EnumMember(Value = "PikBondInterestEvent")]
+        PikBondInterestEvent = 95
     }
 
 }

@@ -12,6 +12,7 @@
 | **DataSchema** | [ResultDataSchema](ResultDataSchema.md) | Optional | *No description available.* |
 | **AggregationFailures** | [List&lt;AggregationMeasureFailureDetail&gt;](AggregationMeasureFailureDetail.md) | Optional | *No description available.* |
 | **RecipeId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **ScenarioDiagnostics** | [ScenarioDiagnostics](ScenarioDiagnostics.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -31,6 +32,7 @@ var instance = new ListAggregationResponse(
     dataSchema: new ResultDataSchema(...),  // optional
     aggregationFailures: new List<AggregationMeasureFailureDetail>(),  // optional
     recipeId: new ResourceId(...),  // optional
+    scenarioDiagnostics: new ScenarioDiagnostics(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -49,6 +51,7 @@ var instance = JsonConvert.DeserializeObject<ListAggregationResponse>(json);
 - [ResultDataSchema](ResultDataSchema.md)
 - [AggregationMeasureFailureDetail](AggregationMeasureFailureDetail.md)
 - [ResourceId](ResourceId.md)
+- [ScenarioDiagnostics](ScenarioDiagnostics.md)
 - [Link](Link.md)
 
 
