@@ -14,6 +14,7 @@
 | **ExplainTooltip** | **string** | Optional | *No description available.* |
 | **ArrowToParentTooltip** | **string** | Optional | *No description available.* |
 | **FullFormula** | **string** | Optional | *No description available.* |
+| **ActionTemplate** | **string** | Optional | *No description available.* |
 | **DocumentationAsHtml** | **string** | Optional | *No description available.* |
 | **DocumentationAsMarkDown** | **string** | Optional | *No description available.* |
 | **Children** | [List&lt;Lineage&gt;](Lineage.md) | Optional | *No description available.* |
@@ -37,6 +38,7 @@ var instance = new Lineage(
     explainTooltip: "...",  // optional
     arrowToParentTooltip: "...",  // optional
     fullFormula: "...",  // optional
+    actionTemplate: "...",  // optional
     documentationAsHtml: "...",  // optional
     documentationAsMarkDown: "...",  // optional
     children: new List<Lineage>()  // optional

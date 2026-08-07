@@ -46,6 +46,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="isMain">isMain.</param>
         /// <param name="isRequiredByProvider">isRequiredByProvider.</param>
         /// <param name="mandatoryForActions">mandatoryForActions.</param>
+        /// <param name="actionTemplate">actionTemplate.</param>
         /// <param name="lineage">lineage.</param>
         /// <param name="name">name.</param>
         /// <param name="type">type.</param>
@@ -54,12 +55,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="conditionUsage">conditionUsage.</param>
         /// <param name="sampleValues">sampleValues.</param>
         /// <param name="allowedValues">allowedValues.</param>
-        public Column(bool isPrimaryKey = default(bool), bool isMain = default(bool), bool isRequiredByProvider = default(bool), string mandatoryForActions = default(string), Lineage lineage = default(Lineage), string name = default(string), DataType ?type = default(DataType?), string description = default(string), string displayName = default(string), ConditionAttributes ?conditionUsage = default(ConditionAttributes?), string sampleValues = default(string), string allowedValues = default(string))
+        public Column(bool isPrimaryKey = default(bool), bool isMain = default(bool), bool isRequiredByProvider = default(bool), string mandatoryForActions = default(string), string actionTemplate = default(string), Lineage lineage = default(Lineage), string name = default(string), DataType ?type = default(DataType?), string description = default(string), string displayName = default(string), ConditionAttributes ?conditionUsage = default(ConditionAttributes?), string sampleValues = default(string), string allowedValues = default(string))
         {
             this.IsPrimaryKey = isPrimaryKey;
             this.IsMain = isMain;
             this.IsRequiredByProvider = isRequiredByProvider;
             this.MandatoryForActions = mandatoryForActions;
+            this.ActionTemplate = actionTemplate;
             this.Lineage = lineage;
             this.Name = name;
             this.Type = type;
@@ -93,6 +95,12 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// </summary>
         [DataMember(Name = "mandatoryForActions", EmitDefaultValue = true)]
         public string MandatoryForActions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ActionTemplate
+        /// </summary>
+        [DataMember(Name = "actionTemplate", EmitDefaultValue = true)]
+        public string ActionTemplate { get; set; }
 
         /// <summary>
         /// Gets or Sets Lineage
@@ -142,6 +150,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
             sb.Append("  IsMain: ").Append(IsMain).Append("\n");
             sb.Append("  IsRequiredByProvider: ").Append(IsRequiredByProvider).Append("\n");
             sb.Append("  MandatoryForActions: ").Append(MandatoryForActions).Append("\n");
+            sb.Append("  ActionTemplate: ").Append(ActionTemplate).Append("\n");
             sb.Append("  Lineage: ").Append(Lineage).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -203,6 +212,11 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                     this.MandatoryForActions.Equals(input.MandatoryForActions))
                 ) && 
                 (
+                    this.ActionTemplate == input.ActionTemplate ||
+                    (this.ActionTemplate != null &&
+                    this.ActionTemplate.Equals(input.ActionTemplate))
+                ) && 
+                (
                     this.Lineage == input.Lineage ||
                     (this.Lineage != null &&
                     this.Lineage.Equals(input.Lineage))
@@ -257,6 +271,10 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 if (this.MandatoryForActions != null)
                 {
                     hashCode = (hashCode * 59) + this.MandatoryForActions.GetHashCode();
+                }
+                if (this.ActionTemplate != null)
+                {
+                    hashCode = (hashCode * 59) + this.ActionTemplate.GetHashCode();
                 }
                 if (this.Lineage != null)
                 {

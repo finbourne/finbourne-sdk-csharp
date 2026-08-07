@@ -46,10 +46,11 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="explainTooltip">explainTooltip.</param>
         /// <param name="arrowToParentTooltip">arrowToParentTooltip.</param>
         /// <param name="fullFormula">fullFormula.</param>
+        /// <param name="actionTemplate">actionTemplate.</param>
         /// <param name="documentationAsHtml">documentationAsHtml.</param>
         /// <param name="documentationAsMarkDown">documentationAsMarkDown.</param>
         /// <param name="children">children.</param>
-        public Lineage(string type = default(string), string subtype = default(string), string legendText = default(string), string alias = default(string), string columnTitleTooltip = default(string), LineageColumnIcon ?columnTitleIcon = default(LineageColumnIcon?), string explainTitle = default(string), string explainTooltip = default(string), string arrowToParentTooltip = default(string), string fullFormula = default(string), string documentationAsHtml = default(string), string documentationAsMarkDown = default(string), List<Lineage> children = default(List<Lineage>))
+        public Lineage(string type = default(string), string subtype = default(string), string legendText = default(string), string alias = default(string), string columnTitleTooltip = default(string), LineageColumnIcon ?columnTitleIcon = default(LineageColumnIcon?), string explainTitle = default(string), string explainTooltip = default(string), string arrowToParentTooltip = default(string), string fullFormula = default(string), string actionTemplate = default(string), string documentationAsHtml = default(string), string documentationAsMarkDown = default(string), List<Lineage> children = default(List<Lineage>))
         {
             this.Type = type;
             this.Subtype = subtype;
@@ -61,6 +62,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
             this.ExplainTooltip = explainTooltip;
             this.ArrowToParentTooltip = arrowToParentTooltip;
             this.FullFormula = fullFormula;
+            this.ActionTemplate = actionTemplate;
             this.DocumentationAsHtml = documentationAsHtml;
             this.DocumentationAsMarkDown = documentationAsMarkDown;
             this.Children = children;
@@ -121,6 +123,12 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         public string FullFormula { get; set; }
 
         /// <summary>
+        /// Gets or Sets ActionTemplate
+        /// </summary>
+        [DataMember(Name = "actionTemplate", EmitDefaultValue = true)]
+        public string ActionTemplate { get; set; }
+
+        /// <summary>
         /// Gets or Sets DocumentationAsHtml
         /// </summary>
         [DataMember(Name = "documentationAsHtml", EmitDefaultValue = true)]
@@ -156,6 +164,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
             sb.Append("  ExplainTooltip: ").Append(ExplainTooltip).Append("\n");
             sb.Append("  ArrowToParentTooltip: ").Append(ArrowToParentTooltip).Append("\n");
             sb.Append("  FullFormula: ").Append(FullFormula).Append("\n");
+            sb.Append("  ActionTemplate: ").Append(ActionTemplate).Append("\n");
             sb.Append("  DocumentationAsHtml: ").Append(DocumentationAsHtml).Append("\n");
             sb.Append("  DocumentationAsMarkDown: ").Append(DocumentationAsMarkDown).Append("\n");
             sb.Append("  Children: ").Append(Children).Append("\n");
@@ -244,6 +253,11 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                     this.FullFormula.Equals(input.FullFormula))
                 ) && 
                 (
+                    this.ActionTemplate == input.ActionTemplate ||
+                    (this.ActionTemplate != null &&
+                    this.ActionTemplate.Equals(input.ActionTemplate))
+                ) && 
+                (
                     this.DocumentationAsHtml == input.DocumentationAsHtml ||
                     (this.DocumentationAsHtml != null &&
                     this.DocumentationAsHtml.Equals(input.DocumentationAsHtml))
@@ -306,6 +320,10 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 if (this.FullFormula != null)
                 {
                     hashCode = (hashCode * 59) + this.FullFormula.GetHashCode();
+                }
+                if (this.ActionTemplate != null)
+                {
+                    hashCode = (hashCode * 59) + this.ActionTemplate.GetHashCode();
                 }
                 if (this.DocumentationAsHtml != null)
                 {

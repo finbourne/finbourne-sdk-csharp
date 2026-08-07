@@ -8,6 +8,7 @@
 | **IsMain** | **bool** | Optional | *No description available.* |
 | **IsRequiredByProvider** | **bool** | Optional | *No description available.* |
 | **MandatoryForActions** | **string** | Optional | *No description available.* |
+| **ActionTemplate** | **string** | Optional | *No description available.* |
 | **Lineage** | [Lineage](Lineage.md) | Optional | *No description available.* |
 | **Name** | **string** | Optional | *No description available.* |
 | **Type** | **DataType** | Optional | *No description available.* |
@@ -30,6 +31,7 @@ var instance = new Column(
     isMain: true,  // optional
     isRequiredByProvider: true,  // optional
     mandatoryForActions: "...",  // optional
+    actionTemplate: "...",  // optional
     lineage: new Lineage(...),  // optional
     name: "...",  // optional
     type: ,  // optional
