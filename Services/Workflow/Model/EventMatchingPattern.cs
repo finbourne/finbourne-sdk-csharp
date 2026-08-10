@@ -35,7 +35,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EventMatchingPattern" /> class.
         /// </summary>
-        /// <param name="eventType">The type of event to subscribe to. The list of available event types can be discovered by calling the ‘List available EventTypes’ API endpoint in the Notifications service (required).</param>
+        /// <param name="eventType">The type of event to subscribe to. The list of available event types can be discovered by calling the ListEventTypes API endpoint in the Notifications service. Note that event types published by the Workflow service itself (such as TaskCreated, TaskUpdated, TaskDeleted, TaskDefinitionCreated, TaskDefinitionUpdated and TaskDefinitionDeleted) are not supported as Event Handler triggers, and specifying one will be rejected. (required).</param>
         /// <param name="filter">A filter on the event. See https://support.lusid.com/filtering-results-from-lusid for more information. If not provided, all events will be matched..</param>
         public EventMatchingPattern(string eventType = default(string), string filter = default(string))
         {
@@ -49,9 +49,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         }
 
         /// <summary>
-        /// The type of event to subscribe to. The list of available event types can be discovered by calling the ‘List available EventTypes’ API endpoint in the Notifications service
+        /// The type of event to subscribe to. The list of available event types can be discovered by calling the ListEventTypes API endpoint in the Notifications service. Note that event types published by the Workflow service itself (such as TaskCreated, TaskUpdated, TaskDeleted, TaskDefinitionCreated, TaskDefinitionUpdated and TaskDefinitionDeleted) are not supported as Event Handler triggers, and specifying one will be rejected.
         /// </summary>
-        /// <value>The type of event to subscribe to. The list of available event types can be discovered by calling the ‘List available EventTypes’ API endpoint in the Notifications service</value>
+        /// <value>The type of event to subscribe to. The list of available event types can be discovered by calling the ListEventTypes API endpoint in the Notifications service. Note that event types published by the Workflow service itself (such as TaskCreated, TaskUpdated, TaskDeleted, TaskDefinitionCreated, TaskDefinitionUpdated and TaskDefinitionDeleted) are not supported as Event Handler triggers, and specifying one will be rejected.</value>
         [DataMember(Name = "eventType", IsRequired = true, EmitDefaultValue = true)]
         public string EventType { get; set; }
 
