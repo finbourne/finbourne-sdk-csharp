@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**QueryApplicableInstrumentEvents**](#queryapplicableinstrumentevents) | **POST** `/api/api/instrumentevents/$queryApplicableInstrumentEvents` | QueryApplicableInstrumentEvents: Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query. |
+| [**QueryBucketCashFlowDrillDown**](#querybucketcashflowdrilldown) | **POST** `/api/api/instrumentevents/$queryBucketCashFlowDrillDown` | QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage. |
 | [**QueryBucketedCashFlows**](#querybucketedcashflows) | **POST** `/api/api/instrumentevents/$queryBucketedCashFlows` | QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query. |
 | [**QueryCashFlows**](#querycashflows) | **POST** `/api/api/instrumentevents/$queryCashFlows` | QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query. |
 | [**QueryInstrumentEvents**](#queryinstrumentevents) | **POST** `/api/api/instrumentevents/$query` | QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query. |
@@ -107,6 +108,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ResourceListOfApplicableInstrumentEvent> response = apiInstance.QueryApplicableInstrumentEventsWithHttpInfo(asAt, limit, page, queryApplicableInstrumentEventsRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="querybucketcashflowdrilldown"></a>
+## QueryBucketCashFlowDrillDown
+
+> ResourceListOfCashFlowDetail QueryBucketCashFlowDrillDown(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = null)
+
+QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage.
+
+Returns the individual cashflows inside the requested bucket window for the holdings of the specified  portfolios, annotated with the source (Instrument, Transaction or SRS) that produced each cashflow.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<InstrumentEventsApi>();
+var queryBucketCashFlowDrillDownRequest = new QueryBucketCashFlowDrillDownRequest?(); // QueryBucketCashFlowDrillDownRequest? (optional)
+ResourceListOfCashFlowDetail result = apiInstance.QueryBucketCashFlowDrillDown(queryBucketCashFlowDrillDownRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **queryBucketCashFlowDrillDownRequest** | [QueryBucketCashFlowDrillDownRequest?](QueryBucketCashFlowDrillDownRequest?.md) | body | optional | The Query Information. |
+
+### Return type
+
+[ResourceListOfCashFlowDetail](ResourceListOfCashFlowDetail.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The individual cashflows inside the requested bucket. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the QueryBucketCashFlowDrillDownWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfCashFlowDetail> response = apiInstance.QueryBucketCashFlowDrillDownWithHttpInfo(queryBucketCashFlowDrillDownRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

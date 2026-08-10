@@ -22,51 +22,61 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// GetScenarioResponse
+    /// PagedResourceListOfVersion
     /// </summary>
-    [DataContract(Name = "GetScenarioResponse")]
-    public partial class GetScenarioResponse : IEquatable<GetScenarioResponse>, IValidatableObject
+    [DataContract(Name = "PagedResourceListOfVersion")]
+    public partial class PagedResourceListOfVersion : IEquatable<PagedResourceListOfVersion>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetScenarioResponse" /> class.
+        /// Initializes a new instance of the <see cref="PagedResourceListOfVersion" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected PagedResourceListOfVersion() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PagedResourceListOfVersion" /> class.
+        /// </summary>
+        /// <param name="nextPage">nextPage.</param>
+        /// <param name="previousPage">previousPage.</param>
+        /// <param name="values">values (required).</param>
         /// <param name="href">href.</param>
-        /// <param name="value">value.</param>
-        /// <param name="varVersion">varVersion.</param>
-        /// <param name="failed">failed.</param>
         /// <param name="links">links.</param>
-        public GetScenarioResponse(string href = default(string), ScenarioDefinition value = default(ScenarioDefinition), ModelVersion varVersion = default(ModelVersion), ErrorDetail failed = default(ErrorDetail), List<Link> links = default(List<Link>))
+        public PagedResourceListOfVersion(string nextPage = default(string), string previousPage = default(string), List<ModelVersion> values = default(List<ModelVersion>), string href = default(string), List<Link> links = default(List<Link>))
         {
+            // to ensure "values" is required (not null)
+            if (values == null)
+            {
+                throw new ArgumentNullException("values is a required property for PagedResourceListOfVersion and cannot be null");
+            }
+            this.Values = values;
+            this.NextPage = nextPage;
+            this.PreviousPage = previousPage;
             this.Href = href;
-            this.Value = value;
-            this.VarVersion = varVersion;
-            this.Failed = failed;
             this.Links = links;
         }
+
+        /// <summary>
+        /// Gets or Sets NextPage
+        /// </summary>
+        [DataMember(Name = "nextPage", EmitDefaultValue = true)]
+        public string NextPage { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PreviousPage
+        /// </summary>
+        [DataMember(Name = "previousPage", EmitDefaultValue = true)]
+        public string PreviousPage { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Values
+        /// </summary>
+        [DataMember(Name = "values", IsRequired = true, EmitDefaultValue = true)]
+        public List<ModelVersion> Values { get; set; }
 
         /// <summary>
         /// Gets or Sets Href
         /// </summary>
         [DataMember(Name = "href", EmitDefaultValue = true)]
         public string Href { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Value
-        /// </summary>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public ScenarioDefinition Value { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VarVersion
-        /// </summary>
-        [DataMember(Name = "version", EmitDefaultValue = false)]
-        public ModelVersion VarVersion { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Failed
-        /// </summary>
-        [DataMember(Name = "failed", EmitDefaultValue = false)]
-        public ErrorDetail Failed { get; set; }
 
         /// <summary>
         /// Gets or Sets Links
@@ -81,11 +91,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetScenarioResponse {\n");
+            sb.Append("class PagedResourceListOfVersion {\n");
+            sb.Append("  NextPage: ").Append(NextPage).Append("\n");
+            sb.Append("  PreviousPage: ").Append(PreviousPage).Append("\n");
+            sb.Append("  Values: ").Append(Values).Append("\n");
             sb.Append("  Href: ").Append(Href).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
-            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
-            sb.Append("  Failed: ").Append(Failed).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -107,15 +117,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetScenarioResponse);
+            return this.Equals(input as PagedResourceListOfVersion);
         }
 
         /// <summary>
-        /// Returns true if GetScenarioResponse instances are equal
+        /// Returns true if PagedResourceListOfVersion instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetScenarioResponse to be compared</param>
+        /// <param name="input">Instance of PagedResourceListOfVersion to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetScenarioResponse input)
+        public bool Equals(PagedResourceListOfVersion input)
         {
             if (input == null)
             {
@@ -123,24 +133,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             return 
                 (
+                    this.NextPage == input.NextPage ||
+                    (this.NextPage != null &&
+                    this.NextPage.Equals(input.NextPage))
+                ) && 
+                (
+                    this.PreviousPage == input.PreviousPage ||
+                    (this.PreviousPage != null &&
+                    this.PreviousPage.Equals(input.PreviousPage))
+                ) && 
+                (
+                    this.Values == input.Values ||
+                    this.Values != null &&
+                    input.Values != null &&
+                    this.Values.SequenceEqual(input.Values)
+                ) && 
+                (
                     this.Href == input.Href ||
                     (this.Href != null &&
                     this.Href.Equals(input.Href))
-                ) && 
-                (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
-                ) && 
-                (
-                    this.VarVersion == input.VarVersion ||
-                    (this.VarVersion != null &&
-                    this.VarVersion.Equals(input.VarVersion))
-                ) && 
-                (
-                    this.Failed == input.Failed ||
-                    (this.Failed != null &&
-                    this.Failed.Equals(input.Failed))
                 ) && 
                 (
                     this.Links == input.Links ||
@@ -159,21 +170,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.NextPage != null)
+                {
+                    hashCode = (hashCode * 59) + this.NextPage.GetHashCode();
+                }
+                if (this.PreviousPage != null)
+                {
+                    hashCode = (hashCode * 59) + this.PreviousPage.GetHashCode();
+                }
+                if (this.Values != null)
+                {
+                    hashCode = (hashCode * 59) + this.Values.GetHashCode();
+                }
                 if (this.Href != null)
                 {
                     hashCode = (hashCode * 59) + this.Href.GetHashCode();
-                }
-                if (this.Value != null)
-                {
-                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
-                }
-                if (this.VarVersion != null)
-                {
-                    hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
-                }
-                if (this.Failed != null)
-                {
-                    hashCode = (hashCode * 59) + this.Failed.GetHashCode();
                 }
                 if (this.Links != null)
                 {

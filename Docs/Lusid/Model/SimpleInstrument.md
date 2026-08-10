@@ -12,6 +12,7 @@ LUSID representation of a Simple Instrument, used as a basic definition of a gen
 | **AssetClass** | **string** | Required | Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown, RealEstate, Exotic. |
 | **FgnCcys** | **List&lt;string&gt;** | Optional | The set of foreign currencies, if any (optional). |
 | **SimpleInstrumentType** | **string** | Required | The Instrument type of the simple instrument. |
+| **ContractSize** | **decimal** | Optional | The size of the contract of the simple instrument Default: `1D` |
 | **TimeZoneConventions** | [TimeZoneConventions](TimeZoneConventions.md) | Optional | *No description available.* |
 | **TradingConventions** | [TradingConventions](TradingConventions.md) | Optional | *No description available.* |
 | **InstrumentType** | **string** | Required | Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward. Default: `InstrumentTypeEnum.SimpleInstrument` |
@@ -30,6 +31,7 @@ var instance = new SimpleInstrument(
     assetClass: "...",  // required — Available values: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown, RealEstate, Exotic.
     fgnCcys: ,  // optional — The set of foreign currencies, if any (optional).
     simpleInstrumentType: "...",  // required — The Instrument type of the simple instrument.
+    contractSize: 0.0d,  // optional — The size of the contract of the simple instrument
     timeZoneConventions: new TimeZoneConventions(...),  // optional
     tradingConventions: new TradingConventions(...),  // optional
     instrumentType: "..."  // required — Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward.

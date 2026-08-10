@@ -1,13 +1,13 @@
-# Finbourne.Sdk.Lusid.Model.GetScenarioResponse
+# Finbourne.Sdk.Lusid.Model.PagedResourceListOfVersion
 
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
+| **NextPage** | **string** | Optional | *No description available.* |
+| **PreviousPage** | **string** | Optional | *No description available.* |
+| **Values** | [List&lt;ModelVersion&gt;](ModelVersion.md) | Required | *No description available.* |
 | **Href** | **string** | Optional | *No description available.* |
-| **Value** | [ScenarioDefinition](ScenarioDefinition.md) | Optional | *No description available.* |
-| **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
-| **Failed** | [ErrorDetail](ErrorDetail.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -18,11 +18,11 @@
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var instance = new GetScenarioResponse(
+var instance = new PagedResourceListOfVersion(
+    nextPage: "...",  // optional
+    previousPage: "...",  // optional
+    values: new List<ModelVersion>(),  // required
     href: "...",  // optional
-    value: new ScenarioDefinition(...),  // optional
-    varVersion: new ModelVersion(...),  // optional
-    failed: new ErrorDetail(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -35,12 +35,10 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<GetScenarioResponse>(json);
+var instance = JsonConvert.DeserializeObject<PagedResourceListOfVersion>(json);
 ```
 
-- [ScenarioDefinition](ScenarioDefinition.md)
 - [ModelVersion](ModelVersion.md)
-- [ErrorDetail](ErrorDetail.md)
 - [Link](Link.md)
 
 

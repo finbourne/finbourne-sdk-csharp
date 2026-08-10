@@ -7,7 +7,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **CurrencyPair** | **string** | Required | *No description available.* |
-| **Amount** | **decimal** | Required | *No description available.* |
+| **Amount** | **decimal?** | Optional | *No description available.* |
 | **ShiftType** | **string** | Required | Available values: Absolute, Relative, Percentage. |
 | **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. Default: `ScenarioShiftTypeEnum.FxShiftDefinition` |
 
@@ -21,7 +21,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new FxShiftDefinition(
     currencyPair: "...",  // required
-    amount: 0.0d,  // required
+    amount: 0.0d,  // optional
     shiftType: "...",  // required — Available values: Absolute, Relative, Percentage.
     scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition.
 );

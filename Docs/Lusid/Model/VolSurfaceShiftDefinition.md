@@ -7,7 +7,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Instrument** | **string** | Required | *No description available.* |
-| **Amount** | **decimal** | Required | *No description available.* |
+| **Amount** | **decimal?** | Optional | *No description available.* |
 | **Strike** | **decimal?** | Optional | *No description available.* |
 | **Expiry** | **string** | Optional | *No description available.* |
 | **ShiftType** | **string** | Required | Available values: Absolute, Relative. |
@@ -23,7 +23,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new VolSurfaceShiftDefinition(
     instrument: "...",  // required
-    amount: 0.0d,  // required
+    amount: 0.0d,  // optional
     strike: 0.0d,  // optional
     expiry: "...",  // optional
     shiftType: "...",  // required — Available values: Absolute, Relative.

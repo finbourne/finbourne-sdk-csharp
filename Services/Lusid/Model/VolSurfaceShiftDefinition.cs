@@ -64,12 +64,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="VolSurfaceShiftDefinition" /> class.
         /// </summary>
         /// <param name="instrument">instrument (required).</param>
-        /// <param name="amount">amount (required).</param>
+        /// <param name="amount">amount.</param>
         /// <param name="strike">strike.</param>
         /// <param name="expiry">expiry.</param>
         /// <param name="shiftType">Available values: Absolute, Relative. (required).</param>
         /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
-        public VolSurfaceShiftDefinition(string instrument = default(string), decimal amount = default(decimal), decimal? strike = default(decimal?), string expiry = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
+        public VolSurfaceShiftDefinition(string instrument = default(string), decimal? amount = default(decimal?), decimal? strike = default(decimal?), string expiry = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
         {
             // to ensure "instrument" is required (not null)
             if (instrument == null)
@@ -77,8 +77,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrument is a required property for VolSurfaceShiftDefinition and cannot be null");
             }
             this.Instrument = instrument;
-            
-            this.Amount = amount;
             
             // to ensure "shiftType" is a defined enum value
             if (!System.Enum.IsDefined(typeof(ShiftTypeEnum), shiftType))
@@ -95,6 +93,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             
             this.ScenarioShiftType = scenarioShiftType;
+            this.Amount = amount;
             this.Strike = strike;
             this.Expiry = expiry;
         }
@@ -108,8 +107,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Gets or Sets Amount
         /// </summary>
-        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal Amount { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public decimal? Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets Strike
@@ -180,7 +179,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 ) && base.Equals(input) && 
                 (
                     this.Amount == input.Amount ||
-                    this.Amount.Equals(input.Amount)
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 ) && base.Equals(input) && 
                 (
                     this.Strike == input.Strike ||
@@ -215,7 +215,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Instrument.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
                 if (this.Strike != null)
                 {
                     hashCode = (hashCode * 59) + this.Strike.GetHashCode();

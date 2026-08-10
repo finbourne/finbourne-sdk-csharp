@@ -70,10 +70,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="FxShiftDefinition" /> class.
         /// </summary>
         /// <param name="currencyPair">currencyPair (required).</param>
-        /// <param name="amount">amount (required).</param>
+        /// <param name="amount">amount.</param>
         /// <param name="shiftType">Available values: Absolute, Relative, Percentage. (required).</param>
         /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
-        public FxShiftDefinition(string currencyPair = default(string), decimal amount = default(decimal), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
+        public FxShiftDefinition(string currencyPair = default(string), decimal? amount = default(decimal?), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
         {
             // to ensure "currencyPair" is required (not null)
             if (currencyPair == null)
@@ -81,8 +81,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("currencyPair is a required property for FxShiftDefinition and cannot be null");
             }
             this.CurrencyPair = currencyPair;
-            
-            this.Amount = amount;
             
             // to ensure "shiftType" is a defined enum value
             if (!System.Enum.IsDefined(typeof(ShiftTypeEnum), shiftType))
@@ -99,6 +97,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             
             this.ScenarioShiftType = scenarioShiftType;
+            this.Amount = amount;
         }
 
         /// <summary>
@@ -110,8 +109,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Gets or Sets Amount
         /// </summary>
-        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal Amount { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public decimal? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -168,7 +167,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 ) && base.Equals(input) && 
                 (
                     this.Amount == input.Amount ||
-                    this.Amount.Equals(input.Amount)
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 ) && base.Equals(input) && 
                 (
                     this.ShiftType == input.ShiftType ||
@@ -193,7 +193,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.CurrencyPair.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.ShiftType.GetHashCode();
                 hashCode = (hashCode * 59) + this.ScenarioShiftType.GetHashCode();
                 return hashCode;

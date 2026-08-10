@@ -48,7 +48,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instruments">The set of instruments, weighted by the quantities held that are required.  It is identified by an identifier tag that can be used to identify it externally.  For a single, unique trade or transaction this can be thought of as equivalent to the transaction identifier, or  a composite of the sub-holding keys for a regular sub-holding. When there are multiple transactions sharing the same underlying instrument  such as purchase of shares on multiple dates where tax implications are different this would not be the case. (required).</param>
         /// <param name="marketDataOverrides">marketDataOverrides.</param>
         /// <param name="corporateActionSourceId">corporateActionSourceId.</param>
-        public InlineValuationRequest(ResourceId recipeId = default(ResourceId), DateTimeOffset? asAt = default(DateTimeOffset?), List<AggregateSpec> metrics = default(List<AggregateSpec>), List<string> groupBy = default(List<string>), List<PropertyFilter> filters = default(List<PropertyFilter>), List<OrderBySpec> sort = default(List<OrderBySpec>), string reportCurrency = default(string), bool equipWithSubtotals = default(bool), bool returnResultAsExpandedTypes = default(bool), ValuationSchedule valuationSchedule = default(ValuationSchedule), List<WeightedInstrument> instruments = default(List<WeightedInstrument>), MarketDataOverrides marketDataOverrides = default(MarketDataOverrides), ResourceId corporateActionSourceId = default(ResourceId))
+        /// <param name="scenario">scenario.</param>
+        public InlineValuationRequest(ResourceId recipeId = default(ResourceId), DateTimeOffset? asAt = default(DateTimeOffset?), List<AggregateSpec> metrics = default(List<AggregateSpec>), List<string> groupBy = default(List<string>), List<PropertyFilter> filters = default(List<PropertyFilter>), List<OrderBySpec> sort = default(List<OrderBySpec>), string reportCurrency = default(string), bool equipWithSubtotals = default(bool), bool returnResultAsExpandedTypes = default(bool), ValuationSchedule valuationSchedule = default(ValuationSchedule), List<WeightedInstrument> instruments = default(List<WeightedInstrument>), MarketDataOverrides marketDataOverrides = default(MarketDataOverrides), ResourceId corporateActionSourceId = default(ResourceId), ScenarioReference scenario = default(ScenarioReference))
         {
             // to ensure "metrics" is required (not null)
             if (metrics == null)
@@ -73,6 +74,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.ValuationSchedule = valuationSchedule;
             this.MarketDataOverrides = marketDataOverrides;
             this.CorporateActionSourceId = corporateActionSourceId;
+            this.Scenario = scenario;
         }
 
         /// <summary>
@@ -163,6 +165,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ResourceId CorporateActionSourceId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Scenario
+        /// </summary>
+        [DataMember(Name = "scenario", EmitDefaultValue = false)]
+        public ScenarioReference Scenario { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -183,6 +191,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Instruments: ").Append(Instruments).Append("\n");
             sb.Append("  MarketDataOverrides: ").Append(MarketDataOverrides).Append("\n");
             sb.Append("  CorporateActionSourceId: ").Append(CorporateActionSourceId).Append("\n");
+            sb.Append("  Scenario: ").Append(Scenario).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -285,6 +294,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.CorporateActionSourceId == input.CorporateActionSourceId ||
                     (this.CorporateActionSourceId != null &&
                     this.CorporateActionSourceId.Equals(input.CorporateActionSourceId))
+                ) && 
+                (
+                    this.Scenario == input.Scenario ||
+                    (this.Scenario != null &&
+                    this.Scenario.Equals(input.Scenario))
                 );
         }
 
@@ -342,6 +356,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.CorporateActionSourceId != null)
                 {
                     hashCode = (hashCode * 59) + this.CorporateActionSourceId.GetHashCode();
+                }
+                if (this.Scenario != null)
+                {
+                    hashCode = (hashCode * 59) + this.Scenario.GetHashCode();
                 }
                 return hashCode;
             }

@@ -7,7 +7,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Ccy** | **string** | Required | *No description available.* |
-| **Amount** | **decimal** | Required | The size of the shift, in the units given by Scale: basis points by default (50 means +50bps),  or a percentage of each rate when Scale is Percentage (1 means rates scaled by 1.01). |
+| **Amount** | **decimal?** | Optional | The size of the shift, in the units given by Scale: basis points by default (50 means +50bps),  or a percentage of each rate when Scale is Percentage (1 means rates scaled by 1.01). |
 | **StartTenor** | **string** | Optional | *No description available.* |
 | **EndTenor** | **string** | Optional | *No description available.* |
 | **ShiftType** | **string** | Required | Available values: Parallel, Steepen, Flatten, Twist. |
@@ -25,7 +25,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RateCurveShiftDefinition(
     ccy: "...",  // required
-    amount: 0.0d,  // required — The size of the shift, in the units given by Scale: basis points by default (50 means +50bps),  or a percentage of each rate when Scale is Percentage (1 means rates scaled by 1.01).
+    amount: 0.0d,  // optional — The size of the shift, in the units given by Scale: basis points by default (50 means +50bps),  or a percentage of each rate when Scale is Percentage (1 means rates scaled by 1.01).
     startTenor: "...",  // optional
     endTenor: "...",  // optional
     shiftType: "...",  // required — Available values: Parallel, Steepen, Flatten, Twist.

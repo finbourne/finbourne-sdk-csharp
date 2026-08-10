@@ -2087,7 +2087,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getportfoliocashflows"></a>
 ## GetPortfolioCashFlows
 
-> ResourceListOfInstrumentCashFlow GetPortfolioCashFlows(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOrCutLabel? windowStart = null, DateTimeOrCutLabel? windowEnd = null, DateTimeOffset? asAt = null, string? filter = null, string? recipeIdScope = null, string? recipeIdCode = null, bool? excludeUnsettledTrades = null)
+> ResourceListOfInstrumentCashFlow GetPortfolioCashFlows(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOrCutLabel? windowStart = null, DateTimeOrCutLabel? windowEnd = null, DateTimeOffset? asAt = null, string? filter = null, string? recipeIdScope = null, string? recipeIdCode = null, bool? excludeUnsettledTrades = null, string? cashFlowCalculationVersion = null)
 
 GetPortfolioCashFlows: Get portfolio cash flows
 
@@ -2107,7 +2107,8 @@ var filter = "filter_example";  // string? (optional)
 var recipeIdScope = "recipeIdScope_example";  // string? (optional)
 var recipeIdCode = "recipeIdCode_example";  // string? (optional)
 var excludeUnsettledTrades = false;  // bool? (optional)
-ResourceListOfInstrumentCashFlow result = apiInstance.GetPortfolioCashFlows(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+var cashFlowCalculationVersion = "cashFlowCalculationVersion_example";  // string? (optional)
+ResourceListOfInstrumentCashFlow result = apiInstance.GetPortfolioCashFlows(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -2125,6 +2126,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeID |
 | **excludeUnsettledTrades** | **bool?** | query | optional | If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. Default: `false` |
+| **cashFlowCalculationVersion** | **string?** | query | optional | The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified; valid values are &#39;1&#39; (the current production behaviour)               and &#39;2&#39; (cash flows resolved via a deterministic source waterfall, with factual cash flows classified by transaction trade date and corporate action date filtering applied). |
 
 ### Return type
 
@@ -2149,7 +2151,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfInstrumentCashFlow> response = apiInstance.GetPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+ApiResponse<ResourceListOfInstrumentCashFlow> response = apiInstance.GetPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2163,7 +2165,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getportfoliocashladder"></a>
 ## GetPortfolioCashLadder
 
-> ResourceListOfPortfolioCashLadder GetPortfolioCashLadder(string scope, string code, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, DateTimeOrCutLabel effectiveAt, DateTimeOffset? asAt = null, string? filter = null, string? recipeIdScope = null, string? recipeIdCode = null, bool? excludeUnsettledTrades = null)
+> ResourceListOfPortfolioCashLadder GetPortfolioCashLadder(string scope, string code, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, DateTimeOrCutLabel effectiveAt, DateTimeOffset? asAt = null, string? filter = null, string? recipeIdScope = null, string? recipeIdCode = null, bool? excludeUnsettledTrades = null, string? cashFlowCalculationVersion = null)
 
 GetPortfolioCashLadder: Get portfolio cash ladder
 
@@ -2183,7 +2185,8 @@ var filter = "filter_example";  // string? (optional)
 var recipeIdScope = "recipeIdScope_example";  // string? (optional)
 var recipeIdCode = "recipeIdCode_example";  // string? (optional)
 var excludeUnsettledTrades = false;  // bool? (optional)
-ResourceListOfPortfolioCashLadder result = apiInstance.GetPortfolioCashLadder(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+var cashFlowCalculationVersion = "cashFlowCalculationVersion_example";  // string? (optional)
+ResourceListOfPortfolioCashLadder result = apiInstance.GetPortfolioCashLadder(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -2201,6 +2204,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeID |
 | **excludeUnsettledTrades** | **bool?** | query | optional | If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set. Default: `false` |
+| **cashFlowCalculationVersion** | **string?** | query | optional | The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified; valid values are &#39;1&#39; (the current production behaviour)              and &#39;2&#39; (cash flows resolved via a deterministic source waterfall, with factual cash flows classified by transaction trade date and corporate action date filtering applied). |
 
 ### Return type
 
@@ -2225,7 +2229,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfPortfolioCashLadder> response = apiInstance.GetPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+ApiResponse<ResourceListOfPortfolioCashLadder> response = apiInstance.GetPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2529,7 +2533,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getupsertableportfoliocashflows"></a>
 ## GetUpsertablePortfolioCashFlows
 
-> ResourceListOfTransaction GetUpsertablePortfolioCashFlows(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOrCutLabel? windowStart = null, DateTimeOrCutLabel? windowEnd = null, DateTimeOffset? asAt = null, string? filter = null, string? recipeIdScope = null, string? recipeIdCode = null, bool? excludeUnsettledTrades = null)
+> ResourceListOfTransaction GetUpsertablePortfolioCashFlows(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOrCutLabel? windowStart = null, DateTimeOrCutLabel? windowEnd = null, DateTimeOffset? asAt = null, string? filter = null, string? recipeIdScope = null, string? recipeIdCode = null, bool? excludeUnsettledTrades = null, string? cashFlowCalculationVersion = null)
 
 GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows.
 
@@ -2549,7 +2553,8 @@ var filter = "filter_example";  // string? (optional)
 var recipeIdScope = "recipeIdScope_example";  // string? (optional)
 var recipeIdCode = "recipeIdCode_example";  // string? (optional)
 var excludeUnsettledTrades = true;  // bool? (optional)
-ResourceListOfTransaction result = apiInstance.GetUpsertablePortfolioCashFlows(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+var cashFlowCalculationVersion = "cashFlowCalculationVersion_example";  // string? (optional)
+ResourceListOfTransaction result = apiInstance.GetUpsertablePortfolioCashFlows(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -2567,6 +2572,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeID |
 | **excludeUnsettledTrades** | **bool?** | query | optional | If absent or set to true, unsettled trades will be excluded from the result set. If set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. Default: `true` |
+| **cashFlowCalculationVersion** | **string?** | query | optional | The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified; valid values are &#39;1&#39; (the current production behaviour)               and &#39;2&#39; (cash flows resolved via a deterministic source waterfall, with factual cash flows classified by transaction trade date and corporate action date filtering applied). |
 
 ### Return type
 
@@ -2591,7 +2597,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfTransaction> response = apiInstance.GetUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+ApiResponse<ResourceListOfTransaction> response = apiInstance.GetUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, cashFlowCalculationVersion);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

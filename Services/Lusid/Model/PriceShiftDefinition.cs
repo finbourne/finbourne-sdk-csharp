@@ -193,14 +193,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="instrument">A single instrument identifier this shift applies to. Exactly one of Instrument and Filter  must be supplied..</param>
         /// <param name="filter">A LUSID filter expression over the instrument entity - fields and properties - selecting which  instruments&#39; quotes the shift applies to, e.g.  \&quot;assetClass eq &#39;Bond&#39; and properties[Instrument/Issuer/Name] eq &#39;X&#39;\&quot;.  Exactly one of Instrument and Filter must be supplied..</param>
-        /// <param name="amount">amount (required).</param>
+        /// <param name="amount">amount.</param>
         /// <param name="shiftType">Available values: Absolute, Relative, Percentage. (required).</param>
         /// <param name="quoteType">Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor..</param>
         /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
-        public PriceShiftDefinition(string instrument = default(string), string filter = default(string), decimal amount = default(decimal), ShiftTypeEnum shiftType = default(ShiftTypeEnum), QuoteTypeEnum ?quoteType = default(QuoteTypeEnum?), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
+        public PriceShiftDefinition(string instrument = default(string), string filter = default(string), decimal? amount = default(decimal?), ShiftTypeEnum shiftType = default(ShiftTypeEnum), QuoteTypeEnum ?quoteType = default(QuoteTypeEnum?), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
         {
-            
-            this.Amount = amount;
             
             // to ensure "shiftType" is a defined enum value
             if (!System.Enum.IsDefined(typeof(ShiftTypeEnum), shiftType))
@@ -219,6 +217,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.ScenarioShiftType = scenarioShiftType;
             this.Instrument = instrument;
             this.Filter = filter;
+            this.Amount = amount;
             this.QuoteType = quoteType;
         }
 
@@ -239,8 +238,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Gets or Sets Amount
         /// </summary>
-        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal Amount { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public decimal? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -304,7 +303,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 ) && base.Equals(input) && 
                 (
                     this.Amount == input.Amount ||
-                    this.Amount.Equals(input.Amount)
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 ) && base.Equals(input) && 
                 (
                     this.ShiftType == input.ShiftType ||
@@ -337,7 +337,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Filter.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.ShiftType.GetHashCode();
                 hashCode = (hashCode * 59) + this.QuoteType.GetHashCode();
                 hashCode = (hashCode * 59) + this.ScenarioShiftType.GetHashCode();

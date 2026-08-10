@@ -6,6 +6,8 @@ A schedule for dates
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Tenor** | **string** | Optional | Rolling tenor |
+| **RollDirection** | **string** | Optional | Optional direction in which the bucketing dates are rolled out from the schedule tenor.  Supported string (enumeration) values are: [ForwardFromStart, BackwardFromEnd].  If absent (and StubType is also absent), the pre-existing date generation behaviour is used. Available values: ForwardFromStart, BackwardFromEnd. |
+| **StubType** | **string** | Optional | Optional treatment of the irregular (stub) period when the window length is not an exact multiple of the tenor.  Supported string (enumeration) values are: [ShortStub, LongStub].  If absent (and RollDirection is also absent), the pre-existing date generation behaviour is used. Available values: ShortStub, LongStub. |
 
 
 ## Usage
@@ -16,7 +18,9 @@ A schedule for dates
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new BucketingSchedule(
-    tenor: "..."  // optional — Rolling tenor
+    tenor: "...",  // optional — Rolling tenor
+    rollDirection: "...",  // optional — Optional direction in which the bucketing dates are rolled out from the schedule tenor.  Supported string (enumeration) values are: [ForwardFromStart, BackwardFromEnd].  If absent (and StubType is also absent), the pre-existing date generation behaviour is used. Available values: ForwardFromStart, BackwardFromEnd.
+    stubType: "..."  // optional — Optional treatment of the irregular (stub) period when the window length is not an exact multiple of the tenor.  Supported string (enumeration) values are: [ShortStub, LongStub].  If absent (and RollDirection is also absent), the pre-existing date generation behaviour is used. Available values: ShortStub, LongStub.
 );
 ```
 ### Serializing to JSON

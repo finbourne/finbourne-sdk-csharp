@@ -11,6 +11,7 @@ Query for cashflows from one or more portfolios
 | **PortfolioEntityIds** | [List&lt;PortfolioEntityId&gt;](PortfolioEntityId.md) | Required | The set of portfolios and portfolio groups to which the instrument events must belong. |
 | **RecipeId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **EffectiveAt** | **DateTimeOffset** | Required | The Effective date used in the valuation of the cashflows. |
+| **CashFlowCalculationVersion** | **string** | Optional | The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified. Valid values are &#39;1&#39; and &#39;2&#39;.  &#39;1&#39; is the current production behaviour: cash flows booked as transactions are de-duplicated against the  instrument cash flows by identifier, and movements are treated as factual when they settle on or before the effective date.  &#39;2&#39; resolves cash flows via a deterministic source waterfall (structured result store &gt; transaction &gt; instrument),  classifies cash flows as factual by the transaction trade date (so trades dealt on or before the effective date  that settle afterwards are factual), and applies corporate action date filtering. |
 
 
 ## Usage
@@ -26,7 +27,8 @@ var instance = new QueryCashFlowsRequest(
     windowEnd: DateTimeOffset.Now,  // required — The end date of the window.
     portfolioEntityIds: new List<PortfolioEntityId>(),  // required — The set of portfolios and portfolio groups to which the instrument events must belong.
     recipeId: new ResourceId(...),  // required
-    effectiveAt: DateTimeOffset.Now  // required — The Effective date used in the valuation of the cashflows.
+    effectiveAt: DateTimeOffset.Now,  // required — The Effective date used in the valuation of the cashflows.
+    cashFlowCalculationVersion: "..."  // optional — The version of the cash flow calculation logic to use. Defaults to &#39;1&#39; if not specified. Valid values are &#39;1&#39; and &#39;2&#39;.  &#39;1&#39; is the current production behaviour: cash flows booked as transactions are de-duplicated against the  instrument cash flows by identifier, and movements are treated as factual when they settle on or before the effective date.  &#39;2&#39; resolves cash flows via a deterministic source waterfall (structured result store &gt; transaction &gt; instrument),  classifies cash flows as factual by the transaction trade date (so trades dealt on or before the effective date  that settle afterwards are factual), and applies corporate action date filtering.
 );
 ```
 ### Serializing to JSON
