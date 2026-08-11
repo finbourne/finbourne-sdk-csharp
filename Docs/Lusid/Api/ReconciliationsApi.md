@@ -87,11 +87,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the reconciliation |
-| **createReconciliationRequest** | [CreateReconciliationRequest?](CreateReconciliationRequest?.md) | body | optional | The definition of the reconciliation |
+| **createReconciliationRequest** | [CreateReconciliationRequest?](../Model/CreateReconciliationRequest?.md) | body | optional | The definition of the reconciliation |
 
 ### Return type
 
-[Reconciliation](Reconciliation.md)
+[Reconciliation](../Model/Reconciliation.md)
 
 ### HTTP request headers
 
@@ -151,7 +151,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -273,11 +273,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the scheduled reconciliation |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the scheduled reconciliation. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.              These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.              These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. |
 
 ### Return type
 
-[Reconciliation](Reconciliation.md)
+[Reconciliation](../Model/Reconciliation.md)
 
 ### HTTP request headers
 
@@ -337,7 +337,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Mapping](Mapping.md)
+[Mapping](../Model/Mapping.md)
 
 ### HTTP request headers
 
@@ -395,7 +395,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfMapping](ResourceListOfMapping.md)
+[ResourceListOfMapping](../Model/ResourceListOfMapping.md)
 
 ### HTTP request headers
 
@@ -459,11 +459,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing reconciliations; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.              These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.              These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfReconciliation](PagedResourceListOfReconciliation.md)
+[PagedResourceListOfReconciliation](../Model/PagedResourceListOfReconciliation.md)
 
 ### HTTP request headers
 
@@ -517,11 +517,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **reconciliationRequest** | [ReconciliationRequest?](ReconciliationRequest?.md) | body | optional | The specifications of the inputs to the reconciliation |
+| **reconciliationRequest** | [ReconciliationRequest?](../Model/ReconciliationRequest?.md) | body | optional | The specifications of the inputs to the reconciliation |
 
 ### Return type
 
-[ReconciliationResponse](ReconciliationResponse.md)
+[ReconciliationResponse](../Model/ReconciliationResponse.md)
 
 ### HTTP request headers
 
@@ -578,14 +578,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Optional. Expression to filter the result set.              For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **portfoliosReconciliationRequest** | [PortfoliosReconciliationRequest?](PortfoliosReconciliationRequest?.md) | body | optional | The specifications of the inputs to the reconciliation |
+| **portfoliosReconciliationRequest** | [PortfoliosReconciliationRequest?](../Model/PortfoliosReconciliationRequest?.md) | body | optional | The specifications of the inputs to the reconciliation |
 
 ### Return type
 
-[ResourceListOfReconciliationBreak](ResourceListOfReconciliationBreak.md)
+[ResourceListOfReconciliationBreak](../Model/ResourceListOfReconciliationBreak.md)
 
 ### HTTP request headers
 
@@ -639,11 +639,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **inlineValuationsReconciliationRequest** | [InlineValuationsReconciliationRequest?](InlineValuationsReconciliationRequest?.md) | body | optional | The specifications of the inputs to the reconciliation |
+| **inlineValuationsReconciliationRequest** | [InlineValuationsReconciliationRequest?](../Model/InlineValuationsReconciliationRequest?.md) | body | optional | The specifications of the inputs to the reconciliation |
 
 ### Return type
 
-[ListAggregationReconciliation](ListAggregationReconciliation.md)
+[ListAggregationReconciliation](../Model/ListAggregationReconciliation.md)
 
 ### HTTP request headers
 
@@ -697,11 +697,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **transactionReconciliationRequest** | [TransactionReconciliationRequest?](TransactionReconciliationRequest?.md) | body | optional |  |
+| **transactionReconciliationRequest** | [TransactionReconciliationRequest?](../Model/TransactionReconciliationRequest?.md) | body | optional |  |
 
 ### Return type
 
-[TransactionsReconciliationsResponse](TransactionsReconciliationsResponse.md)
+[TransactionsReconciliationsResponse](../Model/TransactionsReconciliationsResponse.md)
 
 ### HTTP request headers
 
@@ -755,11 +755,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **transactionReconciliationRequestV2** | [TransactionReconciliationRequestV2?](TransactionReconciliationRequestV2?.md) | body | optional |  |
+| **transactionReconciliationRequestV2** | [TransactionReconciliationRequestV2?](../Model/TransactionReconciliationRequestV2?.md) | body | optional |  |
 
 ### Return type
 
-[ReconciliationResponse](ReconciliationResponse.md)
+[ReconciliationResponse](../Model/ReconciliationResponse.md)
 
 ### HTTP request headers
 
@@ -813,11 +813,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **valuationsReconciliationRequest** | [ValuationsReconciliationRequest?](ValuationsReconciliationRequest?.md) | body | optional | The specifications of the inputs to the reconciliation |
+| **valuationsReconciliationRequest** | [ValuationsReconciliationRequest?](../Model/ValuationsReconciliationRequest?.md) | body | optional | The specifications of the inputs to the reconciliation |
 
 ### Return type
 
-[ListAggregationReconciliation](ListAggregationReconciliation.md)
+[ListAggregationReconciliation](../Model/ListAggregationReconciliation.md)
 
 ### HTTP request headers
 
@@ -875,11 +875,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the reconciliation to be updated |
 | **code** | **string** | path | **required** | The code of the reconciliation to be updated |
-| **updateReconciliationRequest** | [UpdateReconciliationRequest?](UpdateReconciliationRequest?.md) | body | optional | The updated definition of the reconciliation |
+| **updateReconciliationRequest** | [UpdateReconciliationRequest?](../Model/UpdateReconciliationRequest?.md) | body | optional | The updated definition of the reconciliation |
 
 ### Return type
 
-[Reconciliation](Reconciliation.md)
+[Reconciliation](../Model/Reconciliation.md)
 
 ### HTTP request headers
 
@@ -933,11 +933,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **mapping** | [Mapping?](Mapping?.md) | body | optional | The mapping to be created / updated. |
+| **mapping** | [Mapping?](../Model/Mapping?.md) | body | optional | The mapping to be created / updated. |
 
 ### Return type
 
-[Mapping](Mapping.md)
+[Mapping](../Model/Mapping.md)
 
 ### HTTP request headers
 

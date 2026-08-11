@@ -84,7 +84,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AnnulSingleStructuredDataResponse](AnnulSingleStructuredDataResponse.md)
+[AnnulSingleStructuredDataResponse](../Model/AnnulSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -144,7 +144,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AnnulSingleStructuredDataResponse](AnnulSingleStructuredDataResponse.md)
+[AnnulSingleStructuredDataResponse](../Model/AnnulSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -206,7 +206,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetCounterpartyAgreementResponse](GetCounterpartyAgreementResponse.md)
+[GetCounterpartyAgreementResponse](../Model/GetCounterpartyAgreementResponse.md)
 
 ### HTTP request headers
 
@@ -268,7 +268,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetCreditSupportAnnexResponse](GetCreditSupportAnnexResponse.md)
+[GetCreditSupportAnnexResponse](../Model/GetCreditSupportAnnexResponse.md)
 
 ### HTTP request headers
 
@@ -326,7 +326,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfGetCounterpartyAgreementResponse](ResourceListOfGetCounterpartyAgreementResponse.md)
+[ResourceListOfGetCounterpartyAgreementResponse](../Model/ResourceListOfGetCounterpartyAgreementResponse.md)
 
 ### HTTP request headers
 
@@ -384,7 +384,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfGetCreditSupportAnnexResponse](ResourceListOfGetCreditSupportAnnexResponse.md)
+[ResourceListOfGetCreditSupportAnnexResponse](../Model/ResourceListOfGetCreditSupportAnnexResponse.md)
 
 ### HTTP request headers
 
@@ -438,11 +438,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertCounterpartyAgreementRequest** | [UpsertCounterpartyAgreementRequest](UpsertCounterpartyAgreementRequest.md) | body | **required** | The Counterparty Agreement to update or insert |
+| **upsertCounterpartyAgreementRequest** | [UpsertCounterpartyAgreementRequest](../Model/UpsertCounterpartyAgreementRequest.md) | body | **required** | The Counterparty Agreement to update or insert |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -496,11 +496,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertCreditSupportAnnexRequest** | [UpsertCreditSupportAnnexRequest](UpsertCreditSupportAnnexRequest.md) | body | **required** | The Credit Support Annex to update or insert |
+| **upsertCreditSupportAnnexRequest** | [UpsertCreditSupportAnnexRequest](../Model/UpsertCreditSupportAnnexRequest.md) | body | **required** | The Credit Support Annex to update or insert |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 

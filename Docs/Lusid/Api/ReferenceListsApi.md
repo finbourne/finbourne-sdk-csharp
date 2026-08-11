@@ -80,7 +80,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -142,7 +142,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ReferenceListResponse](ReferenceListResponse.md)
+[ReferenceListResponse](../Model/ReferenceListResponse.md)
 
 ### HTTP request headers
 
@@ -206,7 +206,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfReferenceListResponse](PagedResourceListOfReferenceListResponse.md)
+[PagedResourceListOfReferenceListResponse](../Model/PagedResourceListOfReferenceListResponse.md)
 
 ### HTTP request headers
 
@@ -260,11 +260,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **referenceListRequest** | [ReferenceListRequest?](ReferenceListRequest?.md) | body | optional | The payload describing the Reference List instance. |
+| **referenceListRequest** | [ReferenceListRequest?](../Model/ReferenceListRequest?.md) | body | optional | The payload describing the Reference List instance. |
 
 ### Return type
 
-[ReferenceListResponse](ReferenceListResponse.md)
+[ReferenceListResponse](../Model/ReferenceListResponse.md)
 
 ### HTTP request headers
 

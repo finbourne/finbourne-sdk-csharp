@@ -76,11 +76,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **batchUpdateTasksRequest** | [BatchUpdateTasksRequest?](BatchUpdateTasksRequest?.md) | body | optional | The details of the request |
+| **batchUpdateTasksRequest** | [BatchUpdateTasksRequest?](../Model/BatchUpdateTasksRequest?.md) | body | optional | The details of the request |
 
 ### Return type
 
-[BatchUpdateTasksResponse](BatchUpdateTasksResponse.md)
+[BatchUpdateTasksResponse](../Model/BatchUpdateTasksResponse.md)
 
 ### HTTP request headers
 
@@ -133,12 +133,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createTaskRequest** | [CreateTaskRequest](CreateTaskRequest.md) | body | **required** | Request to create Task |
+| **createTaskRequest** | [CreateTaskRequest](../Model/CreateTaskRequest.md) | body | **required** | Request to create Task |
 | **trigger** | **string?** | query | optional | The name of the Trigger to invoke |
 
 ### Return type
 
-[Task](Task.md)
+[Task](../Model/Task.md)
 
 ### HTTP request headers
 
@@ -194,7 +194,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -247,11 +247,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **deleteTasksRequest** | [DeleteTasksRequest?](DeleteTasksRequest?.md) | body | optional | Request with the task instance ids to delete. |
+| **deleteTasksRequest** | [DeleteTasksRequest?](../Model/DeleteTasksRequest?.md) | body | optional | Request with the task instance ids to delete. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -308,11 +308,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | Id of the Task to retrieve |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Task. Defaults to returning the latest version of the Task if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on the Task. These values are a snapshot copied from the TaskDefinition and Workflow when the Task was created, so they reflect the state at creation time and are not affected by subsequent changes to the TaskDefinition or Workflow. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on the Task. These values are a snapshot copied from the TaskDefinition and Workflow when the Task was created, so they reflect the state at creation time and are not affected by subsequent changes to the TaskDefinition or Workflow. |
 
 ### Return type
 
-[Task](Task.md)
+[Task](../Model/Task.md)
 
 ### HTTP request headers
 
@@ -371,7 +371,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfChangeItem](ResourceListOfChangeItem.md)
+[ResourceListOfChangeItem](../Model/ResourceListOfChangeItem.md)
 
 ### HTTP request headers
 
@@ -431,14 +431,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here: https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each optionally suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. These values are a snapshot copied from the TaskDefinition and Workflow when each Task was created, so they reflect the state at creation time and are not affected by subsequent changes to the TaskDefinition or Workflow. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each optionally suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. These values are a snapshot copied from the TaskDefinition and Workflow when each Task was created, so they reflect the state at creation time and are not affected by subsequent changes to the TaskDefinition or Workflow. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Default: `10` |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing tasks from a previous call to list tasks. This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields must not have changed since the original request. |
 
 ### Return type
 
-[PagedResourceListOfTask](PagedResourceListOfTask.md)
+[PagedResourceListOfTask](../Model/PagedResourceListOfTask.md)
 
 ### HTTP request headers
 
@@ -495,11 +495,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | Id of the Task to act upon |
 | **trigger** | **string?** | query | optional |  |
-| **updateTaskRequest** | [UpdateTaskRequest?](UpdateTaskRequest?.md) | body | optional | The details of the request |
+| **updateTaskRequest** | [UpdateTaskRequest?](../Model/UpdateTaskRequest?.md) | body | optional | The details of the request |
 
 ### Return type
 
-[Task](Task.md)
+[Task](../Model/Task.md)
 
 ### HTTP request headers
 

@@ -79,7 +79,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -145,11 +145,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **instrumentIdentifier** | **string?** | query | optional | Optional. The Instrument Identifier to get properties for. |
 | **portfolioScope** | **string?** | query | optional | Optional. The scope of the portfolio to fetch properties from. |
 | **portfolioCode** | **string?** | query | optional | Optional. The code of the portfolio to fetch properties from. |
-| **requestBody** | [Dictionary&lt;string, string&gt;?](string.md) | body | optional | Any other property keys or fields, including the top-level fields of the              fee rule (e.g. \&quot;ExecutionBroker\&quot; and \&quot;SettlementCurrency\&quot; ) and those defined in AdditionalKeys, along with              their corresponding values that should be matched for fees. Eg. \&quot;Instrument/default/Name&#x3D;exampleValue\&quot; or              \&quot;AdditionalKey2&#x3D;Value2\&quot;. |
+| **requestBody** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | body | optional | Any other property keys or fields, including the top-level fields of the              fee rule (e.g. \&quot;ExecutionBroker\&quot; and \&quot;SettlementCurrency\&quot; ) and those defined in AdditionalKeys, along with              their corresponding values that should be matched for fees. Eg. \&quot;Instrument/default/Name&#x3D;exampleValue\&quot; or              \&quot;AdditionalKey2&#x3D;Value2\&quot;. |
 
 ### Return type
 
-[ResourceListOfFeeRule](ResourceListOfFeeRule.md)
+[ResourceListOfFeeRule](../Model/ResourceListOfFeeRule.md)
 
 ### HTTP request headers
 
@@ -211,7 +211,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[FeeRule](FeeRule.md)
+[FeeRule](../Model/FeeRule.md)
 
 ### HTTP request headers
 
@@ -277,7 +277,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfFeeRule](ResourceListOfFeeRule.md)
+[ResourceListOfFeeRule](../Model/ResourceListOfFeeRule.md)
 
 ### HTTP request headers
 
@@ -332,12 +332,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, FeeRuleUpsertRequest&gt;](FeeRuleUpsertRequest.md) | body | **required** | A dictionary of upsert request identifiers to rule upsert requests. The request              identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a              created fee rule. |
+| **requestBody** | [Dictionary&lt;string, FeeRuleUpsertRequest&gt;](../Model/FeeRuleUpsertRequest.md) | body | **required** | A dictionary of upsert request identifiers to rule upsert requests. The request              identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a              created fee rule. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. |
 
 ### Return type
 
-[FeeRuleUpsertResponse](FeeRuleUpsertResponse.md)
+[FeeRuleUpsertResponse](../Model/FeeRuleUpsertResponse.md)
 
 ### HTTP request headers
 

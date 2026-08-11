@@ -76,11 +76,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createScheduleRequest** | [CreateScheduleRequest](CreateScheduleRequest.md) | body | **required** |  |
+| **createScheduleRequest** | [CreateScheduleRequest](../Model/CreateScheduleRequest.md) | body | **required** |  |
 
 ### Return type
 
-[ScheduleDefinition](ScheduleDefinition.md)
+[ScheduleDefinition](../Model/ScheduleDefinition.md)
 
 ### HTTP request headers
 
@@ -194,7 +194,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ScheduleDefinition](ScheduleDefinition.md)
+[ScheduleDefinition](../Model/ScheduleDefinition.md)
 
 ### HTTP request headers
 
@@ -252,7 +252,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ScheduleDefinition](ScheduleDefinition.md)
+[ScheduleDefinition](../Model/ScheduleDefinition.md)
 
 ### HTTP request headers
 
@@ -304,7 +304,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[ResourceListOfString](ResourceListOfString.md)
+[ResourceListOfString](../Model/ResourceListOfString.md)
 
 ### HTTP request headers
 
@@ -360,14 +360,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **page** | **string?** | query | optional | The pagination token to use to continue listing instruments from a previous call to list instruments.             This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields             must not have changed since the original request. Also, if set, a start value cannot be provided. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
 | **start** | **int?** | query | optional | When paginating, skip this number of results. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 2000 if not specified. Maximum is 5000. Default: `2000` |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 
 ### Return type
 
-[ResourceListOfScheduleDefinition](ResourceListOfScheduleDefinition.md)
+[ResourceListOfScheduleDefinition](../Model/ResourceListOfScheduleDefinition.md)
 
 ### HTTP request headers
 
@@ -425,7 +425,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[StartScheduleResponse](StartScheduleResponse.md)
+[StartScheduleResponse](../Model/StartScheduleResponse.md)
 
 ### HTTP request headers
 
@@ -481,11 +481,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope of the schedule to be updated |
 | **code** | **string** | path | **required** | Code of the schedule to be updated |
-| **updateScheduleRequest** | [UpdateScheduleRequest](UpdateScheduleRequest.md) | body | **required** | The updated schedule |
+| **updateScheduleRequest** | [UpdateScheduleRequest](../Model/UpdateScheduleRequest.md) | body | **required** | The updated schedule |
 
 ### Return type
 
-[ScheduleDefinition](ScheduleDefinition.md)
+[ScheduleDefinition](../Model/ScheduleDefinition.md)
 
 ### HTTP request headers
 

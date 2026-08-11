@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **customEntityDefinitionRequest** | [CustomEntityDefinitionRequest](CustomEntityDefinitionRequest.md) | body | **required** | The payload containing the description of the Custom Entity type. |
+| **customEntityDefinitionRequest** | [CustomEntityDefinitionRequest](../Model/CustomEntityDefinitionRequest.md) | body | **required** | The payload containing the description of the Custom Entity type. |
 
 ### Return type
 
-[CustomEntityDefinition](CustomEntityDefinition.md)
+[CustomEntityDefinition](../Model/CustomEntityDefinition.md)
 
 ### HTTP request headers
 
@@ -137,7 +137,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -197,7 +197,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[CustomEntityDefinition](CustomEntityDefinition.md)
+[CustomEntityDefinition](../Model/CustomEntityDefinition.md)
 
 ### HTTP request headers
 
@@ -261,7 +261,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfCustomEntityDefinition](PagedResourceListOfCustomEntityDefinition.md)
+[PagedResourceListOfCustomEntityDefinition](../Model/PagedResourceListOfCustomEntityDefinition.md)
 
 ### HTTP request headers
 
@@ -317,11 +317,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **entityType** | **string** | path | **required** | The identifier for the Custom Entity type, derived from the \&quot;entityTypeName\&quot; provided on creation. |
-| **updateCustomEntityDefinitionRequest** | [UpdateCustomEntityDefinitionRequest](UpdateCustomEntityDefinitionRequest.md) | body | **required** | The payload containing the description of the Custom Entity type. |
+| **updateCustomEntityDefinitionRequest** | [UpdateCustomEntityDefinitionRequest](../Model/UpdateCustomEntityDefinitionRequest.md) | body | **required** | The payload containing the description of the Custom Entity type. |
 
 ### Return type
 
-[CustomEntityDefinition](CustomEntityDefinition.md)
+[CustomEntityDefinition](../Model/CustomEntityDefinition.md)
 
 ### HTTP request headers
 

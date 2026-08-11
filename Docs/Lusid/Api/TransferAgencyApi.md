@@ -72,11 +72,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, CalculateOrderDatesRequest&gt;](CalculateOrderDatesRequest.md) | body | **required** | The request containing the dates used for calculation |
+| **requestBody** | [Dictionary&lt;string, CalculateOrderDatesRequest&gt;](../Model/CalculateOrderDatesRequest.md) | body | **required** | The request containing the dates used for calculation |
 
 ### Return type
 
-[CalculateOrderDatesResponse](CalculateOrderDatesResponse.md)
+[CalculateOrderDatesResponse](../Model/CalculateOrderDatesResponse.md)
 
 ### HTTP request headers
 
@@ -130,11 +130,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, UpsertTransferAgencyOrderRequest&gt;](UpsertTransferAgencyOrderRequest.md) | body | **required** | The transfer agency orders to upsert, keyed by a unique request identifier. |
+| **requestBody** | [Dictionary&lt;string, UpsertTransferAgencyOrderRequest&gt;](../Model/UpsertTransferAgencyOrderRequest.md) | body | **required** | The transfer agency orders to upsert, keyed by a unique request identifier. |
 
 ### Return type
 
-[TransferAgencyOrdersResponse](TransferAgencyOrdersResponse.md)
+[TransferAgencyOrdersResponse](../Model/TransferAgencyOrdersResponse.md)
 
 ### HTTP request headers
 

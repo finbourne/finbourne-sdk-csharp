@@ -81,11 +81,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Role |
 | **code** | **string** | path | **required** | The code of the Role |
-| **addPolicyCollectionToRoleRequest** | [AddPolicyCollectionToRoleRequest](AddPolicyCollectionToRoleRequest.md) | body | **required** | The policy collections to add |
+| **addPolicyCollectionToRoleRequest** | [AddPolicyCollectionToRoleRequest](../Model/AddPolicyCollectionToRoleRequest.md) | body | **required** | The policy collections to add |
 
 ### Return type
 
-[RoleResponse](RoleResponse.md)
+[RoleResponse](../Model/RoleResponse.md)
 
 ### HTTP request headers
 
@@ -139,11 +139,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **roleCreationRequest** | [RoleCreationRequest](RoleCreationRequest.md) | body | **required** | The definition of the Role |
+| **roleCreationRequest** | [RoleCreationRequest](../Model/RoleCreationRequest.md) | body | **required** | The definition of the Role |
 
 ### Return type
 
-[RoleResponse](RoleResponse.md)
+[RoleResponse](../Model/RoleResponse.md)
 
 ### HTTP request headers
 
@@ -259,7 +259,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RoleResponse](RoleResponse.md)
+[RoleResponse](../Model/RoleResponse.md)
 
 ### HTTP request headers
 
@@ -317,7 +317,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;RoleResponse&gt;](RoleResponse.md)
+[List&lt;RoleResponse&gt;](../Model/RoleResponse.md)
 
 ### HTTP request headers
 
@@ -381,7 +381,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RoleResponse](RoleResponse.md)
+[RoleResponse](../Model/RoleResponse.md)
 
 ### HTTP request headers
 
@@ -442,7 +442,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **code** | **string** | path | **required** | The code of the Role |
-| **roleUpdateRequest** | [RoleUpdateRequest](RoleUpdateRequest.md) | body | **required** | The updated definition of the Role |
+| **roleUpdateRequest** | [RoleUpdateRequest](../Model/RoleUpdateRequest.md) | body | **required** | The updated definition of the Role |
 | **scope** | **string?** | query | optional | &gt;Optional. Will use default scope if not supplied. The scope of the Role |
 | **beforeScope** | **string?** | query | optional | Optional. The scope of the Role. Will use default scope if not supplied. |
 | **beforeCode** | **string?** | query | optional | Optional. The code of the Role |
@@ -451,7 +451,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RoleResponse](RoleResponse.md)
+[RoleResponse](../Model/RoleResponse.md)
 
 ### HTTP request headers
 

@@ -106,11 +106,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
-| **chartOfAccountsRequest** | [ChartOfAccountsRequest](ChartOfAccountsRequest.md) | body | **required** | The definition of the Chart of Accounts. |
+| **chartOfAccountsRequest** | [ChartOfAccountsRequest](../Model/ChartOfAccountsRequest.md) | body | **required** | The definition of the Chart of Accounts. |
 
 ### Return type
 
-[ChartOfAccounts](ChartOfAccounts.md)
+[ChartOfAccounts](../Model/ChartOfAccounts.md)
 
 ### HTTP request headers
 
@@ -168,11 +168,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
-| **cleardownModuleRequest** | [CleardownModuleRequest](CleardownModuleRequest.md) | body | **required** | The definition of the Cleardown Module. |
+| **cleardownModuleRequest** | [CleardownModuleRequest](../Model/CleardownModuleRequest.md) | body | **required** | The definition of the Cleardown Module. |
 
 ### Return type
 
-[CleardownModuleResponse](CleardownModuleResponse.md)
+[CleardownModuleResponse](../Model/CleardownModuleResponse.md)
 
 ### HTTP request headers
 
@@ -230,11 +230,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. |
-| **generalLedgerProfileRequest** | [GeneralLedgerProfileRequest](GeneralLedgerProfileRequest.md) | body | **required** | The definition of the General Ledger Profile. |
+| **generalLedgerProfileRequest** | [GeneralLedgerProfileRequest](../Model/GeneralLedgerProfileRequest.md) | body | **required** | The definition of the General Ledger Profile. |
 
 ### Return type
 
-[GeneralLedgerProfileResponse](GeneralLedgerProfileResponse.md)
+[GeneralLedgerProfileResponse](../Model/GeneralLedgerProfileResponse.md)
 
 ### HTTP request headers
 
@@ -292,11 +292,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
-| **postingModuleRequest** | [PostingModuleRequest](PostingModuleRequest.md) | body | **required** | The definition of the Posting Module. |
+| **postingModuleRequest** | [PostingModuleRequest](../Model/PostingModuleRequest.md) | body | **required** | The definition of the Posting Module. |
 
 ### Return type
 
-[PostingModuleResponse](PostingModuleResponse.md)
+[PostingModuleResponse](../Model/PostingModuleResponse.md)
 
 ### HTTP request headers
 
@@ -355,12 +355,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. |
-| **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | The codes of the accounts to delete. |
+| **requestBody** | [List&lt;string&gt;](../Model/string.md) | body | **required** | The codes of the accounts to delete. |
 | **deleteMode** | **string?** | query | optional | The delete mode to use. Default value: Soft. Available values: Soft, Hard. |
 
 ### Return type
 
-[DeleteAccountsResponse](DeleteAccountsResponse.md)
+[DeleteAccountsResponse](../Model/DeleteAccountsResponse.md)
 
 ### HTTP request headers
 
@@ -420,7 +420,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -482,7 +482,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -544,7 +544,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -606,7 +606,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -670,11 +670,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **accountCode** | **string** | path | **required** | The code of the Account. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
 
 ### Return type
 
-[Account](Account.md)
+[Account](../Model/Account.md)
 
 ### HTTP request headers
 
@@ -740,7 +740,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AccountProperties](AccountProperties.md)
+[AccountProperties](../Model/AccountProperties.md)
 
 ### HTTP request headers
 
@@ -802,11 +802,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
 
 ### Return type
 
-[ChartOfAccounts](ChartOfAccounts.md)
+[ChartOfAccounts](../Model/ChartOfAccounts.md)
 
 ### HTTP request headers
 
@@ -870,7 +870,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ChartOfAccountsProperties](ChartOfAccountsProperties.md)
+[ChartOfAccountsProperties](../Model/ChartOfAccountsProperties.md)
 
 ### HTTP request headers
 
@@ -934,7 +934,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[CleardownModuleResponse](CleardownModuleResponse.md)
+[CleardownModuleResponse](../Model/CleardownModuleResponse.md)
 
 ### HTTP request headers
 
@@ -998,7 +998,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GeneralLedgerProfileResponse](GeneralLedgerProfileResponse.md)
+[GeneralLedgerProfileResponse](../Model/GeneralLedgerProfileResponse.md)
 
 ### HTTP request headers
 
@@ -1062,7 +1062,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PostingModuleResponse](PostingModuleResponse.md)
+[PostingModuleResponse](../Model/PostingModuleResponse.md)
 
 ### HTTP request headers
 
@@ -1130,11 +1130,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must have the format {domain}/{scope}/{code}, for example &#39;Account/system/Name&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.              These must have the format {domain}/{scope}/{code}, for example &#39;Account/system/Name&#39;. |
 
 ### Return type
 
-[PagedResourceListOfAccount](PagedResourceListOfAccount.md)
+[PagedResourceListOfAccount](../Model/PagedResourceListOfAccount.md)
 
 ### HTTP request headers
 
@@ -1199,12 +1199,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfChartOfAccounts](PagedResourceListOfChartOfAccounts.md)
+[PagedResourceListOfChartOfAccounts](../Model/PagedResourceListOfChartOfAccounts.md)
 
 ### HTTP request headers
 
@@ -1274,7 +1274,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfCleardownModuleRule](PagedResourceListOfCleardownModuleRule.md)
+[PagedResourceListOfCleardownModuleRule](../Model/PagedResourceListOfCleardownModuleRule.md)
 
 ### HTTP request headers
 
@@ -1340,11 +1340,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Cleardown Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the Cleardown Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 
 ### Return type
 
-[PagedResourceListOfCleardownModuleResponse](PagedResourceListOfCleardownModuleResponse.md)
+[PagedResourceListOfCleardownModuleResponse](../Model/PagedResourceListOfCleardownModuleResponse.md)
 
 ### HTTP request headers
 
@@ -1410,11 +1410,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 
 ### Return type
 
-[PagedResourceListOfGeneralLedgerProfileResponse](PagedResourceListOfGeneralLedgerProfileResponse.md)
+[PagedResourceListOfGeneralLedgerProfileResponse](../Model/PagedResourceListOfGeneralLedgerProfileResponse.md)
 
 ### HTTP request headers
 
@@ -1484,7 +1484,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfPostingModuleRule](PagedResourceListOfPostingModuleRule.md)
+[PagedResourceListOfPostingModuleRule](../Model/PagedResourceListOfPostingModuleRule.md)
 
 ### HTTP request headers
 
@@ -1550,11 +1550,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 
 ### Return type
 
-[PagedResourceListOfPostingModuleResponse](PagedResourceListOfPostingModuleResponse.md)
+[PagedResourceListOfPostingModuleResponse](../Model/PagedResourceListOfPostingModuleResponse.md)
 
 ### HTTP request headers
 
@@ -1612,11 +1612,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
-| **operation** | [List&lt;Operation&gt;](Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
+| **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
 
 ### Return type
 
-[ChartOfAccounts](ChartOfAccounts.md)
+[ChartOfAccounts](../Model/ChartOfAccounts.md)
 
 ### HTTP request headers
 
@@ -1676,11 +1676,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
 | **cleardownModuleCode** | **string** | path | **required** | The code of the Cleardown Module to be updated. |
-| **operation** | [List&lt;Operation&gt;](Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
+| **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
 
 ### Return type
 
-[CleardownModuleResponse](CleardownModuleResponse.md)
+[CleardownModuleResponse](../Model/CleardownModuleResponse.md)
 
 ### HTTP request headers
 
@@ -1740,11 +1740,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
 | **postingModuleCode** | **string** | path | **required** | The code of the Posting Module to be updated. |
-| **operation** | [List&lt;Operation&gt;](Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
+| **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
 
 ### Return type
 
-[PostingModuleResponse](PostingModuleResponse.md)
+[PostingModuleResponse](../Model/PostingModuleResponse.md)
 
 ### HTTP request headers
 
@@ -1804,11 +1804,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
 | **cleardownModuleCode** | **string** | path | **required** | The code of the Cleardown Module to be updated. |
-| **cleardownModuleDetails** | [CleardownModuleDetails](CleardownModuleDetails.md) | body | **required** | The new details for the Cleardown Module. |
+| **cleardownModuleDetails** | [CleardownModuleDetails](../Model/CleardownModuleDetails.md) | body | **required** | The new details for the Cleardown Module. |
 
 ### Return type
 
-[CleardownModuleResponse](CleardownModuleResponse.md)
+[CleardownModuleResponse](../Model/CleardownModuleResponse.md)
 
 ### HTTP request headers
 
@@ -1868,11 +1868,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
 | **cleardownModuleCode** | **string** | path | **required** | The code of the Cleardown Module to be updated. |
-| **cleardownModuleRule** | [List&lt;CleardownModuleRule&gt;](CleardownModuleRule.md) | body | **required** | The new rule set for the Cleardown Module. |
+| **cleardownModuleRule** | [List&lt;CleardownModuleRule&gt;](../Model/CleardownModuleRule.md) | body | **required** | The new rule set for the Cleardown Module. |
 
 ### Return type
 
-[CleardownModuleRulesUpdatedResponse](CleardownModuleRulesUpdatedResponse.md)
+[CleardownModuleRulesUpdatedResponse](../Model/CleardownModuleRulesUpdatedResponse.md)
 
 ### HTTP request headers
 
@@ -1932,11 +1932,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. |
 | **generalLedgerProfileCode** | **string** | path | **required** | The code of the General Ledger Profile |
-| **generalLedgerProfileMapping** | [List&lt;GeneralLedgerProfileMapping&gt;](GeneralLedgerProfileMapping.md) | body | **required** | The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. |
+| **generalLedgerProfileMapping** | [List&lt;GeneralLedgerProfileMapping&gt;](../Model/GeneralLedgerProfileMapping.md) | body | **required** | The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. |
 
 ### Return type
 
-[GeneralLedgerProfileResponse](GeneralLedgerProfileResponse.md)
+[GeneralLedgerProfileResponse](../Model/GeneralLedgerProfileResponse.md)
 
 ### HTTP request headers
 
@@ -1996,11 +1996,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
 | **postingModuleCode** | **string** | path | **required** | The code of the Posting Module to be updated. |
-| **postingModuleDetails** | [PostingModuleDetails](PostingModuleDetails.md) | body | **required** | The new details for the Posting Module. |
+| **postingModuleDetails** | [PostingModuleDetails](../Model/PostingModuleDetails.md) | body | **required** | The new details for the Posting Module. |
 
 ### Return type
 
-[PostingModuleResponse](PostingModuleResponse.md)
+[PostingModuleResponse](../Model/PostingModuleResponse.md)
 
 ### HTTP request headers
 
@@ -2060,11 +2060,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
 | **postingModuleCode** | **string** | path | **required** | The code of the Posting Module to be updated. |
-| **postingModuleRule** | [List&lt;PostingModuleRule&gt;](PostingModuleRule.md) | body | **required** | The new rule set for the Posting Module. |
+| **postingModuleRule** | [List&lt;PostingModuleRule&gt;](../Model/PostingModuleRule.md) | body | **required** | The new rule set for the Posting Module. |
 
 ### Return type
 
-[PostingModuleRulesUpdatedResponse](PostingModuleRulesUpdatedResponse.md)
+[PostingModuleRulesUpdatedResponse](../Model/PostingModuleRulesUpdatedResponse.md)
 
 ### HTTP request headers
 
@@ -2124,11 +2124,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts to update or insert the properties onto. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. |
 | **accountCode** | **string** | path | **required** | The unique ID of the account to create or update properties for. |
-| **requestBody** | [Dictionary&lt;string, Property&gt;?](Property.md) | body | optional | The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;?](../Model/Property.md) | body | optional | The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. |
 
 ### Return type
 
-[AccountProperties](AccountProperties.md)
+[AccountProperties](../Model/AccountProperties.md)
 
 ### HTTP request headers
 
@@ -2186,11 +2186,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. |
-| **account** | [List&lt;Account&gt;](Account.md) | body | **required** | A list of accounts to be created or updated. |
+| **account** | [List&lt;Account&gt;](../Model/Account.md) | body | **required** | A list of accounts to be created or updated. |
 
 ### Return type
 
-[AccountsUpsertResponse](AccountsUpsertResponse.md)
+[AccountsUpsertResponse](../Model/AccountsUpsertResponse.md)
 
 ### HTTP request headers
 
@@ -2248,11 +2248,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Chart of Accounts to update or insert the properties onto. |
 | **code** | **string** | path | **required** | The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. |
-| **requestBody** | [Dictionary&lt;string, Property&gt;?](Property.md) | body | optional | The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;?](../Model/Property.md) | body | optional | The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. |
 
 ### Return type
 
-[ChartOfAccountsProperties](ChartOfAccountsProperties.md)
+[ChartOfAccountsProperties](../Model/ChartOfAccountsProperties.md)
 
 ### HTTP request headers
 

@@ -77,7 +77,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Request](Request.md)
+[Request](../Model/Request.md)
 
 ### HTTP request headers
 
@@ -133,7 +133,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RequestLog](RequestLog.md)
+[RequestLog](../Model/RequestLog.md)
 
 ### HTTP request headers
 
@@ -189,7 +189,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Response](Response.md)
+[Response](../Model/Response.md)
 
 ### HTTP request headers
 
@@ -253,7 +253,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListWithHistogramOfRequestLog](ResourceListWithHistogramOfRequestLog.md)
+[ResourceListWithHistogramOfRequestLog](../Model/ResourceListWithHistogramOfRequestLog.md)
 
 ### HTTP request headers
 
@@ -305,11 +305,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **queryRequestLogsRequest** | [QueryRequestLogsRequest](QueryRequestLogsRequest.md) | body | **required** | The query parameters in the request body. |
+| **queryRequestLogsRequest** | [QueryRequestLogsRequest](../Model/QueryRequestLogsRequest.md) | body | **required** | The query parameters in the request body. |
 
 ### Return type
 
-[ResourceListOfQueriedRequestLog](ResourceListOfQueriedRequestLog.md)
+[ResourceListOfQueriedRequestLog](../Model/ResourceListOfQueriedRequestLog.md)
 
 ### HTTP request headers
 

@@ -78,7 +78,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Schema](Schema.md)
+[Schema](../Model/Schema.md)
 
 ### HTTP request headers
 
@@ -133,12 +133,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | One or more property keys for which the schema is requested |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | One or more property keys for which the schema is requested |
 | **asAt** | **DateTimeOffset?** | query | optional | Optional. The AsAt date of the data |
 
 ### Return type
 
-[PropertySchema](PropertySchema.md)
+[PropertySchema](../Model/PropertySchema.md)
 
 ### HTTP request headers
 
@@ -193,12 +193,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. |
 
 ### Return type
 
-[ResourceListOfValueType](ResourceListOfValueType.md)
+[ResourceListOfValueType](../Model/ResourceListOfValueType.md)
 
 ### HTTP request headers
 
@@ -252,7 +252,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[ResourceListOfString](ResourceListOfString.md)
+[ResourceListOfString](../Model/ResourceListOfString.md)
 
 ### HTTP request headers
 

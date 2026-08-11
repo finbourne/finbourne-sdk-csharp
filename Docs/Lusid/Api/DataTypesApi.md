@@ -79,11 +79,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createDataTypeRequest** | [CreateDataTypeRequest?](CreateDataTypeRequest?.md) | body | optional | The definition of the new data type |
+| **createDataTypeRequest** | [CreateDataTypeRequest?](../Model/CreateDataTypeRequest?.md) | body | optional | The definition of the new data type |
 
 ### Return type
 
-[DataType](DataType.md)
+[DataType](../Model/DataType.md)
 
 ### HTTP request headers
 
@@ -143,7 +143,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -205,7 +205,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DataType](DataType.md)
+[DataType](../Model/DataType.md)
 
 ### HTTP request headers
 
@@ -265,13 +265,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the data type |
 | **code** | **string** | path | **required** | The code of the data type |
-| **units** | [List&lt;string&gt;?](string.md) | query | optional | One or more unit identifiers for which the definition is being requested |
+| **units** | [List&lt;string&gt;?](../Model/string.md) | query | optional | One or more unit identifiers for which the definition is being requested |
 | **filter** | **string?** | query | optional | Optional. Expression to filter the result set.               For example, to filter on the Schema, use \&quot;schema eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 | **asAt** | **DateTimeOffset?** | query | optional | Optional. The as at of the requested data type |
 
 ### Return type
 
-[ResourceListOfIUnitDefinitionDto](ResourceListOfIUnitDefinitionDto.md)
+[ResourceListOfIUnitDefinitionDto](../Model/ResourceListOfIUnitDefinitionDto.md)
 
 ### HTTP request headers
 
@@ -333,11 +333,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Optional. Expression to filter the result set.                For example, to filter on the Scope, use \&quot;id.scope eq &#39;myscope&#39;\&quot;, to filter on Schema, use \&quot;schema eq &#39;string&#39;\&quot;,               to filter on AcceptableValues use \&quot;acceptableValues any (~ eq &#39;value&#39;)\&quot;               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 
 ### Return type
 
-[PagedResourceListOfDataTypeSummary](PagedResourceListOfDataTypeSummary.md)
+[PagedResourceListOfDataTypeSummary](../Model/PagedResourceListOfDataTypeSummary.md)
 
 ### HTTP request headers
 
@@ -399,13 +399,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The requested scope of the data types |
 | **asAt** | **DateTimeOffset?** | query | optional | The as at of the requested data types |
 | **includeSystem** | **bool?** | query | optional | Whether to additionally include those data types in the \&quot;system\&quot; scope |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Optional. Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[ResourceListOfDataType](ResourceListOfDataType.md)
+[ResourceListOfDataType](../Model/ResourceListOfDataType.md)
 
 ### HTTP request headers
 
@@ -463,11 +463,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the data type |
 | **code** | **string** | path | **required** | The code of the data type |
-| **updateDataTypeRequest** | [UpdateDataTypeRequest](UpdateDataTypeRequest.md) | body | **required** | The updated definition of the data type |
+| **updateDataTypeRequest** | [UpdateDataTypeRequest](../Model/UpdateDataTypeRequest.md) | body | **required** | The updated definition of the data type |
 
 ### Return type
 
-[DataType](DataType.md)
+[DataType](../Model/DataType.md)
 
 ### HTTP request headers
 
@@ -525,11 +525,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the data type |
 | **code** | **string** | path | **required** | The code of the data type |
-| **updateReferenceDataRequest** | [UpdateReferenceDataRequest](UpdateReferenceDataRequest.md) | body | **required** | The updated reference data |
+| **updateReferenceDataRequest** | [UpdateReferenceDataRequest](../Model/UpdateReferenceDataRequest.md) | body | **required** | The updated reference data |
 
 ### Return type
 
-[DataType](DataType.md)
+[DataType](../Model/DataType.md)
 
 ### HTTP request headers
 
@@ -587,11 +587,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the data type |
 | **code** | **string** | path | **required** | The code of the data type |
-| **fieldValue** | [List&lt;FieldValue&gt;](FieldValue.md) | body | **required** | The updated reference values |
+| **fieldValue** | [List&lt;FieldValue&gt;](../Model/FieldValue.md) | body | **required** | The updated reference values |
 
 ### Return type
 
-[DataType](DataType.md)
+[DataType](../Model/DataType.md)
 
 ### HTTP request headers
 

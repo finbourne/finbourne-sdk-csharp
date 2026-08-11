@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createExternalTokenIssuerRequest** | [CreateExternalTokenIssuerRequest](CreateExternalTokenIssuerRequest.md) | body | **required** |  |
+| **createExternalTokenIssuerRequest** | [CreateExternalTokenIssuerRequest](../Model/CreateExternalTokenIssuerRequest.md) | body | **required** |  |
 
 ### Return type
 
-[ExternalTokenIssuerResponse](ExternalTokenIssuerResponse.md)
+[ExternalTokenIssuerResponse](../Model/ExternalTokenIssuerResponse.md)
 
 ### HTTP request headers
 
@@ -191,7 +191,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ExternalTokenIssuerResponse](ExternalTokenIssuerResponse.md)
+[ExternalTokenIssuerResponse](../Model/ExternalTokenIssuerResponse.md)
 
 ### HTTP request headers
 
@@ -245,7 +245,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;ExternalTokenIssuerResponse&gt;](ExternalTokenIssuerResponse.md)
+[List&lt;ExternalTokenIssuerResponse&gt;](../Model/ExternalTokenIssuerResponse.md)
 
 ### HTTP request headers
 
@@ -300,11 +300,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **code** | **string** | path | **required** | Identifier of the External Token Issuer to update |
-| **updateExternalTokenIssuerRequest** | [UpdateExternalTokenIssuerRequest](UpdateExternalTokenIssuerRequest.md) | body | **required** |  |
+| **updateExternalTokenIssuerRequest** | [UpdateExternalTokenIssuerRequest](../Model/UpdateExternalTokenIssuerRequest.md) | body | **required** |  |
 
 ### Return type
 
-[ExternalTokenIssuerResponse](ExternalTokenIssuerResponse.md)
+[ExternalTokenIssuerResponse](../Model/ExternalTokenIssuerResponse.md)
 
 ### HTTP request headers
 

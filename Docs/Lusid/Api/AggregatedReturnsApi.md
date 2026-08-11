@@ -81,7 +81,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -135,11 +135,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **aggregatedReturnsEntityRequest** | [AggregatedReturnsEntityRequest](AggregatedReturnsEntityRequest.md) | body | **required** | The entity to calculate returns for, the Returns entity that configures the              calculation, the effective window and the metrics to calculate. |
+| **aggregatedReturnsEntityRequest** | [AggregatedReturnsEntityRequest](../Model/AggregatedReturnsEntityRequest.md) | body | **required** | The entity to calculate returns for, the Returns entity that configures the              calculation, the effective window and the metrics to calculate. |
 
 ### Return type
 
-[AggregatedReturnsResponse](AggregatedReturnsResponse.md)
+[AggregatedReturnsResponse](../Model/AggregatedReturnsResponse.md)
 
 ### HTTP request headers
 
@@ -201,7 +201,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ReturnsEntity](ReturnsEntity.md)
+[ReturnsEntity](../Model/ReturnsEntity.md)
 
 ### HTTP request headers
 
@@ -259,7 +259,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfReturnsEntity](ResourceListOfReturnsEntity.md)
+[ResourceListOfReturnsEntity](../Model/ResourceListOfReturnsEntity.md)
 
 ### HTTP request headers
 
@@ -313,11 +313,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **returnsEntity** | [ReturnsEntity](ReturnsEntity.md) | body | **required** | Definition of the returns entity. |
+| **returnsEntity** | [ReturnsEntity](../Model/ReturnsEntity.md) | body | **required** | Definition of the returns entity. |
 
 ### Return type
 
-[ReturnsEntity](ReturnsEntity.md)
+[ReturnsEntity](../Model/ReturnsEntity.md)
 
 ### HTTP request headers
 

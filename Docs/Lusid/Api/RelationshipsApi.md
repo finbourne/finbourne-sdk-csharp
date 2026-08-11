@@ -76,11 +76,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the relationship |
 | **code** | **string** | path | **required** | The code of the relationship |
-| **createRelationshipRequest** | [CreateRelationshipRequest](CreateRelationshipRequest.md) | body | **required** | The details of the relationship to create. |
+| **createRelationshipRequest** | [CreateRelationshipRequest](../Model/CreateRelationshipRequest.md) | body | **required** | The details of the relationship to create. |
 
 ### Return type
 
-[CompleteRelationship](CompleteRelationship.md)
+[CompleteRelationship](../Model/CompleteRelationship.md)
 
 ### HTTP request headers
 
@@ -138,11 +138,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the relationship |
 | **code** | **string** | path | **required** | The code of the relationship |
-| **deleteRelationshipRequest** | [DeleteRelationshipRequest](DeleteRelationshipRequest.md) | body | **required** | The details of the relationship to delete. |
+| **deleteRelationshipRequest** | [DeleteRelationshipRequest](../Model/DeleteRelationshipRequest.md) | body | **required** | The details of the relationship to delete. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 

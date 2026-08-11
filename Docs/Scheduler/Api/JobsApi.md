@@ -77,11 +77,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createJobRequest** | [CreateJobRequest](CreateJobRequest.md) | body | **required** | The request to create a new job |
+| **createJobRequest** | [CreateJobRequest](../Model/CreateJobRequest.md) | body | **required** | The request to create a new job |
 
 ### Return type
 
-[JobDefinition](JobDefinition.md)
+[JobDefinition](../Model/JobDefinition.md)
 
 ### HTTP request headers
 
@@ -139,7 +139,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfScheduleDefinition](ResourceListOfScheduleDefinition.md)
+[ResourceListOfScheduleDefinition](../Model/ResourceListOfScheduleDefinition.md)
 
 ### HTTP request headers
 
@@ -196,14 +196,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **page** | **string?** | query | optional | The pagination token to use to continue listing instruments from a previous call to list instruments.             This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields             must not have changed since the original request. Also, if set, a start value cannot be provided. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
 | **start** | **int?** | query | optional | This field is obsolete, the value of this field would not be considered. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 2000 if not specified. Maximum is 5000. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 
 ### Return type
 
-[ResourceListOfJobHistory](ResourceListOfJobHistory.md)
+[ResourceListOfJobHistory](../Model/ResourceListOfJobHistory.md)
 
 ### HTTP request headers
 
@@ -315,7 +315,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[JobRunResult](JobRunResult.md)
+[JobRunResult](../Model/JobRunResult.md)
 
 ### HTTP request headers
 
@@ -373,7 +373,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfScheduleDefinition](ResourceListOfScheduleDefinition.md)
+[ResourceListOfScheduleDefinition](../Model/ResourceListOfScheduleDefinition.md)
 
 ### HTTP request headers
 
@@ -430,14 +430,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **page** | **string?** | query | optional | The pagination token to use to continue listing instruments from a previous call to list instruments.             This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields             must not have changed since the original request. Also, if set, a start value cannot be provided. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
 | **start** | **int?** | query | optional | When paginating, skip this number of results. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 2000 if not specified. Maximum is 5000. Default: `2000` |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 
 ### Return type
 
-[ResourceListOfJobDefinition](ResourceListOfJobDefinition.md)
+[ResourceListOfJobDefinition](../Model/ResourceListOfJobDefinition.md)
 
 ### HTTP request headers
 
@@ -493,11 +493,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the job |
 | **code** | **string** | path | **required** | The code of the job |
-| **startJobRequest** | [StartJobRequest](StartJobRequest.md) | body | **required** | The request for starting job |
+| **startJobRequest** | [StartJobRequest](../Model/StartJobRequest.md) | body | **required** | The request for starting job |
 
 ### Return type
 
-[StartJobResponse](StartJobResponse.md)
+[StartJobResponse](../Model/StartJobResponse.md)
 
 ### HTTP request headers
 
@@ -553,11 +553,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** |  |
 | **code** | **string** | path | **required** |  |
-| **updateJobRequest** | [UpdateJobRequest](UpdateJobRequest.md) | body | **required** |  |
+| **updateJobRequest** | [UpdateJobRequest](../Model/UpdateJobRequest.md) | body | **required** |  |
 
 ### Return type
 
-[JobDefinition](JobDefinition.md)
+[JobDefinition](../Model/JobDefinition.md)
 
 ### HTTP request headers
 

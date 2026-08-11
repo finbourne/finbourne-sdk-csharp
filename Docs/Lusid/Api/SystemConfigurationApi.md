@@ -77,11 +77,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **transactionConfigurationDataRequest** | [TransactionConfigurationDataRequest?](TransactionConfigurationDataRequest?.md) | body | optional | A transaction type definition. |
+| **transactionConfigurationDataRequest** | [TransactionConfigurationDataRequest?](../Model/TransactionConfigurationDataRequest?.md) | body | optional | A transaction type definition. |
 
 ### Return type
 
-[TransactionSetConfigurationData](TransactionSetConfigurationData.md)
+[TransactionSetConfigurationData](../Model/TransactionSetConfigurationData.md)
 
 ### HTTP request headers
 
@@ -135,11 +135,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **sideConfigurationDataRequest** | [SideConfigurationDataRequest?](SideConfigurationDataRequest?.md) | body | optional | The definition of the side. |
+| **sideConfigurationDataRequest** | [SideConfigurationDataRequest?](../Model/SideConfigurationDataRequest?.md) | body | optional | The definition of the side. |
 
 ### Return type
 
-[TransactionSetConfigurationData](TransactionSetConfigurationData.md)
+[TransactionSetConfigurationData](../Model/TransactionSetConfigurationData.md)
 
 ### HTTP request headers
 
@@ -197,7 +197,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -257,7 +257,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[TransactionSetConfigurationData](TransactionSetConfigurationData.md)
+[TransactionSetConfigurationData](../Model/TransactionSetConfigurationData.md)
 
 ### HTTP request headers
 
@@ -315,7 +315,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[TransactionSetConfigurationData](TransactionSetConfigurationData.md)
+[TransactionSetConfigurationData](../Model/TransactionSetConfigurationData.md)
 
 ### HTTP request headers
 
@@ -369,11 +369,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **transactionSetConfigurationDataRequest** | [TransactionSetConfigurationDataRequest?](TransactionSetConfigurationDataRequest?.md) | body | optional | The complete set of transaction type definitions. |
+| **transactionSetConfigurationDataRequest** | [TransactionSetConfigurationDataRequest?](../Model/TransactionSetConfigurationDataRequest?.md) | body | optional | The complete set of transaction type definitions. |
 
 ### Return type
 
-[TransactionSetConfigurationData](TransactionSetConfigurationData.md)
+[TransactionSetConfigurationData](../Model/TransactionSetConfigurationData.md)
 
 ### HTTP request headers
 
@@ -429,11 +429,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **source** | **string** | path | **required** | The source to set the transaction configurations for |
-| **setTransactionConfigurationSourceRequest** | [List&lt;SetTransactionConfigurationSourceRequest&gt;](SetTransactionConfigurationSourceRequest.md) | body | **required** | The set of transaction configurations |
+| **setTransactionConfigurationSourceRequest** | [List&lt;SetTransactionConfigurationSourceRequest&gt;](../Model/SetTransactionConfigurationSourceRequest.md) | body | **required** | The set of transaction configurations |
 
 ### Return type
 
-[TransactionSetConfigurationData](TransactionSetConfigurationData.md)
+[TransactionSetConfigurationData](../Model/TransactionSetConfigurationData.md)
 
 ### HTTP request headers
 

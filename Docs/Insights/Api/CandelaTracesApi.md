@@ -76,7 +76,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[TraceDiagramResponse](TraceDiagramResponse.md)
+[TraceDiagramResponse](../Model/TraceDiagramResponse.md)
 
 ### HTTP request headers
 
@@ -132,7 +132,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[TraceLog](TraceLog.md)
+[TraceLog](../Model/TraceLog.md)
 
 ### HTTP request headers
 
@@ -190,7 +190,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfTraceEventLog](ResourceListOfTraceEventLog.md)
+[ResourceListOfTraceEventLog](../Model/ResourceListOfTraceEventLog.md)
 
 ### HTTP request headers
 
@@ -252,7 +252,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfTraceLog](ResourceListOfTraceLog.md)
+[ResourceListOfTraceLog](../Model/ResourceListOfTraceLog.md)
 
 ### HTTP request headers
 

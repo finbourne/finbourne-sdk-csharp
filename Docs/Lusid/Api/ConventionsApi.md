@@ -88,7 +88,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AnnulSingleStructuredDataResponse](AnnulSingleStructuredDataResponse.md)
+[AnnulSingleStructuredDataResponse](../Model/AnnulSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -148,7 +148,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AnnulSingleStructuredDataResponse](AnnulSingleStructuredDataResponse.md)
+[AnnulSingleStructuredDataResponse](../Model/AnnulSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -208,7 +208,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AnnulSingleStructuredDataResponse](AnnulSingleStructuredDataResponse.md)
+[AnnulSingleStructuredDataResponse](../Model/AnnulSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -270,7 +270,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetCdsFlowConventionsResponse](GetCdsFlowConventionsResponse.md)
+[GetCdsFlowConventionsResponse](../Model/GetCdsFlowConventionsResponse.md)
 
 ### HTTP request headers
 
@@ -332,7 +332,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetFlowConventionsResponse](GetFlowConventionsResponse.md)
+[GetFlowConventionsResponse](../Model/GetFlowConventionsResponse.md)
 
 ### HTTP request headers
 
@@ -394,7 +394,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetIndexConventionResponse](GetIndexConventionResponse.md)
+[GetIndexConventionResponse](../Model/GetIndexConventionResponse.md)
 
 ### HTTP request headers
 
@@ -452,7 +452,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfGetCdsFlowConventionsResponse](ResourceListOfGetCdsFlowConventionsResponse.md)
+[ResourceListOfGetCdsFlowConventionsResponse](../Model/ResourceListOfGetCdsFlowConventionsResponse.md)
 
 ### HTTP request headers
 
@@ -510,7 +510,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfGetFlowConventionsResponse](ResourceListOfGetFlowConventionsResponse.md)
+[ResourceListOfGetFlowConventionsResponse](../Model/ResourceListOfGetFlowConventionsResponse.md)
 
 ### HTTP request headers
 
@@ -568,7 +568,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfGetIndexConventionResponse](ResourceListOfGetIndexConventionResponse.md)
+[ResourceListOfGetIndexConventionResponse](../Model/ResourceListOfGetIndexConventionResponse.md)
 
 ### HTTP request headers
 
@@ -622,11 +622,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertCdsFlowConventionsRequest** | [UpsertCdsFlowConventionsRequest](UpsertCdsFlowConventionsRequest.md) | body | **required** | The CDS Flow Conventions to update or insert |
+| **upsertCdsFlowConventionsRequest** | [UpsertCdsFlowConventionsRequest](../Model/UpsertCdsFlowConventionsRequest.md) | body | **required** | The CDS Flow Conventions to update or insert |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -680,11 +680,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertFlowConventionsRequest** | [UpsertFlowConventionsRequest](UpsertFlowConventionsRequest.md) | body | **required** | The Flow Conventions to update or insert |
+| **upsertFlowConventionsRequest** | [UpsertFlowConventionsRequest](../Model/UpsertFlowConventionsRequest.md) | body | **required** | The Flow Conventions to update or insert |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -738,11 +738,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertIndexConventionRequest** | [UpsertIndexConventionRequest](UpsertIndexConventionRequest.md) | body | **required** | The Index Conventions to update or insert |
+| **upsertIndexConventionRequest** | [UpsertIndexConventionRequest](../Model/UpsertIndexConventionRequest.md) | body | **required** | The Index Conventions to update or insert |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 

@@ -77,11 +77,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createRelationalDatasetDefinitionRequest** | [CreateRelationalDatasetDefinitionRequest](CreateRelationalDatasetDefinitionRequest.md) | body | **required** | The relational dataset definition to create. |
+| **createRelationalDatasetDefinitionRequest** | [CreateRelationalDatasetDefinitionRequest](../Model/CreateRelationalDatasetDefinitionRequest.md) | body | **required** | The relational dataset definition to create. |
 
 ### Return type
 
-[RelationalDatasetDefinition](RelationalDatasetDefinition.md)
+[RelationalDatasetDefinition](../Model/RelationalDatasetDefinition.md)
 
 ### HTTP request headers
 
@@ -141,7 +141,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -203,7 +203,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RelationalDatasetDefinition](RelationalDatasetDefinition.md)
+[RelationalDatasetDefinition](../Model/RelationalDatasetDefinition.md)
 
 ### HTTP request headers
 
@@ -263,13 +263,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the relational dataset definitions. Defaults to return the latest version if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing relational dataset definitions from a previous call to list relational dataset definitions. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 
 ### Return type
 
-[PagedResourceListOfRelationalDatasetDefinition](PagedResourceListOfRelationalDatasetDefinition.md)
+[PagedResourceListOfRelationalDatasetDefinition](../Model/PagedResourceListOfRelationalDatasetDefinition.md)
 
 ### HTTP request headers
 
@@ -327,11 +327,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the relational dataset definition. |
 | **code** | **string** | path | **required** | The code of the relational dataset definition. |
-| **updateRelationalDatasetDefinitionRequest** | [UpdateRelationalDatasetDefinitionRequest?](UpdateRelationalDatasetDefinitionRequest?.md) | body | optional | The updated relational dataset definition. |
+| **updateRelationalDatasetDefinitionRequest** | [UpdateRelationalDatasetDefinitionRequest?](../Model/UpdateRelationalDatasetDefinitionRequest?.md) | body | optional | The updated relational dataset definition. |
 
 ### Return type
 
-[RelationalDatasetDefinition](RelationalDatasetDefinition.md)
+[RelationalDatasetDefinition](../Model/RelationalDatasetDefinition.md)
 
 ### HTTP request headers
 
@@ -389,11 +389,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the relational dataset definition. |
 | **code** | **string** | path | **required** | The code of the relational dataset definition. |
-| **updateRelationalDatasetDetails** | [UpdateRelationalDatasetDetails?](UpdateRelationalDatasetDetails?.md) | body | optional | The updated details of the relational dataset. |
+| **updateRelationalDatasetDetails** | [UpdateRelationalDatasetDetails?](../Model/UpdateRelationalDatasetDetails?.md) | body | optional | The updated details of the relational dataset. |
 
 ### Return type
 
-[RelationalDatasetDefinition](RelationalDatasetDefinition.md)
+[RelationalDatasetDefinition](../Model/RelationalDatasetDefinition.md)
 
 ### HTTP request headers
 
@@ -451,11 +451,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the relational dataset definition. |
 | **code** | **string** | path | **required** | The code of the relational dataset definition. |
-| **updateRelationalDatasetFieldSchema** | [UpdateRelationalDatasetFieldSchema?](UpdateRelationalDatasetFieldSchema?.md) | body | optional | Relational dataset fields to add, update or remove. |
+| **updateRelationalDatasetFieldSchema** | [UpdateRelationalDatasetFieldSchema?](../Model/UpdateRelationalDatasetFieldSchema?.md) | body | optional | Relational dataset fields to add, update or remove. |
 
 ### Return type
 
-[RelationalDatasetDefinition](RelationalDatasetDefinition.md)
+[RelationalDatasetDefinition](../Model/RelationalDatasetDefinition.md)
 
 ### HTTP request headers
 

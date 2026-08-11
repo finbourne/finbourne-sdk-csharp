@@ -76,7 +76,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VendorLog](VendorLog.md)
+[VendorLog](../Model/VendorLog.md)
 
 ### HTTP request headers
 
@@ -132,7 +132,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VendorRequest](VendorRequest.md)
+[VendorRequest](../Model/VendorRequest.md)
 
 ### HTTP request headers
 
@@ -188,7 +188,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VendorResponse](VendorResponse.md)
+[VendorResponse](../Model/VendorResponse.md)
 
 ### HTTP request headers
 
@@ -252,7 +252,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListWithHistogramOfVendorLog](ResourceListWithHistogramOfVendorLog.md)
+[ResourceListWithHistogramOfVendorLog](../Model/ResourceListWithHistogramOfVendorLog.md)
 
 ### HTTP request headers
 

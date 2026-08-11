@@ -129,14 +129,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
 | **effectiveAt** | **DateTimeOrCutLabel** | query | **required** | The effective datetime or cut label at which the holdings should be set to the provided targets. |
-| **adjustHoldingRequest** | [List&lt;AdjustHoldingRequest&gt;](AdjustHoldingRequest.md) | body | **required** | The selected set of holdings to adjust to the provided targets for the              transaction portfolio. |
-| **reconciliationMethods** | [List&lt;string&gt;?](string.md) | query | optional | Optional parameter for specifying a reconciliation method: e.g. FxForward. |
+| **adjustHoldingRequest** | [List&lt;AdjustHoldingRequest&gt;](../Model/AdjustHoldingRequest.md) | body | **required** | The selected set of holdings to adjust to the provided targets for the              transaction portfolio. |
+| **reconciliationMethods** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional parameter for specifying a reconciliation method: e.g. FxForward. |
 | **overrideMovementName** | **string?** | query | optional | Optional parameter to override movement name for the set holdings. |
 | **overrideOffsetMovementName** | **string?** | query | optional | Optional parameter will create an additional offset movement for the set holdings with this new name and transaction type: CarryAsPnl |
 
 ### Return type
 
-[AdjustHolding](AdjustHolding.md)
+[AdjustHolding](../Model/AdjustHolding.md)
 
 ### HTTP request headers
 
@@ -197,12 +197,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies               the transaction portfolio. |
 | **successMode** | **string** | query | **required** | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial Default: `&quot;Partial&quot;` |
-| **requestBody** | [Dictionary&lt;string, AdjustHoldingForDateRequest&gt;](AdjustHoldingForDateRequest.md) | body | **required** | The selected set of holdings to adjust to the provided targets for the               transaction portfolio. |
-| **reconciliationMethods** | [List&lt;string&gt;?](string.md) | query | optional | Optional parameter for specifying a reconciliation method: e.g. FxForward. |
+| **requestBody** | [Dictionary&lt;string, AdjustHoldingForDateRequest&gt;](../Model/AdjustHoldingForDateRequest.md) | body | **required** | The selected set of holdings to adjust to the provided targets for the               transaction portfolio. |
+| **reconciliationMethods** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional parameter for specifying a reconciliation method: e.g. FxForward. |
 
 ### Return type
 
-[BatchAdjustHoldingsResponse](BatchAdjustHoldingsResponse.md)
+[BatchAdjustHoldingsResponse](../Model/BatchAdjustHoldingsResponse.md)
 
 ### HTTP request headers
 
@@ -261,12 +261,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio. |
 | **code** | **string** | path | **required** | The code of the portfolio. |
-| **requestBody** | [Dictionary&lt;string, SettlementInstructionAmendRequest&gt;](SettlementInstructionAmendRequest.md) | body | **required** | The amendments to make to the settlement instructions. |
+| **requestBody** | [Dictionary&lt;string, SettlementInstructionAmendRequest&gt;](../Model/SettlementInstructionAmendRequest.md) | body | **required** | The amendments to make to the settlement instructions. |
 | **successMode** | **string?** | query | optional | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial Default: `&quot;Partial&quot;` |
 
 ### Return type
 
-[BatchAmendTransactionSettlementInstructionResponse](BatchAmendTransactionSettlementInstructionResponse.md)
+[BatchAmendTransactionSettlementInstructionResponse](../Model/BatchAmendTransactionSettlementInstructionResponse.md)
 
 ### HTTP request headers
 
@@ -324,11 +324,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
-| **lusidTradeTicket** | [List&lt;LusidTradeTicket&gt;](LusidTradeTicket.md) | body | **required** | the trade tickets to create |
+| **lusidTradeTicket** | [List&lt;LusidTradeTicket&gt;](../Model/LusidTradeTicket.md) | body | **required** | the trade tickets to create |
 
 ### Return type
 
-[CreateTradeTicketsResponse](CreateTradeTicketsResponse.md)
+[CreateTradeTicketsResponse](../Model/CreateTradeTicketsResponse.md)
 
 ### HTTP request headers
 
@@ -389,12 +389,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies               the transaction portfolio. |
 | **successMode** | **string** | query | **required** | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial Default: `&quot;Partial&quot;` |
-| **requestBody** | [Dictionary&lt;string, AdjustHoldingForDateRequest&gt;](AdjustHoldingForDateRequest.md) | body | **required** | The selected set of holdings to adjust to the provided targets for the               transaction portfolio. |
-| **reconciliationMethods** | [List&lt;string&gt;?](string.md) | query | optional | Optional parameter for specifying a reconciliation method: e.g. FxForward. Available values: FxForward. |
+| **requestBody** | [Dictionary&lt;string, AdjustHoldingForDateRequest&gt;](../Model/AdjustHoldingForDateRequest.md) | body | **required** | The selected set of holdings to adjust to the provided targets for the               transaction portfolio. |
+| **reconciliationMethods** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional parameter for specifying a reconciliation method: e.g. FxForward. Available values: FxForward. |
 
 ### Return type
 
-[BatchAdjustHoldingsResponse](BatchAdjustHoldingsResponse.md)
+[BatchAdjustHoldingsResponse](../Model/BatchAdjustHoldingsResponse.md)
 
 ### HTTP request headers
 
@@ -453,12 +453,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio. |
 | **code** | **string** | path | **required** | The code of the portfolio. |
-| **requestBody** | [Dictionary&lt;string, SettlementInstructionRequest&gt;](SettlementInstructionRequest.md) | body | **required** | The definition of the settlement instruction. |
+| **requestBody** | [Dictionary&lt;string, SettlementInstructionRequest&gt;](../Model/SettlementInstructionRequest.md) | body | **required** | The definition of the settlement instruction. |
 | **successMode** | **string?** | query | optional | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial Default: `&quot;Partial&quot;` |
 
 ### Return type
 
-[BatchUpsertTransactionSettlementInstructionResponse](BatchUpsertTransactionSettlementInstructionResponse.md)
+[BatchUpsertTransactionSettlementInstructionResponse](../Model/BatchUpsertTransactionSettlementInstructionResponse.md)
 
 ### HTTP request headers
 
@@ -521,14 +521,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
 | **successMode** | **string** | query | **required** | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. Default: `&quot;Partial&quot;` |
-| **requestBody** | [Dictionary&lt;string, TransactionRequest&gt;](TransactionRequest.md) | body | **required** | The payload describing the transactions to be created or updated. |
+| **requestBody** | [Dictionary&lt;string, TransactionRequest&gt;](../Model/TransactionRequest.md) | body | **required** | The payload describing the transactions to be created or updated. |
 | **preserveProperties** | **bool?** | query | optional | If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. Default: `true` |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 
 ### Return type
 
-[BatchUpsertPortfolioTransactionsResponse](BatchUpsertPortfolioTransactionsResponse.md)
+[BatchUpsertPortfolioTransactionsResponse](../Model/BatchUpsertPortfolioTransactionsResponse.md)
 
 ### HTTP request headers
 
@@ -586,11 +586,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
-| **settlementInstructionQuery** | [SettlementInstructionQuery](SettlementInstructionQuery.md) | body | **required** | The queryParameters which control how the settlement instructions are built and returned. |
+| **settlementInstructionQuery** | [SettlementInstructionQuery](../Model/SettlementInstructionQuery.md) | body | **required** | The queryParameters which control how the settlement instructions are built and returned. |
 
 ### Return type
 
-[VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery](VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery.md)
+[VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery](../Model/VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery.md)
 
 ### HTTP request headers
 
@@ -657,10 +657,10 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
-| **transactionQueryParameters** | [TransactionQueryParameters](TransactionQueryParameters.md) | body | **required** | The query queryParameters which control how the output transactions are built. |
+| **transactionQueryParameters** | [TransactionQueryParameters](../Model/TransactionQueryParameters.md) | body | **required** | The query queryParameters which control how the output transactions are built. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to build the transactions. Defaults to return the latest              version of each transaction if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto              the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;Transaction/strategy/quantsignal\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto              the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;Transaction/strategy/quantsignal\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing transactions from a previous call to BuildTransactions. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
@@ -670,7 +670,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListOfOutputTransaction](VersionedResourceListOfOutputTransaction.md)
+[VersionedResourceListOfOutputTransaction](../Model/VersionedResourceListOfOutputTransaction.md)
 
 ### HTTP request headers
 
@@ -732,7 +732,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -792,11 +792,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
 | **effectiveAt** | **DateTimeOrCutLabel** | query | **required** | The effective datetime or cut label at which the previous adjustment was made. |
-| **cancelSingleHoldingAdjustmentRequest** | [CancelSingleHoldingAdjustmentRequest](CancelSingleHoldingAdjustmentRequest.md) | body | **required** | The selected holding adjustment to be canceled. |
+| **cancelSingleHoldingAdjustmentRequest** | [CancelSingleHoldingAdjustmentRequest](../Model/CancelSingleHoldingAdjustmentRequest.md) | body | **required** | The selected holding adjustment to be canceled. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -854,11 +854,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
-| **transactionIds** | [List&lt;string&gt;](string.md) | query | **required** | The IDs of the transactions to cancel. |
+| **transactionIds** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The IDs of the transactions to cancel. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -914,11 +914,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope in which to create the transaction portfolio. |
-| **createTransactionPortfolioRequest** | [CreateTransactionPortfolioRequest](CreateTransactionPortfolioRequest.md) | body | **required** | The definition of the transaction portfolio. |
+| **createTransactionPortfolioRequest** | [CreateTransactionPortfolioRequest](../Model/CreateTransactionPortfolioRequest.md) | body | **required** | The definition of the transaction portfolio. |
 
 ### Return type
 
-[Portfolio](Portfolio.md)
+[Portfolio](../Model/Portfolio.md)
 
 ### HTTP request headers
 
@@ -976,11 +976,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
-| **lusidTradeTicket** | [LusidTradeTicket?](LusidTradeTicket?.md) | body | optional | the trade ticket to upsert |
+| **lusidTradeTicket** | [LusidTradeTicket?](../Model/LusidTradeTicket?.md) | body | optional | the trade ticket to upsert |
 
 ### Return type
 
-[LusidTradeTicket](LusidTradeTicket.md)
+[LusidTradeTicket](../Model/LusidTradeTicket.md)
 
 ### HTTP request headers
 
@@ -1039,12 +1039,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Transaction Portfolios. |
 | **code** | **string** | path | **required** | The code of the Transaction Portfolios. Together with the scope this uniquely identifies              the Transaction Portfolios. |
-| **resourceId** | [List&lt;ResourceId&gt;](ResourceId.md) | body | **required** | The scope and codes of the custodian accounts to delete. |
+| **resourceId** | [List&lt;ResourceId&gt;](../Model/ResourceId.md) | body | **required** | The scope and codes of the custodian accounts to delete. |
 | **deleteMode** | **string?** | query | optional | The delete mode to use. Default value: Soft. Available values: Soft, Hard. |
 
 ### Return type
 
-[DeleteCustodianAccountsResponse](DeleteCustodianAccountsResponse.md)
+[DeleteCustodianAccountsResponse](../Model/DeleteCustodianAccountsResponse.md)
 
 ### HTTP request headers
 
@@ -1104,11 +1104,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
 | **transactionId** | **string** | path | **required** | The unique ID of the transaction from which to delete properties. |
-| **propertyKeys** | [List&lt;string&gt;](string.md) | query | **required** | The property keys of the properties to delete.              These must be from the \&quot;Transaction\&quot; domain and have the format {domain}/{scope}/{code}, for example              \&quot;Transaction/strategy/quantsignal\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The property keys of the properties to delete.              These must be from the \&quot;Transaction\&quot; domain and have the format {domain}/{scope}/{code}, for example              \&quot;Transaction/strategy/quantsignal\&quot;. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -1166,11 +1166,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio. |
 | **code** | **string** | path | **required** | The code of the portfolio. Together with the scope this uniquely identifies              the portfolio. |
-| **settlementInstructionIds** | [List&lt;string&gt;](string.md) | query | **required** | A list of Ids of settlement instructions to be deleted. |
+| **settlementInstructionIds** | [List&lt;string&gt;](../Model/string.md) | query | **required** | A list of Ids of settlement instructions to be deleted. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -1234,7 +1234,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -1303,12 +1303,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. |
 | **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeId |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[VersionedResourceListOfA2BDataRecord](VersionedResourceListOfA2BDataRecord.md)
+[VersionedResourceListOfA2BDataRecord](../Model/VersionedResourceListOfA2BDataRecord.md)
 
 ### HTTP request headers
 
@@ -1377,12 +1377,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. |
 | **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeId |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[VersionedResourceListOfA2BMovementRecord](VersionedResourceListOfA2BMovementRecord.md)
+[VersionedResourceListOfA2BMovementRecord](../Model/VersionedResourceListOfA2BMovementRecord.md)
 
 ### HTTP request headers
 
@@ -1454,7 +1454,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. |
 | **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeId |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 | **timelineScope** | **string?** | query | optional | The scope of the timeline to use for loading data per closed period. |
 | **timelineCode** | **string?** | query | optional | The code of the timeline to use for loading data per closed period. |
@@ -1462,7 +1462,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListOfA2BMovementRecord](VersionedResourceListOfA2BMovementRecord.md)
+[VersionedResourceListOfA2BMovementRecord](../Model/VersionedResourceListOfA2BMovementRecord.md)
 
 ### HTTP request headers
 
@@ -1520,11 +1520,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies the portfolio. |
-| **bucketedCashFlowRequest** | [BucketedCashFlowRequest?](BucketedCashFlowRequest?.md) | body | optional | Request specifying the bucketing of cashflows |
+| **bucketedCashFlowRequest** | [BucketedCashFlowRequest?](../Model/BucketedCashFlowRequest?.md) | body | optional | Request specifying the bucketing of cashflows |
 
 ### Return type
 
-[BucketedCashFlowResponse](BucketedCashFlowResponse.md)
+[BucketedCashFlowResponse](../Model/BucketedCashFlowResponse.md)
 
 ### HTTP request headers
 
@@ -1590,11 +1590,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **custodianAccountCode** | **string** | path | **required** | The code of the Custodian Account. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the Custodian Account properties. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
 
 ### Return type
 
-[CustodianAccount](CustodianAccount.md)
+[CustodianAccount](../Model/CustodianAccount.md)
 
 ### HTTP request headers
 
@@ -1658,7 +1658,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PortfolioDetails](PortfolioDetails.md)
+[PortfolioDetails](../Model/PortfolioDetails.md)
 
 ### HTTP request headers
 
@@ -1742,7 +1742,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListOfHoldingContributor](VersionedResourceListOfHoldingContributor.md)
+[VersionedResourceListOfHoldingContributor](../Model/VersionedResourceListOfHoldingContributor.md)
 
 ### HTTP request headers
 
@@ -1812,7 +1812,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot;, \&quot;Legal Entity\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot;, \&quot;Legal Entity\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. |
 | **byTaxlots** | **bool?** | query | optional | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. |
 | **includeSettlementEventsAfterDays** | **int?** | query | optional | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt |
 | **timelineScope** | **string?** | query | optional | The scope of the Timeline. |
@@ -1822,7 +1822,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListOfPortfolioHolding](VersionedResourceListOfPortfolioHolding.md)
+[VersionedResourceListOfPortfolioHolding](../Model/VersionedResourceListOfPortfolioHolding.md)
 
 ### HTTP request headers
 
@@ -1885,12 +1885,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
 | **effectiveAt** | **DateTimeOrCutLabel** | path | **required** | The effective datetime or cut label of the holdings adjustment. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest              version of the holdings adjustment if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding&#39; domain are automatically returned. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding&#39; domain are automatically returned. |
 | **filter** | **string?** | query | optional | Expression to filter the holding adjustments result set.              Supported fields: InstrumentUid, InstrumentScope, Currency, Properties[Holding/{scope}/{code}], SubHoldingKeys[Transaction/{scope}/{code}].              For example, to filter on a specific instrument, specify \&quot;InstrumentUid eq &#39;LUID_00003D4X&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
 
 ### Return type
 
-[HoldingsAdjustment](HoldingsAdjustment.md)
+[HoldingsAdjustment](../Model/HoldingsAdjustment.md)
 
 ### HTTP request headers
 
@@ -1959,7 +1959,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the holdings of the transaction              portfolio. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults              to return the latest version of the holdings if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. |
 | **byTaxlots** | **bool?** | query | optional | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. |
 | **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeId |
@@ -1968,7 +1968,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListWithWarningsOfPortfolioHolding](VersionedResourceListWithWarningsOfPortfolioHolding.md)
+[VersionedResourceListWithWarningsOfPortfolioHolding](../Model/VersionedResourceListWithWarningsOfPortfolioHolding.md)
 
 ### HTTP request headers
 
@@ -2037,7 +2037,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
-| **holdingIdsRequest** | [HoldingIdsRequest](HoldingIdsRequest.md) | body | **required** | The array of unique holding identifiers |
+| **holdingIdsRequest** | [HoldingIdsRequest](../Model/HoldingIdsRequest.md) | body | **required** | The array of unique holding identifiers |
 | **effectiveDate** | **DateTimeOrCutLabel?** | query | optional | Effective date |
 | **fromTransactionDate** | **DateTimeOrCutLabel?** | query | optional | The from trade date, defaults to first time this holding is opened, lower bound for transactions |
 | **toTransactionDate** | **DateTimeOrCutLabel?** | query | optional | The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions |
@@ -2052,7 +2052,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListOfHoldingContributor](VersionedResourceListOfHoldingContributor.md)
+[VersionedResourceListOfHoldingContributor](../Model/VersionedResourceListOfHoldingContributor.md)
 
 ### HTTP request headers
 
@@ -2130,7 +2130,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfInstrumentCashFlow](ResourceListOfInstrumentCashFlow.md)
+[ResourceListOfInstrumentCashFlow](../Model/ResourceListOfInstrumentCashFlow.md)
 
 ### HTTP request headers
 
@@ -2208,7 +2208,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPortfolioCashLadder](ResourceListOfPortfolioCashLadder.md)
+[ResourceListOfPortfolioCashLadder](../Model/ResourceListOfPortfolioCashLadder.md)
 
 ### HTTP request headers
 
@@ -2278,11 +2278,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
 | **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeID |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto              the cash flows&#39; transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;Transaction/strategy/quantsignal\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto              the cash flows&#39; transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;Transaction/strategy/quantsignal\&quot;. |
 
 ### Return type
 
-[ResourceListOfPortfolioCashFlow](ResourceListOfPortfolioCashFlow.md)
+[ResourceListOfPortfolioCashFlow](../Model/ResourceListOfPortfolioCashFlow.md)
 
 ### HTTP request headers
 
@@ -2346,7 +2346,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfChangeHistory](ResourceListOfChangeHistory.md)
+[ResourceListOfChangeHistory](../Model/ResourceListOfChangeHistory.md)
 
 ### HTTP request headers
 
@@ -2410,11 +2410,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **transactionId** | **string** | path | **required** | The ID of the transaction. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective date and time or cut label to get the transaction settlement status.              This defaults to the current LUSID system time if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt date and time to get the transaction settlement status.               This defaults to return the latest status if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;SettlementInstruction&#39;, &#39;Instrument&#39; or &#39;Portfolio&#39; domains to decorate onto              settlement instructions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or &#39;SettlementInstruction/strategy/quantsignal&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;SettlementInstruction&#39;, &#39;Instrument&#39; or &#39;Portfolio&#39; domains to decorate onto              settlement instructions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or &#39;SettlementInstruction/strategy/quantsignal&#39;. |
 
 ### Return type
 
-[TransactionSettlementStatus](TransactionSettlementStatus.md)
+[TransactionSettlementStatus](../Model/TransactionSettlementStatus.md)
 
 ### HTTP request headers
 
@@ -2487,18 +2487,18 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **toTransactionDate** | **DateTimeOrCutLabel?** | query | optional | The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no upper bound if this is not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. |
 | **filter** | **string?** | query | optional | Expression with which to filter the result set.               For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;               For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto               transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or               &#39;Transaction/strategy/quantsignal&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto               transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or               &#39;Transaction/strategy/quantsignal&#39;. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing transactions from a previous call to GetTransactions. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. The current behaviour is               to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended               to populate this field to enable pagination. |
 | **showCancelledTransactions** | **bool?** | query | optional | Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 | **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. |
 
 ### Return type
 
-[VersionedResourceListOfTransaction](VersionedResourceListOfTransaction.md)
+[VersionedResourceListOfTransaction](../Model/VersionedResourceListOfTransaction.md)
 
 ### HTTP request headers
 
@@ -2576,7 +2576,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfTransaction](ResourceListOfTransaction.md)
+[ResourceListOfTransaction](../Model/ResourceListOfTransaction.md)
 
 ### HTTP request headers
 
@@ -2644,11 +2644,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing custodian accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.              These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. |
 
 ### Return type
 
-[PagedResourceListOfCustodianAccount](PagedResourceListOfCustodianAccount.md)
+[PagedResourceListOfCustodianAccount](../Model/PagedResourceListOfCustodianAccount.md)
 
 ### HTTP request headers
 
@@ -2716,7 +2716,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfHoldingsAdjustmentHeader](ResourceListOfHoldingsAdjustmentHeader.md)
+[ResourceListOfHoldingsAdjustmentHeader](../Model/ResourceListOfHoldingsAdjustmentHeader.md)
 
 ### HTTP request headers
 
@@ -2789,14 +2789,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | The expression to filter out settlement instructions |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the settlement instructions. Defaults to return the latest if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;SettlementInstruction&#39;, &#39;Instrument&#39; or &#39;Portfolio&#39; domains to decorate onto              settlement instructions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or &#39;SettlementInstruction/strategy/quantsignal&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;SettlementInstruction&#39;, &#39;Instrument&#39; or &#39;Portfolio&#39; domains to decorate onto              settlement instructions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or &#39;SettlementInstruction/strategy/quantsignal&#39;. |
 | **timelineScope** | **string?** | query | optional | The scope of the Timeline. |
 | **timelineCode** | **string?** | query | optional | The code of the Timeline. This can optionally include a colon followed by the Closed Period ID to use at the head of the timeline, for a timeline with unconfirmed periods. |
 | **closedPeriodId** | **string?** | query | optional | The closed period ID. If this is specified, both timelineScope and timelineCode must be specified. Either closedPeriodId or effectiveAt can be used with a Timeline. |
 
 ### Return type
 
-[VersionedResourceListOfTransactionSettlementInstruction](VersionedResourceListOfTransactionSettlementInstruction.md)
+[VersionedResourceListOfTransactionSettlementInstruction](../Model/VersionedResourceListOfTransactionSettlementInstruction.md)
 
 ### HTTP request headers
 
@@ -2855,12 +2855,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the              scope this uniquely identifies the transaction portfolio. |
-| **operation** | [List&lt;Operation&gt;](Operation.md) | body | **required** | The patch document. |
+| **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The patch document. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which the updated or inserted details should become valid.              Defaults to the current LUSID system datetime if not specified.              Note that this will affect all bitemporal fields (eg: SettlementConfiguration) in the request (but will not be used for any              perpetual fields). When patching a bitemporal field, the field will be updated from the              effectiveAt onwards and until the end of effective time. |
 
 ### Return type
 
-[PortfolioDetails](PortfolioDetails.md)
+[PortfolioDetails](../Model/PortfolioDetails.md)
 
 ### HTTP request headers
 
@@ -2923,8 +2923,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
-| **transactionRequest** | [TransactionRequest](TransactionRequest.md) | body | **required** | The transaction to be previewed. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto              the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;Transaction/strategy/quantsignal\&quot;. |
+| **transactionRequest** | [TransactionRequest](../Model/TransactionRequest.md) | body | **required** | The transaction to be previewed. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto              the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;Transaction/strategy/quantsignal\&quot;. |
 | **showCancelledTransactions** | **bool?** | query | optional | Option to specify whether to include previous versions of an amended transaction in the response.              Defaults to False if not specified. |
 | **preserveProperties** | **bool?** | query | optional | If the preview transaction is an amendment to an existing transaction, then setting this to true will carry forward any unmodified properties from the earlier version. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
@@ -2932,7 +2932,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfOutputTransaction](ResourceListOfOutputTransaction.md)
+[ResourceListOfOutputTransaction](../Model/ResourceListOfOutputTransaction.md)
 
 ### HTTP request headers
 
@@ -2998,11 +2998,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **instrumentIdentifierValue** | **string** | query | **required** | The value for the given instrument identifier. |
 | **fromEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.              There is no lower bound if this is not specified. |
 | **reResolve** | **bool?** | query | optional | When set to true, instrument resolution will be attempted for all transactions and holdings for the given identifier and date range.              When set to false (default behaviour), instrument resolution will only be attempted for those transactions and holdings that were previously unresolved. Default: `false` |
-| **requestBody** | [Dictionary&lt;string, string&gt;?](string.md) | body | optional | The dictionary with the instrument identifiers to be updated on the             transaction and holdings. |
+| **requestBody** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | body | optional | The dictionary with the instrument identifiers to be updated on the             transaction and holdings. |
 
 ### Return type
 
-[UpsertPortfolioTransactionsResponse](UpsertPortfolioTransactionsResponse.md)
+[UpsertPortfolioTransactionsResponse](../Model/UpsertPortfolioTransactionsResponse.md)
 
 ### HTTP request headers
 
@@ -3065,14 +3065,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
 | **effectiveAt** | **DateTimeOrCutLabel** | query | **required** | The effective datetime or cut label at which the holdings should be set to the provided targets. |
-| **adjustHoldingRequest** | [List&lt;AdjustHoldingRequest&gt;](AdjustHoldingRequest.md) | body | **required** | The complete set of target holdings for the transaction portfolio. |
-| **reconciliationMethods** | [List&lt;string&gt;?](string.md) | query | optional | Optional parameter for specifying a reconciliation method: e.g. FxForward. |
+| **adjustHoldingRequest** | [List&lt;AdjustHoldingRequest&gt;](../Model/AdjustHoldingRequest.md) | body | **required** | The complete set of target holdings for the transaction portfolio. |
+| **reconciliationMethods** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional parameter for specifying a reconciliation method: e.g. FxForward. |
 | **overrideMovementName** | **string?** | query | optional | Optional parameter to override movement name for the set holdings. |
 | **overrideOffsetMovementName** | **string?** | query | optional | Optional parameter will create an additional offset movement for the set holdings with this new name and transaction type: CarryAsPnl |
 
 ### Return type
 
-[AdjustHolding](AdjustHolding.md)
+[AdjustHolding](../Model/AdjustHolding.md)
 
 ### HTTP request headers
 
@@ -3130,11 +3130,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Transaction Portfolio. |
 | **code** | **string** | path | **required** | The code of the Transaction Portfolio. Together with the scope this uniquely identifies              the Transaction Portfolios. |
-| **custodianAccountRequest** | [List&lt;CustodianAccountRequest&gt;](CustodianAccountRequest.md) | body | **required** | A list of Custodian Accounts to be created or updated. |
+| **custodianAccountRequest** | [List&lt;CustodianAccountRequest&gt;](../Model/CustodianAccountRequest.md) | body | **required** | A list of Custodian Accounts to be created or updated. |
 
 ### Return type
 
-[CustodianAccountsUpsertResponse](CustodianAccountsUpsertResponse.md)
+[CustodianAccountsUpsertResponse](../Model/CustodianAccountsUpsertResponse.md)
 
 ### HTTP request headers
 
@@ -3196,11 +3196,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the Transaction Portfolios to update or insert the properties onto. Together with the scope this uniquely identifies the Transaction Portfolios. |
 | **custodianAccountScope** | **string** | path | **required** | The scope of the Custodian Account to update or insert the properties onto. |
 | **custodianAccountCode** | **string** | path | **required** | The unique ID of the custodian account to create or update properties for. |
-| **requestBody** | [Dictionary&lt;string, Property&gt;?](Property.md) | body | optional | The properties to be updated or inserted onto the Transaction Portfolio. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;CustodianAccount/Manager/Id\&quot;. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;?](../Model/Property.md) | body | optional | The properties to be updated or inserted onto the Transaction Portfolio. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;CustodianAccount/Manager/Id\&quot;. |
 
 ### Return type
 
-[CustodianAccountProperties](CustodianAccountProperties.md)
+[CustodianAccountProperties](../Model/CustodianAccountProperties.md)
 
 ### HTTP request headers
 
@@ -3259,12 +3259,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the               scope this uniquely identifies the transaction portfolio. |
-| **createPortfolioDetails** | [CreatePortfolioDetails](CreatePortfolioDetails.md) | body | **required** | The details to create or update for the specified transaction portfolio. |
+| **createPortfolioDetails** | [CreatePortfolioDetails](../Model/CreatePortfolioDetails.md) | body | **required** | The details to create or update for the specified transaction portfolio. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which the updated or inserted details should become valid.               Defaults to the current LUSID system datetime if not specified. |
 
 ### Return type
 
-[PortfolioDetails](PortfolioDetails.md)
+[PortfolioDetails](../Model/PortfolioDetails.md)
 
 ### HTTP request headers
 
@@ -3322,11 +3322,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio. |
 | **code** | **string** | path | **required** | The code of the portfolio. |
-| **settlementInstructionRequest** | [List&lt;SettlementInstructionRequest&gt;](SettlementInstructionRequest.md) | body | **required** | The definition of the settlement instruction. |
+| **settlementInstructionRequest** | [List&lt;SettlementInstructionRequest&gt;](../Model/SettlementInstructionRequest.md) | body | **required** | The definition of the settlement instruction. |
 
 ### Return type
 
-[ResourceListOfTransactionSettlementInstruction](ResourceListOfTransactionSettlementInstruction.md)
+[ResourceListOfTransactionSettlementInstruction](../Model/ResourceListOfTransactionSettlementInstruction.md)
 
 ### HTTP request headers
 
@@ -3386,11 +3386,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
 | **transactionId** | **string** | path | **required** | The unique ID of the transaction to create or update properties for. |
-| **requestBody** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | body | **required** | The properties and their associated values to create or update. |
+| **requestBody** | [Dictionary&lt;string, PerpetualProperty&gt;](../Model/PerpetualProperty.md) | body | **required** | The properties and their associated values to create or update. |
 
 ### Return type
 
-[UpsertTransactionPropertiesResponse](UpsertTransactionPropertiesResponse.md)
+[UpsertTransactionPropertiesResponse](../Model/UpsertTransactionPropertiesResponse.md)
 
 ### HTTP request headers
 
@@ -3451,14 +3451,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
-| **transactionRequest** | [List&lt;TransactionRequest&gt;](TransactionRequest.md) | body | **required** | A list of transactions to be created or updated. |
+| **transactionRequest** | [List&lt;TransactionRequest&gt;](../Model/TransactionRequest.md) | body | **required** | A list of transactions to be created or updated. |
 | **preserveProperties** | **bool?** | query | optional | If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. Default: `true` |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 
 ### Return type
 
-[UpsertPortfolioTransactionsResponse](UpsertPortfolioTransactionsResponse.md)
+[UpsertPortfolioTransactionsResponse](../Model/UpsertPortfolioTransactionsResponse.md)
 
 ### HTTP request headers
 
@@ -3522,7 +3522,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
 | **instrumentEventId** | **string** | query | **required** | The ID of the instrument event whose virtual transactions should be overridden. |
-| **transactionRequest** | [List&lt;TransactionRequest&gt;](TransactionRequest.md) | body | **required** | A list of transactions to replace the virtual transactions generated by the instrument event. |
+| **transactionRequest** | [List&lt;TransactionRequest&gt;](../Model/TransactionRequest.md) | body | **required** | A list of transactions to replace the virtual transactions generated by the instrument event. |
 | **portfolioEffectiveAt** | **string?** | query | optional | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. |
 | **preserveProperties** | **bool?** | query | optional | If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. Default: `true` |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
@@ -3530,7 +3530,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[OverrideVirtualTransactionsResponse](OverrideVirtualTransactionsResponse.md)
+[OverrideVirtualTransactionsResponse](../Model/OverrideVirtualTransactionsResponse.md)
 
 ### HTTP request headers
 

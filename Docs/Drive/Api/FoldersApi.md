@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createFolder** | [CreateFolder](CreateFolder.md) | body | **required** | A CreateFolder object that defines the name and path of the new folder |
+| **createFolder** | [CreateFolder](../Model/CreateFolder.md) | body | **required** | A CreateFolder object that defines the name and path of the new folder |
 
 ### Return type
 
-[StorageObject](StorageObject.md)
+[StorageObject](../Model/StorageObject.md)
 
 ### HTTP request headers
 
@@ -188,7 +188,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[StorageObject](StorageObject.md)
+[StorageObject](../Model/StorageObject.md)
 
 ### HTTP request headers
 
@@ -248,14 +248,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | Unique ID of the folder |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing contents from a previous call to list contents.             This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields             must not have changed since the original request. Also, if set, a start value cannot be provided. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order. |
 | **start** | **int?** | query | optional | When paginating, skip this number of results. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Default: `&quot;&quot;` |
 
 ### Return type
 
-[PagedResourceListOfStorageObject](PagedResourceListOfStorageObject.md)
+[PagedResourceListOfStorageObject](../Model/PagedResourceListOfStorageObject.md)
 
 ### HTTP request headers
 
@@ -313,14 +313,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **page** | **string?** | query | optional | The pagination token to use to continue listing contents from a previous call to list contents.             This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields             must not have changed since the original request. Also, if set, a start value cannot be provided. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order. |
 | **start** | **int?** | query | optional | When paginating, skip this number of results. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Default: `&quot;true&quot;` |
 
 ### Return type
 
-[PagedResourceListOfStorageObject](PagedResourceListOfStorageObject.md)
+[PagedResourceListOfStorageObject](../Model/PagedResourceListOfStorageObject.md)
 
 ### HTTP request headers
 
@@ -376,13 +376,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | Unique ID of the folder where the files should be moved |
-| **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | Enumerable of unique IDs of files that should be moved |
+| **requestBody** | [List&lt;string&gt;](../Model/string.md) | body | **required** | Enumerable of unique IDs of files that should be moved |
 | **overwrite** | **bool?** | query | optional | True if the destination has file with same name if should be overwritten Default: `false` |
 | **deleteSource** | **bool?** | query | optional | If true after moving the original file is deleted Default: `false` |
 
 ### Return type
 
-[PagedResourceListOfStorageObject](PagedResourceListOfStorageObject.md)
+[PagedResourceListOfStorageObject](../Model/PagedResourceListOfStorageObject.md)
 
 ### HTTP request headers
 
@@ -438,11 +438,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | Unique ID of the folder |
-| **updateFolder** | [UpdateFolder](UpdateFolder.md) | body | **required** | An UpdateFolder object that defines the new name or path of the folder |
+| **updateFolder** | [UpdateFolder](../Model/UpdateFolder.md) | body | **required** | An UpdateFolder object that defines the new name or path of the folder |
 
 ### Return type
 
-[StorageObject](StorageObject.md)
+[StorageObject](../Model/StorageObject.md)
 
 ### HTTP request headers
 

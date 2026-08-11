@@ -79,11 +79,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope in which to create the scenario |
-| **createScenarioFromTemplateRequest** | [CreateScenarioFromTemplateRequest](CreateScenarioFromTemplateRequest.md) | body | **required** | The template, code and parameters to create the scenario from |
+| **createScenarioFromTemplateRequest** | [CreateScenarioFromTemplateRequest](../Model/CreateScenarioFromTemplateRequest.md) | body | **required** | The template, code and parameters to create the scenario from |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -143,7 +143,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AnnulSingleStructuredDataResponse](AnnulSingleStructuredDataResponse.md)
+[AnnulSingleStructuredDataResponse](../Model/AnnulSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -205,7 +205,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetScenarioResponse](GetScenarioResponse.md)
+[GetScenarioResponse](../Model/GetScenarioResponse.md)
 
 ### HTTP request headers
 
@@ -271,7 +271,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfVersion](PagedResourceListOfVersion.md)
+[PagedResourceListOfVersion](../Model/PagedResourceListOfVersion.md)
 
 ### HTTP request headers
 
@@ -337,7 +337,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfGetScenarioResponse](PagedResourceListOfGetScenarioResponse.md)
+[PagedResourceListOfGetScenarioResponse](../Model/PagedResourceListOfGetScenarioResponse.md)
 
 ### HTTP request headers
 
@@ -391,11 +391,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **scenarioPreviewRequest** | [ScenarioPreviewRequest](ScenarioPreviewRequest.md) | body | **required** | The recipe, portfolios, effective date and scenario (stored reference or inline shifts) to preview |
+| **scenarioPreviewRequest** | [ScenarioPreviewRequest](../Model/ScenarioPreviewRequest.md) | body | **required** | The recipe, portfolios, effective date and scenario (stored reference or inline shifts) to preview |
 
 ### Return type
 
-[ScenarioPreviewResponse](ScenarioPreviewResponse.md)
+[ScenarioPreviewResponse](../Model/ScenarioPreviewResponse.md)
 
 ### HTTP request headers
 
@@ -449,11 +449,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertScenarioRequest** | [UpsertScenarioRequest](UpsertScenarioRequest.md) | body | **required** | The Scenario to update or insert |
+| **upsertScenarioRequest** | [UpsertScenarioRequest](../Model/UpsertScenarioRequest.md) | body | **required** | The Scenario to update or insert |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 

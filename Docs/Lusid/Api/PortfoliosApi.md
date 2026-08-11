@@ -104,13 +104,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, BatchUpsertPortfolioAccessMetadataRequest&gt;](BatchUpsertPortfolioAccessMetadataRequest.md) | body | **required** | The Access Metadata Rules to upsert and the Portfolio identifiers to upsert for |
+| **requestBody** | [Dictionary&lt;string, BatchUpsertPortfolioAccessMetadataRequest&gt;](../Model/BatchUpsertPortfolioAccessMetadataRequest.md) | body | **required** | The Access Metadata Rules to upsert and the Portfolio identifiers to upsert for |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The date these rules will be effective from |
 | **effectiveUntil** | **DateTimeOrCutLabel?** | query | optional | The effective date until which the Access Metadata is valid. If not supplied, this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata |
 
 ### Return type
 
-[BatchUpsertPortfolioAccessMetadataResponse](BatchUpsertPortfolioAccessMetadataResponse.md)
+[BatchUpsertPortfolioAccessMetadataResponse](../Model/BatchUpsertPortfolioAccessMetadataResponse.md)
 
 ### HTTP request headers
 
@@ -174,7 +174,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -240,7 +240,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -300,7 +300,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -359,12 +359,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio. |
 | **code** | **string** | path | **required** | The code of the portfolio. Together with the scope this uniquely identifies the portfolio. |
-| **propertyKeys** | [List&lt;string&gt;](string.md) | query | **required** | The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. |
+| **propertyKeys** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -434,7 +434,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -493,12 +493,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Portfolio. |
 | **code** | **string** | path | **required** | The code of the  Portfolio. |
-| **aggregatedReturnsDispersionRequest** | [AggregatedReturnsDispersionRequest](AggregatedReturnsDispersionRequest.md) | body | **required** | The request used in the AggregatedReturnsDispersionMetric. |
+| **aggregatedReturnsDispersionRequest** | [AggregatedReturnsDispersionRequest](../Model/AggregatedReturnsDispersionRequest.md) | body | **required** | The request used in the AggregatedReturnsDispersionMetric. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Returns. Defaults to the latest. |
 
 ### Return type
 
-[CompositeDispersionResponse](CompositeDispersionResponse.md)
+[CompositeDispersionResponse](../Model/CompositeDispersionResponse.md)
 
 ### HTTP request headers
 
@@ -559,14 +559,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Portfolio. |
 | **code** | **string** | path | **required** | The code of the  Portfolio. |
-| **compositeBreakdownRequest** | [CompositeBreakdownRequest](CompositeBreakdownRequest.md) | body | **required** | The request used in the GetCompositeBreakdown. |
+| **compositeBreakdownRequest** | [CompositeBreakdownRequest](../Model/CompositeBreakdownRequest.md) | body | **required** | The request used in the GetCompositeBreakdown. |
 | **fromEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The start date from which to calculate the Returns. |
 | **toEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The end date for which to calculate the Returns. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Returns. Defaults to the latest. |
 
 ### Return type
 
-[CompositeBreakdownResponse](CompositeBreakdownResponse.md)
+[CompositeBreakdownResponse](../Model/CompositeBreakdownResponse.md)
 
 ### HTTP request headers
 
@@ -638,7 +638,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[InstrumentEventInstruction](InstrumentEventInstruction.md)
+[InstrumentEventInstruction](../Model/InstrumentEventInstruction.md)
 
 ### HTTP request headers
 
@@ -701,12 +701,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the portfolio. Together with the scope this uniquely identifies the portfolio. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the format              {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 
 ### Return type
 
-[Portfolio](Portfolio.md)
+[Portfolio](../Model/Portfolio.md)
 
 ### HTTP request headers
 
@@ -784,13 +784,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **compositeMethod** | **string?** | query | optional | The method used to calculate the Portfolio performance. Available values: Equal, Asset. |
 | **period** | **string?** | query | optional | The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. |
 | **outputFrequency** | **string?** | query | optional | The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. |
-| **metrics** | [List&lt;string&gt;?](string.md) | query | optional | Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. |
+| **metrics** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Returns. Defaults to the latest. |
 | **alternativeIncDate** | **DateTimeOrCutLabel?** | query | optional | The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. |
 
 ### Return type
 
-[ResourceListOfAggregatedReturn](ResourceListOfAggregatedReturn.md)
+[ResourceListOfAggregatedReturn](../Model/ResourceListOfAggregatedReturn.md)
 
 ### HTTP request headers
 
@@ -851,14 +851,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Portfolio. |
 | **code** | **string** | path | **required** | The code of the  Portfolio. |
-| **aggregatedReturnsRequest** | [AggregatedReturnsRequest](AggregatedReturnsRequest.md) | body | **required** | The request used in the AggregatedReturns. |
+| **aggregatedReturnsRequest** | [AggregatedReturnsRequest](../Model/AggregatedReturnsRequest.md) | body | **required** | The request used in the AggregatedReturns. |
 | **fromEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The start date from which to calculate the Returns. |
 | **toEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The end date for which to calculate the Returns. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Returns. Defaults to the latest. |
 
 ### Return type
 
-[AggregatedReturnsResponse](AggregatedReturnsResponse.md)
+[AggregatedReturnsResponse](../Model/AggregatedReturnsResponse.md)
 
 ### HTTP request headers
 
@@ -928,7 +928,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfProcessedCommand](ResourceListOfProcessedCommand.md)
+[ResourceListOfProcessedCommand](../Model/ResourceListOfProcessedCommand.md)
 
 ### HTTP request headers
 
@@ -1056,7 +1056,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PortfolioProperties](PortfolioProperties.md)
+[PortfolioProperties](../Model/PortfolioProperties.md)
 
 ### HTTP request headers
 
@@ -1119,7 +1119,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio. |
 | **code** | **string** | path | **required** | The code of the portfolio. Together with the scope this uniquely identifies the portfolio. |
-| **propertyKeys** | [List&lt;string&gt;](string.md) | query | **required** | The property keys of the properties whose history to show. These must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **propertyKeys** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The property keys of the properties whose history to show. These must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
 | **portfolioEffectiveAt** | **string?** | query | optional | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. |
 | **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. |
@@ -1128,7 +1128,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPropertyIntervalTimeSeries](ResourceListOfPropertyIntervalTimeSeries.md)
+[ResourceListOfPropertyIntervalTimeSeries](../Model/ResourceListOfPropertyIntervalTimeSeries.md)
 
 ### HTTP request headers
 
@@ -1200,7 +1200,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPropertyInterval](ResourceListOfPropertyInterval.md)
+[ResourceListOfPropertyInterval](../Model/ResourceListOfPropertyInterval.md)
 
 ### HTTP request headers
 
@@ -1264,11 +1264,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve relations. Defaults to returning the latest LUSID AsAt time if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the relations. Provide a null or empty string for this field until further notice. |
-| **identifierTypes** | [List&lt;string&gt;?](string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. |
+| **identifierTypes** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. |
 
 ### Return type
 
-[ResourceListOfRelation](ResourceListOfRelation.md)
+[ResourceListOfRelation](../Model/ResourceListOfRelation.md)
 
 ### HTTP request headers
 
@@ -1332,11 +1332,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve relationships. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve relationships. Defaults to returning the latest LUSID AsAt time if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the relationships. Provide a null or empty string for this field until further notice. |
-| **identifierTypes** | [List&lt;string&gt;?](string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. |
+| **identifierTypes** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. |
 
 ### Return type
 
-[ResourceListOfRelationship](ResourceListOfRelationship.md)
+[ResourceListOfRelationship](../Model/ResourceListOfRelationship.md)
 
 ### HTTP request headers
 
@@ -1408,7 +1408,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPerformanceReturn](ResourceListOfPerformanceReturn.md)
+[ResourceListOfPerformanceReturn](../Model/ResourceListOfPerformanceReturn.md)
 
 ### HTTP request headers
 
@@ -1474,7 +1474,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;AccessMetadataValue&gt;](AccessMetadataValue.md)
+[List&lt;AccessMetadataValue&gt;](../Model/AccessMetadataValue.md)
 
 ### HTTP request headers
 
@@ -1545,14 +1545,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing instructions; this value is returned from the previous call.              If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **timelineScope** | **string?** | query | optional | The scope of the Timeline, used to override the AsAt, and fetch post close activity data.              If this is provided, timelineCode must also be provided. |
 | **timelineCode** | **string?** | query | optional | The code of the Timeline, used to override the AsAt, and fetch post close activity data.              If this is provided, timelineScope must also be provided. |
 | **closedPeriodId** | **string?** | query | optional | The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and fetch post close activity data.              If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period. |
 
 ### Return type
 
-[PagedResourceListOfInstrumentEventInstruction](PagedResourceListOfInstrumentEventInstruction.md)
+[PagedResourceListOfInstrumentEventInstruction](../Model/PagedResourceListOfInstrumentEventInstruction.md)
 
 ### HTTP request headers
 
@@ -1620,7 +1620,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfProperty](ResourceListOfProperty.md)
+[ResourceListOfProperty](../Model/ResourceListOfProperty.md)
 
 ### HTTP request headers
 
@@ -1687,14 +1687,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing portfolios; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **query** | **string?** | query | optional | Expression specifying the criteria that the returned portfolios must meet. For example, to see which              portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,              specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 
 ### Return type
 
-[ResourceListOfPortfolio](ResourceListOfPortfolio.md)
+[ResourceListOfPortfolio](../Model/ResourceListOfPortfolio.md)
 
 ### HTTP request headers
 
@@ -1762,13 +1762,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 
 ### Return type
 
-[ResourceListOfPortfolio](ResourceListOfPortfolio.md)
+[ResourceListOfPortfolio](../Model/ResourceListOfPortfolio.md)
 
 ### HTTP request headers
 
@@ -1826,11 +1826,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio. |
 | **code** | **string** | path | **required** | The code of the portfolio. Together with the              scope this uniquely identifies the portfolio. |
-| **operation** | [List&lt;Operation&gt;](Operation.md) | body | **required** | The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902. |
+| **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902. |
 
 ### Return type
 
-[Portfolio](Portfolio.md)
+[Portfolio](../Model/Portfolio.md)
 
 ### HTTP request headers
 
@@ -1890,7 +1890,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Portfolio Access Metadata Rule. |
 | **code** | **string** | path | **required** | Portfolio code |
-| **accessMetadataOperation** | [List&lt;AccessMetadataOperation&gt;](AccessMetadataOperation.md) | body | **required** | The Json Patch document |
+| **accessMetadataOperation** | [List&lt;AccessMetadataOperation&gt;](../Model/AccessMetadataOperation.md) | body | **required** | The Json Patch document |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The date this rule will effective from |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata |
 
@@ -1955,12 +1955,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio. |
 | **code** | **string** | path | **required** | The code of the portfolio. Together with the scope this uniquely identifies the portfolio. |
-| **updatePortfolioRequest** | [UpdatePortfolioRequest](UpdatePortfolioRequest.md) | body | **required** | The updated portfolio definition. |
+| **updatePortfolioRequest** | [UpdatePortfolioRequest](../Model/UpdatePortfolioRequest.md) | body | **required** | The updated portfolio definition. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to update the definition. Defaults to the current               LUSID system datetime if not specified. |
 
 ### Return type
 
-[Portfolio](Portfolio.md)
+[Portfolio](../Model/Portfolio.md)
 
 ### HTTP request headers
 
@@ -2021,12 +2021,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the portfolio. |
 | **code** | **string** | path | **required** | The code of the portfolio. Together with the scope this uniquely identifies the portfolio. |
 | **successMode** | **string** | query | **required** | Whether the batch request should fail atomically or in a partial fashion - allowed values: Atomic, Partial (default) Default: `&quot;Partial&quot;` |
-| **requestBody** | [Dictionary&lt;string, InstrumentEventInstructionRequest&gt;](InstrumentEventInstructionRequest.md) | body | **required** | The instructions to be upserted to the portfolio. |
+| **requestBody** | [Dictionary&lt;string, InstrumentEventInstructionRequest&gt;](../Model/InstrumentEventInstructionRequest.md) | body | **required** | The instructions to be upserted to the portfolio. |
 | **portfolioEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective date at which the portfolio will be resolved. Defaults to current time if not specified. |
 
 ### Return type
 
-[InstrumentEventInstructionsResponse](InstrumentEventInstructionsResponse.md)
+[InstrumentEventInstructionsResponse](../Model/InstrumentEventInstructionsResponse.md)
 
 ### HTTP request headers
 
@@ -2088,13 +2088,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope to use when updating or inserting the Portfolio Access Metadata Rule. |
 | **code** | **string** | path | **required** | Portfolio code |
 | **metadataKey** | **string** | path | **required** | Key of the access metadata to upsert |
-| **upsertPortfolioAccessMetadataRequest** | [UpsertPortfolioAccessMetadataRequest](UpsertPortfolioAccessMetadataRequest.md) | body | **required** | The Portfolio Access Metadata Rule to update or insert |
+| **upsertPortfolioAccessMetadataRequest** | [UpsertPortfolioAccessMetadataRequest](../Model/UpsertPortfolioAccessMetadataRequest.md) | body | **required** | The Portfolio Access Metadata Rule to update or insert |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The date this rule will effective from |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata |
 
 ### Return type
 
-[ResourceListOfAccessMetadataValueOf](ResourceListOfAccessMetadataValueOf.md)
+[ResourceListOfAccessMetadataValueOf](../Model/ResourceListOfAccessMetadataValueOf.md)
 
 ### HTTP request headers
 
@@ -2152,11 +2152,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio. |
 | **code** | **string** | path | **required** | The code of the portfolio. Together with the scope this uniquely identifies the portfolio. |
-| **requestBody** | [Dictionary&lt;string, Property&gt;](Property.md) | body | **required** | The properties to be created or updated. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;Portfolio/Manager/Id&#39;. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;](../Model/Property.md) | body | **required** | The properties to be created or updated. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;Portfolio/Manager/Id&#39;. |
 
 ### Return type
 
-[PortfolioProperties](PortfolioProperties.md)
+[PortfolioProperties](../Model/PortfolioProperties.md)
 
 ### HTTP request headers
 
@@ -2218,11 +2218,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the  Portfolio. |
 | **returnScope** | **string** | path | **required** | The scope of the Returns. |
 | **returnCode** | **string** | path | **required** | The code of the Returns. |
-| **performanceReturn** | [List&lt;PerformanceReturn&gt;](PerformanceReturn.md) | body | **required** | This contains the Returns which need to be upsert. |
+| **performanceReturn** | [List&lt;PerformanceReturn&gt;](../Model/PerformanceReturn.md) | body | **required** | This contains the Returns which need to be upsert. |
 
 ### Return type
 
-[UpsertReturnsResponse](UpsertReturnsResponse.md)
+[UpsertReturnsResponse](../Model/UpsertReturnsResponse.md)
 
 ### HTTP request headers
 

@@ -96,7 +96,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -164,7 +164,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -225,12 +225,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the person identifier type. |
 | **idTypeCode** | **string** | path | **required** | Code of the person identifier type. |
 | **code** | **string** | path | **required** | Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. |
-| **propertyKeys** | [List&lt;string&gt;](string.md) | query | **required** | The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. |
+| **propertyKeys** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -291,12 +291,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the person identifier type. |
 | **idTypeCode** | **string** | path | **required** | Code of the person identifier type. |
 | **code** | **string** | path | **required** | Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. |
-| **propertyKeys** | [List&lt;string&gt;](string.md) | query | **required** | The property keys of the person&#39;s properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. |
+| **propertyKeys** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The property keys of the person&#39;s properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -425,14 +425,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the person identifier type. |
 | **idTypeCode** | **string** | path | **required** | Code of the person identifier type. |
 | **code** | **string** | path | **required** | Code of the person under specified scope and code. This together with stated identifier type uniquely              identifies the person. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the person. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 
 ### Return type
 
-[Person](Person.md)
+[Person](../Model/Person.md)
 
 ### HTTP request headers
 
@@ -500,7 +500,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;AccessMetadataValue&gt;](AccessMetadataValue.md)
+[List&lt;AccessMetadataValue&gt;](../Model/AccessMetadataValue.md)
 
 ### HTTP request headers
 
@@ -572,7 +572,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPropertyInterval](ResourceListOfPropertyInterval.md)
+[ResourceListOfPropertyInterval](../Model/ResourceListOfPropertyInterval.md)
 
 ### HTTP request headers
 
@@ -638,11 +638,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the person&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the relations. Users should provide null or empty string for this field until further notice. |
-| **identifierTypes** | [List&lt;string&gt;?](string.md) | query | optional | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. |
+| **identifierTypes** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. |
 
 ### Return type
 
-[ResourceListOfRelation](ResourceListOfRelation.md)
+[ResourceListOfRelation](../Model/ResourceListOfRelation.md)
 
 ### HTTP request headers
 
@@ -708,11 +708,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter relationships. Users should provide null or empty string for this field until further notice. |
-| **identifierTypes** | [List&lt;string&gt;?](string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. |
+| **identifierTypes** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. |
 
 ### Return type
 
-[ResourceListOfRelationship](ResourceListOfRelationship.md)
+[ResourceListOfRelationship](../Model/ResourceListOfRelationship.md)
 
 ### HTTP request headers
 
@@ -777,12 +777,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.               For example, to filter on the display name, use \&quot;displayName eq &#39;John&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 
 ### Return type
 
-[ResourceListOfPerson](ResourceListOfPerson.md)
+[ResourceListOfPerson](../Model/ResourceListOfPerson.md)
 
 ### HTTP request headers
 
@@ -851,12 +851,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.               For example, to filter on the LUPID, use \&quot;lusidPersonId eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 
 ### Return type
 
-[PagedResourceListOfPerson](PagedResourceListOfPerson.md)
+[PagedResourceListOfPerson](../Model/PagedResourceListOfPerson.md)
 
 ### HTTP request headers
 
@@ -918,7 +918,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the person identifier. |
 | **idTypeCode** | **string** | path | **required** | Code of the person identifier. |
 | **code** | **string** | path | **required** | Code of the person under specified identifier type&#39;s scope and code. |
-| **accessMetadataOperation** | [List&lt;AccessMetadataOperation&gt;](AccessMetadataOperation.md) | body | **required** | The Json Patch document |
+| **accessMetadataOperation** | [List&lt;AccessMetadataOperation&gt;](../Model/AccessMetadataOperation.md) | body | **required** | The Json Patch document |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effectiveAt datetime at which to upsert the Access Metadata |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata |
 
@@ -984,11 +984,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the person identifier type. |
 | **idTypeCode** | **string** | path | **required** | Code of the person identifier type. |
 | **code** | **string** | path | **required** | Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. |
-| **setPersonIdentifiersRequest** | [SetPersonIdentifiersRequest](SetPersonIdentifiersRequest.md) | body | **required** | Request containing identifiers to set for the person. Identifiers not specified in request will not be changed. |
+| **setPersonIdentifiersRequest** | [SetPersonIdentifiersRequest](../Model/SetPersonIdentifiersRequest.md) | body | **required** | Request containing identifiers to set for the person. Identifiers not specified in request will not be changed. |
 
 ### Return type
 
-[Person](Person.md)
+[Person](../Model/Person.md)
 
 ### HTTP request headers
 
@@ -1048,11 +1048,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the person identifier type. |
 | **idTypeCode** | **string** | path | **required** | Code of the person identifier type. |
 | **code** | **string** | path | **required** | Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. |
-| **setPersonPropertiesRequest** | [SetPersonPropertiesRequest](SetPersonPropertiesRequest.md) | body | **required** | Request containing properties to set for the person. Properties not specified in request will not be changed. |
+| **setPersonPropertiesRequest** | [SetPersonPropertiesRequest](../Model/SetPersonPropertiesRequest.md) | body | **required** | Request containing properties to set for the person. Properties not specified in request will not be changed. |
 
 ### Return type
 
-[Person](Person.md)
+[Person](../Model/Person.md)
 
 ### HTTP request headers
 
@@ -1106,11 +1106,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertPersonRequest** | [UpsertPersonRequest](UpsertPersonRequest.md) | body | **required** | Request to create or update a person. |
+| **upsertPersonRequest** | [UpsertPersonRequest](../Model/UpsertPersonRequest.md) | body | **required** | Request to create or update a person. |
 
 ### Return type
 
-[Person](Person.md)
+[Person](../Model/Person.md)
 
 ### HTTP request headers
 
@@ -1174,13 +1174,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeCode** | **string** | path | **required** | Code of the person identifier. |
 | **code** | **string** | path | **required** | Code of the person under specified identifier type&#39;s scope and code. |
 | **metadataKey** | **string** | path | **required** | Key of the metadata entry to retrieve |
-| **upsertPersonAccessMetadataRequest** | [UpsertPersonAccessMetadataRequest](UpsertPersonAccessMetadataRequest.md) | body | **required** | The Person Access Metadata entry to upsert |
+| **upsertPersonAccessMetadataRequest** | [UpsertPersonAccessMetadataRequest](../Model/UpsertPersonAccessMetadataRequest.md) | body | **required** | The Person Access Metadata entry to upsert |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effectiveAt datetime at which to upsert the Access Metadata |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata |
 
 ### Return type
 
-[ResourceListOfAccessMetadataValueOf](ResourceListOfAccessMetadataValueOf.md)
+[ResourceListOfAccessMetadataValueOf](../Model/ResourceListOfAccessMetadataValueOf.md)
 
 ### HTTP request headers
 
@@ -1236,11 +1236,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **successMode** | **string** | query | **required** | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial |
-| **requestBody** | [Dictionary&lt;string, UpsertPersonRequest&gt;](UpsertPersonRequest.md) | body | **required** | A collection of requests to create or update Person(s). |
+| **requestBody** | [Dictionary&lt;string, UpsertPersonRequest&gt;](../Model/UpsertPersonRequest.md) | body | **required** | A collection of requests to create or update Person(s). |
 
 ### Return type
 
-[UpsertPersonsResponse](UpsertPersonsResponse.md)
+[UpsertPersonsResponse](../Model/UpsertPersonsResponse.md)
 
 ### HTTP request headers
 

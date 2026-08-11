@@ -74,7 +74,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[EventTypeSchema](EventTypeSchema.md)
+[EventTypeSchema](../Model/EventTypeSchema.md)
 
 ### HTTP request headers
 
@@ -127,7 +127,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[ResourceListOfEventTypeSchema](ResourceListOfEventTypeSchema.md)
+[ResourceListOfEventTypeSchema](../Model/ResourceListOfEventTypeSchema.md)
 
 ### HTTP request headers
 

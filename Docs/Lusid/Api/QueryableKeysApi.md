@@ -77,7 +77,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfQueryableKey](ResourceListOfQueryableKey.md)
+[ResourceListOfQueryableKey](../Model/ResourceListOfQueryableKey.md)
 
 ### HTTP request headers
 

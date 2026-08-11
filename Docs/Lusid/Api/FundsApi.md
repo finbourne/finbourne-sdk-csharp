@@ -125,12 +125,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataRequest** | [ValuationPointDataRequest](ValuationPointDataRequest.md) | body | **required** | The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state. |
+| **valuationPointDataRequest** | [ValuationPointDataRequest](../Model/ValuationPointDataRequest.md) | body | **required** | The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state. |
 | **navTypeCode** | **string?** | query | optional | When provided, accepts the Valuation Point of the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[AcceptEstimateValuationPointResponse](AcceptEstimateValuationPointResponse.md)
+[AcceptEstimateValuationPointResponse](../Model/AcceptEstimateValuationPointResponse.md)
 
 ### HTTP request headers
 
@@ -188,11 +188,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **allocationGroupDefinition** | [List&lt;AllocationGroupDefinition&gt;](AllocationGroupDefinition.md) | body | **required** | The definitions of the Allocation Groups to add to the Fund. |
+| **allocationGroupDefinition** | [List&lt;AllocationGroupDefinition&gt;](../Model/AllocationGroupDefinition.md) | body | **required** | The definitions of the Allocation Groups to add to the Fund. |
 
 ### Return type
 
-[Fund](Fund.md)
+[Fund](../Model/Fund.md)
 
 ### HTTP request headers
 
@@ -250,11 +250,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **seriesDefinitionRequest** | [List&lt;SeriesDefinitionRequest&gt;](SeriesDefinitionRequest.md) | body | **required** | The definitions of the Series to add. |
+| **seriesDefinitionRequest** | [List&lt;SeriesDefinitionRequest&gt;](../Model/SeriesDefinitionRequest.md) | body | **required** | The definitions of the Series to add. |
 
 ### Return type
 
-[Fund](Fund.md)
+[Fund](../Model/Fund.md)
 
 ### HTTP request headers
 
@@ -313,12 +313,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **feeRequest** | [FeeRequest](FeeRequest.md) | body | **required** | The Fee to create. |
+| **feeRequest** | [FeeRequest](../Model/FeeRequest.md) | body | **required** | The Fee to create. |
 | **navTypeCode** | **string?** | query | optional | When provided, creates the Fee against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[Fee](Fee.md)
+[Fee](../Model/Fee.md)
 
 ### HTTP request headers
 
@@ -374,11 +374,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
-| **fundRequest** | [FundRequest](FundRequest.md) | body | **required** | The definition of the Fund. |
+| **fundRequest** | [FundRequest](../Model/FundRequest.md) | body | **required** | The definition of the Fund. |
 
 ### Return type
 
-[Fund](Fund.md)
+[Fund](../Model/Fund.md)
 
 ### HTTP request headers
 
@@ -434,11 +434,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
-| **fundDefinitionRequest** | [FundDefinitionRequest](FundDefinitionRequest.md) | body | **required** | The definition of the Fund. |
+| **fundDefinitionRequest** | [FundDefinitionRequest](../Model/FundDefinitionRequest.md) | body | **required** | The definition of the Fund. |
 
 ### Return type
 
-[Fund](Fund.md)
+[Fund](../Model/Fund.md)
 
 ### HTTP request headers
 
@@ -497,12 +497,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **createValuationPointRequest** | [CreateValuationPointRequest](CreateValuationPointRequest.md) | body | **required** | The Valuation Point Estimate definition to create. |
+| **createValuationPointRequest** | [CreateValuationPointRequest](../Model/CreateValuationPointRequest.md) | body | **required** | The Valuation Point Estimate definition to create. |
 | **navTypeCode** | **string?** | query | optional | When provided, creates the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[ValuationPoint](ValuationPoint.md)
+[ValuationPoint](../Model/ValuationPoint.md)
 
 ### HTTP request headers
 
@@ -561,12 +561,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | The codes of the nav types to be deactivated. |
+| **requestBody** | [List&lt;string&gt;](../Model/string.md) | body | **required** | The codes of the nav types to be deactivated. |
 | **deleteMode** | **string?** | query | optional | The delete mode to use. Default value: Soft. Available values: Soft, Hard. |
 
 ### Return type
 
-[Fund](Fund.md)
+[Fund](../Model/Fund.md)
 
 ### HTTP request headers
 
@@ -630,7 +630,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -692,7 +692,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -752,7 +752,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -814,13 +814,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope is the unique identifier for the given Fund. |
 | **valuationPointCode** | **string** | query | **required** | The valuation point Code to delete the adjustment from |
-| **navActivityAdjustmentResponse** | [List&lt;NavActivityAdjustmentResponse&gt;](NavActivityAdjustmentResponse.md) | body | **required** | The request describing the Nav activity adjustments to delete from a specific valuation point and nav type |
+| **navActivityAdjustmentResponse** | [List&lt;NavActivityAdjustmentResponse&gt;](../Model/NavActivityAdjustmentResponse.md) | body | **required** | The request describing the Nav activity adjustments to delete from a specific valuation point and nav type |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 | **valuationPointCodeVariant** | **string?** | query | optional | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -886,7 +886,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -945,12 +945,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataRequest** | [ValuationPointDataRequest](ValuationPointDataRequest.md) | body | **required** | The details of the Valuation Point to mark as final. |
+| **valuationPointDataRequest** | [ValuationPointDataRequest](../Model/ValuationPointDataRequest.md) | body | **required** | The details of the Valuation Point to mark as final. |
 | **navTypeCode** | **string?** | query | optional | When provided, finalises the Valuation Point of the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[ValuationPointDataResponse](ValuationPointDataResponse.md)
+[ValuationPointDataResponse](../Model/ValuationPointDataResponse.md)
 
 ### HTTP request headers
 
@@ -1012,15 +1012,15 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the A2B data. This includes start and end dates. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the A2B data. This includes start and end dates. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B data. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
 
 ### Return type
 
-[VersionedResourceListOfFundA2BDataRecord](VersionedResourceListOfFundA2BDataRecord.md)
+[VersionedResourceListOfFundA2BDataRecord](../Model/VersionedResourceListOfFundA2BDataRecord.md)
 
 ### HTTP request headers
 
@@ -1082,15 +1082,15 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the A2B movements. This includes start and end dates. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the A2B movements. This includes start and end dates. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to resolve the fund and the timeline. Defaults              to return the latest version if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the A2B movements. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
 
 ### Return type
 
-[VersionedResourceListOfFundA2BMovementRecord](VersionedResourceListOfFundA2BMovementRecord.md)
+[VersionedResourceListOfFundA2BMovementRecord](../Model/VersionedResourceListOfFundA2BMovementRecord.md)
 
 ### HTTP request headers
 
@@ -1154,11 +1154,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **feeCode** | **string** | path | **required** | The code of the Fee. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the Fee properties. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Fee. Defaults to returning the latest version of the Fee if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Fee&#39; domain to decorate onto the Fee.              These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. If no properties are specified, then no properties will be returned. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Fee&#39; domain to decorate onto the Fee.              These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. If no properties are specified, then no properties will be returned. |
 
 ### Return type
 
-[Fee](Fee.md)
+[Fee](../Model/Fee.md)
 
 ### HTTP request headers
 
@@ -1224,7 +1224,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[FeeProperties](FeeProperties.md)
+[FeeProperties](../Model/FeeProperties.md)
 
 ### HTTP request headers
 
@@ -1286,11 +1286,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the Fund properties. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Fund definition. Defaults to returning the latest version of the Fund definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Fund&#39; domain to decorate onto the Fund.              These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Fund&#39; domain to decorate onto the Fund.              These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
 
 ### Return type
 
-[Fund](Fund.md)
+[Fund](../Model/Fund.md)
 
 ### HTTP request headers
 
@@ -1354,7 +1354,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[FundProperties](FundProperties.md)
+[FundProperties](../Model/FundProperties.md)
 
 ### HTTP request headers
 
@@ -1421,7 +1421,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
 | **holdingId** | **long** | path | **required** | The unique holding identifier |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the holdings.This can be a date, valuationPoint or a bookmark. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the holdings.This can be a date, valuationPoint or a bookmark. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 | **includeHistoric** | **bool?** | query | optional | If true, transactions from previously closed holdings are returned.              If false, only transactions from last time position is opened. Default: `false` |
 | **taxLotId** | **string?** | query | optional | Constrains the Holding Contributors to those which contributed to the specified tax lot. |
@@ -1432,7 +1432,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListOfHoldingContributor](VersionedResourceListOfHoldingContributor.md)
+[VersionedResourceListOfHoldingContributor](../Model/VersionedResourceListOfHoldingContributor.md)
 
 ### HTTP request headers
 
@@ -1496,17 +1496,17 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **singleValuationPointQueryParameters** | [SingleValuationPointQueryParameters](SingleValuationPointQueryParameters.md) | body | **required** | The arguments to use for querying the holdings. |
+| **singleValuationPointQueryParameters** | [SingleValuationPointQueryParameters](../Model/SingleValuationPointQueryParameters.md) | body | **required** | The arguments to use for querying the holdings. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the holdings of transaction portfolios in the Fund. Defaults              to return the latest version of the holdings if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot;,\&quot;CustodianAccount\&quot; or \&quot;LegalEntity\&quot; domain to decorate onto domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot;,\&quot;CustodianAccount\&quot; or \&quot;LegalEntity\&quot; domain to decorate onto domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. |
 | **byTaxlots** | **bool?** | query | optional | Whether to expand the holdings to return the underlying tax-lots. Defaults to False. |
 | **includeSettlementEventsAfterDays** | **int?** | query | optional | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt. |
 
 ### Return type
 
-[VersionedResourceListOfPortfolioHolding](VersionedResourceListOfPortfolioHolding.md)
+[VersionedResourceListOfPortfolioHolding](../Model/VersionedResourceListOfPortfolioHolding.md)
 
 ### HTTP request headers
 
@@ -1566,11 +1566,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
-| **fundValuationRequest** | [FundValuationRequest?](FundValuationRequest?.md) | body | optional | The request specifying the dates (or DiaryEntry) on which to calculate a set of valuation metrics. |
+| **fundValuationRequest** | [FundValuationRequest?](../Model/FundValuationRequest?.md) | body | optional | The request specifying the dates (or DiaryEntry) on which to calculate a set of valuation metrics. |
 
 ### Return type
 
-[ListAggregationResponse](ListAggregationResponse.md)
+[ListAggregationResponse](../Model/ListAggregationResponse.md)
 
 ### HTTP request headers
 
@@ -1630,13 +1630,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the Valuation Point data. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the Valuation Point data. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Fund definition. Defaults to returning the latest version of the Fund definition if not specified. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[ValuationPointDataResponse](ValuationPointDataResponse.md)
+[ValuationPointDataResponse](../Model/ValuationPointDataResponse.md)
 
 ### HTTP request headers
 
@@ -1701,18 +1701,18 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the Journal Entry Lines. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the Journal Entry Lines. |
 | **generalLedgerProfileCode** | **string?** | query | optional | The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve Journal Entry Lines. Defaults to returning the latest version if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Journal Entry Lines from a previous call to GetValuationPointJournalEntryLines. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the Journal Entry Lines. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the Journal Entry Lines. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[ValuationPointResourceListOfFundJournalEntryLine](ValuationPointResourceListOfFundJournalEntryLine.md)
+[ValuationPointResourceListOfFundJournalEntryLine](../Model/ValuationPointResourceListOfFundJournalEntryLine.md)
 
 ### HTTP request headers
 
@@ -1776,7 +1776,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for generating the PnL summary. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for generating the PnL summary. |
 | **generalLedgerProfileCode** | **string?** | query | optional | The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version              of each transaction if not specified. |
 | **filter** | **string?** | query | optional | \&quot;Expression to filter the result set.\&quot; |
@@ -1786,7 +1786,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ValuationPointResourceListOfPnlJournalEntryLine](ValuationPointResourceListOfPnlJournalEntryLine.md)
+[ValuationPointResourceListOfPnlJournalEntryLine](../Model/ValuationPointResourceListOfPnlJournalEntryLine.md)
 
 ### HTTP request headers
 
@@ -1848,7 +1848,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the quotes. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the quotes. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve quotes. Defaults to returning the latest version              of each quote if not specified. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing quotes from a previous call to GetValuationPointQuotes. |
@@ -1856,7 +1856,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ValuationPointResourceListOfAccountedQuote](ValuationPointResourceListOfAccountedQuote.md)
+[ValuationPointResourceListOfAccountedQuote](../Model/ValuationPointResourceListOfAccountedQuote.md)
 
 ### HTTP request headers
 
@@ -1924,12 +1924,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the transactions. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the transactions. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;              domain to decorate onto the transactions. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;              domain to decorate onto the transactions. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
@@ -1938,7 +1938,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ValuationPointResourceListOfAccountedTransaction](ValuationPointResourceListOfAccountedTransaction.md)
+[ValuationPointResourceListOfAccountedTransaction](../Model/ValuationPointResourceListOfAccountedTransaction.md)
 
 ### HTTP request headers
 
@@ -2004,19 +2004,19 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for generating the Trial Balance. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for generating the Trial Balance. |
 | **generalLedgerProfileCode** | **string?** | query | optional | The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Trial Balance.               Defaults to returning the latest version if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results by.               For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this number.               Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Trial Balances.               This token is returned from the previous call.               If a pagination token is provided, the filter, effectiveAt and asAt fields               must not have changed since the original request. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the TrialBalance. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the TrialBalance. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 | **excludeCleardownModule** | **bool?** | query | optional | If this is set to true, no Cleardown Module will be applied to the Trial Balance. Defaults to false. Default: `false` |
 
 ### Return type
 
-[ValuationPointResourceListOfTrialBalance](ValuationPointResourceListOfTrialBalance.md)
+[ValuationPointResourceListOfTrialBalance](../Model/ValuationPointResourceListOfTrialBalance.md)
 
 ### HTTP request headers
 
@@ -2079,16 +2079,16 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the unsettled transactions. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the unsettled transactions. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the report. Defaults to latest. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing from a previous call. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[ValuationPointResourceListOfUnsettledTransaction](ValuationPointResourceListOfUnsettledTransaction.md)
+[ValuationPointResourceListOfUnsettledTransaction](../Model/ValuationPointResourceListOfUnsettledTransaction.md)
 
 ### HTTP request headers
 
@@ -2157,12 +2157,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing fees; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the treatment, specify \&quot;treatment eq &#39;Monthly&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Fee&#39; domain to decorate onto each Fee.              These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Fee&#39; domain to decorate onto each Fee.              These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfFee](PagedResourceListOfFee.md)
+[PagedResourceListOfFee](../Model/PagedResourceListOfFee.md)
 
 ### HTTP request headers
 
@@ -2229,12 +2229,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Calendar Entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each item. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each item. |
 
 ### Return type
 
-[PagedResourceListOfFundCalendarEntry](PagedResourceListOfFundCalendarEntry.md)
+[PagedResourceListOfFundCalendarEntry](../Model/PagedResourceListOfFundCalendarEntry.md)
 
 ### HTTP request headers
 
@@ -2301,12 +2301,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Calendar Entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each item. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each item. |
 
 ### Return type
 
-[PagedResourceListOfFundCalendarEntries](PagedResourceListOfFundCalendarEntries.md)
+[PagedResourceListOfFundCalendarEntries](../Model/PagedResourceListOfFundCalendarEntries.md)
 
 ### HTTP request headers
 
@@ -2371,12 +2371,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Funds; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the Fund code, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Fund&#39; domain to decorate onto each Fund.              These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Fund&#39; domain to decorate onto each Fund.              These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfFund](PagedResourceListOfFund.md)
+[PagedResourceListOfFund](../Model/PagedResourceListOfFund.md)
 
 ### HTTP request headers
 
@@ -2450,7 +2450,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfNavActivityAdjustmentResponse](ResourceListOfNavActivityAdjustmentResponse.md)
+[ResourceListOfNavActivityAdjustmentResponse](../Model/ResourceListOfNavActivityAdjustmentResponse.md)
 
 ### HTTP request headers
 
@@ -2512,7 +2512,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the complex market data. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the complex market data. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve complex market data. Defaults to returning the latest version              of each item if not specified. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing complex market data from a previous call to ListValuationPointComplexMarketData. |
@@ -2520,7 +2520,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ValuationPointResourceListOfAccountedComplexMarketData](ValuationPointResourceListOfAccountedComplexMarketData.md)
+[ValuationPointResourceListOfAccountedComplexMarketData](../Model/ValuationPointResourceListOfAccountedComplexMarketData.md)
 
 ### HTTP request headers
 
@@ -2592,13 +2592,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing instruments; this              value is returned from the previous call. If a pagination token is provided, the filter,              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **instrumentPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto              instruments, or from any domain that supports relationships to decorate onto related entities.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **instrumentPropertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto              instruments, or from any domain that supports relationships to decorate onto related entities.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. |
 | **valuationPointCodeVariant** | **string?** | query | optional | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. |
 
 ### Return type
 
-[PagedResourceListOfValuationPointInstrument](PagedResourceListOfValuationPointInstrument.md)
+[PagedResourceListOfValuationPointInstrument](../Model/PagedResourceListOfValuationPointInstrument.md)
 
 ### HTTP request headers
 
@@ -2667,12 +2667,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Valuation Points; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results by.              For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each ValuationPoint.              These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/ValuationPoint/Id&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each ValuationPoint.              These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/ValuationPoint/Id&#39;. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[PagedResourceListOfValuationPointOverview](PagedResourceListOfValuationPointOverview.md)
+[PagedResourceListOfValuationPointOverview](../Model/PagedResourceListOfValuationPointOverview.md)
 
 ### HTTP request headers
 
@@ -2732,11 +2732,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
 | **feeCode** | **string** | path | **required** | The code of the Fee. |
-| **operation** | [List&lt;Operation&gt;](Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
+| **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
 
 ### Return type
 
-[Fee](Fee.md)
+[Fee](../Model/Fee.md)
 
 ### HTTP request headers
 
@@ -2794,11 +2794,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **operation** | [List&lt;Operation&gt;](Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
+| **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
 
 ### Return type
 
-[Fund](Fund.md)
+[Fund](../Model/Fund.md)
 
 ### HTTP request headers
 
@@ -2862,17 +2862,17 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **queryFundCashStatementParameters** | [QueryFundCashStatementParameters](QueryFundCashStatementParameters.md) | body | **required** | The query parameters specifying the diary entry period and display mode. |
+| **queryFundCashStatementParameters** | [QueryFundCashStatementParameters](../Model/QueryFundCashStatementParameters.md) | body | **required** | The query parameters specifying the diary entry period and display mode. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the cash statement. Defaults to the latest version if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to get the next page of results. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys to decorate onto the cash statement rows. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys to decorate onto the cash statement rows. |
 | **navTypeCode** | **string?** | query | optional | The code of the NAV type to use. Defaults to the primary NAV type if not specified. |
 
 ### Return type
 
-[ValuationPointResourceListOfFundCashStatementRow](ValuationPointResourceListOfFundCashStatementRow.md)
+[ValuationPointResourceListOfFundCashStatementRow](../Model/ValuationPointResourceListOfFundCashStatementRow.md)
 
 ### HTTP request headers
 
@@ -2936,17 +2936,17 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **queryFundCashStatementParameters** | [QueryFundCashStatementParameters](QueryFundCashStatementParameters.md) | body | **required** | The query parameters specifying the diary entry period and display mode. |
+| **queryFundCashStatementParameters** | [QueryFundCashStatementParameters](../Model/QueryFundCashStatementParameters.md) | body | **required** | The query parameters specifying the diary entry period and display mode. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the cash statement. Defaults to the latest version if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to get the next page of results. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys to decorate onto the cash statement rows. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys to decorate onto the cash statement rows. |
 | **navTypeCode** | **string?** | query | optional | The code of the NAV type to use. Defaults to the primary NAV type if not specified. |
 
 ### Return type
 
-[ValuationPointResourceListOfFundCashStatementLocalCurrency](ValuationPointResourceListOfFundCashStatementLocalCurrency.md)
+[ValuationPointResourceListOfFundCashStatementLocalCurrency](../Model/ValuationPointResourceListOfFundCashStatementLocalCurrency.md)
 
 ### HTTP request headers
 
@@ -3005,12 +3005,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **revertValuationPointDataRequest** | [RevertValuationPointDataRequest](RevertValuationPointDataRequest.md) | body | **required** | The revertValuationPointRequest which contains the Diary Entry code for the Final Valuation Point to move to Estimate status. |
+| **revertValuationPointDataRequest** | [RevertValuationPointDataRequest](../Model/RevertValuationPointDataRequest.md) | body | **required** | The revertValuationPointRequest which contains the Diary Entry code for the Final Valuation Point to move to Estimate status. |
 | **navTypeCode** | **string?** | query | optional | When provided, sets the status of the Valuation Point of the specified NAV Type to be Estimate.              Otherwise, the Primary NAV Type will be used. |
 
 ### Return type
 
-[ValuationPointDataResponse](ValuationPointDataResponse.md)
+[ValuationPointDataResponse](../Model/ValuationPointDataResponse.md)
 
 ### HTTP request headers
 
@@ -3068,11 +3068,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **setShareClassInstrumentsRequest** | [SetShareClassInstrumentsRequest](SetShareClassInstrumentsRequest.md) | body | **required** | The scopes and instrument identifiers for the instruments to be set. |
+| **setShareClassInstrumentsRequest** | [SetShareClassInstrumentsRequest](../Model/SetShareClassInstrumentsRequest.md) | body | **required** | The scopes and instrument identifiers for the instruments to be set. |
 
 ### Return type
 
-[Fund](Fund.md)
+[Fund](../Model/Fund.md)
 
 ### HTTP request headers
 
@@ -3131,12 +3131,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **updateValuationPointRequest** | [UpdateValuationPointRequest](UpdateValuationPointRequest.md) | body | **required** | The Valuation Point Estimate definition to upsert. |
+| **updateValuationPointRequest** | [UpdateValuationPointRequest](../Model/UpdateValuationPointRequest.md) | body | **required** | The Valuation Point Estimate definition to upsert. |
 | **navTypeCode** | **string?** | query | optional | When provided, upserts the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[ValuationPoint](ValuationPoint.md)
+[ValuationPoint](../Model/ValuationPoint.md)
 
 ### HTTP request headers
 
@@ -3196,12 +3196,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **upsertFundBookmarkRequest** | [UpsertFundBookmarkRequest](UpsertFundBookmarkRequest.md) | body | **required** | The bookmark definition to upsert. |
+| **upsertFundBookmarkRequest** | [UpsertFundBookmarkRequest](../Model/UpsertFundBookmarkRequest.md) | body | **required** | The bookmark definition to upsert. |
 | **navTypeCode** | **string?** | query | optional | When provided, upserts the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[FundCalendarEntry](FundCalendarEntry.md)
+[FundCalendarEntry](../Model/FundCalendarEntry.md)
 
 ### HTTP request headers
 
@@ -3260,12 +3260,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **upsertValuationPointRequest** | [UpsertValuationPointRequest](UpsertValuationPointRequest.md) | body | **required** | The Valuation Point Estimate definition to upsert. |
+| **upsertValuationPointRequest** | [UpsertValuationPointRequest](../Model/UpsertValuationPointRequest.md) | body | **required** | The Valuation Point Estimate definition to upsert. |
 | **navTypeCode** | **string?** | query | optional | When provided, upserts the Valuation Point against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 
 ### Return type
 
-[DiaryEntry](DiaryEntry.md)
+[DiaryEntry](../Model/DiaryEntry.md)
 
 ### HTTP request headers
 
@@ -3325,11 +3325,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
 | **feeCode** | **string** | path | **required** | The code of the Fee to update or insert the properties onto. |
-| **requestBody** | [Dictionary&lt;string, Property&gt;?](Property.md) | body | optional | The properties to be updated or inserted onto the Fee. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fee/Manager/Id\&quot;. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;?](../Model/Property.md) | body | optional | The properties to be updated or inserted onto the Fee. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fee/Manager/Id\&quot;. |
 
 ### Return type
 
-[FeeProperties](FeeProperties.md)
+[FeeProperties](../Model/FeeProperties.md)
 
 ### HTTP request headers
 
@@ -3387,11 +3387,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **requestBody** | [Dictionary&lt;string, Property&gt;?](Property.md) | body | optional | The properties to be updated or inserted onto the Fund. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fund/Manager/Id\&quot;. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;?](../Model/Property.md) | body | optional | The properties to be updated or inserted onto the Fund. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fund/Manager/Id\&quot;. |
 
 ### Return type
 
-[FundProperties](FundProperties.md)
+[FundProperties](../Model/FundProperties.md)
 
 ### HTTP request headers
 
@@ -3453,7 +3453,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope is the unique identifier for the given Fund. |
 | **valuationPointCode** | **string** | query | **required** | The valuation point Code to apply the adjustment to |
-| **navActivityAdjustment** | [List&lt;NavActivityAdjustment&gt;](NavActivityAdjustment.md) | body | **required** | The request describing the Nav activity adjustments to apply to a specific valuation point and nav type |
+| **navActivityAdjustment** | [List&lt;NavActivityAdjustment&gt;](../Model/NavActivityAdjustment.md) | body | **required** | The request describing the Nav activity adjustments to apply to a specific valuation point and nav type |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 | **valuationPointCodeVariant** | **string?** | query | optional | The variant of the valuation point used in the request. Together with the valuation point code marks the unique branch for the NavType. |
 

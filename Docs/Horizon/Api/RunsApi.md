@@ -74,11 +74,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **cancelRunRequest** | [CancelRunRequest](CancelRunRequest.md) | body | **required** | Contains the run identifiers and a message to be set e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;. |
+| **cancelRunRequest** | [CancelRunRequest](../Model/CancelRunRequest.md) | body | **required** | Contains the run identifiers and a message to be set e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;. |
 
 ### Return type
 
-[IntegrationCancellationResponse](IntegrationCancellationResponse.md)
+[IntegrationCancellationResponse](../Model/IntegrationCancellationResponse.md)
 
 ### HTTP request headers
 
@@ -137,13 +137,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Default: `100` |
 | **pageToken** | **string?** | query | optional | The pagination token to use to continue listing integration runs; this value is returned from             the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt; and &lt;i&gt;filter&lt;/i&gt; fields must not have changed since the original request. Default: `&quot;&quot;` |
 
 ### Return type
 
-[PagedResourceListOfIntegrationRunResponse](PagedResourceListOfIntegrationRunResponse.md)
+[PagedResourceListOfIntegrationRunResponse](../Model/PagedResourceListOfIntegrationRunResponse.md)
 
 ### HTTP request headers
 
@@ -202,7 +202,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[IntegrationRerunResponse](IntegrationRerunResponse.md)
+[IntegrationRerunResponse](../Model/IntegrationRerunResponse.md)
 
 ### HTTP request headers
 

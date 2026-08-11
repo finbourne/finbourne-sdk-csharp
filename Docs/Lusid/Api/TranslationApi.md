@@ -72,11 +72,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **translateInstrumentDefinitionsRequest** | [TranslateInstrumentDefinitionsRequest](TranslateInstrumentDefinitionsRequest.md) | body | **required** | The definitions of the instruments to translate along with the target dialect. |
+| **translateInstrumentDefinitionsRequest** | [TranslateInstrumentDefinitionsRequest](../Model/TranslateInstrumentDefinitionsRequest.md) | body | **required** | The definitions of the instruments to translate along with the target dialect. |
 
 ### Return type
 
-[TranslateInstrumentDefinitionsResponse](TranslateInstrumentDefinitionsResponse.md)
+[TranslateInstrumentDefinitionsResponse](../Model/TranslateInstrumentDefinitionsResponse.md)
 
 ### HTTP request headers
 
@@ -130,11 +130,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **translateTradeTicketRequest** | [TranslateTradeTicketRequest](TranslateTradeTicketRequest.md) | body | **required** | The definitions of the trade ticket to translate along with the target dialect. |
+| **translateTradeTicketRequest** | [TranslateTradeTicketRequest](../Model/TranslateTradeTicketRequest.md) | body | **required** | The definitions of the trade ticket to translate along with the target dialect. |
 
 ### Return type
 
-[TranslateTradeTicketsResponse](TranslateTradeTicketsResponse.md)
+[TranslateTradeTicketsResponse](../Model/TranslateTradeTicketsResponse.md)
 
 ### HTTP request headers
 

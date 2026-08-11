@@ -92,7 +92,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -162,7 +162,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -298,7 +298,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[CustomEntityProperties](CustomEntityProperties.md)
+[CustomEntityProperties](../Model/CustomEntityProperties.md)
 
 ### HTTP request headers
 
@@ -366,13 +366,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **identifierScope** | **string** | query | **required** | The identifier scope. |
 | **asAt** | **DateTimeOffset?** | query | optional | The AsAt datetime at which to retrieve the Custom Entity instance. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to get the Custom Entity instance. Defaults to the current LUSID system datetime if not specified. |
-| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;CustomEntity&#39; domain to decorate onto              the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).              These must have the format {domain}/{scope}/{code}, for example &#39;CustomEntity/someScope/id&#39;. |
+| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;CustomEntity&#39; domain to decorate onto              the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).              These must have the format {domain}/{scope}/{code}, for example &#39;CustomEntity/someScope/id&#39;. |
 
 ### Return type
 
-[CustomEntityResponse](CustomEntityResponse.md)
+[CustomEntityResponse](../Model/CustomEntityResponse.md)
 
 ### HTTP request headers
 
@@ -442,7 +442,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;AccessMetadataValue&gt;](AccessMetadataValue.md)
+[List&lt;AccessMetadataValue&gt;](../Model/AccessMetadataValue.md)
 
 ### HTTP request headers
 
@@ -510,11 +510,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter relationships. Users should provide null or empty string for this field until further notice. |
-| **identifierTypes** | [List&lt;string&gt;?](string.md) | query | optional | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. |
+| **identifierTypes** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. |
 
 ### Return type
 
-[ResourceListOfRelationship](ResourceListOfRelationship.md)
+[ResourceListOfRelationship](../Model/ResourceListOfRelationship.md)
 
 ### HTTP request headers
 
@@ -582,15 +582,15 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the entities. Defaults to returning the latest version              of each portfolio if not specified. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
-| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;CustomEntity&#39; domain to decorate onto              the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).              These must have the format {domain}/{scope}/{code}, for example &#39;CustomEntity/someScope/id&#39;. |
+| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;CustomEntity&#39; domain to decorate onto              the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).              These must have the format {domain}/{scope}/{code}, for example &#39;CustomEntity/someScope/id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfCustomEntityResponse](PagedResourceListOfCustomEntityResponse.md)
+[PagedResourceListOfCustomEntityResponse](../Model/PagedResourceListOfCustomEntityResponse.md)
 
 ### HTTP request headers
 
@@ -654,7 +654,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **identifierType** | **string** | path | **required** | An identifier type attached to the Custom Entity instance. |
 | **identifierValue** | **string** | path | **required** | The identifier value. |
 | **identifierScope** | **string** | query | **required** | The identifier scope. |
-| **accessMetadataOperation** | [List&lt;AccessMetadataOperation&gt;](AccessMetadataOperation.md) | body | **required** | The Json Patch document |
+| **accessMetadataOperation** | [List&lt;AccessMetadataOperation&gt;](../Model/AccessMetadataOperation.md) | body | **required** | The Json Patch document |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effectiveAt datetime at which the Access Metadata will be effective from |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata |
 
@@ -718,11 +718,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **entityType** | **string** | path | **required** | The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. |
 | **successMode** | **string** | query | **required** | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial |
-| **requestBody** | [Dictionary&lt;string, CustomEntityRequest&gt;](CustomEntityRequest.md) | body | **required** | The payload describing the Custom Entity instances |
+| **requestBody** | [Dictionary&lt;string, CustomEntityRequest&gt;](../Model/CustomEntityRequest.md) | body | **required** | The payload describing the Custom Entity instances |
 
 ### Return type
 
-[UpsertCustomEntitiesResponse](UpsertCustomEntitiesResponse.md)
+[UpsertCustomEntitiesResponse](../Model/UpsertCustomEntitiesResponse.md)
 
 ### HTTP request headers
 
@@ -778,11 +778,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **entityType** | **string** | path | **required** | The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. |
-| **customEntityRequest** | [CustomEntityRequest](CustomEntityRequest.md) | body | **required** | The payload describing the Custom Entity instance. |
+| **customEntityRequest** | [CustomEntityRequest](../Model/CustomEntityRequest.md) | body | **required** | The payload describing the Custom Entity instance. |
 
 ### Return type
 
-[CustomEntityResponse](CustomEntityResponse.md)
+[CustomEntityResponse](../Model/CustomEntityResponse.md)
 
 ### HTTP request headers
 
@@ -848,13 +848,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **identifierValue** | **string** | path | **required** | The identifier value. |
 | **metadataKey** | **string** | path | **required** | Key of the metadata entry to retrieve |
 | **identifierScope** | **string** | query | **required** | The identifier scope. |
-| **upsertCustomEntityAccessMetadataRequest** | [UpsertCustomEntityAccessMetadataRequest](UpsertCustomEntityAccessMetadataRequest.md) | body | **required** | The Custom Entity Access Metadata entry to upsert |
+| **upsertCustomEntityAccessMetadataRequest** | [UpsertCustomEntityAccessMetadataRequest](../Model/UpsertCustomEntityAccessMetadataRequest.md) | body | **required** | The Custom Entity Access Metadata entry to upsert |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effectiveAt datetime at which the Access Metadata will be effective from |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata |
 
 ### Return type
 
-[List&lt;AccessMetadataValue&gt;](AccessMetadataValue.md)
+[List&lt;AccessMetadataValue&gt;](../Model/AccessMetadataValue.md)
 
 ### HTTP request headers
 

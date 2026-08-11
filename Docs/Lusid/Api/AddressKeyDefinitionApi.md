@@ -73,11 +73,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createAddressKeyDefinitionRequest** | [CreateAddressKeyDefinitionRequest](CreateAddressKeyDefinitionRequest.md) | body | **required** | The request used to create the address key definition. |
+| **createAddressKeyDefinitionRequest** | [CreateAddressKeyDefinitionRequest](../Model/CreateAddressKeyDefinitionRequest.md) | body | **required** | The request used to create the address key definition. |
 
 ### Return type
 
-[AddressKeyDefinition](AddressKeyDefinition.md)
+[AddressKeyDefinition](../Model/AddressKeyDefinition.md)
 
 ### HTTP request headers
 
@@ -137,7 +137,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AddressKeyDefinition](AddressKeyDefinition.md)
+[AddressKeyDefinition](../Model/AddressKeyDefinition.md)
 
 ### HTTP request headers
 
@@ -201,7 +201,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfAddressKeyDefinition](PagedResourceListOfAddressKeyDefinition.md)
+[PagedResourceListOfAddressKeyDefinition](../Model/PagedResourceListOfAddressKeyDefinition.md)
 
 ### HTTP request headers
 

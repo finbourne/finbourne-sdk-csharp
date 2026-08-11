@@ -76,12 +76,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createTaxRuleSetRequest** | [CreateTaxRuleSetRequest](CreateTaxRuleSetRequest.md) | body | **required** | The contents of the rule set. |
+| **createTaxRuleSetRequest** | [CreateTaxRuleSetRequest](../Model/CreateTaxRuleSetRequest.md) | body | **required** | The contents of the rule set. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. |
 
 ### Return type
 
-[TaxRuleSet](TaxRuleSet.md)
+[TaxRuleSet](../Model/TaxRuleSet.md)
 
 ### HTTP request headers
 
@@ -141,7 +141,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -205,7 +205,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[TaxRuleSet](TaxRuleSet.md)
+[TaxRuleSet](../Model/TaxRuleSet.md)
 
 ### HTTP request headers
 
@@ -265,7 +265,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfTaxRuleSet](ResourceListOfTaxRuleSet.md)
+[ResourceListOfTaxRuleSet](../Model/ResourceListOfTaxRuleSet.md)
 
 ### HTTP request headers
 
@@ -324,12 +324,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The rule set scope. |
 | **code** | **string** | path | **required** | The rule set code. |
-| **updateTaxRuleSetRequest** | [UpdateTaxRuleSetRequest](UpdateTaxRuleSetRequest.md) | body | **required** | The contents of the rule set. |
+| **updateTaxRuleSetRequest** | [UpdateTaxRuleSetRequest](../Model/UpdateTaxRuleSetRequest.md) | body | **required** | The contents of the rule set. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. |
 
 ### Return type
 
-[TaxRuleSet](TaxRuleSet.md)
+[TaxRuleSet](../Model/TaxRuleSet.md)
 
 ### HTTP request headers
 

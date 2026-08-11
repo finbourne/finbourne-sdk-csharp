@@ -76,11 +76,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **policyTemplateCreationRequest** | [PolicyTemplateCreationRequest](PolicyTemplateCreationRequest.md) | body | **required** | The definition of the policy template |
+| **policyTemplateCreationRequest** | [PolicyTemplateCreationRequest](../Model/PolicyTemplateCreationRequest.md) | body | **required** | The definition of the policy template |
 
 ### Return type
 
-[PolicyTemplateResponse](PolicyTemplateResponse.md)
+[PolicyTemplateResponse](../Model/PolicyTemplateResponse.md)
 
 ### HTTP request headers
 
@@ -191,12 +191,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **generatePolicyFromTemplateRequest** | [GeneratePolicyFromTemplateRequest](GeneratePolicyFromTemplateRequest.md) | body | **required** | Definition of the generate request |
+| **generatePolicyFromTemplateRequest** | [GeneratePolicyFromTemplateRequest](../Model/GeneratePolicyFromTemplateRequest.md) | body | **required** | Definition of the generate request |
 | **asAt** | **DateTimeOffset?** | query | optional | Optional. The AsAt date time of the data |
 
 ### Return type
 
-[GeneratedPolicyComponents](GeneratedPolicyComponents.md)
+[GeneratedPolicyComponents](../Model/GeneratedPolicyComponents.md)
 
 ### HTTP request headers
 
@@ -258,7 +258,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PolicyTemplateResponse](PolicyTemplateResponse.md)
+[PolicyTemplateResponse](../Model/PolicyTemplateResponse.md)
 
 ### HTTP request headers
 
@@ -324,7 +324,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPolicyTemplateResponse](ResourceListOfPolicyTemplateResponse.md)
+[ResourceListOfPolicyTemplateResponse](../Model/ResourceListOfPolicyTemplateResponse.md)
 
 ### HTTP request headers
 
@@ -380,11 +380,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **code** | **string** | path | **required** | Code of the policy template to update |
-| **policyTemplateUpdateRequest** | [PolicyTemplateUpdateRequest?](PolicyTemplateUpdateRequest?.md) | body | optional | Definition of the updated policy template |
+| **policyTemplateUpdateRequest** | [PolicyTemplateUpdateRequest?](../Model/PolicyTemplateUpdateRequest?.md) | body | optional | Definition of the updated policy template |
 
 ### Return type
 
-[PolicyTemplateResponse](PolicyTemplateResponse.md)
+[PolicyTemplateResponse](../Model/PolicyTemplateResponse.md)
 
 ### HTTP request headers
 

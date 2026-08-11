@@ -79,11 +79,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction fee type. |
 | **code** | **string** | path | **required** | The code of the transaction fee type.              Together with the scope this uniquely identifies the transaction fee type. |
-| **createTransactionFeeTypeRequest** | [CreateTransactionFeeTypeRequest](CreateTransactionFeeTypeRequest.md) | body | **required** | The contents of the transaction fee type. |
+| **createTransactionFeeTypeRequest** | [CreateTransactionFeeTypeRequest](../Model/CreateTransactionFeeTypeRequest.md) | body | **required** | The contents of the transaction fee type. |
 
 ### Return type
 
-[TransactionFeeType](TransactionFeeType.md)
+[TransactionFeeType](../Model/TransactionFeeType.md)
 
 ### HTTP request headers
 
@@ -143,7 +143,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -205,11 +205,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the transaction fee type.              Together with the scope this uniquely identifies the transaction fee type. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime at which to retrieve the transaction fee type properties.              Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction fee types.              Defaults to latest if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The collection of &#x60;PropertyKey&#x60;s that we want to decorate on the transaction fee type. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The collection of &#x60;PropertyKey&#x60;s that we want to decorate on the transaction fee type. |
 
 ### Return type
 
-[TransactionFeeType](TransactionFeeType.md)
+[TransactionFeeType](../Model/TransactionFeeType.md)
 
 ### HTTP request headers
 
@@ -274,12 +274,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing transaction fee types from a previous call to list transaction fee types.  This value is returned from the previous call. If a pagination token is provided the filter,  sortBy, effectiveAt and asAt field must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The collection of &#x60;PropertyKey&#x60;s to filter on |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The collection of &#x60;PropertyKey&#x60;s to filter on |
 
 ### Return type
 
-[ResourceListOfTransactionFeeType](ResourceListOfTransactionFeeType.md)
+[ResourceListOfTransactionFeeType](../Model/ResourceListOfTransactionFeeType.md)
 
 ### HTTP request headers
 
@@ -337,11 +337,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction fee type. |
 | **code** | **string** | path | **required** | The code of the specified transaction fee type.              Together with the scope this uniquely identifies the transaction fee type. |
-| **updateTransactionFeeTypeRequest** | [UpdateTransactionFeeTypeRequest](UpdateTransactionFeeTypeRequest.md) | body | **required** | The updated contents of the transaction fee type. |
+| **updateTransactionFeeTypeRequest** | [UpdateTransactionFeeTypeRequest](../Model/UpdateTransactionFeeTypeRequest.md) | body | **required** | The updated contents of the transaction fee type. |
 
 ### Return type
 
-[TransactionFeeType](TransactionFeeType.md)
+[TransactionFeeType](../Model/TransactionFeeType.md)
 
 ### HTTP request headers
 

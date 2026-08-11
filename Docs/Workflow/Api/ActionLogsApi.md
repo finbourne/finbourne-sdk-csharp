@@ -73,7 +73,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ActionLog](ActionLog.md)
+[ActionLog](../Model/ActionLog.md)
 
 ### HTTP request headers
 

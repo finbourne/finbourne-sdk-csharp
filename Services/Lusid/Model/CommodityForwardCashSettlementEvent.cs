@@ -23,73 +23,82 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// Protection payout cashflow for credit default instruments (CDS or CDX).
+    /// Cash settlement of a cash-delivery CommodityForward at maturity. The cash flow per unit is the  pre-netted settlement price (forward price minus strike) supplied externally via the quote store;  LUSID does not compute the difference itself. A negative cash flow per unit is valid and means the  position was out of the money at settlement.
     /// </summary>
-    [DataContract(Name = "ProtectionPayoutCashFlowEvent")]
+    [DataContract(Name = "CommodityForwardCashSettlementEvent")]
     [JsonConverter(typeof(JsonSubtypes), "InstrumentEventType")]
-    public partial class ProtectionPayoutCashFlowEvent : InstrumentEvent, IEquatable<ProtectionPayoutCashFlowEvent>, IValidatableObject
+    public partial class CommodityForwardCashSettlementEvent : InstrumentEvent, IEquatable<CommodityForwardCashSettlementEvent>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProtectionPayoutCashFlowEvent" /> class.
+        /// Initializes a new instance of the <see cref="CommodityForwardCashSettlementEvent" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ProtectionPayoutCashFlowEvent() { }
+        protected CommodityForwardCashSettlementEvent() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProtectionPayoutCashFlowEvent" /> class.
+        /// Initializes a new instance of the <see cref="CommodityForwardCashSettlementEvent" /> class.
         /// </summary>
-        /// <param name="exDate">The ex-dividend date of the cashflow..</param>
-        /// <param name="paymentDate">The payment date of the cashflow..</param>
-        /// <param name="currency">The currency in which the cashflow is paid. (required).</param>
-        /// <param name="cashFlowPerUnit">The cashflow amount received for each unit of the instrument held on the ex date..</param>
+        /// <param name="maturityDate">The single settlement / maturity date of the forward. Required..</param>
+        /// <param name="domCcy">Settlement currency of the forward. Required. (required).</param>
+        /// <param name="cashFlowPerUnit">The pre-netted settlement amount per unit (current forward price minus strike), supplied  externally via the quote store. Optional — absent until the settlement price has been loaded.  Negative when the position is out of the money..</param>
+        /// <param name="cashFlowAmount">The realised cash amount, calculated as CashFlowPerUnit multiplied by the eligible balance.  Optional — it needs holdings-level data so it is never populated by the instrument layer.  Carries the sign of CashFlowPerUnit..</param>
+        /// <param name="strike">Agreed forward price at trade inception. Optional, and reference only — it is not used in the  settlement calculation; it is carried for auditability..</param>
         /// <param name="instrumentEventType">The Type of Event. Available values: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent, CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent, BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent, MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent, IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent, OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent, TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent, AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent, LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent, DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent, RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent, FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent, ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent, CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent, ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent. (required) (default to InstrumentEventTypeEnum.TransitionEvent).</param>
-        public ProtectionPayoutCashFlowEvent(DateTimeOffset exDate = default(DateTimeOffset), DateTimeOffset paymentDate = default(DateTimeOffset), string currency = default(string), decimal? cashFlowPerUnit = default(decimal?), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
+        public CommodityForwardCashSettlementEvent(DateTimeOffset maturityDate = default(DateTimeOffset), string domCcy = default(string), decimal? cashFlowPerUnit = default(decimal?), decimal? cashFlowAmount = default(decimal?), decimal? strike = default(decimal?), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
         {
-            // to ensure "currency" is required (not null)
-            if (currency == null)
+            // to ensure "domCcy" is required (not null)
+            if (domCcy == null)
             {
-                throw new ArgumentNullException("currency is a required property for ProtectionPayoutCashFlowEvent and cannot be null");
+                throw new ArgumentNullException("domCcy is a required property for CommodityForwardCashSettlementEvent and cannot be null");
             }
-            this.Currency = currency;
+            this.DomCcy = domCcy;
             
             // to ensure "instrumentEventType" is a defined enum value
             if (!System.Enum.IsDefined(typeof(InstrumentEventTypeEnum), instrumentEventType))
             {
-                throw new ArgumentException("instrumentEventType is a required property for ProtectionPayoutCashFlowEvent and must be a defined value");
+                throw new ArgumentException("instrumentEventType is a required property for CommodityForwardCashSettlementEvent and must be a defined value");
             }
             
             this.InstrumentEventType = instrumentEventType;
-            this.ExDate = exDate;
-            this.PaymentDate = paymentDate;
+            this.MaturityDate = maturityDate;
             this.CashFlowPerUnit = cashFlowPerUnit;
+            this.CashFlowAmount = cashFlowAmount;
+            this.Strike = strike;
         }
 
         /// <summary>
-        /// The ex-dividend date of the cashflow.
+        /// The single settlement / maturity date of the forward. Required.
         /// </summary>
-        /// <value>The ex-dividend date of the cashflow.</value>
-        [DataMember(Name = "exDate", EmitDefaultValue = false)]
-        public DateTimeOffset ExDate { get; set; }
+        /// <value>The single settlement / maturity date of the forward. Required.</value>
+        [DataMember(Name = "maturityDate", EmitDefaultValue = false)]
+        public DateTimeOffset MaturityDate { get; set; }
 
         /// <summary>
-        /// The payment date of the cashflow.
+        /// Settlement currency of the forward. Required.
         /// </summary>
-        /// <value>The payment date of the cashflow.</value>
-        [DataMember(Name = "paymentDate", EmitDefaultValue = false)]
-        public DateTimeOffset PaymentDate { get; set; }
+        /// <value>Settlement currency of the forward. Required.</value>
+        [DataMember(Name = "domCcy", IsRequired = true, EmitDefaultValue = true)]
+        public string DomCcy { get; set; }
 
         /// <summary>
-        /// The currency in which the cashflow is paid.
+        /// The pre-netted settlement amount per unit (current forward price minus strike), supplied  externally via the quote store. Optional — absent until the settlement price has been loaded.  Negative when the position is out of the money.
         /// </summary>
-        /// <value>The currency in which the cashflow is paid.</value>
-        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
-        public string Currency { get; set; }
-
-        /// <summary>
-        /// The cashflow amount received for each unit of the instrument held on the ex date.
-        /// </summary>
-        /// <value>The cashflow amount received for each unit of the instrument held on the ex date.</value>
+        /// <value>The pre-netted settlement amount per unit (current forward price minus strike), supplied  externally via the quote store. Optional — absent until the settlement price has been loaded.  Negative when the position is out of the money.</value>
         [DataMember(Name = "cashFlowPerUnit", EmitDefaultValue = true)]
         public decimal? CashFlowPerUnit { get; set; }
+
+        /// <summary>
+        /// The realised cash amount, calculated as CashFlowPerUnit multiplied by the eligible balance.  Optional — it needs holdings-level data so it is never populated by the instrument layer.  Carries the sign of CashFlowPerUnit.
+        /// </summary>
+        /// <value>The realised cash amount, calculated as CashFlowPerUnit multiplied by the eligible balance.  Optional — it needs holdings-level data so it is never populated by the instrument layer.  Carries the sign of CashFlowPerUnit.</value>
+        [DataMember(Name = "cashFlowAmount", EmitDefaultValue = true)]
+        public decimal? CashFlowAmount { get; set; }
+
+        /// <summary>
+        /// Agreed forward price at trade inception. Optional, and reference only — it is not used in the  settlement calculation; it is carried for auditability.
+        /// </summary>
+        /// <value>Agreed forward price at trade inception. Optional, and reference only — it is not used in the  settlement calculation; it is carried for auditability.</value>
+        [DataMember(Name = "strike", EmitDefaultValue = true)]
+        public decimal? Strike { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,12 +107,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ProtectionPayoutCashFlowEvent {\n");
+            sb.Append("class CommodityForwardCashSettlementEvent {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  ExDate: ").Append(ExDate).Append("\n");
-            sb.Append("  PaymentDate: ").Append(PaymentDate).Append("\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  MaturityDate: ").Append(MaturityDate).Append("\n");
+            sb.Append("  DomCcy: ").Append(DomCcy).Append("\n");
             sb.Append("  CashFlowPerUnit: ").Append(CashFlowPerUnit).Append("\n");
+            sb.Append("  CashFlowAmount: ").Append(CashFlowAmount).Append("\n");
+            sb.Append("  Strike: ").Append(Strike).Append("\n");
             sb.Append("  InstrumentEventType: ").Append(InstrumentEventType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -125,15 +135,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ProtectionPayoutCashFlowEvent);
+            return this.Equals(input as CommodityForwardCashSettlementEvent);
         }
 
         /// <summary>
-        /// Returns true if ProtectionPayoutCashFlowEvent instances are equal
+        /// Returns true if CommodityForwardCashSettlementEvent instances are equal
         /// </summary>
-        /// <param name="input">Instance of ProtectionPayoutCashFlowEvent to be compared</param>
+        /// <param name="input">Instance of CommodityForwardCashSettlementEvent to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ProtectionPayoutCashFlowEvent input)
+        public bool Equals(CommodityForwardCashSettlementEvent input)
         {
             if (input == null)
             {
@@ -141,24 +151,29 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             return base.Equals(input) && 
                 (
-                    this.ExDate == input.ExDate ||
-                    (this.ExDate != null &&
-                    this.ExDate.Equals(input.ExDate))
+                    this.MaturityDate == input.MaturityDate ||
+                    (this.MaturityDate != null &&
+                    this.MaturityDate.Equals(input.MaturityDate))
                 ) && base.Equals(input) && 
                 (
-                    this.PaymentDate == input.PaymentDate ||
-                    (this.PaymentDate != null &&
-                    this.PaymentDate.Equals(input.PaymentDate))
-                ) && base.Equals(input) && 
-                (
-                    this.Currency == input.Currency ||
-                    (this.Currency != null &&
-                    this.Currency.Equals(input.Currency))
+                    this.DomCcy == input.DomCcy ||
+                    (this.DomCcy != null &&
+                    this.DomCcy.Equals(input.DomCcy))
                 ) && base.Equals(input) && 
                 (
                     this.CashFlowPerUnit == input.CashFlowPerUnit ||
                     (this.CashFlowPerUnit != null &&
                     this.CashFlowPerUnit.Equals(input.CashFlowPerUnit))
+                ) && base.Equals(input) && 
+                (
+                    this.CashFlowAmount == input.CashFlowAmount ||
+                    (this.CashFlowAmount != null &&
+                    this.CashFlowAmount.Equals(input.CashFlowAmount))
+                ) && base.Equals(input) && 
+                (
+                    this.Strike == input.Strike ||
+                    (this.Strike != null &&
+                    this.Strike.Equals(input.Strike))
                 ) && base.Equals(input) && 
                 (
                     this.InstrumentEventType == input.InstrumentEventType ||
@@ -175,21 +190,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = base.GetHashCode();
-                if (this.ExDate != null)
+                if (this.MaturityDate != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExDate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.MaturityDate.GetHashCode();
                 }
-                if (this.PaymentDate != null)
+                if (this.DomCcy != null)
                 {
-                    hashCode = (hashCode * 59) + this.PaymentDate.GetHashCode();
-                }
-                if (this.Currency != null)
-                {
-                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                    hashCode = (hashCode * 59) + this.DomCcy.GetHashCode();
                 }
                 if (this.CashFlowPerUnit != null)
                 {
                     hashCode = (hashCode * 59) + this.CashFlowPerUnit.GetHashCode();
+                }
+                if (this.CashFlowAmount != null)
+                {
+                    hashCode = (hashCode * 59) + this.CashFlowAmount.GetHashCode();
+                }
+                if (this.Strike != null)
+                {
+                    hashCode = (hashCode * 59) + this.Strike.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.InstrumentEventType.GetHashCode();
                 return hashCode;

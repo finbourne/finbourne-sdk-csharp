@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createRelationshipDefinitionRequest** | [CreateRelationshipDefinitionRequest](CreateRelationshipDefinitionRequest.md) | body | **required** | The definition of the new relationship. |
+| **createRelationshipDefinitionRequest** | [CreateRelationshipDefinitionRequest](../Model/CreateRelationshipDefinitionRequest.md) | body | **required** | The definition of the new relationship. |
 
 ### Return type
 
-[RelationshipDefinition](RelationshipDefinition.md)
+[RelationshipDefinition](../Model/RelationshipDefinition.md)
 
 ### HTTP request headers
 
@@ -139,7 +139,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -201,7 +201,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RelationshipDefinition](RelationshipDefinition.md)
+[RelationshipDefinition](../Model/RelationshipDefinition.md)
 
 ### HTTP request headers
 
@@ -263,11 +263,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field  must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 
 ### Return type
 
-[PagedResourceListOfRelationshipDefinition](PagedResourceListOfRelationshipDefinition.md)
+[PagedResourceListOfRelationshipDefinition](../Model/PagedResourceListOfRelationshipDefinition.md)
 
 ### HTTP request headers
 
@@ -325,11 +325,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the relationship definition being updated. |
 | **code** | **string** | path | **required** | The code of the relationship definition being updated. Together with the scope this uniquely              identifies the relationship definition. |
-| **updateRelationshipDefinitionRequest** | [UpdateRelationshipDefinitionRequest](UpdateRelationshipDefinitionRequest.md) | body | **required** | The details of relationship definition to update. |
+| **updateRelationshipDefinitionRequest** | [UpdateRelationshipDefinitionRequest](../Model/UpdateRelationshipDefinitionRequest.md) | body | **required** | The details of relationship definition to update. |
 
 ### Return type
 
-[RelationshipDefinition](RelationshipDefinition.md)
+[RelationshipDefinition](../Model/RelationshipDefinition.md)
 
 ### HTTP request headers
 

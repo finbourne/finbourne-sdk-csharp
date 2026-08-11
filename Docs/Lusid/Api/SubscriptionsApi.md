@@ -80,7 +80,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AnnulSingleStructuredDataResponse](AnnulSingleStructuredDataResponse.md)
+[AnnulSingleStructuredDataResponse](../Model/AnnulSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -142,7 +142,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetSubscriptionResponse](GetSubscriptionResponse.md)
+[GetSubscriptionResponse](../Model/GetSubscriptionResponse.md)
 
 ### HTTP request headers
 
@@ -208,7 +208,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfGetSubscriptionResponse](PagedResourceListOfGetSubscriptionResponse.md)
+[PagedResourceListOfGetSubscriptionResponse](../Model/PagedResourceListOfGetSubscriptionResponse.md)
 
 ### HTTP request headers
 
@@ -262,11 +262,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertSubscriptionRequest** | [UpsertSubscriptionRequest](UpsertSubscriptionRequest.md) | body | **required** | The Subscription to update or insert |
+| **upsertSubscriptionRequest** | [UpsertSubscriptionRequest](../Model/UpsertSubscriptionRequest.md) | body | **required** | The Subscription to update or insert |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 

@@ -73,11 +73,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **auditCompleteRequest** | [AuditCompleteRequest](AuditCompleteRequest.md) | body | **required** |  |
+| **auditCompleteRequest** | [AuditCompleteRequest](../Model/AuditCompleteRequest.md) | body | **required** |  |
 
 ### Return type
 
-[AuditCompleteResponse](AuditCompleteResponse.md)
+[AuditCompleteResponse](../Model/AuditCompleteResponse.md)
 
 ### HTTP request headers
 
@@ -129,11 +129,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **auditUpdateRequest** | [AuditUpdateRequest](AuditUpdateRequest.md) | body | **required** |  |
+| **auditUpdateRequest** | [AuditUpdateRequest](../Model/AuditUpdateRequest.md) | body | **required** |  |
 
 ### Return type
 
-[AuditUpdateResponse](AuditUpdateResponse.md)
+[AuditUpdateResponse](../Model/AuditUpdateResponse.md)
 
 ### HTTP request headers
 
@@ -185,7 +185,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;ProcessInformation&gt;](ProcessInformation.md)
+[List&lt;ProcessInformation&gt;](../Model/ProcessInformation.md)
 
 ### HTTP request headers
 
@@ -238,11 +238,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **runId** | **string** | query | **required** |  |
-| **queryRequest** | [QueryRequest](QueryRequest.md) | body | **required** |  |
+| **queryRequest** | [QueryRequest](../Model/QueryRequest.md) | body | **required** |  |
 
 ### Return type
 
-[PagedResourceListOfProcessUpdateResult](PagedResourceListOfProcessUpdateResult.md)
+[PagedResourceListOfProcessUpdateResult](../Model/PagedResourceListOfProcessUpdateResult.md)
 
 ### HTTP request headers
 
@@ -295,12 +295,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **queryRequest** | [QueryRequest](QueryRequest.md) | body | **required** |  |
+| **queryRequest** | [QueryRequest](../Model/QueryRequest.md) | body | **required** |  |
 | **processName** | **string?** | query | optional |  |
 
 ### Return type
 
-[PagedResourceListOfProcessInformation](PagedResourceListOfProcessInformation.md)
+[PagedResourceListOfProcessInformation](../Model/PagedResourceListOfProcessInformation.md)
 
 ### HTTP request headers
 

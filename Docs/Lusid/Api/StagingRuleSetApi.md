@@ -77,11 +77,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **entityType** | **string** | path | **required** | The entity type for which to create the staging rule set. |
-| **createStagingRuleSetRequest** | [CreateStagingRuleSetRequest](CreateStagingRuleSetRequest.md) | body | **required** | Request to create a staging rule set. |
+| **createStagingRuleSetRequest** | [CreateStagingRuleSetRequest](../Model/CreateStagingRuleSetRequest.md) | body | **required** | Request to create a staging rule set. |
 
 ### Return type
 
-[StagingRuleSet](StagingRuleSet.md)
+[StagingRuleSet](../Model/StagingRuleSet.md)
 
 ### HTTP request headers
 
@@ -139,7 +139,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -199,7 +199,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[StagingRuleSet](StagingRuleSet.md)
+[StagingRuleSet](../Model/StagingRuleSet.md)
 
 ### HTTP request headers
 
@@ -259,13 +259,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the staging rule sets. Defaults to return the latest              version of the staging rule sets if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing staging rule sets from a previous call to list              staging rule sets. This value is returned from the previous call. If a pagination token is provided the sortBy,              filter, effectiveAt, and asAt fields must not have changed since the original request. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[PagedResourceListOfStagingRuleSet](PagedResourceListOfStagingRuleSet.md)
+[PagedResourceListOfStagingRuleSet](../Model/PagedResourceListOfStagingRuleSet.md)
 
 ### HTTP request headers
 
@@ -321,11 +321,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **entityType** | **string** | path | **required** | The entity type for which to update the staging rule set. |
-| **updateStagingRuleSetRequest** | [UpdateStagingRuleSetRequest](UpdateStagingRuleSetRequest.md) | body | **required** | Request to update a staging rule set. |
+| **updateStagingRuleSetRequest** | [UpdateStagingRuleSetRequest](../Model/UpdateStagingRuleSetRequest.md) | body | **required** | Request to update a staging rule set. |
 
 ### Return type
 
-[StagingRuleSet](StagingRuleSet.md)
+[StagingRuleSet](../Model/StagingRuleSet.md)
 
 ### HTTP request headers
 

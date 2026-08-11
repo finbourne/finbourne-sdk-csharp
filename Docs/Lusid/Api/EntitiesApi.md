@@ -84,11 +84,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **entityUniqueId** | **string** | path | **required** | The universally unique identifier of the bookmark. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the bookmark. Defaults to returning the latest version of the bookmark if not specified. |
-| **previews** | [List&lt;string&gt;?](string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+| **previews** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
 
 ### Return type
 
-[BookmarkEntity](BookmarkEntity.md)
+[BookmarkEntity](../Model/BookmarkEntity.md)
 
 ### HTTP request headers
 
@@ -148,11 +148,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **entityUniqueId** | **string** | path | **required** | The universally unique identifier of the Custom Entity. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the Custom Entity. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Custom Entity. Defaults to returning the latest version of the Custom Entity if not specified. |
-| **previews** | [List&lt;string&gt;?](string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+| **previews** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
 
 ### Return type
 
-[CustomEntityEntity](CustomEntityEntity.md)
+[CustomEntityEntity](../Model/CustomEntityEntity.md)
 
 ### HTTP request headers
 
@@ -210,11 +210,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **entityUniqueId** | **string** | path | **required** | The universally unique identifier of the DataType definition. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the DataType definition. Defaults to returning the latest version of the DataType definition if not specified. |
-| **previews** | [List&lt;string&gt;?](string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+| **previews** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
 
 ### Return type
 
-[DataTypeEntity](DataTypeEntity.md)
+[DataTypeEntity](../Model/DataTypeEntity.md)
 
 ### HTTP request headers
 
@@ -280,11 +280,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing change history information from a previous call to list change              history information. This value is returned from the previous call. If a pagination token is provided the filter, sortBy              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 
 ### Return type
 
-[ResourceListOfChangeInterval](ResourceListOfChangeInterval.md)
+[ResourceListOfChangeInterval](../Model/ResourceListOfChangeInterval.md)
 
 ### HTTP request headers
 
@@ -346,13 +346,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **entityUniqueId** | **string** | path | **required** | The universally unique identifier of the instrument definition. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the Instrument definition. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the instrument definition. Defaults to returning the latest version of the instrument definition if not specified. |
-| **previews** | [List&lt;string&gt;?](string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+| **previews** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use. |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use. |
 
 ### Return type
 
-[InstrumentEntity](InstrumentEntity.md)
+[InstrumentEntity](../Model/InstrumentEntity.md)
 
 ### HTTP request headers
 
@@ -412,11 +412,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **entityUniqueId** | **string** | path | **required** | The universally unique identifier of the portfolio definition. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified. |
-| **previews** | [List&lt;string&gt;?](string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+| **previews** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
 
 ### Return type
 
-[PortfolioEntity](PortfolioEntity.md)
+[PortfolioEntity](../Model/PortfolioEntity.md)
 
 ### HTTP request headers
 
@@ -478,7 +478,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfChange](ResourceListOfChange.md)
+[ResourceListOfChange](../Model/ResourceListOfChange.md)
 
 ### HTTP request headers
 
@@ -538,11 +538,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **entityUniqueId** | **string** | path | **required** | The universally unique identifier of the property definition. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime at which to retrieve the property definition. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the property definition. Defaults to returning the latest version of the property definition if not specified. |
-| **previews** | [List&lt;string&gt;?](string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+| **previews** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
 
 ### Return type
 
-[PropertyDefinitionEntity](PropertyDefinitionEntity.md)
+[PropertyDefinitionEntity](../Model/PropertyDefinitionEntity.md)
 
 ### HTTP request headers
 
@@ -602,13 +602,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **entityUniqueId** | **string** | path | **required** | The entity unique identifier of the transaction. The expected format is &#39;{portfolioEntityUniqueId}_{transactionId}&#39;. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction. Defaults to returning the latest version of the transaction if not specified. |
-| **previews** | [List&lt;string&gt;?](string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+| **previews** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use. |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use. |
 
 ### Return type
 
-[TransactionEntity](TransactionEntity.md)
+[TransactionEntity](../Model/TransactionEntity.md)
 
 ### HTTP request headers
 
@@ -666,11 +666,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **entityUniqueId** | **string** | path | **required** | The universally unique identifier of the valuation point. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the valuation point. Defaults to returning the latest version of the valuation point if not specified. |
-| **previews** | [List&lt;string&gt;?](string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+| **previews** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
 
 ### Return type
 
-[ValuationPointEntity](ValuationPointEntity.md)
+[ValuationPointEntity](../Model/ValuationPointEntity.md)
 
 ### HTTP request headers
 

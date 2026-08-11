@@ -81,11 +81,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **userid** | **string** | path | **required** | Id of the User Role to get |
-| **addPolicyCollectionToRoleRequest** | [AddPolicyCollectionToRoleRequest](AddPolicyCollectionToRoleRequest.md) | body | **required** | Dto of the policy collection to be added. |
+| **addPolicyCollectionToRoleRequest** | [AddPolicyCollectionToRoleRequest](../Model/AddPolicyCollectionToRoleRequest.md) | body | **required** | Dto of the policy collection to be added. |
 
 ### Return type
 
-[UserRoleResponse](UserRoleResponse.md)
+[UserRoleResponse](../Model/UserRoleResponse.md)
 
 ### HTTP request headers
 
@@ -141,11 +141,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **userid** | **string** | path | **required** | Id of the User Role to get |
-| **addPolicyToRoleRequest** | [AddPolicyToRoleRequest](AddPolicyToRoleRequest.md) | body | **required** | Dto of the policy to be added. |
+| **addPolicyToRoleRequest** | [AddPolicyToRoleRequest](../Model/AddPolicyToRoleRequest.md) | body | **required** | Dto of the policy to be added. |
 
 ### Return type
 
-[UserRoleResponse](UserRoleResponse.md)
+[UserRoleResponse](../Model/UserRoleResponse.md)
 
 ### HTTP request headers
 
@@ -199,11 +199,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **userRoleCreationRequest** | [UserRoleCreationRequest](UserRoleCreationRequest.md) | body | **required** | Definition of the user-role to create. |
+| **userRoleCreationRequest** | [UserRoleCreationRequest](../Model/UserRoleCreationRequest.md) | body | **required** | Definition of the user-role to create. |
 
 ### Return type
 
-[UserRoleResponse](UserRoleResponse.md)
+[UserRoleResponse](../Model/UserRoleResponse.md)
 
 ### HTTP request headers
 
@@ -315,7 +315,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[UserRoleResponse](UserRoleResponse.md)
+[UserRoleResponse](../Model/UserRoleResponse.md)
 
 ### HTTP request headers
 
@@ -379,7 +379,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfUserRoleResponse](ResourceListOfUserRoleResponse.md)
+[ResourceListOfUserRoleResponse](../Model/ResourceListOfUserRoleResponse.md)
 
 ### HTTP request headers
 
@@ -551,11 +551,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **userid** | **string** | path | **required** | Id of the user-role to be updated. |
-| **userRoleUpdateRequest** | [UserRoleUpdateRequest](UserRoleUpdateRequest.md) | body | **required** | Definition of the update to apply to the user-role. |
+| **userRoleUpdateRequest** | [UserRoleUpdateRequest](../Model/UserRoleUpdateRequest.md) | body | **required** | Definition of the update to apply to the user-role. |
 
 ### Return type
 
-[UserRoleResponse](UserRoleResponse.md)
+[UserRoleResponse](../Model/UserRoleResponse.md)
 
 ### HTTP request headers
 

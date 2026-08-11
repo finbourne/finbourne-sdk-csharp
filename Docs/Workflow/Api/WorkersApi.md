@@ -77,11 +77,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createWorkerRequest** | [CreateWorkerRequest](CreateWorkerRequest.md) | body | **required** | Worker to be created |
+| **createWorkerRequest** | [CreateWorkerRequest](../Model/CreateWorkerRequest.md) | body | **required** | Worker to be created |
 
 ### Return type
 
-[Worker](Worker.md)
+[Worker](../Model/Worker.md)
 
 ### HTTP request headers
 
@@ -141,7 +141,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -204,7 +204,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Worker](Worker.md)
+[Worker](../Model/Worker.md)
 
 ### HTTP request headers
 
@@ -260,7 +260,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetWorkerResultResponse](GetWorkerResultResponse.md)
+[GetWorkerResultResponse](../Model/GetWorkerResultResponse.md)
 
 ### HTTP request headers
 
@@ -318,13 +318,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Workers. Defaults to return the latest version of each Worker if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here: https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each optionally suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each optionally suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Default: `10` |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing workers from a previous call to list workers. This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields must not have changed since the original request. |
 
 ### Return type
 
-[PagedResourceListOfWorker](PagedResourceListOfWorker.md)
+[PagedResourceListOfWorker](../Model/PagedResourceListOfWorker.md)
 
 ### HTTP request headers
 
@@ -381,12 +381,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope of the worker |
 | **code** | **string** | path | **required** | Code of the worker |
-| **runWorkerRequest** | [RunWorkerRequest](RunWorkerRequest.md) | body | **required** |  |
+| **runWorkerRequest** | [RunWorkerRequest](../Model/RunWorkerRequest.md) | body | **required** |  |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Worker. Defaults to returning the latest version of the Worker if not specified. |
 
 ### Return type
 
-[RunWorkerResponse](RunWorkerResponse.md)
+[RunWorkerResponse](../Model/RunWorkerResponse.md)
 
 ### HTTP request headers
 
@@ -444,11 +444,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope of the worker to be updated |
 | **code** | **string** | path | **required** | Code of the worker to be updated |
-| **updateWorkerRequest** | [UpdateWorkerRequest](UpdateWorkerRequest.md) | body | **required** | State of the updated worker |
+| **updateWorkerRequest** | [UpdateWorkerRequest](../Model/UpdateWorkerRequest.md) | body | **required** | State of the updated worker |
 
 ### Return type
 
-[Worker](Worker.md)
+[Worker](../Model/Worker.md)
 
 ### HTTP request headers
 

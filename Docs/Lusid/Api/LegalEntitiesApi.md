@@ -96,7 +96,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -164,7 +164,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -225,12 +225,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the legal entity identifier type. |
 | **idTypeCode** | **string** | path | **required** | Code of the legal entity identifier type. |
 | **code** | **string** | path | **required** | Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. |
-| **propertyKeys** | [List&lt;string&gt;](string.md) | query | **required** | The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. |
+| **propertyKeys** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -291,12 +291,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the legal entity identifier type. |
 | **idTypeCode** | **string** | path | **required** | Code of the legal entity identifier type. |
 | **code** | **string** | path | **required** | Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. |
-| **propertyKeys** | [List&lt;string&gt;](string.md) | query | **required** | The property keys of the legal entities properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. |
+| **propertyKeys** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The property keys of the legal entities properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -425,14 +425,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the legal entity identifier type. |
 | **idTypeCode** | **string** | path | **required** | Code of the legal entity identifier type. |
 | **code** | **string** | path | **required** | Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the legal entity. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the legal entity. Defaults to return the latest version of the legal entity if not specified. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 
 ### Return type
 
-[LegalEntity](LegalEntity.md)
+[LegalEntity](../Model/LegalEntity.md)
 
 ### HTTP request headers
 
@@ -500,7 +500,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;AccessMetadataValue&gt;](AccessMetadataValue.md)
+[List&lt;AccessMetadataValue&gt;](../Model/AccessMetadataValue.md)
 
 ### HTTP request headers
 
@@ -572,7 +572,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPropertyInterval](ResourceListOfPropertyInterval.md)
+[ResourceListOfPropertyInterval](../Model/ResourceListOfPropertyInterval.md)
 
 ### HTTP request headers
 
@@ -638,11 +638,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the legal entity&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the relations. Users should provide null or empty string for this field until further notice. |
-| **identifierTypes** | [List&lt;string&gt;?](string.md) | query | optional | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. |
+| **identifierTypes** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. |
 
 ### Return type
 
-[ResourceListOfRelation](ResourceListOfRelation.md)
+[ResourceListOfRelation](../Model/ResourceListOfRelation.md)
 
 ### HTTP request headers
 
@@ -708,11 +708,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter relationships. Users should provide null or empty string for this field until further notice. |
-| **identifierTypes** | [List&lt;string&gt;?](string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. |
+| **identifierTypes** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. |
 
 ### Return type
 
-[ResourceListOfRelationship](ResourceListOfRelationship.md)
+[ResourceListOfRelationship](../Model/ResourceListOfRelationship.md)
 
 ### HTTP request headers
 
@@ -778,13 +778,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 
 ### Return type
 
-[ResourceListOfLegalEntity](ResourceListOfLegalEntity.md)
+[ResourceListOfLegalEntity](../Model/ResourceListOfLegalEntity.md)
 
 ### HTTP request headers
 
@@ -854,13 +854,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain              to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 
 ### Return type
 
-[PagedResourceListOfLegalEntity](PagedResourceListOfLegalEntity.md)
+[PagedResourceListOfLegalEntity](../Model/PagedResourceListOfLegalEntity.md)
 
 ### HTTP request headers
 
@@ -922,7 +922,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the Legal Entity identifier. |
 | **idTypeCode** | **string** | path | **required** | Code of the Legal Entity identifier. |
 | **code** | **string** | path | **required** | Code of the Legal Entity under specified identifier type&#39;s scope and code. |
-| **accessMetadataOperation** | [List&lt;AccessMetadataOperation&gt;](AccessMetadataOperation.md) | body | **required** | The Json Patch document |
+| **accessMetadataOperation** | [List&lt;AccessMetadataOperation&gt;](../Model/AccessMetadataOperation.md) | body | **required** | The Json Patch document |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effectiveAt datetime at which to upsert the Access Metadata |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata |
 
@@ -988,11 +988,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the legal entity identifier type. |
 | **idTypeCode** | **string** | path | **required** | Code of the legal entity identifier type. |
 | **code** | **string** | path | **required** | Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. |
-| **setLegalEntityIdentifiersRequest** | [SetLegalEntityIdentifiersRequest](SetLegalEntityIdentifiersRequest.md) | body | **required** | Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed. |
+| **setLegalEntityIdentifiersRequest** | [SetLegalEntityIdentifiersRequest](../Model/SetLegalEntityIdentifiersRequest.md) | body | **required** | Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed. |
 
 ### Return type
 
-[LegalEntity](LegalEntity.md)
+[LegalEntity](../Model/LegalEntity.md)
 
 ### HTTP request headers
 
@@ -1052,11 +1052,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeScope** | **string** | path | **required** | Scope of the legal entity identifier type. |
 | **idTypeCode** | **string** | path | **required** | Code of the legal entity identifier type. |
 | **code** | **string** | path | **required** | Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the legal entity. |
-| **setLegalEntityPropertiesRequest** | [SetLegalEntityPropertiesRequest](SetLegalEntityPropertiesRequest.md) | body | **required** | Request containing properties to set for the legal entity. Properties not specified in request will not be changed. |
+| **setLegalEntityPropertiesRequest** | [SetLegalEntityPropertiesRequest](../Model/SetLegalEntityPropertiesRequest.md) | body | **required** | Request containing properties to set for the legal entity. Properties not specified in request will not be changed. |
 
 ### Return type
 
-[LegalEntity](LegalEntity.md)
+[LegalEntity](../Model/LegalEntity.md)
 
 ### HTTP request headers
 
@@ -1112,11 +1112,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **successMode** | **string** | query | **required** | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial |
-| **requestBody** | [Dictionary&lt;string, UpsertLegalEntityRequest&gt;](UpsertLegalEntityRequest.md) | body | **required** | A collection of requests to create or update Legal Entities. |
+| **requestBody** | [Dictionary&lt;string, UpsertLegalEntityRequest&gt;](../Model/UpsertLegalEntityRequest.md) | body | **required** | A collection of requests to create or update Legal Entities. |
 
 ### Return type
 
-[UpsertLegalEntitiesResponse](UpsertLegalEntitiesResponse.md)
+[UpsertLegalEntitiesResponse](../Model/UpsertLegalEntitiesResponse.md)
 
 ### HTTP request headers
 
@@ -1170,11 +1170,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertLegalEntityRequest** | [UpsertLegalEntityRequest](UpsertLegalEntityRequest.md) | body | **required** | Request to create or update a legal entity. |
+| **upsertLegalEntityRequest** | [UpsertLegalEntityRequest](../Model/UpsertLegalEntityRequest.md) | body | **required** | Request to create or update a legal entity. |
 
 ### Return type
 
-[LegalEntity](LegalEntity.md)
+[LegalEntity](../Model/LegalEntity.md)
 
 ### HTTP request headers
 
@@ -1238,13 +1238,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **idTypeCode** | **string** | path | **required** | Code of the Legal Entity identifier. |
 | **code** | **string** | path | **required** | Code of the Legal Entity under specified identifier type&#39;s scope and code. |
 | **metadataKey** | **string** | path | **required** | Key of the metadata entry to retrieve |
-| **upsertLegalEntityAccessMetadataRequest** | [UpsertLegalEntityAccessMetadataRequest](UpsertLegalEntityAccessMetadataRequest.md) | body | **required** | The Legal Entity Access Metadata entry to upsert |
+| **upsertLegalEntityAccessMetadataRequest** | [UpsertLegalEntityAccessMetadataRequest](../Model/UpsertLegalEntityAccessMetadataRequest.md) | body | **required** | The Legal Entity Access Metadata entry to upsert |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effectiveAt datetime at which to upsert the Access Metadata |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata |
 
 ### Return type
 
-[ResourceListOfAccessMetadataValueOf](ResourceListOfAccessMetadataValueOf.md)
+[ResourceListOfAccessMetadataValueOf](../Model/ResourceListOfAccessMetadataValueOf.md)
 
 ### HTTP request headers
 

@@ -80,7 +80,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AnnulSingleStructuredDataResponse](AnnulSingleStructuredDataResponse.md)
+[AnnulSingleStructuredDataResponse](../Model/AnnulSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -142,7 +142,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetAddressKeyAliasResponse](GetAddressKeyAliasResponse.md)
+[GetAddressKeyAliasResponse](../Model/GetAddressKeyAliasResponse.md)
 
 ### HTTP request headers
 
@@ -208,7 +208,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfGetAddressKeyAliasResponse](PagedResourceListOfGetAddressKeyAliasResponse.md)
+[PagedResourceListOfGetAddressKeyAliasResponse](../Model/PagedResourceListOfGetAddressKeyAliasResponse.md)
 
 ### HTTP request headers
 
@@ -262,11 +262,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertAddressKeyAliasRequest** | [UpsertAddressKeyAliasRequest](UpsertAddressKeyAliasRequest.md) | body | **required** | The Address Key Alias to update or insert |
+| **upsertAddressKeyAliasRequest** | [UpsertAddressKeyAliasRequest](../Model/UpsertAddressKeyAliasRequest.md) | body | **required** | The Address Key Alias to update or insert |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 

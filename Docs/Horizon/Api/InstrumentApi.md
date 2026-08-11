@@ -74,11 +74,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **onboardInstrumentRequest** | [OnboardInstrumentRequest](OnboardInstrumentRequest.md) | body | **required** |  |
+| **onboardInstrumentRequest** | [OnboardInstrumentRequest](../Model/OnboardInstrumentRequest.md) | body | **required** |  |
 
 ### Return type
 
-[OnboardInstrumentResponse](OnboardInstrumentResponse.md)
+[OnboardInstrumentResponse](../Model/OnboardInstrumentResponse.md)
 
 ### HTTP request headers
 
@@ -132,11 +132,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **vendorProductKey** | **string** | query | **required** |  |
-| **identifiers** | [Identifiers](Identifiers.md) | body | **required** |  |
+| **identifiers** | [Identifiers](../Model/Identifiers.md) | body | **required** |  |
 
 ### Return type
 
-[EnrichmentResponse](EnrichmentResponse.md)
+[EnrichmentResponse](../Model/EnrichmentResponse.md)
 
 ### HTTP request headers
 
@@ -192,7 +192,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;AllowedParameterValue&gt;](AllowedParameterValue.md)
+[List&lt;AllowedParameterValue&gt;](../Model/AllowedParameterValue.md)
 
 ### HTTP request headers
 
@@ -248,7 +248,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;PermIdData&gt;](PermIdData.md)
+[List&lt;PermIdData&gt;](../Model/PermIdData.md)
 
 ### HTTP request headers
 
@@ -310,7 +310,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[OpenFigiSearchResult](OpenFigiSearchResult.md)
+[OpenFigiSearchResult](../Model/OpenFigiSearchResult.md)
 
 ### HTTP request headers
 
@@ -370,7 +370,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;VendorProduct&gt;](VendorProduct.md)
+[List&lt;VendorProduct&gt;](../Model/VendorProduct.md)
 
 ### HTTP request headers
 

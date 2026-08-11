@@ -80,7 +80,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -140,11 +140,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope to which the allocation belongs. |
 | **code** | **string** | path | **required** | The allocation&#39;s unique identifier. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.              These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.              These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. |
 
 ### Return type
 
-[Allocation](Allocation.md)
+[Allocation](../Model/Allocation.md)
 
 ### HTTP request headers
 
@@ -205,14 +205,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing allocations from a previous call to list allocations.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;.                  All properties, except derived properties, are returned by default, without specifying here. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;.                  All properties, except derived properties, are returned by default, without specifying here. |
 
 ### Return type
 
-[PagedResourceListOfAllocation](PagedResourceListOfAllocation.md)
+[PagedResourceListOfAllocation](../Model/PagedResourceListOfAllocation.md)
 
 ### HTTP request headers
 
@@ -268,13 +268,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **allocationSetRequest** | [AllocationSetRequest](AllocationSetRequest.md) | body | **required** | The collection of allocation requests. |
+| **allocationSetRequest** | [AllocationSetRequest](../Model/AllocationSetRequest.md) | body | **required** | The collection of allocation requests. |
 | **verificationAsAt** | **DateTimeOffset?** | query | optional | An optional verification asAt; individual upserts will fail if an existing entity has been updated between the verification asAt and time of upsert. |
 | **retryWithoutChangedEntities** | **bool?** | query | optional | Optionally choose to keep retrying upsert for remaining entities if some are being updated concurrently. If set to true, any entities that have              changed since the verificationAsAt will be dropped from the set of allocations to upsert and the upsert will be retried. The response will only contain the allocations in the original request              that have been successfully upserted. Default: `false` |
 
 ### Return type
 
-[ResourceListOfAllocation](ResourceListOfAllocation.md)
+[ResourceListOfAllocation](../Model/ResourceListOfAllocation.md)
 
 ### HTTP request headers
 

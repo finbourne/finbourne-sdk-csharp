@@ -94,7 +94,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Dialect](Dialect.md)
+[Dialect](../Model/Dialect.md)
 
 ### HTTP request headers
 
@@ -158,7 +158,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[TranslationScript](TranslationScript.md)
+[TranslationScript](../Model/TranslationScript.md)
 
 ### HTTP request headers
 
@@ -222,7 +222,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfDialectId](PagedResourceListOfDialectId.md)
+[PagedResourceListOfDialectId](../Model/PagedResourceListOfDialectId.md)
 
 ### HTTP request headers
 
@@ -286,7 +286,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfTranslationScriptId](PagedResourceListOfTranslationScriptId.md)
+[PagedResourceListOfTranslationScriptId](../Model/PagedResourceListOfTranslationScriptId.md)
 
 ### HTTP request headers
 
@@ -340,11 +340,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **translateEntitiesRequest** | [TranslateEntitiesRequest](TranslateEntitiesRequest.md) | body | **required** | The entities to translate, along with identifiers for the script and (optional) dialect to use. |
+| **translateEntitiesRequest** | [TranslateEntitiesRequest](../Model/TranslateEntitiesRequest.md) | body | **required** | The entities to translate, along with identifiers for the script and (optional) dialect to use. |
 
 ### Return type
 
-[TranslateEntitiesResponse](TranslateEntitiesResponse.md)
+[TranslateEntitiesResponse](../Model/TranslateEntitiesResponse.md)
 
 ### HTTP request headers
 
@@ -398,11 +398,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **translateEntitiesInlinedRequest** | [TranslateEntitiesInlinedRequest](TranslateEntitiesInlinedRequest.md) | body | **required** | The entities to translate, along with the script to use and an optional schema for validation. |
+| **translateEntitiesInlinedRequest** | [TranslateEntitiesInlinedRequest](../Model/TranslateEntitiesInlinedRequest.md) | body | **required** | The entities to translate, along with the script to use and an optional schema for validation. |
 
 ### Return type
 
-[TranslateEntitiesResponse](TranslateEntitiesResponse.md)
+[TranslateEntitiesResponse](../Model/TranslateEntitiesResponse.md)
 
 ### HTTP request headers
 
@@ -456,11 +456,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertDialectRequest** | [UpsertDialectRequest](UpsertDialectRequest.md) | body | **required** | The dialect to upsert. |
+| **upsertDialectRequest** | [UpsertDialectRequest](../Model/UpsertDialectRequest.md) | body | **required** | The dialect to upsert. |
 
 ### Return type
 
-[Dialect](Dialect.md)
+[Dialect](../Model/Dialect.md)
 
 ### HTTP request headers
 
@@ -514,11 +514,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertTranslationScriptRequest** | [UpsertTranslationScriptRequest](UpsertTranslationScriptRequest.md) | body | **required** | The translation script to be upserted. |
+| **upsertTranslationScriptRequest** | [UpsertTranslationScriptRequest](../Model/UpsertTranslationScriptRequest.md) | body | **required** | The translation script to be upserted. |
 
 ### Return type
 
-[TranslationScript](TranslationScript.md)
+[TranslationScript](../Model/TranslationScript.md)
 
 ### HTTP request headers
 

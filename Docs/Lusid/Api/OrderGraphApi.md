@@ -81,15 +81,15 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01832/ |
 | **paginationToken** | **string?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
 | **filter** | **string?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01914/ Default: `&quot;&quot;` |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ |
 | **useComplianceV2** | **bool?** | query | optional | Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false) Default: `false` |
 
 ### Return type
 
-[PagedResourceListOfOrderGraphBlock](PagedResourceListOfOrderGraphBlock.md)
+[PagedResourceListOfOrderGraphBlock](../Model/PagedResourceListOfOrderGraphBlock.md)
 
 ### HTTP request headers
 
@@ -153,13 +153,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The parent placement&#39;s code |
 | **asAt** | **DateTimeOffset?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01832/ |
 | **paginationToken** | **string?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
 | **limit** | **int?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ |
 
 ### Return type
 
-[PagedResourceListOfOrderGraphPlacement](PagedResourceListOfOrderGraphPlacement.md)
+[PagedResourceListOfOrderGraphPlacement](../Model/PagedResourceListOfOrderGraphPlacement.md)
 
 ### HTTP request headers
 
@@ -220,14 +220,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01832/ |
 | **paginationToken** | **string?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
 | **filter** | **string?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01914/ Default: `&quot;&quot;` |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ |
 
 ### Return type
 
-[PagedResourceListOfOrderGraphPlacement](PagedResourceListOfOrderGraphPlacement.md)
+[PagedResourceListOfOrderGraphPlacement](../Model/PagedResourceListOfOrderGraphPlacement.md)
 
 ### HTTP request headers
 

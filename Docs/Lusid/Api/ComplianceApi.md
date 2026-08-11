@@ -88,11 +88,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Compliance Rule Template. |
-| **createComplianceTemplateRequest** | [CreateComplianceTemplateRequest](CreateComplianceTemplateRequest.md) | body | **required** | Request to create a compliance rule template. |
+| **createComplianceTemplateRequest** | [CreateComplianceTemplateRequest](../Model/CreateComplianceTemplateRequest.md) | body | **required** | Request to create a compliance rule template. |
 
 ### Return type
 
-[ComplianceRuleTemplate](ComplianceRuleTemplate.md)
+[ComplianceRuleTemplate](../Model/ComplianceRuleTemplate.md)
 
 ### HTTP request headers
 
@@ -152,7 +152,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -212,7 +212,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -272,11 +272,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The compliance rule&#39;s scope. |
 | **code** | **string** | path | **required** | The compliance rule&#39;s code. |
 | **asAt** | **DateTimeOffset?** | query | optional | Optional. Asat time for query. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. |
 
 ### Return type
 
-[ComplianceRuleResponse](ComplianceRuleResponse.md)
+[ComplianceRuleResponse](../Model/ComplianceRuleResponse.md)
 
 ### HTTP request headers
 
@@ -340,7 +340,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ComplianceRuleResultV2](ComplianceRuleResultV2.md)
+[ComplianceRuleResultV2](../Model/ComplianceRuleResultV2.md)
 
 ### HTTP request headers
 
@@ -402,7 +402,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ComplianceTemplate](ComplianceTemplate.md)
+[ComplianceTemplate](../Model/ComplianceTemplate.md)
 
 ### HTTP request headers
 
@@ -462,7 +462,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DecoratedComplianceRunSummary](DecoratedComplianceRunSummary.md)
+[DecoratedComplianceRunSummary](../Model/DecoratedComplianceRunSummary.md)
 
 ### HTTP request headers
 
@@ -524,11 +524,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | Optional. Pagination token. |
 | **limit** | **int?** | query | optional | Optional. Entries per page. |
 | **filter** | **string?** | query | optional | Optional. Filter. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. |
 
 ### Return type
 
-[PagedResourceListOfComplianceRuleResponse](PagedResourceListOfComplianceRuleResponse.md)
+[PagedResourceListOfComplianceRuleResponse](../Model/PagedResourceListOfComplianceRuleResponse.md)
 
 ### HTTP request headers
 
@@ -590,11 +590,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. |
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; |
 
 ### Return type
 
-[PagedResourceListOfComplianceRunInfoV2](PagedResourceListOfComplianceRunInfoV2.md)
+[PagedResourceListOfComplianceRunInfoV2](../Model/PagedResourceListOfComplianceRunInfoV2.md)
 
 ### HTTP request headers
 
@@ -658,7 +658,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfComplianceTemplate](PagedResourceListOfComplianceTemplate.md)
+[PagedResourceListOfComplianceTemplate](../Model/PagedResourceListOfComplianceTemplate.md)
 
 ### HTTP request headers
 
@@ -720,11 +720,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | Optional. The pagination token to use to continue listing historical order breaches from a previous call to list historical order breaches.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. |
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; |
 
 ### Return type
 
-[PagedResourceListOfOrderBreachHistory](PagedResourceListOfOrderBreachHistory.md)
+[PagedResourceListOfOrderBreachHistory](../Model/PagedResourceListOfOrderBreachHistory.md)
 
 ### HTTP request headers
 
@@ -790,7 +790,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ComplianceRunInfoV2](ComplianceRunInfoV2.md)
+[ComplianceRunInfoV2](../Model/ComplianceRunInfoV2.md)
 
 ### HTTP request headers
 
@@ -852,11 +852,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **ruleScope** | **string** | query | **required** | Required: Scope from which to select rules to be run. |
 | **recipeIdScope** | **string** | query | **required** | Required: the scope of the recipe to be used |
 | **recipeIdCode** | **string** | query | **required** | Required: The code of the recipe to be used. If left blank, the default recipe will be used. |
-| **complianceRunConfiguration** | [ComplianceRunConfiguration?](ComplianceRunConfiguration?.md) | body | optional | Configuration options for the compliance run. |
+| **complianceRunConfiguration** | [ComplianceRunConfiguration?](../Model/ComplianceRunConfiguration?.md) | body | optional | Configuration options for the compliance run. |
 
 ### Return type
 
-[ComplianceRunInfoV2](ComplianceRunInfoV2.md)
+[ComplianceRunInfoV2](../Model/ComplianceRunInfoV2.md)
 
 ### HTTP request headers
 
@@ -914,11 +914,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Compliance Rule Template. |
 | **code** | **string** | path | **required** | The code of the Compliance Rule Template. |
-| **updateComplianceTemplateRequest** | [UpdateComplianceTemplateRequest](UpdateComplianceTemplateRequest.md) | body | **required** | Request to update a compliance rule template. |
+| **updateComplianceTemplateRequest** | [UpdateComplianceTemplateRequest](../Model/UpdateComplianceTemplateRequest.md) | body | **required** | Request to update a compliance rule template. |
 
 ### Return type
 
-[ComplianceRuleTemplate](ComplianceRuleTemplate.md)
+[ComplianceRuleTemplate](../Model/ComplianceRuleTemplate.md)
 
 ### HTTP request headers
 
@@ -972,11 +972,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertComplianceRuleRequest** | [UpsertComplianceRuleRequest?](UpsertComplianceRuleRequest?.md) | body | optional |  |
+| **upsertComplianceRuleRequest** | [UpsertComplianceRuleRequest?](../Model/UpsertComplianceRuleRequest?.md) | body | optional |  |
 
 ### Return type
 
-[ComplianceRuleResponse](ComplianceRuleResponse.md)
+[ComplianceRuleResponse](../Model/ComplianceRuleResponse.md)
 
 ### HTTP request headers
 
@@ -1030,11 +1030,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertComplianceRunSummaryRequest** | [UpsertComplianceRunSummaryRequest?](UpsertComplianceRunSummaryRequest?.md) | body | optional |  |
+| **upsertComplianceRunSummaryRequest** | [UpsertComplianceRunSummaryRequest?](../Model/UpsertComplianceRunSummaryRequest?.md) | body | optional |  |
 
 ### Return type
 
-[UpsertComplianceRunSummaryResult](UpsertComplianceRunSummaryResult.md)
+[UpsertComplianceRunSummaryResult](../Model/UpsertComplianceRunSummaryResult.md)
 
 ### HTTP request headers
 

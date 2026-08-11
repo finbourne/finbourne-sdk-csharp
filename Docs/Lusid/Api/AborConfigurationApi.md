@@ -79,11 +79,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the AborConfiguration. |
-| **aborConfigurationRequest** | [AborConfigurationRequest](AborConfigurationRequest.md) | body | **required** | The definition of the AborConfiguration. |
+| **aborConfigurationRequest** | [AborConfigurationRequest](../Model/AborConfigurationRequest.md) | body | **required** | The definition of the AborConfiguration. |
 
 ### Return type
 
-[AborConfiguration](AborConfiguration.md)
+[AborConfiguration](../Model/AborConfiguration.md)
 
 ### HTTP request headers
 
@@ -143,7 +143,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -205,11 +205,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the AborConfiguration. Together with the scope this uniquely identifies the AborConfiguration. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the AborConfiguration properties. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the AborConfiguration definition. Defaults to returning the latest version of the AborConfiguration definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
 
 ### Return type
 
-[AborConfiguration](AborConfiguration.md)
+[AborConfiguration](../Model/AborConfiguration.md)
 
 ### HTTP request headers
 
@@ -273,7 +273,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AborConfigurationProperties](AborConfigurationProperties.md)
+[AborConfigurationProperties](../Model/AborConfigurationProperties.md)
 
 ### HTTP request headers
 
@@ -338,12 +338,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing AborConfiguration; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.              These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfAborConfiguration](PagedResourceListOfAborConfiguration.md)
+[PagedResourceListOfAborConfiguration](../Model/PagedResourceListOfAborConfiguration.md)
 
 ### HTTP request headers
 
@@ -401,11 +401,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the AborConfiguration. |
 | **code** | **string** | path | **required** | The code of the AborConfiguration.              Together with the scope this uniquely identifies the AborConfiguration. |
-| **operation** | [List&lt;Operation&gt;](Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
+| **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
 
 ### Return type
 
-[AborConfiguration](AborConfiguration.md)
+[AborConfiguration](../Model/AborConfiguration.md)
 
 ### HTTP request headers
 
@@ -463,11 +463,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the AborConfiguration to update or insert the properties onto. |
 | **code** | **string** | path | **required** | The code of the AborConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the AborConfiguration. |
-| **requestBody** | [Dictionary&lt;string, Property&gt;?](Property.md) | body | optional | The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;?](../Model/Property.md) | body | optional | The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. |
 
 ### Return type
 
-[AborConfigurationProperties](AborConfigurationProperties.md)
+[AborConfigurationProperties](../Model/AborConfigurationProperties.md)
 
 ### HTTP request headers
 

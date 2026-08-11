@@ -75,8 +75,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **type** | [CertificateType?](CertificateType?.md) | query | optional | User or Domain level cert (Domain level requires additional entitlements) |
-| **fileType** | [CertificateFileType?](CertificateFileType?.md) | query | optional | Should the public key or private key be downloaded? (both must be in place to run providers) |
+| **type** | [CertificateType?](../Model/CertificateType?.md) | query | optional | User or Domain level cert (Domain level requires additional entitlements) |
+| **fileType** | [CertificateFileType?](../Model/CertificateFileType?.md) | query | optional | Should the public key or private key be downloaded? (both must be in place to run providers) |
 | **mayAutoCreate** | **bool?** | query | optional | If no matching cert is available, should an attempt be made to Create/Renew it with default options? Default: `false` |
 
 ### Return type
@@ -135,7 +135,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;CertificateState&gt;](CertificateState.md)
+[List&lt;CertificateState&gt;](../Model/CertificateState.md)
 
 ### HTTP request headers
 
@@ -194,8 +194,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **action** | [CertificateAction?](CertificateAction?.md) | query | optional | The Action to perform, e.g. Create / Renew / Revoke |
-| **type** | [CertificateType?](CertificateType?.md) | query | optional | User or Domain level cert (Domain level requires additional entitlements) |
+| **action** | [CertificateAction?](../Model/CertificateAction?.md) | query | optional | The Action to perform, e.g. Create / Renew / Revoke |
+| **type** | [CertificateType?](../Model/CertificateType?.md) | query | optional | User or Domain level cert (Domain level requires additional entitlements) |
 | **version** | **int?** | query | optional | Version number of the cert, the request will fail to validate if incorrect Default: `1` |
 | **validityStart** | **DateTimeOffset?** | query | optional | When should the cert first be valid (defaults to the current time in UTC) |
 | **validityEnd** | **DateTimeOffset?** | query | optional | When should the cert no longer be valid (defaults to 13 months from now) |
@@ -203,7 +203,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[CertificateState](CertificateState.md)
+[CertificateState](../Model/CertificateState.md)
 
 ### HTTP request headers
 

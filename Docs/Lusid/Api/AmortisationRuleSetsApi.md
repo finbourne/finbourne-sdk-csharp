@@ -78,11 +78,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the rule set. |
-| **createAmortisationRuleSetRequest** | [CreateAmortisationRuleSetRequest](CreateAmortisationRuleSetRequest.md) | body | **required** | The contents of the rule set. |
+| **createAmortisationRuleSetRequest** | [CreateAmortisationRuleSetRequest](../Model/CreateAmortisationRuleSetRequest.md) | body | **required** | The contents of the rule set. |
 
 ### Return type
 
-[AmortisationRuleSet](AmortisationRuleSet.md)
+[AmortisationRuleSet](../Model/AmortisationRuleSet.md)
 
 ### HTTP request headers
 
@@ -142,7 +142,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -206,7 +206,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AmortisationRuleSet](AmortisationRuleSet.md)
+[AmortisationRuleSet](../Model/AmortisationRuleSet.md)
 
 ### HTTP request headers
 
@@ -270,11 +270,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing AmortisationRuleSets; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 
 ### Return type
 
-[PagedResourceListOfAmortisationRuleSet](PagedResourceListOfAmortisationRuleSet.md)
+[PagedResourceListOfAmortisationRuleSet](../Model/PagedResourceListOfAmortisationRuleSet.md)
 
 ### HTTP request headers
 
@@ -332,11 +332,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The rule set scope. |
 | **code** | **string** | path | **required** | The rule set code. |
-| **setAmortisationRulesRequest** | [SetAmortisationRulesRequest](SetAmortisationRulesRequest.md) | body | **required** | The contents of the rules. |
+| **setAmortisationRulesRequest** | [SetAmortisationRulesRequest](../Model/SetAmortisationRulesRequest.md) | body | **required** | The contents of the rules. |
 
 ### Return type
 
-[AmortisationRuleSet](AmortisationRuleSet.md)
+[AmortisationRuleSet](../Model/AmortisationRuleSet.md)
 
 ### HTTP request headers
 
@@ -394,11 +394,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The rule set scope. |
 | **code** | **string** | path | **required** | The rule set code. |
-| **updateAmortisationRuleSetDetailsRequest** | [UpdateAmortisationRuleSetDetailsRequest](UpdateAmortisationRuleSetDetailsRequest.md) | body | **required** | The contents of the rule set. |
+| **updateAmortisationRuleSetDetailsRequest** | [UpdateAmortisationRuleSetDetailsRequest](../Model/UpdateAmortisationRuleSetDetailsRequest.md) | body | **required** | The contents of the rule set. |
 
 ### Return type
 
-[AmortisationRuleSet](AmortisationRuleSet.md)
+[AmortisationRuleSet](../Model/AmortisationRuleSet.md)
 
 ### HTTP request headers
 

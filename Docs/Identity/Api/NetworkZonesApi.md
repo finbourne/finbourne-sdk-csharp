@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createNetworkZoneRequest** | [CreateNetworkZoneRequest](CreateNetworkZoneRequest.md) | body | **required** | The details of the network zone to define |
+| **createNetworkZoneRequest** | [CreateNetworkZoneRequest](../Model/CreateNetworkZoneRequest.md) | body | **required** | The details of the network zone to define |
 
 ### Return type
 
-[NetworkZoneDefinitionResponse](NetworkZoneDefinitionResponse.md)
+[NetworkZoneDefinitionResponse](../Model/NetworkZoneDefinitionResponse.md)
 
 ### HTTP request headers
 
@@ -191,7 +191,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[NetworkZoneDefinitionResponse](NetworkZoneDefinitionResponse.md)
+[NetworkZoneDefinitionResponse](../Model/NetworkZoneDefinitionResponse.md)
 
 ### HTTP request headers
 
@@ -245,7 +245,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;NetworkZoneDefinitionResponse&gt;](NetworkZoneDefinitionResponse.md)
+[List&lt;NetworkZoneDefinitionResponse&gt;](../Model/NetworkZoneDefinitionResponse.md)
 
 ### HTTP request headers
 
@@ -300,11 +300,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **code** | **string** | path | **required** | The unique identifier of the network zone |
-| **updateNetworkZoneRequest** | [UpdateNetworkZoneRequest](UpdateNetworkZoneRequest.md) | body | **required** | The updated definition of the network zone |
+| **updateNetworkZoneRequest** | [UpdateNetworkZoneRequest](../Model/UpdateNetworkZoneRequest.md) | body | **required** | The updated definition of the network zone |
 
 ### Return type
 
-[NetworkZoneDefinitionResponse](NetworkZoneDefinitionResponse.md)
+[NetworkZoneDefinitionResponse](../Model/NetworkZoneDefinitionResponse.md)
 
 ### HTTP request headers
 

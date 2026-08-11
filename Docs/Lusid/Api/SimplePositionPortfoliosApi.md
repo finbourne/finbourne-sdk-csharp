@@ -73,11 +73,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope in which to create the simple position portfolio. |
-| **createSimplePositionPortfolioRequest** | [CreateSimplePositionPortfolioRequest](CreateSimplePositionPortfolioRequest.md) | body | **required** | The definition of the simple position portfolio. |
+| **createSimplePositionPortfolioRequest** | [CreateSimplePositionPortfolioRequest](../Model/CreateSimplePositionPortfolioRequest.md) | body | **required** | The definition of the simple position portfolio. |
 
 ### Return type
 
-[Portfolio](Portfolio.md)
+[Portfolio](../Model/Portfolio.md)
 
 ### HTTP request headers
 

@@ -78,7 +78,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AddScimResponse](AddScimResponse.md)
+[AddScimResponse](../Model/AddScimResponse.md)
 
 ### HTTP request headers
 

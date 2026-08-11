@@ -72,7 +72,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[CurrentUserResponse](CurrentUserResponse.md)
+[CurrentUserResponse](../Model/CurrentUserResponse.md)
 
 ### HTTP request headers
 
@@ -125,11 +125,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **setPassword** | [SetPassword](SetPassword.md) | body | **required** | The request containing the new password value |
+| **setPassword** | [SetPassword](../Model/SetPassword.md) | body | **required** | The request containing the new password value |
 
 ### Return type
 
-[SetPasswordResponse](SetPasswordResponse.md)
+[SetPasswordResponse](../Model/SetPasswordResponse.md)
 
 ### HTTP request headers
 

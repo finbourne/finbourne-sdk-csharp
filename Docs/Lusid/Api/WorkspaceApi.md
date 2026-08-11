@@ -85,11 +85,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **visibility** | **string** | path | **required** | The visibility for the containing workspace; case is important. Available values: shared, personal. |
 | **workspaceName** | **string** | path | **required** | The item&#39;s workspace name. |
-| **workspaceItemCreationRequest** | [WorkspaceItemCreationRequest?](WorkspaceItemCreationRequest?.md) | body | optional | The item to be created. |
+| **workspaceItemCreationRequest** | [WorkspaceItemCreationRequest?](../Model/WorkspaceItemCreationRequest?.md) | body | optional | The item to be created. |
 
 ### Return type
 
-[WorkspaceItem](WorkspaceItem.md)
+[WorkspaceItem](../Model/WorkspaceItem.md)
 
 ### HTTP request headers
 
@@ -146,12 +146,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **visibility** | **string** | path | **required** | The visibility for the workspace being created; case is important. Available values: shared, personal. |
-| **workspaceCreationRequest** | [WorkspaceCreationRequest](WorkspaceCreationRequest.md) | body | **required** | The workspace to be created. |
+| **workspaceCreationRequest** | [WorkspaceCreationRequest](../Model/WorkspaceCreationRequest.md) | body | **required** | The workspace to be created. |
 | **includeItemAccess** | **bool?** | query | optional | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. Default: `false` |
 
 ### Return type
 
-[Workspace](Workspace.md)
+[Workspace](../Model/Workspace.md)
 
 ### HTTP request headers
 
@@ -215,7 +215,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -277,7 +277,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -343,7 +343,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[WorkspaceItem](WorkspaceItem.md)
+[WorkspaceItem](../Model/WorkspaceItem.md)
 
 ### HTTP request headers
 
@@ -407,7 +407,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Workspace](Workspace.md)
+[Workspace](../Model/Workspace.md)
 
 ### HTTP request headers
 
@@ -471,13 +471,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **workspaceName** | **string** | path | **required** | The item&#39;s workspace name. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[PagedResourceListOfWorkspaceItem](PagedResourceListOfWorkspaceItem.md)
+[PagedResourceListOfWorkspaceItem](../Model/PagedResourceListOfWorkspaceItem.md)
 
 ### HTTP request headers
 
@@ -540,14 +540,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **visibility** | **string** | path | **required** | The visibility for the workspaces; case is important. Available values: shared, personal. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing workspaces from a previous call to list workspaces.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
 | **includeItemAccess** | **bool?** | query | optional | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. Default: `false` |
 
 ### Return type
 
-[PagedResourceListOfWorkspace](PagedResourceListOfWorkspace.md)
+[PagedResourceListOfWorkspace](../Model/PagedResourceListOfWorkspace.md)
 
 ### HTTP request headers
 
@@ -609,13 +609,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **visibility** | **string** | path | **required** | The visibility for the containing workspace; case is important. Available values: shared, personal. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[PagedResourceListOfItemAndWorkspace](PagedResourceListOfItemAndWorkspace.md)
+[PagedResourceListOfItemAndWorkspace](../Model/PagedResourceListOfItemAndWorkspace.md)
 
 ### HTTP request headers
 
@@ -677,11 +677,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **workspaceName** | **string** | path | **required** | The workspace name. |
 | **groupName** | **string** | path | **required** | The group containing the item. |
 | **itemName** | **string** | path | **required** | The item name. |
-| **workspaceItemUpdateRequest** | [WorkspaceItemUpdateRequest?](WorkspaceItemUpdateRequest?.md) | body | optional | The new item details. |
+| **workspaceItemUpdateRequest** | [WorkspaceItemUpdateRequest?](../Model/WorkspaceItemUpdateRequest?.md) | body | optional | The new item details. |
 
 ### Return type
 
-[WorkspaceItem](WorkspaceItem.md)
+[WorkspaceItem](../Model/WorkspaceItem.md)
 
 ### HTTP request headers
 
@@ -740,12 +740,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **visibility** | **string** | path | **required** | The visibility for the workspace; case is important. Available values: shared, personal. |
 | **workspaceName** | **string** | path | **required** | The workspace name. |
-| **workspaceUpdateRequest** | [WorkspaceUpdateRequest](WorkspaceUpdateRequest.md) | body | **required** | The new workspace details. |
+| **workspaceUpdateRequest** | [WorkspaceUpdateRequest](../Model/WorkspaceUpdateRequest.md) | body | **required** | The new workspace details. |
 | **includeItemAccess** | **bool?** | query | optional | If true, includes the workspace item actions the user is permitted to perform in the response. Defaults to false. Default: `false` |
 
 ### Return type
 
-[Workspace](Workspace.md)
+[Workspace](../Model/Workspace.md)
 
 ### HTTP request headers
 

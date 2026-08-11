@@ -69,11 +69,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **manualEventRequest** | [ManualEventRequest](ManualEventRequest.md) | body | **required** | The data required to trigger a manual event. |
+| **manualEventRequest** | [ManualEventRequest](../Model/ManualEventRequest.md) | body | **required** | The data required to trigger a manual event. |
 
 ### Return type
 
-[ManualEvent](ManualEvent.md)
+[ManualEvent](../Model/ManualEvent.md)
 
 ### HTTP request headers
 

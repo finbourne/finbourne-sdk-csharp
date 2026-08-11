@@ -82,11 +82,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createDerivedPropertyDefinitionRequest** | [CreateDerivedPropertyDefinitionRequest](CreateDerivedPropertyDefinitionRequest.md) | body | **required** | The definition of the new derived property. |
+| **createDerivedPropertyDefinitionRequest** | [CreateDerivedPropertyDefinitionRequest](../Model/CreateDerivedPropertyDefinitionRequest.md) | body | **required** | The definition of the new derived property. |
 
 ### Return type
 
-[PropertyDefinition](PropertyDefinition.md)
+[PropertyDefinition](../Model/PropertyDefinition.md)
 
 ### HTTP request headers
 
@@ -140,11 +140,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createPropertyDefinitionRequest** | [CreatePropertyDefinitionRequest](CreatePropertyDefinitionRequest.md) | body | **required** | The definition of the new property. |
+| **createPropertyDefinitionRequest** | [CreatePropertyDefinitionRequest](../Model/CreatePropertyDefinitionRequest.md) | body | **required** | The definition of the new property. |
 
 ### Return type
 
-[PropertyDefinition](PropertyDefinition.md)
+[PropertyDefinition](../Model/PropertyDefinition.md)
 
 ### HTTP request headers
 
@@ -206,7 +206,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -267,12 +267,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **domain** | **string** | path | **required** | The domain of the property definition to delete properties from. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction. |
 | **scope** | **string** | path | **required** | The scope of the property definition to delete properties from. |
 | **code** | **string** | path | **required** | The code of the property definition to delete properties from. |
-| **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. |
+| **requestBody** | [List&lt;string&gt;](../Model/string.md) | body | **required** | The property keys of the properties to delete. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is before              the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -328,13 +328,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **derivationFormulaExplainRequest** | [DerivationFormulaExplainRequest](DerivationFormulaExplainRequest.md) | body | **required** | Information about the derivation formula to explain, and optionally, the entity to resolve the formula against. |
+| **derivationFormulaExplainRequest** | [DerivationFormulaExplainRequest](../Model/DerivationFormulaExplainRequest.md) | body | **required** | Information about the derivation formula to explain, and optionally, the entity to resolve the formula against. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to resolve the entity. Defaults to returning the latest asAt in LUSID              if not specified. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to resolve the entity. Defaults to the current LUSID              system datetime if not specified. |
 
 ### Return type
 
-[DerivedPropertyComponent](DerivedPropertyComponent.md)
+[DerivedPropertyComponent](../Model/DerivedPropertyComponent.md)
 
 ### HTTP request headers
 
@@ -391,14 +391,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **propertyKeys** | [List&lt;string&gt;](string.md) | query | **required** | One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. |
+| **propertyKeys** | [List&lt;string&gt;](../Model/string.md) | query | **required** | One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the property definitions. Defaults to return              the latest version of each definition if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.               For example, to filter on the Lifetime, use \&quot;lifeTime eq &#39;Perpetual&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to list properties attached to the Property Definition.              Defaults to the current LUSID system datetime if not specified. |
 
 ### Return type
 
-[ResourceListOfPropertyDefinition](ResourceListOfPropertyDefinition.md)
+[ResourceListOfPropertyDefinition](../Model/ResourceListOfPropertyDefinition.md)
 
 ### HTTP request headers
 
@@ -464,7 +464,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PropertyDefinition](PropertyDefinition.md)
+[PropertyDefinition](../Model/PropertyDefinition.md)
 
 ### HTTP request headers
 
@@ -536,7 +536,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPropertyInterval](ResourceListOfPropertyInterval.md)
+[ResourceListOfPropertyInterval](../Model/ResourceListOfPropertyInterval.md)
 
 ### HTTP request headers
 
@@ -598,15 +598,15 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to list the property definitions. Defaults to the current LUSID              system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the property definitions. Defaults to returning the latest version              of each property definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Property Definition&#39; domain to decorate onto              property definitions. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Property Definition&#39; domain to decorate onto              property definitions. These must take the format              {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing property definitions; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the display name, specify \&quot;DisplayName eq &#39;DisplayName&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 
 ### Return type
 
-[PagedResourceListOfPropertyDefinition](PagedResourceListOfPropertyDefinition.md)
+[PagedResourceListOfPropertyDefinition](../Model/PagedResourceListOfPropertyDefinition.md)
 
 ### HTTP request headers
 
@@ -666,11 +666,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **domain** | **string** | path | **required** | Domain of the property definition. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction. |
 | **scope** | **string** | path | **required** | Scope of the property definition |
 | **code** | **string** | path | **required** | Code of the property definition |
-| **updateDerivedPropertyDefinitionRequest** | [UpdateDerivedPropertyDefinitionRequest](UpdateDerivedPropertyDefinitionRequest.md) | body | **required** | Information about the derived property definition being updated |
+| **updateDerivedPropertyDefinitionRequest** | [UpdateDerivedPropertyDefinitionRequest](../Model/UpdateDerivedPropertyDefinitionRequest.md) | body | **required** | Information about the derived property definition being updated |
 
 ### Return type
 
-[PropertyDefinition](PropertyDefinition.md)
+[PropertyDefinition](../Model/PropertyDefinition.md)
 
 ### HTTP request headers
 
@@ -730,11 +730,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **domain** | **string** | path | **required** | The domain of the property being updated. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction. |
 | **scope** | **string** | path | **required** | The scope of the property being updated. |
 | **code** | **string** | path | **required** | The code of the property being updated. Together with the domain and scope this uniquely              identifies the property. |
-| **updatePropertyDefinitionRequest** | [UpdatePropertyDefinitionRequest](UpdatePropertyDefinitionRequest.md) | body | **required** | The updated definition of the property. |
+| **updatePropertyDefinitionRequest** | [UpdatePropertyDefinitionRequest](../Model/UpdatePropertyDefinitionRequest.md) | body | **required** | The updated definition of the property. |
 
 ### Return type
 
-[PropertyDefinition](PropertyDefinition.md)
+[PropertyDefinition](../Model/PropertyDefinition.md)
 
 ### HTTP request headers
 
@@ -795,12 +795,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **domain** | **string** | path | **required** | The domain of the specified property. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction. |
 | **scope** | **string** | path | **required** | The scope of the specified property. |
 | **code** | **string** | path | **required** | The code of the specified property. Together with the domain and scope this uniquely |
-| **requestBody** | [Dictionary&lt;string, Property&gt;](Property.md) | body | **required** | The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;](../Model/Property.md) | body | **required** | The properties to be created or updated. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example              &#39;PropertyDefinition/Manager/Id&#39;. |
 | **successMode** | **string?** | query | optional | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. Default: `&quot;Partial&quot;` |
 
 ### Return type
 
-[BatchUpsertPropertyDefinitionPropertiesResponse](BatchUpsertPropertyDefinitionPropertiesResponse.md)
+[BatchUpsertPropertyDefinitionPropertiesResponse](../Model/BatchUpsertPropertyDefinitionPropertiesResponse.md)
 
 ### HTTP request headers
 

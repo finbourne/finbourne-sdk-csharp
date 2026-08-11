@@ -88,7 +88,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfSystemLog](ResourceListOfSystemLog.md)
+[ResourceListOfSystemLog](../Model/ResourceListOfSystemLog.md)
 
 ### HTTP request headers
 
@@ -154,7 +154,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfSystemLog](ResourceListOfSystemLog.md)
+[ResourceListOfSystemLog](../Model/ResourceListOfSystemLog.md)
 
 ### HTTP request headers
 

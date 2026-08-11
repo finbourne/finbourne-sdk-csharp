@@ -73,7 +73,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **type** | [LuminesceBinaryType?](LuminesceBinaryType?.md) | query | optional | Type of binary to download (each requires separate licenses and entitlements) |
+| **type** | [LuminesceBinaryType?](../Model/LuminesceBinaryType?.md) | query | optional | Type of binary to download (each requires separate licenses and entitlements) |
 | **version** | **string?** | query | optional | An explicit version of the binary.  Leave blank to get the latest version (recommended) |
 
 ### Return type
@@ -132,7 +132,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **type** | [LuminesceBinaryType?](LuminesceBinaryType?.md) | query | optional | Type of binary to fetch available versions of |
+| **type** | [LuminesceBinaryType?](../Model/LuminesceBinaryType?.md) | query | optional | Type of binary to fetch available versions of |
 
 ### Return type
 

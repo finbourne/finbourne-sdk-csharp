@@ -96,7 +96,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, UpsertInstrumentPropertyRequest&gt;](UpsertInstrumentPropertyRequest.md) | body | **required** | A list of instruments and associated instrument properties to create or update. |
+| **requestBody** | [Dictionary&lt;string, UpsertInstrumentPropertyRequest&gt;](../Model/UpsertInstrumentPropertyRequest.md) | body | **required** | A list of instruments and associated instrument properties to create or update. |
 | **scope** | **string?** | query | optional | The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 | **identifierEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified. |
 | **successMode** | **string?** | query | optional | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. Default: `&quot;Partial&quot;` |
@@ -105,7 +105,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[BatchUpsertInstrumentPropertiesResponse](BatchUpsertInstrumentPropertiesResponse.md)
+[BatchUpsertInstrumentPropertiesResponse](../Model/BatchUpsertInstrumentPropertiesResponse.md)
 
 ### HTTP request headers
 
@@ -171,7 +171,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AddBusinessDaysToDateResponse](AddBusinessDaysToDateResponse.md)
+[AddBusinessDaysToDateResponse](../Model/AddBusinessDaysToDateResponse.md)
 
 ### HTTP request headers
 
@@ -233,7 +233,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeleteInstrumentResponse](DeleteInstrumentResponse.md)
+[DeleteInstrumentResponse](../Model/DeleteInstrumentResponse.md)
 
 ### HTTP request headers
 
@@ -295,7 +295,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **identifierType** | **string** | path | **required** | The unique identifier type to search, for example &#39;Figi&#39;. |
 | **identifier** | **string** | path | **required** | An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. |
-| **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. |
+| **requestBody** | [List&lt;string&gt;](../Model/string.md) | body | **required** | A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. |
 | **scope** | **string?** | query | optional | The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
@@ -303,7 +303,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeleteInstrumentPropertiesResponse](DeleteInstrumentPropertiesResponse.md)
+[DeleteInstrumentPropertiesResponse](../Model/DeleteInstrumentPropertiesResponse.md)
 
 ### HTTP request headers
 
@@ -359,13 +359,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | The list of lusidInstrumentId&#39;s to delete. |
+| **requestBody** | [List&lt;string&gt;](../Model/string.md) | body | **required** | The list of lusidInstrumentId&#39;s to delete. |
 | **deleteMode** | **string?** | query | optional | The delete mode to use. Default value: Soft. Available values: Soft, Hard. |
 | **scope** | **string?** | query | optional | The scope in which the instruments lie. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 
 ### Return type
 
-[DeleteInstrumentsResponse](DeleteInstrumentsResponse.md)
+[DeleteInstrumentsResponse](../Model/DeleteInstrumentsResponse.md)
 
 ### HTTP request headers
 
@@ -493,7 +493,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[InstrumentCapabilities](InstrumentCapabilities.md)
+[InstrumentCapabilities](../Model/InstrumentCapabilities.md)
 
 ### HTTP request headers
 
@@ -561,7 +561,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[InstrumentModels](InstrumentModels.md)
+[InstrumentModels](../Model/InstrumentModels.md)
 
 ### HTTP request headers
 
@@ -630,9 +630,9 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **identifier** | **string** | path | **required** | An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto              the instrument, or from any domain that supports relationships to decorate onto related entities.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto              the instrument, or from any domain that supports relationships to decorate onto related entities.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. |
 | **scope** | **string?** | query | optional | The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use. |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use. |
 | **timelineScope** | **string?** | query | optional | The scope of the Timeline. |
@@ -641,7 +641,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Instrument](Instrument.md)
+[Instrument](../Model/Instrument.md)
 
 ### HTTP request headers
 
@@ -695,7 +695,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[ResourceListOfInstrumentIdTypeDescriptor](ResourceListOfInstrumentIdTypeDescriptor.md)
+[ResourceListOfInstrumentIdTypeDescriptor](../Model/ResourceListOfInstrumentIdTypeDescriptor.md)
 
 ### HTTP request headers
 
@@ -764,7 +764,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[InstrumentPaymentDiary](InstrumentPaymentDiary.md)
+[InstrumentPaymentDiary](../Model/InstrumentPaymentDiary.md)
 
 ### HTTP request headers
 
@@ -830,7 +830,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[InstrumentProperties](InstrumentProperties.md)
+[InstrumentProperties](../Model/InstrumentProperties.md)
 
 ### HTTP request headers
 
@@ -904,7 +904,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPropertyInterval](ResourceListOfPropertyInterval.md)
+[ResourceListOfPropertyInterval](../Model/ResourceListOfPropertyInterval.md)
 
 ### HTTP request headers
 
@@ -969,12 +969,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter relationships. Users should provide null or empty string for this field until further notice. |
-| **identifierTypes** | [List&lt;string&gt;?](string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. |
+| **identifierTypes** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. |
 | **scope** | **string?** | query | optional | The entity scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 
 ### Return type
 
-[ResourceListOfRelationship](ResourceListOfRelationship.md)
+[ResourceListOfRelationship](../Model/ResourceListOfRelationship.md)
 
 ### HTTP request headers
 
@@ -1037,18 +1037,18 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **identifierType** | **string** | query | **required** | The unique identifier type to use, for example &#39;Figi&#39;. |
-| **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | A list of one or more &lt;i&gt;identifierType&lt;/i&gt; values to use to identify instruments. |
+| **requestBody** | [List&lt;string&gt;](../Model/string.md) | body | **required** | A list of one or more &lt;i&gt;identifierType&lt;/i&gt; values to use to identify instruments. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the instrument definitions.               Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the instrument definitions.               Defaults to returning the latest version of each instrument definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto               each instrument, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto               each instrument, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. |
 | **scope** | **string?** | query | optional | The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use. |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use. |
 
 ### Return type
 
-[GetInstrumentsResponse](GetInstrumentsResponse.md)
+[GetInstrumentsResponse](../Model/GetInstrumentsResponse.md)
 
 ### HTTP request headers
 
@@ -1118,7 +1118,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfProperty](ResourceListOfProperty.md)
+[ResourceListOfProperty](../Model/ResourceListOfProperty.md)
 
 ### HTTP request headers
 
@@ -1189,12 +1189,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to list instruments.               Defaults to the current LUSID system datetime if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing instruments; this value is returned from               the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and               &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request.               For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. Default: `&quot;State eq &#39;Active&#39;&quot;` |
-| **instrumentPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. |
+| **instrumentPropertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments, or from any domain that supports relationships to decorate onto related entities.               These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. |
 | **scope** | **string?** | query | optional | The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;.                 Use &#39;*&#39; to list instruments across all scopes. Default: `&quot;default&quot;` |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities               onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use. |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use. |
 | **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. |
@@ -1204,7 +1204,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfInstrument](PagedResourceListOfInstrument.md)
+[PagedResourceListOfInstrument](../Model/PagedResourceListOfInstrument.md)
 
 ### HTTP request headers
 
@@ -1259,12 +1259,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **lusidInstrument** | [LusidInstrument](LusidInstrument.md) | body | **required** | The definition of the instrument. |
+| **lusidInstrument** | [LusidInstrument](../Model/LusidInstrument.md) | body | **required** | The definition of the instrument. |
 | **model** | **string?** | query | optional | A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. |
 
 ### Return type
 
-[InstrumentCapabilities](InstrumentCapabilities.md)
+[InstrumentCapabilities](../Model/InstrumentCapabilities.md)
 
 ### HTTP request headers
 
@@ -1325,14 +1325,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **identifierType** | **string** | path | **required** | The unique identifier type to search, for example &#39;Figi&#39;. |
 | **identifier** | **string** | path | **required** | An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. |
-| **updateInstrumentIdentifierRequest** | [UpdateInstrumentIdentifierRequest](UpdateInstrumentIdentifierRequest.md) | body | **required** | The identifier to update or delete. This need not be the same value as the               &#39;identifier&#39; parameter used to retrieve the instrument. |
+| **updateInstrumentIdentifierRequest** | [UpdateInstrumentIdentifierRequest](../Model/UpdateInstrumentIdentifierRequest.md) | body | **required** | The identifier to update or delete. This need not be the same value as the               &#39;identifier&#39; parameter used to retrieve the instrument. |
 | **scope** | **string?** | query | optional | The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 
 ### Return type
 
-[Instrument](Instrument.md)
+[Instrument](../Model/Instrument.md)
 
 ### HTTP request headers
 
@@ -1389,14 +1389,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, InstrumentDefinition&gt;](InstrumentDefinition.md) | body | **required** | The definitions of the instruments to create or update. |
+| **requestBody** | [Dictionary&lt;string, InstrumentDefinition&gt;](../Model/InstrumentDefinition.md) | body | **required** | The definitions of the instruments to create or update. |
 | **scope** | **string?** | query | optional | The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 
 ### Return type
 
-[UpsertInstrumentsResponse](UpsertInstrumentsResponse.md)
+[UpsertInstrumentsResponse](../Model/UpsertInstrumentsResponse.md)
 
 ### HTTP request headers
 
@@ -1453,14 +1453,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertInstrumentPropertyRequest** | [List&lt;UpsertInstrumentPropertyRequest&gt;](UpsertInstrumentPropertyRequest.md) | body | **required** | A list of instruments and associated instrument properties to create or update. |
+| **upsertInstrumentPropertyRequest** | [List&lt;UpsertInstrumentPropertyRequest&gt;](../Model/UpsertInstrumentPropertyRequest.md) | body | **required** | A list of instruments and associated instrument properties to create or update. |
 | **scope** | **string?** | query | optional | The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 
 ### Return type
 
-[UpsertInstrumentPropertiesResponse](UpsertInstrumentPropertiesResponse.md)
+[UpsertInstrumentPropertiesResponse](../Model/UpsertInstrumentPropertiesResponse.md)
 
 ### HTTP request headers
 

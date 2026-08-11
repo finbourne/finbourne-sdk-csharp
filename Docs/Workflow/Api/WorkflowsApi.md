@@ -74,11 +74,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createWorkflowRequest** | [CreateWorkflowRequest](CreateWorkflowRequest.md) | body | **required** | The data to create a Workflow |
+| **createWorkflowRequest** | [CreateWorkflowRequest](../Model/CreateWorkflowRequest.md) | body | **required** | The data to create a Workflow |
 
 ### Return type
 
-[WorkflowResponse](WorkflowResponse.md)
+[WorkflowResponse](../Model/WorkflowResponse.md)
 
 ### HTTP request headers
 
@@ -137,7 +137,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -196,11 +196,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope that identifies a Workflow |
 | **code** | **string** | path | **required** | The code that identifies a Workflow |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Workflow. Defaults to returning the latest version if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the Workflow or TaskDefinition domain) whose values to return on the Workflow. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys (in the Workflow or TaskDefinition domain) whose values to return on the Workflow. |
 
 ### Return type
 
-[WorkflowResponse](WorkflowResponse.md)
+[WorkflowResponse](../Model/WorkflowResponse.md)
 
 ### HTTP request headers
 
@@ -260,14 +260,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Workflows. Defaults to return the latest version of each Workflow if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here: https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Default: `10` |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing workflows from a previous call to list workflows. This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields must not have changed since the original request. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the Workflow or TaskDefinition domain) whose values to return on each Workflow. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys (in the Workflow or TaskDefinition domain) whose values to return on each Workflow. |
 
 ### Return type
 
-[PagedResourceListOfWorkflowResponse](PagedResourceListOfWorkflowResponse.md)
+[PagedResourceListOfWorkflowResponse](../Model/PagedResourceListOfWorkflowResponse.md)
 
 ### HTTP request headers
 
@@ -324,11 +324,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope that identifies a Workflow |
 | **code** | **string** | path | **required** | The code that identifies a Workflow |
-| **updateWorkflowRequest** | [UpdateWorkflowRequest](UpdateWorkflowRequest.md) | body | **required** | The data to update a Workflow |
+| **updateWorkflowRequest** | [UpdateWorkflowRequest](../Model/UpdateWorkflowRequest.md) | body | **required** | The data to update a Workflow |
 
 ### Return type
 
-[WorkflowResponse](WorkflowResponse.md)
+[WorkflowResponse](../Model/WorkflowResponse.md)
 
 ### HTTP request headers
 
@@ -386,12 +386,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope that identifies a Workflow |
 | **code** | **string** | path | **required** | The code that identifies a Workflow |
-| **requestBody** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | body | **required** | The properties to upsert, keyed by property key. A null value deletes the property. |
+| **requestBody** | [Dictionary&lt;string, PerpetualProperty&gt;](../Model/PerpetualProperty.md) | body | **required** | The properties to upsert, keyed by property key. A null value deletes the property. |
 | **successMode** | **string?** | query | optional | Whether the batch should fail Atomically or Partially. Defaults to Partial. Default: `&quot;Partial&quot;` |
 
 ### Return type
 
-[BatchUpsertWorkflowPropertiesResponse](BatchUpsertWorkflowPropertiesResponse.md)
+[BatchUpsertWorkflowPropertiesResponse](../Model/BatchUpsertWorkflowPropertiesResponse.md)
 
 ### HTTP request headers
 

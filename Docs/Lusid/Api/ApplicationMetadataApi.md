@@ -78,7 +78,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[FileResponse](FileResponse.md)
+[FileResponse](../Model/FileResponse.md)
 
 ### HTTP request headers
 
@@ -132,7 +132,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[LatestAsAt](LatestAsAt.md)
+[LatestAsAt](../Model/LatestAsAt.md)
 
 ### HTTP request headers
 
@@ -185,7 +185,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[VersionSummaryDto](VersionSummaryDto.md)
+[VersionSummaryDto](../Model/VersionSummaryDto.md)
 
 ### HTTP request headers
 
@@ -242,7 +242,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfAccessControlledResource](ResourceListOfAccessControlledResource.md)
+[ResourceListOfAccessControlledResource](../Model/ResourceListOfAccessControlledResource.md)
 
 ### HTTP request headers
 

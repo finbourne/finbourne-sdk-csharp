@@ -79,7 +79,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfDelivery](ResourceListOfDelivery.md)
+[ResourceListOfDelivery](../Model/ResourceListOfDelivery.md)
 
 ### HTTP request headers
 

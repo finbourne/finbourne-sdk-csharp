@@ -82,11 +82,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **configType** | **string** | path | **required** | The category of configuration. |
 | **name** | **string** | path | **required** | The logical name of the configuration. |
-| **createVersionedConfigurationDraftRequest** | [CreateVersionedConfigurationDraftRequest?](CreateVersionedConfigurationDraftRequest?.md) | body | optional | Options for the new draft, including optional explicit version and source version. |
+| **createVersionedConfigurationDraftRequest** | [CreateVersionedConfigurationDraftRequest?](../Model/CreateVersionedConfigurationDraftRequest?.md) | body | optional | Options for the new draft, including optional explicit version and source version. |
 
 ### Return type
 
-[VersionedConfigurationResponse](VersionedConfigurationResponse.md)
+[VersionedConfigurationResponse](../Model/VersionedConfigurationResponse.md)
 
 ### HTTP request headers
 
@@ -152,7 +152,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedConfigurationResponse](VersionedConfigurationResponse.md)
+[VersionedConfigurationResponse](../Model/VersionedConfigurationResponse.md)
 
 ### HTTP request headers
 
@@ -219,7 +219,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedConfigurationResponse](VersionedConfigurationResponse.md)
+[VersionedConfigurationResponse](../Model/VersionedConfigurationResponse.md)
 
 ### HTTP request headers
 
@@ -274,7 +274,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;VersionedConfigurationTypeResponse&gt;](VersionedConfigurationTypeResponse.md)
+[List&lt;VersionedConfigurationTypeResponse&gt;](../Model/VersionedConfigurationTypeResponse.md)
 
 ### HTTP request headers
 
@@ -328,7 +328,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;VersionedConfigurationResponse&gt;](VersionedConfigurationResponse.md)
+[List&lt;VersionedConfigurationResponse&gt;](../Model/VersionedConfigurationResponse.md)
 
 ### HTTP request headers
 
@@ -386,7 +386,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;VersionedConfigurationResponse&gt;](VersionedConfigurationResponse.md)
+[List&lt;VersionedConfigurationResponse&gt;](../Model/VersionedConfigurationResponse.md)
 
 ### HTTP request headers
 
@@ -451,7 +451,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedConfigurationResponse](VersionedConfigurationResponse.md)
+[VersionedConfigurationResponse](../Model/VersionedConfigurationResponse.md)
 
 ### HTTP request headers
 
@@ -514,11 +514,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **name** | **string** | path | **required** | The logical name of the configuration. |
 | **majorVersion** | **int** | path | **required** | The major version of the draft to update. |
 | **minorVersion** | **int** | path | **required** | The minor version of the draft to update. |
-| **updateVersionedConfigurationDraftRequest** | [UpdateVersionedConfigurationDraftRequest?](UpdateVersionedConfigurationDraftRequest?.md) | body | optional | The updated value. |
+| **updateVersionedConfigurationDraftRequest** | [UpdateVersionedConfigurationDraftRequest?](../Model/UpdateVersionedConfigurationDraftRequest?.md) | body | optional | The updated value. |
 
 ### Return type
 
-[VersionedConfigurationResponse](VersionedConfigurationResponse.md)
+[VersionedConfigurationResponse](../Model/VersionedConfigurationResponse.md)
 
 ### HTTP request headers
 

@@ -136,11 +136,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createRoleRequest** | [CreateRoleRequest](CreateRoleRequest.md) | body | **required** | Details of the role to be created |
+| **createRoleRequest** | [CreateRoleRequest](../Model/CreateRoleRequest.md) | body | **required** | Details of the role to be created |
 
 ### Return type
 
-[RoleResponse](RoleResponse.md)
+[RoleResponse](../Model/RoleResponse.md)
 
 ### HTTP request headers
 
@@ -253,7 +253,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RoleResponse](RoleResponse.md)
+[RoleResponse](../Model/RoleResponse.md)
 
 ### HTTP request headers
 
@@ -314,7 +314,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RoleResponse](RoleResponse.md)
+[RoleResponse](../Model/RoleResponse.md)
 
 ### HTTP request headers
 
@@ -369,7 +369,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;RoleResponse&gt;](RoleResponse.md)
+[List&lt;RoleResponse&gt;](../Model/RoleResponse.md)
 
 ### HTTP request headers
 
@@ -426,7 +426,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;UserResponse&gt;](UserResponse.md)
+[List&lt;UserResponse&gt;](../Model/UserResponse.md)
 
 ### HTTP request headers
 
@@ -539,11 +539,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | The unique identifier for the role to be updated |
-| **updateRoleRequest** | [UpdateRoleRequest?](UpdateRoleRequest?.md) | body | optional | The new definition of the role |
+| **updateRoleRequest** | [UpdateRoleRequest?](../Model/UpdateRoleRequest?.md) | body | optional | The new definition of the role |
 
 ### Return type
 
-[RoleResponse](RoleResponse.md)
+[RoleResponse](../Model/RoleResponse.md)
 
 ### HTTP request headers
 

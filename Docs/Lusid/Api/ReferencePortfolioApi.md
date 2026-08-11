@@ -77,11 +77,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope in which to create the reference portfolio. |
-| **createReferencePortfolioRequest** | [CreateReferencePortfolioRequest](CreateReferencePortfolioRequest.md) | body | **required** | The definition of the reference portfolio. |
+| **createReferencePortfolioRequest** | [CreateReferencePortfolioRequest](../Model/CreateReferencePortfolioRequest.md) | body | **required** | The definition of the reference portfolio. |
 
 ### Return type
 
-[Portfolio](Portfolio.md)
+[Portfolio](../Model/Portfolio.md)
 
 ### HTTP request headers
 
@@ -143,11 +143,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto              constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or              &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto              constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or              &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. |
 
 ### Return type
 
-[GetReferencePortfolioConstituentsResponse](GetReferencePortfolioConstituentsResponse.md)
+[GetReferencePortfolioConstituentsResponse](../Model/GetReferencePortfolioConstituentsResponse.md)
 
 ### HTTP request headers
 
@@ -213,7 +213,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfConstituentsAdjustmentHeader](ResourceListOfConstituentsAdjustmentHeader.md)
+[ResourceListOfConstituentsAdjustmentHeader](../Model/ResourceListOfConstituentsAdjustmentHeader.md)
 
 ### HTTP request headers
 
@@ -271,11 +271,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the reference portfolio. |
 | **code** | **string** | path | **required** | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. |
-| **upsertReferencePortfolioConstituentPropertiesRequest** | [UpsertReferencePortfolioConstituentPropertiesRequest](UpsertReferencePortfolioConstituentPropertiesRequest.md) | body | **required** | The request to modify properties for the constituent. |
+| **upsertReferencePortfolioConstituentPropertiesRequest** | [UpsertReferencePortfolioConstituentPropertiesRequest](../Model/UpsertReferencePortfolioConstituentPropertiesRequest.md) | body | **required** | The request to modify properties for the constituent. |
 
 ### Return type
 
-[UpsertReferencePortfolioConstituentPropertiesResponse](UpsertReferencePortfolioConstituentPropertiesResponse.md)
+[UpsertReferencePortfolioConstituentPropertiesResponse](../Model/UpsertReferencePortfolioConstituentPropertiesResponse.md)
 
 ### HTTP request headers
 
@@ -333,11 +333,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the reference portfolio. |
 | **code** | **string** | path | **required** | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. |
-| **upsertReferencePortfolioConstituentsRequest** | [UpsertReferencePortfolioConstituentsRequest](UpsertReferencePortfolioConstituentsRequest.md) | body | **required** | The constituents to upload to the reference portfolio. |
+| **upsertReferencePortfolioConstituentsRequest** | [UpsertReferencePortfolioConstituentsRequest](../Model/UpsertReferencePortfolioConstituentsRequest.md) | body | **required** | The constituents to upload to the reference portfolio. |
 
 ### Return type
 
-[UpsertReferencePortfolioConstituentsResponse](UpsertReferencePortfolioConstituentsResponse.md)
+[UpsertReferencePortfolioConstituentsResponse](../Model/UpsertReferencePortfolioConstituentsResponse.md)
 
 ### HTTP request headers
 

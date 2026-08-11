@@ -84,7 +84,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -148,7 +148,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceRecord](ResourceRecord.md)
+[ResourceRecord](../Model/ResourceRecord.md)
 
 ### HTTP request headers
 
@@ -210,7 +210,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfString](ResourceListOfString.md)
+[ResourceListOfString](../Model/ResourceListOfString.md)
 
 ### HTTP request headers
 
@@ -272,7 +272,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfScopeDefinition](ResourceListOfScopeDefinition.md)
+[ResourceListOfScopeDefinition](../Model/ResourceListOfScopeDefinition.md)
 
 ### HTTP request headers
 
@@ -336,13 +336,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the resource record. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the resource record. Defaults to return the latest version if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing resource records from a previous call. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 
 ### Return type
 
-[PagedResourceListOfResourceRecord](PagedResourceListOfResourceRecord.md)
+[PagedResourceListOfResourceRecord](../Model/PagedResourceListOfResourceRecord.md)
 
 ### HTTP request headers
 
@@ -396,11 +396,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertResourceRecordRequest** | [UpsertResourceRecordRequest](UpsertResourceRecordRequest.md) | body | **required** | The resource record to upsert. |
+| **upsertResourceRecordRequest** | [UpsertResourceRecordRequest](../Model/UpsertResourceRecordRequest.md) | body | **required** | The resource record to upsert. |
 
 ### Return type
 
-[ResourceRecord](ResourceRecord.md)
+[ResourceRecord](../Model/ResourceRecord.md)
 
 ### HTTP request headers
 

@@ -89,11 +89,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Abor. |
 | **code** | **string** | path | **required** | The code of the Abor. |
-| **diaryEntryRequest** | [DiaryEntryRequest](DiaryEntryRequest.md) | body | **required** | The diary entry to add. |
+| **diaryEntryRequest** | [DiaryEntryRequest](../Model/DiaryEntryRequest.md) | body | **required** | The diary entry to add. |
 
 ### Return type
 
-[DiaryEntry](DiaryEntry.md)
+[DiaryEntry](../Model/DiaryEntry.md)
 
 ### HTTP request headers
 
@@ -151,11 +151,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Abor. |
 | **code** | **string** | path | **required** | The code of the Abor. |
-| **closePeriodDiaryEntryRequest** | [ClosePeriodDiaryEntryRequest](ClosePeriodDiaryEntryRequest.md) | body | **required** | The request body, containing details to apply to the closing/locking period. |
+| **closePeriodDiaryEntryRequest** | [ClosePeriodDiaryEntryRequest](../Model/ClosePeriodDiaryEntryRequest.md) | body | **required** | The request body, containing details to apply to the closing/locking period. |
 
 ### Return type
 
-[DiaryEntry](DiaryEntry.md)
+[DiaryEntry](../Model/DiaryEntry.md)
 
 ### HTTP request headers
 
@@ -211,11 +211,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Abor. |
-| **aborRequest** | [AborRequest](AborRequest.md) | body | **required** | The definition of the Abor. |
+| **aborRequest** | [AborRequest](../Model/AborRequest.md) | body | **required** | The definition of the Abor. |
 
 ### Return type
 
-[Abor](Abor.md)
+[Abor](../Model/Abor.md)
 
 ### HTTP request headers
 
@@ -275,7 +275,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -337,7 +337,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -399,11 +399,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the Abor. Together with the scope this uniquely identifies the Abor. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the Abor properties. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Abor definition. Defaults to returning the latest version of the Abor definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Abor&#39; domain to decorate onto the Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
 
 ### Return type
 
-[Abor](Abor.md)
+[Abor](../Model/Abor.md)
 
 ### HTTP request headers
 
@@ -467,7 +467,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AborProperties](AborProperties.md)
+[AborProperties](../Model/AborProperties.md)
 
 ### HTTP request headers
 
@@ -529,7 +529,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Abor. |
 | **code** | **string** | path | **required** | The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. |
-| **journalEntryLinesQueryParameters** | [JournalEntryLinesQueryParameters](JournalEntryLinesQueryParameters.md) | body | **required** | The query parameters used in running the generation of the Journal Entry lines. |
+| **journalEntryLinesQueryParameters** | [JournalEntryLinesQueryParameters](../Model/JournalEntryLinesQueryParameters.md) | body | **required** | The query parameters used in running the generation of the Journal Entry lines. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. |
 | **filter** | **string?** | query | optional | \&quot;Expression to filter the result set.\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
@@ -537,7 +537,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListOfJournalEntryLine](VersionedResourceListOfJournalEntryLine.md)
+[VersionedResourceListOfJournalEntryLine](../Model/VersionedResourceListOfJournalEntryLine.md)
 
 ### HTTP request headers
 
@@ -599,7 +599,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Abor. |
 | **code** | **string** | path | **required** | The code of the Abor. Together with the scope this uniquely identifies the Abor. |
-| **trialBalanceQueryParameters** | [TrialBalanceQueryParameters](TrialBalanceQueryParameters.md) | body | **required** | The query parameters used in running the generation of the Trial Balance. |
+| **trialBalanceQueryParameters** | [TrialBalanceQueryParameters](../Model/TrialBalanceQueryParameters.md) | body | **required** | The query parameters used in running the generation of the Trial Balance. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Trial Balance.              Defaults to returning the latest version if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results by.              For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many.              Defaults to 100 if not specified. |
@@ -607,7 +607,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListOfTrialBalance](VersionedResourceListOfTrialBalance.md)
+[VersionedResourceListOfTrialBalance](../Model/VersionedResourceListOfTrialBalance.md)
 
 ### HTTP request headers
 
@@ -672,12 +672,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Abor; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the Abor type, specify \&quot;id.Code eq &#39;Abor1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Abor&#39; domain to decorate onto each Abor.              These must take the format {domain}/{scope}/{code}, for example &#39;Abor/Manager/Id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfAbor](PagedResourceListOfAbor.md)
+[PagedResourceListOfAbor](../Model/PagedResourceListOfAbor.md)
 
 ### HTTP request headers
 
@@ -746,12 +746,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing diary entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the DiaryEntry type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.              These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.              These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfDiaryEntry](PagedResourceListOfDiaryEntry.md)
+[PagedResourceListOfDiaryEntry](../Model/PagedResourceListOfDiaryEntry.md)
 
 ### HTTP request headers
 
@@ -809,11 +809,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Abor. |
 | **code** | **string** | path | **required** | The code of the Abor. |
-| **lockPeriodDiaryEntryRequest** | [LockPeriodDiaryEntryRequest?](LockPeriodDiaryEntryRequest?.md) | body | optional | The request body, detailing lock details |
+| **lockPeriodDiaryEntryRequest** | [LockPeriodDiaryEntryRequest?](../Model/LockPeriodDiaryEntryRequest?.md) | body | optional | The request body, detailing lock details |
 
 ### Return type
 
-[DiaryEntry](DiaryEntry.md)
+[DiaryEntry](../Model/DiaryEntry.md)
 
 ### HTTP request headers
 
@@ -871,11 +871,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Abor. |
 | **code** | **string** | path | **required** | The code of the Abor. Together with the              scope this uniquely identifies the Abor. |
-| **operation** | [List&lt;Operation&gt;](Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
+| **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
 
 ### Return type
 
-[Abor](Abor.md)
+[Abor](../Model/Abor.md)
 
 ### HTTP request headers
 
@@ -933,11 +933,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Abor. |
 | **code** | **string** | path | **required** | The code of the Abor. Together with the scope this uniquely identifies the Abor. |
-| **reOpenPeriodDiaryEntryRequest** | [ReOpenPeriodDiaryEntryRequest?](ReOpenPeriodDiaryEntryRequest?.md) | body | optional | The request body, containing details about the period to be re-opened. |
+| **reOpenPeriodDiaryEntryRequest** | [ReOpenPeriodDiaryEntryRequest?](../Model/ReOpenPeriodDiaryEntryRequest?.md) | body | optional | The request body, containing details about the period to be re-opened. |
 
 ### Return type
 
-[PeriodDiaryEntriesReopenedResponse](PeriodDiaryEntriesReopenedResponse.md)
+[PeriodDiaryEntriesReopenedResponse](../Model/PeriodDiaryEntriesReopenedResponse.md)
 
 ### HTTP request headers
 
@@ -995,11 +995,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Abor to update or insert the properties onto. |
 | **code** | **string** | path | **required** | The code of the Abor to update or insert the properties onto. Together with the scope this uniquely identifies the Abor. |
-| **requestBody** | [Dictionary&lt;string, Property&gt;?](Property.md) | body | optional | The properties to be updated or inserted onto the Abor. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Abor/Manager/Id\&quot;. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;?](../Model/Property.md) | body | optional | The properties to be updated or inserted onto the Abor. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Abor/Manager/Id\&quot;. |
 
 ### Return type
 
-[AborProperties](AborProperties.md)
+[AborProperties](../Model/AborProperties.md)
 
 ### HTTP request headers
 

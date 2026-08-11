@@ -152,7 +152,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[CaseStatementDesign](CaseStatementDesign.md)
+[CaseStatementDesign](../Model/CaseStatementDesign.md)
 
 ### HTTP request headers
 
@@ -206,7 +206,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **caseStatementDesign** | [CaseStatementDesign](CaseStatementDesign.md) | body | **required** | CaseStatementDesign object to try and create a SQL query from |
+| **caseStatementDesign** | [CaseStatementDesign](../Model/CaseStatementDesign.md) | body | **required** | CaseStatementDesign object to try and create a SQL query from |
 
 ### Return type
 
@@ -265,12 +265,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **fileReaderBuilderDef** | [FileReaderBuilderDef](FileReaderBuilderDef.md) | body | **required** | Structured file read design object to generate SQL from |
+| **fileReaderBuilderDef** | [FileReaderBuilderDef](../Model/FileReaderBuilderDef.md) | body | **required** | Structured file read design object to generate SQL from |
 | **executeQuery** | **bool?** | query | optional | Should the generated query be executed to build preview data or determine errors.&gt; Default: `true` |
 
 ### Return type
 
-[FileReaderBuilderResponse](FileReaderBuilderResponse.md)
+[FileReaderBuilderResponse](../Model/FileReaderBuilderResponse.md)
 
 ### HTTP request headers
 
@@ -328,7 +328,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[InlinedPropertyDesign](InlinedPropertyDesign.md)
+[InlinedPropertyDesign](../Model/InlinedPropertyDesign.md)
 
 ### HTTP request headers
 
@@ -382,7 +382,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **inlinedPropertyDesign** | [InlinedPropertyDesign](InlinedPropertyDesign.md) | body | **required** | Inlined properties Designer specification to generate SQL from |
+| **inlinedPropertyDesign** | [InlinedPropertyDesign](../Model/InlinedPropertyDesign.md) | body | **required** | Inlined properties Designer specification to generate SQL from |
 
 ### Return type
 
@@ -440,11 +440,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **intellisenseRequest** | [IntellisenseRequest](IntellisenseRequest.md) | body | **required** | SQL and a row/colum position within it from which to determine intellisense options for the user to potentially choose from. |
+| **intellisenseRequest** | [IntellisenseRequest](../Model/IntellisenseRequest.md) | body | **required** | SQL and a row/colum position within it from which to determine intellisense options for the user to potentially choose from. |
 
 ### Return type
 
-[IntellisenseResponse](IntellisenseResponse.md)
+[IntellisenseResponse](../Model/IntellisenseResponse.md)
 
 ### HTTP request headers
 
@@ -498,11 +498,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **errorHighlightRequest** | [ErrorHighlightRequest](ErrorHighlightRequest.md) | body | **required** | SQL (by line) to syntax check and return error ranges from within, if any. |
+| **errorHighlightRequest** | [ErrorHighlightRequest](../Model/ErrorHighlightRequest.md) | body | **required** | SQL (by line) to syntax check and return error ranges from within, if any. |
 
 ### Return type
 
-[ErrorHighlightResponse](ErrorHighlightResponse.md)
+[ErrorHighlightResponse](../Model/ErrorHighlightResponse.md)
 
 ### HTTP request headers
 
@@ -556,7 +556,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **lusidGridData** | [LusidGridData](LusidGridData.md) | body | **required** |  |
+| **lusidGridData** | [LusidGridData](../Model/LusidGridData.md) | body | **required** |  |
 
 ### Return type
 
@@ -614,7 +614,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **queryDesign** | [QueryDesign](QueryDesign.md) | body | **required** | Structured Query design object to generate SQL from |
+| **queryDesign** | [QueryDesign](../Model/QueryDesign.md) | body | **required** | Structured Query design object to generate SQL from |
 
 ### Return type
 
@@ -760,7 +760,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;ScalarParameter&gt;](ScalarParameter.md)
+[List&lt;ScalarParameter&gt;](../Model/ScalarParameter.md)
 
 ### HTTP request headers
 
@@ -820,7 +820,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[FileReaderBuilderDef](FileReaderBuilderDef.md)
+[FileReaderBuilderDef](../Model/FileReaderBuilderDef.md)
 
 ### HTTP request headers
 
@@ -878,11 +878,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **body** | **string** | body | **required** | SQL query to generate the design object from |
 | **validateWithMetadata** | **bool?** | query | optional | Should the table be validated against the users&#39; view of Sys.Field to fill in DataTypes, etc.? Default: `true` |
-| **version** | [QueryDesignerVersion?](QueryDesignerVersion?.md) | query | optional | Designer version number used to support multiple web user interface versions. Only some values will be allowed and this will change over time (as mentioned this whole method is largely internal to the Finbourne web user interfaces and evolves over time). |
+| **version** | [QueryDesignerVersion?](../Model/QueryDesignerVersion?.md) | query | optional | Designer version number used to support multiple web user interface versions. Only some values will be allowed and this will change over time (as mentioned this whole method is largely internal to the Finbourne web user interfaces and evolves over time). |
 
 ### Return type
 
-[QueryDesign](QueryDesign.md)
+[QueryDesign](../Model/QueryDesign.md)
 
 ### HTTP request headers
 
@@ -940,7 +940,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ConvertToViewData](ConvertToViewData.md)
+[ConvertToViewData](../Model/ConvertToViewData.md)
 
 ### HTTP request headers
 
@@ -1000,7 +1000,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[WriterDesign](WriterDesign.md)
+[WriterDesign](../Model/WriterDesign.md)
 
 ### HTTP request headers
 
@@ -1054,7 +1054,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **convertToViewData** | [ConvertToViewData](ConvertToViewData.md) | body | **required** | Structured Query design object to generate SQL from |
+| **convertToViewData** | [ConvertToViewData](../Model/ConvertToViewData.md) | body | **required** | Structured Query design object to generate SQL from |
 
 ### Return type
 
@@ -1112,7 +1112,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **writerDesign** | [WriterDesign](WriterDesign.md) | body | **required** | Structured Writer Design design object to generate Writer SQL from |
+| **writerDesign** | [WriterDesign](../Model/WriterDesign.md) | body | **required** | Structured Writer Design design object to generate Writer SQL from |
 
 ### Return type
 

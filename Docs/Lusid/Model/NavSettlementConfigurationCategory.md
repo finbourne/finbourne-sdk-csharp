@@ -4,8 +4,8 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **CalculateInstructionToPortfolioRate** | **bool?** | Optional | An optional flag that allows for the calculation of the instruction to portfolio rate for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction. |
-| **CalculateTradeDateToSettlementFxPnL** | **bool?** | Optional | An optional flag that allows for the calculation of FxPnL between Trade and Settlement Date. |
+| **CalculateInstructionToPortfolioRate** | **bool** | Required | An optional flag that allows for the calculation of the instruction to portfolio rate for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction. |
+| **CalculateTradeDateToSettlementFxPnL** | **bool** | Required | An optional flag that allows for the calculation of FxPnL between Trade and Settlement Date. |
 
 
 ## Usage
@@ -16,8 +16,8 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new NavSettlementConfigurationCategory(
-    calculateInstructionToPortfolioRate: true,  // optional — An optional flag that allows for the calculation of the instruction to portfolio rate for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction.
-    calculateTradeDateToSettlementFxPnL: true  // optional — An optional flag that allows for the calculation of FxPnL between Trade and Settlement Date.
+    calculateInstructionToPortfolioRate: true,  // required — An optional flag that allows for the calculation of the instruction to portfolio rate for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction.
+    calculateTradeDateToSettlementFxPnL: true  // required — An optional flag that allows for the calculation of FxPnL between Trade and Settlement Date.
 );
 ```
 ### Serializing to JSON

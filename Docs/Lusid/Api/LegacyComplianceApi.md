@@ -84,7 +84,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -148,7 +148,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfComplianceBreachedOrderInfo](ResourceListOfComplianceBreachedOrderInfo.md)
+[ResourceListOfComplianceBreachedOrderInfo](../Model/ResourceListOfComplianceBreachedOrderInfo.md)
 
 ### HTTP request headers
 
@@ -212,7 +212,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ComplianceRule](ComplianceRule.md)
+[ComplianceRule](../Model/ComplianceRule.md)
 
 ### HTTP request headers
 
@@ -276,7 +276,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfComplianceRuleResult](ResourceListOfComplianceRuleResult.md)
+[ResourceListOfComplianceRuleResult](../Model/ResourceListOfComplianceRuleResult.md)
 
 ### HTTP request headers
 
@@ -342,7 +342,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfComplianceRule](ResourceListOfComplianceRule.md)
+[ResourceListOfComplianceRule](../Model/ResourceListOfComplianceRule.md)
 
 ### HTTP request headers
 
@@ -406,7 +406,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfComplianceRunInfo](ResourceListOfComplianceRunInfo.md)
+[ResourceListOfComplianceRunInfo](../Model/ResourceListOfComplianceRunInfo.md)
 
 ### HTTP request headers
 
@@ -470,7 +470,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ComplianceRunInfo](ComplianceRunInfo.md)
+[ComplianceRunInfo](../Model/ComplianceRunInfo.md)
 
 ### HTTP request headers
 
@@ -525,12 +525,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, ComplianceRuleUpsertRequest&gt;](ComplianceRuleUpsertRequest.md) | body | **required** | A dictionary of upsert request identifiers to rule upsert requests. The request               identifiers are valid for the request only and can be used to link the upserted compliance rule to the code               of a created compliance rule. |
+| **requestBody** | [Dictionary&lt;string, ComplianceRuleUpsertRequest&gt;](../Model/ComplianceRuleUpsertRequest.md) | body | **required** | A dictionary of upsert request identifiers to rule upsert requests. The request               identifiers are valid for the request only and can be used to link the upserted compliance rule to the code               of a created compliance rule. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. |
 
 ### Return type
 
-[ComplianceRuleUpsertResponse](ComplianceRuleUpsertResponse.md)
+[ComplianceRuleUpsertResponse](../Model/ComplianceRuleUpsertResponse.md)
 
 ### HTTP request headers
 

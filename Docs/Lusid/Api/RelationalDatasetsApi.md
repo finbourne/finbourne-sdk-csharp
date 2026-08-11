@@ -78,12 +78,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **relationalDatasetDefinitionScope** | **string** | path | **required** | The Scope of the relational dataset definition. |
 | **relationalDatasetDefinitionCode** | **string** | path | **required** | The Code of the relational dataset definition. |
-| **requestBody** | [Dictionary&lt;string, DeleteRelationalDataPointRequest&gt;](DeleteRelationalDataPointRequest.md) | body | **required** | The Delete Request. |
+| **requestBody** | [Dictionary&lt;string, DeleteRelationalDataPointRequest&gt;](../Model/DeleteRelationalDataPointRequest.md) | body | **required** | The Delete Request. |
 | **successMode** | **string?** | query | optional | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.              Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code. Default: `&quot;Partial&quot;` |
 
 ### Return type
 
-[BatchDeleteRelationalDataResponse](BatchDeleteRelationalDataResponse.md)
+[BatchDeleteRelationalDataResponse](../Model/BatchDeleteRelationalDataResponse.md)
 
 ### HTTP request headers
 
@@ -142,12 +142,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **relationalDatasetDefinitionScope** | **string** | path | **required** | The Scope of the relational dataset definition. |
 | **relationalDatasetDefinitionCode** | **string** | path | **required** | The Code of the relational dataset definition. |
-| **requestBody** | [Dictionary&lt;string, UpsertRelationalDataPointRequest&gt;](UpsertRelationalDataPointRequest.md) | body | **required** | The DataPoints to upsert. |
+| **requestBody** | [Dictionary&lt;string, UpsertRelationalDataPointRequest&gt;](../Model/UpsertRelationalDataPointRequest.md) | body | **required** | The DataPoints to upsert. |
 | **successMode** | **string?** | query | optional | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.              Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code. Default: `&quot;Partial&quot;` |
 
 ### Return type
 
-[BatchUpsertRelationalDatasetsResponse](BatchUpsertRelationalDatasetsResponse.md)
+[BatchUpsertRelationalDatasetsResponse](../Model/BatchUpsertRelationalDatasetsResponse.md)
 
 ### HTTP request headers
 
@@ -213,11 +213,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to query the datasets.              Defaults to the current LUSID system datetime if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue query datasets. This value is returned from the previous call.              If a pagination token is provided, the filter, customSortBy, effectiveAt and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
-| **queryRelationalDatasetRequest** | [QueryRelationalDatasetRequest?](QueryRelationalDatasetRequest?.md) | body | optional | The query request. |
+| **queryRelationalDatasetRequest** | [QueryRelationalDatasetRequest?](../Model/QueryRelationalDatasetRequest?.md) | body | optional | The query request. |
 
 ### Return type
 
-[PagedResourceListOfRelationalDataPointResponse](PagedResourceListOfRelationalDataPointResponse.md)
+[PagedResourceListOfRelationalDataPointResponse](../Model/PagedResourceListOfRelationalDataPointResponse.md)
 
 ### HTTP request headers
 

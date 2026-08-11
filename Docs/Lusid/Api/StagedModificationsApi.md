@@ -76,11 +76,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | Unique Id for a staged modification.. |
-| **stagedModificationDecisionRequest** | [StagedModificationDecisionRequest](StagedModificationDecisionRequest.md) | body | **required** | The decision on the requested staged modification, \&quot;Approve\&quot; or \&quot;Reject\&quot;. |
+| **stagedModificationDecisionRequest** | [StagedModificationDecisionRequest](../Model/StagedModificationDecisionRequest.md) | body | **required** | The decision on the requested staged modification, \&quot;Approve\&quot; or \&quot;Reject\&quot;. |
 
 ### Return type
 
-[StagedModification](StagedModification.md)
+[StagedModification](../Model/StagedModification.md)
 
 ### HTTP request headers
 
@@ -140,7 +140,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[StagedModification](StagedModification.md)
+[StagedModification](../Model/StagedModification.md)
 
 ### HTTP request headers
 
@@ -204,11 +204,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing requested staged modification changes from a previous call to list requested              staged modifications. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 
 ### Return type
 
-[PagedResourceListOfStagedModificationsRequestedChangeInterval](PagedResourceListOfStagedModificationsRequestedChangeInterval.md)
+[PagedResourceListOfStagedModificationsRequestedChangeInterval](../Model/PagedResourceListOfStagedModificationsRequestedChangeInterval.md)
 
 ### HTTP request headers
 
@@ -270,11 +270,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing staged modifications from a previous call to list staged modifications. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 
 ### Return type
 
-[PagedResourceListOfStagedModification](PagedResourceListOfStagedModification.md)
+[PagedResourceListOfStagedModification](../Model/PagedResourceListOfStagedModification.md)
 
 ### HTTP request headers
 

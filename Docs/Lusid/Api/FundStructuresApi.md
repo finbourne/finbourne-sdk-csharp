@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund Structure. |
-| **fundStructureRequest** | [FundStructureRequest](FundStructureRequest.md) | body | **required** | The definition of the Fund Structure. |
+| **fundStructureRequest** | [FundStructureRequest](../Model/FundStructureRequest.md) | body | **required** | The definition of the Fund Structure. |
 
 ### Return type
 
-[FundStructure](FundStructure.md)
+[FundStructure](../Model/FundStructure.md)
 
 ### HTTP request headers
 
@@ -139,11 +139,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund Structure. |
 | **code** | **string** | path | **required** | The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Fund Structure. Defaults to returning the latest version if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;FundStructure&#39; domain to decorate onto the Fund Structure.              These must take the format {domain}/{scope}/{code}, for example &#39;FundStructure/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;FundStructure&#39; domain to decorate onto the Fund Structure.              These must take the format {domain}/{scope}/{code}, for example &#39;FundStructure/Manager/Id&#39;. If no properties are specified, then no properties will be returned. |
 
 ### Return type
 
-[FundStructure](FundStructure.md)
+[FundStructure](../Model/FundStructure.md)
 
 ### HTTP request headers
 
@@ -206,12 +206,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Fund Structures; this value is returned from the previous call. If a pagination token is provided, the filter and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results. For example, to filter on the Fund Structure code, specify \&quot;id.Code eq &#39;Structure1&#39;\&quot;. For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;FundStructure&#39; domain to decorate onto each Fund Structure.              These must take the format {domain}/{scope}/{code}, for example &#39;FundStructure/Manager/Id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;FundStructure&#39; domain to decorate onto each Fund Structure.              These must take the format {domain}/{scope}/{code}, for example &#39;FundStructure/Manager/Id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfFundStructure](PagedResourceListOfFundStructure.md)
+[PagedResourceListOfFundStructure](../Model/PagedResourceListOfFundStructure.md)
 
 ### HTTP request headers
 

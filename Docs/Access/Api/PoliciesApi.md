@@ -89,12 +89,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **code** | **string** | path | **required** | The code of the PolicyCollection |
-| **addToPolicyCollectionRequest** | [AddToPolicyCollectionRequest](AddToPolicyCollectionRequest.md) | body | **required** | Ids of the PolicyCollections and/or Policies to add to the PolicyCollection |
+| **addToPolicyCollectionRequest** | [AddToPolicyCollectionRequest](../Model/AddToPolicyCollectionRequest.md) | body | **required** | Ids of the PolicyCollections and/or Policies to add to the PolicyCollection |
 | **scope** | **string?** | query | optional | Optional. Will use the default scope if not provided. The scope of the PolicyCollection |
 
 ### Return type
 
-[PolicyCollectionResponse](PolicyCollectionResponse.md)
+[PolicyCollectionResponse](../Model/PolicyCollectionResponse.md)
 
 ### HTTP request headers
 
@@ -148,11 +148,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **policyCreationRequest** | [PolicyCreationRequest](PolicyCreationRequest.md) | body | **required** | The definition of the Policy |
+| **policyCreationRequest** | [PolicyCreationRequest](../Model/PolicyCreationRequest.md) | body | **required** | The definition of the Policy |
 
 ### Return type
 
-[PolicyResponse](PolicyResponse.md)
+[PolicyResponse](../Model/PolicyResponse.md)
 
 ### HTTP request headers
 
@@ -206,11 +206,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **policyCollectionCreationRequest** | [PolicyCollectionCreationRequest](PolicyCollectionCreationRequest.md) | body | **required** | The definition of the PolicyCollection |
+| **policyCollectionCreationRequest** | [PolicyCollectionCreationRequest](../Model/PolicyCollectionCreationRequest.md) | body | **required** | The definition of the PolicyCollection |
 
 ### Return type
 
-[PolicyCollectionResponse](PolicyCollectionResponse.md)
+[PolicyCollectionResponse](../Model/PolicyCollectionResponse.md)
 
 ### HTTP request headers
 
@@ -377,12 +377,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, EvaluationRequest&gt;](EvaluationRequest.md) | body | **required** | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation). |
-| **applications** | [List&lt;string&gt;?](string.md) | query | optional | Optional. The application type of the roles and policies to use when evaluating. |
+| **requestBody** | [Dictionary&lt;string, EvaluationRequest&gt;](../Model/EvaluationRequest.md) | body | **required** | A dictionary of evaluations, keyed using any arbitrary correlation id (it will be returned with the response for that evaluation). |
+| **applications** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. The application type of the roles and policies to use when evaluating. |
 
 ### Return type
 
-[Dictionary&lt;string, EvaluationResponse&gt;](EvaluationResponse.md)
+[Dictionary&lt;string, EvaluationResponse&gt;](../Model/EvaluationResponse.md)
 
 ### HTTP request headers
 
@@ -436,11 +436,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **applications** | [List&lt;string&gt;?](string.md) | query | optional | Optional. Filter on the applications that the policies apply to |
+| **applications** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. Filter on the applications that the policies apply to |
 
 ### Return type
 
-[List&lt;AttachedPolicyDefinitionResponse&gt;](AttachedPolicyDefinitionResponse.md)
+[List&lt;AttachedPolicyDefinitionResponse&gt;](../Model/AttachedPolicyDefinitionResponse.md)
 
 ### HTTP request headers
 
@@ -502,7 +502,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PolicyResponse](PolicyResponse.md)
+[PolicyResponse](../Model/PolicyResponse.md)
 
 ### HTTP request headers
 
@@ -562,7 +562,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PolicyCollectionResponse](PolicyCollectionResponse.md)
+[PolicyCollectionResponse](../Model/PolicyCollectionResponse.md)
 
 ### HTTP request headers
 
@@ -620,7 +620,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;PolicyResponse&gt;](PolicyResponse.md)
+[List&lt;PolicyResponse&gt;](../Model/PolicyResponse.md)
 
 ### HTTP request headers
 
@@ -678,7 +678,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;PolicyCollectionResponse&gt;](PolicyCollectionResponse.md)
+[List&lt;PolicyCollectionResponse&gt;](../Model/PolicyCollectionResponse.md)
 
 ### HTTP request headers
 
@@ -742,7 +742,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPolicyResponse](ResourceListOfPolicyResponse.md)
+[ResourceListOfPolicyResponse](../Model/ResourceListOfPolicyResponse.md)
 
 ### HTTP request headers
 
@@ -806,7 +806,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPolicyCollectionResponse](ResourceListOfPolicyCollectionResponse.md)
+[ResourceListOfPolicyCollectionResponse](../Model/ResourceListOfPolicyCollectionResponse.md)
 
 ### HTTP request headers
 
@@ -863,12 +863,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **code** | **string** | path | **required** | The code of the PolicyCollection |
-| **removeFromPolicyCollectionRequest** | [RemoveFromPolicyCollectionRequest](RemoveFromPolicyCollectionRequest.md) | body | **required** | Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection |
+| **removeFromPolicyCollectionRequest** | [RemoveFromPolicyCollectionRequest](../Model/RemoveFromPolicyCollectionRequest.md) | body | **required** | Ids of the PolicyCollections and/or Policies to remove from the PolicyCollection |
 | **scope** | **string?** | query | optional | Optional. Will use the default scope if not provided. The scope of the PolicyCollection |
 
 ### Return type
 
-[PolicyCollectionResponse](PolicyCollectionResponse.md)
+[PolicyCollectionResponse](../Model/PolicyCollectionResponse.md)
 
 ### HTTP request headers
 
@@ -925,12 +925,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **code** | **string** | path | **required** | The code of the Policy |
-| **policyUpdateRequest** | [PolicyUpdateRequest](PolicyUpdateRequest.md) | body | **required** | The updated definition of the Policy |
+| **policyUpdateRequest** | [PolicyUpdateRequest](../Model/PolicyUpdateRequest.md) | body | **required** | The updated definition of the Policy |
 | **scope** | **string?** | query | optional | Optional. Will use the default scope if not provided. The scope of the Policy |
 
 ### Return type
 
-[PolicyResponse](PolicyResponse.md)
+[PolicyResponse](../Model/PolicyResponse.md)
 
 ### HTTP request headers
 
@@ -987,12 +987,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **code** | **string** | path | **required** | The code of the PolicyCollection |
-| **policyCollectionUpdateRequest** | [PolicyCollectionUpdateRequest](PolicyCollectionUpdateRequest.md) | body | **required** | The updated definition of the PolicyCollection |
+| **policyCollectionUpdateRequest** | [PolicyCollectionUpdateRequest](../Model/PolicyCollectionUpdateRequest.md) | body | **required** | The updated definition of the PolicyCollection |
 | **scope** | **string?** | query | optional | Optional. Will use the default scope if not provided. The scope of the PolicyCollection |
 
 ### Return type
 
-[PolicyCollectionResponse](PolicyCollectionResponse.md)
+[PolicyCollectionResponse](../Model/PolicyCollectionResponse.md)
 
 ### HTTP request headers
 

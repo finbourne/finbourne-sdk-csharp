@@ -78,7 +78,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[MarketDataFieldConfiguration](MarketDataFieldConfiguration.md)
+[MarketDataFieldConfiguration](../Model/MarketDataFieldConfiguration.md)
 
 ### HTTP request headers
 
@@ -134,11 +134,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **marketDataCategory** | **string** | path | **required** | The market data category. |
-| **updateMarketDataFieldConfigurationRequest** | [UpdateMarketDataFieldConfigurationRequest](UpdateMarketDataFieldConfigurationRequest.md) | body | **required** | The metadata fields to add, update, or remove. |
+| **updateMarketDataFieldConfigurationRequest** | [UpdateMarketDataFieldConfigurationRequest](../Model/UpdateMarketDataFieldConfigurationRequest.md) | body | **required** | The metadata fields to add, update, or remove. |
 
 ### Return type
 
-[MarketDataFieldConfiguration](MarketDataFieldConfiguration.md)
+[MarketDataFieldConfiguration](../Model/MarketDataFieldConfiguration.md)
 
 ### HTTP request headers
 

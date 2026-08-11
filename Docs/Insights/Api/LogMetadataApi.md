@@ -71,7 +71,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[ResourceListOfQueryableLogType](ResourceListOfQueryableLogType.md)
+[ResourceListOfQueryableLogType](../Model/ResourceListOfQueryableLogType.md)
 
 ### HTTP request headers
 

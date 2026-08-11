@@ -87,7 +87,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AnnulSingleStructuredDataResponse](AnnulSingleStructuredDataResponse.md)
+[AnnulSingleStructuredDataResponse](../Model/AnnulSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -147,7 +147,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AnnulSingleStructuredDataResponse](AnnulSingleStructuredDataResponse.md)
+[AnnulSingleStructuredDataResponse](../Model/AnnulSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -209,7 +209,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetRecipeResponse](GetRecipeResponse.md)
+[GetRecipeResponse](../Model/GetRecipeResponse.md)
 
 ### HTTP request headers
 
@@ -271,7 +271,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetRecipeResponse](GetRecipeResponse.md)
+[GetRecipeResponse](../Model/GetRecipeResponse.md)
 
 ### HTTP request headers
 
@@ -333,7 +333,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GetRecipeComposerResponse](GetRecipeComposerResponse.md)
+[GetRecipeComposerResponse](../Model/GetRecipeComposerResponse.md)
 
 ### HTTP request headers
 
@@ -387,11 +387,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertRecipeComposerRequest** | [UpsertRecipeComposerRequest](UpsertRecipeComposerRequest.md) | body | **required** | Recipe composer used to expand into the Configuration Recipe. |
+| **upsertRecipeComposerRequest** | [UpsertRecipeComposerRequest](../Model/UpsertRecipeComposerRequest.md) | body | **required** | Recipe composer used to expand into the Configuration Recipe. |
 
 ### Return type
 
-[GetRecipeResponse](GetRecipeResponse.md)
+[GetRecipeResponse](../Model/GetRecipeResponse.md)
 
 ### HTTP request headers
 
@@ -451,7 +451,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfGetRecipeResponse](ResourceListOfGetRecipeResponse.md)
+[ResourceListOfGetRecipeResponse](../Model/ResourceListOfGetRecipeResponse.md)
 
 ### HTTP request headers
 
@@ -511,7 +511,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfGetRecipeResponse](ResourceListOfGetRecipeResponse.md)
+[ResourceListOfGetRecipeResponse](../Model/ResourceListOfGetRecipeResponse.md)
 
 ### HTTP request headers
 
@@ -571,7 +571,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfGetRecipeComposerResponse](ResourceListOfGetRecipeComposerResponse.md)
+[ResourceListOfGetRecipeComposerResponse](../Model/ResourceListOfGetRecipeComposerResponse.md)
 
 ### HTTP request headers
 
@@ -625,11 +625,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertRecipeRequest** | [UpsertRecipeRequest](UpsertRecipeRequest.md) | body | **required** | The Configuration Recipe to update or insert |
+| **upsertRecipeRequest** | [UpsertRecipeRequest](../Model/UpsertRecipeRequest.md) | body | **required** | The Configuration Recipe to update or insert |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -683,11 +683,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **upsertRecipeComposerRequest** | [UpsertRecipeComposerRequest](UpsertRecipeComposerRequest.md) | body | **required** | The Recipe Composer to update or insert |
+| **upsertRecipeComposerRequest** | [UpsertRecipeComposerRequest](../Model/UpsertRecipeComposerRequest.md) | body | **required** | The Recipe Composer to update or insert |
 
 ### Return type
 
-[UpsertSingleStructuredDataResponse](UpsertSingleStructuredDataResponse.md)
+[UpsertSingleStructuredDataResponse](../Model/UpsertSingleStructuredDataResponse.md)
 
 ### HTTP request headers
 

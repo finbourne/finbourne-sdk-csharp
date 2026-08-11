@@ -79,11 +79,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **successMode** | **string** | query | **required** | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. Default: `&quot;Partial&quot;` |
-| **requestBody** | [Dictionary&lt;string, MembershipAmendmentRequest&gt;](MembershipAmendmentRequest.md) | body | **required** | The payload describing the amendments to make for the given Custom Data Model. |
+| **requestBody** | [Dictionary&lt;string, MembershipAmendmentRequest&gt;](../Model/MembershipAmendmentRequest.md) | body | **required** | The payload describing the amendments to make for the given Custom Data Model. |
 
 ### Return type
 
-[BatchAmendCustomDataModelMembershipResponse](BatchAmendCustomDataModelMembershipResponse.md)
+[BatchAmendCustomDataModelMembershipResponse](../Model/BatchAmendCustomDataModelMembershipResponse.md)
 
 ### HTTP request headers
 
@@ -139,11 +139,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **entityType** | **string** | path | **required** | The entity type of the Data Model. |
-| **createCustomDataModelRequest** | [CreateCustomDataModelRequest?](CreateCustomDataModelRequest?.md) | body | optional | The request containing the details of the Data Model. |
+| **createCustomDataModelRequest** | [CreateCustomDataModelRequest?](../Model/CreateCustomDataModelRequest?.md) | body | optional | The request containing the details of the Data Model. |
 
 ### Return type
 
-[CustomDataModel](CustomDataModel.md)
+[CustomDataModel](../Model/CustomDataModel.md)
 
 ### HTTP request headers
 
@@ -205,7 +205,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -269,7 +269,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[CustomDataModel](CustomDataModel.md)
+[CustomDataModel](../Model/CustomDataModel.md)
 
 ### HTTP request headers
 
@@ -327,11 +327,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Data Model. Defaults to return              the latest version of the Data Model if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 
 ### Return type
 
-[ResourceListOfDataModelSummary](ResourceListOfDataModelSummary.md)
+[ResourceListOfDataModelSummary](../Model/ResourceListOfDataModelSummary.md)
 
 ### HTTP request headers
 
@@ -385,7 +385,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[ResourceListOfString](ResourceListOfString.md)
+[ResourceListOfString](../Model/ResourceListOfString.md)
 
 ### HTTP request headers
 
@@ -444,11 +444,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **entityType** | **string** | path | **required** | The entity type of the Data Model. |
 | **scope** | **string** | path | **required** | The scope of the specified Data Model. |
 | **code** | **string** | path | **required** | The code of the specified Data Model. |
-| **updateCustomDataModelRequest** | [UpdateCustomDataModelRequest?](UpdateCustomDataModelRequest?.md) | body | optional | The request containing the details of the Data Model. |
+| **updateCustomDataModelRequest** | [UpdateCustomDataModelRequest?](../Model/UpdateCustomDataModelRequest?.md) | body | optional | The request containing the details of the Data Model. |
 
 ### Return type
 
-[CustomDataModel](CustomDataModel.md)
+[CustomDataModel](../Model/CustomDataModel.md)
 
 ### HTTP request headers
 

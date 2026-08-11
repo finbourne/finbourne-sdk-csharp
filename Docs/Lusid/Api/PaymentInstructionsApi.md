@@ -78,13 +78,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the payment instruction. |
 | **code** | **string** | path | **required** | The code of the payment instruction. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto the              payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto the              payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the payment instruction.              Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the payment instruction. Defaults to return the latest              version of the payment instruction if not specified. |
 
 ### Return type
 
-[PaymentInstruction](PaymentInstruction.md)
+[PaymentInstruction](../Model/PaymentInstruction.md)
 
 ### HTTP request headers
 
@@ -138,11 +138,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, PaymentInstructionRequest&gt;](PaymentInstructionRequest.md) | body | **required** | A collection of requests to create or update Payment Instructions. |
+| **requestBody** | [Dictionary&lt;string, PaymentInstructionRequest&gt;](../Model/PaymentInstructionRequest.md) | body | **required** | A collection of requests to create or update Payment Instructions. |
 
 ### Return type
 
-[PaymentInstructionsResponse](PaymentInstructionsResponse.md)
+[PaymentInstructionsResponse](../Model/PaymentInstructionsResponse.md)
 
 ### HTTP request headers
 

@@ -73,11 +73,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createRelationDefinitionRequest** | [CreateRelationDefinitionRequest](CreateRelationDefinitionRequest.md) | body | **required** | The definition of the new relation. |
+| **createRelationDefinitionRequest** | [CreateRelationDefinitionRequest](../Model/CreateRelationDefinitionRequest.md) | body | **required** | The definition of the new relation. |
 
 ### Return type
 
-[RelationDefinition](RelationDefinition.md)
+[RelationDefinition](../Model/RelationDefinition.md)
 
 ### HTTP request headers
 
@@ -137,7 +137,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -199,7 +199,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RelationDefinition](RelationDefinition.md)
+[RelationDefinition](../Model/RelationDefinition.md)
 
 ### HTTP request headers
 

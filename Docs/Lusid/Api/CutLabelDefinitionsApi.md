@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createCutLabelDefinitionRequest** | [CreateCutLabelDefinitionRequest?](CreateCutLabelDefinitionRequest?.md) | body | optional | The cut label definition |
+| **createCutLabelDefinitionRequest** | [CreateCutLabelDefinitionRequest?](../Model/CreateCutLabelDefinitionRequest?.md) | body | optional | The cut label definition |
 
 ### Return type
 
-[CutLabelDefinition](CutLabelDefinition.md)
+[CutLabelDefinition](../Model/CutLabelDefinition.md)
 
 ### HTTP request headers
 
@@ -197,7 +197,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[CutLabelDefinition](CutLabelDefinition.md)
+[CutLabelDefinition](../Model/CutLabelDefinition.md)
 
 ### HTTP request headers
 
@@ -256,14 +256,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | Optional. The As At time at which listed Cut Labels are valid |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Optional. Expression to filter the result set.              For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. |
 
 ### Return type
 
-[PagedResourceListOfCutLabelDefinition](PagedResourceListOfCutLabelDefinition.md)
+[PagedResourceListOfCutLabelDefinition](../Model/PagedResourceListOfCutLabelDefinition.md)
 
 ### HTTP request headers
 
@@ -319,11 +319,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **code** | **string** | path | **required** | The Code of the Cut Label that is being updated |
-| **updateCutLabelDefinitionRequest** | [UpdateCutLabelDefinitionRequest?](UpdateCutLabelDefinitionRequest?.md) | body | optional | The cut label update definition |
+| **updateCutLabelDefinitionRequest** | [UpdateCutLabelDefinitionRequest?](../Model/UpdateCutLabelDefinitionRequest?.md) | body | optional | The cut label update definition |
 
 ### Return type
 
-[CutLabelDefinition](CutLabelDefinition.md)
+[CutLabelDefinition](../Model/CutLabelDefinition.md)
 
 ### HTTP request headers
 

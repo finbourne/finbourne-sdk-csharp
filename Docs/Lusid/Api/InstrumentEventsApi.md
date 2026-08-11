@@ -82,11 +82,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The as at time to use. |
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. Default: `100` |
 | **page** | **string?** | query | optional | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this |
-| **queryApplicableInstrumentEventsRequest** | [QueryApplicableInstrumentEventsRequest?](QueryApplicableInstrumentEventsRequest?.md) | body | optional | The filter parameters used to retrieve applicable instrument events. |
+| **queryApplicableInstrumentEventsRequest** | [QueryApplicableInstrumentEventsRequest?](../Model/QueryApplicableInstrumentEventsRequest?.md) | body | optional | The filter parameters used to retrieve applicable instrument events. |
 
 ### Return type
 
-[ResourceListOfApplicableInstrumentEvent](ResourceListOfApplicableInstrumentEvent.md)
+[ResourceListOfApplicableInstrumentEvent](../Model/ResourceListOfApplicableInstrumentEvent.md)
 
 ### HTTP request headers
 
@@ -140,11 +140,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **queryBucketCashFlowDrillDownRequest** | [QueryBucketCashFlowDrillDownRequest?](QueryBucketCashFlowDrillDownRequest?.md) | body | optional | The Query Information. |
+| **queryBucketCashFlowDrillDownRequest** | [QueryBucketCashFlowDrillDownRequest?](../Model/QueryBucketCashFlowDrillDownRequest?.md) | body | optional | The Query Information. |
 
 ### Return type
 
-[ResourceListOfCashFlowDetail](ResourceListOfCashFlowDetail.md)
+[ResourceListOfCashFlowDetail](../Model/ResourceListOfCashFlowDetail.md)
 
 ### HTTP request headers
 
@@ -198,11 +198,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **queryBucketedCashFlowsRequest** | [QueryBucketedCashFlowsRequest?](QueryBucketedCashFlowsRequest?.md) | body | optional | The Query Information. |
+| **queryBucketedCashFlowsRequest** | [QueryBucketedCashFlowsRequest?](../Model/QueryBucketedCashFlowsRequest?.md) | body | optional | The Query Information. |
 
 ### Return type
 
-[BucketedCashFlowResponse](BucketedCashFlowResponse.md)
+[BucketedCashFlowResponse](../Model/BucketedCashFlowResponse.md)
 
 ### HTTP request headers
 
@@ -260,11 +260,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. Default: `1000` |
 | **page** | **string?** | query | optional | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. |
-| **queryCashFlowsRequest** | [QueryCashFlowsRequest?](QueryCashFlowsRequest?.md) | body | optional | The filter parameters used to retrieve instrument events. |
+| **queryCashFlowsRequest** | [QueryCashFlowsRequest?](../Model/QueryCashFlowsRequest?.md) | body | optional | The filter parameters used to retrieve instrument events. |
 
 ### Return type
 
-[ResourceListOfInstrumentCashFlow](ResourceListOfInstrumentCashFlow.md)
+[ResourceListOfInstrumentCashFlow](../Model/ResourceListOfInstrumentCashFlow.md)
 
 ### HTTP request headers
 
@@ -322,11 +322,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. Default: `1000` |
 | **page** | **string?** | query | optional | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. |
-| **queryInstrumentEventsRequest** | [QueryInstrumentEventsRequest?](QueryInstrumentEventsRequest?.md) | body | optional | The filter parameters used to retrieve instrument events. |
+| **queryInstrumentEventsRequest** | [QueryInstrumentEventsRequest?](../Model/QueryInstrumentEventsRequest?.md) | body | optional | The filter parameters used to retrieve instrument events. |
 
 ### Return type
 
-[ResourceListOfInstrumentEventHolder](ResourceListOfInstrumentEventHolder.md)
+[ResourceListOfInstrumentEventHolder](../Model/ResourceListOfInstrumentEventHolder.md)
 
 ### HTTP request headers
 
@@ -384,11 +384,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. Default: `1000` |
 | **page** | **string?** | query | optional | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. |
-| **queryTradeTicketsRequest** | [QueryTradeTicketsRequest?](QueryTradeTicketsRequest?.md) | body | optional | The filter parameters used to retrieve instrument events. |
+| **queryTradeTicketsRequest** | [QueryTradeTicketsRequest?](../Model/QueryTradeTicketsRequest?.md) | body | optional | The filter parameters used to retrieve instrument events. |
 
 ### Return type
 
-[ResourceListOfPortfolioTradeTicket](ResourceListOfPortfolioTradeTicket.md)
+[ResourceListOfPortfolioTradeTicket](../Model/ResourceListOfPortfolioTradeTicket.md)
 
 ### HTTP request headers
 

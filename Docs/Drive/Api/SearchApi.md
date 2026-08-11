@@ -73,15 +73,15 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **searchBody** | [SearchBody](SearchBody.md) | body | **required** | Search parameters |
+| **searchBody** | [SearchBody](../Model/SearchBody.md) | body | **required** | Search parameters |
 | **page** | **string?** | query | optional |  |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional |  |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional |  |
 | **limit** | **int?** | query | optional |  |
 | **filter** | **string?** | query | optional |  Default: `&quot;&quot;` |
 
 ### Return type
 
-[PagedResourceListOfStorageObject](PagedResourceListOfStorageObject.md)
+[PagedResourceListOfStorageObject](../Model/PagedResourceListOfStorageObject.md)
 
 ### HTTP request headers
 

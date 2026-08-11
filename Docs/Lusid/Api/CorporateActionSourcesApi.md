@@ -83,11 +83,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of corporate action source |
 | **code** | **string** | path | **required** | The code of the corporate action source |
-| **upsertCorporateActionRequest** | [List&lt;UpsertCorporateActionRequest&gt;?](UpsertCorporateActionRequest.md) | body | optional | The corporate action definitions |
+| **upsertCorporateActionRequest** | [List&lt;UpsertCorporateActionRequest&gt;?](../Model/UpsertCorporateActionRequest.md) | body | optional | The corporate action definitions |
 
 ### Return type
 
-[UpsertCorporateActionsResponse](UpsertCorporateActionsResponse.md)
+[UpsertCorporateActionsResponse](../Model/UpsertCorporateActionsResponse.md)
 
 ### HTTP request headers
 
@@ -141,11 +141,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createCorporateActionSourceRequest** | [CreateCorporateActionSourceRequest](CreateCorporateActionSourceRequest.md) | body | **required** | The corporate action source definition |
+| **createCorporateActionSourceRequest** | [CreateCorporateActionSourceRequest](../Model/CreateCorporateActionSourceRequest.md) | body | **required** | The corporate action source definition |
 
 ### Return type
 
-[CorporateActionSource](CorporateActionSource.md)
+[CorporateActionSource](../Model/CorporateActionSource.md)
 
 ### HTTP request headers
 
@@ -205,7 +205,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -263,11 +263,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the corporate action source |
 | **code** | **string** | path | **required** | The code of the corporate action source |
-| **corporateActionIds** | [List&lt;string&gt;](string.md) | query | **required** | The IDs of the corporate actions to delete |
+| **corporateActionIds** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The IDs of the corporate actions to delete |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -325,11 +325,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the corporate action source |
 | **code** | **string** | path | **required** | The code of the corporate action source |
-| **instrumentEventIds** | [List&lt;string&gt;](string.md) | query | **required** | The IDs of the instrument events to delete |
+| **instrumentEventIds** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The IDs of the instrument events to delete |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -395,13 +395,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **fromEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | Optional. The start effective date of the data range. |
 | **toEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | Optional. The end effective date of the data range. |
 | **asAt** | **DateTimeOffset?** | query | optional | Optional. The AsAt date of the data. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the results to this number. |
 | **filter** | **string?** | query | optional | Optional. Expression to filter the result set.              For example, to filter on the Announcement Date, use \&quot;announcementDate eq &#39;2020-03-06&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[ResourceListOfCorporateAction](ResourceListOfCorporateAction.md)
+[ResourceListOfCorporateAction](../Model/ResourceListOfCorporateAction.md)
 
 ### HTTP request headers
 
@@ -475,7 +475,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfInstrumentEventHolder](PagedResourceListOfInstrumentEventHolder.md)
+[PagedResourceListOfInstrumentEventHolder](../Model/PagedResourceListOfInstrumentEventHolder.md)
 
 ### HTTP request headers
 
@@ -534,14 +534,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | Optional. The AsAt date of the data |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName |
 | **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. Default: `100` |
 | **filter** | **string?** | query | optional | Optional. Expression to filter the result set. For example, to  filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 | **page** | **string?** | query | optional | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, the filter, asAt, and limit must not  be modified. |
 
 ### Return type
 
-[PagedResourceListOfCorporateActionSource](PagedResourceListOfCorporateActionSource.md)
+[PagedResourceListOfCorporateActionSource](../Model/PagedResourceListOfCorporateActionSource.md)
 
 ### HTTP request headers
 
@@ -599,11 +599,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the corporate action source. |
 | **code** | **string** | path | **required** | The code of the corporate action source. |
-| **upsertInstrumentEventRequest** | [List&lt;UpsertInstrumentEventRequest&gt;?](UpsertInstrumentEventRequest.md) | body | optional | The instrument event definitions. |
+| **upsertInstrumentEventRequest** | [List&lt;UpsertInstrumentEventRequest&gt;?](../Model/UpsertInstrumentEventRequest.md) | body | optional | The instrument event definitions. |
 
 ### Return type
 
-[UpsertInstrumentEventsResponse](UpsertInstrumentEventsResponse.md)
+[UpsertInstrumentEventsResponse](../Model/UpsertInstrumentEventsResponse.md)
 
 ### HTTP request headers
 

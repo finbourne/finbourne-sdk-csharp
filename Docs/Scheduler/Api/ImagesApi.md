@@ -76,7 +76,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Image](Image.md)
+[Image](../Model/Image.md)
 
 ### HTTP request headers
 
@@ -135,14 +135,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **name** | **string** | path | **required** | The name of the Repository |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing images from a previous call to list images.             This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields             must not have changed since the original request. Also, if set, a start value cannot be provided. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
 | **start** | **int?** | query | optional | When paginating, skip this number of results. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 2000 if not specified. Maximum is 5000. Default: `2000` |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 
 ### Return type
 
-[ResourceListOfImageSummary](ResourceListOfImageSummary.md)
+[ResourceListOfImageSummary](../Model/ResourceListOfImageSummary.md)
 
 ### HTTP request headers
 
@@ -199,14 +199,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **page** | **string?** | query | optional | The pagination token to use to continue listing images from a previous call to list images.             This value is returned from the previous call. If a pagination token is provided the sortBy and filter fields             must not have changed since the original request. Also, if set, a start value cannot be provided. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
 | **start** | **int?** | query | optional | When paginating, skip this number of results. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 2000 if not specified. Maximum is 5000. Default: `2000` |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 
 ### Return type
 
-[ResourceListOfRepository](ResourceListOfRepository.md)
+[ResourceListOfRepository](../Model/ResourceListOfRepository.md)
 
 ### HTTP request headers
 
@@ -260,11 +260,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **uploadImageRequest** | [UploadImageRequest](UploadImageRequest.md) | body | **required** | Request to upload image |
+| **uploadImageRequest** | [UploadImageRequest](../Model/UploadImageRequest.md) | body | **required** | Request to upload image |
 
 ### Return type
 
-[UploadImageInstructions](UploadImageInstructions.md)
+[UploadImageInstructions](../Model/UploadImageInstructions.md)
 
 ### HTTP request headers
 

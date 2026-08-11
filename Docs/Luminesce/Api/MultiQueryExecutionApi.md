@@ -77,7 +77,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[BackgroundQueryCancelResponse](BackgroundQueryCancelResponse.md)
+[BackgroundQueryCancelResponse](../Model/BackgroundQueryCancelResponse.md)
 
 ### HTTP request headers
 
@@ -133,7 +133,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[BackgroundMultiQueryProgressResponse](BackgroundMultiQueryProgressResponse.md)
+[BackgroundMultiQueryProgressResponse](../Model/BackgroundMultiQueryProgressResponse.md)
 
 ### HTTP request headers
 
@@ -209,7 +209,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[BackgroundMultiQueryResponse](BackgroundMultiQueryResponse.md)
+[BackgroundMultiQueryResponse](../Model/BackgroundMultiQueryResponse.md)
 
 ### HTTP request headers
 

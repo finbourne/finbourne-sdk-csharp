@@ -80,7 +80,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[CellParentStatusResponse](CellParentStatusResponse.md)
+[CellParentStatusResponse](../Model/CellParentStatusResponse.md)
 
 ### HTTP request headers
 
@@ -133,11 +133,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **detachParentCellRequest** | [DetachParentCellRequest](DetachParentCellRequest.md) | body | **required** |  |
+| **detachParentCellRequest** | [DetachParentCellRequest](../Model/DetachParentCellRequest.md) | body | **required** |  |
 
 ### Return type
 
-[CellParentStatusResponse](CellParentStatusResponse.md)
+[CellParentStatusResponse](../Model/CellParentStatusResponse.md)
 
 ### HTTP request headers
 
@@ -191,7 +191,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[CellParentStatusResponse](CellParentStatusResponse.md)
+[CellParentStatusResponse](../Model/CellParentStatusResponse.md)
 
 ### HTTP request headers
 
@@ -244,7 +244,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[CellParentStatusResponse](CellParentStatusResponse.md)
+[CellParentStatusResponse](../Model/CellParentStatusResponse.md)
 
 ### HTTP request headers
 
@@ -297,7 +297,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[CellParentStatusResponse](CellParentStatusResponse.md)
+[CellParentStatusResponse](../Model/CellParentStatusResponse.md)
 
 ### HTTP request headers
 
@@ -350,11 +350,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **rotateAttachingKeyRequest** | [RotateAttachingKeyRequest](RotateAttachingKeyRequest.md) | body | **required** |  |
+| **rotateAttachingKeyRequest** | [RotateAttachingKeyRequest](../Model/RotateAttachingKeyRequest.md) | body | **required** |  |
 
 ### Return type
 
-[CellParentStatusResponse](CellParentStatusResponse.md)
+[CellParentStatusResponse](../Model/CellParentStatusResponse.md)
 
 ### HTTP request headers
 
@@ -408,7 +408,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[CellParentStatusResponse](CellParentStatusResponse.md)
+[CellParentStatusResponse](../Model/CellParentStatusResponse.md)
 
 ### HTTP request headers
 
@@ -461,11 +461,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **setAttachingKeyRequest** | [SetAttachingKeyRequest](SetAttachingKeyRequest.md) | body | **required** |  |
+| **setAttachingKeyRequest** | [SetAttachingKeyRequest](../Model/SetAttachingKeyRequest.md) | body | **required** |  |
 
 ### Return type
 
-[CellParentStatusResponse](CellParentStatusResponse.md)
+[CellParentStatusResponse](../Model/CellParentStatusResponse.md)
 
 ### HTTP request headers
 
@@ -519,11 +519,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **setParentCellRequest** | [SetParentCellRequest](SetParentCellRequest.md) | body | **required** |  |
+| **setParentCellRequest** | [SetParentCellRequest](../Model/SetParentCellRequest.md) | body | **required** |  |
 
 ### Return type
 
-[CellParentStatusResponse](CellParentStatusResponse.md)
+[CellParentStatusResponse](../Model/CellParentStatusResponse.md)
 
 ### HTTP request headers
 
@@ -577,7 +577,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[CellParentStatusResponse](CellParentStatusResponse.md)
+[CellParentStatusResponse](../Model/CellParentStatusResponse.md)
 
 ### HTTP request headers
 

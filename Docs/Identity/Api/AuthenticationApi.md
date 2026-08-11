@@ -79,7 +79,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[AuthenticationInformation](AuthenticationInformation.md)
+[AuthenticationInformation](../Model/AuthenticationInformation.md)
 
 ### HTTP request headers
 
@@ -136,7 +136,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PasswordPolicyResponse](PasswordPolicyResponse.md)
+[PasswordPolicyResponse](../Model/PasswordPolicyResponse.md)
 
 ### HTTP request headers
 
@@ -190,7 +190,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[SessionPolicyResponse](SessionPolicyResponse.md)
+[SessionPolicyResponse](../Model/SessionPolicyResponse.md)
 
 ### HTTP request headers
 
@@ -249,7 +249,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;SupportAccessResponse&gt;](SupportAccessResponse.md)
+[List&lt;SupportAccessResponse&gt;](../Model/SupportAccessResponse.md)
 
 ### HTTP request headers
 
@@ -303,7 +303,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[SupportRolesResponse](SupportRolesResponse.md)
+[SupportRolesResponse](../Model/SupportRolesResponse.md)
 
 ### HTTP request headers
 
@@ -356,11 +356,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **supportAccessRequest** | [SupportAccessRequest](SupportAccessRequest.md) | body | **required** | Request detailing the duration and reasons for supplying support access |
+| **supportAccessRequest** | [SupportAccessRequest](../Model/SupportAccessRequest.md) | body | **required** | Request detailing the duration and reasons for supplying support access |
 
 ### Return type
 
-[SupportAccessResponse](SupportAccessResponse.md)
+[SupportAccessResponse](../Model/SupportAccessResponse.md)
 
 ### HTTP request headers
 
@@ -414,7 +414,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;SupportAccessResponse&gt;](SupportAccessResponse.md)
+[List&lt;SupportAccessResponse&gt;](../Model/SupportAccessResponse.md)
 
 ### HTTP request headers
 
@@ -469,11 +469,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **userType** | **string** | path | **required** | The type of user (should only be personal or service) |
-| **updatePasswordPolicyRequest** | [UpdatePasswordPolicyRequest?](UpdatePasswordPolicyRequest?.md) | body | optional | The password policy for the given user type |
+| **updatePasswordPolicyRequest** | [UpdatePasswordPolicyRequest?](../Model/UpdatePasswordPolicyRequest?.md) | body | optional | The password policy for the given user type |
 
 ### Return type
 
-[PasswordPolicyResponse](PasswordPolicyResponse.md)
+[PasswordPolicyResponse](../Model/PasswordPolicyResponse.md)
 
 ### HTTP request headers
 
@@ -527,11 +527,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **updateSessionPolicyRequest** | [UpdateSessionPolicyRequest](UpdateSessionPolicyRequest.md) | body | **required** | The desired session timing settings |
+| **updateSessionPolicyRequest** | [UpdateSessionPolicyRequest](../Model/UpdateSessionPolicyRequest.md) | body | **required** | The desired session timing settings |
 
 ### Return type
 
-[SessionPolicyResponse](SessionPolicyResponse.md)
+[SessionPolicyResponse](../Model/SessionPolicyResponse.md)
 
 ### HTTP request headers
 

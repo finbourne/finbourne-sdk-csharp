@@ -78,11 +78,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio |
 | **code** | **string** | path | **required** | The code of the portfolio |
-| **createRecipeRequest** | [CreateRecipeRequest?](CreateRecipeRequest?.md) | body | optional | The request specifying the parameters to generating the recipe |
+| **createRecipeRequest** | [CreateRecipeRequest?](../Model/CreateRecipeRequest?.md) | body | optional | The request specifying the parameters to generating the recipe |
 
 ### Return type
 
-[ConfigurationRecipe](ConfigurationRecipe.md)
+[ConfigurationRecipe](../Model/ConfigurationRecipe.md)
 
 ### HTTP request headers
 
@@ -144,7 +144,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfAggregationQuery](ResourceListOfAggregationQuery.md)
+[ResourceListOfAggregationQuery](../Model/ResourceListOfAggregationQuery.md)
 
 ### HTTP request headers
 
@@ -198,11 +198,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **valuationRequest** | [ValuationRequest?](ValuationRequest?.md) | body | optional | The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics |
+| **valuationRequest** | [ValuationRequest?](../Model/ValuationRequest?.md) | body | optional | The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics |
 
 ### Return type
 
-[ListAggregationResponse](ListAggregationResponse.md)
+[ListAggregationResponse](../Model/ListAggregationResponse.md)
 
 ### HTTP request headers
 
@@ -256,11 +256,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **inlineValuationRequest** | [InlineValuationRequest?](InlineValuationRequest?.md) | body | optional | The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics |
+| **inlineValuationRequest** | [InlineValuationRequest?](../Model/InlineValuationRequest?.md) | body | optional | The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics |
 
 ### Return type
 
-[ListAggregationResponse](ListAggregationResponse.md)
+[ListAggregationResponse](../Model/ListAggregationResponse.md)
 
 ### HTTP request headers
 

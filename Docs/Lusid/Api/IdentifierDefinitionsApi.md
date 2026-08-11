@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createIdentifierDefinitionRequest** | [CreateIdentifierDefinitionRequest?](CreateIdentifierDefinitionRequest?.md) | body | optional | The request defining the new definition |
+| **createIdentifierDefinitionRequest** | [CreateIdentifierDefinitionRequest?](../Model/CreateIdentifierDefinitionRequest?.md) | body | optional | The request defining the new definition |
 
 ### Return type
 
-[IdentifierDefinition](IdentifierDefinition.md)
+[IdentifierDefinition](../Model/IdentifierDefinition.md)
 
 ### HTTP request headers
 
@@ -141,7 +141,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -205,11 +205,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **identifierType** | **string** | path | **required** | What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the identifier definition |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Identifier Definition. Defaults to return              the latest version of the definition if not specified. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effectiveAt datetime at which to retrieve the Identifier Definitions.              Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)              on the Identifier Definition. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.              These must take the format {domain}/{scope}/{code}. If no properties are specified, then no properties will be returned. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.              These must take the format {domain}/{scope}/{code}. If no properties are specified, then no properties will be returned. |
 
 ### Return type
 
-[IdentifierDefinition](IdentifierDefinition.md)
+[IdentifierDefinition](../Model/IdentifierDefinition.md)
 
 ### HTTP request headers
 
@@ -274,12 +274,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Identifier Definitions from a previous call to list              Identifier Definitions. This value is returned from the previous call. If a pagination token is provided the sortBy,              filter, effectiveAt, and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many per page. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.              These must take the format {domain}/{scope}/{code}. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.              These must take the format {domain}/{scope}/{code}. |
 
 ### Return type
 
-[PagedResourceListOfIdentifierDefinition](PagedResourceListOfIdentifierDefinition.md)
+[PagedResourceListOfIdentifierDefinition](../Model/PagedResourceListOfIdentifierDefinition.md)
 
 ### HTTP request headers
 
@@ -339,11 +339,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **domain** | **string** | path | **required** | The type of entity to which the identifier relates. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction. |
 | **identifierScope** | **string** | path | **required** | The scope that the identifier exists in |
 | **identifierType** | **string** | path | **required** | What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the Identifier Definition |
-| **updateIdentifierDefinitionRequest** | [UpdateIdentifierDefinitionRequest?](UpdateIdentifierDefinitionRequest?.md) | body | optional | The request containing the updated details of the Identifier Definition. |
+| **updateIdentifierDefinitionRequest** | [UpdateIdentifierDefinitionRequest?](../Model/UpdateIdentifierDefinitionRequest?.md) | body | optional | The request containing the updated details of the Identifier Definition. |
 
 ### Return type
 
-[IdentifierDefinition](IdentifierDefinition.md)
+[IdentifierDefinition](../Model/IdentifierDefinition.md)
 
 ### HTTP request headers
 

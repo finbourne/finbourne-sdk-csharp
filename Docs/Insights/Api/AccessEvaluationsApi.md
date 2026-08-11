@@ -74,7 +74,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[AccessEvaluationLog](AccessEvaluationLog.md)
+[AccessEvaluationLog](../Model/AccessEvaluationLog.md)
 
 ### HTTP request headers
 
@@ -142,7 +142,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListWithHistogramOfAccessEvaluationLog](ResourceListWithHistogramOfAccessEvaluationLog.md)
+[ResourceListWithHistogramOfAccessEvaluationLog](../Model/ResourceListWithHistogramOfAccessEvaluationLog.md)
 
 ### HTTP request headers
 

@@ -83,7 +83,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;LusidField&gt;](LusidField.md)
+[List&lt;LusidField&gt;](../Model/LusidField.md)
 
 ### HTTP request headers
 
@@ -145,7 +145,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Dictionary&lt;string, LusidPropertyDefinitionOverrides&gt;](LusidPropertyDefinitionOverrides.md)
+[Dictionary&lt;string, LusidPropertyDefinitionOverrides&gt;](../Model/LusidPropertyDefinitionOverrides.md)
 
 ### HTTP request headers
 
@@ -207,7 +207,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;LusidPropertyToVendorFieldMapping&gt;](LusidPropertyToVendorFieldMapping.md)
+[List&lt;LusidPropertyToVendorFieldMapping&gt;](../Model/LusidPropertyToVendorFieldMapping.md)
 
 ### HTTP request headers
 
@@ -259,11 +259,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **queryRequest** | [QueryRequest](QueryRequest.md) | body | **required** |  |
+| **queryRequest** | [QueryRequest](../Model/QueryRequest.md) | body | **required** |  |
 
 ### Return type
 
-[PagedResourceListOfVendorProduct](PagedResourceListOfVendorProduct.md)
+[PagedResourceListOfVendorProduct](../Model/PagedResourceListOfVendorProduct.md)
 
 ### HTTP request headers
 
@@ -322,12 +322,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **vendorName** | **string** | query | **required** |  |
 | **productName** | **string** | query | **required** |  |
 | **lusidEntityType** | **string** | query | **required** |  |
-| **requestBody** | [Dictionary&lt;string, LusidPropertyDefinitionOverrides&gt;](LusidPropertyDefinitionOverrides.md) | body | **required** |  |
+| **requestBody** | [Dictionary&lt;string, LusidPropertyDefinitionOverrides&gt;](../Model/LusidPropertyDefinitionOverrides.md) | body | **required** |  |
 | **lusidEntitySubType** | **string?** | query | optional |  |
 
 ### Return type
 
-[Dictionary&lt;string, LusidPropertyDefinitionOverridesResponse&gt;](LusidPropertyDefinitionOverridesResponse.md)
+[Dictionary&lt;string, LusidPropertyDefinitionOverridesResponse&gt;](../Model/LusidPropertyDefinitionOverridesResponse.md)
 
 ### HTTP request headers
 

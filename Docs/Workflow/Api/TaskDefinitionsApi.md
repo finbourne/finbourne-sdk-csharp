@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createTaskDefinitionRequest** | [CreateTaskDefinitionRequest](CreateTaskDefinitionRequest.md) | body | **required** | The data to create a Task Definition |
+| **createTaskDefinitionRequest** | [CreateTaskDefinitionRequest](../Model/CreateTaskDefinitionRequest.md) | body | **required** | The data to create a Task Definition |
 
 ### Return type
 
-[TaskDefinition](TaskDefinition.md)
+[TaskDefinition](../Model/TaskDefinition.md)
 
 ### HTTP request headers
 
@@ -137,7 +137,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -196,11 +196,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope that identifies a Task Definition |
 | **code** | **string** | path | **required** | The code that identifies a Task Definition |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Task Definition. Defaults to returning the latest version of the Task Definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys whose values to return on the Task Definition. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys whose values to return on the Task Definition. |
 
 ### Return type
 
-[TaskDefinition](TaskDefinition.md)
+[TaskDefinition](../Model/TaskDefinition.md)
 
 ### HTTP request headers
 
@@ -260,14 +260,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Task Definitions. Defaults to return the latest version of each Task Definition if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here: https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Default: `10` |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing task definitions from a previous call to list task definitions. This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields must not have changed since the original request. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys whose values to return on each Task Definition. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys whose values to return on each Task Definition. |
 
 ### Return type
 
-[PagedResourceListOfTaskDefinition](PagedResourceListOfTaskDefinition.md)
+[PagedResourceListOfTaskDefinition](../Model/PagedResourceListOfTaskDefinition.md)
 
 ### HTTP request headers
 
@@ -326,11 +326,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope that identifies a Task Definition |
 | **code** | **string** | path | **required** | The code that identifies a Task Definition |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Tasks. Defaults to return the latest version of each Task if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys (in the TaskDefinition or Workflow domain) whose values to return on each Task. |
 
 ### Return type
 
-[ResourceListOfTask](ResourceListOfTask.md)
+[ResourceListOfTask](../Model/ResourceListOfTask.md)
 
 ### HTTP request headers
 
@@ -387,11 +387,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope that identifies a Task Definition |
 | **code** | **string** | path | **required** | The code that identifies a Task Definition |
-| **updateTaskDefinitionRequest** | [UpdateTaskDefinitionRequest](UpdateTaskDefinitionRequest.md) | body | **required** | The data to update a Task Definition |
+| **updateTaskDefinitionRequest** | [UpdateTaskDefinitionRequest](../Model/UpdateTaskDefinitionRequest.md) | body | **required** | The data to update a Task Definition |
 
 ### Return type
 
-[TaskDefinition](TaskDefinition.md)
+[TaskDefinition](../Model/TaskDefinition.md)
 
 ### HTTP request headers
 
@@ -449,12 +449,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope that identifies a Task Definition |
 | **code** | **string** | path | **required** | The code that identifies a Task Definition |
-| **requestBody** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | body | **required** | The properties to upsert, keyed by property key. A null value deletes the property. |
+| **requestBody** | [Dictionary&lt;string, PerpetualProperty&gt;](../Model/PerpetualProperty.md) | body | **required** | The properties to upsert, keyed by property key. A null value deletes the property. |
 | **successMode** | **string?** | query | optional | Whether the batch should fail Atomically or Partially. Defaults to Partial. Default: `&quot;Partial&quot;` |
 
 ### Return type
 
-[BatchUpsertTaskDefinitionPropertiesResponse](BatchUpsertTaskDefinitionPropertiesResponse.md)
+[BatchUpsertTaskDefinitionPropertiesResponse](../Model/BatchUpsertTaskDefinitionPropertiesResponse.md)
 
 ### HTTP request headers
 

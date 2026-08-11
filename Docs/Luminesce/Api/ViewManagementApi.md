@@ -132,7 +132,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **viewItem** | [ViewItem?](ViewItem?.md) | body | optional | View to fetch the create SQL for. Only the LastUpdatedAt and LastUpdatedExecutionId properties are required. |
+| **viewItem** | [ViewItem?](../Model/ViewItem?.md) | body | optional | View to fetch the create SQL for. Only the LastUpdatedAt and LastUpdatedExecutionId properties are required. |
 
 ### Return type
 
@@ -198,7 +198,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;ViewItem&gt;](ViewItem.md)
+[List&lt;ViewItem&gt;](../Model/ViewItem.md)
 
 ### HTTP request headers
 
@@ -256,7 +256,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **allowWarnings** | **bool?** | query | optional | May views with *warnings* be upserted?  Regardless of this views with *errors* may not be. Warnings includes things like: - not using macros properly so that filters or aggregations cannot be passed down - using things like &#x60;select *&#x60; that can lead to results changing over time Errors includes things like: - uses a provider or view that simply doesn&#39;t exists (so perhaps a view this depends on needs creating first?) - The SQL or Metadata of the view was manually edited, not setup correctly by &#x60;Sys.Admin.SetupView&#x60; Default: `false` |
 | **mayUpdateExisting** | **bool?** | query | optional | May an existing view be overwritten?  Defaults to false to prevent accidental overwrites. Set to true when intentionally deploying an updated view definition to a domain. Default: `false` |
-| **viewItem** | [ViewItem?](ViewItem?.md) | body | optional | View to create / change the definition of. |
+| **viewItem** | [ViewItem?](../Model/ViewItem?.md) | body | optional | View to create / change the definition of. |
 
 ### Return type
 

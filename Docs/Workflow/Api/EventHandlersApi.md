@@ -73,11 +73,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createEventHandlerRequest** | [CreateEventHandlerRequest](CreateEventHandlerRequest.md) | body | **required** | The data to create an Event Handler |
+| **createEventHandlerRequest** | [CreateEventHandlerRequest](../Model/CreateEventHandlerRequest.md) | body | **required** | The data to create an Event Handler |
 
 ### Return type
 
-[EventHandler](EventHandler.md)
+[EventHandler](../Model/EventHandler.md)
 
 ### HTTP request headers
 
@@ -137,7 +137,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -200,7 +200,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[EventHandler](EventHandler.md)
+[EventHandler](../Model/EventHandler.md)
 
 ### HTTP request headers
 
@@ -262,7 +262,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfEventHandler](PagedResourceListOfEventHandler.md)
+[PagedResourceListOfEventHandler](../Model/PagedResourceListOfEventHandler.md)
 
 ### HTTP request headers
 
@@ -318,11 +318,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope that identifies an Event Handler |
 | **code** | **string** | path | **required** | The code that identifies an Event Handler |
-| **updateEventHandlerRequest** | [UpdateEventHandlerRequest](UpdateEventHandlerRequest.md) | body | **required** | The data to update an Event Handler |
+| **updateEventHandlerRequest** | [UpdateEventHandlerRequest](../Model/UpdateEventHandlerRequest.md) | body | **required** | The data to update an Event Handler |
 
 ### Return type
 
-[EventHandler](EventHandler.md)
+[EventHandler](../Model/EventHandler.md)
 
 ### HTTP request headers
 

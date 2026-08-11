@@ -87,11 +87,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope within which to search for the calendars |
-| **addBusinessDaysToDateRequest** | [AddBusinessDaysToDateRequest](AddBusinessDaysToDateRequest.md) | body | **required** | Request Details: start date, number of days to add (which can be negative, but not zero), calendar codes and optionally an AsAt date for searching the calendar store |
+| **addBusinessDaysToDateRequest** | [AddBusinessDaysToDateRequest](../Model/AddBusinessDaysToDateRequest.md) | body | **required** | Request Details: start date, number of days to add (which can be negative, but not zero), calendar codes and optionally an AsAt date for searching the calendar store |
 
 ### Return type
 
-[AddBusinessDaysToDateResponse](AddBusinessDaysToDateResponse.md)
+[AddBusinessDaysToDateResponse](../Model/AddBusinessDaysToDateResponse.md)
 
 ### HTTP request headers
 
@@ -149,11 +149,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope of the calendar |
 | **code** | **string** | path | **required** | Code of the calendar |
-| **createDateRequest** | [CreateDateRequest](CreateDateRequest.md) | body | **required** | Add date to calendar request |
+| **createDateRequest** | [CreateDateRequest](../Model/CreateDateRequest.md) | body | **required** | Add date to calendar request |
 
 ### Return type
 
-[CalendarDate](CalendarDate.md)
+[CalendarDate](../Model/CalendarDate.md)
 
 ### HTTP request headers
 
@@ -213,11 +213,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | Scope of the calendar |
 | **code** | **string** | path | **required** | Code of the calendar |
 | **successMode** | **string** | query | **required** | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. Default: `&quot;Partial&quot;` |
-| **requestBody** | [Dictionary&lt;string, CreateDateRequest&gt;](CreateDateRequest.md) | body | **required** | Create Date Requests of dates to upsert |
+| **requestBody** | [Dictionary&lt;string, CreateDateRequest&gt;](../Model/CreateDateRequest.md) | body | **required** | Create Date Requests of dates to upsert |
 
 ### Return type
 
-[BatchUpsertDatesForCalendarResponse](BatchUpsertDatesForCalendarResponse.md)
+[BatchUpsertDatesForCalendarResponse](../Model/BatchUpsertDatesForCalendarResponse.md)
 
 ### HTTP request headers
 
@@ -271,11 +271,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createCalendarRequest** | [CreateCalendarRequest](CreateCalendarRequest.md) | body | **required** | A request to create the calendar |
+| **createCalendarRequest** | [CreateCalendarRequest](../Model/CreateCalendarRequest.md) | body | **required** | A request to create the calendar |
 
 ### Return type
 
-[Calendar](Calendar.md)
+[Calendar](../Model/Calendar.md)
 
 ### HTTP request headers
 
@@ -335,7 +335,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Calendar](Calendar.md)
+[Calendar](../Model/Calendar.md)
 
 ### HTTP request headers
 
@@ -397,7 +397,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[CalendarDate](CalendarDate.md)
+[CalendarDate](../Model/CalendarDate.md)
 
 ### HTTP request headers
 
@@ -455,11 +455,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope of the calendar |
 | **code** | **string** | path | **required** | Code of the calendar |
-| **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | Identifiers of the dates to be removed |
+| **requestBody** | [List&lt;string&gt;](../Model/string.md) | body | **required** | Identifiers of the dates to be removed |
 
 ### Return type
 
-[Dictionary&lt;string, CalendarDate&gt;](CalendarDate.md)
+[Dictionary&lt;string, CalendarDate&gt;](../Model/CalendarDate.md)
 
 ### HTTP request headers
 
@@ -516,7 +516,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope of the calendars to use |
-| **valuationSchedule** | [ValuationSchedule](ValuationSchedule.md) | body | **required** | The ValuationSchedule to generate schedule dates from |
+| **valuationSchedule** | [ValuationSchedule](../Model/ValuationSchedule.md) | body | **required** | The ValuationSchedule to generate schedule dates from |
 | **asAt** | **DateTimeOffset?** | query | optional | Optional AsAt for searching the calendar store. Defaults to Latest. |
 
 ### Return type
@@ -580,12 +580,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope of the calendar identifier |
 | **code** | **string** | path | **required** | Code of the calendar identifier |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. |
 | **asAt** | **DateTimeOffset?** | query | optional | The AsAt datetime at which to retrieve the calendar |
 
 ### Return type
 
-[Calendar](Calendar.md)
+[Calendar](../Model/Calendar.md)
 
 ### HTTP request headers
 
@@ -649,11 +649,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **fromEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | Where the effective window of dates should begin from |
 | **toEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | Where the effective window of dates should end |
 | **asAt** | **DateTimeOffset?** | query | optional | AsAt the dates should be retrieved at |
-| **idFilter** | [List&lt;string&gt;?](string.md) | query | optional | An additional filter that will filter dates based on their identifer |
+| **idFilter** | [List&lt;string&gt;?](../Model/string.md) | query | optional | An additional filter that will filter dates based on their identifer |
 
 ### Return type
 
-[ResourceListOfCalendarDate](ResourceListOfCalendarDate.md)
+[ResourceListOfCalendarDate](../Model/ResourceListOfCalendarDate.md)
 
 ### HTTP request headers
 
@@ -717,7 +717,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[IsBusinessDayResponse](IsBusinessDayResponse.md)
+[IsBusinessDayResponse](../Model/IsBusinessDayResponse.md)
 
 ### HTTP request headers
 
@@ -778,12 +778,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The AsAt datetime at which to retrieve the calendars |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing calendars from a previous call to list calendars.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[PagedResourceListOfCalendar](PagedResourceListOfCalendar.md)
+[PagedResourceListOfCalendar](../Model/PagedResourceListOfCalendar.md)
 
 ### HTTP request headers
 
@@ -846,12 +846,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The AsAt datetime at which to retrieve the calendars |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing calendars from a previous call to list calendars.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,               These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[PagedResourceListOfCalendar](PagedResourceListOfCalendar.md)
+[PagedResourceListOfCalendar](../Model/PagedResourceListOfCalendar.md)
 
 ### HTTP request headers
 
@@ -905,11 +905,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **resolveTenorsRequest** | [ResolveTenorsRequest](ResolveTenorsRequest.md) | body | **required** | Request containing start date, calendars, spot days, tenors, and optional conventions |
+| **resolveTenorsRequest** | [ResolveTenorsRequest](../Model/ResolveTenorsRequest.md) | body | **required** | Request containing start date, calendars, spot days, tenors, and optional conventions |
 
 ### Return type
 
-[ResolveTenorsResponse](ResolveTenorsResponse.md)
+[ResolveTenorsResponse](../Model/ResolveTenorsResponse.md)
 
 ### HTTP request headers
 
@@ -967,11 +967,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope of the request |
 | **code** | **string** | path | **required** | Code of the request |
-| **updateCalendarRequest** | [UpdateCalendarRequest](UpdateCalendarRequest.md) | body | **required** | The new state of the calendar |
+| **updateCalendarRequest** | [UpdateCalendarRequest](../Model/UpdateCalendarRequest.md) | body | **required** | The new state of the calendar |
 
 ### Return type
 
-[Calendar](Calendar.md)
+[Calendar](../Model/Calendar.md)
 
 ### HTTP request headers
 

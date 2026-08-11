@@ -103,11 +103,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the portfolio group to add a portfolio to. |
 | **code** | **string** | path | **required** | The code of the portfolio group to add a portfolio to. Together with the scope this uniquely identifies the portfolio group. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label from which the portfolio will be added to the group. |
-| **resourceId** | [ResourceId?](ResourceId?.md) | body | optional | The resource identifier of the portfolio to add to the portfolio group. |
+| **resourceId** | [ResourceId?](../Model/ResourceId?.md) | body | optional | The resource identifier of the portfolio to add to the portfolio group. |
 
 ### Return type
 
-[PortfolioGroup](PortfolioGroup.md)
+[PortfolioGroup](../Model/PortfolioGroup.md)
 
 ### HTTP request headers
 
@@ -167,11 +167,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the portfolio group to add a portfolio group to. |
 | **code** | **string** | path | **required** | The code of the portfolio group to add a portfolio group to. Together with the scope this uniquely identifies the portfolio group. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label from which the sub group will be added to the group. |
-| **resourceId** | [ResourceId?](ResourceId?.md) | body | optional | The resource identifier of the portfolio group to add to the portfolio group as a sub group. |
+| **resourceId** | [ResourceId?](../Model/ResourceId?.md) | body | optional | The resource identifier of the portfolio group to add to the portfolio group as a sub group. |
 
 ### Return type
 
-[PortfolioGroup](PortfolioGroup.md)
+[PortfolioGroup](../Model/PortfolioGroup.md)
 
 ### HTTP request headers
 
@@ -238,10 +238,10 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the portfolio group. |
 | **code** | **string** | path | **required** | The code of the portfolio group. Together with the scope this uniquely identifies               the portfolio group. |
-| **transactionQueryParameters** | [TransactionQueryParameters](TransactionQueryParameters.md) | body | **required** | The query queryParameters which control how the output transactions are built. |
+| **transactionQueryParameters** | [TransactionQueryParameters](../Model/TransactionQueryParameters.md) | body | **required** | The query queryParameters which control how the output transactions are built. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to build the transactions. Defaults to return the latest               version of each transaction if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.               For example, to filter on the Transaction Type, use \&quot;type eq &#39;Buy&#39;\&quot;               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto               the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or               \&quot;Transaction/strategy/quantsignal\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto               the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or               \&quot;Transaction/strategy/quantsignal\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing transactions from a previous call to BuildTransactions. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
@@ -251,7 +251,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListOfOutputTransaction](VersionedResourceListOfOutputTransaction.md)
+[VersionedResourceListOfOutputTransaction](../Model/VersionedResourceListOfOutputTransaction.md)
 
 ### HTTP request headers
 
@@ -307,11 +307,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope that the portfolio group will be created in. |
-| **createPortfolioGroupRequest** | [CreatePortfolioGroupRequest?](CreatePortfolioGroupRequest?.md) | body | optional | The definition and details of the portfolio group. |
+| **createPortfolioGroupRequest** | [CreatePortfolioGroupRequest?](../Model/CreatePortfolioGroupRequest?.md) | body | optional | The definition and details of the portfolio group. |
 
 ### Return type
 
-[PortfolioGroup](PortfolioGroup.md)
+[PortfolioGroup](../Model/PortfolioGroup.md)
 
 ### HTTP request headers
 
@@ -370,12 +370,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the group to delete properties from. |
 | **code** | **string** | path | **required** | The code of the group to delete properties from. Together with the scope this uniquely identifies the group. |
-| **requestBody** | [List&lt;string&gt;](string.md) | body | **required** | The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. Each property must be from the \&quot;PortfolioGroup\&quot; domain. |
+| **requestBody** | [List&lt;string&gt;](../Model/string.md) | body | **required** | The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. Each property must be from the \&quot;PortfolioGroup\&quot; domain. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -441,7 +441,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -507,7 +507,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PortfolioGroup](PortfolioGroup.md)
+[PortfolioGroup](../Model/PortfolioGroup.md)
 
 ### HTTP request headers
 
@@ -567,7 +567,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -633,7 +633,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PortfolioGroup](PortfolioGroup.md)
+[PortfolioGroup](../Model/PortfolioGroup.md)
 
 ### HTTP request headers
 
@@ -702,12 +702,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version              of each transaction if not specified. |
 | **recipeIdScope** | **string?** | query | optional | The scope of the given recipeId |
 | **recipeIdCode** | **string?** | query | optional | The code of the given recipeId |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto              the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[VersionedResourceListOfA2BDataRecord](VersionedResourceListOfA2BDataRecord.md)
+[VersionedResourceListOfA2BDataRecord](../Model/VersionedResourceListOfA2BDataRecord.md)
 
 ### HTTP request headers
 
@@ -771,7 +771,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PortfolioGroupProperties](PortfolioGroupProperties.md)
+[PortfolioGroupProperties](../Model/PortfolioGroupProperties.md)
 
 ### HTTP request headers
 
@@ -837,13 +837,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the holdings of transaction              portfolios in the portfolio group. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the holdings of transaction portfolios in the portfolio group. Defaults              to return the latest version of the holdings if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto              the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. |
 | **byTaxlots** | **bool?** | query | optional | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to              False. |
 | **includeSettlementEventsAfterDays** | **int?** | query | optional | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt |
 
 ### Return type
 
-[VersionedResourceListOfPortfolioHolding](VersionedResourceListOfPortfolioHolding.md)
+[VersionedResourceListOfPortfolioHolding](../Model/VersionedResourceListOfPortfolioHolding.md)
 
 ### HTTP request headers
 
@@ -907,13 +907,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the portfolio group to retrieve the definition for. Together with the scope              this uniquely identifies the portfolio group. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the portfolio group definition. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the portfolio group definition. Defaults to return              the latest version of the portfolio group definition if not specified. |
-| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio group. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. |
+| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio group. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. |
 
 ### Return type
 
-[PortfolioGroup](PortfolioGroup.md)
+[PortfolioGroup](../Model/PortfolioGroup.md)
 
 ### HTTP request headers
 
@@ -979,7 +979,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;AccessMetadataValue&gt;](AccessMetadataValue.md)
+[List&lt;AccessMetadataValue&gt;](../Model/AccessMetadataValue.md)
 
 ### HTTP request headers
 
@@ -1045,7 +1045,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfProcessedCommand](ResourceListOfProcessedCommand.md)
+[ResourceListOfProcessedCommand](../Model/ResourceListOfProcessedCommand.md)
 
 ### HTTP request headers
 
@@ -1107,11 +1107,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the portfolio group to expand. Together with the scope this uniquely identifies the portfolio              group to expand. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to expand the portfolio group. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to expand the portfolio group. Defaults to return the latest version of each portfolio in the group if not specified. |
-| **propertyFilter** | [List&lt;string&gt;?](string.md) | query | optional | The restricted list of property keys from the \&quot;Portfolio\&quot; domain which will be decorated onto each portfolio. These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. |
+| **propertyFilter** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The restricted list of property keys from the \&quot;Portfolio\&quot; domain which will be decorated onto each portfolio. These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. |
 
 ### Return type
 
-[ExpandedGroup](ExpandedGroup.md)
+[ExpandedGroup](../Model/ExpandedGroup.md)
 
 ### HTTP request headers
 
@@ -1247,7 +1247,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfPropertyInterval](ResourceListOfPropertyInterval.md)
+[ResourceListOfPropertyInterval](../Model/ResourceListOfPropertyInterval.md)
 
 ### HTTP request headers
 
@@ -1311,11 +1311,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve relations. Defaults to return the latest LUSID AsAt time if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the relations. Users should provide null or empty string for this field until further notice. |
-| **identifierTypes** | [List&lt;string&gt;?](string.md) | query | optional | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. |
+| **identifierTypes** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. |
 
 ### Return type
 
-[ResourceListOfRelation](ResourceListOfRelation.md)
+[ResourceListOfRelation](../Model/ResourceListOfRelation.md)
 
 ### HTTP request headers
 
@@ -1379,11 +1379,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve relationship. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter relationships. Users should provide null or empty string for this field until further notice. |
-| **identifierTypes** | [List&lt;string&gt;?](string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. |
+| **identifierTypes** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. |
 
 ### Return type
 
-[ResourceListOfRelationship](ResourceListOfRelationship.md)
+[ResourceListOfRelationship](../Model/ResourceListOfRelationship.md)
 
 ### HTTP request headers
 
@@ -1456,18 +1456,18 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **toTransactionDate** | **DateTimeOrCutLabel?** | query | optional | The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.               There is no upper bound if this is not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transactions. Defaults to return the latest version               of each transaction if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.               For example, to filter on the Transaction Type, use \&quot;type eq &#39;Buy&#39;\&quot;               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot;, \&quot;Transaction\&quot;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto               the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or               \&quot;Transaction/strategy/quantsignal\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Instrument\&quot;, \&quot;Transaction\&quot;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto               the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or               \&quot;Transaction/strategy/quantsignal\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing transactions from a previous call to GetTransactions. |
 | **showCancelledTransactions** | **bool?** | query | optional | Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 | **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. |
 
 ### Return type
 
-[VersionedResourceListOfTransaction](VersionedResourceListOfTransaction.md)
+[VersionedResourceListOfTransaction](../Model/VersionedResourceListOfTransaction.md)
 
 ### HTTP request headers
 
@@ -1534,14 +1534,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing portfolio groups from a previous call to list portfolio groups. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to no limit if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfPortfolioGroup](PagedResourceListOfPortfolioGroup.md)
+[PagedResourceListOfPortfolioGroup](../Model/PagedResourceListOfPortfolioGroup.md)
 
 ### HTTP request headers
 
@@ -1610,14 +1610,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing portfolio groups from a previous call to list portfolio groups. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to no limit if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
-| **relationshipDefinitionIds** | [List&lt;string&gt;?](string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **relatedEntityPropertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
+| **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;PortfolioGroup&#39; domain to decorate onto the portfolio groups. These must take the format {domain}/{scope}/{code}, e.g. &#39;PortfolioGroup/Manager/Id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfPortfolioGroup](PagedResourceListOfPortfolioGroup.md)
+[PagedResourceListOfPortfolioGroup](../Model/PagedResourceListOfPortfolioGroup.md)
 
 ### HTTP request headers
 
@@ -1677,7 +1677,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Portfolio Group |
 | **code** | **string** | path | **required** | The Portfolio Group code |
-| **accessMetadataOperation** | [List&lt;AccessMetadataOperation&gt;](AccessMetadataOperation.md) | body | **required** | The Json patch document |
+| **accessMetadataOperation** | [List&lt;AccessMetadataOperation&gt;](../Model/AccessMetadataOperation.md) | body | **required** | The Json patch document |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The date this rule will be effective from |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata |
 
@@ -1743,11 +1743,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the portfolio group to update the definition for. |
 | **code** | **string** | path | **required** | The code of the portfolio group to update the definition for. Together with the scope this uniquely identifies the portfolio group. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to update the definition. |
-| **updatePortfolioGroupRequest** | [UpdatePortfolioGroupRequest?](UpdatePortfolioGroupRequest?.md) | body | optional | The updated portfolio group definition. |
+| **updatePortfolioGroupRequest** | [UpdatePortfolioGroupRequest?](../Model/UpdatePortfolioGroupRequest?.md) | body | optional | The updated portfolio group definition. |
 
 ### Return type
 
-[PortfolioGroup](PortfolioGroup.md)
+[PortfolioGroup](../Model/PortfolioGroup.md)
 
 ### HTTP request headers
 
@@ -1805,11 +1805,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the group to update or insert the properties onto. |
 | **code** | **string** | path | **required** | The code of the group to update or insert the properties onto. Together with the scope this uniquely identifies the group. |
-| **requestBody** | [Dictionary&lt;string, Property&gt;?](Property.md) | body | optional | The properties to be updated or inserted onto the group. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;?](../Model/Property.md) | body | optional | The properties to be updated or inserted onto the group. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. |
 
 ### Return type
 
-[PortfolioGroupProperties](PortfolioGroupProperties.md)
+[PortfolioGroupProperties](../Model/PortfolioGroupProperties.md)
 
 ### HTTP request headers
 
@@ -1871,13 +1871,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Portfolio Group |
 | **code** | **string** | path | **required** | The Portfolio Group code |
 | **metadataKey** | **string** | path | **required** | Key of the access metadata entry to upsert |
-| **upsertPortfolioGroupAccessMetadataRequest** | [UpsertPortfolioGroupAccessMetadataRequest](UpsertPortfolioGroupAccessMetadataRequest.md) | body | **required** | The Portfolio Group Access Metadata rule to upsert |
+| **upsertPortfolioGroupAccessMetadataRequest** | [UpsertPortfolioGroupAccessMetadataRequest](../Model/UpsertPortfolioGroupAccessMetadataRequest.md) | body | **required** | The Portfolio Group Access Metadata rule to upsert |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The date this rule will be effective from |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata |
 
 ### Return type
 
-[ResourceListOfAccessMetadataValueOf](ResourceListOfAccessMetadataValueOf.md)
+[ResourceListOfAccessMetadataValueOf](../Model/ResourceListOfAccessMetadataValueOf.md)
 
 ### HTTP request headers
 

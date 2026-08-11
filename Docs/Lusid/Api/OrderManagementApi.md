@@ -85,13 +85,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **bookTransactionsRequest** | [BookTransactionsRequest](BookTransactionsRequest.md) | body | **required** | The allocations to create transactions for |
+| **bookTransactionsRequest** | [BookTransactionsRequest](../Model/BookTransactionsRequest.md) | body | **required** | The allocations to create transactions for |
 | **applyFeesAndCommission** | **bool?** | query | optional | Whether to apply fees and commissions to transactions (default: true) Default: `true` |
 | **markOrdersAndAllocationsAsBooked** | **bool?** | query | optional | Whether to mark allocations and fully-booked orders with state Booked Default: `false` |
 
 ### Return type
 
-[BookTransactionsResponse](BookTransactionsResponse.md)
+[BookTransactionsResponse](../Model/BookTransactionsResponse.md)
 
 ### HTTP request headers
 
@@ -145,11 +145,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, ResourceId&gt;](ResourceId.md) | body | **required** | The request containing the ids of the orders to be cancelled. |
+| **requestBody** | [Dictionary&lt;string, ResourceId&gt;](../Model/ResourceId.md) | body | **required** | The request containing the ids of the orders to be cancelled. |
 
 ### Return type
 
-[CancelOrdersResponse](CancelOrdersResponse.md)
+[CancelOrdersResponse](../Model/CancelOrdersResponse.md)
 
 ### HTTP request headers
 
@@ -203,11 +203,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, CancelOrdersAndMoveRemainingRequest&gt;](CancelOrdersAndMoveRemainingRequest.md) | body | **required** | The request containing the orders to be cancelled, and the destinations of remaining quantities. |
+| **requestBody** | [Dictionary&lt;string, CancelOrdersAndMoveRemainingRequest&gt;](../Model/CancelOrdersAndMoveRemainingRequest.md) | body | **required** | The request containing the orders to be cancelled, and the destinations of remaining quantities. |
 
 ### Return type
 
-[CancelOrdersAndMoveRemainingResponse](CancelOrdersAndMoveRemainingResponse.md)
+[CancelOrdersAndMoveRemainingResponse](../Model/CancelOrdersAndMoveRemainingResponse.md)
 
 ### HTTP request headers
 
@@ -261,11 +261,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, ResourceId&gt;](ResourceId.md) | body | **required** | The request containing the ids of the placements to be cancelled. |
+| **requestBody** | [Dictionary&lt;string, ResourceId&gt;](../Model/ResourceId.md) | body | **required** | The request containing the ids of the placements to be cancelled. |
 
 ### Return type
 
-[CancelPlacementsResponse](CancelPlacementsResponse.md)
+[CancelPlacementsResponse](../Model/CancelPlacementsResponse.md)
 
 ### HTTP request headers
 
@@ -319,11 +319,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **blockAndOrdersCreateRequest** | [BlockAndOrdersCreateRequest](BlockAndOrdersCreateRequest.md) | body | **required** | The collection of block and orders requests. |
+| **blockAndOrdersCreateRequest** | [BlockAndOrdersCreateRequest](../Model/BlockAndOrdersCreateRequest.md) | body | **required** | The collection of block and orders requests. |
 
 ### Return type
 
-[ResourceListOfBlockAndOrders](ResourceListOfBlockAndOrders.md)
+[ResourceListOfBlockAndOrders](../Model/ResourceListOfBlockAndOrders.md)
 
 ### HTTP request headers
 
@@ -385,7 +385,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfChangeIntervalWithOrderManagementDetail](ResourceListOfChangeIntervalWithOrderManagementDetail.md)
+[ResourceListOfChangeIntervalWithOrderManagementDetail](../Model/ResourceListOfChangeIntervalWithOrderManagementDetail.md)
 
 ### HTTP request headers
 
@@ -440,11 +440,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **moveOrdersToDifferentBlocksRequest** | [MoveOrdersToDifferentBlocksRequest](MoveOrdersToDifferentBlocksRequest.md) | body | **required** | The collection of order and destination block ids. |
+| **moveOrdersToDifferentBlocksRequest** | [MoveOrdersToDifferentBlocksRequest](../Model/MoveOrdersToDifferentBlocksRequest.md) | body | **required** | The collection of order and destination block ids. |
 
 ### Return type
 
-[ResourceListOfMovedOrderToDifferentBlockResponse](ResourceListOfMovedOrderToDifferentBlockResponse.md)
+[ResourceListOfMovedOrderToDifferentBlockResponse](../Model/ResourceListOfMovedOrderToDifferentBlockResponse.md)
 
 ### HTTP request headers
 
@@ -498,11 +498,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **placeBlocksRequest** | [PlaceBlocksRequest?](PlaceBlocksRequest?.md) | body | optional | The request containing the blocks to the placed. |
+| **placeBlocksRequest** | [PlaceBlocksRequest?](../Model/PlaceBlocksRequest?.md) | body | optional | The request containing the blocks to the placed. |
 
 ### Return type
 
-[ResourceListOfPlacement](ResourceListOfPlacement.md)
+[ResourceListOfPlacement](../Model/ResourceListOfPlacement.md)
 
 ### HTTP request headers
 
@@ -557,12 +557,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **resourceId** | [List&lt;ResourceId&gt;](ResourceId.md) | body | **required** | The List of Placement IDs for which you wish to allocate Executions. |
+| **resourceId** | [List&lt;ResourceId&gt;](../Model/ResourceId.md) | body | **required** | The List of Placement IDs for which you wish to allocate Executions. |
 | **allocationAlgorithm** | **string?** | query | optional | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. |
 
 ### Return type
 
-[AllocationServiceRunResponse](AllocationServiceRunResponse.md)
+[AllocationServiceRunResponse](../Model/AllocationServiceRunResponse.md)
 
 ### HTTP request headers
 
@@ -617,12 +617,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **weightedAllocationServiceRunRequest** | [WeightedAllocationServiceRunRequest](WeightedAllocationServiceRunRequest.md) | body | **required** | The placement IDs to allocate against, and the portfolio weights to use for the allocation split. |
+| **weightedAllocationServiceRunRequest** | [WeightedAllocationServiceRunRequest](../Model/WeightedAllocationServiceRunRequest.md) | body | **required** | The placement IDs to allocate against, and the portfolio weights to use for the allocation split. |
 | **allocationAlgorithm** | **string?** | query | optional | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. |
 
 ### Return type
 
-[AllocationServiceRunResponse](AllocationServiceRunResponse.md)
+[AllocationServiceRunResponse](../Model/AllocationServiceRunResponse.md)
 
 ### HTTP request headers
 
@@ -676,11 +676,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **sweepBlocksRequest** | [SweepBlocksRequest](SweepBlocksRequest.md) | body | **required** |  |
+| **sweepBlocksRequest** | [SweepBlocksRequest](../Model/SweepBlocksRequest.md) | body | **required** |  |
 
 ### Return type
 
-[SweepBlocksResponse](SweepBlocksResponse.md)
+[SweepBlocksResponse](../Model/SweepBlocksResponse.md)
 
 ### HTTP request headers
 
@@ -734,11 +734,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, OrderUpdateRequest&gt;](OrderUpdateRequest.md) | body | **required** | The request containing the orders to be updated. |
+| **requestBody** | [Dictionary&lt;string, OrderUpdateRequest&gt;](../Model/OrderUpdateRequest.md) | body | **required** | The request containing the orders to be updated. |
 
 ### Return type
 
-[UpdateOrdersResponse](UpdateOrdersResponse.md)
+[UpdateOrdersResponse](../Model/UpdateOrdersResponse.md)
 
 ### HTTP request headers
 
@@ -792,11 +792,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **requestBody** | [Dictionary&lt;string, PlacementUpdateRequest&gt;](PlacementUpdateRequest.md) | body | **required** | The request containing the placements to be updated. |
+| **requestBody** | [Dictionary&lt;string, PlacementUpdateRequest&gt;](../Model/PlacementUpdateRequest.md) | body | **required** | The request containing the placements to be updated. |
 
 ### Return type
 
-[UpdatePlacementsResponse](UpdatePlacementsResponse.md)
+[UpdatePlacementsResponse](../Model/UpdatePlacementsResponse.md)
 
 ### HTTP request headers
 

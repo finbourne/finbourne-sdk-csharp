@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createApplicationRequest** | [CreateApplicationRequest?](CreateApplicationRequest?.md) | body | optional | Details of the application to be created |
+| **createApplicationRequest** | [CreateApplicationRequest?](../Model/CreateApplicationRequest?.md) | body | optional | Details of the application to be created |
 
 ### Return type
 
-[OAuthApplication](OAuthApplication.md)
+[OAuthApplication](../Model/OAuthApplication.md)
 
 ### HTTP request headers
 
@@ -193,7 +193,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[OAuthApplication](OAuthApplication.md)
+[OAuthApplication](../Model/OAuthApplication.md)
 
 ### HTTP request headers
 
@@ -248,7 +248,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;OAuthApplication&gt;](OAuthApplication.md)
+[List&lt;OAuthApplication&gt;](../Model/OAuthApplication.md)
 
 ### HTTP request headers
 
@@ -305,7 +305,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[OAuthApplication](OAuthApplication.md)
+[OAuthApplication](../Model/OAuthApplication.md)
 
 ### HTTP request headers
 

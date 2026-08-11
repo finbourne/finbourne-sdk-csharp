@@ -80,11 +80,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **entityUniqueId** | **string** | path | **required** | The entity unique id of the rec result set (its version.entityUniqueId). |
-| **recResultSetApprovalDecisionRequest** | [RecResultSetApprovalDecisionRequest](RecResultSetApprovalDecisionRequest.md) | body | **required** | The approval decision request. |
+| **recResultSetApprovalDecisionRequest** | [RecResultSetApprovalDecisionRequest](../Model/RecResultSetApprovalDecisionRequest.md) | body | **required** | The approval decision request. |
 
 ### Return type
 
-[RecResultSet](RecResultSet.md)
+[RecResultSet](../Model/RecResultSet.md)
 
 ### HTTP request headers
 
@@ -146,7 +146,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RecInstance](RecInstance.md)
+[RecInstance](../Model/RecInstance.md)
 
 ### HTTP request headers
 
@@ -208,7 +208,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[RecResultSet](RecResultSet.md)
+[RecResultSet](../Model/RecResultSet.md)
 
 ### HTTP request headers
 
@@ -262,11 +262,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **instantiateRecRequest** | [InstantiateRecRequest](InstantiateRecRequest.md) | body | **required** | The instantiation request. |
+| **instantiateRecRequest** | [InstantiateRecRequest](../Model/InstantiateRecRequest.md) | body | **required** | The instantiation request. |
 
 ### Return type
 
-[RecInstance](RecInstance.md)
+[RecInstance](../Model/RecInstance.md)
 
 ### HTTP request headers
 
@@ -328,11 +328,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing instances from a previous call. If a pagination token is provided the filter and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 
 ### Return type
 
-[PagedResourceListOfRecInstance](PagedResourceListOfRecInstance.md)
+[PagedResourceListOfRecInstance](../Model/PagedResourceListOfRecInstance.md)
 
 ### HTTP request headers
 
@@ -396,11 +396,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing result sets from a previous call. If a pagination token is provided the filter and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 
 ### Return type
 
-[PagedResourceListOfRecResultSet](PagedResourceListOfRecResultSet.md)
+[PagedResourceListOfRecResultSet](../Model/PagedResourceListOfRecResultSet.md)
 
 ### HTTP request headers
 
@@ -456,11 +456,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **entityUniqueId** | **string** | path | **required** | The entity unique id of the rec result set (its version.entityUniqueId). |
-| **submitRecResultSetReviewRequest** | [SubmitRecResultSetReviewRequest](SubmitRecResultSetReviewRequest.md) | body | **required** | The submission request. |
+| **submitRecResultSetReviewRequest** | [SubmitRecResultSetReviewRequest](../Model/SubmitRecResultSetReviewRequest.md) | body | **required** | The submission request. |
 
 ### Return type
 
-[RecResultSet](RecResultSet.md)
+[RecResultSet](../Model/RecResultSet.md)
 
 ### HTTP request headers
 
@@ -518,11 +518,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **instanceIdType** | **string** | path | **required** | How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual. |
 | **instanceIdValue** | **string** | path | **required** | The instance identifier value (a GUID). |
-| **transitionRecInstanceRequest** | [TransitionRecInstanceRequest](TransitionRecInstanceRequest.md) | body | **required** | The transition request. |
+| **transitionRecInstanceRequest** | [TransitionRecInstanceRequest](../Model/TransitionRecInstanceRequest.md) | body | **required** | The transition request. |
 
 ### Return type
 
-[RecInstance](RecInstance.md)
+[RecInstance](../Model/RecInstance.md)
 
 ### HTTP request headers
 

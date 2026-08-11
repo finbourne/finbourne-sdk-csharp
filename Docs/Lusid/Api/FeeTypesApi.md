@@ -78,11 +78,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the FeeType. |
-| **feeTypeRequest** | [FeeTypeRequest](FeeTypeRequest.md) | body | **required** | The contents of the FeeType. |
+| **feeTypeRequest** | [FeeTypeRequest](../Model/FeeTypeRequest.md) | body | **required** | The contents of the FeeType. |
 
 ### Return type
 
-[FeeType](FeeType.md)
+[FeeType](../Model/FeeType.md)
 
 ### HTTP request headers
 
@@ -142,7 +142,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -196,7 +196,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[FeeTransactionTemplateSpecification](FeeTransactionTemplateSpecification.md)
+[FeeTransactionTemplateSpecification](../Model/FeeTransactionTemplateSpecification.md)
 
 ### HTTP request headers
 
@@ -257,7 +257,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[FeeType](FeeType.md)
+[FeeType](../Model/FeeType.md)
 
 ### HTTP request headers
 
@@ -319,11 +319,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing FeeTypes; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the Code of the FeeType type, specify \&quot;id.Code eq &#39;FeeType1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 
 ### Return type
 
-[PagedResourceListOfFeeType](PagedResourceListOfFeeType.md)
+[PagedResourceListOfFeeType](../Model/PagedResourceListOfFeeType.md)
 
 ### HTTP request headers
 
@@ -381,11 +381,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the FeeType. |
 | **code** | **string** | path | **required** | The code of the fee type |
-| **updateFeeTypeRequest** | [UpdateFeeTypeRequest](UpdateFeeTypeRequest.md) | body | **required** | The contents of the FeeType. |
+| **updateFeeTypeRequest** | [UpdateFeeTypeRequest](../Model/UpdateFeeTypeRequest.md) | body | **required** | The contents of the FeeType. |
 
 ### Return type
 
-[FeeType](FeeType.md)
+[FeeType](../Model/FeeType.md)
 
 ### HTTP request headers
 

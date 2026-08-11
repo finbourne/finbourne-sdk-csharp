@@ -84,7 +84,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[StorageObject](StorageObject.md)
+[StorageObject](../Model/StorageObject.md)
 
 ### HTTP request headers
 
@@ -250,7 +250,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[StorageObject](StorageObject.md)
+[StorageObject](../Model/StorageObject.md)
 
 ### HTTP request headers
 
@@ -310,7 +310,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[StorageObject](StorageObject.md)
+[StorageObject](../Model/StorageObject.md)
 
 ### HTTP request headers
 
@@ -364,11 +364,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | Identifier of the file to be updated |
-| **updateFile** | [UpdateFile](UpdateFile.md) | body | **required** | Update to be applied to file |
+| **updateFile** | [UpdateFile](../Model/UpdateFile.md) | body | **required** | Update to be applied to file |
 
 ### Return type
 
-[StorageObject](StorageObject.md)
+[StorageObject](../Model/StorageObject.md)
 
 ### HTTP request headers
 

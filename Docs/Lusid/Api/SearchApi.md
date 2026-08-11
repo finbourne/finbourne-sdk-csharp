@@ -77,14 +77,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **instrumentSearchProperty** | [List&lt;InstrumentSearchProperty&gt;](InstrumentSearchProperty.md) | body | **required** | A collection of instrument properties to search for. LUSID will return instruments for any matched              properties. |
+| **instrumentSearchProperty** | [List&lt;InstrumentSearchProperty&gt;](../Model/InstrumentSearchProperty.md) | body | **required** | A collection of instrument properties to search for. LUSID will return instruments for any matched              properties. |
 | **masteredEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that  have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified. |
 | **masteredOnly** | **bool?** | query | optional | If set to true, only search over instruments that have been mastered within LUSID. Defaults to false. Default: `false` |
 | **scope** | **string?** | query | optional | The scope in which the instrument lies. |
 
 ### Return type
 
-[List&lt;InstrumentMatch&gt;](InstrumentMatch.md)
+[List&lt;InstrumentMatch&gt;](../Model/InstrumentMatch.md)
 
 ### HTTP request headers
 
@@ -150,7 +150,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfPortfolioGroupSearchResult](PagedResourceListOfPortfolioGroupSearchResult.md)
+[PagedResourceListOfPortfolioGroupSearchResult](../Model/PagedResourceListOfPortfolioGroupSearchResult.md)
 
 ### HTTP request headers
 
@@ -216,7 +216,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfPortfolioSearchResult](PagedResourceListOfPortfolioSearchResult.md)
+[PagedResourceListOfPortfolioSearchResult](../Model/PagedResourceListOfPortfolioSearchResult.md)
 
 ### HTTP request headers
 
@@ -282,7 +282,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfPropertyDefinitionSearchResult](PagedResourceListOfPropertyDefinitionSearchResult.md)
+[PagedResourceListOfPropertyDefinitionSearchResult](../Model/PagedResourceListOfPropertyDefinitionSearchResult.md)
 
 ### HTTP request headers
 

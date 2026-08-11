@@ -4,8 +4,8 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **CashSettlement** | [NavSettlementConfigurationCategory](NavSettlementConfigurationCategory.md) | Optional | *No description available.* |
-| **DeferredCashReceipt** | [NavSettlementConfigurationCategory](NavSettlementConfigurationCategory.md) | Optional | *No description available.* |
+| **CashSettlement** | [NavSettlementConfigurationCategory](NavSettlementConfigurationCategory.md) | Required | *No description available.* |
+| **DeferredCashReceipt** | [NavSettlementConfigurationCategory](NavSettlementConfigurationCategory.md) | Required | *No description available.* |
 
 
 ## Usage
@@ -16,8 +16,8 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new NavSettlementConfiguration(
-    cashSettlement: new NavSettlementConfigurationCategory(...),  // optional
-    deferredCashReceipt: new NavSettlementConfigurationCategory(...)  // optional
+    cashSettlement: new NavSettlementConfigurationCategory(...),  // required
+    deferredCashReceipt: new NavSettlementConfigurationCategory(...)  // required
 );
 ```
 ### Serializing to JSON

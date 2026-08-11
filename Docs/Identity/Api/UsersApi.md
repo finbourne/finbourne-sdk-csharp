@@ -87,12 +87,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createUserRequest** | [CreateUserRequest](CreateUserRequest.md) | body | **required** | Details of the User to be created |
+| **createUserRequest** | [CreateUserRequest](../Model/CreateUserRequest.md) | body | **required** | Details of the User to be created |
 | **waitForReindex** | **bool?** | query | optional | Should the request wait until the newly created User is indexed (available in List) before returning Default: `false` |
 
 ### Return type
 
-[UserResponse](UserResponse.md)
+[UserResponse](../Model/UserResponse.md)
 
 ### HTTP request headers
 
@@ -206,7 +206,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[TemporaryPassword](TemporaryPassword.md)
+[TemporaryPassword](../Model/TemporaryPassword.md)
 
 ### HTTP request headers
 
@@ -260,11 +260,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **id** | [List&lt;string&gt;](string.md) | query | **required** | A list of unique identifiers for the users |
+| **id** | [List&lt;string&gt;](../Model/string.md) | query | **required** | A list of unique identifiers for the users |
 
 ### Return type
 
-[ListUsersResponse](ListUsersResponse.md)
+[ListUsersResponse](../Model/ListUsersResponse.md)
 
 ### HTTP request headers
 
@@ -324,7 +324,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[UserResponse](UserResponse.md)
+[UserResponse](../Model/UserResponse.md)
 
 ### HTTP request headers
 
@@ -382,7 +382,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[UserResponse](UserResponse.md)
+[UserResponse](../Model/UserResponse.md)
 
 ### HTTP request headers
 
@@ -436,7 +436,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[UserSchemaResponse](UserSchemaResponse.md)
+[UserSchemaResponse](../Model/UserSchemaResponse.md)
 
 ### HTTP request headers
 
@@ -489,7 +489,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;UserResponse&gt;](UserResponse.md)
+[List&lt;UserResponse&gt;](../Model/UserResponse.md)
 
 ### HTTP request headers
 
@@ -546,7 +546,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[List&lt;UserResponse&gt;](UserResponse.md)
+[List&lt;UserResponse&gt;](../Model/UserResponse.md)
 
 ### HTTP request headers
 
@@ -872,11 +872,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **id** | **string** | path | **required** | The unique identifier for the User to be updated |
-| **updateUserRequest** | [UpdateUserRequest](UpdateUserRequest.md) | body | **required** | The new definition of the User |
+| **updateUserRequest** | [UpdateUserRequest](../Model/UpdateUserRequest.md) | body | **required** | The new definition of the User |
 
 ### Return type
 
-[UserResponse](UserResponse.md)
+[UserResponse](../Model/UserResponse.md)
 
 ### HTTP request headers
 
@@ -930,11 +930,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **updateUserSchemaRequest** | [UpdateUserSchemaRequest](UpdateUserSchemaRequest.md) | body | **required** | The new User Schema |
+| **updateUserSchemaRequest** | [UpdateUserSchemaRequest](../Model/UpdateUserSchemaRequest.md) | body | **required** | The new User Schema |
 
 ### Return type
 
-[UserSchemaResponse](UserSchemaResponse.md)
+[UserSchemaResponse](../Model/UserSchemaResponse.md)
 
 ### HTTP request headers
 

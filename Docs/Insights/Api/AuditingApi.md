@@ -71,11 +71,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createAuditEntry** | [CreateAuditEntry?](CreateAuditEntry?.md) | body | optional | Information about the entry to be created. |
+| **createAuditEntry** | [CreateAuditEntry?](../Model/CreateAuditEntry?.md) | body | optional | Information about the entry to be created. |
 
 ### Return type
 
-[AuditEntry](AuditEntry.md)
+[AuditEntry](../Model/AuditEntry.md)
 
 ### HTTP request headers
 
@@ -130,7 +130,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[ResourceListOfAuditProcessSummary](ResourceListOfAuditProcessSummary.md)
+[ResourceListOfAuditProcessSummary](../Model/ResourceListOfAuditProcessSummary.md)
 
 ### HTTP request headers
 
@@ -193,7 +193,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ScrollableCollectionOfAuditEntry](ScrollableCollectionOfAuditEntry.md)
+[ScrollableCollectionOfAuditEntry](../Model/ScrollableCollectionOfAuditEntry.md)
 
 ### HTTP request headers
 

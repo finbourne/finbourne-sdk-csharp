@@ -73,11 +73,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createSubscription** | [CreateSubscription](CreateSubscription.md) | body | **required** | The data to create a subscription |
+| **createSubscription** | [CreateSubscription](../Model/CreateSubscription.md) | body | **required** | The data to create a subscription |
 
 ### Return type
 
-[Subscription](Subscription.md)
+[Subscription](../Model/Subscription.md)
 
 ### HTTP request headers
 
@@ -190,7 +190,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Subscription](Subscription.md)
+[Subscription](../Model/Subscription.md)
 
 ### HTTP request headers
 
@@ -253,7 +253,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfSubscription](ResourceListOfSubscription.md)
+[ResourceListOfSubscription](../Model/ResourceListOfSubscription.md)
 
 ### HTTP request headers
 
@@ -309,11 +309,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope that identifies a subscription |
 | **code** | **string** | path | **required** | The code that identifies a subscription |
-| **updateSubscription** | [UpdateSubscription](UpdateSubscription.md) | body | **required** | The data to update a subscription |
+| **updateSubscription** | [UpdateSubscription](../Model/UpdateSubscription.md) | body | **required** | The data to update a subscription |
 
 ### Return type
 
-[Subscription](Subscription.md)
+[Subscription](../Model/Subscription.md)
 
 ### HTTP request headers
 

@@ -76,13 +76,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Default: `100` |
 | **pageToken** | **string?** | query | optional | The pagination token to use to continue listing integration logs; this value is returned from             the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt; and &lt;i&gt;filter&lt;/i&gt; fields must not have changed since the original request.             For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. Default: `&quot;&quot;` |
 
 ### Return type
 
-[PagedResourceListOfIIntegrationLogResponse](PagedResourceListOfIIntegrationLogResponse.md)
+[PagedResourceListOfIIntegrationLogResponse](../Model/PagedResourceListOfIIntegrationLogResponse.md)
 
 ### HTTP request headers
 
@@ -139,7 +139,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **instanceid** | **string** | path | **required** |  |
 | **runid** | **string** | path | **required** |  |
-| **externalLogInsertionRequest** | [ExternalLogInsertionRequest](ExternalLogInsertionRequest.md) | body | **required** |  |
+| **externalLogInsertionRequest** | [ExternalLogInsertionRequest](../Model/ExternalLogInsertionRequest.md) | body | **required** |  |
 
 ### Return type
 

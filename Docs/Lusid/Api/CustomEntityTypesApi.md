@@ -75,11 +75,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createCustomEntityTypeRequest** | [CreateCustomEntityTypeRequest](CreateCustomEntityTypeRequest.md) | body | **required** | The payload containing the description of the Custom Entity Type. |
+| **createCustomEntityTypeRequest** | [CreateCustomEntityTypeRequest](../Model/CreateCustomEntityTypeRequest.md) | body | **required** | The payload containing the description of the Custom Entity Type. |
 
 ### Return type
 
-[CustomEntityType](CustomEntityType.md)
+[CustomEntityType](../Model/CustomEntityType.md)
 
 ### HTTP request headers
 
@@ -137,7 +137,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -197,7 +197,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[CustomEntityType](CustomEntityType.md)
+[CustomEntityType](../Model/CustomEntityType.md)
 
 ### HTTP request headers
 
@@ -258,12 +258,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the entities. Defaults to returning the latest version              of each Custom Entity Type if not specified. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,              and asAt fields must not have changed since the original request. |
 
 ### Return type
 
-[PagedResourceListOfCustomEntityType](PagedResourceListOfCustomEntityType.md)
+[PagedResourceListOfCustomEntityType](../Model/PagedResourceListOfCustomEntityType.md)
 
 ### HTTP request headers
 
@@ -319,11 +319,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **entityType** | **string** | path | **required** | The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. |
-| **updateCustomEntityTypeRequest** | [UpdateCustomEntityTypeRequest](UpdateCustomEntityTypeRequest.md) | body | **required** | The payload containing the description of the Custom Entity Type. |
+| **updateCustomEntityTypeRequest** | [UpdateCustomEntityTypeRequest](../Model/UpdateCustomEntityTypeRequest.md) | body | **required** | The payload containing the description of the Custom Entity Type. |
 
 ### Return type
 
-[CustomEntityType](CustomEntityType.md)
+[CustomEntityType](../Model/CustomEntityType.md)
 
 ### HTTP request headers
 

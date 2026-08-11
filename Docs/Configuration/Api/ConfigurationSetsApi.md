@@ -89,12 +89,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **type** | **string** | path | **required** | Whether the configuration set is Personal or Shared |
 | **scope** | **string** | path | **required** | The scope that identifies a configuration set |
 | **code** | **string** | path | **required** | The code that identifies a configuration set |
-| **createConfigurationItem** | [CreateConfigurationItem](CreateConfigurationItem.md) | body | **required** | The data to create a configuration item |
+| **createConfigurationItem** | [CreateConfigurationItem](../Model/CreateConfigurationItem.md) | body | **required** | The data to create a configuration item |
 | **userId** | **string?** | query | optional | Feature that allows Administrators to administer personal settings  (but never reveal the value of secrets) of a specific user. |
 
 ### Return type
 
-[ConfigurationSet](ConfigurationSet.md)
+[ConfigurationSet](../Model/ConfigurationSet.md)
 
 ### HTTP request headers
 
@@ -196,12 +196,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createConfigurationSet** | [CreateConfigurationSet](CreateConfigurationSet.md) | body | **required** | The data to create a configuration set |
+| **createConfigurationSet** | [CreateConfigurationSet](../Model/CreateConfigurationSet.md) | body | **required** | The data to create a configuration set |
 | **userId** | **string?** | query | optional | Feature that allows Administrators to administer personal settings  (but never reveal the value of secrets) of a specific user. |
 
 ### Return type
 
-[ConfigurationSet](ConfigurationSet.md)
+[ConfigurationSet](../Model/ConfigurationSet.md)
 
 ### HTTP request headers
 
@@ -424,7 +424,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PersonalAccessToken](PersonalAccessToken.md)
+[PersonalAccessToken](../Model/PersonalAccessToken.md)
 
 ### HTTP request headers
 
@@ -490,7 +490,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ConfigurationItem](ConfigurationItem.md)
+[ConfigurationItem](../Model/ConfigurationItem.md)
 
 ### HTTP request headers
 
@@ -555,7 +555,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ConfigurationSet](ConfigurationSet.md)
+[ConfigurationSet](../Model/ConfigurationSet.md)
 
 ### HTTP request headers
 
@@ -616,7 +616,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfConfigurationItem](ResourceListOfConfigurationItem.md)
+[ResourceListOfConfigurationItem](../Model/ResourceListOfConfigurationItem.md)
 
 ### HTTP request headers
 
@@ -675,7 +675,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfConfigurationSet](ResourceListOfConfigurationSet.md)
+[ResourceListOfConfigurationSet](../Model/ResourceListOfConfigurationSet.md)
 
 ### HTTP request headers
 
@@ -734,7 +734,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfConfigurationSetSummary](ResourceListOfConfigurationSetSummary.md)
+[ResourceListOfConfigurationSetSummary](../Model/ResourceListOfConfigurationSetSummary.md)
 
 ### HTTP request headers
 
@@ -795,12 +795,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope that identifies a configuration set |
 | **code** | **string** | path | **required** | The code that identifies a configuration set |
 | **key** | **string** | path | **required** | The key that identifies a configuration item |
-| **updateConfigurationItem** | [UpdateConfigurationItem](UpdateConfigurationItem.md) | body | **required** | The data to update a configuration item |
+| **updateConfigurationItem** | [UpdateConfigurationItem](../Model/UpdateConfigurationItem.md) | body | **required** | The data to update a configuration item |
 | **userId** | **string?** | query | optional | Feature that allows Administrators to administer personal settings  (but never reveal the value of secrets) of a specific user. |
 
 ### Return type
 
-[ConfigurationItem](ConfigurationItem.md)
+[ConfigurationItem](../Model/ConfigurationItem.md)
 
 ### HTTP request headers
 
@@ -860,12 +860,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **type** | **string** | path | **required** | Whether the configuration set is Personal or Shared |
 | **scope** | **string** | path | **required** | The scope that identifies a configuration set |
 | **code** | **string** | path | **required** | The code that identifies a configuration set |
-| **updateConfigurationSet** | [UpdateConfigurationSet](UpdateConfigurationSet.md) | body | **required** | The data to update a configuration set |
+| **updateConfigurationSet** | [UpdateConfigurationSet](../Model/UpdateConfigurationSet.md) | body | **required** | The data to update a configuration set |
 | **userId** | **string?** | query | optional | Feature that allows Administrators to administer personal settings  (but never reveal the value of secrets) of a specific user. |
 
 ### Return type
 
-[ConfigurationSet](ConfigurationSet.md)
+[ConfigurationSet](../Model/ConfigurationSet.md)
 
 ### HTTP request headers
 

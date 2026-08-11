@@ -78,11 +78,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createCheckDefinitionRequest** | [CreateCheckDefinitionRequest?](CreateCheckDefinitionRequest?.md) | body | optional | The request containing the details of the Check Definition |
+| **createCheckDefinitionRequest** | [CreateCheckDefinitionRequest?](../Model/CreateCheckDefinitionRequest?.md) | body | optional | The request containing the details of the Check Definition |
 
 ### Return type
 
-[CheckDefinition](CheckDefinition.md)
+[CheckDefinition](../Model/CheckDefinition.md)
 
 ### HTTP request headers
 
@@ -142,7 +142,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -200,11 +200,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the specified Check Definition. |
 | **code** | **string** | path | **required** | The code of the specified Check Definition. Together with the domain and scope this uniquely              identifies the Check Definition. |
-| **deleteDataQualityRule** | [List&lt;DeleteDataQualityRule&gt;?](DeleteDataQualityRule.md) | body | optional | The request containing the rules to be deleted |
+| **deleteDataQualityRule** | [List&lt;DeleteDataQualityRule&gt;?](../Model/DeleteDataQualityRule.md) | body | optional | The request containing the rules to be deleted |
 
 ### Return type
 
-[CheckDefinition](CheckDefinition.md)
+[CheckDefinition](../Model/CheckDefinition.md)
 
 ### HTTP request headers
 
@@ -266,11 +266,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the specified Check Definition. Together with the scope this uniquely              identifies the Check Definition. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Check Definition definition. Defaults to return              the latest version of the definition if not specified. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the check definition properties.              Defaults to the current LUSID system datetime if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;CheckDefinition&#39; domain to decorate onto              the Check Definition.              These must have the format {domain}/{scope}/{code}, for example &#39;CheckDefinition/system/Name&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;CheckDefinition&#39; domain to decorate onto              the Check Definition.              These must have the format {domain}/{scope}/{code}, for example &#39;CheckDefinition/system/Name&#39;. |
 
 ### Return type
 
-[CheckDefinition](CheckDefinition.md)
+[CheckDefinition](../Model/CheckDefinition.md)
 
 ### HTTP request headers
 
@@ -335,12 +335,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Check Definitions; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the displayName, specify \&quot;displayName eq &#39;MyCheckDefinition&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;CheckDefinition&#39; domain to decorate onto each Check Definition.              These must take the format {domain}/{scope}/{code}, for example &#39;CheckDefinition/Account/id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;CheckDefinition&#39; domain to decorate onto each Check Definition.              These must take the format {domain}/{scope}/{code}, for example &#39;CheckDefinition/Account/id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfCheckDefinition](PagedResourceListOfCheckDefinition.md)
+[PagedResourceListOfCheckDefinition](../Model/PagedResourceListOfCheckDefinition.md)
 
 ### HTTP request headers
 
@@ -398,11 +398,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope of the CheckDefinition to run. |
 | **code** | **string** | path | **required** | Code of the CheckDefinition to run. |
-| **runCheckRequest** | [RunCheckRequest?](RunCheckRequest?.md) | body | optional | Run request defining what dataset to run against. |
+| **runCheckRequest** | [RunCheckRequest?](../Model/RunCheckRequest?.md) | body | optional | Run request defining what dataset to run against. |
 
 ### Return type
 
-[RunCheckResponse](RunCheckResponse.md)
+[RunCheckResponse](../Model/RunCheckResponse.md)
 
 ### HTTP request headers
 
@@ -460,11 +460,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the specified Check Definition. |
 | **code** | **string** | path | **required** | The code of the specified Check Definition. Together with the domain and scope this uniquely identifies the Check Definition. |
-| **updateCheckDefinitionRequest** | [UpdateCheckDefinitionRequest?](UpdateCheckDefinitionRequest?.md) | body | optional | The request containing the updated details of the Check Definition |
+| **updateCheckDefinitionRequest** | [UpdateCheckDefinitionRequest?](../Model/UpdateCheckDefinitionRequest?.md) | body | optional | The request containing the updated details of the Check Definition |
 
 ### Return type
 
-[CheckDefinition](CheckDefinition.md)
+[CheckDefinition](../Model/CheckDefinition.md)
 
 ### HTTP request headers
 
@@ -522,11 +522,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the specified Check Definition. |
 | **code** | **string** | path | **required** | The code of the specified Check Definition. Together with the domain and scope this uniquely              identifies the Check Definition. |
-| **upsertDataQualityRule** | [List&lt;UpsertDataQualityRule&gt;?](UpsertDataQualityRule.md) | body | optional | The request containing the rules to be upserted |
+| **upsertDataQualityRule** | [List&lt;UpsertDataQualityRule&gt;?](../Model/UpsertDataQualityRule.md) | body | optional | The request containing the rules to be upserted |
 
 ### Return type
 
-[CheckDefinition](CheckDefinition.md)
+[CheckDefinition](../Model/CheckDefinition.md)
 
 ### HTTP request headers
 

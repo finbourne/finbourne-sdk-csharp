@@ -77,12 +77,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the relation definition |
 | **code** | **string** | path | **required** | The code of the relation definition |
-| **createRelationRequest** | [CreateRelationRequest](CreateRelationRequest.md) | body | **required** | The details of the relation to create. |
+| **createRelationRequest** | [CreateRelationRequest](../Model/CreateRelationRequest.md) | body | **required** | The details of the relation to create. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which the relation should be effective from. Defaults to the current LUSID system datetime if not specified. |
 
 ### Return type
 
-[CompleteRelation](CompleteRelation.md)
+[CompleteRelation](../Model/CompleteRelation.md)
 
 ### HTTP request headers
 
@@ -141,12 +141,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the relation definition |
 | **code** | **string** | path | **required** | The code of the relation definition |
-| **deleteRelationRequest** | [DeleteRelationRequest](DeleteRelationRequest.md) | body | **required** | The details of the relation to delete. |
+| **deleteRelationRequest** | [DeleteRelationRequest](../Model/DeleteRelationRequest.md) | body | **required** | The details of the relation to delete. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which the relation should the deletion be effective from. Defaults to the current LUSID system datetime if not specified. |
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 

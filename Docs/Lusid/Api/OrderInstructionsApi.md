@@ -80,7 +80,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -140,11 +140,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope to which the orderInstruction belongs. |
 | **code** | **string** | path | **required** | The orderInstruction&#39;s unique identifier. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the orderInstruction. Defaults to return the latest version of the orderInstruction if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto the orderInstruction.              These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto the orderInstruction.              These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;. |
 
 ### Return type
 
-[OrderInstruction](OrderInstruction.md)
+[OrderInstruction](../Model/OrderInstruction.md)
 
 ### HTTP request headers
 
@@ -205,14 +205,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the orderInstruction. Defaults to return the latest version of the orderInstruction if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing orderInstructions from a previous call to list orderInstructions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto each orderInstruction.                  These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;.                  All properties, except derived properties, are returned by default, without specifying here. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto each orderInstruction.                  These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;.                  All properties, except derived properties, are returned by default, without specifying here. |
 
 ### Return type
 
-[PagedResourceListOfOrderInstruction](PagedResourceListOfOrderInstruction.md)
+[PagedResourceListOfOrderInstruction](../Model/PagedResourceListOfOrderInstruction.md)
 
 ### HTTP request headers
 
@@ -266,11 +266,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **orderInstructionSetRequest** | [OrderInstructionSetRequest?](OrderInstructionSetRequest?.md) | body | optional | The collection of orderInstruction requests. |
+| **orderInstructionSetRequest** | [OrderInstructionSetRequest?](../Model/OrderInstructionSetRequest?.md) | body | optional | The collection of orderInstruction requests. |
 
 ### Return type
 
-[ResourceListOfOrderInstruction](ResourceListOfOrderInstruction.md)
+[ResourceListOfOrderInstruction](../Model/ResourceListOfOrderInstruction.md)
 
 ### HTTP request headers
 

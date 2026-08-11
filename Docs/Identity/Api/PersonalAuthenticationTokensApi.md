@@ -73,11 +73,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createApiKey** | [CreateApiKey](CreateApiKey.md) | body | **required** | The request to create a new Personal Access Token |
+| **createApiKey** | [CreateApiKey](../Model/CreateApiKey.md) | body | **required** | The request to create a new Personal Access Token |
 
 ### Return type
 
-[CreatedApiKey](CreatedApiKey.md)
+[CreatedApiKey](../Model/CreatedApiKey.md)
 
 ### HTTP request headers
 
@@ -135,7 +135,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ApiKey](ApiKey.md)
+[ApiKey](../Model/ApiKey.md)
 
 ### HTTP request headers
 
@@ -189,7 +189,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;ApiKey&gt;](ApiKey.md)
+[List&lt;ApiKey&gt;](../Model/ApiKey.md)
 
 ### HTTP request headers
 

@@ -77,11 +77,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Scope of the sequence. |
-| **createSequenceRequest** | [CreateSequenceRequest](CreateSequenceRequest.md) | body | **required** | Request to create sequence |
+| **createSequenceRequest** | [CreateSequenceRequest](../Model/CreateSequenceRequest.md) | body | **required** | Request to create sequence |
 
 ### Return type
 
-[SequenceDefinition](SequenceDefinition.md)
+[SequenceDefinition](../Model/SequenceDefinition.md)
 
 ### HTTP request headers
 
@@ -141,7 +141,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -201,7 +201,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[SequenceDefinition](SequenceDefinition.md)
+[SequenceDefinition](../Model/SequenceDefinition.md)
 
 ### HTTP request headers
 
@@ -263,7 +263,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfSequenceDefinition](PagedResourceListOfSequenceDefinition.md)
+[PagedResourceListOfSequenceDefinition](../Model/PagedResourceListOfSequenceDefinition.md)
 
 ### HTTP request headers
 
@@ -325,7 +325,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[NextValueInSequenceResponse](NextValueInSequenceResponse.md)
+[NextValueInSequenceResponse](../Model/NextValueInSequenceResponse.md)
 
 ### HTTP request headers
 

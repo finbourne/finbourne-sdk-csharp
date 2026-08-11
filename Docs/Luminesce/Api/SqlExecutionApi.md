@@ -92,7 +92,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **query** | **string** | path | **required** | LuminesceSql to Execute (must be one line only) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **download** | **bool?** | query | optional | Makes this a file-download request (as opposed to returning the data in the response-body) Default: `false` |
 | **timeout** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
@@ -161,7 +161,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **query** | **string** | path | **required** | LuminesceSql to Execute (must be one line only) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **dateTimeFormat** | **string?** | query | optional | Format to apply for DateTime data, leaving blank gives the Luminesce Exporter default, currently &#x60;yyyy-MM-dd HH:mm:ss.000&#x60; (Excel support for this is limited) |
 | **timeout** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
@@ -228,7 +228,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **query** | **string** | path | **required** | LuminesceSql to Execute (must be one line only) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **timeout** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
 | **jsonProper** | **bool?** | query | optional | Should this be text/json (not json-encoded-as-a-string) Default: `false` |
@@ -294,7 +294,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **query** | **string** | path | **required** | LuminesceSql to Execute (must be one line only) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **timeout** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
 
@@ -360,7 +360,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **query** | **string** | path | **required** | LuminesceSql to Execute (must be one line only) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **download** | **bool?** | query | optional | Makes this a file-download request (as opposed to returning the data in the response-body) Default: `false` |
 | **dateTimeFormat** | **string?** | query | optional | Format to apply for DateTime data, leaving blank gives the Luminesce Exporter default, currently &#x60;yyyy-MM-dd HH:mm:ss.fff&#x60; |
@@ -426,7 +426,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **query** | **string** | path | **required** | LuminesceSql to Execute (must be one line only) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **timeout** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
 
@@ -491,7 +491,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **query** | **string** | path | **required** | LuminesceSql to Execute (must be one line only) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **download** | **bool?** | query | optional | Makes this a file-download request (as opposed to returning the data in the response-body) Default: `false` |
 | **timeout** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
@@ -560,7 +560,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **body** | **string** | body | **required** | LuminesceSql to Execute (may be multi-line) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **download** | **bool?** | query | optional | Makes this a file-download request (as opposed to returning the data in the response-body) Default: `false` |
 | **timeoutSeconds** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
@@ -629,7 +629,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **body** | **string** | body | **required** | LuminesceSql to Execute (may be multi-line) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **dateTimeFormat** | **string?** | query | optional | Format to apply for DateTime data, leaving blank gives the Luminesce Exporter default, currently &#x60;yyyy-MM-dd HH:mm:ss.000&#x60; (Excel support for this is limited) |
 | **timeoutSeconds** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
@@ -696,7 +696,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **body** | **string** | body | **required** | LuminesceSql to Execute (may be multi-line) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **timeoutSeconds** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
 | **jsonProper** | **bool?** | query | optional | Should this be text/json (not json-encoded-as-a-string) Default: `false` |
@@ -762,7 +762,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **body** | **string** | body | **required** | LuminesceSql to Execute (may be multi-line) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **timeoutSeconds** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
 
@@ -828,7 +828,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **body** | **string** | body | **required** | LuminesceSql to Execute (may be multi-line) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **download** | **bool?** | query | optional | Makes this a file-download request (as opposed to returning the data in the response-body) Default: `false` |
 | **dateTimeFormat** | **string?** | query | optional | Format to apply for DateTime data, leaving blank gives the Luminesce Exporter default, currently &#x60;yyyy-MM-dd HH:mm:ss.fff&#x60; |
@@ -894,7 +894,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **body** | **string** | body | **required** | LuminesceSql to Execute (may be multi-line) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **timeoutSeconds** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |
 
@@ -959,7 +959,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **body** | **string** | body | **required** | LuminesceSql to Execute (may be multi-line) |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | Name to apply to the query in logs and &#x60;Sys.Logs.HcQueryStart&#x60; |
 | **download** | **bool?** | query | optional | Makes this a file-download request (as opposed to returning the data in the response-body) Default: `false` |
 | **timeoutSeconds** | **int?** | query | optional | In seconds: &lt;0 or &gt; 175 → 175s (Maximum allowed), 0 → 120s Default: `0` |

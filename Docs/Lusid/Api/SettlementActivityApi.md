@@ -71,11 +71,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **settlementActivityQuery** | [SettlementActivityQuery](SettlementActivityQuery.md) | body | **required** | The query parameters controlling which settlement activity is returned. |
+| **settlementActivityQuery** | [SettlementActivityQuery](../Model/SettlementActivityQuery.md) | body | **required** | The query parameters controlling which settlement activity is returned. |
 
 ### Return type
 
-[ResourceListWithPostBodiesOfSettlementActivityToSettlementActivityQuery](ResourceListWithPostBodiesOfSettlementActivityToSettlementActivityQuery.md)
+[ResourceListWithPostBodiesOfSettlementActivityToSettlementActivityQuery](../Model/ResourceListWithPostBodiesOfSettlementActivityToSettlementActivityQuery.md)
 
 ### HTTP request headers
 

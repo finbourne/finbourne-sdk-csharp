@@ -87,11 +87,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createInstanceRequest** | [CreateInstanceRequest](CreateInstanceRequest.md) | body | **required** | The new integration instance. |
+| **createInstanceRequest** | [CreateInstanceRequest](../Model/CreateInstanceRequest.md) | body | **required** | The new integration instance. |
 
 ### Return type
 
-[InstanceIdentifier](InstanceIdentifier.md)
+[InstanceIdentifier](../Model/InstanceIdentifier.md)
 
 ### HTTP request headers
 
@@ -205,7 +205,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ExecuteInstanceResponse](ExecuteInstanceResponse.md)
+[ExecuteInstanceResponse](../Model/ExecuteInstanceResponse.md)
 
 ### HTTP request headers
 
@@ -262,11 +262,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;. |
-| **requestBody** | [Dictionary&lt;string, string&gt;](string.md) | body | **required** | Dictionary(string,string) of runtime parameters passed to the integration instance |
+| **requestBody** | [Dictionary&lt;string, string&gt;](../Model/string.md) | body | **required** | Dictionary(string,string) of runtime parameters passed to the integration instance |
 
 ### Return type
 
-[ExecuteInstanceResponse](ExecuteInstanceResponse.md)
+[ExecuteInstanceResponse](../Model/ExecuteInstanceResponse.md)
 
 ### HTTP request headers
 
@@ -323,7 +323,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ProcessorSchemaResponse](ProcessorSchemaResponse.md)
+[ProcessorSchemaResponse](../Model/ProcessorSchemaResponse.md)
 
 ### HTTP request headers
 
@@ -443,7 +443,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[IntegrationInstanceResponse](IntegrationInstanceResponse.md)
+[IntegrationInstanceResponse](../Model/IntegrationInstanceResponse.md)
 
 ### HTTP request headers
 
@@ -504,7 +504,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Dictionary&lt;string, LusidPropertyDefinitionOverridesByType&gt;](LusidPropertyDefinitionOverridesByType.md)
+[Dictionary&lt;string, LusidPropertyDefinitionOverridesByType&gt;](../Model/LusidPropertyDefinitionOverridesByType.md)
 
 ### HTTP request headers
 
@@ -563,7 +563,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[IntegrationPropertyConfiguration](IntegrationPropertyConfiguration.md)
+[IntegrationPropertyConfiguration](../Model/IntegrationPropertyConfiguration.md)
 
 ### HTTP request headers
 
@@ -624,13 +624,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **integration** | **string** | path | **required** |  |
 | **filter** | **string?** | query | optional |  |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional |  |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional |  |
 | **limit** | **int?** | query | optional |  Default: `100` |
 | **pageToken** | **string?** | query | optional |  Default: `&quot;&quot;` |
 
 ### Return type
 
-[PagedResourceListOfIFieldMapping](PagedResourceListOfIFieldMapping.md)
+[PagedResourceListOfIFieldMapping](../Model/PagedResourceListOfIFieldMapping.md)
 
 ### HTTP request headers
 
@@ -691,13 +691,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **integration** | **string** | path | **required** |  |
 | **filter** | **string?** | query | optional |  |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional |  |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional |  |
 | **limit** | **int?** | query | optional |  Default: `100` |
 | **pageToken** | **string?** | query | optional |  Default: `&quot;&quot;` |
 
 ### Return type
 
-[PagedResourceListOfIPropertyMapping](PagedResourceListOfIPropertyMapping.md)
+[PagedResourceListOfIPropertyMapping](../Model/PagedResourceListOfIPropertyMapping.md)
 
 ### HTTP request headers
 
@@ -756,7 +756,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[JSchema](JSchema.md)
+[JSchema](../Model/JSchema.md)
 
 ### HTTP request headers
 
@@ -811,7 +811,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;ProcessorDescription&gt;](ProcessorDescription.md)
+[List&lt;ProcessorDescription&gt;](../Model/ProcessorDescription.md)
 
 ### HTTP request headers
 
@@ -865,7 +865,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;IntegrationInstance&gt;](IntegrationInstance.md)
+[List&lt;IntegrationInstance&gt;](../Model/IntegrationInstance.md)
 
 ### HTTP request headers
 
@@ -919,7 +919,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;IntegrationDescription&gt;](IntegrationDescription.md)
+[List&lt;IntegrationDescription&gt;](../Model/IntegrationDescription.md)
 
 ### HTTP request headers
 
@@ -976,11 +976,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Identifier of the instance |
 | **integration** | **string** | path | **required** | The type of the integration e.g. \&quot;copp-clark\&quot;. |
-| **requestBody** | [Dictionary&lt;string, LusidPropertyDefinitionOverridesByType&gt;?](LusidPropertyDefinitionOverridesByType.md) | body | optional | Properties to be included and any overrides |
+| **requestBody** | [Dictionary&lt;string, LusidPropertyDefinitionOverridesByType&gt;?](../Model/LusidPropertyDefinitionOverridesByType.md) | body | optional | Properties to be included and any overrides |
 
 ### Return type
 
-[Dictionary&lt;string, LusidPropertyDefinitionOverridesByType&gt;](LusidPropertyDefinitionOverridesByType.md)
+[Dictionary&lt;string, LusidPropertyDefinitionOverridesByType&gt;](../Model/LusidPropertyDefinitionOverridesByType.md)
 
 ### HTTP request headers
 
@@ -1036,7 +1036,7 @@ apiInstance.UpdateInstance(instanceId, updateInstanceRequest);
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;. |
-| **updateInstanceRequest** | [UpdateInstanceRequest](UpdateInstanceRequest.md) | body | **required** | The new integration instance. |
+| **updateInstanceRequest** | [UpdateInstanceRequest](../Model/UpdateInstanceRequest.md) | body | **required** | The new integration instance. |
 
 ### Return type
 

@@ -92,7 +92,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ClosedPeriod](ClosedPeriod.md)
+[ClosedPeriod](../Model/ClosedPeriod.md)
 
 ### HTTP request headers
 
@@ -150,11 +150,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the specified Timeline. |
 | **code** | **string** | path | **required** | The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline. |
-| **createClosedPeriodRequest** | [CreateClosedPeriodRequest?](CreateClosedPeriodRequest?.md) | body | optional | The request containing the details of the Closed Period |
+| **createClosedPeriodRequest** | [CreateClosedPeriodRequest?](../Model/CreateClosedPeriodRequest?.md) | body | optional | The request containing the details of the Closed Period |
 
 ### Return type
 
-[ClosedPeriod](ClosedPeriod.md)
+[ClosedPeriod](../Model/ClosedPeriod.md)
 
 ### HTTP request headers
 
@@ -212,11 +212,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the specified Timeline. |
 | **code** | **string** | path | **required** | The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline. |
-| **createClosedPeriodRequest** | [CreateClosedPeriodRequest?](CreateClosedPeriodRequest?.md) | body | optional | The request containing the details of the Closed Period |
+| **createClosedPeriodRequest** | [CreateClosedPeriodRequest?](../Model/CreateClosedPeriodRequest?.md) | body | optional | The request containing the details of the Closed Period |
 
 ### Return type
 
-[ClosedPeriod](ClosedPeriod.md)
+[ClosedPeriod](../Model/ClosedPeriod.md)
 
 ### HTTP request headers
 
@@ -270,11 +270,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createTimelineRequest** | [CreateTimelineRequest?](CreateTimelineRequest?.md) | body | optional | The request containing the details of the Timeline |
+| **createTimelineRequest** | [CreateTimelineRequest?](../Model/CreateTimelineRequest?.md) | body | optional | The request containing the details of the Timeline |
 
 ### Return type
 
-[Timeline](Timeline.md)
+[Timeline](../Model/Timeline.md)
 
 ### HTTP request headers
 
@@ -334,7 +334,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -396,11 +396,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the Timeline. Together with the scope this uniquely              identifies the Timeline. |
 | **closedPeriodId** | **string** | path | **required** | The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the ClosedPeriod definition. Defaults to return              the latest version of the definition if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto              the ClosedPeriod.              These must have the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/system/Name&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto              the ClosedPeriod.              These must have the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/system/Name&#39;. |
 
 ### Return type
 
-[ClosedPeriod](ClosedPeriod.md)
+[ClosedPeriod](../Model/ClosedPeriod.md)
 
 ### HTTP request headers
 
@@ -462,11 +462,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the specified Timeline. Together with the scope this uniquely              identifies the Timeline. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Timeline definition. Defaults to return              the latest version of the definition if not specified. |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the timeline properties.              Defaults to the current LUSID system datetime if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Timeline&#39; domain to decorate onto              the Timeline.              These must have the format {domain}/{scope}/{code}, for example &#39;Timeline/system/Name&#39;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Timeline&#39; domain to decorate onto              the Timeline.              These must have the format {domain}/{scope}/{code}, for example &#39;Timeline/system/Name&#39;. |
 
 ### Return type
 
-[Timeline](Timeline.md)
+[Timeline](../Model/Timeline.md)
 
 ### HTTP request headers
 
@@ -533,12 +533,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing ClosedPeriods; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the effectiveEnd, specify \&quot;effectiveEnd gt 2019-01-15T10:00:00\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each ClosedPeriod.              These must take the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/Account/id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each ClosedPeriod.              These must take the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/Account/id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfClosedPeriod](PagedResourceListOfClosedPeriod.md)
+[PagedResourceListOfClosedPeriod](../Model/PagedResourceListOfClosedPeriod.md)
 
 ### HTTP request headers
 
@@ -603,12 +603,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing Timelines; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the displayName, specify \&quot;displayName eq &#39;AccountingTimeline&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the &#39;Timeline&#39; domain to decorate onto each Timeline.              These must take the format {domain}/{scope}/{code}, for example &#39;Timeline/Account/id&#39;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Timeline&#39; domain to decorate onto each Timeline.              These must take the format {domain}/{scope}/{code}, for example &#39;Timeline/Account/id&#39;. |
 
 ### Return type
 
-[PagedResourceListOfTimeline](PagedResourceListOfTimeline.md)
+[PagedResourceListOfTimeline](../Model/PagedResourceListOfTimeline.md)
 
 ### HTTP request headers
 
@@ -668,11 +668,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Timeline. |
 | **code** | **string** | path | **required** | The code of the Timeline. |
 | **closedPeriodId** | **string** | path | **required** | The ID of the Closed Period.               This ID together with the scope and code of the Timeline uniquely defines the Closed Period. |
-| **postCloseActivitiesRequest** | [PostCloseActivitiesRequest?](PostCloseActivitiesRequest?.md) | body | optional | This specifies a collection of post-close activities. |
+| **postCloseActivitiesRequest** | [PostCloseActivitiesRequest?](../Model/PostCloseActivitiesRequest?.md) | body | optional | This specifies a collection of post-close activities. |
 
 ### Return type
 
-[ClosedPeriod](ClosedPeriod.md)
+[ClosedPeriod](../Model/ClosedPeriod.md)
 
 ### HTTP request headers
 
@@ -736,7 +736,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ClosedPeriod](ClosedPeriod.md)
+[ClosedPeriod](../Model/ClosedPeriod.md)
 
 ### HTTP request headers
 
@@ -794,11 +794,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the specified Timeline. |
 | **code** | **string** | path | **required** | The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline. |
-| **updateTimelineRequest** | [UpdateTimelineRequest?](UpdateTimelineRequest?.md) | body | optional | The request containing the updated details of the Timeline |
+| **updateTimelineRequest** | [UpdateTimelineRequest?](../Model/UpdateTimelineRequest?.md) | body | optional | The request containing the updated details of the Timeline |
 
 ### Return type
 
-[Timeline](Timeline.md)
+[Timeline](../Model/Timeline.md)
 
 ### HTTP request headers
 

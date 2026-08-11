@@ -77,11 +77,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope that identifies a subscription |
 | **code** | **string** | path | **required** | The code that identifies a subscription |
-| **createNotificationRequest** | [CreateNotificationRequest](CreateNotificationRequest.md) | body | **required** | The data to create a notification |
+| **createNotificationRequest** | [CreateNotificationRequest](../Model/CreateNotificationRequest.md) | body | **required** | The data to create a notification |
 
 ### Return type
 
-[Notification](Notification.md)
+[Notification](../Model/Notification.md)
 
 ### HTTP request headers
 
@@ -198,7 +198,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[Notification](Notification.md)
+[Notification](../Model/Notification.md)
 
 ### HTTP request headers
 
@@ -257,7 +257,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfNotification](ResourceListOfNotification.md)
+[ResourceListOfNotification](../Model/ResourceListOfNotification.md)
 
 ### HTTP request headers
 
@@ -316,11 +316,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope that identifies a subscription |
 | **code** | **string** | path | **required** | The code that identifies a subscription |
 | **id** | **string** | path | **required** | The unique identifier of the notification |
-| **updateNotificationRequest** | [UpdateNotificationRequest](UpdateNotificationRequest.md) | body | **required** | The data to update a notification |
+| **updateNotificationRequest** | [UpdateNotificationRequest](../Model/UpdateNotificationRequest.md) | body | **required** | The data to update a notification |
 
 ### Return type
 
-[Notification](Notification.md)
+[Notification](../Model/Notification.md)
 
 ### HTTP request headers
 

@@ -74,11 +74,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope in which to create the derived transaction portfolio. |
-| **createDerivedTransactionPortfolioRequest** | [CreateDerivedTransactionPortfolioRequest?](CreateDerivedTransactionPortfolioRequest?.md) | body | optional | The definition of the derived transaction portfolio. |
+| **createDerivedTransactionPortfolioRequest** | [CreateDerivedTransactionPortfolioRequest?](../Model/CreateDerivedTransactionPortfolioRequest?.md) | body | optional | The definition of the derived transaction portfolio. |
 
 ### Return type
 
-[Portfolio](Portfolio.md)
+[Portfolio](../Model/Portfolio.md)
 
 ### HTTP request headers
 
@@ -140,7 +140,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 

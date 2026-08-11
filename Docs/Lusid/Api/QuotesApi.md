@@ -97,7 +97,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[QuoteAccessMetadataRule](QuoteAccessMetadataRule.md)
+[QuoteAccessMetadataRule](../Model/QuoteAccessMetadataRule.md)
 
 ### HTTP request headers
 
@@ -153,11 +153,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the quotes to delete. |
-| **requestBody** | [Dictionary&lt;string, QuoteId&gt;?](QuoteId.md) | body | optional | The quotes to delete keyed by a unique correlation id. |
+| **requestBody** | [Dictionary&lt;string, QuoteId&gt;?](../Model/QuoteId.md) | body | optional | The quotes to delete keyed by a unique correlation id. |
 
 ### Return type
 
-[AnnulQuotesResponse](AnnulQuotesResponse.md)
+[AnnulQuotesResponse](../Model/AnnulQuotesResponse.md)
 
 ### HTTP request headers
 
@@ -219,11 +219,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the quotes. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the quotes. Defaults to return the latest version of each quote if not specified. |
 | **maxAge** | **string?** | query | optional | The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime or cut label to generate a effective datetime window inside which a quote must exist to be retrieved. |
-| **requestBody** | [Dictionary&lt;string, QuoteSeriesId&gt;?](QuoteSeriesId.md) | body | optional | The time invariant quote series ids of the quotes to retrieve. These need to be               keyed by a unique correlation id allowing the retrieved quote to be identified in the response. |
+| **requestBody** | [Dictionary&lt;string, QuoteSeriesId&gt;?](../Model/QuoteSeriesId.md) | body | optional | The time invariant quote series ids of the quotes to retrieve. These need to be               keyed by a unique correlation id allowing the retrieved quote to be identified in the response. |
 
 ### Return type
 
-[GetQuotesResponse](GetQuotesResponse.md)
+[GetQuotesResponse](../Model/GetQuotesResponse.md)
 
 ### HTTP request headers
 
@@ -297,7 +297,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[QuoteAccessMetadataRule](QuoteAccessMetadataRule.md)
+[QuoteAccessMetadataRule](../Model/QuoteAccessMetadataRule.md)
 
 ### HTTP request headers
 
@@ -363,7 +363,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfQuote](ResourceListOfQuote.md)
+[ResourceListOfQuote](../Model/ResourceListOfQuote.md)
 
 ### HTTP request headers
 
@@ -423,7 +423,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfQuoteAccessMetadataRule](ResourceListOfQuoteAccessMetadataRule.md)
+[ResourceListOfQuoteAccessMetadataRule](../Model/ResourceListOfQuoteAccessMetadataRule.md)
 
 ### HTTP request headers
 
@@ -489,7 +489,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfQuote](ResourceListOfQuote.md)
+[ResourceListOfQuote](../Model/ResourceListOfQuote.md)
 
 ### HTTP request headers
 
@@ -547,13 +547,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope to use when updating or inserting the Quote Access Metadata Rule. |
-| **upsertQuoteAccessMetadataRuleRequest** | [UpsertQuoteAccessMetadataRuleRequest](UpsertQuoteAccessMetadataRuleRequest.md) | body | **required** | The Quote Access Metadata Rule to update or insert |
+| **upsertQuoteAccessMetadataRuleRequest** | [UpsertQuoteAccessMetadataRuleRequest](../Model/UpsertQuoteAccessMetadataRuleRequest.md) | body | **required** | The Quote Access Metadata Rule to update or insert |
 | **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The date this rule will effective from |
 | **effectiveUntil** | **DateTimeOffset?** | query | optional | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata |
 
 ### Return type
 
-[QuoteAccessMetadataRule](QuoteAccessMetadataRule.md)
+[QuoteAccessMetadataRule](../Model/QuoteAccessMetadataRule.md)
 
 ### HTTP request headers
 
@@ -609,11 +609,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope to use when updating or inserting the quotes. |
-| **requestBody** | [Dictionary&lt;string, UpsertQuoteRequest&gt;?](UpsertQuoteRequest.md) | body | optional | The quotes to update or insert keyed by a unique correlation id. |
+| **requestBody** | [Dictionary&lt;string, UpsertQuoteRequest&gt;?](../Model/UpsertQuoteRequest.md) | body | optional | The quotes to update or insert keyed by a unique correlation id. |
 
 ### Return type
 
-[UpsertQuotesResponse](UpsertQuotesResponse.md)
+[UpsertQuotesResponse](../Model/UpsertQuotesResponse.md)
 
 ### HTTP request headers
 

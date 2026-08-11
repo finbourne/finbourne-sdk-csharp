@@ -71,7 +71,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[ResourceListOfAccessControlledResource](ResourceListOfAccessControlledResource.md)
+[ResourceListOfAccessControlledResource](../Model/ResourceListOfAccessControlledResource.md)
 
 ### HTTP request headers
 

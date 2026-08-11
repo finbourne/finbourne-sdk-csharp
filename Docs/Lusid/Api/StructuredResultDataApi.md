@@ -81,11 +81,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope in which to create or update data maps. |
-| **requestBody** | [Dictionary&lt;string, CreateDataMapRequest&gt;](CreateDataMapRequest.md) | body | **required** | Individual data map creation requests. |
+| **requestBody** | [Dictionary&lt;string, CreateDataMapRequest&gt;](../Model/CreateDataMapRequest.md) | body | **required** | Individual data map creation requests. |
 
 ### Return type
 
-[UpsertStructuredDataResponse](UpsertStructuredDataResponse.md)
+[UpsertStructuredDataResponse](../Model/UpsertStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -141,11 +141,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope from which to delete data items. |
-| **requestBody** | [Dictionary&lt;string, StructuredResultDataId&gt;](StructuredResultDataId.md) | body | **required** | The data IDs to delete, each keyed by a unique, ephemeral correlation ID. |
+| **requestBody** | [Dictionary&lt;string, StructuredResultDataId&gt;](../Model/StructuredResultDataId.md) | body | **required** | The data IDs to delete, each keyed by a unique, ephemeral correlation ID. |
 
 ### Return type
 
-[AnnulStructuredDataResponse](AnnulStructuredDataResponse.md)
+[AnnulStructuredDataResponse](../Model/AnnulStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -213,7 +213,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfAddressKeyDefinition](ResourceListOfAddressKeyDefinition.md)
+[ResourceListOfAddressKeyDefinition](../Model/ResourceListOfAddressKeyDefinition.md)
 
 ### HTTP request headers
 
@@ -269,11 +269,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope from which to retrieve data maps. |
-| **requestBody** | [Dictionary&lt;string, DataMapKey&gt;](DataMapKey.md) | body | **required** | The data map keys to look up, each keyed by a unique, ephemeral correlation ID. |
+| **requestBody** | [Dictionary&lt;string, DataMapKey&gt;](../Model/DataMapKey.md) | body | **required** | The data map keys to look up, each keyed by a unique, ephemeral correlation ID. |
 
 ### Return type
 
-[GetDataMapResponse](GetDataMapResponse.md)
+[GetDataMapResponse](../Model/GetDataMapResponse.md)
 
 ### HTTP request headers
 
@@ -331,13 +331,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope from which to retrieve data items. |
-| **requestBody** | [Dictionary&lt;string, StructuredResultDataId&gt;](StructuredResultDataId.md) | body | **required** | The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. |
+| **requestBody** | [Dictionary&lt;string, StructuredResultDataId&gt;](../Model/StructuredResultDataId.md) | body | **required** | The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. |
 | **maxAge** | **string?** | query | optional | The duration of the look-back window in ISO8601 time interval format, for example &#39;P1Y2M3DT4H30M&#39; (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a data item must exist to be retrieved. |
 
 ### Return type
 
-[GetStructuredResultDataResponse](GetStructuredResultDataResponse.md)
+[GetStructuredResultDataResponse](../Model/GetStructuredResultDataResponse.md)
 
 ### HTTP request headers
 
@@ -394,12 +394,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope in which to construct the virtual documents. |
-| **requestBody** | [Dictionary&lt;string, StructuredResultDataId&gt;](StructuredResultDataId.md) | body | **required** | The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. |
+| **requestBody** | [Dictionary&lt;string, StructuredResultDataId&gt;](../Model/StructuredResultDataId.md) | body | **required** | The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified. |
 
 ### Return type
 
-[GetVirtualDocumentResponse](GetVirtualDocumentResponse.md)
+[GetVirtualDocumentResponse](../Model/GetVirtualDocumentResponse.md)
 
 ### HTTP request headers
 
@@ -473,7 +473,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfVirtualRow](PagedResourceListOfVirtualRow.md)
+[PagedResourceListOfVirtualRow](../Model/PagedResourceListOfVirtualRow.md)
 
 ### HTTP request headers
 
@@ -529,11 +529,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope in which to construct the virtual documents. |
-| **requestBody** | [Dictionary&lt;string, UpsertResultValuesDataRequest&gt;](UpsertResultValuesDataRequest.md) | body | **required** | The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. |
+| **requestBody** | [Dictionary&lt;string, UpsertResultValuesDataRequest&gt;](../Model/UpsertResultValuesDataRequest.md) | body | **required** | The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. |
 
 ### Return type
 
-[UpsertStructuredDataResponse](UpsertStructuredDataResponse.md)
+[UpsertStructuredDataResponse](../Model/UpsertStructuredDataResponse.md)
 
 ### HTTP request headers
 
@@ -589,11 +589,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope in which to create or update data items. |
-| **requestBody** | [Dictionary&lt;string, UpsertStructuredResultDataRequest&gt;](UpsertStructuredResultDataRequest.md) | body | **required** | The set of data items to create or update, keyed by a unique, ephemeral correlation ID. |
+| **requestBody** | [Dictionary&lt;string, UpsertStructuredResultDataRequest&gt;](../Model/UpsertStructuredResultDataRequest.md) | body | **required** | The set of data items to create or update, keyed by a unique, ephemeral correlation ID. |
 
 ### Return type
 
-[UpsertStructuredDataResponse](UpsertStructuredDataResponse.md)
+[UpsertStructuredDataResponse](../Model/UpsertStructuredDataResponse.md)
 
 ### HTTP request headers
 

@@ -88,7 +88,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Integration instance ID |
-| **status** | [FileDeliveryStatus?](FileDeliveryStatus?.md) | query | optional | Filter by delivery status (Completed, Error, Pending) |
+| **status** | [FileDeliveryStatus?](../Model/FileDeliveryStatus?.md) | query | optional | Filter by delivery status (Completed, Error, Pending) |
 | **dateFrom** | **DateTimeOffset?** | query | optional | Filter deliveries from this time (inclusive) |
 | **dateTo** | **DateTimeOffset?** | query | optional | Filter deliveries to this time (inclusive) |
 | **limit** | **int?** | query | optional | Page size for pagination (default 50, max 500) Default: `50` |
@@ -96,7 +96,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfTpfFileDeliveryResponse](PagedResourceListOfTpfFileDeliveryResponse.md)
+[PagedResourceListOfTpfFileDeliveryResponse](../Model/PagedResourceListOfTpfFileDeliveryResponse.md)
 
 ### HTTP request headers
 
@@ -148,11 +148,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **tpfTransactionSearchRequest** | [TpfTransactionSearchRequest?](TpfTransactionSearchRequest?.md) | body | optional | Search filters and pagination options. |
+| **tpfTransactionSearchRequest** | [TpfTransactionSearchRequest?](../Model/TpfTransactionSearchRequest?.md) | body | optional | Search filters and pagination options. |
 
 ### Return type
 
-[PagedResourceListOfTpfTransactionSearchResponse](PagedResourceListOfTpfTransactionSearchResponse.md)
+[PagedResourceListOfTpfTransactionSearchResponse](../Model/PagedResourceListOfTpfTransactionSearchResponse.md)
 
 ### HTTP request headers
 
@@ -216,7 +216,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfTransactionPayload](PagedResourceListOfTransactionPayload.md)
+[PagedResourceListOfTransactionPayload](../Model/PagedResourceListOfTransactionPayload.md)
 
 ### HTTP request headers
 
@@ -279,7 +279,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfFailedDeliveryResponse](PagedResourceListOfFailedDeliveryResponse.md)
+[PagedResourceListOfFailedDeliveryResponse](../Model/PagedResourceListOfFailedDeliveryResponse.md)
 
 ### HTTP request headers
 
@@ -340,7 +340,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfInstanceRunResponse](PagedResourceListOfInstanceRunResponse.md)
+[PagedResourceListOfInstanceRunResponse](../Model/PagedResourceListOfInstanceRunResponse.md)
 
 ### HTTP request headers
 
@@ -392,7 +392,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[InstancesResponse](InstancesResponse.md)
+[InstancesResponse](../Model/InstancesResponse.md)
 
 ### HTTP request headers
 
@@ -453,7 +453,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfRunFileResponse](PagedResourceListOfRunFileResponse.md)
+[PagedResourceListOfRunFileResponse](../Model/PagedResourceListOfRunFileResponse.md)
 
 ### HTTP request headers
 
@@ -518,7 +518,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfTransactionResponse](PagedResourceListOfTransactionResponse.md)
+[PagedResourceListOfTransactionResponse](../Model/PagedResourceListOfTransactionResponse.md)
 
 ### HTTP request headers
 
@@ -573,11 +573,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** |  |
-| **replayTransactionsRequest** | [ReplayTransactionsRequest](ReplayTransactionsRequest.md) | body | **required** |  |
+| **replayTransactionsRequest** | [ReplayTransactionsRequest](../Model/ReplayTransactionsRequest.md) | body | **required** |  |
 
 ### Return type
 
-[ReplayTransactionsResponse](ReplayTransactionsResponse.md)
+[ReplayTransactionsResponse](../Model/ReplayTransactionsResponse.md)
 
 ### HTTP request headers
 
@@ -634,11 +634,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** |  |
 | **batchReferenceId** | **string** | path | **required** |  |
-| **resolveFailedDeliveryRequest** | [ResolveFailedDeliveryRequest](ResolveFailedDeliveryRequest.md) | body | **required** |  |
+| **resolveFailedDeliveryRequest** | [ResolveFailedDeliveryRequest](../Model/ResolveFailedDeliveryRequest.md) | body | **required** |  |
 
 ### Return type
 
-[ResolveFailedDeliveryResponse](ResolveFailedDeliveryResponse.md)
+[ResolveFailedDeliveryResponse](../Model/ResolveFailedDeliveryResponse.md)
 
 ### HTTP request headers
 
@@ -696,11 +696,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Integration instance identifier |
-| **tpfRetryFailedDeliveryRequest** | [TpfRetryFailedDeliveryRequest](TpfRetryFailedDeliveryRequest.md) | body | **required** | Request containing batch element reference identifiers to retry |
+| **tpfRetryFailedDeliveryRequest** | [TpfRetryFailedDeliveryRequest](../Model/TpfRetryFailedDeliveryRequest.md) | body | **required** | Request containing batch element reference identifiers to retry |
 
 ### Return type
 
-[TpfFailedDeliveryResponse](TpfFailedDeliveryResponse.md)
+[TpfFailedDeliveryResponse](../Model/TpfFailedDeliveryResponse.md)
 
 ### HTTP request headers
 
@@ -759,7 +759,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[TpfRetrySftpResponse](TpfRetrySftpResponse.md)
+[TpfRetrySftpResponse](../Model/TpfRetrySftpResponse.md)
 
 ### HTTP request headers
 

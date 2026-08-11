@@ -87,7 +87,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -149,7 +149,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -209,7 +209,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -271,7 +271,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[SideDefinition](SideDefinition.md)
+[SideDefinition](../Model/SideDefinition.md)
 
 ### HTTP request headers
 
@@ -335,7 +335,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[TransactionType](TransactionType.md)
+[TransactionType](../Model/TransactionType.md)
 
 ### HTTP request headers
 
@@ -395,7 +395,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfSideDefinition](ResourceListOfSideDefinition.md)
+[ResourceListOfSideDefinition](../Model/ResourceListOfSideDefinition.md)
 
 ### HTTP request headers
 
@@ -512,12 +512,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **side** | **string** | path | **required** | The label to uniquely identify the side. |
-| **sideDefinitionRequest** | [SideDefinitionRequest](SideDefinitionRequest.md) | body | **required** | The side definition to create or replace. |
+| **sideDefinitionRequest** | [SideDefinitionRequest](../Model/SideDefinitionRequest.md) | body | **required** | The side definition to create or replace. |
 | **scope** | **string?** | query | optional | The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 
 ### Return type
 
-[SideDefinition](SideDefinition.md)
+[SideDefinition](../Model/SideDefinition.md)
 
 ### HTTP request headers
 
@@ -572,12 +572,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **sidesDefinitionRequest** | [List&lt;SidesDefinitionRequest&gt;](SidesDefinitionRequest.md) | body | **required** | The list of side definitions to create, or replace. |
+| **sidesDefinitionRequest** | [List&lt;SidesDefinitionRequest&gt;](../Model/SidesDefinitionRequest.md) | body | **required** | The list of side definitions to create, or replace. |
 | **scope** | **string?** | query | optional | The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 
 ### Return type
 
-[ResourceListOfSideDefinition](ResourceListOfSideDefinition.md)
+[ResourceListOfSideDefinition](../Model/ResourceListOfSideDefinition.md)
 
 ### HTTP request headers
 
@@ -636,12 +636,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **source** | **string** | path | **required** | The source to set the transaction configuration for |
 | **type** | **string** | path | **required** | One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type |
-| **transactionTypeRequest** | [TransactionTypeRequest](TransactionTypeRequest.md) | body | **required** | The transaction configuration to set |
+| **transactionTypeRequest** | [TransactionTypeRequest](../Model/TransactionTypeRequest.md) | body | **required** | The transaction configuration to set |
 | **scope** | **string?** | query | optional | The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 
 ### Return type
 
-[TransactionType](TransactionType.md)
+[TransactionType](../Model/TransactionType.md)
 
 ### HTTP request headers
 
@@ -698,12 +698,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **source** | **string** | path | **required** | The source to set the transaction types for. |
-| **transactionTypeRequest** | [List&lt;TransactionTypeRequest&gt;](TransactionTypeRequest.md) | body | **required** | The set of transaction types. |
+| **transactionTypeRequest** | [List&lt;TransactionTypeRequest&gt;](../Model/TransactionTypeRequest.md) | body | **required** | The set of transaction types. |
 | **scope** | **string?** | query | optional | The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 
 ### Return type
 
-[ResourceListOfTransactionType](ResourceListOfTransactionType.md)
+[ResourceListOfTransactionType](../Model/ResourceListOfTransactionType.md)
 
 ### HTTP request headers
 

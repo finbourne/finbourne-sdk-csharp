@@ -88,7 +88,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[BackgroundQueryCancelResponse](BackgroundQueryCancelResponse.md)
+[BackgroundQueryCancelResponse](../Model/BackgroundQueryCancelResponse.md)
 
 ### HTTP request headers
 
@@ -892,7 +892,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[BackgroundQueryProgressResponse](BackgroundQueryProgressResponse.md)
+[BackgroundQueryProgressResponse](../Model/BackgroundQueryProgressResponse.md)
 
 ### HTTP request headers
 
@@ -952,7 +952,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[BackgroundQueryProgressResponse](BackgroundQueryProgressResponse.md)
+[BackgroundQueryProgressResponse](../Model/BackgroundQueryProgressResponse.md)
 
 ### HTTP request headers
 
@@ -1012,15 +1012,15 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **body** | **string** | body | **required** | The LuminesceSql query to kick off. |
 | **executionId** | **string?** | query | optional | An explicit ExecutionId to use.  This must be blank OR assigned to a valid GUID-as-a-string. It might be ignored / replaced, for example if using the query cache and a cached query is found. |
-| **scalarParameters** | [Dictionary&lt;string, string&gt;?](string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
+| **scalarParameters** | [Dictionary&lt;string, string&gt;?](../Model/string.md) | query | optional | Json encoded dictionary of key-value pairs for scalar parameter values to use in the sql execution. |
 | **queryName** | **string?** | query | optional | A name for this query.  This goes into logs and is available in &#x60;Sys.Logs.HcQueryStart&#x60;. |
 | **timeoutSeconds** | **int?** | query | optional | Maximum time the query may run for, in seconds: &lt;0 → ∞, 0 → 7200 (2h) Default: `0` |
 | **keepForSeconds** | **int?** | query | optional | Maximum time the result may be kept for, in seconds: &lt;0 → 1200 (20m), 0 → 28800 (8h), max &#x3D; 2,678,400 (31d) Default: `0` |
-| **executionFlags** | [SqlExecutionFlags?](SqlExecutionFlags?.md) | query | optional | Optional request flags for the execution.  Currently limited by may grow in time: - ProvideLineage : Should Lineage be requested when running the query?  This must be set in order to later retrieve Lineage. |
+| **executionFlags** | [SqlExecutionFlags?](../Model/SqlExecutionFlags?.md) | query | optional | Optional request flags for the execution.  Currently limited by may grow in time: - ProvideLineage : Should Lineage be requested when running the query?  This must be set in order to later retrieve Lineage. |
 
 ### Return type
 
-[BackgroundQueryResponse](BackgroundQueryResponse.md)
+[BackgroundQueryResponse](../Model/BackgroundQueryResponse.md)
 
 ### HTTP request headers
 

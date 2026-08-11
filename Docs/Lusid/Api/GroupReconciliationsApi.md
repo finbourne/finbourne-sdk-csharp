@@ -89,12 +89,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Shared Scope of the GroupReconciliationDefinition and GroupReconciliationComparisonResults. |
 | **code** | **string** | path | **required** | GroupReconciliationDefinitionId code. |
-| **batchUpdateUserReviewForComparisonResultRequest** | [List&lt;BatchUpdateUserReviewForComparisonResultRequest&gt;](BatchUpdateUserReviewForComparisonResultRequest.md) | body | **required** | A collection of the comparison result Ids and their user review entries to be added or removed.                  Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp. |
+| **batchUpdateUserReviewForComparisonResultRequest** | [List&lt;BatchUpdateUserReviewForComparisonResultRequest&gt;](../Model/BatchUpdateUserReviewForComparisonResultRequest.md) | body | **required** | A collection of the comparison result Ids and their user review entries to be added or removed.                  Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp. |
 | **successMode** | **string?** | query | optional | Defines whether the request should fail if at least one of the entries is failed to update                  or process all the entries regardless and return collections of successful and failed updates. \&quot;Partial\&quot; (default) | \&quot;Atomic\&quot;. Default: `&quot;Partial&quot;` |
 
 ### Return type
 
-[BatchUpdateUserReviewForComparisonResultResponse](BatchUpdateUserReviewForComparisonResultResponse.md)
+[BatchUpdateUserReviewForComparisonResultResponse](../Model/BatchUpdateUserReviewForComparisonResultResponse.md)
 
 ### HTTP request headers
 
@@ -148,11 +148,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createGroupReconciliationComparisonRulesetRequest** | [CreateGroupReconciliationComparisonRulesetRequest?](CreateGroupReconciliationComparisonRulesetRequest?.md) | body | optional | The request containing the details of the ruleset |
+| **createGroupReconciliationComparisonRulesetRequest** | [CreateGroupReconciliationComparisonRulesetRequest?](../Model/CreateGroupReconciliationComparisonRulesetRequest?.md) | body | optional | The request containing the details of the ruleset |
 
 ### Return type
 
-[GroupReconciliationComparisonRuleset](GroupReconciliationComparisonRuleset.md)
+[GroupReconciliationComparisonRuleset](../Model/GroupReconciliationComparisonRuleset.md)
 
 ### HTTP request headers
 
@@ -206,11 +206,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **createGroupReconciliationDefinitionRequest** | [CreateGroupReconciliationDefinitionRequest?](CreateGroupReconciliationDefinitionRequest?.md) | body | optional | The definition Group Reconciliation Definition details |
+| **createGroupReconciliationDefinitionRequest** | [CreateGroupReconciliationDefinitionRequest?](../Model/CreateGroupReconciliationDefinitionRequest?.md) | body | optional | The definition Group Reconciliation Definition details |
 
 ### Return type
 
-[GroupReconciliationDefinition](GroupReconciliationDefinition.md)
+[GroupReconciliationDefinition](../Model/GroupReconciliationDefinition.md)
 
 ### HTTP request headers
 
@@ -270,7 +270,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -330,7 +330,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -394,7 +394,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GroupReconciliationComparisonResult](GroupReconciliationComparisonResult.md)
+[GroupReconciliationComparisonResult](../Model/GroupReconciliationComparisonResult.md)
 
 ### HTTP request headers
 
@@ -456,7 +456,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GroupReconciliationComparisonRuleset](GroupReconciliationComparisonRuleset.md)
+[GroupReconciliationComparisonRuleset](../Model/GroupReconciliationComparisonRuleset.md)
 
 ### HTTP request headers
 
@@ -520,7 +520,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[GroupReconciliationDefinition](GroupReconciliationDefinition.md)
+[GroupReconciliationDefinition](../Model/GroupReconciliationDefinition.md)
 
 ### HTTP request headers
 
@@ -580,13 +580,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the comparison results. Defaults to return the latest              version of the comparison results if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing comparison results from a previous call to list              comparison results. This value is returned from the previous call. If a pagination token is provided the sortBy,              filter, effectiveAt, and asAt fields must not have changed since the original request. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many per page. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[PagedResourceListOfGroupReconciliationComparisonResult](PagedResourceListOfGroupReconciliationComparisonResult.md)
+[PagedResourceListOfGroupReconciliationComparisonResult](../Model/PagedResourceListOfGroupReconciliationComparisonResult.md)
 
 ### HTTP request headers
 
@@ -646,13 +646,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the comparison rulesets. Defaults to return the latest              version of the comparison rulesets if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing comparison rulesets from a previous call to list              comparison rulesets. This value is returned from the previous call. If a pagination token is provided the sortBy,              filter, effectiveAt, and asAt fields must not have changed since the original request. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many per page. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
 
 ### Return type
 
-[PagedResourceListOfGroupReconciliationComparisonRuleset](PagedResourceListOfGroupReconciliationComparisonRuleset.md)
+[PagedResourceListOfGroupReconciliationComparisonRuleset](../Model/PagedResourceListOfGroupReconciliationComparisonRuleset.md)
 
 ### HTTP request headers
 
@@ -716,11 +716,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing group reconciliation definitions from a previous call to list group reconciliation definitions. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to no limit if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 
 ### Return type
 
-[PagedResourceListOfGroupReconciliationDefinition](PagedResourceListOfGroupReconciliationDefinition.md)
+[PagedResourceListOfGroupReconciliationDefinition](../Model/PagedResourceListOfGroupReconciliationDefinition.md)
 
 ### HTTP request headers
 
@@ -779,12 +779,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the group reconciliation definition to use for the reconciliation. |
 | **code** | **string** | path | **required** | The code of the group reconciliation definition to use for the reconciliation. |
-| **groupReconciliationRunRequest** | [GroupReconciliationRunRequest](GroupReconciliationRunRequest.md) | body | **required** |  |
+| **groupReconciliationRunRequest** | [GroupReconciliationRunRequest](../Model/GroupReconciliationRunRequest.md) | body | **required** |  |
 | **instanceRunType** | **string?** | query | optional | The run type of the group reconciliation run instance. Default value: Manual. Available values: Manual, WorkflowServiceTaskId. |
 
 ### Return type
 
-[GroupReconciliationRunResponse](GroupReconciliationRunResponse.md)
+[GroupReconciliationRunResponse](../Model/GroupReconciliationRunResponse.md)
 
 ### HTTP request headers
 
@@ -842,11 +842,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the specified comparison ruleset. |
 | **code** | **string** | path | **required** | The code of the specified comparison ruleset. Together with the domain and scope this uniquely                  identifies the reconciliation comparison ruleset. |
-| **updateGroupReconciliationComparisonRulesetRequest** | [UpdateGroupReconciliationComparisonRulesetRequest?](UpdateGroupReconciliationComparisonRulesetRequest?.md) | body | optional | The request containing the updated details of the ruleset |
+| **updateGroupReconciliationComparisonRulesetRequest** | [UpdateGroupReconciliationComparisonRulesetRequest?](../Model/UpdateGroupReconciliationComparisonRulesetRequest?.md) | body | optional | The request containing the updated details of the ruleset |
 
 ### Return type
 
-[GroupReconciliationComparisonRuleset](GroupReconciliationComparisonRuleset.md)
+[GroupReconciliationComparisonRuleset](../Model/GroupReconciliationComparisonRuleset.md)
 
 ### HTTP request headers
 
@@ -904,11 +904,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the group reconciliation definition to update the details for. |
 | **code** | **string** | path | **required** | The code of the group reconciliation definition to update the details for. Together with the scope this uniquely identifies the group reconciliation definition. |
-| **updateGroupReconciliationDefinitionRequest** | [UpdateGroupReconciliationDefinitionRequest?](UpdateGroupReconciliationDefinitionRequest?.md) | body | optional | The updated group reconciliation definition. |
+| **updateGroupReconciliationDefinitionRequest** | [UpdateGroupReconciliationDefinitionRequest?](../Model/UpdateGroupReconciliationDefinitionRequest?.md) | body | optional | The updated group reconciliation definition. |
 
 ### Return type
 
-[GroupReconciliationDefinition](GroupReconciliationDefinition.md)
+[GroupReconciliationDefinition](../Model/GroupReconciliationDefinition.md)
 
 ### HTTP request headers
 

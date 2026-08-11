@@ -79,11 +79,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the MCP tool |
 | **code** | **string** | path | **required** | The code of the MCP tool |
-| **upsertMcpToolRequest** | [UpsertMcpToolRequest](UpsertMcpToolRequest.md) | body | **required** | The MCP tool definition |
+| **upsertMcpToolRequest** | [UpsertMcpToolRequest](../Model/UpsertMcpToolRequest.md) | body | **required** | The MCP tool definition |
 
 ### Return type
 
-[McpToolResponse](McpToolResponse.md)
+[McpToolResponse](../Model/McpToolResponse.md)
 
 ### HTTP request headers
 
@@ -202,7 +202,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[McpToolResponse](McpToolResponse.md)
+[McpToolResponse](../Model/McpToolResponse.md)
 
 ### HTTP request headers
 
@@ -256,7 +256,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[List&lt;McpToolResponse&gt;](McpToolResponse.md)
+[List&lt;McpToolResponse&gt;](../Model/McpToolResponse.md)
 
 ### HTTP request headers
 
@@ -313,11 +313,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the MCP tool |
 | **code** | **string** | path | **required** | The code of the MCP tool |
-| **upsertMcpToolRequest** | [UpsertMcpToolRequest](UpsertMcpToolRequest.md) | body | **required** | The updated MCP tool definition |
+| **upsertMcpToolRequest** | [UpsertMcpToolRequest](../Model/UpsertMcpToolRequest.md) | body | **required** | The updated MCP tool definition |
 
 ### Return type
 
-[McpToolResponse](McpToolResponse.md)
+[McpToolResponse](../Model/McpToolResponse.md)
 
 ### HTTP request headers
 

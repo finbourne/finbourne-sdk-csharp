@@ -82,7 +82,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfScopeDefinition](ResourceListOfScopeDefinition.md)
+[ResourceListOfScopeDefinition](../Model/ResourceListOfScopeDefinition.md)
 
 ### HTTP request headers
 
@@ -140,7 +140,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ResourceListOfScopeDefinition](ResourceListOfScopeDefinition.md)
+[ResourceListOfScopeDefinition](../Model/ResourceListOfScopeDefinition.md)
 
 ### HTTP request headers
 

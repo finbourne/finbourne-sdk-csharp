@@ -80,7 +80,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[DeletedEntityResponse](DeletedEntityResponse.md)
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
 
 ### HTTP request headers
 
@@ -140,11 +140,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope to which the participation belongs. |
 | **code** | **string** | path | **required** | The participation&#39;s unique identifier. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the participation. Defaults to return the latest version of the participation if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Participation\&quot; domain to decorate onto the participation.              These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Participation\&quot; domain to decorate onto the participation.              These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;. |
 
 ### Return type
 
-[Participation](Participation.md)
+[Participation](../Model/Participation.md)
 
 ### HTTP request headers
 
@@ -205,14 +205,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the participation. Defaults to return the latest version of the participation if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing participations from a previous call to list participations.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. |
-| **sortBy** | [List&lt;string&gt;?](string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
-| **propertyKeys** | [List&lt;string&gt;?](string.md) | query | optional | A list of property keys from the \&quot;Participation\&quot; domain to decorate onto each participation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;.                  All properties, except derived properties, are returned by default, without specifying here. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;Participation\&quot; domain to decorate onto each participation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;.                  All properties, except derived properties, are returned by default, without specifying here. |
 
 ### Return type
 
-[PagedResourceListOfParticipation](PagedResourceListOfParticipation.md)
+[PagedResourceListOfParticipation](../Model/PagedResourceListOfParticipation.md)
 
 ### HTTP request headers
 
@@ -266,11 +266,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **participationSetRequest** | [ParticipationSetRequest?](ParticipationSetRequest?.md) | body | optional | The collection of participation requests. |
+| **participationSetRequest** | [ParticipationSetRequest?](../Model/ParticipationSetRequest?.md) | body | optional | The collection of participation requests. |
 
 ### Return type
 
-[ResourceListOfParticipation](ResourceListOfParticipation.md)
+[ResourceListOfParticipation](../Model/ResourceListOfParticipation.md)
 
 ### HTTP request headers
 
