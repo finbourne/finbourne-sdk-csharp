@@ -39,9 +39,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="day">Day in the month (required).</param>
         public DayOfYear(int month = default(int), int day = default(int))
         {
-            
             this.Month = month;
-            
             this.Day = day;
         }
 

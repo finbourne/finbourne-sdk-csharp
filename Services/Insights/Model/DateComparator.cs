@@ -45,7 +45,6 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("operation is a required property for DateComparator and cannot be null");
             }
             this.Operation = operation;
-            
             this.Value = value;
         }
 

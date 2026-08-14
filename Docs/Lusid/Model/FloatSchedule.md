@@ -25,7 +25,7 @@ Schedule for floating rate coupon payments.
 | **CapRate** | **decimal?** | Optional | The maximum floating rate which a cashflow can accrue. |
 | **FloorRate** | **decimal?** | Optional | The minimum floating rate which a cashflow can accrue. |
 | **ScheduleId** | **string** | Optional | Optional: identifier for the Schedule. This is only used for Schedules on FlexibleDeposit instruments where the list of Schedules  on the instrument definition can be modified by upsert of a DepositRollEvent. |
-| **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid. Default: `ScheduleTypeEnum.FloatSchedule` |
+| **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule. Default: `ScheduleTypeEnum.FloatSchedule` |
 
 
 ## Usage
@@ -54,7 +54,7 @@ var instance = new FloatSchedule(
     capRate: 0.0d,  // optional — The maximum floating rate which a cashflow can accrue.
     floorRate: 0.0d,  // optional — The minimum floating rate which a cashflow can accrue.
     scheduleId: "...",  // optional — Optional: identifier for the Schedule. This is only used for Schedules on FlexibleDeposit instruments where the list of Schedules  on the instrument definition can be modified by upsert of a DepositRollEvent.
-    scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid.
+    scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule.
 );
 ```
 ### Serializing to JSON

@@ -39,7 +39,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="nodes">The nodes making up the bucket set: the fund aggregate and one per share class. (required).</param>
         public BucketSetResult(bool isApportionment = default(bool), List<BucketSetNode> nodes = default(List<BucketSetNode>))
         {
-            
             this.IsApportionment = isApportionment;
             // to ensure "nodes" is required (not null)
             if (nodes == null)

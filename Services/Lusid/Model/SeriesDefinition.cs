@@ -55,7 +55,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("seriesType is a required property for SeriesDefinition and cannot be null");
             }
             this.SeriesType = seriesType;
-            
             this.LaunchDate = launchDate;
             // to ensure "launchPriceType" is required (not null)
             if (launchPriceType == null)

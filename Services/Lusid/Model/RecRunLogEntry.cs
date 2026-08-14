@@ -41,9 +41,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="datesReconciled">datesReconciled (required).</param>
         public RecRunLogEntry(int runNumber = default(int), DateTimeOffset runAsAt = default(DateTimeOffset), DateTimeOffset? supersededAsAt = default(DateTimeOffset?), RecDatesReconciled datesReconciled = default(RecDatesReconciled))
         {
-            
             this.RunNumber = runNumber;
-            
             this.RunAsAt = runAsAt;
             // to ensure "datesReconciled" is required (not null)
             if (datesReconciled == null)

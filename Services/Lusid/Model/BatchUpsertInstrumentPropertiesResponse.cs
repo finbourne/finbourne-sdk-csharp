@@ -53,7 +53,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("failed is a required property for BatchUpsertInstrumentPropertiesResponse and cannot be null");
             }
             this.Failed = failed;
-            
             this.AsAtDate = asAtDate;
             this.Links = links;
         }

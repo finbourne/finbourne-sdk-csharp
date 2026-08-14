@@ -71,7 +71,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("investorStructure is a required property for Fund and cannot be null");
             }
             this.InvestorStructure = investorStructure;
-            
             this.InceptionDate = inceptionDate;
             this.Href = href;
             this.DisplayName = displayName;

@@ -45,7 +45,6 @@ namespace Finbourne.Sdk.Services.Identity.Model
                 throw new ArgumentNullException("adminDomainName is a required property for SetParentCellRequest and cannot be null");
             }
             this.AdminDomainName = adminDomainName;
-            
             this.Confirm = confirm;
         }
 

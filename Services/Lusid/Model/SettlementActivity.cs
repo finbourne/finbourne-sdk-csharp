@@ -81,7 +81,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("activityBasis is a required property for SettlementActivity and cannot be null");
             }
             this.ActivityBasis = activityBasis;
-            
             this.ActivityDate = activityDate;
             // to ensure "settlementCategory" is required (not null)
             if (settlementCategory == null)
@@ -101,9 +100,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentScope is a required property for SettlementActivity and cannot be null");
             }
             this.InstrumentScope = instrumentScope;
-            
             this.ContractualSettlementDate = contractualSettlementDate;
-            
             this.Units = units;
             // to ensure "direction" is required (not null)
             if (direction == null)

@@ -124,13 +124,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("transactionClass is a required property for TransactionConfigurationTypeAlias and cannot be null");
             }
             this.TransactionClass = transactionClass;
-            
-            // to ensure "transactionRoles" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TransactionRolesEnum), transactionRoles))
-            {
-                throw new ArgumentException("transactionRoles is a required property for TransactionConfigurationTypeAlias and must be a defined value");
-            }
-            
             this.TransactionRoles = transactionRoles;
             this.TransactionGroup = transactionGroup;
             this.Source = source;

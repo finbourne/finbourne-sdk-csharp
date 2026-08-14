@@ -245,21 +245,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentId is a required property for QuoteSeriesId and cannot be null");
             }
             this.InstrumentId = instrumentId;
-            
-            // to ensure "instrumentIdType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(InstrumentIdTypeEnum), instrumentIdType))
-            {
-                throw new ArgumentException("instrumentIdType is a required property for QuoteSeriesId and must be a defined value");
-            }
-            
             this.InstrumentIdType = instrumentIdType;
-            
-            // to ensure "quoteType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(QuoteTypeEnum), quoteType))
-            {
-                throw new ArgumentException("quoteType is a required property for QuoteSeriesId and must be a defined value");
-            }
-            
             this.QuoteType = quoteType;
             // to ensure "field" is required (not null)
             if (field == null)

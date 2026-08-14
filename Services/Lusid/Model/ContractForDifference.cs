@@ -49,10 +49,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="lotSize">CFD LotSize, the minimum number of shares that can be bought or sold at once.  Optional, if set must be non-negative, if not set defaults to 1..</param>
         /// <param name="underlying">underlying.</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public ContractForDifference(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), string code = default(string), decimal contractSize = default(decimal), string payCcy = default(string), decimal referenceRate = default(decimal), string type = default(string), string underlyingCcy = default(string), string underlyingIdentifier = default(string), int lotSize = default(int), LusidInstrument underlying = default(LusidInstrument), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
-            
             this.StartDate = startDate;
             // to ensure "payCcy" is required (not null)
             if (payCcy == null)
@@ -66,13 +65,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("type is a required property for ContractForDifference and cannot be null");
             }
             this.Type = type;
-            
-            // to ensure "instrumentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
-            {
-                throw new ArgumentException("instrumentType is a required property for ContractForDifference and must be a defined value");
-            }
-            
             this.InstrumentType = instrumentType;
             this.MaturityDate = maturityDate;
             this.Code = code;

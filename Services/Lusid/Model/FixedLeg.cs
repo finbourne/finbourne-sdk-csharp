@@ -43,12 +43,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="notional">notional (required).</param>
         /// <param name="overrides">overrides.</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public FixedLeg(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), LegDefinition legDefinition = default(LegDefinition), decimal notional = default(decimal), FixedLegAllOfOverrides overrides = default(FixedLegAllOfOverrides), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
-            
             this.StartDate = startDate;
-            
             this.MaturityDate = maturityDate;
             // to ensure "legDefinition" is required (not null)
             if (legDefinition == null)
@@ -56,15 +54,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("legDefinition is a required property for FixedLeg and cannot be null");
             }
             this.LegDefinition = legDefinition;
-            
             this.Notional = notional;
-            
-            // to ensure "instrumentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
-            {
-                throw new ArgumentException("instrumentType is a required property for FixedLeg and must be a defined value");
-            }
-            
             this.InstrumentType = instrumentType;
             this.Overrides = overrides;
             this.TimeZoneConventions = timeZoneConventions;

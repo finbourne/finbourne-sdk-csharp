@@ -476,7 +476,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<AnnulSingleStructuredDataResponse, AbstractOpenAPISchema>("/api/api/subscriptions/holdings/{scope}/{code}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<AnnulSingleStructuredDataResponse, AbstractOpenAPISchema>("/api/api/subscriptions/{scope}/{code}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteSubscription", localVarResponse);
@@ -599,7 +599,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<AnnulSingleStructuredDataResponse, AbstractOpenAPISchema>("/api/api/subscriptions/holdings/{scope}/{code}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<AnnulSingleStructuredDataResponse, AbstractOpenAPISchema>("/api/api/subscriptions/{scope}/{code}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -726,7 +726,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetSubscriptionResponse, AbstractOpenAPISchema>("/api/api/subscriptions/holdings/{scope}/{code}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetSubscriptionResponse, AbstractOpenAPISchema>("/api/api/subscriptions/{scope}/{code}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetSubscription", localVarResponse);
@@ -855,7 +855,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetSubscriptionResponse, AbstractOpenAPISchema>("/api/api/subscriptions/holdings/{scope}/{code}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetSubscriptionResponse, AbstractOpenAPISchema>("/api/api/subscriptions/{scope}/{code}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -991,7 +991,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<PagedResourceListOfGetSubscriptionResponse, AbstractOpenAPISchema>("/api/api/subscriptions/holdings/{scope}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<PagedResourceListOfGetSubscriptionResponse, AbstractOpenAPISchema>("/api/api/subscriptions/{scope}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListSubscriptions", localVarResponse);
@@ -1129,7 +1129,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<PagedResourceListOfGetSubscriptionResponse, AbstractOpenAPISchema>("/api/api/subscriptions/holdings/{scope}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<PagedResourceListOfGetSubscriptionResponse, AbstractOpenAPISchema>("/api/api/subscriptions/{scope}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1245,7 +1245,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<UpsertSingleStructuredDataResponse, AbstractOpenAPISchema>("/api/api/subscriptions/holdings", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<UpsertSingleStructuredDataResponse, AbstractOpenAPISchema>("/api/api/subscriptions", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpsertSubscription", localVarResponse);
@@ -1363,7 +1363,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<UpsertSingleStructuredDataResponse, AbstractOpenAPISchema>("/api/api/subscriptions/holdings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpsertSingleStructuredDataResponse, AbstractOpenAPISchema>("/api/api/subscriptions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

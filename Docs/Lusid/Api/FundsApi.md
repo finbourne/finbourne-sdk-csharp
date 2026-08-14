@@ -5,56 +5,56 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AcceptEstimateValuationPoint**](#acceptestimatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$acceptestimate` | [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point. |
-| [**AddAllocationGroups**](#addallocationgroups) | **POST** `/api/api/funds/{scope}/{code}/allocationgroups` | [EXPERIMENTAL] AddAllocationGroups: Add Allocation Groups to a Fund. |
-| [**AddSeries**](#addseries) | **POST** `/api/api/funds/{scope}/{code}/series` | [EXPERIMENTAL] AddSeries: Add Series to a Fund. |
-| [**CreateFee**](#createfee) | **POST** `/api/api/funds/{scope}/{code}/fees` | [EXPERIMENTAL] CreateFee: Create a Fee. |
-| [**CreateFund**](#createfund) | **POST** `/api/api/funds/{scope}` | [EXPERIMENTAL] CreateFund: Create a Fund. |
-| [**CreateFundV2**](#createfundv2) | **POST** `/api/api/funds/v2/{scope}` | [EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview). |
-| [**CreateValuationPoint**](#createvaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$create` | [EXPERIMENTAL] CreateValuationPoint: Create a Valuation Point. |
-| [**DeactivateNavTypes**](#deactivatenavtypes) | **POST** `/api/api/funds/{scope}/{code}/deactivateNavTypes` | [EXPERIMENTAL] DeactivateNavTypes: Deactivate NAV types on a Fund. |
-| [**DeleteBookmark**](#deletebookmark) | **DELETE** `/api/api/funds/{scope}/{code}/bookmarks/{bookmarkCode}` | [EXPERIMENTAL] DeleteBookmark: Delete a Bookmark. |
-| [**DeleteFee**](#deletefee) | **DELETE** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EXPERIMENTAL] DeleteFee: Delete a Fee. |
-| [**DeleteFund**](#deletefund) | **DELETE** `/api/api/funds/{scope}/{code}` | [EXPERIMENTAL] DeleteFund: Delete a Fund. |
-| [**DeleteNavActivityAdjustments**](#deletenavactivityadjustments) | **POST** `/api/api/funds/{scope}/{code}/navAdjustment/$delete` | [EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments. |
-| [**DeleteValuationPoint**](#deletevaluationpoint) | **DELETE** `/api/api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}` | [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point. |
-| [**FinaliseCandidateValuationPoint**](#finalisecandidatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$finalisecandidate` | [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point. |
-| [**GetA2BDataForFund**](#geta2bdataforfund) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/a2b/$query` | [EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund. |
-| [**GetA2BMovementsForFund**](#geta2bmovementsforfund) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/a2bmovements/$query` | [EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. |
-| [**GetFee**](#getfee) | **GET** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund. |
-| [**GetFeeProperties**](#getfeeproperties) | **GET** `/api/api/funds/{scope}/{code}/fees/{feeCode}/properties` | [EXPERIMENTAL] GetFeeProperties: Get Fee properties. |
-| [**GetFund**](#getfund) | **GET** `/api/api/funds/{scope}/{code}` | [EXPERIMENTAL] GetFund: Get a Fund. |
-| [**GetFundProperties**](#getfundproperties) | **GET** `/api/api/funds/{scope}/{code}/properties` | [EXPERIMENTAL] GetFundProperties: Get Fund properties. |
-| [**GetHoldingContributorsForFund**](#getholdingcontributorsforfund) | **POST** `/api/api/funds/{scope}/{code}/holdings/{holdingId}/contributors` | [EXPERIMENTAL] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund. |
-| [**GetHoldingsForFund**](#getholdingsforfund) | **POST** `/api/api/funds/{scope}/{code}/$holdings` | [EXPERIMENTAL] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund. |
-| [**GetValuationForFund**](#getvaluationforfund) | **POST** `/api/api/funds/{scope}/{code}/$valuation` | [EXPERIMENTAL] GetValuationForFund: Perform valuation for a Fund. |
-| [**GetValuationPointData**](#getvaluationpointdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$query` | [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund. |
-| [**GetValuationPointJournalEntryLines**](#getvaluationpointjournalentrylines) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query` | [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. |
-| [**GetValuationPointPnlSummary**](#getvaluationpointpnlsummary) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/pnlsummary/$query` | [EXPERIMENTAL] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. |
-| [**GetValuationPointQuotes**](#getvaluationpointquotes) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/quotes/$query` | [EXPERIMENTAL] GetValuationPointQuotes: Get the Quotes for the given Fund and Valuation Point. |
-| [**GetValuationPointTransactions**](#getvaluationpointtransactions) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/transactions/$query` | [EXPERIMENTAL] GetValuationPointTransactions: Get the Transactions for the given Fund. |
-| [**GetValuationPointTrialBalance**](#getvaluationpointtrialbalance) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/trialbalance/$query` | [EXPERIMENTAL] GetValuationPointTrialBalance: Get Trial Balance for the given Fund. |
-| [**GetValuationPointUnsettledTransactions**](#getvaluationpointunsettledtransactions) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/unsettledtransactions/$query` | [EXPERIMENTAL] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. |
-| [**ListFees**](#listfees) | **GET** `/api/api/funds/{scope}/{code}/fees` | [EXPERIMENTAL] ListFees: List Fees for a specified Fund. |
-| [**ListFundCalendar**](#listfundcalendar) | **GET** `/api/api/funds/{scope}/{code}/calendar` | [EXPERIMENTAL] ListFundCalendar: List Fund Calendar. |
-| [**ListFundCalendarEntries**](#listfundcalendarentries) | **GET** `/api/api/funds/{scope}/{code}/calendars` | [EXPERIMENTAL] ListFundCalendarEntries: List Fund Calendar Entries. |
-| [**ListFunds**](#listfunds) | **GET** `/api/api/funds` | [EXPERIMENTAL] ListFunds: List Funds. |
-| [**ListNavActivityAdjustments**](#listnavactivityadjustments) | **GET** `/api/api/funds/{scope}/{code}/navAdjustment` | [EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point |
-| [**ListValuationPointComplexMarketData**](#listvaluationpointcomplexmarketdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/complexmarketdata/$query` | [EXPERIMENTAL] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point. |
-| [**ListValuationPointInstruments**](#listvaluationpointinstruments) | **GET** `/api/api/funds/{scope}/{code}/valuationpoints/instruments/$query` | [EXPERIMENTAL] ListValuationPointInstruments: List Instruments inside a valuation point |
-| [**ListValuationPointOverview**](#listvaluationpointoverview) | **GET** `/api/api/funds/{scope}/{code}/valuationPointOverview` | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
-| [**PatchFee**](#patchfee) | **PATCH** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EXPERIMENTAL] PatchFee: Patch Fee. |
-| [**PatchFund**](#patchfund) | **PATCH** `/api/api/funds/{scope}/{code}` | [EXPERIMENTAL] PatchFund: Patch a Fund. |
+| [**AcceptEstimateValuationPoint**](#acceptestimatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$acceptestimate` | [EARLY ACCESS] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point. |
+| [**AddAllocationGroups**](#addallocationgroups) | **POST** `/api/api/funds/{scope}/{code}/allocationgroups` | [EARLY ACCESS] AddAllocationGroups: Add Allocation Groups to a Fund. |
+| [**AddSeries**](#addseries) | **POST** `/api/api/funds/{scope}/{code}/series` | [EARLY ACCESS] AddSeries: Add Series to a Fund. |
+| [**CreateFee**](#createfee) | **POST** `/api/api/funds/{scope}/{code}/fees` | [EARLY ACCESS] CreateFee: Create a Fee. |
+| [**CreateFund**](#createfund) | **POST** `/api/api/funds/{scope}` | [EARLY ACCESS] CreateFund: Create a Fund. |
+| [**CreateFundV2**](#createfundv2) | **POST** `/api/api/funds/v2/{scope}` | [EARLY ACCESS] CreateFundV2: Create a Fund V2 (Preview). |
+| [**CreateValuationPoint**](#createvaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$create` | [EARLY ACCESS] CreateValuationPoint: Create a Valuation Point. |
+| [**DeactivateNavTypes**](#deactivatenavtypes) | **POST** `/api/api/funds/{scope}/{code}/deactivateNavTypes` | [EARLY ACCESS] DeactivateNavTypes: Deactivate NAV types on a Fund. |
+| [**DeleteBookmark**](#deletebookmark) | **DELETE** `/api/api/funds/{scope}/{code}/bookmarks/{bookmarkCode}` | [EARLY ACCESS] DeleteBookmark: Delete a Bookmark. |
+| [**DeleteFee**](#deletefee) | **DELETE** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EARLY ACCESS] DeleteFee: Delete a Fee. |
+| [**DeleteFund**](#deletefund) | **DELETE** `/api/api/funds/{scope}/{code}` | [EARLY ACCESS] DeleteFund: Delete a Fund. |
+| [**DeleteNavActivityAdjustments**](#deletenavactivityadjustments) | **POST** `/api/api/funds/{scope}/{code}/navAdjustment/$delete` | [EARLY ACCESS] DeleteNavActivityAdjustments: Delete Nav activity adjustments. |
+| [**DeleteValuationPoint**](#deletevaluationpoint) | **DELETE** `/api/api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}` | [EARLY ACCESS] DeleteValuationPoint: Delete a Valuation Point. |
+| [**FinaliseCandidateValuationPoint**](#finalisecandidatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$finalisecandidate` | [EARLY ACCESS] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point. |
+| [**GetA2BDataForFund**](#geta2bdataforfund) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/a2b/$query` | [EARLY ACCESS] GetA2BDataForFund: Get A2B data for a Fund. |
+| [**GetA2BMovementsForFund**](#geta2bmovementsforfund) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/a2bmovements/$query` | [EARLY ACCESS] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. |
+| [**GetFee**](#getfee) | **GET** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EARLY ACCESS] GetFee: Get a Fee for a specified Fund. |
+| [**GetFeeProperties**](#getfeeproperties) | **GET** `/api/api/funds/{scope}/{code}/fees/{feeCode}/properties` | [EARLY ACCESS] GetFeeProperties: Get Fee properties. |
+| [**GetFund**](#getfund) | **GET** `/api/api/funds/{scope}/{code}` | [EARLY ACCESS] GetFund: Get a Fund. |
+| [**GetFundProperties**](#getfundproperties) | **GET** `/api/api/funds/{scope}/{code}/properties` | [EARLY ACCESS] GetFundProperties: Get Fund properties. |
+| [**GetHoldingContributorsForFund**](#getholdingcontributorsforfund) | **POST** `/api/api/funds/{scope}/{code}/holdings/{holdingId}/contributors` | [EARLY ACCESS] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund. |
+| [**GetHoldingsForFund**](#getholdingsforfund) | **POST** `/api/api/funds/{scope}/{code}/$holdings` | [EARLY ACCESS] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund. |
+| [**GetValuationForFund**](#getvaluationforfund) | **POST** `/api/api/funds/{scope}/{code}/$valuation` | [EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund. |
+| [**GetValuationPointData**](#getvaluationpointdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$query` | [EARLY ACCESS] GetValuationPointData: Get Valuation Point Data for a Fund. |
+| [**GetValuationPointJournalEntryLines**](#getvaluationpointjournalentrylines) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query` | [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. |
+| [**GetValuationPointPnlSummary**](#getvaluationpointpnlsummary) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/pnlsummary/$query` | [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. |
+| [**GetValuationPointQuotes**](#getvaluationpointquotes) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/quotes/$query` | [EARLY ACCESS] GetValuationPointQuotes: Get the Quotes for the given Fund and Valuation Point. |
+| [**GetValuationPointTransactions**](#getvaluationpointtransactions) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/transactions/$query` | [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. |
+| [**GetValuationPointTrialBalance**](#getvaluationpointtrialbalance) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/trialbalance/$query` | [EARLY ACCESS] GetValuationPointTrialBalance: Get Trial Balance for the given Fund. |
+| [**GetValuationPointUnsettledTransactions**](#getvaluationpointunsettledtransactions) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/unsettledtransactions/$query` | [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. |
+| [**ListFees**](#listfees) | **GET** `/api/api/funds/{scope}/{code}/fees` | [EARLY ACCESS] ListFees: List Fees for a specified Fund. |
+| [**ListFundCalendar**](#listfundcalendar) | **GET** `/api/api/funds/{scope}/{code}/calendar` | [EARLY ACCESS] ListFundCalendar: List Fund Calendar. |
+| [**ListFundCalendarEntries**](#listfundcalendarentries) | **GET** `/api/api/funds/{scope}/{code}/calendars` | [EARLY ACCESS] ListFundCalendarEntries: List Fund Calendar Entries. |
+| [**ListFunds**](#listfunds) | **GET** `/api/api/funds` | [EARLY ACCESS] ListFunds: List Funds. |
+| [**ListNavActivityAdjustments**](#listnavactivityadjustments) | **GET** `/api/api/funds/{scope}/{code}/navAdjustment` | [EARLY ACCESS] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point |
+| [**ListValuationPointComplexMarketData**](#listvaluationpointcomplexmarketdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/complexmarketdata/$query` | [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point. |
+| [**ListValuationPointInstruments**](#listvaluationpointinstruments) | **GET** `/api/api/funds/{scope}/{code}/valuationpoints/instruments/$query` | [EARLY ACCESS] ListValuationPointInstruments: List Instruments inside a valuation point |
+| [**ListValuationPointOverview**](#listvaluationpointoverview) | **GET** `/api/api/funds/{scope}/{code}/valuationPointOverview` | [EARLY ACCESS] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
+| [**PatchFee**](#patchfee) | **PATCH** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EARLY ACCESS] PatchFee: Patch Fee. |
+| [**PatchFund**](#patchfund) | **PATCH** `/api/api/funds/{scope}/{code}` | [EARLY ACCESS] PatchFund: Patch a Fund. |
 | [**QueryCashStatement**](#querycashstatement) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/cashstatement/$query` | [DEPRECATED] QueryCashStatement: [DEPRECATED] QueryCashStatement: Query cash statement for a Fund valuation point. |
-| [**QueryCashStatementLocalCurrency**](#querycashstatementlocalcurrency) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/cashstatementlocalcurrency/$query` | [EXPERIMENTAL] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point. |
-| [**RevertValuationPointToEstimate**](#revertvaluationpointtoestimate) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$reverttoestimate` | [EXPERIMENTAL] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate. |
-| [**SetShareClassInstruments**](#setshareclassinstruments) | **PUT** `/api/api/funds/{scope}/{code}/shareclasses` | [EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a Fund. |
-| [**UpdateValuationPoint**](#updatevaluationpoint) | **PUT** `/api/api/funds/{scope}/{code}/valuationpoints` | [EXPERIMENTAL] UpdateValuationPoint: Update a Valuation Point. |
-| [**UpsertBookmark**](#upsertbookmark) | **POST** `/api/api/funds/{scope}/{code}/bookmarks` | [EXPERIMENTAL] UpsertBookmark: Upsert a bookmark. |
-| [**UpsertDiaryEntryTypeValuationPoint**](#upsertdiaryentrytypevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints` | [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point. |
-| [**UpsertFeeProperties**](#upsertfeeproperties) | **POST** `/api/api/funds/{scope}/{code}/fees/{feeCode}/properties/$upsert` | [EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties. |
-| [**UpsertFundProperties**](#upsertfundproperties) | **POST** `/api/api/funds/{scope}/{code}/properties/$upsert` | [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties. |
-| [**UpsertNavActivityAdjustments**](#upsertnavactivityadjustments) | **POST** `/api/api/funds/{scope}/{code}/navAdjustment` | [EXPERIMENTAL] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point |
+| [**QueryCashStatementLocalCurrency**](#querycashstatementlocalcurrency) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/cashstatementlocalcurrency/$query` | [EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point. |
+| [**RevertValuationPointToEstimate**](#revertvaluationpointtoestimate) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$reverttoestimate` | [EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate. |
+| [**SetShareClassInstruments**](#setshareclassinstruments) | **PUT** `/api/api/funds/{scope}/{code}/shareclasses` | [EARLY ACCESS] SetShareClassInstruments: Set the ShareClass Instruments on a Fund. |
+| [**UpdateValuationPoint**](#updatevaluationpoint) | **PUT** `/api/api/funds/{scope}/{code}/valuationpoints` | [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point. |
+| [**UpsertBookmark**](#upsertbookmark) | **POST** `/api/api/funds/{scope}/{code}/bookmarks` | [EARLY ACCESS] UpsertBookmark: Upsert a bookmark. |
+| [**UpsertDiaryEntryTypeValuationPoint**](#upsertdiaryentrytypevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints` | [EARLY ACCESS] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point. |
+| [**UpsertFeeProperties**](#upsertfeeproperties) | **POST** `/api/api/funds/{scope}/{code}/fees/{feeCode}/properties/$upsert` | [EARLY ACCESS] UpsertFeeProperties: Upsert Fee properties. |
+| [**UpsertFundProperties**](#upsertfundproperties) | **POST** `/api/api/funds/{scope}/{code}/properties/$upsert` | [EARLY ACCESS] UpsertFundProperties: Upsert Fund properties. |
+| [**UpsertNavActivityAdjustments**](#upsertnavactivityadjustments) | **POST** `/api/api/funds/{scope}/{code}/navAdjustment` | [EARLY ACCESS] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point |
 
 ### Example
 
@@ -103,7 +103,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
 
 > AcceptEstimateValuationPointResponse AcceptEstimateValuationPoint(string scope, string code, ValuationPointDataRequest valuationPointDataRequest, string? navTypeCode = null)
 
-[EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
+[EARLY ACCESS] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
 
 Accepts the specified estimate Valuation Point.  Should the Valuation Point differ since the Valuation Point was last run, both Valuation Points will be returned and status will be marked as 'Candidate',  otherwise it will be marked as 'Final'.
 
@@ -167,7 +167,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fund AddAllocationGroups(string scope, string code, List<AllocationGroupDefinition> allocationGroupDefinition)
 
-[EXPERIMENTAL] AddAllocationGroups: Add Allocation Groups to a Fund.
+[EARLY ACCESS] AddAllocationGroups: Add Allocation Groups to a Fund.
 
 Add the given Allocation Group definitions to the Fund.
 
@@ -229,7 +229,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fund AddSeries(string scope, string code, List<SeriesDefinitionRequest> seriesDefinitionRequest)
 
-[EXPERIMENTAL] AddSeries: Add Series to a Fund.
+[EARLY ACCESS] AddSeries: Add Series to a Fund.
 
 Add the given Series definitions to the specified Share Classes of the Fund.
 
@@ -291,7 +291,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fee CreateFee(string scope, string code, FeeRequest feeRequest, string? navTypeCode = null)
 
-[EXPERIMENTAL] CreateFee: Create a Fee.
+[EARLY ACCESS] CreateFee: Create a Fee.
 
 Create the given Fee.
 
@@ -355,7 +355,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fund CreateFund(string scope, FundRequest fundRequest)
 
-[EXPERIMENTAL] CreateFund: Create a Fund.
+[EARLY ACCESS] CreateFund: Create a Fund.
 
 Create the given Fund.
 
@@ -415,7 +415,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fund CreateFundV2(string scope, FundDefinitionRequest fundDefinitionRequest)
 
-[EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview).
+[EARLY ACCESS] CreateFundV2: Create a Fund V2 (Preview).
 
 Create the given V2 Fund.
 
@@ -475,7 +475,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPoint CreateValuationPoint(string scope, string code, CreateValuationPointRequest createValuationPointRequest, string? navTypeCode = null)
 
-[EXPERIMENTAL] CreateValuationPoint: Create a Valuation Point.
+[EARLY ACCESS] CreateValuationPoint: Create a Valuation Point.
 
 Insert the estimate Valuation Point.
 
@@ -539,7 +539,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fund DeactivateNavTypes(string scope, string code, List<string> requestBody, string? deleteMode = null)
 
-[EXPERIMENTAL] DeactivateNavTypes: Deactivate NAV types on a Fund.
+[EARLY ACCESS] DeactivateNavTypes: Deactivate NAV types on a Fund.
 
 Deactivate the given NAV types on the Fund.
 
@@ -603,7 +603,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteBookmark(string scope, string code, string bookmarkCode, string? navTypeCode = null)
 
-[EXPERIMENTAL] DeleteBookmark: Delete a Bookmark.
+[EARLY ACCESS] DeleteBookmark: Delete a Bookmark.
 
 Deletes the given Bookmark.
 
@@ -667,7 +667,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteFee(string scope, string code, string feeCode)
 
-[EXPERIMENTAL] DeleteFee: Delete a Fee.
+[EARLY ACCESS] DeleteFee: Delete a Fee.
 
 Delete the given Fee.
 
@@ -729,7 +729,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteFund(string scope, string code)
 
-[EXPERIMENTAL] DeleteFund: Delete a Fund.
+[EARLY ACCESS] DeleteFund: Delete a Fund.
 
 Delete the given Fund.
 
@@ -789,7 +789,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteNavActivityAdjustments(string scope, string code, string valuationPointCode, List<NavActivityAdjustmentResponse> navActivityAdjustmentResponse, string? navTypeCode = null, string? valuationPointCodeVariant = null)
 
-[EXPERIMENTAL] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
+[EARLY ACCESS] DeleteNavActivityAdjustments: Delete Nav activity adjustments.
 
 Delete Nav activity adjustments on a Valuation Point.
 
@@ -857,7 +857,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteValuationPoint(string scope, string code, string diaryEntryCode, string? diaryEntryCodeVariant = null, string? navTypeCode = null)
 
-[EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point.
+[EARLY ACCESS] DeleteValuationPoint: Delete a Valuation Point.
 
 Deletes the given Valuation Point.
 
@@ -923,7 +923,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointDataResponse FinaliseCandidateValuationPoint(string scope, string code, ValuationPointDataRequest valuationPointDataRequest, string? navTypeCode = null)
 
-[EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point.
+[EARLY ACCESS] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point.
 
 Moves a 'Candidate' status Valuation Point to status 'Final'.
 
@@ -987,7 +987,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > VersionedResourceListOfFundA2BDataRecord GetA2BDataForFund(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetA2BDataForFund: Get A2B data for a Fund.
+[EARLY ACCESS] GetA2BDataForFund: Get A2B data for a Fund.
 
 Get the A2B data for transaction portfolios in a specified Fund.
 
@@ -1057,7 +1057,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > VersionedResourceListOfFundA2BMovementRecord GetA2BMovementsForFund(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
+[EARLY ACCESS] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund.
 
 Get the A2B movement records of transaction portfolios in a specified Fund.
 
@@ -1127,7 +1127,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fee GetFee(string scope, string code, string feeCode, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetFee: Get a Fee for a specified Fund.
+[EARLY ACCESS] GetFee: Get a Fee for a specified Fund.
 
 Retrieve a fee for a specified Fund.
 
@@ -1195,7 +1195,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FeeProperties GetFeeProperties(string scope, string code, string feeCode, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetFeeProperties: Get Fee properties.
+[EARLY ACCESS] GetFeeProperties: Get Fee properties.
 
 Get all the properties of a single fee.
 
@@ -1261,7 +1261,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fund GetFund(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetFund: Get a Fund.
+[EARLY ACCESS] GetFund: Get a Fund.
 
 Retrieve the definition of a particular Fund.
 
@@ -1327,7 +1327,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FundProperties GetFundProperties(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetFundProperties: Get Fund properties.
+[EARLY ACCESS] GetFundProperties: Get Fund properties.
 
 Get all the properties of a single fund.
 
@@ -1391,7 +1391,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > VersionedResourceListOfHoldingContributor GetHoldingContributorsForFund(string scope, string code, long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? navTypeCode = null, bool? includeHistoric = null, string? taxLotId = null, bool? includeUnsettledMovements = null, int? limit = null, DateTimeOffset? asAt = null, string? page = null)
 
-[EXPERIMENTAL] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund.
+[EARLY ACCESS] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund.
 
 Get the holdings of transaction portfolios in a specified Fund.
 
@@ -1469,7 +1469,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > VersionedResourceListOfPortfolioHolding GetHoldingsForFund(string scope, string code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, string? navTypeCode = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null, bool? byTaxlots = null, int? includeSettlementEventsAfterDays = null)
 
-[EXPERIMENTAL] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund.
+[EARLY ACCESS] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund.
 
 Get the holdings of transaction portfolios in a specified Fund.
 
@@ -1543,7 +1543,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ListAggregationResponse GetValuationForFund(string scope, string code, string? navTypeCode = null, FundValuationRequest? fundValuationRequest = null)
 
-[EXPERIMENTAL] GetValuationForFund: Perform valuation for a Fund.
+[EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund.
 
 Perform valuation on a specified Fund.
 
@@ -1607,7 +1607,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointDataResponse GetValuationPointData(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, DateTimeOffset? asAt = null, string? navTypeCode = null)
 
-[EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund.
+[EARLY ACCESS] GetValuationPointData: Get Valuation Point Data for a Fund.
 
 Retrieves the Valuation Point data between given dates or Valuation Point codes.  The endpoint will internally extract all 'Assets' and 'Liabilities' from the Fund's Trial balance to produce a GAV.  Start date will be assumed from the last 'official' ValuationPoint and EndDate will be as provided.
 
@@ -1673,7 +1673,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointResourceListOfFundJournalEntryLine GetValuationPointJournalEntryLines(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? generalLedgerProfileCode = null, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null)
 
-[EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
+[EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
 
 Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
 
@@ -1749,7 +1749,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointResourceListOfPnlJournalEntryLine GetValuationPointPnlSummary(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? generalLedgerProfileCode = null, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null, string? navTypeCode = null)
 
-[EXPERIMENTAL] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
+[EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
 
 Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
 
@@ -1823,7 +1823,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointResourceListOfAccountedQuote GetValuationPointQuotes(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, DateTimeOffset? asAt = null, int? limit = null, string? page = null, string? navTypeCode = null)
 
-[EXPERIMENTAL] GetValuationPointQuotes: Get the Quotes for the given Fund and Valuation Point.
+[EARLY ACCESS] GetValuationPointQuotes: Get the Quotes for the given Fund and Valuation Point.
 
 Gets all quotes within the effective date range of the specified Valuation Point for a Fund,  including any quotes added via a Complex Close (Post-Close Activity).
 
@@ -1893,7 +1893,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointResourceListOfAccountedTransaction GetValuationPointTransactions(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null, string? dataModelScope = null, string? dataModelCode = null, bool? showCancelledTransactions = null, string? membershipType = null)
 
-[EXPERIMENTAL] GetValuationPointTransactions: Get the Transactions for the given Fund.
+[EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund.
 
 Gets the Transactions for the given Valuation Point for a Fund.
 
@@ -1975,9 +1975,9 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointResourceListOfTrialBalance GetValuationPointTrialBalance(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, string? generalLedgerProfileCode = null, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null, bool? excludeCleardownModule = null)
 
-[EXPERIMENTAL] GetValuationPointTrialBalance: Get Trial Balance for the given Fund.
+[EARLY ACCESS] GetValuationPointTrialBalance: Get Trial Balance for the given Fund.
 
-Gets the Trial Balance for the given Valuation Point for a Fund.                The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).
+Gets the Trial Balance for the given Valuation Point for a Fund.                The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).                Supplying the X-LUSID-SuppressImbalanceValidation header suppresses the imbalance check.  Any caller with access to this endpoint may use it; it is not role-restricted.
 
 ### Example
 
@@ -2053,7 +2053,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointResourceListOfUnsettledTransaction GetValuationPointUnsettledTransactions(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, DateTimeOffset? asAt = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null)
 
-[EXPERIMENTAL] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
+[EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
 
 Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
 
@@ -2125,7 +2125,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfFee ListFees(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListFees: List Fees for a specified Fund.
+[EARLY ACCESS] ListFees: List Fees for a specified Fund.
 
 List all the Fees matching a particular criteria.
 
@@ -2199,7 +2199,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfFundCalendarEntry ListFundCalendar(string scope, string code, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListFundCalendar: List Fund Calendar.
+[EARLY ACCESS] ListFundCalendar: List Fund Calendar.
 
 List all the Calendar Entries associated with the Fund.
 
@@ -2271,7 +2271,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfFundCalendarEntries ListFundCalendarEntries(string scope, string code, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListFundCalendarEntries: List Fund Calendar Entries.
+[EARLY ACCESS] ListFundCalendarEntries: List Fund Calendar Entries.
 
 List all the Calendar Entries associated with the Fund.
 
@@ -2343,7 +2343,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfFund ListFunds(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListFunds: List Funds.
+[EARLY ACCESS] ListFunds: List Funds.
 
 List all the Funds matching particular criteria.
 
@@ -2413,7 +2413,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ResourceListOfNavActivityAdjustmentResponse ListNavActivityAdjustments(string scope, string code, string valuationPointCode, string? navTypeCode = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, string? valuationPointCodeVariant = null)
 
-[EXPERIMENTAL] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
+[EARLY ACCESS] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
 
 Lists the NAV adjustment activities applied to the specified valuation point for a Fund.
 
@@ -2487,7 +2487,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointResourceListOfAccountedComplexMarketData ListValuationPointComplexMarketData(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, DateTimeOffset? asAt = null, int? limit = null, string? page = null, string? navTypeCode = null)
 
-[EXPERIMENTAL] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
+[EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
 
 Lists all complex market data within the effective date range of the specified Valuation Point for a Fund,  including any items added via a Complex Close (Post-Close Activity).
 
@@ -2557,7 +2557,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfValuationPointInstrument ListValuationPointInstruments(string scope, string code, string valuationPointCode, string? navTypeCode = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? instrumentPropertyKeys = null, string? valuationPointCodeVariant = null)
 
-[EXPERIMENTAL] ListValuationPointInstruments: List Instruments inside a valuation point
+[EARLY ACCESS] ListValuationPointInstruments: List Instruments inside a valuation point
 
 Lists the Instruments linked to Transactions within a Valuation Point for a Fund.
 
@@ -2635,7 +2635,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfValuationPointOverview ListValuationPointOverview(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? propertyKeys = null, string? navTypeCode = null)
 
-[EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
+[EARLY ACCESS] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
 
 List the overview of all the Valuation Points that match the given criteria for a given Fund.
 
@@ -2709,7 +2709,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fee PatchFee(string scope, string code, string feeCode, List<Operation> operation)
 
-[EXPERIMENTAL] PatchFee: Patch Fee.
+[EARLY ACCESS] PatchFee: Patch Fee.
 
 Create or update certain fields for a particular Fee.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: EndDate, ShareClasses.
 
@@ -2773,7 +2773,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fund PatchFund(string scope, string code, List<Operation> operation)
 
-[EXPERIMENTAL] PatchFund: Patch a Fund.
+[EARLY ACCESS] PatchFund: Patch a Fund.
 
 Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, AborId, YearEndDate.
 
@@ -2909,7 +2909,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointResourceListOfFundCashStatementLocalCurrency QueryCashStatementLocalCurrency(string scope, string code, QueryFundCashStatementParameters queryFundCashStatementParameters, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null)
 
-[EXPERIMENTAL] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
+[EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
 
 Returns settled cash movements with a running balance in local currency for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType='B', SourceType=LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses system-generated zero-net reversal/TrueUp pairs into SystemCorrection rows). Base  currency columns are out of scope for this variant and are not returned.
 
@@ -2983,7 +2983,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPointDataResponse RevertValuationPointToEstimate(string scope, string code, RevertValuationPointDataRequest revertValuationPointDataRequest, string? navTypeCode = null)
 
-[EXPERIMENTAL] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
+[EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
 
 Moves a 'Final' status Valuation Point to status 'Estimate'.
 
@@ -3047,7 +3047,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Fund SetShareClassInstruments(string scope, string code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest)
 
-[EXPERIMENTAL] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
+[EARLY ACCESS] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
 
 Update the ShareClass Instruments on an existing Fund with the set of instruments provided.
 
@@ -3109,7 +3109,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ValuationPoint UpdateValuationPoint(string scope, string code, UpdateValuationPointRequest updateValuationPointRequest, string? navTypeCode = null)
 
-[EXPERIMENTAL] UpdateValuationPoint: Update a Valuation Point.
+[EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point.
 
 Updates an existing Valuation Point.
 
@@ -3174,7 +3174,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FundCalendarEntry UpsertBookmark(string scope, string code, UpsertFundBookmarkRequest upsertFundBookmarkRequest, string? navTypeCode = null)
 
-[EXPERIMENTAL] UpsertBookmark: Upsert a bookmark.
+[EARLY ACCESS] UpsertBookmark: Upsert a bookmark.
 
 This method will update or upsert a Bookmark for the Fund.
 
@@ -3238,7 +3238,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DiaryEntry UpsertDiaryEntryTypeValuationPoint(string scope, string code, UpsertValuationPointRequest upsertValuationPointRequest, string? navTypeCode = null)
 
-[EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point.
+[EARLY ACCESS] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point.
 
 Insert the estimate Valuation Point.                If the Valuation Point does not exist, this method will create it in estimate state.
 
@@ -3302,7 +3302,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FeeProperties UpsertFeeProperties(string scope, string code, string feeCode, Dictionary<string, Property>? requestBody = null)
 
-[EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties.
+[EARLY ACCESS] UpsertFeeProperties: Upsert Fee properties.
 
 Update or insert one or more properties onto a single Fee. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain 'Fee'.                Upserting a property that exists for an Fee, with a null value, will delete the instance of the property for that group.                Properties have an <i>effectiveFrom</i> datetime for which the property is valid, and an <i>effectiveUntil</i>  datetime until which the property is valid. Not supplying an <i>effectiveUntil</i> datetime results in the property being  valid indefinitely, or until the next <i>effectiveFrom</i> datetime of the property.
 
@@ -3366,7 +3366,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FundProperties UpsertFundProperties(string scope, string code, Dictionary<string, Property>? requestBody = null)
 
-[EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties.
+[EARLY ACCESS] UpsertFundProperties: Upsert Fund properties.
 
 Update or insert one or more properties onto a single Fund. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain 'Fund'.                Upserting a property that exists for an Fund, with a null value, will delete the instance of the property for that group.                Properties have an <i>effectiveFrom</i> datetime for which the property is valid, and an <i>effectiveUntil</i>  datetime until which the property is valid. Not supplying an <i>effectiveUntil</i> datetime results in the property being  valid indefinitely, or until the next <i>effectiveFrom</i> datetime of the property.
 
@@ -3428,7 +3428,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DateTimeOffset UpsertNavActivityAdjustments(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = null, string? valuationPointCodeVariant = null)
 
-[EXPERIMENTAL] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point
+[EARLY ACCESS] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point
 
 Upserts the NAV adjustment activities to the specified valuation point for a Fund.
 

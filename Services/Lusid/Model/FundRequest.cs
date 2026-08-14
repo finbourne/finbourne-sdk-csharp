@@ -73,7 +73,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("type is a required property for FundRequest and cannot be null");
             }
             this.Type = type;
-            
             this.InceptionDate = inceptionDate;
             // to ensure "yearEndDate" is required (not null)
             if (yearEndDate == null)

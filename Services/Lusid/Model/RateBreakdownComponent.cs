@@ -45,7 +45,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("rateType is a required property for RateBreakdownComponent and cannot be null");
             }
             this.RateType = rateType;
-            
             this.DividendRate = dividendRate;
         }
 

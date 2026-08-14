@@ -60,7 +60,6 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("transactionId is a required property for TpfTransactionSearchResponse and cannot be null");
             }
             this.TransactionId = transactionId;
-            
             this.InstanceId = instanceId;
             // to ensure "instanceName" is required (not null)
             if (instanceName == null)
@@ -68,9 +67,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("instanceName is a required property for TpfTransactionSearchResponse and cannot be null");
             }
             this.InstanceName = instanceName;
-            
             this.BatchId = batchId;
-            
             this.RunStartTime = runStartTime;
             // to ensure "publicationStatus" is required (not null)
             if (publicationStatus == null)
@@ -90,7 +87,6 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("instrumentType is a required property for TpfTransactionSearchResponse and cannot be null");
             }
             this.InstrumentType = instrumentType;
-            
             this.TradeDate = tradeDate;
             this.SettlementDate = settlementDate;
             this.SkipReason = skipReason;

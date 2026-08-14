@@ -59,13 +59,6 @@ namespace Finbourne.Sdk.Services.Access.Model
                 throw new ArgumentNullException("code is a required property for PolicyCreationRequest and cannot be null");
             }
             this.Code = code;
-            
-            // to ensure "grant" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(Grant), grant))
-            {
-                throw new ArgumentException("grant is a required property for PolicyCreationRequest and must be a defined value");
-            }
-            
             this.Grant = grant;
             // to ensure "selectors" is required (not null)
             if (selectors == null)

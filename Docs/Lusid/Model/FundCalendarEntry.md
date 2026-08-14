@@ -22,6 +22,7 @@
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Required | *No description available.* |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. |
 | **LeaderNavTypeCode** | **string** | Optional | The code of the Nav Type that this Nav Type will follow when set. |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -49,7 +50,8 @@ var instance = new FundCalendarEntry(
     properties: new Property(...),  // optional — The properties for the Calendar Entry. These will be from the &#39;ClosedPeriod&#39; domain.
     varVersion: new ModelVersion(...),  // required
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime.
-    leaderNavTypeCode: "..."  // optional — The code of the Nav Type that this Nav Type will follow when set.
+    leaderNavTypeCode: "...",  // optional — The code of the Nav Type that this Nav Type will follow when set.
+    stagedModifications: new StagedModificationsInfo(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -68,6 +70,7 @@ var instance = JsonConvert.DeserializeObject<FundCalendarEntry>(json);
 - [PreviousFundCalendarEntry](PreviousFundCalendarEntry.md)
 - [Property](Property.md) — used in `Properties`
 - [ModelVersion](ModelVersion.md)
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

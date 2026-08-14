@@ -55,7 +55,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("portfolioEntityIds is a required property for ScenarioPreviewRequest and cannot be null");
             }
             this.PortfolioEntityIds = portfolioEntityIds;
-            
             this.EffectiveAt = effectiveAt;
             this.AsAt = asAt;
             this.Scenario = scenario;

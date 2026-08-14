@@ -47,7 +47,6 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 throw new ArgumentNullException("colId is a required property for ColumnStateType and cannot be null");
             }
             this.ColId = colId;
-            
             this.Hide = hide;
             this.Sort = sort;
             this.SortIndex = sortIndex;

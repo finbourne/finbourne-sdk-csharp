@@ -51,12 +51,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="settlementCalendars">Holiday calendar for option exercise date to settlement date calculation..</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
         /// <param name="tradingConventions">tradingConventions.</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public ToBeAnnouncedOption(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset expiryDate = default(DateTimeOffset), string domCcy = default(string), string optionType = default(string), decimal strike = default(decimal), string deliveryType = default(string), MasteredInstrument underlying = default(MasteredInstrument), string exerciseType = default(string), Premium premium = default(Premium), int deliveryDays = default(int), string businessDayConvention = default(string), List<string> settlementCalendars = default(List<string>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), TradingConventions tradingConventions = default(TradingConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
-            
             this.StartDate = startDate;
-            
             this.ExpiryDate = expiryDate;
             // to ensure "domCcy" is required (not null)
             if (domCcy == null)
@@ -70,7 +68,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("optionType is a required property for ToBeAnnouncedOption and cannot be null");
             }
             this.OptionType = optionType;
-            
             this.Strike = strike;
             // to ensure "deliveryType" is required (not null)
             if (deliveryType == null)
@@ -96,13 +93,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("premium is a required property for ToBeAnnouncedOption and cannot be null");
             }
             this.Premium = premium;
-            
-            // to ensure "instrumentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
-            {
-                throw new ArgumentException("instrumentType is a required property for ToBeAnnouncedOption and must be a defined value");
-            }
-            
             this.InstrumentType = instrumentType;
             this.DeliveryDays = deliveryDays;
             this.BusinessDayConvention = businessDayConvention;

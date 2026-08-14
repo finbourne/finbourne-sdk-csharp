@@ -52,7 +52,6 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("name is a required property for LusidValidationProblemDetails and cannot be null");
             }
             this.Name = name;
-            
             this.Code = code;
             // to ensure "errors" is required (not null)
             if (errors == null)

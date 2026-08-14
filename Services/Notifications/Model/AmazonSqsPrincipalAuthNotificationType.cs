@@ -60,13 +60,6 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="queueUrlRef">Reference to queue url from Configuration Store (required).</param>
         public AmazonSqsPrincipalAuthNotificationType(TypeEnum type = default(TypeEnum), string body = default(string), string queueUrlRef = default(string))
         {
-            
-            // to ensure "type" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
-            {
-                throw new ArgumentException("type is a required property for AmazonSqsPrincipalAuthNotificationType and must be a defined value");
-            }
-            
             this.Type = type;
             // to ensure "body" is required (not null)
             if (body == null)

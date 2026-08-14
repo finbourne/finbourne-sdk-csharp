@@ -56,7 +56,6 @@ namespace Finbourne.Sdk.Services.Scheduler.Model
                 throw new ArgumentNullException("description is a required property for ArgumentDefinition and cannot be null");
             }
             this.Description = description;
-            
             this.Order = order;
             // to ensure "passedAs" is required (not null)
             if (passedAs == null)

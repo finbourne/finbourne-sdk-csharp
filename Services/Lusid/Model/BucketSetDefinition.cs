@@ -54,7 +54,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("displayName is a required property for BucketSetDefinition and cannot be null");
             }
             this.DisplayName = displayName;
-            
             this.Unitised = unitised;
             // to ensure "buckets" is required (not null)
             if (buckets == null)

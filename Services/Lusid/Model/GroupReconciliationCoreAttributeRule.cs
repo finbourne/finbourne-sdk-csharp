@@ -53,7 +53,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("right is a required property for GroupReconciliationCoreAttributeRule and cannot be null");
             }
             this.Right = right;
-            
             this.IsComparisonCaseSensitive = isComparisonCaseSensitive;
             this.AllowableStringMappings = allowableStringMappings;
         }

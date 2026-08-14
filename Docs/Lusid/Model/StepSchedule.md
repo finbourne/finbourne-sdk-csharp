@@ -10,7 +10,7 @@ Schedule that steps at known dated points in time.  Used in representation of a 
 | **LevelType** | **string** | Required | The type of shift or adjustment that the quantity represents.    Supported string (enumeration) values are: [Absolute, AbsoluteShift, Percentage, AbsolutePercentage]. |
 | **StepScheduleType** | **string** | Required | The type of step that this schedule is for.  Supported string (enumeration) values are: [Coupon, Notional, Spread]. |
 | **Steps** | [List&lt;LevelStep&gt;](LevelStep.md) | Required | The level steps which are applied. |
-| **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid. Default: `ScheduleTypeEnum.StepSchedule` |
+| **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule. Default: `ScheduleTypeEnum.StepSchedule` |
 
 
 ## Usage
@@ -24,7 +24,7 @@ var instance = new StepSchedule(
     levelType: "...",  // required — The type of shift or adjustment that the quantity represents.    Supported string (enumeration) values are: [Absolute, AbsoluteShift, Percentage, AbsolutePercentage].
     stepScheduleType: "...",  // required — The type of step that this schedule is for.  Supported string (enumeration) values are: [Coupon, Notional, Spread].
     steps: new List<LevelStep>(),  // required — The level steps which are applied.
-    scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid.
+    scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule.
 );
 ```
 ### Serializing to JSON

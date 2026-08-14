@@ -39,7 +39,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="details">Identifiers for each transaction in this block. (required).</param>
         public OrderGraphBlockTransactionSynopsis(decimal quantity = default(decimal), List<OrderGraphBlockTransactionDetail> details = default(List<OrderGraphBlockTransactionDetail>))
         {
-            
             this.Quantity = quantity;
             // to ensure "details" is required (not null)
             if (details == null)

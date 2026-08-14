@@ -39,9 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="cross">The number of Cross results. (required).</param>
         public RecMatchCountByResultType(int match = default(int), int cross = default(int))
         {
-            
             this.Match = match;
-            
             this.Cross = cross;
         }
 

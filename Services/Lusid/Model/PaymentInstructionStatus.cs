@@ -46,7 +46,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("currentValue is a required property for PaymentInstructionStatus and cannot be null");
             }
             this.CurrentValue = currentValue;
-            
             this.AsAtLastTransition = asAtLastTransition;
             // to ensure "userIdLastTransition" is required (not null)
             if (userIdLastTransition == null)

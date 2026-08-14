@@ -119,7 +119,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="contractSize">The size of the contract of the simple instrument (default to 1D).</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
         /// <param name="tradingConventions">tradingConventions.</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public SimpleInstrument(DateTimeOffset maturityDate = default(DateTimeOffset), string domCcy = default(string), AssetClassEnum assetClass = default(AssetClassEnum), List<string> fgnCcys = default(List<string>), string simpleInstrumentType = default(string), decimal contractSize = (decimal)1D, TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), TradingConventions tradingConventions = default(TradingConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
             // to ensure "domCcy" is required (not null)
@@ -128,13 +128,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("domCcy is a required property for SimpleInstrument and cannot be null");
             }
             this.DomCcy = domCcy;
-            
-            // to ensure "assetClass" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(AssetClassEnum), assetClass))
-            {
-                throw new ArgumentException("assetClass is a required property for SimpleInstrument and must be a defined value");
-            }
-            
             this.AssetClass = assetClass;
             // to ensure "simpleInstrumentType" is required (not null)
             if (simpleInstrumentType == null)
@@ -142,13 +135,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("simpleInstrumentType is a required property for SimpleInstrument and cannot be null");
             }
             this.SimpleInstrumentType = simpleInstrumentType;
-            
-            // to ensure "instrumentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
-            {
-                throw new ArgumentException("instrumentType is a required property for SimpleInstrument and must be a defined value");
-            }
-            
             this.InstrumentType = instrumentType;
             this.MaturityDate = maturityDate;
             this.FgnCcys = fgnCcys;

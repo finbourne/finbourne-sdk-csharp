@@ -39,9 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="isBusinessDay">isBusinessDay (required).</param>
         public IsBusinessDayResponse(DateTimeOffset requestedDateTime = default(DateTimeOffset), bool isBusinessDay = default(bool))
         {
-            
             this.RequestedDateTime = requestedDateTime;
-            
             this.IsBusinessDay = isBusinessDay;
         }
 

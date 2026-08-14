@@ -48,12 +48,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="notional">The notional (required).</param>
         /// <param name="payReceive">PayReceive flag for the inflation leg.  This field is optional and defaults to Pay.    Supported string (enumeration) values are: [Pay, Receive]..</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public InflationLeg(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), FlowConventions flowConventions = default(FlowConventions), decimal? baseCPI = default(decimal?), string calculationType = default(string), decimal? capRate = default(decimal?), decimal? floorRate = default(decimal?), InflationIndexConventions inflationIndexConventions = default(InflationIndexConventions), decimal notional = default(decimal), string payReceive = default(string), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
-            
             this.StartDate = startDate;
-            
             this.MaturityDate = maturityDate;
             // to ensure "flowConventions" is required (not null)
             if (flowConventions == null)
@@ -73,15 +71,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("inflationIndexConventions is a required property for InflationLeg and cannot be null");
             }
             this.InflationIndexConventions = inflationIndexConventions;
-            
             this.Notional = notional;
-            
-            // to ensure "instrumentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
-            {
-                throw new ArgumentException("instrumentType is a required property for InflationLeg and must be a defined value");
-            }
-            
             this.InstrumentType = instrumentType;
             this.BaseCPI = baseCPI;
             this.CapRate = capRate;

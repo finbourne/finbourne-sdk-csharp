@@ -63,7 +63,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("pnL is a required property for FundValuationPointData and cannot be null");
             }
             this.PnL = pnL;
-            
             this.Gav = gav;
             // to ensure "fees" is required (not null)
             if (fees == null)
@@ -71,7 +70,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("fees is a required property for FundValuationPointData and cannot be null");
             }
             this.Fees = fees;
-            
             this.Nav = nav;
             this.Miscellaneous = miscellaneous;
             this.PreviousValuationPointData = previousValuationPointData;

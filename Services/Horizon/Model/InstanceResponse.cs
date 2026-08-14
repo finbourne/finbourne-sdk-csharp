@@ -47,7 +47,6 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="destinations">destinations (required).</param>
         public InstanceResponse(Guid id = default(Guid), string name = default(string), bool enabled = default(bool), List<TpfPortfolio> portfolios = default(List<TpfPortfolio>), string schedule = default(string), string scheduleTimezone = default(string), DateTimeOffset? lastRunAt = default(DateTimeOffset?), string lastRunStatus = default(string), string latestRunsIn24Hours = default(string), List<InstanceDestinations> destinations = default(List<InstanceDestinations>))
         {
-            
             this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
@@ -55,7 +54,6 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("name is a required property for InstanceResponse and cannot be null");
             }
             this.Name = name;
-            
             this.Enabled = enabled;
             // to ensure "portfolios" is required (not null)
             if (portfolios == null)

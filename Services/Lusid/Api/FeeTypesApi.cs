@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateFeeType: Create a FeeType.
+        /// [EARLY ACCESS] CreateFeeType: Create a FeeType.
         /// </summary>
         /// <remarks>
         /// Create a FeeType that contains templates used to create fee transactions.
@@ -45,7 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FeeType CreateFeeType(string scope, FeeTypeRequest feeTypeRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFeeType: Create a FeeType.
+        /// [EARLY ACCESS] CreateFeeType: Create a FeeType.
         /// </summary>
         /// <remarks>
         /// Create a FeeType that contains templates used to create fee transactions.
@@ -58,7 +58,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FeeType</returns>
         Finbourne.Sdk.Client.ApiResponse<FeeType> CreateFeeTypeWithHttpInfo(string scope, FeeTypeRequest feeTypeRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFeeType: Delete a FeeType.
+        /// [EARLY ACCESS] DeleteFeeType: Delete a FeeType.
         /// </summary>
         /// <remarks>
         /// Delete a FeeType that contains templates used to create fee transactions.
@@ -72,7 +72,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeleteFeeType(string scope, string code, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFeeType: Delete a FeeType.
+        /// [EARLY ACCESS] DeleteFeeType: Delete a FeeType.
         /// </summary>
         /// <remarks>
         /// Delete a FeeType that contains templates used to create fee transactions.
@@ -85,7 +85,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteFeeTypeWithHttpInfo(string scope, string code, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
+        /// [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
         /// </summary>
         /// <remarks>
         /// Get FeeTemplateSpecifications used in the FeeType.
@@ -97,7 +97,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FeeTransactionTemplateSpecification GetFeeTemplateSpecifications(int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
+        /// [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
         /// </summary>
         /// <remarks>
         /// Get FeeTemplateSpecifications used in the FeeType.
@@ -108,7 +108,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FeeTransactionTemplateSpecification</returns>
         Finbourne.Sdk.Client.ApiResponse<FeeTransactionTemplateSpecification> GetFeeTemplateSpecificationsWithHttpInfo(int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeType: Get a FeeType
+        /// [EARLY ACCESS] GetFeeType: Get a FeeType
         /// </summary>
         /// <remarks>
         /// Get a FeeType that contains templates used to create fee transactions.
@@ -123,7 +123,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FeeType GetFeeType(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeType: Get a FeeType
+        /// [EARLY ACCESS] GetFeeType: Get a FeeType
         /// </summary>
         /// <remarks>
         /// Get a FeeType that contains templates used to create fee transactions.
@@ -137,7 +137,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FeeType</returns>
         Finbourne.Sdk.Client.ApiResponse<FeeType> GetFeeTypeWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListFeeTypes: List FeeTypes
+        /// [EARLY ACCESS] ListFeeTypes: List FeeTypes
         /// </summary>
         /// <remarks>
         /// List FeeTypes that contain templates used to create fee transactions.
@@ -154,7 +154,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfFeeType ListFeeTypes(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFeeTypes: List FeeTypes
+        /// [EARLY ACCESS] ListFeeTypes: List FeeTypes
         /// </summary>
         /// <remarks>
         /// List FeeTypes that contain templates used to create fee transactions.
@@ -170,7 +170,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfFeeType</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFeeType> ListFeeTypesWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpdateFeeType: Update a FeeType.
+        /// [EARLY ACCESS] UpdateFeeType: Update a FeeType.
         /// </summary>
         /// <remarks>
         /// Update a FeeType that contains templates used to create fee transactions.
@@ -185,7 +185,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FeeType UpdateFeeType(string scope, string code, UpdateFeeTypeRequest updateFeeTypeRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateFeeType: Update a FeeType.
+        /// [EARLY ACCESS] UpdateFeeType: Update a FeeType.
         /// </summary>
         /// <remarks>
         /// Update a FeeType that contains templates used to create fee transactions.
@@ -208,7 +208,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateFeeType: Create a FeeType.
+        /// [EARLY ACCESS] CreateFeeType: Create a FeeType.
         /// </summary>
         /// <remarks>
         /// Create a FeeType that contains templates used to create fee transactions.
@@ -223,7 +223,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FeeType> CreateFeeTypeAsync(string scope, FeeTypeRequest feeTypeRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFeeType: Create a FeeType.
+        /// [EARLY ACCESS] CreateFeeType: Create a FeeType.
         /// </summary>
         /// <remarks>
         /// Create a FeeType that contains templates used to create fee transactions.
@@ -237,7 +237,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (FeeType)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FeeType>> CreateFeeTypeWithHttpInfoAsync(string scope, FeeTypeRequest feeTypeRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFeeType: Delete a FeeType.
+        /// [EARLY ACCESS] DeleteFeeType: Delete a FeeType.
         /// </summary>
         /// <remarks>
         /// Delete a FeeType that contains templates used to create fee transactions.
@@ -252,7 +252,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeleteFeeTypeAsync(string scope, string code, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFeeType: Delete a FeeType.
+        /// [EARLY ACCESS] DeleteFeeType: Delete a FeeType.
         /// </summary>
         /// <remarks>
         /// Delete a FeeType that contains templates used to create fee transactions.
@@ -266,7 +266,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteFeeTypeWithHttpInfoAsync(string scope, string code, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
+        /// [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
         /// </summary>
         /// <remarks>
         /// Get FeeTemplateSpecifications used in the FeeType.
@@ -279,7 +279,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FeeTransactionTemplateSpecification> GetFeeTemplateSpecificationsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
+        /// [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
         /// </summary>
         /// <remarks>
         /// Get FeeTemplateSpecifications used in the FeeType.
@@ -291,7 +291,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (FeeTransactionTemplateSpecification)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FeeTransactionTemplateSpecification>> GetFeeTemplateSpecificationsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeType: Get a FeeType
+        /// [EARLY ACCESS] GetFeeType: Get a FeeType
         /// </summary>
         /// <remarks>
         /// Get a FeeType that contains templates used to create fee transactions.
@@ -307,7 +307,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FeeType> GetFeeTypeAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeType: Get a FeeType
+        /// [EARLY ACCESS] GetFeeType: Get a FeeType
         /// </summary>
         /// <remarks>
         /// Get a FeeType that contains templates used to create fee transactions.
@@ -322,7 +322,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (FeeType)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FeeType>> GetFeeTypeWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListFeeTypes: List FeeTypes
+        /// [EARLY ACCESS] ListFeeTypes: List FeeTypes
         /// </summary>
         /// <remarks>
         /// List FeeTypes that contain templates used to create fee transactions.
@@ -340,7 +340,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfFeeType> ListFeeTypesAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFeeTypes: List FeeTypes
+        /// [EARLY ACCESS] ListFeeTypes: List FeeTypes
         /// </summary>
         /// <remarks>
         /// List FeeTypes that contain templates used to create fee transactions.
@@ -357,7 +357,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfFeeType)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFeeType>> ListFeeTypesWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpdateFeeType: Update a FeeType.
+        /// [EARLY ACCESS] UpdateFeeType: Update a FeeType.
         /// </summary>
         /// <remarks>
         /// Update a FeeType that contains templates used to create fee transactions.
@@ -373,7 +373,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FeeType> UpdateFeeTypeAsync(string scope, string code, UpdateFeeTypeRequest updateFeeTypeRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateFeeType: Update a FeeType.
+        /// [EARLY ACCESS] UpdateFeeType: Update a FeeType.
         /// </summary>
         /// <remarks>
         /// Update a FeeType that contains templates used to create fee transactions.
@@ -482,7 +482,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFeeType: Create a FeeType. Create a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] CreateFeeType: Create a FeeType. Create a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FeeType.</param>
@@ -497,7 +497,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFeeType: Create a FeeType. Create a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] CreateFeeType: Create a FeeType. Create a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -606,7 +606,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFeeType: Create a FeeType. Create a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] CreateFeeType: Create a FeeType. Create a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FeeType.</param>
@@ -622,7 +622,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFeeType: Create a FeeType. Create a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] CreateFeeType: Create a FeeType. Create a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -734,7 +734,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFeeType: Delete a FeeType. Delete a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] DeleteFeeType: Delete a FeeType. Delete a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FeeType.</param>
@@ -749,7 +749,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFeeType: Delete a FeeType. Delete a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] DeleteFeeType: Delete a FeeType. Delete a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -854,7 +854,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFeeType: Delete a FeeType. Delete a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] DeleteFeeType: Delete a FeeType. Delete a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FeeType.</param>
@@ -870,7 +870,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFeeType: Delete a FeeType. Delete a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] DeleteFeeType: Delete a FeeType. Delete a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -978,7 +978,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. Get FeeTemplateSpecifications used in the FeeType.
+        /// [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. Get FeeTemplateSpecifications used in the FeeType.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -991,7 +991,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. Get FeeTemplateSpecifications used in the FeeType.
+        /// [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. Get FeeTemplateSpecifications used in the FeeType.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1080,7 +1080,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. Get FeeTemplateSpecifications used in the FeeType.
+        /// [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. Get FeeTemplateSpecifications used in the FeeType.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1094,7 +1094,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. Get FeeTemplateSpecifications used in the FeeType.
+        /// [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. Get FeeTemplateSpecifications used in the FeeType.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1186,7 +1186,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeType: Get a FeeType Get a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] GetFeeType: Get a FeeType Get a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FeeType</param>
@@ -1202,7 +1202,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeType: Get a FeeType Get a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] GetFeeType: Get a FeeType Get a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1312,7 +1312,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeType: Get a FeeType Get a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] GetFeeType: Get a FeeType Get a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FeeType</param>
@@ -1329,7 +1329,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFeeType: Get a FeeType Get a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] GetFeeType: Get a FeeType Get a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1442,7 +1442,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFeeTypes: List FeeTypes List FeeTypes that contain templates used to create fee transactions.
+        /// [EARLY ACCESS] ListFeeTypes: List FeeTypes List FeeTypes that contain templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list the FeeTypes. Defaults to returning the latest version of each FeeType if not specified. (optional)</param>
@@ -1460,7 +1460,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFeeTypes: List FeeTypes List FeeTypes that contain templates used to create fee transactions.
+        /// [EARLY ACCESS] ListFeeTypes: List FeeTypes List FeeTypes that contain templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1574,7 +1574,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFeeTypes: List FeeTypes List FeeTypes that contain templates used to create fee transactions.
+        /// [EARLY ACCESS] ListFeeTypes: List FeeTypes List FeeTypes that contain templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list the FeeTypes. Defaults to returning the latest version of each FeeType if not specified. (optional)</param>
@@ -1593,7 +1593,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFeeTypes: List FeeTypes List FeeTypes that contain templates used to create fee transactions.
+        /// [EARLY ACCESS] ListFeeTypes: List FeeTypes List FeeTypes that contain templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1710,7 +1710,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateFeeType: Update a FeeType. Update a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] UpdateFeeType: Update a FeeType. Update a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FeeType.</param>
@@ -1726,7 +1726,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateFeeType: Update a FeeType. Update a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] UpdateFeeType: Update a FeeType. Update a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1843,7 +1843,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateFeeType: Update a FeeType. Update a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] UpdateFeeType: Update a FeeType. Update a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FeeType.</param>
@@ -1860,7 +1860,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateFeeType: Update a FeeType. Update a FeeType that contains templates used to create fee transactions.
+        /// [EARLY ACCESS] UpdateFeeType: Update a FeeType. Update a FeeType that contains templates used to create fee transactions.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

@@ -39,7 +39,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public UpsertInstrumentPropertiesResponse(DateTimeOffset asAtDate = default(DateTimeOffset), List<Link> links = default(List<Link>))
         {
-            
             this.AsAtDate = asAtDate;
             this.Links = links;
         }

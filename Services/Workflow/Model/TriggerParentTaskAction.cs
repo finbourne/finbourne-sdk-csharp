@@ -59,13 +59,6 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="trigger">Trigger on parent task to be invoked (required).</param>
         public TriggerParentTaskAction(TypeEnum type = default(TypeEnum), string trigger = default(string))
         {
-            
-            // to ensure "type" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
-            {
-                throw new ArgumentException("type is a required property for TriggerParentTaskAction and must be a defined value");
-            }
-            
             this.Type = type;
             // to ensure "trigger" is required (not null)
             if (trigger == null)

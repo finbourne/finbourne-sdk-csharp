@@ -48,10 +48,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="haircutFraction">The fraction of the gross amount removed by the haircut, in the range [0, 1]. Zero for outflows and for cashflows no rule matched. Only populated when haircut rules were supplied on the request..</param>
         /// <param name="netAmount">The signed amount of the cashflow net of the haircut. Only populated when haircut rules were supplied on the request..</param>
         /// <param name="haircutRuleApplied">The identifier of the haircut rule that was applied to the cashflow, or not present when no rule matched or no haircut rules were supplied on the request..</param>
+        /// <param name="error">Only present when the cashflow could not be valued, for example because of missing market data: the valuation error, matching the CashflowError diagnostic reported by the QueryCashFlows endpoint. When set, the amount is null rather than zero..</param>
         /// <param name="links">links.</param>
-        public CashFlowDetail(DateTimeOffset paymentDate = default(DateTimeOffset), decimal? amount = default(decimal?), string currency = default(string), string sourceType = default(string), string instrumentId = default(string), string transactionId = default(string), ResourceId portfolioId = default(ResourceId), string flowType = default(string), string payReceive = default(string), decimal? grossAmount = default(decimal?), decimal? haircutFraction = default(decimal?), decimal? netAmount = default(decimal?), string haircutRuleApplied = default(string), List<Link> links = default(List<Link>))
+        public CashFlowDetail(DateTimeOffset paymentDate = default(DateTimeOffset), decimal? amount = default(decimal?), string currency = default(string), string sourceType = default(string), string instrumentId = default(string), string transactionId = default(string), ResourceId portfolioId = default(ResourceId), string flowType = default(string), string payReceive = default(string), decimal? grossAmount = default(decimal?), decimal? haircutFraction = default(decimal?), decimal? netAmount = default(decimal?), string haircutRuleApplied = default(string), string error = default(string), List<Link> links = default(List<Link>))
         {
-            
             this.PaymentDate = paymentDate;
             // to ensure "currency" is required (not null)
             if (currency == null)
@@ -85,6 +85,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.HaircutFraction = haircutFraction;
             this.NetAmount = netAmount;
             this.HaircutRuleApplied = haircutRuleApplied;
+            this.Error = error;
             this.Links = links;
         }
 
@@ -179,6 +180,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string HaircutRuleApplied { get; set; }
 
         /// <summary>
+        /// Only present when the cashflow could not be valued, for example because of missing market data: the valuation error, matching the CashflowError diagnostic reported by the QueryCashFlows endpoint. When set, the amount is null rather than zero.
+        /// </summary>
+        /// <value>Only present when the cashflow could not be valued, for example because of missing market data: the valuation error, matching the CashflowError diagnostic reported by the QueryCashFlows endpoint. When set, the amount is null rather than zero.</value>
+        [DataMember(Name = "error", EmitDefaultValue = true)]
+        public string Error { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -205,6 +213,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  HaircutFraction: ").Append(HaircutFraction).Append("\n");
             sb.Append("  NetAmount: ").Append(NetAmount).Append("\n");
             sb.Append("  HaircutRuleApplied: ").Append(HaircutRuleApplied).Append("\n");
+            sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -307,6 +316,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.HaircutRuleApplied.Equals(input.HaircutRuleApplied))
                 ) && 
                 (
+                    this.Error == input.Error ||
+                    (this.Error != null &&
+                    this.Error.Equals(input.Error))
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -374,6 +388,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.HaircutRuleApplied != null)
                 {
                     hashCode = (hashCode * 59) + this.HaircutRuleApplied.GetHashCode();
+                }
+                if (this.Error != null)
+                {
+                    hashCode = (hashCode * 59) + this.Error.GetHashCode();
                 }
                 if (this.Links != null)
                 {

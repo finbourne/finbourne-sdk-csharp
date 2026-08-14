@@ -79,13 +79,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("path is a required property for AccessMetadataOperation and cannot be null");
             }
             this.Path = path;
-            
-            // to ensure "op" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(OpEnum), op))
-            {
-                throw new ArgumentException("op is a required property for AccessMetadataOperation and must be a defined value");
-            }
-            
             this.Op = op;
             this.From = from;
         }

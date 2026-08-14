@@ -51,7 +51,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("type is a required property for WorkspaceItem and cannot be null");
             }
             this.Type = type;
-            
             this.Format = format;
             // to ensure "name" is required (not null)
             if (name == null)

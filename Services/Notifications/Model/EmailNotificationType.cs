@@ -64,13 +64,6 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="emailAddressBcc">&#39;Bcc&#39; recipients of the email.</param>
         public EmailNotificationType(TypeEnum type = default(TypeEnum), string subject = default(string), string plainTextBody = default(string), string htmlBody = default(string), List<string> emailAddressTo = default(List<string>), List<string> emailAddressCc = default(List<string>), List<string> emailAddressBcc = default(List<string>))
         {
-            
-            // to ensure "type" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
-            {
-                throw new ArgumentException("type is a required property for EmailNotificationType and must be a defined value");
-            }
-            
             this.Type = type;
             // to ensure "subject" is required (not null)
             if (subject == null)

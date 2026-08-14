@@ -40,11 +40,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="forceMatched">The number of Force Matched results. (required).</param>
         public RecExceptionCountByClosureType(int cleared = default(int), int accepted = default(int), int forceMatched = default(int))
         {
-            
             this.Cleared = cleared;
-            
             this.Accepted = accepted;
-            
             this.ForceMatched = forceMatched;
         }
 

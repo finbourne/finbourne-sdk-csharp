@@ -54,11 +54,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("bucketType is a required property for BucketSetResultBucket and cannot be null");
             }
             this.BucketType = bucketType;
-            
             this.Value = value;
-            
             this.PreviousCumulativeValue = previousCumulativeValue;
-            
             this.CumulativeValue = cumulativeValue;
         }
 

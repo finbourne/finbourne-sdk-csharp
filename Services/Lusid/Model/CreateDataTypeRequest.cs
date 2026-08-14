@@ -257,13 +257,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("code is a required property for CreateDataTypeRequest and cannot be null");
             }
             this.Code = code;
-            
-            // to ensure "typeValueRange" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TypeValueRangeEnum), typeValueRange))
-            {
-                throw new ArgumentException("typeValueRange is a required property for CreateDataTypeRequest and must be a defined value");
-            }
-            
             this.TypeValueRange = typeValueRange;
             // to ensure "displayName" is required (not null)
             if (displayName == null)
@@ -277,13 +270,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("description is a required property for CreateDataTypeRequest and cannot be null");
             }
             this.Description = description;
-            
-            // to ensure "valueType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ValueTypeEnum), valueType))
-            {
-                throw new ArgumentException("valueType is a required property for CreateDataTypeRequest and must be a defined value");
-            }
-            
             this.ValueType = valueType;
             this.AcceptableValues = acceptableValues;
             this.UnitSchema = unitSchema;

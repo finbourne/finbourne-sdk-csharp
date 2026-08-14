@@ -5,10 +5,10 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**DeleteSubscription**](#deletesubscription) | **DELETE** `/api/api/subscriptions/holdings/{scope}/{code}` | [EARLY ACCESS] DeleteSubscription: Delete a Subscription, assuming that it is present. |
-| [**GetSubscription**](#getsubscription) | **GET** `/api/api/subscriptions/holdings/{scope}/{code}` | [EARLY ACCESS] GetSubscription: Get Subscription |
-| [**ListSubscriptions**](#listsubscriptions) | **GET** `/api/api/subscriptions/holdings/{scope}` | [EARLY ACCESS] ListSubscriptions: List the set of Subscription definitions |
-| [**UpsertSubscription**](#upsertsubscription) | **POST** `/api/api/subscriptions/holdings` | [EARLY ACCESS] UpsertSubscription: Upsert a Subscription. This creates or updates the subscription definition in LUSID. |
+| [**DeleteSubscription**](#deletesubscription) | **DELETE** `/api/api/subscriptions/{scope}/{code}` | [EARLY ACCESS] DeleteSubscription: Delete a Subscription, assuming that it is present. |
+| [**GetSubscription**](#getsubscription) | **GET** `/api/api/subscriptions/{scope}/{code}` | [EARLY ACCESS] GetSubscription: Get Subscription |
+| [**ListSubscriptions**](#listsubscriptions) | **GET** `/api/api/subscriptions/{scope}` | [EARLY ACCESS] ListSubscriptions: List the set of Subscription definitions |
+| [**UpsertSubscription**](#upsertsubscription) | **POST** `/api/api/subscriptions` | [EARLY ACCESS] UpsertSubscription: Upsert a Subscription. This creates or updates the subscription definition in LUSID. |
 
 ### Example
 

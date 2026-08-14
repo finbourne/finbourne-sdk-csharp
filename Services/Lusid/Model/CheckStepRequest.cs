@@ -47,13 +47,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("label is a required property for CheckStepRequest and cannot be null");
             }
             this.Label = label;
-            
-            // to ensure "complianceStepTypeRequest" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ComplianceStepTypeRequestEnum), complianceStepTypeRequest))
-            {
-                throw new ArgumentException("complianceStepTypeRequest is a required property for CheckStepRequest and must be a defined value");
-            }
-            
             this.ComplianceStepTypeRequest = complianceStepTypeRequest;
         }
 

@@ -41,7 +41,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="varyingNotionalCurrency">The currency of the varying notional amount. (required).</param>
         /// <param name="varyingNotionalFixingDates">varyingNotionalFixingDates (required).</param>
         /// <param name="varyingNotionalInterimExchangePaymentDates">varyingNotionalInterimExchangePaymentDates.</param>
-        /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid. (required) (default to ScheduleTypeEnum.FixedSchedule).</param>
+        /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule. (required) (default to ScheduleTypeEnum.FixedSchedule).</param>
         public FxLinkedNotionalSchedule(FxConventions fxConventions = default(FxConventions), string varyingNotionalCurrency = default(string), RelativeDateOffset varyingNotionalFixingDates = default(RelativeDateOffset), RelativeDateOffset varyingNotionalInterimExchangePaymentDates = default(RelativeDateOffset), ScheduleTypeEnum scheduleType = default(ScheduleTypeEnum)) : base()
         {
             // to ensure "fxConventions" is required (not null)
@@ -62,13 +62,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("varyingNotionalFixingDates is a required property for FxLinkedNotionalSchedule and cannot be null");
             }
             this.VaryingNotionalFixingDates = varyingNotionalFixingDates;
-            
-            // to ensure "scheduleType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ScheduleTypeEnum), scheduleType))
-            {
-                throw new ArgumentException("scheduleType is a required property for FxLinkedNotionalSchedule and must be a defined value");
-            }
-            
             this.ScheduleType = scheduleType;
             this.VaryingNotionalInterimExchangePaymentDates = varyingNotionalInterimExchangePaymentDates;
         }

@@ -55,7 +55,6 @@ namespace Finbourne.Sdk.Services.Configuration.Model
                 throw new ArgumentNullException("value is a required property for CreateConfigurationItem and cannot be null");
             }
             this.Value = value;
-            
             this.IsSecret = isSecret;
             this.ValueType = valueType;
             this.Description = description;

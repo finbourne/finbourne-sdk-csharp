@@ -39,9 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="calculateTradeDateToSettlementFxPnL">An optional flag that allows for the calculation of FxPnL between Trade and Settlement Date. (required).</param>
         public NavSettlementConfigurationCategory(bool calculateInstructionToPortfolioRate = default(bool), bool calculateTradeDateToSettlementFxPnL = default(bool))
         {
-            
             this.CalculateInstructionToPortfolioRate = calculateInstructionToPortfolioRate;
-            
             this.CalculateTradeDateToSettlementFxPnL = calculateTradeDateToSettlementFxPnL;
         }
 

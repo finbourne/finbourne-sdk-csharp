@@ -95,7 +95,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("businessDayConvention is a required property for Fee and cannot be null");
             }
             this.BusinessDayConvention = businessDayConvention;
-            
             this.StartDate = startDate;
             this.Href = href;
             this.FeeCode = feeCode;

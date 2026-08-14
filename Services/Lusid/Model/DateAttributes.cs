@@ -45,11 +45,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="lastClose">lastClose.</param>
         public DateAttributes(bool irregular = default(bool), bool irregularSession = default(bool), bool newHours = default(bool), string activity = default(string), string firstOpen = default(string), string lastOpen = default(string), string firstClose = default(string), string lastClose = default(string))
         {
-            
             this.Irregular = irregular;
-            
             this.IrregularSession = irregularSession;
-            
             this.NewHours = newHours;
             this.Activity = activity;
             this.FirstOpen = firstOpen;

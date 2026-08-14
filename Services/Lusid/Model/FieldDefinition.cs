@@ -47,9 +47,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("key is a required property for FieldDefinition and cannot be null");
             }
             this.Key = key;
-            
             this.IsRequired = isRequired;
-            
             this.IsUnique = isUnique;
             this.ValueType = valueType;
         }

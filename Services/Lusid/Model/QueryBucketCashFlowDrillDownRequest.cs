@@ -44,13 +44,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="effectiveAt">The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up. (required).</param>
         /// <param name="recipeId">recipeId (required).</param>
         /// <param name="reportCurrency">Three letter ISO currency string indicating what currency to report in for ReportCurrency denominated queries. (required).</param>
-        /// <param name="excludeUnsettledTrades">If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket..</param>
+        /// <param name="excludeUnsettledTrades">If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket. Note that the drill-down returns the complete resolved stream including transaction-sourced cashflows; if the bucketed query used the (default) InstrumentCashFlow representation, also exclude rows with a sourceType of &#39;Transaction&#39; when reconciling..</param>
         /// <param name="haircutRules">Optional ordered haircut rules applied to cashflow inflows; the first matching rule wins and a rule with no criteria acts as a catch-all. When supplied, each returned cashflow carries its gross amount, haircut fraction, net amount and the rule that was applied; with no rules those fields are omitted and the results are unchanged..</param>
         public QueryBucketCashFlowDrillDownRequest(DateTimeOffset? asAt = default(DateTimeOffset?), DateTimeOffset bucketStart = default(DateTimeOffset), DateTimeOffset bucketEnd = default(DateTimeOffset), bool startInclusive = default(bool), bool endInclusive = default(bool), List<PortfolioEntityId> portfolioEntityIds = default(List<PortfolioEntityId>), DateTimeOffset effectiveAt = default(DateTimeOffset), ResourceId recipeId = default(ResourceId), string reportCurrency = default(string), bool excludeUnsettledTrades = default(bool), List<CashFlowHaircutRule> haircutRules = default(List<CashFlowHaircutRule>))
         {
-            
             this.BucketStart = bucketStart;
-            
             this.BucketEnd = bucketEnd;
             // to ensure "portfolioEntityIds" is required (not null)
             if (portfolioEntityIds == null)
@@ -58,7 +56,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("portfolioEntityIds is a required property for QueryBucketCashFlowDrillDownRequest and cannot be null");
             }
             this.PortfolioEntityIds = portfolioEntityIds;
-            
             this.EffectiveAt = effectiveAt;
             // to ensure "recipeId" is required (not null)
             if (recipeId == null)
@@ -142,9 +139,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string ReportCurrency { get; set; }
 
         /// <summary>
-        /// If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket.
+        /// If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket. Note that the drill-down returns the complete resolved stream including transaction-sourced cashflows; if the bucketed query used the (default) InstrumentCashFlow representation, also exclude rows with a sourceType of &#39;Transaction&#39; when reconciling.
         /// </summary>
-        /// <value>If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket.</value>
+        /// <value>If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket. Note that the drill-down returns the complete resolved stream including transaction-sourced cashflows; if the bucketed query used the (default) InstrumentCashFlow representation, also exclude rows with a sourceType of &#39;Transaction&#39; when reconciling.</value>
         [DataMember(Name = "excludeUnsettledTrades", EmitDefaultValue = true)]
         public bool ExcludeUnsettledTrades { get; set; }
 

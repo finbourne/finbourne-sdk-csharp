@@ -46,8 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="subscriptionType">The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions..</param>
         /// <param name="startEffectiveAt">startEffectiveAt.</param>
         /// <param name="endEffectiveAt">endEffectiveAt.</param>
-        /// <param name="startAsAt">startAsAt.</param>
-        public SubscriptionDefinition(string scope = default(string), string code = default(string), string displayName = default(string), string description = default(string), ResourceId portfolioId = default(ResourceId), ResourceId timelineId = default(ResourceId), List<string> addressKeys = default(List<string>), bool byTaxLots = default(bool), string subscriptionType = default(string), DateTimeOffset? startEffectiveAt = default(DateTimeOffset?), DateTimeOffset? endEffectiveAt = default(DateTimeOffset?), DateTimeOffset? startAsAt = default(DateTimeOffset?))
+        public SubscriptionDefinition(string scope = default(string), string code = default(string), string displayName = default(string), string description = default(string), ResourceId portfolioId = default(ResourceId), ResourceId timelineId = default(ResourceId), List<string> addressKeys = default(List<string>), bool byTaxLots = default(bool), string subscriptionType = default(string), DateTimeOffset? startEffectiveAt = default(DateTimeOffset?), DateTimeOffset? endEffectiveAt = default(DateTimeOffset?))
         {
             // to ensure "scope" is required (not null)
             if (scope == null)
@@ -75,7 +74,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.SubscriptionType = subscriptionType;
             this.StartEffectiveAt = startEffectiveAt;
             this.EndEffectiveAt = endEffectiveAt;
-            this.StartAsAt = startAsAt;
         }
 
         /// <summary>
@@ -147,12 +145,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public DateTimeOffset? EndEffectiveAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets StartAsAt
-        /// </summary>
-        [DataMember(Name = "startAsAt", EmitDefaultValue = true)]
-        public DateTimeOffset? StartAsAt { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -171,7 +163,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  SubscriptionType: ").Append(SubscriptionType).Append("\n");
             sb.Append("  StartEffectiveAt: ").Append(StartEffectiveAt).Append("\n");
             sb.Append("  EndEffectiveAt: ").Append(EndEffectiveAt).Append("\n");
-            sb.Append("  StartAsAt: ").Append(StartAsAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -261,11 +252,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.EndEffectiveAt == input.EndEffectiveAt ||
                     (this.EndEffectiveAt != null &&
                     this.EndEffectiveAt.Equals(input.EndEffectiveAt))
-                ) && 
-                (
-                    this.StartAsAt == input.StartAsAt ||
-                    (this.StartAsAt != null &&
-                    this.StartAsAt.Equals(input.StartAsAt))
                 );
         }
 
@@ -318,10 +304,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.EndEffectiveAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndEffectiveAt.GetHashCode();
-                }
-                if (this.StartAsAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.StartAsAt.GetHashCode();
                 }
                 return hashCode;
             }

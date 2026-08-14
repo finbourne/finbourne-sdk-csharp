@@ -28,6 +28,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     [DataContract(Name = "Schedule")]
     [JsonConverter(typeof(JsonSubtypes), "ScheduleType")]
     [JsonSubtypes.KnownSubType(typeof(BondConversionSchedule), "BondConversionSchedule")]
+    [JsonSubtypes.KnownSubType(typeof(CancelSchedule), "CancelSchedule")]
     [JsonSubtypes.KnownSubType(typeof(FixedSchedule), "FixedSchedule")]
     [JsonSubtypes.KnownSubType(typeof(FloatSchedule), "FloatSchedule")]
     [JsonSubtypes.KnownSubType(typeof(FxLinkedNotionalSchedule), "FxLinkedNotionalSchedule")]
@@ -38,9 +39,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class Schedule : IEquatable<Schedule>, IValidatableObject
     {
         /// <summary>
-        /// Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid.
+        /// Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule.
         /// </summary>
-        /// <value>Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid.</value>
+        /// <value>Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ScheduleTypeEnum
         {
@@ -102,13 +103,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             /// Enum Invalid for value: Invalid
             /// </summary>
             [EnumMember(Value = "Invalid")]
-            Invalid = 10
+            Invalid = 10,
+
+            /// <summary>
+            /// Enum CancelSchedule for value: CancelSchedule
+            /// </summary>
+            [EnumMember(Value = "CancelSchedule")]
+            CancelSchedule = 11
         }
 
         /// <summary>
-        /// Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid.
+        /// Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule.
         /// </summary>
-        /// <value>Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid.</value>
+        /// <value>Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule.</value>
         [DataMember(Name = "scheduleType", IsRequired = true, EmitDefaultValue = true)]
         public ScheduleTypeEnum ScheduleType { get; set; }
         /// <summary>
@@ -119,16 +126,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Schedule" /> class.
         /// </summary>
-        /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid. (required).</param>
+        /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule. (required).</param>
         public Schedule(ScheduleTypeEnum scheduleType = default(ScheduleTypeEnum))
         {
-            
-            // to ensure "scheduleType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ScheduleTypeEnum), scheduleType))
-            {
-                throw new ArgumentException("scheduleType is a required property for Schedule and must be a defined value");
-            }
-            
             this.ScheduleType = scheduleType;
         }
 

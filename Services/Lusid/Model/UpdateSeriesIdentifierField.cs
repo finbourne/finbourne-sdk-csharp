@@ -54,7 +54,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("dataTypeId is a required property for UpdateSeriesIdentifierField and cannot be null");
             }
             this.DataTypeId = dataTypeId;
-            
             this.Required = required;
             this.DisplayName = displayName;
             this.Description = description;

@@ -54,7 +54,6 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("runId is a required property for AuditProcess and cannot be null");
             }
             this.RunId = runId;
-            
             this.StartTime = startTime;
             this.EndTime = endTime;
             this.Succeeded = succeeded;

@@ -39,7 +39,6 @@ namespace Finbourne.Sdk.Services.Insights.Model
         /// <param name="unit">The unit of the offset. One of the Finbourne.Insights.WebApi.Dtos.Querying.RelativeTimeUnit values. (required).</param>
         public RelativeOffset(int amount = default(int), string unit = default(string))
         {
-            
             this.Amount = amount;
             // to ensure "unit" is required (not null)
             if (unit == null)

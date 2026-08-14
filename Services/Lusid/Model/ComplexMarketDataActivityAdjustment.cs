@@ -50,7 +50,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("navActivityAdjustmentSource is a required property for ComplexMarketDataActivityAdjustment and cannot be null");
             }
             this.NavActivityAdjustmentSource = navActivityAdjustmentSource;
-            
             this.AsAt = asAt;
             // to ensure "effectiveAt" is required (not null)
             if (effectiveAt == null)
@@ -64,13 +63,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("entityUniqueId is a required property for ComplexMarketDataActivityAdjustment and cannot be null");
             }
             this.EntityUniqueId = entityUniqueId;
-            
-            // to ensure "navActivityAdjustmentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(NavActivityAdjustmentTypeEnum), navActivityAdjustmentType))
-            {
-                throw new ArgumentException("navActivityAdjustmentType is a required property for ComplexMarketDataActivityAdjustment and must be a defined value");
-            }
-            
             this.NavActivityAdjustmentType = navActivityAdjustmentType;
         }
 

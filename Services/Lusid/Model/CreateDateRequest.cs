@@ -51,9 +51,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("dateId is a required property for CreateDateRequest and cannot be null");
             }
             this.DateId = dateId;
-            
             this.FromUtc = fromUtc;
-            
             this.ToUtc = toUtc;
             // to ensure "varTimeZone" is required (not null)
             if (varTimeZone == null)

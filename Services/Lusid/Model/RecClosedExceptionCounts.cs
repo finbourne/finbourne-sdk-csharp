@@ -40,7 +40,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="byReviewStatus">byReviewStatus (required).</param>
         public RecClosedExceptionCounts(int total = default(int), RecExceptionCountByClosureType byClosureType = default(RecExceptionCountByClosureType), RecResultCountByReviewStatus byReviewStatus = default(RecResultCountByReviewStatus))
         {
-            
             this.Total = total;
             // to ensure "byClosureType" is required (not null)
             if (byClosureType == null)

@@ -109,7 +109,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("totalConsideration is a required property for LusidTradeTicket and cannot be null");
             }
             this.TotalConsideration = totalConsideration;
-            
             this.Units = units;
             // to ensure "instrumentIdentifiers" is required (not null)
             if (instrumentIdentifiers == null)
@@ -117,13 +116,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentIdentifiers is a required property for LusidTradeTicket and cannot be null");
             }
             this.InstrumentIdentifiers = instrumentIdentifiers;
-            
-            // to ensure "tradeTicketType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TradeTicketTypeEnum), tradeTicketType))
-            {
-                throw new ArgumentException("tradeTicketType is a required property for LusidTradeTicket and must be a defined value");
-            }
-            
             this.TradeTicketType = tradeTicketType;
             this.Source = source;
             this.InstrumentScope = instrumentScope;

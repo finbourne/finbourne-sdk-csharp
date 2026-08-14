@@ -39,7 +39,6 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="results">Per-element retry results (required).</param>
         public TpfFailedDeliveryResponse(int submitted = default(int), List<TpfRetryElementResult> results = default(List<TpfRetryElementResult>))
         {
-            
             this.Submitted = submitted;
             // to ensure "results" is required (not null)
             if (results == null)

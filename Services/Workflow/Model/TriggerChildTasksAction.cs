@@ -60,13 +60,6 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="filter">Optional LUSID filter expression to limit the action to a subset of the child tasks.</param>
         public TriggerChildTasksAction(TypeEnum type = default(TypeEnum), string trigger = default(string), string filter = default(string))
         {
-            
-            // to ensure "type" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
-            {
-                throw new ArgumentException("type is a required property for TriggerChildTasksAction and must be a defined value");
-            }
-            
             this.Type = type;
             // to ensure "trigger" is required (not null)
             if (trigger == null)

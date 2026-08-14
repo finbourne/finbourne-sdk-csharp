@@ -46,7 +46,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="links">links.</param>
         public FeeAccrual(DateTimeOffset effectiveAt = default(DateTimeOffset), string code = default(string), string name = default(string), decimal calculationBase = default(decimal), decimal amount = default(decimal), decimal previousAccrual = default(decimal), decimal previousTotalAccrual = default(decimal), decimal totalAccrual = default(decimal), List<Link> links = default(List<Link>))
         {
-            
             this.EffectiveAt = effectiveAt;
             // to ensure "code" is required (not null)
             if (code == null)

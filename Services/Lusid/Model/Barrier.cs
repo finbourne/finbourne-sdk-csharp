@@ -47,7 +47,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("direction is a required property for Barrier and cannot be null");
             }
             this.Direction = direction;
-            
             this.Level = level;
             // to ensure "type" is required (not null)
             if (type == null)

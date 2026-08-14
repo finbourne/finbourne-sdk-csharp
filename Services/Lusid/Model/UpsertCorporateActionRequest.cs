@@ -50,13 +50,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("corporateActionCode is a required property for UpsertCorporateActionRequest and cannot be null");
             }
             this.CorporateActionCode = corporateActionCode;
-            
             this.AnnouncementDate = announcementDate;
-            
             this.ExDate = exDate;
-            
             this.RecordDate = recordDate;
-            
             this.PaymentDate = paymentDate;
             // to ensure "transitions" is required (not null)
             if (transitions == null)

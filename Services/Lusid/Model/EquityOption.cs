@@ -56,12 +56,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="settlementCalendars">Holiday calendars for option exercise date to settlement date calculation..</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
         /// <param name="tradingConventions">tradingConventions.</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public EquityOption(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset optionMaturityDate = default(DateTimeOffset), DateTimeOffset? optionSettlementDate = default(DateTimeOffset?), string deliveryType = default(string), string optionType = default(string), decimal strike = default(decimal), string domCcy = default(string), string underlyingIdentifier = default(string), string code = default(string), string equityOptionType = default(string), decimal? numberOfShares = default(decimal?), Premium premium = default(Premium), string exerciseType = default(string), LusidInstrument underlying = default(LusidInstrument), int deliveryDays = default(int), string businessDayConvention = default(string), List<string> settlementCalendars = default(List<string>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), TradingConventions tradingConventions = default(TradingConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
-            
             this.StartDate = startDate;
-            
             this.OptionMaturityDate = optionMaturityDate;
             // to ensure "deliveryType" is required (not null)
             if (deliveryType == null)
@@ -75,7 +73,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("optionType is a required property for EquityOption and cannot be null");
             }
             this.OptionType = optionType;
-            
             this.Strike = strike;
             // to ensure "domCcy" is required (not null)
             if (domCcy == null)
@@ -83,13 +80,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("domCcy is a required property for EquityOption and cannot be null");
             }
             this.DomCcy = domCcy;
-            
-            // to ensure "instrumentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
-            {
-                throw new ArgumentException("instrumentType is a required property for EquityOption and must be a defined value");
-            }
-            
             this.InstrumentType = instrumentType;
             this.OptionSettlementDate = optionSettlementDate;
             this.UnderlyingIdentifier = underlyingIdentifier;

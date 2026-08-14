@@ -55,7 +55,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("vendorPath is a required property for VendorDependency and cannot be null");
             }
             this.VendorPath = vendorPath;
-            
             this.Date = date;
         }
 

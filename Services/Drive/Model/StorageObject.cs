@@ -73,7 +73,6 @@ namespace Finbourne.Sdk.Services.Drive.Model
                 throw new ArgumentNullException("createdBy is a required property for StorageObject and cannot be null");
             }
             this.CreatedBy = createdBy;
-            
             this.CreatedOn = createdOn;
             // to ensure "updatedBy" is required (not null)
             if (updatedBy == null)
@@ -81,7 +80,6 @@ namespace Finbourne.Sdk.Services.Drive.Model
                 throw new ArgumentNullException("updatedBy is a required property for StorageObject and cannot be null");
             }
             this.UpdatedBy = updatedBy;
-            
             this.UpdatedOn = updatedOn;
             // to ensure "type" is required (not null)
             if (type == null)

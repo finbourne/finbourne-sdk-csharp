@@ -66,9 +66,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("currency is a required property for PaymentInstruction and cannot be null");
             }
             this.Currency = currency;
-            
             this.TotalPaymentAmount = totalPaymentAmount;
-            
             this.PaymentDate = paymentDate;
             // to ensure "payorPaymentDetailsReference" is required (not null)
             if (payorPaymentDetailsReference == null)

@@ -43,10 +43,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="refSpotPrice">The reference spot price for the option at which the contract was entered into. (required).</param>
         /// <param name="tradingConventions">tradingConventions.</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public ExchangeTradedOption(DateTimeOffset startDate = default(DateTimeOffset), ExchangeTradedOptionContractDetails contractDetails = default(ExchangeTradedOptionContractDetails), decimal contracts = default(decimal), decimal refSpotPrice = default(decimal), TradingConventions tradingConventions = default(TradingConventions), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
-            
             this.StartDate = startDate;
             // to ensure "contractDetails" is required (not null)
             if (contractDetails == null)
@@ -54,17 +53,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("contractDetails is a required property for ExchangeTradedOption and cannot be null");
             }
             this.ContractDetails = contractDetails;
-            
             this.Contracts = contracts;
-            
             this.RefSpotPrice = refSpotPrice;
-            
-            // to ensure "instrumentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
-            {
-                throw new ArgumentException("instrumentType is a required property for ExchangeTradedOption and must be a defined value");
-            }
-            
             this.InstrumentType = instrumentType;
             this.TradingConventions = tradingConventions;
             this.TimeZoneConventions = timeZoneConventions;

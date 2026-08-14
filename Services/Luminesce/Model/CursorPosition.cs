@@ -39,9 +39,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="column">Column (0 based) of the user&#39;s cursor position (required).</param>
         public CursorPosition(int row = default(int), int column = default(int))
         {
-            
             this.Row = row;
-            
             this.Column = column;
         }
 

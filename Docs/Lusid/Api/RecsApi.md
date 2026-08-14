@@ -6,11 +6,15 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**AddRecResultSetApprovalDecision**](#addrecresultsetapprovaldecision) | **POST** `/api/api/recs/resultsets/{entityUniqueId}/$decide` | [EXPERIMENTAL] AddRecResultSetApprovalDecision: AddRecResultSetApprovalDecision |
+| [**BatchManageRecResultComments**](#batchmanagerecresultcomments) | **POST** `/api/api/recs/results/$batchManageComments` | [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments |
+| [**BatchReviewRecResults**](#batchreviewrecresults) | **POST** `/api/api/recs/results/$batchReview` | [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults |
 | [**GetRecInstance**](#getrecinstance) | **GET** `/api/api/recs/instances/{instanceIdType}/{instanceIdValue}` | [EXPERIMENTAL] GetRecInstance: GetRecInstance |
+| [**GetRecResult**](#getrecresult) | **GET** `/api/api/recs/results/{id}` | [EXPERIMENTAL] GetRecResult: GetRecResult |
 | [**GetRecResultSet**](#getrecresultset) | **GET** `/api/api/recs/resultsets/{entityUniqueId}` | [EXPERIMENTAL] GetRecResultSet: GetRecResultSet |
 | [**InstantiateRec**](#instantiaterec) | **POST** `/api/api/recs/instances` | [EXPERIMENTAL] InstantiateRec: InstantiateRec |
 | [**ListRecInstances**](#listrecinstances) | **GET** `/api/api/recs/instances` | [EXPERIMENTAL] ListRecInstances: ListRecInstances |
 | [**ListRecResultSets**](#listrecresultsets) | **GET** `/api/api/recs/resultsets` | [EXPERIMENTAL] ListRecResultSets: ListRecResultSets |
+| [**ListRecResults**](#listrecresults) | **GET** `/api/api/recs/results` | [EXPERIMENTAL] ListRecResults: ListRecResults |
 | [**SubmitRecResultSetReview**](#submitrecresultsetreview) | **POST** `/api/api/recs/resultsets/{entityUniqueId}/$submit` | [EXPERIMENTAL] SubmitRecResultSetReview: Submit a rec result set review for approval, or resubmit after addressing requested revisions. |
 | [**TransitionRecInstance**](#transitionrecinstance) | **POST** `/api/api/recs/instances/{instanceIdType}/{instanceIdValue}/$transition` | [EXPERIMENTAL] TransitionRecInstance: TransitionRecInstance |
 
@@ -116,6 +120,126 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="batchmanagerecresultcomments"></a>
+## BatchManageRecResultComments
+
+> BatchManageCommentResponse BatchManageRecResultComments(Dictionary<string, BatchManageCommentRequest> requestBody, string? successMode = null)
+
+[EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments
+
+Add, edit or delete comments on rec results in a batch.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var requestBody = new Dictionary<string, BatchManageCommentRequest>(); // Dictionary<string, BatchManageCommentRequest>
+var successMode = "\"Partial\"";  // string? (optional)
+BatchManageCommentResponse result = apiInstance.BatchManageRecResultComments(requestBody, successMode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **requestBody** | [Dictionary&lt;string, BatchManageCommentRequest&gt;](../Model/BatchManageCommentRequest.md) | body | **required** | The batch of comment operations, keyed by a client-supplied correlation key. |
+| **successMode** | **string?** | query | optional | Whether the batch fails Atomically or in a Partial fashion. Allowed values: Atomic, Partial. Default: `&quot;Partial&quot;` |
+
+### Return type
+
+[BatchManageCommentResponse](../Model/BatchManageCommentResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated rec results, keyed by batch item key. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the BatchManageRecResultCommentsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<BatchManageCommentResponse> response = apiInstance.BatchManageRecResultCommentsWithHttpInfo(requestBody, successMode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="batchreviewrecresults"></a>
+## BatchReviewRecResults
+
+> BatchReviewRecResultResponse BatchReviewRecResults(Dictionary<string, BatchReviewRecResultRequest> requestBody, string? successMode = null)
+
+[EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults
+
+Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var requestBody = new Dictionary<string, BatchReviewRecResultRequest>(); // Dictionary<string, BatchReviewRecResultRequest>
+var successMode = "\"Partial\"";  // string? (optional)
+BatchReviewRecResultResponse result = apiInstance.BatchReviewRecResults(requestBody, successMode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **requestBody** | [Dictionary&lt;string, BatchReviewRecResultRequest&gt;](../Model/BatchReviewRecResultRequest.md) | body | **required** | The batch of review items, keyed by a client-supplied correlation key. |
+| **successMode** | **string?** | query | optional | Whether the batch fails Atomically or in a Partial fashion. Allowed values: Atomic, Partial. Default: `&quot;Partial&quot;` |
+
+### Return type
+
+[BatchReviewRecResultResponse](../Model/BatchReviewRecResultResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The results affected by each batch item. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the BatchReviewRecResultsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<BatchReviewRecResultResponse> response = apiInstance.BatchReviewRecResultsWithHttpInfo(requestBody, successMode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="getrecinstance"></a>
 ## GetRecInstance
 
@@ -168,6 +292,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<RecInstance> response = apiInstance.GetRecInstanceWithHttpInfo(instanceIdType, instanceIdValue, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getrecresult"></a>
+## GetRecResult
+
+> RecResult GetRecResult(string id, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
+
+[EXPERIMENTAL] GetRecResult: GetRecResult
+
+Retrieve a single rec result by its id.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var id = "id_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+RecResult result = apiInstance.GetRecResult(id, asAt, propertyKeys);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **id** | **string** | path | **required** | The system-generated id of the rec result. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the result. Defaults to latest if not specified. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys to decorate onto the result. |
+
+### Return type
+
+[RecResult](../Model/RecResult.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested rec result. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetRecResultWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<RecResult> response = apiInstance.GetRecResultWithHttpInfo(id, asAt, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -422,6 +608,74 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PagedResourceListOfRecResultSet> response = apiInstance.ListRecResultSetsWithHttpInfo(asAt, includePreviousRuns, page, limit, filter, sortBy);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listrecresults"></a>
+## ListRecResults
+
+> PagedResourceListOfRecResult ListRecResults(DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
+
+[EXPERIMENTAL] ListRecResults: ListRecResults
+
+List rec results.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var page = "page_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfRecResult result = apiInstance.ListRecResults(asAt, page, limit, filter, sortBy, propertyKeys);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list results. Defaults to latest if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing results from a previous call. If a pagination token is provided the filter and asAt fields must not have changed since the original request. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys to decorate onto each result. |
+
+### Return type
+
+[PagedResourceListOfRecResult](../Model/PagedResourceListOfRecResult.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The rec results. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListRecResultsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfRecResult> response = apiInstance.ListRecResultsWithHttpInfo(asAt, page, limit, filter, sortBy, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

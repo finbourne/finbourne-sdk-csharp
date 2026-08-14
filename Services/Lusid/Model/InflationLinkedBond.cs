@@ -55,12 +55,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="tradingConventions">tradingConventions.</param>
         /// <param name="originalIssuePrice">The price the bond was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%..</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
-        public InflationLinkedBond(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), FlowConventions flowConventions = default(FlowConventions), InflationIndexConventions inflationIndexConventions = default(InflationIndexConventions), decimal couponRate = default(decimal), Dictionary<string, string> identifiers = default(Dictionary<string, string>), decimal? baseCPI = default(decimal?), DateTimeOffset? baseCPIDate = default(DateTimeOffset?), string calculationType = default(string), int? exDividendDays = default(int?), int indexPrecision = default(int), decimal principal = default(decimal), bool principalProtection = default(bool), string stubType = default(string), List<RoundingConvention> roundingConventions = default(List<RoundingConvention>), TradingConventions tradingConventions = default(TradingConventions), decimal? originalIssuePrice = default(decimal?), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
+        /// <param name="amortisationSchedule">amortisationSchedule.</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        public InflationLinkedBond(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), FlowConventions flowConventions = default(FlowConventions), InflationIndexConventions inflationIndexConventions = default(InflationIndexConventions), decimal couponRate = default(decimal), Dictionary<string, string> identifiers = default(Dictionary<string, string>), decimal? baseCPI = default(decimal?), DateTimeOffset? baseCPIDate = default(DateTimeOffset?), string calculationType = default(string), int? exDividendDays = default(int?), int indexPrecision = default(int), decimal principal = default(decimal), bool principalProtection = default(bool), string stubType = default(string), List<RoundingConvention> roundingConventions = default(List<RoundingConvention>), TradingConventions tradingConventions = default(TradingConventions), decimal? originalIssuePrice = default(decimal?), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), StepSchedule amortisationSchedule = default(StepSchedule), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
-            
             this.StartDate = startDate;
-            
             this.MaturityDate = maturityDate;
             // to ensure "flowConventions" is required (not null)
             if (flowConventions == null)
@@ -74,17 +73,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("inflationIndexConventions is a required property for InflationLinkedBond and cannot be null");
             }
             this.InflationIndexConventions = inflationIndexConventions;
-            
             this.CouponRate = couponRate;
-            
             this.Principal = principal;
-            
-            // to ensure "instrumentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
-            {
-                throw new ArgumentException("instrumentType is a required property for InflationLinkedBond and must be a defined value");
-            }
-            
             this.InstrumentType = instrumentType;
             this.Identifiers = identifiers;
             this.BaseCPI = baseCPI;
@@ -98,6 +88,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.TradingConventions = tradingConventions;
             this.OriginalIssuePrice = originalIssuePrice;
             this.TimeZoneConventions = timeZoneConventions;
+            this.AmortisationSchedule = amortisationSchedule;
         }
 
         /// <summary>
@@ -223,6 +214,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public TimeZoneConventions TimeZoneConventions { get; set; }
 
         /// <summary>
+        /// Gets or Sets AmortisationSchedule
+        /// </summary>
+        [DataMember(Name = "amortisationSchedule", EmitDefaultValue = false)]
+        public StepSchedule AmortisationSchedule { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -249,6 +246,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  TradingConventions: ").Append(TradingConventions).Append("\n");
             sb.Append("  OriginalIssuePrice: ").Append(OriginalIssuePrice).Append("\n");
             sb.Append("  TimeZoneConventions: ").Append(TimeZoneConventions).Append("\n");
+            sb.Append("  AmortisationSchedule: ").Append(AmortisationSchedule).Append("\n");
             sb.Append("  InstrumentType: ").Append(InstrumentType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -374,6 +372,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.TimeZoneConventions.Equals(input.TimeZoneConventions))
                 ) && base.Equals(input) && 
                 (
+                    this.AmortisationSchedule == input.AmortisationSchedule ||
+                    (this.AmortisationSchedule != null &&
+                    this.AmortisationSchedule.Equals(input.AmortisationSchedule))
+                ) && base.Equals(input) && 
+                (
                     this.InstrumentType == input.InstrumentType ||
                     this.InstrumentType.Equals(input.InstrumentType)
                 );
@@ -447,6 +450,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.TimeZoneConventions != null)
                 {
                     hashCode = (hashCode * 59) + this.TimeZoneConventions.GetHashCode();
+                }
+                if (this.AmortisationSchedule != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmortisationSchedule.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.InstrumentType.GetHashCode();
                 return hashCode;

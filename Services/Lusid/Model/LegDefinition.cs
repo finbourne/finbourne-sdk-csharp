@@ -66,7 +66,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("payReceive is a required property for LegDefinition and cannot be null");
             }
             this.PayReceive = payReceive;
-            
             this.RateOrSpread = rateOrSpread;
             // to ensure "stubType" is required (not null)
             if (stubType == null)

@@ -54,9 +54,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("fileName is a required property for TpfFileDeliveryResponse and cannot be null");
             }
             this.FileName = fileName;
-            
             this.GeneratedAt = generatedAt;
-            
             this.RowCount = rowCount;
             // to ensure "destinationType" is required (not null)
             if (destinationType == null)

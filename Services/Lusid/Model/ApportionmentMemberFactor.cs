@@ -48,7 +48,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("memberIdentifier is a required property for ApportionmentMemberFactor and cannot be null");
             }
             this.MemberIdentifier = memberIdentifier;
-            
             this.ApportionmentFactor = apportionmentFactor;
             this.FundScope = fundScope;
             this.FundCode = fundCode;

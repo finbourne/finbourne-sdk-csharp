@@ -52,7 +52,6 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("text is a required property for AuditEntryNote and cannot be null");
             }
             this.Text = text;
-            
             this.Date = date;
         }
 

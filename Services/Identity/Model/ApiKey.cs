@@ -53,7 +53,6 @@ namespace Finbourne.Sdk.Services.Identity.Model
                 throw new ArgumentNullException("displayName is a required property for ApiKey and cannot be null");
             }
             this.DisplayName = displayName;
-            
             this.CreatedDate = createdDate;
             this.DeactivationDate = deactivationDate;
         }

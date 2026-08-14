@@ -67,6 +67,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkerConfigurationResponse" /> class
+        /// with the <see cref="HorizonIntegrationResponse" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of HorizonIntegrationResponse.</param>
+        public WorkerConfigurationResponse(HorizonIntegrationResponse actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WorkerConfigurationResponse" /> class
         /// with the <see cref="LibraryResponse" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of LibraryResponse.</param>
@@ -151,6 +163,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(HorizonIntegrationResponse) || value is HorizonIntegrationResponse)
+                {
+                    this._actualInstance = value;
+                }
                 else if (value.GetType() == typeof(LibraryResponse) || value is LibraryResponse)
                 {
                     this._actualInstance = value;
@@ -173,7 +189,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: FailResponse, GroupReconciliationResponse, HealthCheckResponse, LibraryResponse, LuminesceViewResponse, LusidEntityDataQualityCheckResponse, SchedulerJobResponse, SleepResponse");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: FailResponse, GroupReconciliationResponse, HealthCheckResponse, HorizonIntegrationResponse, LibraryResponse, LuminesceViewResponse, LusidEntityDataQualityCheckResponse, SchedulerJobResponse, SleepResponse");
                 }
             }
         }
@@ -206,6 +222,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public HealthCheckResponse GetHealthCheckResponse()
         {
             return (HealthCheckResponse)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `HorizonIntegrationResponse`. If the actual instance is not `HorizonIntegrationResponse`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of HorizonIntegrationResponse</returns>
+        public HorizonIntegrationResponse GetHorizonIntegrationResponse()
+        {
+            return (HorizonIntegrationResponse)this.ActualInstance;
         }
 
         /// <summary>
@@ -354,6 +380,26 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into HealthCheckResponse: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(HorizonIntegrationResponse).GetProperty("AdditionalProperties") == null)
+                {
+                    newWorkerConfigurationResponse = new WorkerConfigurationResponse(JsonConvert.DeserializeObject<HorizonIntegrationResponse>(jsonString, WorkerConfigurationResponse.SerializerSettings));
+                }
+                else
+                {
+                    newWorkerConfigurationResponse = new WorkerConfigurationResponse(JsonConvert.DeserializeObject<HorizonIntegrationResponse>(jsonString, WorkerConfigurationResponse.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("HorizonIntegrationResponse");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into HorizonIntegrationResponse: {1}", jsonString, exception.ToString()));
             }
 
             try

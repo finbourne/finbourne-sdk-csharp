@@ -65,13 +65,6 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="applicationProperties">Optional key-value pairs to attach to the Azure Service Bus message envelope..</param>
         public AzureServiceBusNotificationType(TypeEnum type = default(TypeEnum), string varNamespace = default(string), string queueName = default(string), string body = default(string), string tenantId = default(string), string clientId = default(string), string clientSecret = default(string), Dictionary<string, string> applicationProperties = default(Dictionary<string, string>))
         {
-            
-            // to ensure "type" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
-            {
-                throw new ArgumentException("type is a required property for AzureServiceBusNotificationType and must be a defined value");
-            }
-            
             this.Type = type;
             // to ensure "varNamespace" is required (not null)
             if (varNamespace == null)

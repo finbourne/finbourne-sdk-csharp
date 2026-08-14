@@ -83,7 +83,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("comparisonResultId is a required property for GroupReconciliationComparisonResult and cannot be null");
             }
             this.ComparisonResultId = comparisonResultId;
-            
             this.ReconciliationRunAsAt = reconciliationRunAsAt;
             // to ensure "resultType" is required (not null)
             if (resultType == null)

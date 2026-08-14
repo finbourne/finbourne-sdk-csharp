@@ -47,13 +47,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("rules is a required property for MdkrGroupShiftDefinition and cannot be null");
             }
             this.Rules = rules;
-            
-            // to ensure "scenarioShiftType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ScenarioShiftTypeEnum), scenarioShiftType))
-            {
-                throw new ArgumentException("scenarioShiftType is a required property for MdkrGroupShiftDefinition and must be a defined value");
-            }
-            
             this.ScenarioShiftType = scenarioShiftType;
         }
 

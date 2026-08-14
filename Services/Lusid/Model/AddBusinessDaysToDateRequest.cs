@@ -41,7 +41,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="asAt">asAt.</param>
         public AddBusinessDaysToDateRequest(int businessDayOffset = default(int), List<string> holidayCodes = default(List<string>), DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset? asAt = default(DateTimeOffset?))
         {
-            
             this.BusinessDayOffset = businessDayOffset;
             // to ensure "holidayCodes" is required (not null)
             if (holidayCodes == null)

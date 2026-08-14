@@ -53,7 +53,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("entityUniqueId is a required property for PostCloseActivity and cannot be null");
             }
             this.EntityUniqueId = entityUniqueId;
-            
             this.AsAt = asAt;
             this.EffectiveAt = effectiveAt;
         }

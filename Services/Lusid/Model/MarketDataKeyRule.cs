@@ -188,13 +188,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("dataScope is a required property for MarketDataKeyRule and cannot be null");
             }
             this.DataScope = dataScope;
-            
-            // to ensure "quoteType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(QuoteTypeEnum), quoteType))
-            {
-                throw new ArgumentException("quoteType is a required property for MarketDataKeyRule and must be a defined value");
-            }
-            
             this.QuoteType = quoteType;
             this.Field = field;
             this.QuoteInterval = quoteInterval;

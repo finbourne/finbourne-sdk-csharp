@@ -38,7 +38,6 @@ namespace Finbourne.Sdk.Services.Identity.Model
         /// <param name="maxAttempts">The maximum number of unsuccessful attempts before the user is locked out of their account (required).</param>
         public PasswordPolicyResponseLockout(int maxAttempts = default(int))
         {
-            
             this.MaxAttempts = maxAttempts;
         }
 

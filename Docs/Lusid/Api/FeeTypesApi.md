@@ -5,12 +5,12 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateFeeType**](#createfeetype) | **POST** `/api/api/feetypes/{scope}` | [EXPERIMENTAL] CreateFeeType: Create a FeeType. |
-| [**DeleteFeeType**](#deletefeetype) | **DELETE** `/api/api/feetypes/{scope}/{code}` | [EXPERIMENTAL] DeleteFeeType: Delete a FeeType. |
-| [**GetFeeTemplateSpecifications**](#getfeetemplatespecifications) | **GET** `/api/api/feetypes/feetransactiontemplatespecification` | [EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. |
-| [**GetFeeType**](#getfeetype) | **GET** `/api/api/feetypes/{scope}/{code}` | [EXPERIMENTAL] GetFeeType: Get a FeeType |
-| [**ListFeeTypes**](#listfeetypes) | **GET** `/api/api/feetypes` | [EXPERIMENTAL] ListFeeTypes: List FeeTypes |
-| [**UpdateFeeType**](#updatefeetype) | **PUT** `/api/api/feetypes/{scope}/{code}` | [EXPERIMENTAL] UpdateFeeType: Update a FeeType. |
+| [**CreateFeeType**](#createfeetype) | **POST** `/api/api/feetypes/{scope}` | [EARLY ACCESS] CreateFeeType: Create a FeeType. |
+| [**DeleteFeeType**](#deletefeetype) | **DELETE** `/api/api/feetypes/{scope}/{code}` | [EARLY ACCESS] DeleteFeeType: Delete a FeeType. |
+| [**GetFeeTemplateSpecifications**](#getfeetemplatespecifications) | **GET** `/api/api/feetypes/feetransactiontemplatespecification` | [EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType. |
+| [**GetFeeType**](#getfeetype) | **GET** `/api/api/feetypes/{scope}/{code}` | [EARLY ACCESS] GetFeeType: Get a FeeType |
+| [**ListFeeTypes**](#listfeetypes) | **GET** `/api/api/feetypes` | [EARLY ACCESS] ListFeeTypes: List FeeTypes |
+| [**UpdateFeeType**](#updatefeetype) | **PUT** `/api/api/feetypes/{scope}/{code}` | [EARLY ACCESS] UpdateFeeType: Update a FeeType. |
 
 ### Example
 
@@ -59,7 +59,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FeeTypesApi>();
 
 > FeeType CreateFeeType(string scope, FeeTypeRequest feeTypeRequest)
 
-[EXPERIMENTAL] CreateFeeType: Create a FeeType.
+[EARLY ACCESS] CreateFeeType: Create a FeeType.
 
 Create a FeeType that contains templates used to create fee transactions.
 
@@ -119,7 +119,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteFeeType(string scope, string code)
 
-[EXPERIMENTAL] DeleteFeeType: Delete a FeeType.
+[EARLY ACCESS] DeleteFeeType: Delete a FeeType.
 
 Delete a FeeType that contains templates used to create fee transactions.
 
@@ -179,7 +179,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FeeTransactionTemplateSpecification GetFeeTemplateSpecifications()
 
-[EXPERIMENTAL] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
+[EARLY ACCESS] GetFeeTemplateSpecifications: Get FeeTemplateSpecifications used in the FeeType.
 
 Get FeeTemplateSpecifications used in the FeeType.
 
@@ -232,7 +232,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FeeType GetFeeType(string scope, string code, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetFeeType: Get a FeeType
+[EARLY ACCESS] GetFeeType: Get a FeeType
 
 Get a FeeType that contains templates used to create fee transactions.
 
@@ -294,7 +294,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfFeeType ListFeeTypes(DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null)
 
-[EXPERIMENTAL] ListFeeTypes: List FeeTypes
+[EARLY ACCESS] ListFeeTypes: List FeeTypes
 
 List FeeTypes that contain templates used to create fee transactions.
 
@@ -360,7 +360,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FeeType UpdateFeeType(string scope, string code, UpdateFeeTypeRequest updateFeeTypeRequest)
 
-[EXPERIMENTAL] UpdateFeeType: Update a FeeType.
+[EARLY ACCESS] UpdateFeeType: Update a FeeType.
 
 Update a FeeType that contains templates used to create fee transactions.
 

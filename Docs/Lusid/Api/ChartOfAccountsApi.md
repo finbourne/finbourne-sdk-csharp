@@ -5,40 +5,40 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateChartOfAccounts**](#createchartofaccounts) | **POST** `/api/api/chartofaccounts/{scope}` | [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts |
-| [**CreateCleardownModule**](#createcleardownmodule) | **POST** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules` | [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module |
-| [**CreateGeneralLedgerProfile**](#creategeneralledgerprofile) | **POST** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile` | [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile. |
-| [**CreatePostingModule**](#createpostingmodule) | **POST** `/api/api/chartofaccounts/{scope}/{code}/postingmodules` | [EXPERIMENTAL] CreatePostingModule: Create a Posting Module |
-| [**DeleteAccounts**](#deleteaccounts) | **POST** `/api/api/chartofaccounts/{scope}/{code}/accounts/$delete` | [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts |
-| [**DeleteChartOfAccounts**](#deletechartofaccounts) | **DELETE** `/api/api/chartofaccounts/{scope}/{code}` | [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts |
-| [**DeleteCleardownModule**](#deletecleardownmodule) | **DELETE** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}` | [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module. |
-| [**DeleteGeneralLedgerProfile**](#deletegeneralledgerprofile) | **DELETE** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}` | [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. |
-| [**DeletePostingModule**](#deletepostingmodule) | **DELETE** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}` | [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. |
-| [**GetAccount**](#getaccount) | **GET** `/api/api/chartofaccounts/{scope}/{code}/accounts/{accountCode}` | [EXPERIMENTAL] GetAccount: Get Account |
-| [**GetAccountProperties**](#getaccountproperties) | **GET** `/api/api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties` | [EXPERIMENTAL] GetAccountProperties: Get Account properties |
-| [**GetChartOfAccounts**](#getchartofaccounts) | **GET** `/api/api/chartofaccounts/{scope}/{code}` | [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts |
-| [**GetChartOfAccountsProperties**](#getchartofaccountsproperties) | **GET** `/api/api/chartofaccounts/{scope}/{code}/properties` | [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties |
-| [**GetCleardownModule**](#getcleardownmodule) | **GET** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}` | [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module |
-| [**GetGeneralLedgerProfile**](#getgeneralledgerprofile) | **GET** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}` | [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile. |
-| [**GetPostingModule**](#getpostingmodule) | **GET** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}` | [EXPERIMENTAL] GetPostingModule: Get a Posting Module |
-| [**ListAccounts**](#listaccounts) | **GET** `/api/api/chartofaccounts/{scope}/{code}/accounts` | [EXPERIMENTAL] ListAccounts: List Accounts |
-| [**ListChartsOfAccounts**](#listchartsofaccounts) | **GET** `/api/api/chartofaccounts` | [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts |
-| [**ListCleardownModuleRules**](#listcleardownmodulerules) | **GET** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}/cleardownrules` | [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules |
-| [**ListCleardownModules**](#listcleardownmodules) | **GET** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules` | [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules |
-| [**ListGeneralLedgerProfiles**](#listgeneralledgerprofiles) | **GET** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile` | [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles. |
-| [**ListPostingModuleRules**](#listpostingmodulerules) | **GET** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules` | [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules |
-| [**ListPostingModules**](#listpostingmodules) | **GET** `/api/api/chartofaccounts/{scope}/{code}/postingmodules` | [EXPERIMENTAL] ListPostingModules: List Posting Modules |
-| [**PatchChartOfAccounts**](#patchchartofaccounts) | **PATCH** `/api/api/chartofaccounts/{scope}/{code}` | [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts. |
-| [**PatchCleardownModule**](#patchcleardownmodule) | **PATCH** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}` | [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module |
-| [**PatchPostingModule**](#patchpostingmodule) | **PATCH** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}` | [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module |
-| [**SetCleardownModuleDetails**](#setcleardownmoduledetails) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}` | [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module |
-| [**SetCleardownModuleRules**](#setcleardownmodulerules) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}/cleardownrules` | [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module |
-| [**SetGeneralLedgerProfileMappings**](#setgeneralledgerprofilemappings) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}/mappings` | [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. |
-| [**SetPostingModuleDetails**](#setpostingmoduledetails) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}` | [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module |
-| [**SetPostingModuleRules**](#setpostingmodulerules) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules` | [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module |
-| [**UpsertAccountProperties**](#upsertaccountproperties) | **POST** `/api/api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties/$upsert` | [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties |
-| [**UpsertAccounts**](#upsertaccounts) | **POST** `/api/api/chartofaccounts/{scope}/{code}/accounts` | [EXPERIMENTAL] UpsertAccounts: Upsert Accounts |
-| [**UpsertChartOfAccountsProperties**](#upsertchartofaccountsproperties) | **POST** `/api/api/chartofaccounts/{scope}/{code}/properties/$upsert` | [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties |
+| [**CreateChartOfAccounts**](#createchartofaccounts) | **POST** `/api/api/chartofaccounts/{scope}` | [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts |
+| [**CreateCleardownModule**](#createcleardownmodule) | **POST** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules` | [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module |
+| [**CreateGeneralLedgerProfile**](#creategeneralledgerprofile) | **POST** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile` | [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile. |
+| [**CreatePostingModule**](#createpostingmodule) | **POST** `/api/api/chartofaccounts/{scope}/{code}/postingmodules` | [EARLY ACCESS] CreatePostingModule: Create a Posting Module |
+| [**DeleteAccounts**](#deleteaccounts) | **POST** `/api/api/chartofaccounts/{scope}/{code}/accounts/$delete` | [EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts |
+| [**DeleteChartOfAccounts**](#deletechartofaccounts) | **DELETE** `/api/api/chartofaccounts/{scope}/{code}` | [EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts |
+| [**DeleteCleardownModule**](#deletecleardownmodule) | **DELETE** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}` | [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module. |
+| [**DeleteGeneralLedgerProfile**](#deletegeneralledgerprofile) | **DELETE** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}` | [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. |
+| [**DeletePostingModule**](#deletepostingmodule) | **DELETE** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}` | [EARLY ACCESS] DeletePostingModule: Delete a Posting Module. |
+| [**GetAccount**](#getaccount) | **GET** `/api/api/chartofaccounts/{scope}/{code}/accounts/{accountCode}` | [EARLY ACCESS] GetAccount: Get Account |
+| [**GetAccountProperties**](#getaccountproperties) | **GET** `/api/api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties` | [EARLY ACCESS] GetAccountProperties: Get Account properties |
+| [**GetChartOfAccounts**](#getchartofaccounts) | **GET** `/api/api/chartofaccounts/{scope}/{code}` | [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts |
+| [**GetChartOfAccountsProperties**](#getchartofaccountsproperties) | **GET** `/api/api/chartofaccounts/{scope}/{code}/properties` | [EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties |
+| [**GetCleardownModule**](#getcleardownmodule) | **GET** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}` | [EARLY ACCESS] GetCleardownModule: Get a Cleardown Module |
+| [**GetGeneralLedgerProfile**](#getgeneralledgerprofile) | **GET** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}` | [EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile. |
+| [**GetPostingModule**](#getpostingmodule) | **GET** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}` | [EARLY ACCESS] GetPostingModule: Get a Posting Module |
+| [**ListAccounts**](#listaccounts) | **GET** `/api/api/chartofaccounts/{scope}/{code}/accounts` | [EARLY ACCESS] ListAccounts: List Accounts |
+| [**ListChartsOfAccounts**](#listchartsofaccounts) | **GET** `/api/api/chartofaccounts` | [EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts |
+| [**ListCleardownModuleRules**](#listcleardownmodulerules) | **GET** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}/cleardownrules` | [EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules |
+| [**ListCleardownModules**](#listcleardownmodules) | **GET** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules` | [EARLY ACCESS] ListCleardownModules: List Cleardown Modules |
+| [**ListGeneralLedgerProfiles**](#listgeneralledgerprofiles) | **GET** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile` | [EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles. |
+| [**ListPostingModuleRules**](#listpostingmodulerules) | **GET** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules` | [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules |
+| [**ListPostingModules**](#listpostingmodules) | **GET** `/api/api/chartofaccounts/{scope}/{code}/postingmodules` | [EARLY ACCESS] ListPostingModules: List Posting Modules |
+| [**PatchChartOfAccounts**](#patchchartofaccounts) | **PATCH** `/api/api/chartofaccounts/{scope}/{code}` | [EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts. |
+| [**PatchCleardownModule**](#patchcleardownmodule) | **PATCH** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}` | [EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module |
+| [**PatchPostingModule**](#patchpostingmodule) | **PATCH** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}` | [EARLY ACCESS] PatchPostingModule: Patch a Posting Module |
+| [**SetCleardownModuleDetails**](#setcleardownmoduledetails) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}` | [EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module |
+| [**SetCleardownModuleRules**](#setcleardownmodulerules) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode}/cleardownrules` | [EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module |
+| [**SetGeneralLedgerProfileMappings**](#setgeneralledgerprofilemappings) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}/mappings` | [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. |
+| [**SetPostingModuleDetails**](#setpostingmoduledetails) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}` | [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module |
+| [**SetPostingModuleRules**](#setpostingmodulerules) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules` | [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module |
+| [**UpsertAccountProperties**](#upsertaccountproperties) | **POST** `/api/api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties/$upsert` | [EARLY ACCESS] UpsertAccountProperties: Upsert account properties |
+| [**UpsertAccounts**](#upsertaccounts) | **POST** `/api/api/chartofaccounts/{scope}/{code}/accounts` | [EARLY ACCESS] UpsertAccounts: Upsert Accounts |
+| [**UpsertChartOfAccountsProperties**](#upsertchartofaccountsproperties) | **POST** `/api/api/chartofaccounts/{scope}/{code}/properties/$upsert` | [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties |
 
 ### Example
 
@@ -87,7 +87,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ChartOfAccountsAp
 
 > ChartOfAccounts CreateChartOfAccounts(string scope, ChartOfAccountsRequest chartOfAccountsRequest)
 
-[EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
+[EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts
 
 Create the given Chart of Accounts.
 
@@ -147,7 +147,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > CleardownModuleResponse CreateCleardownModule(string scope, string code, CleardownModuleRequest cleardownModuleRequest)
 
-[EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module
+[EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module
 
 Create the given Cleardown Module.
 
@@ -209,7 +209,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > GeneralLedgerProfileResponse CreateGeneralLedgerProfile(string scope, string code, GeneralLedgerProfileRequest generalLedgerProfileRequest)
 
-[EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
+[EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile.
 
 Create the given General Ledger profile.
 
@@ -271,7 +271,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PostingModuleResponse CreatePostingModule(string scope, string code, PostingModuleRequest postingModuleRequest)
 
-[EXPERIMENTAL] CreatePostingModule: Create a Posting Module
+[EARLY ACCESS] CreatePostingModule: Create a Posting Module
 
 Create the given Posting Module.
 
@@ -333,7 +333,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeleteAccountsResponse DeleteAccounts(string scope, string code, List<string> requestBody, string? deleteMode = null)
 
-[EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
+[EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts
 
 Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
 
@@ -397,7 +397,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteChartOfAccounts(string scope, string code)
 
-[EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
+[EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts
 
 Delete the given Chart of Accounts.
 
@@ -457,7 +457,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteCleardownModule(string scope, string code, string cleardownModuleCode)
 
-[EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module.
+[EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module.
 
 Delete the given Cleardown Module.
 
@@ -519,7 +519,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteGeneralLedgerProfile(string scope, string code, string generalLedgerProfileCode)
 
-[EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
+[EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
 
 Delete the given General Ledger Profile.
 
@@ -581,7 +581,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeletePostingModule(string scope, string code, string postingModuleCode)
 
-[EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
+[EARLY ACCESS] DeletePostingModule: Delete a Posting Module.
 
 Delete the given Posting Module.
 
@@ -643,7 +643,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Account GetAccount(string scope, string code, string accountCode, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetAccount: Get Account
+[EARLY ACCESS] GetAccount: Get Account
 
 Retrieve the definition of a particular Account which is part of a Chart of Accounts.
 
@@ -711,7 +711,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AccountProperties GetAccountProperties(string scope, string code, string accountCode, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetAccountProperties: Get Account properties
+[EARLY ACCESS] GetAccountProperties: Get Account properties
 
 Get all the properties of a single account.
 
@@ -777,7 +777,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ChartOfAccounts GetChartOfAccounts(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
+[EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts
 
 Retrieve the definition of a particular Chart of Accounts.
 
@@ -843,7 +843,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ChartOfAccountsProperties GetChartOfAccountsProperties(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties
+[EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties
 
 Get all the properties of a single chart of accounts.
 
@@ -907,7 +907,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > CleardownModuleResponse GetCleardownModule(string scope, string code, string cleardownModuleCode, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module
+[EARLY ACCESS] GetCleardownModule: Get a Cleardown Module
 
 Retrieve the definition of a Cleardown Module complete with its rules.
 
@@ -971,7 +971,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > GeneralLedgerProfileResponse GetGeneralLedgerProfile(string scope, string code, string generalLedgerProfileCode, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
+[EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile.
 
 Get the given General Ledger Profile.
 
@@ -1035,7 +1035,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PostingModuleResponse GetPostingModule(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetPostingModule: Get a Posting Module
+[EARLY ACCESS] GetPostingModule: Get a Posting Module
 
 Retrieve the definition of a Posting Module complete with its rules.
 
@@ -1099,7 +1099,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfAccount ListAccounts(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListAccounts: List Accounts
+[EARLY ACCESS] ListAccounts: List Accounts
 
 List the accounts in a Chart of Accounts
 
@@ -1171,7 +1171,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfChartOfAccounts ListChartsOfAccounts(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
+[EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts
 
 List all the Charts of Accounts matching particular criteria.
 
@@ -1241,7 +1241,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfCleardownModuleRule ListCleardownModuleRules(string scope, string code, string cleardownModuleCode, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null)
 
-[EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules
+[EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules
 
 List the Rules in a Cleardown Module
 
@@ -1311,7 +1311,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfCleardownModuleResponse ListCleardownModules(string scope, string code, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null)
 
-[EXPERIMENTAL] ListCleardownModules: List Cleardown Modules
+[EARLY ACCESS] ListCleardownModules: List Cleardown Modules
 
 List all the Cleardown Modules matching particular criteria.
 
@@ -1381,7 +1381,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfGeneralLedgerProfileResponse ListGeneralLedgerProfiles(string scope, string code, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null)
 
-[EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
+[EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles.
 
 List all the General Ledger profiles matching particular criteria.
 
@@ -1451,7 +1451,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfPostingModuleRule ListPostingModuleRules(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null)
 
-[EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules
+[EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules
 
 List the Rules in a Posting Module
 
@@ -1521,7 +1521,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfPostingModuleResponse ListPostingModules(string scope, string code, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null)
 
-[EXPERIMENTAL] ListPostingModules: List Posting Modules
+[EARLY ACCESS] ListPostingModules: List Posting Modules
 
 List all the Posting Modules matching particular criteria.
 
@@ -1591,7 +1591,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ChartOfAccounts PatchChartOfAccounts(string scope, string code, List<Operation> operation)
 
-[EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts.
+[EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts.
 
 Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
 
@@ -1653,7 +1653,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > CleardownModuleResponse PatchCleardownModule(string scope, string code, string cleardownModuleCode, List<Operation> operation)
 
-[EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module
+[EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module
 
 Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
 
@@ -1717,7 +1717,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PostingModuleResponse PatchPostingModule(string scope, string code, string postingModuleCode, List<Operation> operation)
 
-[EXPERIMENTAL] PatchPostingModule: Patch a Posting Module
+[EARLY ACCESS] PatchPostingModule: Patch a Posting Module
 
 Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
 
@@ -1781,7 +1781,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > CleardownModuleResponse SetCleardownModuleDetails(string scope, string code, string cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails)
 
-[EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module
+[EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module
 
 Update the given Cleardown Module details.
 
@@ -1845,7 +1845,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > CleardownModuleRulesUpdatedResponse SetCleardownModuleRules(string scope, string code, string cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule)
 
-[EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module
+[EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module
 
 Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
 
@@ -1909,7 +1909,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > GeneralLedgerProfileResponse SetGeneralLedgerProfileMappings(string scope, string code, string generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping)
 
-[EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
+[EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
 
 Update the given General Ledger profile Mappings.
 
@@ -1973,7 +1973,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PostingModuleResponse SetPostingModuleDetails(string scope, string code, string postingModuleCode, PostingModuleDetails postingModuleDetails)
 
-[EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module
+[EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module
 
 Update the given Posting Module details.
 
@@ -2037,7 +2037,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PostingModuleRulesUpdatedResponse SetPostingModuleRules(string scope, string code, string postingModuleCode, List<PostingModuleRule> postingModuleRule)
 
-[EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module
+[EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module
 
 Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
 
@@ -2101,7 +2101,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AccountProperties UpsertAccountProperties(string scope, string code, string accountCode, Dictionary<string, Property>? requestBody = null)
 
-[EXPERIMENTAL] UpsertAccountProperties: Upsert account properties
+[EARLY ACCESS] UpsertAccountProperties: Upsert account properties
 
 Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain 'Account'.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an <i>effectiveFrom</i> datetime for which the property is valid, and an <i>effectiveUntil</i>  datetime until which the property is valid. Not supplying an <i>effectiveUntil</i> datetime results in the property being  valid indefinitely, or until the next <i>effectiveFrom</i> datetime of the property.
 
@@ -2165,7 +2165,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AccountsUpsertResponse UpsertAccounts(string scope, string code, List<Account> account)
 
-[EXPERIMENTAL] UpsertAccounts: Upsert Accounts
+[EARLY ACCESS] UpsertAccounts: Upsert Accounts
 
 Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
 
@@ -2227,7 +2227,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ChartOfAccountsProperties UpsertChartOfAccountsProperties(string scope, string code, Dictionary<string, Property>? requestBody = null)
 
-[EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
+[EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
 
 Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain 'ChartOfAccounts'.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an <i>effectiveFrom</i> datetime for which the property is valid, and an <i>effectiveUntil</i>  datetime until which the property is valid. Not supplying an <i>effectiveUntil</i> datetime results in the property being  valid indefinitely, or until the next <i>effectiveFrom</i> datetime of the property.
 

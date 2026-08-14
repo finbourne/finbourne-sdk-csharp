@@ -44,7 +44,6 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="correlationIds">User-provided ID used to link entities and tasks.</param>
         public TaskSummary(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), string state = default(string), string stateDisplayName = default(string), List<string> correlationIds = default(List<string>))
         {
-            
             this.Id = id;
             // to ensure "taskDefinitionId" is required (not null)
             if (taskDefinitionId == null)

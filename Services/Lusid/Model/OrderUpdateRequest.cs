@@ -37,6 +37,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="quantity">The quantity of the given instrument ordered..</param>
+        /// <param name="amount">amount.</param>
         /// <param name="portfolioId">portfolioId.</param>
         /// <param name="properties">Client-defined properties associated with this order..</param>
         /// <param name="price">price.</param>
@@ -44,7 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="stopPrice">stopPrice.</param>
         /// <param name="date">The date on which the order was made.</param>
         /// <param name="side">The client&#39;s representation of the order&#39;s side (buy, sell, short, etc).</param>
-        public OrderUpdateRequest(ResourceId id = default(ResourceId), decimal? quantity = default(decimal?), ResourceId portfolioId = default(ResourceId), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), CurrencyAndAmount price = default(CurrencyAndAmount), CurrencyAndAmount limitPrice = default(CurrencyAndAmount), CurrencyAndAmount stopPrice = default(CurrencyAndAmount), DateTimeOffset? date = default(DateTimeOffset?), string side = default(string))
+        public OrderUpdateRequest(ResourceId id = default(ResourceId), decimal? quantity = default(decimal?), CurrencyAndAmount amount = default(CurrencyAndAmount), ResourceId portfolioId = default(ResourceId), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), CurrencyAndAmount price = default(CurrencyAndAmount), CurrencyAndAmount limitPrice = default(CurrencyAndAmount), CurrencyAndAmount stopPrice = default(CurrencyAndAmount), DateTimeOffset? date = default(DateTimeOffset?), string side = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -53,6 +54,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.Id = id;
             this.Quantity = quantity;
+            this.Amount = amount;
             this.PortfolioId = portfolioId;
             this.Properties = properties;
             this.Price = price;
@@ -74,6 +76,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>The quantity of the given instrument ordered.</value>
         [DataMember(Name = "quantity", EmitDefaultValue = true)]
         public decimal? Quantity { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Amount
+        /// </summary>
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
+        public CurrencyAndAmount Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets PortfolioId
@@ -130,6 +138,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class OrderUpdateRequest {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  PortfolioId: ").Append(PortfolioId).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
@@ -181,6 +190,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Quantity == input.Quantity ||
                     (this.Quantity != null &&
                     this.Quantity.Equals(input.Quantity))
+                ) && 
+                (
+                    this.Amount == input.Amount ||
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 ) && 
                 (
                     this.PortfolioId == input.PortfolioId ||
@@ -236,6 +250,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Quantity != null)
                 {
                     hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
+                }
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
                 }
                 if (this.PortfolioId != null)
                 {

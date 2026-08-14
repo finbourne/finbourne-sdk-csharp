@@ -62,13 +62,6 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="queueUrlRef">Reference to queue url from Configuration Store (required).</param>
         public AmazonSqsNotificationType(TypeEnum type = default(TypeEnum), string apiKeyRef = default(string), string apiSecretRef = default(string), string body = default(string), string queueUrlRef = default(string))
         {
-            
-            // to ensure "type" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
-            {
-                throw new ArgumentException("type is a required property for AmazonSqsNotificationType and must be a defined value");
-            }
-            
             this.Type = type;
             // to ensure "apiKeyRef" is required (not null)
             if (apiKeyRef == null)

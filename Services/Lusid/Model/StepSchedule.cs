@@ -40,7 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="levelType">The type of shift or adjustment that the quantity represents.    Supported string (enumeration) values are: [Absolute, AbsoluteShift, Percentage, AbsolutePercentage]. (required).</param>
         /// <param name="stepScheduleType">The type of step that this schedule is for.  Supported string (enumeration) values are: [Coupon, Notional, Spread]. (required).</param>
         /// <param name="steps">The level steps which are applied. (required).</param>
-        /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid. (required) (default to ScheduleTypeEnum.FixedSchedule).</param>
+        /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule. (required) (default to ScheduleTypeEnum.FixedSchedule).</param>
         public StepSchedule(string levelType = default(string), string stepScheduleType = default(string), List<LevelStep> steps = default(List<LevelStep>), ScheduleTypeEnum scheduleType = default(ScheduleTypeEnum)) : base()
         {
             // to ensure "levelType" is required (not null)
@@ -61,13 +61,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("steps is a required property for StepSchedule and cannot be null");
             }
             this.Steps = steps;
-            
-            // to ensure "scheduleType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ScheduleTypeEnum), scheduleType))
-            {
-                throw new ArgumentException("scheduleType is a required property for StepSchedule and must be a defined value");
-            }
-            
             this.ScheduleType = scheduleType;
         }
 

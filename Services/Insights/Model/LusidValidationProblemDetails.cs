@@ -52,7 +52,6 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("name is a required property for LusidValidationProblemDetails and cannot be null");
             }
             this.Name = name;
-            
             this.Code = code;
             this.ErrorDetails = errorDetails;
             this.Errors = errors;

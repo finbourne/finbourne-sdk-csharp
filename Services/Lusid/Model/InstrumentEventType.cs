@@ -602,7 +602,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum CommodityForwardCashSettlementEvent for value: CommodityForwardCashSettlementEvent
         /// </summary>
         [EnumMember(Value = "CommodityForwardCashSettlementEvent")]
-        CommodityForwardCashSettlementEvent = 96
+        CommodityForwardCashSettlementEvent = 96,
+
+        /// <summary>
+        /// Enum PaymentInKindEvent for value: PaymentInKindEvent
+        /// </summary>
+        [EnumMember(Value = "PaymentInKindEvent")]
+        PaymentInKindEvent = 97
     }
 
 }

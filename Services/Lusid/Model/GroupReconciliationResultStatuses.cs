@@ -43,7 +43,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="linkChanged">linkChanged (required).</param>
         public GroupReconciliationResultStatuses(int countNew = default(int), Link linkNew = default(Link), int countConfirmed = default(int), Link linkConfirmed = default(Link), int countChanged = default(int), Link linkChanged = default(Link))
         {
-            
             this.CountNew = countNew;
             // to ensure "linkNew" is required (not null)
             if (linkNew == null)
@@ -51,7 +50,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("linkNew is a required property for GroupReconciliationResultStatuses and cannot be null");
             }
             this.LinkNew = linkNew;
-            
             this.CountConfirmed = countConfirmed;
             // to ensure "linkConfirmed" is required (not null)
             if (linkConfirmed == null)
@@ -59,7 +57,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("linkConfirmed is a required property for GroupReconciliationResultStatuses and cannot be null");
             }
             this.LinkConfirmed = linkConfirmed;
-            
             this.CountChanged = countChanged;
             // to ensure "linkChanged" is required (not null)
             if (linkChanged == null)

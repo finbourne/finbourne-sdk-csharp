@@ -60,13 +60,6 @@ namespace Finbourne.Sdk.Services.Notifications.Model
         /// <param name="recipients">The phone numbers to which the SMS will be sent to (E.164 format) (required).</param>
         public SmsNotificationType(TypeEnum type = default(TypeEnum), string body = default(string), List<string> recipients = default(List<string>))
         {
-            
-            // to ensure "type" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
-            {
-                throw new ArgumentException("type is a required property for SmsNotificationType and must be a defined value");
-            }
-            
             this.Type = type;
             // to ensure "body" is required (not null)
             if (body == null)

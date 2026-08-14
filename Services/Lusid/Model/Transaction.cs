@@ -134,11 +134,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentUid is a required property for Transaction and cannot be null");
             }
             this.InstrumentUid = instrumentUid;
-            
             this.TransactionDate = transactionDate;
-            
             this.SettlementDate = settlementDate;
-            
             this.Units = units;
             // to ensure "totalConsideration" is required (not null)
             if (totalConsideration == null)

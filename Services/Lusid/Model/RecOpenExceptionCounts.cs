@@ -40,7 +40,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="byReviewStatus">byReviewStatus (required).</param>
         public RecOpenExceptionCounts(int total = default(int), RecExceptionCountByResultType byResultType = default(RecExceptionCountByResultType), RecResultCountByReviewStatus byReviewStatus = default(RecResultCountByReviewStatus))
         {
-            
             this.Total = total;
             // to ensure "byResultType" is required (not null)
             if (byResultType == null)

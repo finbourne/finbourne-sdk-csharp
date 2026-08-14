@@ -40,9 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="endDate">If American exercise, this is the end of the exercise period.  Optional field. Defaults to the Date field if not set..</param>
         public OptionEntry(decimal strike = default(decimal), DateTimeOffset date = default(DateTimeOffset), DateTimeOffset? endDate = default(DateTimeOffset?))
         {
-            
             this.Strike = strike;
-            
             this.Date = date;
             this.EndDate = endDate;
         }

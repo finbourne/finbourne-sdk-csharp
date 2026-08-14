@@ -41,11 +41,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="dates">dates (required).</param>
         public ResolveTenorsResponse(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset spotDate = default(DateTimeOffset), bool eomRuleApplied = default(bool), Dictionary<string, DateTimeOffset> dates = default(Dictionary<string, DateTimeOffset>))
         {
-            
             this.StartDate = startDate;
-            
             this.SpotDate = spotDate;
-            
             this.EomRuleApplied = eomRuleApplied;
             // to ensure "dates" is required (not null)
             if (dates == null)

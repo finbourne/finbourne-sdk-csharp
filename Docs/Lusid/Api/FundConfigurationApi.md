@@ -5,12 +5,12 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateFundConfiguration**](#createfundconfiguration) | **POST** `/api/api/fundconfigurations/{scope}` | [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration. |
-| [**DeleteFundConfiguration**](#deletefundconfiguration) | **DELETE** `/api/api/fundconfigurations/{scope}/{code}` | [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration. |
-| [**GetFundConfiguration**](#getfundconfiguration) | **GET** `/api/api/fundconfigurations/{scope}/{code}` | [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration. |
-| [**ListFundConfigurations**](#listfundconfigurations) | **GET** `/api/api/fundconfigurations` | [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration. |
-| [**PatchFundConfiguration**](#patchfundconfiguration) | **PATCH** `/api/api/fundconfigurations/{scope}/{code}` | [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration. |
-| [**UpsertFundConfigurationProperties**](#upsertfundconfigurationproperties) | **POST** `/api/api/fundconfigurations/{scope}/{code}/properties/$upsert` | [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties |
+| [**CreateFundConfiguration**](#createfundconfiguration) | **POST** `/api/api/fundconfigurations/{scope}` | [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration. |
+| [**DeleteFundConfiguration**](#deletefundconfiguration) | **DELETE** `/api/api/fundconfigurations/{scope}/{code}` | [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration. |
+| [**GetFundConfiguration**](#getfundconfiguration) | **GET** `/api/api/fundconfigurations/{scope}/{code}` | [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration. |
+| [**ListFundConfigurations**](#listfundconfigurations) | **GET** `/api/api/fundconfigurations` | [EARLY ACCESS] ListFundConfigurations: List FundConfiguration. |
+| [**PatchFundConfiguration**](#patchfundconfiguration) | **PATCH** `/api/api/fundconfigurations/{scope}/{code}` | [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration. |
+| [**UpsertFundConfigurationProperties**](#upsertfundconfigurationproperties) | **POST** `/api/api/fundconfigurations/{scope}/{code}/properties/$upsert` | [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties |
 
 ### Example
 
@@ -59,7 +59,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundConfiguration
 
 > FundConfiguration CreateFundConfiguration(string scope, FundConfigurationRequest fundConfigurationRequest)
 
-[EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration.
+[EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration.
 
 Create the given FundConfiguration.
 
@@ -119,7 +119,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteFundConfiguration(string scope, string code)
 
-[EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration.
+[EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration.
 
 Delete the given FundConfiguration.
 
@@ -179,7 +179,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FundConfiguration GetFundConfiguration(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration.
+[EARLY ACCESS] GetFundConfiguration: Get FundConfiguration.
 
 Retrieve the definition of a particular FundConfiguration.
 
@@ -245,7 +245,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfFundConfiguration ListFundConfigurations(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListFundConfigurations: List FundConfiguration.
+[EARLY ACCESS] ListFundConfigurations: List FundConfiguration.
 
 List all the FundConfiguration matching particular criteria.
 
@@ -315,7 +315,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FundConfiguration PatchFundConfiguration(string scope, string code, List<Operation> operation)
 
-[EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
+[EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration.
 
 Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
 
@@ -377,7 +377,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FundConfigurationProperties UpsertFundConfigurationProperties(string scope, string code, Dictionary<string, Property>? requestBody = null)
 
-[EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
+[EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
 
 Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain 'FundConfiguration'.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an <i>effectiveFrom</i> datetime for which the property is valid, and an <i>effectiveUntil</i>  datetime until which the property is valid. Not supplying an <i>effectiveUntil</i> datetime results in the property being  valid indefinitely, or until the next <i>effectiveFrom</i> datetime of the property.
 

@@ -626,13 +626,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="properties">A set of properties for the identifier definition..</param>
         public CreateIdentifierDefinitionRequest(DomainEnum domain = default(DomainEnum), string identifierScope = default(string), string identifierType = default(string), LifeTimeEnum lifeTime = default(LifeTimeEnum), string hierarchyUsage = default(string), string hierarchyLevel = default(string), string displayName = default(string), string description = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>))
         {
-            
-            // to ensure "domain" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(DomainEnum), domain))
-            {
-                throw new ArgumentException("domain is a required property for CreateIdentifierDefinitionRequest and must be a defined value");
-            }
-            
             this.Domain = domain;
             // to ensure "identifierScope" is required (not null)
             if (identifierScope == null)
@@ -646,13 +639,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("identifierType is a required property for CreateIdentifierDefinitionRequest and cannot be null");
             }
             this.IdentifierType = identifierType;
-            
-            // to ensure "lifeTime" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(LifeTimeEnum), lifeTime))
-            {
-                throw new ArgumentException("lifeTime is a required property for CreateIdentifierDefinitionRequest and must be a defined value");
-            }
-            
             this.LifeTime = lifeTime;
             this.HierarchyUsage = hierarchyUsage;
             this.HierarchyLevel = hierarchyLevel;

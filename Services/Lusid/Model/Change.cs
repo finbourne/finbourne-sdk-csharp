@@ -52,9 +52,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("entityId is a required property for Change and cannot be null");
             }
             this.EntityId = entityId;
-            
             this.Corrected = corrected;
-            
             this.Amended = amended;
             this.Href = href;
             this.CorrectionEffectiveAt = correctionEffectiveAt;

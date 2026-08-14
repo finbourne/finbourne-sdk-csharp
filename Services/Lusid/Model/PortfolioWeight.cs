@@ -45,7 +45,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("portfolioId is a required property for PortfolioWeight and cannot be null");
             }
             this.PortfolioId = portfolioId;
-            
             this.Weight = weight;
         }
 

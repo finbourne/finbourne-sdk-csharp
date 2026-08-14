@@ -313,7 +313,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum CommodityForward for value: CommodityForward
         /// </summary>
         [EnumMember(Value = "CommodityForward")]
-        CommodityForward = 48
+        CommodityForward = 48,
+
+        /// <summary>
+        /// Enum BondOption for value: BondOption
+        /// </summary>
+        [EnumMember(Value = "BondOption")]
+        BondOption = 49
     }
 
 }

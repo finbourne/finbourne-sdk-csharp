@@ -60,9 +60,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("seriesIdentifiers is a required property for PaymentDetailsReference and cannot be null");
             }
             this.SeriesIdentifiers = seriesIdentifiers;
-            
             this.EffectiveDate = effectiveDate;
-            
             this.AsAtDate = asAtDate;
         }
 

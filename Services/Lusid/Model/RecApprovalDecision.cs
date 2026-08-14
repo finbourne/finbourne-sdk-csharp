@@ -61,7 +61,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("userId is a required property for RecApprovalDecision and cannot be null");
             }
             this.UserId = userId;
-            
             this.AsAtDecided = asAtDecided;
             this.Reason = reason;
             this.AsAtSuperseded = asAtSuperseded;

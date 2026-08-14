@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
+        /// [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts
         /// </summary>
         /// <remarks>
         /// Create the given Chart of Accounts.
@@ -45,7 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         ChartOfAccounts CreateChartOfAccounts(string scope, ChartOfAccountsRequest chartOfAccountsRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
+        /// [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts
         /// </summary>
         /// <remarks>
         /// Create the given Chart of Accounts.
@@ -58,7 +58,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ChartOfAccounts</returns>
         Finbourne.Sdk.Client.ApiResponse<ChartOfAccounts> CreateChartOfAccountsWithHttpInfo(string scope, ChartOfAccountsRequest chartOfAccountsRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module
+        /// [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Create the given Cleardown Module.
@@ -73,7 +73,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         CleardownModuleResponse CreateCleardownModule(string scope, string code, CleardownModuleRequest cleardownModuleRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module
+        /// [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Create the given Cleardown Module.
@@ -87,7 +87,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of CleardownModuleResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<CleardownModuleResponse> CreateCleardownModuleWithHttpInfo(string scope, string code, CleardownModuleRequest cleardownModuleRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
+        /// [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Create the given General Ledger profile.
@@ -102,7 +102,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         GeneralLedgerProfileResponse CreateGeneralLedgerProfile(string scope, string code, GeneralLedgerProfileRequest generalLedgerProfileRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
+        /// [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Create the given General Ledger profile.
@@ -116,7 +116,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of GeneralLedgerProfileResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<GeneralLedgerProfileResponse> CreateGeneralLedgerProfileWithHttpInfo(string scope, string code, GeneralLedgerProfileRequest generalLedgerProfileRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] CreatePostingModule: Create a Posting Module
+        /// [EARLY ACCESS] CreatePostingModule: Create a Posting Module
         /// </summary>
         /// <remarks>
         /// Create the given Posting Module.
@@ -131,7 +131,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PostingModuleResponse CreatePostingModule(string scope, string code, PostingModuleRequest postingModuleRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreatePostingModule: Create a Posting Module
+        /// [EARLY ACCESS] CreatePostingModule: Create a Posting Module
         /// </summary>
         /// <remarks>
         /// Create the given Posting Module.
@@ -145,7 +145,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PostingModuleResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PostingModuleResponse> CreatePostingModuleWithHttpInfo(string scope, string code, PostingModuleRequest postingModuleRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
+        /// [EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts
         /// </summary>
         /// <remarks>
         /// Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
@@ -161,7 +161,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeleteAccountsResponse DeleteAccounts(string scope, string code, List<string> requestBody, string? deleteMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
+        /// [EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts
         /// </summary>
         /// <remarks>
         /// Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
@@ -176,7 +176,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeleteAccountsResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeleteAccountsResponse> DeleteAccountsWithHttpInfo(string scope, string code, List<string> requestBody, string? deleteMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
+        /// [EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts
         /// </summary>
         /// <remarks>
         /// Delete the given Chart of Accounts.
@@ -190,7 +190,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeleteChartOfAccounts(string scope, string code, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
+        /// [EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts
         /// </summary>
         /// <remarks>
         /// Delete the given Chart of Accounts.
@@ -203,7 +203,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteChartOfAccountsWithHttpInfo(string scope, string code, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module.
+        /// [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module.
         /// </summary>
         /// <remarks>
         /// Delete the given Cleardown Module.
@@ -218,7 +218,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeleteCleardownModule(string scope, string code, string cleardownModuleCode, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module.
+        /// [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module.
         /// </summary>
         /// <remarks>
         /// Delete the given Cleardown Module.
@@ -232,7 +232,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteCleardownModuleWithHttpInfo(string scope, string code, string cleardownModuleCode, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
+        /// [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Delete the given General Ledger Profile.
@@ -247,7 +247,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeleteGeneralLedgerProfile(string scope, string code, string generalLedgerProfileCode, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
+        /// [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Delete the given General Ledger Profile.
@@ -261,7 +261,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteGeneralLedgerProfileWithHttpInfo(string scope, string code, string generalLedgerProfileCode, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
+        /// [EARLY ACCESS] DeletePostingModule: Delete a Posting Module.
         /// </summary>
         /// <remarks>
         /// Delete the given Posting Module.
@@ -276,7 +276,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeletePostingModule(string scope, string code, string postingModuleCode, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
+        /// [EARLY ACCESS] DeletePostingModule: Delete a Posting Module.
         /// </summary>
         /// <remarks>
         /// Delete the given Posting Module.
@@ -290,7 +290,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeletePostingModuleWithHttpInfo(string scope, string code, string postingModuleCode, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAccount: Get Account
+        /// [EARLY ACCESS] GetAccount: Get Account
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Account which is part of a Chart of Accounts.
@@ -308,7 +308,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         Account GetAccount(string scope, string code, string accountCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccount: Get Account
+        /// [EARLY ACCESS] GetAccount: Get Account
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Account which is part of a Chart of Accounts.
@@ -325,7 +325,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of Account</returns>
         Finbourne.Sdk.Client.ApiResponse<Account> GetAccountWithHttpInfo(string scope, string code, string accountCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAccountProperties: Get Account properties
+        /// [EARLY ACCESS] GetAccountProperties: Get Account properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single account.
@@ -342,7 +342,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AccountProperties GetAccountProperties(string scope, string code, string accountCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccountProperties: Get Account properties
+        /// [EARLY ACCESS] GetAccountProperties: Get Account properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single account.
@@ -358,7 +358,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AccountProperties</returns>
         Finbourne.Sdk.Client.ApiResponse<AccountProperties> GetAccountPropertiesWithHttpInfo(string scope, string code, string accountCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
+        /// [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Chart of Accounts.
@@ -375,7 +375,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         ChartOfAccounts GetChartOfAccounts(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
+        /// [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Chart of Accounts.
@@ -391,7 +391,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ChartOfAccounts</returns>
         Finbourne.Sdk.Client.ApiResponse<ChartOfAccounts> GetChartOfAccountsWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties
+        /// [EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single chart of accounts.
@@ -407,7 +407,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         ChartOfAccountsProperties GetChartOfAccountsProperties(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties
+        /// [EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single chart of accounts.
@@ -422,7 +422,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ChartOfAccountsProperties</returns>
         Finbourne.Sdk.Client.ApiResponse<ChartOfAccountsProperties> GetChartOfAccountsPropertiesWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module
+        /// [EARLY ACCESS] GetCleardownModule: Get a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a Cleardown Module complete with its rules.
@@ -438,7 +438,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         CleardownModuleResponse GetCleardownModule(string scope, string code, string cleardownModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module
+        /// [EARLY ACCESS] GetCleardownModule: Get a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a Cleardown Module complete with its rules.
@@ -453,7 +453,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of CleardownModuleResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<CleardownModuleResponse> GetCleardownModuleWithHttpInfo(string scope, string code, string cleardownModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
+        /// [EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Get the given General Ledger Profile.
@@ -469,7 +469,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         GeneralLedgerProfileResponse GetGeneralLedgerProfile(string scope, string code, string generalLedgerProfileCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
+        /// [EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Get the given General Ledger Profile.
@@ -484,7 +484,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of GeneralLedgerProfileResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<GeneralLedgerProfileResponse> GetGeneralLedgerProfileWithHttpInfo(string scope, string code, string generalLedgerProfileCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetPostingModule: Get a Posting Module
+        /// [EARLY ACCESS] GetPostingModule: Get a Posting Module
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a Posting Module complete with its rules.
@@ -500,7 +500,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PostingModuleResponse GetPostingModule(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetPostingModule: Get a Posting Module
+        /// [EARLY ACCESS] GetPostingModule: Get a Posting Module
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a Posting Module complete with its rules.
@@ -515,7 +515,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PostingModuleResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PostingModuleResponse> GetPostingModuleWithHttpInfo(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListAccounts: List Accounts
+        /// [EARLY ACCESS] ListAccounts: List Accounts
         /// </summary>
         /// <remarks>
         /// List the accounts in a Chart of Accounts
@@ -535,7 +535,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfAccount ListAccounts(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAccounts: List Accounts
+        /// [EARLY ACCESS] ListAccounts: List Accounts
         /// </summary>
         /// <remarks>
         /// List the accounts in a Chart of Accounts
@@ -554,7 +554,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfAccount</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfAccount> ListAccountsWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
+        /// [EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts
         /// </summary>
         /// <remarks>
         /// List all the Charts of Accounts matching particular criteria.
@@ -573,7 +573,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfChartOfAccounts ListChartsOfAccounts(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
+        /// [EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts
         /// </summary>
         /// <remarks>
         /// List all the Charts of Accounts matching particular criteria.
@@ -591,7 +591,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfChartOfAccounts</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfChartOfAccounts> ListChartsOfAccountsWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules
+        /// [EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules
         /// </summary>
         /// <remarks>
         /// List the Rules in a Cleardown Module
@@ -610,7 +610,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfCleardownModuleRule ListCleardownModuleRules(string scope, string code, string cleardownModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules
+        /// [EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules
         /// </summary>
         /// <remarks>
         /// List the Rules in a Cleardown Module
@@ -628,7 +628,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfCleardownModuleRule</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfCleardownModuleRule> ListCleardownModuleRulesWithHttpInfo(string scope, string code, string cleardownModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules
+        /// [EARLY ACCESS] ListCleardownModules: List Cleardown Modules
         /// </summary>
         /// <remarks>
         /// List all the Cleardown Modules matching particular criteria.
@@ -647,7 +647,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfCleardownModuleResponse ListCleardownModules(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules
+        /// [EARLY ACCESS] ListCleardownModules: List Cleardown Modules
         /// </summary>
         /// <remarks>
         /// List all the Cleardown Modules matching particular criteria.
@@ -665,7 +665,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfCleardownModuleResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfCleardownModuleResponse> ListCleardownModulesWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
+        /// [EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles.
         /// </summary>
         /// <remarks>
         /// List all the General Ledger profiles matching particular criteria.
@@ -684,7 +684,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfGeneralLedgerProfileResponse ListGeneralLedgerProfiles(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
+        /// [EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles.
         /// </summary>
         /// <remarks>
         /// List all the General Ledger profiles matching particular criteria.
@@ -702,7 +702,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfGeneralLedgerProfileResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> ListGeneralLedgerProfilesWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules
+        /// [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules
         /// </summary>
         /// <remarks>
         /// List the Rules in a Posting Module
@@ -721,7 +721,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfPostingModuleRule ListPostingModuleRules(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules
+        /// [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules
         /// </summary>
         /// <remarks>
         /// List the Rules in a Posting Module
@@ -739,7 +739,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfPostingModuleRule</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfPostingModuleRule> ListPostingModuleRulesWithHttpInfo(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModules: List Posting Modules
+        /// [EARLY ACCESS] ListPostingModules: List Posting Modules
         /// </summary>
         /// <remarks>
         /// List all the Posting Modules matching particular criteria.
@@ -758,7 +758,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfPostingModuleResponse ListPostingModules(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModules: List Posting Modules
+        /// [EARLY ACCESS] ListPostingModules: List Posting Modules
         /// </summary>
         /// <remarks>
         /// List all the Posting Modules matching particular criteria.
@@ -776,7 +776,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfPostingModuleResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfPostingModuleResponse> ListPostingModulesWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts.
+        /// [EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts.
         /// </summary>
         /// <remarks>
         /// Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
@@ -791,7 +791,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         ChartOfAccounts PatchChartOfAccounts(string scope, string code, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts.
+        /// [EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts.
         /// </summary>
         /// <remarks>
         /// Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
@@ -805,7 +805,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ChartOfAccounts</returns>
         Finbourne.Sdk.Client.ApiResponse<ChartOfAccounts> PatchChartOfAccountsWithHttpInfo(string scope, string code, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module
+        /// [EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
@@ -821,7 +821,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         CleardownModuleResponse PatchCleardownModule(string scope, string code, string cleardownModuleCode, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module
+        /// [EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
@@ -836,7 +836,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of CleardownModuleResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<CleardownModuleResponse> PatchCleardownModuleWithHttpInfo(string scope, string code, string cleardownModuleCode, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module
+        /// [EARLY ACCESS] PatchPostingModule: Patch a Posting Module
         /// </summary>
         /// <remarks>
         /// Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
@@ -852,7 +852,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PostingModuleResponse PatchPostingModule(string scope, string code, string postingModuleCode, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module
+        /// [EARLY ACCESS] PatchPostingModule: Patch a Posting Module
         /// </summary>
         /// <remarks>
         /// Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
@@ -867,7 +867,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PostingModuleResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PostingModuleResponse> PatchPostingModuleWithHttpInfo(string scope, string code, string postingModuleCode, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module
+        /// [EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Update the given Cleardown Module details.
@@ -883,7 +883,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         CleardownModuleResponse SetCleardownModuleDetails(string scope, string code, string cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module
+        /// [EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Update the given Cleardown Module details.
@@ -898,7 +898,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of CleardownModuleResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<CleardownModuleResponse> SetCleardownModuleDetailsWithHttpInfo(string scope, string code, string cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module
+        /// [EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
@@ -914,7 +914,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         CleardownModuleRulesUpdatedResponse SetCleardownModuleRules(string scope, string code, string cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module
+        /// [EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
@@ -929,7 +929,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of CleardownModuleRulesUpdatedResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<CleardownModuleRulesUpdatedResponse> SetCleardownModuleRulesWithHttpInfo(string scope, string code, string cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
+        /// [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
         /// </summary>
         /// <remarks>
         /// Update the given General Ledger profile Mappings.
@@ -945,7 +945,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         GeneralLedgerProfileResponse SetGeneralLedgerProfileMappings(string scope, string code, string generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
+        /// [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
         /// </summary>
         /// <remarks>
         /// Update the given General Ledger profile Mappings.
@@ -960,7 +960,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of GeneralLedgerProfileResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<GeneralLedgerProfileResponse> SetGeneralLedgerProfileMappingsWithHttpInfo(string scope, string code, string generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module
+        /// [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module
         /// </summary>
         /// <remarks>
         /// Update the given Posting Module details.
@@ -976,7 +976,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PostingModuleResponse SetPostingModuleDetails(string scope, string code, string postingModuleCode, PostingModuleDetails postingModuleDetails, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module
+        /// [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module
         /// </summary>
         /// <remarks>
         /// Update the given Posting Module details.
@@ -991,7 +991,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PostingModuleResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PostingModuleResponse> SetPostingModuleDetailsWithHttpInfo(string scope, string code, string postingModuleCode, PostingModuleDetails postingModuleDetails, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module
+        /// [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module
         /// </summary>
         /// <remarks>
         /// Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
@@ -1007,7 +1007,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PostingModuleRulesUpdatedResponse SetPostingModuleRules(string scope, string code, string postingModuleCode, List<PostingModuleRule> postingModuleRule, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module
+        /// [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module
         /// </summary>
         /// <remarks>
         /// Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
@@ -1022,7 +1022,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PostingModuleRulesUpdatedResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PostingModuleRulesUpdatedResponse> SetPostingModuleRulesWithHttpInfo(string scope, string code, string postingModuleCode, List<PostingModuleRule> postingModuleRule, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties
+        /// [EARLY ACCESS] UpsertAccountProperties: Upsert account properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -1038,7 +1038,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AccountProperties UpsertAccountProperties(string scope, string code, string accountCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties
+        /// [EARLY ACCESS] UpsertAccountProperties: Upsert account properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -1053,7 +1053,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AccountProperties</returns>
         Finbourne.Sdk.Client.ApiResponse<AccountProperties> UpsertAccountPropertiesWithHttpInfo(string scope, string code, string accountCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
+        /// [EARLY ACCESS] UpsertAccounts: Upsert Accounts
         /// </summary>
         /// <remarks>
         /// Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
@@ -1068,7 +1068,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AccountsUpsertResponse UpsertAccounts(string scope, string code, List<Account> account, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
+        /// [EARLY ACCESS] UpsertAccounts: Upsert Accounts
         /// </summary>
         /// <remarks>
         /// Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
@@ -1082,7 +1082,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AccountsUpsertResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<AccountsUpsertResponse> UpsertAccountsWithHttpInfo(string scope, string code, List<Account> account, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
+        /// [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -1097,7 +1097,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         ChartOfAccountsProperties UpsertChartOfAccountsProperties(string scope, string code, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
+        /// [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -1120,7 +1120,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
+        /// [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts
         /// </summary>
         /// <remarks>
         /// Create the given Chart of Accounts.
@@ -1135,7 +1135,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<ChartOfAccounts> CreateChartOfAccountsAsync(string scope, ChartOfAccountsRequest chartOfAccountsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
+        /// [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts
         /// </summary>
         /// <remarks>
         /// Create the given Chart of Accounts.
@@ -1149,7 +1149,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ChartOfAccounts)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ChartOfAccounts>> CreateChartOfAccountsWithHttpInfoAsync(string scope, ChartOfAccountsRequest chartOfAccountsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module
+        /// [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Create the given Cleardown Module.
@@ -1165,7 +1165,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<CleardownModuleResponse> CreateCleardownModuleAsync(string scope, string code, CleardownModuleRequest cleardownModuleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module
+        /// [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Create the given Cleardown Module.
@@ -1180,7 +1180,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (CleardownModuleResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<CleardownModuleResponse>> CreateCleardownModuleWithHttpInfoAsync(string scope, string code, CleardownModuleRequest cleardownModuleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
+        /// [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Create the given General Ledger profile.
@@ -1196,7 +1196,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<GeneralLedgerProfileResponse> CreateGeneralLedgerProfileAsync(string scope, string code, GeneralLedgerProfileRequest generalLedgerProfileRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
+        /// [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Create the given General Ledger profile.
@@ -1211,7 +1211,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (GeneralLedgerProfileResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<GeneralLedgerProfileResponse>> CreateGeneralLedgerProfileWithHttpInfoAsync(string scope, string code, GeneralLedgerProfileRequest generalLedgerProfileRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] CreatePostingModule: Create a Posting Module
+        /// [EARLY ACCESS] CreatePostingModule: Create a Posting Module
         /// </summary>
         /// <remarks>
         /// Create the given Posting Module.
@@ -1227,7 +1227,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PostingModuleResponse> CreatePostingModuleAsync(string scope, string code, PostingModuleRequest postingModuleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreatePostingModule: Create a Posting Module
+        /// [EARLY ACCESS] CreatePostingModule: Create a Posting Module
         /// </summary>
         /// <remarks>
         /// Create the given Posting Module.
@@ -1242,7 +1242,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PostingModuleResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PostingModuleResponse>> CreatePostingModuleWithHttpInfoAsync(string scope, string code, PostingModuleRequest postingModuleRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
+        /// [EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts
         /// </summary>
         /// <remarks>
         /// Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
@@ -1259,7 +1259,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeleteAccountsResponse> DeleteAccountsAsync(string scope, string code, List<string> requestBody, string? deleteMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
+        /// [EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts
         /// </summary>
         /// <remarks>
         /// Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
@@ -1275,7 +1275,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeleteAccountsResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeleteAccountsResponse>> DeleteAccountsWithHttpInfoAsync(string scope, string code, List<string> requestBody, string? deleteMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
+        /// [EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts
         /// </summary>
         /// <remarks>
         /// Delete the given Chart of Accounts.
@@ -1290,7 +1290,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeleteChartOfAccountsAsync(string scope, string code, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
+        /// [EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts
         /// </summary>
         /// <remarks>
         /// Delete the given Chart of Accounts.
@@ -1304,7 +1304,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteChartOfAccountsWithHttpInfoAsync(string scope, string code, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module.
+        /// [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module.
         /// </summary>
         /// <remarks>
         /// Delete the given Cleardown Module.
@@ -1320,7 +1320,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeleteCleardownModuleAsync(string scope, string code, string cleardownModuleCode, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module.
+        /// [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module.
         /// </summary>
         /// <remarks>
         /// Delete the given Cleardown Module.
@@ -1335,7 +1335,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteCleardownModuleWithHttpInfoAsync(string scope, string code, string cleardownModuleCode, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
+        /// [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Delete the given General Ledger Profile.
@@ -1351,7 +1351,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeleteGeneralLedgerProfileAsync(string scope, string code, string generalLedgerProfileCode, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
+        /// [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Delete the given General Ledger Profile.
@@ -1366,7 +1366,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteGeneralLedgerProfileWithHttpInfoAsync(string scope, string code, string generalLedgerProfileCode, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
+        /// [EARLY ACCESS] DeletePostingModule: Delete a Posting Module.
         /// </summary>
         /// <remarks>
         /// Delete the given Posting Module.
@@ -1382,7 +1382,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeletePostingModuleAsync(string scope, string code, string postingModuleCode, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
+        /// [EARLY ACCESS] DeletePostingModule: Delete a Posting Module.
         /// </summary>
         /// <remarks>
         /// Delete the given Posting Module.
@@ -1397,7 +1397,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeletePostingModuleWithHttpInfoAsync(string scope, string code, string postingModuleCode, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAccount: Get Account
+        /// [EARLY ACCESS] GetAccount: Get Account
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Account which is part of a Chart of Accounts.
@@ -1416,7 +1416,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<Account> GetAccountAsync(string scope, string code, string accountCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccount: Get Account
+        /// [EARLY ACCESS] GetAccount: Get Account
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Account which is part of a Chart of Accounts.
@@ -1434,7 +1434,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (Account)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Account>> GetAccountWithHttpInfoAsync(string scope, string code, string accountCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAccountProperties: Get Account properties
+        /// [EARLY ACCESS] GetAccountProperties: Get Account properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single account.
@@ -1452,7 +1452,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AccountProperties> GetAccountPropertiesAsync(string scope, string code, string accountCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccountProperties: Get Account properties
+        /// [EARLY ACCESS] GetAccountProperties: Get Account properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single account.
@@ -1469,7 +1469,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AccountProperties)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AccountProperties>> GetAccountPropertiesWithHttpInfoAsync(string scope, string code, string accountCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
+        /// [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Chart of Accounts.
@@ -1487,7 +1487,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<ChartOfAccounts> GetChartOfAccountsAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
+        /// [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Chart of Accounts.
@@ -1504,7 +1504,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ChartOfAccounts)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ChartOfAccounts>> GetChartOfAccountsWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties
+        /// [EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single chart of accounts.
@@ -1521,7 +1521,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<ChartOfAccountsProperties> GetChartOfAccountsPropertiesAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties
+        /// [EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single chart of accounts.
@@ -1537,7 +1537,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ChartOfAccountsProperties)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ChartOfAccountsProperties>> GetChartOfAccountsPropertiesWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module
+        /// [EARLY ACCESS] GetCleardownModule: Get a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a Cleardown Module complete with its rules.
@@ -1554,7 +1554,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<CleardownModuleResponse> GetCleardownModuleAsync(string scope, string code, string cleardownModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module
+        /// [EARLY ACCESS] GetCleardownModule: Get a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a Cleardown Module complete with its rules.
@@ -1570,7 +1570,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (CleardownModuleResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<CleardownModuleResponse>> GetCleardownModuleWithHttpInfoAsync(string scope, string code, string cleardownModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
+        /// [EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Get the given General Ledger Profile.
@@ -1587,7 +1587,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<GeneralLedgerProfileResponse> GetGeneralLedgerProfileAsync(string scope, string code, string generalLedgerProfileCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
+        /// [EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile.
         /// </summary>
         /// <remarks>
         /// Get the given General Ledger Profile.
@@ -1603,7 +1603,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (GeneralLedgerProfileResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<GeneralLedgerProfileResponse>> GetGeneralLedgerProfileWithHttpInfoAsync(string scope, string code, string generalLedgerProfileCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetPostingModule: Get a Posting Module
+        /// [EARLY ACCESS] GetPostingModule: Get a Posting Module
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a Posting Module complete with its rules.
@@ -1620,7 +1620,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PostingModuleResponse> GetPostingModuleAsync(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetPostingModule: Get a Posting Module
+        /// [EARLY ACCESS] GetPostingModule: Get a Posting Module
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a Posting Module complete with its rules.
@@ -1636,7 +1636,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PostingModuleResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PostingModuleResponse>> GetPostingModuleWithHttpInfoAsync(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListAccounts: List Accounts
+        /// [EARLY ACCESS] ListAccounts: List Accounts
         /// </summary>
         /// <remarks>
         /// List the accounts in a Chart of Accounts
@@ -1657,7 +1657,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfAccount> ListAccountsAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAccounts: List Accounts
+        /// [EARLY ACCESS] ListAccounts: List Accounts
         /// </summary>
         /// <remarks>
         /// List the accounts in a Chart of Accounts
@@ -1677,7 +1677,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfAccount)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfAccount>> ListAccountsWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
+        /// [EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts
         /// </summary>
         /// <remarks>
         /// List all the Charts of Accounts matching particular criteria.
@@ -1697,7 +1697,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfChartOfAccounts> ListChartsOfAccountsAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
+        /// [EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts
         /// </summary>
         /// <remarks>
         /// List all the Charts of Accounts matching particular criteria.
@@ -1716,7 +1716,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfChartOfAccounts)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfChartOfAccounts>> ListChartsOfAccountsWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules
+        /// [EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules
         /// </summary>
         /// <remarks>
         /// List the Rules in a Cleardown Module
@@ -1736,7 +1736,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfCleardownModuleRule> ListCleardownModuleRulesAsync(string scope, string code, string cleardownModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules
+        /// [EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules
         /// </summary>
         /// <remarks>
         /// List the Rules in a Cleardown Module
@@ -1755,7 +1755,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfCleardownModuleRule)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfCleardownModuleRule>> ListCleardownModuleRulesWithHttpInfoAsync(string scope, string code, string cleardownModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules
+        /// [EARLY ACCESS] ListCleardownModules: List Cleardown Modules
         /// </summary>
         /// <remarks>
         /// List all the Cleardown Modules matching particular criteria.
@@ -1775,7 +1775,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfCleardownModuleResponse> ListCleardownModulesAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules
+        /// [EARLY ACCESS] ListCleardownModules: List Cleardown Modules
         /// </summary>
         /// <remarks>
         /// List all the Cleardown Modules matching particular criteria.
@@ -1794,7 +1794,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfCleardownModuleResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfCleardownModuleResponse>> ListCleardownModulesWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
+        /// [EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles.
         /// </summary>
         /// <remarks>
         /// List all the General Ledger profiles matching particular criteria.
@@ -1814,7 +1814,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfGeneralLedgerProfileResponse> ListGeneralLedgerProfilesAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
+        /// [EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles.
         /// </summary>
         /// <remarks>
         /// List all the General Ledger profiles matching particular criteria.
@@ -1833,7 +1833,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfGeneralLedgerProfileResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse>> ListGeneralLedgerProfilesWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules
+        /// [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules
         /// </summary>
         /// <remarks>
         /// List the Rules in a Posting Module
@@ -1853,7 +1853,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfPostingModuleRule> ListPostingModuleRulesAsync(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules
+        /// [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules
         /// </summary>
         /// <remarks>
         /// List the Rules in a Posting Module
@@ -1872,7 +1872,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfPostingModuleRule)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfPostingModuleRule>> ListPostingModuleRulesWithHttpInfoAsync(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModules: List Posting Modules
+        /// [EARLY ACCESS] ListPostingModules: List Posting Modules
         /// </summary>
         /// <remarks>
         /// List all the Posting Modules matching particular criteria.
@@ -1892,7 +1892,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfPostingModuleResponse> ListPostingModulesAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModules: List Posting Modules
+        /// [EARLY ACCESS] ListPostingModules: List Posting Modules
         /// </summary>
         /// <remarks>
         /// List all the Posting Modules matching particular criteria.
@@ -1911,7 +1911,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfPostingModuleResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfPostingModuleResponse>> ListPostingModulesWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts.
+        /// [EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts.
         /// </summary>
         /// <remarks>
         /// Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
@@ -1927,7 +1927,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<ChartOfAccounts> PatchChartOfAccountsAsync(string scope, string code, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts.
+        /// [EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts.
         /// </summary>
         /// <remarks>
         /// Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
@@ -1942,7 +1942,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ChartOfAccounts)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ChartOfAccounts>> PatchChartOfAccountsWithHttpInfoAsync(string scope, string code, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module
+        /// [EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
@@ -1959,7 +1959,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<CleardownModuleResponse> PatchCleardownModuleAsync(string scope, string code, string cleardownModuleCode, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module
+        /// [EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
@@ -1975,7 +1975,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (CleardownModuleResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<CleardownModuleResponse>> PatchCleardownModuleWithHttpInfoAsync(string scope, string code, string cleardownModuleCode, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module
+        /// [EARLY ACCESS] PatchPostingModule: Patch a Posting Module
         /// </summary>
         /// <remarks>
         /// Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
@@ -1992,7 +1992,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PostingModuleResponse> PatchPostingModuleAsync(string scope, string code, string postingModuleCode, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module
+        /// [EARLY ACCESS] PatchPostingModule: Patch a Posting Module
         /// </summary>
         /// <remarks>
         /// Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
@@ -2008,7 +2008,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PostingModuleResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PostingModuleResponse>> PatchPostingModuleWithHttpInfoAsync(string scope, string code, string postingModuleCode, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module
+        /// [EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Update the given Cleardown Module details.
@@ -2025,7 +2025,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<CleardownModuleResponse> SetCleardownModuleDetailsAsync(string scope, string code, string cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module
+        /// [EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Update the given Cleardown Module details.
@@ -2041,7 +2041,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (CleardownModuleResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<CleardownModuleResponse>> SetCleardownModuleDetailsWithHttpInfoAsync(string scope, string code, string cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module
+        /// [EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
@@ -2058,7 +2058,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<CleardownModuleRulesUpdatedResponse> SetCleardownModuleRulesAsync(string scope, string code, string cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module
+        /// [EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module
         /// </summary>
         /// <remarks>
         /// Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
@@ -2074,7 +2074,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (CleardownModuleRulesUpdatedResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<CleardownModuleRulesUpdatedResponse>> SetCleardownModuleRulesWithHttpInfoAsync(string scope, string code, string cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
+        /// [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
         /// </summary>
         /// <remarks>
         /// Update the given General Ledger profile Mappings.
@@ -2091,7 +2091,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<GeneralLedgerProfileResponse> SetGeneralLedgerProfileMappingsAsync(string scope, string code, string generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
+        /// [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
         /// </summary>
         /// <remarks>
         /// Update the given General Ledger profile Mappings.
@@ -2107,7 +2107,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (GeneralLedgerProfileResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<GeneralLedgerProfileResponse>> SetGeneralLedgerProfileMappingsWithHttpInfoAsync(string scope, string code, string generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module
+        /// [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module
         /// </summary>
         /// <remarks>
         /// Update the given Posting Module details.
@@ -2124,7 +2124,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PostingModuleResponse> SetPostingModuleDetailsAsync(string scope, string code, string postingModuleCode, PostingModuleDetails postingModuleDetails, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module
+        /// [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module
         /// </summary>
         /// <remarks>
         /// Update the given Posting Module details.
@@ -2140,7 +2140,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PostingModuleResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PostingModuleResponse>> SetPostingModuleDetailsWithHttpInfoAsync(string scope, string code, string postingModuleCode, PostingModuleDetails postingModuleDetails, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module
+        /// [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module
         /// </summary>
         /// <remarks>
         /// Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
@@ -2157,7 +2157,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PostingModuleRulesUpdatedResponse> SetPostingModuleRulesAsync(string scope, string code, string postingModuleCode, List<PostingModuleRule> postingModuleRule, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module
+        /// [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module
         /// </summary>
         /// <remarks>
         /// Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
@@ -2173,7 +2173,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PostingModuleRulesUpdatedResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PostingModuleRulesUpdatedResponse>> SetPostingModuleRulesWithHttpInfoAsync(string scope, string code, string postingModuleCode, List<PostingModuleRule> postingModuleRule, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties
+        /// [EARLY ACCESS] UpsertAccountProperties: Upsert account properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -2190,7 +2190,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AccountProperties> UpsertAccountPropertiesAsync(string scope, string code, string accountCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties
+        /// [EARLY ACCESS] UpsertAccountProperties: Upsert account properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -2206,7 +2206,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AccountProperties)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AccountProperties>> UpsertAccountPropertiesWithHttpInfoAsync(string scope, string code, string accountCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
+        /// [EARLY ACCESS] UpsertAccounts: Upsert Accounts
         /// </summary>
         /// <remarks>
         /// Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
@@ -2222,7 +2222,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AccountsUpsertResponse> UpsertAccountsAsync(string scope, string code, List<Account> account, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
+        /// [EARLY ACCESS] UpsertAccounts: Upsert Accounts
         /// </summary>
         /// <remarks>
         /// Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
@@ -2237,7 +2237,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AccountsUpsertResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AccountsUpsertResponse>> UpsertAccountsWithHttpInfoAsync(string scope, string code, List<Account> account, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
+        /// [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -2253,7 +2253,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<ChartOfAccountsProperties> UpsertChartOfAccountsPropertiesAsync(string scope, string code, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
+        /// [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -2362,7 +2362,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts Create the given Chart of Accounts.
+        /// [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts Create the given Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -2377,7 +2377,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts Create the given Chart of Accounts.
+        /// [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts Create the given Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2486,7 +2486,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts Create the given Chart of Accounts.
+        /// [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts Create the given Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -2502,7 +2502,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts Create the given Chart of Accounts.
+        /// [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts Create the given Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2614,7 +2614,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module Create the given Cleardown Module.
+        /// [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module Create the given Cleardown Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -2630,7 +2630,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module Create the given Cleardown Module.
+        /// [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module Create the given Cleardown Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2747,7 +2747,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module Create the given Cleardown Module.
+        /// [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module Create the given Cleardown Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -2764,7 +2764,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateCleardownModule: Create a Cleardown Module Create the given Cleardown Module.
+        /// [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module Create the given Cleardown Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2884,7 +2884,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile. Create the given General Ledger profile.
+        /// [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile. Create the given General Ledger profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -2900,7 +2900,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile. Create the given General Ledger profile.
+        /// [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile. Create the given General Ledger profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3017,7 +3017,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile. Create the given General Ledger profile.
+        /// [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile. Create the given General Ledger profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -3034,7 +3034,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile. Create the given General Ledger profile.
+        /// [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile. Create the given General Ledger profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3154,7 +3154,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreatePostingModule: Create a Posting Module Create the given Posting Module.
+        /// [EARLY ACCESS] CreatePostingModule: Create a Posting Module Create the given Posting Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -3170,7 +3170,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreatePostingModule: Create a Posting Module Create the given Posting Module.
+        /// [EARLY ACCESS] CreatePostingModule: Create a Posting Module Create the given Posting Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3287,7 +3287,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreatePostingModule: Create a Posting Module Create the given Posting Module.
+        /// [EARLY ACCESS] CreatePostingModule: Create a Posting Module Create the given Posting Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -3304,7 +3304,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreatePostingModule: Create a Posting Module Create the given Posting Module.
+        /// [EARLY ACCESS] CreatePostingModule: Create a Posting Module Create the given Posting Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3424,7 +3424,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
+        /// [EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -3441,7 +3441,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
+        /// [EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3563,7 +3563,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
+        /// [EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -3581,7 +3581,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
+        /// [EARLY ACCESS] DeleteAccounts: Soft or hard delete multiple accounts Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3706,7 +3706,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts Delete the given Chart of Accounts.
+        /// [EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts Delete the given Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts to be deleted.</param>
@@ -3721,7 +3721,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts Delete the given Chart of Accounts.
+        /// [EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts Delete the given Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3826,7 +3826,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts Delete the given Chart of Accounts.
+        /// [EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts Delete the given Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts to be deleted.</param>
@@ -3842,7 +3842,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts Delete the given Chart of Accounts.
+        /// [EARLY ACCESS] DeleteChartOfAccounts: Delete a Chart of Accounts Delete the given Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3950,7 +3950,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module. Delete the given Cleardown Module.
+        /// [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module. Delete the given Cleardown Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -3966,7 +3966,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module. Delete the given Cleardown Module.
+        /// [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module. Delete the given Cleardown Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4079,7 +4079,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module. Delete the given Cleardown Module.
+        /// [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module. Delete the given Cleardown Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -4096,7 +4096,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteCleardownModule: Delete a Cleardown Module. Delete the given Cleardown Module.
+        /// [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module. Delete the given Cleardown Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4212,7 +4212,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. Delete the given General Ledger Profile.
+        /// [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. Delete the given General Ledger Profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts for the General Ledger Profile.</param>
@@ -4228,7 +4228,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. Delete the given General Ledger Profile.
+        /// [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. Delete the given General Ledger Profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4341,7 +4341,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. Delete the given General Ledger Profile.
+        /// [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. Delete the given General Ledger Profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts for the General Ledger Profile.</param>
@@ -4358,7 +4358,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. Delete the given General Ledger Profile.
+        /// [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. Delete the given General Ledger Profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4474,7 +4474,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. Delete the given Posting Module.
+        /// [EARLY ACCESS] DeletePostingModule: Delete a Posting Module. Delete the given Posting Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -4490,7 +4490,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. Delete the given Posting Module.
+        /// [EARLY ACCESS] DeletePostingModule: Delete a Posting Module. Delete the given Posting Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4603,7 +4603,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. Delete the given Posting Module.
+        /// [EARLY ACCESS] DeletePostingModule: Delete a Posting Module. Delete the given Posting Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -4620,7 +4620,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. Delete the given Posting Module.
+        /// [EARLY ACCESS] DeletePostingModule: Delete a Posting Module. Delete the given Posting Module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4736,7 +4736,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccount: Get Account Retrieve the definition of a particular Account which is part of a Chart of Accounts.
+        /// [EARLY ACCESS] GetAccount: Get Account Retrieve the definition of a particular Account which is part of a Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -4755,7 +4755,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccount: Get Account Retrieve the definition of a particular Account which is part of a Chart of Accounts.
+        /// [EARLY ACCESS] GetAccount: Get Account Retrieve the definition of a particular Account which is part of a Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4883,7 +4883,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccount: Get Account Retrieve the definition of a particular Account which is part of a Chart of Accounts.
+        /// [EARLY ACCESS] GetAccount: Get Account Retrieve the definition of a particular Account which is part of a Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -4903,7 +4903,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccount: Get Account Retrieve the definition of a particular Account which is part of a Chart of Accounts.
+        /// [EARLY ACCESS] GetAccount: Get Account Retrieve the definition of a particular Account which is part of a Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -5034,7 +5034,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccountProperties: Get Account properties Get all the properties of a single account.
+        /// [EARLY ACCESS] GetAccountProperties: Get Account properties Get all the properties of a single account.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts to update or insert the properties onto.</param>
@@ -5052,7 +5052,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccountProperties: Get Account properties Get all the properties of a single account.
+        /// [EARLY ACCESS] GetAccountProperties: Get Account properties Get all the properties of a single account.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -5175,7 +5175,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccountProperties: Get Account properties Get all the properties of a single account.
+        /// [EARLY ACCESS] GetAccountProperties: Get Account properties Get all the properties of a single account.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts to update or insert the properties onto.</param>
@@ -5194,7 +5194,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAccountProperties: Get Account properties Get all the properties of a single account.
+        /// [EARLY ACCESS] GetAccountProperties: Get Account properties Get all the properties of a single account.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -5320,7 +5320,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts Retrieve the definition of a particular Chart of Accounts.
+        /// [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts Retrieve the definition of a particular Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -5338,7 +5338,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts Retrieve the definition of a particular Chart of Accounts.
+        /// [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts Retrieve the definition of a particular Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -5458,7 +5458,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts Retrieve the definition of a particular Chart of Accounts.
+        /// [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts Retrieve the definition of a particular Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -5477,7 +5477,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts Retrieve the definition of a particular Chart of Accounts.
+        /// [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts Retrieve the definition of a particular Chart of Accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -5600,7 +5600,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties Get all the properties of a single chart of accounts.
+        /// [EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties Get all the properties of a single chart of accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the chart of accounts to list the properties for.</param>
@@ -5617,7 +5617,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties Get all the properties of a single chart of accounts.
+        /// [EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties Get all the properties of a single chart of accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -5732,7 +5732,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties Get all the properties of a single chart of accounts.
+        /// [EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties Get all the properties of a single chart of accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the chart of accounts to list the properties for.</param>
@@ -5750,7 +5750,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties Get all the properties of a single chart of accounts.
+        /// [EARLY ACCESS] GetChartOfAccountsProperties: Get chart of accounts properties Get all the properties of a single chart of accounts.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -5868,7 +5868,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module Retrieve the definition of a Cleardown Module complete with its rules.
+        /// [EARLY ACCESS] GetCleardownModule: Get a Cleardown Module Retrieve the definition of a Cleardown Module complete with its rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -5885,7 +5885,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module Retrieve the definition of a Cleardown Module complete with its rules.
+        /// [EARLY ACCESS] GetCleardownModule: Get a Cleardown Module Retrieve the definition of a Cleardown Module complete with its rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -6003,7 +6003,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module Retrieve the definition of a Cleardown Module complete with its rules.
+        /// [EARLY ACCESS] GetCleardownModule: Get a Cleardown Module Retrieve the definition of a Cleardown Module complete with its rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -6021,7 +6021,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module Retrieve the definition of a Cleardown Module complete with its rules.
+        /// [EARLY ACCESS] GetCleardownModule: Get a Cleardown Module Retrieve the definition of a Cleardown Module complete with its rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -6142,7 +6142,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile. Get the given General Ledger Profile.
+        /// [EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile. Get the given General Ledger Profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts for the General Ledger Profile.</param>
@@ -6159,7 +6159,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile. Get the given General Ledger Profile.
+        /// [EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile. Get the given General Ledger Profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -6277,7 +6277,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile. Get the given General Ledger Profile.
+        /// [EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile. Get the given General Ledger Profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts for the General Ledger Profile.</param>
@@ -6295,7 +6295,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile. Get the given General Ledger Profile.
+        /// [EARLY ACCESS] GetGeneralLedgerProfile: Get a General Ledger Profile. Get the given General Ledger Profile.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -6416,7 +6416,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetPostingModule: Get a Posting Module Retrieve the definition of a Posting Module complete with its rules.
+        /// [EARLY ACCESS] GetPostingModule: Get a Posting Module Retrieve the definition of a Posting Module complete with its rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -6433,7 +6433,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetPostingModule: Get a Posting Module Retrieve the definition of a Posting Module complete with its rules.
+        /// [EARLY ACCESS] GetPostingModule: Get a Posting Module Retrieve the definition of a Posting Module complete with its rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -6551,7 +6551,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetPostingModule: Get a Posting Module Retrieve the definition of a Posting Module complete with its rules.
+        /// [EARLY ACCESS] GetPostingModule: Get a Posting Module Retrieve the definition of a Posting Module complete with its rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -6569,7 +6569,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetPostingModule: Get a Posting Module Retrieve the definition of a Posting Module complete with its rules.
+        /// [EARLY ACCESS] GetPostingModule: Get a Posting Module Retrieve the definition of a Posting Module complete with its rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -6690,7 +6690,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAccounts: List Accounts List the accounts in a Chart of Accounts
+        /// [EARLY ACCESS] ListAccounts: List Accounts List the accounts in a Chart of Accounts
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -6711,7 +6711,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAccounts: List Accounts List the accounts in a Chart of Accounts
+        /// [EARLY ACCESS] ListAccounts: List Accounts List the accounts in a Chart of Accounts
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -6846,7 +6846,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAccounts: List Accounts List the accounts in a Chart of Accounts
+        /// [EARLY ACCESS] ListAccounts: List Accounts List the accounts in a Chart of Accounts
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -6868,7 +6868,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAccounts: List Accounts List the accounts in a Chart of Accounts
+        /// [EARLY ACCESS] ListAccounts: List Accounts List the accounts in a Chart of Accounts
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -7006,7 +7006,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts List all the Charts of Accounts matching particular criteria.
+        /// [EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts List all the Charts of Accounts matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)</param>
@@ -7026,7 +7026,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts List all the Charts of Accounts matching particular criteria.
+        /// [EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts List all the Charts of Accounts matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -7150,7 +7150,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts List all the Charts of Accounts matching particular criteria.
+        /// [EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts List all the Charts of Accounts matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)</param>
@@ -7171,7 +7171,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts List all the Charts of Accounts matching particular criteria.
+        /// [EARLY ACCESS] ListChartsOfAccounts: List Charts of Accounts List all the Charts of Accounts matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -7298,7 +7298,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules List the Rules in a Cleardown Module
+        /// [EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules List the Rules in a Cleardown Module
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -7318,7 +7318,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules List the Rules in a Cleardown Module
+        /// [EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules List the Rules in a Cleardown Module
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -7451,7 +7451,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules List the Rules in a Cleardown Module
+        /// [EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules List the Rules in a Cleardown Module
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -7472,7 +7472,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModuleRules: List Cleardown Module Rules List the Rules in a Cleardown Module
+        /// [EARLY ACCESS] ListCleardownModuleRules: List Cleardown Module Rules List the Rules in a Cleardown Module
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -7608,7 +7608,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules List all the Cleardown Modules matching particular criteria.
+        /// [EARLY ACCESS] ListCleardownModules: List Cleardown Modules List all the Cleardown Modules matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -7628,7 +7628,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules List all the Cleardown Modules matching particular criteria.
+        /// [EARLY ACCESS] ListCleardownModules: List Cleardown Modules List all the Cleardown Modules matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -7758,7 +7758,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules List all the Cleardown Modules matching particular criteria.
+        /// [EARLY ACCESS] ListCleardownModules: List Cleardown Modules List all the Cleardown Modules matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -7779,7 +7779,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListCleardownModules: List Cleardown Modules List all the Cleardown Modules matching particular criteria.
+        /// [EARLY ACCESS] ListCleardownModules: List Cleardown Modules List all the Cleardown Modules matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -7912,7 +7912,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles. List all the General Ledger profiles matching particular criteria.
+        /// [EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles. List all the General Ledger profiles matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts</param>
@@ -7932,7 +7932,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles. List all the General Ledger profiles matching particular criteria.
+        /// [EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles. List all the General Ledger profiles matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -8062,7 +8062,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles. List all the General Ledger profiles matching particular criteria.
+        /// [EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles. List all the General Ledger profiles matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts</param>
@@ -8083,7 +8083,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles. List all the General Ledger profiles matching particular criteria.
+        /// [EARLY ACCESS] ListGeneralLedgerProfiles: List General Ledger Profiles. List all the General Ledger profiles matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -8216,7 +8216,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules List the Rules in a Posting Module
+        /// [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules List the Rules in a Posting Module
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -8236,7 +8236,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules List the Rules in a Posting Module
+        /// [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules List the Rules in a Posting Module
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -8369,7 +8369,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules List the Rules in a Posting Module
+        /// [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules List the Rules in a Posting Module
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -8390,7 +8390,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules List the Rules in a Posting Module
+        /// [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules List the Rules in a Posting Module
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -8526,7 +8526,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModules: List Posting Modules List all the Posting Modules matching particular criteria.
+        /// [EARLY ACCESS] ListPostingModules: List Posting Modules List all the Posting Modules matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -8546,7 +8546,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModules: List Posting Modules List all the Posting Modules matching particular criteria.
+        /// [EARLY ACCESS] ListPostingModules: List Posting Modules List all the Posting Modules matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -8676,7 +8676,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModules: List Posting Modules List all the Posting Modules matching particular criteria.
+        /// [EARLY ACCESS] ListPostingModules: List Posting Modules List all the Posting Modules matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -8697,7 +8697,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListPostingModules: List Posting Modules List all the Posting Modules matching particular criteria.
+        /// [EARLY ACCESS] ListPostingModules: List Posting Modules List all the Posting Modules matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -8830,7 +8830,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts. Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
+        /// [EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts. Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -8846,7 +8846,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts. Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
+        /// [EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts. Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -8963,7 +8963,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts. Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
+        /// [EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts. Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -8980,7 +8980,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts. Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
+        /// [EARLY ACCESS] PatchChartOfAccounts: Patch a Chart of Accounts. Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -9100,7 +9100,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
+        /// [EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -9117,7 +9117,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
+        /// [EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -9242,7 +9242,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
+        /// [EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -9260,7 +9260,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
+        /// [EARLY ACCESS] PatchCleardownModule: Patch a Cleardown Module Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -9388,7 +9388,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
+        /// [EARLY ACCESS] PatchPostingModule: Patch a Posting Module Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -9405,7 +9405,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
+        /// [EARLY ACCESS] PatchPostingModule: Patch a Posting Module Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -9530,7 +9530,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
+        /// [EARLY ACCESS] PatchPostingModule: Patch a Posting Module Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -9548,7 +9548,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
+        /// [EARLY ACCESS] PatchPostingModule: Patch a Posting Module Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -9676,7 +9676,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module Update the given Cleardown Module details.
+        /// [EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module Update the given Cleardown Module details.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -9693,7 +9693,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module Update the given Cleardown Module details.
+        /// [EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module Update the given Cleardown Module details.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -9818,7 +9818,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module Update the given Cleardown Module details.
+        /// [EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module Update the given Cleardown Module details.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -9836,7 +9836,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleDetails: Set the details of a Cleardown Module Update the given Cleardown Module details.
+        /// [EARLY ACCESS] SetCleardownModuleDetails: Set the details of a Cleardown Module Update the given Cleardown Module details.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -9964,7 +9964,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
+        /// [EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -9981,7 +9981,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
+        /// [EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -10106,7 +10106,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
+        /// [EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -10124,7 +10124,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetCleardownModuleRules: Set the rules of a Cleardown Module Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
+        /// [EARLY ACCESS] SetCleardownModuleRules: Set the rules of a Cleardown Module Set the given Cleardown Modules rules, this will replace the existing set of rules for the cleardown module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -10252,7 +10252,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. Update the given General Ledger profile Mappings.
+        /// [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. Update the given General Ledger profile Mappings.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -10269,7 +10269,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. Update the given General Ledger profile Mappings.
+        /// [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. Update the given General Ledger profile Mappings.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -10394,7 +10394,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. Update the given General Ledger profile Mappings.
+        /// [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. Update the given General Ledger profile Mappings.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -10412,7 +10412,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. Update the given General Ledger profile Mappings.
+        /// [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. Update the given General Ledger profile Mappings.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -10540,7 +10540,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module Update the given Posting Module details.
+        /// [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module Update the given Posting Module details.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -10557,7 +10557,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module Update the given Posting Module details.
+        /// [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module Update the given Posting Module details.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -10682,7 +10682,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module Update the given Posting Module details.
+        /// [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module Update the given Posting Module details.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -10700,7 +10700,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module Update the given Posting Module details.
+        /// [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module Update the given Posting Module details.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -10828,7 +10828,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
+        /// [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -10845,7 +10845,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
+        /// [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -10970,7 +10970,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
+        /// [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -10988,7 +10988,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
+        /// [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module Set the given Posting Modules rules, this will replace the existing set of rules for the posting module.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -11116,7 +11116,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertAccountProperties: Upsert account properties Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts to update or insert the properties onto.</param>
@@ -11133,7 +11133,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertAccountProperties: Upsert account properties Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -11252,7 +11252,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertAccountProperties: Upsert account properties Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts to update or insert the properties onto.</param>
@@ -11270,7 +11270,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertAccountProperties: Upsert account properties Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -11392,7 +11392,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccounts: Upsert Accounts Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
+        /// [EARLY ACCESS] UpsertAccounts: Upsert Accounts Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -11408,7 +11408,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccounts: Upsert Accounts Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
+        /// [EARLY ACCESS] UpsertAccounts: Upsert Accounts Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -11525,7 +11525,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccounts: Upsert Accounts Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
+        /// [EARLY ACCESS] UpsertAccounts: Upsert Accounts Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts.</param>
@@ -11542,7 +11542,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAccounts: Upsert Accounts Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
+        /// [EARLY ACCESS] UpsertAccounts: Upsert Accounts Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -11662,7 +11662,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts to update or insert the properties onto.</param>
@@ -11678,7 +11678,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -11789,7 +11789,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Chart of Accounts to update or insert the properties onto.</param>
@@ -11806,7 +11806,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

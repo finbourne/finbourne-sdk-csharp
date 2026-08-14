@@ -68,9 +68,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("category is a required property for ProcessorDescription and cannot be null");
             }
             this.Category = category;
-            
             this.IsActive = isActive;
-            
             this.IsConnectionRequired = isConnectionRequired;
             // to ensure "relationships" is required (not null)
             if (relationships == null)

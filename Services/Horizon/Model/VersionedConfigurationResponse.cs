@@ -55,9 +55,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("configType is a required property for VersionedConfigurationResponse and cannot be null");
             }
             this.ConfigType = configType;
-            
             this.MajorVersion = majorVersion;
-            
             this.MinorVersion = minorVersion;
             // to ensure "value" is required (not null)
             if (value == null)
@@ -65,7 +63,6 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("value is a required property for VersionedConfigurationResponse and cannot be null");
             }
             this.Value = value;
-            
             this.IsDraft = isDraft;
         }
 

@@ -78,13 +78,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("documentResultType is a required property for ResultDataKeyRule and cannot be null");
             }
             this.DocumentResultType = documentResultType;
-            
-            // to ensure "resultKeyRuleType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ResultKeyRuleTypeEnum), resultKeyRuleType))
-            {
-                throw new ArgumentException("resultKeyRuleType is a required property for ResultDataKeyRule and must be a defined value");
-            }
-            
             this.ResultKeyRuleType = resultKeyRuleType;
             this.QuoteInterval = quoteInterval;
             this.AsAt = asAt;

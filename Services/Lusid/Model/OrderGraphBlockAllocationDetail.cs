@@ -46,7 +46,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("id is a required property for OrderGraphBlockAllocationDetail and cannot be null");
             }
             this.Id = id;
-            
             this.Quantity = quantity;
             this.AllocatedOrderId = allocatedOrderId;
         }

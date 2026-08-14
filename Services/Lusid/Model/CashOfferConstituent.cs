@@ -42,7 +42,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="minIncrement">minIncrement.</param>
         public CashOfferConstituent(decimal offerPrice = default(decimal), string currency = default(string), DateTimeOffset settlementDate = default(DateTimeOffset), decimal? minPieceSize = default(decimal?), decimal? minIncrement = default(decimal?))
         {
-            
             this.OfferPrice = offerPrice;
             // to ensure "currency" is required (not null)
             if (currency == null)
@@ -50,7 +49,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("currency is a required property for CashOfferConstituent and cannot be null");
             }
             this.Currency = currency;
-            
             this.SettlementDate = settlementDate;
             this.MinPieceSize = minPieceSize;
             this.MinIncrement = minIncrement;

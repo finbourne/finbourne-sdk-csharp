@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration.
+        /// [EARLY ACCESS] CreateAborConfiguration: Create an AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Create the given AborConfiguration.
@@ -45,7 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AborConfiguration CreateAborConfiguration(string scope, AborConfigurationRequest aborConfigurationRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration.
+        /// [EARLY ACCESS] CreateAborConfiguration: Create an AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Create the given AborConfiguration.
@@ -58,7 +58,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AborConfiguration</returns>
         Finbourne.Sdk.Client.ApiResponse<AborConfiguration> CreateAborConfigurationWithHttpInfo(string scope, AborConfigurationRequest aborConfigurationRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration.
+        /// [EARLY ACCESS] DeleteAborConfiguration: Delete an AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Delete the given AborConfiguration.
@@ -72,7 +72,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeleteAborConfiguration(string scope, string code, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration.
+        /// [EARLY ACCESS] DeleteAborConfiguration: Delete an AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Delete the given AborConfiguration.
@@ -85,7 +85,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteAborConfigurationWithHttpInfo(string scope, string code, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration.
+        /// [EARLY ACCESS] GetAborConfiguration: Get AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular AborConfiguration.
@@ -102,7 +102,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AborConfiguration GetAborConfiguration(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration.
+        /// [EARLY ACCESS] GetAborConfiguration: Get AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular AborConfiguration.
@@ -118,7 +118,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AborConfiguration</returns>
         Finbourne.Sdk.Client.ApiResponse<AborConfiguration> GetAborConfigurationWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfigurationProperties: Get Abor Configuration properties
+        /// [EARLY ACCESS] GetAborConfigurationProperties: Get Abor Configuration properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single abor Configuration.
@@ -134,7 +134,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AborConfigurationProperties GetAborConfigurationProperties(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfigurationProperties: Get Abor Configuration properties
+        /// [EARLY ACCESS] GetAborConfigurationProperties: Get Abor Configuration properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single abor Configuration.
@@ -149,7 +149,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AborConfigurationProperties</returns>
         Finbourne.Sdk.Client.ApiResponse<AborConfigurationProperties> GetAborConfigurationPropertiesWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration.
+        /// [EARLY ACCESS] ListAborConfigurations: List AborConfiguration.
         /// </summary>
         /// <remarks>
         /// List all the AborConfiguration matching particular criteria.
@@ -168,7 +168,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfAborConfiguration ListAborConfigurations(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration.
+        /// [EARLY ACCESS] ListAborConfigurations: List AborConfiguration.
         /// </summary>
         /// <remarks>
         /// List all the AborConfiguration matching particular criteria.
@@ -186,7 +186,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfAborConfiguration</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfAborConfiguration> ListAborConfigurationsWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration.
+        /// [EARLY ACCESS] PatchAborConfiguration: Patch Abor Configuration.
         /// </summary>
         /// <remarks>
         /// Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
@@ -201,7 +201,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AborConfiguration PatchAborConfiguration(string scope, string code, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration.
+        /// [EARLY ACCESS] PatchAborConfiguration: Patch Abor Configuration.
         /// </summary>
         /// <remarks>
         /// Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
@@ -215,7 +215,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AborConfiguration</returns>
         Finbourne.Sdk.Client.ApiResponse<AborConfiguration> PatchAborConfigurationWithHttpInfo(string scope, string code, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
+        /// [EARLY ACCESS] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -230,7 +230,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AborConfigurationProperties UpsertAborConfigurationProperties(string scope, string code, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
+        /// [EARLY ACCESS] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -253,7 +253,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration.
+        /// [EARLY ACCESS] CreateAborConfiguration: Create an AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Create the given AborConfiguration.
@@ -268,7 +268,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AborConfiguration> CreateAborConfigurationAsync(string scope, AborConfigurationRequest aborConfigurationRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration.
+        /// [EARLY ACCESS] CreateAborConfiguration: Create an AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Create the given AborConfiguration.
@@ -282,7 +282,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AborConfiguration)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AborConfiguration>> CreateAborConfigurationWithHttpInfoAsync(string scope, AborConfigurationRequest aborConfigurationRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration.
+        /// [EARLY ACCESS] DeleteAborConfiguration: Delete an AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Delete the given AborConfiguration.
@@ -297,7 +297,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeleteAborConfigurationAsync(string scope, string code, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration.
+        /// [EARLY ACCESS] DeleteAborConfiguration: Delete an AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Delete the given AborConfiguration.
@@ -311,7 +311,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteAborConfigurationWithHttpInfoAsync(string scope, string code, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration.
+        /// [EARLY ACCESS] GetAborConfiguration: Get AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular AborConfiguration.
@@ -329,7 +329,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AborConfiguration> GetAborConfigurationAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration.
+        /// [EARLY ACCESS] GetAborConfiguration: Get AborConfiguration.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular AborConfiguration.
@@ -346,7 +346,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AborConfiguration)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AborConfiguration>> GetAborConfigurationWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfigurationProperties: Get Abor Configuration properties
+        /// [EARLY ACCESS] GetAborConfigurationProperties: Get Abor Configuration properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single abor Configuration.
@@ -363,7 +363,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AborConfigurationProperties> GetAborConfigurationPropertiesAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfigurationProperties: Get Abor Configuration properties
+        /// [EARLY ACCESS] GetAborConfigurationProperties: Get Abor Configuration properties
         /// </summary>
         /// <remarks>
         /// Get all the properties of a single abor Configuration.
@@ -379,7 +379,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AborConfigurationProperties)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AborConfigurationProperties>> GetAborConfigurationPropertiesWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration.
+        /// [EARLY ACCESS] ListAborConfigurations: List AborConfiguration.
         /// </summary>
         /// <remarks>
         /// List all the AborConfiguration matching particular criteria.
@@ -399,7 +399,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfAborConfiguration> ListAborConfigurationsAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration.
+        /// [EARLY ACCESS] ListAborConfigurations: List AborConfiguration.
         /// </summary>
         /// <remarks>
         /// List all the AborConfiguration matching particular criteria.
@@ -418,7 +418,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfAborConfiguration)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfAborConfiguration>> ListAborConfigurationsWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration.
+        /// [EARLY ACCESS] PatchAborConfiguration: Patch Abor Configuration.
         /// </summary>
         /// <remarks>
         /// Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
@@ -434,7 +434,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AborConfiguration> PatchAborConfigurationAsync(string scope, string code, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration.
+        /// [EARLY ACCESS] PatchAborConfiguration: Patch Abor Configuration.
         /// </summary>
         /// <remarks>
         /// Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
@@ -449,7 +449,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AborConfiguration)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AborConfiguration>> PatchAborConfigurationWithHttpInfoAsync(string scope, string code, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
+        /// [EARLY ACCESS] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -465,7 +465,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AborConfigurationProperties> UpsertAborConfigurationPropertiesAsync(string scope, string code, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
+        /// [EARLY ACCESS] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -574,7 +574,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration. Create the given AborConfiguration.
+        /// [EARLY ACCESS] CreateAborConfiguration: Create an AborConfiguration. Create the given AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the AborConfiguration.</param>
@@ -589,7 +589,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration. Create the given AborConfiguration.
+        /// [EARLY ACCESS] CreateAborConfiguration: Create an AborConfiguration. Create the given AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -698,7 +698,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration. Create the given AborConfiguration.
+        /// [EARLY ACCESS] CreateAborConfiguration: Create an AborConfiguration. Create the given AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the AborConfiguration.</param>
@@ -714,7 +714,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAborConfiguration: Create an AborConfiguration. Create the given AborConfiguration.
+        /// [EARLY ACCESS] CreateAborConfiguration: Create an AborConfiguration. Create the given AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -826,7 +826,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration. Delete the given AborConfiguration.
+        /// [EARLY ACCESS] DeleteAborConfiguration: Delete an AborConfiguration. Delete the given AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the AborConfiguration to be deleted.</param>
@@ -841,7 +841,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration. Delete the given AborConfiguration.
+        /// [EARLY ACCESS] DeleteAborConfiguration: Delete an AborConfiguration. Delete the given AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -946,7 +946,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration. Delete the given AborConfiguration.
+        /// [EARLY ACCESS] DeleteAborConfiguration: Delete an AborConfiguration. Delete the given AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the AborConfiguration to be deleted.</param>
@@ -962,7 +962,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAborConfiguration: Delete an AborConfiguration. Delete the given AborConfiguration.
+        /// [EARLY ACCESS] DeleteAborConfiguration: Delete an AborConfiguration. Delete the given AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1070,7 +1070,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration. Retrieve the definition of a particular AborConfiguration.
+        /// [EARLY ACCESS] GetAborConfiguration: Get AborConfiguration. Retrieve the definition of a particular AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the AborConfiguration.</param>
@@ -1088,7 +1088,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration. Retrieve the definition of a particular AborConfiguration.
+        /// [EARLY ACCESS] GetAborConfiguration: Get AborConfiguration. Retrieve the definition of a particular AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1208,7 +1208,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration. Retrieve the definition of a particular AborConfiguration.
+        /// [EARLY ACCESS] GetAborConfiguration: Get AborConfiguration. Retrieve the definition of a particular AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the AborConfiguration.</param>
@@ -1227,7 +1227,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration. Retrieve the definition of a particular AborConfiguration.
+        /// [EARLY ACCESS] GetAborConfiguration: Get AborConfiguration. Retrieve the definition of a particular AborConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1350,7 +1350,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfigurationProperties: Get Abor Configuration properties Get all the properties of a single abor Configuration.
+        /// [EARLY ACCESS] GetAborConfigurationProperties: Get Abor Configuration properties Get all the properties of a single abor Configuration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Abor Configuration to list the properties for.</param>
@@ -1367,7 +1367,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfigurationProperties: Get Abor Configuration properties Get all the properties of a single abor Configuration.
+        /// [EARLY ACCESS] GetAborConfigurationProperties: Get Abor Configuration properties Get all the properties of a single abor Configuration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1482,7 +1482,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfigurationProperties: Get Abor Configuration properties Get all the properties of a single abor Configuration.
+        /// [EARLY ACCESS] GetAborConfigurationProperties: Get Abor Configuration properties Get all the properties of a single abor Configuration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Abor Configuration to list the properties for.</param>
@@ -1500,7 +1500,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAborConfigurationProperties: Get Abor Configuration properties Get all the properties of a single abor Configuration.
+        /// [EARLY ACCESS] GetAborConfigurationProperties: Get Abor Configuration properties Get all the properties of a single abor Configuration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1618,7 +1618,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration. List all the AborConfiguration matching particular criteria.
+        /// [EARLY ACCESS] ListAborConfigurations: List AborConfiguration. List all the AborConfiguration matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID              system datetime if not specified. (optional)</param>
@@ -1638,7 +1638,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration. List all the AborConfiguration matching particular criteria.
+        /// [EARLY ACCESS] ListAborConfigurations: List AborConfiguration. List all the AborConfiguration matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1762,7 +1762,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration. List all the AborConfiguration matching particular criteria.
+        /// [EARLY ACCESS] ListAborConfigurations: List AborConfiguration. List all the AborConfiguration matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID              system datetime if not specified. (optional)</param>
@@ -1783,7 +1783,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration. List all the AborConfiguration matching particular criteria.
+        /// [EARLY ACCESS] ListAborConfigurations: List AborConfiguration. List all the AborConfiguration matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1910,7 +1910,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration. Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
+        /// [EARLY ACCESS] PatchAborConfiguration: Patch Abor Configuration. Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the AborConfiguration.</param>
@@ -1926,7 +1926,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration. Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
+        /// [EARLY ACCESS] PatchAborConfiguration: Patch Abor Configuration. Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2043,7 +2043,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration. Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
+        /// [EARLY ACCESS] PatchAborConfiguration: Patch Abor Configuration. Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the AborConfiguration.</param>
@@ -2060,7 +2060,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration. Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
+        /// [EARLY ACCESS] PatchAborConfiguration: Patch Abor Configuration. Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2180,7 +2180,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertAborConfigurationProperties: Upsert AborConfiguration properties Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the AborConfiguration to update or insert the properties onto.</param>
@@ -2196,7 +2196,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertAborConfigurationProperties: Upsert AborConfiguration properties Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2307,7 +2307,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertAborConfigurationProperties: Upsert AborConfiguration properties Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the AborConfiguration to update or insert the properties onto.</param>
@@ -2324,7 +2324,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertAborConfigurationProperties: Upsert AborConfiguration properties Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.                Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

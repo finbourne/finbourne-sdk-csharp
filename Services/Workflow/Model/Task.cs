@@ -64,7 +64,6 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="properties">The requested TaskDefinition and Workflow properties decorated onto this Task, keyed by property key. Only populated when property keys were requested..</param>
         public Task(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), ResourceId workflowId = default(ResourceId), string workflowDisplayName = default(string), string state = default(string), string stateDisplayName = default(string), TaskSummary ultimateParentTask = default(TaskSummary), TaskSummary parentTask = default(TaskSummary), List<TaskSummary> childTasks = default(List<TaskSummary>), List<string> correlationIds = default(List<string>), VersionInfo varVersion = default(VersionInfo), bool terminalState = default(bool), DateTimeOffset? asAtLastTransition = default(DateTimeOffset?), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string), Stack stack = default(Stack), Guid? actionLogIdCreated = default(Guid?), Guid? actionLogIdModified = default(Guid?), Guid? actionLogIdSubmitted = default(Guid?), string hierarchicalPosition = default(string), string completionStatus = default(string), long? openDuration = default(long?), long? openDurationSinceLastUpdate = default(long?), long? openDurationSinceLastTransition = default(long?), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>))
         {
-            
             this.Id = id;
             // to ensure "taskDefinitionId" is required (not null)
             if (taskDefinitionId == null)
@@ -96,7 +95,6 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("ultimateParentTask is a required property for Task and cannot be null");
             }
             this.UltimateParentTask = ultimateParentTask;
-            
             this.TerminalState = terminalState;
             this.WorkflowId = workflowId;
             this.WorkflowDisplayName = workflowDisplayName;

@@ -57,7 +57,6 @@ namespace Finbourne.Sdk.Services.Insights.Model
         /// <param name="links">links.</param>
         public QueriedRequestLog(DateTimeOffset timestamp = default(DateTimeOffset), string id = default(string), string application = default(string), string operation = default(string), string sessionId = default(string), string verb = default(string), string url = default(string), string domain = default(string), string user = default(string), string userType = default(string), string outcome = default(string), decimal? duration = default(decimal?), int? httpStatusCode = default(int?), string errorCode = default(string), string sdkLanguage = default(string), string sdkVersion = default(string), string sourceApplication = default(string), List<string> correlationId = default(List<string>), string impersonatingUser = default(string), List<Link> links = default(List<Link>))
         {
-            
             this.Timestamp = timestamp;
             // to ensure "id" is required (not null)
             if (id == null)

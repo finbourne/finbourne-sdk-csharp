@@ -45,7 +45,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="linkResolved">linkResolved (required).</param>
         public GroupReconciliationResultTypes(int countMatch = default(int), Link linkMatches = default(Link), int countPartialMatch = default(int), Link linkPartialMatches = default(Link), int countBreak = default(int), Link linkBreaks = default(Link), int countResolved = default(int), Link linkResolved = default(Link))
         {
-            
             this.CountMatch = countMatch;
             // to ensure "linkMatches" is required (not null)
             if (linkMatches == null)
@@ -53,7 +52,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("linkMatches is a required property for GroupReconciliationResultTypes and cannot be null");
             }
             this.LinkMatches = linkMatches;
-            
             this.CountPartialMatch = countPartialMatch;
             // to ensure "linkPartialMatches" is required (not null)
             if (linkPartialMatches == null)
@@ -61,7 +59,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("linkPartialMatches is a required property for GroupReconciliationResultTypes and cannot be null");
             }
             this.LinkPartialMatches = linkPartialMatches;
-            
             this.CountBreak = countBreak;
             // to ensure "linkBreaks" is required (not null)
             if (linkBreaks == null)
@@ -69,7 +66,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("linkBreaks is a required property for GroupReconciliationResultTypes and cannot be null");
             }
             this.LinkBreaks = linkBreaks;
-            
             this.CountResolved = countResolved;
             // to ensure "linkResolved" is required (not null)
             if (linkResolved == null)

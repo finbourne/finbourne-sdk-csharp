@@ -87,13 +87,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("type is a required property for Account and cannot be null");
             }
             this.Type = type;
-            
-            // to ensure "status" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(StatusEnum), status))
-            {
-                throw new ArgumentException("status is a required property for Account and must be a defined value");
-            }
-            
             this.Status = status;
             this.Description = description;
             this.Control = control;

@@ -61,7 +61,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("recDefinitionId is a required property for RecInstance and cannot be null");
             }
             this.RecDefinitionId = recDefinitionId;
-            
             this.AsAtInstantiated = asAtInstantiated;
             // to ensure "status" is required (not null)
             if (status == null)

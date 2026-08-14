@@ -41,13 +41,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="completionRatio">Reviewed / (Reviewed + Required). Is 1.0 when the denominator is zero, and null when execution failed. (required).</param>
         public RecReview(int countReviewed = default(int), int countRequired = default(int), int countNotRequired = default(int), decimal completionRatio = default(decimal))
         {
-            
             this.CountReviewed = countReviewed;
-            
             this.CountRequired = countRequired;
-            
             this.CountNotRequired = countNotRequired;
-            
             this.CompletionRatio = completionRatio;
         }
 

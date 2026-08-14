@@ -65,9 +65,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("recInstance is a required property for RecResultSet and cannot be null");
             }
             this.RecInstance = recInstance;
-            
             this.RunNumber = runNumber;
-            
             this.RunAsAt = runAsAt;
             // to ensure "execution" is required (not null)
             if (execution == null)

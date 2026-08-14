@@ -53,7 +53,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("valuationPointCode is a required property for CreateValuationPointRequest and cannot be null");
             }
             this.ValuationPointCode = valuationPointCode;
-            
             this.EffectiveAt = effectiveAt;
             this.Variant = variant;
             this.Name = name;

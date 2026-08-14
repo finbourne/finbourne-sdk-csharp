@@ -62,7 +62,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("status is a required property for DiaryEntry and cannot be null");
             }
             this.Status = status;
-            
             this.EffectiveAt = effectiveAt;
             this.Href = href;
             this.AborId = aborId;

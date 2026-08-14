@@ -48,7 +48,6 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("id is a required property for AuditEntry and cannot be null");
             }
             this.Id = id;
-            
             this.Date = date;
             // to ensure "process" is required (not null)
             if (process == null)

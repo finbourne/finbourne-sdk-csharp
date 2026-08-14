@@ -40,13 +40,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
         public EmptyModelOptions(ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
         {
-            
-            // to ensure "modelOptionsType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ModelOptionsTypeEnum), modelOptionsType))
-            {
-                throw new ArgumentException("modelOptionsType is a required property for EmptyModelOptions and must be a defined value");
-            }
-            
             this.ModelOptionsType = modelOptionsType;
         }
 

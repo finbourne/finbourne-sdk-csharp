@@ -56,9 +56,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("rightPortfolioId is a required property for TransactionReconciliationRequest and cannot be null");
             }
             this.RightPortfolioId = rightPortfolioId;
-            
             this.FromTransactionDate = fromTransactionDate;
-            
             this.ToTransactionDate = toTransactionDate;
             this.MappingId = mappingId;
             this.AsAt = asAt;

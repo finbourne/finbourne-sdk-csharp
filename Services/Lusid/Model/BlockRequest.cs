@@ -68,7 +68,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("side is a required property for BlockRequest and cannot be null");
             }
             this.Side = side;
-            
             this.CreatedDate = createdDate;
             this.OrderIds = orderIds;
             this.Properties = properties;

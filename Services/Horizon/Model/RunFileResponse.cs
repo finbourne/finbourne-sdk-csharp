@@ -50,9 +50,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("fileName is a required property for RunFileResponse and cannot be null");
             }
             this.FileName = fileName;
-            
             this.GeneratedAt = generatedAt;
-            
             this.RowCount = rowCount;
             // to ensure "fileHash" is required (not null)
             if (fileHash == null)
@@ -60,7 +58,6 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("fileHash is a required property for RunFileResponse and cannot be null");
             }
             this.FileHash = fileHash;
-            
             this.Encrypted = encrypted;
             // to ensure "destinations" is required (not null)
             if (destinations == null)

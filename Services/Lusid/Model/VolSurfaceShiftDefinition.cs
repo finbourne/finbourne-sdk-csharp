@@ -77,21 +77,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrument is a required property for VolSurfaceShiftDefinition and cannot be null");
             }
             this.Instrument = instrument;
-            
-            // to ensure "shiftType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ShiftTypeEnum), shiftType))
-            {
-                throw new ArgumentException("shiftType is a required property for VolSurfaceShiftDefinition and must be a defined value");
-            }
-            
             this.ShiftType = shiftType;
-            
-            // to ensure "scenarioShiftType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ScenarioShiftTypeEnum), scenarioShiftType))
-            {
-                throw new ArgumentException("scenarioShiftType is a required property for VolSurfaceShiftDefinition and must be a defined value");
-            }
-            
             this.ScenarioShiftType = scenarioShiftType;
             this.Amount = amount;
             this.Strike = strike;

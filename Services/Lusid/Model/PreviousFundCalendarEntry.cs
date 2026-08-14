@@ -56,7 +56,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("displayName is a required property for PreviousFundCalendarEntry and cannot be null");
             }
             this.DisplayName = displayName;
-            
             this.AsAt = asAt;
             this.Description = description;
             this.EffectiveAt = effectiveAt;

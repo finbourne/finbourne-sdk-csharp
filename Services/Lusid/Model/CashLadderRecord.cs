@@ -41,7 +41,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="close">close (required).</param>
         public CashLadderRecord(DateTimeOffset effectiveDate = default(DateTimeOffset), decimal open = default(decimal), Dictionary<string, decimal> activities = default(Dictionary<string, decimal>), decimal close = default(decimal))
         {
-            
             this.Open = open;
             // to ensure "activities" is required (not null)
             if (activities == null)
@@ -49,7 +48,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("activities is a required property for CashLadderRecord and cannot be null");
             }
             this.Activities = activities;
-            
             this.Close = close;
             this.EffectiveDate = effectiveDate;
         }

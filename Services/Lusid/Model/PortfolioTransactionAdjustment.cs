@@ -51,7 +51,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("navActivityAdjustmentSource is a required property for PortfolioTransactionAdjustment and cannot be null");
             }
             this.NavActivityAdjustmentSource = navActivityAdjustmentSource;
-            
             this.AsAt = asAt;
             // to ensure "portfolioScope" is required (not null)
             if (portfolioScope == null)
@@ -71,13 +70,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("transactionId is a required property for PortfolioTransactionAdjustment and cannot be null");
             }
             this.TransactionId = transactionId;
-            
-            // to ensure "navActivityAdjustmentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(NavActivityAdjustmentTypeEnum), navActivityAdjustmentType))
-            {
-                throw new ArgumentException("navActivityAdjustmentType is a required property for PortfolioTransactionAdjustment and must be a defined value");
-            }
-            
             this.NavActivityAdjustmentType = navActivityAdjustmentType;
         }
 

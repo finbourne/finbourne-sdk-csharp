@@ -34,6 +34,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="useInstrumentTypeToDeterminePricer">If true then use the instrument type to set the default instrument pricer  This applies where no more specific set of overrides are provided on a per-vendor and instrument basis..</param>
         /// <param name="allowAnyInstrumentsWithSecUidToPriceOffLookup">By default, one would not expect to price and exotic instrument, i.e. an instrument with a complicated  instrument definition simply through looking up a price as there should be a better way of evaluating it.  To override that behaviour and allow lookup for a price from the instrument identifier(s), set this to true..</param>
         /// <param name="allowPartiallySuccessfulEvaluation">If true then a failure in task evaluation doesn&#39;t cause overall failure.  results will be returned where they succeeded and annotation elsewhere.</param>
+        /// <param name="riskEngine">Which engine computes first-order Risk/_* measures. One of \&quot;Bump\&quot; (default: central  finite differences by bump-and-revalue - the historical behaviour, used when this is  absent), \&quot;Parity\&quot; (bump computes and is reported, the adjoint engine independently checks  every calculator and any disagreement fails the measure loudly - the recommended  enablement gate), or \&quot;Adjoint\&quot; (algorithmic differentiation where an evaluator exists,  with silent fallback to Bump elsewhere - selecting it can never reduce coverage). Available values: Bump, Adjoint, Parity..</param>
         /// <param name="produceSeparateResultForLinearOtcLegs">If true (default), when pricing an Fx-Forward or Interest Rate Swap, Future and other linearly separable products, product two results, one for each leg  rather than a single line result with the amalgamated/summed pv from both legs..</param>
         /// <param name="fxForwardContractsAsUnitsInBothLegs">When true, Holding/Units on both legs of an instrument-booked FxForward valued with  ProduceSeparateResultForLinearOtcLegs reports the number of forward contracts held (the  non-split holding units), so that Holding/Units * Valuation/InstrumentPV &#x3D;&#x3D; Valuation/PV  holds on each leg. When false (default), the foreign leg reports  &lt;non-split units&gt; * (fgnAmount / domAmount)..</param>
         /// <param name="enableUseOfCachedUnitResults">If true, when pricing using a model or for an instrument that supports use of intermediate cached-results, use them.  Default is that this caching is turned off..</param>
@@ -48,12 +49,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="enableLegLevelInferenceForCustomSrsColumns">When enabled, allows inference between leg-level and  instrument-level data during portfolio valuation. If  data is missing at one level, it may be inferred from  the other level. For example, missing leg-level data   may be inferred from existing leg-level and instrument-  level data when ProduceSeparateResultForLinearOtcLegs  is enabled, and vice versa. Explicitly provided data  always takes precedence..</param>
         /// <param name="useInstrumentScaleFactorAsDefault">When enabled, priceScaleFactor defined at the instrument level will  be used in the absence of quote scaleFactor when resolving quotes..</param>
         /// <param name="scaleInstrumentAccruedOverrideByContractSize">When enabled, an SRS InstrumentAccrued override is multiplied by the instrument contractSize (legacy behaviour).  By default this is disabled, and the override is treated as the accrued for a single unit, keeping the  holding-level identity PV &#x3D; CleanPv + Accrued consistent..</param>
-        public PricingOptions(ModelSelection modelSelection = default(ModelSelection), bool useInstrumentTypeToDeterminePricer = default(bool), bool allowAnyInstrumentsWithSecUidToPriceOffLookup = default(bool), bool allowPartiallySuccessfulEvaluation = default(bool), bool produceSeparateResultForLinearOtcLegs = default(bool), bool fxForwardContractsAsUnitsInBothLegs = default(bool), bool enableUseOfCachedUnitResults = default(bool), bool windowValuationOnInstrumentStartEnd = default(bool), bool removeContingentCashflowsInPaymentDiary = default(bool), bool useChildSubHoldingKeysForPortfolioExpansion = default(bool), bool validateDomesticAndQuoteCurrenciesAreConsistent = default(bool), bool mbsValuationUsingHoldingCurrentFace = default(bool), bool convertSrsCashFlowsToPortfolioCurrency = default(bool), string conservedQuantityForLookthroughExpansion = default(string), ReturnZeroPvOptions returnZeroPv = default(ReturnZeroPvOptions), bool enableLegLevelInferenceForCustomSrsColumns = default(bool), bool useInstrumentScaleFactorAsDefault = default(bool), bool scaleInstrumentAccruedOverrideByContractSize = default(bool))
+        public PricingOptions(ModelSelection modelSelection = default(ModelSelection), bool useInstrumentTypeToDeterminePricer = default(bool), bool allowAnyInstrumentsWithSecUidToPriceOffLookup = default(bool), bool allowPartiallySuccessfulEvaluation = default(bool), string riskEngine = default(string), bool produceSeparateResultForLinearOtcLegs = default(bool), bool fxForwardContractsAsUnitsInBothLegs = default(bool), bool enableUseOfCachedUnitResults = default(bool), bool windowValuationOnInstrumentStartEnd = default(bool), bool removeContingentCashflowsInPaymentDiary = default(bool), bool useChildSubHoldingKeysForPortfolioExpansion = default(bool), bool validateDomesticAndQuoteCurrenciesAreConsistent = default(bool), bool mbsValuationUsingHoldingCurrentFace = default(bool), bool convertSrsCashFlowsToPortfolioCurrency = default(bool), string conservedQuantityForLookthroughExpansion = default(string), ReturnZeroPvOptions returnZeroPv = default(ReturnZeroPvOptions), bool enableLegLevelInferenceForCustomSrsColumns = default(bool), bool useInstrumentScaleFactorAsDefault = default(bool), bool scaleInstrumentAccruedOverrideByContractSize = default(bool))
         {
             this.ModelSelection = modelSelection;
             this.UseInstrumentTypeToDeterminePricer = useInstrumentTypeToDeterminePricer;
             this.AllowAnyInstrumentsWithSecUidToPriceOffLookup = allowAnyInstrumentsWithSecUidToPriceOffLookup;
             this.AllowPartiallySuccessfulEvaluation = allowPartiallySuccessfulEvaluation;
+            this.RiskEngine = riskEngine;
             this.ProduceSeparateResultForLinearOtcLegs = produceSeparateResultForLinearOtcLegs;
             this.FxForwardContractsAsUnitsInBothLegs = fxForwardContractsAsUnitsInBothLegs;
             this.EnableUseOfCachedUnitResults = enableUseOfCachedUnitResults;
@@ -96,6 +98,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>If true then a failure in task evaluation doesn&#39;t cause overall failure.  results will be returned where they succeeded and annotation elsewhere</value>
         [DataMember(Name = "allowPartiallySuccessfulEvaluation", EmitDefaultValue = true)]
         public bool AllowPartiallySuccessfulEvaluation { get; set; }
+
+        /// <summary>
+        /// Which engine computes first-order Risk/_* measures. One of \&quot;Bump\&quot; (default: central  finite differences by bump-and-revalue - the historical behaviour, used when this is  absent), \&quot;Parity\&quot; (bump computes and is reported, the adjoint engine independently checks  every calculator and any disagreement fails the measure loudly - the recommended  enablement gate), or \&quot;Adjoint\&quot; (algorithmic differentiation where an evaluator exists,  with silent fallback to Bump elsewhere - selecting it can never reduce coverage). Available values: Bump, Adjoint, Parity.
+        /// </summary>
+        /// <value>Which engine computes first-order Risk/_* measures. One of \&quot;Bump\&quot; (default: central  finite differences by bump-and-revalue - the historical behaviour, used when this is  absent), \&quot;Parity\&quot; (bump computes and is reported, the adjoint engine independently checks  every calculator and any disagreement fails the measure loudly - the recommended  enablement gate), or \&quot;Adjoint\&quot; (algorithmic differentiation where an evaluator exists,  with silent fallback to Bump elsewhere - selecting it can never reduce coverage). Available values: Bump, Adjoint, Parity.</value>
+        [DataMember(Name = "riskEngine", EmitDefaultValue = true)]
+        public string RiskEngine { get; set; }
 
         /// <summary>
         /// If true (default), when pricing an Fx-Forward or Interest Rate Swap, Future and other linearly separable products, product two results, one for each leg  rather than a single line result with the amalgamated/summed pv from both legs.
@@ -205,6 +214,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  UseInstrumentTypeToDeterminePricer: ").Append(UseInstrumentTypeToDeterminePricer).Append("\n");
             sb.Append("  AllowAnyInstrumentsWithSecUidToPriceOffLookup: ").Append(AllowAnyInstrumentsWithSecUidToPriceOffLookup).Append("\n");
             sb.Append("  AllowPartiallySuccessfulEvaluation: ").Append(AllowPartiallySuccessfulEvaluation).Append("\n");
+            sb.Append("  RiskEngine: ").Append(RiskEngine).Append("\n");
             sb.Append("  ProduceSeparateResultForLinearOtcLegs: ").Append(ProduceSeparateResultForLinearOtcLegs).Append("\n");
             sb.Append("  FxForwardContractsAsUnitsInBothLegs: ").Append(FxForwardContractsAsUnitsInBothLegs).Append("\n");
             sb.Append("  EnableUseOfCachedUnitResults: ").Append(EnableUseOfCachedUnitResults).Append("\n");
@@ -270,6 +280,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.AllowPartiallySuccessfulEvaluation == input.AllowPartiallySuccessfulEvaluation ||
                     this.AllowPartiallySuccessfulEvaluation.Equals(input.AllowPartiallySuccessfulEvaluation)
+                ) && 
+                (
+                    this.RiskEngine == input.RiskEngine ||
+                    (this.RiskEngine != null &&
+                    this.RiskEngine.Equals(input.RiskEngine))
                 ) && 
                 (
                     this.ProduceSeparateResultForLinearOtcLegs == input.ProduceSeparateResultForLinearOtcLegs ||
@@ -347,6 +362,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 hashCode = (hashCode * 59) + this.UseInstrumentTypeToDeterminePricer.GetHashCode();
                 hashCode = (hashCode * 59) + this.AllowAnyInstrumentsWithSecUidToPriceOffLookup.GetHashCode();
                 hashCode = (hashCode * 59) + this.AllowPartiallySuccessfulEvaluation.GetHashCode();
+                if (this.RiskEngine != null)
+                {
+                    hashCode = (hashCode * 59) + this.RiskEngine.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.ProduceSeparateResultForLinearOtcLegs.GetHashCode();
                 hashCode = (hashCode * 59) + this.FxForwardContractsAsUnitsInBothLegs.GetHashCode();
                 hashCode = (hashCode * 59) + this.EnableUseOfCachedUnitResults.GetHashCode();

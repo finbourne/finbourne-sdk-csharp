@@ -53,7 +53,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("diaryEntryCode is a required property for UpsertValuationPointRequest and cannot be null");
             }
             this.DiaryEntryCode = diaryEntryCode;
-            
             this.EffectiveAt = effectiveAt;
             this.DiaryEntryVariant = diaryEntryVariant;
             this.Name = name;

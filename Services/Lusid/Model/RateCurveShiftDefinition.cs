@@ -117,21 +117,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("ccy is a required property for RateCurveShiftDefinition and cannot be null");
             }
             this.Ccy = ccy;
-            
-            // to ensure "shiftType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ShiftTypeEnum), shiftType))
-            {
-                throw new ArgumentException("shiftType is a required property for RateCurveShiftDefinition and must be a defined value");
-            }
-            
             this.ShiftType = shiftType;
-            
-            // to ensure "scenarioShiftType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ScenarioShiftTypeEnum), scenarioShiftType))
-            {
-                throw new ArgumentException("scenarioShiftType is a required property for RateCurveShiftDefinition and must be a defined value");
-            }
-            
             this.ScenarioShiftType = scenarioShiftType;
             this.Amount = amount;
             this.StartTenor = startTenor;

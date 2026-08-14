@@ -48,11 +48,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="decisions">An append-only log of approver decisions. May be empty. (required).</param>
         public RecSupersededRun(int runNumber = default(int), DateTimeOffset runAsAt = default(DateTimeOffset), DateTimeOffset supersededAsAt = default(DateTimeOffset), RecExecution execution = default(RecExecution), RecDatesReconciled datesReconciled = default(RecDatesReconciled), RecResultCounts resultCounts = default(RecResultCounts), RecReview review = default(RecReview), string approvalStatus = default(string), List<RecRequiredApproval> requiredApprovals = default(List<RecRequiredApproval>), List<RecSubmission> submissions = default(List<RecSubmission>), List<RecApprovalDecision> decisions = default(List<RecApprovalDecision>))
         {
-            
             this.RunNumber = runNumber;
-            
             this.RunAsAt = runAsAt;
-            
             this.SupersededAsAt = supersededAsAt;
             // to ensure "execution" is required (not null)
             if (execution == null)

@@ -51,7 +51,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("fixingReference is a required property for IndexConvention and cannot be null");
             }
             this.FixingReference = fixingReference;
-            
             this.PublicationDayLag = publicationDayLag;
             // to ensure "paymentTenor" is required (not null)
             if (paymentTenor == null)

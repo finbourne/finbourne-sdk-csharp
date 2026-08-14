@@ -44,9 +44,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="filterInstrumentEvents">Expression to filter the result set..</param>
         public QueryInstrumentEventsRequest(DateTimeOffset? asAt = default(DateTimeOffset?), DateTimeOffset windowStart = default(DateTimeOffset), DateTimeOffset windowEnd = default(DateTimeOffset), List<PortfolioEntityId> portfolioEntityIds = default(List<PortfolioEntityId>), DateTimeOffset effectiveAt = default(DateTimeOffset), ResourceId recipeId = default(ResourceId), string filterInstrumentEvents = default(string))
         {
-            
             this.WindowStart = windowStart;
-            
             this.WindowEnd = windowEnd;
             // to ensure "portfolioEntityIds" is required (not null)
             if (portfolioEntityIds == null)
@@ -54,7 +52,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("portfolioEntityIds is a required property for QueryInstrumentEventsRequest and cannot be null");
             }
             this.PortfolioEntityIds = portfolioEntityIds;
-            
             this.EffectiveAt = effectiveAt;
             // to ensure "recipeId" is required (not null)
             if (recipeId == null)

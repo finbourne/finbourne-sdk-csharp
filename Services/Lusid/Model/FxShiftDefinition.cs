@@ -81,21 +81,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("currencyPair is a required property for FxShiftDefinition and cannot be null");
             }
             this.CurrencyPair = currencyPair;
-            
-            // to ensure "shiftType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ShiftTypeEnum), shiftType))
-            {
-                throw new ArgumentException("shiftType is a required property for FxShiftDefinition and must be a defined value");
-            }
-            
             this.ShiftType = shiftType;
-            
-            // to ensure "scenarioShiftType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ScenarioShiftTypeEnum), scenarioShiftType))
-            {
-                throw new ArgumentException("scenarioShiftType is a required property for FxShiftDefinition and must be a defined value");
-            }
-            
             this.ScenarioShiftType = scenarioShiftType;
             this.Amount = amount;
         }

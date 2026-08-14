@@ -41,7 +41,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="type">The type of the workspace item. (required).</param>
         public WorkspaceItemUpdateRequest(int format = default(int), string description = default(string), Object content = default(Object), string type = default(string))
         {
-            
             this.Format = format;
             // to ensure "description" is required (not null)
             if (description == null)

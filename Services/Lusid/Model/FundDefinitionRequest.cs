@@ -84,7 +84,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("fundConfigurationId is a required property for FundDefinitionRequest and cannot be null");
             }
             this.FundConfigurationId = fundConfigurationId;
-            
             this.InceptionDate = inceptionDate;
             // to ensure "primaryNavType" is required (not null)
             if (primaryNavType == null)

@@ -64,7 +64,6 @@ namespace Finbourne.Sdk.Services.Notifications.Model
                 throw new ArgumentNullException("notificationType is a required property for Notification and cannot be null");
             }
             this.NotificationType = notificationType;
-            
             this.CreatedAt = createdAt;
             // to ensure "userIdCreated" is required (not null)
             if (userIdCreated == null)
@@ -72,7 +71,6 @@ namespace Finbourne.Sdk.Services.Notifications.Model
                 throw new ArgumentNullException("userIdCreated is a required property for Notification and cannot be null");
             }
             this.UserIdCreated = userIdCreated;
-            
             this.ModifiedAt = modifiedAt;
             // to ensure "userIdModified" is required (not null)
             if (userIdModified == null)

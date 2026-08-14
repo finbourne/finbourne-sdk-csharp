@@ -65,13 +65,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("documentCode is a required property for PortfolioResultDataKeyRule and cannot be null");
             }
             this.DocumentCode = documentCode;
-            
-            // to ensure "resultKeyRuleType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ResultKeyRuleTypeEnum), resultKeyRuleType))
-            {
-                throw new ArgumentException("resultKeyRuleType is a required property for PortfolioResultDataKeyRule and must be a defined value");
-            }
-            
             this.ResultKeyRuleType = resultKeyRuleType;
             this.QuoteInterval = quoteInterval;
             this.AsAt = asAt;

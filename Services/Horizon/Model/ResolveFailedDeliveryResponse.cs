@@ -49,11 +49,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("batchReferenceId is a required property for ResolveFailedDeliveryResponse and cannot be null");
             }
             this.BatchReferenceId = batchReferenceId;
-            
             this.ResolvedCount = resolvedCount;
-            
             this.Resolved = resolved;
-            
             this.ResolvedAt = resolvedAt;
             // to ensure "resolutionReason" is required (not null)
             if (resolutionReason == null)

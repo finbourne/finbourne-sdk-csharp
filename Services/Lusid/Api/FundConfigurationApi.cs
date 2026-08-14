@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration.
+        /// [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Create the given FundConfiguration.
@@ -45,7 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FundConfiguration CreateFundConfiguration(string scope, FundConfigurationRequest fundConfigurationRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration.
+        /// [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Create the given FundConfiguration.
@@ -58,7 +58,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FundConfiguration</returns>
         Finbourne.Sdk.Client.ApiResponse<FundConfiguration> CreateFundConfigurationWithHttpInfo(string scope, FundConfigurationRequest fundConfigurationRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration.
+        /// [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Delete the given FundConfiguration.
@@ -72,7 +72,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeleteFundConfiguration(string scope, string code, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration.
+        /// [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Delete the given FundConfiguration.
@@ -85,7 +85,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteFundConfigurationWithHttpInfo(string scope, string code, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration.
+        /// [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular FundConfiguration.
@@ -102,7 +102,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FundConfiguration GetFundConfiguration(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration.
+        /// [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular FundConfiguration.
@@ -118,7 +118,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FundConfiguration</returns>
         Finbourne.Sdk.Client.ApiResponse<FundConfiguration> GetFundConfigurationWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration.
+        /// [EARLY ACCESS] ListFundConfigurations: List FundConfiguration.
         /// </summary>
         /// <remarks>
         /// List all the FundConfiguration matching particular criteria.
@@ -137,7 +137,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfFundConfiguration ListFundConfigurations(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration.
+        /// [EARLY ACCESS] ListFundConfigurations: List FundConfiguration.
         /// </summary>
         /// <remarks>
         /// List all the FundConfiguration matching particular criteria.
@@ -155,7 +155,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfFundConfiguration</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFundConfiguration> ListFundConfigurationsWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
+        /// [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration.
         /// </summary>
         /// <remarks>
         /// Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
@@ -170,7 +170,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FundConfiguration PatchFundConfiguration(string scope, string code, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
+        /// [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration.
         /// </summary>
         /// <remarks>
         /// Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
@@ -184,7 +184,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FundConfiguration</returns>
         Finbourne.Sdk.Client.ApiResponse<FundConfiguration> PatchFundConfigurationWithHttpInfo(string scope, string code, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
+        /// [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -199,7 +199,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FundConfigurationProperties UpsertFundConfigurationProperties(string scope, string code, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
+        /// [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -222,7 +222,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration.
+        /// [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Create the given FundConfiguration.
@@ -237,7 +237,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FundConfiguration> CreateFundConfigurationAsync(string scope, FundConfigurationRequest fundConfigurationRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration.
+        /// [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Create the given FundConfiguration.
@@ -251,7 +251,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (FundConfiguration)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FundConfiguration>> CreateFundConfigurationWithHttpInfoAsync(string scope, FundConfigurationRequest fundConfigurationRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration.
+        /// [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Delete the given FundConfiguration.
@@ -266,7 +266,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeleteFundConfigurationAsync(string scope, string code, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration.
+        /// [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Delete the given FundConfiguration.
@@ -280,7 +280,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteFundConfigurationWithHttpInfoAsync(string scope, string code, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration.
+        /// [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular FundConfiguration.
@@ -298,7 +298,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FundConfiguration> GetFundConfigurationAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration.
+        /// [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular FundConfiguration.
@@ -315,7 +315,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (FundConfiguration)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FundConfiguration>> GetFundConfigurationWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration.
+        /// [EARLY ACCESS] ListFundConfigurations: List FundConfiguration.
         /// </summary>
         /// <remarks>
         /// List all the FundConfiguration matching particular criteria.
@@ -335,7 +335,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfFundConfiguration> ListFundConfigurationsAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration.
+        /// [EARLY ACCESS] ListFundConfigurations: List FundConfiguration.
         /// </summary>
         /// <remarks>
         /// List all the FundConfiguration matching particular criteria.
@@ -354,7 +354,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfFundConfiguration)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFundConfiguration>> ListFundConfigurationsWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
+        /// [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration.
         /// </summary>
         /// <remarks>
         /// Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
@@ -370,7 +370,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FundConfiguration> PatchFundConfigurationAsync(string scope, string code, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
+        /// [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration.
         /// </summary>
         /// <remarks>
         /// Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
@@ -385,7 +385,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (FundConfiguration)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FundConfiguration>> PatchFundConfigurationWithHttpInfoAsync(string scope, string code, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
+        /// [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -401,7 +401,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FundConfigurationProperties> UpsertFundConfigurationPropertiesAsync(string scope, string code, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
+        /// [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
         /// </summary>
         /// <remarks>
         /// Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
@@ -510,7 +510,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration. Create the given FundConfiguration.
+        /// [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration. Create the given FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FundConfiguration.</param>
@@ -525,7 +525,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration. Create the given FundConfiguration.
+        /// [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration. Create the given FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -634,7 +634,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration. Create the given FundConfiguration.
+        /// [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration. Create the given FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FundConfiguration.</param>
@@ -650,7 +650,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration. Create the given FundConfiguration.
+        /// [EARLY ACCESS] CreateFundConfiguration: Create a FundConfiguration. Create the given FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -762,7 +762,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration. Delete the given FundConfiguration.
+        /// [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration. Delete the given FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FundConfiguration to be deleted.</param>
@@ -777,7 +777,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration. Delete the given FundConfiguration.
+        /// [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration. Delete the given FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -882,7 +882,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration. Delete the given FundConfiguration.
+        /// [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration. Delete the given FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FundConfiguration to be deleted.</param>
@@ -898,7 +898,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration. Delete the given FundConfiguration.
+        /// [EARLY ACCESS] DeleteFundConfiguration: Delete a FundConfiguration. Delete the given FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1006,7 +1006,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration. Retrieve the definition of a particular FundConfiguration.
+        /// [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration. Retrieve the definition of a particular FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FundConfiguration.</param>
@@ -1024,7 +1024,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration. Retrieve the definition of a particular FundConfiguration.
+        /// [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration. Retrieve the definition of a particular FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1144,7 +1144,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration. Retrieve the definition of a particular FundConfiguration.
+        /// [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration. Retrieve the definition of a particular FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FundConfiguration.</param>
@@ -1163,7 +1163,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration. Retrieve the definition of a particular FundConfiguration.
+        /// [EARLY ACCESS] GetFundConfiguration: Get FundConfiguration. Retrieve the definition of a particular FundConfiguration.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1286,7 +1286,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration. List all the FundConfiguration matching particular criteria.
+        /// [EARLY ACCESS] ListFundConfigurations: List FundConfiguration. List all the FundConfiguration matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to list the TimeVariant properties for the FundConfiguration.              Defaults to the current LUSID system datetime if not specified. (optional)</param>
@@ -1306,7 +1306,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration. List all the FundConfiguration matching particular criteria.
+        /// [EARLY ACCESS] ListFundConfigurations: List FundConfiguration. List all the FundConfiguration matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1430,7 +1430,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration. List all the FundConfiguration matching particular criteria.
+        /// [EARLY ACCESS] ListFundConfigurations: List FundConfiguration. List all the FundConfiguration matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to list the TimeVariant properties for the FundConfiguration.              Defaults to the current LUSID system datetime if not specified. (optional)</param>
@@ -1451,7 +1451,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration. List all the FundConfiguration matching particular criteria.
+        /// [EARLY ACCESS] ListFundConfigurations: List FundConfiguration. List all the FundConfiguration matching particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1578,7 +1578,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration. Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
+        /// [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration. Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FundConfiguration.</param>
@@ -1594,7 +1594,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration. Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
+        /// [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration. Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1711,7 +1711,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration. Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
+        /// [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration. Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FundConfiguration.</param>
@@ -1728,7 +1728,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration. Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
+        /// [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration. Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters, BucketSets, ApportionmentBucketSet, ApportionmentMethodProperty.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1848,7 +1848,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FundConfiguration to update or insert the properties onto.</param>
@@ -1864,7 +1864,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1975,7 +1975,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the FundConfiguration to update or insert the properties onto.</param>
@@ -1992,7 +1992,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+        /// [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties Update or insert one or more properties onto a single FundConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;FundConfiguration&#39;.                Upserting a property that exists for an FundConfiguration, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

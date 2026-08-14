@@ -41,13 +41,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="rightAsAt">The asAt datetime of the data reconciled on the right side. (required).</param>
         public RecDatesReconciled(DateTimeOffset leftEffectiveAt = default(DateTimeOffset), DateTimeOffset leftAsAt = default(DateTimeOffset), DateTimeOffset rightEffectiveAt = default(DateTimeOffset), DateTimeOffset rightAsAt = default(DateTimeOffset))
         {
-            
             this.LeftEffectiveAt = leftEffectiveAt;
-            
             this.LeftAsAt = leftAsAt;
-            
             this.RightEffectiveAt = rightEffectiveAt;
-            
             this.RightAsAt = rightAsAt;
         }
 

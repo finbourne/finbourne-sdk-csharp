@@ -47,13 +47,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("filter is a required property for FilteredFundIdList and cannot be null");
             }
             this.Filter = filter;
-            
-            // to ensure "referenceListType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ReferenceListTypeEnum), referenceListType))
-            {
-                throw new ArgumentException("referenceListType is a required property for FilteredFundIdList and must be a defined value");
-            }
-            
             this.ReferenceListType = referenceListType;
         }
 

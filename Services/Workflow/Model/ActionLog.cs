@@ -42,7 +42,6 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="loggedItems">The logged items for this Action (required).</param>
         public ActionLog(Guid id = default(Guid), ActionLogOrigin origin = default(ActionLogOrigin), string actionType = default(string), string runAsUserId = default(string), List<ActionLogItem> loggedItems = default(List<ActionLogItem>))
         {
-            
             this.Id = id;
             // to ensure "origin" is required (not null)
             if (origin == null)

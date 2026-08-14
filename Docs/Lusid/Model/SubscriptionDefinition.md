@@ -15,7 +15,6 @@
 | **SubscriptionType** | **string** | Optional | The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions. |
 | **StartEffectiveAt** | **DateTimeOffset?** | Optional | *No description available.* |
 | **EndEffectiveAt** | **DateTimeOffset?** | Optional | *No description available.* |
-| **StartAsAt** | **DateTimeOffset?** | Optional | *No description available.* |
 
 
 ## Usage
@@ -36,8 +35,7 @@ var instance = new SubscriptionDefinition(
     byTaxLots: true,  // optional
     subscriptionType: "...",  // optional — The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions.
     startEffectiveAt: DateTimeOffset.Now,  // optional
-    endEffectiveAt: DateTimeOffset.Now,  // optional
-    startAsAt: DateTimeOffset.Now  // optional
+    endEffectiveAt: DateTimeOffset.Now  // optional
 );
 ```
 ### Serializing to JSON

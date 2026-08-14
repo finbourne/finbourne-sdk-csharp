@@ -40,7 +40,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="date">Date when premium paid. (required).</param>
         public Premium(decimal amount = default(decimal), string currency = default(string), DateTimeOffset date = default(DateTimeOffset))
         {
-            
             this.Amount = amount;
             // to ensure "currency" is required (not null)
             if (currency == null)
@@ -48,7 +47,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("currency is a required property for Premium and cannot be null");
             }
             this.Currency = currency;
-            
             this.Date = date;
         }
 

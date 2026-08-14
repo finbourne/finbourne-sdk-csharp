@@ -62,7 +62,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("side is a required property for TransactionTypeMovement and cannot be null");
             }
             this.Side = side;
-            
             this.Direction = direction;
             this.Properties = properties;
             this.Mappings = mappings;

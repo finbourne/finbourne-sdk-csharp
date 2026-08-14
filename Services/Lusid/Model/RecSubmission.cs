@@ -47,7 +47,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("userId is a required property for RecSubmission and cannot be null");
             }
             this.UserId = userId;
-            
             this.AsAtSubmitted = asAtSubmitted;
             this.CommentText = commentText;
             this.AsAtSuperseded = asAtSuperseded;

@@ -57,9 +57,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("diaryEntryCode is a required property for ValuationPointOverview and cannot be null");
             }
             this.DiaryEntryCode = diaryEntryCode;
-            
             this.EffectiveFrom = effectiveFrom;
-            
             this.EffectiveTo = effectiveTo;
             // to ensure "type" is required (not null)
             if (type == null)
@@ -73,9 +71,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("status is a required property for ValuationPointOverview and cannot be null");
             }
             this.Status = status;
-            
             this.Gav = gav;
-            
             this.Nav = nav;
             this.Href = href;
             this.DiaryEntryVariant = diaryEntryVariant;

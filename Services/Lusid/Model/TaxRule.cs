@@ -53,7 +53,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("description is a required property for TaxRule and cannot be null");
             }
             this.Description = description;
-            
             this.Rate = rate;
             // to ensure "matchCriteria" is required (not null)
             if (matchCriteria == null)

@@ -65,13 +65,6 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("code is a required property for CutLabelReference and cannot be null");
             }
             this.Code = code;
-            
-            // to ensure "type" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(TypeEnum), type))
-            {
-                throw new ArgumentException("type is a required property for CutLabelReference and must be a defined value");
-            }
-            
             this.Type = type;
         }
 

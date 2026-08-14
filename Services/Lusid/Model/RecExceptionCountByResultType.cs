@@ -40,11 +40,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="partialCross">The number of Partial Cross results. (required).</param>
         public RecExceptionCountByResultType(int varBreak = default(int), int partialMatch = default(int), int partialCross = default(int))
         {
-            
             this.Break = varBreak;
-            
             this.PartialMatch = partialMatch;
-            
             this.PartialCross = partialCross;
         }
 

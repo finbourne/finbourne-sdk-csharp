@@ -47,10 +47,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="deliveryDays">Number of business days between exercise date and settlement of the option payoff or underlying.                Defaults to 0..</param>
         /// <param name="businessDayConvention">Business day convention for option exercise date to settlement date calculation.  Default value: F. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid..</param>
         /// <param name="settlementCalendars">Holiday calendars for option exercise date to settlement date calculation..</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
         public InterestRateSwaption(DateTimeOffset startDate = default(DateTimeOffset), string payOrReceiveFixed = default(string), Premium premium = default(Premium), string deliveryMethod = default(string), InterestRateSwap swap = default(InterestRateSwap), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), LusidInstrument underlying = default(LusidInstrument), int deliveryDays = default(int), string businessDayConvention = default(string), List<string> settlementCalendars = default(List<string>), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
-            
             this.StartDate = startDate;
             // to ensure "payOrReceiveFixed" is required (not null)
             if (payOrReceiveFixed == null)
@@ -64,13 +63,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("deliveryMethod is a required property for InterestRateSwaption and cannot be null");
             }
             this.DeliveryMethod = deliveryMethod;
-            
-            // to ensure "instrumentType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(InstrumentTypeEnum), instrumentType))
-            {
-                throw new ArgumentException("instrumentType is a required property for InterestRateSwaption and must be a defined value");
-            }
-            
             this.InstrumentType = instrumentType;
             this.Premium = premium;
             this.Swap = swap;

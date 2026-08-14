@@ -67,6 +67,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkerConfiguration" /> class
+        /// with the <see cref="HorizonIntegration" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of HorizonIntegration.</param>
+        public WorkerConfiguration(HorizonIntegration actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WorkerConfiguration" /> class
         /// with the <see cref="LuminesceView" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of LuminesceView.</param>
@@ -139,6 +151,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(HorizonIntegration) || value is HorizonIntegration)
+                {
+                    this._actualInstance = value;
+                }
                 else if (value.GetType() == typeof(LuminesceView) || value is LuminesceView)
                 {
                     this._actualInstance = value;
@@ -157,7 +173,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: Fail, GroupReconciliation, HealthCheck, LuminesceView, LusidEntityDataQualityCheck, SchedulerJob, Sleep");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: Fail, GroupReconciliation, HealthCheck, HorizonIntegration, LuminesceView, LusidEntityDataQualityCheck, SchedulerJob, Sleep");
                 }
             }
         }
@@ -190,6 +206,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public HealthCheck GetHealthCheck()
         {
             return (HealthCheck)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `HorizonIntegration`. If the actual instance is not `HorizonIntegration`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of HorizonIntegration</returns>
+        public HorizonIntegration GetHorizonIntegration()
+        {
+            return (HorizonIntegration)this.ActualInstance;
         }
 
         /// <summary>
@@ -328,6 +354,26 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into HealthCheck: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(HorizonIntegration).GetProperty("AdditionalProperties") == null)
+                {
+                    newWorkerConfiguration = new WorkerConfiguration(JsonConvert.DeserializeObject<HorizonIntegration>(jsonString, WorkerConfiguration.SerializerSettings));
+                }
+                else
+                {
+                    newWorkerConfiguration = new WorkerConfiguration(JsonConvert.DeserializeObject<HorizonIntegration>(jsonString, WorkerConfiguration.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("HorizonIntegration");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into HorizonIntegration: {1}", jsonString, exception.ToString()));
             }
 
             try

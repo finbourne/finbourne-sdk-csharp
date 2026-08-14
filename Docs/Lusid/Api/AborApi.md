@@ -5,21 +5,21 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddDiaryEntry**](#adddiaryentry) | **POST** `/api/api/abor/{scope}/{code}/accountingdiary` | [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type &#39;Other&#39;. |
-| [**ClosePeriod**](#closeperiod) | **POST** `/api/api/abor/{scope}/{code}/accountingdiary/$closeperiod` | [EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor. |
-| [**CreateAbor**](#createabor) | **POST** `/api/api/abor/{scope}` | [EXPERIMENTAL] CreateAbor: Create an Abor. |
-| [**DeleteAbor**](#deleteabor) | **DELETE** `/api/api/abor/{scope}/{code}` | [EXPERIMENTAL] DeleteAbor: Delete an Abor. |
-| [**DeleteDiaryEntry**](#deletediaryentry) | **DELETE** `/api/api/abor/{scope}/{code}/accountingdiary/{diaryEntryCode}` | [EXPERIMENTAL] DeleteDiaryEntry: Delete a diary entry type &#39;Other&#39; from the specified Abor. |
-| [**GetAbor**](#getabor) | **GET** `/api/api/abor/{scope}/{code}` | [EXPERIMENTAL] GetAbor: Get Abor. |
-| [**GetAborProperties**](#getaborproperties) | **GET** `/api/api/abor/{scope}/{code}/properties` | [EXPERIMENTAL] GetAborProperties: Get Abor properties |
-| [**GetJournalEntryLines**](#getjournalentrylines) | **POST** `/api/api/abor/{scope}/{code}/journalentrylines/$query` | [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. |
-| [**GetTrialBalance**](#gettrialbalance) | **POST** `/api/api/abor/{scope}/{code}/trialbalance/$query` | [EXPERIMENTAL] GetTrialBalance: Get the Trial Balance for the given Abor. |
-| [**ListAbors**](#listabors) | **GET** `/api/api/abor` | [EXPERIMENTAL] ListAbors: List Abors. |
-| [**ListDiaryEntries**](#listdiaryentries) | **GET** `/api/api/abor/{scope}/{code}/accountingdiary` | [EXPERIMENTAL] ListDiaryEntries: List diary entries. |
-| [**LockPeriod**](#lockperiod) | **POST** `/api/api/abor/{scope}/{code}/accountingdiary/$lockperiod` | [EXPERIMENTAL] LockPeriod: Locks the last Closed or given Closed Period. |
-| [**PatchAbor**](#patchabor) | **PATCH** `/api/api/abor/{scope}/{code}` | [EXPERIMENTAL] PatchAbor: Patch Abor. |
-| [**ReOpenPeriods**](#reopenperiods) | **POST** `/api/api/abor/{scope}/{code}/accountingdiary/$reopenperiods` | [EXPERIMENTAL] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor. |
-| [**UpsertAborProperties**](#upsertaborproperties) | **POST** `/api/api/abor/{scope}/{code}/properties/$upsert` | [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties |
+| [**AddDiaryEntry**](#adddiaryentry) | **POST** `/api/api/abor/{scope}/{code}/accountingdiary` | [EARLY ACCESS] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type &#39;Other&#39;. |
+| [**ClosePeriod**](#closeperiod) | **POST** `/api/api/abor/{scope}/{code}/accountingdiary/$closeperiod` | [EARLY ACCESS] ClosePeriod: Closes or locks the current period for the given Abor. |
+| [**CreateAbor**](#createabor) | **POST** `/api/api/abor/{scope}` | [EARLY ACCESS] CreateAbor: Create an Abor. |
+| [**DeleteAbor**](#deleteabor) | **DELETE** `/api/api/abor/{scope}/{code}` | [EARLY ACCESS] DeleteAbor: Delete an Abor. |
+| [**DeleteDiaryEntry**](#deletediaryentry) | **DELETE** `/api/api/abor/{scope}/{code}/accountingdiary/{diaryEntryCode}` | [EARLY ACCESS] DeleteDiaryEntry: Delete a diary entry type &#39;Other&#39; from the specified Abor. |
+| [**GetAbor**](#getabor) | **GET** `/api/api/abor/{scope}/{code}` | [EARLY ACCESS] GetAbor: Get Abor. |
+| [**GetAborProperties**](#getaborproperties) | **GET** `/api/api/abor/{scope}/{code}/properties` | [EARLY ACCESS] GetAborProperties: Get Abor properties |
+| [**GetJournalEntryLines**](#getjournalentrylines) | **POST** `/api/api/abor/{scope}/{code}/journalentrylines/$query` | [EARLY ACCESS] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. |
+| [**GetTrialBalance**](#gettrialbalance) | **POST** `/api/api/abor/{scope}/{code}/trialbalance/$query` | [EARLY ACCESS] GetTrialBalance: Get the Trial Balance for the given Abor. |
+| [**ListAbors**](#listabors) | **GET** `/api/api/abor` | [EARLY ACCESS] ListAbors: List Abors. |
+| [**ListDiaryEntries**](#listdiaryentries) | **GET** `/api/api/abor/{scope}/{code}/accountingdiary` | [EARLY ACCESS] ListDiaryEntries: List diary entries. |
+| [**LockPeriod**](#lockperiod) | **POST** `/api/api/abor/{scope}/{code}/accountingdiary/$lockperiod` | [EARLY ACCESS] LockPeriod: Locks the last Closed or given Closed Period. |
+| [**PatchAbor**](#patchabor) | **PATCH** `/api/api/abor/{scope}/{code}` | [EARLY ACCESS] PatchAbor: Patch Abor. |
+| [**ReOpenPeriods**](#reopenperiods) | **POST** `/api/api/abor/{scope}/{code}/accountingdiary/$reopenperiods` | [EARLY ACCESS] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor. |
+| [**UpsertAborProperties**](#upsertaborproperties) | **POST** `/api/api/abor/{scope}/{code}/properties/$upsert` | [EARLY ACCESS] UpsertAborProperties: Upsert Abor properties |
 
 ### Example
 
@@ -68,7 +68,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AborApi>();
 
 > DiaryEntry AddDiaryEntry(string scope, string code, DiaryEntryRequest diaryEntryRequest)
 
-[EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type 'Other'.
+[EARLY ACCESS] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type 'Other'.
 
 Adds a new diary entry to the specified Abor
 
@@ -130,7 +130,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DiaryEntry ClosePeriod(string scope, string code, ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest)
 
-[EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor.
+[EARLY ACCESS] ClosePeriod: Closes or locks the current period for the given Abor.
 
 Closes or Locks the current open period for the given Abor.
 
@@ -192,7 +192,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Abor CreateAbor(string scope, AborRequest aborRequest)
 
-[EXPERIMENTAL] CreateAbor: Create an Abor.
+[EARLY ACCESS] CreateAbor: Create an Abor.
 
 Create the given Abor.
 
@@ -252,7 +252,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteAbor(string scope, string code)
 
-[EXPERIMENTAL] DeleteAbor: Delete an Abor.
+[EARLY ACCESS] DeleteAbor: Delete an Abor.
 
 Delete the given Abor.
 
@@ -312,7 +312,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteDiaryEntry(string scope, string code, string diaryEntryCode)
 
-[EXPERIMENTAL] DeleteDiaryEntry: Delete a diary entry type 'Other' from the specified Abor.
+[EARLY ACCESS] DeleteDiaryEntry: Delete a diary entry type 'Other' from the specified Abor.
 
 Delete a diary entry type 'Other' from the specified Abor.
 
@@ -374,7 +374,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Abor GetAbor(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetAbor: Get Abor.
+[EARLY ACCESS] GetAbor: Get Abor.
 
 Retrieve the definition of a particular Abor.
 
@@ -440,7 +440,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AborProperties GetAborProperties(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetAborProperties: Get Abor properties
+[EARLY ACCESS] GetAborProperties: Get Abor properties
 
 Get all the properties of a single abor.
 
@@ -504,7 +504,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > VersionedResourceListOfJournalEntryLine GetJournalEntryLines(string scope, string code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null)
 
-[EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
+[EARLY ACCESS] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
 
 Gets the Journal Entry lines for the given Abor                The Journal Entry lines have been generated from transactions and translated via posting rules
 
@@ -574,9 +574,9 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > VersionedResourceListOfTrialBalance GetTrialBalance(string scope, string code, TrialBalanceQueryParameters trialBalanceQueryParameters, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null)
 
-[EXPERIMENTAL] GetTrialBalance: Get the Trial Balance for the given Abor.
+[EARLY ACCESS] GetTrialBalance: Get the Trial Balance for the given Abor.
 
-Gets the Trial Balance for the given Abor.    The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).
+Gets the Trial Balance for the given Abor.    The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).                Supplying the X-LUSID-SuppressImbalanceValidation header suppresses the imbalance check.  Any caller with access to this endpoint may use it; it is not role-restricted.
 
 ### Example
 
@@ -600,10 +600,10 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Abor. |
 | **code** | **string** | path | **required** | The code of the Abor. Together with the scope this uniquely identifies the Abor. |
 | **trialBalanceQueryParameters** | [TrialBalanceQueryParameters](../Model/TrialBalanceQueryParameters.md) | body | **required** | The query parameters used in running the generation of the Trial Balance. |
-| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Trial Balance.              Defaults to returning the latest version if not specified. |
-| **filter** | **string?** | query | optional | Expression to filter the results by.              For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
-| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many.              Defaults to 100 if not specified. |
-| **page** | **string?** | query | optional | The pagination token to use to continue listing Trial Balances.              This token is returned from the previous call.              If a pagination token is provided, the filter, effectiveAt and asAt fields              must not have changed since the original request. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Trial Balance.               Defaults to returning the latest version if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the results by.               For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many.               Defaults to 100 if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing Trial Balances.               This token is returned from the previous call.               If a pagination token is provided, the filter, effectiveAt and asAt fields               must not have changed since the original request. |
 
 ### Return type
 
@@ -644,7 +644,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfAbor ListAbors(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListAbors: List Abors.
+[EARLY ACCESS] ListAbors: List Abors.
 
 List all the Abors matching particular criteria.
 
@@ -714,7 +714,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfDiaryEntry ListDiaryEntries(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListDiaryEntries: List diary entries.
+[EARLY ACCESS] ListDiaryEntries: List diary entries.
 
 List all the diary entries matching particular criteria.
 
@@ -788,7 +788,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DiaryEntry LockPeriod(string scope, string code, LockPeriodDiaryEntryRequest? lockPeriodDiaryEntryRequest = null)
 
-[EXPERIMENTAL] LockPeriod: Locks the last Closed or given Closed Period.
+[EARLY ACCESS] LockPeriod: Locks the last Closed or given Closed Period.
 
 Locks the specified or last locked period for the given Abor.
 
@@ -850,7 +850,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Abor PatchAbor(string scope, string code, List<Operation> operation)
 
-[EXPERIMENTAL] PatchAbor: Patch Abor.
+[EARLY ACCESS] PatchAbor: Patch Abor.
 
 Create or update certain fields for a particular Abor.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: PortfolioIds.
 
@@ -912,7 +912,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PeriodDiaryEntriesReopenedResponse ReOpenPeriods(string scope, string code, ReOpenPeriodDiaryEntryRequest? reOpenPeriodDiaryEntryRequest = null)
 
-[EXPERIMENTAL] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor.
+[EARLY ACCESS] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor.
 
 Reopens one or more periods.
 
@@ -974,7 +974,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AborProperties UpsertAborProperties(string scope, string code, Dictionary<string, Property>? requestBody = null)
 
-[EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties
+[EARLY ACCESS] UpsertAborProperties: Upsert Abor properties
 
 Update or insert one or more properties onto a single Abor. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain 'Abor'.                Upserting a property that exists for an Abor, with a null value, will delete the instance of the property for that group.                Properties have an <i>effectiveFrom</i> datetime for which the property is valid, and an <i>effectiveUntil</i>  datetime until which the property is valid. Not supplying an <i>effectiveUntil</i> datetime results in the property being  valid indefinitely, or until the next <i>effectiveFrom</i> datetime of the property.
 

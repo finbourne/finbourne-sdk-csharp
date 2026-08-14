@@ -40,11 +40,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="reviewed">The number of results with review status Reviewed. (required).</param>
         public RecResultCountByReviewStatus(int required = default(int), int notRequired = default(int), int reviewed = default(int))
         {
-            
             this.Required = required;
-            
             this.NotRequired = notRequired;
-            
             this.Reviewed = reviewed;
         }
 

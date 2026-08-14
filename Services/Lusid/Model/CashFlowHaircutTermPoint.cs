@@ -45,7 +45,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("tenor is a required property for CashFlowHaircutTermPoint and cannot be null");
             }
             this.Tenor = tenor;
-            
             this.Rate = rate;
         }
 

@@ -46,7 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="mandatoryConversion">Set this to true if a conversion is mandatory if the trigger occurs. Defaults to false..</param>
         /// <param name="notificationPeriodEnd">The last day in the notification period for the conversion of the bond.</param>
         /// <param name="notificationPeriodStart">The first day in the notification period for the conversion of the bond.</param>
-        /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid. (required) (default to ScheduleTypeEnum.FixedSchedule).</param>
+        /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule. (required) (default to ScheduleTypeEnum.FixedSchedule).</param>
         public BondConversionSchedule(Dictionary<string, string> identifiers = default(Dictionary<string, string>), List<BondConversionEntry> bondConversionEntries = default(List<BondConversionEntry>), string conversionTrigger = default(string), string deliveryType = default(string), string exerciseType = default(string), bool includesAccrued = default(bool), bool mandatoryConversion = default(bool), DateTimeOffset notificationPeriodEnd = default(DateTimeOffset), DateTimeOffset notificationPeriodStart = default(DateTimeOffset), ScheduleTypeEnum scheduleType = default(ScheduleTypeEnum)) : base()
         {
             // to ensure "conversionTrigger" is required (not null)
@@ -61,13 +61,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("exerciseType is a required property for BondConversionSchedule and cannot be null");
             }
             this.ExerciseType = exerciseType;
-            
-            // to ensure "scheduleType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ScheduleTypeEnum), scheduleType))
-            {
-                throw new ArgumentException("scheduleType is a required property for BondConversionSchedule and must be a defined value");
-            }
-            
             this.ScheduleType = scheduleType;
             this.Identifiers = identifiers;
             this.BondConversionEntries = bondConversionEntries;

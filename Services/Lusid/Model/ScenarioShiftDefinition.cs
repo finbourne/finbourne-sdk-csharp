@@ -89,13 +89,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition. (required).</param>
         public ScenarioShiftDefinition(ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum))
         {
-            
-            // to ensure "scenarioShiftType" is a defined enum value
-            if (!System.Enum.IsDefined(typeof(ScenarioShiftTypeEnum), scenarioShiftType))
-            {
-                throw new ArgumentException("scenarioShiftType is a required property for ScenarioShiftDefinition and must be a defined value");
-            }
-            
             this.ScenarioShiftType = scenarioShiftType;
         }
 

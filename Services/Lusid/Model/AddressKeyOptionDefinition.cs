@@ -61,7 +61,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("description is a required property for AddressKeyOptionDefinition and cannot be null");
             }
             this.Description = description;
-            
             this.Optional = optional;
             this.AllowedValueSet = allowedValueSet;
             this.DefaultValue = defaultValue;
