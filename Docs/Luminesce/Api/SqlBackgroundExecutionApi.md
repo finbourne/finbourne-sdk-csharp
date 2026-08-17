@@ -18,6 +18,7 @@ All URIs are relative to *http://localhost*
 | [**FetchQueryResultXml**](#fetchqueryresultxml) | **GET** `/honeycomb/api/SqlBackground/{executionId}/xml` | FetchQueryResultXml: Fetch the result of a query as XML |
 | [**GetHistoricalFeedback**](#gethistoricalfeedback) | **GET** `/honeycomb/api/SqlBackground/{executionId}/historicalFeedback` | GetHistoricalFeedback: View historical query progress (for older queries) |
 | [**GetProgressOf**](#getprogressof) | **GET** `/honeycomb/api/SqlBackground/{executionId}` | GetProgressOf: View query progress up to this point. |
+| [**SaveQueryResultToDrive**](#savequeryresulttodrive) | **GET** `/honeycomb/api/SqlBackground/{executionId}/drive` | [EXPERIMENTAL] SaveQueryResultToDrive: Saves the query results directly to Drive |
 | [**StartQuery**](#startquery) | **PUT** `/honeycomb/api/SqlBackground` | StartQuery: Start to Execute Sql in the background |
 
 ### Example
@@ -982,10 +983,92 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="savequeryresulttodrive"></a>
+## SaveQueryResultToDrive
+
+> string SaveQueryResultToDrive(string executionId, string driveLocationAndFileName, bool? mayOverwrite = null, ExportType? format = null, string? driveTemplateLocation = null, string? tableNameReference = null, string? sortBy = null, string? filter = null, string? sqlFilter = null, string? select = null, string? groupBy = null, string? dateTimeFormat = null, int? loadWaitMilliseconds = null)
+
+[EXPERIMENTAL] SaveQueryResultToDrive: Saves the query results directly to Drive
+
+Saves the results directly to Drive.  This can be useful for sharing results with others, keeping persistent reports, etc.      Of course always consider data visibility and security as who can see these depends on users' permissions to the chosen location within Drive.  Template support is provided, for the export types that allow this, but unlike using the `Drive.SaveAs` provider within the SQL itself, only one data set can be be saved  (the full query result set, optionally manipulated with the various parameters to this method).  The following error codes are to be anticipated most with standard Problem Detail reports: - 400 BadRequest : Something failed with the execution of your query or drive parameters were incorrect in some way - 401 Unauthorized - 403 Forbidden - 404 Not Found : The requested query result doesn't (yet) exist or the calling user did not run the query. - 429 Too Many Requests : Please try your request again soon   1. The query has been executed successfully in the past yet the server-instance receiving this request (e.g. from a load balancer) doesn't yet have this data available.   1. By virtue of the request you have just placed this will have started to load from the persisted cache and will soon be available.   1. It is also the case that the original server-instance to process the original query is likely to already be able to service this request.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<SqlBackgroundExecutionApi>();
+var executionId = "executionId_example";  // string
+var driveLocationAndFileName = "driveLocationAndFileName_example";  // string
+var mayOverwrite = false;  // bool? (optional)
+var format = new ExportType?(); // ExportType? (optional)
+var driveTemplateLocation = "driveTemplateLocation_example";  // string? (optional)
+var tableNameReference = "tableNameReference_example";  // string? (optional)
+var sortBy = "sortBy_example";  // string? (optional)
+var filter = "filter_example";  // string? (optional)
+var sqlFilter = "sqlFilter_example";  // string? (optional)
+var select = "select_example";  // string? (optional)
+var groupBy = "groupBy_example";  // string? (optional)
+var dateTimeFormat = "dateTimeFormat_example";  // string? (optional)
+var loadWaitMilliseconds = 0;  // int? (optional)
+string result = apiInstance.SaveQueryResultToDrive(executionId, driveLocationAndFileName, mayOverwrite, format, driveTemplateLocation, tableNameReference, sortBy, filter, sqlFilter, select, groupBy, dateTimeFormat, loadWaitMilliseconds);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **executionId** | **string** | path | **required** | ExecutionId returned when starting the query |
+| **driveLocationAndFileName** | **string** | query | **required** | Location and file name within drive where this should be saved to. Missing paths will be created, and extension (if given) will be ignored and inferred from the chosen format |
+| **mayOverwrite** | **bool?** | query | optional | If there is an existing file at the requested location with the same name should this be overridden, or an error returned? Default: `false` |
+| **format** | [ExportType?](../Model/ExportType?.md) | query | optional | Format to save in. |
+| **driveTemplateLocation** | **string?** | query | optional | Drive path and full file name including extension to be used for the export. Only some export types support templates, such as Excel and Pdf, and this will need to match the format type, if given. |
+| **tableNameReference** | **string?** | query | optional | What should the &#39;exported table name&#39; be.  Defaults to &#39;Results&#39;. This has different meaning for different export types. |
+| **sortBy** | **string?** | query | optional | Order the results by these fields.             Use the &#x60;-&#x60; sign to denote descending order, e.g. &#x60;-MyFieldName&#x60;.  Numeric indexes may be used also, e.g. &#x60;2,-3&#x60;.             Multiple fields can be denoted by a comma e.g. &#x60;-MyFieldName,AnotherFieldName,-AFurtherFieldName&#x60;.             Default is null, the sort order specified in the query itself. |
+| **filter** | **string?** | query | optional | Further limits the fetched results beyond that of the original query. - An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; - may be combined with &#x60;sqlFilter&#x60;. |
+| **sqlFilter** | **string?** | query | optional | Further limits the fetched results beyond that of the original query. - Raw SQL for filtering, e.g. &#x60;strftime(&#39;%Y-%m&#39;, SomeDateField) &#x3D; &#39;2026-06&#39;&#x60; - may be combined with &#x60;filter&#x60; while supporting additional syntax that cannot. |
+| **select** | **string?** | query | optional | Default is null (meaning return all columns in the original query itself). The values are in terms of the result column name from the original data set and are comma delimited. The power of this comes in that you may aggregate the data if you wish (that is the main reason for allowing this, in fact). e.g.: - &#x60;MyField&#x60; - &#x60;Max(x) FILTER (WHERE y &gt; 12) as ABC&#x60; (max of a field, if another field lets it qualify, with a nice column name) - &#x60;count(*)&#x60; (count the rows for the given group, that would produce a rather ugly column name, but  it works) - &#x60;count(distinct x) as numOfXs&#x60; If there was an illegal character in a field you are selecting from, you are responsible for bracketing it with [ ].  e.g. - &#x60;some_field, count(*) as a, max(x) as b, min([column with space in name]) as nice_name&#x60;   where you would likely want to pass &#x60;1&#x60; as the &#x60;groupBy&#x60; also. |
+| **groupBy** | **string?** | query | optional | Groups by the specified fields.             A comma delimited list of: 1 based numeric indexes (cleaner), or repeats of the select expressions (a bit verbose and must match exactly).             e.g. &#x60;2,3&#x60;, &#x60;myColumn&#x60;.             Default is null (meaning no grouping will be performed on the selected columns).             This applies only over the result set being requested here, meaning indexes into the \&quot;select\&quot; parameter fields.             Only specify this if you are selecting aggregations in the \&quot;select\&quot; parameter. |
+| **dateTimeFormat** | **string?** | query | optional | Format to apply for DateTime data, leaving blank gives the Luminesce Exporter default, currently &#x60;yyyy-MM-dd HH:mm:ss.fff&#x60; |
+| **loadWaitMilliseconds** | **int?** | query | optional | Optional maximum additional wait period for post execution platform processing. Default: `0` |
+
+### Return type
+
+**string**
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
+
+<details>
+<summary>Using the SaveQueryResultToDriveWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<string> response = apiInstance.SaveQueryResultToDriveWithHttpInfo(executionId, driveLocationAndFileName, mayOverwrite, format, driveTemplateLocation, tableNameReference, sortBy, filter, sqlFilter, select, groupBy, dateTimeFormat, loadWaitMilliseconds);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="startquery"></a>
 ## StartQuery
 
-> BackgroundQueryResponse StartQuery(string body, string? executionId = null, Dictionary<string, string>? scalarParameters = null, string? queryName = null, int? timeoutSeconds = null, int? keepForSeconds = null, SqlExecutionFlags? executionFlags = null)
+> BackgroundQueryResponse StartQuery(string body, string? executionId = null, Dictionary<string, string>? scalarParameters = null, string? queryName = null, int? timeoutSeconds = null, int? keepForSeconds = null, SqlExecutionFlags? executionFlags = null, ExternalQuerySource? externalQuerySource = null)
 
 StartQuery: Start to Execute Sql in the background
 
@@ -1002,7 +1085,8 @@ var queryName = Intentionally slow test query;  // string? (optional)
 var timeoutSeconds = 1200;  // int? (optional)
 var keepForSeconds = 7200;  // int? (optional)
 var executionFlags = new SqlExecutionFlags?(); // SqlExecutionFlags? (optional)
-BackgroundQueryResponse result = apiInstance.StartQuery(body, executionId, scalarParameters, queryName, timeoutSeconds, keepForSeconds, executionFlags);
+var externalQuerySource = new ExternalQuerySource?(); // ExternalQuerySource? (optional)
+BackgroundQueryResponse result = apiInstance.StartQuery(body, executionId, scalarParameters, queryName, timeoutSeconds, keepForSeconds, executionFlags, externalQuerySource);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1017,6 +1101,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **timeoutSeconds** | **int?** | query | optional | Maximum time the query may run for, in seconds: &lt;0 → ∞, 0 → 7200 (2h) Default: `0` |
 | **keepForSeconds** | **int?** | query | optional | Maximum time the result may be kept for, in seconds: &lt;0 → 1200 (20m), 0 → 28800 (8h), max &#x3D; 2,678,400 (31d) Default: `0` |
 | **executionFlags** | [SqlExecutionFlags?](../Model/SqlExecutionFlags?.md) | query | optional | Optional request flags for the execution.  Currently limited by may grow in time: - ProvideLineage : Should Lineage be requested when running the query?  This must be set in order to later retrieve Lineage. |
+| **externalQuerySource** | [ExternalQuerySource?](../Model/ExternalQuerySource?.md) | query | optional | Optional request to load the query from an external SQL-store. The payload is then a key that means something to the chosen source Currently limited by may grow in time: - SavedQuery : Load from Saved Queries (within the Workspaces API),   Query/Body examples: &#x60;personal/YourUserId/items/queries/SomeQuery&#x60; or &#x60;shared/SomeWorkspace/items/queries/SomeQuery&#x60;. |
 
 ### Return type
 
@@ -1041,7 +1126,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<BackgroundQueryResponse> response = apiInstance.StartQueryWithHttpInfo(body, executionId, scalarParameters, queryName, timeoutSeconds, keepForSeconds, executionFlags);
+ApiResponse<BackgroundQueryResponse> response = apiInstance.StartQueryWithHttpInfo(body, executionId, scalarParameters, queryName, timeoutSeconds, keepForSeconds, executionFlags, externalQuerySource);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

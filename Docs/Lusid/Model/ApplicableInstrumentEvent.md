@@ -20,6 +20,8 @@ Represents applicable instrument event.
 | **TransactionDiagnostics** | [TransactionDiagnostics](TransactionDiagnostics.md) | Optional | *No description available.* |
 | **AppliedInstrumentEventInstruction** | [InstrumentEventInstruction](InstrumentEventInstruction.md) | Optional | *No description available.* |
 | **EligibleBalance** | **decimal?** | Optional | *No description available.* |
+| **InstrumentEventStatus** | **string** | Optional | Available values: Active, ActiveReversal, ActiveTrueUp. |
+| **AccountingDate** | **DateTimeOffset?** | Optional | *No description available.* |
 
 
 ## Usage
@@ -44,7 +46,9 @@ var instance = new ApplicableInstrumentEvent(
     transactions: new List<Transaction>(),  // optional
     transactionDiagnostics: new TransactionDiagnostics(...),  // optional
     appliedInstrumentEventInstruction: new InstrumentEventInstruction(...),  // optional
-    eligibleBalance: 0.0d  // optional
+    eligibleBalance: 0.0d,  // optional
+    instrumentEventStatus: "...",  // optional — Available values: Active, ActiveReversal, ActiveTrueUp.
+    accountingDate: DateTimeOffset.Now  // optional
 );
 ```
 ### Serializing to JSON

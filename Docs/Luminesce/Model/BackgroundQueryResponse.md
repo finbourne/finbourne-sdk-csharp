@@ -18,6 +18,7 @@ Response for Background Query Start requests
 | **FetchExcel** | [Link](Link.md) | Optional | *No description available.* |
 | **FetchSqlite** | [Link](Link.md) | Optional | *No description available.* |
 | **Histogram** | [Link](Link.md) | Optional | *No description available.* |
+| **SaveToDrive** | [Link](Link.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -40,7 +41,8 @@ var instance = new BackgroundQueryResponse(
     fetchPipe: new Link(...),  // optional
     fetchExcel: new Link(...),  // optional
     fetchSqlite: new Link(...),  // optional
-    histogram: new Link(...)  // optional
+    histogram: new Link(...),  // optional
+    saveToDrive: new Link(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -55,6 +57,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<BackgroundQueryResponse>(json);
 ```
 
+- [Link](Link.md)
 - [Link](Link.md)
 - [Link](Link.md)
 - [Link](Link.md)

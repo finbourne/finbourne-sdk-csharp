@@ -82,16 +82,22 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         PikSchedule = 9,
 
         /// <summary>
+        /// Enum CommodityCalendarSchedule for value: CommodityCalendarSchedule
+        /// </summary>
+        [EnumMember(Value = "CommodityCalendarSchedule")]
+        CommodityCalendarSchedule = 10,
+
+        /// <summary>
         /// Enum Invalid for value: Invalid
         /// </summary>
         [EnumMember(Value = "Invalid")]
-        Invalid = 10,
+        Invalid = 11,
 
         /// <summary>
         /// Enum CancelSchedule for value: CancelSchedule
         /// </summary>
         [EnumMember(Value = "CancelSchedule")]
-        CancelSchedule = 11
+        CancelSchedule = 12
     }
 
 }

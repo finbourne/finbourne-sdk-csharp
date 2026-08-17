@@ -10,7 +10,7 @@ Cancel schedule represents the embedded option on a cancellable swap, allowing o
 | **CancelDates** | **List&lt;DateTimeOffset&gt;** | Required | The dates on which cancellation may be elected. |
 | **CancelType** | **string** | Required | The type of cancellation option: European (single cancel date) or Bermudan (two or more).                Supported string (enumeration) values are: [European, Bermudan]. Available values: European, Bermudan. |
 | **NoticeConvention** | [NoticeConvention](NoticeConvention.md) | Required | *No description available.* |
-| **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule. Default: `ScheduleTypeEnum.CancelSchedule` |
+| **ScheduleType** | **string** | Required | Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, CommodityCalendarSchedule, Invalid, CancelSchedule. Default: `ScheduleTypeEnum.CancelSchedule` |
 
 
 ## Usage
@@ -24,7 +24,7 @@ var instance = new CancelSchedule(
     cancelDates: ,  // required — The dates on which cancellation may be elected.
     cancelType: "...",  // required — The type of cancellation option: European (single cancel date) or Bermudan (two or more).                Supported string (enumeration) values are: [European, Bermudan]. Available values: European, Bermudan.
     noticeConvention: new NoticeConvention(...),  // required
-    scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, Invalid, CancelSchedule.
+    scheduleType: "..."  // required — Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, CommodityCalendarSchedule, Invalid, CancelSchedule.
 );
 ```
 ### Serializing to JSON
