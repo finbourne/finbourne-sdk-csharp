@@ -17,7 +17,7 @@ Contains data (i.e. tenors and rates + metadata) for building fx forward curves 
 | **Calendars** | [List&lt;FxTenorConvention&gt;](FxTenorConvention.md) | Optional | The list of conventions that should be used when interpreting tenors as dates. |
 | **SpotDaysCalculationType** | **string** | Optional | Configures how to calculate the spot date from the build date using the Calendars provided. Available values: SingleCalendar, UnionCalendars. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
-| **MarketDataType** | **string** | Required | Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface. Default: `MarketDataTypeEnum.FxForwardTenorCurveData` |
+| **MarketDataType** | **string** | Required | Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData. Default: `MarketDataTypeEnum.FxForwardTenorCurveData` |
 
 
 ## Usage
@@ -38,7 +38,7 @@ var instance = new FxForwardTenorCurveData(
     calendars: new List<FxTenorConvention>(),  // optional — The list of conventions that should be used when interpreting tenors as dates.
     spotDaysCalculationType: "...",  // optional — Configures how to calculate the spot date from the build date using the Calendars provided. Available values: SingleCalendar, UnionCalendars.
     varVersion: new ModelVersion(...),  // optional
-    marketDataType: "..."  // required — Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface.
+    marketDataType: "..."  // required — Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData.
 );
 ```
 ### Serializing to JSON

@@ -2051,11 +2051,11 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getvaluationpointunsettledtransactions"></a>
 ## GetValuationPointUnsettledTransactions
 
-> ValuationPointResourceListOfUnsettledTransaction GetValuationPointUnsettledTransactions(string scope, string code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, DateTimeOffset? asAt = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null)
+> ValuationPointResourceListOfUnsettledTransaction GetValuationPointUnsettledTransactions(string scope, string code, DateTimeOffset? asAt = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null, DateTimeOrCutLabel? date = null, string? diaryEntry = null, ValuationPointDataQueryParameters? valuationPointDataQueryParameters = null)
 
 [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
 
-Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the 'End' parameter in the  request body; when both are supplied the query parameters are used.
 
 ### Example
 
@@ -2063,13 +2063,15 @@ Gets all transactions that remain unsettled as at the specified Valuation Point 
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
-var valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var limit = 56;  // int? (optional)
 var page = "page_example";  // string? (optional)
 var propertyKeys = new List<string>?(); // List<string>? (optional)
 var navTypeCode = "navTypeCode_example";  // string? (optional)
-ValuationPointResourceListOfUnsettledTransaction result = apiInstance.GetValuationPointUnsettledTransactions(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode);
+var date = "date_example";  // DateTimeOrCutLabel? (optional)
+var diaryEntry = "diaryEntry_example";  // string? (optional)
+var valuationPointDataQueryParameters = new ValuationPointDataQueryParameters?(); // ValuationPointDataQueryParameters? (optional)
+ValuationPointResourceListOfUnsettledTransaction result = apiInstance.GetValuationPointUnsettledTransactions(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, valuationPointDataQueryParameters);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -2079,12 +2081,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
-| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters](../Model/ValuationPointDataQueryParameters.md) | body | **required** | The arguments to use for querying the unsettled transactions. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the report. Defaults to latest. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing from a previous call. |
 | **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
+| **date** | **DateTimeOrCutLabel?** | query | optional | The optional date of the Valuation Point to report against, as an alternative to supplying              it in the request body. Must not be supplied together with diaryEntry. |
+| **diaryEntry** | **string?** | query | optional | The optional diary entry code of the Valuation Point to report against, as an              alternative to supplying it in the request body. Must not be supplied together with date. |
+| **valuationPointDataQueryParameters** | [ValuationPointDataQueryParameters?](../Model/ValuationPointDataQueryParameters?.md) | body | optional | The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. |
 
 ### Return type
 
@@ -2109,7 +2113,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ValuationPointResourceListOfUnsettledTransaction> response = apiInstance.GetValuationPointUnsettledTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, limit, page, propertyKeys, navTypeCode);
+ApiResponse<ValuationPointResourceListOfUnsettledTransaction> response = apiInstance.GetValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, valuationPointDataQueryParameters);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

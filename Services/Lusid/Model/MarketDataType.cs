@@ -110,7 +110,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum ConstantVolatilitySurface for value: ConstantVolatilitySurface
         /// </summary>
         [EnumMember(Value = "ConstantVolatilitySurface")]
-        ConstantVolatilitySurface = 14
+        ConstantVolatilitySurface = 14,
+
+        /// <summary>
+        /// Enum InflationCurveData for value: InflationCurveData
+        /// </summary>
+        [EnumMember(Value = "InflationCurveData")]
+        InflationCurveData = 15
     }
 
 }
