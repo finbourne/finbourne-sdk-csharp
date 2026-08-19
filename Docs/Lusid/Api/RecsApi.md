@@ -8,15 +8,25 @@ All URIs are relative to *http://localhost*
 | [**AddRecResultSetApprovalDecision**](#addrecresultsetapprovaldecision) | **POST** `/api/api/recs/resultsets/{entityUniqueId}/$decide` | [EXPERIMENTAL] AddRecResultSetApprovalDecision: AddRecResultSetApprovalDecision |
 | [**BatchManageRecResultComments**](#batchmanagerecresultcomments) | **POST** `/api/api/recs/results/$batchManageComments` | [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments |
 | [**BatchReviewRecResults**](#batchreviewrecresults) | **POST** `/api/api/recs/results/$batchReview` | [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults |
+| [**CreateMatchingRuleset**](#creatematchingruleset) | **POST** `/api/api/recs/matchingrulesets` | [EXPERIMENTAL] CreateMatchingRuleset: CreateMatchingRuleset |
+| [**CreateRecDefinition**](#createrecdefinition) | **POST** `/api/api/recs/definitions` | [EXPERIMENTAL] CreateRecDefinition: CreateRecDefinition |
+| [**DeleteMatchingRuleset**](#deletematchingruleset) | **DELETE** `/api/api/recs/matchingrulesets/{scope}/{code}` | [EXPERIMENTAL] DeleteMatchingRuleset: DeleteMatchingRuleset |
+| [**DeleteRecDefinition**](#deleterecdefinition) | **DELETE** `/api/api/recs/definitions/{scope}/{code}` | [EXPERIMENTAL] DeleteRecDefinition: DeleteRecDefinition |
+| [**GetMatchingRuleset**](#getmatchingruleset) | **GET** `/api/api/recs/matchingrulesets/{scope}/{code}` | [EXPERIMENTAL] GetMatchingRuleset: GetMatchingRuleset |
+| [**GetRecDefinition**](#getrecdefinition) | **GET** `/api/api/recs/definitions/{scope}/{code}` | [EXPERIMENTAL] GetRecDefinition: GetRecDefinition |
 | [**GetRecInstance**](#getrecinstance) | **GET** `/api/api/recs/instances/{instanceIdType}/{instanceIdValue}` | [EXPERIMENTAL] GetRecInstance: GetRecInstance |
 | [**GetRecResult**](#getrecresult) | **GET** `/api/api/recs/results/{id}` | [EXPERIMENTAL] GetRecResult: GetRecResult |
 | [**GetRecResultSet**](#getrecresultset) | **GET** `/api/api/recs/resultsets/{entityUniqueId}` | [EXPERIMENTAL] GetRecResultSet: GetRecResultSet |
 | [**InstantiateRec**](#instantiaterec) | **POST** `/api/api/recs/instances` | [EXPERIMENTAL] InstantiateRec: InstantiateRec |
+| [**ListMatchingRulesets**](#listmatchingrulesets) | **GET** `/api/api/recs/matchingrulesets` | [EXPERIMENTAL] ListMatchingRulesets: ListMatchingRulesets |
+| [**ListRecDefinitions**](#listrecdefinitions) | **GET** `/api/api/recs/definitions` | [EXPERIMENTAL] ListRecDefinitions: ListRecDefinitions |
 | [**ListRecInstances**](#listrecinstances) | **GET** `/api/api/recs/instances` | [EXPERIMENTAL] ListRecInstances: ListRecInstances |
 | [**ListRecResultSets**](#listrecresultsets) | **GET** `/api/api/recs/resultsets` | [EXPERIMENTAL] ListRecResultSets: ListRecResultSets |
 | [**ListRecResults**](#listrecresults) | **GET** `/api/api/recs/results` | [EXPERIMENTAL] ListRecResults: ListRecResults |
 | [**SubmitRecResultSetReview**](#submitrecresultsetreview) | **POST** `/api/api/recs/resultsets/{entityUniqueId}/$submit` | [EXPERIMENTAL] SubmitRecResultSetReview: Submit a rec result set review for approval, or resubmit after addressing requested revisions. |
 | [**TransitionRecInstance**](#transitionrecinstance) | **POST** `/api/api/recs/instances/{instanceIdType}/{instanceIdValue}/$transition` | [EXPERIMENTAL] TransitionRecInstance: TransitionRecInstance |
+| [**UpdateMatchingRuleset**](#updatematchingruleset) | **PUT** `/api/api/recs/matchingrulesets/{scope}/{code}` | [EXPERIMENTAL] UpdateMatchingRuleset: UpdateMatchingRuleset |
+| [**UpdateRecDefinition**](#updaterecdefinition) | **PUT** `/api/api/recs/definitions/{scope}/{code}` | [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition |
 
 ### Example
 
@@ -230,6 +240,366 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<BatchReviewRecResultResponse> response = apiInstance.BatchReviewRecResultsWithHttpInfo(requestBody, successMode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="creatematchingruleset"></a>
+## CreateMatchingRuleset
+
+> MatchingRuleset CreateMatchingRuleset(CreateMatchingRulesetRequest createMatchingRulesetRequest)
+
+[EXPERIMENTAL] CreateMatchingRuleset: CreateMatchingRuleset
+
+Create a matching ruleset, describing the core and aggregate rules used to match a reconciliation's two sides.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var createMatchingRulesetRequest = new CreateMatchingRulesetRequest(); // CreateMatchingRulesetRequest
+MatchingRuleset result = apiInstance.CreateMatchingRuleset(createMatchingRulesetRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **createMatchingRulesetRequest** | [CreateMatchingRulesetRequest](../Model/CreateMatchingRulesetRequest.md) | body | **required** | The matching ruleset to create. |
+
+### Return type
+
+[MatchingRuleset](../Model/MatchingRuleset.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The newly created matching ruleset. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the CreateMatchingRulesetWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<MatchingRuleset> response = apiInstance.CreateMatchingRulesetWithHttpInfo(createMatchingRulesetRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="createrecdefinition"></a>
+## CreateRecDefinition
+
+> RecDefinition CreateRecDefinition(CreateRecDefinitionRequest createRecDefinitionRequest)
+
+[EXPERIMENTAL] CreateRecDefinition: CreateRecDefinition
+
+Create a rec definition, describing the two sides to reconcile and the rules to reconcile them with.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var createRecDefinitionRequest = new CreateRecDefinitionRequest(); // CreateRecDefinitionRequest
+RecDefinition result = apiInstance.CreateRecDefinition(createRecDefinitionRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **createRecDefinitionRequest** | [CreateRecDefinitionRequest](../Model/CreateRecDefinitionRequest.md) | body | **required** | The rec definition to create. |
+
+### Return type
+
+[RecDefinition](../Model/RecDefinition.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The newly created rec definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the CreateRecDefinitionWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<RecDefinition> response = apiInstance.CreateRecDefinitionWithHttpInfo(createRecDefinitionRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="deletematchingruleset"></a>
+## DeleteMatchingRuleset
+
+> DeletedEntityResponse DeleteMatchingRuleset(string scope, string code)
+
+[EXPERIMENTAL] DeleteMatchingRuleset: DeleteMatchingRuleset
+
+Delete a matching ruleset identified by scope and code. The deletion takes effect from the deletion datetime,  i.e. the matching ruleset will no longer exist at any asAt datetime after the asAt datetime of deletion.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+DeletedEntityResponse result = apiInstance.DeleteMatchingRuleset(scope, code);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the matching ruleset. |
+| **code** | **string** | path | **required** | The code of the matching ruleset. Together with the scope this uniquely identifies the matching ruleset. |
+
+### Return type
+
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The deleted entity metadata. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteMatchingRulesetWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteMatchingRulesetWithHttpInfo(scope, code);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="deleterecdefinition"></a>
+## DeleteRecDefinition
+
+> DeletedEntityResponse DeleteRecDefinition(string scope, string code)
+
+[EXPERIMENTAL] DeleteRecDefinition: DeleteRecDefinition
+
+Delete a rec definition identified by scope and code. The deletion takes effect from the deletion datetime,  i.e. the rec definition will no longer exist at any asAt datetime after the asAt datetime of deletion.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+DeletedEntityResponse result = apiInstance.DeleteRecDefinition(scope, code);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the rec definition. |
+| **code** | **string** | path | **required** | The code of the rec definition. Together with the scope this uniquely identifies the rec definition. |
+
+### Return type
+
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The deleted entity metadata. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteRecDefinitionWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteRecDefinitionWithHttpInfo(scope, code);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getmatchingruleset"></a>
+## GetMatchingRuleset
+
+> MatchingRuleset GetMatchingRuleset(string scope, string code, DateTimeOffset? asAt = null)
+
+[EXPERIMENTAL] GetMatchingRuleset: GetMatchingRuleset
+
+Retrieve a single matching ruleset by scope and code.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+MatchingRuleset result = apiInstance.GetMatchingRuleset(scope, code, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the matching ruleset. |
+| **code** | **string** | path | **required** | The code of the matching ruleset. Together with the scope this uniquely identifies the matching ruleset. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the matching ruleset. Defaults to latest if not specified. |
+
+### Return type
+
+[MatchingRuleset](../Model/MatchingRuleset.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested matching ruleset. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetMatchingRulesetWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<MatchingRuleset> response = apiInstance.GetMatchingRulesetWithHttpInfo(scope, code, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getrecdefinition"></a>
+## GetRecDefinition
+
+> RecDefinition GetRecDefinition(string scope, string code, DateTimeOffset? asAt = null)
+
+[EXPERIMENTAL] GetRecDefinition: GetRecDefinition
+
+Retrieve a single rec definition by scope and code.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+RecDefinition result = apiInstance.GetRecDefinition(scope, code, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the rec definition. |
+| **code** | **string** | path | **required** | The code of the rec definition. Together with the scope this uniquely identifies the rec definition. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. |
+
+### Return type
+
+[RecDefinition](../Model/RecDefinition.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested rec definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetRecDefinitionWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<RecDefinition> response = apiInstance.GetRecDefinitionWithHttpInfo(scope, code, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -474,6 +844,138 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<RecInstance> response = apiInstance.InstantiateRecWithHttpInfo(instantiateRecRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listmatchingrulesets"></a>
+## ListMatchingRulesets
+
+> PagedResourceListOfMatchingRuleset ListMatchingRulesets(DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null)
+
+[EXPERIMENTAL] ListMatchingRulesets: ListMatchingRulesets
+
+List matching rulesets, optionally filtered and sorted. Supports pagination.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var page = "page_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+var limit = 56;  // int? (optional)
+var filter = "filter_example";  // string? (optional)
+PagedResourceListOfMatchingRuleset result = apiInstance.ListMatchingRulesets(asAt, page, sortBy, limit, filter);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the matching rulesets. Defaults to latest if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing matching rulesets from a previous call. This value is              returned from the previous call. If a pagination token is provided the sortBy, filter and asAt fields must not have              changed since the original request. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many per page. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. |
+
+### Return type
+
+[PagedResourceListOfMatchingRuleset](../Model/PagedResourceListOfMatchingRuleset.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested list of matching rulesets. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListMatchingRulesetsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfMatchingRuleset> response = apiInstance.ListMatchingRulesetsWithHttpInfo(asAt, page, sortBy, limit, filter);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listrecdefinitions"></a>
+## ListRecDefinitions
+
+> PagedResourceListOfRecDefinition ListRecDefinitions(DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null)
+
+[EXPERIMENTAL] ListRecDefinitions: ListRecDefinitions
+
+List rec definitions, optionally filtered and sorted. Supports pagination.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var page = "page_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+var limit = 56;  // int? (optional)
+var filter = "filter_example";  // string? (optional)
+PagedResourceListOfRecDefinition result = apiInstance.ListRecDefinitions(asAt, page, sortBy, limit, filter);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the rec definitions. Defaults to latest if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing rec definitions from a previous call. This value is              returned from the previous call. If a pagination token is provided the sortBy, filter and asAt fields must not have              changed since the original request. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many per page. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. |
+
+### Return type
+
+[PagedResourceListOfRecDefinition](../Model/PagedResourceListOfRecDefinition.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested list of rec definitions. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListRecDefinitionsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfRecDefinition> response = apiInstance.ListRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -798,6 +1300,130 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<RecInstance> response = apiInstance.TransitionRecInstanceWithHttpInfo(instanceIdType, instanceIdValue, transitionRecInstanceRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="updatematchingruleset"></a>
+## UpdateMatchingRuleset
+
+> MatchingRuleset UpdateMatchingRuleset(string scope, string code, UpdateMatchingRulesetRequest updateMatchingRulesetRequest)
+
+[EXPERIMENTAL] UpdateMatchingRuleset: UpdateMatchingRuleset
+
+Overwrite an existing matching ruleset identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var updateMatchingRulesetRequest = new UpdateMatchingRulesetRequest(); // UpdateMatchingRulesetRequest
+MatchingRuleset result = apiInstance.UpdateMatchingRuleset(scope, code, updateMatchingRulesetRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the matching ruleset. |
+| **code** | **string** | path | **required** | The code of the matching ruleset. Together with the scope this uniquely identifies the matching ruleset. |
+| **updateMatchingRulesetRequest** | [UpdateMatchingRulesetRequest](../Model/UpdateMatchingRulesetRequest.md) | body | **required** | The updated matching ruleset values. |
+
+### Return type
+
+[MatchingRuleset](../Model/MatchingRuleset.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated matching ruleset. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpdateMatchingRulesetWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<MatchingRuleset> response = apiInstance.UpdateMatchingRulesetWithHttpInfo(scope, code, updateMatchingRulesetRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="updaterecdefinition"></a>
+## UpdateRecDefinition
+
+> RecDefinition UpdateRecDefinition(string scope, string code, UpdateRecDefinitionRequest updateRecDefinitionRequest)
+
+[EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition
+
+Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var updateRecDefinitionRequest = new UpdateRecDefinitionRequest(); // UpdateRecDefinitionRequest
+RecDefinition result = apiInstance.UpdateRecDefinition(scope, code, updateRecDefinitionRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the rec definition. |
+| **code** | **string** | path | **required** | The code of the rec definition. Together with the scope this uniquely identifies the rec definition. |
+| **updateRecDefinitionRequest** | [UpdateRecDefinitionRequest](../Model/UpdateRecDefinitionRequest.md) | body | **required** | The updated rec definition values. |
+
+### Return type
+
+[RecDefinition](../Model/RecDefinition.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated rec definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpdateRecDefinitionWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<RecDefinition> response = apiInstance.UpdateRecDefinitionWithHttpInfo(scope, code, updateRecDefinitionRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

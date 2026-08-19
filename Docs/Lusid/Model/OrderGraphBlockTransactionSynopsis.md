@@ -5,6 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Quantity** | **decimal** | Required | Total number of units booked. |
+| **Amount** | **decimal?** | Optional | Total consideration booked, in the block currency. |
 | **Details** | [List&lt;OrderGraphBlockTransactionDetail&gt;](OrderGraphBlockTransactionDetail.md) | Required | Identifiers for each transaction in this block. |
 
 
@@ -17,6 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new OrderGraphBlockTransactionSynopsis(
     quantity: 0.0d,  // required — Total number of units booked.
+    amount: 0.0d,  // optional — Total consideration booked, in the block currency.
     details: new List<OrderGraphBlockTransactionDetail>()  // required — Identifiers for each transaction in this block.
 );
 ```

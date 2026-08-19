@@ -7,6 +7,7 @@
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **AllocatedOrderId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Quantity** | **decimal** | Required | The quantity of this allocation, with direction relative to the containing block. |
+| **Amount** | **decimal?** | Optional | The amount of this allocation, derived from the quantity and price of the allocation. |
 
 
 ## Usage
@@ -19,7 +20,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new OrderGraphBlockAllocationDetail(
     id: new ResourceId(...),  // required
     allocatedOrderId: new ResourceId(...),  // optional
-    quantity: 0.0d  // required — The quantity of this allocation, with direction relative to the containing block.
+    quantity: 0.0d,  // required — The quantity of this allocation, with direction relative to the containing block.
+    amount: 0.0d  // optional — The amount of this allocation, derived from the quantity and price of the allocation.
 );
 ```
 ### Serializing to JSON

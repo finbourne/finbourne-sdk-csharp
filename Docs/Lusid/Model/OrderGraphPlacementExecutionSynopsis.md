@@ -5,6 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Quantity** | **decimal** | Required | Total number of units executed. |
+| **Amount** | **decimal?** | Optional | Total monetary value executed, derived from the quantity and price of each execution, in the placement&#39;s amount currency. Null where the placement has no amount, or where an execution cannot be expressed in that currency. |
 | **Details** | [List&lt;OrderGraphPlacementExecutionDetail&gt;](OrderGraphPlacementExecutionDetail.md) | Required | Identifiers info for each execution against this placement. |
 
 
@@ -17,6 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new OrderGraphPlacementExecutionSynopsis(
     quantity: 0.0d,  // required — Total number of units executed.
+    amount: 0.0d,  // optional — Total monetary value executed, derived from the quantity and price of each execution, in the placement&#39;s amount currency. Null where the placement has no amount, or where an execution cannot be expressed in that currency.
     details: new List<OrderGraphPlacementExecutionDetail>()  // required — Identifiers info for each execution against this placement.
 );
 ```

@@ -38,7 +38,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="id">id (required).</param>
         /// <param name="allocatedOrderId">allocatedOrderId.</param>
         /// <param name="quantity">The quantity of this allocation, with direction relative to the containing block. (required).</param>
-        public OrderGraphBlockAllocationDetail(ResourceId id = default(ResourceId), ResourceId allocatedOrderId = default(ResourceId), decimal quantity = default(decimal))
+        /// <param name="amount">The amount of this allocation, derived from the quantity and price of the allocation..</param>
+        public OrderGraphBlockAllocationDetail(ResourceId id = default(ResourceId), ResourceId allocatedOrderId = default(ResourceId), decimal quantity = default(decimal), decimal? amount = default(decimal?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -48,6 +49,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Id = id;
             this.Quantity = quantity;
             this.AllocatedOrderId = allocatedOrderId;
+            this.Amount = amount;
         }
 
         /// <summary>
@@ -70,6 +72,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal Quantity { get; set; }
 
         /// <summary>
+        /// The amount of this allocation, derived from the quantity and price of the allocation.
+        /// </summary>
+        /// <value>The amount of this allocation, derived from the quantity and price of the allocation.</value>
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public decimal? Amount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -80,6 +89,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  AllocatedOrderId: ").Append(AllocatedOrderId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -128,6 +138,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.Quantity == input.Quantity ||
                     this.Quantity.Equals(input.Quantity)
+                ) && 
+                (
+                    this.Amount == input.Amount ||
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 );
         }
 
@@ -149,6 +164,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     hashCode = (hashCode * 59) + this.AllocatedOrderId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
+                if (this.Amount != null)
+                {
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
                 return hashCode;
             }
         }

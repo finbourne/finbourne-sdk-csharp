@@ -5,6 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Quantity** | **decimal** | Required | Total number of units allocated. |
+| **Amount** | **decimal?** | Optional | Total monetary value allocated, derived from the quantity and price of each allocation. |
 | **Details** | [List&lt;OrderGraphBlockAllocationDetail&gt;](OrderGraphBlockAllocationDetail.md) | Required | Identifiers for each allocation in this block. |
 
 
@@ -17,6 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new OrderGraphBlockAllocationSynopsis(
     quantity: 0.0d,  // required — Total number of units allocated.
+    amount: 0.0d,  // optional — Total monetary value allocated, derived from the quantity and price of each allocation.
     details: new List<OrderGraphBlockAllocationDetail>()  // required — Identifiers for each allocation in this block.
 );
 ```

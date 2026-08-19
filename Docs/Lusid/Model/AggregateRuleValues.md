@@ -9,7 +9,7 @@ An aggregate matching rule and its values. The difference is the measured magnit
 | **LeftValue** | **string** | Optional | The left-side value. |
 | **RightValue** | **string** | Optional | The right-side value. |
 | **Difference** | **string** | Required | The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)). |
-| **AppliedTolerance** | [AggregateToleranceBase](AggregateToleranceBase.md) | Optional | *No description available.* |
+| **AppliedTolerance** | [ToleranceBase](ToleranceBase.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -24,7 +24,7 @@ var instance = new AggregateRuleValues(
     leftValue: "...",  // optional — The left-side value.
     rightValue: "...",  // optional — The right-side value.
     difference: "...",  // required — The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)).
-    appliedTolerance: new AggregateToleranceBase(...)  // optional
+    appliedTolerance: new ToleranceBase(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -39,7 +39,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<AggregateRuleValues>(json);
 ```
 
-- [AggregateToleranceBase](AggregateToleranceBase.md)
+- [ToleranceBase](ToleranceBase.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

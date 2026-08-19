@@ -1,6 +1,6 @@
-# Finbourne.Sdk.Lusid.Model.CoreToleranceBase
+# Finbourne.Sdk.Lusid.Model.ToleranceBase
 
-Abstract base for tolerances that apply to core matching rules. Distinguishes core tolerances from  aggregate tolerances at the type level (both share a common tolerance base).
+Base class for the tolerances that relax how strictly a matching rule compares its two sides. Polymorphic  by ToleranceType; each supported type has a corresponding inherited class.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -16,7 +16,7 @@ Abstract base for tolerances that apply to core matching rules. Distinguishes co
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var instance = new CoreToleranceBase(
+var instance = new ToleranceBase(
     toleranceType: "...",  // required — Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric.
     ruleName: "..."  // required — The reference name of the rule that this tolerance relaxes.
 );
@@ -30,7 +30,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<CoreToleranceBase>(json);
+var instance = JsonConvert.DeserializeObject<ToleranceBase>(json);
 ```
 
 

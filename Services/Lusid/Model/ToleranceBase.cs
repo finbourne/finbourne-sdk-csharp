@@ -22,33 +22,33 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// Abstract base for tolerances that apply to aggregate matching rules. Distinguishes aggregate  tolerances from core tolerances at the type level (both share a common tolerance base).
+    /// Base class for the tolerances that relax how strictly a matching rule compares its two sides. Polymorphic  by ToleranceType; each supported type has a corresponding inherited class.
     /// </summary>
-    [DataContract(Name = "AggregateToleranceBase")]
-    public partial class AggregateToleranceBase : IEquatable<AggregateToleranceBase>, IValidatableObject
+    [DataContract(Name = "ToleranceBase")]
+    public partial class ToleranceBase : IEquatable<ToleranceBase>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AggregateToleranceBase" /> class.
+        /// Initializes a new instance of the <see cref="ToleranceBase" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AggregateToleranceBase() { }
+        protected ToleranceBase() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AggregateToleranceBase" /> class.
+        /// Initializes a new instance of the <see cref="ToleranceBase" /> class.
         /// </summary>
         /// <param name="toleranceType">Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. (required).</param>
         /// <param name="ruleName">The reference name of the rule that this tolerance relaxes. (required).</param>
-        public AggregateToleranceBase(string toleranceType = default(string), string ruleName = default(string))
+        public ToleranceBase(string toleranceType = default(string), string ruleName = default(string))
         {
             // to ensure "toleranceType" is required (not null)
             if (toleranceType == null)
             {
-                throw new ArgumentNullException("toleranceType is a required property for AggregateToleranceBase and cannot be null");
+                throw new ArgumentNullException("toleranceType is a required property for ToleranceBase and cannot be null");
             }
             this.ToleranceType = toleranceType;
             // to ensure "ruleName" is required (not null)
             if (ruleName == null)
             {
-                throw new ArgumentNullException("ruleName is a required property for AggregateToleranceBase and cannot be null");
+                throw new ArgumentNullException("ruleName is a required property for ToleranceBase and cannot be null");
             }
             this.RuleName = ruleName;
         }
@@ -74,7 +74,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class AggregateToleranceBase {\n");
+            sb.Append("class ToleranceBase {\n");
             sb.Append("  ToleranceType: ").Append(ToleranceType).Append("\n");
             sb.Append("  RuleName: ").Append(RuleName).Append("\n");
             sb.Append("}\n");
@@ -97,15 +97,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AggregateToleranceBase);
+            return this.Equals(input as ToleranceBase);
         }
 
         /// <summary>
-        /// Returns true if AggregateToleranceBase instances are equal
+        /// Returns true if ToleranceBase instances are equal
         /// </summary>
-        /// <param name="input">Instance of AggregateToleranceBase to be compared</param>
+        /// <param name="input">Instance of ToleranceBase to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AggregateToleranceBase input)
+        public bool Equals(ToleranceBase input)
         {
             if (input == null)
             {

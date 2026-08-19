@@ -5,6 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Quantity** | **decimal** | Required | Total number of units executed. |
+| **Amount** | **decimal?** | Optional | Total monetary value executed, derived from the quantity and price of each execution. |
 | **Details** | [List&lt;OrderGraphBlockExecutionDetail&gt;](OrderGraphBlockExecutionDetail.md) | Required | Identifiers for each execution in this block. |
 
 
@@ -17,6 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new OrderGraphBlockExecutionSynopsis(
     quantity: 0.0d,  // required — Total number of units executed.
+    amount: 0.0d,  // optional — Total monetary value executed, derived from the quantity and price of each execution.
     details: new List<OrderGraphBlockExecutionDetail>()  // required — Identifiers for each execution in this block.
 );
 ```

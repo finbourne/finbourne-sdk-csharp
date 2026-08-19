@@ -1,0 +1,75 @@
+# Finbourne.Sdk.Lusid.Model.MatchingRuleset
+
+## Properties
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
+| **DisplayName** | **string** | Required | The name of the matching ruleset. |
+| **RecType** | **string** | Required | The type of reconciliation to perform. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. |
+| **DatasetSchemas** | [RecDatasetSchemas](RecDatasetSchemas.md) | Required | *No description available.* |
+| **Filters** | [GroupReconciliationFilters](GroupReconciliationFilters.md) | Optional | *No description available.* |
+| **CoreRules** | [List&lt;CoreMatchingRule&gt;](CoreMatchingRule.md) | Required | The core comparison rules evaluated as derivation formulae against each side of the reconciliation. |
+| **AggregateRules** | [List&lt;AggregateMatchingRule&gt;](AggregateMatchingRule.md) | Required | The aggregate comparison rules evaluated as derivation formulae against values on each side of the reconciliation and operation to aggregate those values. |
+| **CoreTolerances** | [List&lt;ToleranceBase&gt;](ToleranceBase.md) | Optional | Tolerance configurations applied to core rule matching, in the specified order. |
+| **AggregateTolerances** | [List&lt;ToleranceBase&gt;](ToleranceBase.md) | Optional | Tolerance configurations applied to aggregate rule matching. |
+| **AllowPartialMatching** | **bool** | Optional | Whether to permit partial matches when applying rules. |
+| **SupplementalAttributes** | [List&lt;SupplementalAttribute&gt;](SupplementalAttribute.md) | Optional | Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself. |
+| **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
+| **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
+
+
+## Usage
+
+### Creating an instance
+
+```csharp
+using Finbourne.Sdk.Services.Lusid.Model;
+
+var instance = new MatchingRuleset(
+    id: new ResourceId(...),  // required
+    displayName: "...",  // required — The name of the matching ruleset.
+    recType: "...",  // required — The type of reconciliation to perform. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
+    datasetSchemas: new RecDatasetSchemas(...),  // required
+    filters: new GroupReconciliationFilters(...),  // optional
+    coreRules: new List<CoreMatchingRule>(),  // required — The core comparison rules evaluated as derivation formulae against each side of the reconciliation.
+    aggregateRules: new List<AggregateMatchingRule>(),  // required — The aggregate comparison rules evaluated as derivation formulae against values on each side of the reconciliation and operation to aggregate those values.
+    coreTolerances: new List<ToleranceBase>(),  // optional — Tolerance configurations applied to core rule matching, in the specified order.
+    aggregateTolerances: new List<ToleranceBase>(),  // optional — Tolerance configurations applied to aggregate rule matching.
+    allowPartialMatching: true,  // optional — Whether to permit partial matches when applying rules.
+    supplementalAttributes: new List<SupplementalAttribute>(),  // optional — Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself.
+    href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
+    varVersion: new ModelVersion(...),  // optional
+    links: new List<Link>()  // optional
+);
+```
+### Serializing to JSON
+
+```csharp
+var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
+```
+
+### Deserializing from JSON
+
+```csharp
+var instance = JsonConvert.DeserializeObject<MatchingRuleset>(json);
+```
+
+
+## Related Models
+
+- [ResourceId](ResourceId.md)
+- [RecDatasetSchemas](RecDatasetSchemas.md)
+- [GroupReconciliationFilters](GroupReconciliationFilters.md)
+- [CoreMatchingRule](CoreMatchingRule.md) — used in `CoreRules`
+- [AggregateMatchingRule](AggregateMatchingRule.md) — used in `AggregateRules`
+- [ToleranceBase](ToleranceBase.md) — used in `CoreTolerances`
+- [ToleranceBase](ToleranceBase.md) — used in `AggregateTolerances`
+- [SupplementalAttribute](SupplementalAttribute.md) — used in `SupplementalAttributes`
+- [ModelVersion](ModelVersion.md)
+- [Link](Link.md)
+
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+

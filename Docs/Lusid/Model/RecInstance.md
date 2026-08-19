@@ -8,7 +8,6 @@ The expanded view of a rec instance: its identity, lifecycle status, lock state,
 | **Id** | [RecInstanceId](RecInstanceId.md) | Required | *No description available.* |
 | **RecDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **AsAtInstantiated** | **DateTimeOffset** | Required | The asAt datetime at which the instance was first created. |
-| **WorkflowTaskInstantiated** | [RecWorkflowTask](RecWorkflowTask.md) | Optional | *No description available.* |
 | **Status** | **string** | Required | The instance-level lifecycle rollup. Available values: Running, Failures, ReviewAndApproval, AllApproved, Locked. |
 | **AsAtLocked** | **DateTimeOffset?** | Optional | The wall-clock time the lock action was performed. Null when the instance has not been locked. |
 | **DatesLocked** | [RecDatesReconciled](RecDatesReconciled.md) | Optional | *No description available.* |
@@ -30,7 +29,6 @@ var instance = new RecInstance(
     id: new RecInstanceId(...),  // required
     recDefinitionId: new ResourceId(...),  // required
     asAtInstantiated: DateTimeOffset.Now,  // required — The asAt datetime at which the instance was first created.
-    workflowTaskInstantiated: new RecWorkflowTask(...),  // optional
     status: "...",  // required — The instance-level lifecycle rollup. Available values: Running, Failures, ReviewAndApproval, AllApproved, Locked.
     asAtLocked: DateTimeOffset.Now,  // optional — The wall-clock time the lock action was performed. Null when the instance has not been locked.
     datesLocked: new RecDatesReconciled(...),  // optional
@@ -58,7 +56,6 @@ var instance = JsonConvert.DeserializeObject<RecInstance>(json);
 
 - [RecInstanceId](RecInstanceId.md)
 - [ResourceId](ResourceId.md)
-- [RecWorkflowTask](RecWorkflowTask.md)
 - [RecDatesReconciled](RecDatesReconciled.md)
 - [RecClosedPeriods](RecClosedPeriods.md)
 - [RecRunLogEntry](RecRunLogEntry.md) — used in `RunLog`
