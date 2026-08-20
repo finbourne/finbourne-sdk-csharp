@@ -626,7 +626,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum BondOptionTerminationEvent for value: BondOptionTerminationEvent
         /// </summary>
         [EnumMember(Value = "BondOptionTerminationEvent")]
-        BondOptionTerminationEvent = 100
+        BondOptionTerminationEvent = 100,
+
+        /// <summary>
+        /// Enum TerminationEvent for value: TerminationEvent
+        /// </summary>
+        [EnumMember(Value = "TerminationEvent")]
+        TerminationEvent = 101
     }
 
 }

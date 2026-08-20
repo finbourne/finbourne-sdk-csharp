@@ -41,8 +41,9 @@ namespace Finbourne.Sdk.Services.Identity.Model
         /// <param name="support">support.</param>
         /// <param name="supportAccessExpiryWithRole">supportAccessExpiryWithRole.</param>
         /// <param name="status">status.</param>
+        /// <param name="code">Internal provisioning code..</param>
         /// <param name="links">links.</param>
-        public AuthenticationInformation(string issuerUrl = default(string), List<string> fallbackIssuerUrls = default(List<string>), string samlIdentityProviderId = default(string), SupportAccessExpiry support = default(SupportAccessExpiry), List<SupportAccessExpiryWithRole> supportAccessExpiryWithRole = default(List<SupportAccessExpiryWithRole>), bool status = default(bool), List<Link> links = default(List<Link>))
+        public AuthenticationInformation(string issuerUrl = default(string), List<string> fallbackIssuerUrls = default(List<string>), string samlIdentityProviderId = default(string), SupportAccessExpiry support = default(SupportAccessExpiry), List<SupportAccessExpiryWithRole> supportAccessExpiryWithRole = default(List<SupportAccessExpiryWithRole>), bool status = default(bool), int? code = default(int?), List<Link> links = default(List<Link>))
         {
             // to ensure "issuerUrl" is required (not null)
             if (issuerUrl == null)
@@ -55,6 +56,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
             this.Support = support;
             this.SupportAccessExpiryWithRole = supportAccessExpiryWithRole;
             this.Status = status;
+            this.Code = code;
             this.Links = links;
         }
 
@@ -95,6 +97,13 @@ namespace Finbourne.Sdk.Services.Identity.Model
         public bool Status { get; set; }
 
         /// <summary>
+        /// Internal provisioning code.
+        /// </summary>
+        /// <value>Internal provisioning code.</value>
+        [DataMember(Name = "code", EmitDefaultValue = true)]
+        public int? Code { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -114,6 +123,7 @@ namespace Finbourne.Sdk.Services.Identity.Model
             sb.Append("  Support: ").Append(Support).Append("\n");
             sb.Append("  SupportAccessExpiryWithRole: ").Append(SupportAccessExpiryWithRole).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -182,6 +192,11 @@ namespace Finbourne.Sdk.Services.Identity.Model
                     this.Status.Equals(input.Status)
                 ) && 
                 (
+                    this.Code == input.Code ||
+                    (this.Code != null &&
+                    this.Code.Equals(input.Code))
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -219,6 +234,10 @@ namespace Finbourne.Sdk.Services.Identity.Model
                     hashCode = (hashCode * 59) + this.SupportAccessExpiryWithRole.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                if (this.Code != null)
+                {
+                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
+                }
                 if (this.Links != null)
                 {
                     hashCode = (hashCode * 59) + this.Links.GetHashCode();

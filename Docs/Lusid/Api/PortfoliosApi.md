@@ -20,7 +20,7 @@ All URIs are relative to *http://localhost*
 | [**GetPortfolioCommands**](#getportfoliocommands) | **GET** `/api/api/portfolios/{scope}/{code}/commands` | GetPortfolioCommands: Get portfolio commands |
 | [**GetPortfolioMetadata**](#getportfoliometadata) | **GET** `/api/api/portfolios/{scope}/{code}/metadata` | GetPortfolioMetadata: Get access metadata rules for a portfolio |
 | [**GetPortfolioProperties**](#getportfolioproperties) | **GET** `/api/api/portfolios/{scope}/{code}/properties` | GetPortfolioProperties: Get portfolio properties |
-| [**GetPortfolioPropertiesTimeSeries**](#getportfoliopropertiestimeseries) | **GET** `/api/api/portfolios/{scope}/{code}/properties/time-series/batch` | [BETA] GetPortfolioPropertiesTimeSeries: Get portfolio properties time series |
+| [**GetPortfolioPropertiesTimeSeries**](#getportfoliopropertiestimeseries) | **GET** `/api/api/portfolios/{scope}/{code}/properties/time-series/batch` | GetPortfolioPropertiesTimeSeries: Get portfolio properties time series |
 | [**GetPortfolioPropertyTimeSeries**](#getportfoliopropertytimeseries) | **GET** `/api/api/portfolios/{scope}/{code}/properties/time-series` | GetPortfolioPropertyTimeSeries: Get portfolio property time series |
 | [**GetPortfolioRelations**](#getportfoliorelations) | **GET** `/api/api/portfolios/{scope}/{code}/relations` | [EXPERIMENTAL] GetPortfolioRelations: Get portfolio relations |
 | [**GetPortfolioRelationships**](#getportfoliorelationships) | **GET** `/api/api/portfolios/{scope}/{code}/relationships` | GetPortfolioRelationships: Get portfolio relationships |
@@ -1093,7 +1093,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ResourceListOfPropertyIntervalTimeSeries GetPortfolioPropertiesTimeSeries(string scope, string code, List<string> propertyKeys, string? portfolioEffectiveAt = null, DateTimeOffset? asAt = null, string? filter = null, string? page = null, int? limit = null)
 
-[BETA] GetPortfolioPropertiesTimeSeries: Get portfolio properties time series
+GetPortfolioPropertiesTimeSeries: Get portfolio properties time series
 
 Show the complete time series (history) for multiple portfolio properties at once, grouped by property key.
 

@@ -28,9 +28,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class AddressDefinition : IEquatable<AddressDefinition>, IValidatableObject
     {
         /// <summary>
-        /// Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json.
+        /// Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Result1D, Result2D, Json.
         /// </summary>
-        /// <value>Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json.</value>
+        /// <value>Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Result1D, Result2D, Json.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
@@ -77,23 +77,35 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             Result0D = 7,
 
             /// <summary>
+            /// Enum Result1D for value: Result1D
+            /// </summary>
+            [EnumMember(Value = "Result1D")]
+            Result1D = 8,
+
+            /// <summary>
+            /// Enum Result2D for value: Result2D
+            /// </summary>
+            [EnumMember(Value = "Result2D")]
+            Result2D = 9,
+
+            /// <summary>
             /// Enum Json for value: Json
             /// </summary>
             [EnumMember(Value = "Json")]
-            Json = 8
+            Json = 10
         }
 
         /// <summary>
-        /// Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json.
+        /// Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Result1D, Result2D, Json.
         /// </summary>
-        /// <value>Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json.</value>
+        /// <value>Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Result1D, Result2D, Json.</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AddressDefinition" /> class.
         /// </summary>
         /// <param name="displayName">The display name of the address key..</param>
-        /// <param name="type">Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json..</param>
+        /// <param name="type">Available values: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Result1D, Result2D, Json..</param>
         /// <param name="description">The description for this result..</param>
         /// <param name="lifeCycleStatus">What is the status of the address path. If it is not Production then it might be removed at some point in the future.  See the removal date for the likely timing of that if any..</param>
         /// <param name="removalDate">If the life-cycle status of the address is Deprecated then this is the date at which support of the address will be suspended.  After that date it will be removed at the earliest possible point subject to any specific contractual support and development constraints..</param>

@@ -10,6 +10,7 @@
 | **Support** | [SupportAccessExpiry](SupportAccessExpiry.md) | Optional | *No description available.* |
 | **SupportAccessExpiryWithRole** | [List&lt;SupportAccessExpiryWithRole&gt;](SupportAccessExpiryWithRole.md) | Optional | *No description available.* |
 | **Status** | **bool** | Optional | *No description available.* |
+| **Code** | **int?** | Optional | Internal provisioning code. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -27,6 +28,7 @@ var instance = new AuthenticationInformation(
     support: new SupportAccessExpiry(...),  // optional
     supportAccessExpiryWithRole: new List<SupportAccessExpiryWithRole>(),  // optional
     status: true,  // optional
+    code: 0,  // optional — Internal provisioning code.
     links: new List<Link>()  // optional
 );
 ```
