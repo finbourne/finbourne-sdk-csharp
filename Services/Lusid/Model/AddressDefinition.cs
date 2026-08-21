@@ -110,7 +110,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="lifeCycleStatus">What is the status of the address path. If it is not Production then it might be removed at some point in the future.  See the removal date for the likely timing of that if any..</param>
         /// <param name="removalDate">If the life-cycle status of the address is Deprecated then this is the date at which support of the address will be suspended.  After that date it will be removed at the earliest possible point subject to any specific contractual support and development constraints..</param>
         /// <param name="documentationLink">Contains a link to the documentation for this AddressDefinition in KnowledgeBase..</param>
-        public AddressDefinition(string displayName = default(string), TypeEnum ?type = default(TypeEnum?), string description = default(string), string lifeCycleStatus = default(string), DateTimeOffset? removalDate = default(DateTimeOffset?), string documentationLink = default(string))
+        /// <param name="axes">For keys whose type is a labelled vector or matrix (Result1D/Result2D), describes what the  labels on each axis mean. Null for scalar results and for shaped results whose axes have  not been described..</param>
+        public AddressDefinition(string displayName = default(string), TypeEnum ?type = default(TypeEnum?), string description = default(string), string lifeCycleStatus = default(string), DateTimeOffset? removalDate = default(DateTimeOffset?), string documentationLink = default(string), List<ResultAxisDefinition> axes = default(List<ResultAxisDefinition>))
         {
             this.DisplayName = displayName;
             this.Type = type;
@@ -118,6 +119,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.LifeCycleStatus = lifeCycleStatus;
             this.RemovalDate = removalDate;
             this.DocumentationLink = documentationLink;
+            this.Axes = axes;
         }
 
         /// <summary>
@@ -156,6 +158,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string DocumentationLink { get; set; }
 
         /// <summary>
+        /// For keys whose type is a labelled vector or matrix (Result1D/Result2D), describes what the  labels on each axis mean. Null for scalar results and for shaped results whose axes have  not been described.
+        /// </summary>
+        /// <value>For keys whose type is a labelled vector or matrix (Result1D/Result2D), describes what the  labels on each axis mean. Null for scalar results and for shaped results whose axes have  not been described.</value>
+        [DataMember(Name = "axes", EmitDefaultValue = true)]
+        public List<ResultAxisDefinition> Axes { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -169,6 +178,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  LifeCycleStatus: ").Append(LifeCycleStatus).Append("\n");
             sb.Append("  RemovalDate: ").Append(RemovalDate).Append("\n");
             sb.Append("  DocumentationLink: ").Append(DocumentationLink).Append("\n");
+            sb.Append("  Axes: ").Append(Axes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -232,6 +242,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.DocumentationLink == input.DocumentationLink ||
                     (this.DocumentationLink != null &&
                     this.DocumentationLink.Equals(input.DocumentationLink))
+                ) && 
+                (
+                    this.Axes == input.Axes ||
+                    this.Axes != null &&
+                    input.Axes != null &&
+                    this.Axes.SequenceEqual(input.Axes)
                 );
         }
 
@@ -264,6 +280,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.DocumentationLink != null)
                 {
                     hashCode = (hashCode * 59) + this.DocumentationLink.GetHashCode();
+                }
+                if (this.Axes != null)
+                {
+                    hashCode = (hashCode * 59) + this.Axes.GetHashCode();
                 }
                 return hashCode;
             }

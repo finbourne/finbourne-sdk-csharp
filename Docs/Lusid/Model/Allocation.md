@@ -25,6 +25,7 @@ An Allocation of a certain quantity of a specific instrument against an originat
 | **SettlementCurrencyFxRate** | **decimal?** | Optional | The settlement currency to allocation currency FX rate. |
 | **Counterparty** | **string** | Optional | The counterparty for this allocation. |
 | **ExecutionIds** | [List&lt;ResourceId&gt;](ResourceId.md) | Optional | The executions associated with this allocation |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **DataModelMembership** | [DataModelMembership](DataModelMembership.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
@@ -57,6 +58,7 @@ var instance = new Allocation(
     settlementCurrencyFxRate: 0.0d,  // optional — The settlement currency to allocation currency FX rate.
     counterparty: "...",  // optional — The counterparty for this allocation.
     executionIds: new List<ResourceId>(),  // optional — The executions associated with this allocation
+    custodianAccountId: new ResourceId(...),  // optional
     dataModelMembership: new DataModelMembership(...),  // optional
     links: new List<Link>()  // optional
 );
@@ -84,6 +86,7 @@ var instance = JsonConvert.DeserializeObject<Allocation>(json);
 - [ResourceId](ResourceId.md) — used in `PlacementIds`
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [ResourceId](ResourceId.md) — used in `ExecutionIds`
+- [ResourceId](ResourceId.md)
 - [DataModelMembership](DataModelMembership.md)
 - [Link](Link.md)
 

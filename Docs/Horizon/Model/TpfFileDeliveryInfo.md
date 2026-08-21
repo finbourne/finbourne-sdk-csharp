@@ -5,7 +5,7 @@ Information about a file delivery
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Id** | **long** | Required | File delivery ID |
+| **FileUuid** | **Guid** | Required | File delivery UUID — the identifier the retry endpoint accepts |
 | **FileName** | **string** | Required | File name |
 | **FileHash** | **string** | Required | SHA-256 hash of the file content |
 | **DestinationPath** | **string** | Required | SFTP destination path |
@@ -21,7 +21,7 @@ Information about a file delivery
 using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new TpfFileDeliveryInfo(
-    id: 0L,  // required — File delivery ID
+    fileUuid: "...",  // required — File delivery UUID — the identifier the retry endpoint accepts
     fileName: "...",  // required — File name
     fileHash: "...",  // required — SHA-256 hash of the file content
     destinationPath: "...",  // required — SFTP destination path

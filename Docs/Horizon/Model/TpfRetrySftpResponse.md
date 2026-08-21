@@ -7,7 +7,7 @@ Response from retrying SFTP file delivery
 |------|------|----------|-------------|
 | **Success** | **bool** | Required | Whether the retry was successful |
 | **Message** | **string** | Required | Status message describing the result |
-| **NewFileDeliveryId** | **long?** | Optional | ID of the new file delivery record created for this retry (if successful) |
+| **NewFileDeliveryUuid** | **Guid?** | Optional | UUID of the new file delivery record created for this retry (if successful) |
 | **RetriedAt** | **DateTimeOffset?** | Optional | Timestamp when the retry was executed |
 | **OriginalFile** | [TpfFileDeliveryInfo](TpfFileDeliveryInfo.md) | Optional | *No description available.* |
 | **DuplicateFile** | [TpfFileDeliveryInfo](TpfFileDeliveryInfo.md) | Optional | *No description available.* |
@@ -23,7 +23,7 @@ using Finbourne.Sdk.Services.Horizon.Model;
 var instance = new TpfRetrySftpResponse(
     success: true,  // required — Whether the retry was successful
     message: "...",  // required — Status message describing the result
-    newFileDeliveryId: 0L,  // optional — ID of the new file delivery record created for this retry (if successful)
+    newFileDeliveryUuid: "...",  // optional — UUID of the new file delivery record created for this retry (if successful)
     retriedAt: DateTimeOffset.Now,  // optional — Timestamp when the retry was executed
     originalFile: new TpfFileDeliveryInfo(...),  // optional
     duplicateFile: new TpfFileDeliveryInfo(...)  // optional

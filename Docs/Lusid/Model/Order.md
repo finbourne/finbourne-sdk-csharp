@@ -26,6 +26,7 @@ An Order for a certain quantity of a specific instrument
 | **PackageId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Weight** | **decimal?** | Optional | The proportion of the total portfolio value ordered for the given instrument ordered. |
 | **Amount** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **DataModelMembership** | [DataModelMembership](DataModelMembership.md) | Optional | *No description available.* |
 | **DerivedComplianceState** | **string** | Optional | The compliance state of the order, derived from pre-trade compliance runs. |
 | **DerivedApprovalState** | **string** | Optional | The approval state of the order. |
@@ -61,6 +62,7 @@ var instance = new Order(
     packageId: new ResourceId(...),  // optional
     weight: 0.0d,  // optional — The proportion of the total portfolio value ordered for the given instrument ordered.
     amount: new CurrencyAndAmount(...),  // optional
+    custodianAccountId: new ResourceId(...),  // optional
     dataModelMembership: new DataModelMembership(...),  // optional
     derivedComplianceState: "...",  // optional — The compliance state of the order, derived from pre-trade compliance runs.
     derivedApprovalState: "...",  // optional — The approval state of the order.
@@ -93,6 +95,7 @@ var instance = JsonConvert.DeserializeObject<Order>(json);
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
+- [ResourceId](ResourceId.md)
 - [DataModelMembership](DataModelMembership.md)
 - [Link](Link.md)
 

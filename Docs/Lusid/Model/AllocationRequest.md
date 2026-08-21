@@ -22,6 +22,7 @@ A request to create or update an Allocation.
 | **SettlementCurrencyFxRate** | **decimal?** | Optional | The settlement currency to allocation currency FX rate. |
 | **Counterparty** | **string** | Optional | The counterparty for this allocation. |
 | **ExecutionIds** | [List&lt;ResourceId&gt;](ResourceId.md) | Optional | The executions associated with this allocation |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -48,7 +49,8 @@ var instance = new AllocationRequest(
     settlementCurrency: "...",  // optional — The settlement currency of this allocation.
     settlementCurrencyFxRate: 0.0d,  // optional — The settlement currency to allocation currency FX rate.
     counterparty: "...",  // optional — The counterparty for this allocation.
-    executionIds: new List<ResourceId>()  // optional — The executions associated with this allocation
+    executionIds: new List<ResourceId>(),  // optional — The executions associated with this allocation
+    custodianAccountId: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -73,6 +75,7 @@ var instance = JsonConvert.DeserializeObject<AllocationRequest>(json);
 - [ResourceId](ResourceId.md) — used in `PlacementIds`
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [ResourceId](ResourceId.md) — used in `ExecutionIds`
+- [ResourceId](ResourceId.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

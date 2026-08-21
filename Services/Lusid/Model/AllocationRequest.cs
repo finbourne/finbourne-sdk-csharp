@@ -52,7 +52,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="settlementCurrencyFxRate">The settlement currency to allocation currency FX rate..</param>
         /// <param name="counterparty">The counterparty for this allocation..</param>
         /// <param name="executionIds">The executions associated with this allocation.</param>
-        public AllocationRequest(Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), decimal quantity = default(decimal), ResourceId portfolioId = default(ResourceId), ResourceId allocatedOrderId = default(ResourceId), ResourceId id = default(ResourceId), List<ResourceId> placementIds = default(List<ResourceId>), string state = default(string), string side = default(string), string type = default(string), DateTimeOffset? settlementDate = default(DateTimeOffset?), DateTimeOffset date = default(DateTimeOffset), CurrencyAndAmount price = default(CurrencyAndAmount), string settlementCurrency = default(string), decimal? settlementCurrencyFxRate = default(decimal?), string counterparty = default(string), List<ResourceId> executionIds = default(List<ResourceId>))
+        /// <param name="custodianAccountId">custodianAccountId.</param>
+        public AllocationRequest(Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), decimal quantity = default(decimal), ResourceId portfolioId = default(ResourceId), ResourceId allocatedOrderId = default(ResourceId), ResourceId id = default(ResourceId), List<ResourceId> placementIds = default(List<ResourceId>), string state = default(string), string side = default(string), string type = default(string), DateTimeOffset? settlementDate = default(DateTimeOffset?), DateTimeOffset date = default(DateTimeOffset), CurrencyAndAmount price = default(CurrencyAndAmount), string settlementCurrency = default(string), decimal? settlementCurrencyFxRate = default(decimal?), string counterparty = default(string), List<ResourceId> executionIds = default(List<ResourceId>), ResourceId custodianAccountId = default(ResourceId))
         {
             // to ensure "instrumentIdentifiers" is required (not null)
             if (instrumentIdentifiers == null)
@@ -91,6 +92,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.SettlementCurrencyFxRate = settlementCurrencyFxRate;
             this.Counterparty = counterparty;
             this.ExecutionIds = executionIds;
+            this.CustodianAccountId = custodianAccountId;
         }
 
         /// <summary>
@@ -209,6 +211,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<ResourceId> ExecutionIds { get; set; }
 
         /// <summary>
+        /// Gets or Sets CustodianAccountId
+        /// </summary>
+        [DataMember(Name = "custodianAccountId", EmitDefaultValue = false)]
+        public ResourceId CustodianAccountId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -233,6 +241,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  SettlementCurrencyFxRate: ").Append(SettlementCurrencyFxRate).Append("\n");
             sb.Append("  Counterparty: ").Append(Counterparty).Append("\n");
             sb.Append("  ExecutionIds: ").Append(ExecutionIds).Append("\n");
+            sb.Append("  CustodianAccountId: ").Append(CustodianAccountId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -355,6 +364,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ExecutionIds != null &&
                     input.ExecutionIds != null &&
                     this.ExecutionIds.SequenceEqual(input.ExecutionIds)
+                ) && 
+                (
+                    this.CustodianAccountId == input.CustodianAccountId ||
+                    (this.CustodianAccountId != null &&
+                    this.CustodianAccountId.Equals(input.CustodianAccountId))
                 );
         }
 
@@ -431,6 +445,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.ExecutionIds != null)
                 {
                     hashCode = (hashCode * 59) + this.ExecutionIds.GetHashCode();
+                }
+                if (this.CustodianAccountId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustodianAccountId.GetHashCode();
                 }
                 return hashCode;
             }

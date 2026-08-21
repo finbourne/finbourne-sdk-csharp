@@ -46,7 +46,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="destinationStatus">destinationStatus (required).</param>
         /// <param name="destinationError">destinationError.</param>
         /// <param name="destinationName">destinationName.</param>
-        public TpfFileDeliveryResponse(string runId = default(string), DateTimeOffset? runStartTime = default(DateTimeOffset?), string fileName = default(string), DateTimeOffset generatedAt = default(DateTimeOffset), int rowCount = default(int), string fileHash = default(string), string destinationType = default(string), string destinationPath = default(string), string destinationStatus = default(string), string destinationError = default(string), string destinationName = default(string))
+        /// <param name="fileUuid">fileUuid (required).</param>
+        public TpfFileDeliveryResponse(string runId = default(string), DateTimeOffset? runStartTime = default(DateTimeOffset?), string fileName = default(string), DateTimeOffset generatedAt = default(DateTimeOffset), int rowCount = default(int), string fileHash = default(string), string destinationType = default(string), string destinationPath = default(string), string destinationStatus = default(string), string destinationError = default(string), string destinationName = default(string), Guid fileUuid = default(Guid))
         {
             // to ensure "fileName" is required (not null)
             if (fileName == null)
@@ -68,6 +69,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("destinationStatus is a required property for TpfFileDeliveryResponse and cannot be null");
             }
             this.DestinationStatus = destinationStatus;
+            this.FileUuid = fileUuid;
             this.RunId = runId;
             this.RunStartTime = runStartTime;
             this.FileHash = fileHash;
@@ -143,6 +145,12 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string DestinationName { get; set; }
 
         /// <summary>
+        /// Gets or Sets FileUuid
+        /// </summary>
+        [DataMember(Name = "fileUuid", IsRequired = true, EmitDefaultValue = true)]
+        public Guid FileUuid { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -161,6 +169,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  DestinationStatus: ").Append(DestinationStatus).Append("\n");
             sb.Append("  DestinationError: ").Append(DestinationError).Append("\n");
             sb.Append("  DestinationName: ").Append(DestinationName).Append("\n");
+            sb.Append("  FileUuid: ").Append(FileUuid).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -249,6 +258,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.DestinationName == input.DestinationName ||
                     (this.DestinationName != null &&
                     this.DestinationName.Equals(input.DestinationName))
+                ) && 
+                (
+                    this.FileUuid == input.FileUuid ||
+                    (this.FileUuid != null &&
+                    this.FileUuid.Equals(input.FileUuid))
                 );
         }
 
@@ -301,6 +315,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 if (this.DestinationName != null)
                 {
                     hashCode = (hashCode * 59) + this.DestinationName.GetHashCode();
+                }
+                if (this.FileUuid != null)
+                {
+                    hashCode = (hashCode * 59) + this.FileUuid.GetHashCode();
                 }
                 return hashCode;
             }

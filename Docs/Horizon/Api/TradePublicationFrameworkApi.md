@@ -16,7 +16,7 @@ All URIs are relative to *http://localhost*
 | [**ReplayTransactions**](#replaytransactions) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/replay` | [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance |
 | [**ResolveFailedDelivery**](#resolvefaileddelivery) | **PUT** `/horizon/api/trade-publication-framework/instances/{instanceId}/failed/{batchReferenceId}/resolve` | [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry |
 | [**RetryFailedDelivery**](#retryfaileddelivery) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/failed/retry` | [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework |
-| [**RetryTpfSftpDelivery**](#retrytpfsftpdelivery) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/files/{fileId}/retry-sftp` | [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file |
+| [**RetryTpfSftpDelivery**](#retrytpfsftpdelivery) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/files/{fileUuid}/retry-sftp` | [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file |
 
 ### Example
 
@@ -736,7 +736,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="retrytpfsftpdelivery"></a>
 ## RetryTpfSftpDelivery
 
-> TpfRetrySftpResponse RetryTpfSftpDelivery(string instanceId, long fileId)
+> TpfRetrySftpResponse RetryTpfSftpDelivery(string instanceId, string fileUuid)
 
 [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
 
@@ -745,8 +745,8 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 ```csharp
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
 var instanceId = "instanceId_example";  // string
-var fileId = 789L;  // long
-TpfRetrySftpResponse result = apiInstance.RetryTpfSftpDelivery(instanceId, fileId);
+var fileUuid = "fileUuid_example";  // string
+TpfRetrySftpResponse result = apiInstance.RetryTpfSftpDelivery(instanceId, fileUuid);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -755,7 +755,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Integration instance ID |
-| **fileId** | **long** | path | **required** | File delivery ID to retry |
+| **fileUuid** | **string** | path | **required** | File delivery UUID to retry, as returned by the run-files and file-deliveries listings |
 
 ### Return type
 
@@ -782,7 +782,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<TpfRetrySftpResponse> response = apiInstance.RetryTpfSftpDeliveryWithHttpInfo(instanceId, fileId);
+ApiResponse<TpfRetrySftpResponse> response = apiInstance.RetryTpfSftpDeliveryWithHttpInfo(instanceId, fileUuid);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

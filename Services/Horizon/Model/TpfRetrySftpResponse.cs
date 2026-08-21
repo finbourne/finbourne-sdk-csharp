@@ -37,11 +37,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// </summary>
         /// <param name="success">Whether the retry was successful (required).</param>
         /// <param name="message">Status message describing the result (required).</param>
-        /// <param name="newFileDeliveryId">ID of the new file delivery record created for this retry (if successful).</param>
+        /// <param name="newFileDeliveryUuid">UUID of the new file delivery record created for this retry (if successful).</param>
         /// <param name="retriedAt">Timestamp when the retry was executed.</param>
         /// <param name="originalFile">originalFile.</param>
         /// <param name="duplicateFile">duplicateFile.</param>
-        public TpfRetrySftpResponse(bool success = default(bool), string message = default(string), long? newFileDeliveryId = default(long?), DateTimeOffset? retriedAt = default(DateTimeOffset?), TpfFileDeliveryInfo originalFile = default(TpfFileDeliveryInfo), TpfFileDeliveryInfo duplicateFile = default(TpfFileDeliveryInfo))
+        public TpfRetrySftpResponse(bool success = default(bool), string message = default(string), Guid? newFileDeliveryUuid = default(Guid?), DateTimeOffset? retriedAt = default(DateTimeOffset?), TpfFileDeliveryInfo originalFile = default(TpfFileDeliveryInfo), TpfFileDeliveryInfo duplicateFile = default(TpfFileDeliveryInfo))
         {
             this.Success = success;
             // to ensure "message" is required (not null)
@@ -50,7 +50,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("message is a required property for TpfRetrySftpResponse and cannot be null");
             }
             this.Message = message;
-            this.NewFileDeliveryId = newFileDeliveryId;
+            this.NewFileDeliveryUuid = newFileDeliveryUuid;
             this.RetriedAt = retriedAt;
             this.OriginalFile = originalFile;
             this.DuplicateFile = duplicateFile;
@@ -71,11 +71,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string Message { get; set; }
 
         /// <summary>
-        /// ID of the new file delivery record created for this retry (if successful)
+        /// UUID of the new file delivery record created for this retry (if successful)
         /// </summary>
-        /// <value>ID of the new file delivery record created for this retry (if successful)</value>
-        [DataMember(Name = "newFileDeliveryId", EmitDefaultValue = true)]
-        public long? NewFileDeliveryId { get; set; }
+        /// <value>UUID of the new file delivery record created for this retry (if successful)</value>
+        [DataMember(Name = "newFileDeliveryUuid", EmitDefaultValue = true)]
+        public Guid? NewFileDeliveryUuid { get; set; }
 
         /// <summary>
         /// Timestamp when the retry was executed
@@ -106,7 +106,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("class TpfRetrySftpResponse {\n");
             sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("  NewFileDeliveryId: ").Append(NewFileDeliveryId).Append("\n");
+            sb.Append("  NewFileDeliveryUuid: ").Append(NewFileDeliveryUuid).Append("\n");
             sb.Append("  RetriedAt: ").Append(RetriedAt).Append("\n");
             sb.Append("  OriginalFile: ").Append(OriginalFile).Append("\n");
             sb.Append("  DuplicateFile: ").Append(DuplicateFile).Append("\n");
@@ -155,9 +155,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.Message.Equals(input.Message))
                 ) && 
                 (
-                    this.NewFileDeliveryId == input.NewFileDeliveryId ||
-                    (this.NewFileDeliveryId != null &&
-                    this.NewFileDeliveryId.Equals(input.NewFileDeliveryId))
+                    this.NewFileDeliveryUuid == input.NewFileDeliveryUuid ||
+                    (this.NewFileDeliveryUuid != null &&
+                    this.NewFileDeliveryUuid.Equals(input.NewFileDeliveryUuid))
                 ) && 
                 (
                     this.RetriedAt == input.RetriedAt ||
@@ -190,9 +190,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 {
                     hashCode = (hashCode * 59) + this.Message.GetHashCode();
                 }
-                if (this.NewFileDeliveryId != null)
+                if (this.NewFileDeliveryUuid != null)
                 {
-                    hashCode = (hashCode * 59) + this.NewFileDeliveryId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.NewFileDeliveryUuid.GetHashCode();
                 }
                 if (this.RetriedAt != null)
                 {

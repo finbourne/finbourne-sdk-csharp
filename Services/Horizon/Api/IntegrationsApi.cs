@@ -350,6 +350,31 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <returns>ApiResponse of JSchema</returns>
         Finbourne.Sdk.Client.ApiResponse<JSchema> GetSchemaWithHttpInfo(string integration, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EXPERIMENTAL] GetWorkflowResultFields: Get the Workflow result fields an integration instance returns
+        /// </summary>
+        /// <remarks>
+        /// Returns the result fields this instance&#39;s &#x60;RunWorkflow&#x60; post-process tasks declare, so a caller can discover what a run will report back before starting one. An instance with no enabled &#x60;RunWorkflow&#x60; post-process task is not an error: the response has &#x60;reportsToWorkflow&#x60; false and no fields. Note that such an instance will not report back at all, even when a Workflow task starts the run — configuring a &#x60;RunWorkflow&#x60; post-process task is what closes that loop. The user must be authenticated, entitled to call this method, and the user&#39;s domain must be licensed for the integration.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>WorkflowResultFieldsResponse</returns>
+        WorkflowResultFieldsResponse GetWorkflowResultFields(string instanceId, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetWorkflowResultFields: Get the Workflow result fields an integration instance returns
+        /// </summary>
+        /// <remarks>
+        /// Returns the result fields this instance&#39;s &#x60;RunWorkflow&#x60; post-process tasks declare, so a caller can discover what a run will report back before starting one. An instance with no enabled &#x60;RunWorkflow&#x60; post-process task is not an error: the response has &#x60;reportsToWorkflow&#x60; false and no fields. Note that such an instance will not report back at all, even when a Workflow task starts the run — configuring a &#x60;RunWorkflow&#x60; post-process task is what closes that loop. The user must be authenticated, entitled to call this method, and the user&#39;s domain must be licensed for the integration.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of WorkflowResultFieldsResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<WorkflowResultFieldsResponse> GetWorkflowResultFieldsWithHttpInfo(string instanceId, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] ListDataflowProcessors: List processor types.
         /// </summary>
         /// <remarks>
@@ -829,6 +854,33 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (JSchema)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<JSchema>> GetSchemaWithHttpInfoAsync(string integration, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetWorkflowResultFields: Get the Workflow result fields an integration instance returns
+        /// </summary>
+        /// <remarks>
+        /// Returns the result fields this instance&#39;s &#x60;RunWorkflow&#x60; post-process tasks declare, so a caller can discover what a run will report back before starting one. An instance with no enabled &#x60;RunWorkflow&#x60; post-process task is not an error: the response has &#x60;reportsToWorkflow&#x60; false and no fields. Note that such an instance will not report back at all, even when a Workflow task starts the run — configuring a &#x60;RunWorkflow&#x60; post-process task is what closes that loop. The user must be authenticated, entitled to call this method, and the user&#39;s domain must be licensed for the integration.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of WorkflowResultFieldsResponse</returns>
+        System.Threading.Tasks.Task<WorkflowResultFieldsResponse> GetWorkflowResultFieldsAsync(string instanceId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetWorkflowResultFields: Get the Workflow result fields an integration instance returns
+        /// </summary>
+        /// <remarks>
+        /// Returns the result fields this instance&#39;s &#x60;RunWorkflow&#x60; post-process tasks declare, so a caller can discover what a run will report back before starting one. An instance with no enabled &#x60;RunWorkflow&#x60; post-process task is not an error: the response has &#x60;reportsToWorkflow&#x60; false and no fields. Note that such an instance will not report back at all, even when a Workflow task starts the run — configuring a &#x60;RunWorkflow&#x60; post-process task is what closes that loop. The user must be authenticated, entitled to call this method, and the user&#39;s domain must be licensed for the integration.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (WorkflowResultFieldsResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<WorkflowResultFieldsResponse>> GetWorkflowResultFieldsWithHttpInfoAsync(string instanceId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListDataflowProcessors: List processor types.
         /// </summary>
@@ -3859,6 +3911,228 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetSchema", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetWorkflowResultFields: Get the Workflow result fields an integration instance returns Returns the result fields this instance&#39;s &#x60;RunWorkflow&#x60; post-process tasks declare, so a caller can discover what a run will report back before starting one. An instance with no enabled &#x60;RunWorkflow&#x60; post-process task is not an error: the response has &#x60;reportsToWorkflow&#x60; false and no fields. Note that such an instance will not report back at all, even when a Workflow task starts the run — configuring a &#x60;RunWorkflow&#x60; post-process task is what closes that loop. The user must be authenticated, entitled to call this method, and the user&#39;s domain must be licensed for the integration.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>WorkflowResultFieldsResponse</returns>
+        public WorkflowResultFieldsResponse GetWorkflowResultFields(string instanceId, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<WorkflowResultFieldsResponse> localVarResponse = GetWorkflowResultFieldsWithHttpInfo(instanceId, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetWorkflowResultFields: Get the Workflow result fields an integration instance returns Returns the result fields this instance&#39;s &#x60;RunWorkflow&#x60; post-process tasks declare, so a caller can discover what a run will report back before starting one. An instance with no enabled &#x60;RunWorkflow&#x60; post-process task is not an error: the response has &#x60;reportsToWorkflow&#x60; false and no fields. Note that such an instance will not report back at all, even when a Workflow task starts the run — configuring a &#x60;RunWorkflow&#x60; post-process task is what closes that loop. The user must be authenticated, entitled to call this method, and the user&#39;s domain must be licensed for the integration.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId">Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of WorkflowResultFieldsResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<WorkflowResultFieldsResponse> GetWorkflowResultFieldsWithHttpInfo(string instanceId, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling IntegrationsApi->GetWorkflowResultFields");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+
+            localVarRequestOptions.Operation = "IntegrationsApi.GetWorkflowResultFields";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<WorkflowResultFieldsResponse, AbstractOpenAPISchema>("/horizon/api/integrations/instances/{instanceId}/workflow/resultfields", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowResultFields", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetWorkflowResultFields: Get the Workflow result fields an integration instance returns Returns the result fields this instance&#39;s &#x60;RunWorkflow&#x60; post-process tasks declare, so a caller can discover what a run will report back before starting one. An instance with no enabled &#x60;RunWorkflow&#x60; post-process task is not an error: the response has &#x60;reportsToWorkflow&#x60; false and no fields. Note that such an instance will not report back at all, even when a Workflow task starts the run — configuring a &#x60;RunWorkflow&#x60; post-process task is what closes that loop. The user must be authenticated, entitled to call this method, and the user&#39;s domain must be licensed for the integration.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="instanceId">Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of WorkflowResultFieldsResponse</returns>
+        public async System.Threading.Tasks.Task<WorkflowResultFieldsResponse> GetWorkflowResultFieldsAsync(string instanceId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<WorkflowResultFieldsResponse> localVarResponse = await GetWorkflowResultFieldsWithHttpInfoAsync(instanceId, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetWorkflowResultFields: Get the Workflow result fields an integration instance returns Returns the result fields this instance&#39;s &#x60;RunWorkflow&#x60; post-process tasks declare, so a caller can discover what a run will report back before starting one. An instance with no enabled &#x60;RunWorkflow&#x60; post-process task is not an error: the response has &#x60;reportsToWorkflow&#x60; false and no fields. Note that such an instance will not report back at all, even when a Workflow task starts the run — configuring a &#x60;RunWorkflow&#x60; post-process task is what closes that loop. The user must be authenticated, entitled to call this method, and the user&#39;s domain must be licensed for the integration.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="instanceId">Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (WorkflowResultFieldsResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<WorkflowResultFieldsResponse>> GetWorkflowResultFieldsWithHttpInfoAsync(string instanceId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'instanceId' is set
+            if (instanceId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling IntegrationsApi->GetWorkflowResultFields");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
+
+            localVarRequestOptions.Operation = "IntegrationsApi.GetWorkflowResultFields";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<WorkflowResultFieldsResponse, AbstractOpenAPISchema>("/horizon/api/integrations/instances/{instanceId}/workflow/resultfields", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowResultFields", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

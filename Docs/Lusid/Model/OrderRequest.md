@@ -23,6 +23,7 @@ A request to create or update an Order.
 | **Package** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Weight** | **decimal?** | Optional | The proportion of the total portfolio value ordered for the given instrument ordered. |
 | **Amount** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -50,7 +51,8 @@ var instance = new OrderRequest(
     orderInstruction: new ResourceId(...),  // optional
     package: new ResourceId(...),  // optional
     weight: 0.0d,  // optional — The proportion of the total portfolio value ordered for the given instrument ordered.
-    amount: new CurrencyAndAmount(...)  // optional
+    amount: new CurrencyAndAmount(...),  // optional
+    custodianAccountId: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -78,6 +80,7 @@ var instance = JsonConvert.DeserializeObject<OrderRequest>(json);
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
+- [ResourceId](ResourceId.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -7,6 +7,7 @@ Represents a trace diagram composed of nodes and edges.
 |------|------|----------|-------------|
 | **Nodes** | [List&lt;TraceDiagramNode&gt;](TraceDiagramNode.md) | Optional | The nodes that make up the diagram. |
 | **Edges** | [List&lt;TraceDiagramEdge&gt;](TraceDiagramEdge.md) | Optional | The edges that connect the nodes in the diagram. |
+| **IsPossiblyIncomplete** | **bool** | Optional | Whether detected retrieval or diagram degradation means some events may not be shown. |
 
 
 ## Usage
@@ -18,7 +19,8 @@ using Finbourne.Sdk.Services.Insights.Model;
 
 var instance = new TraceDiagramResponse(
     nodes: new List<TraceDiagramNode>(),  // optional — The nodes that make up the diagram.
-    edges: new List<TraceDiagramEdge>()  // optional — The edges that connect the nodes in the diagram.
+    edges: new List<TraceDiagramEdge>(),  // optional — The edges that connect the nodes in the diagram.
+    isPossiblyIncomplete: true  // optional — Whether detected retrieval or diagram degradation means some events may not be shown.
 );
 ```
 ### Serializing to JSON

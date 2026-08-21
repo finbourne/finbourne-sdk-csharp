@@ -16,6 +16,7 @@ Response model for TPF file delivery search results
 | **DestinationStatus** | **string** | Required | *No description available.* |
 | **DestinationError** | **string** | Optional | *No description available.* |
 | **DestinationName** | **string** | Optional | *No description available.* |
+| **FileUuid** | **Guid** | Required | *No description available.* |
 
 
 ## Usage
@@ -36,7 +37,8 @@ var instance = new TpfFileDeliveryResponse(
     destinationPath: "...",  // optional
     destinationStatus: "...",  // required
     destinationError: "...",  // optional
-    destinationName: "..."  // optional
+    destinationName: "...",  // optional
+    fileUuid: "..."  // required
 );
 ```
 ### Serializing to JSON

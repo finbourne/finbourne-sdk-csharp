@@ -15,6 +15,7 @@ Holds information about a trace event.
 | **AgentCode** | **string** | Required | The code identifier of the agent currently being interacted with |
 | **AgentVersion** | **int** | Required | The version of the circuit in which the trace event occurred. |
 | **NodeId** | **string** | Required | The ID of the circuit&#39;s node at which the trace event occured. |
+| **RowId** | **string** | Optional | An opaque identifier for comparing complete trace event rows. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -36,6 +37,7 @@ var instance = new TraceEventLog(
     agentCode: "...",  // required — The code identifier of the agent currently being interacted with
     agentVersion: 0,  // required — The version of the circuit in which the trace event occurred.
     nodeId: "...",  // required — The ID of the circuit&#39;s node at which the trace event occured.
+    rowId: "...",  // optional — An opaque identifier for comparing complete trace event rows.
     links: new List<Link>()  // optional
 );
 ```

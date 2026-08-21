@@ -53,7 +53,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="package">package.</param>
         /// <param name="weight">The proportion of the total portfolio value ordered for the given instrument ordered..</param>
         /// <param name="amount">amount.</param>
-        public OrderRequest(Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), decimal? quantity = default(decimal?), string side = default(string), ResourceId orderBookId = default(ResourceId), ResourceId portfolioId = default(ResourceId), ResourceId id = default(ResourceId), string state = default(string), string type = default(string), string timeInForce = default(string), DateTimeOffset date = default(DateTimeOffset), CurrencyAndAmount price = default(CurrencyAndAmount), CurrencyAndAmount limitPrice = default(CurrencyAndAmount), CurrencyAndAmount stopPrice = default(CurrencyAndAmount), ResourceId orderInstruction = default(ResourceId), ResourceId package = default(ResourceId), decimal? weight = default(decimal?), CurrencyAndAmount amount = default(CurrencyAndAmount))
+        /// <param name="custodianAccountId">custodianAccountId.</param>
+        public OrderRequest(Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), decimal? quantity = default(decimal?), string side = default(string), ResourceId orderBookId = default(ResourceId), ResourceId portfolioId = default(ResourceId), ResourceId id = default(ResourceId), string state = default(string), string type = default(string), string timeInForce = default(string), DateTimeOffset date = default(DateTimeOffset), CurrencyAndAmount price = default(CurrencyAndAmount), CurrencyAndAmount limitPrice = default(CurrencyAndAmount), CurrencyAndAmount stopPrice = default(CurrencyAndAmount), ResourceId orderInstruction = default(ResourceId), ResourceId package = default(ResourceId), decimal? weight = default(decimal?), CurrencyAndAmount amount = default(CurrencyAndAmount), ResourceId custodianAccountId = default(ResourceId))
         {
             // to ensure "instrumentIdentifiers" is required (not null)
             if (instrumentIdentifiers == null)
@@ -88,6 +89,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Package = package;
             this.Weight = weight;
             this.Amount = amount;
+            this.CustodianAccountId = custodianAccountId;
         }
 
         /// <summary>
@@ -208,6 +210,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public CurrencyAndAmount Amount { get; set; }
 
         /// <summary>
+        /// Gets or Sets CustodianAccountId
+        /// </summary>
+        [DataMember(Name = "custodianAccountId", EmitDefaultValue = false)]
+        public ResourceId CustodianAccountId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -233,6 +241,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Package: ").Append(Package).Append("\n");
             sb.Append("  Weight: ").Append(Weight).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  CustodianAccountId: ").Append(CustodianAccountId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -359,6 +368,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
+                ) && 
+                (
+                    this.CustodianAccountId == input.CustodianAccountId ||
+                    (this.CustodianAccountId != null &&
+                    this.CustodianAccountId.Equals(input.CustodianAccountId))
                 );
         }
 
@@ -442,6 +456,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Amount != null)
                 {
                     hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                }
+                if (this.CustodianAccountId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustodianAccountId.GetHashCode();
                 }
                 return hashCode;
             }

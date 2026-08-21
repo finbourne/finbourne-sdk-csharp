@@ -10,6 +10,7 @@
 | **LifeCycleStatus** | **string** | Optional | What is the status of the address path. If it is not Production then it might be removed at some point in the future.  See the removal date for the likely timing of that if any. |
 | **RemovalDate** | **DateTimeOffset?** | Optional | If the life-cycle status of the address is Deprecated then this is the date at which support of the address will be suspended.  After that date it will be removed at the earliest possible point subject to any specific contractual support and development constraints. |
 | **DocumentationLink** | **string** | Optional | Contains a link to the documentation for this AddressDefinition in KnowledgeBase. |
+| **Axes** | [List&lt;ResultAxisDefinition&gt;](ResultAxisDefinition.md) | Optional | For keys whose type is a labelled vector or matrix (Result1D/Result2D), describes what the  labels on each axis mean. Null for scalar results and for shaped results whose axes have  not been described. |
 
 
 ## Usage
@@ -25,7 +26,8 @@ var instance = new AddressDefinition(
     description: "...",  // optional — The description for this result.
     lifeCycleStatus: "...",  // optional — What is the status of the address path. If it is not Production then it might be removed at some point in the future.  See the removal date for the likely timing of that if any.
     removalDate: DateTimeOffset.Now,  // optional — If the life-cycle status of the address is Deprecated then this is the date at which support of the address will be suspended.  After that date it will be removed at the earliest possible point subject to any specific contractual support and development constraints.
-    documentationLink: "..."  // optional — Contains a link to the documentation for this AddressDefinition in KnowledgeBase.
+    documentationLink: "...",  // optional — Contains a link to the documentation for this AddressDefinition in KnowledgeBase.
+    axes: new List<ResultAxisDefinition>()  // optional — For keys whose type is a labelled vector or matrix (Result1D/Result2D), describes what the  labels on each axis mean. Null for scalar results and for shaped results whose axes have  not been described.
 );
 ```
 ### Serializing to JSON
@@ -40,6 +42,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<AddressDefinition>(json);
 ```
 
+- [ResultAxisDefinition](ResultAxisDefinition.md) — used in `Axes`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

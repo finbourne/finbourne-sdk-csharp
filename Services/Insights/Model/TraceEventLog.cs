@@ -45,8 +45,9 @@ namespace Finbourne.Sdk.Services.Insights.Model
         /// <param name="agentCode">The code identifier of the agent currently being interacted with (required).</param>
         /// <param name="agentVersion">The version of the circuit in which the trace event occurred. (required).</param>
         /// <param name="nodeId">The ID of the circuit&#39;s node at which the trace event occured. (required).</param>
+        /// <param name="rowId">An opaque identifier for comparing complete trace event rows..</param>
         /// <param name="links">links.</param>
-        public TraceEventLog(string traceEventId = default(string), string traceId = default(string), DateTimeOffset createdAt = default(DateTimeOffset), string eventType = default(string), string origin = default(string), string content = default(string), string agentScope = default(string), string agentCode = default(string), int agentVersion = default(int), string nodeId = default(string), List<Link> links = default(List<Link>))
+        public TraceEventLog(string traceEventId = default(string), string traceId = default(string), DateTimeOffset createdAt = default(DateTimeOffset), string eventType = default(string), string origin = default(string), string content = default(string), string agentScope = default(string), string agentCode = default(string), int agentVersion = default(int), string nodeId = default(string), string rowId = default(string), List<Link> links = default(List<Link>))
         {
             // to ensure "traceEventId" is required (not null)
             if (traceEventId == null)
@@ -98,6 +99,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 throw new ArgumentNullException("nodeId is a required property for TraceEventLog and cannot be null");
             }
             this.NodeId = nodeId;
+            this.RowId = rowId;
             this.Links = links;
         }
 
@@ -172,6 +174,13 @@ namespace Finbourne.Sdk.Services.Insights.Model
         public string NodeId { get; set; }
 
         /// <summary>
+        /// An opaque identifier for comparing complete trace event rows.
+        /// </summary>
+        /// <value>An opaque identifier for comparing complete trace event rows.</value>
+        [DataMember(Name = "rowId", EmitDefaultValue = true)]
+        public string RowId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -195,6 +204,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
             sb.Append("  AgentCode: ").Append(AgentCode).Append("\n");
             sb.Append("  AgentVersion: ").Append(AgentVersion).Append("\n");
             sb.Append("  NodeId: ").Append(NodeId).Append("\n");
+            sb.Append("  RowId: ").Append(RowId).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -281,6 +291,11 @@ namespace Finbourne.Sdk.Services.Insights.Model
                     this.NodeId.Equals(input.NodeId))
                 ) && 
                 (
+                    this.RowId == input.RowId ||
+                    (this.RowId != null &&
+                    this.RowId.Equals(input.RowId))
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -333,6 +348,10 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 if (this.NodeId != null)
                 {
                     hashCode = (hashCode * 59) + this.NodeId.GetHashCode();
+                }
+                if (this.RowId != null)
+                {
+                    hashCode = (hashCode * 59) + this.RowId.GetHashCode();
                 }
                 if (this.Links != null)
                 {

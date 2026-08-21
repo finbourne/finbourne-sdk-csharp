@@ -12,6 +12,8 @@ record containing details of a single file for a run.
 | **Encrypted** | **bool** | Required | *No description available.* |
 | **Destinations** | [List&lt;FileDestinationResponse&gt;](FileDestinationResponse.md) | Required | *No description available.* |
 | **TransactionIds** | **List&lt;Guid&gt;** | Required | *No description available.* |
+| **FileUuid** | **Guid** | Required | *No description available.* |
+| **FailedTransactionIds** | **List&lt;Guid&gt;** | Required | *No description available.* |
 
 
 ## Usage
@@ -28,7 +30,9 @@ var instance = new RunFileResponse(
     fileHash: "...",  // required
     encrypted: true,  // required
     destinations: new List<FileDestinationResponse>(),  // required
-    transactionIds:   // required
+    transactionIds: ,  // required
+    fileUuid: "...",  // required
+    failedTransactionIds:   // required
 );
 ```
 ### Serializing to JSON

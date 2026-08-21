@@ -16,6 +16,7 @@
 | **OrderInstruction** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Package** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Side** | **string** | Optional | The client&#39;s representation of the order&#39;s side (buy, sell, short, etc) |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -37,7 +38,8 @@ var instance = new BlockedOrderRequest(
     price: new CurrencyAndAmount(...),  // optional
     orderInstruction: new ResourceId(...),  // optional
     package: new ResourceId(...),  // optional
-    side: "..."  // optional — The client&#39;s representation of the order&#39;s side (buy, sell, short, etc)
+    side: "...",  // optional — The client&#39;s representation of the order&#39;s side (buy, sell, short, etc)
+    custodianAccountId: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -61,6 +63,7 @@ var instance = JsonConvert.DeserializeObject<BlockedOrderRequest>(json);
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
+- [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 
