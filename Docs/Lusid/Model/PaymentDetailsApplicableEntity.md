@@ -6,9 +6,9 @@ Identifies the LUSID entity that holds the payment details (e.g. an InvestorReco
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **EntityType** | **string** | Required | The type of the LUSID entity holding the payment details. e.g. \&quot;InvestorRecord\&quot;, \&quot;InvestmentAccount\&quot;, \&quot;Portfolio\&quot;. |
-| **EntityScope** | **string** | Optional | The scope of the entity. Optional — required depends on the entity type. |
+| **EntityScope** | **string** | Optional | The scope of the entity. Optional, and narrows the match when supplied. Required for a Portfolio. |
 | **IdentifierType** | **string** | Required | The identifier type used to identify the entity. e.g. \&quot;lusidInvestmentAccountId\&quot;. |
-| **IdentifierScope** | **string** | Optional | The scope of the identifier used to identify the entity. Optional — null for native LUSID identifiers such as code. |
+| **IdentifierScope** | **string** | Optional | The scope of the identifier used to identify the entity. Optional, and narrows the match when supplied. |
 | **IdentifierValue** | **string** | Required | The identifier value for the entity. e.g. \&quot;LUID_00003DNL\&quot;. |
 
 
@@ -21,9 +21,9 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new PaymentDetailsApplicableEntity(
     entityType: "...",  // required — The type of the LUSID entity holding the payment details. e.g. \&quot;InvestorRecord\&quot;, \&quot;InvestmentAccount\&quot;, \&quot;Portfolio\&quot;.
-    entityScope: "...",  // optional — The scope of the entity. Optional — required depends on the entity type.
+    entityScope: "...",  // optional — The scope of the entity. Optional, and narrows the match when supplied. Required for a Portfolio.
     identifierType: "...",  // required — The identifier type used to identify the entity. e.g. \&quot;lusidInvestmentAccountId\&quot;.
-    identifierScope: "...",  // optional — The scope of the identifier used to identify the entity. Optional — null for native LUSID identifiers such as code.
+    identifierScope: "...",  // optional — The scope of the identifier used to identify the entity. Optional, and narrows the match when supplied.
     identifierValue: "..."  // required — The identifier value for the entity. e.g. \&quot;LUID_00003DNL\&quot;.
 );
 ```

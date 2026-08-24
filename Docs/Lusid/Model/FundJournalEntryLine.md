@@ -35,6 +35,8 @@ A Journal Entry line entity specifically for fund valuation point lines.
 | **LedgerColumn** | **string** | Optional | Indicates if the Journal Entry Line is credit or debit. Available values: Debit, Credit. |
 | **JournalEntryLineType** | **string** | Optional | Indicates the Journal Entry Line type. Available values: Default, Reversal, TrueUp. |
 | **ShareClassBreakdowns** | [List&lt;JournalEntryLineShareClassBreakdown&gt;](JournalEntryLineShareClassBreakdown.md) | Optional | Share Class breakdown data for this Journal Entry Line. |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **CustodianAccountType** | **string** | Optional | Indicates the Account Type of the resolved Custodian Account for this Journal Entry Line. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -76,6 +78,8 @@ var instance = new FundJournalEntryLine(
     ledgerColumn: "...",  // optional — Indicates if the Journal Entry Line is credit or debit. Available values: Debit, Credit.
     journalEntryLineType: "...",  // optional — Indicates the Journal Entry Line type. Available values: Default, Reversal, TrueUp.
     shareClassBreakdowns: new List<JournalEntryLineShareClassBreakdown>(),  // optional — Share Class breakdown data for this Journal Entry Line.
+    custodianAccountId: new ResourceId(...),  // optional
+    custodianAccountType: "...",  // optional — Indicates the Account Type of the resolved Custodian Account for this Journal Entry Line.
     links: new List<Link>()  // optional
 );
 ```
@@ -97,6 +101,7 @@ var instance = JsonConvert.DeserializeObject<FundJournalEntryLine>(json);
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [Property](Property.md) — used in `Properties`
 - [JournalEntryLineShareClassBreakdown](JournalEntryLineShareClassBreakdown.md) — used in `ShareClassBreakdowns`
+- [ResourceId](ResourceId.md)
 - [Link](Link.md)
 
 

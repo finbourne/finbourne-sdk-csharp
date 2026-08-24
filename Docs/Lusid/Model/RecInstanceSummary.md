@@ -8,7 +8,6 @@ A lightweight view of the rec instance, nested on each result set. It carries th
 | **Id** | [RecInstanceId](RecInstanceId.md) | Required | *No description available.* |
 | **RecDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **AsAtInstantiated** | **DateTimeOffset** | Required | The asAt datetime at which the instance was first created. |
-| **WorkflowTaskInstantiated** | [RecWorkflowTask](RecWorkflowTask.md) | Optional | *No description available.* |
 | **Status** | **string** | Required | The instance-level lifecycle rollup. Available values: Running, Failures, ReviewAndApproval, AllApproved, Locked. |
 | **AsAtLocked** | **DateTimeOffset?** | Optional | The wall-clock time the lock action was performed. Null when the instance has not been locked. |
 
@@ -24,7 +23,6 @@ var instance = new RecInstanceSummary(
     id: new RecInstanceId(...),  // required
     recDefinitionId: new ResourceId(...),  // required
     asAtInstantiated: DateTimeOffset.Now,  // required — The asAt datetime at which the instance was first created.
-    workflowTaskInstantiated: new RecWorkflowTask(...),  // optional
     status: "...",  // required — The instance-level lifecycle rollup. Available values: Running, Failures, ReviewAndApproval, AllApproved, Locked.
     asAtLocked: DateTimeOffset.Now  // optional — The wall-clock time the lock action was performed. Null when the instance has not been locked.
 );
@@ -46,7 +44,6 @@ var instance = JsonConvert.DeserializeObject<RecInstanceSummary>(json);
 
 - [RecInstanceId](RecInstanceId.md)
 - [ResourceId](ResourceId.md)
-- [RecWorkflowTask](RecWorkflowTask.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -5,7 +5,7 @@ The two hardcoded series identifier keys that uniquely identify a Payment Detail
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **PaymentType** | **string** | Required | The type of payment series. One of \&quot;Dividend\&quot;, \&quot;Fee\&quot;, \&quot;Rebate\&quot;, \&quot;Redemption\&quot;, \&quot;Subscription\&quot;. |
+| **PaymentType** | **string** | Required | The type of payment series. |
 | **Currency** | **string** | Required | ISO 4217 currency code identifying the currency-specific series row. Must match the top-level currency field. |
 | **CustodianAccountScope** | **string** | Optional | Optional. The scope of the custodian account on the portfolio. Only permitted when the applicable entity is a Portfolio. |
 | **CustodianAccountCode** | **string** | Optional | Optional. The code of the custodian account on the portfolio. Only permitted when the applicable entity is a Portfolio. |
@@ -19,7 +19,7 @@ The two hardcoded series identifier keys that uniquely identify a Payment Detail
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new PaymentDetailsSeriesIdentifiers(
-    paymentType: "...",  // required — The type of payment series. One of \&quot;Dividend\&quot;, \&quot;Fee\&quot;, \&quot;Rebate\&quot;, \&quot;Redemption\&quot;, \&quot;Subscription\&quot;.
+    paymentType: "...",  // required — The type of payment series.
     currency: "...",  // required — ISO 4217 currency code identifying the currency-specific series row. Must match the top-level currency field.
     custodianAccountScope: "...",  // optional — Optional. The scope of the custodian account on the portfolio. Only permitted when the applicable entity is a Portfolio.
     custodianAccountCode: "..."  // optional — Optional. The code of the custodian account on the portfolio. Only permitted when the applicable entity is a Portfolio.

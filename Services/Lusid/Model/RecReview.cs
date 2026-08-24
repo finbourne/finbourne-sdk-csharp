@@ -38,8 +38,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="countReviewed">The number of results with review status Reviewed. (required).</param>
         /// <param name="countRequired">The number of results with review status Required. (required).</param>
         /// <param name="countNotRequired">The number of results with review status Not Required. (required).</param>
-        /// <param name="completionRatio">Reviewed / (Reviewed + Required). Is 1.0 when the denominator is zero, and null when execution failed. (required).</param>
-        public RecReview(int countReviewed = default(int), int countRequired = default(int), int countNotRequired = default(int), decimal completionRatio = default(decimal))
+        /// <param name="completionRatio">Reviewed / (Reviewed + Required). Is 1.0 when the denominator is zero, and null when execution failed..</param>
+        public RecReview(int countReviewed = default(int), int countRequired = default(int), int countNotRequired = default(int), decimal? completionRatio = default(decimal?))
         {
             this.CountReviewed = countReviewed;
             this.CountRequired = countRequired;
@@ -72,8 +72,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Reviewed / (Reviewed + Required). Is 1.0 when the denominator is zero, and null when execution failed.
         /// </summary>
         /// <value>Reviewed / (Reviewed + Required). Is 1.0 when the denominator is zero, and null when execution failed.</value>
-        [DataMember(Name = "completionRatio", IsRequired = true, EmitDefaultValue = true)]
-        public decimal CompletionRatio { get; set; }
+        [DataMember(Name = "completionRatio", EmitDefaultValue = true)]
+        public decimal? CompletionRatio { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,7 +136,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 ) && 
                 (
                     this.CompletionRatio == input.CompletionRatio ||
-                    this.CompletionRatio.Equals(input.CompletionRatio)
+                    (this.CompletionRatio != null &&
+                    this.CompletionRatio.Equals(input.CompletionRatio))
                 );
         }
 
@@ -152,7 +153,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 hashCode = (hashCode * 59) + this.CountReviewed.GetHashCode();
                 hashCode = (hashCode * 59) + this.CountRequired.GetHashCode();
                 hashCode = (hashCode * 59) + this.CountNotRequired.GetHashCode();
-                hashCode = (hashCode * 59) + this.CompletionRatio.GetHashCode();
+                if (this.CompletionRatio != null)
+                {
+                    hashCode = (hashCode * 59) + this.CompletionRatio.GetHashCode();
+                }
                 return hashCode;
             }
         }
