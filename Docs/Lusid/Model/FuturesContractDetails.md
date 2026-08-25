@@ -20,6 +20,10 @@ Most, if not all, information about contracts is standardized. See, e.g. https:/
 | **UnitValue** | **decimal** | Optional | The value in the currency of a 1 unit change in the contract price. |
 | **Calendars** | **List&lt;string&gt;** | Optional | Holiday calendars that apply to yield-to-price conversions (i.e. for BRL futures). |
 | **DeliveryType** | **string** | Optional | Delivery type to be used on settling the contract.  Default value: Physical. Available values: Cash, Physical. |
+| **DeliverableMinMaturityYears** | **decimal?** | Optional | For physically-delivered bond futures: the minimum remaining maturity, in years, measured from the first  day of the delivery month, for a bond to be eligible for delivery against this contract.  Optional: if not set, no lower bound is applied when matching eligible bonds. |
+| **DeliverableMaxMaturityYears** | **decimal?** | Optional | For physically-delivered bond futures: the maximum remaining maturity, in years, measured from the first  day of the delivery month, for a bond to be eligible for delivery against this contract.  Optional: if not set, no upper bound is applied when matching eligible bonds. |
+| **ExcludeCallableBonds** | **bool** | Optional | For physically-delivered bond futures: whether callable bonds are excluded from delivery against this  contract. Optional: defaults to false (callable bonds are not excluded). |
+| **DeliverableMinAmountOutstanding** | **decimal?** | Optional | For physically-delivered bond futures: the minimum amount outstanding, in the domestic currency of the  contract, for a bond issue to be eligible for delivery against this contract.  Optional: if not set, no minimum is applied when matching eligible bonds. |
 
 
 ## Usage
@@ -44,7 +48,11 @@ var instance = new FuturesContractDetails(
     tickerStep: 0.0d,  // optional — Minimal step size change in ticker.
     unitValue: 0.0d,  // optional — The value in the currency of a 1 unit change in the contract price.
     calendars: ,  // optional — Holiday calendars that apply to yield-to-price conversions (i.e. for BRL futures).
-    deliveryType: "..."  // optional — Delivery type to be used on settling the contract.  Default value: Physical. Available values: Cash, Physical.
+    deliveryType: "...",  // optional — Delivery type to be used on settling the contract.  Default value: Physical. Available values: Cash, Physical.
+    deliverableMinMaturityYears: 0.0d,  // optional — For physically-delivered bond futures: the minimum remaining maturity, in years, measured from the first  day of the delivery month, for a bond to be eligible for delivery against this contract.  Optional: if not set, no lower bound is applied when matching eligible bonds.
+    deliverableMaxMaturityYears: 0.0d,  // optional — For physically-delivered bond futures: the maximum remaining maturity, in years, measured from the first  day of the delivery month, for a bond to be eligible for delivery against this contract.  Optional: if not set, no upper bound is applied when matching eligible bonds.
+    excludeCallableBonds: true,  // optional — For physically-delivered bond futures: whether callable bonds are excluded from delivery against this  contract. Optional: defaults to false (callable bonds are not excluded).
+    deliverableMinAmountOutstanding: 0.0d  // optional — For physically-delivered bond futures: the minimum amount outstanding, in the domestic currency of the  contract, for a bond issue to be eligible for delivery against this contract.  Optional: if not set, no minimum is applied when matching eligible bonds.
 );
 ```
 ### Serializing to JSON

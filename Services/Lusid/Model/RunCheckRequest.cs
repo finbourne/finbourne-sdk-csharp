@@ -32,10 +32,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="lusidEntityDataset">lusidEntityDataset.</param>
         /// <param name="limitIndividualBreachesPerRule">The maximum number of individual breaches to return per rule. Defaults to 100 if not specified..</param>
-        public RunCheckRequest(LusidEntityDataset lusidEntityDataset = default(LusidEntityDataset), int limitIndividualBreachesPerRule = default(int))
+        /// <param name="portfolioHoldingDataset">portfolioHoldingDataset.</param>
+        public RunCheckRequest(LusidEntityDataset lusidEntityDataset = default(LusidEntityDataset), int limitIndividualBreachesPerRule = default(int), PortfolioHoldingDataset portfolioHoldingDataset = default(PortfolioHoldingDataset))
         {
             this.LusidEntityDataset = lusidEntityDataset;
             this.LimitIndividualBreachesPerRule = limitIndividualBreachesPerRule;
+            this.PortfolioHoldingDataset = portfolioHoldingDataset;
         }
 
         /// <summary>
@@ -52,6 +54,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public int LimitIndividualBreachesPerRule { get; set; }
 
         /// <summary>
+        /// Gets or Sets PortfolioHoldingDataset
+        /// </summary>
+        [DataMember(Name = "portfolioHoldingDataset", EmitDefaultValue = false)]
+        public PortfolioHoldingDataset PortfolioHoldingDataset { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -61,6 +69,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class RunCheckRequest {\n");
             sb.Append("  LusidEntityDataset: ").Append(LusidEntityDataset).Append("\n");
             sb.Append("  LimitIndividualBreachesPerRule: ").Append(LimitIndividualBreachesPerRule).Append("\n");
+            sb.Append("  PortfolioHoldingDataset: ").Append(PortfolioHoldingDataset).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -104,6 +113,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.LimitIndividualBreachesPerRule == input.LimitIndividualBreachesPerRule ||
                     this.LimitIndividualBreachesPerRule.Equals(input.LimitIndividualBreachesPerRule)
+                ) && 
+                (
+                    this.PortfolioHoldingDataset == input.PortfolioHoldingDataset ||
+                    (this.PortfolioHoldingDataset != null &&
+                    this.PortfolioHoldingDataset.Equals(input.PortfolioHoldingDataset))
                 );
         }
 
@@ -121,6 +135,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     hashCode = (hashCode * 59) + this.LusidEntityDataset.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.LimitIndividualBreachesPerRule.GetHashCode();
+                if (this.PortfolioHoldingDataset != null)
+                {
+                    hashCode = (hashCode * 59) + this.PortfolioHoldingDataset.GetHashCode();
+                }
                 return hashCode;
             }
         }

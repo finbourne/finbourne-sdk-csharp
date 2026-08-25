@@ -28,6 +28,7 @@ A list of holdings.
 | **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **UnsettledUnits** | **decimal** | Optional | The number of unsettled units for the holding. |
 | **OverdueUnits** | **decimal** | Optional | The number of unsettled units for the holding that are beyond their contractual settlement date. |
+| **CustodianAccount** | [CustodianAccount](CustodianAccount.md) | Optional | *No description available.* |
 | **ResolvedCustodianAccount** | [ResolvedCustodianAccount](ResolvedCustodianAccount.md) | Optional | *No description available.* |
 
 
@@ -62,6 +63,7 @@ var instance = new PortfolioHolding(
     custodianAccountId: new ResourceId(...),  // optional
     unsettledUnits: 0.0d,  // optional — The number of unsettled units for the holding.
     overdueUnits: 0.0d,  // optional — The number of unsettled units for the holding that are beyond their contractual settlement date.
+    custodianAccount: new CustodianAccount(...),  // optional
     resolvedCustodianAccount: new ResolvedCustodianAccount(...)  // optional
 );
 ```
@@ -89,6 +91,7 @@ var instance = JsonConvert.DeserializeObject<PortfolioHolding>(json);
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [SettlementSchedule](SettlementSchedule.md) — used in `SettlementSchedule`
 - [ResourceId](ResourceId.md)
+- [CustodianAccount](CustodianAccount.md)
 - [ResolvedCustodianAccount](ResolvedCustodianAccount.md)
 
 

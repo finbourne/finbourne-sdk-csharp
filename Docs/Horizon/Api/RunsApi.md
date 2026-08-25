@@ -7,6 +7,7 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**CancelInstance**](#cancelinstance) | **PUT** `/horizon/api/runs/cancel` | [EXPERIMENTAL] CancelInstance: Cancels multiple instance executions. |
 | [**GetRunResults**](#getrunresults) | **GET** `/horizon/api/runs` | [EXPERIMENTAL] GetRunResults: Get run results |
+| [**GetWorkflowRunResults**](#getworkflowrunresults) | **GET** `/horizon/api/runs/{runId}/workflow/results` | [EXPERIMENTAL] GetWorkflowRunResults: Get the status and published result values of an integration run |
 | [**RerunInstance**](#reruninstance) | **PUT** `/horizon/api/runs/{runId}/rerun` | [EXPERIMENTAL] RerunInstance: Reruns a single instance execution. |
 | [**StopInstanceExecution**](#stopinstanceexecution) | **PUT** `/horizon/api/runs/{instanceId}/{runId}/stop` | [EXPERIMENTAL] StopInstanceExecution: Stops a single instance execution. |
 
@@ -166,6 +167,65 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PagedResourceListOfIntegrationRunResponse> response = apiInstance.GetRunResultsWithHttpInfo(filter, sortBy, limit, pageToken);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getworkflowrunresults"></a>
+## GetWorkflowRunResults
+
+> WorkflowRunResultsResponse GetWorkflowRunResults(string runId)
+
+[EXPERIMENTAL] GetWorkflowRunResults: Get the status and published result values of an integration run
+
+Returns the run's status alongside the result values the run published, so a caller waiting on an integration it started can poll one route rather than combining a status call with a results call. The response carries one entry per field the instance declares, matching the shape the instance reported when the caller discovered it, and a declared field the run published nothing for carries a null value. The user must be authenticated, entitled to call this method, and the user's domain must be licensed for the integration.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RunsApi>();
+var runId = "runId_example";  // string
+WorkflowRunResultsResponse result = apiInstance.GetWorkflowRunResults(runId);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **runId** | **string** | path | **required** | Run identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;. |
+
+### Return type
+
+[WorkflowRunResultsResponse](../Model/WorkflowRunResultsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The run status and its published result values. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | The run does not exist. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetWorkflowRunResultsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<WorkflowRunResultsResponse> response = apiInstance.GetWorkflowRunResultsWithHttpInfo(runId);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

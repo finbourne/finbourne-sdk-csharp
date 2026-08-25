@@ -34,6 +34,8 @@ A Journal Entry line entity.
 | **HoldingSign** | **string** | Optional | Indicates if the Journal Entry Line is operating against a Long or Short holding. Available values: NA, Long, Short. |
 | **LedgerColumn** | **string** | Optional | Indicates if the Journal Entry Line is credit or debit. Available values: Debit, Credit. |
 | **JournalEntryLineType** | **string** | Optional | Indicates the Journal Entry Line type. Available values: Default, Reversal, TrueUp. |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **CustodianAccountType** | **string** | Optional | Indicates the Account Type of the resolved Custodian Account for this Journal Entry Line. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -74,6 +76,8 @@ var instance = new JournalEntryLine(
     holdingSign: "...",  // optional — Indicates if the Journal Entry Line is operating against a Long or Short holding. Available values: NA, Long, Short.
     ledgerColumn: "...",  // optional — Indicates if the Journal Entry Line is credit or debit. Available values: Debit, Credit.
     journalEntryLineType: "...",  // optional — Indicates the Journal Entry Line type. Available values: Default, Reversal, TrueUp.
+    custodianAccountId: new ResourceId(...),  // optional
+    custodianAccountType: "...",  // optional — Indicates the Account Type of the resolved Custodian Account for this Journal Entry Line.
     links: new List<Link>()  // optional
 );
 ```
@@ -94,6 +98,7 @@ var instance = JsonConvert.DeserializeObject<JournalEntryLine>(json);
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [Property](Property.md) — used in `Properties`
+- [ResourceId](ResourceId.md)
 - [Link](Link.md)
 
 
