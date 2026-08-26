@@ -43,7 +43,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="launchDate">The launch date set when a shareclass is added to the fund. Defaults to Fund Inception Date..</param>
         /// <param name="properties">An optional set of properties to attach to the auto-created Instrument. Only applied when createInstrument is true..</param>
         /// <param name="fundShareClassType">The Type of Share Class. Available values: Unitised, Inactive, Series, PrivateEquity, Partnership. (required).</param>
-        /// <param name="distributionType">The type of distribution the ShareClass will calculate. Available values: Income, Accumulation. (required).</param>
+        /// <param name="distributionType">The type of distribution the ShareClass will calculate. Available values: Income, Accumulation..</param>
         /// <param name="domCcy">The domestic currency of the ShareClass instrument. (required).</param>
         /// <param name="tradingConventions">tradingConventions.</param>
         /// <param name="unitsPrecision">Decimal places for the share class units..</param>
@@ -52,7 +52,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="roundingConventionsUnits">Rounding conventions used for the ShareClass units..</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
         /// <param name="distributionPaymentType">The tax treatment applied to distributions. Available values: Invalid, Gross, Net..</param>
-        /// <param name="hedging">Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging. (required).</param>
+        /// <param name="hedging">Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging..</param>
         public ShareClass(Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string name = default(string), string description = default(string), string shareClassShortCode = default(string), decimal? launchPrice = default(decimal?), DateTimeOffset? launchDate = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string fundShareClassType = default(string), string distributionType = default(string), string domCcy = default(string), TradingConventions tradingConventions = default(TradingConventions), int? unitsPrecision = default(int?), int? pricePrecision = default(int?), List<SimpleRoundingConvention> roundingConventions = default(List<SimpleRoundingConvention>), List<SimpleRoundingConvention> roundingConventionsUnits = default(List<SimpleRoundingConvention>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), string distributionPaymentType = default(string), string hedging = default(string))
         {
             // to ensure "name" is required (not null)
@@ -73,29 +73,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("fundShareClassType is a required property for ShareClass and cannot be null");
             }
             this.FundShareClassType = fundShareClassType;
-            // to ensure "distributionType" is required (not null)
-            if (distributionType == null)
-            {
-                throw new ArgumentNullException("distributionType is a required property for ShareClass and cannot be null");
-            }
-            this.DistributionType = distributionType;
             // to ensure "domCcy" is required (not null)
             if (domCcy == null)
             {
                 throw new ArgumentNullException("domCcy is a required property for ShareClass and cannot be null");
             }
             this.DomCcy = domCcy;
-            // to ensure "hedging" is required (not null)
-            if (hedging == null)
-            {
-                throw new ArgumentNullException("hedging is a required property for ShareClass and cannot be null");
-            }
-            this.Hedging = hedging;
             this.InstrumentIdentifiers = instrumentIdentifiers;
             this.Description = description;
             this.LaunchPrice = launchPrice;
             this.LaunchDate = launchDate;
             this.Properties = properties;
+            this.DistributionType = distributionType;
             this.TradingConventions = tradingConventions;
             this.UnitsPrecision = unitsPrecision;
             this.PricePrecision = pricePrecision;
@@ -103,6 +92,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.RoundingConventionsUnits = roundingConventionsUnits;
             this.TimeZoneConventions = timeZoneConventions;
             this.DistributionPaymentType = distributionPaymentType;
+            this.Hedging = hedging;
         }
 
         /// <summary>
@@ -165,7 +155,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// The type of distribution the ShareClass will calculate. Available values: Income, Accumulation.
         /// </summary>
         /// <value>The type of distribution the ShareClass will calculate. Available values: Income, Accumulation.</value>
-        [DataMember(Name = "distributionType", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "distributionType", EmitDefaultValue = true)]
         public string DistributionType { get; set; }
 
         /// <summary>
@@ -226,7 +216,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging.
         /// </summary>
         /// <value>Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging.</value>
-        [DataMember(Name = "hedging", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "hedging", EmitDefaultValue = true)]
         public string Hedging { get; set; }
 
         /// <summary>

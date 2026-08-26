@@ -6,6 +6,7 @@ Readonly configuration for the Horizon Integration Worker
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Type** | **string** | Optional | The type of worker |
+| **IntegrationInstanceId** | **string** | Optional | The id of the Horizon integration instance the worker executes. Null on the library worker. |
 
 
 ## Usage
@@ -16,7 +17,8 @@ Readonly configuration for the Horizon Integration Worker
 using Finbourne.Sdk.Services.Workflow.Model;
 
 var instance = new HorizonIntegrationResponse(
-    type: "..."  // optional — The type of worker
+    type: "...",  // optional — The type of worker
+    integrationInstanceId: "..."  // optional — The id of the Horizon integration instance the worker executes. Null on the library worker.
 );
 ```
 ### Serializing to JSON

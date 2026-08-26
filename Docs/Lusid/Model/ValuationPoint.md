@@ -17,6 +17,7 @@
 | **Previous** | [PreviousValuationPoint](PreviousValuationPoint.md) | Optional | *No description available.* |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | The Valuation Point properties. These are from the &#39;DiaryEntry&#39; domain. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -41,6 +42,7 @@ var instance = new ValuationPoint(
     previous: new PreviousValuationPoint(...),  // optional
     properties: new Property(...),  // optional — The Valuation Point properties. These are from the &#39;DiaryEntry&#39; domain.
     varVersion: new ModelVersion(...),  // optional
+    stagedModifications: new StagedModificationsInfo(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -59,6 +61,7 @@ var instance = JsonConvert.DeserializeObject<ValuationPoint>(json);
 - [PreviousValuationPoint](PreviousValuationPoint.md)
 - [Property](Property.md) — used in `Properties`
 - [ModelVersion](ModelVersion.md)
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 - [Link](Link.md)
 
 

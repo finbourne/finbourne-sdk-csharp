@@ -26,6 +26,7 @@ An Order for a certain quantity of a specific instrument
 | **PackageId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Weight** | **decimal?** | Optional | The proportion of the total portfolio value ordered for the given instrument ordered. |
 | **Amount** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
+| **Basis** | **string** | Optional | The measure in which the order was instructed. Expected values are &#39;Quantity&#39;, &#39;Amount&#39; or &#39;Weight&#39;; null when the order carries no size measure. Read-only; derived from the populated size measures, taking quantity first, then amount, then weight. *(read-only)* |
 | **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **DataModelMembership** | [DataModelMembership](DataModelMembership.md) | Optional | *No description available.* |
 | **DerivedComplianceState** | **string** | Optional | The compliance state of the order, derived from pre-trade compliance runs. |
@@ -62,6 +63,7 @@ var instance = new Order(
     packageId: new ResourceId(...),  // optional
     weight: 0.0d,  // optional — The proportion of the total portfolio value ordered for the given instrument ordered.
     amount: new CurrencyAndAmount(...),  // optional
+    basis: "...",  // optional — The measure in which the order was instructed. Expected values are &#39;Quantity&#39;, &#39;Amount&#39; or &#39;Weight&#39;; null when the order carries no size measure. Read-only; derived from the populated size measures, taking quantity first, then amount, then weight.
     custodianAccountId: new ResourceId(...),  // optional
     dataModelMembership: new DataModelMembership(...),  // optional
     derivedComplianceState: "...",  // optional — The compliance state of the order, derived from pre-trade compliance runs.

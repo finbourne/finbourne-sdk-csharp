@@ -12,7 +12,7 @@
 | **LaunchDate** | **DateTimeOffset?** | Optional | The launch date set when a shareclass is added to the fund. Defaults to Fund Inception Date. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | An optional set of properties to attach to the auto-created Instrument. Only applied when createInstrument is true. |
 | **FundShareClassType** | **string** | Required | The Type of Share Class. Available values: Unitised, Inactive, Series, PrivateEquity, Partnership. |
-| **DistributionType** | **string** | Required | The type of distribution the ShareClass will calculate. Available values: Income, Accumulation. |
+| **DistributionType** | **string** | Optional | The type of distribution the ShareClass will calculate. Available values: Income, Accumulation. |
 | **DomCcy** | **string** | Required | The domestic currency of the ShareClass instrument. |
 | **TradingConventions** | [TradingConventions](TradingConventions.md) | Optional | *No description available.* |
 | **UnitsPrecision** | **int?** | Optional | Decimal places for the share class units. |
@@ -21,7 +21,7 @@
 | **RoundingConventionsUnits** | [List&lt;SimpleRoundingConvention&gt;](SimpleRoundingConvention.md) | Optional | Rounding conventions used for the ShareClass units. |
 | **TimeZoneConventions** | [TimeZoneConventions](TimeZoneConventions.md) | Optional | *No description available.* |
 | **DistributionPaymentType** | **string** | Optional | The tax treatment applied to distributions. Available values: Invalid, Gross, Net. |
-| **Hedging** | **string** | Required | Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging. |
+| **Hedging** | **string** | Optional | Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging. |
 
 
 ## Usage
@@ -40,7 +40,7 @@ var instance = new ShareClass(
     launchDate: DateTimeOffset.Now,  // optional — The launch date set when a shareclass is added to the fund. Defaults to Fund Inception Date.
     properties: new Property(...),  // optional — An optional set of properties to attach to the auto-created Instrument. Only applied when createInstrument is true.
     fundShareClassType: "...",  // required — The Type of Share Class. Available values: Unitised, Inactive, Series, PrivateEquity, Partnership.
-    distributionType: "...",  // required — The type of distribution the ShareClass will calculate. Available values: Income, Accumulation.
+    distributionType: "...",  // optional — The type of distribution the ShareClass will calculate. Available values: Income, Accumulation.
     domCcy: "...",  // required — The domestic currency of the ShareClass instrument.
     tradingConventions: new TradingConventions(...),  // optional
     unitsPrecision: 0,  // optional — Decimal places for the share class units.
@@ -49,7 +49,7 @@ var instance = new ShareClass(
     roundingConventionsUnits: new List<SimpleRoundingConvention>(),  // optional — Rounding conventions used for the ShareClass units.
     timeZoneConventions: new TimeZoneConventions(...),  // optional
     distributionPaymentType: "...",  // optional — The tax treatment applied to distributions. Available values: Invalid, Gross, Net.
-    hedging: "..."  // required — Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging.
+    hedging: "..."  // optional — Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging.
 );
 ```
 ### Serializing to JSON

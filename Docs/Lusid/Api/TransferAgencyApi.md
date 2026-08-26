@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CalculateOrderDates**](#calculateorderdates) | **POST** `/api/api/transferagency/orderdates` | [EXPERIMENTAL] CalculateOrderDates: Calculate the key dates associated with transfer agency orders |
+| [**DeleteTransferAgencyOrders**](#deletetransferagencyorders) | **POST** `/api/api/transferagency/orders/$delete` | [EXPERIMENTAL] DeleteTransferAgencyOrders: Delete transfer agency orders |
 | [**UpsertTransferAgencyOrders**](#upserttransferagencyorders) | **POST** `/api/api/transferagency/orders` | [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders |
 
 ### Example
@@ -98,6 +99,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<CalculateOrderDatesResponse> response = apiInstance.CalculateOrderDatesWithHttpInfo(requestBody);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="deletetransferagencyorders"></a>
+## DeleteTransferAgencyOrders
+
+> DeleteTransferAgencyOrdersResponse DeleteTransferAgencyOrders(Dictionary<string, DeleteTransferAgencyOrderRequest> requestBody)
+
+[EXPERIMENTAL] DeleteTransferAgencyOrders: Delete transfer agency orders
+
+Deletes each order supplied, cancelling any cash transaction(s) already booked for it. Only an order in  'New' or 'Pending' can be deleted. A priced order must be un-priced first. An order with no cash transaction  booked against it is deleted successfully and reports no cancelled transactions. Transaction staging rules are not applied to these  cancellations.  The response contains both successfully deleted orders and any failures, each in the form of a  dictionary keyed by the request's keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransferAgencyApi>();
+var requestBody = new Dictionary<string, DeleteTransferAgencyOrderRequest>(); // Dictionary<string, DeleteTransferAgencyOrderRequest>
+DeleteTransferAgencyOrdersResponse result = apiInstance.DeleteTransferAgencyOrders(requestBody);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **requestBody** | [Dictionary&lt;string, DeleteTransferAgencyOrderRequest&gt;](../Model/DeleteTransferAgencyOrderRequest.md) | body | **required** | The transfer agency orders to delete, keyed by a unique request identifier. |
+
+### Return type
+
+[DeleteTransferAgencyOrdersResponse](../Model/DeleteTransferAgencyOrdersResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully deleted orders and any failures. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteTransferAgencyOrdersWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeleteTransferAgencyOrdersResponse> response = apiInstance.DeleteTransferAgencyOrdersWithHttpInfo(requestBody);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

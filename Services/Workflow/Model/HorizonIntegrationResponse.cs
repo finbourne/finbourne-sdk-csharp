@@ -51,10 +51,19 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// Initializes a new instance of the <see cref="HorizonIntegrationResponse" /> class.
         /// </summary>
         /// <param name="type">The type of worker.</param>
-        public HorizonIntegrationResponse(TypeEnum ?type = default(TypeEnum?))
+        /// <param name="integrationInstanceId">The id of the Horizon integration instance the worker executes. Null on the library worker..</param>
+        public HorizonIntegrationResponse(TypeEnum ?type = default(TypeEnum?), string integrationInstanceId = default(string))
         {
             this.Type = type;
+            this.IntegrationInstanceId = integrationInstanceId;
         }
+
+        /// <summary>
+        /// The id of the Horizon integration instance the worker executes. Null on the library worker.
+        /// </summary>
+        /// <value>The id of the Horizon integration instance the worker executes. Null on the library worker.</value>
+        [DataMember(Name = "integrationInstanceId", EmitDefaultValue = true)]
+        public string IntegrationInstanceId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,6 +74,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class HorizonIntegrationResponse {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  IntegrationInstanceId: ").Append(IntegrationInstanceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -103,6 +113,11 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
+                ) && 
+                (
+                    this.IntegrationInstanceId == input.IntegrationInstanceId ||
+                    (this.IntegrationInstanceId != null &&
+                    this.IntegrationInstanceId.Equals(input.IntegrationInstanceId))
                 );
         }
 
@@ -116,6 +131,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                if (this.IntegrationInstanceId != null)
+                {
+                    hashCode = (hashCode * 59) + this.IntegrationInstanceId.GetHashCode();
+                }
                 return hashCode;
             }
         }

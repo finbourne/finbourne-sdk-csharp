@@ -13,6 +13,7 @@ A street order for a quantity of a single instrument placed with a single market
 | **LusidInstrumentId** | **string** | Required | The LUSID instrument id for the instrument placement. |
 | **Quantity** | **decimal?** | Optional | The quantity of given instrument ordered. |
 | **Amount** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
+| **Basis** | **string** | Optional | The measure in which the placement was instructed. Expected values are &#39;Quantity&#39; or &#39;Amount&#39;; null when the placement carries no size measure. Read-only; derived from the populated size measures, taking quantity first, then amount. *(read-only)* |
 | **State** | **string** | Required | The state of this placement (typically a FIX state; Open, Filled, etc). |
 | **Side** | **string** | Required | The side (Buy, Sell, ...) of this placement. |
 | **TimeInForce** | **string** | Required | The time in force applicable to this placement (GTC, FOK, Day, etc) |
@@ -44,6 +45,7 @@ var instance = new Placement(
     lusidInstrumentId: "...",  // required — The LUSID instrument id for the instrument placement.
     quantity: 0.0d,  // optional — The quantity of given instrument ordered.
     amount: new CurrencyAndAmount(...),  // optional
+    basis: "...",  // optional — The measure in which the placement was instructed. Expected values are &#39;Quantity&#39; or &#39;Amount&#39;; null when the placement carries no size measure. Read-only; derived from the populated size measures, taking quantity first, then amount.
     state: "...",  // required — The state of this placement (typically a FIX state; Open, Filled, etc).
     side: "...",  // required — The side (Buy, Sell, ...) of this placement.
     timeInForce: "...",  // required — The time in force applicable to this placement (GTC, FOK, Day, etc)

@@ -48,8 +48,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="previous">previous.</param>
         /// <param name="properties">The Valuation Point properties. These are from the &#39;DiaryEntry&#39; domain..</param>
         /// <param name="varVersion">varVersion.</param>
+        /// <param name="stagedModifications">stagedModifications.</param>
         /// <param name="links">links.</param>
-        public ValuationPoint(string href = default(string), string valuationPointCode = default(string), string variant = default(string), string name = default(string), string status = default(string), bool applyClearDown = default(bool), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset queryAsAt = default(DateTimeOffset), DateTimeOffset holdingsAsAt = default(DateTimeOffset), DateTimeOffset valuationAsAt = default(DateTimeOffset), PreviousValuationPoint previous = default(PreviousValuationPoint), Dictionary<string, Property> properties = default(Dictionary<string, Property>), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
+        public ValuationPoint(string href = default(string), string valuationPointCode = default(string), string variant = default(string), string name = default(string), string status = default(string), bool applyClearDown = default(bool), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset queryAsAt = default(DateTimeOffset), DateTimeOffset holdingsAsAt = default(DateTimeOffset), DateTimeOffset valuationAsAt = default(DateTimeOffset), PreviousValuationPoint previous = default(PreviousValuationPoint), Dictionary<string, Property> properties = default(Dictionary<string, Property>), ModelVersion varVersion = default(ModelVersion), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), List<Link> links = default(List<Link>))
         {
             // to ensure "status" is required (not null)
             if (status == null)
@@ -69,6 +70,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Previous = previous;
             this.Properties = properties;
             this.VarVersion = varVersion;
+            this.StagedModifications = stagedModifications;
             this.Links = links;
         }
 
@@ -162,6 +164,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ModelVersion VarVersion { get; set; }
 
         /// <summary>
+        /// Gets or Sets StagedModifications
+        /// </summary>
+        [DataMember(Name = "stagedModifications", EmitDefaultValue = false)]
+        public StagedModificationsInfo StagedModifications { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -188,6 +196,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Previous: ").Append(Previous).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  StagedModifications: ").Append(StagedModifications).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -290,6 +299,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.VarVersion.Equals(input.VarVersion))
                 ) && 
                 (
+                    this.StagedModifications == input.StagedModifications ||
+                    (this.StagedModifications != null &&
+                    this.StagedModifications.Equals(input.StagedModifications))
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -354,6 +368,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.VarVersion != null)
                 {
                     hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
+                }
+                if (this.StagedModifications != null)
+                {
+                    hashCode = (hashCode * 59) + this.StagedModifications.GetHashCode();
                 }
                 if (this.Links != null)
                 {

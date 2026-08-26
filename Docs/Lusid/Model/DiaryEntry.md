@@ -16,6 +16,7 @@
 | **PreviousEntryTime** | **DateTimeOffset** | Optional | The entry time of the previous diary entry. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the diary entry. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -39,6 +40,7 @@ var instance = new DiaryEntry(
     previousEntryTime: DateTimeOffset.Now,  // optional — The entry time of the previous diary entry.
     properties: new Property(...),  // optional — A set of properties for the diary entry.
     varVersion: new ModelVersion(...),  // optional
+    stagedModifications: new StagedModificationsInfo(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -57,6 +59,7 @@ var instance = JsonConvert.DeserializeObject<DiaryEntry>(json);
 - [ResourceId](ResourceId.md)
 - [Property](Property.md) — used in `Properties`
 - [ModelVersion](ModelVersion.md)
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 - [Link](Link.md)
 
 

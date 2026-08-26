@@ -6,6 +6,7 @@ Configuration for a Worker that executes a Horizon integration instance
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Type** | **string** | Required | The type of worker |
+| **IntegrationInstanceId** | **string** | Required | The id of the Horizon integration instance the worker executes. |
 
 
 ## Usage
@@ -16,7 +17,8 @@ Configuration for a Worker that executes a Horizon integration instance
 using Finbourne.Sdk.Services.Workflow.Model;
 
 var instance = new HorizonIntegration(
-    type: "..."  // required — The type of worker
+    type: "...",  // required — The type of worker
+    integrationInstanceId: "..."  // required — The id of the Horizon integration instance the worker executes.
 );
 ```
 ### Serializing to JSON
