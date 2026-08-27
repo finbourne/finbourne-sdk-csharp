@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// GetScenarioResponse
+    /// The response to a singular scenario read. There is deliberately no failure block on this  type: every route returning it is a singular (or list-of-singular) read, never a batch keyed  lookup, so there is no per-key error to report - an invalid entity is rejected at upsert and  a failed read fails the whole request. The IGetResponse batch members below throw for the  same reason; do not reintroduce a Failed property when copying this shape.
     /// </summary>
     [DataContract(Name = "GetScenarioResponse")]
     public partial class GetScenarioResponse : IEquatable<GetScenarioResponse>, IValidatableObject
@@ -33,14 +33,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="href">href.</param>
         /// <param name="value">value.</param>
         /// <param name="varVersion">varVersion.</param>
-        /// <param name="failed">failed.</param>
         /// <param name="links">links.</param>
-        public GetScenarioResponse(string href = default(string), ScenarioDefinition value = default(ScenarioDefinition), ModelVersion varVersion = default(ModelVersion), ErrorDetail failed = default(ErrorDetail), List<Link> links = default(List<Link>))
+        public GetScenarioResponse(string href = default(string), ScenarioDefinition value = default(ScenarioDefinition), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
         {
             this.Href = href;
             this.Value = value;
             this.VarVersion = varVersion;
-            this.Failed = failed;
             this.Links = links;
         }
 
@@ -63,12 +61,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ModelVersion VarVersion { get; set; }
 
         /// <summary>
-        /// Gets or Sets Failed
-        /// </summary>
-        [DataMember(Name = "failed", EmitDefaultValue = false)]
-        public ErrorDetail Failed { get; set; }
-
-        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -85,7 +77,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Href: ").Append(Href).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
-            sb.Append("  Failed: ").Append(Failed).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -138,11 +129,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.VarVersion.Equals(input.VarVersion))
                 ) && 
                 (
-                    this.Failed == input.Failed ||
-                    (this.Failed != null &&
-                    this.Failed.Equals(input.Failed))
-                ) && 
-                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -170,10 +156,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.VarVersion != null)
                 {
                     hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
-                }
-                if (this.Failed != null)
-                {
-                    hashCode = (hashCode * 59) + this.Failed.GetHashCode();
                 }
                 if (this.Links != null)
                 {

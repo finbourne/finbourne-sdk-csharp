@@ -14,6 +14,7 @@ Dutch Auction Event (DTCH) — a voluntary corporate action with price-discovery
 | **SecurityOfferElections** | [List&lt;SecurityOfferElection&gt;](SecurityOfferElection.md) | Optional | List of possible SecurityOfferElections for this event. Populated on the SECU path (Count &#x3D;&#x3D; 1);  empty on the CASH and CASE paths. |
 | **CashAndSecurityOfferElections** | [List&lt;CashAndSecurityOfferElection&gt;](CashAndSecurityOfferElection.md) | Optional | List of possible CashAndSecurityOfferElections for this event. Populated on the CASE path  (Count &#x3D;&#x3D; 1); empty on the CASH and SECU paths. |
 | **LapseElections** | [List&lt;LapseElection&gt;](LapseElection.md) | Optional | List of possible LapseElections for this event. Required on all three paths (Count &#x3D;&#x3D; 1).  Allows the holder to opt out of the offer (NOAC). |
+| **MixedLotConstituentsElections** | [List&lt;MixedLotConstituentsElection&gt;](MixedLotConstituentsElection.md) | Optional | List of possible MixedLotConstituentsElections for this event, if any. Each election settles into one or more  distinct new securities and/or cash legs of its own, in place of the single event-level NewInstrument the  SecurityOffer and CashAndSecurityOffer paths resolve to.    Several may be present: a Dutch Auction commonly offers a number of mutually exclusive destinations, and each  is described by its own election. Not applicable to the CASH path, which has no security leg to multiply. |
 | **ResponseDeadlineDate** | **DateTimeOffset?** | Optional | Account-servicer response deadline. Defaults to MarketDeadlineDate when not supplied.  When provided, must be on or before MarketDeadlineDate. |
 | **EarlyResponseDeadline** | **DateTimeOffset?** | Optional | Early-participation deadline. When provided, must be on or before ResponseDeadlineDate. |
 | **ExDate** | **DateTimeOffset?** | Optional | The ex date of the event. Optional; carried for cross-event consistency. |
@@ -43,6 +44,7 @@ var instance = new DutchAuctionEvent(
     securityOfferElections: new List<SecurityOfferElection>(),  // optional — List of possible SecurityOfferElections for this event. Populated on the SECU path (Count &#x3D;&#x3D; 1);  empty on the CASH and CASE paths.
     cashAndSecurityOfferElections: new List<CashAndSecurityOfferElection>(),  // optional — List of possible CashAndSecurityOfferElections for this event. Populated on the CASE path  (Count &#x3D;&#x3D; 1); empty on the CASH and SECU paths.
     lapseElections: new List<LapseElection>(),  // optional — List of possible LapseElections for this event. Required on all three paths (Count &#x3D;&#x3D; 1).  Allows the holder to opt out of the offer (NOAC).
+    mixedLotConstituentsElections: new List<MixedLotConstituentsElection>(),  // optional — List of possible MixedLotConstituentsElections for this event, if any. Each election settles into one or more  distinct new securities and/or cash legs of its own, in place of the single event-level NewInstrument the  SecurityOffer and CashAndSecurityOffer paths resolve to.    Several may be present: a Dutch Auction commonly offers a number of mutually exclusive destinations, and each  is described by its own election. Not applicable to the CASH path, which has no security leg to multiply.
     responseDeadlineDate: DateTimeOffset.Now,  // optional — Account-servicer response deadline. Defaults to MarketDeadlineDate when not supplied.  When provided, must be on or before MarketDeadlineDate.
     earlyResponseDeadline: DateTimeOffset.Now,  // optional — Early-participation deadline. When provided, must be on or before ResponseDeadlineDate.
     exDate: DateTimeOffset.Now,  // optional — The ex date of the event. Optional; carried for cross-event consistency.
@@ -74,6 +76,7 @@ var instance = JsonConvert.DeserializeObject<DutchAuctionEvent>(json);
 - [SecurityOfferElection](SecurityOfferElection.md) — used in `SecurityOfferElections`
 - [CashAndSecurityOfferElection](CashAndSecurityOfferElection.md) — used in `CashAndSecurityOfferElections`
 - [LapseElection](LapseElection.md) — used in `LapseElections`
+- [MixedLotConstituentsElection](MixedLotConstituentsElection.md) — used in `MixedLotConstituentsElections`
 - [NewInstrument](NewInstrument.md)
 
 

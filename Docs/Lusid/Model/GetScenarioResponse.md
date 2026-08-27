@@ -1,5 +1,6 @@
 # Finbourne.Sdk.Lusid.Model.GetScenarioResponse
 
+The response to a singular scenario read. There is deliberately no failure block on this  type: every route returning it is a singular (or list-of-singular) read, never a batch keyed  lookup, so there is no per-key error to report - an invalid entity is rejected at upsert and  a failed read fails the whole request. The IGetResponse batch members below throw for the  same reason; do not reintroduce a Failed property when copying this shape.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -7,7 +8,6 @@
 | **Href** | **string** | Optional | *No description available.* |
 | **Value** | [ScenarioDefinition](ScenarioDefinition.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
-| **Failed** | [ErrorDetail](ErrorDetail.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -22,7 +22,6 @@ var instance = new GetScenarioResponse(
     href: "...",  // optional
     value: new ScenarioDefinition(...),  // optional
     varVersion: new ModelVersion(...),  // optional
-    failed: new ErrorDetail(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -40,7 +39,6 @@ var instance = JsonConvert.DeserializeObject<GetScenarioResponse>(json);
 
 - [ScenarioDefinition](ScenarioDefinition.md)
 - [ModelVersion](ModelVersion.md)
-- [ErrorDetail](ErrorDetail.md)
 - [Link](Link.md)
 
 

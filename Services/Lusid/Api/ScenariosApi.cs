@@ -147,10 +147,41 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfVersion</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfVersion> ListScenarioVersionsWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] ListScenarios: List the set of Scenario definitions
+        /// [EARLY ACCESS] ListScenarios: List Scenarios
         /// </summary>
         /// <remarks>
-        /// List the set of scenario definitions at the specified date/time and scope.
+        /// List scenario definitions across all scopes at the specified date/time. Each item carries  its scope and code. Scenarios the caller is not entitled to read are omitted.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asAt">The asAt datetime at which to list the scenarios. Defaults to latest if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set, e.g. \&quot;scope eq &#39;MyScope&#39;\&quot;. (optional)</param>
+        /// <param name="limit">Maximum number of results to return. Defaults to 100. (optional)</param>
+        /// <param name="page">Pagination token from a previous result to fetch the next page. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>PagedResourceListOfGetScenarioResponse</returns>
+        PagedResourceListOfGetScenarioResponse ListScenarios(DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] ListScenarios: List Scenarios
+        /// </summary>
+        /// <remarks>
+        /// List scenario definitions across all scopes at the specified date/time. Each item carries  its scope and code. Scenarios the caller is not entitled to read are omitted.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asAt">The asAt datetime at which to list the scenarios. Defaults to latest if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set, e.g. \&quot;scope eq &#39;MyScope&#39;\&quot;. (optional)</param>
+        /// <param name="limit">Maximum number of results to return. Defaults to 100. (optional)</param>
+        /// <param name="page">Pagination token from a previous result to fetch the next page. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of PagedResourceListOfGetScenarioResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> ListScenariosWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope
+        /// </summary>
+        /// <remarks>
+        /// List the set of scenario definitions in a single scope at the specified date/time.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope to list scenarios for.</param>
@@ -161,13 +192,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfGetScenarioResponse</returns>
-        PagedResourceListOfGetScenarioResponse ListScenarios(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfGetScenarioResponse ListScenariosForScope(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] ListScenarios: List the set of Scenario definitions
+        /// [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope
         /// </summary>
         /// <remarks>
-        /// List the set of scenario definitions at the specified date/time and scope.
+        /// List the set of scenario definitions in a single scope at the specified date/time.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope to list scenarios for.</param>
@@ -178,7 +209,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfGetScenarioResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> ListScenariosWithHttpInfo(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> ListScenariosForScopeWithHttpInfo(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] PreviewScenario: Preview a Scenario
         /// </summary>
@@ -363,10 +394,43 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfVersion)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfVersion>> ListScenarioVersionsWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EARLY ACCESS] ListScenarios: List the set of Scenario definitions
+        /// [EARLY ACCESS] ListScenarios: List Scenarios
         /// </summary>
         /// <remarks>
-        /// List the set of scenario definitions at the specified date/time and scope.
+        /// List scenario definitions across all scopes at the specified date/time. Each item carries  its scope and code. Scenarios the caller is not entitled to read are omitted.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asAt">The asAt datetime at which to list the scenarios. Defaults to latest if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set, e.g. \&quot;scope eq &#39;MyScope&#39;\&quot;. (optional)</param>
+        /// <param name="limit">Maximum number of results to return. Defaults to 100. (optional)</param>
+        /// <param name="page">Pagination token from a previous result to fetch the next page. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of PagedResourceListOfGetScenarioResponse</returns>
+        System.Threading.Tasks.Task<PagedResourceListOfGetScenarioResponse> ListScenariosAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] ListScenarios: List Scenarios
+        /// </summary>
+        /// <remarks>
+        /// List scenario definitions across all scopes at the specified date/time. Each item carries  its scope and code. Scenarios the caller is not entitled to read are omitted.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asAt">The asAt datetime at which to list the scenarios. Defaults to latest if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set, e.g. \&quot;scope eq &#39;MyScope&#39;\&quot;. (optional)</param>
+        /// <param name="limit">Maximum number of results to return. Defaults to 100. (optional)</param>
+        /// <param name="page">Pagination token from a previous result to fetch the next page. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (PagedResourceListOfGetScenarioResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse>> ListScenariosWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope
+        /// </summary>
+        /// <remarks>
+        /// List the set of scenario definitions in a single scope at the specified date/time.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope to list scenarios for.</param>
@@ -378,13 +442,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfGetScenarioResponse</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfGetScenarioResponse> ListScenariosAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfGetScenarioResponse> ListScenariosForScopeAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EARLY ACCESS] ListScenarios: List the set of Scenario definitions
+        /// [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope
         /// </summary>
         /// <remarks>
-        /// List the set of scenario definitions at the specified date/time and scope.
+        /// List the set of scenario definitions in a single scope at the specified date/time.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope to list scenarios for.</param>
@@ -396,7 +460,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfGetScenarioResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse>> ListScenariosWithHttpInfoAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse>> ListScenariosForScopeWithHttpInfoAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] PreviewScenario: Preview a Scenario
         /// </summary>
@@ -1578,44 +1642,36 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListScenarios: List the set of Scenario definitions List the set of scenario definitions at the specified date/time and scope.
+        /// [EARLY ACCESS] ListScenarios: List Scenarios List scenario definitions across all scopes at the specified date/time. Each item carries  its scope and code. Scenarios the caller is not entitled to read are omitted.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="scope">The scope to list scenarios for.</param>
         /// <param name="asAt">The asAt datetime at which to list the scenarios. Defaults to latest if not specified. (optional)</param>
-        /// <param name="filter">Expression to filter the result set. (optional)</param>
+        /// <param name="filter">Expression to filter the result set, e.g. \&quot;scope eq &#39;MyScope&#39;\&quot;. (optional)</param>
         /// <param name="limit">Maximum number of results to return. Defaults to 100. (optional)</param>
         /// <param name="page">Pagination token from a previous result to fetch the next page. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfGetScenarioResponse</returns>
-        public PagedResourceListOfGetScenarioResponse ListScenarios(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfGetScenarioResponse ListScenarios(DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> localVarResponse = ListScenariosWithHttpInfo(scope, asAt, filter, limit, page, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> localVarResponse = ListScenariosWithHttpInfo(asAt, filter, limit, page, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListScenarios: List the set of Scenario definitions List the set of scenario definitions at the specified date/time and scope.
+        /// [EARLY ACCESS] ListScenarios: List Scenarios List scenario definitions across all scopes at the specified date/time. Each item carries  its scope and code. Scenarios the caller is not entitled to read are omitted.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="scope">The scope to list scenarios for.</param>
         /// <param name="asAt">The asAt datetime at which to list the scenarios. Defaults to latest if not specified. (optional)</param>
-        /// <param name="filter">Expression to filter the result set. (optional)</param>
+        /// <param name="filter">Expression to filter the result set, e.g. \&quot;scope eq &#39;MyScope&#39;\&quot;. (optional)</param>
         /// <param name="limit">Maximum number of results to return. Defaults to 100. (optional)</param>
         /// <param name="page">Pagination token from a previous result to fetch the next page. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfGetScenarioResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> ListScenariosWithHttpInfo(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> ListScenariosWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            // verify the required parameter 'scope' is set
-            if (scope == null)
-            {
-                throw new ArgumentNullException("Missing required parameter 'scope' when calling ScenariosApi->ListScenarios");
-            }
-
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
 
             if (opts is { TimeoutMs: not null })
@@ -1660,7 +1716,6 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
             if (asAt != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
@@ -1699,7 +1754,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<PagedResourceListOfGetScenarioResponse, AbstractOpenAPISchema>("/api/api/scenarios/{scope}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<PagedResourceListOfGetScenarioResponse, AbstractOpenAPISchema>("/api/api/scenarios", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListScenarios", localVarResponse);
@@ -1713,7 +1768,272 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListScenarios: List the set of Scenario definitions List the set of scenario definitions at the specified date/time and scope.
+        /// [EARLY ACCESS] ListScenarios: List Scenarios List scenario definitions across all scopes at the specified date/time. Each item carries  its scope and code. Scenarios the caller is not entitled to read are omitted.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asAt">The asAt datetime at which to list the scenarios. Defaults to latest if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set, e.g. \&quot;scope eq &#39;MyScope&#39;\&quot;. (optional)</param>
+        /// <param name="limit">Maximum number of results to return. Defaults to 100. (optional)</param>
+        /// <param name="page">Pagination token from a previous result to fetch the next page. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of PagedResourceListOfGetScenarioResponse</returns>
+        public async System.Threading.Tasks.Task<PagedResourceListOfGetScenarioResponse> ListScenariosAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> localVarResponse = await ListScenariosWithHttpInfoAsync(asAt, filter, limit, page, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ListScenarios: List Scenarios List scenario definitions across all scopes at the specified date/time. Each item carries  its scope and code. Scenarios the caller is not entitled to read are omitted.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="asAt">The asAt datetime at which to list the scenarios. Defaults to latest if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set, e.g. \&quot;scope eq &#39;MyScope&#39;\&quot;. (optional)</param>
+        /// <param name="limit">Maximum number of results to return. Defaults to 100. (optional)</param>
+        /// <param name="page">Pagination token from a previous result to fetch the next page. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (PagedResourceListOfGetScenarioResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse>> ListScenariosWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+
+            localVarRequestOptions.Operation = "ScenariosApi.ListScenarios";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<PagedResourceListOfGetScenarioResponse, AbstractOpenAPISchema>("/api/api/scenarios", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListScenarios", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope List the set of scenario definitions in a single scope at the specified date/time.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope to list scenarios for.</param>
+        /// <param name="asAt">The asAt datetime at which to list the scenarios. Defaults to latest if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. (optional)</param>
+        /// <param name="limit">Maximum number of results to return. Defaults to 100. (optional)</param>
+        /// <param name="page">Pagination token from a previous result to fetch the next page. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>PagedResourceListOfGetScenarioResponse</returns>
+        public PagedResourceListOfGetScenarioResponse ListScenariosForScope(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> localVarResponse = ListScenariosForScopeWithHttpInfo(scope, asAt, filter, limit, page, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope List the set of scenario definitions in a single scope at the specified date/time.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope to list scenarios for.</param>
+        /// <param name="asAt">The asAt datetime at which to list the scenarios. Defaults to latest if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the result set. (optional)</param>
+        /// <param name="limit">Maximum number of results to return. Defaults to 100. (optional)</param>
+        /// <param name="page">Pagination token from a previous result to fetch the next page. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of PagedResourceListOfGetScenarioResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> ListScenariosForScopeWithHttpInfo(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling ScenariosApi->ListScenariosForScope");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+
+            localVarRequestOptions.Operation = "ScenariosApi.ListScenariosForScope";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<PagedResourceListOfGetScenarioResponse, AbstractOpenAPISchema>("/api/api/scenarios/{scope}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListScenariosForScope", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope List the set of scenario definitions in a single scope at the specified date/time.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope to list scenarios for.</param>
@@ -1725,14 +2045,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfGetScenarioResponse</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfGetScenarioResponse> ListScenariosAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfGetScenarioResponse> ListScenariosForScopeAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> localVarResponse = await ListScenariosWithHttpInfoAsync(scope, asAt, filter, limit, page, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse> localVarResponse = await ListScenariosForScopeWithHttpInfoAsync(scope, asAt, filter, limit, page, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EARLY ACCESS] ListScenarios: List the set of Scenario definitions List the set of scenario definitions at the specified date/time and scope.
+        /// [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope List the set of scenario definitions in a single scope at the specified date/time.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1745,12 +2065,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfGetScenarioResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse>> ListScenariosWithHttpInfoAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfGetScenarioResponse>> ListScenariosForScopeWithHttpInfoAsync(string scope, DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
             {
-                throw new ArgumentNullException("Missing required parameter 'scope' when calling ScenariosApi->ListScenarios");
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling ScenariosApi->ListScenariosForScope");
             }
 
 
@@ -1816,7 +2136,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
             }
 
-            localVarRequestOptions.Operation = "ScenariosApi.ListScenarios";
+            localVarRequestOptions.Operation = "ScenariosApi.ListScenariosForScope";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -1841,7 +2161,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListScenarios", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListScenariosForScope", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

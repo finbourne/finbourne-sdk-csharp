@@ -19,6 +19,7 @@ Tender Event (TEND).
 | **SecurityOfferElections** | [List&lt;SecurityOfferElection&gt;](SecurityOfferElection.md) | Optional | List of possible SecurityOfferElections for this event. |
 | **CashAndSecurityOfferElections** | [List&lt;CashAndSecurityOfferElection&gt;](CashAndSecurityOfferElection.md) | Optional | List of possible CashAndSecurityOfferElections for this event. |
 | **CashOfferElections** | [List&lt;CashOfferElection&gt;](CashOfferElection.md) | Optional | List of possible CashOfferElections for this event. |
+| **MixedLotConstituentsElections** | [List&lt;MixedLotConstituentsElection&gt;](MixedLotConstituentsElection.md) | Optional | List of possible mixed lot offers for this tender event, if any. Each election replaces the tendered  position with one or more distinct new securities and/or cash legs of its own, taking the place of the  single event-level NewInstrument that the other security-bearing elections resolve to.    A tender may carry more than one of these, describing mutually exclusive multi-destination options. |
 | **OfferType** | **string** | Optional | Informational ISO 20022 OfferTp indicator (e.g. \&quot;ACPR\&quot;). Optional. No calculation impact. |
 | **AccruedInterestPerUnit** | **decimal?** | Optional | Optional per-unit accrued interest on the tendered face, from the last coupon date up to  (but excluding) PaymentDate. Bond instrument types only. If left empty, analytics-core  resolves it at event time from the bond&#39;s coupon schedule and market data. |
 | **MinPieceSize** | **decimal?** | Optional | Bond-specific minimum instructable face amount. Optional. Must be strictly positive when set. |
@@ -50,6 +51,7 @@ var instance = new TenderEvent(
     securityOfferElections: new List<SecurityOfferElection>(),  // optional — List of possible SecurityOfferElections for this event.
     cashAndSecurityOfferElections: new List<CashAndSecurityOfferElection>(),  // optional — List of possible CashAndSecurityOfferElections for this event.
     cashOfferElections: new List<CashOfferElection>(),  // optional — List of possible CashOfferElections for this event.
+    mixedLotConstituentsElections: new List<MixedLotConstituentsElection>(),  // optional — List of possible mixed lot offers for this tender event, if any. Each election replaces the tendered  position with one or more distinct new securities and/or cash legs of its own, taking the place of the  single event-level NewInstrument that the other security-bearing elections resolve to.    A tender may carry more than one of these, describing mutually exclusive multi-destination options.
     offerType: "...",  // optional — Informational ISO 20022 OfferTp indicator (e.g. \&quot;ACPR\&quot;). Optional. No calculation impact.
     accruedInterestPerUnit: 0.0d,  // optional — Optional per-unit accrued interest on the tendered face, from the last coupon date up to  (but excluding) PaymentDate. Bond instrument types only. If left empty, analytics-core  resolves it at event time from the bond&#39;s coupon schedule and market data.
     minPieceSize: 0.0d,  // optional — Bond-specific minimum instructable face amount. Optional. Must be strictly positive when set.
@@ -78,6 +80,7 @@ var instance = JsonConvert.DeserializeObject<TenderEvent>(json);
 - [SecurityOfferElection](SecurityOfferElection.md) — used in `SecurityOfferElections`
 - [CashAndSecurityOfferElection](CashAndSecurityOfferElection.md) — used in `CashAndSecurityOfferElections`
 - [CashOfferElection](CashOfferElection.md) — used in `CashOfferElections`
+- [MixedLotConstituentsElection](MixedLotConstituentsElection.md) — used in `MixedLotConstituentsElections`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

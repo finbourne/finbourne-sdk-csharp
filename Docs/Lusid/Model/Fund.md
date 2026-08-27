@@ -25,6 +25,7 @@ A Fund entity.
 | **CreateInstrument** | **bool** | Optional | Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false. |
 | **AllocationGroups** | [List&lt;AllocationGroup&gt;](AllocationGroup.md) | Optional | An optional list of Allocation Group definitions for the Fund. |
 | **ShareClasses** | [List&lt;ShareClass&gt;](ShareClass.md) | Optional | An optional list of Share Class definitions for the Fund. |
+| **FundInstrument** | [FundInstrument](FundInstrument.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
@@ -57,6 +58,7 @@ var instance = new Fund(
     createInstrument: true,  // optional — Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false.
     allocationGroups: new List<AllocationGroup>(),  // optional — An optional list of Allocation Group definitions for the Fund.
     shareClasses: new List<ShareClass>(),  // optional — An optional list of Share Class definitions for the Fund.
+    fundInstrument: new FundInstrument(...),  // optional
     varVersion: new ModelVersion(...),  // optional
     links: new List<Link>()  // optional
 );
@@ -84,6 +86,7 @@ var instance = JsonConvert.DeserializeObject<Fund>(json);
 - [Property](Property.md) — used in `Properties`
 - [AllocationGroup](AllocationGroup.md) — used in `AllocationGroups`
 - [ShareClass](ShareClass.md) — used in `ShareClasses`
+- [FundInstrument](FundInstrument.md)
 - [ModelVersion](ModelVersion.md)
 - [Link](Link.md)
 

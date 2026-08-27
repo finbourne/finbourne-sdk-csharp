@@ -10,6 +10,7 @@ Merger Event (MRGR).
 | **AnnouncementDate** | **DateTimeOffset?** | Optional | The date the merger is announced. |
 | **CashAndSecurityOfferElections** | [List&lt;CashAndSecurityOfferElection&gt;](CashAndSecurityOfferElection.md) | Optional | List of possible CashAndSecurityOfferElections for this merger event |
 | **CashOfferElections** | [List&lt;CashOfferElection&gt;](CashOfferElection.md) | Optional | List of possible CashOfferElections for this merger event |
+| **MixedLotConstituentsElections** | [List&lt;MixedLotConstituentsElection&gt;](MixedLotConstituentsElection.md) | Optional | List of possible mixed lot offers for this merger event, if any. Each election replaces the parent position  with one or more distinct new securities and/or cash legs of its own, taking the place of the single  event-level NewInstrument that the other security-bearing elections resolve to.    A merger may carry more than one of these, describing mutually exclusive multi-destination options. |
 | **ExDate** | **DateTimeOffset** | Optional | The first date on which the holder of record of the original shares has entitled ownership of the new shares. |
 | **FractionalUnitsCashCurrency** | **string** | Optional | Optional. Used in calculating cash-in-lieu of fractional shares. |
 | **FractionalUnitsCashPrice** | **decimal?** | Optional | Optional. Used in calculating cash-in-lieu of fractional shares. |
@@ -33,6 +34,7 @@ var instance = new MergerEvent(
     announcementDate: DateTimeOffset.Now,  // optional — The date the merger is announced.
     cashAndSecurityOfferElections: new List<CashAndSecurityOfferElection>(),  // optional — List of possible CashAndSecurityOfferElections for this merger event
     cashOfferElections: new List<CashOfferElection>(),  // optional — List of possible CashOfferElections for this merger event
+    mixedLotConstituentsElections: new List<MixedLotConstituentsElection>(),  // optional — List of possible mixed lot offers for this merger event, if any. Each election replaces the parent position  with one or more distinct new securities and/or cash legs of its own, taking the place of the single  event-level NewInstrument that the other security-bearing elections resolve to.    A merger may carry more than one of these, describing mutually exclusive multi-destination options.
     exDate: DateTimeOffset.Now,  // optional — The first date on which the holder of record of the original shares has entitled ownership of the new shares.
     fractionalUnitsCashCurrency: "...",  // optional — Optional. Used in calculating cash-in-lieu of fractional shares.
     fractionalUnitsCashPrice: 0.0d,  // optional — Optional. Used in calculating cash-in-lieu of fractional shares.
@@ -60,6 +62,7 @@ var instance = JsonConvert.DeserializeObject<MergerEvent>(json);
 
 - [CashAndSecurityOfferElection](CashAndSecurityOfferElection.md) — used in `CashAndSecurityOfferElections`
 - [CashOfferElection](CashOfferElection.md) — used in `CashOfferElections`
+- [MixedLotConstituentsElection](MixedLotConstituentsElection.md) — used in `MixedLotConstituentsElections`
 - [NewInstrument](NewInstrument.md)
 - [SecurityOfferElection](SecurityOfferElection.md) — used in `SecurityOfferElections`
 

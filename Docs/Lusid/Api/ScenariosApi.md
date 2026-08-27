@@ -9,7 +9,8 @@ All URIs are relative to *http://localhost*
 | [**DeleteScenario**](#deletescenario) | **DELETE** `/api/api/scenarios/{scope}/{code}` | [EARLY ACCESS] DeleteScenario: Delete a Scenario, assuming that it is present. |
 | [**GetScenario**](#getscenario) | **GET** `/api/api/scenarios/{scope}/{code}` | [EARLY ACCESS] GetScenario: Get Scenario |
 | [**ListScenarioVersions**](#listscenarioversions) | **GET** `/api/api/scenarios/{scope}/{code}/versions` | [EARLY ACCESS] ListScenarioVersions: List the versions of a Scenario |
-| [**ListScenarios**](#listscenarios) | **GET** `/api/api/scenarios/{scope}` | [EARLY ACCESS] ListScenarios: List the set of Scenario definitions |
+| [**ListScenarios**](#listscenarios) | **GET** `/api/api/scenarios` | [EARLY ACCESS] ListScenarios: List Scenarios |
+| [**ListScenariosForScope**](#listscenariosforscope) | **GET** `/api/api/scenarios/{scope}` | [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope |
 | [**PreviewScenario**](#previewscenario) | **POST** `/api/api/scenarios/$preview` | [EARLY ACCESS] PreviewScenario: Preview a Scenario |
 | [**UpsertScenario**](#upsertscenario) | **POST** `/api/api/scenarios` | [EARLY ACCESS] UpsertScenario: Upsert a Scenario. This creates or updates the scenario definition in LUSID. |
 
@@ -216,7 +217,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The successfully retrieved Scenario or any failure |  -  |
+| **200** | The successfully retrieved Scenario |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -306,11 +307,75 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listscenarios"></a>
 ## ListScenarios
 
-> PagedResourceListOfGetScenarioResponse ListScenarios(string scope, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null)
+> PagedResourceListOfGetScenarioResponse ListScenarios(DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null)
 
-[EARLY ACCESS] ListScenarios: List the set of Scenario definitions
+[EARLY ACCESS] ListScenarios: List Scenarios
 
-List the set of scenario definitions at the specified date/time and scope.
+List scenario definitions across all scopes at the specified date/time. Each item carries  its scope and code. Scenarios the caller is not entitled to read are omitted.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ScenariosApi>();
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var filter = "filter_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+var page = "page_example";  // string? (optional)
+PagedResourceListOfGetScenarioResponse result = apiInstance.ListScenarios(asAt, filter, limit, page);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the scenarios. Defaults to latest if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the result set, e.g. \&quot;scope eq &#39;MyScope&#39;\&quot;. |
+| **limit** | **int?** | query | optional | Maximum number of results to return. Defaults to 100. |
+| **page** | **string?** | query | optional | Pagination token from a previous result to fetch the next page. |
+
+### Return type
+
+[PagedResourceListOfGetScenarioResponse](../Model/PagedResourceListOfGetScenarioResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested scenarios |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListScenariosWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfGetScenarioResponse> response = apiInstance.ListScenariosWithHttpInfo(asAt, filter, limit, page);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listscenariosforscope"></a>
+## ListScenariosForScope
+
+> PagedResourceListOfGetScenarioResponse ListScenariosForScope(string scope, DateTimeOffset? asAt = null, string? filter = null, int? limit = null, string? page = null)
+
+[EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope
+
+List the set of scenario definitions in a single scope at the specified date/time.
 
 ### Example
 
@@ -321,7 +386,7 @@ var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset
 var filter = "filter_example";  // string? (optional)
 var limit = 56;  // int? (optional)
 var page = "page_example";  // string? (optional)
-PagedResourceListOfGetScenarioResponse result = apiInstance.ListScenarios(scope, asAt, filter, limit, page);
+PagedResourceListOfGetScenarioResponse result = apiInstance.ListScenariosForScope(scope, asAt, filter, limit, page);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -353,12 +418,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **0** | Error response |  -  |
 
 <details>
-<summary>Using the ListScenariosWithHttpInfo variant</summary>
+<summary>Using the ListScenariosForScopeWithHttpInfo variant</summary>
 
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfGetScenarioResponse> response = apiInstance.ListScenariosWithHttpInfo(scope, asAt, filter, limit, page);
+ApiResponse<PagedResourceListOfGetScenarioResponse> response = apiInstance.ListScenariosForScopeWithHttpInfo(scope, asAt, filter, limit, page);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
