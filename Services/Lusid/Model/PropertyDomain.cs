@@ -572,7 +572,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum PaymentInstruction for value: PaymentInstruction
         /// </summary>
         [EnumMember(Value = "PaymentInstruction")]
-        PaymentInstruction = 91
+        PaymentInstruction = 91,
+
+        /// <summary>
+        /// Enum Transfer for value: Transfer
+        /// </summary>
+        [EnumMember(Value = "Transfer")]
+        Transfer = 92
     }
 
 }

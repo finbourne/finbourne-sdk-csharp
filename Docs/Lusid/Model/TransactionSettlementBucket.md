@@ -16,6 +16,7 @@
 | **Status** | **string** | Required | The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;. Available values: Unsettled, PartSettled, Settled, None. |
 | **SettlementInstructions** | [List&lt;TransactionSettlementInstruction&gt;](TransactionSettlementInstruction.md) | Optional | The settlement instructions received for this settlement bucket. |
 | **Movements** | [List&lt;TransactionSettlementMovement&gt;](TransactionSettlementMovement.md) | Optional | The movements for the settlement bucket. |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -37,7 +38,8 @@ var instance = new TransactionSettlementBucket(
     configuredSettlement: "...",  // optional — The effective method of settlement for the settlement bucket. This reflects any transaction-level settlement method overrides, falling back to the portfolio&#39;s SettlementConfiguration if no override applies. Available values: Automatic, Instructed, NotApplicable.
     status: "...",  // required — The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;. Available values: Unsettled, PartSettled, Settled, None.
     settlementInstructions: new List<TransactionSettlementInstruction>(),  // optional — The settlement instructions received for this settlement bucket.
-    movements: new List<TransactionSettlementMovement>()  // optional — The movements for the settlement bucket.
+    movements: new List<TransactionSettlementMovement>(),  // optional — The movements for the settlement bucket.
+    custodianAccountId: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -54,6 +56,7 @@ var instance = JsonConvert.DeserializeObject<TransactionSettlementBucket>(json);
 
 - [TransactionSettlementInstruction](TransactionSettlementInstruction.md) — used in `SettlementInstructions`
 - [TransactionSettlementMovement](TransactionSettlementMovement.md) — used in `Movements`
+- [ResourceId](ResourceId.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

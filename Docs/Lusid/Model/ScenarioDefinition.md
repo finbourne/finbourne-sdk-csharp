@@ -8,6 +8,8 @@
 | **Code** | **string** | Required | *No description available.* |
 | **DisplayName** | **string** | Optional | *No description available.* |
 | **Description** | **string** | Optional | *No description available.* |
+| **ShortCode** | **string** | Optional | A short, memorable identifier for the scenario, for use in reporting. Optional on upsert:  when omitted, reads return a value inferred from the display name (falling back to the  code) rather than null; the inferred value is computed fresh on every read and is never  persisted. When supplied, the value is stored and returned verbatim. Independent of  scenarioType. |
+| **ScenarioType** | **string** | Required | Classifies the scenario. Required on upsert; supported string (enumeration) values are:  [Historical, Regulatory, Hypothetical]. Independent of shortCode. Available values: Historical, Regulatory, Hypothetical. |
 | **Shifts** | [List&lt;ScenarioShiftDefinition&gt;](ScenarioShiftDefinition.md) | Optional | *No description available.* |
 
 
@@ -23,6 +25,8 @@ var instance = new ScenarioDefinition(
     code: "...",  // required
     displayName: "...",  // optional
     description: "...",  // optional
+    shortCode: "...",  // optional — A short, memorable identifier for the scenario, for use in reporting. Optional on upsert:  when omitted, reads return a value inferred from the display name (falling back to the  code) rather than null; the inferred value is computed fresh on every read and is never  persisted. When supplied, the value is stored and returned verbatim. Independent of  scenarioType.
+    scenarioType: "...",  // required — Classifies the scenario. Required on upsert; supported string (enumeration) values are:  [Historical, Regulatory, Hypothetical]. Independent of shortCode. Available values: Historical, Regulatory, Hypothetical.
     shifts: new List<ScenarioShiftDefinition>()  // optional
 );
 ```

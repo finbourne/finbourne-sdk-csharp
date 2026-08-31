@@ -13,7 +13,7 @@ record containing details of a single instance.
 | **ScheduleTimezone** | **string** | Optional | *No description available.* |
 | **LastRunAt** | **DateTimeOffset?** | Optional | *No description available.* |
 | **LastRunStatus** | **string** | Optional | *No description available.* |
-| **LatestRunsIn24Hours** | **string** | Optional | *No description available.* |
+| **LatestRunsIn24Hours** | [LatestRunsResponse](LatestRunsResponse.md) | Optional | *No description available.* |
 | **Destinations** | [List&lt;InstanceDestinations&gt;](InstanceDestinations.md) | Required | *No description available.* |
 
 
@@ -33,7 +33,7 @@ var instance = new InstanceResponse(
     scheduleTimezone: "...",  // optional
     lastRunAt: DateTimeOffset.Now,  // optional
     lastRunStatus: "...",  // optional
-    latestRunsIn24Hours: "...",  // optional
+    latestRunsIn24Hours: new LatestRunsResponse(...),  // optional
     destinations: new List<InstanceDestinations>()  // required
 );
 ```
@@ -50,6 +50,7 @@ var instance = JsonConvert.DeserializeObject<InstanceResponse>(json);
 ```
 
 - [TpfPortfolio](TpfPortfolio.md)
+- [LatestRunsResponse](LatestRunsResponse.md)
 - [InstanceDestinations](InstanceDestinations.md)
 
 

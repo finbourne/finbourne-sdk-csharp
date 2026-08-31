@@ -21,6 +21,7 @@
 | **InstrumentEventConfiguration** | [InstrumentEventConfiguration](InstrumentEventConfiguration.md) | Optional | *No description available.* |
 | **SettlementConfiguration** | [PortfolioSettlementConfiguration](PortfolioSettlementConfiguration.md) | Optional | *No description available.* |
 | **TransactionExclusionFilter** | **string** | Optional | A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded. |
+| **TaxLotSelectionCostBasis** | **string** | Optional | The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Available values: Cost, AmortisedCost. |
 
 
 ## Usage
@@ -47,7 +48,8 @@ var instance = new CreateDerivedTransactionPortfolioRequest(
     amortisationRuleSetId: new ResourceId(...),  // optional
     instrumentEventConfiguration: new InstrumentEventConfiguration(...),  // optional
     settlementConfiguration: new PortfolioSettlementConfiguration(...),  // optional
-    transactionExclusionFilter: "..."  // optional — A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.
+    transactionExclusionFilter: "...",  // optional — A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.
+    taxLotSelectionCostBasis: "..."  // optional — The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Available values: Cost, AmortisedCost.
 );
 ```
 ### Serializing to JSON

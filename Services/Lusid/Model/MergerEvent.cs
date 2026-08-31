@@ -39,26 +39,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="announcementDate">The date the merger is announced..</param>
         /// <param name="cashAndSecurityOfferElections">List of possible CashAndSecurityOfferElections for this merger event.</param>
-        /// <param name="cashOfferElections">List of possible CashOfferElections for this merger event.</param>
+        /// <param name="cashOfferElections">List of possible CashOfferElections for this merger event. Under ParticipationType.Mandatory  a single CashOfferElection may be the event&#39;s only election — a cash-only merger — in which  case no NewInstrument is required. Under ParticipationType.MandatoryWithChoices cash offers  are provided alongside the other elections on the event..</param>
         /// <param name="mixedLotConstituentsElections">List of possible mixed lot offers for this merger event, if any. Each election replaces the parent position  with one or more distinct new securities and/or cash legs of its own, taking the place of the single  event-level NewInstrument that the other security-bearing elections resolve to.    A merger may carry more than one of these, describing mutually exclusive multi-destination options..</param>
         /// <param name="exDate">The first date on which the holder of record of the original shares has entitled ownership of the new shares..</param>
         /// <param name="fractionalUnitsCashCurrency">Optional. Used in calculating cash-in-lieu of fractional shares..</param>
         /// <param name="fractionalUnitsCashPrice">Optional. Used in calculating cash-in-lieu of fractional shares..</param>
         /// <param name="fractionalUnitsRoundingConvention">The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding..</param>
         /// <param name="fractionalUnitsDecimalPlaces">The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces..</param>
-        /// <param name="newInstrument">newInstrument (required).</param>
+        /// <param name="newInstrument">newInstrument.</param>
         /// <param name="paymentDate">Date on which the merger takes place..</param>
         /// <param name="recordDate">Optional. Date you have to be the holder of record of the original shares in order to receive the new shares..</param>
         /// <param name="securityOfferElections">List of possible SecurityOfferElections for this merger event.</param>
-        /// <param name="instrumentEventType">The Type of Event. Available values: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent, CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent, BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent, MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent, IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent, OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent, TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent, AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent, LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent, DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent, RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent, FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent, ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent, CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent, ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent, PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent, BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent. (required) (default to InstrumentEventTypeEnum.TransitionEvent).</param>
+        /// <param name="instrumentEventType">The Type of Event. Available values: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent, CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent, BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent, MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent, IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent, OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent, TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent, AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent, LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent, DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent, RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent, FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent, ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent, CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent, ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent, DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent, InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent, LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent, WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent, PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent, DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent, PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent, BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent, DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent. (required) (default to InstrumentEventTypeEnum.TransitionEvent).</param>
         public MergerEvent(DateTimeOffset? announcementDate = default(DateTimeOffset?), List<CashAndSecurityOfferElection> cashAndSecurityOfferElections = default(List<CashAndSecurityOfferElection>), List<CashOfferElection> cashOfferElections = default(List<CashOfferElection>), List<MixedLotConstituentsElection> mixedLotConstituentsElections = default(List<MixedLotConstituentsElection>), DateTimeOffset exDate = default(DateTimeOffset), string fractionalUnitsCashCurrency = default(string), decimal? fractionalUnitsCashPrice = default(decimal?), string fractionalUnitsRoundingConvention = default(string), int? fractionalUnitsDecimalPlaces = default(int?), NewInstrument newInstrument = default(NewInstrument), DateTimeOffset paymentDate = default(DateTimeOffset), DateTimeOffset? recordDate = default(DateTimeOffset?), List<SecurityOfferElection> securityOfferElections = default(List<SecurityOfferElection>), InstrumentEventTypeEnum instrumentEventType = default(InstrumentEventTypeEnum)) : base()
         {
-            // to ensure "newInstrument" is required (not null)
-            if (newInstrument == null)
-            {
-                throw new ArgumentNullException("newInstrument is a required property for MergerEvent and cannot be null");
-            }
-            this.NewInstrument = newInstrument;
             this.InstrumentEventType = instrumentEventType;
             this.AnnouncementDate = announcementDate;
             this.CashAndSecurityOfferElections = cashAndSecurityOfferElections;
@@ -69,6 +63,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.FractionalUnitsCashPrice = fractionalUnitsCashPrice;
             this.FractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
             this.FractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+            this.NewInstrument = newInstrument;
             this.PaymentDate = paymentDate;
             this.RecordDate = recordDate;
             this.SecurityOfferElections = securityOfferElections;
@@ -89,9 +84,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<CashAndSecurityOfferElection> CashAndSecurityOfferElections { get; set; }
 
         /// <summary>
-        /// List of possible CashOfferElections for this merger event
+        /// List of possible CashOfferElections for this merger event. Under ParticipationType.Mandatory  a single CashOfferElection may be the event&#39;s only election — a cash-only merger — in which  case no NewInstrument is required. Under ParticipationType.MandatoryWithChoices cash offers  are provided alongside the other elections on the event.
         /// </summary>
-        /// <value>List of possible CashOfferElections for this merger event</value>
+        /// <value>List of possible CashOfferElections for this merger event. Under ParticipationType.Mandatory  a single CashOfferElection may be the event&#39;s only election — a cash-only merger — in which  case no NewInstrument is required. Under ParticipationType.MandatoryWithChoices cash offers  are provided alongside the other elections on the event.</value>
         [DataMember(Name = "cashOfferElections", EmitDefaultValue = true)]
         public List<CashOfferElection> CashOfferElections { get; set; }
 
@@ -140,7 +135,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Gets or Sets NewInstrument
         /// </summary>
-        [DataMember(Name = "newInstrument", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "newInstrument", EmitDefaultValue = false)]
         public NewInstrument NewInstrument { get; set; }
 
         /// <summary>

@@ -146,6 +146,7 @@
 * [TransactionFeesApi](Lusid/Api/TransactionFeesApi.md)
 * [TransactionPortfoliosApi](Lusid/Api/TransactionPortfoliosApi.md)
 * [TransferAgencyApi](Lusid/Api/TransferAgencyApi.md)
+* [TransfersApi](Lusid/Api/TransfersApi.md)
 * [TranslationApi](Lusid/Api/TranslationApi.md)
 * [WorkspaceApi](Lusid/Api/WorkspaceApi.md)
 ## Notifications

@@ -27,20 +27,22 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     /// </summary>
     [DataContract(Name = "ModelOptions")]
     [JsonConverter(typeof(JsonSubtypes), "ModelOptionsType")]
+    [JsonSubtypes.KnownSubType(typeof(BondLookupModelOptions), "BondLookupModelOptions")]
     [JsonSubtypes.KnownSubType(typeof(CdsModelOptions), "CdsModelOptions")]
     [JsonSubtypes.KnownSubType(typeof(EmptyModelOptions), "EmptyModelOptions")]
     [JsonSubtypes.KnownSubType(typeof(EquityModelOptions), "EquityModelOptions")]
     [JsonSubtypes.KnownSubType(typeof(FlexibleLoanPricerOptions), "FlexibleLoanPricerOptions")]
     [JsonSubtypes.KnownSubType(typeof(FundingLegOptions), "FundingLegOptions")]
     [JsonSubtypes.KnownSubType(typeof(FxForwardModelOptions), "FxForwardModelOptions")]
+    [JsonSubtypes.KnownSubType(typeof(HullWhiteModelOptions), "HullWhiteModelOptions")]
     [JsonSubtypes.KnownSubType(typeof(IndexModelOptions), "IndexModelOptions")]
     [JsonSubtypes.KnownSubType(typeof(OpaqueModelOptions), "OpaqueModelOptions")]
     public partial class ModelOptions : IEquatable<ModelOptions>, IValidatableObject
     {
         /// <summary>
-        /// Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions.
+        /// Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions.
         /// </summary>
-        /// <value>Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions.</value>
+        /// <value>Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ModelOptionsTypeEnum
         {
@@ -96,13 +98,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             /// Enum FlexibleLoanPricerOptions for value: FlexibleLoanPricerOptions
             /// </summary>
             [EnumMember(Value = "FlexibleLoanPricerOptions")]
-            FlexibleLoanPricerOptions = 9
+            FlexibleLoanPricerOptions = 9,
+
+            /// <summary>
+            /// Enum HullWhiteModelOptions for value: HullWhiteModelOptions
+            /// </summary>
+            [EnumMember(Value = "HullWhiteModelOptions")]
+            HullWhiteModelOptions = 10,
+
+            /// <summary>
+            /// Enum BondLookupModelOptions for value: BondLookupModelOptions
+            /// </summary>
+            [EnumMember(Value = "BondLookupModelOptions")]
+            BondLookupModelOptions = 11
         }
 
         /// <summary>
-        /// Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions.
+        /// Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions.
         /// </summary>
-        /// <value>Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions.</value>
+        /// <value>Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions.</value>
         [DataMember(Name = "modelOptionsType", IsRequired = true, EmitDefaultValue = true)]
         public ModelOptionsTypeEnum ModelOptionsType { get; set; }
         /// <summary>
@@ -113,7 +127,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelOptions" /> class.
         /// </summary>
-        /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions. (required).</param>
+        /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions. (required).</param>
         public ModelOptions(ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum))
         {
             this.ModelOptionsType = modelOptionsType;

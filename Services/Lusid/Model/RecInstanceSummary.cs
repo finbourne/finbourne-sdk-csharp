@@ -37,10 +37,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="recDefinitionId">recDefinitionId (required).</param>
+        /// <param name="recDefinitionDisplayName">The display name of the rec definition the rec was instantiated for, as it stood as-at instantiation. Not re-synchronised if the definition is later renamed. (required).</param>
         /// <param name="asAtInstantiated">The asAt datetime at which the instance was first created. (required).</param>
         /// <param name="status">The instance-level lifecycle rollup. Available values: Running, Failures, ReviewAndApproval, AllApproved, Locked. (required).</param>
         /// <param name="asAtLocked">The wall-clock time the lock action was performed. Null when the instance has not been locked..</param>
-        public RecInstanceSummary(RecInstanceId id = default(RecInstanceId), ResourceId recDefinitionId = default(ResourceId), DateTimeOffset asAtInstantiated = default(DateTimeOffset), string status = default(string), DateTimeOffset? asAtLocked = default(DateTimeOffset?))
+        public RecInstanceSummary(RecInstanceId id = default(RecInstanceId), ResourceId recDefinitionId = default(ResourceId), string recDefinitionDisplayName = default(string), DateTimeOffset asAtInstantiated = default(DateTimeOffset), string status = default(string), DateTimeOffset? asAtLocked = default(DateTimeOffset?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -54,6 +55,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("recDefinitionId is a required property for RecInstanceSummary and cannot be null");
             }
             this.RecDefinitionId = recDefinitionId;
+            // to ensure "recDefinitionDisplayName" is required (not null)
+            if (recDefinitionDisplayName == null)
+            {
+                throw new ArgumentNullException("recDefinitionDisplayName is a required property for RecInstanceSummary and cannot be null");
+            }
+            this.RecDefinitionDisplayName = recDefinitionDisplayName;
             this.AsAtInstantiated = asAtInstantiated;
             // to ensure "status" is required (not null)
             if (status == null)
@@ -75,6 +82,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         [DataMember(Name = "recDefinitionId", IsRequired = true, EmitDefaultValue = true)]
         public ResourceId RecDefinitionId { get; set; }
+
+        /// <summary>
+        /// The display name of the rec definition the rec was instantiated for, as it stood as-at instantiation. Not re-synchronised if the definition is later renamed.
+        /// </summary>
+        /// <value>The display name of the rec definition the rec was instantiated for, as it stood as-at instantiation. Not re-synchronised if the definition is later renamed.</value>
+        [DataMember(Name = "recDefinitionDisplayName", IsRequired = true, EmitDefaultValue = true)]
+        public string RecDefinitionDisplayName { get; set; }
 
         /// <summary>
         /// The asAt datetime at which the instance was first created.
@@ -107,6 +121,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class RecInstanceSummary {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  RecDefinitionId: ").Append(RecDefinitionId).Append("\n");
+            sb.Append("  RecDefinitionDisplayName: ").Append(RecDefinitionDisplayName).Append("\n");
             sb.Append("  AsAtInstantiated: ").Append(AsAtInstantiated).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  AsAtLocked: ").Append(AsAtLocked).Append("\n");
@@ -156,6 +171,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.RecDefinitionId.Equals(input.RecDefinitionId))
                 ) && 
                 (
+                    this.RecDefinitionDisplayName == input.RecDefinitionDisplayName ||
+                    (this.RecDefinitionDisplayName != null &&
+                    this.RecDefinitionDisplayName.Equals(input.RecDefinitionDisplayName))
+                ) && 
+                (
                     this.AsAtInstantiated == input.AsAtInstantiated ||
                     (this.AsAtInstantiated != null &&
                     this.AsAtInstantiated.Equals(input.AsAtInstantiated))
@@ -188,6 +208,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.RecDefinitionId != null)
                 {
                     hashCode = (hashCode * 59) + this.RecDefinitionId.GetHashCode();
+                }
+                if (this.RecDefinitionDisplayName != null)
+                {
+                    hashCode = (hashCode * 59) + this.RecDefinitionDisplayName.GetHashCode();
                 }
                 if (this.AsAtInstantiated != null)
                 {

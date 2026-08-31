@@ -7,6 +7,7 @@ A lightweight view of the rec instance, nested on each result set. It carries th
 |------|------|----------|-------------|
 | **Id** | [RecInstanceId](RecInstanceId.md) | Required | *No description available.* |
 | **RecDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
+| **RecDefinitionDisplayName** | **string** | Required | The display name of the rec definition the rec was instantiated for, as it stood as-at instantiation. Not re-synchronised if the definition is later renamed. |
 | **AsAtInstantiated** | **DateTimeOffset** | Required | The asAt datetime at which the instance was first created. |
 | **Status** | **string** | Required | The instance-level lifecycle rollup. Available values: Running, Failures, ReviewAndApproval, AllApproved, Locked. |
 | **AsAtLocked** | **DateTimeOffset?** | Optional | The wall-clock time the lock action was performed. Null when the instance has not been locked. |
@@ -22,6 +23,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new RecInstanceSummary(
     id: new RecInstanceId(...),  // required
     recDefinitionId: new ResourceId(...),  // required
+    recDefinitionDisplayName: "...",  // required — The display name of the rec definition the rec was instantiated for, as it stood as-at instantiation. Not re-synchronised if the definition is later renamed.
     asAtInstantiated: DateTimeOffset.Now,  // required — The asAt datetime at which the instance was first created.
     status: "...",  // required — The instance-level lifecycle rollup. Available values: Running, Failures, ReviewAndApproval, AllApproved, Locked.
     asAtLocked: DateTimeOffset.Now  // optional — The wall-clock time the lock action was performed. Null when the instance has not been locked.

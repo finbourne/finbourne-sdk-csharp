@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// One node within a bucket set result: the fund aggregate or a single share class. Both carry NAV and buckets; the  capital ratio is set only on share class nodes.
+    /// One node within a bucket set result: the fund aggregate or a single share class. Both carry NAV and buckets; the  capital ratio, the unit counts and the per-unit values are set only on share class nodes.
     /// </summary>
     [DataContract(Name = "BucketSetNode")]
     public partial class BucketSetNode : IEquatable<BucketSetNode>, IValidatableObject
@@ -40,7 +40,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="nav">The net asset value at this node, in the fund currency, or null where it does not apply to the node type..</param>
         /// <param name="capitalRatio">The share class&#39;s capital ratio (its share of the fund NAV), set only on share class nodes..</param>
         /// <param name="buckets">The buckets on this node, each with its period movement and cumulative values. (required).</param>
-        public BucketSetNode(string nodeType = default(string), string shareClassShortCode = default(string), decimal? nav = default(decimal?), decimal? capitalRatio = default(decimal?), List<BucketSetResultBucket> buckets = default(List<BucketSetResultBucket>))
+        /// <param name="perUnitValue">The share class&#39;s NAV per unit in issue, in the fund currency, rounded to the share class&#39;s PricePrecision (left unrounded where the share class declares none). Reported only for a share class that is unitised and has units in issue to divide by. The dealing price - in the share class currency, with its instrument&#39;s rounding convention applied - is on the share class breakdown&#39;s unitisation data..</param>
+        /// <param name="sharesInIssue">The share class&#39;s units in issue at the end of the period. Reported only for a share class that is unitised..</param>
+        /// <param name="previousPerUnitValue">The share class&#39;s NAV per unit at the previous valuation point, on the same basis as PerUnitValue..</param>
+        /// <param name="previousSharesInIssue">The share class&#39;s units in issue at the start of the period. Reported only for a share class that is unitised..</param>
+        public BucketSetNode(string nodeType = default(string), string shareClassShortCode = default(string), decimal? nav = default(decimal?), decimal? capitalRatio = default(decimal?), List<BucketSetResultBucket> buckets = default(List<BucketSetResultBucket>), decimal? perUnitValue = default(decimal?), decimal? sharesInIssue = default(decimal?), decimal? previousPerUnitValue = default(decimal?), decimal? previousSharesInIssue = default(decimal?))
         {
             // to ensure "nodeType" is required (not null)
             if (nodeType == null)
@@ -57,6 +61,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.ShareClassShortCode = shareClassShortCode;
             this.Nav = nav;
             this.CapitalRatio = capitalRatio;
+            this.PerUnitValue = perUnitValue;
+            this.SharesInIssue = sharesInIssue;
+            this.PreviousPerUnitValue = previousPerUnitValue;
+            this.PreviousSharesInIssue = previousSharesInIssue;
         }
 
         /// <summary>
@@ -95,6 +103,34 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<BucketSetResultBucket> Buckets { get; set; }
 
         /// <summary>
+        /// The share class&#39;s NAV per unit in issue, in the fund currency, rounded to the share class&#39;s PricePrecision (left unrounded where the share class declares none). Reported only for a share class that is unitised and has units in issue to divide by. The dealing price - in the share class currency, with its instrument&#39;s rounding convention applied - is on the share class breakdown&#39;s unitisation data.
+        /// </summary>
+        /// <value>The share class&#39;s NAV per unit in issue, in the fund currency, rounded to the share class&#39;s PricePrecision (left unrounded where the share class declares none). Reported only for a share class that is unitised and has units in issue to divide by. The dealing price - in the share class currency, with its instrument&#39;s rounding convention applied - is on the share class breakdown&#39;s unitisation data.</value>
+        [DataMember(Name = "perUnitValue", EmitDefaultValue = true)]
+        public decimal? PerUnitValue { get; set; }
+
+        /// <summary>
+        /// The share class&#39;s units in issue at the end of the period. Reported only for a share class that is unitised.
+        /// </summary>
+        /// <value>The share class&#39;s units in issue at the end of the period. Reported only for a share class that is unitised.</value>
+        [DataMember(Name = "sharesInIssue", EmitDefaultValue = true)]
+        public decimal? SharesInIssue { get; set; }
+
+        /// <summary>
+        /// The share class&#39;s NAV per unit at the previous valuation point, on the same basis as PerUnitValue.
+        /// </summary>
+        /// <value>The share class&#39;s NAV per unit at the previous valuation point, on the same basis as PerUnitValue.</value>
+        [DataMember(Name = "previousPerUnitValue", EmitDefaultValue = true)]
+        public decimal? PreviousPerUnitValue { get; set; }
+
+        /// <summary>
+        /// The share class&#39;s units in issue at the start of the period. Reported only for a share class that is unitised.
+        /// </summary>
+        /// <value>The share class&#39;s units in issue at the start of the period. Reported only for a share class that is unitised.</value>
+        [DataMember(Name = "previousSharesInIssue", EmitDefaultValue = true)]
+        public decimal? PreviousSharesInIssue { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -107,6 +143,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Nav: ").Append(Nav).Append("\n");
             sb.Append("  CapitalRatio: ").Append(CapitalRatio).Append("\n");
             sb.Append("  Buckets: ").Append(Buckets).Append("\n");
+            sb.Append("  PerUnitValue: ").Append(PerUnitValue).Append("\n");
+            sb.Append("  SharesInIssue: ").Append(SharesInIssue).Append("\n");
+            sb.Append("  PreviousPerUnitValue: ").Append(PreviousPerUnitValue).Append("\n");
+            sb.Append("  PreviousSharesInIssue: ").Append(PreviousSharesInIssue).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -167,6 +207,26 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Buckets != null &&
                     input.Buckets != null &&
                     this.Buckets.SequenceEqual(input.Buckets)
+                ) && 
+                (
+                    this.PerUnitValue == input.PerUnitValue ||
+                    (this.PerUnitValue != null &&
+                    this.PerUnitValue.Equals(input.PerUnitValue))
+                ) && 
+                (
+                    this.SharesInIssue == input.SharesInIssue ||
+                    (this.SharesInIssue != null &&
+                    this.SharesInIssue.Equals(input.SharesInIssue))
+                ) && 
+                (
+                    this.PreviousPerUnitValue == input.PreviousPerUnitValue ||
+                    (this.PreviousPerUnitValue != null &&
+                    this.PreviousPerUnitValue.Equals(input.PreviousPerUnitValue))
+                ) && 
+                (
+                    this.PreviousSharesInIssue == input.PreviousSharesInIssue ||
+                    (this.PreviousSharesInIssue != null &&
+                    this.PreviousSharesInIssue.Equals(input.PreviousSharesInIssue))
                 );
         }
 
@@ -198,6 +258,22 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Buckets != null)
                 {
                     hashCode = (hashCode * 59) + this.Buckets.GetHashCode();
+                }
+                if (this.PerUnitValue != null)
+                {
+                    hashCode = (hashCode * 59) + this.PerUnitValue.GetHashCode();
+                }
+                if (this.SharesInIssue != null)
+                {
+                    hashCode = (hashCode * 59) + this.SharesInIssue.GetHashCode();
+                }
+                if (this.PreviousPerUnitValue != null)
+                {
+                    hashCode = (hashCode * 59) + this.PreviousPerUnitValue.GetHashCode();
+                }
+                if (this.PreviousSharesInIssue != null)
+                {
+                    hashCode = (hashCode * 59) + this.PreviousSharesInIssue.GetHashCode();
                 }
                 return hashCode;
             }

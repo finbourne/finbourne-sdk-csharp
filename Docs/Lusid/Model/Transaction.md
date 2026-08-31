@@ -34,6 +34,7 @@ A list of transactions.
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 | **CustodianEntries** | [List&lt;CustodianEntry&gt;](CustodianEntry.md) | Optional | A list of Custodian Entries associated with the transaction. |
+| **EntityLinks** | [List&lt;TransactionEntityLink&gt;](TransactionEntityLink.md) | Optional | Links to the entities related to this transaction. |
 
 
 ## Usage
@@ -72,7 +73,8 @@ var instance = new Transaction(
     dataModelMembership: new DataModelMembership(...),  // optional
     varVersion: new ModelVersion(...),  // optional
     stagedModifications: new StagedModificationsInfo(...),  // optional
-    custodianEntries: new List<CustodianEntry>()  // optional — A list of Custodian Entries associated with the transaction.
+    custodianEntries: new List<CustodianEntry>(),  // optional — A list of Custodian Entries associated with the transaction.
+    entityLinks: new List<TransactionEntityLink>()  // optional — Links to the entities related to this transaction.
 );
 ```
 ### Serializing to JSON
@@ -100,6 +102,7 @@ var instance = JsonConvert.DeserializeObject<Transaction>(json);
 - [ModelVersion](ModelVersion.md)
 - [StagedModificationsInfo](StagedModificationsInfo.md)
 - [CustodianEntry](CustodianEntry.md) — used in `CustodianEntries`
+- [TransactionEntityLink](TransactionEntityLink.md) — used in `EntityLinks`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

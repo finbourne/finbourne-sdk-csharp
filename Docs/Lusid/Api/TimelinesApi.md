@@ -5,6 +5,8 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**BatchCreateClosedPeriodCandidates**](#batchcreateclosedperiodcandidates) | **POST** `/api/api/timelines/{scope}/{code}/closedperiods/candidate/$batchCreate` | [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity |
+| [**BatchCreateClosedPeriods**](#batchcreateclosedperiods) | **POST** `/api/api/timelines/{scope}/{code}/closedperiods/$batchCreate` | [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity |
 | [**ConfirmClosedPeriod**](#confirmclosedperiod) | **POST** `/api/api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$confirm` | [EXPERIMENTAL] ConfirmClosedPeriod: Confirm a Closed Period against a Timeline Entity |
 | [**CreateClosedPeriod**](#createclosedperiod) | **POST** `/api/api/timelines/{scope}/{code}/closedperiods` | [EXPERIMENTAL] CreateClosedPeriod: Create a new closed period against a timeline entity |
 | [**CreateClosedPeriodCandidate**](#createclosedperiodcandidate) | **POST** `/api/api/timelines/{scope}/{code}/closedperiods/candidate` | [EXPERIMENTAL] CreateClosedPeriodCandidate: Create a new closed period candidate against a timeline entity |
@@ -15,7 +17,7 @@ All URIs are relative to *http://localhost*
 | [**ListClosedPeriods**](#listclosedperiods) | **GET** `/api/api/timelines/{scope}/{code}/closedperiods` | [EXPERIMENTAL] ListClosedPeriods: List ClosedPeriods for a specified Timeline. |
 | [**ListTimelines**](#listtimelines) | **GET** `/api/api/timelines` | [EXPERIMENTAL] ListTimelines: List Timelines |
 | [**SetPostCloseActivity**](#setpostcloseactivity) | **POST** `/api/api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/postcloseactivity` | [EXPERIMENTAL] SetPostCloseActivity: Sets post-close activities to a Closed Period. |
-| [**UnconfirmClosedPeriod**](#unconfirmclosedperiod) | **POST** `/api/api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$unconfirm` | [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity |
+| [**UnconfirmClosedPeriod**](#unconfirmclosedperiod) | **POST** `/api/api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/$unconfirm` | [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity |
 | [**UpdateTimeline**](#updatetimeline) | **PUT** `/api/api/timelines/{scope}/{code}` | [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code |
 
 ### Example
@@ -57,6 +59,130 @@ File.WriteAllText(
 
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TimelinesApi>();
 ```
+
+---
+
+<a id="batchcreateclosedperiodcandidates"></a>
+## BatchCreateClosedPeriodCandidates
+
+> ResourceListOfClosedPeriod BatchCreateClosedPeriodCandidates(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = null)
+
+[EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity
+
+Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TimelinesApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var batchCreateClosedPeriodsRequest = new BatchCreateClosedPeriodsRequest?(); // BatchCreateClosedPeriodsRequest? (optional)
+ResourceListOfClosedPeriod result = apiInstance.BatchCreateClosedPeriodCandidates(scope, code, batchCreateClosedPeriodsRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the specified Timeline. |
+| **code** | **string** | path | **required** | The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline. |
+| **batchCreateClosedPeriodsRequest** | [BatchCreateClosedPeriodsRequest?](../Model/BatchCreateClosedPeriodsRequest?.md) | body | optional | The ordered set of Closed Periods to create |
+
+### Return type
+
+[ResourceListOfClosedPeriod](../Model/ResourceListOfClosedPeriod.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The created closed periods |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the BatchCreateClosedPeriodCandidatesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfClosedPeriod> response = apiInstance.BatchCreateClosedPeriodCandidatesWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="batchcreateclosedperiods"></a>
+## BatchCreateClosedPeriods
+
+> ResourceListOfClosedPeriod BatchCreateClosedPeriods(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = null)
+
+[EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity
+
+Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period's EffectiveStart is derived from the previous closed period's EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch's AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TimelinesApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var batchCreateClosedPeriodsRequest = new BatchCreateClosedPeriodsRequest?(); // BatchCreateClosedPeriodsRequest? (optional)
+ResourceListOfClosedPeriod result = apiInstance.BatchCreateClosedPeriods(scope, code, batchCreateClosedPeriodsRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the specified Timeline. |
+| **code** | **string** | path | **required** | The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline. |
+| **batchCreateClosedPeriodsRequest** | [BatchCreateClosedPeriodsRequest?](../Model/BatchCreateClosedPeriodsRequest?.md) | body | optional | The ordered set of Closed Periods to create |
+
+### Return type
+
+[ResourceListOfClosedPeriod](../Model/ResourceListOfClosedPeriod.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The created closed periods |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the BatchCreateClosedPeriodsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfClosedPeriod> response = apiInstance.BatchCreateClosedPeriodsWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
 
 ---
 
@@ -707,11 +833,11 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="unconfirmclosedperiod"></a>
 ## UnconfirmClosedPeriod
 
-> ClosedPeriod UnconfirmClosedPeriod(string scope, string code, string closedPeriodId, Object? body = null)
+> ClosedPeriod UnconfirmClosedPeriod(string scope, string code, string closedPeriodId, UnconfirmClosedPeriodRequest? unconfirmClosedPeriodRequest = null)
 
-[EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity
+[EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity
 
-Unconfirm the last confirmed Closed Period against a Timeline Entity
+Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
 
 ### Example
 
@@ -720,8 +846,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TimelinesApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var closedPeriodId = "closedPeriodId_example";  // string
-var body = {};  // Object? (optional)
-ClosedPeriod result = apiInstance.UnconfirmClosedPeriod(scope, code, closedPeriodId, body);
+var unconfirmClosedPeriodRequest = new UnconfirmClosedPeriodRequest?(); // UnconfirmClosedPeriodRequest? (optional)
+ClosedPeriod result = apiInstance.UnconfirmClosedPeriod(scope, code, closedPeriodId, unconfirmClosedPeriodRequest);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -731,8 +857,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the specified Timeline. |
 | **code** | **string** | path | **required** | The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline. |
-| **closedPeriodId** | **string** | path | **required** | The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline. |
-| **body** | **Object?** | body | optional | Not in use at the moment |
+| **closedPeriodId** | **string** | path | **required** | The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless              deleteSubsequentPeriods is set on the request body. |
+| **unconfirmClosedPeriodRequest** | [UnconfirmClosedPeriodRequest?](../Model/UnconfirmClosedPeriodRequest?.md) | body | optional | Controls whether a non-latest confirmed Closed Period may be unconfirmed. |
 
 ### Return type
 
@@ -757,7 +883,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ClosedPeriod> response = apiInstance.UnconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body);
+ApiResponse<ClosedPeriod> response = apiInstance.UnconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, unconfirmClosedPeriodRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

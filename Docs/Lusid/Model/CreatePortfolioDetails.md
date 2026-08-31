@@ -5,6 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **CorporateActionSourceId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **TaxLotSelectionCostBasis** | **string** | Optional | The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. If not supplied, the portfolio&#39;s current value is left unchanged; supply Default to reset it. Available values: Cost, AmortisedCost. |
 
 
 ## Usage
@@ -15,7 +16,8 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CreatePortfolioDetails(
-    corporateActionSourceId: new ResourceId(...)  // optional
+    corporateActionSourceId: new ResourceId(...),  // optional
+    taxLotSelectionCostBasis: "..."  // optional — The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. If not supplied, the portfolio&#39;s current value is left unchanged; supply Default to reset it. Available values: Cost, AmortisedCost.
 );
 ```
 ### Serializing to JSON

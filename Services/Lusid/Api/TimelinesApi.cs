@@ -31,6 +31,64 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity
+        /// </summary>
+        /// <remarks>
+        /// Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResourceListOfClosedPeriod</returns>
+        ResourceListOfClosedPeriod BatchCreateClosedPeriodCandidates(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity
+        /// </summary>
+        /// <remarks>
+        /// Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResourceListOfClosedPeriod</returns>
+        Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod> BatchCreateClosedPeriodCandidatesWithHttpInfo(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity
+        /// </summary>
+        /// <remarks>
+        /// Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period&#39;s EffectiveStart is derived from the previous closed period&#39;s EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch&#39;s AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResourceListOfClosedPeriod</returns>
+        ResourceListOfClosedPeriod BatchCreateClosedPeriods(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity
+        /// </summary>
+        /// <remarks>
+        /// Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period&#39;s EffectiveStart is derived from the previous closed period&#39;s EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch&#39;s AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResourceListOfClosedPeriod</returns>
+        Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod> BatchCreateClosedPeriodsWithHttpInfo(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] ConfirmClosedPeriod: Confirm a Closed Period against a Timeline Entity
         /// </summary>
         /// <remarks>
@@ -345,36 +403,36 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ClosedPeriod</returns>
         Finbourne.Sdk.Client.ApiResponse<ClosedPeriod> SetPostCloseActivityWithHttpInfo(string scope, string code, string closedPeriodId, PostCloseActivitiesRequest? postCloseActivitiesRequest = default(PostCloseActivitiesRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity
         /// </summary>
         /// <remarks>
-        /// Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the specified Timeline.</param>
         /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
-        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline.</param>
-        /// <param name="body">Not in use at the moment (optional)</param>
+        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless              deleteSubsequentPeriods is set on the request body.</param>
+        /// <param name="unconfirmClosedPeriodRequest">Controls whether a non-latest confirmed Closed Period may be unconfirmed. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ClosedPeriod</returns>
-        ClosedPeriod UnconfirmClosedPeriod(string scope, string code, string closedPeriodId, Object? body = default(Object?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        ClosedPeriod UnconfirmClosedPeriod(string scope, string code, string closedPeriodId, UnconfirmClosedPeriodRequest? unconfirmClosedPeriodRequest = default(UnconfirmClosedPeriodRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity
         /// </summary>
         /// <remarks>
-        /// Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the specified Timeline.</param>
         /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
-        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline.</param>
-        /// <param name="body">Not in use at the moment (optional)</param>
+        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless              deleteSubsequentPeriods is set on the request body.</param>
+        /// <param name="unconfirmClosedPeriodRequest">Controls whether a non-latest confirmed Closed Period may be unconfirmed. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ClosedPeriod</returns>
-        Finbourne.Sdk.Client.ApiResponse<ClosedPeriod> UnconfirmClosedPeriodWithHttpInfo(string scope, string code, string closedPeriodId, Object? body = default(Object?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<ClosedPeriod> UnconfirmClosedPeriodWithHttpInfo(string scope, string code, string closedPeriodId, UnconfirmClosedPeriodRequest? unconfirmClosedPeriodRequest = default(UnconfirmClosedPeriodRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code
         /// </summary>
@@ -413,6 +471,68 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     public interface ITimelinesApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity
+        /// </summary>
+        /// <remarks>
+        /// Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResourceListOfClosedPeriod</returns>
+        System.Threading.Tasks.Task<ResourceListOfClosedPeriod> BatchCreateClosedPeriodCandidatesAsync(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity
+        /// </summary>
+        /// <remarks>
+        /// Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResourceListOfClosedPeriod)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod>> BatchCreateClosedPeriodCandidatesWithHttpInfoAsync(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity
+        /// </summary>
+        /// <remarks>
+        /// Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period&#39;s EffectiveStart is derived from the previous closed period&#39;s EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch&#39;s AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResourceListOfClosedPeriod</returns>
+        System.Threading.Tasks.Task<ResourceListOfClosedPeriod> BatchCreateClosedPeriodsAsync(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity
+        /// </summary>
+        /// <remarks>
+        /// Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period&#39;s EffectiveStart is derived from the previous closed period&#39;s EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch&#39;s AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResourceListOfClosedPeriod)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod>> BatchCreateClosedPeriodsWithHttpInfoAsync(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ConfirmClosedPeriod: Confirm a Closed Period against a Timeline Entity
         /// </summary>
@@ -748,38 +868,38 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ClosedPeriod)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClosedPeriod>> SetPostCloseActivityWithHttpInfoAsync(string scope, string code, string closedPeriodId, PostCloseActivitiesRequest? postCloseActivitiesRequest = default(PostCloseActivitiesRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity
         /// </summary>
         /// <remarks>
-        /// Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the specified Timeline.</param>
         /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
-        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline.</param>
-        /// <param name="body">Not in use at the moment (optional)</param>
+        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless              deleteSubsequentPeriods is set on the request body.</param>
+        /// <param name="unconfirmClosedPeriodRequest">Controls whether a non-latest confirmed Closed Period may be unconfirmed. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ClosedPeriod</returns>
-        System.Threading.Tasks.Task<ClosedPeriod> UnconfirmClosedPeriodAsync(string scope, string code, string closedPeriodId, Object? body = default(Object?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<ClosedPeriod> UnconfirmClosedPeriodAsync(string scope, string code, string closedPeriodId, UnconfirmClosedPeriodRequest? unconfirmClosedPeriodRequest = default(UnconfirmClosedPeriodRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity
         /// </summary>
         /// <remarks>
-        /// Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the specified Timeline.</param>
         /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
-        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline.</param>
-        /// <param name="body">Not in use at the moment (optional)</param>
+        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless              deleteSubsequentPeriods is set on the request body.</param>
+        /// <param name="unconfirmClosedPeriodRequest">Controls whether a non-latest confirmed Closed Period may be unconfirmed. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (ClosedPeriod)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClosedPeriod>> UnconfirmClosedPeriodWithHttpInfoAsync(string scope, string code, string closedPeriodId, Object? body = default(Object?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClosedPeriod>> UnconfirmClosedPeriodWithHttpInfoAsync(string scope, string code, string closedPeriodId, UnconfirmClosedPeriodRequest? unconfirmClosedPeriodRequest = default(UnconfirmClosedPeriodRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code
         /// </summary>
@@ -903,6 +1023,522 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResourceListOfClosedPeriod</returns>
+        public ResourceListOfClosedPeriod BatchCreateClosedPeriodCandidates(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod> localVarResponse = BatchCreateClosedPeriodCandidatesWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResourceListOfClosedPeriod</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod> BatchCreateClosedPeriodCandidatesWithHttpInfo(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling TimelinesApi->BatchCreateClosedPeriodCandidates");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling TimelinesApi->BatchCreateClosedPeriodCandidates");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.Data = batchCreateClosedPeriodsRequest;
+
+            localVarRequestOptions.Operation = "TimelinesApi.BatchCreateClosedPeriodCandidates";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ResourceListOfClosedPeriod, AbstractOpenAPISchema>("/api/api/timelines/{scope}/{code}/closedperiods/candidate/$batchCreate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("BatchCreateClosedPeriodCandidates", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResourceListOfClosedPeriod</returns>
+        public async System.Threading.Tasks.Task<ResourceListOfClosedPeriod> BatchCreateClosedPeriodCandidatesAsync(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod> localVarResponse = await BatchCreateClosedPeriodCandidatesWithHttpInfoAsync(scope, code, batchCreateClosedPeriodsRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriodCandidates: Atomically create an ordered series of confirmed closed period candidates against a timeline entity Creates an ordered series of closed period candidates against a timeline entity in a single transaction.  AsAtClosed is required on every item; unlike the single closed period endpoints it is not defaulted.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResourceListOfClosedPeriod)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod>> BatchCreateClosedPeriodCandidatesWithHttpInfoAsync(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling TimelinesApi->BatchCreateClosedPeriodCandidates");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling TimelinesApi->BatchCreateClosedPeriodCandidates");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.Data = batchCreateClosedPeriodsRequest;
+
+            localVarRequestOptions.Operation = "TimelinesApi.BatchCreateClosedPeriodCandidates";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ResourceListOfClosedPeriod, AbstractOpenAPISchema>("/api/api/timelines/{scope}/{code}/closedperiods/candidate/$batchCreate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("BatchCreateClosedPeriodCandidates", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period&#39;s EffectiveStart is derived from the previous closed period&#39;s EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch&#39;s AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResourceListOfClosedPeriod</returns>
+        public ResourceListOfClosedPeriod BatchCreateClosedPeriods(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod> localVarResponse = BatchCreateClosedPeriodsWithHttpInfo(scope, code, batchCreateClosedPeriodsRequest, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period&#39;s EffectiveStart is derived from the previous closed period&#39;s EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch&#39;s AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResourceListOfClosedPeriod</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod> BatchCreateClosedPeriodsWithHttpInfo(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling TimelinesApi->BatchCreateClosedPeriods");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling TimelinesApi->BatchCreateClosedPeriods");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.Data = batchCreateClosedPeriodsRequest;
+
+            localVarRequestOptions.Operation = "TimelinesApi.BatchCreateClosedPeriods";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ResourceListOfClosedPeriod, AbstractOpenAPISchema>("/api/api/timelines/{scope}/{code}/closedperiods/$batchCreate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("BatchCreateClosedPeriods", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period&#39;s EffectiveStart is derived from the previous closed period&#39;s EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch&#39;s AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResourceListOfClosedPeriod</returns>
+        public async System.Threading.Tasks.Task<ResourceListOfClosedPeriod> BatchCreateClosedPeriodsAsync(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod> localVarResponse = await BatchCreateClosedPeriodsWithHttpInfoAsync(scope, code, batchCreateClosedPeriodsRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] BatchCreateClosedPeriods: Atomically create an ordered series of confirmed closed periods against a timeline entity Creates an ordered series of confirmed closed periods against a timeline entity in a single transaction.  Each closed period&#39;s EffectiveStart is derived from the previous closed period&#39;s EffectiveEnd (or the  current chain tail for the first item), so EffectiveEnd must be strictly increasing across the batch.  AsAtClosed is required on every item and must be strictly increasing across the batch too; unlike the  single closed period endpoints it is not defaulted, since defaulting it per item would leave the  batch&#39;s AsAtClosed ordering to the wall clock rather than to the request.  Any failure rolls back the whole batch - either every closed period is created, or none are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the specified Timeline.</param>
+        /// <param name="code">The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline.</param>
+        /// <param name="batchCreateClosedPeriodsRequest">The ordered set of Closed Periods to create (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResourceListOfClosedPeriod)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfClosedPeriod>> BatchCreateClosedPeriodsWithHttpInfoAsync(string scope, string code, BatchCreateClosedPeriodsRequest? batchCreateClosedPeriodsRequest = default(BatchCreateClosedPeriodsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling TimelinesApi->BatchCreateClosedPeriods");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling TimelinesApi->BatchCreateClosedPeriods");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.Data = batchCreateClosedPeriodsRequest;
+
+            localVarRequestOptions.Operation = "TimelinesApi.BatchCreateClosedPeriods";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ResourceListOfClosedPeriod, AbstractOpenAPISchema>("/api/api/timelines/{scope}/{code}/closedperiods/$batchCreate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("BatchCreateClosedPeriods", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>
@@ -3614,35 +4250,35 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the specified Timeline.</param>
         /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
-        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline.</param>
-        /// <param name="body">Not in use at the moment (optional)</param>
+        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless              deleteSubsequentPeriods is set on the request body.</param>
+        /// <param name="unconfirmClosedPeriodRequest">Controls whether a non-latest confirmed Closed Period may be unconfirmed. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ClosedPeriod</returns>
-        public ClosedPeriod UnconfirmClosedPeriod(string scope, string code, string closedPeriodId, Object? body = default(Object?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public ClosedPeriod UnconfirmClosedPeriod(string scope, string code, string closedPeriodId, UnconfirmClosedPeriodRequest? unconfirmClosedPeriodRequest = default(UnconfirmClosedPeriodRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ClosedPeriod> localVarResponse = UnconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, body, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<ClosedPeriod> localVarResponse = UnconfirmClosedPeriodWithHttpInfo(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="scope">The scope of the specified Timeline.</param>
         /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
-        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline.</param>
-        /// <param name="body">Not in use at the moment (optional)</param>
+        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless              deleteSubsequentPeriods is set on the request body.</param>
+        /// <param name="unconfirmClosedPeriodRequest">Controls whether a non-latest confirmed Closed Period may be unconfirmed. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ClosedPeriod</returns>
-        public Finbourne.Sdk.Client.ApiResponse<ClosedPeriod> UnconfirmClosedPeriodWithHttpInfo(string scope, string code, string closedPeriodId, Object? body = default(Object?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<ClosedPeriod> UnconfirmClosedPeriodWithHttpInfo(string scope, string code, string closedPeriodId, UnconfirmClosedPeriodRequest? unconfirmClosedPeriodRequest = default(UnconfirmClosedPeriodRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -3713,7 +4349,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
             localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
             localVarRequestOptions.PathParameters.Add("closedPeriodId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(closedPeriodId)); // path parameter
-            localVarRequestOptions.Data = body;
+            localVarRequestOptions.Data = unconfirmClosedPeriodRequest;
 
             localVarRequestOptions.Operation = "TimelinesApi.UnconfirmClosedPeriod";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3750,37 +4386,37 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the specified Timeline.</param>
         /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
-        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline.</param>
-        /// <param name="body">Not in use at the moment (optional)</param>
+        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless              deleteSubsequentPeriods is set on the request body.</param>
+        /// <param name="unconfirmClosedPeriodRequest">Controls whether a non-latest confirmed Closed Period may be unconfirmed. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ClosedPeriod</returns>
-        public async System.Threading.Tasks.Task<ClosedPeriod> UnconfirmClosedPeriodAsync(string scope, string code, string closedPeriodId, Object? body = default(Object?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<ClosedPeriod> UnconfirmClosedPeriodAsync(string scope, string code, string closedPeriodId, UnconfirmClosedPeriodRequest? unconfirmClosedPeriodRequest = default(UnconfirmClosedPeriodRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ClosedPeriod> localVarResponse = await UnconfirmClosedPeriodWithHttpInfoAsync(scope, code, closedPeriodId, body, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<ClosedPeriod> localVarResponse = await UnconfirmClosedPeriodWithHttpInfoAsync(scope, code, closedPeriodId, unconfirmClosedPeriodRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm the last confirmed Closed Period against a Timeline Entity Unconfirm the last confirmed Closed Period against a Timeline Entity
+        /// [EXPERIMENTAL] UnconfirmClosedPeriod: Unconfirm a confirmed Closed Period against a Timeline Entity Unconfirm a confirmed Closed Period against a Timeline Entity. By default only the latest confirmed  Closed Period may be unconfirmed. Setting deleteSubsequentPeriods on the request body allows any  confirmed Closed Period to be unconfirmed, deleting every Closed Period after it on the Timeline.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="scope">The scope of the specified Timeline.</param>
         /// <param name="code">The code of the specified Timeline. Together with the scope this uniquely identifies the Timeline.</param>
-        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. The closed period must be the last closed period on the Timeline.</param>
-        /// <param name="body">Not in use at the moment (optional)</param>
+        /// <param name="closedPeriodId">The id of the Closed Period. Together with the scope and code of the Timeline,              this uniquely identifies the ClosedPeriod. Must be the latest confirmed Closed Period unless              deleteSubsequentPeriods is set on the request body.</param>
+        /// <param name="unconfirmClosedPeriodRequest">Controls whether a non-latest confirmed Closed Period may be unconfirmed. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (ClosedPeriod)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClosedPeriod>> UnconfirmClosedPeriodWithHttpInfoAsync(string scope, string code, string closedPeriodId, Object? body = default(Object?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ClosedPeriod>> UnconfirmClosedPeriodWithHttpInfoAsync(string scope, string code, string closedPeriodId, UnconfirmClosedPeriodRequest? unconfirmClosedPeriodRequest = default(UnconfirmClosedPeriodRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -3852,7 +4488,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
             localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
             localVarRequestOptions.PathParameters.Add("closedPeriodId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(closedPeriodId)); // path parameter
-            localVarRequestOptions.Data = body;
+            localVarRequestOptions.Data = unconfirmClosedPeriodRequest;
 
             localVarRequestOptions.Operation = "TimelinesApi.UnconfirmClosedPeriod";
             localVarRequestOptions.OperationIndex = operationIndex;

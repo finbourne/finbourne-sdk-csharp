@@ -20,6 +20,7 @@
 | **CashGainLossCalculationDate** | **string** | Optional | The option when the Cash Gain Loss to be calulated. Default value: SettlementDate. Available values: Default, SettlementDate, TransactionDate. |
 | **InstrumentEventConfiguration** | [InstrumentEventConfiguration](InstrumentEventConfiguration.md) | Optional | *No description available.* |
 | **AmortisationRuleSetId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **TaxLotSelectionCostBasis** | **string** | Optional | The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Available values: Cost, AmortisedCost. |
 
 
 ## Usage
@@ -45,7 +46,8 @@ var instance = new CreateSimplePositionPortfolioRequest(
     transactionTypeScope: "...",  // optional — The scope of the transaction types.
     cashGainLossCalculationDate: "...",  // optional — The option when the Cash Gain Loss to be calulated. Default value: SettlementDate. Available values: Default, SettlementDate, TransactionDate.
     instrumentEventConfiguration: new InstrumentEventConfiguration(...),  // optional
-    amortisationRuleSetId: new ResourceId(...)  // optional
+    amortisationRuleSetId: new ResourceId(...),  // optional
+    taxLotSelectionCostBasis: "..."  // optional — The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Available values: Cost, AmortisedCost.
 );
 ```
 ### Serializing to JSON

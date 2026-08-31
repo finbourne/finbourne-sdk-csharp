@@ -8,7 +8,7 @@ Model options for instruments of type flexibleDeposit and flexibleLoan when used
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **SetCleanPVToZero** | **bool** | Required | If set to true the CleanPV will be set to zero in valuations and PV will effectively just be the Accrual. |
-| **ModelOptionsType** | **string** | Required | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions. Default: `ModelOptionsTypeEnum.FlexibleLoanPricerOptions` |
+| **ModelOptionsType** | **string** | Required | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions. Default: `ModelOptionsTypeEnum.FlexibleLoanPricerOptions` |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new FlexibleLoanPricerOptions(
     setCleanPVToZero: true,  // required — If set to true the CleanPV will be set to zero in valuations and PV will effectively just be the Accrual.
-    modelOptionsType: "..."  // required — Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions.
+    modelOptionsType: "..."  // required — Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions.
 );
 ```
 ### Serializing to JSON

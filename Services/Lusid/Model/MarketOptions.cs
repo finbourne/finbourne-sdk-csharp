@@ -34,14 +34,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="defaultInstrumentCodeType">When instrument quotes are searched for, what identifier should be used by default.</param>
         /// <param name="defaultScope">The scope in which to search for data when applying default rules. This is optional: if omitted, no default rules  are created and market data is resolved only via the explicitly specified market data key rules..</param>
         /// <param name="attemptToInferMissingFx">if true will calculate a missing Fx pair (e.g. THBJPY) from the inverse JPYTHB or from standardised pairs against USD, e.g. THBUSD and JPYUSD.</param>
+        /// <param name="attemptToInferMissingFxOnFixings">If true, applies the same inference as AttemptToInferMissingFx to FX fixings (resets), e.g. the fixing of a  non-deliverable FX forward: a fixing quoted only in the reverse direction, or derivable by triangulation  through a standard base currency at the fixing date, is inferred rather than reported missing. This is a  separate, explicit opt-in because a fixing is a contractual historical print: with this off (the default),  a fixing must be present as the exact oriented currency pair to be used..</param>
         /// <param name="calendarScope">The scope in which holiday calendars stored.</param>
         /// <param name="conventionScope">The scope in which conventions stored.</param>
-        public MarketOptions(string defaultSupplier = default(string), string defaultInstrumentCodeType = default(string), string defaultScope = default(string), bool attemptToInferMissingFx = default(bool), string calendarScope = default(string), string conventionScope = default(string))
+        public MarketOptions(string defaultSupplier = default(string), string defaultInstrumentCodeType = default(string), string defaultScope = default(string), bool attemptToInferMissingFx = default(bool), bool attemptToInferMissingFxOnFixings = default(bool), string calendarScope = default(string), string conventionScope = default(string))
         {
             this.DefaultSupplier = defaultSupplier;
             this.DefaultInstrumentCodeType = defaultInstrumentCodeType;
             this.DefaultScope = defaultScope;
             this.AttemptToInferMissingFx = attemptToInferMissingFx;
+            this.AttemptToInferMissingFxOnFixings = attemptToInferMissingFxOnFixings;
             this.CalendarScope = calendarScope;
             this.ConventionScope = conventionScope;
         }
@@ -75,6 +77,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public bool AttemptToInferMissingFx { get; set; }
 
         /// <summary>
+        /// If true, applies the same inference as AttemptToInferMissingFx to FX fixings (resets), e.g. the fixing of a  non-deliverable FX forward: a fixing quoted only in the reverse direction, or derivable by triangulation  through a standard base currency at the fixing date, is inferred rather than reported missing. This is a  separate, explicit opt-in because a fixing is a contractual historical print: with this off (the default),  a fixing must be present as the exact oriented currency pair to be used.
+        /// </summary>
+        /// <value>If true, applies the same inference as AttemptToInferMissingFx to FX fixings (resets), e.g. the fixing of a  non-deliverable FX forward: a fixing quoted only in the reverse direction, or derivable by triangulation  through a standard base currency at the fixing date, is inferred rather than reported missing. This is a  separate, explicit opt-in because a fixing is a contractual historical print: with this off (the default),  a fixing must be present as the exact oriented currency pair to be used.</value>
+        [DataMember(Name = "attemptToInferMissingFxOnFixings", EmitDefaultValue = true)]
+        public bool AttemptToInferMissingFxOnFixings { get; set; }
+
+        /// <summary>
         /// The scope in which holiday calendars stored
         /// </summary>
         /// <value>The scope in which holiday calendars stored</value>
@@ -100,6 +109,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  DefaultInstrumentCodeType: ").Append(DefaultInstrumentCodeType).Append("\n");
             sb.Append("  DefaultScope: ").Append(DefaultScope).Append("\n");
             sb.Append("  AttemptToInferMissingFx: ").Append(AttemptToInferMissingFx).Append("\n");
+            sb.Append("  AttemptToInferMissingFxOnFixings: ").Append(AttemptToInferMissingFxOnFixings).Append("\n");
             sb.Append("  CalendarScope: ").Append(CalendarScope).Append("\n");
             sb.Append("  ConventionScope: ").Append(ConventionScope).Append("\n");
             sb.Append("}\n");
@@ -157,6 +167,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.AttemptToInferMissingFx.Equals(input.AttemptToInferMissingFx)
                 ) && 
                 (
+                    this.AttemptToInferMissingFxOnFixings == input.AttemptToInferMissingFxOnFixings ||
+                    this.AttemptToInferMissingFxOnFixings.Equals(input.AttemptToInferMissingFxOnFixings)
+                ) && 
+                (
                     this.CalendarScope == input.CalendarScope ||
                     (this.CalendarScope != null &&
                     this.CalendarScope.Equals(input.CalendarScope))
@@ -190,6 +204,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     hashCode = (hashCode * 59) + this.DefaultScope.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AttemptToInferMissingFx.GetHashCode();
+                hashCode = (hashCode * 59) + this.AttemptToInferMissingFxOnFixings.GetHashCode();
                 if (this.CalendarScope != null)
                 {
                     hashCode = (hashCode * 59) + this.CalendarScope.GetHashCode();

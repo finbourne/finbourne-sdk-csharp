@@ -47,7 +47,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="status">The Status of the settlement bucket - &#39;Settled&#39;, &#39;Part Settled&#39; or &#39;Unsettled&#39;. Available values: Unsettled, PartSettled, Settled, None. (required).</param>
         /// <param name="settlementInstructions">The settlement instructions received for this settlement bucket..</param>
         /// <param name="movements">The movements for the settlement bucket..</param>
-        public TransactionSettlementBucket(string settlementCategory = default(string), string lusidInstrumentId = default(string), string instrumentScope = default(string), DateTimeOffset? contractualSettlementDate = default(DateTimeOffset?), decimal contractedUnits = default(decimal), decimal settledUnits = default(decimal), decimal unsettledUnits = default(decimal), decimal overdueUnits = default(decimal), string configuredSettlement = default(string), string status = default(string), List<TransactionSettlementInstruction> settlementInstructions = default(List<TransactionSettlementInstruction>), List<TransactionSettlementMovement> movements = default(List<TransactionSettlementMovement>))
+        /// <param name="custodianAccountId">custodianAccountId.</param>
+        public TransactionSettlementBucket(string settlementCategory = default(string), string lusidInstrumentId = default(string), string instrumentScope = default(string), DateTimeOffset? contractualSettlementDate = default(DateTimeOffset?), decimal contractedUnits = default(decimal), decimal settledUnits = default(decimal), decimal unsettledUnits = default(decimal), decimal overdueUnits = default(decimal), string configuredSettlement = default(string), string status = default(string), List<TransactionSettlementInstruction> settlementInstructions = default(List<TransactionSettlementInstruction>), List<TransactionSettlementMovement> movements = default(List<TransactionSettlementMovement>), ResourceId custodianAccountId = default(ResourceId))
         {
             // to ensure "settlementCategory" is required (not null)
             if (settlementCategory == null)
@@ -81,6 +82,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.ConfiguredSettlement = configuredSettlement;
             this.SettlementInstructions = settlementInstructions;
             this.Movements = movements;
+            this.CustodianAccountId = custodianAccountId;
         }
 
         /// <summary>
@@ -168,6 +170,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<TransactionSettlementMovement> Movements { get; set; }
 
         /// <summary>
+        /// Gets or Sets CustodianAccountId
+        /// </summary>
+        [DataMember(Name = "custodianAccountId", EmitDefaultValue = false)]
+        public ResourceId CustodianAccountId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -187,6 +195,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  SettlementInstructions: ").Append(SettlementInstructions).Append("\n");
             sb.Append("  Movements: ").Append(Movements).Append("\n");
+            sb.Append("  CustodianAccountId: ").Append(CustodianAccountId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -279,6 +288,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Movements != null &&
                     input.Movements != null &&
                     this.Movements.SequenceEqual(input.Movements)
+                ) && 
+                (
+                    this.CustodianAccountId == input.CustodianAccountId ||
+                    (this.CustodianAccountId != null &&
+                    this.CustodianAccountId.Equals(input.CustodianAccountId))
                 );
         }
 
@@ -326,6 +340,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Movements != null)
                 {
                     hashCode = (hashCode * 59) + this.Movements.GetHashCode();
+                }
+                if (this.CustodianAccountId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustodianAccountId.GetHashCode();
                 }
                 return hashCode;
             }

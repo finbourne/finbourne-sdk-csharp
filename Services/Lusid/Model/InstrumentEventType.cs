@@ -638,7 +638,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum CommodityCalendarSwapCashFlowEvent for value: CommodityCalendarSwapCashFlowEvent
         /// </summary>
         [EnumMember(Value = "CommodityCalendarSwapCashFlowEvent")]
-        CommodityCalendarSwapCashFlowEvent = 102
+        CommodityCalendarSwapCashFlowEvent = 102,
+
+        /// <summary>
+        /// Enum DepositSweepEvent for value: DepositSweepEvent
+        /// </summary>
+        [EnumMember(Value = "DepositSweepEvent")]
+        DepositSweepEvent = 103,
+
+        /// <summary>
+        /// Enum BondForwardCashSettlementEvent for value: BondForwardCashSettlementEvent
+        /// </summary>
+        [EnumMember(Value = "BondForwardCashSettlementEvent")]
+        BondForwardCashSettlementEvent = 104,
+
+        /// <summary>
+        /// Enum BondForwardTerminationEvent for value: BondForwardTerminationEvent
+        /// </summary>
+        [EnumMember(Value = "BondForwardTerminationEvent")]
+        BondForwardTerminationEvent = 105
     }
 
 }
