@@ -55,7 +55,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum MdkrGroupShiftDefinition for value: MdkrGroupShiftDefinition
         /// </summary>
         [EnumMember(Value = "MdkrGroupShiftDefinition")]
-        MdkrGroupShiftDefinition = 5
+        MdkrGroupShiftDefinition = 5,
+
+        /// <summary>
+        /// Enum InflationCurveShiftDefinition for value: InflationCurveShiftDefinition
+        /// </summary>
+        [EnumMember(Value = "InflationCurveShiftDefinition")]
+        InflationCurveShiftDefinition = 6
     }
 
 }

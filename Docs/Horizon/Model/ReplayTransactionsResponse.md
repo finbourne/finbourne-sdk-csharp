@@ -1,6 +1,6 @@
 # Finbourne.Sdk.Horizon.Model.ReplayTransactionsResponse
 
-Response from a replay transactions operation containing the CSV output.
+Response from a replay transactions operation. For DryRun, Finbourne.Horizon.Integrations.Web.Dto.Integrations.TradePublicationFramework.Response.ReplayTransactionsResponse.PayloadOutput carries the preview payload in the instance's configured output format (CSV or XML); for Committed it is empty.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -8,7 +8,7 @@ Response from a replay transactions operation containing the CSV output.
 | **BatchReferenceId** | **string** | Required | *No description available.* |
 | **Mode** | **string** | Required | *No description available.* |
 | **TransactionCount** | **int** | Required | *No description available.* |
-| **CsvOutput** | **string** | Required | *No description available.* |
+| **PayloadOutput** | **string** | Required | *No description available.* |
 | **Message** | **string** | Required | *No description available.* |
 
 
@@ -23,7 +23,7 @@ var instance = new ReplayTransactionsResponse(
     batchReferenceId: "...",  // required
     mode: "...",  // required
     transactionCount: 0,  // required
-    csvOutput: "...",  // required
+    payloadOutput: "...",  // required
     message: "..."  // required
 );
 ```
