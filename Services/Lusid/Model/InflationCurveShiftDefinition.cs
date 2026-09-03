@@ -100,6 +100,44 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         [DataMember(Name = "scale", EmitDefaultValue = false)]
         public ScaleEnum? Scale { get; set; }
         /// <summary>
+        /// Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.
+        /// </summary>
+        /// <value>Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum WindowBoundsEnum
+        {
+            /// <summary>
+            /// Enum Inclusive for value: Inclusive
+            /// </summary>
+            [EnumMember(Value = "Inclusive")]
+            Inclusive = 1,
+
+            /// <summary>
+            /// Enum StartExclusive for value: StartExclusive
+            /// </summary>
+            [EnumMember(Value = "StartExclusive")]
+            StartExclusive = 2,
+
+            /// <summary>
+            /// Enum EndExclusive for value: EndExclusive
+            /// </summary>
+            [EnumMember(Value = "EndExclusive")]
+            EndExclusive = 3,
+
+            /// <summary>
+            /// Enum Exclusive for value: Exclusive
+            /// </summary>
+            [EnumMember(Value = "Exclusive")]
+            Exclusive = 4
+        }
+
+        /// <summary>
+        /// Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.
+        /// </summary>
+        /// <value>Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.</value>
+        [DataMember(Name = "windowBounds", EmitDefaultValue = false)]
+        public WindowBoundsEnum? WindowBounds { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="InflationCurveShiftDefinition" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -114,8 +152,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="shiftType">Available values: Parallel, Steepen, Flatten, Twist, Tent. (required).</param>
         /// <param name="scale">Available values: Bps, Percentage..</param>
         /// <param name="pivotTenor">The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape. Only  valid with ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. Declared  last on purpose: generated SDKs emit their positional constructor in property-declaration  order, and this property must not shift the parameters of the ones before it..</param>
-        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
-        public InflationCurveShiftDefinition(string index = default(string), decimal? amount = default(decimal?), string startTenor = default(string), string endTenor = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScaleEnum ?scale = default(ScaleEnum?), string pivotTenor = default(string), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
+        /// <param name="windowBounds">Available values: Inclusive, StartExclusive, EndExclusive, Exclusive..</param>
+        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
+        public InflationCurveShiftDefinition(string index = default(string), decimal? amount = default(decimal?), string startTenor = default(string), string endTenor = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScaleEnum ?scale = default(ScaleEnum?), string pivotTenor = default(string), WindowBoundsEnum ?windowBounds = default(WindowBoundsEnum?), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
         {
             // to ensure "index" is required (not null)
             if (index == null)
@@ -130,6 +169,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.EndTenor = endTenor;
             this.Scale = scale;
             this.PivotTenor = pivotTenor;
+            this.WindowBounds = windowBounds;
         }
 
         /// <summary>
@@ -181,6 +221,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ShiftType: ").Append(ShiftType).Append("\n");
             sb.Append("  Scale: ").Append(Scale).Append("\n");
             sb.Append("  PivotTenor: ").Append(PivotTenor).Append("\n");
+            sb.Append("  WindowBounds: ").Append(WindowBounds).Append("\n");
             sb.Append("  ScenarioShiftType: ").Append(ScenarioShiftType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -251,6 +292,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PivotTenor.Equals(input.PivotTenor))
                 ) && base.Equals(input) && 
                 (
+                    this.WindowBounds == input.WindowBounds ||
+                    this.WindowBounds.Equals(input.WindowBounds)
+                ) && base.Equals(input) && 
+                (
                     this.ScenarioShiftType == input.ScenarioShiftType ||
                     this.ScenarioShiftType.Equals(input.ScenarioShiftType)
                 );
@@ -287,6 +332,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.PivotTenor.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.WindowBounds.GetHashCode();
                 hashCode = (hashCode * 59) + this.ScenarioShiftType.GetHashCode();
                 return hashCode;
             }

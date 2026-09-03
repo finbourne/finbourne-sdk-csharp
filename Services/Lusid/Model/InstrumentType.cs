@@ -337,7 +337,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum BondForward for value: BondForward
         /// </summary>
         [EnumMember(Value = "BondForward")]
-        BondForward = 52
+        BondForward = 52,
+
+        /// <summary>
+        /// Enum PreferredShare for value: PreferredShare
+        /// </summary>
+        [EnumMember(Value = "PreferredShare")]
+        PreferredShare = 53
     }
 
 }

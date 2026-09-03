@@ -27,6 +27,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     /// </summary>
     [DataContract(Name = "ScenarioShiftDefinition")]
     [JsonConverter(typeof(JsonSubtypes), "ScenarioShiftType")]
+    [JsonSubtypes.KnownSubType(typeof(CreditSpreadShiftDefinition), "CreditSpreadShiftDefinition")]
     [JsonSubtypes.KnownSubType(typeof(FxShiftDefinition), "FxShiftDefinition")]
     [JsonSubtypes.KnownSubType(typeof(InflationCurveShiftDefinition), "InflationCurveShiftDefinition")]
     [JsonSubtypes.KnownSubType(typeof(MdkrGroupShiftDefinition), "MdkrGroupShiftDefinition")]
@@ -36,9 +37,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class ScenarioShiftDefinition : IEquatable<ScenarioShiftDefinition>, IValidatableObject
     {
         /// <summary>
-        /// Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition.
+        /// Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition.
         /// </summary>
-        /// <value>Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition.</value>
+        /// <value>Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ScenarioShiftTypeEnum
         {
@@ -76,13 +77,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             /// Enum InflationCurveShiftDefinition for value: InflationCurveShiftDefinition
             /// </summary>
             [EnumMember(Value = "InflationCurveShiftDefinition")]
-            InflationCurveShiftDefinition = 6
+            InflationCurveShiftDefinition = 6,
+
+            /// <summary>
+            /// Enum CreditSpreadShiftDefinition for value: CreditSpreadShiftDefinition
+            /// </summary>
+            [EnumMember(Value = "CreditSpreadShiftDefinition")]
+            CreditSpreadShiftDefinition = 7
         }
 
         /// <summary>
-        /// Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition.
+        /// Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition.
         /// </summary>
-        /// <value>Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition.</value>
+        /// <value>Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition.</value>
         [DataMember(Name = "scenarioShiftType", IsRequired = true, EmitDefaultValue = true)]
         public ScenarioShiftTypeEnum ScenarioShiftType { get; set; }
         /// <summary>
@@ -93,7 +100,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ScenarioShiftDefinition" /> class.
         /// </summary>
-        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition. (required).</param>
+        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition. (required).</param>
         public ScenarioShiftDefinition(ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum))
         {
             this.ScenarioShiftType = scenarioShiftType;

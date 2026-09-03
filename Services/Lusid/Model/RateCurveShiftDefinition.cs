@@ -100,6 +100,44 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         [DataMember(Name = "scale", EmitDefaultValue = false)]
         public ScaleEnum? Scale { get; set; }
         /// <summary>
+        /// Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.
+        /// </summary>
+        /// <value>Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum WindowBoundsEnum
+        {
+            /// <summary>
+            /// Enum Inclusive for value: Inclusive
+            /// </summary>
+            [EnumMember(Value = "Inclusive")]
+            Inclusive = 1,
+
+            /// <summary>
+            /// Enum StartExclusive for value: StartExclusive
+            /// </summary>
+            [EnumMember(Value = "StartExclusive")]
+            StartExclusive = 2,
+
+            /// <summary>
+            /// Enum EndExclusive for value: EndExclusive
+            /// </summary>
+            [EnumMember(Value = "EndExclusive")]
+            EndExclusive = 3,
+
+            /// <summary>
+            /// Enum Exclusive for value: Exclusive
+            /// </summary>
+            [EnumMember(Value = "Exclusive")]
+            Exclusive = 4
+        }
+
+        /// <summary>
+        /// Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.
+        /// </summary>
+        /// <value>Available values: Inclusive, StartExclusive, EndExclusive, Exclusive.</value>
+        [DataMember(Name = "windowBounds", EmitDefaultValue = false)]
+        public WindowBoundsEnum? WindowBounds { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="RateCurveShiftDefinition" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -115,8 +153,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="scale">Available values: Bps, Percentage..</param>
         /// <param name="applyTo">A LUSID filter expression over the instrument entity scoping which instruments this shift is  for, e.g. \&quot;properties[Instrument/default/CountryOfIssue] eq &#39;Italy&#39;\&quot;. The shifted market data  is used by the whole valuation run, but when the scenario is requested as a result column the  column is only populated for matching instruments. Only usable when the scenario is applied as  a per-metric column. Note that with a scope set, the base and scenario columns cover different  instrument populations: an aggregate (e.g. Sum) of the scenario column totals only the matching  instruments, so it is not directly comparable to the same aggregate of the base column..</param>
         /// <param name="pivotTenor">The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape, whose  asymmetry matters because key-rate buckets are rarely evenly spaced. Only valid with  ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. Declared last on  purpose: generated SDKs emit their positional constructor in property-declaration order,  and this property must not shift the parameters of the ones before it.  Over a window containing a single curve point, that point takes the full Amount regardless  of where the pivot lands: a one-point window has no slope to express, and every shift  shape degenerates the same way there..</param>
-        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
-        public RateCurveShiftDefinition(string ccy = default(string), decimal? amount = default(decimal?), string startTenor = default(string), string endTenor = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScaleEnum ?scale = default(ScaleEnum?), string applyTo = default(string), string pivotTenor = default(string), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
+        /// <param name="windowBounds">Available values: Inclusive, StartExclusive, EndExclusive, Exclusive..</param>
+        /// <param name="curveName">The funding identifier of the one curve in the currency this shift targets, letting a  scenario shock a named curve (say, an issuer discounting curve) without also moving the  risk-free curve mastered in the same currency. Omitted - as on every scenario stored  before this field existed - the shift matches every rate curve in the currency, exactly  as before. Declared last on purpose: generated SDKs emit their positional constructor in  property-declaration order, and this property must not shift the parameters of the ones  before it..</param>
+        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
+        public RateCurveShiftDefinition(string ccy = default(string), decimal? amount = default(decimal?), string startTenor = default(string), string endTenor = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScaleEnum ?scale = default(ScaleEnum?), string applyTo = default(string), string pivotTenor = default(string), WindowBoundsEnum ?windowBounds = default(WindowBoundsEnum?), string curveName = default(string), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
         {
             // to ensure "ccy" is required (not null)
             if (ccy == null)
@@ -132,6 +172,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Scale = scale;
             this.ApplyTo = applyTo;
             this.PivotTenor = pivotTenor;
+            this.WindowBounds = windowBounds;
+            this.CurveName = curveName;
         }
 
         /// <summary>
@@ -174,6 +216,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string PivotTenor { get; set; }
 
         /// <summary>
+        /// The funding identifier of the one curve in the currency this shift targets, letting a  scenario shock a named curve (say, an issuer discounting curve) without also moving the  risk-free curve mastered in the same currency. Omitted - as on every scenario stored  before this field existed - the shift matches every rate curve in the currency, exactly  as before. Declared last on purpose: generated SDKs emit their positional constructor in  property-declaration order, and this property must not shift the parameters of the ones  before it.
+        /// </summary>
+        /// <value>The funding identifier of the one curve in the currency this shift targets, letting a  scenario shock a named curve (say, an issuer discounting curve) without also moving the  risk-free curve mastered in the same currency. Omitted - as on every scenario stored  before this field existed - the shift matches every rate curve in the currency, exactly  as before. Declared last on purpose: generated SDKs emit their positional constructor in  property-declaration order, and this property must not shift the parameters of the ones  before it.</value>
+        [DataMember(Name = "curveName", EmitDefaultValue = true)]
+        public string CurveName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -190,6 +239,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Scale: ").Append(Scale).Append("\n");
             sb.Append("  ApplyTo: ").Append(ApplyTo).Append("\n");
             sb.Append("  PivotTenor: ").Append(PivotTenor).Append("\n");
+            sb.Append("  WindowBounds: ").Append(WindowBounds).Append("\n");
+            sb.Append("  CurveName: ").Append(CurveName).Append("\n");
             sb.Append("  ScenarioShiftType: ").Append(ScenarioShiftType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -265,6 +316,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PivotTenor.Equals(input.PivotTenor))
                 ) && base.Equals(input) && 
                 (
+                    this.WindowBounds == input.WindowBounds ||
+                    this.WindowBounds.Equals(input.WindowBounds)
+                ) && base.Equals(input) && 
+                (
+                    this.CurveName == input.CurveName ||
+                    (this.CurveName != null &&
+                    this.CurveName.Equals(input.CurveName))
+                ) && base.Equals(input) && 
+                (
                     this.ScenarioShiftType == input.ScenarioShiftType ||
                     this.ScenarioShiftType.Equals(input.ScenarioShiftType)
                 );
@@ -304,6 +364,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.PivotTenor != null)
                 {
                     hashCode = (hashCode * 59) + this.PivotTenor.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.WindowBounds.GetHashCode();
+                if (this.CurveName != null)
+                {
+                    hashCode = (hashCode * 59) + this.CurveName.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ScenarioShiftType.GetHashCode();
                 return hashCode;

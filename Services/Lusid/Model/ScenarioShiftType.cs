@@ -61,7 +61,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum InflationCurveShiftDefinition for value: InflationCurveShiftDefinition
         /// </summary>
         [EnumMember(Value = "InflationCurveShiftDefinition")]
-        InflationCurveShiftDefinition = 6
+        InflationCurveShiftDefinition = 6,
+
+        /// <summary>
+        /// Enum CreditSpreadShiftDefinition for value: CreditSpreadShiftDefinition
+        /// </summary>
+        [EnumMember(Value = "CreditSpreadShiftDefinition")]
+        CreditSpreadShiftDefinition = 7
     }
 
 }

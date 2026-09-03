@@ -9,7 +9,7 @@
 | **CurrencyPair** | **string** | Required | *No description available.* |
 | **Amount** | **decimal?** | Optional | *No description available.* |
 | **ShiftType** | **string** | Required | Available values: Absolute, Relative, Percentage. |
-| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition. Default: `ScenarioShiftTypeEnum.FxShiftDefinition` |
+| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition. Default: `ScenarioShiftTypeEnum.FxShiftDefinition` |
 
 
 ## Usage
@@ -23,7 +23,7 @@ var instance = new FxShiftDefinition(
     currencyPair: "...",  // required
     amount: 0.0d,  // optional
     shiftType: "...",  // required — Available values: Absolute, Relative, Percentage.
-    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition.
+    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition.
 );
 ```
 ### Serializing to JSON
