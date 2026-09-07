@@ -902,8 +902,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="aggregateCashCommitments">When true, collapses cash-commitment rows that share a sub-holding key              into a single aggregated row per portfolio with summed units/cost and the per-leg breakdown retained on the              settlement schedule. Ignored when byTaxlots is true. Defaults to False. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>VersionedResourceListOfPortfolioHolding</returns>
-        VersionedResourceListOfPortfolioHolding GetHoldings(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>VersionedResourceListWithWarningsOfPortfolioHolding</returns>
+        VersionedResourceListWithWarningsOfPortfolioHolding GetHoldings(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// GetHoldings: Get holdings
@@ -926,8 +926,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="aggregateCashCommitments">When true, collapses cash-commitment rows that share a sub-holding key              into a single aggregated row per portfolio with summed units/cost and the per-leg breakdown retained on the              settlement schedule. Ignored when byTaxlots is true. Defaults to False. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of VersionedResourceListOfPortfolioHolding</returns>
-        Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfPortfolioHolding> GetHoldingsWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>ApiResponse of VersionedResourceListWithWarningsOfPortfolioHolding</returns>
+        Finbourne.Sdk.Client.ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> GetHoldingsWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// GetHoldingsAdjustment: Get holdings adjustment
         /// </summary>
@@ -2776,8 +2776,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of VersionedResourceListOfPortfolioHolding</returns>
-        System.Threading.Tasks.Task<VersionedResourceListOfPortfolioHolding> GetHoldingsAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of VersionedResourceListWithWarningsOfPortfolioHolding</returns>
+        System.Threading.Tasks.Task<VersionedResourceListWithWarningsOfPortfolioHolding> GetHoldingsAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// GetHoldings: Get holdings
@@ -2801,8 +2801,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (VersionedResourceListOfPortfolioHolding)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfPortfolioHolding>> GetHoldingsWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of ApiResponse (VersionedResourceListWithWarningsOfPortfolioHolding)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding>> GetHoldingsWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// GetHoldingsAdjustment: Get holdings adjustment
         /// </summary>
@@ -11309,10 +11309,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="aggregateCashCommitments">When true, collapses cash-commitment rows that share a sub-holding key              into a single aggregated row per portfolio with summed units/cost and the per-leg breakdown retained on the              settlement schedule. Ignored when byTaxlots is true. Defaults to False. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>VersionedResourceListOfPortfolioHolding</returns>
-        public VersionedResourceListOfPortfolioHolding GetHoldings(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>VersionedResourceListWithWarningsOfPortfolioHolding</returns>
+        public VersionedResourceListWithWarningsOfPortfolioHolding GetHoldings(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResponse = GetHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResponse = GetHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -11335,8 +11335,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="aggregateCashCommitments">When true, collapses cash-commitment rows that share a sub-holding key              into a single aggregated row per portfolio with summed units/cost and the per-leg breakdown retained on the              settlement schedule. Ignored when byTaxlots is true. Defaults to False. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of VersionedResourceListOfPortfolioHolding</returns>
-        public Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfPortfolioHolding> GetHoldingsWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>ApiResponse of VersionedResourceListWithWarningsOfPortfolioHolding</returns>
+        public Finbourne.Sdk.Client.ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> GetHoldingsWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -11458,7 +11458,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<VersionedResourceListOfPortfolioHolding, AbstractOpenAPISchema>("/api/api/transactionportfolios/{scope}/{code}/holdings", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<VersionedResourceListWithWarningsOfPortfolioHolding, AbstractOpenAPISchema>("/api/api/transactionportfolios/{scope}/{code}/holdings", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetHoldings", localVarResponse);
@@ -11490,10 +11490,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of VersionedResourceListOfPortfolioHolding</returns>
-        public async System.Threading.Tasks.Task<VersionedResourceListOfPortfolioHolding> GetHoldingsAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of VersionedResourceListWithWarningsOfPortfolioHolding</returns>
+        public async System.Threading.Tasks.Task<VersionedResourceListWithWarningsOfPortfolioHolding> GetHoldingsAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResponse = await GetHoldingsWithHttpInfoAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResponse = await GetHoldingsWithHttpInfoAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -11517,8 +11517,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (VersionedResourceListOfPortfolioHolding)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedResourceListOfPortfolioHolding>> GetHoldingsWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of ApiResponse (VersionedResourceListWithWarningsOfPortfolioHolding)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding>> GetHoldingsWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), bool? byTaxlots = default(bool?), int? includeSettlementEventsAfterDays = default(int?), string? timelineScope = default(string?), string? timelineCode = default(string?), string? closedPeriodId = default(string?), bool? aggregateCashCommitments = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -11641,7 +11641,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<VersionedResourceListOfPortfolioHolding, AbstractOpenAPISchema>("/api/api/transactionportfolios/{scope}/{code}/holdings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<VersionedResourceListWithWarningsOfPortfolioHolding, AbstractOpenAPISchema>("/api/api/transactionportfolios/{scope}/{code}/holdings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

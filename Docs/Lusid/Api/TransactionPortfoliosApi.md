@@ -1777,7 +1777,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getholdings"></a>
 ## GetHoldings
 
-> VersionedResourceListOfPortfolioHolding GetHoldings(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null, bool? byTaxlots = null, int? includeSettlementEventsAfterDays = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null, bool? aggregateCashCommitments = null)
+> VersionedResourceListWithWarningsOfPortfolioHolding GetHoldings(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? filter = null, List<string>? propertyKeys = null, bool? byTaxlots = null, int? includeSettlementEventsAfterDays = null, string? timelineScope = null, string? timelineCode = null, string? closedPeriodId = null, bool? aggregateCashCommitments = null)
 
 GetHoldings: Get holdings
 
@@ -1799,7 +1799,7 @@ var timelineScope = "timelineScope_example";  // string? (optional)
 var timelineCode = "timelineCode_example";  // string? (optional)
 var closedPeriodId = "closedPeriodId_example";  // string? (optional)
 var aggregateCashCommitments = true;  // bool? (optional)
-VersionedResourceListOfPortfolioHolding result = apiInstance.GetHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
+VersionedResourceListWithWarningsOfPortfolioHolding result = apiInstance.GetHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1822,7 +1822,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[VersionedResourceListOfPortfolioHolding](../Model/VersionedResourceListOfPortfolioHolding.md)
+[VersionedResourceListWithWarningsOfPortfolioHolding](../Model/VersionedResourceListWithWarningsOfPortfolioHolding.md)
 
 ### HTTP request headers
 
@@ -1843,7 +1843,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<VersionedResourceListOfPortfolioHolding> response = apiInstance.GetHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
+ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> response = apiInstance.GetHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, timelineScope, timelineCode, closedPeriodId, aggregateCashCommitments);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -25,6 +25,8 @@ Options for controlling the default aspects and behaviour of the pricing engine.
 | **EnableLegLevelInferenceForCustomSrsColumns** | **bool** | Optional | When enabled, allows inference between leg-level and  instrument-level data during portfolio valuation. If  data is missing at one level, it may be inferred from  the other level. For example, missing leg-level data   may be inferred from existing leg-level and instrument-  level data when ProduceSeparateResultForLinearOtcLegs  is enabled, and vice versa. Explicitly provided data  always takes precedence. |
 | **UseInstrumentScaleFactorAsDefault** | **bool** | Optional | When enabled, priceScaleFactor defined at the instrument level will  be used in the absence of quote scaleFactor when resolving quotes. |
 | **ScaleInstrumentAccruedOverrideByContractSize** | **bool** | Optional | When enabled, an SRS InstrumentAccrued override is multiplied by the instrument contractSize (legacy behaviour).  By default this is disabled, and the override is treated as the accrued for a single unit, keeping the  holding-level identity PV &#x3D; CleanPv + Accrued consistent. |
+| **RiskBumpOptions** | [RiskBumpOptions](RiskBumpOptions.md) | Optional | *No description available.* |
+| **FundingCurveByCurrency** | **Dictionary&lt;string, string&gt;** | Optional | Names the funding curve each currency discounts on, keyed by ISO 4217 currency code  (e.g. \&quot;GBP\&quot; -&gt; \&quot;GBPOIS-USDCOLL\&quot;). Keys are case-insensitive. A currency absent from  the map keeps the default funding curve, {CCY}OIS, so an absent or empty map leaves  every valuation unchanged. |
 
 
 ## Usage
@@ -54,7 +56,9 @@ var instance = new PricingOptions(
     returnZeroPv: new ReturnZeroPvOptions(...),  // optional
     enableLegLevelInferenceForCustomSrsColumns: true,  // optional — When enabled, allows inference between leg-level and  instrument-level data during portfolio valuation. If  data is missing at one level, it may be inferred from  the other level. For example, missing leg-level data   may be inferred from existing leg-level and instrument-  level data when ProduceSeparateResultForLinearOtcLegs  is enabled, and vice versa. Explicitly provided data  always takes precedence.
     useInstrumentScaleFactorAsDefault: true,  // optional — When enabled, priceScaleFactor defined at the instrument level will  be used in the absence of quote scaleFactor when resolving quotes.
-    scaleInstrumentAccruedOverrideByContractSize: true  // optional — When enabled, an SRS InstrumentAccrued override is multiplied by the instrument contractSize (legacy behaviour).  By default this is disabled, and the override is treated as the accrued for a single unit, keeping the  holding-level identity PV &#x3D; CleanPv + Accrued consistent.
+    scaleInstrumentAccruedOverrideByContractSize: true,  // optional — When enabled, an SRS InstrumentAccrued override is multiplied by the instrument contractSize (legacy behaviour).  By default this is disabled, and the override is treated as the accrued for a single unit, keeping the  holding-level identity PV &#x3D; CleanPv + Accrued consistent.
+    riskBumpOptions: new RiskBumpOptions(...),  // optional
+    fundingCurveByCurrency:   // optional — Names the funding curve each currency discounts on, keyed by ISO 4217 currency code  (e.g. \&quot;GBP\&quot; -&gt; \&quot;GBPOIS-USDCOLL\&quot;). Keys are case-insensitive. A currency absent from  the map keeps the default funding curve, {CCY}OIS, so an absent or empty map leaves  every valuation unchanged.
 );
 ```
 ### Serializing to JSON
@@ -74,6 +78,7 @@ var instance = JsonConvert.DeserializeObject<PricingOptions>(json);
 
 - [ModelSelection](ModelSelection.md)
 - [ReturnZeroPvOptions](ReturnZeroPvOptions.md)
+- [RiskBumpOptions](RiskBumpOptions.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -30,6 +30,7 @@ A list of holdings.
 | **OverdueUnits** | **decimal** | Optional | The number of unsettled units for the holding that are beyond their contractual settlement date. |
 | **CustodianAccount** | [CustodianAccount](CustodianAccount.md) | Optional | *No description available.* |
 | **ResolvedCustodianAccount** | [ResolvedCustodianAccount](ResolvedCustodianAccount.md) | Optional | *No description available.* |
+| **HoldingPropertyBalances** | **Dictionary&lt;string, decimal&gt;** | Optional | The latest running balance of each holding property maintained on the holding by transaction type holding property deltas, keyed by holding property key, for example &#39;CommittedCapital&#39;. Only populated when the holding has at least one balance. |
 
 
 ## Usage
@@ -64,7 +65,8 @@ var instance = new PortfolioHolding(
     unsettledUnits: 0.0d,  // optional — The number of unsettled units for the holding.
     overdueUnits: 0.0d,  // optional — The number of unsettled units for the holding that are beyond their contractual settlement date.
     custodianAccount: new CustodianAccount(...),  // optional
-    resolvedCustodianAccount: new ResolvedCustodianAccount(...)  // optional
+    resolvedCustodianAccount: new ResolvedCustodianAccount(...),  // optional
+    holdingPropertyBalances:   // optional — The latest running balance of each holding property maintained on the holding by transaction type holding property deltas, keyed by holding property key, for example &#39;CommittedCapital&#39;. Only populated when the holding has at least one balance.
 );
 ```
 ### Serializing to JSON

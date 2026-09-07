@@ -60,7 +60,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="overdueUnits">The number of unsettled units for the holding that are beyond their contractual settlement date..</param>
         /// <param name="custodianAccount">custodianAccount.</param>
         /// <param name="resolvedCustodianAccount">resolvedCustodianAccount.</param>
-        public PortfolioHolding(string instrumentScope = default(string), string instrumentUid = default(string), Dictionary<string, PerpetualProperty> subHoldingKeys = default(Dictionary<string, PerpetualProperty>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string holdingType = default(string), decimal units = default(decimal), decimal settledUnits = default(decimal), CurrencyAndAmount cost = default(CurrencyAndAmount), CurrencyAndAmount costPortfolioCcy = default(CurrencyAndAmount), Transaction transaction = default(Transaction), string currency = default(string), string holdingTypeName = default(string), long? holdingId = default(long?), CurrencyAndAmount notionalCost = default(CurrencyAndAmount), CurrencyAndAmount amortisedCost = default(CurrencyAndAmount), CurrencyAndAmount amortisedCostPortfolioCcy = default(CurrencyAndAmount), CurrencyAndAmount variationMargin = default(CurrencyAndAmount), CurrencyAndAmount variationMarginPortfolioCcy = default(CurrencyAndAmount), List<SettlementSchedule> settlementSchedule = default(List<SettlementSchedule>), decimal? currentFace = default(decimal?), ResourceId custodianAccountId = default(ResourceId), decimal unsettledUnits = default(decimal), decimal overdueUnits = default(decimal), CustodianAccount custodianAccount = default(CustodianAccount), ResolvedCustodianAccount resolvedCustodianAccount = default(ResolvedCustodianAccount))
+        /// <param name="holdingPropertyBalances">The latest running balance of each holding property maintained on the holding by transaction type holding property deltas, keyed by holding property key, for example &#39;CommittedCapital&#39;. Only populated when the holding has at least one balance..</param>
+        public PortfolioHolding(string instrumentScope = default(string), string instrumentUid = default(string), Dictionary<string, PerpetualProperty> subHoldingKeys = default(Dictionary<string, PerpetualProperty>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string holdingType = default(string), decimal units = default(decimal), decimal settledUnits = default(decimal), CurrencyAndAmount cost = default(CurrencyAndAmount), CurrencyAndAmount costPortfolioCcy = default(CurrencyAndAmount), Transaction transaction = default(Transaction), string currency = default(string), string holdingTypeName = default(string), long? holdingId = default(long?), CurrencyAndAmount notionalCost = default(CurrencyAndAmount), CurrencyAndAmount amortisedCost = default(CurrencyAndAmount), CurrencyAndAmount amortisedCostPortfolioCcy = default(CurrencyAndAmount), CurrencyAndAmount variationMargin = default(CurrencyAndAmount), CurrencyAndAmount variationMarginPortfolioCcy = default(CurrencyAndAmount), List<SettlementSchedule> settlementSchedule = default(List<SettlementSchedule>), decimal? currentFace = default(decimal?), ResourceId custodianAccountId = default(ResourceId), decimal unsettledUnits = default(decimal), decimal overdueUnits = default(decimal), CustodianAccount custodianAccount = default(CustodianAccount), ResolvedCustodianAccount resolvedCustodianAccount = default(ResolvedCustodianAccount), Dictionary<string, decimal> holdingPropertyBalances = default(Dictionary<string, decimal>))
         {
             // to ensure "instrumentUid" is required (not null)
             if (instrumentUid == null)
@@ -107,6 +108,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.OverdueUnits = overdueUnits;
             this.CustodianAccount = custodianAccount;
             this.ResolvedCustodianAccount = resolvedCustodianAccount;
+            this.HoldingPropertyBalances = holdingPropertyBalances;
         }
 
         /// <summary>
@@ -274,6 +276,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ResolvedCustodianAccount ResolvedCustodianAccount { get; set; }
 
         /// <summary>
+        /// The latest running balance of each holding property maintained on the holding by transaction type holding property deltas, keyed by holding property key, for example &#39;CommittedCapital&#39;. Only populated when the holding has at least one balance.
+        /// </summary>
+        /// <value>The latest running balance of each holding property maintained on the holding by transaction type holding property deltas, keyed by holding property key, for example &#39;CommittedCapital&#39;. Only populated when the holding has at least one balance.</value>
+        [DataMember(Name = "holdingPropertyBalances", EmitDefaultValue = true)]
+        public Dictionary<string, decimal> HoldingPropertyBalances { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -306,6 +315,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  OverdueUnits: ").Append(OverdueUnits).Append("\n");
             sb.Append("  CustodianAccount: ").Append(CustodianAccount).Append("\n");
             sb.Append("  ResolvedCustodianAccount: ").Append(ResolvedCustodianAccount).Append("\n");
+            sb.Append("  HoldingPropertyBalances: ").Append(HoldingPropertyBalances).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -464,6 +474,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ResolvedCustodianAccount == input.ResolvedCustodianAccount ||
                     (this.ResolvedCustodianAccount != null &&
                     this.ResolvedCustodianAccount.Equals(input.ResolvedCustodianAccount))
+                ) && 
+                (
+                    this.HoldingPropertyBalances == input.HoldingPropertyBalances ||
+                    this.HoldingPropertyBalances != null &&
+                    input.HoldingPropertyBalances != null &&
+                    this.HoldingPropertyBalances.SequenceEqual(input.HoldingPropertyBalances)
                 );
         }
 
@@ -563,6 +579,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.ResolvedCustodianAccount != null)
                 {
                     hashCode = (hashCode * 59) + this.ResolvedCustodianAccount.GetHashCode();
+                }
+                if (this.HoldingPropertyBalances != null)
+                {
+                    hashCode = (hashCode * 59) + this.HoldingPropertyBalances.GetHashCode();
                 }
                 return hashCode;
             }

@@ -13,6 +13,7 @@
 | **ValuationRecipes** | [RecDefRecipeIds](RecDefRecipeIds.md) | Optional | *No description available.* |
 | **Currencies** | [RecDefCurrencies](RecDefCurrencies.md) | Optional | *No description available.* |
 | **Rulesets** | [List&lt;RecDefRuleset&gt;](RecDefRuleset.md) | Required | The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once. |
+| **ReviewConfiguration** | [RecReviewConfiguration](RecReviewConfiguration.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -31,7 +32,8 @@ var instance = new UpdateRecDefinitionRequest(
     rightPortfolioSources: new List<RecDefSource>(),  // optional — The portfolios, portfolio groups and funds contributing to the right side. Empty when the right side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty.
     valuationRecipes: new RecDefRecipeIds(...),  // optional
     currencies: new RecDefCurrencies(...),  // optional
-    rulesets: new List<RecDefRuleset>()  // required — The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once.
+    rulesets: new List<RecDefRuleset>(),  // required — The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once.
+    reviewConfiguration: new RecReviewConfiguration(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -52,6 +54,7 @@ var instance = JsonConvert.DeserializeObject<UpdateRecDefinitionRequest>(json);
 - [RecDefRecipeIds](RecDefRecipeIds.md)
 - [RecDefCurrencies](RecDefCurrencies.md)
 - [RecDefRuleset](RecDefRuleset.md) — used in `Rulesets`
+- [RecReviewConfiguration](RecReviewConfiguration.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

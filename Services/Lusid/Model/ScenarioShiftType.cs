@@ -67,7 +67,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum CreditSpreadShiftDefinition for value: CreditSpreadShiftDefinition
         /// </summary>
         [EnumMember(Value = "CreditSpreadShiftDefinition")]
-        CreditSpreadShiftDefinition = 7
+        CreditSpreadShiftDefinition = 7,
+
+        /// <summary>
+        /// Enum ModelOptionShiftDefinition for value: ModelOptionShiftDefinition
+        /// </summary>
+        [EnumMember(Value = "ModelOptionShiftDefinition")]
+        ModelOptionShiftDefinition = 8
     }
 
 }

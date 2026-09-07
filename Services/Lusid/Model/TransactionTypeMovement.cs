@@ -48,7 +48,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="calculateTradeDateToSettlementFxPnL">Configures whether Trade To Settlement Date Realised Gain Loss should be calculated. This overrides the value set at the Portfolio level.If null, then the Portfolio Settlement Configuration TradeToSettlementDateRealisedFxPnl setting will be used.If false, then no TradeToSettlementDateRealisedFxPnl will apply for this movement and if true, then TradeToSettlementDateRealisedFxPnlwill be calculated for this movement..</param>
         /// <param name="custodianAccountType">The type of custodian account this movement targets, e.g. Cash or Margin. Free text, optional..</param>
         /// <param name="accountSelector">An optional selector expression used to identify the specific account this movement targets. Available values: From, To..</param>
-        public TransactionTypeMovement(string movementTypes = default(string), string side = default(string), int direction = default(int), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), List<TransactionTypePropertyMapping> mappings = default(List<TransactionTypePropertyMapping>), string name = default(string), List<string> movementOptions = default(List<string>), string settlementDateOverride = default(string), string condition = default(string), string settlementMode = default(string), bool? calculateTradeDateToSettlementFxPnL = default(bool?), string custodianAccountType = default(string), string accountSelector = default(string))
+        /// <param name="holdingPropertyDeltas">An optional list of running balances on the holding that this movement adjusts, for example the committed, funded and unfunded capital balances maintained by the private equity transaction types. Each delta names the balance to adjust, the transaction field that sources the adjustment amount, and the direction in which to apply it..</param>
+        public TransactionTypeMovement(string movementTypes = default(string), string side = default(string), int direction = default(int), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), List<TransactionTypePropertyMapping> mappings = default(List<TransactionTypePropertyMapping>), string name = default(string), List<string> movementOptions = default(List<string>), string settlementDateOverride = default(string), string condition = default(string), string settlementMode = default(string), bool? calculateTradeDateToSettlementFxPnL = default(bool?), string custodianAccountType = default(string), string accountSelector = default(string), List<HoldingPropertyDelta> holdingPropertyDeltas = default(List<HoldingPropertyDelta>))
         {
             // to ensure "movementTypes" is required (not null)
             if (movementTypes == null)
@@ -73,6 +74,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.CalculateTradeDateToSettlementFxPnL = calculateTradeDateToSettlementFxPnL;
             this.CustodianAccountType = custodianAccountType;
             this.AccountSelector = accountSelector;
+            this.HoldingPropertyDeltas = holdingPropertyDeltas;
         }
 
         /// <summary>
@@ -167,6 +169,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string AccountSelector { get; set; }
 
         /// <summary>
+        /// An optional list of running balances on the holding that this movement adjusts, for example the committed, funded and unfunded capital balances maintained by the private equity transaction types. Each delta names the balance to adjust, the transaction field that sources the adjustment amount, and the direction in which to apply it.
+        /// </summary>
+        /// <value>An optional list of running balances on the holding that this movement adjusts, for example the committed, funded and unfunded capital balances maintained by the private equity transaction types. Each delta names the balance to adjust, the transaction field that sources the adjustment amount, and the direction in which to apply it.</value>
+        [DataMember(Name = "holdingPropertyDeltas", EmitDefaultValue = true)]
+        public List<HoldingPropertyDelta> HoldingPropertyDeltas { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -187,6 +196,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  CalculateTradeDateToSettlementFxPnL: ").Append(CalculateTradeDateToSettlementFxPnL).Append("\n");
             sb.Append("  CustodianAccountType: ").Append(CustodianAccountType).Append("\n");
             sb.Append("  AccountSelector: ").Append(AccountSelector).Append("\n");
+            sb.Append("  HoldingPropertyDeltas: ").Append(HoldingPropertyDeltas).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -288,6 +298,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.AccountSelector == input.AccountSelector ||
                     (this.AccountSelector != null &&
                     this.AccountSelector.Equals(input.AccountSelector))
+                ) && 
+                (
+                    this.HoldingPropertyDeltas == input.HoldingPropertyDeltas ||
+                    this.HoldingPropertyDeltas != null &&
+                    input.HoldingPropertyDeltas != null &&
+                    this.HoldingPropertyDeltas.SequenceEqual(input.HoldingPropertyDeltas)
                 );
         }
 
@@ -348,6 +364,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.AccountSelector != null)
                 {
                     hashCode = (hashCode * 59) + this.AccountSelector.GetHashCode();
+                }
+                if (this.HoldingPropertyDeltas != null)
+                {
+                    hashCode = (hashCode * 59) + this.HoldingPropertyDeltas.GetHashCode();
                 }
                 return hashCode;
             }

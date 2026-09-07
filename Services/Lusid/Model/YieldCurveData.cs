@@ -43,8 +43,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="lineage">Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;..</param>
         /// <param name="marketDataOptions">marketDataOptions.</param>
         /// <param name="varVersion">varVersion.</param>
+        /// <param name="fundingCurveName">Optional name of the funding curve under which the calibration instruments are discounted,  for projection curves that are bootstrapped under a separate discount curve. This is the  funding identifier of the rates dependency for the calibration instruments&#39; domestic currency,  so a value of &#39;EUROIS&#39; names the discounting dependency Rates/EUR/EUROIS. When omitted the  calibration instruments are discounted on the curve being built, which is the classic  single-curve bootstrap..</param>
         /// <param name="marketDataType">Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData. (required) (default to MarketDataTypeEnum.DiscountFactorCurveData).</param>
-        public YieldCurveData(DateTimeOffset baseDate = default(DateTimeOffset), List<LusidInstrument> instruments = default(List<LusidInstrument>), List<MarketQuote> quotes = default(List<MarketQuote>), string lineage = default(string), MarketDataOptions marketDataOptions = default(MarketDataOptions), ModelVersion varVersion = default(ModelVersion), MarketDataTypeEnum marketDataType = default(MarketDataTypeEnum)) : base()
+        public YieldCurveData(DateTimeOffset baseDate = default(DateTimeOffset), List<LusidInstrument> instruments = default(List<LusidInstrument>), List<MarketQuote> quotes = default(List<MarketQuote>), string lineage = default(string), MarketDataOptions marketDataOptions = default(MarketDataOptions), ModelVersion varVersion = default(ModelVersion), string fundingCurveName = default(string), MarketDataTypeEnum marketDataType = default(MarketDataTypeEnum)) : base()
         {
             this.BaseDate = baseDate;
             // to ensure "instruments" is required (not null)
@@ -63,6 +64,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Lineage = lineage;
             this.MarketDataOptions = marketDataOptions;
             this.VarVersion = varVersion;
+            this.FundingCurveName = fundingCurveName;
         }
 
         /// <summary>
@@ -106,6 +108,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ModelVersion VarVersion { get; set; }
 
         /// <summary>
+        /// Optional name of the funding curve under which the calibration instruments are discounted,  for projection curves that are bootstrapped under a separate discount curve. This is the  funding identifier of the rates dependency for the calibration instruments&#39; domestic currency,  so a value of &#39;EUROIS&#39; names the discounting dependency Rates/EUR/EUROIS. When omitted the  calibration instruments are discounted on the curve being built, which is the classic  single-curve bootstrap.
+        /// </summary>
+        /// <value>Optional name of the funding curve under which the calibration instruments are discounted,  for projection curves that are bootstrapped under a separate discount curve. This is the  funding identifier of the rates dependency for the calibration instruments&#39; domestic currency,  so a value of &#39;EUROIS&#39; names the discounting dependency Rates/EUR/EUROIS. When omitted the  calibration instruments are discounted on the curve being built, which is the classic  single-curve bootstrap.</value>
+        [DataMember(Name = "fundingCurveName", EmitDefaultValue = true)]
+        public string FundingCurveName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -120,6 +129,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Lineage: ").Append(Lineage).Append("\n");
             sb.Append("  MarketDataOptions: ").Append(MarketDataOptions).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  FundingCurveName: ").Append(FundingCurveName).Append("\n");
             sb.Append("  MarketDataType: ").Append(MarketDataType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -189,6 +199,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.VarVersion.Equals(input.VarVersion))
                 ) && base.Equals(input) && 
                 (
+                    this.FundingCurveName == input.FundingCurveName ||
+                    (this.FundingCurveName != null &&
+                    this.FundingCurveName.Equals(input.FundingCurveName))
+                ) && base.Equals(input) && 
+                (
                     this.MarketDataType == input.MarketDataType ||
                     this.MarketDataType.Equals(input.MarketDataType)
                 );
@@ -226,6 +241,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.VarVersion != null)
                 {
                     hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
+                }
+                if (this.FundingCurveName != null)
+                {
+                    hashCode = (hashCode * 59) + this.FundingCurveName.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.MarketDataType.GetHashCode();
                 return hashCode;

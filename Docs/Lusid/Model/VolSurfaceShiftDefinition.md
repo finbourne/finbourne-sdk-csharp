@@ -11,7 +11,7 @@
 | **Strike** | **decimal?** | Optional | *No description available.* |
 | **Expiry** | **string** | Optional | *No description available.* |
 | **ShiftType** | **string** | Required | Available values: Absolute, Relative. |
-| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition. Default: `ScenarioShiftTypeEnum.VolSurfaceShiftDefinition` |
+| **ScenarioShiftType** | **string** | Required | Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition. Default: `ScenarioShiftTypeEnum.VolSurfaceShiftDefinition` |
 
 
 ## Usage
@@ -27,7 +27,7 @@ var instance = new VolSurfaceShiftDefinition(
     strike: 0.0d,  // optional
     expiry: "...",  // optional
     shiftType: "...",  // required — Available values: Absolute, Relative.
-    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition.
+    scenarioShiftType: "..."  // required — Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition.
 );
 ```
 ### Serializing to JSON

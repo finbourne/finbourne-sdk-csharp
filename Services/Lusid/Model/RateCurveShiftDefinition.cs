@@ -138,6 +138,38 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         [DataMember(Name = "windowBounds", EmitDefaultValue = false)]
         public WindowBoundsEnum? WindowBounds { get; set; }
         /// <summary>
+        /// Available values: Any, Positive, Negative.
+        /// </summary>
+        /// <value>Available values: Any, Positive, Negative.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ApplyWhenValueEnum
+        {
+            /// <summary>
+            /// Enum Any for value: Any
+            /// </summary>
+            [EnumMember(Value = "Any")]
+            Any = 1,
+
+            /// <summary>
+            /// Enum Positive for value: Positive
+            /// </summary>
+            [EnumMember(Value = "Positive")]
+            Positive = 2,
+
+            /// <summary>
+            /// Enum Negative for value: Negative
+            /// </summary>
+            [EnumMember(Value = "Negative")]
+            Negative = 3
+        }
+
+        /// <summary>
+        /// Available values: Any, Positive, Negative.
+        /// </summary>
+        /// <value>Available values: Any, Positive, Negative.</value>
+        [DataMember(Name = "applyWhenValue", EmitDefaultValue = false)]
+        public ApplyWhenValueEnum? ApplyWhenValue { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="RateCurveShiftDefinition" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -155,8 +187,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="pivotTenor">The tenor the Tent shift peaks at. The shift applies with the full Amount at this tenor,  falling linearly to zero at StartTenor and EndTenor - the key-rate triangle shape, whose  asymmetry matters because key-rate buckets are rarely evenly spaced. Only valid with  ShiftType Tent; omitted, a Tent peaks at the midpoint of the window. Declared last on  purpose: generated SDKs emit their positional constructor in property-declaration order,  and this property must not shift the parameters of the ones before it.  Over a window containing a single curve point, that point takes the full Amount regardless  of where the pivot lands: a one-point window has no slope to express, and every shift  shape degenerates the same way there..</param>
         /// <param name="windowBounds">Available values: Inclusive, StartExclusive, EndExclusive, Exclusive..</param>
         /// <param name="curveName">The funding identifier of the one curve in the currency this shift targets, letting a  scenario shock a named curve (say, an issuer discounting curve) without also moving the  risk-free curve mastered in the same currency. Omitted - as on every scenario stored  before this field existed - the shift matches every rate curve in the currency, exactly  as before. Declared last on purpose: generated SDKs emit their positional constructor in  property-declaration order, and this property must not shift the parameters of the ones  before it..</param>
-        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
-        public RateCurveShiftDefinition(string ccy = default(string), decimal? amount = default(decimal?), string startTenor = default(string), string endTenor = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScaleEnum ?scale = default(ScaleEnum?), string applyTo = default(string), string pivotTenor = default(string), WindowBoundsEnum ?windowBounds = default(WindowBoundsEnum?), string curveName = default(string), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
+        /// <param name="minimumAmountBps">The smallest magnitude, in basis points, of the shift finally applied at each curve point.  Evaluated per point AFTER the shape weight, in the direction the shift acts there (the sign  of Amount times the shape weight): the applied move becomes at least the minimum in that  direction, even where a Percentage shift on a negative rate would have pointed the other  way - the Solvency II up-shock&#39;s \&quot;at least one percentage point at any maturity\&quot; is  MinimumAmountBps &#x3D; 100 on the relative shift the regulation states. A point whose shape  weight is exactly zero stays unshifted: the floor strengthens a shock where the shape  applies one, it does not extend the shock to points the shape excludes (a Tent&#39;s window  ends remain unmoved). Deliberately in basis points rather than in Scale units, because the  floor and the shift are in different units by construction: the regulation states a  relative shock with an absolute floor. Omitted, no floor applies - today&#39;s behaviour.  Declared after PivotTenor on purpose, for the constructor-ordering reason given there..</param>
+        /// <param name="applyWhenValue">Available values: Any, Positive, Negative..</param>
+        /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
+        public RateCurveShiftDefinition(string ccy = default(string), decimal? amount = default(decimal?), string startTenor = default(string), string endTenor = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScaleEnum ?scale = default(ScaleEnum?), string applyTo = default(string), string pivotTenor = default(string), WindowBoundsEnum ?windowBounds = default(WindowBoundsEnum?), string curveName = default(string), decimal? minimumAmountBps = default(decimal?), ApplyWhenValueEnum ?applyWhenValue = default(ApplyWhenValueEnum?), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
         {
             // to ensure "ccy" is required (not null)
             if (ccy == null)
@@ -174,6 +208,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.PivotTenor = pivotTenor;
             this.WindowBounds = windowBounds;
             this.CurveName = curveName;
+            this.MinimumAmountBps = minimumAmountBps;
+            this.ApplyWhenValue = applyWhenValue;
         }
 
         /// <summary>
@@ -223,6 +259,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string CurveName { get; set; }
 
         /// <summary>
+        /// The smallest magnitude, in basis points, of the shift finally applied at each curve point.  Evaluated per point AFTER the shape weight, in the direction the shift acts there (the sign  of Amount times the shape weight): the applied move becomes at least the minimum in that  direction, even where a Percentage shift on a negative rate would have pointed the other  way - the Solvency II up-shock&#39;s \&quot;at least one percentage point at any maturity\&quot; is  MinimumAmountBps &#x3D; 100 on the relative shift the regulation states. A point whose shape  weight is exactly zero stays unshifted: the floor strengthens a shock where the shape  applies one, it does not extend the shock to points the shape excludes (a Tent&#39;s window  ends remain unmoved). Deliberately in basis points rather than in Scale units, because the  floor and the shift are in different units by construction: the regulation states a  relative shock with an absolute floor. Omitted, no floor applies - today&#39;s behaviour.  Declared after PivotTenor on purpose, for the constructor-ordering reason given there.
+        /// </summary>
+        /// <value>The smallest magnitude, in basis points, of the shift finally applied at each curve point.  Evaluated per point AFTER the shape weight, in the direction the shift acts there (the sign  of Amount times the shape weight): the applied move becomes at least the minimum in that  direction, even where a Percentage shift on a negative rate would have pointed the other  way - the Solvency II up-shock&#39;s \&quot;at least one percentage point at any maturity\&quot; is  MinimumAmountBps &#x3D; 100 on the relative shift the regulation states. A point whose shape  weight is exactly zero stays unshifted: the floor strengthens a shock where the shape  applies one, it does not extend the shock to points the shape excludes (a Tent&#39;s window  ends remain unmoved). Deliberately in basis points rather than in Scale units, because the  floor and the shift are in different units by construction: the regulation states a  relative shock with an absolute floor. Omitted, no floor applies - today&#39;s behaviour.  Declared after PivotTenor on purpose, for the constructor-ordering reason given there.</value>
+        [DataMember(Name = "minimumAmountBps", EmitDefaultValue = true)]
+        public decimal? MinimumAmountBps { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -241,6 +284,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  PivotTenor: ").Append(PivotTenor).Append("\n");
             sb.Append("  WindowBounds: ").Append(WindowBounds).Append("\n");
             sb.Append("  CurveName: ").Append(CurveName).Append("\n");
+            sb.Append("  MinimumAmountBps: ").Append(MinimumAmountBps).Append("\n");
+            sb.Append("  ApplyWhenValue: ").Append(ApplyWhenValue).Append("\n");
             sb.Append("  ScenarioShiftType: ").Append(ScenarioShiftType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -325,6 +370,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.CurveName.Equals(input.CurveName))
                 ) && base.Equals(input) && 
                 (
+                    this.MinimumAmountBps == input.MinimumAmountBps ||
+                    (this.MinimumAmountBps != null &&
+                    this.MinimumAmountBps.Equals(input.MinimumAmountBps))
+                ) && base.Equals(input) && 
+                (
+                    this.ApplyWhenValue == input.ApplyWhenValue ||
+                    this.ApplyWhenValue.Equals(input.ApplyWhenValue)
+                ) && base.Equals(input) && 
+                (
                     this.ScenarioShiftType == input.ScenarioShiftType ||
                     this.ScenarioShiftType.Equals(input.ScenarioShiftType)
                 );
@@ -370,6 +424,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.CurveName.GetHashCode();
                 }
+                if (this.MinimumAmountBps != null)
+                {
+                    hashCode = (hashCode * 59) + this.MinimumAmountBps.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ApplyWhenValue.GetHashCode();
                 hashCode = (hashCode * 59) + this.ScenarioShiftType.GetHashCode();
                 return hashCode;
             }

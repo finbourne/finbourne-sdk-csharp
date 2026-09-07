@@ -133,7 +133,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum ConstituentWeightFactor for value: ConstituentWeightFactor
         /// </summary>
         [EnumMember(Value = "ConstituentWeightFactor")]
-        ConstituentWeightFactor = 18
+        ConstituentWeightFactor = 18,
+
+        /// <summary>
+        /// Enum ForwardPrice for value: ForwardPrice
+        /// </summary>
+        [EnumMember(Value = "ForwardPrice")]
+        ForwardPrice = 19,
+
+        /// <summary>
+        /// Enum DiscountFactor for value: DiscountFactor
+        /// </summary>
+        [EnumMember(Value = "DiscountFactor")]
+        DiscountFactor = 20
     }
 
 }

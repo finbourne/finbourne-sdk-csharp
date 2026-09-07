@@ -44,7 +44,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="valuationRecipes">valuationRecipes.</param>
         /// <param name="currencies">currencies.</param>
         /// <param name="rulesets">The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once. (required).</param>
-        public UpdateRecDefinitionRequest(string displayName = default(string), string description = default(string), string definitionType = default(string), RecDefSideNames sideNames = default(RecDefSideNames), List<RecDefSource> leftPortfolioSources = default(List<RecDefSource>), List<RecDefSource> rightPortfolioSources = default(List<RecDefSource>), RecDefRecipeIds valuationRecipes = default(RecDefRecipeIds), RecDefCurrencies currencies = default(RecDefCurrencies), List<RecDefRuleset> rulesets = default(List<RecDefRuleset>))
+        /// <param name="reviewConfiguration">reviewConfiguration.</param>
+        public UpdateRecDefinitionRequest(string displayName = default(string), string description = default(string), string definitionType = default(string), RecDefSideNames sideNames = default(RecDefSideNames), List<RecDefSource> leftPortfolioSources = default(List<RecDefSource>), List<RecDefSource> rightPortfolioSources = default(List<RecDefSource>), RecDefRecipeIds valuationRecipes = default(RecDefRecipeIds), RecDefCurrencies currencies = default(RecDefCurrencies), List<RecDefRuleset> rulesets = default(List<RecDefRuleset>), RecReviewConfiguration reviewConfiguration = default(RecReviewConfiguration))
         {
             // to ensure "displayName" is required (not null)
             if (displayName == null)
@@ -70,6 +71,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.RightPortfolioSources = rightPortfolioSources;
             this.ValuationRecipes = valuationRecipes;
             this.Currencies = currencies;
+            this.ReviewConfiguration = reviewConfiguration;
         }
 
         /// <summary>
@@ -133,6 +135,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<RecDefRuleset> Rulesets { get; set; }
 
         /// <summary>
+        /// Gets or Sets ReviewConfiguration
+        /// </summary>
+        [DataMember(Name = "reviewConfiguration", EmitDefaultValue = false)]
+        public RecReviewConfiguration ReviewConfiguration { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -149,6 +157,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ValuationRecipes: ").Append(ValuationRecipes).Append("\n");
             sb.Append("  Currencies: ").Append(Currencies).Append("\n");
             sb.Append("  Rulesets: ").Append(Rulesets).Append("\n");
+            sb.Append("  ReviewConfiguration: ").Append(ReviewConfiguration).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -231,6 +240,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Rulesets != null &&
                     input.Rulesets != null &&
                     this.Rulesets.SequenceEqual(input.Rulesets)
+                ) && 
+                (
+                    this.ReviewConfiguration == input.ReviewConfiguration ||
+                    (this.ReviewConfiguration != null &&
+                    this.ReviewConfiguration.Equals(input.ReviewConfiguration))
                 );
         }
 
@@ -278,6 +292,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Rulesets != null)
                 {
                     hashCode = (hashCode * 59) + this.Rulesets.GetHashCode();
+                }
+                if (this.ReviewConfiguration != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReviewConfiguration.GetHashCode();
                 }
                 return hashCode;
             }

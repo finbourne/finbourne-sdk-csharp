@@ -7,6 +7,7 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**CalculateOrderDates**](#calculateorderdates) | **POST** `/api/api/transferagency/orderdates` | [EXPERIMENTAL] CalculateOrderDates: Calculate the key dates associated with transfer agency orders |
 | [**DeleteTransferAgencyOrders**](#deletetransferagencyorders) | **POST** `/api/api/transferagency/orders/$delete` | [EXPERIMENTAL] DeleteTransferAgencyOrders: Delete transfer agency orders |
+| [**EstimateTransferAgencyOrders**](#estimatetransferagencyorders) | **POST** `/api/api/transferagency/orders/$estimate` | [EXPERIMENTAL] EstimateTransferAgencyOrders: Estimate the values of transfer agency orders |
 | [**UpsertTransferAgencyOrders**](#upserttransferagencyorders) | **POST** `/api/api/transferagency/orders` | [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders |
 
 ### Example
@@ -157,6 +158,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<DeleteTransferAgencyOrdersResponse> response = apiInstance.DeleteTransferAgencyOrdersWithHttpInfo(requestBody);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="estimatetransferagencyorders"></a>
+## EstimateTransferAgencyOrders
+
+> EstimateTransferAgencyOrdersResponse EstimateTransferAgencyOrders(Dictionary<string, EstimateTransferAgencyOrderRequest> requestBody)
+
+[EXPERIMENTAL] EstimateTransferAgencyOrders: Estimate the values of transfer agency orders
+
+Estimates the units and the cash each order supplied would move, from the share class's most recent price.  Nothing is written.                An order may be named by its identifier, to estimate it as it stands, or supplied whole, to estimate values  that have not been saved yet. Both forms may appear in the same request. Where an order is supplied whole,  those values are estimated in place of the saved order's.                A switch or a transfer is two orders, and each leg is estimated independently.                The price is reported in the currency the share class is quoted in, which is not necessarily the order's  currency, so it is returned alongside that currency and the rate used.                The response contains both the successful estimates and any failures, each in the form of a dictionary  keyed by the request's keys. A share class with no price available fails only its own orders. It is  important to check the failed set for unsuccessful results.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransferAgencyApi>();
+var requestBody = new Dictionary<string, EstimateTransferAgencyOrderRequest>(); // Dictionary<string, EstimateTransferAgencyOrderRequest>
+EstimateTransferAgencyOrdersResponse result = apiInstance.EstimateTransferAgencyOrders(requestBody);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **requestBody** | [Dictionary&lt;string, EstimateTransferAgencyOrderRequest&gt;](../Model/EstimateTransferAgencyOrderRequest.md) | body | **required** | The transfer agency orders to estimate, keyed by a unique request identifier. |
+
+### Return type
+
+[EstimateTransferAgencyOrdersResponse](../Model/EstimateTransferAgencyOrdersResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully estimated orders and any failures. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the EstimateTransferAgencyOrdersWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<EstimateTransferAgencyOrdersResponse> response = apiInstance.EstimateTransferAgencyOrdersWithHttpInfo(requestBody);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

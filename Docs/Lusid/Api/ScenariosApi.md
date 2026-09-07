@@ -8,6 +8,7 @@ All URIs are relative to *http://localhost*
 | [**CreateScenarioFromTemplate**](#createscenariofromtemplate) | **POST** `/api/api/scenarios/{scope}/$fromTemplate` | [EARLY ACCESS] CreateScenarioFromTemplate: [EARLY ACCESS] CreateScenarioFromTemplate: Create a Scenario from a pre-built template. |
 | [**DeleteScenario**](#deletescenario) | **DELETE** `/api/api/scenarios/{scope}/{code}` | [EARLY ACCESS] DeleteScenario: Delete a Scenario, assuming that it is present. |
 | [**GetScenario**](#getscenario) | **GET** `/api/api/scenarios/{scope}/{code}` | [EARLY ACCESS] GetScenario: Get Scenario |
+| [**ListScenarioTemplates**](#listscenariotemplates) | **GET** `/api/api/scenarios/$templates` | [EARLY ACCESS] ListScenarioTemplates: [EARLY ACCESS] ListScenarioTemplates: List the pre-built scenario templates. |
 | [**ListScenarioVersions**](#listscenarioversions) | **GET** `/api/api/scenarios/{scope}/{code}/versions` | [EARLY ACCESS] ListScenarioVersions: List the versions of a Scenario |
 | [**ListScenarios**](#listscenarios) | **GET** `/api/api/scenarios` | [EARLY ACCESS] ListScenarios: List Scenarios |
 | [**ListScenariosForScope**](#listscenariosforscope) | **GET** `/api/api/scenarios/{scope}` | [EARLY ACCESS] ListScenariosForScope: List Scenarios for a scope |
@@ -63,7 +64,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ScenariosApi>();
 
 [EARLY ACCESS] CreateScenarioFromTemplate: [EARLY ACCESS] CreateScenarioFromTemplate: Create a Scenario from a pre-built template.
 
-Creates and stores a scenario built from a pre-defined parameterised template, for example a  parallel rates shift or an equity crash. The template determines the scenario's shifts; the  parameters supply the targets (e.g. currency or instrument) and optionally override the default  shift size. The created scenario is stored in the given scope and behaves exactly like a  hand-built scenario.                Available templates: RatesUp, RatesDown, CurveSteepener, CurveFlattener, VolSpike, EquityCrash,  FxShock, RiskOff.
+Creates and stores a scenario built from a pre-defined parameterised template, for example a  parallel rates shift or an equity crash. The template determines the scenario's shifts; the  parameters supply the targets (e.g. currency or instrument) and optionally override the default  shift size. The created scenario is stored in the given scope and behaves exactly like a  hand-built scenario.                Use ListScenarioTemplates to discover the available templates and, for each, the parameters it  accepts, their defaults and their units. A parameter the template does not read is rejected  rather than ignored, and parameter names are case-sensitive.
 
 ### Example
 
@@ -228,6 +229,59 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<GetScenarioResponse> response = apiInstance.GetScenarioWithHttpInfo(scope, code, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listscenariotemplates"></a>
+## ListScenarioTemplates
+
+> ResourceListOfScenarioTemplateDefinition ListScenarioTemplates()
+
+[EARLY ACCESS] ListScenarioTemplates: [EARLY ACCESS] ListScenarioTemplates: List the pre-built scenario templates.
+
+Lists every template CreateScenarioFromTemplate accepts, with each template's parameters: the  parameter's name (case-sensitive), whether it is required, what it means, the default used when  it is omitted and the unit a numeric value is read in. The units differ between templates -  basis points, percentage points or a fraction - so read them per template rather than assuming  one convention. The list is static application metadata: it does not vary by tenant, scope or  date, so the endpoint takes no parameters.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ScenariosApi>();
+ResourceListOfScenarioTemplateDefinition result = apiInstance.ListScenarioTemplates();
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[ResourceListOfScenarioTemplateDefinition](../Model/ResourceListOfScenarioTemplateDefinition.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The available scenario templates |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListScenarioTemplatesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfScenarioTemplateDefinition> response = apiInstance.ListScenarioTemplatesWithHttpInfo();
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

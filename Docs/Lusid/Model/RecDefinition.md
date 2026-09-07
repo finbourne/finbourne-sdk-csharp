@@ -14,6 +14,7 @@
 | **ValuationRecipes** | [RecDefRecipeIds](RecDefRecipeIds.md) | Optional | *No description available.* |
 | **Currencies** | [RecDefCurrencies](RecDefCurrencies.md) | Optional | *No description available.* |
 | **Rulesets** | [List&lt;RecDefRuleset&gt;](RecDefRuleset.md) | Required | The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once. |
+| **ReviewConfiguration** | [RecReviewConfiguration](RecReviewConfiguration.md) | Required | *No description available.* |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
@@ -37,6 +38,7 @@ var instance = new RecDefinition(
     valuationRecipes: new RecDefRecipeIds(...),  // optional
     currencies: new RecDefCurrencies(...),  // optional
     rulesets: new List<RecDefRuleset>(),  // required — The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once.
+    reviewConfiguration: new RecReviewConfiguration(...),  // required
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
     varVersion: new ModelVersion(...),  // optional
     links: new List<Link>()  // optional
@@ -64,6 +66,7 @@ var instance = JsonConvert.DeserializeObject<RecDefinition>(json);
 - [RecDefRecipeIds](RecDefRecipeIds.md)
 - [RecDefCurrencies](RecDefCurrencies.md)
 - [RecDefRuleset](RecDefRuleset.md) — used in `Rulesets`
+- [RecReviewConfiguration](RecReviewConfiguration.md)
 - [ModelVersion](ModelVersion.md)
 - [Link](Link.md)
 

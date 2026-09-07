@@ -5,7 +5,7 @@ The current status of a Payment Instruction. Managed exclusively via the dedicat
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **CurrentValue** | **string** | Required | The current status value. One of: Created, Staged, Released, Instructed, Sent, Cancelled. |
+| **CurrentValue** | **string** | Required | The current status value. One of: Created, Staged, Released, Instructed, Sent, Cancelled, Failed. |
 | **AsAtLastTransition** | **DateTimeOffset** | Required | The as-at timestamp of the most recent status transition. |
 | **UserIdLastTransition** | **string** | Required | The ID of the user who made the most recent status transition. |
 
@@ -18,7 +18,7 @@ The current status of a Payment Instruction. Managed exclusively via the dedicat
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new PaymentInstructionStatus(
-    currentValue: "...",  // required — The current status value. One of: Created, Staged, Released, Instructed, Sent, Cancelled.
+    currentValue: "...",  // required — The current status value. One of: Created, Staged, Released, Instructed, Sent, Cancelled, Failed.
     asAtLastTransition: DateTimeOffset.Now,  // required — The as-at timestamp of the most recent status transition.
     userIdLastTransition: "..."  // required — The ID of the user who made the most recent status transition.
 );

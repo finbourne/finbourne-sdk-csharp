@@ -23,30 +23,31 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// FundingLegOptions
+    /// FundingLegModelOptions
     /// </summary>
-    [DataContract(Name = "FundingLegOptions")]
+    [DataContract(Name = "FundingLegModelOptions")]
     [JsonConverter(typeof(JsonSubtypes), "ModelOptionsType")]
-    public partial class FundingLegOptions : ModelOptions, IEquatable<FundingLegOptions>, IValidatableObject
+    public partial class FundingLegModelOptions : ModelOptions, IEquatable<FundingLegModelOptions>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FundingLegOptions" /> class.
+        /// Initializes a new instance of the <see cref="FundingLegModelOptions" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected FundingLegOptions() { }
+        protected FundingLegModelOptions() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="FundingLegOptions" /> class.
+        /// Initializes a new instance of the <see cref="FundingLegModelOptions" /> class.
         /// </summary>
         /// <param name="expectedFundingLegNotional">Assumption made on future expected notional of the funding leg. (required).</param>
-        /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
-        public FundingLegOptions(string expectedFundingLegNotional = default(string), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base(modelOptionsType)
+        /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
+        public FundingLegModelOptions(string expectedFundingLegNotional = default(string), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
         {
             // to ensure "expectedFundingLegNotional" is required (not null)
             if (expectedFundingLegNotional == null)
             {
-                throw new ArgumentNullException("expectedFundingLegNotional is a required property for FundingLegOptions and cannot be null");
+                throw new ArgumentNullException("expectedFundingLegNotional is a required property for FundingLegModelOptions and cannot be null");
             }
             this.ExpectedFundingLegNotional = expectedFundingLegNotional;
+            this.ModelOptionsType = modelOptionsType;
         }
 
         /// <summary>
@@ -63,9 +64,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class FundingLegOptions {\n");
+            sb.Append("class FundingLegModelOptions {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  ExpectedFundingLegNotional: ").Append(ExpectedFundingLegNotional).Append("\n");
+            sb.Append("  ModelOptionsType: ").Append(ModelOptionsType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -86,15 +88,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FundingLegOptions);
+            return this.Equals(input as FundingLegModelOptions);
         }
 
         /// <summary>
-        /// Returns true if FundingLegOptions instances are equal
+        /// Returns true if FundingLegModelOptions instances are equal
         /// </summary>
-        /// <param name="input">Instance of FundingLegOptions to be compared</param>
+        /// <param name="input">Instance of FundingLegModelOptions to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FundingLegOptions input)
+        public bool Equals(FundingLegModelOptions input)
         {
             if (input == null)
             {
@@ -105,6 +107,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ExpectedFundingLegNotional == input.ExpectedFundingLegNotional ||
                     (this.ExpectedFundingLegNotional != null &&
                     this.ExpectedFundingLegNotional.Equals(input.ExpectedFundingLegNotional))
+                ) && base.Equals(input) && 
+                (
+                    this.ModelOptionsType == input.ModelOptionsType ||
+                    this.ModelOptionsType.Equals(input.ModelOptionsType)
                 );
         }
 
@@ -121,6 +127,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.ExpectedFundingLegNotional.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ModelOptionsType.GetHashCode();
                 return hashCode;
             }
         }

@@ -5,8 +5,9 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetPaymentInstruction**](#getpaymentinstruction) | **GET** `/api/api/paymentinstructions/{scope}/{code}` | [EARLY ACCESS] GetPaymentInstruction: Get Payment Instruction |
-| [**UpsertPaymentInstructions**](#upsertpaymentinstructions) | **POST** `/api/api/paymentinstructions` | [EARLY ACCESS] UpsertPaymentInstructions: Upsert Payment Instructions |
+| [**DeletePaymentInstruction**](#deletepaymentinstruction) | **DELETE** `/api/api/paymentinstructions/{scope}/{code}` | [EXPERIMENTAL] DeletePaymentInstruction: Delete Payment Instruction |
+| [**GetPaymentInstruction**](#getpaymentinstruction) | **GET** `/api/api/paymentinstructions/{scope}/{code}` | [EXPERIMENTAL] GetPaymentInstruction: Get Payment Instruction |
+| [**UpsertPaymentInstructions**](#upsertpaymentinstructions) | **POST** `/api/api/paymentinstructions` | [EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions |
 
 ### Example
 
@@ -50,12 +51,72 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<PaymentInstructio
 
 ---
 
+<a id="deletepaymentinstruction"></a>
+## DeletePaymentInstruction
+
+> DeletedEntityResponse DeletePaymentInstruction(string scope, string code)
+
+[EXPERIMENTAL] DeletePaymentInstruction: Delete Payment Instruction
+
+Delete a Payment Instruction. Deletion will be valid from the payment instruction's creation datetime.  This means that the payment instruction will no longer exist at any effective datetime from the asAt datetime  of deletion. Any payment records the instruction owns are released and become available to another instruction.  A payment instruction that has been released, instructed, sent, cancelled or failed cannot be deleted.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<PaymentInstructionsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+DeletedEntityResponse result = apiInstance.DeletePaymentInstruction(scope, code);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the payment instruction. |
+| **code** | **string** | path | **required** | The code of the payment instruction. |
+
+### Return type
+
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The response from deleting the payment instruction |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeletePaymentInstructionWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeletePaymentInstructionWithHttpInfo(scope, code);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="getpaymentinstruction"></a>
 ## GetPaymentInstruction
 
 > PaymentInstruction GetPaymentInstruction(string scope, string code, List<string>? propertyKeys = null, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EARLY ACCESS] GetPaymentInstruction: Get Payment Instruction
+[EXPERIMENTAL] GetPaymentInstruction: Get Payment Instruction
 
 Retrieve a single Payment Instruction.
 
@@ -121,7 +182,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PaymentInstructionsResponse UpsertPaymentInstructions(Dictionary<string, PaymentInstructionRequest> requestBody)
 
-[EARLY ACCESS] UpsertPaymentInstructions: Upsert Payment Instructions
+[EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions
 
 Create or update a collection of Payment Instructions.
 
