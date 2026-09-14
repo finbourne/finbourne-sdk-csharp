@@ -7,6 +7,7 @@ A request to estimate the values of one order. `OrderId` is required whether or 
 |------|------|----------|-------------|
 | **OrderId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **Order** | [TransferAgencyOrderToEstimate](TransferAgencyOrderToEstimate.md) | Optional | *No description available.* |
+| **PriceDate** | **DateTimeOffset?** | Optional | *No description available.* |
 
 
 ## Usage
@@ -18,7 +19,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new EstimateTransferAgencyOrderRequest(
     orderId: new ResourceId(...),  // required
-    order: new TransferAgencyOrderToEstimate(...)  // optional
+    order: new TransferAgencyOrderToEstimate(...),  // optional
+    priceDate: DateTimeOffset.Now  // optional
 );
 ```
 ### Serializing to JSON

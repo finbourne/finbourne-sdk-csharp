@@ -40,7 +40,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="displayName">Human readable name (required).</param>
         /// <param name="description">Human readable description.</param>
         /// <param name="rootTaskDefinitionId">rootTaskDefinitionId (required).</param>
-        /// <param name="workflowStructure">workflowStructure.</param>
+        /// <param name="workflowStructure">workflowStructure (required).</param>
         /// <param name="properties">The properties of the Workflow, keyed by property key..</param>
         public WorkflowResponse(ResourceId id = default(ResourceId), VersionInfo varVersion = default(VersionInfo), string displayName = default(string), string description = default(string), ResourceId rootTaskDefinitionId = default(ResourceId), WorkflowStructure workflowStructure = default(WorkflowStructure), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>))
         {
@@ -62,9 +62,14 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("rootTaskDefinitionId is a required property for WorkflowResponse and cannot be null");
             }
             this.RootTaskDefinitionId = rootTaskDefinitionId;
+            // to ensure "workflowStructure" is required (not null)
+            if (workflowStructure == null)
+            {
+                throw new ArgumentNullException("workflowStructure is a required property for WorkflowResponse and cannot be null");
+            }
+            this.WorkflowStructure = workflowStructure;
             this.VarVersion = varVersion;
             this.Description = description;
-            this.WorkflowStructure = workflowStructure;
             this.Properties = properties;
         }
 
@@ -103,7 +108,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <summary>
         /// Gets or Sets WorkflowStructure
         /// </summary>
-        [DataMember(Name = "workflowStructure", EmitDefaultValue = false)]
+        [DataMember(Name = "workflowStructure", IsRequired = true, EmitDefaultValue = true)]
         public WorkflowStructure WorkflowStructure { get; set; }
 
         /// <summary>

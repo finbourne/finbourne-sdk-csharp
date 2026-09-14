@@ -6,7 +6,7 @@ Represents a set of diagnostics per generatedEvent, where applicable.
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **InstrumentEventId** | **string** | Required | *No description available.* |
-| **Type** | **string** | Required | Available values: MarketDataFailure, TransactionFailure, EventCombinationFailure, RepodOutHolding, ScheduleFailure. |
+| **Type** | **string** | Required | Available values: MarketDataFailure, TransactionFailure, EventCombinationFailure, RepodOutHolding, ScheduleFailure, ModelSubstitution. |
 | **Detail** | **string** | Required | *No description available.* |
 | **ErrorDetails** | **List&lt;string&gt;** | Required | *No description available.* |
 
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new GeneratedEventDiagnostics(
     instrumentEventId: "...",  // required
-    type: "...",  // required — Available values: MarketDataFailure, TransactionFailure, EventCombinationFailure, RepodOutHolding, ScheduleFailure.
+    type: "...",  // required — Available values: MarketDataFailure, TransactionFailure, EventCombinationFailure, RepodOutHolding, ScheduleFailure, ModelSubstitution.
     detail: "...",  // required
     errorDetails:   // required
 );

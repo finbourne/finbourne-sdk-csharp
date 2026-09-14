@@ -23,7 +23,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// A PikSchedule represents Payment-in-Kind features for a ComplexBond.  It works in conjunction with existing FixedSchedules or FloatSchedules to define  how interest is paid during duration of the schedule.
+    /// A PikSchedule represents Payment-in-Kind features for a ComplexBond, a FlexibleLoan or a LoanFacility.  It works in conjunction with existing FixedSchedules or FloatSchedules to define  how interest is paid during duration of the schedule.
     /// </summary>
     [DataContract(Name = "PikSchedule")]
     [JsonConverter(typeof(JsonSubtypes), "ScheduleType")]
@@ -39,22 +39,32 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="startDate">The start date of the PIK schedule period. (required).</param>
         /// <param name="maturityDate">The end date of the PIK schedule period. (required).</param>
+        /// <param name="faceRoundingConvention">How the face credited by an interest capitalisation is rounded. A PIK indenture typically increases  the note&#39;s principal by the interest payable rounded to a whole currency unit, and which way it  rounds varies by issuer. Defaults to null, which leaves the credited face unrounded. BuyUp is one  of the available values but is rejected: a capitalisation has no cash leg to fund the next whole  unit from. The per-unit coupon itself is never rounded. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding..</param>
+        /// <param name="faceRoundingDecimalPlaces">The number of decimal places the credited face is rounded to. Required when  FaceRoundingConvention is RoundToDecimalPlaces and not permitted otherwise..</param>
         /// <param name="isPikFractionElectable">If true, the PIK fraction is electable at each payment date.  Defaults to false..</param>
         /// <param name="pikFraction">The fraction of the coupon that is paid in kind, where 0 means fully cash and 1 means fully PIK.  Required if IsPikFractionElectable is false or null. Must satisfy 0 &lt;&#x3D; pikFraction &lt;&#x3D; 1..</param>
+        /// <param name="pikMargin">The portion of the coupon that is paid in kind, stated in the leg&#39;s own rate units (an annualised  rate on the notional) rather than as a fraction of the coupon. The in-kind leg accrues at this flat  rate and the cash leg accrues the remainder of the coupon, so on a floating leg the in-kind portion  stays constant across fixings — the shape of a loan quoted as \&quot;index + 700bp, of which 250bp paid  in kind\&quot;. On a fixed leg it is equivalent to pikFraction &#x3D; pikMargin / couponRate. Should the  period&#39;s whole coupon fall below the margin, the in-kind portion is capped at the whole  (non-negative) coupon and the cash leg floors at zero.  Mutually exclusive with pikFraction, pikRate, pikSpread and isPikFractionElectable.  Must be greater than or equal to zero. null indicates the split is stated by pikFraction instead..</param>
         /// <param name="pikPaymentType">The type of PIK payment to be used for the duration of this schedule.  InterestCapitalisation adds the paid-in-kind portion to the bond&#39;s current face;  AdditionalSecurities settles it by delivering units of another instrument, named on each  period&#39;s PikBondInterestEvent; Electable leaves the choice to a per-period election.                Supported string (enumeration) values are: [Electable, InterestCapitalisation, AdditionalSecurities]..</param>
         /// <param name="pikRate">The PIK interest rate. Must be greater than or equal to zero.  null indicates no override PIK interest rate..</param>
         /// <param name="pikSpread">The PIK spread to be added to the base rate for the final PIK rate.  null indicates no spread on base rate..</param>
+        /// <param name="pikTravelsFree">Whether the in-kind entitlement travels with the traded position for the whole period, the way bond  interest does, rather than being earned from settlement the way loan cash interest is. When true, a  holder who buys before the period end takes the full-period in-kind amount on the amount bought even  if the trade settles after the ex-date. When false, the in-kind amount is day-weighted on the settled  balance path and the settled holder keeps it. Defaults to true. Bank debt only: a ComplexBond&#39;s  in-kind entitlement already follows the record date.                Nullable in the constructor and initialised here, unlike the generated shape: Newtonsoft passes  default(bool) for a value-type constructor parameter the payload omits, so a plain  &#x60;bool pikTravelsFree &#x3D; true&#x60; would come back false for every client that did not state it..</param>
+        /// <param name="pikInterestBasis">Whether the in-kind leg stands in place of the cash leg or is paid on top of it.                Alternative, the default, is the toggling structure: one period&#39;s interest settled partly in cash  and partly in kind, so the cash leg settles the complement of PikFraction and the period&#39;s  interest is the weighted sum of the two accruals, lying between them. Additional makes the two  separate legs of one loan, each settled in full, so the period&#39;s interest is their sum and  PikFraction weights only the in-kind leg.                The two accruals cannot be told apart without this: 500 accrued in cash against 600 in kind is  560 of interest on one reading and 1,100 on the other. A PikMargin schedule is Additional  whichever is stated, because the margin is already carved out of the coupon.                Defaulted here as well as in the constructor for the reason PikTravelsFree is..</param>
         /// <param name="scheduleType">Available values: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, PikSchedule, CommodityCalendarSchedule, Invalid, CancelSchedule. (required) (default to ScheduleTypeEnum.FixedSchedule).</param>
-        public PikSchedule(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), bool isPikFractionElectable = default(bool), decimal? pikFraction = default(decimal?), string pikPaymentType = default(string), decimal? pikRate = default(decimal?), decimal? pikSpread = default(decimal?), ScheduleTypeEnum scheduleType = default(ScheduleTypeEnum)) : base()
+        public PikSchedule(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), string faceRoundingConvention = default(string), int? faceRoundingDecimalPlaces = default(int?), bool isPikFractionElectable = default(bool), decimal? pikFraction = default(decimal?), decimal? pikMargin = default(decimal?), string pikPaymentType = default(string), decimal? pikRate = default(decimal?), decimal? pikSpread = default(decimal?), bool pikTravelsFree = default(bool), string pikInterestBasis = default(string), ScheduleTypeEnum scheduleType = default(ScheduleTypeEnum)) : base()
         {
             this.StartDate = startDate;
             this.MaturityDate = maturityDate;
             this.ScheduleType = scheduleType;
+            this.FaceRoundingConvention = faceRoundingConvention;
+            this.FaceRoundingDecimalPlaces = faceRoundingDecimalPlaces;
             this.IsPikFractionElectable = isPikFractionElectable;
             this.PikFraction = pikFraction;
+            this.PikMargin = pikMargin;
             this.PikPaymentType = pikPaymentType;
             this.PikRate = pikRate;
             this.PikSpread = pikSpread;
+            this.PikTravelsFree = pikTravelsFree;
+            this.PikInterestBasis = pikInterestBasis;
         }
 
         /// <summary>
@@ -72,6 +82,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public DateTimeOffset MaturityDate { get; set; }
 
         /// <summary>
+        /// How the face credited by an interest capitalisation is rounded. A PIK indenture typically increases  the note&#39;s principal by the interest payable rounded to a whole currency unit, and which way it  rounds varies by issuer. Defaults to null, which leaves the credited face unrounded. BuyUp is one  of the available values but is rejected: a capitalisation has no cash leg to fund the next whole  unit from. The per-unit coupon itself is never rounded. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.
+        /// </summary>
+        /// <value>How the face credited by an interest capitalisation is rounded. A PIK indenture typically increases  the note&#39;s principal by the interest payable rounded to a whole currency unit, and which way it  rounds varies by issuer. Defaults to null, which leaves the credited face unrounded. BuyUp is one  of the available values but is rejected: a capitalisation has no cash leg to fund the next whole  unit from. The per-unit coupon itself is never rounded. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.</value>
+        [DataMember(Name = "faceRoundingConvention", EmitDefaultValue = true)]
+        public string FaceRoundingConvention { get; set; }
+
+        /// <summary>
+        /// The number of decimal places the credited face is rounded to. Required when  FaceRoundingConvention is RoundToDecimalPlaces and not permitted otherwise.
+        /// </summary>
+        /// <value>The number of decimal places the credited face is rounded to. Required when  FaceRoundingConvention is RoundToDecimalPlaces and not permitted otherwise.</value>
+        [DataMember(Name = "faceRoundingDecimalPlaces", EmitDefaultValue = true)]
+        public int? FaceRoundingDecimalPlaces { get; set; }
+
+        /// <summary>
         /// If true, the PIK fraction is electable at each payment date.  Defaults to false.
         /// </summary>
         /// <value>If true, the PIK fraction is electable at each payment date.  Defaults to false.</value>
@@ -84,6 +108,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>The fraction of the coupon that is paid in kind, where 0 means fully cash and 1 means fully PIK.  Required if IsPikFractionElectable is false or null. Must satisfy 0 &lt;&#x3D; pikFraction &lt;&#x3D; 1.</value>
         [DataMember(Name = "pikFraction", EmitDefaultValue = true)]
         public decimal? PikFraction { get; set; }
+
+        /// <summary>
+        /// The portion of the coupon that is paid in kind, stated in the leg&#39;s own rate units (an annualised  rate on the notional) rather than as a fraction of the coupon. The in-kind leg accrues at this flat  rate and the cash leg accrues the remainder of the coupon, so on a floating leg the in-kind portion  stays constant across fixings — the shape of a loan quoted as \&quot;index + 700bp, of which 250bp paid  in kind\&quot;. On a fixed leg it is equivalent to pikFraction &#x3D; pikMargin / couponRate. Should the  period&#39;s whole coupon fall below the margin, the in-kind portion is capped at the whole  (non-negative) coupon and the cash leg floors at zero.  Mutually exclusive with pikFraction, pikRate, pikSpread and isPikFractionElectable.  Must be greater than or equal to zero. null indicates the split is stated by pikFraction instead.
+        /// </summary>
+        /// <value>The portion of the coupon that is paid in kind, stated in the leg&#39;s own rate units (an annualised  rate on the notional) rather than as a fraction of the coupon. The in-kind leg accrues at this flat  rate and the cash leg accrues the remainder of the coupon, so on a floating leg the in-kind portion  stays constant across fixings — the shape of a loan quoted as \&quot;index + 700bp, of which 250bp paid  in kind\&quot;. On a fixed leg it is equivalent to pikFraction &#x3D; pikMargin / couponRate. Should the  period&#39;s whole coupon fall below the margin, the in-kind portion is capped at the whole  (non-negative) coupon and the cash leg floors at zero.  Mutually exclusive with pikFraction, pikRate, pikSpread and isPikFractionElectable.  Must be greater than or equal to zero. null indicates the split is stated by pikFraction instead.</value>
+        [DataMember(Name = "pikMargin", EmitDefaultValue = true)]
+        public decimal? PikMargin { get; set; }
 
         /// <summary>
         /// The type of PIK payment to be used for the duration of this schedule.  InterestCapitalisation adds the paid-in-kind portion to the bond&#39;s current face;  AdditionalSecurities settles it by delivering units of another instrument, named on each  period&#39;s PikBondInterestEvent; Electable leaves the choice to a per-period election.                Supported string (enumeration) values are: [Electable, InterestCapitalisation, AdditionalSecurities].
@@ -107,6 +138,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal? PikSpread { get; set; }
 
         /// <summary>
+        /// Whether the in-kind entitlement travels with the traded position for the whole period, the way bond  interest does, rather than being earned from settlement the way loan cash interest is. When true, a  holder who buys before the period end takes the full-period in-kind amount on the amount bought even  if the trade settles after the ex-date. When false, the in-kind amount is day-weighted on the settled  balance path and the settled holder keeps it. Defaults to true. Bank debt only: a ComplexBond&#39;s  in-kind entitlement already follows the record date.                Nullable in the constructor and initialised here, unlike the generated shape: Newtonsoft passes  default(bool) for a value-type constructor parameter the payload omits, so a plain  &#x60;bool pikTravelsFree &#x3D; true&#x60; would come back false for every client that did not state it.
+        /// </summary>
+        /// <value>Whether the in-kind entitlement travels with the traded position for the whole period, the way bond  interest does, rather than being earned from settlement the way loan cash interest is. When true, a  holder who buys before the period end takes the full-period in-kind amount on the amount bought even  if the trade settles after the ex-date. When false, the in-kind amount is day-weighted on the settled  balance path and the settled holder keeps it. Defaults to true. Bank debt only: a ComplexBond&#39;s  in-kind entitlement already follows the record date.                Nullable in the constructor and initialised here, unlike the generated shape: Newtonsoft passes  default(bool) for a value-type constructor parameter the payload omits, so a plain  &#x60;bool pikTravelsFree &#x3D; true&#x60; would come back false for every client that did not state it.</value>
+        [DataMember(Name = "pikTravelsFree", EmitDefaultValue = true)]
+        public bool PikTravelsFree { get; set; }
+
+        /// <summary>
+        /// Whether the in-kind leg stands in place of the cash leg or is paid on top of it.                Alternative, the default, is the toggling structure: one period&#39;s interest settled partly in cash  and partly in kind, so the cash leg settles the complement of PikFraction and the period&#39;s  interest is the weighted sum of the two accruals, lying between them. Additional makes the two  separate legs of one loan, each settled in full, so the period&#39;s interest is their sum and  PikFraction weights only the in-kind leg.                The two accruals cannot be told apart without this: 500 accrued in cash against 600 in kind is  560 of interest on one reading and 1,100 on the other. A PikMargin schedule is Additional  whichever is stated, because the margin is already carved out of the coupon.                Defaulted here as well as in the constructor for the reason PikTravelsFree is.
+        /// </summary>
+        /// <value>Whether the in-kind leg stands in place of the cash leg or is paid on top of it.                Alternative, the default, is the toggling structure: one period&#39;s interest settled partly in cash  and partly in kind, so the cash leg settles the complement of PikFraction and the period&#39;s  interest is the weighted sum of the two accruals, lying between them. Additional makes the two  separate legs of one loan, each settled in full, so the period&#39;s interest is their sum and  PikFraction weights only the in-kind leg.                The two accruals cannot be told apart without this: 500 accrued in cash against 600 in kind is  560 of interest on one reading and 1,100 on the other. A PikMargin schedule is Additional  whichever is stated, because the margin is already carved out of the coupon.                Defaulted here as well as in the constructor for the reason PikTravelsFree is.</value>
+        [DataMember(Name = "pikInterestBasis", EmitDefaultValue = true)]
+        public string PikInterestBasis { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -117,11 +162,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             sb.Append("  MaturityDate: ").Append(MaturityDate).Append("\n");
+            sb.Append("  FaceRoundingConvention: ").Append(FaceRoundingConvention).Append("\n");
+            sb.Append("  FaceRoundingDecimalPlaces: ").Append(FaceRoundingDecimalPlaces).Append("\n");
             sb.Append("  IsPikFractionElectable: ").Append(IsPikFractionElectable).Append("\n");
             sb.Append("  PikFraction: ").Append(PikFraction).Append("\n");
+            sb.Append("  PikMargin: ").Append(PikMargin).Append("\n");
             sb.Append("  PikPaymentType: ").Append(PikPaymentType).Append("\n");
             sb.Append("  PikRate: ").Append(PikRate).Append("\n");
             sb.Append("  PikSpread: ").Append(PikSpread).Append("\n");
+            sb.Append("  PikTravelsFree: ").Append(PikTravelsFree).Append("\n");
+            sb.Append("  PikInterestBasis: ").Append(PikInterestBasis).Append("\n");
             sb.Append("  ScheduleType: ").Append(ScheduleType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -169,6 +219,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.MaturityDate.Equals(input.MaturityDate))
                 ) && base.Equals(input) && 
                 (
+                    this.FaceRoundingConvention == input.FaceRoundingConvention ||
+                    (this.FaceRoundingConvention != null &&
+                    this.FaceRoundingConvention.Equals(input.FaceRoundingConvention))
+                ) && base.Equals(input) && 
+                (
+                    this.FaceRoundingDecimalPlaces == input.FaceRoundingDecimalPlaces ||
+                    (this.FaceRoundingDecimalPlaces != null &&
+                    this.FaceRoundingDecimalPlaces.Equals(input.FaceRoundingDecimalPlaces))
+                ) && base.Equals(input) && 
+                (
                     this.IsPikFractionElectable == input.IsPikFractionElectable ||
                     this.IsPikFractionElectable.Equals(input.IsPikFractionElectable)
                 ) && base.Equals(input) && 
@@ -176,6 +236,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PikFraction == input.PikFraction ||
                     (this.PikFraction != null &&
                     this.PikFraction.Equals(input.PikFraction))
+                ) && base.Equals(input) && 
+                (
+                    this.PikMargin == input.PikMargin ||
+                    (this.PikMargin != null &&
+                    this.PikMargin.Equals(input.PikMargin))
                 ) && base.Equals(input) && 
                 (
                     this.PikPaymentType == input.PikPaymentType ||
@@ -191,6 +256,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PikSpread == input.PikSpread ||
                     (this.PikSpread != null &&
                     this.PikSpread.Equals(input.PikSpread))
+                ) && base.Equals(input) && 
+                (
+                    this.PikTravelsFree == input.PikTravelsFree ||
+                    this.PikTravelsFree.Equals(input.PikTravelsFree)
+                ) && base.Equals(input) && 
+                (
+                    this.PikInterestBasis == input.PikInterestBasis ||
+                    (this.PikInterestBasis != null &&
+                    this.PikInterestBasis.Equals(input.PikInterestBasis))
                 ) && base.Equals(input) && 
                 (
                     this.ScheduleType == input.ScheduleType ||
@@ -215,10 +289,22 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.MaturityDate.GetHashCode();
                 }
+                if (this.FaceRoundingConvention != null)
+                {
+                    hashCode = (hashCode * 59) + this.FaceRoundingConvention.GetHashCode();
+                }
+                if (this.FaceRoundingDecimalPlaces != null)
+                {
+                    hashCode = (hashCode * 59) + this.FaceRoundingDecimalPlaces.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.IsPikFractionElectable.GetHashCode();
                 if (this.PikFraction != null)
                 {
                     hashCode = (hashCode * 59) + this.PikFraction.GetHashCode();
+                }
+                if (this.PikMargin != null)
+                {
+                    hashCode = (hashCode * 59) + this.PikMargin.GetHashCode();
                 }
                 if (this.PikPaymentType != null)
                 {
@@ -231,6 +317,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.PikSpread != null)
                 {
                     hashCode = (hashCode * 59) + this.PikSpread.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.PikTravelsFree.GetHashCode();
+                if (this.PikInterestBasis != null)
+                {
+                    hashCode = (hashCode * 59) + this.PikInterestBasis.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ScheduleType.GetHashCode();
                 return hashCode;

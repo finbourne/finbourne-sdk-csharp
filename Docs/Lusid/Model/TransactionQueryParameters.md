@@ -13,6 +13,7 @@
 | **IncludeEconomics** | **bool** | Optional | By default is false. When set to true the Economics data would be populated in the response. |
 | **IncludeSettlementStatus** | **bool** | Optional | By default is false. When set to true the Settlement Status data would be populated in the response. |
 | **SettlementStatusDate** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Optional | Optional date used to specify end of an extended window for settlement information. When provided, transactions will be returned between start and end date, but settlement information between start date and this date will be included. When provided, the value must be greater than or equal to end date. |
+| **ReturnExcludedTransactions** | **bool** | Optional | Option to specify whether or not to include transactions that are marked as excluded by the portfolio&#39;s transaction exclusion filter. Excluded transactions do not affect holdings. Defaults to false if not specified. |
 
 
 ## Usage
@@ -31,7 +32,8 @@ var instance = new TransactionQueryParameters(
     timelineCode: "...",  // optional — Code of the Timeline for the Portfolio. The Timeline to be used while building transactions. This can optionally include a colon, followed by the Closed Period Id to use at the head of the timeline, for a timeline with unconfirmed periods.
     includeEconomics: true,  // optional — By default is false. When set to true the Economics data would be populated in the response.
     includeSettlementStatus: true,  // optional — By default is false. When set to true the Settlement Status data would be populated in the response.
-    settlementStatusDate: new DateTimeOrCutLabel(...)  // optional — Optional date used to specify end of an extended window for settlement information. When provided, transactions will be returned between start and end date, but settlement information between start date and this date will be included. When provided, the value must be greater than or equal to end date.
+    settlementStatusDate: new DateTimeOrCutLabel(...),  // optional — Optional date used to specify end of an extended window for settlement information. When provided, transactions will be returned between start and end date, but settlement information between start date and this date will be included. When provided, the value must be greater than or equal to end date.
+    returnExcludedTransactions: true  // optional — Option to specify whether or not to include transactions that are marked as excluded by the portfolio&#39;s transaction exclusion filter. Excluded transactions do not affect holdings. Defaults to false if not specified.
 );
 ```
 ### Serializing to JSON

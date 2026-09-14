@@ -315,7 +315,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
 
-For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+For more information about filtering results,  see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
 
 ### Example
 

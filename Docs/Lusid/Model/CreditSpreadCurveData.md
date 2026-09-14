@@ -9,7 +9,7 @@ A credit spread curve matching tenors against par spread quotes
 |------|------|----------|-------------|
 | **BaseDate** | **DateTimeOffset** | Required | EffectiveAt date of the quoted rates |
 | **DomCcy** | **string** | Required | Domestic currency of the curve |
-| **Tenors** | **List&lt;string&gt;** | Required | The tenors for which the rates apply  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097) |
+| **Tenors** | **List&lt;string&gt;** | Required | The tenors for which the rates apply  For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid) |
 | **Spreads** | **List&lt;decimal&gt;** | Required | Par spread quotes corresponding to the tenors. |
 | **RecoveryRate** | **decimal** | Required | The recovery rate in default. |
 | **ReferenceDate** | **DateTimeOffset?** | Optional | If tenors are provided, this is the date against which the tenors will be resolved.  This is of importance to CDX spread quotes, which are usually quoted in tenors relative to the CDX start date.  In this case, the ReferenceDate would be equal to the CDX start date, and the BaseDate would be the date for which the spreads are valid.  If not provided, this defaults to the BaseDate of the curve. |
@@ -30,7 +30,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new CreditSpreadCurveData(
     baseDate: DateTimeOffset.Now,  // required — EffectiveAt date of the quoted rates
     domCcy: "...",  // required — Domestic currency of the curve
-    tenors: ,  // required — The tenors for which the rates apply  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
+    tenors: ,  // required — The tenors for which the rates apply  For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid)
     spreads: ,  // required — Par spread quotes corresponding to the tenors.
     recoveryRate: 0.0d,  // required — The recovery rate in default.
     referenceDate: DateTimeOffset.Now,  // optional — If tenors are provided, this is the date against which the tenors will be resolved.  This is of importance to CDX spread quotes, which are usually quoted in tenors relative to the CDX start date.  In this case, the ReferenceDate would be equal to the CDX start date, and the BaseDate would be the date for which the spreads are valid.  If not provided, this defaults to the BaseDate of the curve.

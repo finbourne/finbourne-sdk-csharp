@@ -7,6 +7,7 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**DeletePaymentInstruction**](#deletepaymentinstruction) | **DELETE** `/api/api/paymentinstructions/{scope}/{code}` | [EXPERIMENTAL] DeletePaymentInstruction: Delete Payment Instruction |
 | [**GetPaymentInstruction**](#getpaymentinstruction) | **GET** `/api/api/paymentinstructions/{scope}/{code}` | [EXPERIMENTAL] GetPaymentInstruction: Get Payment Instruction |
+| [**GetPaymentInstructionsByPaymentRecordIds**](#getpaymentinstructionsbypaymentrecordids) | **POST** `/api/api/paymentinstructions/$getByPaymentRecordIds` | [EXPERIMENTAL] GetPaymentInstructionsByPaymentRecordIds: Get Payment Instructions by Payment Record Ids |
 | [**UpsertPaymentInstructions**](#upsertpaymentinstructions) | **POST** `/api/api/paymentinstructions` | [EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions |
 
 ### Example
@@ -167,6 +168,70 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PaymentInstruction> response = apiInstance.GetPaymentInstructionWithHttpInfo(scope, code, propertyKeys, effectiveAt, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getpaymentinstructionsbypaymentrecordids"></a>
+## GetPaymentInstructionsByPaymentRecordIds
+
+> GetPaymentInstructionsResponse GetPaymentInstructionsByPaymentRecordIds(List<string> requestBody, List<string>? propertyKeys = null, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
+
+[EXPERIMENTAL] GetPaymentInstructionsByPaymentRecordIds: Get Payment Instructions by Payment Record Ids
+
+Retrieve the Payment Instructions that reference the given Payment Records. Payment record ids are unique  across the system scope, so no scope or identifier type is required. The response contains the payment  instructions that could be found, keyed by the payment record id used to retrieve them, along with the  nature of any failures.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<PaymentInstructionsApi>();
+var requestBody = new List<string>(); // List<string>
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+GetPaymentInstructionsResponse result = apiInstance.GetPaymentInstructionsByPaymentRecordIds(requestBody, propertyKeys, effectiveAt, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **requestBody** | [List&lt;string&gt;](../Model/string.md) | body | **required** | A collection of payment record ids to retrieve payment instructions for.              Duplicate ids are ignored. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the payment instructions.              Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the payment instructions. Defaults to return the latest              version of each payment instruction if not specified. |
+
+### Return type
+
+[GetPaymentInstructionsResponse](../Model/GetPaymentInstructionsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The payment instructions that could be found for the supplied payment record ids, along with any failures |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetPaymentInstructionsByPaymentRecordIdsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<GetPaymentInstructionsResponse> response = apiInstance.GetPaymentInstructionsByPaymentRecordIdsWithHttpInfo(requestBody, propertyKeys, effectiveAt, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

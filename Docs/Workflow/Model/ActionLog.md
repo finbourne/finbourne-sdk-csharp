@@ -9,7 +9,7 @@ An Action Log contains the processing history of an Action
 | **Origin** | [ActionLogOrigin](ActionLogOrigin.md) | Required | *No description available.* |
 | **ActionType** | **string** | Required | The type of the Action |
 | **RunAsUserId** | **string** | Optional | The ID of the user that the Action was performed by. If not specified, the actions were performed by the \&quot;current user\&quot;. |
-| **LoggedItems** | [List&lt;ActionLogItem&gt;](ActionLogItem.md) | Required | The logged items for this Action |
+| **LoggedItems** | [List&lt;ActionLogItem&gt;](ActionLogItem.md) | Required | The logged items for this Action, ordered by timestamp with the earliest item first |
 
 
 ## Usage
@@ -24,7 +24,7 @@ var instance = new ActionLog(
     origin: new ActionLogOrigin(...),  // required
     actionType: "...",  // required — The type of the Action
     runAsUserId: "...",  // optional — The ID of the user that the Action was performed by. If not specified, the actions were performed by the \&quot;current user\&quot;.
-    loggedItems: new List<ActionLogItem>()  // required — The logged items for this Action
+    loggedItems: new List<ActionLogItem>()  // required — The logged items for this Action, ordered by timestamp with the earliest item first
 );
 ```
 ### Serializing to JSON

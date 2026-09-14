@@ -56,8 +56,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="workerParameters">Parameters for this Worker.</param>
         /// <param name="workerStatusTriggers">workerStatusTriggers.</param>
         /// <param name="childTaskConfigurations">Tasks can be generated from run worker results; this is the configuration.</param>
+        /// <param name="reRunConfigurations">Configuration governing how re-run results are reconciled against existing child tasks from a previous run of this action against the same parent Task instance.</param>
         /// <param name="workerTimeout">Worker timeout in seconds.</param>
-        public RunWorkerActionResponse(TypeEnum ?type = default(TypeEnum?), ResourceId workerId = default(ResourceId), DateTimeOffset? workerAsAt = default(DateTimeOffset?), Dictionary<string, FieldMapping> workerParameters = default(Dictionary<string, FieldMapping>), WorkerStatusTriggers workerStatusTriggers = default(WorkerStatusTriggers), List<ResultantChildTaskConfiguration> childTaskConfigurations = default(List<ResultantChildTaskConfiguration>), int? workerTimeout = default(int?))
+        public RunWorkerActionResponse(TypeEnum ?type = default(TypeEnum?), ResourceId workerId = default(ResourceId), DateTimeOffset? workerAsAt = default(DateTimeOffset?), Dictionary<string, FieldMapping> workerParameters = default(Dictionary<string, FieldMapping>), WorkerStatusTriggers workerStatusTriggers = default(WorkerStatusTriggers), List<ResultantChildTaskConfiguration> childTaskConfigurations = default(List<ResultantChildTaskConfiguration>), List<ReRunConfiguration> reRunConfigurations = default(List<ReRunConfiguration>), int? workerTimeout = default(int?))
         {
             this.Type = type;
             this.WorkerId = workerId;
@@ -65,6 +66,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             this.WorkerParameters = workerParameters;
             this.WorkerStatusTriggers = workerStatusTriggers;
             this.ChildTaskConfigurations = childTaskConfigurations;
+            this.ReRunConfigurations = reRunConfigurations;
             this.WorkerTimeout = workerTimeout;
         }
 
@@ -102,6 +104,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public List<ResultantChildTaskConfiguration> ChildTaskConfigurations { get; set; }
 
         /// <summary>
+        /// Configuration governing how re-run results are reconciled against existing child tasks from a previous run of this action against the same parent Task instance
+        /// </summary>
+        /// <value>Configuration governing how re-run results are reconciled against existing child tasks from a previous run of this action against the same parent Task instance</value>
+        [DataMember(Name = "reRunConfigurations", EmitDefaultValue = true)]
+        public List<ReRunConfiguration> ReRunConfigurations { get; set; }
+
+        /// <summary>
         /// Worker timeout in seconds
         /// </summary>
         /// <value>Worker timeout in seconds</value>
@@ -122,6 +131,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  WorkerParameters: ").Append(WorkerParameters).Append("\n");
             sb.Append("  WorkerStatusTriggers: ").Append(WorkerStatusTriggers).Append("\n");
             sb.Append("  ChildTaskConfigurations: ").Append(ChildTaskConfigurations).Append("\n");
+            sb.Append("  ReRunConfigurations: ").Append(ReRunConfigurations).Append("\n");
             sb.Append("  WorkerTimeout: ").Append(WorkerTimeout).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -190,6 +200,12 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.ChildTaskConfigurations.SequenceEqual(input.ChildTaskConfigurations)
                 ) && 
                 (
+                    this.ReRunConfigurations == input.ReRunConfigurations ||
+                    this.ReRunConfigurations != null &&
+                    input.ReRunConfigurations != null &&
+                    this.ReRunConfigurations.SequenceEqual(input.ReRunConfigurations)
+                ) && 
+                (
                     this.WorkerTimeout == input.WorkerTimeout ||
                     (this.WorkerTimeout != null &&
                     this.WorkerTimeout.Equals(input.WorkerTimeout))
@@ -225,6 +241,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.ChildTaskConfigurations != null)
                 {
                     hashCode = (hashCode * 59) + this.ChildTaskConfigurations.GetHashCode();
+                }
+                if (this.ReRunConfigurations != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReRunConfigurations.GetHashCode();
                 }
                 if (this.WorkerTimeout != null)
                 {

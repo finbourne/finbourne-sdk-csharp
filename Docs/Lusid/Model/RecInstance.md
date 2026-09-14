@@ -1,6 +1,6 @@
 # Finbourne.Sdk.Lusid.Model.RecInstance
 
-The expanded view of a rec instance: its identity, lifecycle status, lock state, closed periods  (for Closed Period windows) and the time-series of runs in the run log.
+The expanded view of a rec instance: its identity, lifecycle status, lock state, closed periods  (for Closed Period windows) and, per rec type, the time-series of runs in that rec type's run log.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -13,7 +13,7 @@ The expanded view of a rec instance: its identity, lifecycle status, lock state,
 | **AsAtLocked** | **DateTimeOffset?** | Optional | The wall-clock time the lock action was performed. Null when the instance has not been locked. |
 | **DatesLocked** | [RecDatesReconciled](RecDatesReconciled.md) | Optional | *No description available.* |
 | **ClosedPeriods** | [RecClosedPeriods](RecClosedPeriods.md) | Optional | *No description available.* |
-| **RunLog** | [List&lt;RecRunLogEntry&gt;](RecRunLogEntry.md) | Required | A chronologically ordered list of all runs on the instance. Always contains at least one entry. |
+| **RunLogs** | [Dictionary&lt;string, RecRunLog&gt;](RecRunLog.md) | Required | The instance&#39;s run history, keyed by rec type. Contains an entry for each rec type that has produced a result set, so a run appears only once it has completed or failed. Empty while the instance&#39;s first run is still in flight. |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
@@ -35,7 +35,7 @@ var instance = new RecInstance(
     asAtLocked: DateTimeOffset.Now,  // optional — The wall-clock time the lock action was performed. Null when the instance has not been locked.
     datesLocked: new RecDatesReconciled(...),  // optional
     closedPeriods: new RecClosedPeriods(...),  // optional
-    runLog: new List<RecRunLogEntry>(),  // required — A chronologically ordered list of all runs on the instance. Always contains at least one entry.
+    runLogs: new RecRunLog(...),  // required — The instance&#39;s run history, keyed by rec type. Contains an entry for each rec type that has produced a result set, so a run appears only once it has completed or failed. Empty while the instance&#39;s first run is still in flight.
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
     varVersion: new ModelVersion(...),  // optional
     links: new List<Link>()  // optional
@@ -60,7 +60,7 @@ var instance = JsonConvert.DeserializeObject<RecInstance>(json);
 - [ResourceId](ResourceId.md)
 - [RecDatesReconciled](RecDatesReconciled.md)
 - [RecClosedPeriods](RecClosedPeriods.md)
-- [RecRunLogEntry](RecRunLogEntry.md) — used in `RunLog`
+- [RecRunLog](RecRunLog.md) — used in `RunLogs`
 - [ModelVersion](ModelVersion.md)
 - [Link](Link.md)
 

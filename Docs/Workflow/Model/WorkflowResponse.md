@@ -10,7 +10,7 @@ A Workflow
 | **DisplayName** | **string** | Required | Human readable name |
 | **Description** | **string** | Optional | Human readable description |
 | **RootTaskDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
-| **WorkflowStructure** | [WorkflowStructure](WorkflowStructure.md) | Optional | *No description available.* |
+| **WorkflowStructure** | [WorkflowStructure](WorkflowStructure.md) | Required | *No description available.* |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The properties of the Workflow, keyed by property key. |
 
 
@@ -27,7 +27,7 @@ var instance = new WorkflowResponse(
     displayName: "...",  // required — Human readable name
     description: "...",  // optional — Human readable description
     rootTaskDefinitionId: new ResourceId(...),  // required
-    workflowStructure: new WorkflowStructure(...),  // optional
+    workflowStructure: new WorkflowStructure(...),  // required
     properties: new PerpetualProperty(...)  // optional — The properties of the Workflow, keyed by property key.
 );
 ```

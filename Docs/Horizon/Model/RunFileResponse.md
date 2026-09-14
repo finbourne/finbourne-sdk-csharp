@@ -11,9 +11,9 @@ record containing details of a single file for a run.
 | **FileHash** | **string** | Required | *No description available.* |
 | **Encrypted** | **bool** | Required | *No description available.* |
 | **Destinations** | [List&lt;FileDestinationResponse&gt;](FileDestinationResponse.md) | Required | *No description available.* |
-| **TransactionIds** | **List&lt;Guid&gt;** | Required | *No description available.* |
+| **TransactionIds** | **List&lt;string&gt;** | Required | *No description available.* |
 | **FileUuid** | **Guid** | Required | *No description available.* |
-| **FailedTransactionIds** | **List&lt;Guid&gt;** | Required | *No description available.* |
+| **FailedTransactionIds** | **List&lt;string&gt;** | Required | *No description available.* |
 
 
 ## Usage

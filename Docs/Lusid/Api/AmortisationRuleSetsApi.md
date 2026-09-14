@@ -269,7 +269,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing AmortisationRuleSets; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
-| **filter** | **string?** | query | optional | Expression to filter the results.              For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **filter** | **string?** | query | optional | Expression to filter the results.              For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
 | **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
 
 ### Return type

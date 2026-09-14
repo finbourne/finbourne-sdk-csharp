@@ -14,7 +14,6 @@ The values of an order to estimate, for an order that has not been saved yet or 
 | **Quantity** | **decimal?** | Optional | *No description available.* |
 | **Amount** | **decimal?** | Optional | *No description available.* |
 | **Weight** | **decimal?** | Optional | *No description available.* |
-| **TransactionDate** | **DateTimeOffset?** | Optional | *No description available.* |
 | **ExchangeRate** | **decimal?** | Optional | *No description available.* |
 
 
@@ -35,7 +34,6 @@ var instance = new TransferAgencyOrderToEstimate(
     quantity: 0.0d,  // optional
     amount: 0.0d,  // optional
     weight: 0.0d,  // optional
-    transactionDate: DateTimeOffset.Now,  // optional
     exchangeRate: 0.0d  // optional
 );
 ```

@@ -6,6 +6,7 @@
 |------|------|----------|-------------|
 | **GroupStatus** | **string** | Required | *No description available.* |
 | **ResultsUsed** | **Dictionary&lt;string, decimal&gt;** | Required | *No description available.* |
+| **FormulaValues** | **Dictionary&lt;string, decimal&gt;** | Optional | *No description available.* |
 | **PropertiesUsed** | **Dictionary&lt;string, List&lt;Property&gt;&gt;** | Required | *No description available.* |
 | **MissingDataInformation** | **List&lt;string&gt;** | Required | *No description available.* |
 | **Lineage** | [List&lt;LineageMember&gt;](LineageMember.md) | Required | *No description available.* |
@@ -21,6 +22,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new ComplianceRuleBreakdownRequest(
     groupStatus: "...",  // required
     resultsUsed: ,  // required
+    formulaValues: ,  // optional
     propertiesUsed: ,  // required
     missingDataInformation: ,  // required
     lineage: new List<LineageMember>()  // required

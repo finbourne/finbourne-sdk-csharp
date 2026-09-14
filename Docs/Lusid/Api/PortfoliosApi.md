@@ -784,7 +784,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **compositeMethod** | **string?** | query | optional | The method used to calculate the Portfolio performance. Available values: Equal, Asset. |
 | **period** | **string?** | query | optional | The type of the returns used to calculate the aggregation result. Available values: Daily, Monthly. |
 | **outputFrequency** | **string?** | query | optional | The type of calculated output. Available values: Daily, Weekly, Monthly, Quarterly, HalfYearly, Yearly. |
-| **metrics** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. |
+| **metrics** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Determines what type of returns should be calculated, see https://support.lusid.com/docs/aggregating-performance-returns-for-a-portfolio for a list of available metrics. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Returns. Defaults to the latest. |
 | **alternativeIncDate** | **DateTimeOrCutLabel?** | query | optional | The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property. |
 
@@ -922,7 +922,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the portfolio. Together with the scope this uniquely identifies the portfolio. |
 | **fromAsAt** | **DateTimeOffset?** | query | optional | The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified. |
 | **toAsAt** | **DateTimeOffset?** | query | optional | The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified. |
-| **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.              For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.              For more information about filtering, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing commands; this value is returned from the previous call. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 500 if not specified. |
 
@@ -1122,7 +1122,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **propertyKeys** | [List&lt;string&gt;](../Model/string.md) | query | **required** | The property keys of the properties whose history to show. These must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
 | **portfolioEffectiveAt** | **string?** | query | optional | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. |
-| **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering,              see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the propertyKeys, filter, portfolioEffectiveAt, and asAt              fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of property keys returned per page to this number. |
 
@@ -1194,7 +1194,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **propertyKey** | **string** | query | **required** | The property key of the property whose history to show.              This must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
 | **portfolioEffectiveAt** | **string?** | query | optional | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. |
-| **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering,              see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields              must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. |
 
@@ -1544,7 +1544,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the instructions. Defaults to latest if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing instructions; this value is returned from the previous call.              If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
-| **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **filter** | **string?** | query | optional | Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
 | **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **timelineScope** | **string?** | query | optional | The scope of the Timeline, used to override the AsAt, and fetch post close activity data.              If this is provided, timelineCode must also be provided. |
 | **timelineCode** | **string?** | query | optional | The code of the Timeline, used to override the AsAt, and fetch post close activity data.              If this is provided, timelineScope must also be provided. |
@@ -1686,7 +1686,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the portfolios. Defaults to returning the latest version              of each portfolio if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing portfolios; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
-| **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
 | **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **query** | **string?** | query | optional | Expression specifying the criteria that the returned portfolios must meet. For example, to see which              portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,              specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. |
 | **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
@@ -1761,7 +1761,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the portfolios. Defaults to returning the latest version              of each portfolio if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
-| **filter** | **string?** | query | optional | Expression to filter the results.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **filter** | **string?** | query | optional | Expression to filter the results.              For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.              For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
 | **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,              or from any domain that supports relationships to decorate onto related entities. These must take the              format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. |
 | **relationshipDefinitionIds** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of relationship definitions that are used to decorate related entities              onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. |

@@ -434,7 +434,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ListTransactionTypes: List transaction types
 
-Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
+Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/docs/what-built-in-transaction-types-and-sides-are-provided-with-lusid.
 
 ### Example
 
@@ -494,7 +494,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 SetSideDefinition: Set a side definition
 
-Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
+Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/docs/what-is-a-side.
 
 ### Example
 
@@ -556,7 +556,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 SetSideDefinitions: Set the given side definitions
 
-Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/knowledgebase/article/KA-01875.
+Set a new side definition for use in a transaction type. For more information, see https://support.lusid.com/docs/what-is-a-side.
 
 ### Example
 

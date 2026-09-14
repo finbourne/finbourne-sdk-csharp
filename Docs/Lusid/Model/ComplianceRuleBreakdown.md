@@ -6,6 +6,7 @@
 |------|------|----------|-------------|
 | **GroupStatus** | **string** | Required | The status of this subset of results. |
 | **ResultsUsed** | **Dictionary&lt;string, decimal&gt;** | Required | Dictionary of AddressKey (as string) and their corresponding decimal values, that were used in this rule. |
+| **FormulaValues** | **Dictionary&lt;string, decimal&gt;** | Optional | The value each formula within the check criterion evaluated to for this group. Empty where the criterion  compares a single value or is not numerical, since the operand values already recorded describe those. |
 | **PropertiesUsed** | **Dictionary&lt;string, List&lt;Property&gt;&gt;** | Required | Dictionary of PropertyKey (as string) and their corresponding Properties, that were used in this rule |
 | **MissingDataInformation** | **List&lt;string&gt;** | Required | List of string information detailing data that was missing from contributions processed in this rule |
 | **Lineage** | [List&lt;LineageMember&gt;](LineageMember.md) | Required | *No description available.* |
@@ -21,6 +22,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new ComplianceRuleBreakdown(
     groupStatus: "...",  // required — The status of this subset of results.
     resultsUsed: ,  // required — Dictionary of AddressKey (as string) and their corresponding decimal values, that were used in this rule.
+    formulaValues: ,  // optional — The value each formula within the check criterion evaluated to for this group. Empty where the criterion  compares a single value or is not numerical, since the operand values already recorded describe those.
     propertiesUsed: ,  // required — Dictionary of PropertyKey (as string) and their corresponding Properties, that were used in this rule
     missingDataInformation: ,  // required — List of string information detailing data that was missing from contributions processed in this rule
     lineage: new List<LineageMember>()  // required

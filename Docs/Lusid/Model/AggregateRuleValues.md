@@ -8,7 +8,7 @@ An aggregate matching rule and its values. The difference is the measured magnit
 | **RuleName** | **string** | Required | The name of the rule. |
 | **LeftValue** | **string** | Optional | The left-side value. |
 | **RightValue** | **string** | Optional | The right-side value. |
-| **Difference** | **string** | Required | The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)). |
+| **Difference** | **string** | Optional | The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)). |
 | **AppliedTolerance** | [ToleranceBase](ToleranceBase.md) | Optional | *No description available.* |
 
 
@@ -23,7 +23,7 @@ var instance = new AggregateRuleValues(
     ruleName: "...",  // required — The name of the rule.
     leftValue: "...",  // optional — The left-side value.
     rightValue: "...",  // optional — The right-side value.
-    difference: "...",  // required — The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)).
+    difference: "...",  // optional — The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)).
     appliedTolerance: new ToleranceBase(...)  // optional
 );
 ```

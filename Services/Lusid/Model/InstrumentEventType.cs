@@ -680,7 +680,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum NavReportEvent for value: NavReportEvent
         /// </summary>
         [EnumMember(Value = "NavReportEvent")]
-        NavReportEvent = 109
+        NavReportEvent = 109,
+
+        /// <summary>
+        /// Enum DividendSuspensionEvent for value: DividendSuspensionEvent
+        /// </summary>
+        [EnumMember(Value = "DividendSuspensionEvent")]
+        DividendSuspensionEvent = 110,
+
+        /// <summary>
+        /// Enum LoanInterestCapitalisationEvent for value: LoanInterestCapitalisationEvent
+        /// </summary>
+        [EnumMember(Value = "LoanInterestCapitalisationEvent")]
+        LoanInterestCapitalisationEvent = 111
     }
 
 }

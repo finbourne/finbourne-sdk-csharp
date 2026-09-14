@@ -7,7 +7,7 @@ A Cleardown rule
 |------|------|----------|-------------|
 | **RuleId** | **string** | Required | The identifier for the Cleardown Rule. |
 | **GeneralLedgerAccountCode** | **string** | Required | The account to post the residual P&amp;L to. |
-| **RuleFilter** | **string** | Required | The filter syntax for the Cleardown Rule. See https://support.lusid.com/knowledgebase/article/KA-02140 for more information on filter syntax. |
+| **RuleFilter** | **string** | Required | The filter syntax for the Cleardown Rule. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules for more information on filter syntax. |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new CleardownModuleRule(
     ruleId: "...",  // required — The identifier for the Cleardown Rule.
     generalLedgerAccountCode: "...",  // required — The account to post the residual P&amp;L to.
-    ruleFilter: "..."  // required — The filter syntax for the Cleardown Rule. See https://support.lusid.com/knowledgebase/article/KA-02140 for more information on filter syntax.
+    ruleFilter: "..."  // required — The filter syntax for the Cleardown Rule. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules for more information on filter syntax.
 );
 ```
 ### Serializing to JSON

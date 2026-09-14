@@ -5,14 +5,14 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**DeleteQuoteAccessMetadataRule**](#deletequoteaccessmetadatarule) | **DELETE** `/api/api/metadata/quotes/rules/{scope}` | [EXPERIMENTAL] DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule |
+| [**DeleteQuoteAccessMetadataRule**](#deletequoteaccessmetadatarule) | **DELETE** `/api/api/metadata/quotes/rules/{scope}` | DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule |
 | [**DeleteQuotes**](#deletequotes) | **POST** `/api/api/quotes/{scope}/$delete` | DeleteQuotes: Delete quotes |
 | [**GetQuotes**](#getquotes) | **POST** `/api/api/quotes/{scope}/$get` | GetQuotes: Get quotes |
-| [**GetQuotesAccessMetadataRule**](#getquotesaccessmetadatarule) | **GET** `/api/api/metadata/quotes/rules` | [EXPERIMENTAL] GetQuotesAccessMetadataRule: Get a quote access metadata rule |
+| [**GetQuotesAccessMetadataRule**](#getquotesaccessmetadatarule) | **GET** `/api/api/metadata/quotes/rules` | GetQuotesAccessMetadataRule: Get a quote access metadata rule |
 | [**ListQuotes**](#listquotes) | **GET** `/api/api/quotes/{scope}/$deprecated` | [DEPRECATED] ListQuotes: List quotes |
-| [**ListQuotesAccessMetadataRules**](#listquotesaccessmetadatarules) | **GET** `/api/api/metadata/quotes/rules/{scope}` | [EXPERIMENTAL] ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope |
+| [**ListQuotesAccessMetadataRules**](#listquotesaccessmetadatarules) | **GET** `/api/api/metadata/quotes/rules/{scope}` | ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope |
 | [**ListQuotesForScope**](#listquotesforscope) | **GET** `/api/api/quotes/{scope}` | ListQuotesForScope: List quotes for scope |
-| [**UpsertQuoteAccessMetadataRule**](#upsertquoteaccessmetadatarule) | **POST** `/api/api/metadata/quotes/rules/{scope}` | [EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID. |
+| [**UpsertQuoteAccessMetadataRule**](#upsertquoteaccessmetadatarule) | **POST** `/api/api/metadata/quotes/rules/{scope}` | UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID. |
 | [**UpsertQuotes**](#upsertquotes) | **POST** `/api/api/quotes/{scope}` | UpsertQuotes: Upsert quotes |
 
 ### Example
@@ -62,7 +62,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<QuotesApi>();
 
 > QuoteAccessMetadataRule DeleteQuoteAccessMetadataRule(string scope, string? provider = null, string? priceSource = null, string? instrumentIdType = null, string? instrumentId = null, string? quoteType = null, string? field = null, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule
+DeleteQuoteAccessMetadataRule: Delete a Quote Access Metadata Rule
 
 Delete the Quote Access Metadata Rule that exactly matches the provided identifier parts
 
@@ -260,7 +260,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > QuoteAccessMetadataRule GetQuotesAccessMetadataRule(string scope, string? provider = null, string? priceSource = null, string? instrumentIdType = null, string? instrumentId = null, string? quoteType = null, string? field = null, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetQuotesAccessMetadataRule: Get a quote access metadata rule
+GetQuotesAccessMetadataRule: Get a quote access metadata rule
 
 Get a specific quote access metadata rule by specifying the corresponding identifier parts                No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
 
@@ -400,7 +400,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > ResourceListOfQuoteAccessMetadataRule ListQuotesAccessMetadataRules(string scope, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope
+ListQuotesAccessMetadataRules: List all quote access metadata rules in a scope
 
 Get all the quote access metadata rules in the specified scope
 
@@ -526,7 +526,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > QuoteAccessMetadataRule UpsertQuoteAccessMetadataRule(string scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? effectiveUntil = null)
 
-[EXPERIMENTAL] UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID.
+UpsertQuoteAccessMetadataRule: Upsert a Quote Access Metadata Rule. This creates or updates the data in LUSID.
 
 Update or insert one Quote Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Quote Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).                Multiple rules for a key can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
 

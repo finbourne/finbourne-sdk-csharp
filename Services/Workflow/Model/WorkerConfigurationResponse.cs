@@ -115,6 +115,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkerConfigurationResponse" /> class
+        /// with the <see cref="PortfolioHoldingDataQualityCheckResponse" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of PortfolioHoldingDataQualityCheckResponse.</param>
+        public WorkerConfigurationResponse(PortfolioHoldingDataQualityCheckResponse actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WorkerConfigurationResponse" /> class
         /// with the <see cref="SchedulerJobResponse" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of SchedulerJobResponse.</param>
@@ -179,6 +191,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(PortfolioHoldingDataQualityCheckResponse) || value is PortfolioHoldingDataQualityCheckResponse)
+                {
+                    this._actualInstance = value;
+                }
                 else if (value.GetType() == typeof(SchedulerJobResponse) || value is SchedulerJobResponse)
                 {
                     this._actualInstance = value;
@@ -189,7 +205,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: FailResponse, GroupReconciliationResponse, HealthCheckResponse, HorizonIntegrationResponse, LibraryResponse, LuminesceViewResponse, LusidEntityDataQualityCheckResponse, SchedulerJobResponse, SleepResponse");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: FailResponse, GroupReconciliationResponse, HealthCheckResponse, HorizonIntegrationResponse, LibraryResponse, LuminesceViewResponse, LusidEntityDataQualityCheckResponse, PortfolioHoldingDataQualityCheckResponse, SchedulerJobResponse, SleepResponse");
                 }
             }
         }
@@ -262,6 +278,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public LusidEntityDataQualityCheckResponse GetLusidEntityDataQualityCheckResponse()
         {
             return (LusidEntityDataQualityCheckResponse)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `PortfolioHoldingDataQualityCheckResponse`. If the actual instance is not `PortfolioHoldingDataQualityCheckResponse`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of PortfolioHoldingDataQualityCheckResponse</returns>
+        public PortfolioHoldingDataQualityCheckResponse GetPortfolioHoldingDataQualityCheckResponse()
+        {
+            return (PortfolioHoldingDataQualityCheckResponse)this.ActualInstance;
         }
 
         /// <summary>
@@ -460,6 +486,26 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into LusidEntityDataQualityCheckResponse: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(PortfolioHoldingDataQualityCheckResponse).GetProperty("AdditionalProperties") == null)
+                {
+                    newWorkerConfigurationResponse = new WorkerConfigurationResponse(JsonConvert.DeserializeObject<PortfolioHoldingDataQualityCheckResponse>(jsonString, WorkerConfigurationResponse.SerializerSettings));
+                }
+                else
+                {
+                    newWorkerConfigurationResponse = new WorkerConfigurationResponse(JsonConvert.DeserializeObject<PortfolioHoldingDataQualityCheckResponse>(jsonString, WorkerConfigurationResponse.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("PortfolioHoldingDataQualityCheckResponse");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into PortfolioHoldingDataQualityCheckResponse: {1}", jsonString, exception.ToString()));
             }
 
             try

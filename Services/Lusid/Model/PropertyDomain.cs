@@ -578,7 +578,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum Transfer for value: Transfer
         /// </summary>
         [EnumMember(Value = "Transfer")]
-        Transfer = 92
+        Transfer = 92,
+
+        /// <summary>
+        /// Enum CurrencyGroup for value: CurrencyGroup
+        /// </summary>
+        [EnumMember(Value = "CurrencyGroup")]
+        CurrencyGroup = 93
     }
 
 }

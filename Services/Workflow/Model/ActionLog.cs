@@ -39,7 +39,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="origin">origin (required).</param>
         /// <param name="actionType">The type of the Action (required).</param>
         /// <param name="runAsUserId">The ID of the user that the Action was performed by. If not specified, the actions were performed by the \&quot;current user\&quot;..</param>
-        /// <param name="loggedItems">The logged items for this Action (required).</param>
+        /// <param name="loggedItems">The logged items for this Action, ordered by timestamp with the earliest item first (required).</param>
         public ActionLog(Guid id = default(Guid), ActionLogOrigin origin = default(ActionLogOrigin), string actionType = default(string), string runAsUserId = default(string), List<ActionLogItem> loggedItems = default(List<ActionLogItem>))
         {
             this.Id = id;
@@ -92,9 +92,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public string RunAsUserId { get; set; }
 
         /// <summary>
-        /// The logged items for this Action
+        /// The logged items for this Action, ordered by timestamp with the earliest item first
         /// </summary>
-        /// <value>The logged items for this Action</value>
+        /// <value>The logged items for this Action, ordered by timestamp with the earliest item first</value>
         [DataMember(Name = "loggedItems", IsRequired = true, EmitDefaultValue = true)]
         public List<ActionLogItem> LoggedItems { get; set; }
 

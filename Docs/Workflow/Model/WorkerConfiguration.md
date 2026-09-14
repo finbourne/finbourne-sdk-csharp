@@ -12,6 +12,7 @@ Information about how the worker should be executed
 * [HorizonIntegration](./HorizonIntegration.md)
 * [LuminesceView](./LuminesceView.md)
 * [LusidEntityDataQualityCheck](./LusidEntityDataQualityCheck.md)
+* [PortfolioHoldingDataQualityCheck](./PortfolioHoldingDataQualityCheck.md)
 * [SchedulerJob](./SchedulerJob.md)
 * [Sleep](./Sleep.md)
 
@@ -46,6 +47,7 @@ var instance = JsonConvert.DeserializeObject<WorkerConfiguration>(json);
 - [HorizonIntegration](./HorizonIntegration.md)
 - [LuminesceView](./LuminesceView.md)
 - [LusidEntityDataQualityCheck](./LusidEntityDataQualityCheck.md)
+- [PortfolioHoldingDataQualityCheck](./PortfolioHoldingDataQualityCheck.md)
 - [SchedulerJob](./SchedulerJob.md)
 - [Sleep](./Sleep.md)
 

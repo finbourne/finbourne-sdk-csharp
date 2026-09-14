@@ -35,7 +35,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ElectionSpecification" /> class.
         /// </summary>
-        /// <param name="electionType">Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection, SubscribeElection. (required).</param>
+        /// <param name="electionType">Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection, SubscribeElection, ConsentGrantedElection, ConsentDeniedElection, AbstainElection, ConsentAndTenderElection, ConsentAndExchangeElection, RetainElection, OversubscribeElection, SellEntitlementElection, UnknownProceedsElection. (required).</param>
         /// <param name="cardinality">cardinality (required).</param>
         /// <param name="referencedAs">referencedAs (required).</param>
         public ElectionSpecification(string electionType = default(string), Dictionary<string, string> cardinality = default(Dictionary<string, string>), List<string> referencedAs = default(List<string>))
@@ -61,9 +61,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection, SubscribeElection.
+        /// Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection, SubscribeElection, ConsentGrantedElection, ConsentDeniedElection, AbstainElection, ConsentAndTenderElection, ConsentAndExchangeElection, RetainElection, OversubscribeElection, SellEntitlementElection, UnknownProceedsElection.
         /// </summary>
-        /// <value>Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection, SubscribeElection.</value>
+        /// <value>Available values: CashElection, CashAndSecurityOfferElection, CashOfferElection, EarlyRedemptionElection, LapseElection, OptionExerciseElection, SecurityElection, SecurityOfferElection, TenderOfferElection, MixedLotConstituentsElection, SubscribeElection, ConsentGrantedElection, ConsentDeniedElection, AbstainElection, ConsentAndTenderElection, ConsentAndExchangeElection, RetainElection, OversubscribeElection, SellEntitlementElection, UnknownProceedsElection.</value>
         [DataMember(Name = "electionType", IsRequired = true, EmitDefaultValue = true)]
         public string ElectionType { get; set; }
 

@@ -38,7 +38,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="estimatedAmount">estimatedAmount.</param>
         /// <param name="estimatedAmountCurrency">estimatedAmountCurrency.</param>
         /// <param name="fxRateUsed">fxRateUsed.</param>
-        public TransferAgencyOrderEstimateResult(ResourceId orderId = default(ResourceId), DateTimeOffset mostRecentValuationDate = default(DateTimeOffset), decimal pricePerShare = default(decimal), string priceCurrency = default(string), decimal estimatedUnits = default(decimal), decimal estimatedAmount = default(decimal), string estimatedAmountCurrency = default(string), decimal fxRateUsed = default(decimal))
+        /// <param name="excludedOrders">excludedOrders.</param>
+        public TransferAgencyOrderEstimateResult(ResourceId orderId = default(ResourceId), DateTimeOffset mostRecentValuationDate = default(DateTimeOffset), decimal pricePerShare = default(decimal), string priceCurrency = default(string), decimal estimatedUnits = default(decimal), decimal estimatedAmount = default(decimal), string estimatedAmountCurrency = default(string), decimal fxRateUsed = default(decimal), List<TransferAgencyExcludedOrder> excludedOrders = default(List<TransferAgencyExcludedOrder>))
         {
             this.OrderId = orderId;
             this.MostRecentValuationDate = mostRecentValuationDate;
@@ -48,6 +49,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.EstimatedAmount = estimatedAmount;
             this.EstimatedAmountCurrency = estimatedAmountCurrency;
             this.FxRateUsed = fxRateUsed;
+            this.ExcludedOrders = excludedOrders;
         }
 
         /// <summary>
@@ -99,6 +101,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal FxRateUsed { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExcludedOrders
+        /// </summary>
+        [DataMember(Name = "excludedOrders", EmitDefaultValue = true)]
+        public List<TransferAgencyExcludedOrder> ExcludedOrders { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -114,6 +122,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  EstimatedAmount: ").Append(EstimatedAmount).Append("\n");
             sb.Append("  EstimatedAmountCurrency: ").Append(EstimatedAmountCurrency).Append("\n");
             sb.Append("  FxRateUsed: ").Append(FxRateUsed).Append("\n");
+            sb.Append("  ExcludedOrders: ").Append(ExcludedOrders).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -184,6 +193,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.FxRateUsed == input.FxRateUsed ||
                     this.FxRateUsed.Equals(input.FxRateUsed)
+                ) && 
+                (
+                    this.ExcludedOrders == input.ExcludedOrders ||
+                    this.ExcludedOrders != null &&
+                    input.ExcludedOrders != null &&
+                    this.ExcludedOrders.SequenceEqual(input.ExcludedOrders)
                 );
         }
 
@@ -216,6 +231,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     hashCode = (hashCode * 59) + this.EstimatedAmountCurrency.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.FxRateUsed.GetHashCode();
+                if (this.ExcludedOrders != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExcludedOrders.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -7,7 +7,7 @@
 | **InstrumentIdentifiers** | **Dictionary&lt;string, string&gt;** | Required | Unique instrument identifiers |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
 | **Weight** | **decimal** | Required | *No description available.* |
-| **Currency** | **string** | Optional | *No description available.* |
+| **Currency** | **string** | Required | *No description available.* |
 
 
 ## Usage
@@ -21,7 +21,7 @@ var instance = new ReferencePortfolioConstituentRequest(
     instrumentIdentifiers: ,  // required — Unique instrument identifiers
     properties: new PerpetualProperty(...),  // optional
     weight: 0.0d,  // required
-    currency: "..."  // optional
+    currency: "..."  // required
 );
 ```
 ### Serializing to JSON

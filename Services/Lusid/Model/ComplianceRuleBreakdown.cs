@@ -37,10 +37,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="groupStatus">The status of this subset of results. (required).</param>
         /// <param name="resultsUsed">Dictionary of AddressKey (as string) and their corresponding decimal values, that were used in this rule. (required).</param>
+        /// <param name="formulaValues">The value each formula within the check criterion evaluated to for this group. Empty where the criterion  compares a single value or is not numerical, since the operand values already recorded describe those..</param>
         /// <param name="propertiesUsed">Dictionary of PropertyKey (as string) and their corresponding Properties, that were used in this rule (required).</param>
         /// <param name="missingDataInformation">List of string information detailing data that was missing from contributions processed in this rule (required).</param>
         /// <param name="lineage">lineage (required).</param>
-        public ComplianceRuleBreakdown(string groupStatus = default(string), Dictionary<string, decimal> resultsUsed = default(Dictionary<string, decimal>), Dictionary<string, List<Property>> propertiesUsed = default(Dictionary<string, List<Property>>), List<string> missingDataInformation = default(List<string>), List<LineageMember> lineage = default(List<LineageMember>))
+        public ComplianceRuleBreakdown(string groupStatus = default(string), Dictionary<string, decimal> resultsUsed = default(Dictionary<string, decimal>), Dictionary<string, decimal> formulaValues = default(Dictionary<string, decimal>), Dictionary<string, List<Property>> propertiesUsed = default(Dictionary<string, List<Property>>), List<string> missingDataInformation = default(List<string>), List<LineageMember> lineage = default(List<LineageMember>))
         {
             // to ensure "groupStatus" is required (not null)
             if (groupStatus == null)
@@ -72,6 +73,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("lineage is a required property for ComplianceRuleBreakdown and cannot be null");
             }
             this.Lineage = lineage;
+            this.FormulaValues = formulaValues;
         }
 
         /// <summary>
@@ -87,6 +89,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>Dictionary of AddressKey (as string) and their corresponding decimal values, that were used in this rule.</value>
         [DataMember(Name = "resultsUsed", IsRequired = true, EmitDefaultValue = true)]
         public Dictionary<string, decimal> ResultsUsed { get; set; }
+
+        /// <summary>
+        /// The value each formula within the check criterion evaluated to for this group. Empty where the criterion  compares a single value or is not numerical, since the operand values already recorded describe those.
+        /// </summary>
+        /// <value>The value each formula within the check criterion evaluated to for this group. Empty where the criterion  compares a single value or is not numerical, since the operand values already recorded describe those.</value>
+        [DataMember(Name = "formulaValues", EmitDefaultValue = true)]
+        public Dictionary<string, decimal> FormulaValues { get; set; }
 
         /// <summary>
         /// Dictionary of PropertyKey (as string) and their corresponding Properties, that were used in this rule
@@ -118,6 +127,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class ComplianceRuleBreakdown {\n");
             sb.Append("  GroupStatus: ").Append(GroupStatus).Append("\n");
             sb.Append("  ResultsUsed: ").Append(ResultsUsed).Append("\n");
+            sb.Append("  FormulaValues: ").Append(FormulaValues).Append("\n");
             sb.Append("  PropertiesUsed: ").Append(PropertiesUsed).Append("\n");
             sb.Append("  MissingDataInformation: ").Append(MissingDataInformation).Append("\n");
             sb.Append("  Lineage: ").Append(Lineage).Append("\n");
@@ -168,6 +178,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ResultsUsed.SequenceEqual(input.ResultsUsed)
                 ) && 
                 (
+                    this.FormulaValues == input.FormulaValues ||
+                    this.FormulaValues != null &&
+                    input.FormulaValues != null &&
+                    this.FormulaValues.SequenceEqual(input.FormulaValues)
+                ) && 
+                (
                     this.PropertiesUsed == input.PropertiesUsed ||
                     this.PropertiesUsed != null &&
                     input.PropertiesUsed != null &&
@@ -203,6 +219,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.ResultsUsed != null)
                 {
                     hashCode = (hashCode * 59) + this.ResultsUsed.GetHashCode();
+                }
+                if (this.FormulaValues != null)
+                {
+                    hashCode = (hashCode * 59) + this.FormulaValues.GetHashCode();
                 }
                 if (this.PropertiesUsed != null)
                 {

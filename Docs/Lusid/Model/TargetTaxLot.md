@@ -14,6 +14,7 @@ Used to specify holdings target amounts at the tax-lot level
 | **NotionalCost** | **decimal?** | Optional | The notional cost of the tax-lot&#39;s opening transaction. |
 | **VariationMargin** | **decimal?** | Optional | The variation margin of the tax-lot&#39;s opening transaction. |
 | **VariationMarginPortfolioCcy** | **decimal?** | Optional | The variation margin in portfolio currency of the tax-lot&#39;s opening transaction. |
+| **AmortisedCost** | **decimal?** | Optional | The amortised cost of the tax-lot in the settlement currency, for example a supplied amortised cost at migration. If supplied, this value seeds the tax-lot&#39;s amortised cost at the adjustment date and amortisation continues forward from it; if not supplied, the amortised cost defaults to the cost of the tax-lot. |
 
 
 ## Usage
@@ -32,7 +33,8 @@ var instance = new TargetTaxLot(
     settlementDate: DateTimeOffset.Now,  // optional — The settlement date of the tax-lot&#39;s opening transaction.
     notionalCost: 0.0d,  // optional — The notional cost of the tax-lot&#39;s opening transaction.
     variationMargin: 0.0d,  // optional — The variation margin of the tax-lot&#39;s opening transaction.
-    variationMarginPortfolioCcy: 0.0d  // optional — The variation margin in portfolio currency of the tax-lot&#39;s opening transaction.
+    variationMarginPortfolioCcy: 0.0d,  // optional — The variation margin in portfolio currency of the tax-lot&#39;s opening transaction.
+    amortisedCost: 0.0d  // optional — The amortised cost of the tax-lot in the settlement currency, for example a supplied amortised cost at migration. If supplied, this value seeds the tax-lot&#39;s amortised cost at the adjustment date and amortisation continues forward from it; if not supplied, the amortised cost defaults to the cost of the tax-lot.
 );
 ```
 ### Serializing to JSON

@@ -70,7 +70,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="includeEconomics">By default is false. When set to true the Economics data would be populated in the response..</param>
         /// <param name="includeSettlementStatus">By default is false. When set to true the Settlement Status data would be populated in the response..</param>
         /// <param name="settlementStatusDate">Optional date used to specify end of an extended window for settlement information. When provided, transactions will be returned between start and end date, but settlement information between start date and this date will be included. When provided, the value must be greater than or equal to end date..</param>
-        public TransactionQueryParameters(DateTimeOrCutLabel startDate = default(DateTimeOrCutLabel), DateTimeOrCutLabel endDate = default(DateTimeOrCutLabel), QueryModeEnum ?queryMode = default(QueryModeEnum?), bool showCancelledTransactions = default(bool), string timelineScope = default(string), string timelineCode = default(string), bool includeEconomics = default(bool), bool includeSettlementStatus = default(bool), DateTimeOrCutLabel settlementStatusDate = default(DateTimeOrCutLabel))
+        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions that are marked as excluded by the portfolio&#39;s transaction exclusion filter. Excluded transactions do not affect holdings. Defaults to false if not specified..</param>
+        public TransactionQueryParameters(DateTimeOrCutLabel startDate = default(DateTimeOrCutLabel), DateTimeOrCutLabel endDate = default(DateTimeOrCutLabel), QueryModeEnum ?queryMode = default(QueryModeEnum?), bool showCancelledTransactions = default(bool), string timelineScope = default(string), string timelineCode = default(string), bool includeEconomics = default(bool), bool includeSettlementStatus = default(bool), DateTimeOrCutLabel settlementStatusDate = default(DateTimeOrCutLabel), bool returnExcludedTransactions = default(bool))
         {
             // to ensure "startDate" is required (not null)
             if (startDate == null)
@@ -91,6 +92,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.IncludeEconomics = includeEconomics;
             this.IncludeSettlementStatus = includeSettlementStatus;
             this.SettlementStatusDate = settlementStatusDate;
+            this.ReturnExcludedTransactions = returnExcludedTransactions;
         }
 
         /// <summary>
@@ -150,6 +152,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public DateTimeOrCutLabel SettlementStatusDate { get; set; }
 
         /// <summary>
+        /// Option to specify whether or not to include transactions that are marked as excluded by the portfolio&#39;s transaction exclusion filter. Excluded transactions do not affect holdings. Defaults to false if not specified.
+        /// </summary>
+        /// <value>Option to specify whether or not to include transactions that are marked as excluded by the portfolio&#39;s transaction exclusion filter. Excluded transactions do not affect holdings. Defaults to false if not specified.</value>
+        [DataMember(Name = "returnExcludedTransactions", EmitDefaultValue = true)]
+        public bool ReturnExcludedTransactions { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -166,6 +175,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  IncludeEconomics: ").Append(IncludeEconomics).Append("\n");
             sb.Append("  IncludeSettlementStatus: ").Append(IncludeSettlementStatus).Append("\n");
             sb.Append("  SettlementStatusDate: ").Append(SettlementStatusDate).Append("\n");
+            sb.Append("  ReturnExcludedTransactions: ").Append(ReturnExcludedTransactions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -241,6 +251,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.SettlementStatusDate == input.SettlementStatusDate ||
                     (this.SettlementStatusDate != null &&
                     this.SettlementStatusDate.Equals(input.SettlementStatusDate))
+                ) && 
+                (
+                    this.ReturnExcludedTransactions == input.ReturnExcludedTransactions ||
+                    this.ReturnExcludedTransactions.Equals(input.ReturnExcludedTransactions)
                 );
         }
 
@@ -277,6 +291,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.SettlementStatusDate.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ReturnExcludedTransactions.GetHashCode();
                 return hashCode;
             }
         }

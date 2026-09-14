@@ -29,8 +29,6 @@ A list of holdings.
 | **UnsettledUnits** | **decimal** | Optional | The number of unsettled units for the holding. |
 | **OverdueUnits** | **decimal** | Optional | The number of unsettled units for the holding that are beyond their contractual settlement date. |
 | **CustodianAccount** | [CustodianAccount](CustodianAccount.md) | Optional | *No description available.* |
-| **ResolvedCustodianAccount** | [ResolvedCustodianAccount](ResolvedCustodianAccount.md) | Optional | *No description available.* |
-| **HoldingPropertyBalances** | **Dictionary&lt;string, decimal&gt;** | Optional | The latest running balance of each holding property maintained on the holding by transaction type holding property deltas, keyed by holding property key, for example &#39;CommittedCapital&#39;. Only populated when the holding has at least one balance. |
 
 
 ## Usage
@@ -64,9 +62,7 @@ var instance = new PortfolioHolding(
     custodianAccountId: new ResourceId(...),  // optional
     unsettledUnits: 0.0d,  // optional — The number of unsettled units for the holding.
     overdueUnits: 0.0d,  // optional — The number of unsettled units for the holding that are beyond their contractual settlement date.
-    custodianAccount: new CustodianAccount(...),  // optional
-    resolvedCustodianAccount: new ResolvedCustodianAccount(...),  // optional
-    holdingPropertyBalances:   // optional — The latest running balance of each holding property maintained on the holding by transaction type holding property deltas, keyed by holding property key, for example &#39;CommittedCapital&#39;. Only populated when the holding has at least one balance.
+    custodianAccount: new CustodianAccount(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -94,7 +90,6 @@ var instance = JsonConvert.DeserializeObject<PortfolioHolding>(json);
 - [SettlementSchedule](SettlementSchedule.md) — used in `SettlementSchedule`
 - [ResourceId](ResourceId.md)
 - [CustodianAccount](CustodianAccount.md)
-- [ResolvedCustodianAccount](ResolvedCustodianAccount.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

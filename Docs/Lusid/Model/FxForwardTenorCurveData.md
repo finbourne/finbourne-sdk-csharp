@@ -10,7 +10,7 @@ Contains data (i.e. tenors and rates + metadata) for building fx forward curves 
 | **BaseDate** | **DateTimeOffset** | Required | EffectiveAt date of the quoted rates |
 | **DomCcy** | **string** | Required | Domestic currency of the fx forward |
 | **FgnCcy** | **string** | Required | Foreign currency of the fx forward |
-| **Tenors** | **List&lt;string&gt;** | Required | Tenors for which the forward rates apply.  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097) |
+| **Tenors** | **List&lt;string&gt;** | Required | Tenors for which the forward rates apply.  For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid) |
 | **Rates** | **List&lt;decimal&gt;** | Required | Rates provided for the fx forward (price in FgnCcy per unit of DomCcy) |
 | **Lineage** | **string** | Optional | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. |
 | **MarketDataOptions** | [MarketDataOptions](MarketDataOptions.md) | Optional | *No description available.* |
@@ -31,7 +31,7 @@ var instance = new FxForwardTenorCurveData(
     baseDate: DateTimeOffset.Now,  // required — EffectiveAt date of the quoted rates
     domCcy: "...",  // required — Domestic currency of the fx forward
     fgnCcy: "...",  // required — Foreign currency of the fx forward
-    tenors: ,  // required — Tenors for which the forward rates apply.  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
+    tenors: ,  // required — Tenors for which the forward rates apply.  For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid)
     rates: ,  // required — Rates provided for the fx forward (price in FgnCcy per unit of DomCcy)
     lineage: "...",  // optional — Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;.
     marketDataOptions: new MarketDataOptions(...),  // optional

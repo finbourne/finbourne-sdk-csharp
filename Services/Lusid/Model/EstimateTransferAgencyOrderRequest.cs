@@ -37,7 +37,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="orderId">orderId (required).</param>
         /// <param name="order">order.</param>
-        public EstimateTransferAgencyOrderRequest(ResourceId orderId = default(ResourceId), TransferAgencyOrderToEstimate order = default(TransferAgencyOrderToEstimate))
+        /// <param name="priceDate">priceDate.</param>
+        public EstimateTransferAgencyOrderRequest(ResourceId orderId = default(ResourceId), TransferAgencyOrderToEstimate order = default(TransferAgencyOrderToEstimate), DateTimeOffset? priceDate = default(DateTimeOffset?))
         {
             // to ensure "orderId" is required (not null)
             if (orderId == null)
@@ -46,6 +47,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.OrderId = orderId;
             this.Order = order;
+            this.PriceDate = priceDate;
         }
 
         /// <summary>
@@ -61,6 +63,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public TransferAgencyOrderToEstimate Order { get; set; }
 
         /// <summary>
+        /// Gets or Sets PriceDate
+        /// </summary>
+        [DataMember(Name = "priceDate", EmitDefaultValue = true)]
+        public DateTimeOffset? PriceDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -70,6 +78,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class EstimateTransferAgencyOrderRequest {\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  Order: ").Append(Order).Append("\n");
+            sb.Append("  PriceDate: ").Append(PriceDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -114,6 +123,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Order == input.Order ||
                     (this.Order != null &&
                     this.Order.Equals(input.Order))
+                ) && 
+                (
+                    this.PriceDate == input.PriceDate ||
+                    (this.PriceDate != null &&
+                    this.PriceDate.Equals(input.PriceDate))
                 );
         }
 
@@ -133,6 +147,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Order != null)
                 {
                     hashCode = (hashCode * 59) + this.Order.GetHashCode();
+                }
+                if (this.PriceDate != null)
+                {
+                    hashCode = (hashCode * 59) + this.PriceDate.GetHashCode();
                 }
                 return hashCode;
             }

@@ -63,10 +63,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="VolSurfaceShiftDefinition" /> class.
         /// </summary>
-        /// <param name="instrument">instrument (required).</param>
+        /// <param name="instrument">The market-data descriptor of the surfaces to shift, not an instrument identifier such as a LUID.  For an equity vol surface this is the underlier code the surface was mastered against (e.g. &#39;TSLA&#39;  for market asset &#39;TSLA/USD/LN&#39;); for an interest rate vol surface it is the currency (e.g. &#39;USD&#39;);  for an FX vol surface it is the currency pair (e.g. &#39;GBP/USD&#39;). The wildcard &#39;EquityVol.*&#39; widens  the shift to every equity vol surface in the valuation; interest rate and FX vol surfaces cannot  be widened, since neither a currency nor a currency pair names a set of instruments. (required).</param>
         /// <param name="amount">amount.</param>
         /// <param name="strike">strike.</param>
-        /// <param name="expiry">expiry.</param>
+        /// <param name="expiry">The expiry of the surface points the shift applies to, resolved against the valuation  date. A whole number of units, in any case: BD (business day), D, W, M, Q or Qtr, SA  (semi-annual), Y or A - for example \&quot;1BD\&quot;, \&quot;3m\&quot;, \&quot;6M\&quot;, \&quot;1Qtr\&quot;, \&quot;5y\&quot;. Omitted, every  expiry on the surface is shifted..</param>
         /// <param name="shiftType">Available values: Absolute, Relative. (required).</param>
         /// <param name="scenarioShiftType">Available values: RateCurveShiftDefinition, FxShiftDefinition, PriceShiftDefinition, VolSurfaceShiftDefinition, MdkrGroupShiftDefinition, InflationCurveShiftDefinition, CreditSpreadShiftDefinition, ModelOptionShiftDefinition. (required) (default to ScenarioShiftTypeEnum.RateCurveShiftDefinition).</param>
         public VolSurfaceShiftDefinition(string instrument = default(string), decimal? amount = default(decimal?), decimal? strike = default(decimal?), string expiry = default(string), ShiftTypeEnum shiftType = default(ShiftTypeEnum), ScenarioShiftTypeEnum scenarioShiftType = default(ScenarioShiftTypeEnum)) : base()
@@ -85,8 +85,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// Gets or Sets Instrument
+        /// The market-data descriptor of the surfaces to shift, not an instrument identifier such as a LUID.  For an equity vol surface this is the underlier code the surface was mastered against (e.g. &#39;TSLA&#39;  for market asset &#39;TSLA/USD/LN&#39;); for an interest rate vol surface it is the currency (e.g. &#39;USD&#39;);  for an FX vol surface it is the currency pair (e.g. &#39;GBP/USD&#39;). The wildcard &#39;EquityVol.*&#39; widens  the shift to every equity vol surface in the valuation; interest rate and FX vol surfaces cannot  be widened, since neither a currency nor a currency pair names a set of instruments.
         /// </summary>
+        /// <value>The market-data descriptor of the surfaces to shift, not an instrument identifier such as a LUID.  For an equity vol surface this is the underlier code the surface was mastered against (e.g. &#39;TSLA&#39;  for market asset &#39;TSLA/USD/LN&#39;); for an interest rate vol surface it is the currency (e.g. &#39;USD&#39;);  for an FX vol surface it is the currency pair (e.g. &#39;GBP/USD&#39;). The wildcard &#39;EquityVol.*&#39; widens  the shift to every equity vol surface in the valuation; interest rate and FX vol surfaces cannot  be widened, since neither a currency nor a currency pair names a set of instruments.</value>
         [DataMember(Name = "instrument", IsRequired = true, EmitDefaultValue = true)]
         public string Instrument { get; set; }
 
@@ -103,8 +104,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal? Strike { get; set; }
 
         /// <summary>
-        /// Gets or Sets Expiry
+        /// The expiry of the surface points the shift applies to, resolved against the valuation  date. A whole number of units, in any case: BD (business day), D, W, M, Q or Qtr, SA  (semi-annual), Y or A - for example \&quot;1BD\&quot;, \&quot;3m\&quot;, \&quot;6M\&quot;, \&quot;1Qtr\&quot;, \&quot;5y\&quot;. Omitted, every  expiry on the surface is shifted.
         /// </summary>
+        /// <value>The expiry of the surface points the shift applies to, resolved against the valuation  date. A whole number of units, in any case: BD (business day), D, W, M, Q or Qtr, SA  (semi-annual), Y or A - for example \&quot;1BD\&quot;, \&quot;3m\&quot;, \&quot;6M\&quot;, \&quot;1Qtr\&quot;, \&quot;5y\&quot;. Omitted, every  expiry on the surface is shifted.</value>
         [DataMember(Name = "expiry", EmitDefaultValue = true)]
         public string Expiry { get; set; }
 
@@ -241,7 +243,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 yield return x;
             }
             // Expiry (string) pattern
-            Regex regexExpiry = new Regex(@"^\d+[mywdMYWD]$", RegexOptions.CultureInvariant);
+            Regex regexExpiry = new Regex(@"^\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$", RegexOptions.CultureInvariant);
             if (this.Expiry != null && false == regexExpiry.Match(this.Expiry).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Expiry, must match a pattern of " + regexExpiry, new [] { "Expiry" });

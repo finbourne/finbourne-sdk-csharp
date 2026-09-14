@@ -154,7 +154,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
         /// </summary>
         /// <remarks>
-        /// For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        /// For more information about filtering results,  see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)</param>
@@ -171,7 +171,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
         /// </summary>
         /// <remarks>
-        /// For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        /// For more information about filtering results,  see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)</param>
@@ -413,7 +413,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
         /// </summary>
         /// <remarks>
-        /// For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        /// For more information about filtering results,  see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)</param>
@@ -431,7 +431,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
         /// </summary>
         /// <remarks>
-        /// For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        /// For more information about filtering results,  see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)</param>
@@ -1670,7 +1670,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering. For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering. For more information about filtering results,  see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)</param>
@@ -1688,7 +1688,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering. For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering. For more information about filtering results,  see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1802,7 +1802,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering. For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering. For more information about filtering results,  see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)</param>
@@ -1821,7 +1821,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering. For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        /// [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering. For more information about filtering results,  see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

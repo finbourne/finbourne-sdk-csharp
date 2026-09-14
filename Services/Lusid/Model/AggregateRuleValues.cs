@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="ruleName">The name of the rule. (required).</param>
         /// <param name="leftValue">The left-side value..</param>
         /// <param name="rightValue">The right-side value..</param>
-        /// <param name="difference">The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)). (required).</param>
+        /// <param name="difference">The measured magnitude of the difference, ToString(ABS(leftValue - rightValue))..</param>
         /// <param name="appliedTolerance">appliedTolerance.</param>
         public AggregateRuleValues(string ruleName = default(string), string leftValue = default(string), string rightValue = default(string), string difference = default(string), ToleranceBase appliedTolerance = default(ToleranceBase))
         {
@@ -48,14 +48,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("ruleName is a required property for AggregateRuleValues and cannot be null");
             }
             this.RuleName = ruleName;
-            // to ensure "difference" is required (not null)
-            if (difference == null)
-            {
-                throw new ArgumentNullException("difference is a required property for AggregateRuleValues and cannot be null");
-            }
-            this.Difference = difference;
             this.LeftValue = leftValue;
             this.RightValue = rightValue;
+            this.Difference = difference;
             this.AppliedTolerance = appliedTolerance;
         }
 
@@ -84,7 +79,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)).
         /// </summary>
         /// <value>The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)).</value>
-        [DataMember(Name = "difference", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "difference", EmitDefaultValue = true)]
         public string Difference { get; set; }
 
         /// <summary>

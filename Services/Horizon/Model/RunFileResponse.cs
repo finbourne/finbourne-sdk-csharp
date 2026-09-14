@@ -44,7 +44,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="transactionIds">transactionIds (required).</param>
         /// <param name="fileUuid">fileUuid (required).</param>
         /// <param name="failedTransactionIds">failedTransactionIds (required).</param>
-        public RunFileResponse(string fileName = default(string), DateTimeOffset generatedAt = default(DateTimeOffset), int rowCount = default(int), string fileHash = default(string), bool encrypted = default(bool), List<FileDestinationResponse> destinations = default(List<FileDestinationResponse>), List<Guid> transactionIds = default(List<Guid>), Guid fileUuid = default(Guid), List<Guid> failedTransactionIds = default(List<Guid>))
+        public RunFileResponse(string fileName = default(string), DateTimeOffset generatedAt = default(DateTimeOffset), int rowCount = default(int), string fileHash = default(string), bool encrypted = default(bool), List<FileDestinationResponse> destinations = default(List<FileDestinationResponse>), List<string> transactionIds = default(List<string>), Guid fileUuid = default(Guid), List<string> failedTransactionIds = default(List<string>))
         {
             // to ensure "fileName" is required (not null)
             if (fileName == null)
@@ -122,7 +122,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// Gets or Sets TransactionIds
         /// </summary>
         [DataMember(Name = "transactionIds", IsRequired = true, EmitDefaultValue = true)]
-        public List<Guid> TransactionIds { get; set; }
+        public List<string> TransactionIds { get; set; }
 
         /// <summary>
         /// Gets or Sets FileUuid
@@ -134,7 +134,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// Gets or Sets FailedTransactionIds
         /// </summary>
         [DataMember(Name = "failedTransactionIds", IsRequired = true, EmitDefaultValue = true)]
-        public List<Guid> FailedTransactionIds { get; set; }
+        public List<string> FailedTransactionIds { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

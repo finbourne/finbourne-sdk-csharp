@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **MappingFilter** | **string** | Required | The filter syntax for the Mapping filter. See https://support.lusid.com/knowledgebase/article/KA-02140 for more information on filter syntax |
+| **MappingFilter** | **string** | Required | The filter syntax for the Mapping filter. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules for more information on filter syntax |
 | **Levels** | **List&lt;string&gt;** | Required | References fields and properties on the associated Journal Entry Line and graph of associated objects. |
 
 
@@ -16,7 +16,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new GeneralLedgerProfileMapping(
-    mappingFilter: "...",  // required — The filter syntax for the Mapping filter. See https://support.lusid.com/knowledgebase/article/KA-02140 for more information on filter syntax
+    mappingFilter: "...",  // required — The filter syntax for the Mapping filter. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules for more information on filter syntax
     levels:   // required — References fields and properties on the associated Journal Entry Line and graph of associated objects.
 );
 ```

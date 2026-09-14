@@ -7,7 +7,7 @@ Representation of an abstract definition of a flow convention set consisting of 
 |------|------|----------|-------------|
 | **Currency** | **string** | Required | Currency of the flow convention name. |
 | **IndexName** | **string** | Optional | The index, if present, that is required. e.g. \&quot;IBOR\&quot;, \&quot;OIS\&quot; or \&quot;SONIA\&quot;. |
-| **Tenor** | **string** | Required | Tenor for the convention name.    For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097) |
+| **Tenor** | **string** | Required | Tenor for the convention name.    For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid) |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new FlowConventionName(
     currency: "...",  // required — Currency of the flow convention name.
     indexName: "...",  // optional — The index, if present, that is required. e.g. \&quot;IBOR\&quot;, \&quot;OIS\&quot; or \&quot;SONIA\&quot;.
-    tenor: "..."  // required — Tenor for the convention name.    For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
+    tenor: "..."  // required — Tenor for the convention name.    For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid)
 );
 ```
 ### Serializing to JSON

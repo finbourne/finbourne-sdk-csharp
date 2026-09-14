@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// The expanded view of a rec instance: its identity, lifecycle status, lock state, closed periods  (for Closed Period windows) and the time-series of runs in the run log.
+    /// The expanded view of a rec instance: its identity, lifecycle status, lock state, closed periods  (for Closed Period windows) and, per rec type, the time-series of runs in that rec type&#39;s run log.
     /// </summary>
     [DataContract(Name = "RecInstance")]
     public partial class RecInstance : IEquatable<RecInstance>, IValidatableObject
@@ -43,11 +43,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="asAtLocked">The wall-clock time the lock action was performed. Null when the instance has not been locked..</param>
         /// <param name="datesLocked">datesLocked.</param>
         /// <param name="closedPeriods">closedPeriods.</param>
-        /// <param name="runLog">A chronologically ordered list of all runs on the instance. Always contains at least one entry. (required).</param>
+        /// <param name="runLogs">The instance&#39;s run history, keyed by rec type. Contains an entry for each rec type that has produced a result set, so a run appears only once it has completed or failed. Empty while the instance&#39;s first run is still in flight. (required).</param>
         /// <param name="href">The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime..</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="links">links.</param>
-        public RecInstance(RecInstanceId id = default(RecInstanceId), ResourceId recDefinitionId = default(ResourceId), string recDefinitionDisplayName = default(string), DateTimeOffset asAtInstantiated = default(DateTimeOffset), string status = default(string), DateTimeOffset? asAtLocked = default(DateTimeOffset?), RecDatesReconciled datesLocked = default(RecDatesReconciled), RecClosedPeriods closedPeriods = default(RecClosedPeriods), List<RecRunLogEntry> runLog = default(List<RecRunLogEntry>), string href = default(string), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
+        public RecInstance(RecInstanceId id = default(RecInstanceId), ResourceId recDefinitionId = default(ResourceId), string recDefinitionDisplayName = default(string), DateTimeOffset asAtInstantiated = default(DateTimeOffset), string status = default(string), DateTimeOffset? asAtLocked = default(DateTimeOffset?), RecDatesReconciled datesLocked = default(RecDatesReconciled), RecClosedPeriods closedPeriods = default(RecClosedPeriods), Dictionary<string, RecRunLog> runLogs = default(Dictionary<string, RecRunLog>), string href = default(string), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -74,12 +74,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("status is a required property for RecInstance and cannot be null");
             }
             this.Status = status;
-            // to ensure "runLog" is required (not null)
-            if (runLog == null)
+            // to ensure "runLogs" is required (not null)
+            if (runLogs == null)
             {
-                throw new ArgumentNullException("runLog is a required property for RecInstance and cannot be null");
+                throw new ArgumentNullException("runLogs is a required property for RecInstance and cannot be null");
             }
-            this.RunLog = runLog;
+            this.RunLogs = runLogs;
             this.AsAtLocked = asAtLocked;
             this.DatesLocked = datesLocked;
             this.ClosedPeriods = closedPeriods;
@@ -141,11 +141,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public RecClosedPeriods ClosedPeriods { get; set; }
 
         /// <summary>
-        /// A chronologically ordered list of all runs on the instance. Always contains at least one entry.
+        /// The instance&#39;s run history, keyed by rec type. Contains an entry for each rec type that has produced a result set, so a run appears only once it has completed or failed. Empty while the instance&#39;s first run is still in flight.
         /// </summary>
-        /// <value>A chronologically ordered list of all runs on the instance. Always contains at least one entry.</value>
-        [DataMember(Name = "runLog", IsRequired = true, EmitDefaultValue = true)]
-        public List<RecRunLogEntry> RunLog { get; set; }
+        /// <value>The instance&#39;s run history, keyed by rec type. Contains an entry for each rec type that has produced a result set, so a run appears only once it has completed or failed. Empty while the instance&#39;s first run is still in flight.</value>
+        [DataMember(Name = "runLogs", IsRequired = true, EmitDefaultValue = true)]
+        public Dictionary<string, RecRunLog> RunLogs { get; set; }
 
         /// <summary>
         /// The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
@@ -182,7 +182,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  AsAtLocked: ").Append(AsAtLocked).Append("\n");
             sb.Append("  DatesLocked: ").Append(DatesLocked).Append("\n");
             sb.Append("  ClosedPeriods: ").Append(ClosedPeriods).Append("\n");
-            sb.Append("  RunLog: ").Append(RunLog).Append("\n");
+            sb.Append("  RunLogs: ").Append(RunLogs).Append("\n");
             sb.Append("  Href: ").Append(Href).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
@@ -262,10 +262,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ClosedPeriods.Equals(input.ClosedPeriods))
                 ) && 
                 (
-                    this.RunLog == input.RunLog ||
-                    this.RunLog != null &&
-                    input.RunLog != null &&
-                    this.RunLog.SequenceEqual(input.RunLog)
+                    this.RunLogs == input.RunLogs ||
+                    this.RunLogs != null &&
+                    input.RunLogs != null &&
+                    this.RunLogs.SequenceEqual(input.RunLogs)
                 ) && 
                 (
                     this.Href == input.Href ||
@@ -326,9 +326,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.ClosedPeriods.GetHashCode();
                 }
-                if (this.RunLog != null)
+                if (this.RunLogs != null)
                 {
-                    hashCode = (hashCode * 59) + this.RunLog.GetHashCode();
+                    hashCode = (hashCode * 59) + this.RunLogs.GetHashCode();
                 }
                 if (this.Href != null)
                 {

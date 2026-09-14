@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **QueryMethod** | **string** | Optional | The method used to query data points. Can be either &#39;Latest&#39; or &#39;TimeSeries&#39;. |
-| **Filter** | **string** | Optional | Expression to filter the result set. For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **Filter** | **string** | Optional | Expression to filter the result set. For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
 | **CustomSortBy** | [List&lt;CustomSortBy&gt;](CustomSortBy.md) | Optional | A list of fields and values to sort the results by. |
 
 
@@ -18,7 +18,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new QueryRelationalDatasetRequest(
     queryMethod: "...",  // optional — The method used to query data points. Can be either &#39;Latest&#39; or &#39;TimeSeries&#39;.
-    filter: "...",  // optional — Expression to filter the result set. For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    filter: "...",  // optional — Expression to filter the result set. For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
     customSortBy: new List<CustomSortBy>()  // optional — A list of fields and values to sort the results by.
 );
 ```

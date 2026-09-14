@@ -79,12 +79,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **asAt** | **DateTimeOffset?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01832/ |
-| **paginationToken** | **string?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
+| **asAt** | **DateTimeOffset?** | query | optional | See https://support.lusid.com/docs/what-is-the-asat-timestamp |
+| **paginationToken** | **string?** | query | optional | See https://support.lusid.com/docs/paging-and-limiting-an-api-request |
 | **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **limit** | **int?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
-| **filter** | **string?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01914/ Default: `&quot;&quot;` |
-| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ |
+| **limit** | **int?** | query | optional | See https://support.lusid.com/docs/paging-and-limiting-an-api-request |
+| **filter** | **string?** | query | optional | See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid Default: `&quot;&quot;` |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Must be block-level properties. See https://support.lusid.com/docs/properties |
 | **useComplianceV2** | **bool?** | query | optional | Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false) Default: `false` |
 
 ### Return type
@@ -151,11 +151,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The parent placement&#39;s scope |
 | **code** | **string** | path | **required** | The parent placement&#39;s code |
-| **asAt** | **DateTimeOffset?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01832/ |
-| **paginationToken** | **string?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
+| **asAt** | **DateTimeOffset?** | query | optional | See https://support.lusid.com/docs/what-is-the-asat-timestamp |
+| **paginationToken** | **string?** | query | optional | See https://support.lusid.com/docs/paging-and-limiting-an-api-request |
 | **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. |
-| **limit** | **int?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
-| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ |
+| **limit** | **int?** | query | optional | See https://support.lusid.com/docs/paging-and-limiting-an-api-request |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Must be placement properties. See https://support.lusid.com/docs/properties |
 
 ### Return type
 
@@ -218,12 +218,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **asAt** | **DateTimeOffset?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01832/ |
-| **paginationToken** | **string?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
+| **asAt** | **DateTimeOffset?** | query | optional | See https://support.lusid.com/docs/what-is-the-asat-timestamp |
+| **paginationToken** | **string?** | query | optional | See https://support.lusid.com/docs/paging-and-limiting-an-api-request |
 | **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **limit** | **int?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01915/ |
-| **filter** | **string?** | query | optional | See https://support.lusid.com/knowledgebase/article/KA-01914/ Default: `&quot;&quot;` |
-| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/ |
+| **limit** | **int?** | query | optional | See https://support.lusid.com/docs/paging-and-limiting-an-api-request |
+| **filter** | **string?** | query | optional | See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid Default: `&quot;&quot;` |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Must be placement properties. See https://support.lusid.com/docs/properties |
 
 ### Return type
 

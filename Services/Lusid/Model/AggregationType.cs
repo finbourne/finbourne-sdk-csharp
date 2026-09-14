@@ -86,7 +86,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum Json for value: Json
         /// </summary>
         [EnumMember(Value = "Json")]
-        Json = 10
+        Json = 10,
+
+        /// <summary>
+        /// Enum ResultND for value: ResultND
+        /// </summary>
+        [EnumMember(Value = "ResultND")]
+        ResultND = 11
     }
 
 }

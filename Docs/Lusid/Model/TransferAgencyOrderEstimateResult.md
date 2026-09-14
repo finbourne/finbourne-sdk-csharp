@@ -13,6 +13,7 @@ The estimated values for one order, together with the market facts they were str
 | **EstimatedAmount** | **decimal** | Optional | *No description available.* |
 | **EstimatedAmountCurrency** | **string** | Optional | *No description available.* |
 | **FxRateUsed** | **decimal** | Optional | *No description available.* |
+| **ExcludedOrders** | [List&lt;TransferAgencyExcludedOrder&gt;](TransferAgencyExcludedOrder.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -30,7 +31,8 @@ var instance = new TransferAgencyOrderEstimateResult(
     estimatedUnits: 0.0d,  // optional
     estimatedAmount: 0.0d,  // optional
     estimatedAmountCurrency: "...",  // optional
-    fxRateUsed: 0.0d  // optional
+    fxRateUsed: 0.0d,  // optional
+    excludedOrders: new List<TransferAgencyExcludedOrder>()  // optional
 );
 ```
 ### Serializing to JSON
@@ -49,6 +51,7 @@ var instance = JsonConvert.DeserializeObject<TransferAgencyOrderEstimateResult>(
 ## Related Models
 
 - [ResourceId](ResourceId.md)
+- [TransferAgencyExcludedOrder](TransferAgencyExcludedOrder.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
