@@ -14,6 +14,7 @@
 | **RuleName** | **string** | Required | *No description available.* |
 | **RuleDescription** | **string** | Required | *No description available.* |
 | **Outcome** | **string** | Required | *No description available.* |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -33,7 +34,8 @@ var instance = new ComplianceRuleResultDetail(
     status: "...",  // required
     ruleName: "...",  // required
     ruleDescription: "...",  // required
-    outcome: "..."  // required
+    outcome: "...",  // required
+    properties: new PerpetualProperty(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -55,6 +57,7 @@ var instance = JsonConvert.DeserializeObject<ComplianceRuleResultDetail>(json);
 - [ComplianceRuleResultPortfolioDetail](ComplianceRuleResultPortfolioDetail.md)
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
+- [PerpetualProperty](PerpetualProperty.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

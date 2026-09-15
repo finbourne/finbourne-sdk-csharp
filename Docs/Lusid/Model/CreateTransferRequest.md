@@ -30,7 +30,7 @@ A request to create a transfer: the paired transaction legs that move a position
 | **CustodianAccountIdIn** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Source** | **string** | Required | *No description available.* |
 | **AccountingMethod** | **string** | Optional | Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. |
-| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
+| **PropertiesOut** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
 | **PropertiesIn** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
 
 
@@ -67,7 +67,7 @@ var instance = new CreateTransferRequest(
     custodianAccountIdIn: new ResourceId(...),  // optional
     source: "...",  // required
     accountingMethod: "...",  // optional — Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
-    properties: new PerpetualProperty(...),  // optional
+    propertiesOut: new PerpetualProperty(...),  // optional
     propertiesIn: new PerpetualProperty(...)  // optional
 );
 ```

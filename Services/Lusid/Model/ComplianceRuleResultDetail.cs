@@ -45,7 +45,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="ruleName">ruleName (required).</param>
         /// <param name="ruleDescription">ruleDescription (required).</param>
         /// <param name="outcome">outcome (required).</param>
-        public ComplianceRuleResultDetail(ResourceId ruleId = default(ResourceId), List<ComplianceRuleResultPortfolioDetail> affectedPortfoliosDetails = default(List<ComplianceRuleResultPortfolioDetail>), List<ResourceId> affectedOrders = default(List<ResourceId>), ResourceId templateId = default(ResourceId), string templateDescription = default(string), string templateVariation = default(string), string status = default(string), string ruleName = default(string), string ruleDescription = default(string), string outcome = default(string))
+        /// <param name="properties">properties.</param>
+        public ComplianceRuleResultDetail(ResourceId ruleId = default(ResourceId), List<ComplianceRuleResultPortfolioDetail> affectedPortfoliosDetails = default(List<ComplianceRuleResultPortfolioDetail>), List<ResourceId> affectedOrders = default(List<ResourceId>), ResourceId templateId = default(ResourceId), string templateDescription = default(string), string templateVariation = default(string), string status = default(string), string ruleName = default(string), string ruleDescription = default(string), string outcome = default(string), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>))
         {
             // to ensure "ruleId" is required (not null)
             if (ruleId == null)
@@ -107,6 +108,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("outcome is a required property for ComplianceRuleResultDetail and cannot be null");
             }
             this.Outcome = outcome;
+            this.Properties = properties;
         }
 
         /// <summary>
@@ -170,6 +172,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Outcome { get; set; }
 
         /// <summary>
+        /// Gets or Sets Properties
+        /// </summary>
+        [DataMember(Name = "properties", EmitDefaultValue = true)]
+        public Dictionary<string, PerpetualProperty> Properties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -187,6 +195,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  RuleName: ").Append(RuleName).Append("\n");
             sb.Append("  RuleDescription: ").Append(RuleDescription).Append("\n");
             sb.Append("  Outcome: ").Append(Outcome).Append("\n");
+            sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -273,6 +282,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Outcome == input.Outcome ||
                     (this.Outcome != null &&
                     this.Outcome.Equals(input.Outcome))
+                ) && 
+                (
+                    this.Properties == input.Properties ||
+                    this.Properties != null &&
+                    input.Properties != null &&
+                    this.Properties.SequenceEqual(input.Properties)
                 );
         }
 
@@ -324,6 +339,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Outcome != null)
                 {
                     hashCode = (hashCode * 59) + this.Outcome.GetHashCode();
+                }
+                if (this.Properties != null)
+                {
+                    hashCode = (hashCode * 59) + this.Properties.GetHashCode();
                 }
                 return hashCode;
             }

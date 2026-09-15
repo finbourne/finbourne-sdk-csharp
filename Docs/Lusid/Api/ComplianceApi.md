@@ -437,7 +437,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getdecoratedcompliancerunsummary"></a>
 ## GetDecoratedComplianceRunSummary
 
-> DecoratedComplianceRunSummary GetDecoratedComplianceRunSummary(string scope, string code)
+> DecoratedComplianceRunSummary GetDecoratedComplianceRunSummary(string scope, string code, List<string>? propertyKeys = null)
 
 [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run.
 
@@ -449,7 +449,8 @@ Specify a run scope and code from a previously run compliance check to get an ov
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
-DecoratedComplianceRunSummary result = apiInstance.GetDecoratedComplianceRunSummary(scope, code);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+DecoratedComplianceRunSummary result = apiInstance.GetDecoratedComplianceRunSummary(scope, code, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -459,6 +460,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | Required: Run Scope. |
 | **code** | **string** | path | **required** | Required: Run Code. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule result.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. |
 
 ### Return type
 
@@ -483,7 +485,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<DecoratedComplianceRunSummary> response = apiInstance.GetDecoratedComplianceRunSummaryWithHttpInfo(scope, code);
+ApiResponse<DecoratedComplianceRunSummary> response = apiInstance.GetDecoratedComplianceRunSummaryWithHttpInfo(scope, code, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

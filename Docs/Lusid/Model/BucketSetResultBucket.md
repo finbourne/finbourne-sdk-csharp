@@ -15,6 +15,7 @@ One bucket's values within a bucket set node: the movement in the period plus th
 | **UnitsInIssue** | **decimal?** | Optional | The share class&#39;s units in issue at the end of the period. Reported only where both the share class and the bucket are unitised. |
 | **PreviousCumulativePerUnitValue** | **decimal?** | Optional | The bucket&#39;s cumulative value at the start of the period, per unit in issue at that point - so it reads as it did at the previous valuation point rather than being restated at this period&#39;s unit count. |
 | **CumulativePerUnitValue** | **decimal?** | Optional | The bucket&#39;s cumulative value at the end of the period per unit in issue (CumulativeValue divided by UnitsInIssue). Reported only where both the share class and the bucket are unitised and there are units in issue to divide by. |
+| **DisplayName** | **string** | Optional | The display name of the bucket, as configured on the fund configuration. |
 
 
 ## Usage
@@ -34,7 +35,8 @@ var instance = new BucketSetResultBucket(
     perUnitValue: 0.0d,  // optional — The bucket&#39;s movement over the period per unit in issue (Value divided by UnitsInIssue), in the fund currency, rounded to the share class&#39;s PricePrecision. Reported only where both the share class and the bucket are unitised and there are units in issue to divide by.
     unitsInIssue: 0.0d,  // optional — The share class&#39;s units in issue at the end of the period. Reported only where both the share class and the bucket are unitised.
     previousCumulativePerUnitValue: 0.0d,  // optional — The bucket&#39;s cumulative value at the start of the period, per unit in issue at that point - so it reads as it did at the previous valuation point rather than being restated at this period&#39;s unit count.
-    cumulativePerUnitValue: 0.0d  // optional — The bucket&#39;s cumulative value at the end of the period per unit in issue (CumulativeValue divided by UnitsInIssue). Reported only where both the share class and the bucket are unitised and there are units in issue to divide by.
+    cumulativePerUnitValue: 0.0d,  // optional — The bucket&#39;s cumulative value at the end of the period per unit in issue (CumulativeValue divided by UnitsInIssue). Reported only where both the share class and the bucket are unitised and there are units in issue to divide by.
+    displayName: "..."  // optional — The display name of the bucket, as configured on the fund configuration.
 );
 ```
 ### Serializing to JSON
