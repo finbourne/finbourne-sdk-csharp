@@ -5781,7 +5781,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Api
             }
             if (scalarParameters != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("deepObject", "scalarParameters", scalarParameters));
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "scalarParameters", scalarParameters));
             }
             if (queryName != null)
             {
@@ -5938,7 +5938,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Api
             }
             if (scalarParameters != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("deepObject", "scalarParameters", scalarParameters));
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "scalarParameters", scalarParameters));
             }
             if (queryName != null)
             {
