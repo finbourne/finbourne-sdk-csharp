@@ -14,6 +14,7 @@
 | **Currencies** | [RecDefCurrencies](RecDefCurrencies.md) | Optional | *No description available.* |
 | **Rulesets** | [List&lt;RecDefRuleset&gt;](RecDefRuleset.md) | Required | The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once. |
 | **ReviewConfiguration** | [RecReviewConfiguration](RecReviewConfiguration.md) | Optional | *No description available.* |
+| **DatePolicy** | [RecDatePolicy](RecDatePolicy.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -33,7 +34,8 @@ var instance = new UpdateRecDefinitionRequest(
     valuationRecipes: new RecDefRecipeIds(...),  // optional
     currencies: new RecDefCurrencies(...),  // optional
     rulesets: new List<RecDefRuleset>(),  // required — The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once.
-    reviewConfiguration: new RecReviewConfiguration(...)  // optional
+    reviewConfiguration: new RecReviewConfiguration(...),  // optional
+    datePolicy: new RecDatePolicy(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -55,6 +57,7 @@ var instance = JsonConvert.DeserializeObject<UpdateRecDefinitionRequest>(json);
 - [RecDefCurrencies](RecDefCurrencies.md)
 - [RecDefRuleset](RecDefRuleset.md) — used in `Rulesets`
 - [RecReviewConfiguration](RecReviewConfiguration.md)
+- [RecDatePolicy](RecDatePolicy.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

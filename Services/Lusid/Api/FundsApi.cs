@@ -1029,7 +1029,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the &#39;End&#39; parameter in the  request body; when both are supplied the query parameters are used.
+        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the  &#39;dateOrDiaryEntry&#39; parameter in the request body; when both are supplied the query parameters are used.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -1042,17 +1042,17 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="date">The optional date of the Valuation Point to report against, as an alternative to supplying              it in the request body. Must not be supplied together with diaryEntry. (optional)</param>
         /// <param name="diaryEntry">The optional diary entry code of the Valuation Point to report against, as an              alternative to supplying it in the request body. Must not be supplied together with date. (optional)</param>
         /// <param name="variant">The optional variant code of the Valuation Point to report against, as an alternative to              supplying it in the request body. Only required when it is necessary to choose between scenarios with multiple              estimates. (optional)</param>
-        /// <param name="valuationPointDataQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
+        /// <param name="singleValuationPointQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ValuationPointResourceListOfUnsettledTransaction</returns>
-        ValuationPointResourceListOfUnsettledTransaction GetValuationPointUnsettledTransactions(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), ValuationPointDataQueryParameters? valuationPointDataQueryParameters = default(ValuationPointDataQueryParameters?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        ValuationPointResourceListOfUnsettledTransaction GetValuationPointUnsettledTransactions(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), SingleValuationPointQueryParameters? singleValuationPointQueryParameters = default(SingleValuationPointQueryParameters?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the &#39;End&#39; parameter in the  request body; when both are supplied the query parameters are used.
+        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the  &#39;dateOrDiaryEntry&#39; parameter in the request body; when both are supplied the query parameters are used.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -1065,11 +1065,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="date">The optional date of the Valuation Point to report against, as an alternative to supplying              it in the request body. Must not be supplied together with diaryEntry. (optional)</param>
         /// <param name="diaryEntry">The optional diary entry code of the Valuation Point to report against, as an              alternative to supplying it in the request body. Must not be supplied together with date. (optional)</param>
         /// <param name="variant">The optional variant code of the Valuation Point to report against, as an alternative to              supplying it in the request body. Only required when it is necessary to choose between scenarios with multiple              estimates. (optional)</param>
-        /// <param name="valuationPointDataQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
+        /// <param name="singleValuationPointQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ValuationPointResourceListOfUnsettledTransaction</returns>
-        Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction> GetValuationPointUnsettledTransactionsWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), ValuationPointDataQueryParameters? valuationPointDataQueryParameters = default(ValuationPointDataQueryParameters?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction> GetValuationPointUnsettledTransactionsWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), SingleValuationPointQueryParameters? singleValuationPointQueryParameters = default(SingleValuationPointQueryParameters?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] ListFees: List Fees for a specified Fund.
         /// </summary>
@@ -2846,7 +2846,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the &#39;End&#39; parameter in the  request body; when both are supplied the query parameters are used.
+        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the  &#39;dateOrDiaryEntry&#39; parameter in the request body; when both are supplied the query parameters are used.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -2859,18 +2859,18 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="date">The optional date of the Valuation Point to report against, as an alternative to supplying              it in the request body. Must not be supplied together with diaryEntry. (optional)</param>
         /// <param name="diaryEntry">The optional diary entry code of the Valuation Point to report against, as an              alternative to supplying it in the request body. Must not be supplied together with date. (optional)</param>
         /// <param name="variant">The optional variant code of the Valuation Point to report against, as an alternative to              supplying it in the request body. Only required when it is necessary to choose between scenarios with multiple              estimates. (optional)</param>
-        /// <param name="valuationPointDataQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
+        /// <param name="singleValuationPointQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ValuationPointResourceListOfUnsettledTransaction</returns>
-        System.Threading.Tasks.Task<ValuationPointResourceListOfUnsettledTransaction> GetValuationPointUnsettledTransactionsAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), ValuationPointDataQueryParameters? valuationPointDataQueryParameters = default(ValuationPointDataQueryParameters?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<ValuationPointResourceListOfUnsettledTransaction> GetValuationPointUnsettledTransactionsAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), SingleValuationPointQueryParameters? singleValuationPointQueryParameters = default(SingleValuationPointQueryParameters?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the &#39;End&#39; parameter in the  request body; when both are supplied the query parameters are used.
+        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the  &#39;dateOrDiaryEntry&#39; parameter in the request body; when both are supplied the query parameters are used.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -2883,12 +2883,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="date">The optional date of the Valuation Point to report against, as an alternative to supplying              it in the request body. Must not be supplied together with diaryEntry. (optional)</param>
         /// <param name="diaryEntry">The optional diary entry code of the Valuation Point to report against, as an              alternative to supplying it in the request body. Must not be supplied together with date. (optional)</param>
         /// <param name="variant">The optional variant code of the Valuation Point to report against, as an alternative to              supplying it in the request body. Only required when it is necessary to choose between scenarios with multiple              estimates. (optional)</param>
-        /// <param name="valuationPointDataQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
+        /// <param name="singleValuationPointQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (ValuationPointResourceListOfUnsettledTransaction)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction>> GetValuationPointUnsettledTransactionsWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), ValuationPointDataQueryParameters? valuationPointDataQueryParameters = default(ValuationPointDataQueryParameters?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction>> GetValuationPointUnsettledTransactionsWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), SingleValuationPointQueryParameters? singleValuationPointQueryParameters = default(SingleValuationPointQueryParameters?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] ListFees: List Fees for a specified Fund.
         /// </summary>
@@ -12382,7 +12382,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the &#39;End&#39; parameter in the  request body; when both are supplied the query parameters are used.
+        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the  &#39;dateOrDiaryEntry&#39; parameter in the request body; when both are supplied the query parameters are used.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -12395,18 +12395,18 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="date">The optional date of the Valuation Point to report against, as an alternative to supplying              it in the request body. Must not be supplied together with diaryEntry. (optional)</param>
         /// <param name="diaryEntry">The optional diary entry code of the Valuation Point to report against, as an              alternative to supplying it in the request body. Must not be supplied together with date. (optional)</param>
         /// <param name="variant">The optional variant code of the Valuation Point to report against, as an alternative to              supplying it in the request body. Only required when it is necessary to choose between scenarios with multiple              estimates. (optional)</param>
-        /// <param name="valuationPointDataQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
+        /// <param name="singleValuationPointQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ValuationPointResourceListOfUnsettledTransaction</returns>
-        public ValuationPointResourceListOfUnsettledTransaction GetValuationPointUnsettledTransactions(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), ValuationPointDataQueryParameters? valuationPointDataQueryParameters = default(ValuationPointDataQueryParameters?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public ValuationPointResourceListOfUnsettledTransaction GetValuationPointUnsettledTransactions(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), SingleValuationPointQueryParameters? singleValuationPointQueryParameters = default(SingleValuationPointQueryParameters?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResponse = GetValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResponse = GetValuationPointUnsettledTransactionsWithHttpInfo(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the &#39;End&#39; parameter in the  request body; when both are supplied the query parameters are used.
+        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the  &#39;dateOrDiaryEntry&#39; parameter in the request body; when both are supplied the query parameters are used.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -12420,11 +12420,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="date">The optional date of the Valuation Point to report against, as an alternative to supplying              it in the request body. Must not be supplied together with diaryEntry. (optional)</param>
         /// <param name="diaryEntry">The optional diary entry code of the Valuation Point to report against, as an              alternative to supplying it in the request body. Must not be supplied together with date. (optional)</param>
         /// <param name="variant">The optional variant code of the Valuation Point to report against, as an alternative to              supplying it in the request body. Only required when it is necessary to choose between scenarios with multiple              estimates. (optional)</param>
-        /// <param name="valuationPointDataQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
+        /// <param name="singleValuationPointQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ValuationPointResourceListOfUnsettledTransaction</returns>
-        public Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction> GetValuationPointUnsettledTransactionsWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), ValuationPointDataQueryParameters? valuationPointDataQueryParameters = default(ValuationPointDataQueryParameters?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction> GetValuationPointUnsettledTransactionsWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), SingleValuationPointQueryParameters? singleValuationPointQueryParameters = default(SingleValuationPointQueryParameters?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -12520,7 +12520,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "variant", variant));
             }
-            localVarRequestOptions.Data = valuationPointDataQueryParameters;
+            localVarRequestOptions.Data = singleValuationPointQueryParameters;
 
             localVarRequestOptions.Operation = "FundsApi.GetValuationPointUnsettledTransactions";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -12557,7 +12557,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the &#39;End&#39; parameter in the  request body; when both are supplied the query parameters are used.
+        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the  &#39;dateOrDiaryEntry&#39; parameter in the request body; when both are supplied the query parameters are used.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -12570,19 +12570,19 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="date">The optional date of the Valuation Point to report against, as an alternative to supplying              it in the request body. Must not be supplied together with diaryEntry. (optional)</param>
         /// <param name="diaryEntry">The optional diary entry code of the Valuation Point to report against, as an              alternative to supplying it in the request body. Must not be supplied together with date. (optional)</param>
         /// <param name="variant">The optional variant code of the Valuation Point to report against, as an alternative to              supplying it in the request body. Only required when it is necessary to choose between scenarios with multiple              estimates. (optional)</param>
-        /// <param name="valuationPointDataQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
+        /// <param name="singleValuationPointQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ValuationPointResourceListOfUnsettledTransaction</returns>
-        public async System.Threading.Tasks.Task<ValuationPointResourceListOfUnsettledTransaction> GetValuationPointUnsettledTransactionsAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), ValuationPointDataQueryParameters? valuationPointDataQueryParameters = default(ValuationPointDataQueryParameters?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<ValuationPointResourceListOfUnsettledTransaction> GetValuationPointUnsettledTransactionsAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), SingleValuationPointQueryParameters? singleValuationPointQueryParameters = default(SingleValuationPointQueryParameters?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResponse = await GetValuationPointUnsettledTransactionsWithHttpInfoAsync(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, valuationPointDataQueryParameters, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction> localVarResponse = await GetValuationPointUnsettledTransactionsWithHttpInfoAsync(scope, code, asAt, limit, page, propertyKeys, navTypeCode, date, diaryEntry, variant, singleValuationPointQueryParameters, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the &#39;End&#39; parameter in the  request body; when both are supplied the query parameters are used.
+        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.  The Valuation Point must be identified either by the date or diaryEntry query parameters or by the  &#39;dateOrDiaryEntry&#39; parameter in the request body; when both are supplied the query parameters are used.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -12596,12 +12596,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="date">The optional date of the Valuation Point to report against, as an alternative to supplying              it in the request body. Must not be supplied together with diaryEntry. (optional)</param>
         /// <param name="diaryEntry">The optional diary entry code of the Valuation Point to report against, as an              alternative to supplying it in the request body. Must not be supplied together with date. (optional)</param>
         /// <param name="variant">The optional variant code of the Valuation Point to report against, as an alternative to              supplying it in the request body. Only required when it is necessary to choose between scenarios with multiple              estimates. (optional)</param>
-        /// <param name="valuationPointDataQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
+        /// <param name="singleValuationPointQueryParameters">The optional arguments to use for querying the unsettled transactions. Can be              omitted when the Valuation Point is identified by the date or diaryEntry query parameters. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (ValuationPointResourceListOfUnsettledTransaction)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction>> GetValuationPointUnsettledTransactionsWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), ValuationPointDataQueryParameters? valuationPointDataQueryParameters = default(ValuationPointDataQueryParameters?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ValuationPointResourceListOfUnsettledTransaction>> GetValuationPointUnsettledTransactionsWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), List<string>? propertyKeys = default(List<string>?), string? navTypeCode = default(string?), DateTimeOrCutLabel? date = default(DateTimeOrCutLabel?), string? diaryEntry = default(string?), string? variant = default(string?), SingleValuationPointQueryParameters? singleValuationPointQueryParameters = default(SingleValuationPointQueryParameters?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -12698,7 +12698,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "variant", variant));
             }
-            localVarRequestOptions.Data = valuationPointDataQueryParameters;
+            localVarRequestOptions.Data = singleValuationPointQueryParameters;
 
             localVarRequestOptions.Operation = "FundsApi.GetValuationPointUnsettledTransactions";
             localVarRequestOptions.OperationIndex = operationIndex;

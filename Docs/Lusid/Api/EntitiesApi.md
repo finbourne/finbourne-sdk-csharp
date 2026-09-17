@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**GetBookmarkByEntityUniqueId**](#getbookmarkbyentityuniqueid) | **GET** `/api/api/entities/bookmarks/{entityUniqueId}` | GetBookmarkByEntityUniqueId: Get bookmark by EntityUniqueId |
+| [**GetComplianceRuleByEntityUniqueId**](#getcompliancerulebyentityuniqueid) | **GET** `/api/api/entities/compliancerules/{entityUniqueId}` | [EARLY ACCESS] GetComplianceRuleByEntityUniqueId: Get compliance rule by EntityUniqueId |
 | [**GetCustomEntityByEntityUniqueId**](#getcustomentitybyentityuniqueid) | **GET** `/api/api/entities/customentities/{entityUniqueId}` | GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId |
 | [**GetDataTypeByEntityUniqueId**](#getdatatypebyentityuniqueid) | **GET** `/api/api/entities/datatypes/{entityUniqueId}` | GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId |
 | [**GetEntityHistory**](#getentityhistory) | **GET** `/api/api/entities/{entityType}/{entityUniqueId}/history` | GetEntityHistory: List an entity&#39;s history information |
@@ -110,6 +111,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<BookmarkEntity> response = apiInstance.GetBookmarkByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, previews);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getcompliancerulebyentityuniqueid"></a>
+## GetComplianceRuleByEntityUniqueId
+
+> ComplianceRuleEntity GetComplianceRuleByEntityUniqueId(string entityUniqueId, DateTimeOffset? asAt = null, List<string>? previews = null)
+
+[EARLY ACCESS] GetComplianceRuleByEntityUniqueId: Get compliance rule by EntityUniqueId
+
+Retrieve the definition of a particular compliance rule.    If the compliance rule is deleted, this will return the state of the rule immediately prior to deletion.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<EntitiesApi>();
+var entityUniqueId = "entityUniqueId_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var previews = new List<string>?(); // List<string>? (optional)
+ComplianceRuleEntity result = apiInstance.GetComplianceRuleByEntityUniqueId(entityUniqueId, asAt, previews);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **entityUniqueId** | **string** | path | **required** | The universally unique identifier of the compliance rule. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the compliance rule. Defaults to returning the latest version of the compliance rule if not specified. |
+| **previews** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The ids of the staged modifications to be previewed in the response. |
+
+### Return type
+
+[ComplianceRuleEntity](../Model/ComplianceRuleEntity.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested compliance rule entity |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetComplianceRuleByEntityUniqueIdWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ComplianceRuleEntity> response = apiInstance.GetComplianceRuleByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, previews);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

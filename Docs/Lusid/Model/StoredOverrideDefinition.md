@@ -1,0 +1,66 @@
+# Finbourne.Sdk.Lusid.Model.StoredOverrideDefinition
+
+A single replacement transaction definition as it was persisted against a virtual transaction.
+## Properties
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| **TransactionId** | **string** | Optional | The unique identifier of the replacement transaction. |
+| **Type** | **string** | Optional | The type of the replacement transaction, for example &#39;Buy&#39; or &#39;Sell&#39;. |
+| **InstrumentIdentifiers** | **Dictionary&lt;string, string&gt;** | Optional | A set of instrument identifiers that resolve the replacement transaction to a unique instrument. |
+| **TradeDate** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Optional | The trade date of the replacement transaction. |
+| **SettlementDate** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Optional | The settlement date of the replacement transaction. |
+| **Units** | **decimal** | Optional | The number of units of the transacted instrument. |
+| **TradePrice** | [TransactionPrice](TransactionPrice.md) | Optional | *No description available.* |
+| **TotalConsideration** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
+| **ExchangeRate** | **decimal?** | Optional | The exchange rate between the trade and settlement currency. |
+| **TradeCurrency** | **string** | Optional | The trade currency of the replacement transaction. |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The transaction properties stored for the replacement transaction. |
+| **CounterpartyId** | **string** | Optional | The identifier for the counterparty of the replacement transaction. |
+| **Source** | **string** | Optional | The source of the replacement transaction. |
+
+
+## Usage
+
+### Creating an instance
+
+```csharp
+using Finbourne.Sdk.Services.Lusid.Model;
+
+var instance = new StoredOverrideDefinition(
+    transactionId: "...",  // optional — The unique identifier of the replacement transaction.
+    type: "...",  // optional — The type of the replacement transaction, for example &#39;Buy&#39; or &#39;Sell&#39;.
+    instrumentIdentifiers: ,  // optional — A set of instrument identifiers that resolve the replacement transaction to a unique instrument.
+    tradeDate: new DateTimeOrCutLabel(...),  // optional — The trade date of the replacement transaction.
+    settlementDate: new DateTimeOrCutLabel(...),  // optional — The settlement date of the replacement transaction.
+    units: 0.0d,  // optional — The number of units of the transacted instrument.
+    tradePrice: new TransactionPrice(...),  // optional
+    totalConsideration: new CurrencyAndAmount(...),  // optional
+    exchangeRate: 0.0d,  // optional — The exchange rate between the trade and settlement currency.
+    tradeCurrency: "...",  // optional — The trade currency of the replacement transaction.
+    properties: new PerpetualProperty(...),  // optional — The transaction properties stored for the replacement transaction.
+    counterpartyId: "...",  // optional — The identifier for the counterparty of the replacement transaction.
+    source: "..."  // optional — The source of the replacement transaction.
+);
+```
+### Serializing to JSON
+
+```csharp
+var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
+```
+
+### Deserializing from JSON
+
+```csharp
+var instance = JsonConvert.DeserializeObject<StoredOverrideDefinition>(json);
+```
+
+- [DateTimeOrCutLabel](DateTimeOrCutLabel.md) — used in `TradeDate`
+- [DateTimeOrCutLabel](DateTimeOrCutLabel.md) — used in `SettlementDate`
+- [TransactionPrice](TransactionPrice.md)
+- [CurrencyAndAmount](CurrencyAndAmount.md)
+- [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
+
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+

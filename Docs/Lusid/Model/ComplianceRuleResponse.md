@@ -14,6 +14,7 @@
 | **Parameters** | [Dictionary&lt;string, ComplianceParameter&gt;](ComplianceParameter.md) | Optional | *No description available.* |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -35,6 +36,7 @@ var instance = new ComplianceRuleResponse(
     parameters: new ComplianceParameter(...),  // optional
     properties: new PerpetualProperty(...),  // optional
     varVersion: new ModelVersion(...),  // optional
+    stagedModifications: new StagedModificationsInfo(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -59,6 +61,7 @@ var instance = JsonConvert.DeserializeObject<ComplianceRuleResponse>(json);
 - [ComplianceParameter](ComplianceParameter.md)
 - [PerpetualProperty](PerpetualProperty.md)
 - [ModelVersion](ModelVersion.md)
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 - [Link](Link.md)
 
 

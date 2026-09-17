@@ -15,6 +15,7 @@ The Valuation Point Data Response for the Fund and specified date.
 | **PreviousValuationPointCode** | **string** | Optional | The code of the previous valuation point. |
 | **ApportionmentResults** | [List&lt;ApportionmentBreakdown&gt;](ApportionmentBreakdown.md) | Optional | The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group. |
 | **BucketSetResults** | [List&lt;BucketSetResult&gt;](BucketSetResult.md) | Optional | The bucket set results for the valuation point: for each bucket set, the per-node (fund and share class) buckets and NAV. |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -36,6 +37,7 @@ var instance = new ValuationPointDataResponse(
     previousValuationPointCode: "...",  // optional — The code of the previous valuation point.
     apportionmentResults: new List<ApportionmentBreakdown>(),  // optional — The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group.
     bucketSetResults: new List<BucketSetResult>(),  // optional — The bucket set results for the valuation point: for each bucket set, the per-node (fund and share class) buckets and NAV.
+    stagedModifications: new StagedModificationsInfo(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -56,6 +58,7 @@ var instance = JsonConvert.DeserializeObject<ValuationPointDataResponse>(json);
 - [ShareClassData](ShareClassData.md) — used in `ShareClassData`
 - [ApportionmentBreakdown](ApportionmentBreakdown.md) — used in `ApportionmentResults`
 - [BucketSetResult](BucketSetResult.md) — used in `BucketSetResults`
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 - [Link](Link.md)
 
 

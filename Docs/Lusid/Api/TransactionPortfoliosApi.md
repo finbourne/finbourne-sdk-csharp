@@ -41,9 +41,11 @@ All URIs are relative to *http://localhost*
 | [**GetTransactionSettlementStatus**](#gettransactionsettlementstatus) | **GET** `/api/api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/settlementstatus` | [EARLY ACCESS] GetTransactionSettlementStatus: Get transaction settlement status |
 | [**GetTransactions**](#gettransactions) | **GET** `/api/api/transactionportfolios/{scope}/{code}/transactions` | GetTransactions: Get transactions |
 | [**GetUpsertablePortfolioCashFlows**](#getupsertableportfoliocashflows) | **GET** `/api/api/transactionportfolios/{scope}/{code}/upsertablecashflows` | GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows. |
+| [**GetVirtualTransactionOverride**](#getvirtualtransactionoverride) | **GET** `/api/api/transactionportfolios/{scope}/{code}/overridevirtualtransactions` | [EARLY ACCESS] GetVirtualTransactionOverride: [EARLY ACCESS] Get virtual transaction overrides and suppressions for an instrument event |
 | [**ListCustodianAccounts**](#listcustodianaccounts) | **GET** `/api/api/transactionportfolios/{scope}/{code}/custodianaccounts` | ListCustodianAccounts: List Custodian Accounts |
 | [**ListHoldingsAdjustments**](#listholdingsadjustments) | **GET** `/api/api/transactionportfolios/{scope}/{code}/holdingsadjustments` | ListHoldingsAdjustments: List holdings adjustments |
 | [**ListSettlementInstructions**](#listsettlementinstructions) | **GET** `/api/api/transactionportfolios/{scope}/{code}/settlementinstructions` | [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. |
+| [**ListVirtualTransactionOverrides**](#listvirtualtransactionoverrides) | **GET** `/api/api/transactionportfolios/{scope}/{code}/overridevirtualtransactions/$list` | [EARLY ACCESS] ListVirtualTransactionOverrides: [EARLY ACCESS] List virtual transaction overrides and suppressions |
 | [**PatchPortfolioDetails**](#patchportfoliodetails) | **PATCH** `/api/api/transactionportfolios/{scope}/{code}/details` | PatchPortfolioDetails: Patch portfolio details |
 | [**PreviewTransaction**](#previewtransaction) | **POST** `/api/api/transactionportfolios/{scope}/{code}/previewTransaction` | PreviewTransaction: Preview a transaction |
 | [**ResolveInstrument**](#resolveinstrument) | **POST** `/api/api/transactionportfolios/{scope}/{code}/$resolve` | ResolveInstrument: Resolve instrument |
@@ -54,7 +56,7 @@ All URIs are relative to *http://localhost*
 | [**UpsertSettlementInstructions**](#upsertsettlementinstructions) | **POST** `/api/api/transactionportfolios/{scope}/{code}/settlementinstructions` | [EARLY ACCESS] UpsertSettlementInstructions: Upsert Settlement Instructions. |
 | [**UpsertTransactionProperties**](#upserttransactionproperties) | **POST** `/api/api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties` | UpsertTransactionProperties: Upsert transaction properties |
 | [**UpsertTransactions**](#upserttransactions) | **POST** `/api/api/transactionportfolios/{scope}/{code}/transactions` | UpsertTransactions: Upsert transactions |
-| [**UpsertVirtualTransactionOverride**](#upsertvirtualtransactionoverride) | **POST** `/api/api/transactionportfolios/{scope}/{code}/overridevirtualtransactions` | [EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert a virtual transaction override |
+| [**UpsertVirtualTransactionOverride**](#upsertvirtualtransactionoverride) | **POST** `/api/api/transactionportfolios/{scope}/{code}/overridevirtualtransactions` | [EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert virtual transaction overrides and suppressions |
 
 ### Example
 
@@ -2606,6 +2608,72 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="getvirtualtransactionoverride"></a>
+## GetVirtualTransactionOverride
+
+> VirtualTransactionOverridesResponse GetVirtualTransactionOverride(string scope, string code, string instrumentEventId, string? portfolioEffectiveAt = null, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] GetVirtualTransactionOverride: [EARLY ACCESS] Get virtual transaction overrides and suppressions for an instrument event
+
+Returns the overrides and suppressions affecting this portfolio for the specified instrument event,  each entry's status, and the virtual transaction ids the event currently generates that none of them  target. A derived portfolio is affected by its own record and by every record held by an ancestor, so  one record is returned per holding portfolio, nearest first, each carrying the portfolio that holds  it. An entry's map key is the virtual transaction id as it appears in the portfolio holding the  record, which is the id to override or suppress against that portfolio.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionPortfoliosApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var instrumentEventId = "instrumentEventId_example";  // string
+var portfolioEffectiveAt = "portfolioEffectiveAt_example";  // string? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+VirtualTransactionOverridesResponse result = apiInstance.GetVirtualTransactionOverride(scope, code, instrumentEventId, portfolioEffectiveAt, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
+| **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies the transaction portfolio. |
+| **instrumentEventId** | **string** | query | **required** | The ID of the instrument event whose overrides and suppressions should be returned. |
+| **portfolioEffectiveAt** | **string?** | query | optional | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the overrides and suppressions. Defaults to returning the latest version if not specified. |
+
+### Return type
+
+[VirtualTransactionOverridesResponse](../Model/VirtualTransactionOverridesResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The overrides and suppressions affecting this portfolio for the requested instrument event |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetVirtualTransactionOverrideWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<VirtualTransactionOverridesResponse> response = apiInstance.GetVirtualTransactionOverrideWithHttpInfo(scope, code, instrumentEventId, portfolioEffectiveAt, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="listcustodianaccounts"></a>
 ## ListCustodianAccounts
 
@@ -2816,6 +2884,74 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<VersionedResourceListOfTransactionSettlementInstruction> response = apiInstance.ListSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, propertyKeys, timelineScope, timelineCode, closedPeriodId);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listvirtualtransactionoverrides"></a>
+## ListVirtualTransactionOverrides
+
+> ResourceListOfVirtualTransactionOverrideRecord ListVirtualTransactionOverrides(string scope, string code, string? portfolioEffectiveAt = null, DateTimeOffset? asAt = null, List<string>? overrideMatchStatus = null, List<string>? overrideApplicationStatus = null)
+
+[EARLY ACCESS] ListVirtualTransactionOverrides: [EARLY ACCESS] List virtual transaction overrides and suppressions
+
+Returns every override and suppression record affecting this portfolio, across every instrument  event, optionally restricted to the given match and application statuses. Filtering to the orphaned  and partially-applied statuses gives a reconciliation worklist of records whose targets no longer  generate. A derived portfolio is affected by its own records and by every record held by an ancestor,  so each returned record carries the portfolio that holds it.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionPortfoliosApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var portfolioEffectiveAt = "portfolioEffectiveAt_example";  // string? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var overrideMatchStatus = new List<string>?(); // List<string>? (optional)
+var overrideApplicationStatus = new List<string>?(); // List<string>? (optional)
+ResourceListOfVirtualTransactionOverrideRecord result = apiInstance.ListVirtualTransactionOverrides(scope, code, portfolioEffectiveAt, asAt, overrideMatchStatus, overrideApplicationStatus);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
+| **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies the transaction portfolio. |
+| **portfolioEffectiveAt** | **string?** | query | optional | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the overrides and suppressions. Defaults to returning the latest version if not specified. |
+| **overrideMatchStatus** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Restrict the records returned to those with one of these match statuses. May be specified more than once. Available values: Matched, Orphaned. |
+| **overrideApplicationStatus** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Restrict the records returned to those with one of these application statuses. May be specified more than once. Available values: Full, Partial, Orphaned. |
+
+### Return type
+
+[ResourceListOfVirtualTransactionOverrideRecord](../Model/ResourceListOfVirtualTransactionOverrideRecord.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The override and suppression records affecting this portfolio |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListVirtualTransactionOverridesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfVirtualTransactionOverrideRecord> response = apiInstance.ListVirtualTransactionOverridesWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, overrideMatchStatus, overrideApplicationStatus);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -3491,11 +3627,11 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="upsertvirtualtransactionoverride"></a>
 ## UpsertVirtualTransactionOverride
 
-> OverrideVirtualTransactionsResponse UpsertVirtualTransactionOverride(string scope, string code, string instrumentEventId, List<TransactionRequest> transactionRequest, string? portfolioEffectiveAt = null, bool? preserveProperties = null, string? dataModelScope = null, string? dataModelCode = null)
+> UpsertVirtualTransactionOverrideResponse UpsertVirtualTransactionOverride(string scope, string code, string instrumentEventId, OverrideVirtualTransactionsRequest overrideVirtualTransactionsRequest, string? portfolioEffectiveAt = null, bool? preserveProperties = null)
 
-[EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert a virtual transaction override
+[EARLY ACCESS] UpsertVirtualTransactionOverride: [EARLY ACCESS] Upsert virtual transaction overrides and suppressions
 
-Creates or updates virtual transaction overrides for an instrument event with manually provided input transactions.  This will cancel the specified instrument event and upsert the provided transactions as replacements.  The replacement transactions will have the OverrideOfInstrumentEvent system property set and a source type of OverriddenVirtualTransaction.  Calling this endpoint again with the same transaction IDs will update the existing overrides in place.
+Creates or updates overrides and suppressions of virtual transactions generated by a single instrument  event. Overrides and suppressions are each keyed by the virtual transaction id they target. This is a  full replace of the previously stored overrides and suppressions for the targeted instrument event -  any previously stored entry not present in this request is removed.  Calling this endpoint again with the same virtual transaction id will replace the existing override or  suppression in place.
 
 ### Example
 
@@ -3504,12 +3640,10 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionPortfo
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var instrumentEventId = "instrumentEventId_example";  // string
-var transactionRequest = new List<TransactionRequest>(); // List<TransactionRequest>
+var overrideVirtualTransactionsRequest = new OverrideVirtualTransactionsRequest(); // OverrideVirtualTransactionsRequest
 var portfolioEffectiveAt = "portfolioEffectiveAt_example";  // string? (optional)
 var preserveProperties = true;  // bool? (optional)
-var dataModelScope = "dataModelScope_example";  // string? (optional)
-var dataModelCode = "dataModelCode_example";  // string? (optional)
-OverrideVirtualTransactionsResponse result = apiInstance.UpsertVirtualTransactionOverride(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode);
+UpsertVirtualTransactionOverrideResponse result = apiInstance.UpsertVirtualTransactionOverride(scope, code, instrumentEventId, overrideVirtualTransactionsRequest, portfolioEffectiveAt, preserveProperties);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -3519,16 +3653,14 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **scope** | **string** | path | **required** | The scope of the transaction portfolio. |
 | **code** | **string** | path | **required** | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
-| **instrumentEventId** | **string** | query | **required** | The ID of the instrument event whose virtual transactions should be overridden. |
-| **transactionRequest** | [List&lt;TransactionRequest&gt;](../Model/TransactionRequest.md) | body | **required** | A list of transactions to replace the virtual transactions generated by the instrument event. |
+| **instrumentEventId** | **string** | query | **required** | The ID of the instrument event whose virtual transactions should be overridden or suppressed. |
+| **overrideVirtualTransactionsRequest** | [OverrideVirtualTransactionsRequest](../Model/OverrideVirtualTransactionsRequest.md) | body | **required** | The overrides and suppressions to upsert, keyed by the virtual transaction id being overridden or suppressed. |
 | **portfolioEffectiveAt** | **string?** | query | optional | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. |
-| **preserveProperties** | **bool?** | query | optional | If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. Default: `true` |
-| **dataModelScope** | **string?** | query | optional | The optional scope of a Custom Data Model to use |
-| **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
+| **preserveProperties** | **bool?** | query | optional | If set to false, the entire property set of an updated override entry will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. Default: `true` |
 
 ### Return type
 
-[OverrideVirtualTransactionsResponse](../Model/OverrideVirtualTransactionsResponse.md)
+[UpsertVirtualTransactionOverrideResponse](../Model/UpsertVirtualTransactionOverrideResponse.md)
 
 ### HTTP request headers
 
@@ -3539,7 +3671,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The result of the upsert including the cancel instruction and instrument event details |  -  |
+| **200** | The result of the upsert including the persisted overrides, suppressions, and instrument event details |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -3549,7 +3681,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<OverrideVirtualTransactionsResponse> response = apiInstance.UpsertVirtualTransactionOverrideWithHttpInfo(scope, code, instrumentEventId, transactionRequest, portfolioEffectiveAt, preserveProperties, dataModelScope, dataModelCode);
+ApiResponse<UpsertVirtualTransactionOverrideResponse> response = apiInstance.UpsertVirtualTransactionOverrideWithHttpInfo(scope, code, instrumentEventId, overrideVirtualTransactionsRequest, portfolioEffectiveAt, preserveProperties);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

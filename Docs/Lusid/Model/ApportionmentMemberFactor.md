@@ -10,6 +10,7 @@ One member share class's outcome within an apportionment result: the base value 
 | **FundCode** | **string** | Optional | The code of the fund the member share class belongs to. |
 | **BaseValue** | **decimal?** | Optional | The base value the method produced for the member, or null for the SetFactor method. |
 | **ApportionmentFactor** | **decimal** | Required | The member&#39;s apportionment factor: its base value over the total across the group or fund. |
+| **Inputs** | [List&lt;ApportionmentInput&gt;](ApportionmentInput.md) | Optional | The named amounts the apportionment method summed to reach the base value, always summing to it. Absent where the method defines no such breakdown. |
 
 
 ## Usage
@@ -24,7 +25,8 @@ var instance = new ApportionmentMemberFactor(
     fundScope: "...",  // optional — The scope of the fund the member share class belongs to.
     fundCode: "...",  // optional — The code of the fund the member share class belongs to.
     baseValue: 0.0d,  // optional — The base value the method produced for the member, or null for the SetFactor method.
-    apportionmentFactor: 0.0d  // required — The member&#39;s apportionment factor: its base value over the total across the group or fund.
+    apportionmentFactor: 0.0d,  // required — The member&#39;s apportionment factor: its base value over the total across the group or fund.
+    inputs: new List<ApportionmentInput>()  // optional — The named amounts the apportionment method summed to reach the base value, always summing to it. Absent where the method defines no such breakdown.
 );
 ```
 ### Serializing to JSON
@@ -39,6 +41,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<ApportionmentMemberFactor>(json);
 ```
 
+- [ApportionmentInput](ApportionmentInput.md) — used in `Inputs`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

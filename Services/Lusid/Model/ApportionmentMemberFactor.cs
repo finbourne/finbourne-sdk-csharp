@@ -40,7 +40,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="fundCode">The code of the fund the member share class belongs to..</param>
         /// <param name="baseValue">The base value the method produced for the member, or null for the SetFactor method..</param>
         /// <param name="apportionmentFactor">The member&#39;s apportionment factor: its base value over the total across the group or fund. (required).</param>
-        public ApportionmentMemberFactor(string memberIdentifier = default(string), string fundScope = default(string), string fundCode = default(string), decimal? baseValue = default(decimal?), decimal apportionmentFactor = default(decimal))
+        /// <param name="inputs">The named amounts the apportionment method summed to reach the base value, always summing to it. Absent where the method defines no such breakdown..</param>
+        public ApportionmentMemberFactor(string memberIdentifier = default(string), string fundScope = default(string), string fundCode = default(string), decimal? baseValue = default(decimal?), decimal apportionmentFactor = default(decimal), List<ApportionmentInput> inputs = default(List<ApportionmentInput>))
         {
             // to ensure "memberIdentifier" is required (not null)
             if (memberIdentifier == null)
@@ -52,6 +53,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.FundScope = fundScope;
             this.FundCode = fundCode;
             this.BaseValue = baseValue;
+            this.Inputs = inputs;
         }
 
         /// <summary>
@@ -90,6 +92,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal ApportionmentFactor { get; set; }
 
         /// <summary>
+        /// The named amounts the apportionment method summed to reach the base value, always summing to it. Absent where the method defines no such breakdown.
+        /// </summary>
+        /// <value>The named amounts the apportionment method summed to reach the base value, always summing to it. Absent where the method defines no such breakdown.</value>
+        [DataMember(Name = "inputs", EmitDefaultValue = true)]
+        public List<ApportionmentInput> Inputs { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -102,6 +111,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  FundCode: ").Append(FundCode).Append("\n");
             sb.Append("  BaseValue: ").Append(BaseValue).Append("\n");
             sb.Append("  ApportionmentFactor: ").Append(ApportionmentFactor).Append("\n");
+            sb.Append("  Inputs: ").Append(Inputs).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -160,6 +170,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.ApportionmentFactor == input.ApportionmentFactor ||
                     this.ApportionmentFactor.Equals(input.ApportionmentFactor)
+                ) && 
+                (
+                    this.Inputs == input.Inputs ||
+                    this.Inputs != null &&
+                    input.Inputs != null &&
+                    this.Inputs.SequenceEqual(input.Inputs)
                 );
         }
 
@@ -189,6 +205,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     hashCode = (hashCode * 59) + this.BaseValue.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ApportionmentFactor.GetHashCode();
+                if (this.Inputs != null)
+                {
+                    hashCode = (hashCode * 59) + this.Inputs.GetHashCode();
+                }
                 return hashCode;
             }
         }

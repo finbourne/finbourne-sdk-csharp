@@ -45,8 +45,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="byTaxLots">byTaxLots.</param>
         /// <param name="subscriptionType">The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions..</param>
         /// <param name="startEffectiveAt">startEffectiveAt.</param>
-        /// <param name="endEffectiveAt">endEffectiveAt.</param>
-        public SubscriptionDefinition(string scope = default(string), string code = default(string), string displayName = default(string), string description = default(string), ResourceId portfolioId = default(ResourceId), ResourceId timelineId = default(ResourceId), List<string> addressKeys = default(List<string>), bool byTaxLots = default(bool), string subscriptionType = default(string), DateTimeOffset? startEffectiveAt = default(DateTimeOffset?), DateTimeOffset? endEffectiveAt = default(DateTimeOffset?))
+        /// <param name="endEffectiveAt">Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping..</param>
+        /// <param name="effectiveForwardDays">How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes..</param>
+        public SubscriptionDefinition(string scope = default(string), string code = default(string), string displayName = default(string), string description = default(string), ResourceId portfolioId = default(ResourceId), ResourceId timelineId = default(ResourceId), List<string> addressKeys = default(List<string>), bool byTaxLots = default(bool), string subscriptionType = default(string), DateTimeOffset? startEffectiveAt = default(DateTimeOffset?), DateTimeOffset? endEffectiveAt = default(DateTimeOffset?), int? effectiveForwardDays = default(int?))
         {
             // to ensure "scope" is required (not null)
             if (scope == null)
@@ -74,6 +75,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.SubscriptionType = subscriptionType;
             this.StartEffectiveAt = startEffectiveAt;
             this.EndEffectiveAt = endEffectiveAt;
+            this.EffectiveForwardDays = effectiveForwardDays;
         }
 
         /// <summary>
@@ -139,10 +141,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public DateTimeOffset? StartEffectiveAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets EndEffectiveAt
+        /// Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping.
         /// </summary>
+        /// <value>Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping.</value>
         [DataMember(Name = "endEffectiveAt", EmitDefaultValue = true)]
         public DateTimeOffset? EndEffectiveAt { get; set; }
+
+        /// <summary>
+        /// How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes.
+        /// </summary>
+        /// <value>How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes.</value>
+        [DataMember(Name = "effectiveForwardDays", EmitDefaultValue = true)]
+        public int? EffectiveForwardDays { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -163,6 +173,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  SubscriptionType: ").Append(SubscriptionType).Append("\n");
             sb.Append("  StartEffectiveAt: ").Append(StartEffectiveAt).Append("\n");
             sb.Append("  EndEffectiveAt: ").Append(EndEffectiveAt).Append("\n");
+            sb.Append("  EffectiveForwardDays: ").Append(EffectiveForwardDays).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -252,6 +263,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.EndEffectiveAt == input.EndEffectiveAt ||
                     (this.EndEffectiveAt != null &&
                     this.EndEffectiveAt.Equals(input.EndEffectiveAt))
+                ) && 
+                (
+                    this.EffectiveForwardDays == input.EffectiveForwardDays ||
+                    (this.EffectiveForwardDays != null &&
+                    this.EffectiveForwardDays.Equals(input.EffectiveForwardDays))
                 );
         }
 
@@ -304,6 +320,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.EndEffectiveAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndEffectiveAt.GetHashCode();
+                }
+                if (this.EffectiveForwardDays != null)
+                {
+                    hashCode = (hashCode * 59) + this.EffectiveForwardDays.GetHashCode();
                 }
                 return hashCode;
             }
