@@ -6,7 +6,7 @@ Response containing details of a single run for an instance.
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **RunId** | **Guid** | Required | *No description available.* |
-| **BatchReferenceId** | **Guid** | Required | *No description available.* |
+| **ReferenceId** | **Guid** | Required | *No description available.* |
 | **Attempt** | **int?** | Optional | *No description available.* |
 | **StartTime** | **DateTimeOffset** | Required | *No description available.* |
 | **EndTime** | **DateTimeOffset?** | Optional | *No description available.* |
@@ -29,7 +29,7 @@ using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new InstanceRunResponse(
     runId: "...",  // required
-    batchReferenceId: "...",  // required
+    referenceId: "...",  // required
     attempt: 0,  // optional
     startTime: DateTimeOffset.Now,  // required
     endTime: DateTimeOffset.Now,  // optional

@@ -10,6 +10,7 @@ Response containing the description of an integration.
 | **Description** | **string** | Required | Describes the purpose of the integration. |
 | **SupportedTriggerTypes** | **List&lt;string&gt;** | Required | Trigger types (Time, File) the integration supports. |
 | **Licensed** | **bool** | Required | True if your domain is licensed to use this integration, otherwise false. |
+| **SupportsEffectiveFromOverride** | **bool** | Required | True if this integration allows a per-property effectiveFromOverride to be set via the optional property mapping endpoints, otherwise false. |
 
 
 ## Usage
@@ -24,7 +25,8 @@ var instance = new IntegrationDescription(
     name: "...",  // required — Readable name of the integration e.g. \&quot;Copp Clark\&quot;.
     description: "...",  // required — Describes the purpose of the integration.
     supportedTriggerTypes: ,  // required — Trigger types (Time, File) the integration supports.
-    licensed: true  // required — True if your domain is licensed to use this integration, otherwise false.
+    licensed: true,  // required — True if your domain is licensed to use this integration, otherwise false.
+    supportsEffectiveFromOverride: true  // required — True if this integration allows a per-property effectiveFromOverride to be set via the optional property mapping endpoints, otherwise false.
 );
 ```
 ### Serializing to JSON

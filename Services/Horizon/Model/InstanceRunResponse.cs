@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// Initializes a new instance of the <see cref="InstanceRunResponse" /> class.
         /// </summary>
         /// <param name="runId">runId (required).</param>
-        /// <param name="batchReferenceId">batchReferenceId (required).</param>
+        /// <param name="referenceId">referenceId (required).</param>
         /// <param name="attempt">attempt.</param>
         /// <param name="startTime">startTime (required).</param>
         /// <param name="endTime">endTime.</param>
@@ -48,10 +48,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="skippedCount">skippedCount (required).</param>
         /// <param name="failedCount">failedCount (required).</param>
         /// <param name="failedFiles">failedFiles (required).</param>
-        public InstanceRunResponse(Guid runId = default(Guid), Guid batchReferenceId = default(Guid), int? attempt = default(int?), DateTimeOffset startTime = default(DateTimeOffset), DateTimeOffset? endTime = default(DateTimeOffset?), string duration = default(string), string status = default(string), string triggeredBy = default(string), int total = default(int), long sentCount = default(long), long skippedCount = default(long), long failedCount = default(long), int failedFiles = default(int))
+        public InstanceRunResponse(Guid runId = default(Guid), Guid referenceId = default(Guid), int? attempt = default(int?), DateTimeOffset startTime = default(DateTimeOffset), DateTimeOffset? endTime = default(DateTimeOffset?), string duration = default(string), string status = default(string), string triggeredBy = default(string), int total = default(int), long sentCount = default(long), long skippedCount = default(long), long failedCount = default(long), int failedFiles = default(int))
         {
             this.RunId = runId;
-            this.BatchReferenceId = batchReferenceId;
+            this.ReferenceId = referenceId;
             this.StartTime = startTime;
             // to ensure "status" is required (not null)
             if (status == null)
@@ -77,10 +77,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public Guid RunId { get; set; }
 
         /// <summary>
-        /// Gets or Sets BatchReferenceId
+        /// Gets or Sets ReferenceId
         /// </summary>
-        [DataMember(Name = "batchReferenceId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid BatchReferenceId { get; set; }
+        [DataMember(Name = "referenceId", IsRequired = true, EmitDefaultValue = true)]
+        public Guid ReferenceId { get; set; }
 
         /// <summary>
         /// Gets or Sets Attempt
@@ -157,7 +157,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class InstanceRunResponse {\n");
             sb.Append("  RunId: ").Append(RunId).Append("\n");
-            sb.Append("  BatchReferenceId: ").Append(BatchReferenceId).Append("\n");
+            sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("  Attempt: ").Append(Attempt).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
@@ -210,9 +210,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.RunId.Equals(input.RunId))
                 ) && 
                 (
-                    this.BatchReferenceId == input.BatchReferenceId ||
-                    (this.BatchReferenceId != null &&
-                    this.BatchReferenceId.Equals(input.BatchReferenceId))
+                    this.ReferenceId == input.ReferenceId ||
+                    (this.ReferenceId != null &&
+                    this.ReferenceId.Equals(input.ReferenceId))
                 ) && 
                 (
                     this.Attempt == input.Attempt ||
@@ -279,9 +279,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 {
                     hashCode = (hashCode * 59) + this.RunId.GetHashCode();
                 }
-                if (this.BatchReferenceId != null)
+                if (this.ReferenceId != null)
                 {
-                    hashCode = (hashCode * 59) + this.BatchReferenceId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ReferenceId.GetHashCode();
                 }
                 if (this.Attempt != null)
                 {

@@ -33,7 +33,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="code">The code of the currency group. This uniquely identifies the currency group within the tenant..</param>
         /// <param name="displayName">The name of the currency group..</param>
         /// <param name="description">A description for the currency group..</param>
-        /// <param name="majorUnitCurrency">The three-letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group..</param>
+        /// <param name="majorUnitCurrency">The three to five letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group..</param>
         /// <param name="circulationDomain">The domain in which the group&#39;s currencies circulate, e.g. an ISO 3166 country code..</param>
         /// <param name="minorUnits">The minor unit currencies belonging to this currency group..</param>
         /// <param name="varVersion">varVersion.</param>
@@ -74,9 +74,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// The three-letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group.
+        /// The three to five letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group.
         /// </summary>
-        /// <value>The three-letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group.</value>
+        /// <value>The three to five letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group.</value>
         [DataMember(Name = "majorUnitCurrency", EmitDefaultValue = true)]
         public string MajorUnitCurrency { get; set; }
 

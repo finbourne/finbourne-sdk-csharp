@@ -11,6 +11,7 @@ Defines a Task created based on a Task Definition
 | **TaskDefinitionDisplayName** | **string** | Required | The display name of the Task Definition used by this Task |
 | **WorkflowId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **WorkflowDisplayName** | **string** | Optional | The display name of the Workflow that this Task is a member of, if any |
+| **WorkflowRun** | [WorkflowRun](WorkflowRun.md) | Optional | *No description available.* |
 | **State** | **string** | Required | Current State |
 | **StateDisplayName** | **string** | Optional | The display name of the current State, from the Task Definition, if one is provided |
 | **UltimateParentTask** | [TaskSummary](TaskSummary.md) | Required | *No description available.* |
@@ -48,6 +49,7 @@ var instance = new Task(
     taskDefinitionDisplayName: "...",  // required — The display name of the Task Definition used by this Task
     workflowId: new ResourceId(...),  // optional
     workflowDisplayName: "...",  // optional — The display name of the Workflow that this Task is a member of, if any
+    workflowRun: new WorkflowRun(...),  // optional
     state: "...",  // required — Current State
     stateDisplayName: "...",  // optional — The display name of the current State, from the Task Definition, if one is provided
     ultimateParentTask: new TaskSummary(...),  // required
@@ -86,6 +88,7 @@ var instance = JsonConvert.DeserializeObject<Task>(json);
 - [ResourceId](ResourceId.md)
 - [TaskDefinitionVersion](TaskDefinitionVersion.md)
 - [ResourceId](ResourceId.md)
+- [WorkflowRun](WorkflowRun.md)
 - [TaskSummary](TaskSummary.md)
 - [TaskSummary](TaskSummary.md)
 - [TaskSummary](TaskSummary.md) — used in `ChildTasks`

@@ -457,6 +457,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             {
                 yield return x;
             }
+            // Ccy (string) pattern
+            Regex regexCcy = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
+            if (this.Ccy != null && false == regexCcy.Match(this.Ccy).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Ccy, must match a pattern of " + regexCcy, new [] { "Ccy" });
+            }
+
             // StartTenor (string) pattern
             Regex regexStartTenor = new Regex(@"^\d+(?:[Bb][Dd]|[Qq][Tt][Rr]|[Ss][Aa]|[Dd]|[Ww]|[Mm]|[Qq]|[Yy]|[Aa])$", RegexOptions.CultureInvariant);
             if (this.StartTenor != null && false == regexStartTenor.Match(this.StartTenor).Success)

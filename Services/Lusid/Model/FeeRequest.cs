@@ -494,6 +494,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
             }
 
+            // AccrualCurrency (string) pattern
+            Regex regexAccrualCurrency = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
+            if (this.AccrualCurrency != null && false == regexAccrualCurrency.Match(this.AccrualCurrency).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccrualCurrency, must match a pattern of " + regexAccrualCurrency, new [] { "AccrualCurrency" });
+            }
+
             yield break;
         }
     }

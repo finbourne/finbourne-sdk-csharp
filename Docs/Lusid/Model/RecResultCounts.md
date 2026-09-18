@@ -5,6 +5,7 @@ Counts of results broken down by the structural categories that align with the r
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
+| **Total** | **int** | Required | The total number of results in this result set, across all categories. |
 | **OpenExceptions** | [RecOpenExceptionCounts](RecOpenExceptionCounts.md) | Required | *No description available.* |
 | **ClosedExceptions** | [RecClosedExceptionCounts](RecClosedExceptionCounts.md) | Required | *No description available.* |
 | **Matches** | [RecMatchCounts](RecMatchCounts.md) | Required | *No description available.* |
@@ -18,6 +19,7 @@ Counts of results broken down by the structural categories that align with the r
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecResultCounts(
+    total: 0,  // required — The total number of results in this result set, across all categories.
     openExceptions: new RecOpenExceptionCounts(...),  // required
     closedExceptions: new RecClosedExceptionCounts(...),  // required
     matches: new RecMatchCounts(...)  // required
@@ -34,9 +36,6 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ```csharp
 var instance = JsonConvert.DeserializeObject<RecResultCounts>(json);
 ```
-
-
-## Related Models
 
 - [RecOpenExceptionCounts](RecOpenExceptionCounts.md)
 - [RecClosedExceptionCounts](RecClosedExceptionCounts.md)

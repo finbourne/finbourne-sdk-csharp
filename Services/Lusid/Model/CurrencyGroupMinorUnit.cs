@@ -35,7 +35,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CurrencyGroupMinorUnit" /> class.
         /// </summary>
-        /// <param name="currency">The three-letter, case-sensitive currency code of the minor unit, e.g. GBX. (required).</param>
+        /// <param name="currency">The three to five letter, case-sensitive currency code of the minor unit, e.g. GBX. (required).</param>
         /// <param name="fractionOfMajor">The fraction of the major unit that one minor unit is worth, greater than zero and no more than one, e.g. 0.01 for GBX against GBP. (required).</param>
         public CurrencyGroupMinorUnit(string currency = default(string), decimal fractionOfMajor = default(decimal))
         {
@@ -49,9 +49,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The three-letter, case-sensitive currency code of the minor unit, e.g. GBX.
+        /// The three to five letter, case-sensitive currency code of the minor unit, e.g. GBX.
         /// </summary>
-        /// <value>The three-letter, case-sensitive currency code of the minor unit, e.g. GBX.</value>
+        /// <value>The three to five letter, case-sensitive currency code of the minor unit, e.g. GBX.</value>
         [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
         public string Currency { get; set; }
 

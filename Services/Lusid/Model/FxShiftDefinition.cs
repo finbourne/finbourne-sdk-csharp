@@ -211,7 +211,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 yield return x;
             }
             // CurrencyPair (string) pattern
-            Regex regexCurrencyPair = new Regex(@"^[A-Z]{3}/[A-Z]{3}$", RegexOptions.CultureInvariant);
+            Regex regexCurrencyPair = new Regex(@"^[A-Z]{3,5}/[A-Z]{3,5}$", RegexOptions.CultureInvariant);
             if (this.CurrencyPair != null && false == regexCurrencyPair.Match(this.CurrencyPair).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CurrencyPair, must match a pattern of " + regexCurrencyPair, new [] { "CurrencyPair" });

@@ -45,9 +45,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="lusidEntity">lusidEntity.</param>
         /// <param name="countRuleBreaches">The count of rule breaches (1 for RuleBreached, multiple for RuleBreachesOverLimit).</param>
         /// <param name="errorDetail">Error details (for RulesetInvalid, RuleInvalid).</param>
-        /// <param name="resultId">Unique identifier for the result in format: {{GUID of Check Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}.  For holdings the trailing segment is {{source portfolio GUID}}-{{subEntityId}}, since a holding id only  identifies a holding within its own portfolio..</param>
+        /// <param name="resultId">Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType..</param>
         /// <param name="portfolioHolding">portfolioHolding.</param>
-        public DataQualityCheckResult(string checkDefinitionScope = default(string), string checkDefinitionCode = default(string), string checkDefinitionDisplayName = default(string), DateTimeOffset checkRunAsAt = default(DateTimeOffset), string resultType = default(string), string ruleSetKey = default(string), string ruleSetDisplayName = default(string), string ruleKey = default(string), string ruleDisplayName = default(string), string ruleDescription = default(string), string ruleFormula = default(string), int? severity = default(int?), LusidEntityResult lusidEntity = default(LusidEntityResult), int? countRuleBreaches = default(int?), string errorDetail = default(string), string resultId = default(string), PortfolioHoldingResult portfolioHolding = default(PortfolioHoldingResult))
+        /// <param name="portfolioTransaction">portfolioTransaction.</param>
+        public DataQualityCheckResult(string checkDefinitionScope = default(string), string checkDefinitionCode = default(string), string checkDefinitionDisplayName = default(string), DateTimeOffset checkRunAsAt = default(DateTimeOffset), string resultType = default(string), string ruleSetKey = default(string), string ruleSetDisplayName = default(string), string ruleKey = default(string), string ruleDisplayName = default(string), string ruleDescription = default(string), string ruleFormula = default(string), int? severity = default(int?), LusidEntityResult lusidEntity = default(LusidEntityResult), int? countRuleBreaches = default(int?), string errorDetail = default(string), string resultId = default(string), PortfolioHoldingResult portfolioHolding = default(PortfolioHoldingResult), PortfolioTransactionResult portfolioTransaction = default(PortfolioTransactionResult))
         {
             this.CheckDefinitionScope = checkDefinitionScope;
             this.CheckDefinitionCode = checkDefinitionCode;
@@ -66,6 +67,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.ErrorDetail = errorDetail;
             this.ResultId = resultId;
             this.PortfolioHolding = portfolioHolding;
+            this.PortfolioTransaction = portfolioTransaction;
         }
 
         /// <summary>
@@ -173,9 +175,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string ErrorDetail { get; set; }
 
         /// <summary>
-        /// Unique identifier for the result in format: {{GUID of Check Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}.  For holdings the trailing segment is {{source portfolio GUID}}-{{subEntityId}}, since a holding id only  identifies a holding within its own portfolio.
+        /// Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType.
         /// </summary>
-        /// <value>Unique identifier for the result in format: {{GUID of Check Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}.  For holdings the trailing segment is {{source portfolio GUID}}-{{subEntityId}}, since a holding id only  identifies a holding within its own portfolio.</value>
+        /// <value>Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType.</value>
         [DataMember(Name = "resultId", EmitDefaultValue = true)]
         public string ResultId { get; set; }
 
@@ -184,6 +186,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         [DataMember(Name = "portfolioHolding", EmitDefaultValue = false)]
         public PortfolioHoldingResult PortfolioHolding { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PortfolioTransaction
+        /// </summary>
+        [DataMember(Name = "portfolioTransaction", EmitDefaultValue = false)]
+        public PortfolioTransactionResult PortfolioTransaction { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -210,6 +218,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ErrorDetail: ").Append(ErrorDetail).Append("\n");
             sb.Append("  ResultId: ").Append(ResultId).Append("\n");
             sb.Append("  PortfolioHolding: ").Append(PortfolioHolding).Append("\n");
+            sb.Append("  PortfolioTransaction: ").Append(PortfolioTransaction).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -329,6 +338,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PortfolioHolding == input.PortfolioHolding ||
                     (this.PortfolioHolding != null &&
                     this.PortfolioHolding.Equals(input.PortfolioHolding))
+                ) && 
+                (
+                    this.PortfolioTransaction == input.PortfolioTransaction ||
+                    (this.PortfolioTransaction != null &&
+                    this.PortfolioTransaction.Equals(input.PortfolioTransaction))
                 );
         }
 
@@ -408,6 +422,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.PortfolioHolding != null)
                 {
                     hashCode = (hashCode * 59) + this.PortfolioHolding.GetHashCode();
+                }
+                if (this.PortfolioTransaction != null)
+                {
+                    hashCode = (hashCode * 59) + this.PortfolioTransaction.GetHashCode();
                 }
                 return hashCode;
             }

@@ -20,8 +20,9 @@ Represents the result of a data quality check operation
 | **LusidEntity** | [LusidEntityResult](LusidEntityResult.md) | Optional | *No description available.* |
 | **CountRuleBreaches** | **int?** | Optional | The count of rule breaches (1 for RuleBreached, multiple for RuleBreachesOverLimit) |
 | **ErrorDetail** | **string** | Optional | Error details (for RulesetInvalid, RuleInvalid) |
-| **ResultId** | **string** | Optional | Unique identifier for the result in format: {{GUID of Check Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}.  For holdings the trailing segment is {{source portfolio GUID}}-{{subEntityId}}, since a holding id only  identifies a holding within its own portfolio. |
+| **ResultId** | **string** | Optional | Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType. |
 | **PortfolioHolding** | [PortfolioHoldingResult](PortfolioHoldingResult.md) | Optional | *No description available.* |
+| **PortfolioTransaction** | [PortfolioTransactionResult](PortfolioTransactionResult.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -47,8 +48,9 @@ var instance = new DataQualityCheckResult(
     lusidEntity: new LusidEntityResult(...),  // optional
     countRuleBreaches: 0,  // optional — The count of rule breaches (1 for RuleBreached, multiple for RuleBreachesOverLimit)
     errorDetail: "...",  // optional — Error details (for RulesetInvalid, RuleInvalid)
-    resultId: "...",  // optional — Unique identifier for the result in format: {{GUID of Check Definition}}-{{resultType}}-{{rulesetKey}}-{{ruleKey}}-{{entity GUID}}.  For holdings the trailing segment is {{source portfolio GUID}}-{{subEntityId}}, since a holding id only  identifies a holding within its own portfolio.
-    portfolioHolding: new PortfolioHoldingResult(...)  // optional
+    resultId: "...",  // optional — Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType.
+    portfolioHolding: new PortfolioHoldingResult(...),  // optional
+    portfolioTransaction: new PortfolioTransactionResult(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -65,6 +67,7 @@ var instance = JsonConvert.DeserializeObject<DataQualityCheckResult>(json);
 
 - [LusidEntityResult](LusidEntityResult.md)
 - [PortfolioHoldingResult](PortfolioHoldingResult.md)
+- [PortfolioTransactionResult](PortfolioTransactionResult.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

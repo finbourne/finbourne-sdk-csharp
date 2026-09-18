@@ -11,6 +11,7 @@ A Workflow
 | **Description** | **string** | Optional | Human readable description |
 | **RootTaskDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **WorkflowStructure** | [WorkflowStructure](WorkflowStructure.md) | Required | *No description available.* |
+| **RunCount** | **int** | Required | The number of times this Workflow has been run. Starts at 0 and increments by 1 each time a new run is instantiated. |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The properties of the Workflow, keyed by property key. |
 
 
@@ -28,6 +29,7 @@ var instance = new WorkflowResponse(
     description: "...",  // optional — Human readable description
     rootTaskDefinitionId: new ResourceId(...),  // required
     workflowStructure: new WorkflowStructure(...),  // required
+    runCount: 0,  // required — The number of times this Workflow has been run. Starts at 0 and increments by 1 each time a new run is instantiated.
     properties: new PerpetualProperty(...)  // optional — The properties of the Workflow, keyed by property key.
 );
 ```

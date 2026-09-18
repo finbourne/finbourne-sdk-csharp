@@ -8,7 +8,7 @@ A currency group: a set of related currencies sharing a major unit (e.g. GBP wit
 | **Code** | **string** | Optional | The code of the currency group. This uniquely identifies the currency group within the tenant. |
 | **DisplayName** | **string** | Optional | The name of the currency group. |
 | **Description** | **string** | Optional | A description for the currency group. |
-| **MajorUnitCurrency** | **string** | Optional | The three-letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group. |
+| **MajorUnitCurrency** | **string** | Optional | The three to five letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group. |
 | **CirculationDomain** | **string** | Optional | The domain in which the group&#39;s currencies circulate, e.g. an ISO 3166 country code. |
 | **MinorUnits** | [List&lt;CurrencyGroupMinorUnit&gt;](CurrencyGroupMinorUnit.md) | Optional | The minor unit currencies belonging to this currency group. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
@@ -27,7 +27,7 @@ var instance = new CurrencyGroupResponse(
     code: "...",  // optional — The code of the currency group. This uniquely identifies the currency group within the tenant.
     displayName: "...",  // optional — The name of the currency group.
     description: "...",  // optional — A description for the currency group.
-    majorUnitCurrency: "...",  // optional — The three-letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group.
+    majorUnitCurrency: "...",  // optional — The three to five letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group.
     circulationDomain: "...",  // optional — The domain in which the group&#39;s currencies circulate, e.g. an ISO 3166 country code.
     minorUnits: new List<CurrencyGroupMinorUnit>(),  // optional — The minor unit currencies belonging to this currency group.
     varVersion: new ModelVersion(...),  // optional
