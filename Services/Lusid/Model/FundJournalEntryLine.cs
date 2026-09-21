@@ -54,6 +54,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="sourceId">For the Lusid Source Type this will be the txn Id. For the rest will be what the user populates. (required).</param>
         /// <param name="properties">A set of properties for the Abor..</param>
         /// <param name="movementName">If the JE Line is generated from a transaction, the name of the side in the transaction type&#39;s movement. If from a valuation, this is &#39;MarkToMarket&#39;..</param>
+        /// <param name="txnType">If the JE Line is generated from a transaction, the type of that transaction. Null where the line is not linked to a transaction, such as a valuation line..</param>
         /// <param name="holdingType">One of the LUSID holding types such as &#39;P&#39; for position or &#39;B&#39; for settled cash balance. (required).</param>
         /// <param name="economicBucket">LUSID automatically categorises a JE Line into a broad economic bucket such as &#39;NA_Cost&#39; or &#39;PL_RealPriceGL&#39;. (required).</param>
         /// <param name="economicBucketComponent">Sub bucket of the economic bucket. Available values: Undefined, Premium, OID, MarketDiscount, AcquisitionPremium, CoreMarket, CrossGainLoss, TradedInterest, Income, Expense..</param>
@@ -69,7 +70,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="custodianAccountType">Indicates the Account Type of the resolved Custodian Account for this Journal Entry Line..</param>
         /// <param name="bucketMemberships">The bucket this Journal Entry Line is assigned to in each of the Fund Configuration&#39;s bucket sets that covers the NAV type, in bucket set definition order. Each bucket set classifies the line independently, so a line normally carries one entry per bucket set..</param>
         /// <param name="links">links.</param>
-        public FundJournalEntryLine(DateTimeOffset accountingDate = default(DateTimeOffset), DateTimeOffset activityDate = default(DateTimeOffset), ResourceId portfolioId = default(ResourceId), string instrumentId = default(string), string instrumentScope = default(string), Dictionary<string, PerpetualProperty> subHoldingKeys = default(Dictionary<string, PerpetualProperty>), string taxLotId = default(string), string generalLedgerAccountCode = default(string), CurrencyAndAmount local = default(CurrencyAndAmount), CurrencyAndAmount varBase = default(CurrencyAndAmount), decimal units = default(decimal), string postingModuleCode = default(string), string postingRule = default(string), DateTimeOffset asAtDate = default(DateTimeOffset), string activitiesDescription = default(string), string sourceType = default(string), string sourceId = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string movementName = default(string), string holdingType = default(string), string economicBucket = default(string), string economicBucketComponent = default(string), string economicBucketVariant = default(string), List<string> levels = default(List<string>), List<string> sourceLevels = default(List<string>), string movementSign = default(string), string holdingSign = default(string), string ledgerColumn = default(string), string journalEntryLineType = default(string), List<JournalEntryLineShareClassBreakdown> shareClassBreakdowns = default(List<JournalEntryLineShareClassBreakdown>), ResourceId custodianAccountId = default(ResourceId), string custodianAccountType = default(string), List<BucketMembership> bucketMemberships = default(List<BucketMembership>), List<Link> links = default(List<Link>))
+        public FundJournalEntryLine(DateTimeOffset accountingDate = default(DateTimeOffset), DateTimeOffset activityDate = default(DateTimeOffset), ResourceId portfolioId = default(ResourceId), string instrumentId = default(string), string instrumentScope = default(string), Dictionary<string, PerpetualProperty> subHoldingKeys = default(Dictionary<string, PerpetualProperty>), string taxLotId = default(string), string generalLedgerAccountCode = default(string), CurrencyAndAmount local = default(CurrencyAndAmount), CurrencyAndAmount varBase = default(CurrencyAndAmount), decimal units = default(decimal), string postingModuleCode = default(string), string postingRule = default(string), DateTimeOffset asAtDate = default(DateTimeOffset), string activitiesDescription = default(string), string sourceType = default(string), string sourceId = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string movementName = default(string), string txnType = default(string), string holdingType = default(string), string economicBucket = default(string), string economicBucketComponent = default(string), string economicBucketVariant = default(string), List<string> levels = default(List<string>), List<string> sourceLevels = default(List<string>), string movementSign = default(string), string holdingSign = default(string), string ledgerColumn = default(string), string journalEntryLineType = default(string), List<JournalEntryLineShareClassBreakdown> shareClassBreakdowns = default(List<JournalEntryLineShareClassBreakdown>), ResourceId custodianAccountId = default(ResourceId), string custodianAccountType = default(string), List<BucketMembership> bucketMemberships = default(List<BucketMembership>), List<Link> links = default(List<Link>))
         {
             this.AccountingDate = accountingDate;
             this.ActivityDate = activityDate;
@@ -147,6 +148,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.ActivitiesDescription = activitiesDescription;
             this.Properties = properties;
             this.MovementName = movementName;
+            this.TxnType = txnType;
             this.EconomicBucketComponent = economicBucketComponent;
             this.EconomicBucketVariant = economicBucketVariant;
             this.Levels = levels;
@@ -293,6 +295,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string MovementName { get; set; }
 
         /// <summary>
+        /// If the JE Line is generated from a transaction, the type of that transaction. Null where the line is not linked to a transaction, such as a valuation line.
+        /// </summary>
+        /// <value>If the JE Line is generated from a transaction, the type of that transaction. Null where the line is not linked to a transaction, such as a valuation line.</value>
+        [DataMember(Name = "txnType", EmitDefaultValue = true)]
+        public string TxnType { get; set; }
+
+        /// <summary>
         /// One of the LUSID holding types such as &#39;P&#39; for position or &#39;B&#39; for settled cash balance.
         /// </summary>
         /// <value>One of the LUSID holding types such as &#39;P&#39; for position or &#39;B&#39; for settled cash balance.</value>
@@ -422,6 +431,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  SourceId: ").Append(SourceId).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  MovementName: ").Append(MovementName).Append("\n");
+            sb.Append("  TxnType: ").Append(TxnType).Append("\n");
             sb.Append("  HoldingType: ").Append(HoldingType).Append("\n");
             sb.Append("  EconomicBucket: ").Append(EconomicBucket).Append("\n");
             sb.Append("  EconomicBucketComponent: ").Append(EconomicBucketComponent).Append("\n");
@@ -567,6 +577,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.MovementName == input.MovementName ||
                     (this.MovementName != null &&
                     this.MovementName.Equals(input.MovementName))
+                ) && 
+                (
+                    this.TxnType == input.TxnType ||
+                    (this.TxnType != null &&
+                    this.TxnType.Equals(input.TxnType))
                 ) && 
                 (
                     this.HoldingType == input.HoldingType ||
@@ -731,6 +746,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.MovementName != null)
                 {
                     hashCode = (hashCode * 59) + this.MovementName.GetHashCode();
+                }
+                if (this.TxnType != null)
+                {
+                    hashCode = (hashCode * 59) + this.TxnType.GetHashCode();
                 }
                 if (this.HoldingType != null)
                 {

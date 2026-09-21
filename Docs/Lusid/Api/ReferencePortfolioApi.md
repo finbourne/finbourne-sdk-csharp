@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateReferencePortfolio**](#createreferenceportfolio) | **POST** `/api/api/referenceportfolios/{scope}` | CreateReferencePortfolio: Create reference portfolio |
+| [**DeleteReferencePortfolioConstituentAdjustment**](#deletereferenceportfolioconstituentadjustment) | **DELETE** `/api/api/referenceportfolios/{scope}/{code}/constituentsadjustment` | DeleteReferencePortfolioConstituentAdjustment: Delete constituents adjustment |
 | [**GetReferencePortfolioConstituents**](#getreferenceportfolioconstituents) | **GET** `/api/api/referenceportfolios/{scope}/{code}/constituents` | GetReferencePortfolioConstituents: Get reference portfolio constituents |
 | [**ListConstituentsAdjustments**](#listconstituentsadjustments) | **GET** `/api/api/referenceportfolios/{scope}/{code}/constituentsadjustments` | ListConstituentsAdjustments: List constituents adjustments |
 | [**UpsertReferencePortfolioConstituentProperties**](#upsertreferenceportfolioconstituentproperties) | **POST** `/api/api/referenceportfolios/{scope}/{code}/constituents/properties` | [EARLY ACCESS] UpsertReferencePortfolioConstituentProperties: Upsert constituent properties |
@@ -103,6 +104,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<Portfolio> response = apiInstance.CreateReferencePortfolioWithHttpInfo(scope, createReferencePortfolioRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="deletereferenceportfolioconstituentadjustment"></a>
+## DeleteReferencePortfolioConstituentAdjustment
+
+> DeletedEntityResponse DeleteReferencePortfolioConstituentAdjustment(string scope, string code, DateTimeOrCutLabel effectiveAt)
+
+DeleteReferencePortfolioConstituentAdjustment: Delete constituents adjustment
+
+Delete the constituents adjustment made to a reference portfolio at the specified effective  datetime. After deletion the constituents in effect revert to the previous effective-dated  adjustment, or to none if there is no earlier adjustment.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ReferencePortfolioApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel
+DeletedEntityResponse result = apiInstance.DeleteReferencePortfolioConstituentAdjustment(scope, code, effectiveAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the reference portfolio. |
+| **code** | **string** | path | **required** | The code of the reference portfolio. Together with the scope this uniquely              identifies the reference portfolio. |
+| **effectiveAt** | **DateTimeOrCutLabel** | query | **required** | The effective datetime or cut label at which the constituents adjustment was made. |
+
+### Return type
+
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the constituents adjustment was deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteReferencePortfolioConstituentAdjustmentWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteReferencePortfolioConstituentAdjustmentWithHttpInfo(scope, code, effectiveAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

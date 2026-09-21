@@ -36,8 +36,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="variations">Variation details of a Compliance Template.</param>
         /// <param name="href">The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime..</param>
         /// <param name="varVersion">varVersion.</param>
+        /// <param name="stagedModifications">stagedModifications.</param>
         /// <param name="links">links.</param>
-        public ComplianceRuleTemplate(ResourceId id = default(ResourceId), string description = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), List<ComplianceTemplateVariationDto> variations = default(List<ComplianceTemplateVariationDto>), string href = default(string), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
+        public ComplianceRuleTemplate(ResourceId id = default(ResourceId), string description = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), List<ComplianceTemplateVariationDto> variations = default(List<ComplianceTemplateVariationDto>), string href = default(string), ModelVersion varVersion = default(ModelVersion), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), List<Link> links = default(List<Link>))
         {
             this.Id = id;
             this.Description = description;
@@ -45,6 +46,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Variations = variations;
             this.Href = href;
             this.VarVersion = varVersion;
+            this.StagedModifications = stagedModifications;
             this.Links = links;
         }
 
@@ -89,6 +91,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ModelVersion VarVersion { get; set; }
 
         /// <summary>
+        /// Gets or Sets StagedModifications
+        /// </summary>
+        [DataMember(Name = "stagedModifications", EmitDefaultValue = false)]
+        public StagedModificationsInfo StagedModifications { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -108,6 +116,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Variations: ").Append(Variations).Append("\n");
             sb.Append("  Href: ").Append(Href).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  StagedModifications: ").Append(StagedModifications).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -177,6 +186,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.VarVersion.Equals(input.VarVersion))
                 ) && 
                 (
+                    this.StagedModifications == input.StagedModifications ||
+                    (this.StagedModifications != null &&
+                    this.StagedModifications.Equals(input.StagedModifications))
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -216,6 +230,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.VarVersion != null)
                 {
                     hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
+                }
+                if (this.StagedModifications != null)
+                {
+                    hashCode = (hashCode * 59) + this.StagedModifications.GetHashCode();
                 }
                 if (this.Links != null)
                 {

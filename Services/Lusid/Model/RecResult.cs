@@ -51,6 +51,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="aggregateRules">The aggregate matching rules and their measured values. (required).</param>
         /// <param name="supplementalAttributes">Additional attribute values carried on the result for context. Do not contribute to matching or the result id. (required).</param>
         /// <param name="items">items (required).</param>
+        /// <param name="linkedResults">Results of other rec types in the same rec instance run whose items share an identifier with this result&#39;s items. Only exceptions link, and only to exceptions; symmetric. Set by the linking pass once every rec type of the run has completed, so empty until then. (required).</param>
         /// <param name="comments">User-authored comments attached to the result. Carried forward across runs. (required).</param>
         /// <param name="properties">Properties in the RecResult domain. Filterable and sortable..</param>
         /// <param name="assignedUser">The LUSID user id assigned to the result..</param>
@@ -58,7 +59,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="href">The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime..</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="links">links.</param>
-        public RecResult(string id = default(string), string recType = default(string), RecInstanceId instanceId = default(RecInstanceId), ResourceId recDefinitionId = default(ResourceId), int runNumber = default(int), DateTimeOffset runAsAt = default(DateTimeOffset), RecDatesReconciled datesReconciled = default(RecDatesReconciled), string resultType = default(string), string resultCardinality = default(string), string resultLifeCycle = default(string), RecResultException exception = default(RecResultException), RecResultReview review = default(RecResultReview), List<CoreRuleValues> coreRules = default(List<CoreRuleValues>), List<AggregateRuleValues> aggregateRules = default(List<AggregateRuleValues>), List<SupplementalAttributeValues> supplementalAttributes = default(List<SupplementalAttributeValues>), RecResultItemDetails items = default(RecResultItemDetails), List<RecUserComment> comments = default(List<RecUserComment>), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string assignedUser = default(string), string assignedRole = default(string), string href = default(string), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
+        public RecResult(string id = default(string), string recType = default(string), RecInstanceId instanceId = default(RecInstanceId), ResourceId recDefinitionId = default(ResourceId), int runNumber = default(int), DateTimeOffset runAsAt = default(DateTimeOffset), RecDatesReconciled datesReconciled = default(RecDatesReconciled), string resultType = default(string), string resultCardinality = default(string), string resultLifeCycle = default(string), RecResultException exception = default(RecResultException), RecResultReview review = default(RecResultReview), List<CoreRuleValues> coreRules = default(List<CoreRuleValues>), List<AggregateRuleValues> aggregateRules = default(List<AggregateRuleValues>), List<SupplementalAttributeValues> supplementalAttributes = default(List<SupplementalAttributeValues>), RecResultItemDetails items = default(RecResultItemDetails), List<RecLinkedResult> linkedResults = default(List<RecLinkedResult>), List<RecUserComment> comments = default(List<RecUserComment>), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string assignedUser = default(string), string assignedRole = default(string), string href = default(string), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -140,6 +141,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("items is a required property for RecResult and cannot be null");
             }
             this.Items = items;
+            // to ensure "linkedResults" is required (not null)
+            if (linkedResults == null)
+            {
+                throw new ArgumentNullException("linkedResults is a required property for RecResult and cannot be null");
+            }
+            this.LinkedResults = linkedResults;
             // to ensure "comments" is required (not null)
             if (comments == null)
             {
@@ -262,6 +269,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public RecResultItemDetails Items { get; set; }
 
         /// <summary>
+        /// Results of other rec types in the same rec instance run whose items share an identifier with this result&#39;s items. Only exceptions link, and only to exceptions; symmetric. Set by the linking pass once every rec type of the run has completed, so empty until then.
+        /// </summary>
+        /// <value>Results of other rec types in the same rec instance run whose items share an identifier with this result&#39;s items. Only exceptions link, and only to exceptions; symmetric. Set by the linking pass once every rec type of the run has completed, so empty until then.</value>
+        [DataMember(Name = "linkedResults", IsRequired = true, EmitDefaultValue = true)]
+        public List<RecLinkedResult> LinkedResults { get; set; }
+
+        /// <summary>
         /// User-authored comments attached to the result. Carried forward across runs.
         /// </summary>
         /// <value>User-authored comments attached to the result. Carried forward across runs.</value>
@@ -332,6 +346,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  AggregateRules: ").Append(AggregateRules).Append("\n");
             sb.Append("  SupplementalAttributes: ").Append(SupplementalAttributes).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("  LinkedResults: ").Append(LinkedResults).Append("\n");
             sb.Append("  Comments: ").Append(Comments).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  AssignedUser: ").Append(AssignedUser).Append("\n");
@@ -457,6 +472,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Items.Equals(input.Items))
                 ) && 
                 (
+                    this.LinkedResults == input.LinkedResults ||
+                    this.LinkedResults != null &&
+                    input.LinkedResults != null &&
+                    this.LinkedResults.SequenceEqual(input.LinkedResults)
+                ) && 
+                (
                     this.Comments == input.Comments ||
                     this.Comments != null &&
                     input.Comments != null &&
@@ -565,6 +586,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Items != null)
                 {
                     hashCode = (hashCode * 59) + this.Items.GetHashCode();
+                }
+                if (this.LinkedResults != null)
+                {
+                    hashCode = (hashCode * 59) + this.LinkedResults.GetHashCode();
                 }
                 if (this.Comments != null)
                 {

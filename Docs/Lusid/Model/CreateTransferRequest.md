@@ -32,6 +32,7 @@ A request to create a transfer: the paired transaction legs that move a position
 | **AccountingMethod** | **string** | Optional | Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. |
 | **PropertiesOut** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
 | **PropertiesIn** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -68,7 +69,8 @@ var instance = new CreateTransferRequest(
     source: "...",  // required
     accountingMethod: "...",  // optional — Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
     propertiesOut: new PerpetualProperty(...),  // optional
-    propertiesIn: new PerpetualProperty(...)  // optional
+    propertiesIn: new PerpetualProperty(...),  // optional
+    properties: new PerpetualProperty(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -91,6 +93,7 @@ var instance = JsonConvert.DeserializeObject<CreateTransferRequest>(json);
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
+- [PerpetualProperty](PerpetualProperty.md)
 - [PerpetualProperty](PerpetualProperty.md)
 - [PerpetualProperty](PerpetualProperty.md)
 

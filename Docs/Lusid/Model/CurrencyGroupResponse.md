@@ -9,7 +9,7 @@ A currency group: a set of related currencies sharing a major unit (e.g. GBP wit
 | **DisplayName** | **string** | Optional | The name of the currency group. |
 | **Description** | **string** | Optional | A description for the currency group. |
 | **MajorUnitCurrency** | **string** | Optional | The three to five letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group. |
-| **CirculationDomain** | **string** | Optional | The domain in which the group&#39;s currencies circulate, e.g. an ISO 3166 country code. |
+| **CirculationDomain** | **List&lt;string&gt;** | Optional | The domains in which the group&#39;s currencies circulate, e.g. ISO 3166 country codes or the ISO 4217 entity names of the countries using the major unit. |
 | **MinorUnits** | [List&lt;CurrencyGroupMinorUnit&gt;](CurrencyGroupMinorUnit.md) | Optional | The minor unit currencies belonging to this currency group. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource. |
@@ -28,7 +28,7 @@ var instance = new CurrencyGroupResponse(
     displayName: "...",  // optional — The name of the currency group.
     description: "...",  // optional — A description for the currency group.
     majorUnitCurrency: "...",  // optional — The three to five letter, case-sensitive currency code of the group&#39;s major unit, e.g. GBP for the sterling group.
-    circulationDomain: "...",  // optional — The domain in which the group&#39;s currencies circulate, e.g. an ISO 3166 country code.
+    circulationDomain: ,  // optional — The domains in which the group&#39;s currencies circulate, e.g. ISO 3166 country codes or the ISO 4217 entity names of the countries using the major unit.
     minorUnits: new List<CurrencyGroupMinorUnit>(),  // optional — The minor unit currencies belonging to this currency group.
     varVersion: new ModelVersion(...),  // optional
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource.

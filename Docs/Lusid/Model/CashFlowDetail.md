@@ -10,9 +10,11 @@ An individual cashflow inside a cashflow bucket, annotated with the source that 
 | **Currency** | **string** | Required | The payment currency of the cashflow. |
 | **SourceType** | **string** | Required | The source that produced the cashflow in the cash flow waterfall. One of &#39;Instrument&#39; (produced by the valuation engine), &#39;Transaction&#39; (produced from a booked transaction or movement) or &#39;SRS&#39; (sourced from the structured results store). |
 | **InstrumentId** | **string** | Required | The LUSID instrument identifier of the instrument that produced the cashflow. |
+| **InstrumentDisplayName** | **string** | Optional | The display name of the instrument that produced the cashflow. Not present when the instrument cannot be resolved (e.g. deleted, no permission). |
 | **TransactionId** | **string** | Optional | The identifier of the transaction from which the cashflow originates, where known. |
 | **PortfolioId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **FlowType** | **string** | Optional | The type of the cashflow, e.g. Coupon, Principal or Premium. |
+| **MovementName** | **string** | Optional | The name of the movement that produced the cashflow (e.g. Coupon, Side1), falling back to the flow type when the movement is unnamed. Not present when the cashflow could not be valued. |
 | **PayReceive** | **string** | Optional | Indicates whether the cashflow is paid or received. |
 | **GrossAmount** | **decimal?** | Optional | The signed amount of the cashflow before any haircut was applied. Only populated when haircut rules were supplied on the request. |
 | **HaircutFraction** | **decimal?** | Optional | The fraction of the gross amount removed by the haircut, in the range [0, 1]. Zero for outflows and for cashflows no rule matched. Only populated when haircut rules were supplied on the request. |
@@ -35,9 +37,11 @@ var instance = new CashFlowDetail(
     currency: "...",  // required — The payment currency of the cashflow.
     sourceType: "...",  // required — The source that produced the cashflow in the cash flow waterfall. One of &#39;Instrument&#39; (produced by the valuation engine), &#39;Transaction&#39; (produced from a booked transaction or movement) or &#39;SRS&#39; (sourced from the structured results store).
     instrumentId: "...",  // required — The LUSID instrument identifier of the instrument that produced the cashflow.
+    instrumentDisplayName: "...",  // optional — The display name of the instrument that produced the cashflow. Not present when the instrument cannot be resolved (e.g. deleted, no permission).
     transactionId: "...",  // optional — The identifier of the transaction from which the cashflow originates, where known.
     portfolioId: new ResourceId(...),  // required
     flowType: "...",  // optional — The type of the cashflow, e.g. Coupon, Principal or Premium.
+    movementName: "...",  // optional — The name of the movement that produced the cashflow (e.g. Coupon, Side1), falling back to the flow type when the movement is unnamed. Not present when the cashflow could not be valued.
     payReceive: "...",  // optional — Indicates whether the cashflow is paid or received.
     grossAmount: 0.0d,  // optional — The signed amount of the cashflow before any haircut was applied. Only populated when haircut rules were supplied on the request.
     haircutFraction: 0.0d,  // optional — The fraction of the gross amount removed by the haircut, in the range [0, 1]. Zero for outflows and for cashflows no rule matched. Only populated when haircut rules were supplied on the request.

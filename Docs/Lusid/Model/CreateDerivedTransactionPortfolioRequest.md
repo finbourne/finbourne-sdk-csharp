@@ -22,6 +22,8 @@
 | **SettlementConfiguration** | [PortfolioSettlementConfiguration](PortfolioSettlementConfiguration.md) | Optional | *No description available.* |
 | **TransactionExclusionFilter** | **string** | Optional | A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded. |
 | **TaxLotSelectionCostBasis** | **string** | Optional | The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Supply Default to explicitly reset it; a reset or never-configured basis reads back as absent. Available values: Default, Cost, AmortisedCost. |
+| **FractionalUnitsTrueUpConfiguration** | [FractionalUnitsTrueUpConfiguration](FractionalUnitsTrueUpConfiguration.md) | Optional | *No description available.* |
+| **HoldingsFungibility** | **string** | Optional | Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled. |
 
 
 ## Usage
@@ -49,7 +51,9 @@ var instance = new CreateDerivedTransactionPortfolioRequest(
     instrumentEventConfiguration: new InstrumentEventConfiguration(...),  // optional
     settlementConfiguration: new PortfolioSettlementConfiguration(...),  // optional
     transactionExclusionFilter: "...",  // optional — A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded.
-    taxLotSelectionCostBasis: "..."  // optional — The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Supply Default to explicitly reset it; a reset or never-configured basis reads back as absent. Available values: Default, Cost, AmortisedCost.
+    taxLotSelectionCostBasis: "...",  // optional — The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Supply Default to explicitly reset it; a reset or never-configured basis reads back as absent. Available values: Default, Cost, AmortisedCost.
+    fractionalUnitsTrueUpConfiguration: new FractionalUnitsTrueUpConfiguration(...),  // optional
+    holdingsFungibility: "..."  // optional — Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled.
 );
 ```
 ### Serializing to JSON
@@ -69,6 +73,7 @@ var instance = JsonConvert.DeserializeObject<CreateDerivedTransactionPortfolioRe
 - [ResourceId](ResourceId.md)
 - [InstrumentEventConfiguration](InstrumentEventConfiguration.md)
 - [PortfolioSettlementConfiguration](PortfolioSettlementConfiguration.md)
+- [FractionalUnitsTrueUpConfiguration](FractionalUnitsTrueUpConfiguration.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

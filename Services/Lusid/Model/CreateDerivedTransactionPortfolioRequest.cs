@@ -163,7 +163,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="settlementConfiguration">settlementConfiguration.</param>
         /// <param name="transactionExclusionFilter">A filter expression that identifies transactions to exclude when building the transaction portfolio&#39;s transactions and holdings. Transactions matching this filter are flagged as excluded..</param>
         /// <param name="taxLotSelectionCostBasis">The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Supply Default to explicitly reset it; a reset or never-configured basis reads back as absent. Available values: Default, Cost, AmortisedCost..</param>
-        public CreateDerivedTransactionPortfolioRequest(string displayName = default(string), string description = default(string), string code = default(string), ResourceId parentPortfolioId = default(ResourceId), DateTimeOffset? created = default(DateTimeOffset?), DateTimeOffset? enablementDate = default(DateTimeOffset?), ResourceId corporateActionSourceId = default(ResourceId), AccountingMethodEnum ?accountingMethod = default(AccountingMethodEnum?), List<string> subHoldingKeys = default(List<string>), List<string> instrumentScopes = default(List<string>), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), ResourceId amortisationRuleSetId = default(ResourceId), InstrumentEventConfiguration instrumentEventConfiguration = default(InstrumentEventConfiguration), PortfolioSettlementConfiguration settlementConfiguration = default(PortfolioSettlementConfiguration), string transactionExclusionFilter = default(string), string taxLotSelectionCostBasis = default(string))
+        /// <param name="fractionalUnitsTrueUpConfiguration">fractionalUnitsTrueUpConfiguration.</param>
+        /// <param name="holdingsFungibility">Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled..</param>
+        public CreateDerivedTransactionPortfolioRequest(string displayName = default(string), string description = default(string), string code = default(string), ResourceId parentPortfolioId = default(ResourceId), DateTimeOffset? created = default(DateTimeOffset?), DateTimeOffset? enablementDate = default(DateTimeOffset?), ResourceId corporateActionSourceId = default(ResourceId), AccountingMethodEnum ?accountingMethod = default(AccountingMethodEnum?), List<string> subHoldingKeys = default(List<string>), List<string> instrumentScopes = default(List<string>), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), ResourceId amortisationRuleSetId = default(ResourceId), InstrumentEventConfiguration instrumentEventConfiguration = default(InstrumentEventConfiguration), PortfolioSettlementConfiguration settlementConfiguration = default(PortfolioSettlementConfiguration), string transactionExclusionFilter = default(string), string taxLotSelectionCostBasis = default(string), FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration = default(FractionalUnitsTrueUpConfiguration), string holdingsFungibility = default(string))
         {
             // to ensure "displayName" is required (not null)
             if (displayName == null)
@@ -198,6 +200,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.SettlementConfiguration = settlementConfiguration;
             this.TransactionExclusionFilter = transactionExclusionFilter;
             this.TaxLotSelectionCostBasis = taxLotSelectionCostBasis;
+            this.FractionalUnitsTrueUpConfiguration = fractionalUnitsTrueUpConfiguration;
+            this.HoldingsFungibility = holdingsFungibility;
         }
 
         /// <summary>
@@ -315,6 +319,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string TaxLotSelectionCostBasis { get; set; }
 
         /// <summary>
+        /// Gets or Sets FractionalUnitsTrueUpConfiguration
+        /// </summary>
+        [DataMember(Name = "fractionalUnitsTrueUpConfiguration", EmitDefaultValue = false)]
+        public FractionalUnitsTrueUpConfiguration FractionalUnitsTrueUpConfiguration { get; set; }
+
+        /// <summary>
+        /// Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled.
+        /// </summary>
+        /// <value>Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled.</value>
+        [DataMember(Name = "holdingsFungibility", EmitDefaultValue = true)]
+        public string HoldingsFungibility { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -340,6 +357,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  SettlementConfiguration: ").Append(SettlementConfiguration).Append("\n");
             sb.Append("  TransactionExclusionFilter: ").Append(TransactionExclusionFilter).Append("\n");
             sb.Append("  TaxLotSelectionCostBasis: ").Append(TaxLotSelectionCostBasis).Append("\n");
+            sb.Append("  FractionalUnitsTrueUpConfiguration: ").Append(FractionalUnitsTrueUpConfiguration).Append("\n");
+            sb.Append("  HoldingsFungibility: ").Append(HoldingsFungibility).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -465,6 +484,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.TaxLotSelectionCostBasis == input.TaxLotSelectionCostBasis ||
                     (this.TaxLotSelectionCostBasis != null &&
                     this.TaxLotSelectionCostBasis.Equals(input.TaxLotSelectionCostBasis))
+                ) && 
+                (
+                    this.FractionalUnitsTrueUpConfiguration == input.FractionalUnitsTrueUpConfiguration ||
+                    (this.FractionalUnitsTrueUpConfiguration != null &&
+                    this.FractionalUnitsTrueUpConfiguration.Equals(input.FractionalUnitsTrueUpConfiguration))
+                ) && 
+                (
+                    this.HoldingsFungibility == input.HoldingsFungibility ||
+                    (this.HoldingsFungibility != null &&
+                    this.HoldingsFungibility.Equals(input.HoldingsFungibility))
                 );
         }
 
@@ -545,6 +574,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.TaxLotSelectionCostBasis != null)
                 {
                     hashCode = (hashCode * 59) + this.TaxLotSelectionCostBasis.GetHashCode();
+                }
+                if (this.FractionalUnitsTrueUpConfiguration != null)
+                {
+                    hashCode = (hashCode * 59) + this.FractionalUnitsTrueUpConfiguration.GetHashCode();
+                }
+                if (this.HoldingsFungibility != null)
+                {
+                    hashCode = (hashCode * 59) + this.HoldingsFungibility.GetHashCode();
                 }
                 return hashCode;
             }

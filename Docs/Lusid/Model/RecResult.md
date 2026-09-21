@@ -21,6 +21,7 @@ An individual reconciliation result — the aggregate result for a set of core r
 | **AggregateRules** | [List&lt;AggregateRuleValues&gt;](AggregateRuleValues.md) | Required | The aggregate matching rules and their measured values. |
 | **SupplementalAttributes** | [List&lt;SupplementalAttributeValues&gt;](SupplementalAttributeValues.md) | Required | Additional attribute values carried on the result for context. Do not contribute to matching or the result id. |
 | **Items** | [RecResultItemDetails](RecResultItemDetails.md) | Required | *No description available.* |
+| **LinkedResults** | [List&lt;RecLinkedResult&gt;](RecLinkedResult.md) | Required | Results of other rec types in the same rec instance run whose items share an identifier with this result&#39;s items. Only exceptions link, and only to exceptions; symmetric. Set by the linking pass once every rec type of the run has completed, so empty until then. |
 | **Comments** | [List&lt;RecUserComment&gt;](RecUserComment.md) | Required | User-authored comments attached to the result. Carried forward across runs. |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Properties in the RecResult domain. Filterable and sortable. |
 | **AssignedUser** | **string** | Optional | The LUSID user id assigned to the result. |
@@ -54,6 +55,7 @@ var instance = new RecResult(
     aggregateRules: new List<AggregateRuleValues>(),  // required — The aggregate matching rules and their measured values.
     supplementalAttributes: new List<SupplementalAttributeValues>(),  // required — Additional attribute values carried on the result for context. Do not contribute to matching or the result id.
     items: new RecResultItemDetails(...),  // required
+    linkedResults: new List<RecLinkedResult>(),  // required — Results of other rec types in the same rec instance run whose items share an identifier with this result&#39;s items. Only exceptions link, and only to exceptions; symmetric. Set by the linking pass once every rec type of the run has completed, so empty until then.
     comments: new List<RecUserComment>(),  // required — User-authored comments attached to the result. Carried forward across runs.
     properties: new PerpetualProperty(...),  // optional — Properties in the RecResult domain. Filterable and sortable.
     assignedUser: "...",  // optional — The LUSID user id assigned to the result.
@@ -84,6 +86,7 @@ var instance = JsonConvert.DeserializeObject<RecResult>(json);
 - [AggregateRuleValues](AggregateRuleValues.md) — used in `AggregateRules`
 - [SupplementalAttributeValues](SupplementalAttributeValues.md) — used in `SupplementalAttributes`
 - [RecResultItemDetails](RecResultItemDetails.md)
+- [RecLinkedResult](RecLinkedResult.md) — used in `LinkedResults`
 - [RecUserComment](RecUserComment.md) — used in `Comments`
 - [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
 - [ModelVersion](ModelVersion.md)

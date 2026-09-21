@@ -10,6 +10,7 @@
 | **Variations** | [List&lt;ComplianceTemplateVariationDto&gt;](ComplianceTemplateVariationDto.md) | Optional | Variation details of a Compliance Template |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -27,6 +28,7 @@ var instance = new ComplianceRuleTemplate(
     variations: new List<ComplianceTemplateVariationDto>(),  // optional — Variation details of a Compliance Template
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime.
     varVersion: new ModelVersion(...),  // optional
+    stagedModifications: new StagedModificationsInfo(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -49,6 +51,7 @@ var instance = JsonConvert.DeserializeObject<ComplianceRuleTemplate>(json);
 - [Property](Property.md) — used in `Properties`
 - [ComplianceTemplateVariationDto](ComplianceTemplateVariationDto.md) — used in `Variations`
 - [ModelVersion](ModelVersion.md)
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 - [Link](Link.md)
 
 

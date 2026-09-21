@@ -482,7 +482,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getinstanceoptionalpropertymapping"></a>
 ## GetInstanceOptionalPropertyMapping
 
-> SetInstanceOptionalPropertyMappingResponse GetInstanceOptionalPropertyMapping(string integration, string instanceId)
+> Dictionary&lt;string, LusidPropertyDefinitionOverridesByType&gt; GetInstanceOptionalPropertyMapping(string integration, string instanceId)
 
 [EXPERIMENTAL] GetInstanceOptionalPropertyMapping: Get the Optional Property Mapping for an integration instance
 
@@ -494,7 +494,7 @@ Will return the full list of optional properties configured for this integration
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IntegrationsApi>();
 var integration = "integration_example";  // string
 var instanceId = "instanceId_example";  // string
-SetInstanceOptionalPropertyMappingResponse result = apiInstance.GetInstanceOptionalPropertyMapping(integration, instanceId);
+Dictionary<string, LusidPropertyDefinitionOverridesByType> result = apiInstance.GetInstanceOptionalPropertyMapping(integration, instanceId);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -507,7 +507,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[SetInstanceOptionalPropertyMappingResponse](../Model/SetInstanceOptionalPropertyMappingResponse.md)
+[Dictionary&lt;string, LusidPropertyDefinitionOverridesByType&gt;](../Model/LusidPropertyDefinitionOverridesByType.md)
 
 ### HTTP request headers
 
@@ -529,7 +529,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<SetInstanceOptionalPropertyMappingResponse> response = apiInstance.GetInstanceOptionalPropertyMappingWithHttpInfo(integration, instanceId);
+ApiResponse<Dictionary<string, LusidPropertyDefinitionOverridesByType>> response = apiInstance.GetInstanceOptionalPropertyMappingWithHttpInfo(integration, instanceId);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
