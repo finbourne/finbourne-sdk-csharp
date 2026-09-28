@@ -39,18 +39,18 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="publicationStatus">publicationStatus (required).</param>
         /// <param name="portfolioScope">portfolioScope.</param>
         /// <param name="portfolioCode">portfolioCode.</param>
-        /// <param name="instrumentId">instrumentId (required).</param>
-        /// <param name="instrumentType">instrumentType (required).</param>
-        /// <param name="instrumentName">instrumentName (required).</param>
-        /// <param name="tradeDate">tradeDate (required).</param>
-        /// <param name="settlementDate">settlementDate (required).</param>
+        /// <param name="instrumentId">instrumentId.</param>
+        /// <param name="instrumentType">instrumentType.</param>
+        /// <param name="instrumentName">instrumentName.</param>
+        /// <param name="tradeDate">tradeDate.</param>
+        /// <param name="settlementDate">settlementDate.</param>
         /// <param name="status">status (required).</param>
         /// <param name="skipReason">skipReason.</param>
         /// <param name="failureReason">failureReason.</param>
         /// <param name="outputFileName">outputFileName.</param>
         /// <param name="sentAt">sentAt.</param>
         /// <param name="destinations">destinations (required).</param>
-        public TransactionResponse(string transactionId = default(string), string publicationStatus = default(string), string portfolioScope = default(string), string portfolioCode = default(string), string instrumentId = default(string), string instrumentType = default(string), string instrumentName = default(string), DateTimeOffset tradeDate = default(DateTimeOffset), DateTimeOffset settlementDate = default(DateTimeOffset), string status = default(string), string skipReason = default(string), string failureReason = default(string), string outputFileName = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), List<DestinationResponse> destinations = default(List<DestinationResponse>))
+        public TransactionResponse(string transactionId = default(string), string publicationStatus = default(string), string portfolioScope = default(string), string portfolioCode = default(string), string instrumentId = default(string), string instrumentType = default(string), string instrumentName = default(string), DateTimeOffset? tradeDate = default(DateTimeOffset?), DateTimeOffset? settlementDate = default(DateTimeOffset?), string status = default(string), string skipReason = default(string), string failureReason = default(string), string outputFileName = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), List<DestinationResponse> destinations = default(List<DestinationResponse>))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -64,26 +64,6 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("publicationStatus is a required property for TransactionResponse and cannot be null");
             }
             this.PublicationStatus = publicationStatus;
-            // to ensure "instrumentId" is required (not null)
-            if (instrumentId == null)
-            {
-                throw new ArgumentNullException("instrumentId is a required property for TransactionResponse and cannot be null");
-            }
-            this.InstrumentId = instrumentId;
-            // to ensure "instrumentType" is required (not null)
-            if (instrumentType == null)
-            {
-                throw new ArgumentNullException("instrumentType is a required property for TransactionResponse and cannot be null");
-            }
-            this.InstrumentType = instrumentType;
-            // to ensure "instrumentName" is required (not null)
-            if (instrumentName == null)
-            {
-                throw new ArgumentNullException("instrumentName is a required property for TransactionResponse and cannot be null");
-            }
-            this.InstrumentName = instrumentName;
-            this.TradeDate = tradeDate;
-            this.SettlementDate = settlementDate;
             // to ensure "status" is required (not null)
             if (status == null)
             {
@@ -98,6 +78,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             this.Destinations = destinations;
             this.PortfolioScope = portfolioScope;
             this.PortfolioCode = portfolioCode;
+            this.InstrumentId = instrumentId;
+            this.InstrumentType = instrumentType;
+            this.InstrumentName = instrumentName;
+            this.TradeDate = tradeDate;
+            this.SettlementDate = settlementDate;
             this.SkipReason = skipReason;
             this.FailureReason = failureReason;
             this.OutputFileName = outputFileName;
@@ -131,32 +116,32 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <summary>
         /// Gets or Sets InstrumentId
         /// </summary>
-        [DataMember(Name = "instrumentId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "instrumentId", EmitDefaultValue = true)]
         public string InstrumentId { get; set; }
 
         /// <summary>
         /// Gets or Sets InstrumentType
         /// </summary>
-        [DataMember(Name = "instrumentType", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "instrumentType", EmitDefaultValue = true)]
         public string InstrumentType { get; set; }
 
         /// <summary>
         /// Gets or Sets InstrumentName
         /// </summary>
-        [DataMember(Name = "instrumentName", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "instrumentName", EmitDefaultValue = true)]
         public string InstrumentName { get; set; }
 
         /// <summary>
         /// Gets or Sets TradeDate
         /// </summary>
-        [DataMember(Name = "tradeDate", IsRequired = true, EmitDefaultValue = true)]
-        public DateTimeOffset TradeDate { get; set; }
+        [DataMember(Name = "tradeDate", EmitDefaultValue = true)]
+        public DateTimeOffset? TradeDate { get; set; }
 
         /// <summary>
         /// Gets or Sets SettlementDate
         /// </summary>
-        [DataMember(Name = "settlementDate", IsRequired = true, EmitDefaultValue = true)]
-        public DateTimeOffset SettlementDate { get; set; }
+        [DataMember(Name = "settlementDate", EmitDefaultValue = true)]
+        public DateTimeOffset? SettlementDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Status

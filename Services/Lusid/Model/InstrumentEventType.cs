@@ -692,7 +692,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum LoanInterestCapitalisationEvent for value: LoanInterestCapitalisationEvent
         /// </summary>
         [EnumMember(Value = "LoanInterestCapitalisationEvent")]
-        LoanInterestCapitalisationEvent = 111
+        LoanInterestCapitalisationEvent = 111,
+
+        /// <summary>
+        /// Enum TotalReturnSwapCashFlowEvent for value: TotalReturnSwapCashFlowEvent
+        /// </summary>
+        [EnumMember(Value = "TotalReturnSwapCashFlowEvent")]
+        TotalReturnSwapCashFlowEvent = 112
     }
 
 }

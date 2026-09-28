@@ -7,6 +7,7 @@
 | **RecType** | **string** | Required | The type of reconciliation this entry configures. Must be valid for the definitionType, and must match the reconciliationType of the referenced matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. |
 | **MatchingRulesetId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **RelationalDataFilter** | **string** | Optional | Selects the slice of the relational dataset this definition draws from, e.g. \&quot;custodian eq &#39;NT&#39;\&quot;. Only permitted when the referenced ruleset declares a relational side, and combined with AND at run time with that ruleset&#39;s own filter for the side. |
+| **ByTaxLots** | [RecDefByTaxLots](RecDefByTaxLots.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -19,7 +20,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new RecDefRuleset(
     recType: "...",  // required — The type of reconciliation this entry configures. Must be valid for the definitionType, and must match the reconciliationType of the referenced matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
     matchingRulesetId: new ResourceId(...),  // required
-    relationalDataFilter: "..."  // optional — Selects the slice of the relational dataset this definition draws from, e.g. \&quot;custodian eq &#39;NT&#39;\&quot;. Only permitted when the referenced ruleset declares a relational side, and combined with AND at run time with that ruleset&#39;s own filter for the side.
+    relationalDataFilter: "...",  // optional — Selects the slice of the relational dataset this definition draws from, e.g. \&quot;custodian eq &#39;NT&#39;\&quot;. Only permitted when the referenced ruleset declares a relational side, and combined with AND at run time with that ruleset&#39;s own filter for the side.
+    byTaxLots: new RecDefByTaxLots(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -35,6 +37,7 @@ var instance = JsonConvert.DeserializeObject<RecDefRuleset>(json);
 ```
 
 - [ResourceId](ResourceId.md)
+- [RecDefByTaxLots](RecDefByTaxLots.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -1,26 +1,26 @@
 # Finbourne.Sdk.Lusid.Model.RecResultItem
 
-An individual item that makes up (one side of) a rec result. Polymorphic by rec type / item type.
-## Properties
+An individual item that makes up (one side of) a rec result. Polymorphic by itemType; each value has a  corresponding inherited class.
 
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| **ItemType** | **string** | Required | The polymorphic item-type discriminator (e.g. SettlementActivity, Holding, Transaction). Available values: SettlementActivity, Holding, Transaction. |
-| **RuleAndAttributeValues** | **Dictionary&lt;string, string&gt;** | Optional | The core rule, aggregate rule and supplemental attribute values for the item, keyed by name. *(read-only)* |
+## oneOf Type
 
+`RecResultItem` can be one of the following types:
+
+* [RecResultHoldingItem](./RecResultHoldingItem.md)
+* [RecResultSettlementActivityItem](./RecResultSettlementActivityItem.md)
+* [RecResultTransactionItem](./RecResultTransactionItem.md)
 
 ## Usage
 
-### Creating an instance
+### Creating from a compatible type
 
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var instance = new RecResultItem(
-    itemType: "...",  // required — The polymorphic item-type discriminator (e.g. SettlementActivity, Holding, Transaction). Available values: SettlementActivity, Holding, Transaction.
-    ruleAndAttributeValues:   // optional — The core rule, aggregate rule and supplemental attribute values for the item, keyed by name.
-);
+var inner = new RecResultHoldingItem(...);
+var instance = new RecResultItem(inner);
 ```
+
 ### Serializing to JSON
 
 ```csharp
@@ -33,7 +33,11 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<RecResultItem>(json);
 ```
 
+## Related Models
 
+- [RecResultHoldingItem](./RecResultHoldingItem.md)
+- [RecResultSettlementActivityItem](./RecResultSettlementActivityItem.md)
+- [RecResultTransactionItem](./RecResultTransactionItem.md)
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
 

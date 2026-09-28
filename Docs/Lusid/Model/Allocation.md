@@ -27,6 +27,7 @@ An Allocation of a certain quantity of a specific instrument against an originat
 | **ExecutionIds** | [List&lt;ResourceId&gt;](ResourceId.md) | Optional | The executions associated with this allocation |
 | **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **DataModelMembership** | [DataModelMembership](DataModelMembership.md) | Optional | *No description available.* |
+| **Direction** | **int?** | Optional | The direction of the allocation&#39;s side, derived from its transaction type at write time: 1 the side increases the position (longer), -1 it decreases it (shorter), null when no direction could be resolved. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -60,6 +61,7 @@ var instance = new Allocation(
     executionIds: new List<ResourceId>(),  // optional — The executions associated with this allocation
     custodianAccountId: new ResourceId(...),  // optional
     dataModelMembership: new DataModelMembership(...),  // optional
+    direction: 0,  // optional — The direction of the allocation&#39;s side, derived from its transaction type at write time: 1 the side increases the position (longer), -1 it decreases it (shorter), null when no direction could be resolved.
     links: new List<Link>()  // optional
 );
 ```

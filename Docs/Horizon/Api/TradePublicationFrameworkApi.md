@@ -315,7 +315,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listinstancerunhistory"></a>
 ## ListInstanceRunHistory
 
-> PagedResourceListOfInstanceRunResponse ListInstanceRunHistory(string instanceId, string? page = null, int? pageSize = null)
+> PagedResourceListOfInstanceRunResponse ListInstanceRunHistory(string instanceId, string? page = null, int? pageSize = null, string? filter = null)
 
 [EXPERIMENTAL] ListInstanceRunHistory: List run history for a given TPF instance, with pagination support.
 
@@ -326,7 +326,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationF
 var instanceId = "instanceId_example";  // string
 var page = "\"\"";  // string? (optional)
 var pageSize = 100;  // int? (optional)
-PagedResourceListOfInstanceRunResponse result = apiInstance.ListInstanceRunHistory(instanceId, page, pageSize);
+var filter = "filter_example";  // string? (optional)
+PagedResourceListOfInstanceRunResponse result = apiInstance.ListInstanceRunHistory(instanceId, page, pageSize, filter);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -337,6 +338,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **instanceId** | **string** | path | **required** |  |
 | **page** | **string?** | query | optional |  Default: `&quot;&quot;` |
 | **pageSize** | **int?** | query | optional |  Default: `100` |
+| **filter** | **string?** | query | optional | A Finbourne filter over runId, referenceId, attempt, total, sentCount, skippedCount, failedCount and failedFiles e.g. failedCount gt 0. status, triggeredBy, duration, startTime and endTime are not filterable and will result in a 400 response. |
 
 ### Return type
 
@@ -361,7 +363,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfInstanceRunResponse> response = apiInstance.ListInstanceRunHistoryWithHttpInfo(instanceId, page, pageSize);
+ApiResponse<PagedResourceListOfInstanceRunResponse> response = apiInstance.ListInstanceRunHistoryWithHttpInfo(instanceId, page, pageSize, filter);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

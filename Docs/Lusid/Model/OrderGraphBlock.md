@@ -13,6 +13,7 @@
 | **DerivedState** | **string** | Required | A simple description of the overall state of a block. |
 | **DerivedComplianceState** | **string** | Required | The overall compliance state of a block, derived from the block&#39;s orders. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning. |
 | **DerivedApprovalState** | **string** | Required | The overall approval state of a block, derived from approval of the block&#39;s orders. Available values: Pending, Rejected, Approved, Placed. |
+| **DerivedDirection** | **int?** | Optional | The overall direction of a block, derived from its orders&#39; transaction types: 1 the block increases the position (longer), -1 it decreases it (shorter), 0 its orders net flat, null when no direction could be resolved (including unsolicited blocks). |
 
 
 ## Usage
@@ -31,7 +32,8 @@ var instance = new OrderGraphBlock(
     booked: new OrderGraphBlockTransactionSynopsis(...),  // required
     derivedState: "...",  // required — A simple description of the overall state of a block.
     derivedComplianceState: "...",  // required — The overall compliance state of a block, derived from the block&#39;s orders. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning.
-    derivedApprovalState: "..."  // required — The overall approval state of a block, derived from approval of the block&#39;s orders. Available values: Pending, Rejected, Approved, Placed.
+    derivedApprovalState: "...",  // required — The overall approval state of a block, derived from approval of the block&#39;s orders. Available values: Pending, Rejected, Approved, Placed.
+    derivedDirection: 0  // optional — The overall direction of a block, derived from its orders&#39; transaction types: 1 the block increases the position (longer), -1 it decreases it (shorter), 0 its orders net flat, null when no direction could be resolved (including unsolicited blocks).
 );
 ```
 ### Serializing to JSON

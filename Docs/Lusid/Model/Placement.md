@@ -26,6 +26,7 @@ A street order for a quantity of a single instrument placed with a single market
 | **EntryType** | **string** | Optional | Optionally specifies the entry type of this placement. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **DataModelMembership** | [DataModelMembership](DataModelMembership.md) | Optional | *No description available.* |
+| **Direction** | **int?** | Optional | The direction of the placement&#39;s side, inherited at creation from its block&#39;s orders: 1 the side increases the position (longer), -1 it decreases it (shorter), 0 the block&#39;s orders net flat, null when no direction could be resolved. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -58,6 +59,7 @@ var instance = new Placement(
     entryType: "...",  // optional — Optionally specifies the entry type of this placement.
     varVersion: new ModelVersion(...),  // optional
     dataModelMembership: new DataModelMembership(...),  // optional
+    direction: 0,  // optional — The direction of the placement&#39;s side, inherited at creation from its block&#39;s orders: 1 the side increases the position (longer), -1 it decreases it (shorter), 0 the block&#39;s orders net flat, null when no direction could be resolved.
     links: new List<Link>()  // optional
 );
 ```

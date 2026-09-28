@@ -13,9 +13,10 @@ A Fund entity.
 | **InvestorStructure** | **string** | Required | The Investor structure to be used by the Fund. Available values: NonUnitised, Classes. |
 | **PortfolioIds** | [List&lt;PortfolioEntityIdWithDetails&gt;](PortfolioEntityIdWithDetails.md) | Optional | A list of the portfolios on the fund, which are part of the Fund. Note: These must all have the same base currency, which must also match the Fund Base Currency. |
 | **FundConfigurationId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **ShortCode** | **string** | Optional | A short code for the Fund. A fund structure tags journal entry lines with the short code of the member they originated from, so it should be unique across the funds of one structure. Optional. |
 | **AborId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **ShareClassInstruments** | [List&lt;InstrumentResolutionDetail&gt;](InstrumentResolutionDetail.md) | Optional | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. |
-| **Type** | **string** | Optional | The type of fund. Available values: Standalone, Master, Feeder. |
+| **Type** | **string** | Optional | The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA. |
 | **InceptionDate** | **DateTimeOffset** | Required | Inception date of the Fund |
 | **DecimalPlaces** | **int?** | Optional | Number of decimal places for reporting |
 | **YearEndDate** | [DayMonth](DayMonth.md) | Optional | *No description available.* |
@@ -46,9 +47,10 @@ var instance = new Fund(
     investorStructure: "...",  // required — The Investor structure to be used by the Fund. Available values: NonUnitised, Classes.
     portfolioIds: new List<PortfolioEntityIdWithDetails>(),  // optional — A list of the portfolios on the fund, which are part of the Fund. Note: These must all have the same base currency, which must also match the Fund Base Currency.
     fundConfigurationId: new ResourceId(...),  // optional
+    shortCode: "...",  // optional — A short code for the Fund. A fund structure tags journal entry lines with the short code of the member they originated from, so it should be unique across the funds of one structure. Optional.
     aborId: new ResourceId(...),  // optional
     shareClassInstruments: new List<InstrumentResolutionDetail>(),  // optional — Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
-    type: "...",  // optional — The type of fund. Available values: Standalone, Master, Feeder.
+    type: "...",  // optional — The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
     inceptionDate: DateTimeOffset.Now,  // required — Inception date of the Fund
     decimalPlaces: 0,  // optional — Number of decimal places for reporting
     yearEndDate: new DayMonth(...),  // optional

@@ -31,6 +31,7 @@ An Order for a certain quantity of a specific instrument
 | **DataModelMembership** | [DataModelMembership](DataModelMembership.md) | Optional | *No description available.* |
 | **DerivedComplianceState** | **string** | Optional | The compliance state of the order, derived from pre-trade compliance runs. |
 | **DerivedApprovalState** | **string** | Optional | The approval state of the order. |
+| **Direction** | **int?** | Optional | The direction of the order&#39;s side, derived from its transaction type at write time: 1 the side increases the position (longer), -1 it decreases it (shorter), null when no direction could be resolved. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -68,6 +69,7 @@ var instance = new Order(
     dataModelMembership: new DataModelMembership(...),  // optional
     derivedComplianceState: "...",  // optional — The compliance state of the order, derived from pre-trade compliance runs.
     derivedApprovalState: "...",  // optional — The approval state of the order.
+    direction: 0,  // optional — The direction of the order&#39;s side, derived from its transaction type at write time: 1 the side increases the position (longer), -1 it decreases it (shorter), null when no direction could be resolved.
     links: new List<Link>()  // optional
 );
 ```

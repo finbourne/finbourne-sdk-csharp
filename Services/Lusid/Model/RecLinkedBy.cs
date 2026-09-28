@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// The item keys a link between two rec results was established on, per side.
+    /// The item pairings a link between two rec results was established on, per side.
     /// </summary>
     [DataContract(Name = "RecLinkedBy")]
     public partial class RecLinkedBy : IEquatable<RecLinkedBy>, IValidatableObject
@@ -35,9 +35,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RecLinkedBy" /> class.
         /// </summary>
-        /// <param name="left">The keys shared by the two results&#39; left-side items. May be empty. (required).</param>
-        /// <param name="right">The keys shared by the two results&#39; right-side items. May be empty. (required).</param>
-        public RecLinkedBy(List<RecLinkKey> left = default(List<RecLinkKey>), List<RecLinkKey> right = default(List<RecLinkKey>))
+        /// <param name="left">The pairings between the two results&#39; left-side items, one entry per pairing. May be empty. (required).</param>
+        /// <param name="right">The pairings between the two results&#39; right-side items, one entry per pairing. May be empty. (required).</param>
+        public RecLinkedBy(List<RecResultLinkKey> left = default(List<RecResultLinkKey>), List<RecResultLinkKey> right = default(List<RecResultLinkKey>))
         {
             // to ensure "left" is required (not null)
             if (left == null)
@@ -54,18 +54,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The keys shared by the two results&#39; left-side items. May be empty.
+        /// The pairings between the two results&#39; left-side items, one entry per pairing. May be empty.
         /// </summary>
-        /// <value>The keys shared by the two results&#39; left-side items. May be empty.</value>
+        /// <value>The pairings between the two results&#39; left-side items, one entry per pairing. May be empty.</value>
         [DataMember(Name = "left", IsRequired = true, EmitDefaultValue = true)]
-        public List<RecLinkKey> Left { get; set; }
+        public List<RecResultLinkKey> Left { get; set; }
 
         /// <summary>
-        /// The keys shared by the two results&#39; right-side items. May be empty.
+        /// The pairings between the two results&#39; right-side items, one entry per pairing. May be empty.
         /// </summary>
-        /// <value>The keys shared by the two results&#39; right-side items. May be empty.</value>
+        /// <value>The pairings between the two results&#39; right-side items, one entry per pairing. May be empty.</value>
         [DataMember(Name = "right", IsRequired = true, EmitDefaultValue = true)]
-        public List<RecLinkKey> Right { get; set; }
+        public List<RecResultLinkKey> Right { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

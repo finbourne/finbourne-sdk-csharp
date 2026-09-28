@@ -7,6 +7,7 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**GenerateConfigurationRecipe**](#generateconfigurationrecipe) | **POST** `/api/api/aggregation/{scope}/{code}/$generateconfigurationrecipe` | [EXPERIMENTAL] GenerateConfigurationRecipe: Generates a recipe sufficient to perform valuations for the given portfolio. |
 | [**GetQueryableKeys**](#getqueryablekeys) | **GET** `/api/api/results/queryable/keys` | GetQueryableKeys: Query the set of supported \&quot;addresses\&quot; that can be queried from the aggregation endpoint. |
+| [**GetQueryableKeysForMetrics**](#getqueryablekeysformetrics) | **POST** `/api/api/aggregation/$queryablekeys` | [EXPERIMENTAL] GetQueryableKeysForMetrics: Query the queryable keys behind a given set of valuation metrics. |
 | [**GetValuation**](#getvaluation) | **POST** `/api/api/aggregation/$valuation` | GetValuation: Perform valuation for a list of portfolios and/or portfolio groups |
 | [**GetValuationOfWeightedInstruments**](#getvaluationofweightedinstruments) | **POST** `/api/api/aggregation/$valuationinlined` | GetValuationOfWeightedInstruments: Perform valuation for an inlined portfolio |
 
@@ -166,6 +167,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ResourceListOfAggregationQuery> response = apiInstance.GetQueryableKeysWithHttpInfo(page, limit, filter);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getqueryablekeysformetrics"></a>
+## GetQueryableKeysForMetrics
+
+> QueryableKeysForMetricsResponse GetQueryableKeysForMetrics(QueryableKeysForMetricsRequest? queryableKeysForMetricsRequest = null)
+
+[EXPERIMENTAL] GetQueryableKeysForMetrics: Query the queryable keys behind a given set of valuation metrics.
+
+Describes what a valuation would return for each of the supplied metrics, so that a caller can  prepare for the response, and render it, without having to ask for the valuation first. The  metrics are given exactly as they would be supplied to the metrics of a valuation request.                Each metric is reported on individually, keyed by its normalised address key: those that resolve  appear under metrics with their queryable key definition, and the rest appear under failed with the  reason. A metric that does not exist, or that you are not entitled to read, is reported as failed;  the two cases are not distinguished from one another.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AggregationApi>();
+var queryableKeysForMetricsRequest = new QueryableKeysForMetricsRequest?(); // QueryableKeysForMetricsRequest? (optional)
+QueryableKeysForMetricsResponse result = apiInstance.GetQueryableKeysForMetrics(queryableKeysForMetricsRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **queryableKeysForMetricsRequest** | [QueryableKeysForMetricsRequest?](../Model/QueryableKeysForMetricsRequest?.md) | body | optional | The set of metrics whose queryable keys are to be described |
+
+### Return type
+
+[QueryableKeysForMetricsResponse](../Model/QueryableKeysForMetricsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetQueryableKeysForMetricsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<QueryableKeysForMetricsResponse> response = apiInstance.GetQueryableKeysForMetricsWithHttpInfo(queryableKeysForMetricsRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -61,7 +61,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments
         /// </summary>
         /// <remarks>
-        /// Add, edit or delete comments on rec results in a batch.
+        /// Add, edit or delete comments on rec results in a batch.  The batch limit per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of comment operations, keyed by a client-supplied correlation key.</param>
@@ -75,7 +75,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments
         /// </summary>
         /// <remarks>
-        /// Add, edit or delete comments on rec results in a batch.
+        /// Add, edit or delete comments on rec results in a batch.  The batch limit per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of comment operations, keyed by a client-supplied correlation key.</param>
@@ -88,7 +88,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults
         /// </summary>
         /// <remarks>
-        /// Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+        /// Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.  The batch limit per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of review items, keyed by a client-supplied correlation key.</param>
@@ -102,7 +102,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults
         /// </summary>
         /// <remarks>
-        /// Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+        /// Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.  The batch limit per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of review items, keyed by a client-supplied correlation key.</param>
@@ -710,7 +710,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments
         /// </summary>
         /// <remarks>
-        /// Add, edit or delete comments on rec results in a batch.
+        /// Add, edit or delete comments on rec results in a batch.  The batch limit per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of comment operations, keyed by a client-supplied correlation key.</param>
@@ -725,7 +725,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments
         /// </summary>
         /// <remarks>
-        /// Add, edit or delete comments on rec results in a batch.
+        /// Add, edit or delete comments on rec results in a batch.  The batch limit per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of comment operations, keyed by a client-supplied correlation key.</param>
@@ -739,7 +739,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults
         /// </summary>
         /// <remarks>
-        /// Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+        /// Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.  The batch limit per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of review items, keyed by a client-supplied correlation key.</param>
@@ -754,7 +754,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults
         /// </summary>
         /// <remarks>
-        /// Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+        /// Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.  The batch limit per request is 2,000.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of review items, keyed by a client-supplied correlation key.</param>
@@ -1706,7 +1706,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments Add, edit or delete comments on rec results in a batch.
+        /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments Add, edit or delete comments on rec results in a batch.  The batch limit per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of comment operations, keyed by a client-supplied correlation key.</param>
@@ -1721,7 +1721,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments Add, edit or delete comments on rec results in a batch.
+        /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments Add, edit or delete comments on rec results in a batch.  The batch limit per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1827,7 +1827,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments Add, edit or delete comments on rec results in a batch.
+        /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments Add, edit or delete comments on rec results in a batch.  The batch limit per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of comment operations, keyed by a client-supplied correlation key.</param>
@@ -1843,7 +1843,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments Add, edit or delete comments on rec results in a batch.
+        /// [EXPERIMENTAL] BatchManageRecResultComments: BatchManageRecResultComments Add, edit or delete comments on rec results in a batch.  The batch limit per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1952,7 +1952,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+        /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.  The batch limit per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of review items, keyed by a client-supplied correlation key.</param>
@@ -1967,7 +1967,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+        /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.  The batch limit per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2073,7 +2073,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+        /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.  The batch limit per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="requestBody">The batch of review items, keyed by a client-supplied correlation key.</param>
@@ -2089,7 +2089,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.
+        /// [EXPERIMENTAL] BatchReviewRecResults: BatchReviewRecResults Apply a batch of review actions (decisions, assignments, comments, properties) to rec results.  The batch limit per request is 2,000.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

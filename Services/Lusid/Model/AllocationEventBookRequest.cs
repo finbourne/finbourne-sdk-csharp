@@ -22,50 +22,36 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// One item key that established a link between two rec results: the key name and the identifier value both  results&#39; items carried for it.
+    /// The request used to book a computed Allocation Event: the reference under which its shares were posted.
     /// </summary>
-    [DataContract(Name = "RecLinkKey")]
-    public partial class RecLinkKey : IEquatable<RecLinkKey>, IValidatableObject
+    [DataContract(Name = "AllocationEventBookRequest")]
+    public partial class AllocationEventBookRequest : IEquatable<AllocationEventBookRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RecLinkKey" /> class.
+        /// Initializes a new instance of the <see cref="AllocationEventBookRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RecLinkKey() { }
+        protected AllocationEventBookRequest() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RecLinkKey" /> class.
+        /// Initializes a new instance of the <see cref="AllocationEventBookRequest" /> class.
         /// </summary>
-        /// <param name="key">The key name: holdingId or transactionId. (required).</param>
-        /// <param name="value">The identifier value both results&#39; items carried under the key. (required).</param>
-        public RecLinkKey(string key = default(string), string value = default(string))
+        /// <param name="bookingReference">The reference under which the computed shares were posted, for instance a journal entry code. (required).</param>
+        public AllocationEventBookRequest(string bookingReference = default(string))
         {
-            // to ensure "key" is required (not null)
-            if (key == null)
+            // to ensure "bookingReference" is required (not null)
+            if (bookingReference == null)
             {
-                throw new ArgumentNullException("key is a required property for RecLinkKey and cannot be null");
+                throw new ArgumentNullException("bookingReference is a required property for AllocationEventBookRequest and cannot be null");
             }
-            this.Key = key;
-            // to ensure "value" is required (not null)
-            if (value == null)
-            {
-                throw new ArgumentNullException("value is a required property for RecLinkKey and cannot be null");
-            }
-            this.Value = value;
+            this.BookingReference = bookingReference;
         }
 
         /// <summary>
-        /// The key name: holdingId or transactionId.
+        /// The reference under which the computed shares were posted, for instance a journal entry code.
         /// </summary>
-        /// <value>The key name: holdingId or transactionId.</value>
-        [DataMember(Name = "key", IsRequired = true, EmitDefaultValue = true)]
-        public string Key { get; set; }
-
-        /// <summary>
-        /// The identifier value both results&#39; items carried under the key.
-        /// </summary>
-        /// <value>The identifier value both results&#39; items carried under the key.</value>
-        [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public string Value { get; set; }
+        /// <value>The reference under which the computed shares were posted, for instance a journal entry code.</value>
+        [DataMember(Name = "bookingReference", IsRequired = true, EmitDefaultValue = true)]
+        public string BookingReference { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -74,9 +60,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RecLinkKey {\n");
-            sb.Append("  Key: ").Append(Key).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class AllocationEventBookRequest {\n");
+            sb.Append("  BookingReference: ").Append(BookingReference).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -97,15 +82,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as RecLinkKey);
+            return this.Equals(input as AllocationEventBookRequest);
         }
 
         /// <summary>
-        /// Returns true if RecLinkKey instances are equal
+        /// Returns true if AllocationEventBookRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of RecLinkKey to be compared</param>
+        /// <param name="input">Instance of AllocationEventBookRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(RecLinkKey input)
+        public bool Equals(AllocationEventBookRequest input)
         {
             if (input == null)
             {
@@ -113,14 +98,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             return 
                 (
-                    this.Key == input.Key ||
-                    (this.Key != null &&
-                    this.Key.Equals(input.Key))
-                ) && 
-                (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
+                    this.BookingReference == input.BookingReference ||
+                    (this.BookingReference != null &&
+                    this.BookingReference.Equals(input.BookingReference))
                 );
         }
 
@@ -133,13 +113,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Key != null)
+                if (this.BookingReference != null)
                 {
-                    hashCode = (hashCode * 59) + this.Key.GetHashCode();
-                }
-                if (this.Value != null)
-                {
-                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
+                    hashCode = (hashCode * 59) + this.BookingReference.GetHashCode();
                 }
                 return hashCode;
             }

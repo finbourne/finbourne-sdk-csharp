@@ -15,6 +15,7 @@
 | **AggregateTolerances** | [List&lt;ToleranceBase&gt;](ToleranceBase.md) | Optional | Tolerance configurations applied to aggregate rule matching. |
 | **AllowPartialMatching** | **bool** | Optional | Whether to permit partial matches when applying rules. |
 | **SupplementalAttributes** | [List&lt;SupplementalAttribute&gt;](SupplementalAttribute.md) | Optional | Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself. |
+| **WritebackConfigurations** | [List&lt;WritebackConfiguration&gt;](WritebackConfiguration.md) | Optional | The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty. |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
@@ -39,6 +40,7 @@ var instance = new MatchingRuleset(
     aggregateTolerances: new List<ToleranceBase>(),  // optional — Tolerance configurations applied to aggregate rule matching.
     allowPartialMatching: true,  // optional — Whether to permit partial matches when applying rules.
     supplementalAttributes: new List<SupplementalAttribute>(),  // optional — Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself.
+    writebackConfigurations: new List<WritebackConfiguration>(),  // optional — The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty.
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
     varVersion: new ModelVersion(...),  // optional
     links: new List<Link>()  // optional
@@ -67,6 +69,7 @@ var instance = JsonConvert.DeserializeObject<MatchingRuleset>(json);
 - [ToleranceBase](ToleranceBase.md) — used in `CoreTolerances`
 - [ToleranceBase](ToleranceBase.md) — used in `AggregateTolerances`
 - [SupplementalAttribute](SupplementalAttribute.md) — used in `SupplementalAttributes`
+- [WritebackConfiguration](WritebackConfiguration.md) — used in `WritebackConfigurations`
 - [ModelVersion](ModelVersion.md)
 - [Link](Link.md)
 

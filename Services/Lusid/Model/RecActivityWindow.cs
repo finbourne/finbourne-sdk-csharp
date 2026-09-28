@@ -35,9 +35,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RecActivityWindow" /> class.
         /// </summary>
+        /// <param name="initialActivitySinceEffectiveAt">initialActivitySinceEffectiveAt (required).</param>
         /// <param name="windowType">Polymorphic discriminator. Supported types: Contiguous. Contiguous requires effectiveAtProgression Series. Available values: Contiguous, FixedLookback, Explicit, ClosedPeriod, ContiguousAsAt. (required).</param>
-        public RecActivityWindow(string windowType = default(string))
+        public RecActivityWindow(RecActivitySinceEffectiveAt initialActivitySinceEffectiveAt = default(RecActivitySinceEffectiveAt), string windowType = default(string))
         {
+            // to ensure "initialActivitySinceEffectiveAt" is required (not null)
+            if (initialActivitySinceEffectiveAt == null)
+            {
+                throw new ArgumentNullException("initialActivitySinceEffectiveAt is a required property for RecActivityWindow and cannot be null");
+            }
+            this.InitialActivitySinceEffectiveAt = initialActivitySinceEffectiveAt;
             // to ensure "windowType" is required (not null)
             if (windowType == null)
             {
@@ -45,6 +52,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.WindowType = windowType;
         }
+
+        /// <summary>
+        /// Gets or Sets InitialActivitySinceEffectiveAt
+        /// </summary>
+        [DataMember(Name = "initialActivitySinceEffectiveAt", IsRequired = true, EmitDefaultValue = true)]
+        public RecActivitySinceEffectiveAt InitialActivitySinceEffectiveAt { get; set; }
 
         /// <summary>
         /// Polymorphic discriminator. Supported types: Contiguous. Contiguous requires effectiveAtProgression Series. Available values: Contiguous, FixedLookback, Explicit, ClosedPeriod, ContiguousAsAt.
@@ -61,6 +74,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class RecActivityWindow {\n");
+            sb.Append("  InitialActivitySinceEffectiveAt: ").Append(InitialActivitySinceEffectiveAt).Append("\n");
             sb.Append("  WindowType: ").Append(WindowType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -98,6 +112,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             return 
                 (
+                    this.InitialActivitySinceEffectiveAt == input.InitialActivitySinceEffectiveAt ||
+                    (this.InitialActivitySinceEffectiveAt != null &&
+                    this.InitialActivitySinceEffectiveAt.Equals(input.InitialActivitySinceEffectiveAt))
+                ) && 
+                (
                     this.WindowType == input.WindowType ||
                     (this.WindowType != null &&
                     this.WindowType.Equals(input.WindowType))
@@ -113,6 +132,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.InitialActivitySinceEffectiveAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.InitialActivitySinceEffectiveAt.GetHashCode();
+                }
                 if (this.WindowType != null)
                 {
                     hashCode = (hashCode * 59) + this.WindowType.GetHashCode();

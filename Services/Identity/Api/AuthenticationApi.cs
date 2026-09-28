@@ -79,7 +79,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         /// <returns>ApiResponse of PasswordPolicyResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PasswordPolicyResponse> GetPasswordPolicyWithHttpInfo(string userType, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetSessionPolicy: Get session policy
+        /// GetSessionPolicy: Get session policy
         /// </summary>
         /// <remarks>
         /// Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
@@ -91,7 +91,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         SessionPolicyResponse GetSessionPolicy(int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetSessionPolicy: Get session policy
+        /// GetSessionPolicy: Get session policy
         /// </summary>
         /// <remarks>
         /// Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
@@ -227,7 +227,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         /// <returns>ApiResponse of PasswordPolicyResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<PasswordPolicyResponse> UpdatePasswordPolicyWithHttpInfo(string userType, UpdatePasswordPolicyRequest? updatePasswordPolicyRequest = default(UpdatePasswordPolicyRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpdateSessionPolicy: Update session policy
+        /// UpdateSessionPolicy: Update session policy
         /// </summary>
         /// <remarks>
         /// Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
@@ -240,7 +240,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         SessionPolicyResponse UpdateSessionPolicy(UpdateSessionPolicyRequest updateSessionPolicyRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateSessionPolicy: Update session policy
+        /// UpdateSessionPolicy: Update session policy
         /// </summary>
         /// <remarks>
         /// Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
@@ -313,7 +313,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         /// <returns>Task of ApiResponse (PasswordPolicyResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PasswordPolicyResponse>> GetPasswordPolicyWithHttpInfoAsync(string userType, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetSessionPolicy: Get session policy
+        /// GetSessionPolicy: Get session policy
         /// </summary>
         /// <remarks>
         /// Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
@@ -326,7 +326,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         System.Threading.Tasks.Task<SessionPolicyResponse> GetSessionPolicyAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetSessionPolicy: Get session policy
+        /// GetSessionPolicy: Get session policy
         /// </summary>
         /// <remarks>
         /// Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
@@ -473,7 +473,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         /// <returns>Task of ApiResponse (PasswordPolicyResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PasswordPolicyResponse>> UpdatePasswordPolicyWithHttpInfoAsync(string userType, UpdatePasswordPolicyRequest? updatePasswordPolicyRequest = default(UpdatePasswordPolicyRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpdateSessionPolicy: Update session policy
+        /// UpdateSessionPolicy: Update session policy
         /// </summary>
         /// <remarks>
         /// Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
@@ -487,7 +487,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         System.Threading.Tasks.Task<SessionPolicyResponse> UpdateSessionPolicyAsync(UpdateSessionPolicyRequest updateSessionPolicyRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateSessionPolicy: Update session policy
+        /// UpdateSessionPolicy: Update session policy
         /// </summary>
         /// <remarks>
         /// Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
@@ -1020,7 +1020,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetSessionPolicy: Get session policy Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
+        /// GetSessionPolicy: Get session policy Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1033,7 +1033,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetSessionPolicy: Get session policy Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
+        /// GetSessionPolicy: Get session policy Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1120,7 +1120,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetSessionPolicy: Get session policy Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
+        /// GetSessionPolicy: Get session policy Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1134,7 +1134,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetSessionPolicy: Get session policy Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
+        /// GetSessionPolicy: Get session policy Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2326,7 +2326,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateSessionPolicy: Update session policy Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
+        /// UpdateSessionPolicy: Update session policy Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateSessionPolicyRequest">The desired session timing settings</param>
@@ -2340,7 +2340,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateSessionPolicy: Update session policy Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
+        /// UpdateSessionPolicy: Update session policy Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2439,7 +2439,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateSessionPolicy: Update session policy Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
+        /// UpdateSessionPolicy: Update session policy Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateSessionPolicyRequest">The desired session timing settings</param>
@@ -2454,7 +2454,7 @@ namespace Finbourne.Sdk.Services.Identity.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateSessionPolicy: Update session policy Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
+        /// UpdateSessionPolicy: Update session policy Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

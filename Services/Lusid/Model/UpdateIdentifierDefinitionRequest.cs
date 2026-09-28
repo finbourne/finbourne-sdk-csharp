@@ -33,12 +33,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="hierarchyLevel">Optional metadata associated with the identifier definition..</param>
         /// <param name="displayName">A display name for the identifier. E.g. Figi..</param>
         /// <param name="description">An optional description for the identifier..</param>
+        /// <param name="hierarchyUsage">Optional. When supplied, relaxes the identifier definition from MasterIdentifier (unique) to ParentIdentifier (non-unique).  Tightening from ParentIdentifier back to MasterIdentifier is refused.  Omit to leave the HierarchyUsage unchanged. Available values: MasterIdentifier, ParentIdentifier..</param>
         /// <param name="properties">A set of properties for the identifier definition..</param>
-        public UpdateIdentifierDefinitionRequest(string hierarchyLevel = default(string), string displayName = default(string), string description = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>))
+        public UpdateIdentifierDefinitionRequest(string hierarchyLevel = default(string), string displayName = default(string), string description = default(string), string hierarchyUsage = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>))
         {
             this.HierarchyLevel = hierarchyLevel;
             this.DisplayName = displayName;
             this.Description = description;
+            this.HierarchyUsage = hierarchyUsage;
             this.Properties = properties;
         }
 
@@ -64,6 +66,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// Optional. When supplied, relaxes the identifier definition from MasterIdentifier (unique) to ParentIdentifier (non-unique).  Tightening from ParentIdentifier back to MasterIdentifier is refused.  Omit to leave the HierarchyUsage unchanged. Available values: MasterIdentifier, ParentIdentifier.
+        /// </summary>
+        /// <value>Optional. When supplied, relaxes the identifier definition from MasterIdentifier (unique) to ParentIdentifier (non-unique).  Tightening from ParentIdentifier back to MasterIdentifier is refused.  Omit to leave the HierarchyUsage unchanged. Available values: MasterIdentifier, ParentIdentifier.</value>
+        [DataMember(Name = "hierarchyUsage", EmitDefaultValue = true)]
+        public string HierarchyUsage { get; set; }
+
+        /// <summary>
         /// A set of properties for the identifier definition.
         /// </summary>
         /// <value>A set of properties for the identifier definition.</value>
@@ -81,6 +90,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  HierarchyLevel: ").Append(HierarchyLevel).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  HierarchyUsage: ").Append(HierarchyUsage).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -133,6 +143,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Description.Equals(input.Description))
                 ) && 
                 (
+                    this.HierarchyUsage == input.HierarchyUsage ||
+                    (this.HierarchyUsage != null &&
+                    this.HierarchyUsage.Equals(input.HierarchyUsage))
+                ) && 
+                (
                     this.Properties == input.Properties ||
                     this.Properties != null &&
                     input.Properties != null &&
@@ -160,6 +175,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.HierarchyUsage != null)
+                {
+                    hashCode = (hashCode * 59) + this.HierarchyUsage.GetHashCode();
                 }
                 if (this.Properties != null)
                 {

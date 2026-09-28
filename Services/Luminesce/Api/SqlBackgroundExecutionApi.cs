@@ -155,7 +155,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Api
         /// <param name="startAt">Start point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="endAt">End point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="bucketSize">Optional histogram bucket width.  If not provided a set number of buckets between start/end range will be generated. (optional)</param>
-        /// <param name="filter">Further limits the fetched results beyond that of the original query. - An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; - Or raw SqLite SQL, this must then begin with &#x60;WHERE &#x60; and is more flexible, e.g. &#x60;strftime(&#39;%Y-%m&#39;, SomeDateField) &#x3D; &#39;2026-06&#39;&#x60; (optional)</param>
+        /// <param name="filter">Further limits the rows counted beyond that of the original query. An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; or &#x60;SomeField in &#39;a&#39;, &#39;b&#39;&#x60; (optional)</param>
         /// <param name="jsonProper">Should this be text/json (not json-encoded-as-a-string) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -174,7 +174,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Api
         /// <param name="startAt">Start point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="endAt">End point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="bucketSize">Optional histogram bucket width.  If not provided a set number of buckets between start/end range will be generated. (optional)</param>
-        /// <param name="filter">Further limits the fetched results beyond that of the original query. - An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; - Or raw SqLite SQL, this must then begin with &#x60;WHERE &#x60; and is more flexible, e.g. &#x60;strftime(&#39;%Y-%m&#39;, SomeDateField) &#x3D; &#39;2026-06&#39;&#x60; (optional)</param>
+        /// <param name="filter">Further limits the rows counted beyond that of the original query. An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; or &#x60;SomeField in &#39;a&#39;, &#39;b&#39;&#x60; (optional)</param>
         /// <param name="jsonProper">Should this be text/json (not json-encoded-as-a-string) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -755,7 +755,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Api
         /// <param name="startAt">Start point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="endAt">End point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="bucketSize">Optional histogram bucket width.  If not provided a set number of buckets between start/end range will be generated. (optional)</param>
-        /// <param name="filter">Further limits the fetched results beyond that of the original query. - An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; - Or raw SqLite SQL, this must then begin with &#x60;WHERE &#x60; and is more flexible, e.g. &#x60;strftime(&#39;%Y-%m&#39;, SomeDateField) &#x3D; &#39;2026-06&#39;&#x60; (optional)</param>
+        /// <param name="filter">Further limits the rows counted beyond that of the original query. An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; or &#x60;SomeField in &#39;a&#39;, &#39;b&#39;&#x60; (optional)</param>
         /// <param name="jsonProper">Should this be text/json (not json-encoded-as-a-string) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -775,7 +775,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Api
         /// <param name="startAt">Start point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="endAt">End point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="bucketSize">Optional histogram bucket width.  If not provided a set number of buckets between start/end range will be generated. (optional)</param>
-        /// <param name="filter">Further limits the fetched results beyond that of the original query. - An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; - Or raw SqLite SQL, this must then begin with &#x60;WHERE &#x60; and is more flexible, e.g. &#x60;strftime(&#39;%Y-%m&#39;, SomeDateField) &#x3D; &#39;2026-06&#39;&#x60; (optional)</param>
+        /// <param name="filter">Further limits the rows counted beyond that of the original query. An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; or &#x60;SomeField in &#39;a&#39;, &#39;b&#39;&#x60; (optional)</param>
         /// <param name="jsonProper">Should this be text/json (not json-encoded-as-a-string) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2248,7 +2248,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Api
         /// <param name="startAt">Start point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="endAt">End point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="bucketSize">Optional histogram bucket width.  If not provided a set number of buckets between start/end range will be generated. (optional)</param>
-        /// <param name="filter">Further limits the fetched results beyond that of the original query. - An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; - Or raw SqLite SQL, this must then begin with &#x60;WHERE &#x60; and is more flexible, e.g. &#x60;strftime(&#39;%Y-%m&#39;, SomeDateField) &#x3D; &#39;2026-06&#39;&#x60; (optional)</param>
+        /// <param name="filter">Further limits the rows counted beyond that of the original query. An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; or &#x60;SomeField in &#39;a&#39;, &#39;b&#39;&#x60; (optional)</param>
         /// <param name="jsonProper">Should this be text/json (not json-encoded-as-a-string) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -2269,7 +2269,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Api
         /// <param name="startAt">Start point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="endAt">End point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="bucketSize">Optional histogram bucket width.  If not provided a set number of buckets between start/end range will be generated. (optional)</param>
-        /// <param name="filter">Further limits the fetched results beyond that of the original query. - An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; - Or raw SqLite SQL, this must then begin with &#x60;WHERE &#x60; and is more flexible, e.g. &#x60;strftime(&#39;%Y-%m&#39;, SomeDateField) &#x3D; &#39;2026-06&#39;&#x60; (optional)</param>
+        /// <param name="filter">Further limits the rows counted beyond that of the original query. An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; or &#x60;SomeField in &#39;a&#39;, &#39;b&#39;&#x60; (optional)</param>
         /// <param name="jsonProper">Should this be text/json (not json-encoded-as-a-string) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
@@ -2398,7 +2398,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Api
         /// <param name="startAt">Start point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="endAt">End point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="bucketSize">Optional histogram bucket width.  If not provided a set number of buckets between start/end range will be generated. (optional)</param>
-        /// <param name="filter">Further limits the fetched results beyond that of the original query. - An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; - Or raw SqLite SQL, this must then begin with &#x60;WHERE &#x60; and is more flexible, e.g. &#x60;strftime(&#39;%Y-%m&#39;, SomeDateField) &#x3D; &#39;2026-06&#39;&#x60; (optional)</param>
+        /// <param name="filter">Further limits the rows counted beyond that of the original query. An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; or &#x60;SomeField in &#39;a&#39;, &#39;b&#39;&#x60; (optional)</param>
         /// <param name="jsonProper">Should this be text/json (not json-encoded-as-a-string) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2420,7 +2420,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Api
         /// <param name="startAt">Start point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="endAt">End point (of the timestampFieldName field) for the histogram (optional)</param>
         /// <param name="bucketSize">Optional histogram bucket width.  If not provided a set number of buckets between start/end range will be generated. (optional)</param>
-        /// <param name="filter">Further limits the fetched results beyond that of the original query. - An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; - Or raw SqLite SQL, this must then begin with &#x60;WHERE &#x60; and is more flexible, e.g. &#x60;strftime(&#39;%Y-%m&#39;, SomeDateField) &#x3D; &#39;2026-06&#39;&#x60; (optional)</param>
+        /// <param name="filter">Further limits the rows counted beyond that of the original query. An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; or &#x60;SomeField in &#39;a&#39;, &#39;b&#39;&#x60; (optional)</param>
         /// <param name="jsonProper">Should this be text/json (not json-encoded-as-a-string) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>

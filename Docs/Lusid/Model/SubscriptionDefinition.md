@@ -12,7 +12,7 @@
 | **TimelineId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **AddressKeys** | **List&lt;string&gt;** | Optional | The set of addresses the subscriber wishes to receive. |
 | **ByTaxLots** | **bool** | Optional | *No description available.* |
-| **SubscriptionType** | **string** | Optional | The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions. |
+| **SubscriptionType** | **string** | Optional | The kind of data the subscription streams, defaulting to holdings: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions. |
 | **StartEffectiveAt** | **DateTimeOffset?** | Optional | *No description available.* |
 | **EndEffectiveAt** | **DateTimeOffset?** | Optional | Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping. |
 | **EffectiveForwardDays** | **int?** | Optional | How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes. |
@@ -34,7 +34,7 @@ var instance = new SubscriptionDefinition(
     timelineId: new ResourceId(...),  // optional
     addressKeys: ,  // optional — The set of addresses the subscriber wishes to receive.
     byTaxLots: true,  // optional
-    subscriptionType: "...",  // optional — The kind of data the subscription streams (holdings or transactions), defaulting to holdings.  Address keys and byTaxLots are not valid for a transactions subscription. Available values: Holdings, Transactions.
+    subscriptionType: "...",  // optional — The kind of data the subscription streams, defaulting to holdings: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions.
     startEffectiveAt: DateTimeOffset.Now,  // optional
     endEffectiveAt: DateTimeOffset.Now,  // optional — Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping.
     effectiveForwardDays: 0  // optional — How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes.

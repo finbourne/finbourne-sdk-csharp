@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 | [**DeleteComplianceRule**](#deletecompliancerule) | **DELETE** `/api/api/compliance/rules/{scope}/{code}` | [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule. |
 | [**DeleteComplianceTemplate**](#deletecompliancetemplate) | **DELETE** `/api/api/compliance/templates/{scope}/{code}` | [EARLY ACCESS] DeleteComplianceTemplate: Delete a ComplianceRuleTemplate |
 | [**GetComplianceRule**](#getcompliancerule) | **GET** `/api/api/compliance/rules/{scope}/{code}` | [EARLY ACCESS] GetComplianceRule: Get compliance rule. |
+| [**GetComplianceRuleBreakdown**](#getcompliancerulebreakdown) | **GET** `/api/api/compliance/runs/breakdown/{runScope}/{runCode}/{ruleScope}/{ruleCode}` | [EARLY ACCESS] GetComplianceRuleBreakdown: Get the position-level breakdown for a single rule of a compliance run. |
 | [**GetComplianceRuleResult**](#getcomplianceruleresult) | **GET** `/api/api/compliance/runs/summary/{runScope}/{runCode}/{ruleScope}/{ruleCode}` | [EARLY ACCESS] GetComplianceRuleResult: Get detailed results for a specific rule within a compliance run. |
 | [**GetComplianceTemplate**](#getcompliancetemplate) | **GET** `/api/api/compliance/templates/{scope}/{code}` | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template. |
 | [**GetDecoratedComplianceRunSummary**](#getdecoratedcompliancerunsummary) | **GET** `/api/api/compliance/runs/summary/{scope}/{code}/$decorate` | [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run. |
@@ -298,6 +299,70 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ComplianceRuleResponse> response = apiInstance.GetComplianceRuleWithHttpInfo(scope, code, asAt, propertyKeys);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getcompliancerulebreakdown"></a>
+## GetComplianceRuleBreakdown
+
+> ComplianceRuleResultV2WithContributions GetComplianceRuleBreakdown(string runScope, string runCode, string ruleScope, string ruleCode)
+
+[EARLY ACCESS] GetComplianceRuleBreakdown: Get the position-level breakdown for a single rule of a compliance run.
+
+Specify a run scope and code from a previously run compliance check, and the scope and code of a rule within that run, to get the per-position contributions behind that rule's breakdown groups.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
+var runScope = "runScope_example";  // string
+var runCode = "runCode_example";  // string
+var ruleScope = "ruleScope_example";  // string
+var ruleCode = "ruleCode_example";  // string
+ComplianceRuleResultV2WithContributions result = apiInstance.GetComplianceRuleBreakdown(runScope, runCode, ruleScope, ruleCode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **runScope** | **string** | path | **required** | Required: Run Scope. |
+| **runCode** | **string** | path | **required** | Required: Run Code. |
+| **ruleScope** | **string** | path | **required** | Required: Rule Scope. |
+| **ruleCode** | **string** | path | **required** | Required: Rule Code. |
+
+### Return type
+
+[ComplianceRuleResultV2WithContributions](../Model/ComplianceRuleResultV2WithContributions.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The position-level breakdown for the requested rule of a compliance run. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetComplianceRuleBreakdownWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ComplianceRuleResultV2WithContributions> response = apiInstance.GetComplianceRuleBreakdownWithHttpInfo(runScope, runCode, ruleScope, ruleCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

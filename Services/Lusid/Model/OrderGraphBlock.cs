@@ -44,7 +44,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="derivedState">A simple description of the overall state of a block. (required).</param>
         /// <param name="derivedComplianceState">The overall compliance state of a block, derived from the block&#39;s orders. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning. (required).</param>
         /// <param name="derivedApprovalState">The overall approval state of a block, derived from approval of the block&#39;s orders. Available values: Pending, Rejected, Approved, Placed. (required).</param>
-        public OrderGraphBlock(Block block = default(Block), OrderGraphBlockOrderSynopsis ordered = default(OrderGraphBlockOrderSynopsis), OrderGraphBlockPlacementSynopsis placed = default(OrderGraphBlockPlacementSynopsis), OrderGraphBlockExecutionSynopsis executed = default(OrderGraphBlockExecutionSynopsis), OrderGraphBlockAllocationSynopsis allocated = default(OrderGraphBlockAllocationSynopsis), OrderGraphBlockTransactionSynopsis booked = default(OrderGraphBlockTransactionSynopsis), string derivedState = default(string), string derivedComplianceState = default(string), string derivedApprovalState = default(string))
+        /// <param name="derivedDirection">The overall direction of a block, derived from its orders&#39; transaction types: 1 the block increases the position (longer), -1 it decreases it (shorter), 0 its orders net flat, null when no direction could be resolved (including unsolicited blocks)..</param>
+        public OrderGraphBlock(Block block = default(Block), OrderGraphBlockOrderSynopsis ordered = default(OrderGraphBlockOrderSynopsis), OrderGraphBlockPlacementSynopsis placed = default(OrderGraphBlockPlacementSynopsis), OrderGraphBlockExecutionSynopsis executed = default(OrderGraphBlockExecutionSynopsis), OrderGraphBlockAllocationSynopsis allocated = default(OrderGraphBlockAllocationSynopsis), OrderGraphBlockTransactionSynopsis booked = default(OrderGraphBlockTransactionSynopsis), string derivedState = default(string), string derivedComplianceState = default(string), string derivedApprovalState = default(string), int? derivedDirection = default(int?))
         {
             // to ensure "block" is required (not null)
             if (block == null)
@@ -100,6 +101,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("derivedApprovalState is a required property for OrderGraphBlock and cannot be null");
             }
             this.DerivedApprovalState = derivedApprovalState;
+            this.DerivedDirection = derivedDirection;
         }
 
         /// <summary>
@@ -160,6 +162,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string DerivedApprovalState { get; set; }
 
         /// <summary>
+        /// The overall direction of a block, derived from its orders&#39; transaction types: 1 the block increases the position (longer), -1 it decreases it (shorter), 0 its orders net flat, null when no direction could be resolved (including unsolicited blocks).
+        /// </summary>
+        /// <value>The overall direction of a block, derived from its orders&#39; transaction types: 1 the block increases the position (longer), -1 it decreases it (shorter), 0 its orders net flat, null when no direction could be resolved (including unsolicited blocks).</value>
+        [DataMember(Name = "derivedDirection", EmitDefaultValue = true)]
+        public int? DerivedDirection { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -176,6 +185,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  DerivedState: ").Append(DerivedState).Append("\n");
             sb.Append("  DerivedComplianceState: ").Append(DerivedComplianceState).Append("\n");
             sb.Append("  DerivedApprovalState: ").Append(DerivedApprovalState).Append("\n");
+            sb.Append("  DerivedDirection: ").Append(DerivedDirection).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -255,6 +265,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.DerivedApprovalState == input.DerivedApprovalState ||
                     (this.DerivedApprovalState != null &&
                     this.DerivedApprovalState.Equals(input.DerivedApprovalState))
+                ) && 
+                (
+                    this.DerivedDirection == input.DerivedDirection ||
+                    (this.DerivedDirection != null &&
+                    this.DerivedDirection.Equals(input.DerivedDirection))
                 );
         }
 
@@ -302,6 +317,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.DerivedApprovalState != null)
                 {
                     hashCode = (hashCode * 59) + this.DerivedApprovalState.GetHashCode();
+                }
+                if (this.DerivedDirection != null)
+                {
+                    hashCode = (hashCode * 59) + this.DerivedDirection.GetHashCode();
                 }
                 return hashCode;
             }

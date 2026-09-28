@@ -12,7 +12,7 @@ The request used to create a Fund.
 | **AborId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **ShareClassInstrumentScopes** | **List&lt;string&gt;** | Optional | The scopes in which the instruments lie, currently limited to one. |
 | **ShareClassInstruments** | [List&lt;InstrumentResolutionDetail&gt;](InstrumentResolutionDetail.md) | Optional | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. |
-| **Type** | **string** | Required | The type of fund. Available values: Standalone, Master, Feeder. |
+| **Type** | **string** | Required | The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA. |
 | **InceptionDate** | **DateTimeOffset** | Required | Inception date of the Fund |
 | **DecimalPlaces** | **int?** | Optional | Number of decimal places for reporting |
 | **YearEndDate** | [DayMonth](DayMonth.md) | Required | *No description available.* |
@@ -34,7 +34,7 @@ var instance = new FundRequest(
     aborId: new ResourceId(...),  // required
     shareClassInstrumentScopes: ,  // optional — The scopes in which the instruments lie, currently limited to one.
     shareClassInstruments: new List<InstrumentResolutionDetail>(),  // optional — Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
-    type: "...",  // required — The type of fund. Available values: Standalone, Master, Feeder.
+    type: "...",  // required — The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
     inceptionDate: DateTimeOffset.Now,  // required — Inception date of the Fund
     decimalPlaces: 0,  // optional — Number of decimal places for reporting
     yearEndDate: new DayMonth(...),  // required

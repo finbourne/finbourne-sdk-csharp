@@ -8,6 +8,7 @@ All URIs are relative to *http://localhost*
 | [**DeletePaymentInstruction**](#deletepaymentinstruction) | **DELETE** `/api/api/paymentinstructions/{scope}/{code}` | [EXPERIMENTAL] DeletePaymentInstruction: Delete Payment Instruction |
 | [**GetPaymentInstruction**](#getpaymentinstruction) | **GET** `/api/api/paymentinstructions/{scope}/{code}` | [EXPERIMENTAL] GetPaymentInstruction: Get Payment Instruction |
 | [**GetPaymentInstructionsByPaymentRecordIds**](#getpaymentinstructionsbypaymentrecordids) | **POST** `/api/api/paymentinstructions/$getByPaymentRecordIds` | [EXPERIMENTAL] GetPaymentInstructionsByPaymentRecordIds: Get Payment Instructions by Payment Record Ids |
+| [**ListPaymentInstructions**](#listpaymentinstructions) | **GET** `/api/api/paymentinstructions` | [EXPERIMENTAL] ListPaymentInstructions: List Payment Instructions |
 | [**UpsertPaymentInstructions**](#upsertpaymentinstructions) | **POST** `/api/api/paymentinstructions` | [EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions |
 
 ### Example
@@ -232,6 +233,76 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<GetPaymentInstructionsResponse> response = apiInstance.GetPaymentInstructionsByPaymentRecordIdsWithHttpInfo(requestBody, propertyKeys, effectiveAt, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listpaymentinstructions"></a>
+## ListPaymentInstructions
+
+> PagedResourceListOfPaymentInstruction ListPaymentInstructions(DateTimeOffset? asAt = null, DateTimeOrCutLabel? effectiveAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
+
+[EXPERIMENTAL] ListPaymentInstructions: List Payment Instructions
+
+List all Payment Instructions matching the given criteria.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<PaymentInstructionsApi>();
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var page = "page_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfPaymentInstruction result = apiInstance.ListPaymentInstructions(asAt, effectiveAt, page, limit, filter, sortBy, propertyKeys);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the payment instructions. Defaults to return the latest              version of each payment instruction if not specified. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to list the payment instructions.              Defaults to the current LUSID system datetime if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing payment instructions from a previous call to              list payment instructions. This value is returned from the previous call. If a pagination token is provided,              the filter, limit and asAt fields must not have changed since the original request. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. |
+| **filter** | **string?** | query | optional | Expression to filter the results. For example, to filter on the currency, specify              \&quot;currency eq &#39;GBP&#39;\&quot;. For more information about filtering results, see              https://support.lusid.com/knowledgebase/article/KA-01914. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. |
+
+### Return type
+
+[PagedResourceListOfPaymentInstruction](../Model/PagedResourceListOfPaymentInstruction.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The payment instructions matching the given criteria |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListPaymentInstructionsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfPaymentInstruction> response = apiInstance.ListPaymentInstructionsWithHttpInfo(asAt, effectiveAt, page, limit, filter, sortBy, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

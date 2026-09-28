@@ -18,6 +18,9 @@ One node within a bucket set result: the fund aggregate or a single share class.
 | **PreviousNav** | **decimal?** | Optional | The net asset value this node carried at the previous valuation point, in the fund currency. Zero at the fund&#39;s first valuation point. |
 | **NetDealingUnits** | **decimal?** | Optional | The net units dealt for the share class over the period, so that the shares in issue are the previous shares in issue plus this. Omitted on the fund node and where the bucket set is not unitised. |
 | **ShareClassDetails** | [BucketSetShareClassDetails](BucketSetShareClassDetails.md) | Optional | *No description available.* |
+| **NavShareClassCurrency** | **decimal?** | Optional | The node&#39;s net asset value restated in the share class&#39; own currency, at the rate this node publishes. Set only on share class nodes. |
+| **ShareClassToFundFxRate** | **decimal?** | Optional | The fx rate from the share class currency to the fund currency at this valuation point. Nav and the bucket values are in the fund currency, so divide by this rate to restate them in the share class currency. Set only on share class nodes. |
+| **PreviousNavShareClassCurrency** | **decimal?** | Optional | The net asset value in the share class&#39; currency at the previous valuation point, as that point published it, at the rate that point struck. Zero at the fund&#39;s first valuation point. Absent (rather than zero) if the previous valuation point predates this field. |
 
 
 ## Usage
@@ -40,7 +43,10 @@ var instance = new BucketSetNode(
     label: "...",  // optional — A display label for the node: the fund&#39;s display name on the fund node, the share class&#39;s name on a share class node.
     previousNav: 0.0d,  // optional — The net asset value this node carried at the previous valuation point, in the fund currency. Zero at the fund&#39;s first valuation point.
     netDealingUnits: 0.0d,  // optional — The net units dealt for the share class over the period, so that the shares in issue are the previous shares in issue plus this. Omitted on the fund node and where the bucket set is not unitised.
-    shareClassDetails: new BucketSetShareClassDetails(...)  // optional
+    shareClassDetails: new BucketSetShareClassDetails(...),  // optional
+    navShareClassCurrency: 0.0d,  // optional — The node&#39;s net asset value restated in the share class&#39; own currency, at the rate this node publishes. Set only on share class nodes.
+    shareClassToFundFxRate: 0.0d,  // optional — The fx rate from the share class currency to the fund currency at this valuation point. Nav and the bucket values are in the fund currency, so divide by this rate to restate them in the share class currency. Set only on share class nodes.
+    previousNavShareClassCurrency: 0.0d  // optional — The net asset value in the share class&#39; currency at the previous valuation point, as that point published it, at the rate that point struck. Zero at the fund&#39;s first valuation point. Absent (rather than zero) if the previous valuation point predates this field.
 );
 ```
 ### Serializing to JSON

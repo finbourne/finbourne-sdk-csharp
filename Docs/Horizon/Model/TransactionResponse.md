@@ -9,11 +9,11 @@ Response containing details of a single transaction for a run.
 | **PublicationStatus** | **string** | Required | *No description available.* |
 | **PortfolioScope** | **string** | Optional | *No description available.* |
 | **PortfolioCode** | **string** | Optional | *No description available.* |
-| **InstrumentId** | **string** | Required | *No description available.* |
-| **InstrumentType** | **string** | Required | *No description available.* |
-| **InstrumentName** | **string** | Required | *No description available.* |
-| **TradeDate** | **DateTimeOffset** | Required | *No description available.* |
-| **SettlementDate** | **DateTimeOffset** | Required | *No description available.* |
+| **InstrumentId** | **string** | Optional | *No description available.* |
+| **InstrumentType** | **string** | Optional | *No description available.* |
+| **InstrumentName** | **string** | Optional | *No description available.* |
+| **TradeDate** | **DateTimeOffset?** | Optional | *No description available.* |
+| **SettlementDate** | **DateTimeOffset?** | Optional | *No description available.* |
 | **Status** | **string** | Required | *No description available.* |
 | **SkipReason** | **string** | Optional | *No description available.* |
 | **FailureReason** | **string** | Optional | *No description available.* |
@@ -34,11 +34,11 @@ var instance = new TransactionResponse(
     publicationStatus: "...",  // required
     portfolioScope: "...",  // optional
     portfolioCode: "...",  // optional
-    instrumentId: "...",  // required
-    instrumentType: "...",  // required
-    instrumentName: "...",  // required
-    tradeDate: DateTimeOffset.Now,  // required
-    settlementDate: DateTimeOffset.Now,  // required
+    instrumentId: "...",  // optional
+    instrumentType: "...",  // optional
+    instrumentName: "...",  // optional
+    tradeDate: DateTimeOffset.Now,  // optional
+    settlementDate: DateTimeOffset.Now,  // optional
     status: "...",  // required
     skipReason: "...",  // optional
     failureReason: "...",  // optional

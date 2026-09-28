@@ -16,6 +16,7 @@ Query for the individual cashflows inside a single cashflow bucket, with their s
 | **ReportCurrency** | **string** | Required | Three letter ISO currency string indicating what currency to report in for ReportCurrency denominated queries. |
 | **ExcludeUnsettledTrades** | **bool** | Optional | If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket. Note that the drill-down returns the complete resolved stream including transaction-sourced cashflows; if the bucketed query used the (default) InstrumentCashFlow representation, also exclude rows with a sourceType of &#39;Transaction&#39; when reconciling. |
 | **HaircutRules** | [List&lt;CashFlowHaircutRule&gt;](CashFlowHaircutRule.md) | Optional | Optional ordered haircut rules applied to cashflow inflows; the first matching rule wins and a rule with no criteria acts as a catch-all. When supplied, each returned cashflow carries its gross amount, haircut fraction, net amount and the rule that was applied; with no rules those fields are omitted and the results are unchanged. |
+| **CashType** | **string** | Optional | Which date basis buckets cash flows: TradeDate uses each cash flow&#39;s transaction date, SettleDate (default) uses its payment date. The response&#39;s CashFlowDetail.PaymentDate reflects whichever basis was used. Available values: TradeDate, SettleDate. |
 
 
 ## Usage
@@ -36,7 +37,8 @@ var instance = new QueryBucketCashFlowDrillDownRequest(
     recipeId: new ResourceId(...),  // required
     reportCurrency: "...",  // required — Three letter ISO currency string indicating what currency to report in for ReportCurrency denominated queries.
     excludeUnsettledTrades: true,  // optional — If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket. Note that the drill-down returns the complete resolved stream including transaction-sourced cashflows; if the bucketed query used the (default) InstrumentCashFlow representation, also exclude rows with a sourceType of &#39;Transaction&#39; when reconciling.
-    haircutRules: new List<CashFlowHaircutRule>()  // optional — Optional ordered haircut rules applied to cashflow inflows; the first matching rule wins and a rule with no criteria acts as a catch-all. When supplied, each returned cashflow carries its gross amount, haircut fraction, net amount and the rule that was applied; with no rules those fields are omitted and the results are unchanged.
+    haircutRules: new List<CashFlowHaircutRule>(),  // optional — Optional ordered haircut rules applied to cashflow inflows; the first matching rule wins and a rule with no criteria acts as a catch-all. When supplied, each returned cashflow carries its gross amount, haircut fraction, net amount and the rule that was applied; with no rules those fields are omitted and the results are unchanged.
+    cashType: "..."  // optional — Which date basis buckets cash flows: TradeDate uses each cash flow&#39;s transaction date, SettleDate (default) uses its payment date. The response&#39;s CashFlowDetail.PaymentDate reflects whichever basis was used. Available values: TradeDate, SettleDate.
 );
 ```
 ### Serializing to JSON

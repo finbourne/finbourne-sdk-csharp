@@ -38,7 +38,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="recType">The type of reconciliation this entry configures. Must be valid for the definitionType, and must match the reconciliationType of the referenced matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. (required).</param>
         /// <param name="matchingRulesetId">matchingRulesetId (required).</param>
         /// <param name="relationalDataFilter">Selects the slice of the relational dataset this definition draws from, e.g. \&quot;custodian eq &#39;NT&#39;\&quot;. Only permitted when the referenced ruleset declares a relational side, and combined with AND at run time with that ruleset&#39;s own filter for the side..</param>
-        public RecDefRuleset(string recType = default(string), ResourceId matchingRulesetId = default(ResourceId), string relationalDataFilter = default(string))
+        /// <param name="byTaxLots">byTaxLots.</param>
+        public RecDefRuleset(string recType = default(string), ResourceId matchingRulesetId = default(ResourceId), string relationalDataFilter = default(string), RecDefByTaxLots byTaxLots = default(RecDefByTaxLots))
         {
             // to ensure "recType" is required (not null)
             if (recType == null)
@@ -53,6 +54,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.MatchingRulesetId = matchingRulesetId;
             this.RelationalDataFilter = relationalDataFilter;
+            this.ByTaxLots = byTaxLots;
         }
 
         /// <summary>
@@ -76,6 +78,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string RelationalDataFilter { get; set; }
 
         /// <summary>
+        /// Gets or Sets ByTaxLots
+        /// </summary>
+        [DataMember(Name = "byTaxLots", EmitDefaultValue = false)]
+        public RecDefByTaxLots ByTaxLots { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -86,6 +94,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  RecType: ").Append(RecType).Append("\n");
             sb.Append("  MatchingRulesetId: ").Append(MatchingRulesetId).Append("\n");
             sb.Append("  RelationalDataFilter: ").Append(RelationalDataFilter).Append("\n");
+            sb.Append("  ByTaxLots: ").Append(ByTaxLots).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -135,6 +144,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.RelationalDataFilter == input.RelationalDataFilter ||
                     (this.RelationalDataFilter != null &&
                     this.RelationalDataFilter.Equals(input.RelationalDataFilter))
+                ) && 
+                (
+                    this.ByTaxLots == input.ByTaxLots ||
+                    (this.ByTaxLots != null &&
+                    this.ByTaxLots.Equals(input.ByTaxLots))
                 );
         }
 
@@ -158,6 +172,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.RelationalDataFilter != null)
                 {
                     hashCode = (hashCode * 59) + this.RelationalDataFilter.GetHashCode();
+                }
+                if (this.ByTaxLots != null)
+                {
+                    hashCode = (hashCode * 59) + this.ByTaxLots.GetHashCode();
                 }
                 return hashCode;
             }

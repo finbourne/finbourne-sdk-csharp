@@ -306,7 +306,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **startAt** | **DateTimeOffset?** | query | optional | Start point (of the timestampFieldName field) for the histogram |
 | **endAt** | **DateTimeOffset?** | query | optional | End point (of the timestampFieldName field) for the histogram |
 | **bucketSize** | **string?** | query | optional | Optional histogram bucket width.  If not provided a set number of buckets between start/end range will be generated. |
-| **filter** | **string?** | query | optional | Further limits the fetched results beyond that of the original query. - An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; - Or raw SqLite SQL, this must then begin with &#x60;WHERE &#x60; and is more flexible, e.g. &#x60;strftime(&#39;%Y-%m&#39;, SomeDateField) &#x3D; &#39;2026-06&#39;&#x60; |
+| **filter** | **string?** | query | optional | Further limits the rows counted beyond that of the original query. An ODATA filter per Finbourne.Filtering syntax, e.g. &#x60;SomeField eq &#39;Hello&#39;&#x60; or &#x60;SomeField in &#39;a&#39;, &#39;b&#39;&#x60; |
 | **jsonProper** | **bool?** | query | optional | Should this be text/json (not json-encoded-as-a-string) Default: `false` |
 
 ### Return type

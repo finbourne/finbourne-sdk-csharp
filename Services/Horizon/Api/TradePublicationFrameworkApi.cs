@@ -152,10 +152,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="instanceId"></param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter over runId, referenceId, attempt, total, sentCount, skippedCount, failedCount and failedFiles e.g. failedCount gt 0. status, triggeredBy, duration, startTime and endTime are not filterable and will result in a 400 response. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfInstanceRunResponse</returns>
-        PagedResourceListOfInstanceRunResponse ListInstanceRunHistory(string instanceId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfInstanceRunResponse ListInstanceRunHistory(string instanceId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListInstanceRunHistory: List run history for a given TPF instance, with pagination support.
@@ -167,10 +168,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="instanceId"></param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter over runId, referenceId, attempt, total, sentCount, skippedCount, failedCount and failedFiles e.g. failedCount gt 0. status, triggeredBy, duration, startTime and endTime are not filterable and will result in a 400 response. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfInstanceRunResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse> ListInstanceRunHistoryWithHttpInfo(string instanceId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse> ListInstanceRunHistoryWithHttpInfo(string instanceId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListInstancesWithStatus: Lists all instances of the Trade Publication Framework (TPF).
         /// </summary>
@@ -501,11 +503,12 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="instanceId"></param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter over runId, referenceId, attempt, total, sentCount, skippedCount, failedCount and failedFiles e.g. failedCount gt 0. status, triggeredBy, duration, startTime and endTime are not filterable and will result in a 400 response. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfInstanceRunResponse</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfInstanceRunResponse> ListInstanceRunHistoryAsync(string instanceId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfInstanceRunResponse> ListInstanceRunHistoryAsync(string instanceId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListInstanceRunHistory: List run history for a given TPF instance, with pagination support.
@@ -517,11 +520,12 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="instanceId"></param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter over runId, referenceId, attempt, total, sentCount, skippedCount, failedCount and failedFiles e.g. failedCount gt 0. status, triggeredBy, duration, startTime and endTime are not filterable and will result in a 400 response. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfInstanceRunResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse>> ListInstanceRunHistoryWithHttpInfoAsync(string instanceId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse>> ListInstanceRunHistoryWithHttpInfoAsync(string instanceId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListInstancesWithStatus: Lists all instances of the Trade Publication Framework (TPF).
         /// </summary>
@@ -1868,12 +1872,13 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="instanceId"></param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter over runId, referenceId, attempt, total, sentCount, skippedCount, failedCount and failedFiles e.g. failedCount gt 0. status, triggeredBy, duration, startTime and endTime are not filterable and will result in a 400 response. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfInstanceRunResponse</returns>
-        public PagedResourceListOfInstanceRunResponse ListInstanceRunHistory(string instanceId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfInstanceRunResponse ListInstanceRunHistory(string instanceId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse> localVarResponse = ListInstanceRunHistoryWithHttpInfo(instanceId, page, pageSize, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse> localVarResponse = ListInstanceRunHistoryWithHttpInfo(instanceId, page, pageSize, filter, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -1885,10 +1890,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="instanceId"></param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter over runId, referenceId, attempt, total, sentCount, skippedCount, failedCount and failedFiles e.g. failedCount gt 0. status, triggeredBy, duration, startTime and endTime are not filterable and will result in a 400 response. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfInstanceRunResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse> ListInstanceRunHistoryWithHttpInfo(string instanceId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse> ListInstanceRunHistoryWithHttpInfo(string instanceId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -1946,6 +1952,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
             }
 
             localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ListInstanceRunHistory";
@@ -1989,13 +1999,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="instanceId"></param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter over runId, referenceId, attempt, total, sentCount, skippedCount, failedCount and failedFiles e.g. failedCount gt 0. status, triggeredBy, duration, startTime and endTime are not filterable and will result in a 400 response. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfInstanceRunResponse</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfInstanceRunResponse> ListInstanceRunHistoryAsync(string instanceId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfInstanceRunResponse> ListInstanceRunHistoryAsync(string instanceId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse> localVarResponse = await ListInstanceRunHistoryWithHttpInfoAsync(instanceId, page, pageSize, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse> localVarResponse = await ListInstanceRunHistoryWithHttpInfoAsync(instanceId, page, pageSize, filter, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2007,11 +2018,12 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="instanceId"></param>
         /// <param name="page"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter over runId, referenceId, attempt, total, sentCount, skippedCount, failedCount and failedFiles e.g. failedCount gt 0. status, triggeredBy, duration, startTime and endTime are not filterable and will result in a 400 response. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfInstanceRunResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse>> ListInstanceRunHistoryWithHttpInfoAsync(string instanceId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfInstanceRunResponse>> ListInstanceRunHistoryWithHttpInfoAsync(string instanceId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -2070,6 +2082,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
             }
 
             localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ListInstanceRunHistory";

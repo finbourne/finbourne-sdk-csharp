@@ -596,7 +596,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum RecResult for value: RecResult
         /// </summary>
         [EnumMember(Value = "RecResult")]
-        RecResult = 95
+        RecResult = 95,
+
+        /// <summary>
+        /// Enum JournalEntry for value: JournalEntry
+        /// </summary>
+        [EnumMember(Value = "JournalEntry")]
+        JournalEntry = 96
     }
 
 }

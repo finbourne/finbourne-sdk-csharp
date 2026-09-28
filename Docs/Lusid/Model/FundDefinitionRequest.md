@@ -6,6 +6,7 @@ The request used to create a Fund.
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Code** | **string** | Required | The code given for the Fund. |
+| **ShortCode** | **string** | Optional | A short code for the Fund. A fund structure tags journal entry lines with the short code of the member they originated from, so it should be unique across the funds of one structure. Optional. |
 | **DisplayName** | **string** | Required | The name of the Fund. |
 | **Description** | **string** | Optional | A description for the Fund. |
 | **BaseCurrency** | **string** | Required | The base currency of the Fund in ISO 4217 currency code format. All portfolios must be of a matching base currency. |
@@ -14,7 +15,7 @@ The request used to create a Fund.
 | **FundConfigurationId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **ShareClassInstrumentScopes** | **List&lt;string&gt;** | Optional | The scopes in which the instruments lie, currently limited to one. |
 | **ShareClassInstruments** | [List&lt;InstrumentResolutionDetail&gt;](InstrumentResolutionDetail.md) | Optional | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. |
-| **Type** | **string** | Optional | The type of fund. Available values: Standalone, Master, Feeder. |
+| **Type** | **string** | Optional | The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA. |
 | **InceptionDate** | **DateTimeOffset** | Required | Inception date of the Fund |
 | **DecimalPlaces** | **int?** | Optional | Number of decimal places for reporting |
 | **PrimaryNavType** | [NavTypeDefinition](NavTypeDefinition.md) | Required | *No description available.* |
@@ -33,6 +34,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new FundDefinitionRequest(
     code: "...",  // required — The code given for the Fund.
+    shortCode: "...",  // optional — A short code for the Fund. A fund structure tags journal entry lines with the short code of the member they originated from, so it should be unique across the funds of one structure. Optional.
     displayName: "...",  // required — The name of the Fund.
     description: "...",  // optional — A description for the Fund.
     baseCurrency: "...",  // required — The base currency of the Fund in ISO 4217 currency code format. All portfolios must be of a matching base currency.
@@ -41,7 +43,7 @@ var instance = new FundDefinitionRequest(
     fundConfigurationId: new ResourceId(...),  // required
     shareClassInstrumentScopes: ,  // optional — The scopes in which the instruments lie, currently limited to one.
     shareClassInstruments: new List<InstrumentResolutionDetail>(),  // optional — Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
-    type: "...",  // optional — The type of fund. Available values: Standalone, Master, Feeder.
+    type: "...",  // optional — The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
     inceptionDate: DateTimeOffset.Now,  // required — Inception date of the Fund
     decimalPlaces: 0,  // optional — Number of decimal places for reporting
     primaryNavType: new NavTypeDefinition(...),  // required

@@ -7,6 +7,7 @@
 | **HierarchyLevel** | **string** | Optional | Optional metadata associated with the identifier definition. |
 | **DisplayName** | **string** | Optional | A display name for the identifier. E.g. Figi. |
 | **Description** | **string** | Optional | An optional description for the identifier. |
+| **HierarchyUsage** | **string** | Optional | Optional. When supplied, relaxes the identifier definition from MasterIdentifier (unique) to ParentIdentifier (non-unique).  Tightening from ParentIdentifier back to MasterIdentifier is refused.  Omit to leave the HierarchyUsage unchanged. Available values: MasterIdentifier, ParentIdentifier. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the identifier definition. |
 
 
@@ -21,6 +22,7 @@ var instance = new UpdateIdentifierDefinitionRequest(
     hierarchyLevel: "...",  // optional — Optional metadata associated with the identifier definition.
     displayName: "...",  // optional — A display name for the identifier. E.g. Figi.
     description: "...",  // optional — An optional description for the identifier.
+    hierarchyUsage: "...",  // optional — Optional. When supplied, relaxes the identifier definition from MasterIdentifier (unique) to ParentIdentifier (non-unique).  Tightening from ParentIdentifier back to MasterIdentifier is refused.  Omit to leave the HierarchyUsage unchanged. Available values: MasterIdentifier, ParentIdentifier.
     properties: new Property(...)  // optional — A set of properties for the identifier definition.
 );
 ```

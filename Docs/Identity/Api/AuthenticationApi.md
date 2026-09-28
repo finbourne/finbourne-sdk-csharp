@@ -7,13 +7,13 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**GetAuthenticationInformation**](#getauthenticationinformation) | **GET** `/identity/api/authentication/information` | GetAuthenticationInformation: Gets AuthenticationInformation |
 | [**GetPasswordPolicy**](#getpasswordpolicy) | **GET** `/identity/api/authentication/password-policy/{userType}` | GetPasswordPolicy: Gets password policy for a user type |
-| [**GetSessionPolicy**](#getsessionpolicy) | **GET** `/identity/api/authentication/session-policy` | [EXPERIMENTAL] GetSessionPolicy: Get session policy |
+| [**GetSessionPolicy**](#getsessionpolicy) | **GET** `/identity/api/authentication/session-policy` | GetSessionPolicy: Get session policy |
 | [**GetSupportAccessHistory**](#getsupportaccesshistory) | **GET** `/identity/api/authentication/support` | GetSupportAccessHistory: Get the history of all support access granted and any information pertaining to their termination |
 | [**GetSupportRoles**](#getsupportroles) | **GET** `/identity/api/authentication/support-roles` | GetSupportRoles: Get mapping of support roles, the internal representation to a human friendly representation |
 | [**GrantSupportAccess**](#grantsupportaccess) | **POST** `/identity/api/authentication/support` | GrantSupportAccess: Grants FINBOURNE support access to your account |
 | [**InvalidateSupportAccess**](#invalidatesupportaccess) | **DELETE** `/identity/api/authentication/support` | InvalidateSupportAccess: Revoke any FINBOURNE support access to your account |
 | [**UpdatePasswordPolicy**](#updatepasswordpolicy) | **PUT** `/identity/api/authentication/password-policy/{userType}` | UpdatePasswordPolicy: Updates password policy for a user type |
-| [**UpdateSessionPolicy**](#updatesessionpolicy) | **PUT** `/identity/api/authentication/session-policy` | [EXPERIMENTAL] UpdateSessionPolicy: Update session policy |
+| [**UpdateSessionPolicy**](#updatesessionpolicy) | **PUT** `/identity/api/authentication/session-policy` | UpdateSessionPolicy: Update session policy |
 
 ### Example
 
@@ -173,7 +173,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > SessionPolicyResponse GetSessionPolicy()
 
-[EXPERIMENTAL] GetSessionPolicy: Get session policy
+GetSessionPolicy: Get session policy
 
 Get the configured session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
 
@@ -510,7 +510,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > SessionPolicyResponse UpdateSessionPolicy(UpdateSessionPolicyRequest updateSessionPolicyRequest)
 
-[EXPERIMENTAL] UpdateSessionPolicy: Update session policy
+UpdateSessionPolicy: Update session policy
 
 Update the session timing settings. These settings dictate the duration of user sessions and the frequency of required re-authentication.
 
