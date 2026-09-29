@@ -657,7 +657,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 PutQueryToFormat: Format SQL into a more readable form
 
- This formats SQL (given a set of options as to how to do so), a.k.a. Pretty-Print the SQL. It takes some SQL (or a fragment thereof, it need not fully parse as yet and certainly need not execute correctly) and returns the reformatted version. e.g. ```sql select x,y,z from a inner join b on a.x=b.x where x>y or y!=z ``` becomes ```sql select x, y, z from a inner join b    on a.x = b.x where x > y    or y != z ``` 
+ This formats SQL, a.k.a. Pretty-Print the SQL. It takes some SQL (or a fragment thereof, it need not fully parse as yet and certainly need not execute correctly) and returns the reformatted version. Of the options only `maxLineWidth` has any effect, the rest are retained for compatibility. e.g. ```sql select x,y,z from a inner join b on a.x=b.x where x>y or y!=z ``` becomes ```sql select x, y, z from a inner join b on a.x = b.x where x > y   or y != z ``` 
 
 ### Example
 
@@ -686,19 +686,19 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **body** | **string** | body | **required** | LuminesceSql to Pretty-Print. Even if it doesn&#39;t parse an attempt will be made to format it |
-| **trailingCommas** | **bool?** | query | optional | Should commas be after an expression (as opposed to before) Default: `true` |
-| **uppercaseKeywords** | **bool?** | query | optional | Should key words be capitalized Default: `false` |
-| **breakJoinOnSections** | **bool?** | query | optional | Should clauses on joins be given line breaks? Default: `true` |
-| **spaceAfterExpandedComma** | **bool?** | query | optional | Should comma-lists have spaces after the commas? Default: `true` |
-| **keywordStandardization** | **bool?** | query | optional | Should the \&quot;nicest\&quot; key words be used? (e.g. JOIN -&gt; INNER JOIN) Default: `true` |
-| **expandCommaLists** | **bool?** | query | optional | Should comma-lists (e.g. select a,b,c) have line breaks added? Default: `false` |
-| **expandInLists** | **bool?** | query | optional | Should IN-lists have line breaks added? Default: `false` |
-| **expandBooleanExpressions** | **bool?** | query | optional | Should boolean expressions have line breaks added? Default: `true` |
-| **expandBetweenConditions** | **bool?** | query | optional | Should between conditions have line breaks added? Default: `true` |
-| **expandCaseStatements** | **bool?** | query | optional | Should case-statements have line breaks added? Default: `true` |
+| **trailingCommas** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `true` |
+| **uppercaseKeywords** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `false` |
+| **breakJoinOnSections** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `true` |
+| **spaceAfterExpandedComma** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `true` |
+| **keywordStandardization** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `true` |
+| **expandCommaLists** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `false` |
+| **expandInLists** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `false` |
+| **expandBooleanExpressions** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `true` |
+| **expandBetweenConditions** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `true` |
+| **expandCaseStatements** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `true` |
 | **maxLineWidth** | **int?** | query | optional | Maximum number of characters to allow on one line (if possible) Default: `120` |
-| **spaceBeforeTrailingSingleLineComments** | **bool?** | query | optional | Should the be a space before trailing single line comments? Default: `true` |
-| **multilineCommentExtraLineBreak** | **bool?** | query | optional | Should an additional line break be added after multi-line comments? Default: `false` |
+| **spaceBeforeTrailingSingleLineComments** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `true` |
+| **multilineCommentExtraLineBreak** | **bool?** | query | optional | No longer has any effect, retained only for compatibility Default: `false` |
 
 ### Return type
 

@@ -7,7 +7,7 @@
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **DisplayName** | **string** | Required | The name of the rec definition. |
 | **Description** | **string** | Optional | A description of the rec definition. |
-| **DefinitionType** | **string** | Required | What this definition reconciles, naming the kind of dataset that must be present on at least one side. One of: PortfolioContents, LusidEntity, RelationalData. Only PortfolioContents is currently supported. Available values: PortfolioContents, LusidEntity, RelationalData. |
+| **DefinitionType** | **string** | Required | What this definition reconciles, naming the kind of dataset that must be present on at least one side. Only PortfolioContents is currently supported. Available values: PortfolioContents, LusidEntity, RelationalData. |
 | **SideNames** | [RecDefSideNames](RecDefSideNames.md) | Optional | *No description available.* |
 | **LeftPortfolioSources** | [List&lt;RecDefSource&gt;](RecDefSource.md) | Optional | The portfolios, portfolio groups and funds contributing to the left side. Empty when the left side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty. |
 | **RightPortfolioSources** | [List&lt;RecDefSource&gt;](RecDefSource.md) | Optional | The portfolios, portfolio groups and funds contributing to the right side. Empty when the right side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty. |
@@ -16,6 +16,7 @@
 | **Rulesets** | [List&lt;RecDefRuleset&gt;](RecDefRuleset.md) | Required | The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once. |
 | **ReviewConfiguration** | [RecReviewConfiguration](RecReviewConfiguration.md) | Optional | *No description available.* |
 | **DatePolicy** | [RecDatePolicy](RecDatePolicy.md) | Optional | *No description available.* |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Properties in the RecDefinition domain. On update, a property with a null value is deleted and omitted properties are left unchanged. Filterable and sortable. |
 
 
 ## Usage
@@ -29,7 +30,7 @@ var instance = new CreateRecDefinitionRequest(
     id: new ResourceId(...),  // required
     displayName: "...",  // required — The name of the rec definition.
     description: "...",  // optional — A description of the rec definition.
-    definitionType: "...",  // required — What this definition reconciles, naming the kind of dataset that must be present on at least one side. One of: PortfolioContents, LusidEntity, RelationalData. Only PortfolioContents is currently supported. Available values: PortfolioContents, LusidEntity, RelationalData.
+    definitionType: "...",  // required — What this definition reconciles, naming the kind of dataset that must be present on at least one side. Only PortfolioContents is currently supported. Available values: PortfolioContents, LusidEntity, RelationalData.
     sideNames: new RecDefSideNames(...),  // optional
     leftPortfolioSources: new List<RecDefSource>(),  // optional — The portfolios, portfolio groups and funds contributing to the left side. Empty when the left side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty.
     rightPortfolioSources: new List<RecDefSource>(),  // optional — The portfolios, portfolio groups and funds contributing to the right side. Empty when the right side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty.
@@ -37,7 +38,8 @@ var instance = new CreateRecDefinitionRequest(
     currencies: new RecDefCurrencies(...),  // optional
     rulesets: new List<RecDefRuleset>(),  // required — The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once.
     reviewConfiguration: new RecReviewConfiguration(...),  // optional
-    datePolicy: new RecDatePolicy(...)  // optional
+    datePolicy: new RecDatePolicy(...),  // optional
+    properties: new PerpetualProperty(...)  // optional — Properties in the RecDefinition domain. On update, a property with a null value is deleted and omitted properties are left unchanged. Filterable and sortable.
 );
 ```
 ### Serializing to JSON
@@ -64,6 +66,7 @@ var instance = JsonConvert.DeserializeObject<CreateRecDefinitionRequest>(json);
 - [RecDefRuleset](RecDefRuleset.md) — used in `Rulesets`
 - [RecReviewConfiguration](RecReviewConfiguration.md)
 - [RecDatePolicy](RecDatePolicy.md)
+- [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

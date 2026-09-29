@@ -152,6 +152,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // Left (string) pattern
+            Regex regexLeft = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
+            if (this.Left != null && false == regexLeft.Match(this.Left).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Left, must match a pattern of " + regexLeft, new [] { "Left" });
+            }
+
+            // Right (string) pattern
+            Regex regexRight = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
+            if (this.Right != null && false == regexRight.Match(this.Right).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Right, must match a pattern of " + regexRight, new [] { "Right" });
+            }
+
             yield break;
         }
     }

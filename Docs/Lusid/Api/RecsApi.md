@@ -551,7 +551,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getrecdefinition"></a>
 ## GetRecDefinition
 
-> RecDefinition GetRecDefinition(string scope, string code, DateTimeOffset? asAt = null)
+> RecDefinition GetRecDefinition(string scope, string code, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
 [EXPERIMENTAL] GetRecDefinition: GetRecDefinition
 
@@ -564,7 +564,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
-RecDefinition result = apiInstance.GetRecDefinition(scope, code, asAt);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+RecDefinition result = apiInstance.GetRecDefinition(scope, code, asAt, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -575,6 +576,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the rec definition. |
 | **code** | **string** | path | **required** | The code of the rec definition. Together with the scope this uniquely identifies the rec definition. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definition. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. |
 
 ### Return type
 
@@ -599,7 +601,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<RecDefinition> response = apiInstance.GetRecDefinitionWithHttpInfo(scope, code, asAt);
+ApiResponse<RecDefinition> response = apiInstance.GetRecDefinitionWithHttpInfo(scope, code, asAt, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -923,7 +925,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listrecdefinitions"></a>
 ## ListRecDefinitions
 
-> PagedResourceListOfRecDefinition ListRecDefinitions(DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null)
+> PagedResourceListOfRecDefinition ListRecDefinitions(DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null, List<string>? propertyKeys = null)
 
 [EXPERIMENTAL] ListRecDefinitions: ListRecDefinitions
 
@@ -938,7 +940,8 @@ var page = "page_example";  // string? (optional)
 var sortBy = new List<string>?(); // List<string>? (optional)
 var limit = 56;  // int? (optional)
 var filter = "filter_example";  // string? (optional)
-PagedResourceListOfRecDefinition result = apiInstance.ListRecDefinitions(asAt, page, sortBy, limit, filter);
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfRecDefinition result = apiInstance.ListRecDefinitions(asAt, page, sortBy, limit, filter, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -951,6 +954,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many per page. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definitions. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again              with each page. |
 
 ### Return type
 
@@ -975,7 +979,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfRecDefinition> response = apiInstance.ListRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter);
+ApiResponse<PagedResourceListOfRecDefinition> response = apiInstance.ListRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1379,7 +1383,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition
 
-Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
 
 ### Example
 

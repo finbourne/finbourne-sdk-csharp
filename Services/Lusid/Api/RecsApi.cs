@@ -254,10 +254,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the rec definition.</param>
         /// <param name="code">The code of the rec definition. Together with the scope this uniquely identifies the rec definition.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definition. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>RecDefinition</returns>
-        RecDefinition GetRecDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        RecDefinition GetRecDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] GetRecDefinition: GetRecDefinition
@@ -269,10 +270,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the rec definition.</param>
         /// <param name="code">The code of the rec definition. Together with the scope this uniquely identifies the rec definition.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definition. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of RecDefinition</returns>
-        Finbourne.Sdk.Client.ApiResponse<RecDefinition> GetRecDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<RecDefinition> GetRecDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetRecInstance: GetRecInstance
         /// </summary>
@@ -430,10 +432,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many per page. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definitions. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again              with each page. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfRecDefinition</returns>
-        PagedResourceListOfRecDefinition ListRecDefinitions(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfRecDefinition ListRecDefinitions(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListRecDefinitions: ListRecDefinitions
@@ -447,10 +450,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many per page. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definitions. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again              with each page. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfRecDefinition</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition> ListRecDefinitionsWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition> ListRecDefinitionsWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListRecInstances: ListRecInstances
         /// </summary>
@@ -643,7 +647,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition
         /// </summary>
         /// <remarks>
-        /// Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+        /// Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the rec definition.</param>
@@ -658,7 +662,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition
         /// </summary>
         /// <remarks>
-        /// Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+        /// Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the rec definition.</param>
@@ -917,11 +921,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the rec definition.</param>
         /// <param name="code">The code of the rec definition. Together with the scope this uniquely identifies the rec definition.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definition. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of RecDefinition</returns>
-        System.Threading.Tasks.Task<RecDefinition> GetRecDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<RecDefinition> GetRecDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] GetRecDefinition: GetRecDefinition
@@ -933,11 +938,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the rec definition.</param>
         /// <param name="code">The code of the rec definition. Together with the scope this uniquely identifies the rec definition.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definition. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (RecDefinition)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<RecDefinition>> GetRecDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<RecDefinition>> GetRecDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetRecInstance: GetRecInstance
         /// </summary>
@@ -1105,11 +1111,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many per page. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definitions. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again              with each page. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfRecDefinition</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfRecDefinition> ListRecDefinitionsAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfRecDefinition> ListRecDefinitionsAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListRecDefinitions: ListRecDefinitions
@@ -1123,11 +1130,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many per page. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definitions. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again              with each page. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfRecDefinition)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition>> ListRecDefinitionsWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition>> ListRecDefinitionsWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListRecInstances: ListRecInstances
         /// </summary>
@@ -1332,7 +1340,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition
         /// </summary>
         /// <remarks>
-        /// Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+        /// Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the rec definition.</param>
@@ -1348,7 +1356,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition
         /// </summary>
         /// <remarks>
-        /// Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+        /// Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the rec definition.</param>
@@ -3416,12 +3424,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the rec definition.</param>
         /// <param name="code">The code of the rec definition. Together with the scope this uniquely identifies the rec definition.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definition. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>RecDefinition</returns>
-        public RecDefinition GetRecDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public RecDefinition GetRecDefinition(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<RecDefinition> localVarResponse = GetRecDefinitionWithHttpInfo(scope, code, asAt, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<RecDefinition> localVarResponse = GetRecDefinitionWithHttpInfo(scope, code, asAt, propertyKeys, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -3433,10 +3442,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the rec definition.</param>
         /// <param name="code">The code of the rec definition. Together with the scope this uniquely identifies the rec definition.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definition. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of RecDefinition</returns>
-        public Finbourne.Sdk.Client.ApiResponse<RecDefinition> GetRecDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<RecDefinition> GetRecDefinitionWithHttpInfo(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -3499,6 +3509,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (asAt != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
             }
 
             localVarRequestOptions.Operation = "RecsApi.GetRecDefinition";
@@ -3542,13 +3556,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the rec definition.</param>
         /// <param name="code">The code of the rec definition. Together with the scope this uniquely identifies the rec definition.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definition. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of RecDefinition</returns>
-        public async System.Threading.Tasks.Task<RecDefinition> GetRecDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<RecDefinition> GetRecDefinitionAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<RecDefinition> localVarResponse = await GetRecDefinitionWithHttpInfoAsync(scope, code, asAt, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<RecDefinition> localVarResponse = await GetRecDefinitionWithHttpInfoAsync(scope, code, asAt, propertyKeys, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3560,11 +3575,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the rec definition.</param>
         /// <param name="code">The code of the rec definition. Together with the scope this uniquely identifies the rec definition.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the rec definition. Defaults to latest if not specified. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definition. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (RecDefinition)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<RecDefinition>> GetRecDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<RecDefinition>> GetRecDefinitionWithHttpInfoAsync(string scope, string code, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -3628,6 +3644,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (asAt != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
             }
 
             localVarRequestOptions.Operation = "RecsApi.GetRecDefinition";
@@ -4932,12 +4952,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many per page. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definitions. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again              with each page. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfRecDefinition</returns>
-        public PagedResourceListOfRecDefinition ListRecDefinitions(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfRecDefinition ListRecDefinitions(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition> localVarResponse = ListRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition> localVarResponse = ListRecDefinitionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -4951,10 +4972,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many per page. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definitions. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again              with each page. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfRecDefinition</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition> ListRecDefinitionsWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition> ListRecDefinitionsWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
 
@@ -5019,6 +5041,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (filter != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
             }
 
             localVarRequestOptions.Operation = "RecsApi.ListRecDefinitions";
@@ -5064,13 +5090,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many per page. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definitions. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again              with each page. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfRecDefinition</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfRecDefinition> ListRecDefinitionsAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfRecDefinition> ListRecDefinitionsAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition> localVarResponse = await ListRecDefinitionsWithHttpInfoAsync(asAt, page, sortBy, limit, filter, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition> localVarResponse = await ListRecDefinitionsWithHttpInfoAsync(asAt, page, sortBy, limit, filter, propertyKeys, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5084,11 +5111,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="sortBy">A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many per page. (optional)</param>
         /// <param name="filter">Expression to filter the result set. Read more about filtering results from LUSID here              https://support.lusid.com/filtering-results-from-lusid. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;RecDefinition&#39; domain to decorate onto the rec              definitions. These must have the format {domain}/{scope}/{code}, for example              &#39;RecDefinition/Workflow/WorkflowId&#39;. They are not carried in the pagination token, so must be supplied again              with each page. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfRecDefinition)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition>> ListRecDefinitionsWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRecDefinition>> ListRecDefinitionsWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), List<string>? sortBy = default(List<string>?), int? limit = default(int?), string? filter = default(string?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -5154,6 +5182,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (filter != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
             }
 
             localVarRequestOptions.Operation = "RecsApi.ListRecDefinitions";
@@ -6812,7 +6844,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+        /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the rec definition.</param>
@@ -6828,7 +6860,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+        /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -6945,7 +6977,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+        /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the rec definition.</param>
@@ -6962,7 +6994,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.
+        /// [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition Overwrite an existing rec definition identified by scope and code.  The update request has the same required fields as create, apart from the identifier.  Properties are merged rather than overwritten - each property supplied is set, a property supplied with a null  value is deleted, and any property not supplied is left unchanged.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

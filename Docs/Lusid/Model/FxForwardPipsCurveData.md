@@ -12,6 +12,7 @@ Contains data (i.e. dates and pips + metadata) for building fx forward curves (w
 | **FgnCcy** | **string** | Required | Foreign currency of the fx forward |
 | **Dates** | **List&lt;DateTimeOffset&gt;** | Required | Dates for which the forward rates apply |
 | **PipRates** | **List&lt;decimal&gt;** | Required | Rates provided for the fx forward (price in FgnCcy per unit of DomCcy), expressed in pips |
+| **PipMultiplier** | **decimal?** | Optional | Optional. The scaling factor applied to the pip rates to convert them into a forward rate adjustment,  so that forwardRate &#x3D; spotRate + pipRate * pipMultiplier. Must be strictly positive when supplied.  When omitted, the market convention for the currency pair is used:  0.01 when the foreign (quote) currency is JPY, and 0.0001 (the four-decimal-place convention of the major pairs) otherwise. |
 | **Lineage** | **string** | Optional | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. |
 | **MarketDataOptions** | [MarketDataOptions](MarketDataOptions.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
@@ -31,6 +32,7 @@ var instance = new FxForwardPipsCurveData(
     fgnCcy: "...",  // required — Foreign currency of the fx forward
     dates: ,  // required — Dates for which the forward rates apply
     pipRates: ,  // required — Rates provided for the fx forward (price in FgnCcy per unit of DomCcy), expressed in pips
+    pipMultiplier: 0.0d,  // optional — Optional. The scaling factor applied to the pip rates to convert them into a forward rate adjustment,  so that forwardRate &#x3D; spotRate + pipRate * pipMultiplier. Must be strictly positive when supplied.  When omitted, the market convention for the currency pair is used:  0.01 when the foreign (quote) currency is JPY, and 0.0001 (the four-decimal-place convention of the major pairs) otherwise.
     lineage: "...",  // optional — Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;.
     marketDataOptions: new MarketDataOptions(...),  // optional
     varVersion: new ModelVersion(...),  // optional

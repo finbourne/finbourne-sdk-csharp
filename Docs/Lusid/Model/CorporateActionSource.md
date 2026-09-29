@@ -12,6 +12,7 @@ A corporate action source
 | **Description** | **string** | Optional | The description of the corporate action source |
 | **InstrumentScopes** | **List&lt;string&gt;** | Optional | The list of instrument scopes used as the scope resolution strategy when resolving instruments of upserted corporate actions. |
 | **EventInheritance** | [EventInheritance](EventInheritance.md) | Optional | *No description available.* |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -30,6 +31,7 @@ var instance = new CorporateActionSource(
     description: "...",  // optional — The description of the corporate action source
     instrumentScopes: ,  // optional — The list of instrument scopes used as the scope resolution strategy when resolving instruments of upserted corporate actions.
     eventInheritance: new EventInheritance(...),  // optional
+    stagedModifications: new StagedModificationsInfo(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -48,6 +50,7 @@ var instance = JsonConvert.DeserializeObject<CorporateActionSource>(json);
 - [ResourceId](ResourceId.md)
 - [ModelVersion](ModelVersion.md)
 - [EventInheritance](EventInheritance.md)
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 - [Link](Link.md)
 
 

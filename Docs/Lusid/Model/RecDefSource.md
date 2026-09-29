@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **SourceType** | **string** | Required | The type of entity that this source refers to. One of: Portfolio, PortfolioGroup, Fund. Available values: Portfolio, PortfolioGroup, Fund. |
+| **SourceType** | **string** | Required | The type of entity that this source refers to. Available values: Portfolio, PortfolioGroup, Fund. |
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 
 
@@ -16,7 +16,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecDefSource(
-    sourceType: "...",  // required — The type of entity that this source refers to. One of: Portfolio, PortfolioGroup, Fund. Available values: Portfolio, PortfolioGroup, Fund.
+    sourceType: "...",  // required — The type of entity that this source refers to. Available values: Portfolio, PortfolioGroup, Fund.
     id: new ResourceId(...)  // required
 );
 ```
