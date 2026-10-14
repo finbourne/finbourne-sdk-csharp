@@ -16,6 +16,9 @@ The Valuation Point Data Response for the Fund and specified date.
 | **ApportionmentResults** | [List&lt;ApportionmentBreakdown&gt;](ApportionmentBreakdown.md) | Optional | The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group. |
 | **BucketSetResults** | [List&lt;BucketSetResult&gt;](BucketSetResult.md) | Optional | The bucket set results for the valuation point: for each bucket set, the per-node (fund and share class) buckets and NAV. |
 | **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
+| **IsBackfilled** | **bool** | Optional | Set to True if the Valuation Point has backfilled bucket set results, False otherwise. |
+| **ApplyClearDown** | **bool** | Optional | Set to True if the Valuation Point applies a clear down, False otherwise. The Valuation Point shows its bucket values before the clear down, and the next Valuation Point opens from the balances after it. |
+| **Diagnostics** | [List&lt;ValuationPointDiagnostic&gt;](ValuationPointDiagnostic.md) | Optional | Findings made while striking the valuation point that did not stop it but should be looked at, such as a fund structure holder whose declared sharing percentage in a member has drifted from the share its contributions make of that member&#39;s capital. Absent when there are none. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -38,6 +41,9 @@ var instance = new ValuationPointDataResponse(
     apportionmentResults: new List<ApportionmentBreakdown>(),  // optional — The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group.
     bucketSetResults: new List<BucketSetResult>(),  // optional — The bucket set results for the valuation point: for each bucket set, the per-node (fund and share class) buckets and NAV.
     stagedModifications: new StagedModificationsInfo(...),  // optional
+    isBackfilled: true,  // optional — Set to True if the Valuation Point has backfilled bucket set results, False otherwise.
+    applyClearDown: true,  // optional — Set to True if the Valuation Point applies a clear down, False otherwise. The Valuation Point shows its bucket values before the clear down, and the next Valuation Point opens from the balances after it.
+    diagnostics: new List<ValuationPointDiagnostic>(),  // optional — Findings made while striking the valuation point that did not stop it but should be looked at, such as a fund structure holder whose declared sharing percentage in a member has drifted from the share its contributions make of that member&#39;s capital. Absent when there are none.
     links: new List<Link>()  // optional
 );
 ```
@@ -59,6 +65,7 @@ var instance = JsonConvert.DeserializeObject<ValuationPointDataResponse>(json);
 - [ApportionmentBreakdown](ApportionmentBreakdown.md) — used in `ApportionmentResults`
 - [BucketSetResult](BucketSetResult.md) — used in `BucketSetResults`
 - [StagedModificationsInfo](StagedModificationsInfo.md)
+- [ValuationPointDiagnostic](ValuationPointDiagnostic.md) — used in `Diagnostics`
 - [Link](Link.md)
 
 

@@ -36,14 +36,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="AggregatedReturnsEntityRequest" /> class.
         /// </summary>
         /// <param name="entity">entity (required).</param>
-        /// <param name="returnsScope">returnsScope (required).</param>
-        /// <param name="returnsCode">returnsCode (required).</param>
+        /// <param name="returnsId">returnsId (required).</param>
         /// <param name="metrics">metrics (required).</param>
         /// <param name="period">Available values: Daily, Monthly..</param>
         /// <param name="fromEffectiveAt">fromEffectiveAt.</param>
         /// <param name="toEffectiveAt">toEffectiveAt.</param>
         /// <param name="asAt">asAt.</param>
-        public AggregatedReturnsEntityRequest(AggregatedReturnsEntityId entity = default(AggregatedReturnsEntityId), string returnsScope = default(string), string returnsCode = default(string), List<ReturnsMetric> metrics = default(List<ReturnsMetric>), string period = default(string), DateTimeOrCutLabel fromEffectiveAt = default(DateTimeOrCutLabel), DateTimeOrCutLabel toEffectiveAt = default(DateTimeOrCutLabel), DateTimeOffset? asAt = default(DateTimeOffset?))
+        /// <param name="currency">currency.</param>
+        public AggregatedReturnsEntityRequest(AggregatedReturnsEntityId entity = default(AggregatedReturnsEntityId), ResourceId returnsId = default(ResourceId), List<ReturnsMetric> metrics = default(List<ReturnsMetric>), string period = default(string), DateTimeOrCutLabel fromEffectiveAt = default(DateTimeOrCutLabel), DateTimeOrCutLabel toEffectiveAt = default(DateTimeOrCutLabel), DateTimeOffset? asAt = default(DateTimeOffset?), string currency = default(string))
         {
             // to ensure "entity" is required (not null)
             if (entity == null)
@@ -51,18 +51,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("entity is a required property for AggregatedReturnsEntityRequest and cannot be null");
             }
             this.Entity = entity;
-            // to ensure "returnsScope" is required (not null)
-            if (returnsScope == null)
+            // to ensure "returnsId" is required (not null)
+            if (returnsId == null)
             {
-                throw new ArgumentNullException("returnsScope is a required property for AggregatedReturnsEntityRequest and cannot be null");
+                throw new ArgumentNullException("returnsId is a required property for AggregatedReturnsEntityRequest and cannot be null");
             }
-            this.ReturnsScope = returnsScope;
-            // to ensure "returnsCode" is required (not null)
-            if (returnsCode == null)
-            {
-                throw new ArgumentNullException("returnsCode is a required property for AggregatedReturnsEntityRequest and cannot be null");
-            }
-            this.ReturnsCode = returnsCode;
+            this.ReturnsId = returnsId;
             // to ensure "metrics" is required (not null)
             if (metrics == null)
             {
@@ -73,6 +67,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.FromEffectiveAt = fromEffectiveAt;
             this.ToEffectiveAt = toEffectiveAt;
             this.AsAt = asAt;
+            this.Currency = currency;
         }
 
         /// <summary>
@@ -82,16 +77,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public AggregatedReturnsEntityId Entity { get; set; }
 
         /// <summary>
-        /// Gets or Sets ReturnsScope
+        /// Gets or Sets ReturnsId
         /// </summary>
-        [DataMember(Name = "returnsScope", IsRequired = true, EmitDefaultValue = true)]
-        public string ReturnsScope { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ReturnsCode
-        /// </summary>
-        [DataMember(Name = "returnsCode", IsRequired = true, EmitDefaultValue = true)]
-        public string ReturnsCode { get; set; }
+        [DataMember(Name = "returnsId", IsRequired = true, EmitDefaultValue = true)]
+        public ResourceId ReturnsId { get; set; }
 
         /// <summary>
         /// Gets or Sets Metrics
@@ -125,6 +114,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public DateTimeOffset? AsAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets Currency
+        /// </summary>
+        [DataMember(Name = "currency", EmitDefaultValue = true)]
+        public string Currency { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -133,13 +128,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AggregatedReturnsEntityRequest {\n");
             sb.Append("  Entity: ").Append(Entity).Append("\n");
-            sb.Append("  ReturnsScope: ").Append(ReturnsScope).Append("\n");
-            sb.Append("  ReturnsCode: ").Append(ReturnsCode).Append("\n");
+            sb.Append("  ReturnsId: ").Append(ReturnsId).Append("\n");
             sb.Append("  Metrics: ").Append(Metrics).Append("\n");
             sb.Append("  Period: ").Append(Period).Append("\n");
             sb.Append("  FromEffectiveAt: ").Append(FromEffectiveAt).Append("\n");
             sb.Append("  ToEffectiveAt: ").Append(ToEffectiveAt).Append("\n");
             sb.Append("  AsAt: ").Append(AsAt).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -181,14 +176,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Entity.Equals(input.Entity))
                 ) && 
                 (
-                    this.ReturnsScope == input.ReturnsScope ||
-                    (this.ReturnsScope != null &&
-                    this.ReturnsScope.Equals(input.ReturnsScope))
-                ) && 
-                (
-                    this.ReturnsCode == input.ReturnsCode ||
-                    (this.ReturnsCode != null &&
-                    this.ReturnsCode.Equals(input.ReturnsCode))
+                    this.ReturnsId == input.ReturnsId ||
+                    (this.ReturnsId != null &&
+                    this.ReturnsId.Equals(input.ReturnsId))
                 ) && 
                 (
                     this.Metrics == input.Metrics ||
@@ -215,6 +205,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.AsAt == input.AsAt ||
                     (this.AsAt != null &&
                     this.AsAt.Equals(input.AsAt))
+                ) && 
+                (
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
                 );
         }
 
@@ -231,13 +226,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Entity.GetHashCode();
                 }
-                if (this.ReturnsScope != null)
+                if (this.ReturnsId != null)
                 {
-                    hashCode = (hashCode * 59) + this.ReturnsScope.GetHashCode();
-                }
-                if (this.ReturnsCode != null)
-                {
-                    hashCode = (hashCode * 59) + this.ReturnsCode.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ReturnsId.GetHashCode();
                 }
                 if (this.Metrics != null)
                 {
@@ -259,6 +250,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.AsAt.GetHashCode();
                 }
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -270,20 +265,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // ReturnsScope (string) pattern
-            Regex regexReturnsScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (this.ReturnsScope != null && false == regexReturnsScope.Match(this.ReturnsScope).Success)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ReturnsScope, must match a pattern of " + regexReturnsScope, new [] { "ReturnsScope" });
-            }
-
-            // ReturnsCode (string) pattern
-            Regex regexReturnsCode = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
-            if (this.ReturnsCode != null && false == regexReturnsCode.Match(this.ReturnsCode).Success)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ReturnsCode, must match a pattern of " + regexReturnsCode, new [] { "ReturnsCode" });
-            }
-
             yield break;
         }
     }

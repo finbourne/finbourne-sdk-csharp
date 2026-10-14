@@ -31,14 +31,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="UpsertInstrumentEventsResponse" /> class.
         /// </summary>
         /// <param name="href">The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime..</param>
-        /// <param name="values">The corporate actions which have been successfully updated or inserted..</param>
-        /// <param name="failed">The corporate actions that could not be updated or inserted along with a reason for their failure..</param>
+        /// <param name="values">The instrument events which have been successfully updated or inserted..</param>
+        /// <param name="failed">The instrument events that could not be updated or inserted along with a reason for their failure..</param>
+        /// <param name="staged">The instrument events that have been staged pending approval..</param>
         /// <param name="links">links.</param>
-        public UpsertInstrumentEventsResponse(string href = default(string), Dictionary<string, InstrumentEventHolder> values = default(Dictionary<string, InstrumentEventHolder>), Dictionary<string, ErrorDetail> failed = default(Dictionary<string, ErrorDetail>), List<Link> links = default(List<Link>))
+        public UpsertInstrumentEventsResponse(string href = default(string), Dictionary<string, InstrumentEventHolder> values = default(Dictionary<string, InstrumentEventHolder>), Dictionary<string, ErrorDetail> failed = default(Dictionary<string, ErrorDetail>), Dictionary<string, InstrumentEventHolder> staged = default(Dictionary<string, InstrumentEventHolder>), List<Link> links = default(List<Link>))
         {
             this.Href = href;
             this.Values = values;
             this.Failed = failed;
+            this.Staged = staged;
             this.Links = links;
         }
 
@@ -50,18 +52,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Href { get; set; }
 
         /// <summary>
-        /// The corporate actions which have been successfully updated or inserted.
+        /// The instrument events which have been successfully updated or inserted.
         /// </summary>
-        /// <value>The corporate actions which have been successfully updated or inserted.</value>
+        /// <value>The instrument events which have been successfully updated or inserted.</value>
         [DataMember(Name = "values", EmitDefaultValue = true)]
         public Dictionary<string, InstrumentEventHolder> Values { get; set; }
 
         /// <summary>
-        /// The corporate actions that could not be updated or inserted along with a reason for their failure.
+        /// The instrument events that could not be updated or inserted along with a reason for their failure.
         /// </summary>
-        /// <value>The corporate actions that could not be updated or inserted along with a reason for their failure.</value>
+        /// <value>The instrument events that could not be updated or inserted along with a reason for their failure.</value>
         [DataMember(Name = "failed", EmitDefaultValue = true)]
         public Dictionary<string, ErrorDetail> Failed { get; set; }
+
+        /// <summary>
+        /// The instrument events that have been staged pending approval.
+        /// </summary>
+        /// <value>The instrument events that have been staged pending approval.</value>
+        [DataMember(Name = "staged", EmitDefaultValue = true)]
+        public Dictionary<string, InstrumentEventHolder> Staged { get; set; }
 
         /// <summary>
         /// Gets or Sets Links
@@ -80,6 +89,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Href: ").Append(Href).Append("\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
             sb.Append("  Failed: ").Append(Failed).Append("\n");
+            sb.Append("  Staged: ").Append(Staged).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -134,6 +144,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Failed.SequenceEqual(input.Failed)
                 ) && 
                 (
+                    this.Staged == input.Staged ||
+                    this.Staged != null &&
+                    input.Staged != null &&
+                    this.Staged.SequenceEqual(input.Staged)
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -161,6 +177,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Failed != null)
                 {
                     hashCode = (hashCode * 59) + this.Failed.GetHashCode();
+                }
+                if (this.Staged != null)
+                {
+                    hashCode = (hashCode * 59) + this.Staged.GetHashCode();
                 }
                 if (this.Links != null)
                 {

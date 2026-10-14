@@ -38,7 +38,8 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="id">The id of this run of the Workflow. Assigned once, when the run is instantiated. (required).</param>
         /// <param name="asAtCreated">The version.asAtCreated of the root/ultimate parent Task of this run. (required).</param>
         /// <param name="completionStatus">The completion status of the root/ultimate parent Task of this run: NotStarted, InProgress, or Completed. (required).</param>
-        public WorkflowRun(int id = default(int), DateTimeOffset asAtCreated = default(DateTimeOffset), string completionStatus = default(string))
+        /// <param name="launchedBy">launchedBy.</param>
+        public WorkflowRun(int id = default(int), DateTimeOffset asAtCreated = default(DateTimeOffset), string completionStatus = default(string), LaunchedBy launchedBy = default(LaunchedBy))
         {
             this.Id = id;
             this.AsAtCreated = asAtCreated;
@@ -48,6 +49,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("completionStatus is a required property for WorkflowRun and cannot be null");
             }
             this.CompletionStatus = completionStatus;
+            this.LaunchedBy = launchedBy;
         }
 
         /// <summary>
@@ -72,6 +74,12 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public string CompletionStatus { get; set; }
 
         /// <summary>
+        /// Gets or Sets LaunchedBy
+        /// </summary>
+        [DataMember(Name = "launchedBy", EmitDefaultValue = false)]
+        public LaunchedBy LaunchedBy { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +90,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  AsAtCreated: ").Append(AsAtCreated).Append("\n");
             sb.Append("  CompletionStatus: ").Append(CompletionStatus).Append("\n");
+            sb.Append("  LaunchedBy: ").Append(LaunchedBy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -130,6 +139,11 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.CompletionStatus == input.CompletionStatus ||
                     (this.CompletionStatus != null &&
                     this.CompletionStatus.Equals(input.CompletionStatus))
+                ) && 
+                (
+                    this.LaunchedBy == input.LaunchedBy ||
+                    (this.LaunchedBy != null &&
+                    this.LaunchedBy.Equals(input.LaunchedBy))
                 );
         }
 
@@ -150,6 +164,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.CompletionStatus != null)
                 {
                     hashCode = (hashCode * 59) + this.CompletionStatus.GetHashCode();
+                }
+                if (this.LaunchedBy != null)
+                {
+                    hashCode = (hashCode * 59) + this.LaunchedBy.GetHashCode();
                 }
                 return hashCode;
             }

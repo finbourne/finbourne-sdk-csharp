@@ -12,7 +12,7 @@ A list of property definitions.
 | **DataTypeId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Type** | **string** | Optional | The type of the property. Available values: Label, Metric, Information. |
 | **UnitSchema** | **string** | Optional | The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. Available values: NoUnits, Basic, Iso4217Currency. |
-| **Domain** | **string** | Optional | The domain that the property exists in. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction, Transfer, RecDefinition, RecResult, JournalEntry. |
+| **Domain** | **string** | Optional | The domain that the property exists in. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction, Transfer, RecDefinition, RecResult, JournalEntry, EligibleCollateralSchedule. |
 | **Scope** | **string** | Optional | The scope that the property exists in. *(read-only)* |
 | **Code** | **string** | Optional | The code of the property. Together with the domain and scope this uniquely identifies the property. *(read-only)* |
 | **ValueRequired** | **bool** | Optional | This field is not implemented and should be disregarded. |
@@ -28,6 +28,7 @@ A list of property definitions.
 | **IsFilterable** | **bool** | Optional | Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions.  For a derived definition this must be set true to enable filtering. |
 | **CustomEntityTypes** | **List&lt;string&gt;** | Optional | The custom entity types that properties relating to this property definition can be applied to. |
 | **ValueFormat** | **string** | Optional | The format in which values for this property definition should be represented. |
+| **QualifierDefinitions** | [List&lt;QualifierDefinition&gt;](QualifierDefinition.md) | Optional | The qualifiers declared against this property definition, each with its value type resolved from its data type. Absent where the definition declares no qualifiers. Qualifiers are supported only on single-value properties. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -46,7 +47,7 @@ var instance = new PropertyDefinition(
     dataTypeId: new ResourceId(...),  // optional
     type: "...",  // optional — The type of the property. Available values: Label, Metric, Information.
     unitSchema: "...",  // optional — The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. Available values: NoUnits, Basic, Iso4217Currency.
-    domain: "...",  // optional — The domain that the property exists in. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction, Transfer, RecDefinition, RecResult, JournalEntry.
+    domain: "...",  // optional — The domain that the property exists in. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction, Transfer, RecDefinition, RecResult, JournalEntry, EligibleCollateralSchedule.
     scope: "...",  // optional — The scope that the property exists in.
     code: "...",  // optional — The code of the property. Together with the domain and scope this uniquely identifies the property.
     valueRequired: true,  // optional — This field is not implemented and should be disregarded.
@@ -62,6 +63,7 @@ var instance = new PropertyDefinition(
     isFilterable: true,  // optional — Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions.  For a derived definition this must be set true to enable filtering.
     customEntityTypes: ,  // optional — The custom entity types that properties relating to this property definition can be applied to.
     valueFormat: "...",  // optional — The format in which values for this property definition should be represented.
+    qualifierDefinitions: new List<QualifierDefinition>(),  // optional — The qualifiers declared against this property definition, each with its value type resolved from its data type. Absent where the definition declares no qualifiers. Qualifiers are supported only on single-value properties.
     links: new List<Link>()  // optional
 );
 ```
@@ -81,6 +83,7 @@ var instance = JsonConvert.DeserializeObject<PropertyDefinition>(json);
 - [Property](Property.md) — used in `Properties`
 - [ModelVersion](ModelVersion.md)
 - [StagedModificationsInfo](StagedModificationsInfo.md)
+- [QualifierDefinition](QualifierDefinition.md) — used in `QualifierDefinitions`
 - [Link](Link.md)
 
 

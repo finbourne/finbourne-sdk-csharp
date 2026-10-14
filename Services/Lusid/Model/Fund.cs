@@ -46,7 +46,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="shortCode">A short code for the Fund. A fund structure tags journal entry lines with the short code of the member they originated from, so it should be unique across the funds of one structure. Optional..</param>
         /// <param name="aborId">aborId.</param>
         /// <param name="shareClassInstruments">Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures..</param>
-        /// <param name="type">The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA..</param>
+        /// <param name="type">The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Master and Feeder are deprecated: the structural role of a fund now lives on its fund structure node, and a fund with either type cannot be a member of a fund structure. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA..</param>
+        /// <param name="taxTransparency">Whether the Fund is looked through for tax: Transparent passes its income and gains to its holders as their own, Opaque is taxed in its own right. Optional; if not set, a TaxBlocker is Opaque and a CarryVehicle or GPInterestHolder is Transparent. A fund structure requires it on every SPV and AIV member. Available values: Transparent, Opaque..</param>
         /// <param name="inceptionDate">Inception date of the Fund (required).</param>
         /// <param name="decimalPlaces">Number of decimal places for reporting.</param>
         /// <param name="yearEndDate">yearEndDate.</param>
@@ -57,9 +58,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="allocationGroups">An optional list of Allocation Group definitions for the Fund..</param>
         /// <param name="shareClasses">An optional list of Share Class definitions for the Fund..</param>
         /// <param name="fundInstrument">fundInstrument.</param>
+        /// <param name="pricingMethodology">pricingMethodology.</param>
+        /// <param name="reportingPrices">Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices..</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="links">links.</param>
-        public Fund(string href = default(string), ResourceId id = default(ResourceId), string displayName = default(string), string description = default(string), string baseCurrency = default(string), string investorStructure = default(string), List<PortfolioEntityIdWithDetails> portfolioIds = default(List<PortfolioEntityIdWithDetails>), ResourceId fundConfigurationId = default(ResourceId), string shortCode = default(string), ResourceId aborId = default(ResourceId), List<InstrumentResolutionDetail> shareClassInstruments = default(List<InstrumentResolutionDetail>), string type = default(string), DateTimeOffset inceptionDate = default(DateTimeOffset), int? decimalPlaces = default(int?), DayMonth yearEndDate = default(DayMonth), NavType primaryNavType = default(NavType), List<NavType> additionalNavTypes = default(List<NavType>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool createInstrument = default(bool), List<AllocationGroup> allocationGroups = default(List<AllocationGroup>), List<ShareClass> shareClasses = default(List<ShareClass>), FundInstrument fundInstrument = default(FundInstrument), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
+        public Fund(string href = default(string), ResourceId id = default(ResourceId), string displayName = default(string), string description = default(string), string baseCurrency = default(string), string investorStructure = default(string), List<PortfolioEntityIdWithDetails> portfolioIds = default(List<PortfolioEntityIdWithDetails>), ResourceId fundConfigurationId = default(ResourceId), string shortCode = default(string), ResourceId aborId = default(ResourceId), List<InstrumentResolutionDetail> shareClassInstruments = default(List<InstrumentResolutionDetail>), string type = default(string), string taxTransparency = default(string), DateTimeOffset inceptionDate = default(DateTimeOffset), int? decimalPlaces = default(int?), DayMonth yearEndDate = default(DayMonth), NavType primaryNavType = default(NavType), List<NavType> additionalNavTypes = default(List<NavType>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool createInstrument = default(bool), List<AllocationGroup> allocationGroups = default(List<AllocationGroup>), List<ShareClass> shareClasses = default(List<ShareClass>), FundInstrument fundInstrument = default(FundInstrument), PricingMethodology pricingMethodology = default(PricingMethodology), List<ReportingPrice> reportingPrices = default(List<ReportingPrice>), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -84,6 +87,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.AborId = aborId;
             this.ShareClassInstruments = shareClassInstruments;
             this.Type = type;
+            this.TaxTransparency = taxTransparency;
             this.DecimalPlaces = decimalPlaces;
             this.YearEndDate = yearEndDate;
             this.PrimaryNavType = primaryNavType;
@@ -93,6 +97,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.AllocationGroups = allocationGroups;
             this.ShareClasses = shareClasses;
             this.FundInstrument = fundInstrument;
+            this.PricingMethodology = pricingMethodology;
+            this.ReportingPrices = reportingPrices;
             this.VarVersion = varVersion;
             this.Links = links;
         }
@@ -172,11 +178,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<InstrumentResolutionDetail> ShareClassInstruments { get; set; }
 
         /// <summary>
-        /// The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
+        /// The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Master and Feeder are deprecated: the structural role of a fund now lives on its fund structure node, and a fund with either type cannot be a member of a fund structure. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
         /// </summary>
-        /// <value>The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.</value>
+        /// <value>The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Master and Feeder are deprecated: the structural role of a fund now lives on its fund structure node, and a fund with either type cannot be a member of a fund structure. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.</value>
         [DataMember(Name = "type", EmitDefaultValue = true)]
         public string Type { get; set; }
+
+        /// <summary>
+        /// Whether the Fund is looked through for tax: Transparent passes its income and gains to its holders as their own, Opaque is taxed in its own right. Optional; if not set, a TaxBlocker is Opaque and a CarryVehicle or GPInterestHolder is Transparent. A fund structure requires it on every SPV and AIV member. Available values: Transparent, Opaque.
+        /// </summary>
+        /// <value>Whether the Fund is looked through for tax: Transparent passes its income and gains to its holders as their own, Opaque is taxed in its own right. Optional; if not set, a TaxBlocker is Opaque and a CarryVehicle or GPInterestHolder is Transparent. A fund structure requires it on every SPV and AIV member. Available values: Transparent, Opaque.</value>
+        [DataMember(Name = "taxTransparency", EmitDefaultValue = true)]
+        public string TaxTransparency { get; set; }
 
         /// <summary>
         /// Inception date of the Fund
@@ -246,6 +259,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public FundInstrument FundInstrument { get; set; }
 
         /// <summary>
+        /// Gets or Sets PricingMethodology
+        /// </summary>
+        [DataMember(Name = "pricingMethodology", EmitDefaultValue = false)]
+        public PricingMethodology PricingMethodology { get; set; }
+
+        /// <summary>
+        /// Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices.
+        /// </summary>
+        /// <value>Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices.</value>
+        [DataMember(Name = "reportingPrices", EmitDefaultValue = true)]
+        public List<ReportingPrice> ReportingPrices { get; set; }
+
+        /// <summary>
         /// Gets or Sets VarVersion
         /// </summary>
         [DataMember(Name = "version", EmitDefaultValue = false)]
@@ -277,6 +303,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  AborId: ").Append(AborId).Append("\n");
             sb.Append("  ShareClassInstruments: ").Append(ShareClassInstruments).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  TaxTransparency: ").Append(TaxTransparency).Append("\n");
             sb.Append("  InceptionDate: ").Append(InceptionDate).Append("\n");
             sb.Append("  DecimalPlaces: ").Append(DecimalPlaces).Append("\n");
             sb.Append("  YearEndDate: ").Append(YearEndDate).Append("\n");
@@ -287,6 +314,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  AllocationGroups: ").Append(AllocationGroups).Append("\n");
             sb.Append("  ShareClasses: ").Append(ShareClasses).Append("\n");
             sb.Append("  FundInstrument: ").Append(FundInstrument).Append("\n");
+            sb.Append("  PricingMethodology: ").Append(PricingMethodology).Append("\n");
+            sb.Append("  ReportingPrices: ").Append(ReportingPrices).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
@@ -387,6 +416,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Type.Equals(input.Type))
                 ) && 
                 (
+                    this.TaxTransparency == input.TaxTransparency ||
+                    (this.TaxTransparency != null &&
+                    this.TaxTransparency.Equals(input.TaxTransparency))
+                ) && 
+                (
                     this.InceptionDate == input.InceptionDate ||
                     (this.InceptionDate != null &&
                     this.InceptionDate.Equals(input.InceptionDate))
@@ -438,6 +472,17 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.FundInstrument == input.FundInstrument ||
                     (this.FundInstrument != null &&
                     this.FundInstrument.Equals(input.FundInstrument))
+                ) && 
+                (
+                    this.PricingMethodology == input.PricingMethodology ||
+                    (this.PricingMethodology != null &&
+                    this.PricingMethodology.Equals(input.PricingMethodology))
+                ) && 
+                (
+                    this.ReportingPrices == input.ReportingPrices ||
+                    this.ReportingPrices != null &&
+                    input.ReportingPrices != null &&
+                    this.ReportingPrices.SequenceEqual(input.ReportingPrices)
                 ) && 
                 (
                     this.VarVersion == input.VarVersion ||
@@ -509,6 +554,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
+                if (this.TaxTransparency != null)
+                {
+                    hashCode = (hashCode * 59) + this.TaxTransparency.GetHashCode();
+                }
                 if (this.InceptionDate != null)
                 {
                     hashCode = (hashCode * 59) + this.InceptionDate.GetHashCode();
@@ -545,6 +594,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.FundInstrument != null)
                 {
                     hashCode = (hashCode * 59) + this.FundInstrument.GetHashCode();
+                }
+                if (this.PricingMethodology != null)
+                {
+                    hashCode = (hashCode * 59) + this.PricingMethodology.GetHashCode();
+                }
+                if (this.ReportingPrices != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReportingPrices.GetHashCode();
                 }
                 if (this.VarVersion != null)
                 {

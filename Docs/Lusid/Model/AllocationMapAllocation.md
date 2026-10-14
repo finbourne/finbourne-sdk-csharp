@@ -10,6 +10,10 @@ One investor record's share of a resolved allocation event.
 | **Weight** | **decimal** | Optional | The fraction of the remainder the investor record receives, or the fixed fraction of the whole amount for a FixedPercentage exception. |
 | **Amount** | **decimal** | Optional | The amount allocated to the investor record. |
 | **Treatment** | **string** | Optional | How the share was found. Derived means pro rata from the basis; FixedPercentage means off the top from an exception; Excluded means an exception removed the investor record and it receives nothing. Available values: Derived, FixedPercentage, Excluded. |
+| **CommitmentLineId** | **string** | Optional | For a Commitment event, the commitment line the share is recorded against. Absent for other event types. |
+| **PortfolioId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **Component** | **string** | Optional | The component of the event the share belongs to. Absent when the event was resolved whole. |
+| **OriginMemberShortCode** | **string** | Optional | The deal the share is for, when a capital call&#39;s use of proceeds split one component across deals. Absent when the component&#39;s own origin applies. |
 
 
 ## Usage
@@ -24,7 +28,11 @@ var instance = new AllocationMapAllocation(
     basisValue: 0.0d,  // optional — The basis value the pro rata share was weighted by. Absent for a fixed or excluded investor record.
     weight: 0.0d,  // optional — The fraction of the remainder the investor record receives, or the fixed fraction of the whole amount for a FixedPercentage exception.
     amount: 0.0d,  // optional — The amount allocated to the investor record.
-    treatment: "..."  // optional — How the share was found. Derived means pro rata from the basis; FixedPercentage means off the top from an exception; Excluded means an exception removed the investor record and it receives nothing. Available values: Derived, FixedPercentage, Excluded.
+    treatment: "...",  // optional — How the share was found. Derived means pro rata from the basis; FixedPercentage means off the top from an exception; Excluded means an exception removed the investor record and it receives nothing. Available values: Derived, FixedPercentage, Excluded.
+    commitmentLineId: "...",  // optional — For a Commitment event, the commitment line the share is recorded against. Absent for other event types.
+    portfolioId: new ResourceId(...),  // optional
+    component: "...",  // optional — The component of the event the share belongs to. Absent when the event was resolved whole.
+    originMemberShortCode: "..."  // optional — The deal the share is for, when a capital call&#39;s use of proceeds split one component across deals. Absent when the component&#39;s own origin applies.
 );
 ```
 ### Serializing to JSON
@@ -39,6 +47,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<AllocationMapAllocation>(json);
 ```
 
+- [ResourceId](ResourceId.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -5,8 +5,9 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
-| **Values** | [Dictionary&lt;string, InstrumentEventHolder&gt;](InstrumentEventHolder.md) | Optional | The corporate actions which have been successfully updated or inserted. |
-| **Failed** | [Dictionary&lt;string, ErrorDetail&gt;](ErrorDetail.md) | Optional | The corporate actions that could not be updated or inserted along with a reason for their failure. |
+| **Values** | [Dictionary&lt;string, InstrumentEventHolder&gt;](InstrumentEventHolder.md) | Optional | The instrument events which have been successfully updated or inserted. |
+| **Failed** | [Dictionary&lt;string, ErrorDetail&gt;](ErrorDetail.md) | Optional | The instrument events that could not be updated or inserted along with a reason for their failure. |
+| **Staged** | [Dictionary&lt;string, InstrumentEventHolder&gt;](InstrumentEventHolder.md) | Optional | The instrument events that have been staged pending approval. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -19,8 +20,9 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new UpsertInstrumentEventsResponse(
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
-    values: new InstrumentEventHolder(...),  // optional — The corporate actions which have been successfully updated or inserted.
-    failed: new ErrorDetail(...),  // optional — The corporate actions that could not be updated or inserted along with a reason for their failure.
+    values: new InstrumentEventHolder(...),  // optional — The instrument events which have been successfully updated or inserted.
+    failed: new ErrorDetail(...),  // optional — The instrument events that could not be updated or inserted along with a reason for their failure.
+    staged: new InstrumentEventHolder(...),  // optional — The instrument events that have been staged pending approval.
     links: new List<Link>()  // optional
 );
 ```
@@ -38,6 +40,7 @@ var instance = JsonConvert.DeserializeObject<UpsertInstrumentEventsResponse>(jso
 
 - [InstrumentEventHolder](InstrumentEventHolder.md) — used in `Values`
 - [ErrorDetail](ErrorDetail.md) — used in `Failed`
+- [InstrumentEventHolder](InstrumentEventHolder.md) — used in `Staged`
 - [Link](Link.md)
 
 

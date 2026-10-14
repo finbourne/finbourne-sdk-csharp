@@ -9,6 +9,7 @@ Exactly one dataset must be provided, matching the check definition's datasetSch
 | **LimitIndividualBreachesPerRule** | **int** | Optional | The maximum number of individual breaches to return per rule. Defaults to 100 if not specified. |
 | **PortfolioHoldingDataset** | [PortfolioHoldingDataset](PortfolioHoldingDataset.md) | Optional | *No description available.* |
 | **PortfolioTransactionDataset** | [PortfolioTransactionDataset](PortfolioTransactionDataset.md) | Optional | *No description available.* |
+| **StructuredResultDataset** | [StructuredResultDataset](StructuredResultDataset.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -22,7 +23,8 @@ var instance = new RunCheckRequest(
     lusidEntityDataset: new LusidEntityDataset(...),  // optional
     limitIndividualBreachesPerRule: 0,  // optional — The maximum number of individual breaches to return per rule. Defaults to 100 if not specified.
     portfolioHoldingDataset: new PortfolioHoldingDataset(...),  // optional
-    portfolioTransactionDataset: new PortfolioTransactionDataset(...)  // optional
+    portfolioTransactionDataset: new PortfolioTransactionDataset(...),  // optional
+    structuredResultDataset: new StructuredResultDataset(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -43,6 +45,7 @@ var instance = JsonConvert.DeserializeObject<RunCheckRequest>(json);
 - [LusidEntityDataset](LusidEntityDataset.md)
 - [PortfolioHoldingDataset](PortfolioHoldingDataset.md)
 - [PortfolioTransactionDataset](PortfolioTransactionDataset.md)
+- [StructuredResultDataset](StructuredResultDataset.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

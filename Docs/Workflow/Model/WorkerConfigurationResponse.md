@@ -10,6 +10,7 @@ Readonly information about how the worker should be executed
 * [GroupReconciliationResponse](./GroupReconciliationResponse.md)
 * [HealthCheckResponse](./HealthCheckResponse.md)
 * [HorizonIntegrationResponse](./HorizonIntegrationResponse.md)
+* [InstantiateRecResponse](./InstantiateRecResponse.md)
 * [LibraryResponse](./LibraryResponse.md)
 * [LuminesceViewResponse](./LuminesceViewResponse.md)
 * [LusidEntityDataQualityCheckResponse](./LusidEntityDataQualityCheckResponse.md)
@@ -17,6 +18,7 @@ Readonly information about how the worker should be executed
 * [PortfolioTransactionDataQualityCheckResponse](./PortfolioTransactionDataQualityCheckResponse.md)
 * [SchedulerJobResponse](./SchedulerJobResponse.md)
 * [SleepResponse](./SleepResponse.md)
+* [StructuredResultDataQualityCheckResponse](./StructuredResultDataQualityCheckResponse.md)
 
 ## Usage
 
@@ -47,6 +49,7 @@ var instance = JsonConvert.DeserializeObject<WorkerConfigurationResponse>(json);
 - [GroupReconciliationResponse](./GroupReconciliationResponse.md)
 - [HealthCheckResponse](./HealthCheckResponse.md)
 - [HorizonIntegrationResponse](./HorizonIntegrationResponse.md)
+- [InstantiateRecResponse](./InstantiateRecResponse.md)
 - [LibraryResponse](./LibraryResponse.md)
 - [LuminesceViewResponse](./LuminesceViewResponse.md)
 - [LusidEntityDataQualityCheckResponse](./LusidEntityDataQualityCheckResponse.md)
@@ -54,6 +57,7 @@ var instance = JsonConvert.DeserializeObject<WorkerConfigurationResponse>(json);
 - [PortfolioTransactionDataQualityCheckResponse](./PortfolioTransactionDataQualityCheckResponse.md)
 - [SchedulerJobResponse](./SchedulerJobResponse.md)
 - [SleepResponse](./SleepResponse.md)
+- [StructuredResultDataQualityCheckResponse](./StructuredResultDataQualityCheckResponse.md)
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
 

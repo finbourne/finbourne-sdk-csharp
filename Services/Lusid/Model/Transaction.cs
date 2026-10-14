@@ -28,9 +28,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class Transaction : IEquatable<Transaction>, IValidatableObject
     {
         /// <summary>
-        /// The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp.
+        /// The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp, PendingReversal, Reversed.
         /// </summary>
-        /// <value>The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp.</value>
+        /// <value>The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp, PendingReversal, Reversed.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TransactionStatusEnum
         {
@@ -68,13 +68,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             /// Enum CancelledTrueUp for value: CancelledTrueUp
             /// </summary>
             [EnumMember(Value = "CancelledTrueUp")]
-            CancelledTrueUp = 6
+            CancelledTrueUp = 6,
+
+            /// <summary>
+            /// Enum PendingReversal for value: PendingReversal
+            /// </summary>
+            [EnumMember(Value = "PendingReversal")]
+            PendingReversal = 7,
+
+            /// <summary>
+            /// Enum Reversed for value: Reversed
+            /// </summary>
+            [EnumMember(Value = "Reversed")]
+            Reversed = 8
         }
 
         /// <summary>
-        /// The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp.
+        /// The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp, PendingReversal, Reversed.
         /// </summary>
-        /// <value>The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp.</value>
+        /// <value>The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp, PendingReversal, Reversed.</value>
         [DataMember(Name = "transactionStatus", EmitDefaultValue = false)]
         public TransactionStatusEnum? TransactionStatus { get; set; }
         /// <summary>
@@ -102,7 +114,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="source">The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration..</param>
         /// <param name="entryDateTime">The asAt datetime that the transaction was added to LUSID..</param>
         /// <param name="otcConfirmation">otcConfirmation.</param>
-        /// <param name="transactionStatus">The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp..</param>
+        /// <param name="transactionStatus">The status of the transaction. Available values: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp, PendingReversal, Reversed..</param>
         /// <param name="cancelDateTime">If the transaction has been cancelled, the asAt datetime that the transaction was cancelled..</param>
         /// <param name="orderId">orderId.</param>
         /// <param name="allocationId">allocationId.</param>

@@ -37,7 +37,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="shareClassBreakdown">shareClassBreakdown (required).</param>
         /// <param name="shareClassDetails">shareClassDetails.</param>
-        public ShareClassData(ShareClassBreakdown shareClassBreakdown = default(ShareClassBreakdown), ShareClassDetails shareClassDetails = default(ShareClassDetails))
+        /// <param name="pricingMethodology">pricingMethodology.</param>
+        public ShareClassData(ShareClassBreakdown shareClassBreakdown = default(ShareClassBreakdown), ShareClassDetails shareClassDetails = default(ShareClassDetails), PricingMethodologyResult pricingMethodology = default(PricingMethodologyResult))
         {
             // to ensure "shareClassBreakdown" is required (not null)
             if (shareClassBreakdown == null)
@@ -46,6 +47,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.ShareClassBreakdown = shareClassBreakdown;
             this.ShareClassDetails = shareClassDetails;
+            this.PricingMethodology = pricingMethodology;
         }
 
         /// <summary>
@@ -61,6 +63,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ShareClassDetails ShareClassDetails { get; set; }
 
         /// <summary>
+        /// Gets or Sets PricingMethodology
+        /// </summary>
+        [DataMember(Name = "pricingMethodology", EmitDefaultValue = false)]
+        public PricingMethodologyResult PricingMethodology { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -70,6 +78,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class ShareClassData {\n");
             sb.Append("  ShareClassBreakdown: ").Append(ShareClassBreakdown).Append("\n");
             sb.Append("  ShareClassDetails: ").Append(ShareClassDetails).Append("\n");
+            sb.Append("  PricingMethodology: ").Append(PricingMethodology).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -114,6 +123,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ShareClassDetails == input.ShareClassDetails ||
                     (this.ShareClassDetails != null &&
                     this.ShareClassDetails.Equals(input.ShareClassDetails))
+                ) && 
+                (
+                    this.PricingMethodology == input.PricingMethodology ||
+                    (this.PricingMethodology != null &&
+                    this.PricingMethodology.Equals(input.PricingMethodology))
                 );
         }
 
@@ -133,6 +147,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.ShareClassDetails != null)
                 {
                     hashCode = (hashCode * 59) + this.ShareClassDetails.GetHashCode();
+                }
+                if (this.PricingMethodology != null)
+                {
+                    hashCode = (hashCode * 59) + this.PricingMethodology.GetHashCode();
                 }
                 return hashCode;
             }

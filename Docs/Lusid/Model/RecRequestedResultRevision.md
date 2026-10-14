@@ -5,7 +5,7 @@ A result flagged for re-review as part of a Request Revisions decision.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **RecResultId** | **string** | Required | The identifier of the result to flag for re-review. |
+| **RecResultId** | **string** | Required | The id of the result to flag for re-review, as carried on the result itself, e.g. &#39;break-3&#39;. Resolved within the run this result set is for. |
 | **CommentText** | **string** | Optional | An optional per-result comment added to the result&#39;s user comments. |
 
 
@@ -17,7 +17,7 @@ A result flagged for re-review as part of a Request Revisions decision.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecRequestedResultRevision(
-    recResultId: "...",  // required — The identifier of the result to flag for re-review.
+    recResultId: "...",  // required — The id of the result to flag for re-review, as carried on the result itself, e.g. &#39;break-3&#39;. Resolved within the run this result set is for.
     commentText: "..."  // optional — An optional per-result comment added to the result&#39;s user comments.
 );
 ```

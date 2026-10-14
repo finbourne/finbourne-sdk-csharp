@@ -39,7 +39,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="isApportionment">Whether this bucket set is the apportionment set (apportioning non-class-specific P&amp;L across share classes). (required).</param>
         /// <param name="nodes">The nodes making up the bucket set: the fund aggregate and one per share class. (required).</param>
         /// <param name="displayName">The display name of the bucket set, as configured on the fund configuration..</param>
-        public BucketSetResult(string bucketSetCode = default(string), bool isApportionment = default(bool), List<BucketSetNode> nodes = default(List<BucketSetNode>), string displayName = default(string))
+        /// <param name="isBackfilled">Set to True if this bucket set was backfilled from fund inception at this valuation point, because the previous valuation point has no results for it. Its values then hold the whole history, and its previous cumulative values are zero. False otherwise..</param>
+        public BucketSetResult(string bucketSetCode = default(string), bool isApportionment = default(bool), List<BucketSetNode> nodes = default(List<BucketSetNode>), string displayName = default(string), bool isBackfilled = default(bool))
         {
             // to ensure "bucketSetCode" is required (not null)
             if (bucketSetCode == null)
@@ -55,6 +56,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.Nodes = nodes;
             this.DisplayName = displayName;
+            this.IsBackfilled = isBackfilled;
         }
 
         /// <summary>
@@ -86,6 +88,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Set to True if this bucket set was backfilled from fund inception at this valuation point, because the previous valuation point has no results for it. Its values then hold the whole history, and its previous cumulative values are zero. False otherwise.
+        /// </summary>
+        /// <value>Set to True if this bucket set was backfilled from fund inception at this valuation point, because the previous valuation point has no results for it. Its values then hold the whole history, and its previous cumulative values are zero. False otherwise.</value>
+        [DataMember(Name = "isBackfilled", EmitDefaultValue = true)]
+        public bool IsBackfilled { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -97,6 +106,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  IsApportionment: ").Append(IsApportionment).Append("\n");
             sb.Append("  Nodes: ").Append(Nodes).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  IsBackfilled: ").Append(IsBackfilled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -151,6 +161,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
+                ) && 
+                (
+                    this.IsBackfilled == input.IsBackfilled ||
+                    this.IsBackfilled.Equals(input.IsBackfilled)
                 );
         }
 
@@ -176,6 +190,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsBackfilled.GetHashCode();
                 return hashCode;
             }
         }

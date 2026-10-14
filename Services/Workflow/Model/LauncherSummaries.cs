@@ -30,7 +30,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LauncherSummaries" /> class.
         /// </summary>
-        /// <param name="schedule">A sentence that says when the Launcher starts a run, for example \&quot;At 09:00 every weekday, London time\&quot;.              Null for an Event Launcher, which has no schedule.</param>
+        /// <param name="schedule">A sentence that says when the Launcher starts a run, for example \&quot;Weekly on Mon at 09:00, rolled forward to the next business day\&quot;.              Null for an Event Launcher, which has no schedule.</param>
         /// <param name="fields">A sentence for each field of the root task the Launcher fills, keyed by the field name on the root task definition. Empty when the Launcher fills no fields.</param>
         public LauncherSummaries(string schedule = default(string), Dictionary<string, string> fields = default(Dictionary<string, string>))
         {
@@ -39,9 +39,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         }
 
         /// <summary>
-        /// A sentence that says when the Launcher starts a run, for example \&quot;At 09:00 every weekday, London time\&quot;.              Null for an Event Launcher, which has no schedule
+        /// A sentence that says when the Launcher starts a run, for example \&quot;Weekly on Mon at 09:00, rolled forward to the next business day\&quot;.              Null for an Event Launcher, which has no schedule
         /// </summary>
-        /// <value>A sentence that says when the Launcher starts a run, for example \&quot;At 09:00 every weekday, London time\&quot;.              Null for an Event Launcher, which has no schedule</value>
+        /// <value>A sentence that says when the Launcher starts a run, for example \&quot;Weekly on Mon at 09:00, rolled forward to the next business day\&quot;.              Null for an Event Launcher, which has no schedule</value>
         [DataMember(Name = "schedule", EmitDefaultValue = true)]
         public string Schedule { get; set; }
 

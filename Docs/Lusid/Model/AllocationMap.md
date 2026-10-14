@@ -12,7 +12,9 @@ The rules that say which investor records share in the economics of a member of 
 | **StructureMemberId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **InheritsFrom** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Participants** | [AllocationMapParticipants](AllocationMapParticipants.md) | Required | *No description available.* |
-| **BasisByEventType** | [List&lt;AllocationMapEventBasis&gt;](AllocationMapEventBasis.md) | Required | The basis on which each kind of allocation event is shared between the participants. At most one entry per event type. |
+| **BasisByEventType** | [List&lt;AllocationMapEventBasis&gt;](AllocationMapEventBasis.md) | Required | The basis on which each kind of allocation event is shared between the participants. At most one entry per event type and component; an entry without a component is the default for the event type. |
+| **RoundingPartnerLine** | **string** | Optional | The investor record that takes every minor unit left over when the shares of an event are rounded. Absent means the leftover is spread one minor unit at a time over the largest remainders. |
+| **IlpaTransactionTypes** | [List&lt;AllocationMapIlpaTransactionType&gt;](AllocationMapIlpaTransactionType.md) | Optional | The ILPA transaction types the map reports particular kinds of allocation event under, where they differ from the default for the event type and component. At most one entry per event type and component; an entry without a component is the default for the event type. Every value must be one the system IlpaTransactionType data type lists. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
@@ -32,7 +34,9 @@ var instance = new AllocationMap(
     structureMemberId: new ResourceId(...),  // required
     inheritsFrom: new ResourceId(...),  // optional
     participants: new AllocationMapParticipants(...),  // required
-    basisByEventType: new List<AllocationMapEventBasis>(),  // required — The basis on which each kind of allocation event is shared between the participants. At most one entry per event type.
+    basisByEventType: new List<AllocationMapEventBasis>(),  // required — The basis on which each kind of allocation event is shared between the participants. At most one entry per event type and component; an entry without a component is the default for the event type.
+    roundingPartnerLine: "...",  // optional — The investor record that takes every minor unit left over when the shares of an event are rounded. Absent means the leftover is spread one minor unit at a time over the largest remainders.
+    ilpaTransactionTypes: new List<AllocationMapIlpaTransactionType>(),  // optional — The ILPA transaction types the map reports particular kinds of allocation event under, where they differ from the default for the event type and component. At most one entry per event type and component; an entry without a component is the default for the event type. Every value must be one the system IlpaTransactionType data type lists.
     varVersion: new ModelVersion(...),  // optional
     links: new List<Link>()  // optional
 );
@@ -54,6 +58,7 @@ var instance = JsonConvert.DeserializeObject<AllocationMap>(json);
 - [ResourceId](ResourceId.md)
 - [AllocationMapParticipants](AllocationMapParticipants.md)
 - [AllocationMapEventBasis](AllocationMapEventBasis.md) — used in `BasisByEventType`
+- [AllocationMapIlpaTransactionType](AllocationMapIlpaTransactionType.md) — used in `IlpaTransactionTypes`
 - [ModelVersion](ModelVersion.md)
 - [Link](Link.md)
 

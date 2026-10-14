@@ -31,9 +31,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="FundDetails" /> class.
         /// </summary>
         /// <param name="currency">The currency of the fund which is the same as the base currency of all the portfolios of the fund&#39;s Abor..</param>
-        public FundDetails(string currency = default(string))
+        /// <param name="pricingBasis">The side of the quote the NAV type valued the fund on: Mid, Bid or Ask. Absent when the NAV type defers to the valuation recipe&#39;s own pricing basis. When the NAV type has a swing pricing rule this is the basis the rule applied..</param>
+        /// <param name="swingPricing">swingPricing.</param>
+        public FundDetails(string currency = default(string), string pricingBasis = default(string), SwingPricingDecision swingPricing = default(SwingPricingDecision))
         {
             this.Currency = currency;
+            this.PricingBasis = pricingBasis;
+            this.SwingPricing = swingPricing;
         }
 
         /// <summary>
@@ -44,6 +48,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Currency { get; set; }
 
         /// <summary>
+        /// The side of the quote the NAV type valued the fund on: Mid, Bid or Ask. Absent when the NAV type defers to the valuation recipe&#39;s own pricing basis. When the NAV type has a swing pricing rule this is the basis the rule applied.
+        /// </summary>
+        /// <value>The side of the quote the NAV type valued the fund on: Mid, Bid or Ask. Absent when the NAV type defers to the valuation recipe&#39;s own pricing basis. When the NAV type has a swing pricing rule this is the basis the rule applied.</value>
+        [DataMember(Name = "pricingBasis", EmitDefaultValue = true)]
+        public string PricingBasis { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SwingPricing
+        /// </summary>
+        [DataMember(Name = "swingPricing", EmitDefaultValue = false)]
+        public SwingPricingDecision SwingPricing { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -52,6 +69,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class FundDetails {\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  PricingBasis: ").Append(PricingBasis).Append("\n");
+            sb.Append("  SwingPricing: ").Append(SwingPricing).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,6 +110,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Currency == input.Currency ||
                     (this.Currency != null &&
                     this.Currency.Equals(input.Currency))
+                ) && 
+                (
+                    this.PricingBasis == input.PricingBasis ||
+                    (this.PricingBasis != null &&
+                    this.PricingBasis.Equals(input.PricingBasis))
+                ) && 
+                (
+                    this.SwingPricing == input.SwingPricing ||
+                    (this.SwingPricing != null &&
+                    this.SwingPricing.Equals(input.SwingPricing))
                 );
         }
 
@@ -106,6 +135,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Currency != null)
                 {
                     hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                }
+                if (this.PricingBasis != null)
+                {
+                    hashCode = (hashCode * 59) + this.PricingBasis.GetHashCode();
+                }
+                if (this.SwingPricing != null)
+                {
+                    hashCode = (hashCode * 59) + this.SwingPricing.GetHashCode();
                 }
                 return hashCode;
             }

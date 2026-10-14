@@ -17,6 +17,9 @@ Defines a Task created based on a Task Definition
 | **UltimateParentTask** | [TaskSummary](TaskSummary.md) | Required | *No description available.* |
 | **ParentTask** | [TaskSummary](TaskSummary.md) | Optional | *No description available.* |
 | **ChildTasks** | [List&lt;TaskSummary&gt;](TaskSummary.md) | Optional | This Task&#39;s child tasks |
+| **PreviousTask** | [TaskSummary](TaskSummary.md) | Optional | *No description available.* |
+| **NextTask** | [TaskSummary](TaskSummary.md) | Optional | *No description available.* |
+| **NextTaskInitialTrigger** | **string** | Optional | The trigger this Task&#39;s next Task should receive when this Task completes, if any |
 | **CorrelationIds** | **List&lt;string&gt;** | Optional | User-provided ID used to link entities and tasks |
 | **VarVersion** | [VersionInfo](VersionInfo.md) | Optional | *No description available.* |
 | **TerminalState** | **bool** | Required | True if no onward transitions are possible |
@@ -55,6 +58,9 @@ var instance = new Task(
     ultimateParentTask: new TaskSummary(...),  // required
     parentTask: new TaskSummary(...),  // optional
     childTasks: new List<TaskSummary>(),  // optional — This Task&#39;s child tasks
+    previousTask: new TaskSummary(...),  // optional
+    nextTask: new TaskSummary(...),  // optional
+    nextTaskInitialTrigger: "...",  // optional — The trigger this Task&#39;s next Task should receive when this Task completes, if any
     correlationIds: ,  // optional — User-provided ID used to link entities and tasks
     varVersion: new VersionInfo(...),  // optional
     terminalState: true,  // required — True if no onward transitions are possible
@@ -92,6 +98,8 @@ var instance = JsonConvert.DeserializeObject<Task>(json);
 - [TaskSummary](TaskSummary.md)
 - [TaskSummary](TaskSummary.md)
 - [TaskSummary](TaskSummary.md) — used in `ChildTasks`
+- [TaskSummary](TaskSummary.md)
+- [TaskSummary](TaskSummary.md)
 - [VersionInfo](VersionInfo.md)
 - [TaskInstanceField](TaskInstanceField.md) — used in `Fields`
 - [Stack](Stack.md)

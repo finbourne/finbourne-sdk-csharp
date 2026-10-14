@@ -48,7 +48,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="ladderPoints">How many factors to evaluate between zero and MaxScale. All of them are valued in  one request - the rungs share market data resolution - so a finer ladder costs far less than  its rung count suggests, and a coarse one is the main source of a missed bracket..</param>
         /// <param name="tolerance">How close the achieved loss must be to the target, relative to the target&#39;s own size. Relative  rather than absolute because the same reverse stress is asked of books whose value differs by  orders of magnitude..</param>
         /// <param name="maxIterations">How many refinement rounds are allowed after the opening ladder. Each round costs one  valuation; on a near-linear P&amp;L the first interpolation is usually already inside tolerance,  so the default exists for the mildly curved case rather than the normal one..</param>
-        public ReverseStressRequest(ResourceId recipeId = default(ResourceId), List<PortfolioEntityId> portfolioEntityIds = default(List<PortfolioEntityId>), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset? asAt = default(DateTimeOffset?), ScenarioReference scenario = default(ScenarioReference), decimal targetPnl = default(decimal), string metric = default(string), string reportCurrency = default(string), List<PropertyFilter> filters = default(List<PropertyFilter>), decimal maxScale = default(decimal), int ladderPoints = default(int), decimal tolerance = default(decimal), int maxIterations = default(int))
+        /// <param name="marketDataOverrides">marketDataOverrides.</param>
+        public ReverseStressRequest(ResourceId recipeId = default(ResourceId), List<PortfolioEntityId> portfolioEntityIds = default(List<PortfolioEntityId>), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset? asAt = default(DateTimeOffset?), ScenarioReference scenario = default(ScenarioReference), decimal targetPnl = default(decimal), string metric = default(string), string reportCurrency = default(string), List<PropertyFilter> filters = default(List<PropertyFilter>), decimal maxScale = default(decimal), int ladderPoints = default(int), decimal tolerance = default(decimal), int maxIterations = default(int), MarketDataOverrides marketDataOverrides = default(MarketDataOverrides))
         {
             // to ensure "recipeId" is required (not null)
             if (recipeId == null)
@@ -78,6 +79,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.LadderPoints = ladderPoints;
             this.Tolerance = tolerance;
             this.MaxIterations = maxIterations;
+            this.MarketDataOverrides = marketDataOverrides;
         }
 
         /// <summary>
@@ -170,6 +172,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public int MaxIterations { get; set; }
 
         /// <summary>
+        /// Gets or Sets MarketDataOverrides
+        /// </summary>
+        [DataMember(Name = "marketDataOverrides", EmitDefaultValue = false)]
+        public MarketDataOverrides MarketDataOverrides { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -190,6 +198,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  LadderPoints: ").Append(LadderPoints).Append("\n");
             sb.Append("  Tolerance: ").Append(Tolerance).Append("\n");
             sb.Append("  MaxIterations: ").Append(MaxIterations).Append("\n");
+            sb.Append("  MarketDataOverrides: ").Append(MarketDataOverrides).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -286,6 +295,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.MaxIterations == input.MaxIterations ||
                     this.MaxIterations.Equals(input.MaxIterations)
+                ) && 
+                (
+                    this.MarketDataOverrides == input.MarketDataOverrides ||
+                    (this.MarketDataOverrides != null &&
+                    this.MarketDataOverrides.Equals(input.MarketDataOverrides))
                 );
         }
 
@@ -335,6 +349,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 hashCode = (hashCode * 59) + this.LadderPoints.GetHashCode();
                 hashCode = (hashCode * 59) + this.Tolerance.GetHashCode();
                 hashCode = (hashCode * 59) + this.MaxIterations.GetHashCode();
+                if (this.MarketDataOverrides != null)
+                {
+                    hashCode = (hashCode * 59) + this.MarketDataOverrides.GetHashCode();
+                }
                 return hashCode;
             }
         }

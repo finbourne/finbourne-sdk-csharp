@@ -35,9 +35,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AllocationMapEventBasis" /> class.
         /// </summary>
-        /// <param name="eventType">The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense or ValuationMove. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove. (required).</param>
+        /// <param name="eventType">The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense, ValuationMove, Equalisation, RecallExpiry, Transfer, Default, Commitment or DealFunding. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding. (required).</param>
         /// <param name="basis">basis (required).</param>
-        public AllocationMapEventBasis(string eventType = default(string), AllocationMapBasis basis = default(AllocationMapBasis))
+        /// <param name="component">The component of the event the basis applies to, for example MgmtFee or OrgCost. Absent means the entry is the default for every component of the event type without an entry of its own..</param>
+        public AllocationMapEventBasis(string eventType = default(string), AllocationMapBasis basis = default(AllocationMapBasis), string component = default(string))
         {
             // to ensure "eventType" is required (not null)
             if (eventType == null)
@@ -51,12 +52,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("basis is a required property for AllocationMapEventBasis and cannot be null");
             }
             this.Basis = basis;
+            this.Component = component;
         }
 
         /// <summary>
-        /// The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense or ValuationMove. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove.
+        /// The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense, ValuationMove, Equalisation, RecallExpiry, Transfer, Default, Commitment or DealFunding. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding.
         /// </summary>
-        /// <value>The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense or ValuationMove. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove.</value>
+        /// <value>The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense, ValuationMove, Equalisation, RecallExpiry, Transfer, Default, Commitment or DealFunding. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding.</value>
         [DataMember(Name = "eventType", IsRequired = true, EmitDefaultValue = true)]
         public string EventType { get; set; }
 
@@ -65,6 +67,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         [DataMember(Name = "basis", IsRequired = true, EmitDefaultValue = true)]
         public AllocationMapBasis Basis { get; set; }
+
+        /// <summary>
+        /// The component of the event the basis applies to, for example MgmtFee or OrgCost. Absent means the entry is the default for every component of the event type without an entry of its own.
+        /// </summary>
+        /// <value>The component of the event the basis applies to, for example MgmtFee or OrgCost. Absent means the entry is the default for every component of the event type without an entry of its own.</value>
+        [DataMember(Name = "component", EmitDefaultValue = true)]
+        public string Component { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -76,6 +85,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class AllocationMapEventBasis {\n");
             sb.Append("  EventType: ").Append(EventType).Append("\n");
             sb.Append("  Basis: ").Append(Basis).Append("\n");
+            sb.Append("  Component: ").Append(Component).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -120,6 +130,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Basis == input.Basis ||
                     (this.Basis != null &&
                     this.Basis.Equals(input.Basis))
+                ) && 
+                (
+                    this.Component == input.Component ||
+                    (this.Component != null &&
+                    this.Component.Equals(input.Component))
                 );
         }
 
@@ -140,6 +155,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Basis.GetHashCode();
                 }
+                if (this.Component != null)
+                {
+                    hashCode = (hashCode * 59) + this.Component.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -151,6 +170,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // Component (string) pattern
+            Regex regexComponent = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
+            if (this.Component != null && false == regexComponent.Match(this.Component).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Component, must match a pattern of " + regexComponent, new [] { "Component" });
+            }
+
             yield break;
         }
     }

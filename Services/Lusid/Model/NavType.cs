@@ -54,7 +54,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="leaderNavTypeCode">The code of the Nav Type that this Nav Type will follow when set..</param>
         /// <param name="transactionTemplateScope">The Transaction Template Scope used by the NavType. (required).</param>
         /// <param name="transactionExclusionFilter">Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties..</param>
-        public NavType(string status = default(string), string code = default(string), string displayName = default(string), string description = default(string), ResourceId chartOfAccountsId = default(ResourceId), List<string> postingModuleCodes = default(List<string>), List<string> cleardownModuleCodes = default(List<string>), NavSettlementConfiguration settlementConfiguration = default(NavSettlementConfiguration), ResourceId valuationRecipeId = default(ResourceId), ResourceId holdingRecipeId = default(ResourceId), string accountingMethod = default(string), List<string> subHoldingKeys = default(List<string>), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), ResourceId amortisationRuleSetId = default(ResourceId), string leaderNavTypeCode = default(string), string transactionTemplateScope = default(string), string transactionExclusionFilter = default(string))
+        /// <param name="pricingBasis">The side of the quote this Nav Type values the fund on: Mid, Bid or Ask. Overrides the pricing basis of the valuation recipe&#39;s market options for this Nav Type only, so a bid NAV and an ask NAV can share one recipe. Omit it to value on the recipe&#39;s own pricing basis. Available values: Mid, Bid, Ask..</param>
+        /// <param name="swingPricing">swingPricing.</param>
+        /// <param name="notionalDealingCostTableId">notionalDealingCostTableId.</param>
+        public NavType(string status = default(string), string code = default(string), string displayName = default(string), string description = default(string), ResourceId chartOfAccountsId = default(ResourceId), List<string> postingModuleCodes = default(List<string>), List<string> cleardownModuleCodes = default(List<string>), NavSettlementConfiguration settlementConfiguration = default(NavSettlementConfiguration), ResourceId valuationRecipeId = default(ResourceId), ResourceId holdingRecipeId = default(ResourceId), string accountingMethod = default(string), List<string> subHoldingKeys = default(List<string>), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), ResourceId amortisationRuleSetId = default(ResourceId), string leaderNavTypeCode = default(string), string transactionTemplateScope = default(string), string transactionExclusionFilter = default(string), string pricingBasis = default(string), SwingPricingRule swingPricing = default(SwingPricingRule), ResourceId notionalDealingCostTableId = default(ResourceId))
         {
             // to ensure "status" is required (not null)
             if (status == null)
@@ -125,6 +128,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.AmortisationRuleSetId = amortisationRuleSetId;
             this.LeaderNavTypeCode = leaderNavTypeCode;
             this.TransactionExclusionFilter = transactionExclusionFilter;
+            this.PricingBasis = pricingBasis;
+            this.SwingPricing = swingPricing;
+            this.NotionalDealingCostTableId = notionalDealingCostTableId;
         }
 
         /// <summary>
@@ -256,6 +262,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string TransactionExclusionFilter { get; set; }
 
         /// <summary>
+        /// The side of the quote this Nav Type values the fund on: Mid, Bid or Ask. Overrides the pricing basis of the valuation recipe&#39;s market options for this Nav Type only, so a bid NAV and an ask NAV can share one recipe. Omit it to value on the recipe&#39;s own pricing basis. Available values: Mid, Bid, Ask.
+        /// </summary>
+        /// <value>The side of the quote this Nav Type values the fund on: Mid, Bid or Ask. Overrides the pricing basis of the valuation recipe&#39;s market options for this Nav Type only, so a bid NAV and an ask NAV can share one recipe. Omit it to value on the recipe&#39;s own pricing basis. Available values: Mid, Bid, Ask.</value>
+        [DataMember(Name = "pricingBasis", EmitDefaultValue = true)]
+        public string PricingBasis { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SwingPricing
+        /// </summary>
+        [DataMember(Name = "swingPricing", EmitDefaultValue = false)]
+        public SwingPricingRule SwingPricing { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NotionalDealingCostTableId
+        /// </summary>
+        [DataMember(Name = "notionalDealingCostTableId", EmitDefaultValue = false)]
+        public ResourceId NotionalDealingCostTableId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -282,6 +307,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  LeaderNavTypeCode: ").Append(LeaderNavTypeCode).Append("\n");
             sb.Append("  TransactionTemplateScope: ").Append(TransactionTemplateScope).Append("\n");
             sb.Append("  TransactionExclusionFilter: ").Append(TransactionExclusionFilter).Append("\n");
+            sb.Append("  PricingBasis: ").Append(PricingBasis).Append("\n");
+            sb.Append("  SwingPricing: ").Append(SwingPricing).Append("\n");
+            sb.Append("  NotionalDealingCostTableId: ").Append(NotionalDealingCostTableId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -414,6 +442,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.TransactionExclusionFilter == input.TransactionExclusionFilter ||
                     (this.TransactionExclusionFilter != null &&
                     this.TransactionExclusionFilter.Equals(input.TransactionExclusionFilter))
+                ) && 
+                (
+                    this.PricingBasis == input.PricingBasis ||
+                    (this.PricingBasis != null &&
+                    this.PricingBasis.Equals(input.PricingBasis))
+                ) && 
+                (
+                    this.SwingPricing == input.SwingPricing ||
+                    (this.SwingPricing != null &&
+                    this.SwingPricing.Equals(input.SwingPricing))
+                ) && 
+                (
+                    this.NotionalDealingCostTableId == input.NotionalDealingCostTableId ||
+                    (this.NotionalDealingCostTableId != null &&
+                    this.NotionalDealingCostTableId.Equals(input.NotionalDealingCostTableId))
                 );
         }
 
@@ -501,6 +544,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.TransactionExclusionFilter != null)
                 {
                     hashCode = (hashCode * 59) + this.TransactionExclusionFilter.GetHashCode();
+                }
+                if (this.PricingBasis != null)
+                {
+                    hashCode = (hashCode * 59) + this.PricingBasis.GetHashCode();
+                }
+                if (this.SwingPricing != null)
+                {
+                    hashCode = (hashCode * 59) + this.SwingPricing.GetHashCode();
+                }
+                if (this.NotionalDealingCostTableId != null)
+                {
+                    hashCode = (hashCode * 59) + this.NotionalDealingCostTableId.GetHashCode();
                 }
                 return hashCode;
             }

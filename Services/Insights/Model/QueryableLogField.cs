@@ -40,7 +40,8 @@ namespace Finbourne.Sdk.Services.Insights.Model
         /// <param name="supportedOperations">The comparator operations available for this field. Empty when the field is not filterable. (required).</param>
         /// <param name="filterable">Whether the field can be used in a filter..</param>
         /// <param name="alwaysReturned">Whether the field is always returned (and therefore need not be requested)..</param>
-        public QueryableLogField(string name = default(string), string dataType = default(string), List<string> supportedOperations = default(List<string>), bool filterable = default(bool), bool alwaysReturned = default(bool))
+        /// <param name="availableValues">The values known to be valid for this field, which a UI can offer when filtering on it. Null when the field has no known set of values. The list is not exhaustive: other values may still be filtered on..</param>
+        public QueryableLogField(string name = default(string), string dataType = default(string), List<string> supportedOperations = default(List<string>), bool filterable = default(bool), bool alwaysReturned = default(bool), List<AvailableValue> availableValues = default(List<AvailableValue>))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -62,6 +63,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
             this.SupportedOperations = supportedOperations;
             this.Filterable = filterable;
             this.AlwaysReturned = alwaysReturned;
+            this.AvailableValues = availableValues;
         }
 
         /// <summary>
@@ -100,6 +102,13 @@ namespace Finbourne.Sdk.Services.Insights.Model
         public bool AlwaysReturned { get; set; }
 
         /// <summary>
+        /// The values known to be valid for this field, which a UI can offer when filtering on it. Null when the field has no known set of values. The list is not exhaustive: other values may still be filtered on.
+        /// </summary>
+        /// <value>The values known to be valid for this field, which a UI can offer when filtering on it. Null when the field has no known set of values. The list is not exhaustive: other values may still be filtered on.</value>
+        [DataMember(Name = "availableValues", EmitDefaultValue = true)]
+        public List<AvailableValue> AvailableValues { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -112,6 +121,7 @@ namespace Finbourne.Sdk.Services.Insights.Model
             sb.Append("  SupportedOperations: ").Append(SupportedOperations).Append("\n");
             sb.Append("  Filterable: ").Append(Filterable).Append("\n");
             sb.Append("  AlwaysReturned: ").Append(AlwaysReturned).Append("\n");
+            sb.Append("  AvailableValues: ").Append(AvailableValues).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -170,6 +180,12 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 (
                     this.AlwaysReturned == input.AlwaysReturned ||
                     this.AlwaysReturned.Equals(input.AlwaysReturned)
+                ) && 
+                (
+                    this.AvailableValues == input.AvailableValues ||
+                    this.AvailableValues != null &&
+                    input.AvailableValues != null &&
+                    this.AvailableValues.SequenceEqual(input.AvailableValues)
                 );
         }
 
@@ -196,6 +212,10 @@ namespace Finbourne.Sdk.Services.Insights.Model
                 }
                 hashCode = (hashCode * 59) + this.Filterable.GetHashCode();
                 hashCode = (hashCode * 59) + this.AlwaysReturned.GetHashCode();
+                if (this.AvailableValues != null)
+                {
+                    hashCode = (hashCode * 59) + this.AvailableValues.GetHashCode();
+                }
                 return hashCode;
             }
         }

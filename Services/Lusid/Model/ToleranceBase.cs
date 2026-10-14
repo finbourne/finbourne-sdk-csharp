@@ -16,6 +16,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using JsonSubTypes;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 using System.Reflection;
@@ -189,6 +190,35 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             {
                 return newToleranceBase;
             }
+
+            try
+            {
+                var discriminatorObj = JObject.Parse(jsonString)["toleranceType"];
+                string discriminatorValue =  discriminatorObj == null ?string.Empty :discriminatorObj.ToString();
+                switch (discriminatorValue)
+                {
+                    case "CoreAttributeOptionality":
+                        newToleranceBase = new ToleranceBase(JsonConvert.DeserializeObject<CoreAttributeOptionalityTolerance>(jsonString, ToleranceBase.AdditionalPropertiesSerializerSettings));
+                        return newToleranceBase;
+                    case "CoreDateTolerance":
+                        newToleranceBase = new ToleranceBase(JsonConvert.DeserializeObject<CoreDateTolerance>(jsonString, ToleranceBase.AdditionalPropertiesSerializerSettings));
+                        return newToleranceBase;
+                    case "CoreStringCross":
+                        newToleranceBase = new ToleranceBase(JsonConvert.DeserializeObject<CoreStringCrossTolerance>(jsonString, ToleranceBase.AdditionalPropertiesSerializerSettings));
+                        return newToleranceBase;
+                    case "Numeric":
+                        newToleranceBase = new ToleranceBase(JsonConvert.DeserializeObject<AggregateNumericTolerance>(jsonString, ToleranceBase.AdditionalPropertiesSerializerSettings));
+                        return newToleranceBase;
+                    default:
+                        System.Diagnostics.Debug.WriteLine(string.Format("Failed to lookup discriminator value `{0}` for ToleranceBase. Possible values: CoreAttributeOptionality CoreDateTolerance CoreStringCross Numeric", discriminatorValue));
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to parse the json data : `{0}` {1}", jsonString, ex.ToString()));
+            }
+
             int match = 0;
             List<string> matchedTypes = new List<string>();
 

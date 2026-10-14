@@ -9,6 +9,8 @@
 | **FilterExpression** | **string** | Required | *No description available.* |
 | **BucketType** | **string** | Required | Available values: Dealing, PnL, Fees, BalanceSheet, Misc. |
 | **Unitised** | **bool?** | Optional | *No description available.* |
+| **CleardownBehaviour** | **string** | Optional | Available values: Clear, CarryForward. |
+| **ClearsTo** | **string** | Optional | *No description available.* |
 
 
 ## Usage
@@ -23,7 +25,9 @@ var instance = new BucketDefinition(
     displayName: "...",  // required
     filterExpression: "...",  // required
     bucketType: "...",  // required — Available values: Dealing, PnL, Fees, BalanceSheet, Misc.
-    unitised: true  // optional
+    unitised: true,  // optional
+    cleardownBehaviour: "...",  // optional — Available values: Clear, CarryForward.
+    clearsTo: "..."  // optional
 );
 ```
 ### Serializing to JSON

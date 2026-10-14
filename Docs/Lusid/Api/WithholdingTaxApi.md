@@ -5,6 +5,8 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**BatchDeleteWithholdingTaxRates**](#batchdeletewithholdingtaxrates) | **POST** `/api/api/withholdingtax/rates/{scope}/{code}/$batchDelete` | [EARLY ACCESS] BatchDeleteWithholdingTaxRates: Batch delete Withholding Tax rate rows from a rate dataset. |
+| [**BatchUpsertWithholdingTaxRates**](#batchupsertwithholdingtaxrates) | **POST** `/api/api/withholdingtax/rates/{scope}/{code}/$batchUpsert` | [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands. |
 | [**CreateWithholdingTaxDatasetDefinitions**](#createwithholdingtaxdatasetdefinitions) | **POST** `/api/api/withholdingtax/datasetdefinitions` | [EARLY ACCESS] CreateWithholdingTaxDatasetDefinitions: Create the Withholding Tax dataset definitions. |
 | [**DeleteWithholdingTaxConfiguration**](#deletewithholdingtaxconfiguration) | **DELETE** `/api/api/withholdingtax/configurations/{scope}/{code}` | [EARLY ACCESS] DeleteWithholdingTaxConfiguration: Delete a Withholding Tax Configuration. |
 | [**DeleteWithholdingTaxDatasetDefinition**](#deletewithholdingtaxdatasetdefinition) | **DELETE** `/api/api/withholdingtax/datasetdefinitions/{scope}/{code}` | [EARLY ACCESS] DeleteWithholdingTaxDatasetDefinition: Delete a Withholding Tax dataset definition. |
@@ -57,6 +59,134 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WithholdingTaxApi
 
 ---
 
+<a id="batchdeletewithholdingtaxrates"></a>
+## BatchDeleteWithholdingTaxRates
+
+> BatchDeleteRelationalDataResponse BatchDeleteWithholdingTaxRates(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = null)
+
+[EARLY ACCESS] BatchDeleteWithholdingTaxRates: Batch delete Withholding Tax rate rows from a rate dataset.
+
+Also how a rate with no replacement is expired, there being no effectiveTo field. Deletes are  bitemporal, so rows stay readable at a prior asAt.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WithholdingTaxApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var requestBody = new Dictionary<string, DeleteWithholdingTaxRateRequest>(); // Dictionary<string, DeleteWithholdingTaxRateRequest>
+var successMode = "\"Atomic\"";  // string? (optional)
+BatchDeleteRelationalDataResponse result = apiInstance.BatchDeleteWithholdingTaxRates(scope, code, requestBody, successMode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The Scope of the rate dataset&#39;s relational dataset definition. |
+| **code** | **string** | path | **required** | The Code of the rate dataset&#39;s relational dataset definition. |
+| **requestBody** | [Dictionary&lt;string, DeleteWithholdingTaxRateRequest&gt;](../Model/DeleteWithholdingTaxRateRequest.md) | body | **required** | The rate rows to delete, keyed by a correlation id echoed back in the response. |
+| **successMode** | **string?** | query | optional | Atomic or Partial; defaults to Atomic. In Partial mode failures are returned              in the response body with a 200 status. Default: `&quot;Atomic&quot;` |
+
+### Return type
+
+[BatchDeleteRelationalDataResponse](../Model/BatchDeleteRelationalDataResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The deleted rate row metadata. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the BatchDeleteWithholdingTaxRatesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<BatchDeleteRelationalDataResponse> response = apiInstance.BatchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="batchupsertwithholdingtaxrates"></a>
+## BatchUpsertWithholdingTaxRates
+
+> BatchUpsertWithholdingTaxRatesResponse BatchUpsertWithholdingTaxRates(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = null)
+
+[EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands.
+
+Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WithholdingTaxApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var requestBody = new Dictionary<string, UpsertWithholdingTaxRateRequest>(); // Dictionary<string, UpsertWithholdingTaxRateRequest>
+var successMode = "\"Atomic\"";  // string? (optional)
+BatchUpsertWithholdingTaxRatesResponse result = apiInstance.BatchUpsertWithholdingTaxRates(scope, code, requestBody, successMode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The Scope of the rate dataset&#39;s relational dataset definition. |
+| **code** | **string** | path | **required** | The Code of the rate dataset&#39;s relational dataset definition. |
+| **requestBody** | [Dictionary&lt;string, UpsertWithholdingTaxRateRequest&gt;](../Model/UpsertWithholdingTaxRateRequest.md) | body | **required** | The rate rows to upsert, keyed by a correlation id echoed back in the response. |
+| **successMode** | **string?** | query | optional | Atomic or Partial; defaults to Atomic, because a partly loaded feed silently              under-withholds. In Partial mode failures are returned in the response body with a 200 status. Default: `&quot;Atomic&quot;` |
+
+### Return type
+
+[BatchUpsertWithholdingTaxRatesResponse](../Model/BatchUpsertWithholdingTaxRatesResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Withholding Tax rate rows that were upserted. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the BatchUpsertWithholdingTaxRatesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<BatchUpsertWithholdingTaxRatesResponse> response = apiInstance.BatchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="createwithholdingtaxdatasetdefinitions"></a>
 ## CreateWithholdingTaxDatasetDefinitions
 
@@ -64,7 +194,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WithholdingTaxApi
 
 [EARLY ACCESS] CreateWithholdingTaxDatasetDefinitions: Create the Withholding Tax dataset definitions.
 
-Create the anomaly and the main relational dataset definition for a customer domain, in a single call.                The definitions are constructed rather than accepted as given, so the fields the engine reads by name cannot  be absent, misspelled or created in the wrong field category. LUSID adds the mandatory core to both: taxCountry  and profileType as series identifiers, countryRate, treatyRate, betterRate and enhancedRate as value fields,  treatyRAS, betterRAS and enhancedRAS as value fields, and rank as a value field on the anomaly definition only.                The caller supplies only their own matching dimensions, given per dataset. The two schemas need not be  identical: a dimension present on only one dataset is simply not matched on when the other is queried, an ISIN  dimension on the anomaly dataset alone being the usual case. The request is rejected if it names a dimension  that collides with a mandatory core field, or if it omits a scope or a code.
+Create the anomaly and the main relational dataset definition for a customer domain, in a single call.                The definitions are constructed rather than accepted as given, so the fields the engine reads by name cannot  be absent, misspelled or created in the wrong field category. LUSID adds the mandatory core to both: taxCountry,  profileType and ruleSource as series identifiers (ruleSource optional), countryRate, treatyRate, betterRate and  enhancedRate as value fields, treatyRAS, betterRAS and enhancedRAS as value fields, and rank as a value field on  the anomaly definition only.                The caller supplies only their own matching dimensions, given per dataset. The two schemas need not be  identical: a dimension present on only one dataset is simply not matched on when the other is queried, an ISIN  dimension on the anomaly dataset alone being the usual case. The request is rejected if it names a dimension  that collides with a mandatory core field, or if it omits a scope or a code.
 
 ### Example
 
@@ -498,7 +628,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EARLY ACCESS] PatchWithholdingTaxDatasetDefinition: Patch a Withholding Tax dataset definition.
 
-Amend one Withholding Tax relational dataset definition, adding a matching dimension being the common case.  Subject to the platform's own rules on what may be changed on a populated dataset.                Only the matching dimensions the document addresses are affected; a dimension it does not address is left as  it is. Append a dimension with an add on \"/dimensions/-\", and amend one in place with an add on its index.                A dimension whose name collides with a mandatory core field is rejected, as is any attempt to add a rate tier:  the tier set is fixed at four and cannot be extended by schema evolution, because the engine could never read  a tier it does not know by name. The mandatory core is not addressable by this endpoint at all.                The amended dataset is returned in the same shape the get and the list return: the matching dimensions alone.  Read the full field schema from the relational dataset definition at the returned href.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: Dimensions.
+Amend one Withholding Tax relational dataset definition, adding a matching dimension being the common case.  Subject to the platform's own rules on what may be changed on a populated dataset.                Only the matching dimensions the document addresses are affected; a dimension it does not address is left as  it is. Append a dimension with an add on \"/dimensions/-\", insert one at a position with an add on its index,  and remove one with a remove on its index. To amend a dimension, remove it and add it again.                A dimension whose name collides with a mandatory core field is rejected, as is any attempt to add a rate tier:  the tier set is fixed at four and cannot be extended by schema evolution, because the engine could never read  a tier it does not know by name. The mandatory core is not addressable by this endpoint at all.                The amended dataset is returned in the same shape the get and the list return: the matching dimensions alone.  Read the full field schema from the relational dataset definition at the returned href.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: Dimensions.
 
 ### Example
 

@@ -37,7 +37,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="investorRecordId">The investor record the basis value belongs to. (required).</param>
         /// <param name="basisValue">The value the investor record is weighted by, for example its commitment. (required).</param>
-        public AllocationMapBasisValue(string investorRecordId = default(string), decimal basisValue = default(decimal))
+        /// <param name="currency">The currency the basis value is held in. Absent means the base currency of the map&#39;s member fund. When the basis values span more than one currency, each is translated into the fund&#39;s base currency at the spot rate on the event date, from the fund&#39;s ABOR recipe, before it weights the allocation. The rate on the event date is the latest quote at or before 00:00 UTC on that date..</param>
+        /// <param name="commitmentLineId">For a Commitment event, the commitment line the amount is recorded against. The basis value is then the signed commitment amount itself: positive commits, negative releases. Not used for other event types..</param>
+        /// <param name="portfolioId">portfolioId.</param>
+        public AllocationMapBasisValue(string investorRecordId = default(string), decimal basisValue = default(decimal), string currency = default(string), string commitmentLineId = default(string), ResourceId portfolioId = default(ResourceId))
         {
             // to ensure "investorRecordId" is required (not null)
             if (investorRecordId == null)
@@ -46,6 +49,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.InvestorRecordId = investorRecordId;
             this.BasisValue = basisValue;
+            this.Currency = currency;
+            this.CommitmentLineId = commitmentLineId;
+            this.PortfolioId = portfolioId;
         }
 
         /// <summary>
@@ -63,6 +69,26 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal BasisValue { get; set; }
 
         /// <summary>
+        /// The currency the basis value is held in. Absent means the base currency of the map&#39;s member fund. When the basis values span more than one currency, each is translated into the fund&#39;s base currency at the spot rate on the event date, from the fund&#39;s ABOR recipe, before it weights the allocation. The rate on the event date is the latest quote at or before 00:00 UTC on that date.
+        /// </summary>
+        /// <value>The currency the basis value is held in. Absent means the base currency of the map&#39;s member fund. When the basis values span more than one currency, each is translated into the fund&#39;s base currency at the spot rate on the event date, from the fund&#39;s ABOR recipe, before it weights the allocation. The rate on the event date is the latest quote at or before 00:00 UTC on that date.</value>
+        [DataMember(Name = "currency", EmitDefaultValue = true)]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// For a Commitment event, the commitment line the amount is recorded against. The basis value is then the signed commitment amount itself: positive commits, negative releases. Not used for other event types.
+        /// </summary>
+        /// <value>For a Commitment event, the commitment line the amount is recorded against. The basis value is then the signed commitment amount itself: positive commits, negative releases. Not used for other event types.</value>
+        [DataMember(Name = "commitmentLineId", EmitDefaultValue = true)]
+        public string CommitmentLineId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PortfolioId
+        /// </summary>
+        [DataMember(Name = "portfolioId", EmitDefaultValue = false)]
+        public ResourceId PortfolioId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -72,6 +98,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class AllocationMapBasisValue {\n");
             sb.Append("  InvestorRecordId: ").Append(InvestorRecordId).Append("\n");
             sb.Append("  BasisValue: ").Append(BasisValue).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  CommitmentLineId: ").Append(CommitmentLineId).Append("\n");
+            sb.Append("  PortfolioId: ").Append(PortfolioId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -115,6 +144,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.BasisValue == input.BasisValue ||
                     this.BasisValue.Equals(input.BasisValue)
+                ) && 
+                (
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
+                ) && 
+                (
+                    this.CommitmentLineId == input.CommitmentLineId ||
+                    (this.CommitmentLineId != null &&
+                    this.CommitmentLineId.Equals(input.CommitmentLineId))
+                ) && 
+                (
+                    this.PortfolioId == input.PortfolioId ||
+                    (this.PortfolioId != null &&
+                    this.PortfolioId.Equals(input.PortfolioId))
                 );
         }
 
@@ -132,6 +176,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     hashCode = (hashCode * 59) + this.InvestorRecordId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.BasisValue.GetHashCode();
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                }
+                if (this.CommitmentLineId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CommitmentLineId.GetHashCode();
+                }
+                if (this.PortfolioId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PortfolioId.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -148,6 +204,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             if (this.InvestorRecordId != null && false == regexInvestorRecordId.Match(this.InvestorRecordId).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InvestorRecordId, must match a pattern of " + regexInvestorRecordId, new [] { "InvestorRecordId" });
+            }
+
+            // CommitmentLineId (string) pattern
+            Regex regexCommitmentLineId = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
+            if (this.CommitmentLineId != null && false == regexCommitmentLineId.Match(this.CommitmentLineId).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CommitmentLineId, must match a pattern of " + regexCommitmentLineId, new [] { "CommitmentLineId" });
             }
 
             yield break;

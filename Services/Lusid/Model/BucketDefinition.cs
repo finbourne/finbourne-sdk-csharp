@@ -40,7 +40,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="filterExpression">filterExpression (required).</param>
         /// <param name="bucketType">Available values: Dealing, PnL, Fees, BalanceSheet, Misc. (required).</param>
         /// <param name="unitised">unitised.</param>
-        public BucketDefinition(string bucketId = default(string), string displayName = default(string), string filterExpression = default(string), string bucketType = default(string), bool? unitised = default(bool?))
+        /// <param name="cleardownBehaviour">Available values: Clear, CarryForward..</param>
+        /// <param name="clearsTo">clearsTo.</param>
+        public BucketDefinition(string bucketId = default(string), string displayName = default(string), string filterExpression = default(string), string bucketType = default(string), bool? unitised = default(bool?), string cleardownBehaviour = default(string), string clearsTo = default(string))
         {
             // to ensure "bucketId" is required (not null)
             if (bucketId == null)
@@ -67,6 +69,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.BucketType = bucketType;
             this.Unitised = unitised;
+            this.CleardownBehaviour = cleardownBehaviour;
+            this.ClearsTo = clearsTo;
         }
 
         /// <summary>
@@ -101,6 +105,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public bool? Unitised { get; set; }
 
         /// <summary>
+        /// Available values: Clear, CarryForward.
+        /// </summary>
+        /// <value>Available values: Clear, CarryForward.</value>
+        [DataMember(Name = "cleardownBehaviour", EmitDefaultValue = true)]
+        public string CleardownBehaviour { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClearsTo
+        /// </summary>
+        [DataMember(Name = "clearsTo", EmitDefaultValue = true)]
+        public string ClearsTo { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -113,6 +130,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  FilterExpression: ").Append(FilterExpression).Append("\n");
             sb.Append("  BucketType: ").Append(BucketType).Append("\n");
             sb.Append("  Unitised: ").Append(Unitised).Append("\n");
+            sb.Append("  CleardownBehaviour: ").Append(CleardownBehaviour).Append("\n");
+            sb.Append("  ClearsTo: ").Append(ClearsTo).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -172,6 +191,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Unitised == input.Unitised ||
                     (this.Unitised != null &&
                     this.Unitised.Equals(input.Unitised))
+                ) && 
+                (
+                    this.CleardownBehaviour == input.CleardownBehaviour ||
+                    (this.CleardownBehaviour != null &&
+                    this.CleardownBehaviour.Equals(input.CleardownBehaviour))
+                ) && 
+                (
+                    this.ClearsTo == input.ClearsTo ||
+                    (this.ClearsTo != null &&
+                    this.ClearsTo.Equals(input.ClearsTo))
                 );
         }
 
@@ -203,6 +232,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Unitised != null)
                 {
                     hashCode = (hashCode * 59) + this.Unitised.GetHashCode();
+                }
+                if (this.CleardownBehaviour != null)
+                {
+                    hashCode = (hashCode * 59) + this.CleardownBehaviour.GetHashCode();
+                }
+                if (this.ClearsTo != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClearsTo.GetHashCode();
                 }
                 return hashCode;
             }

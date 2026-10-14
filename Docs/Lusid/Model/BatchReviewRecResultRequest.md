@@ -1,10 +1,13 @@
 # Finbourne.Sdk.Lusid.Model.BatchReviewRecResultRequest
 
-One item of a batch review request: applies review content to its targeted rec result(s). Exactly  one target, except FixAsGroup/ForceMatch which require two or more.
+One item of a batch review request: applies review content to its targeted rec result(s). Exactly  one target, except FixAsGroup/ForceMatch which require two or more. A result id identifies a result only  within one run of one rec type of one instance, so every item names the run its targets belong to — which  also makes the same-result-set rule for group decisions structural.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
+| **InstanceId** | [RecInstanceId](RecInstanceId.md) | Required | *No description available.* |
+| **RecType** | **string** | Required | The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. |
+| **RunNumber** | **int** | Required | The run of the instance whose results this item targets. |
 | **RecResultIds** | **List&lt;string&gt;** | Required | The rec results targeted by this batch item. Exactly one, except FixAsGroup/ForceMatch which require two or more. |
 | **Decision** | [RecResultDecisionUpdate](RecResultDecisionUpdate.md) | Optional | *No description available.* |
 | **AssignedUser** | [RecResultAssignmentUpdate](RecResultAssignmentUpdate.md) | Optional | *No description available.* |
@@ -21,6 +24,9 @@ One item of a batch review request: applies review content to its targeted rec r
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new BatchReviewRecResultRequest(
+    instanceId: new RecInstanceId(...),  // required
+    recType: "...",  // required — The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
+    runNumber: 0,  // required — The run of the instance whose results this item targets.
     recResultIds: ,  // required — The rec results targeted by this batch item. Exactly one, except FixAsGroup/ForceMatch which require two or more.
     decision: new RecResultDecisionUpdate(...),  // optional
     assignedUser: new RecResultAssignmentUpdate(...),  // optional
@@ -41,6 +47,10 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<BatchReviewRecResultRequest>(json);
 ```
 
+
+## Related Models
+
+- [RecInstanceId](RecInstanceId.md)
 - [RecResultDecisionUpdate](RecResultDecisionUpdate.md)
 - [RecResultAssignmentUpdate](RecResultAssignmentUpdate.md)
 - [RecResultAssignmentUpdate](RecResultAssignmentUpdate.md)

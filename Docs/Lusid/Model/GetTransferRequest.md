@@ -8,7 +8,7 @@ The transfer to read. Every part of its identity is required: a transfer is iden
 | **TransferId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **PortfolioIdOut** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **PortfolioIdIn** | [ResourceId](ResourceId.md) | Required | *No description available.* |
-| **PropertyKeys** | **List&lt;string&gt;** | Optional | *No description available.* |
+| **PropertyKeys** | **List&lt;string&gt;** | Optional | A list of property keys from the Transfer domain to decorate onto the transfer. These must have the format {domain}/{scope}/{code}. |
 
 
 ## Usage
@@ -22,7 +22,7 @@ var instance = new GetTransferRequest(
     transferId: new ResourceId(...),  // required
     portfolioIdOut: new ResourceId(...),  // required
     portfolioIdIn: new ResourceId(...),  // required
-    propertyKeys:   // optional
+    propertyKeys:   // optional — A list of property keys from the Transfer domain to decorate onto the transfer. These must have the format {domain}/{scope}/{code}.
 );
 ```
 ### Serializing to JSON

@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Domain** | **string** | Required | The domain that the property exists in. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction, Transfer, RecDefinition, RecResult, JournalEntry. |
+| **Domain** | **string** | Required | The domain that the property exists in. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction, Transfer, RecDefinition, RecResult, JournalEntry, EligibleCollateralSchedule. |
 | **Scope** | **string** | Required | The scope that the property exists in. |
 | **Code** | **string** | Required | The code of the property. Together with the domain and scope this uniquely identifies the property. |
 | **ValueRequired** | **bool** | Optional | This field is not implemented and should be disregarded. |
@@ -16,6 +16,7 @@
 | **CollectionType** | **string** | Optional | Describes whether a collection property should behave as a Set or as an Array. Available values: Set, Array. |
 | **CustomEntityTypes** | **List&lt;string&gt;** | Optional | The custom entity types that properties relating to this property definition can be applied to. |
 | **ValueFormat** | **string** | Optional | The format in which values for this property definition should be represented. Available values: Text, Html. |
+| **QualifierDefinitions** | [List&lt;QualifierDefinitionRequest&gt;](QualifierDefinitionRequest.md) | Optional | The qualifiers to declare against this property definition. A qualifier attaches an individually typed supporting fact to a value of this property, sharing that value&#39;s interval. Supported only where the constraint style is Property and no collection type is set. |
 
 
 ## Usage
@@ -26,7 +27,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CreatePropertyDefinitionRequest(
-    domain: "...",  // required — The domain that the property exists in. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction, Transfer, RecDefinition, RecResult, JournalEntry.
+    domain: "...",  // required — The domain that the property exists in. Available values: Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, PortfolioGroup, Person, Order, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, FundStructure, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, TaskDefinition, Workflow, IdentifierDefinition, SettlementInstruction, TransactionFeeType, PaymentInstruction, Transfer, RecDefinition, RecResult, JournalEntry, EligibleCollateralSchedule.
     scope: "...",  // required — The scope that the property exists in.
     code: "...",  // required — The code of the property. Together with the domain and scope this uniquely identifies the property.
     valueRequired: true,  // optional — This field is not implemented and should be disregarded.
@@ -37,7 +38,8 @@ var instance = new CreatePropertyDefinitionRequest(
     propertyDescription: "...",  // optional — Describes the property
     collectionType: "...",  // optional — Describes whether a collection property should behave as a Set or as an Array. Available values: Set, Array.
     customEntityTypes: ,  // optional — The custom entity types that properties relating to this property definition can be applied to.
-    valueFormat: "..."  // optional — The format in which values for this property definition should be represented. Available values: Text, Html.
+    valueFormat: "...",  // optional — The format in which values for this property definition should be represented. Available values: Text, Html.
+    qualifierDefinitions: new List<QualifierDefinitionRequest>()  // optional — The qualifiers to declare against this property definition. A qualifier attaches an individually typed supporting fact to a value of this property, sharing that value&#39;s interval. Supported only where the constraint style is Property and no collection type is set.
 );
 ```
 ### Serializing to JSON
@@ -53,6 +55,7 @@ var instance = JsonConvert.DeserializeObject<CreatePropertyDefinitionRequest>(js
 ```
 
 - [ResourceId](ResourceId.md)
+- [QualifierDefinitionRequest](QualifierDefinitionRequest.md) — used in `QualifierDefinitions`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

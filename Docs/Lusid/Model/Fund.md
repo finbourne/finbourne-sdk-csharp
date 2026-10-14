@@ -16,7 +16,8 @@ A Fund entity.
 | **ShortCode** | **string** | Optional | A short code for the Fund. A fund structure tags journal entry lines with the short code of the member they originated from, so it should be unique across the funds of one structure. Optional. |
 | **AborId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **ShareClassInstruments** | [List&lt;InstrumentResolutionDetail&gt;](InstrumentResolutionDetail.md) | Optional | Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures. |
-| **Type** | **string** | Optional | The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA. |
+| **Type** | **string** | Optional | The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Master and Feeder are deprecated: the structural role of a fund now lives on its fund structure node, and a fund with either type cannot be a member of a fund structure. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA. |
+| **TaxTransparency** | **string** | Optional | Whether the Fund is looked through for tax: Transparent passes its income and gains to its holders as their own, Opaque is taxed in its own right. Optional; if not set, a TaxBlocker is Opaque and a CarryVehicle or GPInterestHolder is Transparent. A fund structure requires it on every SPV and AIV member. Available values: Transparent, Opaque. |
 | **InceptionDate** | **DateTimeOffset** | Required | Inception date of the Fund |
 | **DecimalPlaces** | **int?** | Optional | Number of decimal places for reporting |
 | **YearEndDate** | [DayMonth](DayMonth.md) | Optional | *No description available.* |
@@ -27,6 +28,8 @@ A Fund entity.
 | **AllocationGroups** | [List&lt;AllocationGroup&gt;](AllocationGroup.md) | Optional | An optional list of Allocation Group definitions for the Fund. |
 | **ShareClasses** | [List&lt;ShareClass&gt;](ShareClass.md) | Optional | An optional list of Share Class definitions for the Fund. |
 | **FundInstrument** | [FundInstrument](FundInstrument.md) | Optional | *No description available.* |
+| **PricingMethodology** | [PricingMethodology](PricingMethodology.md) | Optional | *No description available.* |
+| **ReportingPrices** | [List&lt;ReportingPrice&gt;](ReportingPrice.md) | Optional | Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
@@ -50,7 +53,8 @@ var instance = new Fund(
     shortCode: "...",  // optional — A short code for the Fund. A fund structure tags journal entry lines with the short code of the member they originated from, so it should be unique across the funds of one structure. Optional.
     aborId: new ResourceId(...),  // optional
     shareClassInstruments: new List<InstrumentResolutionDetail>(),  // optional — Details the user-provided instrument identifiers and the instrument resolved from them. These would be decommissioned in favour of the new AllocationGroups and ShareClasses structures.
-    type: "...",  // optional — The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Standalone, Master and Feeder are retained for compatibility; the structural role of a fund now lives on its fund structure node. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
+    type: "...",  // optional — The kind of vehicle the fund is, one of the values of the system/fundVehicleType data type. Master and Feeder are deprecated: the structural role of a fund now lives on its fund structure node, and a fund with either type cannot be a member of a fund structure. Available values: Standalone, Master, Feeder, SPV, AIV, TaxBlocker, CarryVehicle, SponsorCommitmentVehicle, CoInvestVehicle, GPInterestHolder, SMA, CTA.
+    taxTransparency: "...",  // optional — Whether the Fund is looked through for tax: Transparent passes its income and gains to its holders as their own, Opaque is taxed in its own right. Optional; if not set, a TaxBlocker is Opaque and a CarryVehicle or GPInterestHolder is Transparent. A fund structure requires it on every SPV and AIV member. Available values: Transparent, Opaque.
     inceptionDate: DateTimeOffset.Now,  // required — Inception date of the Fund
     decimalPlaces: 0,  // optional — Number of decimal places for reporting
     yearEndDate: new DayMonth(...),  // optional
@@ -61,6 +65,8 @@ var instance = new Fund(
     allocationGroups: new List<AllocationGroup>(),  // optional — An optional list of Allocation Group definitions for the Fund.
     shareClasses: new List<ShareClass>(),  // optional — An optional list of Share Class definitions for the Fund.
     fundInstrument: new FundInstrument(...),  // optional
+    pricingMethodology: new PricingMethodology(...),  // optional
+    reportingPrices: new List<ReportingPrice>(),  // optional — Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices.
     varVersion: new ModelVersion(...),  // optional
     links: new List<Link>()  // optional
 );
@@ -89,6 +95,8 @@ var instance = JsonConvert.DeserializeObject<Fund>(json);
 - [AllocationGroup](AllocationGroup.md) — used in `AllocationGroups`
 - [ShareClass](ShareClass.md) — used in `ShareClasses`
 - [FundInstrument](FundInstrument.md)
+- [PricingMethodology](PricingMethodology.md)
+- [ReportingPrice](ReportingPrice.md) — used in `ReportingPrices`
 - [ModelVersion](ModelVersion.md)
 - [Link](Link.md)
 

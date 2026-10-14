@@ -20,6 +20,7 @@ Specification object for the parameters of a valuation
 | **MarketDataOverrides** | [MarketDataOverrides](MarketDataOverrides.md) | Optional | *No description available.* |
 | **CorporateActionSourceId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Scenario** | [ScenarioReference](ScenarioReference.md) | Optional | *No description available.* |
+| **NotionalDealingCostTableId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -44,7 +45,8 @@ var instance = new ValuationRequest(
     valuationSchedule: new ValuationSchedule(...),  // required
     marketDataOverrides: new MarketDataOverrides(...),  // optional
     corporateActionSourceId: new ResourceId(...),  // optional
-    scenario: new ScenarioReference(...)  // optional
+    scenario: new ScenarioReference(...),  // optional
+    notionalDealingCostTableId: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -72,6 +74,7 @@ var instance = JsonConvert.DeserializeObject<ValuationRequest>(json);
 - [MarketDataOverrides](MarketDataOverrides.md)
 - [ResourceId](ResourceId.md)
 - [ScenarioReference](ScenarioReference.md)
+- [ResourceId](ResourceId.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

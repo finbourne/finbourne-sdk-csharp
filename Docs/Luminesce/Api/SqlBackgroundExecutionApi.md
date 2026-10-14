@@ -18,6 +18,7 @@ All URIs are relative to *http://localhost*
 | [**FetchQueryResultXml**](#fetchqueryresultxml) | **GET** `/honeycomb/api/SqlBackground/{executionId}/xml` | FetchQueryResultXml: Fetch the result of a query as XML |
 | [**GetHistoricalFeedback**](#gethistoricalfeedback) | **GET** `/honeycomb/api/SqlBackground/{executionId}/historicalFeedback` | GetHistoricalFeedback: View historical query progress (for older queries) |
 | [**GetProgressOf**](#getprogressof) | **GET** `/honeycomb/api/SqlBackground/{executionId}` | GetProgressOf: View query progress up to this point. |
+| [**ListQueries**](#listqueries) | **GET** `/honeycomb/api/SqlBackground` | [EXPERIMENTAL] ListQueries: List the background queries available to the calling user |
 | [**SaveQueryResultToDrive**](#savequeryresulttodrive) | **GET** `/honeycomb/api/SqlBackground/{executionId}/drive` | [EXPERIMENTAL] SaveQueryResultToDrive: Saves the query results directly to Drive |
 | [**StartQuery**](#startquery) | **PUT** `/honeycomb/api/SqlBackground` | StartQuery: Start to Execute Sql in the background |
 
@@ -973,6 +974,62 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<BackgroundQueryProgressResponse> response = apiInstance.GetProgressOfWithHttpInfo(executionId, buildFromLogs, includeAllFeedback);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listqueries"></a>
+## ListQueries
+
+> List&lt;BackgroundQueryListItem&gt; ListQueries(string? sqlLike = null)
+
+[EXPERIMENTAL] ListQueries: List the background queries available to the calling user
+
+Lists the background queries (started by the calling user) whose results may be fetched, and which have not yet passed their `keepForSeconds` time, most recent first. Multi-queries themselves are not included, though the individual queries they started are (other than those marked as not being external results).  The following error codes are to be anticipated most with standard Problem Detail reports: - 401 Unauthorized
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<SqlBackgroundExecutionApi>();
+var sqlLike = "sqlLike_example";  // string? (optional)
+List<BackgroundQueryListItem> result = apiInstance.ListQueries(sqlLike);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **sqlLike** | **string?** | query | optional | An optional SQL-LIKE style filter on the LuminesceSql of the queries (manually include wildcards if desired). |
+
+### Return type
+
+[List&lt;BackgroundQueryListItem&gt;](../Model/BackgroundQueryListItem.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+<details>
+<summary>Using the ListQueriesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<List<BackgroundQueryListItem>> response = apiInstance.ListQueriesWithHttpInfo(sqlLike);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -79,6 +79,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkerConfigurationResponse" /> class
+        /// with the <see cref="InstantiateRecResponse" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of InstantiateRecResponse.</param>
+        public WorkerConfigurationResponse(InstantiateRecResponse actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WorkerConfigurationResponse" /> class
         /// with the <see cref="LibraryResponse" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of LibraryResponse.</param>
@@ -161,6 +173,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WorkerConfigurationResponse" /> class
+        /// with the <see cref="StructuredResultDataQualityCheckResponse" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of StructuredResultDataQualityCheckResponse.</param>
+        public WorkerConfigurationResponse(StructuredResultDataQualityCheckResponse actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
 
         private Object _actualInstance;
 
@@ -188,6 +212,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this._actualInstance = value;
                 }
                 else if (value.GetType() == typeof(HorizonIntegrationResponse) || value is HorizonIntegrationResponse)
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(InstantiateRecResponse) || value is InstantiateRecResponse)
                 {
                     this._actualInstance = value;
                 }
@@ -219,9 +247,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(StructuredResultDataQualityCheckResponse) || value is StructuredResultDataQualityCheckResponse)
+                {
+                    this._actualInstance = value;
+                }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: FailResponse, GroupReconciliationResponse, HealthCheckResponse, HorizonIntegrationResponse, LibraryResponse, LuminesceViewResponse, LusidEntityDataQualityCheckResponse, PortfolioHoldingDataQualityCheckResponse, PortfolioTransactionDataQualityCheckResponse, SchedulerJobResponse, SleepResponse");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: FailResponse, GroupReconciliationResponse, HealthCheckResponse, HorizonIntegrationResponse, InstantiateRecResponse, LibraryResponse, LuminesceViewResponse, LusidEntityDataQualityCheckResponse, PortfolioHoldingDataQualityCheckResponse, PortfolioTransactionDataQualityCheckResponse, SchedulerJobResponse, SleepResponse, StructuredResultDataQualityCheckResponse");
                 }
             }
         }
@@ -264,6 +296,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public HorizonIntegrationResponse GetHorizonIntegrationResponse()
         {
             return (HorizonIntegrationResponse)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `InstantiateRecResponse`. If the actual instance is not `InstantiateRecResponse`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of InstantiateRecResponse</returns>
+        public InstantiateRecResponse GetInstantiateRecResponse()
+        {
+            return (InstantiateRecResponse)this.ActualInstance;
         }
 
         /// <summary>
@@ -334,6 +376,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public SleepResponse GetSleepResponse()
         {
             return (SleepResponse)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `StructuredResultDataQualityCheckResponse`. If the actual instance is not `StructuredResultDataQualityCheckResponse`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of StructuredResultDataQualityCheckResponse</returns>
+        public StructuredResultDataQualityCheckResponse GetStructuredResultDataQualityCheckResponse()
+        {
+            return (StructuredResultDataQualityCheckResponse)this.ActualInstance;
         }
 
         /// <summary>
@@ -452,6 +504,26 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into HorizonIntegrationResponse: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(InstantiateRecResponse).GetProperty("AdditionalProperties") == null)
+                {
+                    newWorkerConfigurationResponse = new WorkerConfigurationResponse(JsonConvert.DeserializeObject<InstantiateRecResponse>(jsonString, WorkerConfigurationResponse.SerializerSettings));
+                }
+                else
+                {
+                    newWorkerConfigurationResponse = new WorkerConfigurationResponse(JsonConvert.DeserializeObject<InstantiateRecResponse>(jsonString, WorkerConfigurationResponse.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("InstantiateRecResponse");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into InstantiateRecResponse: {1}", jsonString, exception.ToString()));
             }
 
             try
@@ -592,6 +664,26 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into SleepResponse: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(StructuredResultDataQualityCheckResponse).GetProperty("AdditionalProperties") == null)
+                {
+                    newWorkerConfigurationResponse = new WorkerConfigurationResponse(JsonConvert.DeserializeObject<StructuredResultDataQualityCheckResponse>(jsonString, WorkerConfigurationResponse.SerializerSettings));
+                }
+                else
+                {
+                    newWorkerConfigurationResponse = new WorkerConfigurationResponse(JsonConvert.DeserializeObject<StructuredResultDataQualityCheckResponse>(jsonString, WorkerConfigurationResponse.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("StructuredResultDataQualityCheckResponse");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into StructuredResultDataQualityCheckResponse: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

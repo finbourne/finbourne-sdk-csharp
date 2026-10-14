@@ -10,6 +10,7 @@ Describes a field of a log type that can be selected and (where Finbourne.Insigh
 | **SupportedOperations** | **List&lt;string&gt;** | Required | The comparator operations available for this field. Empty when the field is not filterable. |
 | **Filterable** | **bool** | Optional | Whether the field can be used in a filter. |
 | **AlwaysReturned** | **bool** | Optional | Whether the field is always returned (and therefore need not be requested). |
+| **AvailableValues** | [List&lt;AvailableValue&gt;](AvailableValue.md) | Optional | The values known to be valid for this field, which a UI can offer when filtering on it. Null when the field has no known set of values. The list is not exhaustive: other values may still be filtered on. |
 
 
 ## Usage
@@ -24,7 +25,8 @@ var instance = new QueryableLogField(
     dataType: "...",  // required — The data type of the field: Text, Numeric, Date or Boolean.
     supportedOperations: ,  // required — The comparator operations available for this field. Empty when the field is not filterable.
     filterable: true,  // optional — Whether the field can be used in a filter.
-    alwaysReturned: true  // optional — Whether the field is always returned (and therefore need not be requested).
+    alwaysReturned: true,  // optional — Whether the field is always returned (and therefore need not be requested).
+    availableValues: new List<AvailableValue>()  // optional — The values known to be valid for this field, which a UI can offer when filtering on it. Null when the field has no known set of values. The list is not exhaustive: other values may still be filtered on.
 );
 ```
 ### Serializing to JSON
@@ -39,6 +41,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<QueryableLogField>(json);
 ```
 
+- [AvailableValue](AvailableValue.md) — used in `AvailableValues`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

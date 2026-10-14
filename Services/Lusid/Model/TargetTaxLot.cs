@@ -45,7 +45,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="variationMargin">The variation margin of the tax-lot&#39;s opening transaction..</param>
         /// <param name="variationMarginPortfolioCcy">The variation margin in portfolio currency of the tax-lot&#39;s opening transaction..</param>
         /// <param name="amortisedCost">The amortised cost of the tax-lot in the settlement currency, for example a supplied amortised cost at migration. If supplied, this value seeds the tax-lot&#39;s amortised cost at the adjustment date and amortisation continues forward from it; if not supplied, the amortised cost defaults to the cost of the tax-lot..</param>
-        public TargetTaxLot(decimal units = default(decimal), CurrencyAndAmount cost = default(CurrencyAndAmount), decimal? portfolioCost = default(decimal?), decimal? price = default(decimal?), DateTimeOffset? purchaseDate = default(DateTimeOffset?), DateTimeOffset? settlementDate = default(DateTimeOffset?), decimal? notionalCost = default(decimal?), decimal? variationMargin = default(decimal?), decimal? variationMarginPortfolioCcy = default(decimal?), decimal? amortisedCost = default(decimal?))
+        /// <param name="currentFace">The current face of the tax-lot, i.e. its outstanding notional after any reduction by the instrument&#39;s pool factor. If supplied, this value seeds the tax-lot&#39;s current face, so that later paydowns on an asset-backed instrument reduce the cost against it; if not supplied, a tax-lot that already has a current face keeps its pool factor as its units change..</param>
+        public TargetTaxLot(decimal units = default(decimal), CurrencyAndAmount cost = default(CurrencyAndAmount), decimal? portfolioCost = default(decimal?), decimal? price = default(decimal?), DateTimeOffset? purchaseDate = default(DateTimeOffset?), DateTimeOffset? settlementDate = default(DateTimeOffset?), decimal? notionalCost = default(decimal?), decimal? variationMargin = default(decimal?), decimal? variationMarginPortfolioCcy = default(decimal?), decimal? amortisedCost = default(decimal?), decimal? currentFace = default(decimal?))
         {
             this.Units = units;
             this.Cost = cost;
@@ -57,6 +58,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.VariationMargin = variationMargin;
             this.VariationMarginPortfolioCcy = variationMarginPortfolioCcy;
             this.AmortisedCost = amortisedCost;
+            this.CurrentFace = currentFace;
         }
 
         /// <summary>
@@ -129,6 +131,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal? AmortisedCost { get; set; }
 
         /// <summary>
+        /// The current face of the tax-lot, i.e. its outstanding notional after any reduction by the instrument&#39;s pool factor. If supplied, this value seeds the tax-lot&#39;s current face, so that later paydowns on an asset-backed instrument reduce the cost against it; if not supplied, a tax-lot that already has a current face keeps its pool factor as its units change.
+        /// </summary>
+        /// <value>The current face of the tax-lot, i.e. its outstanding notional after any reduction by the instrument&#39;s pool factor. If supplied, this value seeds the tax-lot&#39;s current face, so that later paydowns on an asset-backed instrument reduce the cost against it; if not supplied, a tax-lot that already has a current face keeps its pool factor as its units change.</value>
+        [DataMember(Name = "currentFace", EmitDefaultValue = true)]
+        public decimal? CurrentFace { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -146,6 +155,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  VariationMargin: ").Append(VariationMargin).Append("\n");
             sb.Append("  VariationMarginPortfolioCcy: ").Append(VariationMarginPortfolioCcy).Append("\n");
             sb.Append("  AmortisedCost: ").Append(AmortisedCost).Append("\n");
+            sb.Append("  CurrentFace: ").Append(CurrentFace).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -229,6 +239,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.AmortisedCost == input.AmortisedCost ||
                     (this.AmortisedCost != null &&
                     this.AmortisedCost.Equals(input.AmortisedCost))
+                ) && 
+                (
+                    this.CurrentFace == input.CurrentFace ||
+                    (this.CurrentFace != null &&
+                    this.CurrentFace.Equals(input.CurrentFace))
                 );
         }
 
@@ -277,6 +292,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.AmortisedCost != null)
                 {
                     hashCode = (hashCode * 59) + this.AmortisedCost.GetHashCode();
+                }
+                if (this.CurrentFace != null)
+                {
+                    hashCode = (hashCode * 59) + this.CurrentFace.GetHashCode();
                 }
                 return hashCode;
             }

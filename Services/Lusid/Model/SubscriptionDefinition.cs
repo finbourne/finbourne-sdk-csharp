@@ -43,7 +43,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="timelineId">timelineId.</param>
         /// <param name="addressKeys">The set of addresses the subscriber wishes to receive..</param>
         /// <param name="byTaxLots">byTaxLots.</param>
-        /// <param name="subscriptionType">The kind of data the subscription streams, defaulting to holdings: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions..</param>
+        /// <param name="subscriptionType">Required. The kind of data the subscription streams: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions. (required).</param>
         /// <param name="startEffectiveAt">startEffectiveAt.</param>
         /// <param name="endEffectiveAt">Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping..</param>
         /// <param name="effectiveForwardDays">How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes..</param>
@@ -67,12 +67,17 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("portfolioId is a required property for SubscriptionDefinition and cannot be null");
             }
             this.PortfolioId = portfolioId;
+            // to ensure "subscriptionType" is required (not null)
+            if (subscriptionType == null)
+            {
+                throw new ArgumentNullException("subscriptionType is a required property for SubscriptionDefinition and cannot be null");
+            }
+            this.SubscriptionType = subscriptionType;
             this.DisplayName = displayName;
             this.Description = description;
             this.TimelineId = timelineId;
             this.AddressKeys = addressKeys;
             this.ByTaxLots = byTaxLots;
-            this.SubscriptionType = subscriptionType;
             this.StartEffectiveAt = startEffectiveAt;
             this.EndEffectiveAt = endEffectiveAt;
             this.EffectiveForwardDays = effectiveForwardDays;
@@ -128,10 +133,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public bool ByTaxLots { get; set; }
 
         /// <summary>
-        /// The kind of data the subscription streams, defaulting to holdings: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions.
+        /// Required. The kind of data the subscription streams: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions.
         /// </summary>
-        /// <value>The kind of data the subscription streams, defaulting to holdings: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions.</value>
-        [DataMember(Name = "subscriptionType", EmitDefaultValue = true)]
+        /// <value>Required. The kind of data the subscription streams: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions.</value>
+        [DataMember(Name = "subscriptionType", IsRequired = true, EmitDefaultValue = true)]
         public string SubscriptionType { get; set; }
 
         /// <summary>

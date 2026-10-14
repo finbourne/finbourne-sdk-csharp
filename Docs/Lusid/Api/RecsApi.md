@@ -15,7 +15,7 @@ All URIs are relative to *http://localhost*
 | [**GetMatchingRuleset**](#getmatchingruleset) | **GET** `/api/api/recs/matchingrulesets/{scope}/{code}` | [EXPERIMENTAL] GetMatchingRuleset: GetMatchingRuleset |
 | [**GetRecDefinition**](#getrecdefinition) | **GET** `/api/api/recs/definitions/{scope}/{code}` | [EXPERIMENTAL] GetRecDefinition: GetRecDefinition |
 | [**GetRecInstance**](#getrecinstance) | **GET** `/api/api/recs/instances/{instanceIdType}/{instanceIdValue}` | [EXPERIMENTAL] GetRecInstance: GetRecInstance |
-| [**GetRecResult**](#getrecresult) | **GET** `/api/api/recs/results/{id}` | [EXPERIMENTAL] GetRecResult: GetRecResult |
+| [**GetRecResult**](#getrecresult) | **GET** `/api/api/recs/results/{instanceIdType}/{instanceIdValue}/{recType}/{runNumber}/{id}` | [EXPERIMENTAL] GetRecResult: GetRecResult |
 | [**GetRecResultSet**](#getrecresultset) | **GET** `/api/api/recs/resultsets/{entityUniqueId}` | [EXPERIMENTAL] GetRecResultSet: GetRecResultSet |
 | [**InstantiateRec**](#instantiaterec) | **POST** `/api/api/recs/instances` | [EXPERIMENTAL] InstantiateRec: InstantiateRec |
 | [**ListMatchingRulesets**](#listmatchingrulesets) | **GET** `/api/api/recs/matchingrulesets` | [EXPERIMENTAL] ListMatchingRulesets: ListMatchingRulesets |
@@ -27,6 +27,7 @@ All URIs are relative to *http://localhost*
 | [**TransitionRecInstance**](#transitionrecinstance) | **POST** `/api/api/recs/instances/{instanceIdType}/{instanceIdValue}/$transition` | [EXPERIMENTAL] TransitionRecInstance: TransitionRecInstance |
 | [**UpdateMatchingRuleset**](#updatematchingruleset) | **PUT** `/api/api/recs/matchingrulesets/{scope}/{code}` | [EXPERIMENTAL] UpdateMatchingRuleset: UpdateMatchingRuleset |
 | [**UpdateRecDefinition**](#updaterecdefinition) | **PUT** `/api/api/recs/definitions/{scope}/{code}` | [EXPERIMENTAL] UpdateRecDefinition: UpdateRecDefinition |
+| [**UpsertRecDefinitionProperties**](#upsertrecdefinitionproperties) | **POST** `/api/api/recs/definitions/{scope}/{code}/properties/$upsert` | [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties |
 
 ### Example
 
@@ -677,20 +678,24 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getrecresult"></a>
 ## GetRecResult
 
-> RecResult GetRecResult(string id, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
+> RecResult GetRecResult(string instanceIdType, string instanceIdValue, string recType, int runNumber, string id, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
 [EXPERIMENTAL] GetRecResult: GetRecResult
 
-Retrieve a single rec result by its id.
+Retrieve a single rec result by its display id, as it stood in the run named.
 
 ### Example
 
 ```csharp
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var instanceIdType = "instanceIdType_example";  // string
+var instanceIdValue = "instanceIdValue_example";  // string
+var recType = "recType_example";  // string
+var runNumber = 56;  // int
 var id = "id_example";  // string
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var propertyKeys = new List<string>?(); // List<string>? (optional)
-RecResult result = apiInstance.GetRecResult(id, asAt, propertyKeys);
+RecResult result = apiInstance.GetRecResult(instanceIdType, instanceIdValue, recType, runNumber, id, asAt, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -698,7 +703,11 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **id** | **string** | path | **required** | The system-generated id of the rec result. |
+| **instanceIdType** | **string** | path | **required** | How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual. |
+| **instanceIdValue** | **string** | path | **required** | The unique identifier of the rec instance. |
+| **recType** | **string** | path | **required** | The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. |
+| **runNumber** | **int** | path | **required** | The run of the instance whose view of the result is read. |
+| **id** | **string** | path | **required** | The display id of the rec result, e.g. \&quot;break-3\&quot;. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the result. Defaults to latest if not specified. |
 | **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys to decorate onto the result. |
 
@@ -725,7 +734,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<RecResult> response = apiInstance.GetRecResultWithHttpInfo(id, asAt, propertyKeys);
+ApiResponse<RecResult> response = apiInstance.GetRecResultWithHttpInfo(instanceIdType, instanceIdValue, recType, runNumber, id, asAt, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1131,7 +1140,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EXPERIMENTAL] ListRecResults: ListRecResults
 
-List rec results.
+List rec results. A result's runNumber is the run that last wrote it; a run's results as they stood are read at that run's asAt.
 
 ### Example
 
@@ -1428,6 +1437,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<RecDefinition> response = apiInstance.UpdateRecDefinitionWithHttpInfo(scope, code, updateRecDefinitionRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="upsertrecdefinitionproperties"></a>
+## UpsertRecDefinitionProperties
+
+> UpsertRecDefinitionPropertiesResponse UpsertRecDefinitionProperties(string scope, string code, Dictionary<string, PerpetualProperty> requestBody)
+
+[EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties
+
+Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain 'RecDefinition', and are perpetual.                Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var requestBody = new Dictionary<string, PerpetualProperty>(); // Dictionary<string, PerpetualProperty>
+UpsertRecDefinitionPropertiesResponse result = apiInstance.UpsertRecDefinitionProperties(scope, code, requestBody);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the rec definition to update or insert the properties onto. |
+| **code** | **string** | path | **required** | The code of the rec definition to update or insert the properties onto. Together with the               scope this uniquely identifies the rec definition. |
+| **requestBody** | [Dictionary&lt;string, PerpetualProperty&gt;](../Model/PerpetualProperty.md) | body | **required** | The properties to be updated or inserted onto the rec definition. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;RecDefinition/Workflow/WorkflowId&#39;. |
+
+### Return type
+
+[UpsertRecDefinitionPropertiesResponse](../Model/UpsertRecDefinitionPropertiesResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated or inserted properties. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpsertRecDefinitionPropertiesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<UpsertRecDefinitionPropertiesResponse> response = apiInstance.UpsertRecDefinitionPropertiesWithHttpInfo(scope, code, requestBody);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

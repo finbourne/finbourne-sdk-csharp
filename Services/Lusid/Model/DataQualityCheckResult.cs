@@ -48,7 +48,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="resultId">Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType..</param>
         /// <param name="portfolioHolding">portfolioHolding.</param>
         /// <param name="portfolioTransaction">portfolioTransaction.</param>
-        public DataQualityCheckResult(string checkDefinitionScope = default(string), string checkDefinitionCode = default(string), string checkDefinitionDisplayName = default(string), DateTimeOffset checkRunAsAt = default(DateTimeOffset), string resultType = default(string), string ruleSetKey = default(string), string ruleSetDisplayName = default(string), string ruleKey = default(string), string ruleDisplayName = default(string), string ruleDescription = default(string), string ruleFormula = default(string), int? severity = default(int?), LusidEntityResult lusidEntity = default(LusidEntityResult), int? countRuleBreaches = default(int?), string errorDetail = default(string), string resultId = default(string), PortfolioHoldingResult portfolioHolding = default(PortfolioHoldingResult), PortfolioTransactionResult portfolioTransaction = default(PortfolioTransactionResult))
+        /// <param name="structuredResultData">structuredResultData.</param>
+        public DataQualityCheckResult(string checkDefinitionScope = default(string), string checkDefinitionCode = default(string), string checkDefinitionDisplayName = default(string), DateTimeOffset checkRunAsAt = default(DateTimeOffset), string resultType = default(string), string ruleSetKey = default(string), string ruleSetDisplayName = default(string), string ruleKey = default(string), string ruleDisplayName = default(string), string ruleDescription = default(string), string ruleFormula = default(string), int? severity = default(int?), LusidEntityResult lusidEntity = default(LusidEntityResult), int? countRuleBreaches = default(int?), string errorDetail = default(string), string resultId = default(string), PortfolioHoldingResult portfolioHolding = default(PortfolioHoldingResult), PortfolioTransactionResult portfolioTransaction = default(PortfolioTransactionResult), StructuredResultDataResult structuredResultData = default(StructuredResultDataResult))
         {
             this.CheckDefinitionScope = checkDefinitionScope;
             this.CheckDefinitionCode = checkDefinitionCode;
@@ -68,6 +69,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.ResultId = resultId;
             this.PortfolioHolding = portfolioHolding;
             this.PortfolioTransaction = portfolioTransaction;
+            this.StructuredResultData = structuredResultData;
         }
 
         /// <summary>
@@ -194,6 +196,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public PortfolioTransactionResult PortfolioTransaction { get; set; }
 
         /// <summary>
+        /// Gets or Sets StructuredResultData
+        /// </summary>
+        [DataMember(Name = "structuredResultData", EmitDefaultValue = false)]
+        public StructuredResultDataResult StructuredResultData { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -219,6 +227,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ResultId: ").Append(ResultId).Append("\n");
             sb.Append("  PortfolioHolding: ").Append(PortfolioHolding).Append("\n");
             sb.Append("  PortfolioTransaction: ").Append(PortfolioTransaction).Append("\n");
+            sb.Append("  StructuredResultData: ").Append(StructuredResultData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -343,6 +352,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PortfolioTransaction == input.PortfolioTransaction ||
                     (this.PortfolioTransaction != null &&
                     this.PortfolioTransaction.Equals(input.PortfolioTransaction))
+                ) && 
+                (
+                    this.StructuredResultData == input.StructuredResultData ||
+                    (this.StructuredResultData != null &&
+                    this.StructuredResultData.Equals(input.StructuredResultData))
                 );
         }
 
@@ -426,6 +440,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.PortfolioTransaction != null)
                 {
                     hashCode = (hashCode * 59) + this.PortfolioTransaction.GetHashCode();
+                }
+                if (this.StructuredResultData != null)
+                {
+                    hashCode = (hashCode * 59) + this.StructuredResultData.GetHashCode();
                 }
                 return hashCode;
             }

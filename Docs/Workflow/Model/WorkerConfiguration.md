@@ -10,12 +10,14 @@ Information about how the worker should be executed
 * [GroupReconciliation](./GroupReconciliation.md)
 * [HealthCheck](./HealthCheck.md)
 * [HorizonIntegration](./HorizonIntegration.md)
+* [InstantiateRec](./InstantiateRec.md)
 * [LuminesceView](./LuminesceView.md)
 * [LusidEntityDataQualityCheck](./LusidEntityDataQualityCheck.md)
 * [PortfolioHoldingDataQualityCheck](./PortfolioHoldingDataQualityCheck.md)
 * [PortfolioTransactionDataQualityCheck](./PortfolioTransactionDataQualityCheck.md)
 * [SchedulerJob](./SchedulerJob.md)
 * [Sleep](./Sleep.md)
+* [StructuredResultDataQualityCheck](./StructuredResultDataQualityCheck.md)
 
 ## Usage
 
@@ -46,12 +48,14 @@ var instance = JsonConvert.DeserializeObject<WorkerConfiguration>(json);
 - [GroupReconciliation](./GroupReconciliation.md)
 - [HealthCheck](./HealthCheck.md)
 - [HorizonIntegration](./HorizonIntegration.md)
+- [InstantiateRec](./InstantiateRec.md)
 - [LuminesceView](./LuminesceView.md)
 - [LusidEntityDataQualityCheck](./LusidEntityDataQualityCheck.md)
 - [PortfolioHoldingDataQualityCheck](./PortfolioHoldingDataQualityCheck.md)
 - [PortfolioTransactionDataQualityCheck](./PortfolioTransactionDataQualityCheck.md)
 - [SchedulerJob](./SchedulerJob.md)
 - [Sleep](./Sleep.md)
+- [StructuredResultDataQualityCheck](./StructuredResultDataQualityCheck.md)
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
 

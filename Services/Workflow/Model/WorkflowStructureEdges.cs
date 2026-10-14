@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Workflow.Model
 {
     /// <summary>
-    /// The edges of a Workflow structure graph — the parent-child relationships between Task Definitions
+    /// The edges of a Workflow structure graph — the parent-child relationships between Task Definitions and the relationships between Launchers and the Task Definitions they start
     /// </summary>
     [DataContract(Name = "WorkflowStructureEdges")]
     public partial class WorkflowStructureEdges : IEquatable<WorkflowStructureEdges>, IValidatableObject
@@ -31,9 +31,11 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// Initializes a new instance of the <see cref="WorkflowStructureEdges" /> class.
         /// </summary>
         /// <param name="childTaskDefinitions">The child Task Definition relationships.</param>
-        public WorkflowStructureEdges(List<ChildTaskDefinitionEdge> childTaskDefinitions = default(List<ChildTaskDefinitionEdge>))
+        /// <param name="launchers">The Launcher relationships. There is one entry per Launcher in nodes.launchers, in the same order.</param>
+        public WorkflowStructureEdges(List<ChildTaskDefinitionEdge> childTaskDefinitions = default(List<ChildTaskDefinitionEdge>), List<LauncherEdge> launchers = default(List<LauncherEdge>))
         {
             this.ChildTaskDefinitions = childTaskDefinitions;
+            this.Launchers = launchers;
         }
 
         /// <summary>
@@ -44,6 +46,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public List<ChildTaskDefinitionEdge> ChildTaskDefinitions { get; set; }
 
         /// <summary>
+        /// The Launcher relationships. There is one entry per Launcher in nodes.launchers, in the same order
+        /// </summary>
+        /// <value>The Launcher relationships. There is one entry per Launcher in nodes.launchers, in the same order</value>
+        [DataMember(Name = "launchers", EmitDefaultValue = true)]
+        public List<LauncherEdge> Launchers { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -52,6 +61,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class WorkflowStructureEdges {\n");
             sb.Append("  ChildTaskDefinitions: ").Append(ChildTaskDefinitions).Append("\n");
+            sb.Append("  Launchers: ").Append(Launchers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,6 +102,12 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.ChildTaskDefinitions != null &&
                     input.ChildTaskDefinitions != null &&
                     this.ChildTaskDefinitions.SequenceEqual(input.ChildTaskDefinitions)
+                ) && 
+                (
+                    this.Launchers == input.Launchers ||
+                    this.Launchers != null &&
+                    input.Launchers != null &&
+                    this.Launchers.SequenceEqual(input.Launchers)
                 );
         }
 
@@ -107,6 +123,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.ChildTaskDefinitions != null)
                 {
                     hashCode = (hashCode * 59) + this.ChildTaskDefinitions.GetHashCode();
+                }
+                if (this.Launchers != null)
+                {
+                    hashCode = (hashCode * 59) + this.Launchers.GetHashCode();
                 }
                 return hashCode;
             }

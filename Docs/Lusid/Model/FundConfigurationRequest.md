@@ -15,6 +15,9 @@
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the Fund Configuration. |
 | **ApportionmentBucketSet** | **string** | Optional | The code of the bucket set definition within this fund configuration that is designated as the apportionment bucket set. Must reference a BucketSetDefinition code within the BucketSets collection. |
 | **ApportionmentMethodProperty** | [ApportionmentMethodProperty](ApportionmentMethodProperty.md) | Optional | *No description available.* |
+| **PartnershipAccounting** | [PartnershipAccountingConfiguration](PartnershipAccountingConfiguration.md) | Optional | *No description available.* |
+| **FundTerms** | [FundTerms](FundTerms.md) | Optional | *No description available.* |
+| **Closings** | [List&lt;FundClosing&gt;](FundClosing.md) | Optional | The register of fund closings (first close, subsequent closes, final close) for partnership funds using this configuration. |
 
 
 ## Usage
@@ -35,7 +38,10 @@ var instance = new FundConfigurationRequest(
     bucketSets: new List<BucketSetDefinition>(),  // optional — The ordered set of component bucket set definitions for this fund configuration. Each bucket set defines how JE lines are grouped into buckets at VP finalisation.
     properties: new Property(...),  // optional — A set of properties for the Fund Configuration.
     apportionmentBucketSet: "...",  // optional — The code of the bucket set definition within this fund configuration that is designated as the apportionment bucket set. Must reference a BucketSetDefinition code within the BucketSets collection.
-    apportionmentMethodProperty: new ApportionmentMethodProperty(...)  // optional
+    apportionmentMethodProperty: new ApportionmentMethodProperty(...),  // optional
+    partnershipAccounting: new PartnershipAccountingConfiguration(...),  // optional
+    fundTerms: new FundTerms(...),  // optional
+    closings: new List<FundClosing>()  // optional — The register of fund closings (first close, subsequent closes, final close) for partnership funds using this configuration.
 );
 ```
 ### Serializing to JSON
@@ -57,6 +63,9 @@ var instance = JsonConvert.DeserializeObject<FundConfigurationRequest>(json);
 - [BucketSetDefinition](BucketSetDefinition.md) — used in `BucketSets`
 - [Property](Property.md) — used in `Properties`
 - [ApportionmentMethodProperty](ApportionmentMethodProperty.md)
+- [PartnershipAccountingConfiguration](PartnershipAccountingConfiguration.md)
+- [FundTerms](FundTerms.md)
+- [FundClosing](FundClosing.md) — used in `Closings`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -47,6 +47,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="ultimateParentTask">ultimateParentTask (required).</param>
         /// <param name="parentTask">parentTask.</param>
         /// <param name="childTasks">This Task&#39;s child tasks.</param>
+        /// <param name="previousTask">previousTask.</param>
+        /// <param name="nextTask">nextTask.</param>
+        /// <param name="nextTaskInitialTrigger">The trigger this Task&#39;s next Task should receive when this Task completes, if any.</param>
         /// <param name="correlationIds">User-provided ID used to link entities and tasks.</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="terminalState">True if no onward transitions are possible (required).</param>
@@ -63,7 +66,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="openDurationSinceLastUpdate">Duration in seconds since the Task was last updated. 0 if the Task is Completed..</param>
         /// <param name="openDurationSinceLastTransition">Duration in seconds since the Task last transitioned. 0 if the Task is Completed..</param>
         /// <param name="properties">The requested TaskDefinition and Workflow properties decorated onto this Task, keyed by property key. Only populated when property keys were requested..</param>
-        public Task(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), ResourceId workflowId = default(ResourceId), string workflowDisplayName = default(string), WorkflowRun workflowRun = default(WorkflowRun), string state = default(string), string stateDisplayName = default(string), TaskSummary ultimateParentTask = default(TaskSummary), TaskSummary parentTask = default(TaskSummary), List<TaskSummary> childTasks = default(List<TaskSummary>), List<string> correlationIds = default(List<string>), VersionInfo varVersion = default(VersionInfo), bool terminalState = default(bool), DateTimeOffset? asAtLastTransition = default(DateTimeOffset?), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string), Stack stack = default(Stack), Guid? actionLogIdCreated = default(Guid?), Guid? actionLogIdModified = default(Guid?), Guid? actionLogIdSubmitted = default(Guid?), string hierarchicalPosition = default(string), string completionStatus = default(string), long? openDuration = default(long?), long? openDurationSinceLastUpdate = default(long?), long? openDurationSinceLastTransition = default(long?), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>))
+        public Task(Guid id = default(Guid), ResourceId taskDefinitionId = default(ResourceId), TaskDefinitionVersion taskDefinitionVersion = default(TaskDefinitionVersion), string taskDefinitionDisplayName = default(string), ResourceId workflowId = default(ResourceId), string workflowDisplayName = default(string), WorkflowRun workflowRun = default(WorkflowRun), string state = default(string), string stateDisplayName = default(string), TaskSummary ultimateParentTask = default(TaskSummary), TaskSummary parentTask = default(TaskSummary), List<TaskSummary> childTasks = default(List<TaskSummary>), TaskSummary previousTask = default(TaskSummary), TaskSummary nextTask = default(TaskSummary), string nextTaskInitialTrigger = default(string), List<string> correlationIds = default(List<string>), VersionInfo varVersion = default(VersionInfo), bool terminalState = default(bool), DateTimeOffset? asAtLastTransition = default(DateTimeOffset?), List<TaskInstanceField> fields = default(List<TaskInstanceField>), string stackingKey = default(string), Stack stack = default(Stack), Guid? actionLogIdCreated = default(Guid?), Guid? actionLogIdModified = default(Guid?), Guid? actionLogIdSubmitted = default(Guid?), string hierarchicalPosition = default(string), string completionStatus = default(string), long? openDuration = default(long?), long? openDurationSinceLastUpdate = default(long?), long? openDurationSinceLastTransition = default(long?), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>))
         {
             this.Id = id;
             // to ensure "taskDefinitionId" is required (not null)
@@ -103,6 +106,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             this.StateDisplayName = stateDisplayName;
             this.ParentTask = parentTask;
             this.ChildTasks = childTasks;
+            this.PreviousTask = previousTask;
+            this.NextTask = nextTask;
+            this.NextTaskInitialTrigger = nextTaskInitialTrigger;
             this.CorrelationIds = correlationIds;
             this.VarVersion = varVersion;
             this.AsAtLastTransition = asAtLastTransition;
@@ -197,6 +203,25 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <value>This Task&#39;s child tasks</value>
         [DataMember(Name = "childTasks", EmitDefaultValue = true)]
         public List<TaskSummary> ChildTasks { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PreviousTask
+        /// </summary>
+        [DataMember(Name = "previousTask", EmitDefaultValue = false)]
+        public TaskSummary PreviousTask { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NextTask
+        /// </summary>
+        [DataMember(Name = "nextTask", EmitDefaultValue = false)]
+        public TaskSummary NextTask { get; set; }
+
+        /// <summary>
+        /// The trigger this Task&#39;s next Task should receive when this Task completes, if any
+        /// </summary>
+        /// <value>The trigger this Task&#39;s next Task should receive when this Task completes, if any</value>
+        [DataMember(Name = "nextTaskInitialTrigger", EmitDefaultValue = true)]
+        public string NextTaskInitialTrigger { get; set; }
 
         /// <summary>
         /// User-provided ID used to link entities and tasks
@@ -328,6 +353,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  UltimateParentTask: ").Append(UltimateParentTask).Append("\n");
             sb.Append("  ParentTask: ").Append(ParentTask).Append("\n");
             sb.Append("  ChildTasks: ").Append(ChildTasks).Append("\n");
+            sb.Append("  PreviousTask: ").Append(PreviousTask).Append("\n");
+            sb.Append("  NextTask: ").Append(NextTask).Append("\n");
+            sb.Append("  NextTaskInitialTrigger: ").Append(NextTaskInitialTrigger).Append("\n");
             sb.Append("  CorrelationIds: ").Append(CorrelationIds).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  TerminalState: ").Append(TerminalState).Append("\n");
@@ -439,6 +467,21 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.ChildTasks != null &&
                     input.ChildTasks != null &&
                     this.ChildTasks.SequenceEqual(input.ChildTasks)
+                ) && 
+                (
+                    this.PreviousTask == input.PreviousTask ||
+                    (this.PreviousTask != null &&
+                    this.PreviousTask.Equals(input.PreviousTask))
+                ) && 
+                (
+                    this.NextTask == input.NextTask ||
+                    (this.NextTask != null &&
+                    this.NextTask.Equals(input.NextTask))
+                ) && 
+                (
+                    this.NextTaskInitialTrigger == input.NextTaskInitialTrigger ||
+                    (this.NextTaskInitialTrigger != null &&
+                    this.NextTaskInitialTrigger.Equals(input.NextTaskInitialTrigger))
                 ) && 
                 (
                     this.CorrelationIds == input.CorrelationIds ||
@@ -580,6 +623,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.ChildTasks != null)
                 {
                     hashCode = (hashCode * 59) + this.ChildTasks.GetHashCode();
+                }
+                if (this.PreviousTask != null)
+                {
+                    hashCode = (hashCode * 59) + this.PreviousTask.GetHashCode();
+                }
+                if (this.NextTask != null)
+                {
+                    hashCode = (hashCode * 59) + this.NextTask.GetHashCode();
+                }
+                if (this.NextTaskInitialTrigger != null)
+                {
+                    hashCode = (hashCode * 59) + this.NextTaskInitialTrigger.GetHashCode();
                 }
                 if (this.CorrelationIds != null)
                 {

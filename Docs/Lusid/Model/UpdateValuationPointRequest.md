@@ -11,6 +11,7 @@ A definition for the period you wish to close
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the diary entry. |
 | **ApplyClearDown** | **bool?** | Optional | Defaults to null. Set to true if you want the closed period to have the clear down applied. |
 | **UpdateInclusionDateNavAdjustments** | **bool?** | Optional | Defaults to null. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities. |
+| **PricingMethodologyOverride** | [PricingMethodologyOverrideRequest](PricingMethodologyOverrideRequest.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -26,7 +27,8 @@ var instance = new UpdateValuationPointRequest(
     name: "...",  // optional — Identifiable Name assigned to the Valuation Point.
     properties: new Property(...),  // optional — A set of properties for the diary entry.
     applyClearDown: true,  // optional — Defaults to null. Set to true if you want the closed period to have the clear down applied.
-    updateInclusionDateNavAdjustments: true  // optional — Defaults to null. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities.
+    updateInclusionDateNavAdjustments: true,  // optional — Defaults to null. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities.
+    pricingMethodologyOverride: new PricingMethodologyOverrideRequest(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -42,6 +44,7 @@ var instance = JsonConvert.DeserializeObject<UpdateValuationPointRequest>(json);
 ```
 
 - [Property](Property.md) — used in `Properties`
+- [PricingMethodologyOverrideRequest](PricingMethodologyOverrideRequest.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

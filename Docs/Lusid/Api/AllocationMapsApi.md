@@ -84,7 +84,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Allocation Map. |
 | **code** | **string** | path | **required** | The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map. |
 | **allocationMapException** | [AllocationMapException](../Model/AllocationMapException.md) | body | **required** | The exception to add. |
-| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label from which the exception applies. Defaults to the current LUSID system datetime if not specified. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label of the map version that gains the exception. Defaults to the exception&#39;s effectiveFrom when that is earlier than the current LUSID system datetime, and to the current LUSID system datetime otherwise. Refused if the map has any version starting after that datetime, including a re-save of the same definition, or a later deletion, since neither would carry the exception. Also refused, with the reason, if the defaulted effectiveFrom is before the map&#39;s first version. |
 
 ### Return type
 
@@ -402,7 +402,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Allocation Map. |
 | **code** | **string** | path | **required** | The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map. |
 | **investorRecordId** | **string** | path | **required** | The investor record whose exception is removed. |
-| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label from which the exception no longer applies. Defaults to the current LUSID system datetime if not specified. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label from which the exception no longer applies. Defaults to the current LUSID system datetime if not specified. Refused if the map has any version starting after that datetime, including a re-save of the same definition, which would still carry the exception, or a later deletion. |
 
 ### Return type
 

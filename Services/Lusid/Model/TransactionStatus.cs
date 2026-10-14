@@ -61,7 +61,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum CancelledTrueUp for value: CancelledTrueUp
         /// </summary>
         [EnumMember(Value = "CancelledTrueUp")]
-        CancelledTrueUp = 6
+        CancelledTrueUp = 6,
+
+        /// <summary>
+        /// Enum PendingReversal for value: PendingReversal
+        /// </summary>
+        [EnumMember(Value = "PendingReversal")]
+        PendingReversal = 7,
+
+        /// <summary>
+        /// Enum Reversed for value: Reversed
+        /// </summary>
+        [EnumMember(Value = "Reversed")]
+        Reversed = 8
     }
 
 }

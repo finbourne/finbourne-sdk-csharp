@@ -23,6 +23,7 @@ Represents the result of a data quality check operation
 | **ResultId** | **string** | Optional | Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType. |
 | **PortfolioHolding** | [PortfolioHoldingResult](PortfolioHoldingResult.md) | Optional | *No description available.* |
 | **PortfolioTransaction** | [PortfolioTransactionResult](PortfolioTransactionResult.md) | Optional | *No description available.* |
+| **StructuredResultData** | [StructuredResultDataResult](StructuredResultDataResult.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -50,7 +51,8 @@ var instance = new DataQualityCheckResult(
     errorDetail: "...",  // optional — Error details (for RulesetInvalid, RuleInvalid)
     resultId: "...",  // optional — Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType.
     portfolioHolding: new PortfolioHoldingResult(...),  // optional
-    portfolioTransaction: new PortfolioTransactionResult(...)  // optional
+    portfolioTransaction: new PortfolioTransactionResult(...),  // optional
+    structuredResultData: new StructuredResultDataResult(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -68,6 +70,7 @@ var instance = JsonConvert.DeserializeObject<DataQualityCheckResult>(json);
 - [LusidEntityResult](LusidEntityResult.md)
 - [PortfolioHoldingResult](PortfolioHoldingResult.md)
 - [PortfolioTransactionResult](PortfolioTransactionResult.md)
+- [StructuredResultDataResult](StructuredResultDataResult.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

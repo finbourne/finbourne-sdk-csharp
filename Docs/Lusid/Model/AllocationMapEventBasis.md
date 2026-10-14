@@ -5,8 +5,9 @@ The basis an Allocation Map applies to one kind of allocation event.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **EventType** | **string** | Required | The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense or ValuationMove. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove. |
+| **EventType** | **string** | Required | The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense, ValuationMove, Equalisation, RecallExpiry, Transfer, Default, Commitment or DealFunding. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding. |
 | **Basis** | [AllocationMapBasis](AllocationMapBasis.md) | Required | *No description available.* |
+| **Component** | **string** | Optional | The component of the event the basis applies to, for example MgmtFee or OrgCost. Absent means the entry is the default for every component of the event type without an entry of its own. |
 
 
 ## Usage
@@ -17,8 +18,9 @@ The basis an Allocation Map applies to one kind of allocation event.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new AllocationMapEventBasis(
-    eventType: "...",  // required — The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense or ValuationMove. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove.
-    basis: new AllocationMapBasis(...)  // required
+    eventType: "...",  // required — The kind of allocation event the basis applies to: CapitalCall, Distribution, FeeExpense, ValuationMove, Equalisation, RecallExpiry, Transfer, Default, Commitment or DealFunding. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding.
+    basis: new AllocationMapBasis(...),  // required
+    component: "..."  // optional — The component of the event the basis applies to, for example MgmtFee or OrgCost. Absent means the entry is the default for every component of the event type without an entry of its own.
 );
 ```
 ### Serializing to JSON

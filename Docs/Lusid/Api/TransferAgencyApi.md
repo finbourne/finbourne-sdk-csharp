@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 | [**DeleteTransferAgencyOrders**](#deletetransferagencyorders) | **POST** `/api/api/transferagency/orders/$delete` | [EXPERIMENTAL] DeleteTransferAgencyOrders: Delete transfer agency orders |
 | [**EstimateTransferAgencyOrders**](#estimatetransferagencyorders) | **POST** `/api/api/transferagency/orders/$estimate` | [EXPERIMENTAL] EstimateTransferAgencyOrders: Estimate the values of transfer agency orders |
 | [**UpsertTransferAgencyOrders**](#upserttransferagencyorders) | **POST** `/api/api/transferagency/orders` | [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders |
+| [**UpsertTransferAgencyTransactionsFromOrders**](#upserttransferagencytransactionsfromorders) | **POST** `/api/api/transferagency/transactions/$fromOrders` | [EXPERIMENTAL] UpsertTransferAgencyTransactionsFromOrders: Upsert transfer agency transactions from transfer agency orders |
 
 ### Example
 
@@ -233,7 +234,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders
 
-Creates a transaction and updates the relevant order for each order supplied.  The response contains both successfully processed orders and any failures, each in the form of a  dictionary keyed by the request's keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+Creates a cash transaction and updates the relevant order for each order supplied. An order must be in  'Pending' or 'New'. An order that already has a cash transaction has that transaction amended  to the order's current amount rather than a second one created.  The response contains both successfully processed orders and any failures, each in the form of a  dictionary keyed by the request's keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
 
 ### Example
 
@@ -274,6 +275,66 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<TransferAgencyOrdersResponse> response = apiInstance.UpsertTransferAgencyOrdersWithHttpInfo(requestBody);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="upserttransferagencytransactionsfromorders"></a>
+## UpsertTransferAgencyTransactionsFromOrders
+
+> UpsertTransferAgencyTransactionsFromOrdersResponse UpsertTransferAgencyTransactionsFromOrders(Dictionary<string, UpsertTransferAgencyTransactionFromOrderRequest> requestBody, string? successMode = null)
+
+[EXPERIMENTAL] UpsertTransferAgencyTransactionsFromOrders: Upsert transfer agency transactions from transfer agency orders
+
+This endpoint derives transactions from existing transfer agency orders. It does not upsert  caller-supplied ones.  Prices each order supplied, booking the security transaction into the investor's portfolio, amending the  paired cash transaction to the final settlement amount, and moving the order to 'Priced'. Only an order in  'New' can be priced, and the supplied price date must match the price date calculated when the order was  created.  The response contains both successfully priced orders and any failures, each in the form of a  dictionary keyed by the request's keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransferAgencyApi>();
+var requestBody = new Dictionary<string, UpsertTransferAgencyTransactionFromOrderRequest>(); // Dictionary<string, UpsertTransferAgencyTransactionFromOrderRequest>
+var successMode = "\"Partial\"";  // string? (optional)
+UpsertTransferAgencyTransactionsFromOrdersResponse result = apiInstance.UpsertTransferAgencyTransactionsFromOrders(requestBody, successMode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **requestBody** | [Dictionary&lt;string, UpsertTransferAgencyTransactionFromOrderRequest&gt;](../Model/UpsertTransferAgencyTransactionFromOrderRequest.md) | body | **required** | The transfer agency orders to price, keyed by a unique request identifier. |
+| **successMode** | **string?** | query | optional | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial Default: `&quot;Partial&quot;` |
+
+### Return type
+
+[UpsertTransferAgencyTransactionsFromOrdersResponse](../Model/UpsertTransferAgencyTransactionsFromOrdersResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully priced orders and any failures. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpsertTransferAgencyTransactionsFromOrdersWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<UpsertTransferAgencyTransactionsFromOrdersResponse> response = apiInstance.UpsertTransferAgencyTransactionsFromOrdersWithHttpInfo(requestBody, successMode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

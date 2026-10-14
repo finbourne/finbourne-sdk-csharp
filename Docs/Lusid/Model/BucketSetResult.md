@@ -9,6 +9,7 @@ A valuation point's results for one bucket set: whether the set is the apportion
 | **IsApportionment** | **bool** | Required | Whether this bucket set is the apportionment set (apportioning non-class-specific P&amp;L across share classes). |
 | **Nodes** | [List&lt;BucketSetNode&gt;](BucketSetNode.md) | Required | The nodes making up the bucket set: the fund aggregate and one per share class. |
 | **DisplayName** | **string** | Optional | The display name of the bucket set, as configured on the fund configuration. |
+| **IsBackfilled** | **bool** | Optional | Set to True if this bucket set was backfilled from fund inception at this valuation point, because the previous valuation point has no results for it. Its values then hold the whole history, and its previous cumulative values are zero. False otherwise. |
 
 
 ## Usage
@@ -22,7 +23,8 @@ var instance = new BucketSetResult(
     bucketSetCode: "...",  // required — The code of the fund configuration&#39;s bucket set definition these results were produced from. Empty for a fund valued from component filters, which has no bucket set definition to name.
     isApportionment: true,  // required — Whether this bucket set is the apportionment set (apportioning non-class-specific P&amp;L across share classes).
     nodes: new List<BucketSetNode>(),  // required — The nodes making up the bucket set: the fund aggregate and one per share class.
-    displayName: "..."  // optional — The display name of the bucket set, as configured on the fund configuration.
+    displayName: "...",  // optional — The display name of the bucket set, as configured on the fund configuration.
+    isBackfilled: true  // optional — Set to True if this bucket set was backfilled from fund inception at this valuation point, because the previous valuation point has no results for it. Its values then hold the whole history, and its previous cumulative values are zero. False otherwise.
 );
 ```
 ### Serializing to JSON

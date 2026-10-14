@@ -7,7 +7,7 @@
 | **EffectiveAt** | **DateTimeOffset** | Required | The effective date for which the fee accrual has been calculated. |
 | **Code** | **string** | Required | The code of the fee for which the accrual has been calculated. |
 | **Name** | **string** | Required | The name of the fee for which the accrual has been calculated. |
-| **CalculationBase** | **decimal** | Optional | The result of the evaluating the fee&#39;s calculation base expression. |
+| **CalculationBase** | **decimal** | Optional | The basis the annual accrual derives from: the result of evaluating the fee&#39;s calculation base expression, or the configured annual amount for a fixed-amount fee. |
 | **Amount** | **decimal** | Optional | The result of applying the fee to the calculation base, and scaled down to a day. |
 | **PreviousAccrual** | **decimal** | Optional | The previous valuation point&#39;s total accrual. |
 | **PreviousTotalAccrual** | **decimal** | Optional | The previous valuation point&#39;s total accrual. |
@@ -26,7 +26,7 @@ var instance = new FeeAccrual(
     effectiveAt: DateTimeOffset.Now,  // required — The effective date for which the fee accrual has been calculated.
     code: "...",  // required — The code of the fee for which the accrual has been calculated.
     name: "...",  // required — The name of the fee for which the accrual has been calculated.
-    calculationBase: 0.0d,  // optional — The result of the evaluating the fee&#39;s calculation base expression.
+    calculationBase: 0.0d,  // optional — The basis the annual accrual derives from: the result of evaluating the fee&#39;s calculation base expression, or the configured annual amount for a fixed-amount fee.
     amount: 0.0d,  // optional — The result of applying the fee to the calculation base, and scaled down to a day.
     previousAccrual: 0.0d,  // optional — The previous valuation point&#39;s total accrual.
     previousTotalAccrual: 0.0d,  // optional — The previous valuation point&#39;s total accrual.

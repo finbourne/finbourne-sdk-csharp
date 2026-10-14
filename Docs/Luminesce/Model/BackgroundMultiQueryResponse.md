@@ -7,6 +7,8 @@
 | **ExecutionId** | **Guid** | Optional | *No description available.* *(read-only)* |
 | **Progress** | [Link](Link.md) | Optional | *No description available.* |
 | **Cancel** | [Link](Link.md) | Optional | *No description available.* |
+| **Download** | [Link](Link.md) | Optional | *No description available.* |
+| **SaveToDrive** | [Link](Link.md) | Optional | *No description available.* |
 | **FetchJson** | [List&lt;Link&gt;](Link.md) | Optional | Json (as a string) data request links for all of the child queries *(read-only)* |
 | **FetchJsonProper** | [List&lt;Link&gt;](Link.md) | Optional | Json-proper data request links for all of the child queries *(read-only)* |
 | **FetchJsonProperWithLineage** | [List&lt;Link&gt;](Link.md) | Optional | Json-proper-with-lineage data request links for all of the child queries *(read-only)* |
@@ -30,6 +32,8 @@ var instance = new BackgroundMultiQueryResponse(
     executionId: "...",  // optional
     progress: new Link(...),  // optional
     cancel: new Link(...),  // optional
+    download: new Link(...),  // optional
+    saveToDrive: new Link(...),  // optional
     fetchJson: new List<Link>(),  // optional — Json (as a string) data request links for all of the child queries
     fetchJsonProper: new List<Link>(),  // optional — Json-proper data request links for all of the child queries
     fetchJsonProperWithLineage: new List<Link>(),  // optional — Json-proper-with-lineage data request links for all of the child queries
@@ -54,6 +58,8 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<BackgroundMultiQueryResponse>(json);
 ```
 
+- [Link](Link.md)
+- [Link](Link.md)
 - [Link](Link.md)
 - [Link](Link.md)
 - [Link](Link.md) — used in `FetchJson`

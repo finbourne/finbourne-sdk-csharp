@@ -79,6 +79,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkerConfiguration" /> class
+        /// with the <see cref="InstantiateRec" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of InstantiateRec.</param>
+        public WorkerConfiguration(InstantiateRec actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WorkerConfiguration" /> class
         /// with the <see cref="LuminesceView" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of LuminesceView.</param>
@@ -149,6 +161,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WorkerConfiguration" /> class
+        /// with the <see cref="StructuredResultDataQualityCheck" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of StructuredResultDataQualityCheck.</param>
+        public WorkerConfiguration(StructuredResultDataQualityCheck actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
 
         private Object _actualInstance;
 
@@ -179,6 +203,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(InstantiateRec) || value is InstantiateRec)
+                {
+                    this._actualInstance = value;
+                }
                 else if (value.GetType() == typeof(LuminesceView) || value is LuminesceView)
                 {
                     this._actualInstance = value;
@@ -203,9 +231,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(StructuredResultDataQualityCheck) || value is StructuredResultDataQualityCheck)
+                {
+                    this._actualInstance = value;
+                }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: Fail, GroupReconciliation, HealthCheck, HorizonIntegration, LuminesceView, LusidEntityDataQualityCheck, PortfolioHoldingDataQualityCheck, PortfolioTransactionDataQualityCheck, SchedulerJob, Sleep");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: Fail, GroupReconciliation, HealthCheck, HorizonIntegration, InstantiateRec, LuminesceView, LusidEntityDataQualityCheck, PortfolioHoldingDataQualityCheck, PortfolioTransactionDataQualityCheck, SchedulerJob, Sleep, StructuredResultDataQualityCheck");
                 }
             }
         }
@@ -248,6 +280,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public HorizonIntegration GetHorizonIntegration()
         {
             return (HorizonIntegration)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `InstantiateRec`. If the actual instance is not `InstantiateRec`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of InstantiateRec</returns>
+        public InstantiateRec GetInstantiateRec()
+        {
+            return (InstantiateRec)this.ActualInstance;
         }
 
         /// <summary>
@@ -308,6 +350,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public Sleep GetSleep()
         {
             return (Sleep)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `StructuredResultDataQualityCheck`. If the actual instance is not `StructuredResultDataQualityCheck`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of StructuredResultDataQualityCheck</returns>
+        public StructuredResultDataQualityCheck GetStructuredResultDataQualityCheck()
+        {
+            return (StructuredResultDataQualityCheck)this.ActualInstance;
         }
 
         /// <summary>
@@ -431,6 +483,26 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             try
             {
                 // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(InstantiateRec).GetProperty("AdditionalProperties") == null)
+                {
+                    newWorkerConfiguration = new WorkerConfiguration(JsonConvert.DeserializeObject<InstantiateRec>(jsonString, WorkerConfiguration.SerializerSettings));
+                }
+                else
+                {
+                    newWorkerConfiguration = new WorkerConfiguration(JsonConvert.DeserializeObject<InstantiateRec>(jsonString, WorkerConfiguration.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("InstantiateRec");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into InstantiateRec: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
                 if (typeof(LuminesceView).GetProperty("AdditionalProperties") == null)
                 {
                     newWorkerConfiguration = new WorkerConfiguration(JsonConvert.DeserializeObject<LuminesceView>(jsonString, WorkerConfiguration.SerializerSettings));
@@ -546,6 +618,26 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Sleep: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(StructuredResultDataQualityCheck).GetProperty("AdditionalProperties") == null)
+                {
+                    newWorkerConfiguration = new WorkerConfiguration(JsonConvert.DeserializeObject<StructuredResultDataQualityCheck>(jsonString, WorkerConfiguration.SerializerSettings));
+                }
+                else
+                {
+                    newWorkerConfiguration = new WorkerConfiguration(JsonConvert.DeserializeObject<StructuredResultDataQualityCheck>(jsonString, WorkerConfiguration.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("StructuredResultDataQualityCheck");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into StructuredResultDataQualityCheck: {1}", jsonString, exception.ToString()));
             }
 
             if (match == 0)

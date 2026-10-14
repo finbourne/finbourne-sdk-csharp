@@ -21,6 +21,7 @@
 | **IsActive** | **bool** | Optional | Indicates whether the settlement instruction is active. When false, the instruction has no impact on settlement positions, but remains visible. Defaults to true. |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The properties which have been requested to be decorated onto the settlement instruction. These will be from the &#39;SettlementInstruction&#39;, &#39;Portfolio&#39;, or &#39;Instrument&#39; domains. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **ProblemCode** | **string** | Optional | Why the settlement instruction was not applied. Set only when the status is Invalid, Orphan or Rejected. |
 
 
 ## Usage
@@ -47,7 +48,8 @@ var instance = new TransactionSettlementInstruction(
     settlementInLieu: new SettlementInLieu(...),  // optional
     isActive: true,  // optional — Indicates whether the settlement instruction is active. When false, the instruction has no impact on settlement positions, but remains visible. Defaults to true.
     properties: new PerpetualProperty(...),  // optional — The properties which have been requested to be decorated onto the settlement instruction. These will be from the &#39;SettlementInstruction&#39;, &#39;Portfolio&#39;, or &#39;Instrument&#39; domains.
-    varVersion: new ModelVersion(...)  // optional
+    varVersion: new ModelVersion(...),  // optional
+    problemCode: "..."  // optional — Why the settlement instruction was not applied. Set only when the status is Invalid, Orphan or Rejected.
 );
 ```
 ### Serializing to JSON

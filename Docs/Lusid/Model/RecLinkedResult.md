@@ -5,7 +5,7 @@ A rec result of a different rec type in the same rec instance whose items share 
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Id** | **string** | Required | The id of the linked result, as carried in that result&#39;s own id field. |
+| **Id** | **string** | Required | The id of the linked result within the same run, as carried in that result&#39;s own id field, e.g. &#39;break-3&#39;. With recType, names the result uniquely. |
 | **RecType** | **string** | Required | The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. |
 | **LinkedBy** | [RecLinkedBy](RecLinkedBy.md) | Required | *No description available.* |
 
@@ -18,7 +18,7 @@ A rec result of a different rec type in the same rec instance whose items share 
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecLinkedResult(
-    id: "...",  // required — The id of the linked result, as carried in that result&#39;s own id field.
+    id: "...",  // required — The id of the linked result within the same run, as carried in that result&#39;s own id field, e.g. &#39;break-3&#39;. With recType, names the result uniquely.
     recType: "...",  // required — The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
     linkedBy: new RecLinkedBy(...)  // required
 );

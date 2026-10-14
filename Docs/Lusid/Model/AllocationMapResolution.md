@@ -5,10 +5,10 @@ The result of resolving an Allocation Map for one event: how much each investor 
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **EventType** | **string** | Optional | The kind of allocation event that was resolved. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove. |
+| **EventType** | **string** | Optional | The kind of allocation event that was resolved. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding. |
 | **Amount** | **decimal** | Optional | The amount that was shared. |
 | **Currency** | **string** | Optional | The currency of the amount. |
-| **BasisRule** | **string** | Optional | The basis the map applies to this event type. Available values: ValueWeighted, PropertyWeighted, FixedPercentage. |
+| **BasisRule** | **string** | Optional | The basis the map applies to this event type. Available values: ValueWeighted, PropertyWeighted, FixedPercentage, Committed, CommittedExGP, UncalledCommitment, PaidIn, PaidInForDeal, Recallable, FeeWeightedCommitment, FixedAmount. |
 | **BasisPool** | **decimal** | Optional | The sum of the basis values over the participants that share the remainder pro rata. |
 | **FixedTotal** | **decimal** | Optional | The total taken off the top by FixedPercentage exceptions before the remainder is shared. |
 | **ParticipantCount** | **int** | Optional | The number of investor records that receive a share, whether fixed or pro rata. |
@@ -25,10 +25,10 @@ The result of resolving an Allocation Map for one event: how much each investor 
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new AllocationMapResolution(
-    eventType: "...",  // optional — The kind of allocation event that was resolved. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove.
+    eventType: "...",  // optional — The kind of allocation event that was resolved. Available values: CapitalCall, Distribution, FeeExpense, ValuationMove, Commitment, Equalisation, RecallExpiry, Transfer, Default, DealFunding.
     amount: 0.0d,  // optional — The amount that was shared.
     currency: "...",  // optional — The currency of the amount.
-    basisRule: "...",  // optional — The basis the map applies to this event type. Available values: ValueWeighted, PropertyWeighted, FixedPercentage.
+    basisRule: "...",  // optional — The basis the map applies to this event type. Available values: ValueWeighted, PropertyWeighted, FixedPercentage, Committed, CommittedExGP, UncalledCommitment, PaidIn, PaidInForDeal, Recallable, FeeWeightedCommitment, FixedAmount.
     basisPool: 0.0d,  // optional — The sum of the basis values over the participants that share the remainder pro rata.
     fixedTotal: 0.0d,  // optional — The total taken off the top by FixedPercentage exceptions before the remainder is shared.
     participantCount: 0,  // optional — The number of investor records that receive a share, whether fixed or pro rata.

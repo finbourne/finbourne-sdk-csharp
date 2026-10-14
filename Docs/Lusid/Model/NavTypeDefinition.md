@@ -22,6 +22,9 @@
 | **LeaderNavTypeCode** | **string** | Optional | The code of the Nav Type that this Nav Type will follow when set. |
 | **TransactionTemplateScope** | **string** | Required | The Transaction Template Scope used by the NavType. |
 | **TransactionExclusionFilter** | **string** | Optional | Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties. |
+| **PricingBasis** | **string** | Optional | The side of the quote this Nav Type values the fund on: Mid, Bid or Ask. Overrides the pricing basis of the valuation recipe&#39;s market options for this Nav Type only, so a bid NAV and an ask NAV can share one recipe. Omit it to value on the recipe&#39;s own pricing basis. Available values: Mid, Bid, Ask. |
+| **SwingPricing** | [SwingPricingRule](SwingPricingRule.md) | Optional | *No description available.* |
+| **NotionalDealingCostTableId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -49,7 +52,10 @@ var instance = new NavTypeDefinition(
     amortisationRuleSetId: new ResourceId(...),  // optional
     leaderNavTypeCode: "...",  // optional — The code of the Nav Type that this Nav Type will follow when set.
     transactionTemplateScope: "...",  // required — The Transaction Template Scope used by the NavType.
-    transactionExclusionFilter: "..."  // optional — Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties.
+    transactionExclusionFilter: "...",  // optional — Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties.
+    pricingBasis: "...",  // optional — The side of the quote this Nav Type values the fund on: Mid, Bid or Ask. Overrides the pricing basis of the valuation recipe&#39;s market options for this Nav Type only, so a bid NAV and an ask NAV can share one recipe. Omit it to value on the recipe&#39;s own pricing basis. Available values: Mid, Bid, Ask.
+    swingPricing: new SwingPricingRule(...),  // optional
+    notionalDealingCostTableId: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -68,6 +74,8 @@ var instance = JsonConvert.DeserializeObject<NavTypeDefinition>(json);
 - [NavSettlementConfiguration](NavSettlementConfiguration.md)
 - [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
+- [ResourceId](ResourceId.md)
+- [SwingPricingRule](SwingPricingRule.md)
 - [ResourceId](ResourceId.md)
 
 

@@ -308,31 +308,39 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] GetRecResult: GetRecResult
         /// </summary>
         /// <remarks>
-        /// Retrieve a single rec result by its id.
+        /// Retrieve a single rec result by its display id, as it stood in the run named.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The system-generated id of the rec result.</param>
+        /// <param name="instanceIdType">How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual.</param>
+        /// <param name="instanceIdValue">The unique identifier of the rec instance.</param>
+        /// <param name="recType">The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.</param>
+        /// <param name="runNumber">The run of the instance whose view of the result is read.</param>
+        /// <param name="id">The display id of the rec result, e.g. \&quot;break-3\&quot;.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the result. Defaults to latest if not specified. (optional)</param>
         /// <param name="propertyKeys">The property keys to decorate onto the result. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>RecResult</returns>
-        RecResult GetRecResult(string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        RecResult GetRecResult(string instanceIdType, string instanceIdValue, string recType, int runNumber, string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] GetRecResult: GetRecResult
         /// </summary>
         /// <remarks>
-        /// Retrieve a single rec result by its id.
+        /// Retrieve a single rec result by its display id, as it stood in the run named.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The system-generated id of the rec result.</param>
+        /// <param name="instanceIdType">How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual.</param>
+        /// <param name="instanceIdValue">The unique identifier of the rec instance.</param>
+        /// <param name="recType">The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.</param>
+        /// <param name="runNumber">The run of the instance whose view of the result is read.</param>
+        /// <param name="id">The display id of the rec result, e.g. \&quot;break-3\&quot;.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the result. Defaults to latest if not specified. (optional)</param>
         /// <param name="propertyKeys">The property keys to decorate onto the result. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of RecResult</returns>
-        Finbourne.Sdk.Client.ApiResponse<RecResult> GetRecResultWithHttpInfo(string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<RecResult> GetRecResultWithHttpInfo(string instanceIdType, string instanceIdValue, string recType, int runNumber, string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetRecResultSet: GetRecResultSet
         /// </summary>
@@ -527,7 +535,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListRecResults: ListRecResults
         /// </summary>
         /// <remarks>
-        /// List rec results.
+        /// List rec results. A result&#39;s runNumber is the run that last wrote it; a run&#39;s results as they stood are read at that run&#39;s asAt.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list results. Defaults to latest if not specified. (optional)</param>
@@ -545,7 +553,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListRecResults: ListRecResults
         /// </summary>
         /// <remarks>
-        /// List rec results.
+        /// List rec results. A result&#39;s runNumber is the run that last wrote it; a run&#39;s results as they stood are read at that run&#39;s asAt.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list results. Defaults to latest if not specified. (optional)</param>
@@ -672,6 +680,35 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of RecDefinition</returns>
         Finbourne.Sdk.Client.ApiResponse<RecDefinition> UpdateRecDefinitionWithHttpInfo(string scope, string code, UpdateRecDefinitionRequest updateRecDefinitionRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties
+        /// </summary>
+        /// <remarks>
+        /// Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain &#39;RecDefinition&#39;, and are perpetual.                Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the rec definition to update or insert the properties onto.</param>
+        /// <param name="code">The code of the rec definition to update or insert the properties onto. Together with the               scope this uniquely identifies the rec definition.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the rec definition. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;RecDefinition/Workflow/WorkflowId&#39;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>UpsertRecDefinitionPropertiesResponse</returns>
+        UpsertRecDefinitionPropertiesResponse UpsertRecDefinitionProperties(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties
+        /// </summary>
+        /// <remarks>
+        /// Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain &#39;RecDefinition&#39;, and are perpetual.                Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the rec definition to update or insert the properties onto.</param>
+        /// <param name="code">The code of the rec definition to update or insert the properties onto. Together with the               scope this uniquely identifies the rec definition.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the rec definition. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;RecDefinition/Workflow/WorkflowId&#39;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of UpsertRecDefinitionPropertiesResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<UpsertRecDefinitionPropertiesResponse> UpsertRecDefinitionPropertiesWithHttpInfo(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, int operationIndex = 0, ConfigurationOptions? opts = null);
         #endregion Synchronous Operations
     }
 
@@ -979,33 +1016,41 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] GetRecResult: GetRecResult
         /// </summary>
         /// <remarks>
-        /// Retrieve a single rec result by its id.
+        /// Retrieve a single rec result by its display id, as it stood in the run named.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The system-generated id of the rec result.</param>
+        /// <param name="instanceIdType">How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual.</param>
+        /// <param name="instanceIdValue">The unique identifier of the rec instance.</param>
+        /// <param name="recType">The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.</param>
+        /// <param name="runNumber">The run of the instance whose view of the result is read.</param>
+        /// <param name="id">The display id of the rec result, e.g. \&quot;break-3\&quot;.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the result. Defaults to latest if not specified. (optional)</param>
         /// <param name="propertyKeys">The property keys to decorate onto the result. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of RecResult</returns>
-        System.Threading.Tasks.Task<RecResult> GetRecResultAsync(string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<RecResult> GetRecResultAsync(string instanceIdType, string instanceIdValue, string recType, int runNumber, string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] GetRecResult: GetRecResult
         /// </summary>
         /// <remarks>
-        /// Retrieve a single rec result by its id.
+        /// Retrieve a single rec result by its display id, as it stood in the run named.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The system-generated id of the rec result.</param>
+        /// <param name="instanceIdType">How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual.</param>
+        /// <param name="instanceIdValue">The unique identifier of the rec instance.</param>
+        /// <param name="recType">The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.</param>
+        /// <param name="runNumber">The run of the instance whose view of the result is read.</param>
+        /// <param name="id">The display id of the rec result, e.g. \&quot;break-3\&quot;.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the result. Defaults to latest if not specified. (optional)</param>
         /// <param name="propertyKeys">The property keys to decorate onto the result. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (RecResult)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<RecResult>> GetRecResultWithHttpInfoAsync(string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<RecResult>> GetRecResultWithHttpInfoAsync(string instanceIdType, string instanceIdValue, string recType, int runNumber, string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetRecResultSet: GetRecResultSet
         /// </summary>
@@ -1212,7 +1257,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListRecResults: ListRecResults
         /// </summary>
         /// <remarks>
-        /// List rec results.
+        /// List rec results. A result&#39;s runNumber is the run that last wrote it; a run&#39;s results as they stood are read at that run&#39;s asAt.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list results. Defaults to latest if not specified. (optional)</param>
@@ -1231,7 +1276,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListRecResults: ListRecResults
         /// </summary>
         /// <remarks>
-        /// List rec results.
+        /// List rec results. A result&#39;s runNumber is the run that last wrote it; a run&#39;s results as they stood are read at that run&#39;s asAt.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list results. Defaults to latest if not specified. (optional)</param>
@@ -1367,6 +1412,37 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (RecDefinition)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<RecDefinition>> UpdateRecDefinitionWithHttpInfoAsync(string scope, string code, UpdateRecDefinitionRequest updateRecDefinitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties
+        /// </summary>
+        /// <remarks>
+        /// Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain &#39;RecDefinition&#39;, and are perpetual.                Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the rec definition to update or insert the properties onto.</param>
+        /// <param name="code">The code of the rec definition to update or insert the properties onto. Together with the               scope this uniquely identifies the rec definition.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the rec definition. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;RecDefinition/Workflow/WorkflowId&#39;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of UpsertRecDefinitionPropertiesResponse</returns>
+        System.Threading.Tasks.Task<UpsertRecDefinitionPropertiesResponse> UpsertRecDefinitionPropertiesAsync(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties
+        /// </summary>
+        /// <remarks>
+        /// Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain &#39;RecDefinition&#39;, and are perpetual.                Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the rec definition to update or insert the properties onto.</param>
+        /// <param name="code">The code of the rec definition to update or insert the properties onto. Together with the               scope this uniquely identifies the rec definition.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the rec definition. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;RecDefinition/Workflow/WorkflowId&#39;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (UpsertRecDefinitionPropertiesResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<UpsertRecDefinitionPropertiesResponse>> UpsertRecDefinitionPropertiesWithHttpInfoAsync(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         #endregion Asynchronous Operations
     }
 
@@ -3942,34 +4018,60 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetRecResult: GetRecResult Retrieve a single rec result by its id.
+        /// [EXPERIMENTAL] GetRecResult: GetRecResult Retrieve a single rec result by its display id, as it stood in the run named.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The system-generated id of the rec result.</param>
+        /// <param name="instanceIdType">How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual.</param>
+        /// <param name="instanceIdValue">The unique identifier of the rec instance.</param>
+        /// <param name="recType">The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.</param>
+        /// <param name="runNumber">The run of the instance whose view of the result is read.</param>
+        /// <param name="id">The display id of the rec result, e.g. \&quot;break-3\&quot;.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the result. Defaults to latest if not specified. (optional)</param>
         /// <param name="propertyKeys">The property keys to decorate onto the result. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>RecResult</returns>
-        public RecResult GetRecResult(string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public RecResult GetRecResult(string instanceIdType, string instanceIdValue, string recType, int runNumber, string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<RecResult> localVarResponse = GetRecResultWithHttpInfo(id, asAt, propertyKeys, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<RecResult> localVarResponse = GetRecResultWithHttpInfo(instanceIdType, instanceIdValue, recType, runNumber, id, asAt, propertyKeys, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetRecResult: GetRecResult Retrieve a single rec result by its id.
+        /// [EXPERIMENTAL] GetRecResult: GetRecResult Retrieve a single rec result by its display id, as it stood in the run named.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="id">The system-generated id of the rec result.</param>
+        /// <param name="instanceIdType">How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual.</param>
+        /// <param name="instanceIdValue">The unique identifier of the rec instance.</param>
+        /// <param name="recType">The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.</param>
+        /// <param name="runNumber">The run of the instance whose view of the result is read.</param>
+        /// <param name="id">The display id of the rec result, e.g. \&quot;break-3\&quot;.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the result. Defaults to latest if not specified. (optional)</param>
         /// <param name="propertyKeys">The property keys to decorate onto the result. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of RecResult</returns>
-        public Finbourne.Sdk.Client.ApiResponse<RecResult> GetRecResultWithHttpInfo(string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<RecResult> GetRecResultWithHttpInfo(string instanceIdType, string instanceIdValue, string recType, int runNumber, string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
+            // verify the required parameter 'instanceIdType' is set
+            if (instanceIdType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceIdType' when calling RecsApi->GetRecResult");
+            }
+
+            // verify the required parameter 'instanceIdValue' is set
+            if (instanceIdValue == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceIdValue' when calling RecsApi->GetRecResult");
+            }
+
+            // verify the required parameter 'recType' is set
+            if (recType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'recType' when calling RecsApi->GetRecResult");
+            }
+
             // verify the required parameter 'id' is set
             if (id == null)
             {
@@ -4020,6 +4122,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("instanceIdType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceIdType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("instanceIdValue", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceIdValue)); // path parameter
+            localVarRequestOptions.PathParameters.Add("recType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(recType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("runNumber", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runNumber)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Finbourne.Sdk.Client.ClientUtils.ParameterToString(id)); // path parameter
             if (asAt != null)
             {
@@ -4051,7 +4157,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<RecResult, AbstractOpenAPISchema>("/api/api/recs/results/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<RecResult, AbstractOpenAPISchema>("/api/api/recs/results/{instanceIdType}/{instanceIdValue}/{recType}/{runNumber}/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetRecResult", localVarResponse);
@@ -4065,36 +4171,62 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetRecResult: GetRecResult Retrieve a single rec result by its id.
+        /// [EXPERIMENTAL] GetRecResult: GetRecResult Retrieve a single rec result by its display id, as it stood in the run named.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The system-generated id of the rec result.</param>
+        /// <param name="instanceIdType">How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual.</param>
+        /// <param name="instanceIdValue">The unique identifier of the rec instance.</param>
+        /// <param name="recType">The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.</param>
+        /// <param name="runNumber">The run of the instance whose view of the result is read.</param>
+        /// <param name="id">The display id of the rec result, e.g. \&quot;break-3\&quot;.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the result. Defaults to latest if not specified. (optional)</param>
         /// <param name="propertyKeys">The property keys to decorate onto the result. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of RecResult</returns>
-        public async System.Threading.Tasks.Task<RecResult> GetRecResultAsync(string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<RecResult> GetRecResultAsync(string instanceIdType, string instanceIdValue, string recType, int runNumber, string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<RecResult> localVarResponse = await GetRecResultWithHttpInfoAsync(id, asAt, propertyKeys, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<RecResult> localVarResponse = await GetRecResultWithHttpInfoAsync(instanceIdType, instanceIdValue, recType, runNumber, id, asAt, propertyKeys, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetRecResult: GetRecResult Retrieve a single rec result by its id.
+        /// [EXPERIMENTAL] GetRecResult: GetRecResult Retrieve a single rec result by its display id, as it stood in the run named.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="id">The system-generated id of the rec result.</param>
+        /// <param name="instanceIdType">How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual.</param>
+        /// <param name="instanceIdValue">The unique identifier of the rec instance.</param>
+        /// <param name="recType">The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.</param>
+        /// <param name="runNumber">The run of the instance whose view of the result is read.</param>
+        /// <param name="id">The display id of the rec result, e.g. \&quot;break-3\&quot;.</param>
         /// <param name="asAt">The asAt datetime at which to retrieve the result. Defaults to latest if not specified. (optional)</param>
         /// <param name="propertyKeys">The property keys to decorate onto the result. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (RecResult)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<RecResult>> GetRecResultWithHttpInfoAsync(string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<RecResult>> GetRecResultWithHttpInfoAsync(string instanceIdType, string instanceIdValue, string recType, int runNumber, string id, DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
+            // verify the required parameter 'instanceIdType' is set
+            if (instanceIdType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceIdType' when calling RecsApi->GetRecResult");
+            }
+
+            // verify the required parameter 'instanceIdValue' is set
+            if (instanceIdValue == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'instanceIdValue' when calling RecsApi->GetRecResult");
+            }
+
+            // verify the required parameter 'recType' is set
+            if (recType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'recType' when calling RecsApi->GetRecResult");
+            }
+
             // verify the required parameter 'id' is set
             if (id == null)
             {
@@ -4146,6 +4278,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("instanceIdType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceIdType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("instanceIdValue", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceIdValue)); // path parameter
+            localVarRequestOptions.PathParameters.Add("recType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(recType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("runNumber", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runNumber)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Finbourne.Sdk.Client.ClientUtils.ParameterToString(id)); // path parameter
             if (asAt != null)
             {
@@ -4177,7 +4313,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<RecResult, AbstractOpenAPISchema>("/api/api/recs/results/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<RecResult, AbstractOpenAPISchema>("/api/api/recs/results/{instanceIdType}/{instanceIdValue}/{recType}/{runNumber}/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -5772,7 +5908,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListRecResults: ListRecResults List rec results.
+        /// [EXPERIMENTAL] ListRecResults: ListRecResults List rec results. A result&#39;s runNumber is the run that last wrote it; a run&#39;s results as they stood are read at that run&#39;s asAt.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list results. Defaults to latest if not specified. (optional)</param>
@@ -5791,7 +5927,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListRecResults: ListRecResults List rec results.
+        /// [EXPERIMENTAL] ListRecResults: ListRecResults List rec results. A result&#39;s runNumber is the run that last wrote it; a run&#39;s results as they stood are read at that run&#39;s asAt.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -5910,7 +6046,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListRecResults: ListRecResults List rec results.
+        /// [EXPERIMENTAL] ListRecResults: ListRecResults List rec results. A result&#39;s runNumber is the run that last wrote it; a run&#39;s results as they stood are read at that run&#39;s asAt.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asAt">The asAt datetime at which to list results. Defaults to latest if not specified. (optional)</param>
@@ -5930,7 +6066,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListRecResults: ListRecResults List rec results.
+        /// [EXPERIMENTAL] ListRecResults: ListRecResults List rec results. A result&#39;s runNumber is the run that last wrote it; a run&#39;s results as they stood are read at that run&#39;s asAt.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -7104,6 +7240,276 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateRecDefinition", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain &#39;RecDefinition&#39;, and are perpetual.                Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the rec definition to update or insert the properties onto.</param>
+        /// <param name="code">The code of the rec definition to update or insert the properties onto. Together with the               scope this uniquely identifies the rec definition.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the rec definition. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;RecDefinition/Workflow/WorkflowId&#39;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>UpsertRecDefinitionPropertiesResponse</returns>
+        public UpsertRecDefinitionPropertiesResponse UpsertRecDefinitionProperties(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<UpsertRecDefinitionPropertiesResponse> localVarResponse = UpsertRecDefinitionPropertiesWithHttpInfo(scope, code, requestBody, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain &#39;RecDefinition&#39;, and are perpetual.                Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the rec definition to update or insert the properties onto.</param>
+        /// <param name="code">The code of the rec definition to update or insert the properties onto. Together with the               scope this uniquely identifies the rec definition.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the rec definition. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;RecDefinition/Workflow/WorkflowId&#39;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of UpsertRecDefinitionPropertiesResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<UpsertRecDefinitionPropertiesResponse> UpsertRecDefinitionPropertiesWithHttpInfo(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling RecsApi->UpsertRecDefinitionProperties");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling RecsApi->UpsertRecDefinitionProperties");
+            }
+
+            // verify the required parameter 'requestBody' is set
+            if (requestBody == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'requestBody' when calling RecsApi->UpsertRecDefinitionProperties");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.Data = requestBody;
+
+            localVarRequestOptions.Operation = "RecsApi.UpsertRecDefinitionProperties";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<UpsertRecDefinitionPropertiesResponse, AbstractOpenAPISchema>("/api/api/recs/definitions/{scope}/{code}/properties/$upsert", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpsertRecDefinitionProperties", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain &#39;RecDefinition&#39;, and are perpetual.                Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the rec definition to update or insert the properties onto.</param>
+        /// <param name="code">The code of the rec definition to update or insert the properties onto. Together with the               scope this uniquely identifies the rec definition.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the rec definition. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;RecDefinition/Workflow/WorkflowId&#39;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of UpsertRecDefinitionPropertiesResponse</returns>
+        public async System.Threading.Tasks.Task<UpsertRecDefinitionPropertiesResponse> UpsertRecDefinitionPropertiesAsync(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<UpsertRecDefinitionPropertiesResponse> localVarResponse = await UpsertRecDefinitionPropertiesWithHttpInfoAsync(scope, code, requestBody, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertRecDefinitionProperties: UpsertRecDefinitionProperties Update or insert one or more properties onto a single rec definition. A property will be updated if it already  exists and inserted if it does not. All properties must be of the domain &#39;RecDefinition&#39;, and are perpetual.                Upserting a property that exists for a rec definition, with a null value, will delete the instance of the  property for that rec definition. Properties not supplied are left unchanged, as is every other field of the  rec definition.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the rec definition to update or insert the properties onto.</param>
+        /// <param name="code">The code of the rec definition to update or insert the properties onto. Together with the               scope this uniquely identifies the rec definition.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the rec definition. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example               &#39;RecDefinition/Workflow/WorkflowId&#39;.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (UpsertRecDefinitionPropertiesResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<UpsertRecDefinitionPropertiesResponse>> UpsertRecDefinitionPropertiesWithHttpInfoAsync(string scope, string code, Dictionary<string, PerpetualProperty> requestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling RecsApi->UpsertRecDefinitionProperties");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling RecsApi->UpsertRecDefinitionProperties");
+            }
+
+            // verify the required parameter 'requestBody' is set
+            if (requestBody == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'requestBody' when calling RecsApi->UpsertRecDefinitionProperties");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.Data = requestBody;
+
+            localVarRequestOptions.Operation = "RecsApi.UpsertRecDefinitionProperties";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpsertRecDefinitionPropertiesResponse, AbstractOpenAPISchema>("/api/api/recs/definitions/{scope}/{code}/properties/$upsert", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpsertRecDefinitionProperties", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

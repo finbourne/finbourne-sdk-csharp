@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// The request used to book a computed Allocation Event: the reference under which its shares were posted.
+    /// The request used to book a computed Allocation Event: the reference under which its shares are posted, and  whether to only show what would be posted.
     /// </summary>
     [DataContract(Name = "AllocationEventBookRequest")]
     public partial class AllocationEventBookRequest : IEquatable<AllocationEventBookRequest>, IValidatableObject
@@ -36,7 +36,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="AllocationEventBookRequest" /> class.
         /// </summary>
         /// <param name="bookingReference">The reference under which the computed shares were posted, for instance a journal entry code. (required).</param>
-        public AllocationEventBookRequest(string bookingReference = default(string))
+        /// <param name="dryRun">Whether to only build and return the posting plan without writing anything. Defaults to false..</param>
+        public AllocationEventBookRequest(string bookingReference = default(string), bool dryRun = default(bool))
         {
             // to ensure "bookingReference" is required (not null)
             if (bookingReference == null)
@@ -44,6 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("bookingReference is a required property for AllocationEventBookRequest and cannot be null");
             }
             this.BookingReference = bookingReference;
+            this.DryRun = dryRun;
         }
 
         /// <summary>
@@ -54,6 +56,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string BookingReference { get; set; }
 
         /// <summary>
+        /// Whether to only build and return the posting plan without writing anything. Defaults to false.
+        /// </summary>
+        /// <value>Whether to only build and return the posting plan without writing anything. Defaults to false.</value>
+        [DataMember(Name = "dryRun", EmitDefaultValue = true)]
+        public bool DryRun { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -62,6 +71,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AllocationEventBookRequest {\n");
             sb.Append("  BookingReference: ").Append(BookingReference).Append("\n");
+            sb.Append("  DryRun: ").Append(DryRun).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -101,6 +111,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.BookingReference == input.BookingReference ||
                     (this.BookingReference != null &&
                     this.BookingReference.Equals(input.BookingReference))
+                ) && 
+                (
+                    this.DryRun == input.DryRun ||
+                    this.DryRun.Equals(input.DryRun)
                 );
         }
 
@@ -117,6 +131,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.BookingReference.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.DryRun.GetHashCode();
                 return hashCode;
             }
         }

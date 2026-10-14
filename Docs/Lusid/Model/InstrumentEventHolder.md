@@ -19,6 +19,7 @@ An instrument event equipped with additional metadata.
 | **ParticipationType** | **string** | Optional | Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary. Default: `"Mandatory"` |
 | **AsAt** | **DateTimeOffset?** | Optional | The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert. *(read-only)* |
 | **GroupCode** | **string** | Optional | The group code that determines the processing order of instrument events with the same effective datetime. Available values: Tier1, Tier2, Tier3, Legacy. |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -42,7 +43,8 @@ var instance = new InstrumentEventHolder(
     sequenceNumber: 0,  // optional — The order of the instrument event relative others on the same date (0 being processed first). Must be non negative.
     participationType: "...",  // optional — Indicates the type of participation in this event. Default value: Mandatory. Available values: Mandatory, MandatoryWithChoices, Voluntary.
     asAt: DateTimeOffset.Now,  // optional — The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert.
-    groupCode: "..."  // optional — The group code that determines the processing order of instrument events with the same effective datetime. Available values: Tier1, Tier2, Tier3, Legacy.
+    groupCode: "...",  // optional — The group code that determines the processing order of instrument events with the same effective datetime. Available values: Tier1, Tier2, Tier3, Legacy.
+    stagedModifications: new StagedModificationsInfo(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -61,6 +63,7 @@ var instance = JsonConvert.DeserializeObject<InstrumentEventHolder>(json);
 - [EventDateRange](EventDateRange.md)
 - [InstrumentEvent](InstrumentEvent.md)
 - [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

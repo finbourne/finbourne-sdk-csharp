@@ -13,6 +13,7 @@ All URIs are relative to *http://localhost*
 | [**GetComplianceRuleResult**](#getcomplianceruleresult) | **GET** `/api/api/compliance/runs/summary/{runScope}/{runCode}/{ruleScope}/{ruleCode}` | [EARLY ACCESS] GetComplianceRuleResult: Get detailed results for a specific rule within a compliance run. |
 | [**GetComplianceTemplate**](#getcompliancetemplate) | **GET** `/api/api/compliance/templates/{scope}/{code}` | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template. |
 | [**GetDecoratedComplianceRunSummary**](#getdecoratedcompliancerunsummary) | **GET** `/api/api/compliance/runs/summary/{scope}/{code}/$decorate` | [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run. |
+| [**GetFilteredDecoratedComplianceRunSummary**](#getfiltereddecoratedcompliancerunsummary) | **POST** `/api/api/compliance/runs/summary/$decorate` | [EARLY ACCESS] GetFilteredDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run, optionally restricted to a set of portfolios or portfolio groups. |
 | [**ListComplianceRules**](#listcompliancerules) | **GET** `/api/api/compliance/rules` | [EARLY ACCESS] ListComplianceRules: List compliance rules. |
 | [**ListComplianceRuns**](#listcomplianceruns) | **GET** `/api/api/compliance/runs` | [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers. |
 | [**ListComplianceTemplates**](#listcompliancetemplates) | **GET** `/api/api/compliance/templates` | [EARLY ACCESS] ListComplianceTemplates: List compliance templates. |
@@ -551,6 +552,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<DecoratedComplianceRunSummary> response = apiInstance.GetDecoratedComplianceRunSummaryWithHttpInfo(scope, code, propertyKeys);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getfiltereddecoratedcompliancerunsummary"></a>
+## GetFilteredDecoratedComplianceRunSummary
+
+> DecoratedComplianceRunSummary GetFilteredDecoratedComplianceRunSummary(DecoratedComplianceRunSummaryRequest? decoratedComplianceRunSummaryRequest = null)
+
+[EARLY ACCESS] GetFilteredDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run, optionally restricted to a set of portfolios or portfolio groups.
+
+Specify a run scope and code from a previously run compliance check to get an overview of result details.  Supply an optional list of portfolios and/or portfolio groups to return only the rule results affecting them;  portfolio groups are expanded to their member portfolios (including nested groups). An empty or omitted list  returns the full, unfiltered summary.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
+var decoratedComplianceRunSummaryRequest = new DecoratedComplianceRunSummaryRequest?(); // DecoratedComplianceRunSummaryRequest? (optional)
+DecoratedComplianceRunSummary result = apiInstance.GetFilteredDecoratedComplianceRunSummary(decoratedComplianceRunSummaryRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **decoratedComplianceRunSummaryRequest** | [DecoratedComplianceRunSummaryRequest?](../Model/DecoratedComplianceRunSummaryRequest?.md) | body | optional | The run to summarise, the optional portfolio/portfolio-group filter, and the property keys to decorate. |
+
+### Return type
+
+[DecoratedComplianceRunSummary](../Model/DecoratedComplianceRunSummary.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested compliance run details. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetFilteredDecoratedComplianceRunSummaryWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DecoratedComplianceRunSummary> response = apiInstance.GetFilteredDecoratedComplianceRunSummaryWithHttpInfo(decoratedComplianceRunSummaryRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

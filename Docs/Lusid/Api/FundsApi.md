@@ -8,12 +8,14 @@ All URIs are relative to *http://localhost*
 | [**AcceptEstimateValuationPoint**](#acceptestimatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$acceptestimate` | [EARLY ACCESS] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point. |
 | [**AddAllocationGroups**](#addallocationgroups) | **POST** `/api/api/funds/{scope}/{code}/allocationgroups` | [EARLY ACCESS] AddAllocationGroups: Add Allocation Groups to a Fund. |
 | [**AddSeries**](#addseries) | **POST** `/api/api/funds/{scope}/{code}/series` | [EARLY ACCESS] AddSeries: Add Series to a Fund. |
+| [**CreateFacility**](#createfacility) | **POST** `/api/api/funds/{scope}/{code}/facilities` | [EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create a Facility. |
 | [**CreateFee**](#createfee) | **POST** `/api/api/funds/{scope}/{code}/fees` | [EARLY ACCESS] CreateFee: Create a Fee. |
 | [**CreateFund**](#createfund) | **POST** `/api/api/funds/{scope}` | [EARLY ACCESS] CreateFund: Create a Fund. |
 | [**CreateFundV2**](#createfundv2) | **POST** `/api/api/funds/v2/{scope}` | [EARLY ACCESS] CreateFundV2: Create a Fund V2 (Preview). |
 | [**CreateValuationPoint**](#createvaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$create` | [EARLY ACCESS] CreateValuationPoint: Create a Valuation Point. |
 | [**DeactivateNavTypes**](#deactivatenavtypes) | **POST** `/api/api/funds/{scope}/{code}/deactivateNavTypes` | [EARLY ACCESS] DeactivateNavTypes: Deactivate NAV types on a Fund. |
 | [**DeleteBookmark**](#deletebookmark) | **DELETE** `/api/api/funds/{scope}/{code}/bookmarks/{bookmarkCode}` | [EARLY ACCESS] DeleteBookmark: Delete a Bookmark. |
+| [**DeleteFacility**](#deletefacility) | **DELETE** `/api/api/funds/{scope}/{code}/facilities/{facilityCode}` | [EXPERIMENTAL] DeleteFacility: [EXPERIMENTAL] DeleteFacility: Delete a Facility. |
 | [**DeleteFee**](#deletefee) | **DELETE** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EARLY ACCESS] DeleteFee: Delete a Fee. |
 | [**DeleteFund**](#deletefund) | **DELETE** `/api/api/funds/{scope}/{code}` | [EARLY ACCESS] DeleteFund: Delete a Fund. |
 | [**DeleteNavActivityAdjustments**](#deletenavactivityadjustments) | **POST** `/api/api/funds/{scope}/{code}/navAdjustment/$delete` | [EARLY ACCESS] DeleteNavActivityAdjustments: Delete Nav activity adjustments. |
@@ -21,12 +23,15 @@ All URIs are relative to *http://localhost*
 | [**FinaliseCandidateValuationPoint**](#finalisecandidatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$finalisecandidate` | [EARLY ACCESS] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point. |
 | [**GetA2BDataForFund**](#geta2bdataforfund) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/a2b/$query` | [EARLY ACCESS] GetA2BDataForFund: Get A2B data for a Fund. |
 | [**GetA2BMovementsForFund**](#geta2bmovementsforfund) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/a2bmovements/$query` | [EARLY ACCESS] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. |
+| [**GetFacility**](#getfacility) | **GET** `/api/api/funds/{scope}/{code}/facilities/{facilityCode}` | [EXPERIMENTAL] GetFacility: [EXPERIMENTAL] GetFacility: Get a Facility for a specified Fund. |
 | [**GetFee**](#getfee) | **GET** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EARLY ACCESS] GetFee: Get a Fee for a specified Fund. |
 | [**GetFeeProperties**](#getfeeproperties) | **GET** `/api/api/funds/{scope}/{code}/fees/{feeCode}/properties` | [EARLY ACCESS] GetFeeProperties: Get Fee properties. |
 | [**GetFund**](#getfund) | **GET** `/api/api/funds/{scope}/{code}` | [EARLY ACCESS] GetFund: Get a Fund. |
 | [**GetFundProperties**](#getfundproperties) | **GET** `/api/api/funds/{scope}/{code}/properties` | [EARLY ACCESS] GetFundProperties: Get Fund properties. |
 | [**GetHoldingContributorsForFund**](#getholdingcontributorsforfund) | **POST** `/api/api/funds/{scope}/{code}/holdings/{holdingId}/contributors` | [EARLY ACCESS] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund. |
 | [**GetHoldingsForFund**](#getholdingsforfund) | **POST** `/api/api/funds/{scope}/{code}/$holdings` | [EARLY ACCESS] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund. |
+| [**GetPartnerUnfundedReconciliation**](#getpartnerunfundedreconciliation) | **GET** `/api/api/funds/{scope}/{code}/partners/{investorRecordId}/unfundedreconciliation` | [EARLY ACCESS] GetPartnerUnfundedReconciliation: [EARLY ACCESS] GetPartnerUnfundedReconciliation: Get a partner&#39;s unfunded commitment statement. |
+| [**GetPartners**](#getpartners) | **GET** `/api/api/funds/{scope}/{code}/partners` | [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund. |
 | [**GetValuationForFund**](#getvaluationforfund) | **POST** `/api/api/funds/{scope}/{code}/$valuation` | [EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund. |
 | [**GetValuationPointData**](#getvaluationpointdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$query` | [EARLY ACCESS] GetValuationPointData: Get Valuation Point Data for a Fund. |
 | [**GetValuationPointJournalEntryLines**](#getvaluationpointjournalentrylines) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query` | [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. |
@@ -35,6 +40,7 @@ All URIs are relative to *http://localhost*
 | [**GetValuationPointTransactions**](#getvaluationpointtransactions) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/transactions/$query` | [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. |
 | [**GetValuationPointTrialBalance**](#getvaluationpointtrialbalance) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/trialbalance/$query` | [EARLY ACCESS] GetValuationPointTrialBalance: Get Trial Balance for the given Fund. |
 | [**GetValuationPointUnsettledTransactions**](#getvaluationpointunsettledtransactions) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/unsettledtransactions/$query` | [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. |
+| [**ListFacilities**](#listfacilities) | **GET** `/api/api/funds/{scope}/{code}/facilities` | [EXPERIMENTAL] ListFacilities: [EXPERIMENTAL] ListFacilities: List Facilities for a specified Fund. |
 | [**ListFees**](#listfees) | **GET** `/api/api/funds/{scope}/{code}/fees` | [EARLY ACCESS] ListFees: List Fees for a specified Fund. |
 | [**ListFundCalendar**](#listfundcalendar) | **GET** `/api/api/funds/{scope}/{code}/calendar` | [EARLY ACCESS] ListFundCalendar: List Fund Calendar. |
 | [**ListFundCalendarEntries**](#listfundcalendarentries) | **GET** `/api/api/funds/{scope}/{code}/calendars` | [EARLY ACCESS] ListFundCalendarEntries: List Fund Calendar Entries. |
@@ -276,6 +282,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<Fund> response = apiInstance.AddSeriesWithHttpInfo(scope, code, seriesDefinitionRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="createfacility"></a>
+## CreateFacility
+
+> Facility CreateFacility(string scope, string code, FacilityRequest facilityRequest)
+
+[EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create a Facility.
+
+Create the given Facility against a Fund.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var facilityRequest = new FacilityRequest(); // FacilityRequest
+Facility result = apiInstance.CreateFacility(scope, code, facilityRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **facilityRequest** | [FacilityRequest](../Model/FacilityRequest.md) | body | **required** | The Facility to create. |
+
+### Return type
+
+[Facility](../Model/Facility.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The newly created Facility. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the CreateFacilityWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<Facility> response = apiInstance.CreateFacilityWithHttpInfo(scope, code, facilityRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -652,6 +720,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteBookmarkWithHttpInfo(scope, code, bookmarkCode, navTypeCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="deletefacility"></a>
+## DeleteFacility
+
+> DeletedEntityResponse DeleteFacility(string scope, string code, string facilityCode)
+
+[EXPERIMENTAL] DeleteFacility: [EXPERIMENTAL] DeleteFacility: Delete a Facility.
+
+Delete the given Facility.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var facilityCode = "facilityCode_example";  // string
+DeletedEntityResponse result = apiInstance.DeleteFacility(scope, code, facilityCode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **facilityCode** | **string** | path | **required** | The code of the Facility to be deleted. |
+
+### Return type
+
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the Facility was deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteFacilityWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteFacilityWithHttpInfo(scope, code, facilityCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1122,6 +1252,72 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="getfacility"></a>
+## GetFacility
+
+> Facility GetFacility(string scope, string code, string facilityCode, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
+
+[EXPERIMENTAL] GetFacility: [EXPERIMENTAL] GetFacility: Get a Facility for a specified Fund.
+
+Retrieve a Facility for a specified Fund.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var facilityCode = "facilityCode_example";  // string
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+Facility result = apiInstance.GetFacility(scope, code, facilityCode, effectiveAt, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **facilityCode** | **string** | path | **required** | The code of the Facility. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to retrieve the Facility. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Facility. Defaults to returning the latest version of the Facility if not specified. |
+
+### Return type
+
+[Facility](../Model/Facility.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested Facility definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetFacilityWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<Facility> response = apiInstance.GetFacilityWithHttpInfo(scope, code, facilityCode, effectiveAt, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="getfee"></a>
 ## GetFee
 
@@ -1528,6 +1724,144 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<VersionedResourceListOfPortfolioHolding> response = apiInstance.GetHoldingsForFundWithHttpInfo(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getpartnerunfundedreconciliation"></a>
+## GetPartnerUnfundedReconciliation
+
+> FundPartnerUnfundedReconciliation GetPartnerUnfundedReconciliation(string scope, string code, string investorRecordId, DateTimeOrCutLabel from, DateTimeOrCutLabel? to = null, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] GetPartnerUnfundedReconciliation: [EARLY ACCESS] GetPartnerUnfundedReconciliation: Get a partner's unfunded commitment statement.
+
+Reconciles one partner's unfunded commitment over a period: the register's opening unfunded, less capital  called inside the commitment, plus recallable distributions, less recallable distributions that expired,  plus or minus commitment changes and transfers, gives the closing unfunded, which is checked against the  register's unfunded at the close. Every booked allocation to the partner in the period is listed with the  ILPA transaction type it is reported under.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var investorRecordId = "investorRecordId_example";  // string
+var from = "from_example";  // DateTimeOrCutLabel
+var to = "to_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+FundPartnerUnfundedReconciliation result = apiInstance.GetPartnerUnfundedReconciliation(scope, code, investorRecordId, from, to, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **investorRecordId** | **string** | path | **required** | The investor record of the partner. |
+| **from** | **DateTimeOrCutLabel** | query | **required** | The effective datetime or cut label the statement opens at. |
+| **to** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label the statement closes at. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the register and the booked events. Defaults to returning the latest version if not specified. |
+
+### Return type
+
+[FundPartnerUnfundedReconciliation](../Model/FundPartnerUnfundedReconciliation.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The partner&#39;s unfunded commitment statement over the period. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetPartnerUnfundedReconciliationWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<FundPartnerUnfundedReconciliation> response = apiInstance.GetPartnerUnfundedReconciliationWithHttpInfo(scope, code, investorRecordId, from, to, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getpartners"></a>
+## GetPartners
+
+> PagedResourceListOfFundPartner GetPartners(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, bool? includeClosed = null, string? page = null, int? limit = null)
+
+[EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund.
+
+Lists the register lines of a partnership-accounting fund with each partner's capital balances at the  requested effective date, together with totals across the whole register.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var includeClosed = true;  // bool? (optional)
+var page = "page_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+PagedResourceListOfFundPartner result = apiInstance.GetPartners(scope, code, effectiveAt, asAt, includeClosed, page, limit);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to read the register. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the register. Defaults to returning the latest version if not specified. |
+| **includeClosed** | **bool?** | query | optional | Whether to include register lines with no remaining commitment or funded capital. Defaults to false. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing partners; this value is returned from the previous call.              If a pagination token is provided, the effectiveAt and asAt fields must not have changed since the original request. |
+| **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
+
+### Return type
+
+[PagedResourceListOfFundPartner](../Model/PagedResourceListOfFundPartner.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The partners of the requested Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetPartnersWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfFundPartner> response = apiInstance.GetPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2055,7 +2389,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getvaluationpointunsettledtransactions"></a>
 ## GetValuationPointUnsettledTransactions
 
-> ValuationPointResourceListOfUnsettledTransaction GetValuationPointUnsettledTransactions(string scope, string code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, DateTimeOffset? asAt = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null)
+> ValuationPointResourceListOfUnsettledTransaction GetValuationPointUnsettledTransactions(string scope, string code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, DateTimeOffset? asAt = null, int? limit = null, string? page = null, List<string>? propertyKeys = null, string? navTypeCode = null, string? filter = null)
 
 [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
 
@@ -2073,7 +2407,8 @@ var limit = 56;  // int? (optional)
 var page = "page_example";  // string? (optional)
 var propertyKeys = new List<string>?(); // List<string>? (optional)
 var navTypeCode = "navTypeCode_example";  // string? (optional)
-ValuationPointResourceListOfUnsettledTransaction result = apiInstance.GetValuationPointUnsettledTransactions(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode);
+var filter = "filter_example";  // string? (optional)
+ValuationPointResourceListOfUnsettledTransaction result = apiInstance.GetValuationPointUnsettledTransactions(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -2089,6 +2424,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **page** | **string?** | query | optional | The pagination token to use to continue listing from a previous call. |
 | **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. |
 
 ### Return type
 
@@ -2113,7 +2449,79 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ValuationPointResourceListOfUnsettledTransaction> response = apiInstance.GetValuationPointUnsettledTransactionsWithHttpInfo(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode);
+ApiResponse<ValuationPointResourceListOfUnsettledTransaction> response = apiInstance.GetValuationPointUnsettledTransactionsWithHttpInfo(scope, code, singleValuationPointQueryParameters, asAt, limit, page, propertyKeys, navTypeCode, filter);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listfacilities"></a>
+## ListFacilities
+
+> PagedResourceListOfFacility ListFacilities(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null)
+
+[EXPERIMENTAL] ListFacilities: [EXPERIMENTAL] ListFacilities: List Facilities for a specified Fund.
+
+List all the Facilities matching a particular criteria.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var page = "page_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfFacility result = apiInstance.ListFacilities(scope, code, effectiveAt, asAt, page, limit, filter, sortBy);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to list the Facilities. Defaults to the current LUSID              system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Facilities. Defaults to returning the latest version of each Facility if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing facilities; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
+| **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the lender, specify \&quot;lender eq &#39;Bank&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+
+### Return type
+
+[PagedResourceListOfFacility](../Model/PagedResourceListOfFacility.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested Facilities. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListFacilitiesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfFacility> response = apiInstance.ListFacilitiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2775,11 +3183,11 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="patchfund"></a>
 ## PatchFund
 
-> Fund PatchFund(string scope, string code, List<Operation> operation)
+> Fund PatchFund(string scope, string code, List<Operation> operation, DateTimeOrCutLabel? effectiveAt = null)
 
 [EARLY ACCESS] PatchFund: Patch a Fund.
 
-Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, AborId, YearEndDate.
+Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, AborId, YearEndDate, PricingMethodology, ReportingPrices.
 
 ### Example
 
@@ -2788,7 +3196,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var operation = new List<Operation>(); // List<Operation>
-Fund result = apiInstance.PatchFund(scope, code, operation);
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+Fund result = apiInstance.PatchFund(scope, code, operation, effectiveAt);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -2799,6 +3208,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
 | **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label from which the patch applies. If not specified, the patch applies for all time.              Only DisplayName and Description can be patched with an effectiveAt, and the Fund is returned as at that datetime.              A value patched with an effectiveAt stays in force from that datetime. A later patch of the same field without an effectiveAt              changes it only before that datetime; to change it from that datetime, patch it again with the same effectiveAt. |
 
 ### Return type
 
@@ -2823,7 +3233,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<Fund> response = apiInstance.PatchFundWithHttpInfo(scope, code, operation);
+ApiResponse<Fund> response = apiInstance.PatchFundWithHttpInfo(scope, code, operation, effectiveAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2985,11 +3395,11 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="revertvaluationpointtoestimate"></a>
 ## RevertValuationPointToEstimate
 
-> ValuationPointDataResponse RevertValuationPointToEstimate(string scope, string code, RevertValuationPointDataRequest revertValuationPointDataRequest, string? navTypeCode = null)
+> RevertValuationPointResponse RevertValuationPointToEstimate(string scope, string code, RevertValuationPointDataRequest revertValuationPointDataRequest, string? navTypeCode = null)
 
 [EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
 
-Moves a 'Final' status Valuation Point to status 'Estimate'.
+Moves a 'Final' status Valuation Point to status 'Estimate'.  Returns the reverted Valuation Point alongside every variant that  finalising it had rejected.
 
 ### Example
 
@@ -2999,7 +3409,7 @@ var scope = "scope_example";  // string
 var code = "code_example";  // string
 var revertValuationPointDataRequest = new RevertValuationPointDataRequest(); // RevertValuationPointDataRequest
 var navTypeCode = "navTypeCode_example";  // string? (optional)
-ValuationPointDataResponse result = apiInstance.RevertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode);
+RevertValuationPointResponse result = apiInstance.RevertValuationPointToEstimate(scope, code, revertValuationPointDataRequest, navTypeCode);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -3014,7 +3424,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[ValuationPointDataResponse](../Model/ValuationPointDataResponse.md)
+[RevertValuationPointResponse](../Model/RevertValuationPointResponse.md)
 
 ### HTTP request headers
 
@@ -3025,7 +3435,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The updated Valuation Point response as a result of it be marked as Estimate. |  -  |
+| **200** | The reverted Estimate Valuation Point, with every variant resurrected by the revert |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -3035,7 +3445,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ValuationPointDataResponse> response = apiInstance.RevertValuationPointToEstimateWithHttpInfo(scope, code, revertValuationPointDataRequest, navTypeCode);
+ApiResponse<RevertValuationPointResponse> response = apiInstance.RevertValuationPointToEstimateWithHttpInfo(scope, code, revertValuationPointDataRequest, navTypeCode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

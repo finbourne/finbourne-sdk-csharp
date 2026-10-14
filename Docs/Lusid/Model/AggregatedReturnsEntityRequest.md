@@ -6,13 +6,13 @@ The request body for the aggregated-returns (TWR) endpoint: the entity to calcul
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Entity** | [AggregatedReturnsEntityId](AggregatedReturnsEntityId.md) | Required | *No description available.* |
-| **ReturnsScope** | **string** | Required | *No description available.* |
-| **ReturnsCode** | **string** | Required | *No description available.* |
+| **ReturnsId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **Metrics** | [List&lt;ReturnsMetric&gt;](ReturnsMetric.md) | Required | *No description available.* |
 | **Period** | **string** | Optional | Available values: Daily, Monthly. |
 | **FromEffectiveAt** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Optional | *No description available.* |
 | **ToEffectiveAt** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Optional | *No description available.* |
 | **AsAt** | **DateTimeOffset?** | Optional | *No description available.* |
+| **Currency** | **string** | Optional | *No description available.* |
 
 
 ## Usage
@@ -24,13 +24,13 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new AggregatedReturnsEntityRequest(
     entity: new AggregatedReturnsEntityId(...),  // required
-    returnsScope: "...",  // required
-    returnsCode: "...",  // required
+    returnsId: new ResourceId(...),  // required
     metrics: new List<ReturnsMetric>(),  // required
     period: "...",  // optional — Available values: Daily, Monthly.
     fromEffectiveAt: new DateTimeOrCutLabel(...),  // optional
     toEffectiveAt: new DateTimeOrCutLabel(...),  // optional
-    asAt: DateTimeOffset.Now  // optional
+    asAt: DateTimeOffset.Now,  // optional
+    currency: "..."  // optional
 );
 ```
 ### Serializing to JSON
@@ -49,6 +49,7 @@ var instance = JsonConvert.DeserializeObject<AggregatedReturnsEntityRequest>(jso
 ## Related Models
 
 - [AggregatedReturnsEntityId](AggregatedReturnsEntityId.md)
+- [ResourceId](ResourceId.md)
 - [ReturnsMetric](ReturnsMetric.md)
 - [DateTimeOrCutLabel](DateTimeOrCutLabel.md)
 - [DateTimeOrCutLabel](DateTimeOrCutLabel.md)

@@ -8,7 +8,7 @@ Election to grant consent to the proposed action (CONY), optionally in return fo
 | **ElectionKey** | **string** | Required | Unique key associated to this election. |
 | **IsDefault** | **bool** | Optional | Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided. |
 | **IsChosen** | **bool** | Optional | Is this the election that has been explicitly chosen from multiple options. |
-| **ConsentFeePrice** | **decimal?** | Optional | Optional. The consent fee paid per unit for granting consent. |
+| **ConsentFeePrice** | **decimal?** | Optional | The consent fee, quoted per 1,000 of face for bonds (the current notional at the record date for amortising and inflation-linked bonds) and per unit otherwise. |
 | **ConsentFeeCurrency** | **string** | Optional | Optional. Currency of the consent fee. Required if a consent fee price is provided. |
 
 
@@ -23,7 +23,7 @@ var instance = new ConsentGrantedElection(
     electionKey: "...",  // required — Unique key associated to this election.
     isDefault: true,  // optional — Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided.
     isChosen: true,  // optional — Is this the election that has been explicitly chosen from multiple options.
-    consentFeePrice: 0.0d,  // optional — Optional. The consent fee paid per unit for granting consent.
+    consentFeePrice: 0.0d,  // optional — The consent fee, quoted per 1,000 of face for bonds (the current notional at the record date for amortising and inflation-linked bonds) and per unit otherwise.
     consentFeeCurrency: "..."  // optional — Optional. Currency of the consent fee. Required if a consent fee price is provided.
 );
 ```
