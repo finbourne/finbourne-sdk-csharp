@@ -1,0 +1,53 @@
+# Finbourne.Sdk.Lusid.Model.Series
+
+## Properties
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| **ShareClassShortCode** | **string** | Optional | The short code of the share class the Series belongs to. A series identifier is unique only within its share class. |
+| **SeriesIdentifier** | **string** | Required | The identifier that uniquely identifies this Series within the Share Class. |
+| **SeriesType** | **string** | Required | The type of the Series. Available values: Lead, Standard. |
+| **LaunchDate** | **DateTimeOffset** | Required | The date on which the Series was launched. |
+| **LaunchPriceType** | **string** | Required | The type of launch price for the Series. Available values: Manual, Calculated. |
+| **DomCcy** | **string** | Required | The denomination currency of the Series. |
+| **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | An optional set of properties to associate with the Series. Only applied if createInstrument is set to true on the parent Fund. |
+| **LaunchPrice** | **decimal?** | Optional | The launch price of the Series. Required when LaunchPriceType is Manual; ignored when it is Calculated. |
+| **Status** | **string** | Optional | The lifecycle status of the Series: Open, Closed or Rolled. Defaults to Open. Available values: Open, Closed, Rolled. |
+
+
+## Usage
+
+### Creating an instance
+
+```csharp
+using Finbourne.Sdk.Services.Lusid.Model;
+
+var instance = new Series(
+    shareClassShortCode: "...",  // optional — The short code of the share class the Series belongs to. A series identifier is unique only within its share class.
+    seriesIdentifier: "...",  // required — The identifier that uniquely identifies this Series within the Share Class.
+    seriesType: "...",  // required — The type of the Series. Available values: Lead, Standard.
+    launchDate: DateTimeOffset.Now,  // required — The date on which the Series was launched.
+    launchPriceType: "...",  // required — The type of launch price for the Series. Available values: Manual, Calculated.
+    domCcy: "...",  // required — The denomination currency of the Series.
+    properties: new Property(...),  // optional — An optional set of properties to associate with the Series. Only applied if createInstrument is set to true on the parent Fund.
+    launchPrice: 0.0d,  // optional — The launch price of the Series. Required when LaunchPriceType is Manual; ignored when it is Calculated.
+    status: "..."  // optional — The lifecycle status of the Series: Open, Closed or Rolled. Defaults to Open. Available values: Open, Closed, Rolled.
+);
+```
+### Serializing to JSON
+
+```csharp
+var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
+```
+
+### Deserializing from JSON
+
+```csharp
+var instance = JsonConvert.DeserializeObject<Series>(json);
+```
+
+- [Property](Property.md) — used in `Properties`
+
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+

@@ -5,7 +5,7 @@ The collection of reconciliation results for a given rec type within a rec insta
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **RecType** | **string** | Required | The type of rec that this result set belongs to (e.g. Holding). Together with the rec instance, this uniquely identifies the result set. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. |
+| **RecType** | **string** | Required | The type of rec that this result set belongs to (e.g. Holding). Together with the rec instance, this uniquely identifies the result set. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. |
 | **RecInstance** | [RecInstanceSummary](RecInstanceSummary.md) | Required | *No description available.* |
 | **RunNumber** | **int** | Required | The run number within the instance. Increments with each re-run. |
 | **RunAsAt** | **DateTimeOffset** | Required | The asAt datetime at which the run happened. |
@@ -31,7 +31,7 @@ The collection of reconciliation results for a given rec type within a rec insta
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecResultSet(
-    recType: "...",  // required — The type of rec that this result set belongs to (e.g. Holding). Together with the rec instance, this uniquely identifies the result set. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
+    recType: "...",  // required — The type of rec that this result set belongs to (e.g. Holding). Together with the rec instance, this uniquely identifies the result set. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
     recInstance: new RecInstanceSummary(...),  // required
     runNumber: 0,  // required — The run number within the instance. Increments with each re-run.
     runAsAt: DateTimeOffset.Now,  // required — The asAt datetime at which the run happened.

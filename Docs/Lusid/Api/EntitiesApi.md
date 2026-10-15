@@ -13,6 +13,7 @@ All URIs are relative to *http://localhost*
 | [**GetDataTypeByEntityUniqueId**](#getdatatypebyentityuniqueid) | **GET** `/api/api/entities/datatypes/{entityUniqueId}` | GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId |
 | [**GetEntityHistory**](#getentityhistory) | **GET** `/api/api/entities/{entityType}/{entityUniqueId}/history` | GetEntityHistory: List an entity&#39;s history information |
 | [**GetInstrumentByEntityUniqueId**](#getinstrumentbyentityuniqueid) | **GET** `/api/api/entities/instruments/{entityUniqueId}` | GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId |
+| [**GetInstrumentEventByEntityUniqueId**](#getinstrumenteventbyentityuniqueid) | **GET** `/api/api/entities/instrumentevents/{entityUniqueId}` | [EARLY ACCESS] GetInstrumentEventByEntityUniqueId: Get instrument event by EntityUniqueId |
 | [**GetPortfolioByEntityUniqueId**](#getportfoliobyentityuniqueid) | **GET** `/api/api/entities/portfolios/{entityUniqueId}` | GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId |
 | [**GetPortfolioChanges**](#getportfoliochanges) | **GET** `/api/api/entities/changes/portfolios` | GetPortfolioChanges: Get the next change to each portfolio in a scope. |
 | [**GetPropertyDefinitionByEntityUniqueId**](#getpropertydefinitionbyentityuniqueid) | **GET** `/api/api/entities/propertydefinitions/{entityUniqueId}` | GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId |
@@ -563,6 +564,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<InstrumentEntity> response = apiInstance.GetInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getinstrumenteventbyentityuniqueid"></a>
+## GetInstrumentEventByEntityUniqueId
+
+> InstrumentEventEntity GetInstrumentEventByEntityUniqueId(string entityUniqueId, DateTimeOffset? asAt = null, List<string>? previews = null)
+
+[EARLY ACCESS] GetInstrumentEventByEntityUniqueId: Get instrument event by EntityUniqueId
+
+Retrieve a particular instrument event by its entity unique identifier.    If the instrument event or its corporate action source is deleted, this will return the state of the instrument event immediately prior to deletion.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<EntitiesApi>();
+var entityUniqueId = "entityUniqueId_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var previews = new List<string>?(); // List<string>? (optional)
+InstrumentEventEntity result = apiInstance.GetInstrumentEventByEntityUniqueId(entityUniqueId, asAt, previews);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **entityUniqueId** | **string** | path | **required** | The entity unique identifier of the instrument event. The expected format is &#39;{corporateActionSourceEntityUniqueId}_{instrumentEventId}&#39;. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the instrument event. Defaults to returning the latest version of the instrument event if not specified. |
+| **previews** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The ids of the staged modifications to be previewed in the response, applied in the order given. |
+
+### Return type
+
+[InstrumentEventEntity](../Model/InstrumentEventEntity.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested instrument event entity |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetInstrumentEventByEntityUniqueIdWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<InstrumentEventEntity> response = apiInstance.GetInstrumentEventByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, previews);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

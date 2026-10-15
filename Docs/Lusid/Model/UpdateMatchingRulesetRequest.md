@@ -5,14 +5,15 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **DisplayName** | **string** | Required | The name of the matching ruleset. |
-| **RecType** | **string** | Required | The type of reconciliation to perform. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. |
+| **RecType** | **string** | Required | The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. |
+| **ExternalRecType** | [ExternalRecType](ExternalRecType.md) | Optional | *No description available.* |
 | **DatasetSchemas** | [RecDatasetSchemas](RecDatasetSchemas.md) | Optional | *No description available.* |
 | **Filters** | [GroupReconciliationFilters](GroupReconciliationFilters.md) | Optional | *No description available.* |
 | **CoreRules** | [List&lt;CoreMatchingRule&gt;](CoreMatchingRule.md) | Required | The core comparison rules evaluated as derivation formulae against each side of the reconciliation. |
 | **AggregateRules** | [List&lt;AggregateMatchingRule&gt;](AggregateMatchingRule.md) | Required | The aggregate comparison rules evaluated as derivation formulae against values on each side of the reconciliation and operation to aggregate those values. |
 | **CoreTolerances** | [List&lt;ToleranceBase&gt;](ToleranceBase.md) | Optional | Tolerance configurations applied to core rule matching, in the specified order. |
 | **AggregateTolerances** | [List&lt;ToleranceBase&gt;](ToleranceBase.md) | Optional | Tolerance configurations applied to aggregate rule matching. |
-| **AllowPartialMatching** | **bool** | Optional | Whether to permit partial matches when applying rules. |
+| **AllowPartialMatching** | **bool** | Optional | Whether to permit partial matches when applying rules. Optional, defaults to true if a value is not provided. |
 | **SupplementalAttributes** | [List&lt;SupplementalAttribute&gt;](SupplementalAttribute.md) | Optional | Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself. |
 | **WritebackConfigurations** | [List&lt;WritebackConfiguration&gt;](WritebackConfiguration.md) | Optional | The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty. |
 
@@ -26,14 +27,15 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new UpdateMatchingRulesetRequest(
     displayName: "...",  // required — The name of the matching ruleset.
-    recType: "...",  // required — The type of reconciliation to perform. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
+    recType: "...",  // required — The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
+    externalRecType: new ExternalRecType(...),  // optional
     datasetSchemas: new RecDatasetSchemas(...),  // optional
     filters: new GroupReconciliationFilters(...),  // optional
     coreRules: new List<CoreMatchingRule>(),  // required — The core comparison rules evaluated as derivation formulae against each side of the reconciliation.
     aggregateRules: new List<AggregateMatchingRule>(),  // required — The aggregate comparison rules evaluated as derivation formulae against values on each side of the reconciliation and operation to aggregate those values.
     coreTolerances: new List<ToleranceBase>(),  // optional — Tolerance configurations applied to core rule matching, in the specified order.
     aggregateTolerances: new List<ToleranceBase>(),  // optional — Tolerance configurations applied to aggregate rule matching.
-    allowPartialMatching: true,  // optional — Whether to permit partial matches when applying rules.
+    allowPartialMatching: true,  // optional — Whether to permit partial matches when applying rules. Optional, defaults to true if a value is not provided.
     supplementalAttributes: new List<SupplementalAttribute>(),  // optional — Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself.
     writebackConfigurations: new List<WritebackConfiguration>()  // optional — The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty.
 );
@@ -50,6 +52,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<UpdateMatchingRulesetRequest>(json);
 ```
 
+- [ExternalRecType](ExternalRecType.md)
 - [RecDatasetSchemas](RecDatasetSchemas.md)
 - [GroupReconciliationFilters](GroupReconciliationFilters.md)
 - [CoreMatchingRule](CoreMatchingRule.md) — used in `CoreRules`

@@ -34,12 +34,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="taxLotSelectionCostBasis">The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. If not supplied, the portfolio&#39;s current value is left unchanged; supply Default to reset it. A reset or never-configured basis reads back as absent. Available values: Default, Cost, AmortisedCost..</param>
         /// <param name="fractionalUnitsTrueUpConfiguration">fractionalUnitsTrueUpConfiguration.</param>
         /// <param name="holdingsFungibility">Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. If not supplied, the portfolio&#39;s current value is left unchanged; supply Default to reset it. A reset or never-configured flag reads back as absent. Available values: Default, Enabled..</param>
-        public CreatePortfolioDetails(ResourceId corporateActionSourceId = default(ResourceId), string taxLotSelectionCostBasis = default(string), FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration = default(FractionalUnitsTrueUpConfiguration), string holdingsFungibility = default(string))
+        /// <param name="whtParameters">whtParameters.</param>
+        public CreatePortfolioDetails(ResourceId corporateActionSourceId = default(ResourceId), string taxLotSelectionCostBasis = default(string), FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration = default(FractionalUnitsTrueUpConfiguration), string holdingsFungibility = default(string), WhtParameters whtParameters = default(WhtParameters))
         {
             this.CorporateActionSourceId = corporateActionSourceId;
             this.TaxLotSelectionCostBasis = taxLotSelectionCostBasis;
             this.FractionalUnitsTrueUpConfiguration = fractionalUnitsTrueUpConfiguration;
             this.HoldingsFungibility = holdingsFungibility;
+            this.WhtParameters = whtParameters;
         }
 
         /// <summary>
@@ -69,6 +71,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string HoldingsFungibility { get; set; }
 
         /// <summary>
+        /// Gets or Sets WhtParameters
+        /// </summary>
+        [DataMember(Name = "whtParameters", EmitDefaultValue = false)]
+        public WhtParameters WhtParameters { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -80,6 +88,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  TaxLotSelectionCostBasis: ").Append(TaxLotSelectionCostBasis).Append("\n");
             sb.Append("  FractionalUnitsTrueUpConfiguration: ").Append(FractionalUnitsTrueUpConfiguration).Append("\n");
             sb.Append("  HoldingsFungibility: ").Append(HoldingsFungibility).Append("\n");
+            sb.Append("  WhtParameters: ").Append(WhtParameters).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -134,6 +143,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.HoldingsFungibility == input.HoldingsFungibility ||
                     (this.HoldingsFungibility != null &&
                     this.HoldingsFungibility.Equals(input.HoldingsFungibility))
+                ) && 
+                (
+                    this.WhtParameters == input.WhtParameters ||
+                    (this.WhtParameters != null &&
+                    this.WhtParameters.Equals(input.WhtParameters))
                 );
         }
 
@@ -161,6 +175,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.HoldingsFungibility != null)
                 {
                     hashCode = (hashCode * 59) + this.HoldingsFungibility.GetHashCode();
+                }
+                if (this.WhtParameters != null)
+                {
+                    hashCode = (hashCode * 59) + this.WhtParameters.GetHashCode();
                 }
                 return hashCode;
             }

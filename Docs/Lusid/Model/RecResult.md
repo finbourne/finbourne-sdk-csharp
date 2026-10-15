@@ -8,7 +8,7 @@ An individual reconciliation result — the aggregate result for a set of core r
 | **Id** | **string** | Required | The id of the result within its run: its result type and result number, e.g. &#39;break-3&#39;. Unique within one run of one rec type of an instance; the same id in another run of the instance names the same result, for as long as it keeps its result type. |
 | **ResultNumber** | **int** | Required | The result&#39;s number within its result type. Kept across runs while the result keeps its type; never reused once assigned. |
 | **FirstRunSeen** | **int** | Required | The run in which the result was first assigned its id. |
-| **RecType** | **string** | Required | The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. |
+| **RecType** | **string** | Required | The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. |
 | **InstanceId** | [RecInstanceId](RecInstanceId.md) | Required | *No description available.* |
 | **RecDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **RunNumber** | **int** | Required | The run number within the instance. Increments with each re-run. |
@@ -44,7 +44,7 @@ var instance = new RecResult(
     id: "...",  // required — The id of the result within its run: its result type and result number, e.g. &#39;break-3&#39;. Unique within one run of one rec type of an instance; the same id in another run of the instance names the same result, for as long as it keeps its result type.
     resultNumber: 0,  // required — The result&#39;s number within its result type. Kept across runs while the result keeps its type; never reused once assigned.
     firstRunSeen: 0,  // required — The run in which the result was first assigned its id.
-    recType: "...",  // required — The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
+    recType: "...",  // required — The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
     instanceId: new RecInstanceId(...),  // required
     recDefinitionId: new ResourceId(...),  // required
     runNumber: 0,  // required — The run number within the instance. Increments with each re-run.

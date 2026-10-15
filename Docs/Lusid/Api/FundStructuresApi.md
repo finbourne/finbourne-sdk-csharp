@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**AddFundStructureMember**](#addfundstructuremember) | **POST** `/api/api/fundstructures/{scope}/{code}/members` | [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure. |
+| [**CloseFundStructure**](#closefundstructure) | **POST** `/api/api/fundstructures/{scope}/{code}/$close` | [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure. |
 | [**CreateFundStructure**](#createfundstructure) | **POST** `/api/api/fundstructures/{scope}` | [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure. |
 | [**DeleteFundStructure**](#deletefundstructure) | **DELETE** `/api/api/fundstructures/{scope}/{code}` | [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure. |
 | [**GetFundStructure**](#getfundstructure) | **GET** `/api/api/fundstructures/{scope}/{code}` | [EXPERIMENTAL] GetFundStructure: Get a Fund Structure. |
@@ -109,6 +110,70 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<FundStructure> response = apiInstance.AddFundStructureMemberWithHttpInfo(scope, code, fundStructureMemberRequest, effectiveAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="closefundstructure"></a>
+## CloseFundStructure
+
+> FundStructureCloseResult CloseFundStructure(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure.
+
+Finalise the named valuation point on every member fund of the structure, leaves first so that each fund's  investors see a final NAV before the fund holding them closes. A member that fails stops the funds that depend on  it; the members already finalised stand.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundStructuresApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var fundStructureCloseRequest = new FundStructureCloseRequest(); // FundStructureCloseRequest
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+FundStructureCloseResult result = apiInstance.CloseFundStructure(scope, code, fundStructureCloseRequest, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund Structure. |
+| **code** | **string** | path | **required** | The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure. |
+| **fundStructureCloseRequest** | [FundStructureCloseRequest](../Model/FundStructureCloseRequest.md) | body | **required** | The valuation point to finalise. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the structure. Defaults to return the latest version if not specified. |
+
+### Return type
+
+[FundStructureCloseResult](../Model/FundStructureCloseResult.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The finalisation of each member of the structure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the CloseFundStructureWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<FundStructureCloseResult> response = apiInstance.CloseFundStructureWithHttpInfo(scope, code, fundStructureCloseRequest, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

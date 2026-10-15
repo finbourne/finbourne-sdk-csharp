@@ -10,6 +10,8 @@
 | **LaunchPriceType** | **string** | Required | The type of launch price for the Series. Available values: Manual, Calculated. |
 | **DomCcy** | **string** | Required | The denomination currency of the Series. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | An optional set of properties to associate with the Series. Only applied if createInstrument is set to true on the parent Fund. |
+| **LaunchPrice** | **decimal?** | Optional | The launch price of the Series. Required when LaunchPriceType is Manual; ignored when it is Calculated. |
+| **Status** | **string** | Optional | The lifecycle status of the Series: Open, Closed or Rolled. Defaults to Open. Available values: Open, Closed, Rolled. |
 
 
 ## Usage
@@ -25,7 +27,9 @@ var instance = new SeriesDefinition(
     launchDate: DateTimeOffset.Now,  // required — The date on which the Series was launched.
     launchPriceType: "...",  // required — The type of launch price for the Series. Available values: Manual, Calculated.
     domCcy: "...",  // required — The denomination currency of the Series.
-    properties: new Property(...)  // optional — An optional set of properties to associate with the Series. Only applied if createInstrument is set to true on the parent Fund.
+    properties: new Property(...),  // optional — An optional set of properties to associate with the Series. Only applied if createInstrument is set to true on the parent Fund.
+    launchPrice: 0.0d,  // optional — The launch price of the Series. Required when LaunchPriceType is Manual; ignored when it is Calculated.
+    status: "..."  // optional — The lifecycle status of the Series: Open, Closed or Rolled. Defaults to Open. Available values: Open, Closed, Rolled.
 );
 ```
 ### Serializing to JSON

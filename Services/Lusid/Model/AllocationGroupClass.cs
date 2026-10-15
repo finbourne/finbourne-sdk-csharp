@@ -37,7 +37,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="shareClassShortCode">A short code that uniquely identifies the share class within the Fund and is attached to the transaction. (required).</param>
         /// <param name="apportionmentFactor">Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund..</param>
-        public AllocationGroupClass(string shareClassShortCode = default(string), decimal? apportionmentFactor = default(decimal?))
+        /// <param name="shareClassSeriesCode">The series of the share class the member refers to. Not yet supported: an allocation group is apportioned by share class, so a member that names a series is rejected..</param>
+        public AllocationGroupClass(string shareClassShortCode = default(string), decimal? apportionmentFactor = default(decimal?), string shareClassSeriesCode = default(string))
         {
             // to ensure "shareClassShortCode" is required (not null)
             if (shareClassShortCode == null)
@@ -46,6 +47,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.ShareClassShortCode = shareClassShortCode;
             this.ApportionmentFactor = apportionmentFactor;
+            this.ShareClassSeriesCode = shareClassSeriesCode;
         }
 
         /// <summary>
@@ -63,6 +65,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal? ApportionmentFactor { get; set; }
 
         /// <summary>
+        /// The series of the share class the member refers to. Not yet supported: an allocation group is apportioned by share class, so a member that names a series is rejected.
+        /// </summary>
+        /// <value>The series of the share class the member refers to. Not yet supported: an allocation group is apportioned by share class, so a member that names a series is rejected.</value>
+        [DataMember(Name = "shareClassSeriesCode", EmitDefaultValue = true)]
+        public string ShareClassSeriesCode { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -72,6 +81,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class AllocationGroupClass {\n");
             sb.Append("  ShareClassShortCode: ").Append(ShareClassShortCode).Append("\n");
             sb.Append("  ApportionmentFactor: ").Append(ApportionmentFactor).Append("\n");
+            sb.Append("  ShareClassSeriesCode: ").Append(ShareClassSeriesCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,6 +126,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ApportionmentFactor == input.ApportionmentFactor ||
                     (this.ApportionmentFactor != null &&
                     this.ApportionmentFactor.Equals(input.ApportionmentFactor))
+                ) && 
+                (
+                    this.ShareClassSeriesCode == input.ShareClassSeriesCode ||
+                    (this.ShareClassSeriesCode != null &&
+                    this.ShareClassSeriesCode.Equals(input.ShareClassSeriesCode))
                 );
         }
 
@@ -135,6 +150,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.ApportionmentFactor != null)
                 {
                     hashCode = (hashCode * 59) + this.ApportionmentFactor.GetHashCode();
+                }
+                if (this.ShareClassSeriesCode != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShareClassSeriesCode.GetHashCode();
                 }
                 return hashCode;
             }

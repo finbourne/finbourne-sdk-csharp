@@ -6,6 +6,7 @@
 |------|------|----------|-------------|
 | **ShareClassShortCode** | **string** | Required | A short code that uniquely identifies the share class within the Fund and is attached to the transaction. |
 | **ApportionmentFactor** | **decimal?** | Optional | Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund. |
+| **ShareClassSeriesCode** | **string** | Optional | The series of the share class the member refers to. Not yet supported: an allocation group is apportioned by share class, so a member that names a series is rejected. |
 
 
 ## Usage
@@ -17,7 +18,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new AllocationGroupClassDefinition(
     shareClassShortCode: "...",  // required — A short code that uniquely identifies the share class within the Fund and is attached to the transaction.
-    apportionmentFactor: 0.0d  // optional — Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.
+    apportionmentFactor: 0.0d,  // optional — Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund.
+    shareClassSeriesCode: "..."  // optional — The series of the share class the member refers to. Not yet supported: an allocation group is apportioned by share class, so a member that names a series is rejected.
 );
 ```
 ### Serializing to JSON

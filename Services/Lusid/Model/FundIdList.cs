@@ -38,8 +38,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="FundIdList" /> class.
         /// </summary>
         /// <param name="values">values (required).</param>
+        /// <param name="navTypeCodesHint">The NAV type codes this list nominates, in priority order; entries may contain &#39;*&#39; wildcards.  For each fund the first matching code the fund defines is picked, falling back to the fund&#39;s  primary (official) NAV type when the list is empty or nothing matches. Optional..</param>
         /// <param name="referenceListType">The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList. (required) (default to ReferenceListTypeEnum.PortfolioGroupIdList).</param>
-        public FundIdList(List<ResourceId> values = default(List<ResourceId>), ReferenceListTypeEnum referenceListType = default(ReferenceListTypeEnum)) : base()
+        public FundIdList(List<ResourceId> values = default(List<ResourceId>), List<string> navTypeCodesHint = default(List<string>), ReferenceListTypeEnum referenceListType = default(ReferenceListTypeEnum)) : base()
         {
             // to ensure "values" is required (not null)
             if (values == null)
@@ -48,6 +49,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.Values = values;
             this.ReferenceListType = referenceListType;
+            this.NavTypeCodesHint = navTypeCodesHint;
         }
 
         /// <summary>
@@ -55,6 +57,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         [DataMember(Name = "values", IsRequired = true, EmitDefaultValue = true)]
         public List<ResourceId> Values { get; set; }
+
+        /// <summary>
+        /// The NAV type codes this list nominates, in priority order; entries may contain &#39;*&#39; wildcards.  For each fund the first matching code the fund defines is picked, falling back to the fund&#39;s  primary (official) NAV type when the list is empty or nothing matches. Optional.
+        /// </summary>
+        /// <value>The NAV type codes this list nominates, in priority order; entries may contain &#39;*&#39; wildcards.  For each fund the first matching code the fund defines is picked, falling back to the fund&#39;s  primary (official) NAV type when the list is empty or nothing matches. Optional.</value>
+        [DataMember(Name = "navTypeCodesHint", EmitDefaultValue = true)]
+        public List<string> NavTypeCodesHint { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,6 +75,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class FundIdList {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
+            sb.Append("  NavTypeCodesHint: ").Append(NavTypeCodesHint).Append("\n");
             sb.Append("  ReferenceListType: ").Append(ReferenceListType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -109,6 +119,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Values.SequenceEqual(input.Values)
                 ) && base.Equals(input) && 
                 (
+                    this.NavTypeCodesHint == input.NavTypeCodesHint ||
+                    this.NavTypeCodesHint != null &&
+                    input.NavTypeCodesHint != null &&
+                    this.NavTypeCodesHint.SequenceEqual(input.NavTypeCodesHint)
+                ) && base.Equals(input) && 
+                (
                     this.ReferenceListType == input.ReferenceListType ||
                     this.ReferenceListType.Equals(input.ReferenceListType)
                 );
@@ -126,6 +142,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Values != null)
                 {
                     hashCode = (hashCode * 59) + this.Values.GetHashCode();
+                }
+                if (this.NavTypeCodesHint != null)
+                {
+                    hashCode = (hashCode * 59) + this.NavTypeCodesHint.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ReferenceListType.GetHashCode();
                 return hashCode;

@@ -24,6 +24,7 @@
 | **TaxLotSelectionCostBasis** | **string** | Optional | The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Supply Default to explicitly reset it; a reset or never-configured basis reads back as absent. Available values: Default, Cost, AmortisedCost. |
 | **FractionalUnitsTrueUpConfiguration** | [FractionalUnitsTrueUpConfiguration](FractionalUnitsTrueUpConfiguration.md) | Optional | *No description available.* |
 | **HoldingsFungibility** | **string** | Optional | Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled. |
+| **WhtParameters** | [WhtParameters](WhtParameters.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -55,6 +56,7 @@ var instance = new PortfolioDetails(
     taxLotSelectionCostBasis: "...",  // optional — The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Supply Default to explicitly reset it; a reset or never-configured basis reads back as absent. Available values: Default, Cost, AmortisedCost.
     fractionalUnitsTrueUpConfiguration: new FractionalUnitsTrueUpConfiguration(...),  // optional
     holdingsFungibility: "...",  // optional — Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled.
+    whtParameters: new WhtParameters(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -78,6 +80,7 @@ var instance = JsonConvert.DeserializeObject<PortfolioDetails>(json);
 - [PortfolioSettlementConfiguration](PortfolioSettlementConfiguration.md)
 - [StagedModificationsInfo](StagedModificationsInfo.md)
 - [FractionalUnitsTrueUpConfiguration](FractionalUnitsTrueUpConfiguration.md)
+- [WhtParameters](WhtParameters.md)
 - [Link](Link.md)
 
 

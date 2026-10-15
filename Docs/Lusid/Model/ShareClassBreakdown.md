@@ -16,6 +16,7 @@ The Valuation Point Data for a Share Class on a specified date.
 | **ShareClassToFundFxRate** | **decimal** | Required | The fx rate from the Share Class currency to the fund currency at this valuation point. |
 | **CapitalRatio** | **decimal** | Required | The proportion of the fund&#39;s non-class-specific P&amp;L apportioned to this share class. Sums to 1 across the fund&#39;s share classes. |
 | **PreviousShareClassBreakdown** | [PreviousShareClassBreakdown](PreviousShareClassBreakdown.md) | Required | *No description available.* |
+| **SeriesBreakdowns** | [List&lt;SeriesBreakdown&gt;](SeriesBreakdown.md) | Optional | The share class NAV split across the series within the share class, one entry per series. Empty for a share class without series. |
 
 
 ## Usage
@@ -36,7 +37,8 @@ var instance = new ShareClassBreakdown(
     miscellaneous: new ShareClassAmount(...),  // optional — Not used directly by the LUSID engines but serves as a holding area for any custom derived data points that may be useful in, for example, fee calculations).
     shareClassToFundFxRate: 0.0d,  // required — The fx rate from the Share Class currency to the fund currency at this valuation point.
     capitalRatio: 0.0d,  // required — The proportion of the fund&#39;s non-class-specific P&amp;L apportioned to this share class. Sums to 1 across the fund&#39;s share classes.
-    previousShareClassBreakdown: new PreviousShareClassBreakdown(...)  // required
+    previousShareClassBreakdown: new PreviousShareClassBreakdown(...),  // required
+    seriesBreakdowns: new List<SeriesBreakdown>()  // optional — The share class NAV split across the series within the share class, one entry per series. Empty for a share class without series.
 );
 ```
 ### Serializing to JSON
@@ -63,6 +65,7 @@ var instance = JsonConvert.DeserializeObject<ShareClassBreakdown>(json);
 - [UnitisationData](UnitisationData.md)
 - [ShareClassAmount](ShareClassAmount.md) — used in `Miscellaneous`
 - [PreviousShareClassBreakdown](PreviousShareClassBreakdown.md)
+- [SeriesBreakdown](SeriesBreakdown.md) — used in `SeriesBreakdowns`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -45,7 +45,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="derivedComplianceState">The overall compliance state of a block, derived from the block&#39;s orders. Available values: Pending, Failed, Passed, ManuallyApproved, PartiallyOverridden, Warning. (required).</param>
         /// <param name="derivedApprovalState">The overall approval state of a block, derived from approval of the block&#39;s orders. Available values: Pending, Rejected, Approved, Placed. (required).</param>
         /// <param name="derivedDirection">The overall direction of a block, derived from its orders&#39; transaction types: 1 the block increases the position (longer), -1 it decreases it (shorter), 0 its orders net flat, null when no direction could be resolved (including unsolicited blocks)..</param>
-        public OrderGraphBlock(Block block = default(Block), OrderGraphBlockOrderSynopsis ordered = default(OrderGraphBlockOrderSynopsis), OrderGraphBlockPlacementSynopsis placed = default(OrderGraphBlockPlacementSynopsis), OrderGraphBlockExecutionSynopsis executed = default(OrderGraphBlockExecutionSynopsis), OrderGraphBlockAllocationSynopsis allocated = default(OrderGraphBlockAllocationSynopsis), OrderGraphBlockTransactionSynopsis booked = default(OrderGraphBlockTransactionSynopsis), string derivedState = default(string), string derivedComplianceState = default(string), string derivedApprovalState = default(string), int? derivedDirection = default(int?))
+        /// <param name="latestActivityDate">The most recent AsAt at which the block, or any of its orders, placements, executions or allocations, was modified..</param>
+        public OrderGraphBlock(Block block = default(Block), OrderGraphBlockOrderSynopsis ordered = default(OrderGraphBlockOrderSynopsis), OrderGraphBlockPlacementSynopsis placed = default(OrderGraphBlockPlacementSynopsis), OrderGraphBlockExecutionSynopsis executed = default(OrderGraphBlockExecutionSynopsis), OrderGraphBlockAllocationSynopsis allocated = default(OrderGraphBlockAllocationSynopsis), OrderGraphBlockTransactionSynopsis booked = default(OrderGraphBlockTransactionSynopsis), string derivedState = default(string), string derivedComplianceState = default(string), string derivedApprovalState = default(string), int? derivedDirection = default(int?), DateTimeOffset latestActivityDate = default(DateTimeOffset))
         {
             // to ensure "block" is required (not null)
             if (block == null)
@@ -102,6 +103,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.DerivedApprovalState = derivedApprovalState;
             this.DerivedDirection = derivedDirection;
+            this.LatestActivityDate = latestActivityDate;
         }
 
         /// <summary>
@@ -169,6 +171,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public int? DerivedDirection { get; set; }
 
         /// <summary>
+        /// The most recent AsAt at which the block, or any of its orders, placements, executions or allocations, was modified.
+        /// </summary>
+        /// <value>The most recent AsAt at which the block, or any of its orders, placements, executions or allocations, was modified.</value>
+        [DataMember(Name = "latestActivityDate", EmitDefaultValue = false)]
+        public DateTimeOffset LatestActivityDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -186,6 +195,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  DerivedComplianceState: ").Append(DerivedComplianceState).Append("\n");
             sb.Append("  DerivedApprovalState: ").Append(DerivedApprovalState).Append("\n");
             sb.Append("  DerivedDirection: ").Append(DerivedDirection).Append("\n");
+            sb.Append("  LatestActivityDate: ").Append(LatestActivityDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -270,6 +280,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.DerivedDirection == input.DerivedDirection ||
                     (this.DerivedDirection != null &&
                     this.DerivedDirection.Equals(input.DerivedDirection))
+                ) && 
+                (
+                    this.LatestActivityDate == input.LatestActivityDate ||
+                    (this.LatestActivityDate != null &&
+                    this.LatestActivityDate.Equals(input.LatestActivityDate))
                 );
         }
 
@@ -321,6 +336,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.DerivedDirection != null)
                 {
                     hashCode = (hashCode * 59) + this.DerivedDirection.GetHashCode();
+                }
+                if (this.LatestActivityDate != null)
+                {
+                    hashCode = (hashCode * 59) + this.LatestActivityDate.GetHashCode();
                 }
                 return hashCode;
             }

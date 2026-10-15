@@ -115,7 +115,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getreferencelist"></a>
 ## GetReferenceList
 
-> ReferenceListResponse GetReferenceList(string scope, string code, DateTimeOffset? asAt = null)
+> ReferenceListResponse GetReferenceList(string scope, string code, DateTimeOffset? asAt = null, string? filter = null)
 
 GetReferenceList: Get Reference List
 
@@ -128,7 +128,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ReferenceListsApi
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
-ReferenceListResponse result = apiInstance.GetReferenceList(scope, code, asAt);
+var filter = "filter_example";  // string? (optional)
+ReferenceListResponse result = apiInstance.GetReferenceList(scope, code, asAt, filter);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -139,6 +140,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope to which the Reference List belongs. |
 | **code** | **string** | path | **required** | The Reference List&#39;s unique identifier. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the Reference List. Defaults to return the latest version of the Reference List if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the values of the Reference List by its underlying type:              fund lists filter on the fund (for example \&quot;id.Code eq &#39;FundCode&#39;\&quot;), id lists on Scope and Code,              property lists on Key and Value, and scalar lists on Value. Defaults to returning all values if not specified. |
 
 ### Return type
 
@@ -163,7 +165,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ReferenceListResponse> response = apiInstance.GetReferenceListWithHttpInfo(scope, code, asAt);
+ApiResponse<ReferenceListResponse> response = apiInstance.GetReferenceListWithHttpInfo(scope, code, asAt, filter);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

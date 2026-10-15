@@ -15,7 +15,7 @@ LUSID representation of an OTC option on a ToBeAnnounced (TBA) forward contract.
 | **DeliveryType** | **string** | Required | Is the option cash settled or physical delivery of the underlying TBA.                Supported string (enumeration) values are: [Cash, Physical]. |
 | **Underlying** | [MasteredInstrument](MasteredInstrument.md) | Required | *No description available.* |
 | **ExerciseType** | **string** | Required | Type of optionality that is present; European only in this scope.                Supported string (enumeration) values are: [European]. |
-| **Premium** | [Premium](Premium.md) | Required | *No description available.* |
+| **Premium** | [Premium](Premium.md) | Optional | *No description available.* |
 | **DeliveryDays** | **int** | Optional | Number of business days between exercise date and settlement of the option payoff or underlying.  Defaults to 0 if not set. |
 | **BusinessDayConvention** | **string** | Optional | Business day convention for option exercise date to settlement date calculation.  Default value: F. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid. |
 | **SettlementCalendars** | **List&lt;string&gt;** | Optional | Holiday calendar for option exercise date to settlement date calculation. |
@@ -40,7 +40,7 @@ var instance = new ToBeAnnouncedOption(
     deliveryType: "...",  // required — Is the option cash settled or physical delivery of the underlying TBA.                Supported string (enumeration) values are: [Cash, Physical].
     underlying: new MasteredInstrument(...),  // required
     exerciseType: "...",  // required — Type of optionality that is present; European only in this scope.                Supported string (enumeration) values are: [European].
-    premium: new Premium(...),  // required
+    premium: new Premium(...),  // optional
     deliveryDays: 0,  // optional — Number of business days between exercise date and settlement of the option payoff or underlying.  Defaults to 0 if not set.
     businessDayConvention: "...",  // optional — Business day convention for option exercise date to settlement date calculation.  Default value: F. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid.
     settlementCalendars: ,  // optional — Holiday calendar for option exercise date to settlement date calculation.

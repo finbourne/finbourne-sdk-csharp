@@ -36,6 +36,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="ShareClass" /> class.
         /// </summary>
         /// <param name="instrumentIdentifiers">Unique instrument identifiers.</param>
+        /// <param name="series">The series that belong to this Share Class - only relevant if InvestorType is Series..</param>
         /// <param name="name">The display name of the Share Class. (required).</param>
         /// <param name="description">An optional description for the Share Class..</param>
         /// <param name="shareClassShortCode">A short code that uniquely identifies the share class within the Fund. (required).</param>
@@ -51,7 +52,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
         /// <param name="distributionPaymentType">The tax treatment applied to distributions. Available values: Invalid, Gross, Net..</param>
         /// <param name="hedging">Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging..</param>
-        public ShareClass(Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string name = default(string), string description = default(string), string shareClassShortCode = default(string), decimal? launchPrice = default(decimal?), DateTimeOffset? launchDate = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string investorType = default(string), string distributionType = default(string), string domCcy = default(string), TradingConventions tradingConventions = default(TradingConventions), List<SimpleRoundingConvention> roundingConventionsPrice = default(List<SimpleRoundingConvention>), List<SimpleRoundingConvention> roundingConventionsUnits = default(List<SimpleRoundingConvention>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), string distributionPaymentType = default(string), string hedging = default(string))
+        /// <param name="whtParameters">whtParameters.</param>
+        public ShareClass(Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), List<Series> series = default(List<Series>), string name = default(string), string description = default(string), string shareClassShortCode = default(string), decimal? launchPrice = default(decimal?), DateTimeOffset? launchDate = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string investorType = default(string), string distributionType = default(string), string domCcy = default(string), TradingConventions tradingConventions = default(TradingConventions), List<SimpleRoundingConvention> roundingConventionsPrice = default(List<SimpleRoundingConvention>), List<SimpleRoundingConvention> roundingConventionsUnits = default(List<SimpleRoundingConvention>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), string distributionPaymentType = default(string), string hedging = default(string), WhtParameters whtParameters = default(WhtParameters))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -78,6 +80,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.DomCcy = domCcy;
             this.InstrumentIdentifiers = instrumentIdentifiers;
+            this.Series = series;
             this.Description = description;
             this.LaunchPrice = launchPrice;
             this.LaunchDate = launchDate;
@@ -89,6 +92,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.TimeZoneConventions = timeZoneConventions;
             this.DistributionPaymentType = distributionPaymentType;
             this.Hedging = hedging;
+            this.WhtParameters = whtParameters;
         }
 
         /// <summary>
@@ -97,6 +101,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>Unique instrument identifiers</value>
         [DataMember(Name = "instrumentIdentifiers", EmitDefaultValue = true)]
         public Dictionary<string, string> InstrumentIdentifiers { get; set; }
+
+        /// <summary>
+        /// The series that belong to this Share Class - only relevant if InvestorType is Series.
+        /// </summary>
+        /// <value>The series that belong to this Share Class - only relevant if InvestorType is Series.</value>
+        [DataMember(Name = "series", EmitDefaultValue = true)]
+        public List<Series> Series { get; set; }
 
         /// <summary>
         /// The display name of the Share Class.
@@ -202,6 +213,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Hedging { get; set; }
 
         /// <summary>
+        /// Gets or Sets WhtParameters
+        /// </summary>
+        [DataMember(Name = "whtParameters", EmitDefaultValue = false)]
+        public WhtParameters WhtParameters { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -210,6 +227,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ShareClass {\n");
             sb.Append("  InstrumentIdentifiers: ").Append(InstrumentIdentifiers).Append("\n");
+            sb.Append("  Series: ").Append(Series).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ShareClassShortCode: ").Append(ShareClassShortCode).Append("\n");
@@ -225,6 +243,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  TimeZoneConventions: ").Append(TimeZoneConventions).Append("\n");
             sb.Append("  DistributionPaymentType: ").Append(DistributionPaymentType).Append("\n");
             sb.Append("  Hedging: ").Append(Hedging).Append("\n");
+            sb.Append("  WhtParameters: ").Append(WhtParameters).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -265,6 +284,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.InstrumentIdentifiers != null &&
                     input.InstrumentIdentifiers != null &&
                     this.InstrumentIdentifiers.SequenceEqual(input.InstrumentIdentifiers)
+                ) && 
+                (
+                    this.Series == input.Series ||
+                    this.Series != null &&
+                    input.Series != null &&
+                    this.Series.SequenceEqual(input.Series)
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -343,6 +368,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Hedging == input.Hedging ||
                     (this.Hedging != null &&
                     this.Hedging.Equals(input.Hedging))
+                ) && 
+                (
+                    this.WhtParameters == input.WhtParameters ||
+                    (this.WhtParameters != null &&
+                    this.WhtParameters.Equals(input.WhtParameters))
                 );
         }
 
@@ -358,6 +388,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.InstrumentIdentifiers != null)
                 {
                     hashCode = (hashCode * 59) + this.InstrumentIdentifiers.GetHashCode();
+                }
+                if (this.Series != null)
+                {
+                    hashCode = (hashCode * 59) + this.Series.GetHashCode();
                 }
                 if (this.Name != null)
                 {
@@ -418,6 +452,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Hedging != null)
                 {
                     hashCode = (hashCode * 59) + this.Hedging.GetHashCode();
+                }
+                if (this.WhtParameters != null)
+                {
+                    hashCode = (hashCode * 59) + this.WhtParameters.GetHashCode();
                 }
                 return hashCode;
             }

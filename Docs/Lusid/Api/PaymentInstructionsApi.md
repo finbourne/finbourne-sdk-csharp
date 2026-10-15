@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 | [**GetPaymentInstruction**](#getpaymentinstruction) | **GET** `/api/api/paymentinstructions/{scope}/{code}` | [EXPERIMENTAL] GetPaymentInstruction: Get Payment Instruction |
 | [**GetPaymentInstructionsByPaymentRecordIds**](#getpaymentinstructionsbypaymentrecordids) | **POST** `/api/api/paymentinstructions/$getByPaymentRecordIds` | [EXPERIMENTAL] GetPaymentInstructionsByPaymentRecordIds: Get Payment Instructions by Payment Record Ids |
 | [**ListPaymentInstructions**](#listpaymentinstructions) | **GET** `/api/api/paymentinstructions` | [EXPERIMENTAL] ListPaymentInstructions: List Payment Instructions |
+| [**TransitionPaymentInstructionStatuses**](#transitionpaymentinstructionstatuses) | **POST** `/api/api/paymentinstructions/$transitionStatuses` | [EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses |
 | [**UpsertPaymentInstructions**](#upsertpaymentinstructions) | **POST** `/api/api/paymentinstructions` | [EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions |
 
 ### Example
@@ -303,6 +304,66 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PagedResourceListOfPaymentInstruction> response = apiInstance.ListPaymentInstructionsWithHttpInfo(asAt, effectiveAt, page, limit, filter, sortBy, propertyKeys);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="transitionpaymentinstructionstatuses"></a>
+## TransitionPaymentInstructionStatuses
+
+> TransitionPaymentInstructionsResponse TransitionPaymentInstructionStatuses(Dictionary<string, PaymentInstructionStatusTransitionRequest> requestBody, List<string>? propertyKeys = null)
+
+[EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses
+
+Move a collection of Payment Instructions to new statuses. A Payment Instruction's status is not settable on  the upsert endpoint; this endpoint is the state machine that controls its lifecycle, which runs  Created, Staged, Released, Instructed, Sent, with Cancelled reachable before the instruction is Instructed and  Failed reachable once it has been. Each requested transition is validated against the instruction's current  status on its own, and those that are permitted are applied together.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<PaymentInstructionsApi>();
+var requestBody = new Dictionary<string, PaymentInstructionStatusTransitionRequest>(); // Dictionary<string, PaymentInstructionStatusTransitionRequest>
+var propertyKeys = new List<string>?(); // List<string>? (optional)
+TransitionPaymentInstructionsResponse result = apiInstance.TransitionPaymentInstructionStatuses(requestBody, propertyKeys);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **requestBody** | [Dictionary&lt;string, PaymentInstructionStatusTransitionRequest&gt;](../Model/PaymentInstructionStatusTransitionRequest.md) | body | **required** | A collection of requests to transition the status of Payment Instructions. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              transitioned payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. |
+
+### Return type
+
+[TransitionPaymentInstructionsResponse](../Model/TransitionPaymentInstructionsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The successfully transitioned payment instructions at their new status, along with any failures |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the TransitionPaymentInstructionStatusesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<TransitionPaymentInstructionsResponse> response = apiInstance.TransitionPaymentInstructionStatusesWithHttpInfo(requestBody, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

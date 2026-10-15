@@ -56,7 +56,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="shareClasses">An optional list of Share Class definitions for the Fund..</param>
         /// <param name="pricingMethodology">pricingMethodology.</param>
         /// <param name="reportingPrices">Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices..</param>
-        public FundDefinitionRequest(string code = default(string), string shortCode = default(string), string displayName = default(string), string description = default(string), string baseCurrency = default(string), string investorStructure = default(string), List<PortfolioEntityId> portfolioIds = default(List<PortfolioEntityId>), ResourceId fundConfigurationId = default(ResourceId), List<string> shareClassInstrumentScopes = default(List<string>), List<InstrumentResolutionDetail> shareClassInstruments = default(List<InstrumentResolutionDetail>), string type = default(string), string taxTransparency = default(string), DateTimeOffset inceptionDate = default(DateTimeOffset), int? decimalPlaces = default(int?), NavTypeDefinition primaryNavType = default(NavTypeDefinition), List<NavTypeDefinition> additionalNavTypes = default(List<NavTypeDefinition>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool createInstrument = default(bool), List<ShareClassDefinition> shareClasses = default(List<ShareClassDefinition>), PricingMethodology pricingMethodology = default(PricingMethodology), List<ReportingPrice> reportingPrices = default(List<ReportingPrice>))
+        /// <param name="whtParameters">whtParameters.</param>
+        public FundDefinitionRequest(string code = default(string), string shortCode = default(string), string displayName = default(string), string description = default(string), string baseCurrency = default(string), string investorStructure = default(string), List<PortfolioEntityId> portfolioIds = default(List<PortfolioEntityId>), ResourceId fundConfigurationId = default(ResourceId), List<string> shareClassInstrumentScopes = default(List<string>), List<InstrumentResolutionDetail> shareClassInstruments = default(List<InstrumentResolutionDetail>), string type = default(string), string taxTransparency = default(string), DateTimeOffset inceptionDate = default(DateTimeOffset), int? decimalPlaces = default(int?), NavTypeDefinition primaryNavType = default(NavTypeDefinition), List<NavTypeDefinition> additionalNavTypes = default(List<NavTypeDefinition>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool createInstrument = default(bool), List<ShareClassDefinition> shareClasses = default(List<ShareClassDefinition>), PricingMethodology pricingMethodology = default(PricingMethodology), List<ReportingPrice> reportingPrices = default(List<ReportingPrice>), WhtParameters whtParameters = default(WhtParameters))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -109,6 +110,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.ShareClasses = shareClasses;
             this.PricingMethodology = pricingMethodology;
             this.ReportingPrices = reportingPrices;
+            this.WhtParameters = whtParameters;
         }
 
         /// <summary>
@@ -256,6 +258,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<ReportingPrice> ReportingPrices { get; set; }
 
         /// <summary>
+        /// Gets or Sets WhtParameters
+        /// </summary>
+        [DataMember(Name = "whtParameters", EmitDefaultValue = false)]
+        public WhtParameters WhtParameters { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -284,6 +292,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ShareClasses: ").Append(ShareClasses).Append("\n");
             sb.Append("  PricingMethodology: ").Append(PricingMethodology).Append("\n");
             sb.Append("  ReportingPrices: ").Append(ReportingPrices).Append("\n");
+            sb.Append("  WhtParameters: ").Append(WhtParameters).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -429,6 +438,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ReportingPrices != null &&
                     input.ReportingPrices != null &&
                     this.ReportingPrices.SequenceEqual(input.ReportingPrices)
+                ) && 
+                (
+                    this.WhtParameters == input.WhtParameters ||
+                    (this.WhtParameters != null &&
+                    this.WhtParameters.Equals(input.WhtParameters))
                 );
         }
 
@@ -521,6 +535,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.ReportingPrices != null)
                 {
                     hashCode = (hashCode * 59) + this.ReportingPrices.GetHashCode();
+                }
+                if (this.WhtParameters != null)
+                {
+                    hashCode = (hashCode * 59) + this.WhtParameters.GetHashCode();
                 }
                 return hashCode;
             }

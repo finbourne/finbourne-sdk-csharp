@@ -18,6 +18,7 @@ A single replacement transaction definition as it was persisted against a virtua
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The transaction properties stored for the replacement transaction. |
 | **CounterpartyId** | **string** | Optional | The identifier for the counterparty of the replacement transaction. |
 | **Source** | **string** | Optional | The source of the replacement transaction. |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -40,7 +41,8 @@ var instance = new StoredOverrideDefinition(
     tradeCurrency: "...",  // optional — The trade currency of the replacement transaction.
     properties: new PerpetualProperty(...),  // optional — The transaction properties stored for the replacement transaction.
     counterpartyId: "...",  // optional — The identifier for the counterparty of the replacement transaction.
-    source: "..."  // optional — The source of the replacement transaction.
+    source: "...",  // optional — The source of the replacement transaction.
+    custodianAccountId: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -60,6 +62,7 @@ var instance = JsonConvert.DeserializeObject<StoredOverrideDefinition>(json);
 - [TransactionPrice](TransactionPrice.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
+- [ResourceId](ResourceId.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

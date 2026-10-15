@@ -51,7 +51,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
         /// <param name="distributionPaymentType">The tax treatment applied to distributions. Available values: Invalid, Gross, Net..</param>
         /// <param name="hedging">Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging..</param>
-        public ShareClassDefinition(Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string name = default(string), string description = default(string), string shareClassShortCode = default(string), decimal? launchPrice = default(decimal?), DateTimeOffset? launchDate = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string investorType = default(string), string distributionType = default(string), string domCcy = default(string), TradingConventions tradingConventions = default(TradingConventions), List<SimpleRoundingConvention> roundingConventionsPrice = default(List<SimpleRoundingConvention>), List<SimpleRoundingConvention> roundingConventionsUnits = default(List<SimpleRoundingConvention>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), string distributionPaymentType = default(string), string hedging = default(string))
+        /// <param name="whtParameters">whtParameters.</param>
+        public ShareClassDefinition(Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), string name = default(string), string description = default(string), string shareClassShortCode = default(string), decimal? launchPrice = default(decimal?), DateTimeOffset? launchDate = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), string investorType = default(string), string distributionType = default(string), string domCcy = default(string), TradingConventions tradingConventions = default(TradingConventions), List<SimpleRoundingConvention> roundingConventionsPrice = default(List<SimpleRoundingConvention>), List<SimpleRoundingConvention> roundingConventionsUnits = default(List<SimpleRoundingConvention>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), string distributionPaymentType = default(string), string hedging = default(string), WhtParameters whtParameters = default(WhtParameters))
         {
             // to ensure "instrumentIdentifiers" is required (not null)
             if (instrumentIdentifiers == null)
@@ -94,6 +95,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.TimeZoneConventions = timeZoneConventions;
             this.DistributionPaymentType = distributionPaymentType;
             this.Hedging = hedging;
+            this.WhtParameters = whtParameters;
         }
 
         /// <summary>
@@ -207,6 +209,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Hedging { get; set; }
 
         /// <summary>
+        /// Gets or Sets WhtParameters
+        /// </summary>
+        [DataMember(Name = "whtParameters", EmitDefaultValue = false)]
+        public WhtParameters WhtParameters { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -230,6 +238,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  TimeZoneConventions: ").Append(TimeZoneConventions).Append("\n");
             sb.Append("  DistributionPaymentType: ").Append(DistributionPaymentType).Append("\n");
             sb.Append("  Hedging: ").Append(Hedging).Append("\n");
+            sb.Append("  WhtParameters: ").Append(WhtParameters).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -348,6 +357,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Hedging == input.Hedging ||
                     (this.Hedging != null &&
                     this.Hedging.Equals(input.Hedging))
+                ) && 
+                (
+                    this.WhtParameters == input.WhtParameters ||
+                    (this.WhtParameters != null &&
+                    this.WhtParameters.Equals(input.WhtParameters))
                 );
         }
 
@@ -423,6 +437,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Hedging != null)
                 {
                     hashCode = (hashCode * 59) + this.Hedging.GetHashCode();
+                }
+                if (this.WhtParameters != null)
+                {
+                    hashCode = (hashCode * 59) + this.WhtParameters.GetHashCode();
                 }
                 return hashCode;
             }

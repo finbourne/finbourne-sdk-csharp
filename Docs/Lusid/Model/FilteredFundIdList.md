@@ -8,6 +8,9 @@
 |------|------|----------|-------------|
 | **Filter** | **string** | Required | *No description available.* |
 | **Values** | [List&lt;ResourceId&gt;](ResourceId.md) | Optional | *No description available.* *(read-only)* |
+| **NavTypeCodesHint** | **List&lt;string&gt;** | Optional | *No description available.* |
+| **NavTypeSelection** | **string** | Optional | Available values: First, All. |
+| **ResolvedFundNavTypeCodes** | [List&lt;FundNavTypeCodes&gt;](FundNavTypeCodes.md) | Optional | *No description available.* *(read-only)* |
 | **ReferenceListType** | **string** | Required | The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList. Default: `ReferenceListTypeEnum.FilteredFundIdList` |
 
 
@@ -21,6 +24,9 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new FilteredFundIdList(
     filter: "...",  // required
     values: new List<ResourceId>(),  // optional
+    navTypeCodesHint: ,  // optional
+    navTypeSelection: "...",  // optional — Available values: First, All.
+    resolvedFundNavTypeCodes: new List<FundNavTypeCodes>(),  // optional
     referenceListType: "..."  // required — The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList.
 );
 ```
@@ -38,6 +44,7 @@ var instance = JsonConvert.DeserializeObject<FilteredFundIdList>(json);
 
 
 - [ResourceId](ResourceId.md)
+- [FundNavTypeCodes](FundNavTypeCodes.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

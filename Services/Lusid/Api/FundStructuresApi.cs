@@ -62,6 +62,37 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FundStructure</returns>
         Finbourne.Sdk.Client.ApiResponse<FundStructure> AddFundStructureMemberWithHttpInfo(string scope, string code, FundStructureMemberRequest fundStructureMemberRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure.
+        /// </summary>
+        /// <remarks>
+        /// Finalise the named valuation point on every member fund of the structure, leaves first so that each fund&#39;s  investors see a final NAV before the fund holding them closes. A member that fails stops the funds that depend on  it; the members already finalised stand.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund Structure.</param>
+        /// <param name="code">The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure.</param>
+        /// <param name="fundStructureCloseRequest">The valuation point to finalise.</param>
+        /// <param name="asAt">The asAt datetime at which to read the structure. Defaults to return the latest version if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>FundStructureCloseResult</returns>
+        FundStructureCloseResult CloseFundStructure(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure.
+        /// </summary>
+        /// <remarks>
+        /// Finalise the named valuation point on every member fund of the structure, leaves first so that each fund&#39;s  investors see a final NAV before the fund holding them closes. A member that fails stops the funds that depend on  it; the members already finalised stand.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund Structure.</param>
+        /// <param name="code">The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure.</param>
+        /// <param name="fundStructureCloseRequest">The valuation point to finalise.</param>
+        /// <param name="asAt">The asAt datetime at which to read the structure. Defaults to return the latest version if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of FundStructureCloseResult</returns>
+        Finbourne.Sdk.Client.ApiResponse<FundStructureCloseResult> CloseFundStructureWithHttpInfo(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure.
         /// </summary>
         /// <remarks>
@@ -289,6 +320,39 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (FundStructure)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FundStructure>> AddFundStructureMemberWithHttpInfoAsync(string scope, string code, FundStructureMemberRequest fundStructureMemberRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure.
+        /// </summary>
+        /// <remarks>
+        /// Finalise the named valuation point on every member fund of the structure, leaves first so that each fund&#39;s  investors see a final NAV before the fund holding them closes. A member that fails stops the funds that depend on  it; the members already finalised stand.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund Structure.</param>
+        /// <param name="code">The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure.</param>
+        /// <param name="fundStructureCloseRequest">The valuation point to finalise.</param>
+        /// <param name="asAt">The asAt datetime at which to read the structure. Defaults to return the latest version if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of FundStructureCloseResult</returns>
+        System.Threading.Tasks.Task<FundStructureCloseResult> CloseFundStructureAsync(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure.
+        /// </summary>
+        /// <remarks>
+        /// Finalise the named valuation point on every member fund of the structure, leaves first so that each fund&#39;s  investors see a final NAV before the fund holding them closes. A member that fails stops the funds that depend on  it; the members already finalised stand.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund Structure.</param>
+        /// <param name="code">The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure.</param>
+        /// <param name="fundStructureCloseRequest">The valuation point to finalise.</param>
+        /// <param name="asAt">The asAt datetime at which to read the structure. Defaults to return the latest version if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (FundStructureCloseResult)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FundStructureCloseResult>> CloseFundStructureWithHttpInfoAsync(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure.
         /// </summary>
@@ -854,6 +918,288 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("AddFundStructureMember", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure. Finalise the named valuation point on every member fund of the structure, leaves first so that each fund&#39;s  investors see a final NAV before the fund holding them closes. A member that fails stops the funds that depend on  it; the members already finalised stand.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund Structure.</param>
+        /// <param name="code">The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure.</param>
+        /// <param name="fundStructureCloseRequest">The valuation point to finalise.</param>
+        /// <param name="asAt">The asAt datetime at which to read the structure. Defaults to return the latest version if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>FundStructureCloseResult</returns>
+        public FundStructureCloseResult CloseFundStructure(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<FundStructureCloseResult> localVarResponse = CloseFundStructureWithHttpInfo(scope, code, fundStructureCloseRequest, asAt, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure. Finalise the named valuation point on every member fund of the structure, leaves first so that each fund&#39;s  investors see a final NAV before the fund holding them closes. A member that fails stops the funds that depend on  it; the members already finalised stand.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund Structure.</param>
+        /// <param name="code">The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure.</param>
+        /// <param name="fundStructureCloseRequest">The valuation point to finalise.</param>
+        /// <param name="asAt">The asAt datetime at which to read the structure. Defaults to return the latest version if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of FundStructureCloseResult</returns>
+        public Finbourne.Sdk.Client.ApiResponse<FundStructureCloseResult> CloseFundStructureWithHttpInfo(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundStructuresApi->CloseFundStructure");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundStructuresApi->CloseFundStructure");
+            }
+
+            // verify the required parameter 'fundStructureCloseRequest' is set
+            if (fundStructureCloseRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'fundStructureCloseRequest' when calling FundStructuresApi->CloseFundStructure");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            localVarRequestOptions.Data = fundStructureCloseRequest;
+
+            localVarRequestOptions.Operation = "FundStructuresApi.CloseFundStructure";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<FundStructureCloseResult, AbstractOpenAPISchema>("/api/api/fundstructures/{scope}/{code}/$close", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CloseFundStructure", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure. Finalise the named valuation point on every member fund of the structure, leaves first so that each fund&#39;s  investors see a final NAV before the fund holding them closes. A member that fails stops the funds that depend on  it; the members already finalised stand.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund Structure.</param>
+        /// <param name="code">The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure.</param>
+        /// <param name="fundStructureCloseRequest">The valuation point to finalise.</param>
+        /// <param name="asAt">The asAt datetime at which to read the structure. Defaults to return the latest version if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of FundStructureCloseResult</returns>
+        public async System.Threading.Tasks.Task<FundStructureCloseResult> CloseFundStructureAsync(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<FundStructureCloseResult> localVarResponse = await CloseFundStructureWithHttpInfoAsync(scope, code, fundStructureCloseRequest, asAt, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure. Finalise the named valuation point on every member fund of the structure, leaves first so that each fund&#39;s  investors see a final NAV before the fund holding them closes. A member that fails stops the funds that depend on  it; the members already finalised stand.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund Structure.</param>
+        /// <param name="code">The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure.</param>
+        /// <param name="fundStructureCloseRequest">The valuation point to finalise.</param>
+        /// <param name="asAt">The asAt datetime at which to read the structure. Defaults to return the latest version if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (FundStructureCloseResult)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FundStructureCloseResult>> CloseFundStructureWithHttpInfoAsync(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundStructuresApi->CloseFundStructure");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundStructuresApi->CloseFundStructure");
+            }
+
+            // verify the required parameter 'fundStructureCloseRequest' is set
+            if (fundStructureCloseRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'fundStructureCloseRequest' when calling FundStructuresApi->CloseFundStructure");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            localVarRequestOptions.Data = fundStructureCloseRequest;
+
+            localVarRequestOptions.Operation = "FundStructuresApi.CloseFundStructure";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<FundStructureCloseResult, AbstractOpenAPISchema>("/api/api/fundstructures/{scope}/{code}/$close", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CloseFundStructure", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

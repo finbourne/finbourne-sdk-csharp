@@ -13,6 +13,7 @@ The Valuation Point Data for a Fund on a specified date.
 | **Nav** | **decimal** | Required | The Net Asset Value of the Fund or Share Class at the Valuation Point. This represents the GAV with any fees applied in the period. |
 | **Miscellaneous** | [Dictionary&lt;string, FundAmount&gt;](FundAmount.md) | Optional | Not used directly by the LUSID engines but serves as a holding area for any custom derived data points that may be useful in, for example, fee calculations). |
 | **PreviousValuationPointData** | [PreviousFundValuationPointData](PreviousFundValuationPointData.md) | Optional | *No description available.* |
+| **PartnershipAccounting** | [PartnershipAccountingValuationPointData](PartnershipAccountingValuationPointData.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -30,7 +31,8 @@ var instance = new FundValuationPointData(
     fees: new FeeAccrual(...),  // required — Bucket of detail for any &#39;Fees&#39; that have been charged in the selected period.
     nav: 0.0d,  // required — The Net Asset Value of the Fund or Share Class at the Valuation Point. This represents the GAV with any fees applied in the period.
     miscellaneous: new FundAmount(...),  // optional — Not used directly by the LUSID engines but serves as a holding area for any custom derived data points that may be useful in, for example, fee calculations).
-    previousValuationPointData: new PreviousFundValuationPointData(...)  // optional
+    previousValuationPointData: new PreviousFundValuationPointData(...),  // optional
+    partnershipAccounting: new PartnershipAccountingValuationPointData(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -54,6 +56,7 @@ var instance = JsonConvert.DeserializeObject<FundValuationPointData>(json);
 - [FeeAccrual](FeeAccrual.md) — used in `Fees`
 - [FundAmount](FundAmount.md) — used in `Miscellaneous`
 - [PreviousFundValuationPointData](PreviousFundValuationPointData.md)
+- [PartnershipAccountingValuationPointData](PartnershipAccountingValuationPointData.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

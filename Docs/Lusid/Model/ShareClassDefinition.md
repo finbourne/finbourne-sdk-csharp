@@ -20,6 +20,7 @@
 | **TimeZoneConventions** | [TimeZoneConventions](TimeZoneConventions.md) | Optional | *No description available.* |
 | **DistributionPaymentType** | **string** | Optional | The tax treatment applied to distributions. Available values: Invalid, Gross, Net. |
 | **Hedging** | **string** | Optional | Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging. |
+| **WhtParameters** | [WhtParameters](WhtParameters.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -45,7 +46,8 @@ var instance = new ShareClassDefinition(
     roundingConventionsUnits: new List<SimpleRoundingConvention>(),  // optional — Rounding conventions used for the ShareClass units.
     timeZoneConventions: new TimeZoneConventions(...),  // optional
     distributionPaymentType: "...",  // optional — The tax treatment applied to distributions. Available values: Invalid, Gross, Net.
-    hedging: "..."  // optional — Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging.
+    hedging: "...",  // optional — Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging.
+    whtParameters: new WhtParameters(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -65,6 +67,7 @@ var instance = JsonConvert.DeserializeObject<ShareClassDefinition>(json);
 - [SimpleRoundingConvention](SimpleRoundingConvention.md) — used in `RoundingConventionsPrice`
 - [SimpleRoundingConvention](SimpleRoundingConvention.md) — used in `RoundingConventionsUnits`
 - [TimeZoneConventions](TimeZoneConventions.md)
+- [WhtParameters](WhtParameters.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

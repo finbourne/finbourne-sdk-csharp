@@ -31,6 +31,7 @@ A Fund entity.
 | **PricingMethodology** | [PricingMethodology](PricingMethodology.md) | Optional | *No description available.* |
 | **ReportingPrices** | [List&lt;ReportingPrice&gt;](ReportingPrice.md) | Optional | Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **WhtParameters** | [WhtParameters](WhtParameters.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -68,6 +69,7 @@ var instance = new Fund(
     pricingMethodology: new PricingMethodology(...),  // optional
     reportingPrices: new List<ReportingPrice>(),  // optional — Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices.
     varVersion: new ModelVersion(...),  // optional
+    whtParameters: new WhtParameters(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -98,6 +100,7 @@ var instance = JsonConvert.DeserializeObject<Fund>(json);
 - [PricingMethodology](PricingMethodology.md)
 - [ReportingPrice](ReportingPrice.md) — used in `ReportingPrices`
 - [ModelVersion](ModelVersion.md)
+- [WhtParameters](WhtParameters.md)
 - [Link](Link.md)
 
 

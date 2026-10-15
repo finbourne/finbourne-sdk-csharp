@@ -18,6 +18,7 @@ A single replacement transaction definition that overrides a virtual transaction
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The transaction properties stored for the replacement transaction. |
 | **CounterpartyId** | **string** | Optional | The identifier for the counterparty of the replacement transaction. |
 | **Source** | **string** | Optional | The source of the replacement transaction. |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **PrecedesEvent** | **bool?** | Optional | True when this replacement&#39;s trade date is earlier than the target instrument event&#39;s current effective date, which orphans the entry it belongs to. |
 
 
@@ -42,6 +43,7 @@ var instance = new OverrideDefinitionResponse(
     properties: new PerpetualProperty(...),  // optional — The transaction properties stored for the replacement transaction.
     counterpartyId: "...",  // optional — The identifier for the counterparty of the replacement transaction.
     source: "...",  // optional — The source of the replacement transaction.
+    custodianAccountId: new ResourceId(...),  // optional
     precedesEvent: true  // optional — True when this replacement&#39;s trade date is earlier than the target instrument event&#39;s current effective date, which orphans the entry it belongs to.
 );
 ```
@@ -62,6 +64,7 @@ var instance = JsonConvert.DeserializeObject<OverrideDefinitionResponse>(json);
 - [TransactionPrice](TransactionPrice.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
+- [ResourceId](ResourceId.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

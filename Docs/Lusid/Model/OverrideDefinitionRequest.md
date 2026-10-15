@@ -18,6 +18,7 @@ A single replacement transaction definition that overrides a virtual transaction
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | A list of unique transaction properties and associated values to store for the replacement transaction. Each property must be from the &#39;Transaction&#39; domain. |
 | **CounterpartyId** | **string** | Optional | The identifier for the counterparty of the replacement transaction. |
 | **Source** | **string** | Optional | The source of the replacement transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |
+| **CustodianAccountId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -40,7 +41,8 @@ var instance = new OverrideDefinitionRequest(
     tradeCurrency: "...",  // optional — The trade currency of the replacement transaction.
     properties: new PerpetualProperty(...),  // optional — A list of unique transaction properties and associated values to store for the replacement transaction. Each property must be from the &#39;Transaction&#39; domain.
     counterpartyId: "...",  // optional — The identifier for the counterparty of the replacement transaction.
-    source: "..."  // optional — The source of the replacement transaction. This is used to look up the appropriate transaction group set in the transaction type configuration.
+    source: "...",  // optional — The source of the replacement transaction. This is used to look up the appropriate transaction group set in the transaction type configuration.
+    custodianAccountId: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -60,6 +62,7 @@ var instance = JsonConvert.DeserializeObject<OverrideDefinitionRequest>(json);
 - [TransactionPrice](TransactionPrice.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
+- [ResourceId](ResourceId.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

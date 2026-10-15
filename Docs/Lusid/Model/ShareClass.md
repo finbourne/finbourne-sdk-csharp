@@ -5,6 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **InstrumentIdentifiers** | **Dictionary&lt;string, string&gt;** | Optional | Unique instrument identifiers |
+| **Series** | [List&lt;Series&gt;](Series.md) | Optional | The series that belong to this Share Class - only relevant if InvestorType is Series. |
 | **Name** | **string** | Required | The display name of the Share Class. |
 | **Description** | **string** | Optional | An optional description for the Share Class. |
 | **ShareClassShortCode** | **string** | Required | A short code that uniquely identifies the share class within the Fund. |
@@ -20,6 +21,7 @@
 | **TimeZoneConventions** | [TimeZoneConventions](TimeZoneConventions.md) | Optional | *No description available.* |
 | **DistributionPaymentType** | **string** | Optional | The tax treatment applied to distributions. Available values: Invalid, Gross, Net. |
 | **Hedging** | **string** | Optional | Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging. |
+| **WhtParameters** | [WhtParameters](WhtParameters.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -31,6 +33,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ShareClass(
     instrumentIdentifiers: ,  // optional — Unique instrument identifiers
+    series: new List<Series>(),  // optional — The series that belong to this Share Class - only relevant if InvestorType is Series.
     name: "...",  // required — The display name of the Share Class.
     description: "...",  // optional — An optional description for the Share Class.
     shareClassShortCode: "...",  // required — A short code that uniquely identifies the share class within the Fund.
@@ -45,7 +48,8 @@ var instance = new ShareClass(
     roundingConventionsUnits: new List<SimpleRoundingConvention>(),  // optional — Rounding conventions used for the ShareClass units.
     timeZoneConventions: new TimeZoneConventions(...),  // optional
     distributionPaymentType: "...",  // optional — The tax treatment applied to distributions. Available values: Invalid, Gross, Net.
-    hedging: "..."  // optional — Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging.
+    hedging: "...",  // optional — Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging.
+    whtParameters: new WhtParameters(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -60,11 +64,13 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<ShareClass>(json);
 ```
 
+- [Series](Series.md) — used in `Series`
 - [Property](Property.md) — used in `Properties`
 - [TradingConventions](TradingConventions.md)
 - [SimpleRoundingConvention](SimpleRoundingConvention.md) — used in `RoundingConventionsPrice`
 - [SimpleRoundingConvention](SimpleRoundingConvention.md) — used in `RoundingConventionsUnits`
 - [TimeZoneConventions](TimeZoneConventions.md)
+- [WhtParameters](WhtParameters.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

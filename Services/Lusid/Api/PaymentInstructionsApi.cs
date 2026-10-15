@@ -159,6 +159,33 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfPaymentInstruction</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfPaymentInstruction> ListPaymentInstructionsWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses
+        /// </summary>
+        /// <remarks>
+        /// Move a collection of Payment Instructions to new statuses. A Payment Instruction&#39;s status is not settable on  the upsert endpoint; this endpoint is the state machine that controls its lifecycle, which runs  Created, Staged, Released, Instructed, Sent, with Cancelled reachable before the instruction is Instructed and  Failed reachable once it has been. Each requested transition is validated against the instruction&#39;s current  status on its own, and those that are permitted are applied together.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody">A collection of requests to transition the status of Payment Instructions.</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              transitioned payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TransitionPaymentInstructionsResponse</returns>
+        TransitionPaymentInstructionsResponse TransitionPaymentInstructionStatuses(Dictionary<string, PaymentInstructionStatusTransitionRequest> requestBody, List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses
+        /// </summary>
+        /// <remarks>
+        /// Move a collection of Payment Instructions to new statuses. A Payment Instruction&#39;s status is not settable on  the upsert endpoint; this endpoint is the state machine that controls its lifecycle, which runs  Created, Staged, Released, Instructed, Sent, with Cancelled reachable before the instruction is Instructed and  Failed reachable once it has been. Each requested transition is validated against the instruction&#39;s current  status on its own, and those that are permitted are applied together.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody">A collection of requests to transition the status of Payment Instructions.</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              transitioned payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TransitionPaymentInstructionsResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TransitionPaymentInstructionsResponse> TransitionPaymentInstructionStatusesWithHttpInfo(Dictionary<string, PaymentInstructionStatusTransitionRequest> requestBody, List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions
         /// </summary>
         /// <remarks>
@@ -328,6 +355,35 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfPaymentInstruction)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfPaymentInstruction>> ListPaymentInstructionsWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses
+        /// </summary>
+        /// <remarks>
+        /// Move a collection of Payment Instructions to new statuses. A Payment Instruction&#39;s status is not settable on  the upsert endpoint; this endpoint is the state machine that controls its lifecycle, which runs  Created, Staged, Released, Instructed, Sent, with Cancelled reachable before the instruction is Instructed and  Failed reachable once it has been. Each requested transition is validated against the instruction&#39;s current  status on its own, and those that are permitted are applied together.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody">A collection of requests to transition the status of Payment Instructions.</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              transitioned payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TransitionPaymentInstructionsResponse</returns>
+        System.Threading.Tasks.Task<TransitionPaymentInstructionsResponse> TransitionPaymentInstructionStatusesAsync(Dictionary<string, PaymentInstructionStatusTransitionRequest> requestBody, List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses
+        /// </summary>
+        /// <remarks>
+        /// Move a collection of Payment Instructions to new statuses. A Payment Instruction&#39;s status is not settable on  the upsert endpoint; this endpoint is the state machine that controls its lifecycle, which runs  Created, Staged, Released, Instructed, Sent, with Cancelled reachable before the instruction is Instructed and  Failed reachable once it has been. Each requested transition is validated against the instruction&#39;s current  status on its own, and those that are permitted are applied together.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody">A collection of requests to transition the status of Payment Instructions.</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              transitioned payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TransitionPaymentInstructionsResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TransitionPaymentInstructionsResponse>> TransitionPaymentInstructionStatusesWithHttpInfoAsync(Dictionary<string, PaymentInstructionStatusTransitionRequest> requestBody, List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] UpsertPaymentInstructions: Upsert Payment Instructions
         /// </summary>
@@ -1526,6 +1582,252 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListPaymentInstructions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses Move a collection of Payment Instructions to new statuses. A Payment Instruction&#39;s status is not settable on  the upsert endpoint; this endpoint is the state machine that controls its lifecycle, which runs  Created, Staged, Released, Instructed, Sent, with Cancelled reachable before the instruction is Instructed and  Failed reachable once it has been. Each requested transition is validated against the instruction&#39;s current  status on its own, and those that are permitted are applied together.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody">A collection of requests to transition the status of Payment Instructions.</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              transitioned payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TransitionPaymentInstructionsResponse</returns>
+        public TransitionPaymentInstructionsResponse TransitionPaymentInstructionStatuses(Dictionary<string, PaymentInstructionStatusTransitionRequest> requestBody, List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TransitionPaymentInstructionsResponse> localVarResponse = TransitionPaymentInstructionStatusesWithHttpInfo(requestBody, propertyKeys, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses Move a collection of Payment Instructions to new statuses. A Payment Instruction&#39;s status is not settable on  the upsert endpoint; this endpoint is the state machine that controls its lifecycle, which runs  Created, Staged, Released, Instructed, Sent, with Cancelled reachable before the instruction is Instructed and  Failed reachable once it has been. Each requested transition is validated against the instruction&#39;s current  status on its own, and those that are permitted are applied together.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="requestBody">A collection of requests to transition the status of Payment Instructions.</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              transitioned payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TransitionPaymentInstructionsResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TransitionPaymentInstructionsResponse> TransitionPaymentInstructionStatusesWithHttpInfo(Dictionary<string, PaymentInstructionStatusTransitionRequest> requestBody, List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'requestBody' is set
+            if (requestBody == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'requestBody' when calling PaymentInstructionsApi->TransitionPaymentInstructionStatuses");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
+            }
+            localVarRequestOptions.Data = requestBody;
+
+            localVarRequestOptions.Operation = "PaymentInstructionsApi.TransitionPaymentInstructionStatuses";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TransitionPaymentInstructionsResponse, AbstractOpenAPISchema>("/api/api/paymentinstructions/$transitionStatuses", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TransitionPaymentInstructionStatuses", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses Move a collection of Payment Instructions to new statuses. A Payment Instruction&#39;s status is not settable on  the upsert endpoint; this endpoint is the state machine that controls its lifecycle, which runs  Created, Staged, Released, Instructed, Sent, with Cancelled reachable before the instruction is Instructed and  Failed reachable once it has been. Each requested transition is validated against the instruction&#39;s current  status on its own, and those that are permitted are applied together.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="requestBody">A collection of requests to transition the status of Payment Instructions.</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              transitioned payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TransitionPaymentInstructionsResponse</returns>
+        public async System.Threading.Tasks.Task<TransitionPaymentInstructionsResponse> TransitionPaymentInstructionStatusesAsync(Dictionary<string, PaymentInstructionStatusTransitionRequest> requestBody, List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TransitionPaymentInstructionsResponse> localVarResponse = await TransitionPaymentInstructionStatusesWithHttpInfoAsync(requestBody, propertyKeys, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses Move a collection of Payment Instructions to new statuses. A Payment Instruction&#39;s status is not settable on  the upsert endpoint; this endpoint is the state machine that controls its lifecycle, which runs  Created, Staged, Released, Instructed, Sent, with Cancelled reachable before the instruction is Instructed and  Failed reachable once it has been. Each requested transition is validated against the instruction&#39;s current  status on its own, and those that are permitted are applied together.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="requestBody">A collection of requests to transition the status of Payment Instructions.</param>
+        /// <param name="propertyKeys">A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each              transitioned payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TransitionPaymentInstructionsResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TransitionPaymentInstructionsResponse>> TransitionPaymentInstructionStatusesWithHttpInfoAsync(Dictionary<string, PaymentInstructionStatusTransitionRequest> requestBody, List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'requestBody' is set
+            if (requestBody == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'requestBody' when calling PaymentInstructionsApi->TransitionPaymentInstructionStatuses");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (propertyKeys != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "propertyKeys", propertyKeys));
+            }
+            localVarRequestOptions.Data = requestBody;
+
+            localVarRequestOptions.Operation = "PaymentInstructionsApi.TransitionPaymentInstructionStatuses";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TransitionPaymentInstructionsResponse, AbstractOpenAPISchema>("/api/api/paymentinstructions/$transitionStatuses", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TransitionPaymentInstructionStatuses", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -30,6 +30,32 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     public partial class FilteredFundIdList : ReferenceList, IEquatable<FilteredFundIdList>, IValidatableObject
     {
         /// <summary>
+        /// Available values: First, All.
+        /// </summary>
+        /// <value>Available values: First, All.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum NavTypeSelectionEnum
+        {
+            /// <summary>
+            /// Enum First for value: First
+            /// </summary>
+            [EnumMember(Value = "First")]
+            First = 1,
+
+            /// <summary>
+            /// Enum All for value: All
+            /// </summary>
+            [EnumMember(Value = "All")]
+            All = 2
+        }
+
+        /// <summary>
+        /// Available values: First, All.
+        /// </summary>
+        /// <value>Available values: First, All.</value>
+        [DataMember(Name = "navTypeSelection", EmitDefaultValue = false)]
+        public NavTypeSelectionEnum? NavTypeSelection { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="FilteredFundIdList" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -38,8 +64,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="FilteredFundIdList" /> class.
         /// </summary>
         /// <param name="filter">filter (required).</param>
+        /// <param name="navTypeCodesHint">navTypeCodesHint.</param>
+        /// <param name="navTypeSelection">Available values: First, All..</param>
         /// <param name="referenceListType">The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList. (required) (default to ReferenceListTypeEnum.PortfolioGroupIdList).</param>
-        public FilteredFundIdList(string filter = default(string), ReferenceListTypeEnum referenceListType = default(ReferenceListTypeEnum)) : base()
+        public FilteredFundIdList(string filter = default(string), List<string> navTypeCodesHint = default(List<string>), NavTypeSelectionEnum ?navTypeSelection = default(NavTypeSelectionEnum?), ReferenceListTypeEnum referenceListType = default(ReferenceListTypeEnum)) : base()
         {
             // to ensure "filter" is required (not null)
             if (filter == null)
@@ -48,6 +76,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.Filter = filter;
             this.ReferenceListType = referenceListType;
+            this.NavTypeCodesHint = navTypeCodesHint;
+            this.NavTypeSelection = navTypeSelection;
         }
 
         /// <summary>
@@ -71,6 +101,26 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             return false;
         }
         /// <summary>
+        /// Gets or Sets NavTypeCodesHint
+        /// </summary>
+        [DataMember(Name = "navTypeCodesHint", EmitDefaultValue = true)]
+        public List<string> NavTypeCodesHint { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ResolvedFundNavTypeCodes
+        /// </summary>
+        [DataMember(Name = "resolvedFundNavTypeCodes", EmitDefaultValue = true)]
+        public List<FundNavTypeCodes> ResolvedFundNavTypeCodes { get; private set; }
+
+        /// <summary>
+        /// Returns false as ResolvedFundNavTypeCodes should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeResolvedFundNavTypeCodes()
+        {
+            return false;
+        }
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -81,6 +131,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
+            sb.Append("  NavTypeCodesHint: ").Append(NavTypeCodesHint).Append("\n");
+            sb.Append("  NavTypeSelection: ").Append(NavTypeSelection).Append("\n");
+            sb.Append("  ResolvedFundNavTypeCodes: ").Append(ResolvedFundNavTypeCodes).Append("\n");
             sb.Append("  ReferenceListType: ").Append(ReferenceListType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -129,6 +182,22 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Values.SequenceEqual(input.Values)
                 ) && base.Equals(input) && 
                 (
+                    this.NavTypeCodesHint == input.NavTypeCodesHint ||
+                    this.NavTypeCodesHint != null &&
+                    input.NavTypeCodesHint != null &&
+                    this.NavTypeCodesHint.SequenceEqual(input.NavTypeCodesHint)
+                ) && base.Equals(input) && 
+                (
+                    this.NavTypeSelection == input.NavTypeSelection ||
+                    this.NavTypeSelection.Equals(input.NavTypeSelection)
+                ) && base.Equals(input) && 
+                (
+                    this.ResolvedFundNavTypeCodes == input.ResolvedFundNavTypeCodes ||
+                    this.ResolvedFundNavTypeCodes != null &&
+                    input.ResolvedFundNavTypeCodes != null &&
+                    this.ResolvedFundNavTypeCodes.SequenceEqual(input.ResolvedFundNavTypeCodes)
+                ) && base.Equals(input) && 
+                (
                     this.ReferenceListType == input.ReferenceListType ||
                     this.ReferenceListType.Equals(input.ReferenceListType)
                 );
@@ -150,6 +219,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Values != null)
                 {
                     hashCode = (hashCode * 59) + this.Values.GetHashCode();
+                }
+                if (this.NavTypeCodesHint != null)
+                {
+                    hashCode = (hashCode * 59) + this.NavTypeCodesHint.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.NavTypeSelection.GetHashCode();
+                if (this.ResolvedFundNavTypeCodes != null)
+                {
+                    hashCode = (hashCode * 59) + this.ResolvedFundNavTypeCodes.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ReferenceListType.GetHashCode();
                 return hashCode;

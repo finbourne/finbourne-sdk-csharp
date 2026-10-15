@@ -37,13 +37,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="enabled">enabled (required).</param>
         /// <param name="configPack">configPack.</param>
-        /// <param name="commitmentCurrencyPolicy">Available values: FundCurrencyOnly..</param>
+        /// <param name="commitmentCurrencyPolicy">Available values: FundCurrencyOnly, AllowLineCurrency..</param>
         /// <param name="registerPortfolioGroup">registerPortfolioGroup.</param>
         /// <param name="capitalModel">Available values: PartnershipCapitalAccounts, SeriesUnitised..</param>
         /// <param name="capabilityOverrides">capabilityOverrides.</param>
         /// <param name="series">series.</param>
         /// <param name="effectiveCapabilities">Derived on the way out; ignored on the way in..</param>
-        public PartnershipAccountingConfiguration(bool enabled = default(bool), ResourceId configPack = default(ResourceId), string commitmentCurrencyPolicy = default(string), ResourceId registerPortfolioGroup = default(ResourceId), string capitalModel = default(string), List<CapabilityOverride> capabilityOverrides = default(List<CapabilityOverride>), SeriesConfiguration series = default(SeriesConfiguration), Dictionary<string, string> effectiveCapabilities = default(Dictionary<string, string>))
+        /// <param name="presentation">presentation.</param>
+        public PartnershipAccountingConfiguration(bool enabled = default(bool), ResourceId configPack = default(ResourceId), string commitmentCurrencyPolicy = default(string), ResourceId registerPortfolioGroup = default(ResourceId), string capitalModel = default(string), List<CapabilityOverride> capabilityOverrides = default(List<CapabilityOverride>), SeriesConfiguration series = default(SeriesConfiguration), Dictionary<string, string> effectiveCapabilities = default(Dictionary<string, string>), PresentationConfiguration presentation = default(PresentationConfiguration))
         {
             this.Enabled = enabled;
             this.ConfigPack = configPack;
@@ -53,6 +54,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.CapabilityOverrides = capabilityOverrides;
             this.Series = series;
             this.EffectiveCapabilities = effectiveCapabilities;
+            this.Presentation = presentation;
         }
 
         /// <summary>
@@ -68,9 +70,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ResourceId ConfigPack { get; set; }
 
         /// <summary>
-        /// Available values: FundCurrencyOnly.
+        /// Available values: FundCurrencyOnly, AllowLineCurrency.
         /// </summary>
-        /// <value>Available values: FundCurrencyOnly.</value>
+        /// <value>Available values: FundCurrencyOnly, AllowLineCurrency.</value>
         [DataMember(Name = "commitmentCurrencyPolicy", EmitDefaultValue = true)]
         public string CommitmentCurrencyPolicy { get; set; }
 
@@ -107,6 +109,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public Dictionary<string, string> EffectiveCapabilities { get; set; }
 
         /// <summary>
+        /// Gets or Sets Presentation
+        /// </summary>
+        [DataMember(Name = "presentation", EmitDefaultValue = false)]
+        public PresentationConfiguration Presentation { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -122,6 +130,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  CapabilityOverrides: ").Append(CapabilityOverrides).Append("\n");
             sb.Append("  Series: ").Append(Series).Append("\n");
             sb.Append("  EffectiveCapabilities: ").Append(EffectiveCapabilities).Append("\n");
+            sb.Append("  Presentation: ").Append(Presentation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -197,6 +206,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.EffectiveCapabilities != null &&
                     input.EffectiveCapabilities != null &&
                     this.EffectiveCapabilities.SequenceEqual(input.EffectiveCapabilities)
+                ) && 
+                (
+                    this.Presentation == input.Presentation ||
+                    (this.Presentation != null &&
+                    this.Presentation.Equals(input.Presentation))
                 );
         }
 
@@ -237,6 +251,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.EffectiveCapabilities != null)
                 {
                     hashCode = (hashCode * 59) + this.EffectiveCapabilities.GetHashCode();
+                }
+                if (this.Presentation != null)
+                {
+                    hashCode = (hashCode * 59) + this.Presentation.GetHashCode();
                 }
                 return hashCode;
             }

@@ -244,7 +244,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getsidedefinition"></a>
 ## GetSideDefinition
 
-> SideDefinition GetSideDefinition(string side, string? scope = null, DateTimeOffset? asAt = null)
+> SideDefinition GetSideDefinition(string side, string? scope = null, DateTimeOffset? asAt = null, bool? includeSystemTypes = null)
 
 GetSideDefinition: Get the side definition for a given side name( or label)
 
@@ -257,7 +257,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionConfig
 var side = "side_example";  // string
 var scope = "\"default\"";  // string? (optional)
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
-SideDefinition result = apiInstance.GetSideDefinition(side, scope, asAt);
+var includeSystemTypes = false;  // bool? (optional)
+SideDefinition result = apiInstance.GetSideDefinition(side, scope, asAt, includeSystemTypes);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -268,6 +269,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **side** | **string** | path | **required** | The label to uniquely identify the side. |
 | **scope** | **string?** | query | optional | The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. |
+| **includeSystemTypes** | **bool?** | query | optional | Whether the default definitions of the sides that LUSID&#39;s own transaction              types reference, which LUSID provides to every scope that lacks them, may be returned. Defaults to false,              so a side is found only if the scope stored it itself. Default: `false` |
 
 ### Return type
 
@@ -292,7 +294,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<SideDefinition> response = apiInstance.GetSideDefinitionWithHttpInfo(side, scope, asAt);
+ApiResponse<SideDefinition> response = apiInstance.GetSideDefinitionWithHttpInfo(side, scope, asAt, includeSystemTypes);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -306,7 +308,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="gettransactiontype"></a>
 ## GetTransactionType
 
-> TransactionType GetTransactionType(string source, string type, DateTimeOffset? asAt = null, string? scope = null)
+> TransactionType GetTransactionType(string source, string type, DateTimeOffset? asAt = null, string? scope = null, bool? includeSystemTypes = null)
 
 GetTransactionType: Get a single transaction configuration type
 
@@ -320,7 +322,8 @@ var source = "source_example";  // string
 var type = "type_example";  // string
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var scope = "\"default\"";  // string? (optional)
-TransactionType result = apiInstance.GetTransactionType(source, type, asAt, scope);
+var includeSystemTypes = false;  // bool? (optional)
+TransactionType result = apiInstance.GetTransactionType(source, type, asAt, scope, includeSystemTypes);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -332,6 +335,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **type** | **string** | path | **required** | One of the type&#39;s aliases |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction configuration.              Defaults to returning the latest version of the transaction configuration type if not specified |
 | **scope** | **string?** | query | optional | The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. Default: `&quot;default&quot;` |
+| **includeSystemTypes** | **bool?** | query | optional | Whether the transaction types LUSID provides to every scope under the              &#39;pa-system&#39; source may be returned. Defaults to false, so a type in that source is found only if the scope              stored it there itself. Default: `false` |
 
 ### Return type
 
@@ -356,7 +360,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<TransactionType> response = apiInstance.GetTransactionTypeWithHttpInfo(source, type, asAt, scope);
+ApiResponse<TransactionType> response = apiInstance.GetTransactionTypeWithHttpInfo(source, type, asAt, scope, includeSystemTypes);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -370,7 +374,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listsidedefinitions"></a>
 ## ListSideDefinitions
 
-> ResourceListOfSideDefinition ListSideDefinitions(DateTimeOffset? asAt = null, string? scope = null)
+> ResourceListOfSideDefinition ListSideDefinitions(DateTimeOffset? asAt = null, string? scope = null, bool? includeSystemTypes = null)
 
 ListSideDefinitions: List the side definitions
 
@@ -382,7 +386,8 @@ List all the side definitions in the given scope, or across all scopes when scop
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionConfigurationApi>();
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var scope = "\"default\"";  // string? (optional)
-ResourceListOfSideDefinition result = apiInstance.ListSideDefinitions(asAt, scope);
+var includeSystemTypes = false;  // bool? (optional)
+ResourceListOfSideDefinition result = apiInstance.ListSideDefinitions(asAt, scope, includeSystemTypes);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -392,6 +397,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. |
 | **scope** | **string?** | query | optional | The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. Default: `&quot;default&quot;` |
+| **includeSystemTypes** | **bool?** | query | optional | Whether the default definitions of the sides that LUSID&#39;s own transaction              types reference, which LUSID provides to every scope that lacks them, are listed. Defaults to false, so              only the sides the scope stored itself are listed. Default: `false` |
 
 ### Return type
 
@@ -416,7 +422,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfSideDefinition> response = apiInstance.ListSideDefinitionsWithHttpInfo(asAt, scope);
+ApiResponse<ResourceListOfSideDefinition> response = apiInstance.ListSideDefinitionsWithHttpInfo(asAt, scope, includeSystemTypes);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -430,7 +436,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listtransactiontypes"></a>
 ## ListTransactionTypes
 
-> Dictionary&lt;string, List&lt;TransactionType&gt;&gt; ListTransactionTypes(DateTimeOffset? asAt = null, string? scope = null)
+> Dictionary&lt;string, List&lt;TransactionType&gt;&gt; ListTransactionTypes(DateTimeOffset? asAt = null, string? scope = null, bool? includeSystemTypes = null)
 
 ListTransactionTypes: List transaction types
 
@@ -442,7 +448,8 @@ Get the list of current transaction types. For information on the default transa
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransactionConfigurationApi>();
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var scope = "\"default\"";  // string? (optional)
-Dictionary<string, List<TransactionType>> result = apiInstance.ListTransactionTypes(asAt, scope);
+var includeSystemTypes = false;  // bool? (optional)
+Dictionary<string, List<TransactionType>> result = apiInstance.ListTransactionTypes(asAt, scope, includeSystemTypes);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -452,6 +459,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified. |
 | **scope** | **string?** | query | optional | The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. Default: `&quot;default&quot;` |
+| **includeSystemTypes** | **bool?** | query | optional | Whether to include the transaction types LUSID provides to every scope under              the &#39;pa-system&#39; source, which portfolios in the scope can book with. Defaults to false, so that source shows              only what the scope stored there itself. Default: `false` |
 
 ### Return type
 
@@ -476,7 +484,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<Dictionary<string, List<TransactionType>>> response = apiInstance.ListTransactionTypesWithHttpInfo(asAt, scope);
+ApiResponse<Dictionary<string, List<TransactionType>>> response = apiInstance.ListTransactionTypesWithHttpInfo(asAt, scope, includeSystemTypes);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -26,6 +26,7 @@ The request used to create a Fund.
 | **ShareClasses** | [List&lt;ShareClassDefinition&gt;](ShareClassDefinition.md) | Optional | An optional list of Share Class definitions for the Fund. |
 | **PricingMethodology** | [PricingMethodology](PricingMethodology.md) | Optional | *No description available.* |
 | **ReportingPrices** | [List&lt;ReportingPrice&gt;](ReportingPrice.md) | Optional | Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices. |
+| **WhtParameters** | [WhtParameters](WhtParameters.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -56,7 +57,8 @@ var instance = new FundDefinitionRequest(
     createInstrument: true,  // optional — Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false.
     shareClasses: new List<ShareClassDefinition>(),  // optional — An optional list of Share Class definitions for the Fund.
     pricingMethodology: new PricingMethodology(...),  // optional
-    reportingPrices: new List<ReportingPrice>()  // optional — Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices.
+    reportingPrices: new List<ReportingPrice>(),  // optional — Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices.
+    whtParameters: new WhtParameters(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -80,6 +82,7 @@ var instance = JsonConvert.DeserializeObject<FundDefinitionRequest>(json);
 - [ShareClassDefinition](ShareClassDefinition.md) — used in `ShareClasses`
 - [PricingMethodology](PricingMethodology.md)
 - [ReportingPrice](ReportingPrice.md) — used in `ReportingPrices`
+- [WhtParameters](WhtParameters.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

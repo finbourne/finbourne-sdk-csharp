@@ -46,7 +46,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="shareClassToFundFxRate">The fx rate from the Share Class currency to the fund currency at this valuation point. (required).</param>
         /// <param name="capitalRatio">The proportion of the fund&#39;s non-class-specific P&amp;L apportioned to this share class. Sums to 1 across the fund&#39;s share classes. (required).</param>
         /// <param name="previousShareClassBreakdown">previousShareClassBreakdown (required).</param>
-        public ShareClassBreakdown(Dictionary<string, ShareClassAmount> backOut = default(Dictionary<string, ShareClassAmount>), ShareClassDealingBreakdown dealing = default(ShareClassDealingBreakdown), ShareClassPnlBreakdown pnL = default(ShareClassPnlBreakdown), ShareClassAmount gav = default(ShareClassAmount), Dictionary<string, FeeAccrual> fees = default(Dictionary<string, FeeAccrual>), ShareClassAmount nav = default(ShareClassAmount), UnitisationData unitisation = default(UnitisationData), Dictionary<string, ShareClassAmount> miscellaneous = default(Dictionary<string, ShareClassAmount>), decimal shareClassToFundFxRate = default(decimal), decimal capitalRatio = default(decimal), PreviousShareClassBreakdown previousShareClassBreakdown = default(PreviousShareClassBreakdown))
+        /// <param name="seriesBreakdowns">The share class NAV split across the series within the share class, one entry per series. Empty for a share class without series..</param>
+        public ShareClassBreakdown(Dictionary<string, ShareClassAmount> backOut = default(Dictionary<string, ShareClassAmount>), ShareClassDealingBreakdown dealing = default(ShareClassDealingBreakdown), ShareClassPnlBreakdown pnL = default(ShareClassPnlBreakdown), ShareClassAmount gav = default(ShareClassAmount), Dictionary<string, FeeAccrual> fees = default(Dictionary<string, FeeAccrual>), ShareClassAmount nav = default(ShareClassAmount), UnitisationData unitisation = default(UnitisationData), Dictionary<string, ShareClassAmount> miscellaneous = default(Dictionary<string, ShareClassAmount>), decimal shareClassToFundFxRate = default(decimal), decimal capitalRatio = default(decimal), PreviousShareClassBreakdown previousShareClassBreakdown = default(PreviousShareClassBreakdown), List<SeriesBreakdown> seriesBreakdowns = default(List<SeriesBreakdown>))
         {
             // to ensure "backOut" is required (not null)
             if (backOut == null)
@@ -94,6 +95,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.PreviousShareClassBreakdown = previousShareClassBreakdown;
             this.Unitisation = unitisation;
             this.Miscellaneous = miscellaneous;
+            this.SeriesBreakdowns = seriesBreakdowns;
         }
 
         /// <summary>
@@ -168,6 +170,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public PreviousShareClassBreakdown PreviousShareClassBreakdown { get; set; }
 
         /// <summary>
+        /// The share class NAV split across the series within the share class, one entry per series. Empty for a share class without series.
+        /// </summary>
+        /// <value>The share class NAV split across the series within the share class, one entry per series. Empty for a share class without series.</value>
+        [DataMember(Name = "seriesBreakdowns", EmitDefaultValue = true)]
+        public List<SeriesBreakdown> SeriesBreakdowns { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -186,6 +195,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ShareClassToFundFxRate: ").Append(ShareClassToFundFxRate).Append("\n");
             sb.Append("  CapitalRatio: ").Append(CapitalRatio).Append("\n");
             sb.Append("  PreviousShareClassBreakdown: ").Append(PreviousShareClassBreakdown).Append("\n");
+            sb.Append("  SeriesBreakdowns: ").Append(SeriesBreakdowns).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -276,6 +286,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PreviousShareClassBreakdown == input.PreviousShareClassBreakdown ||
                     (this.PreviousShareClassBreakdown != null &&
                     this.PreviousShareClassBreakdown.Equals(input.PreviousShareClassBreakdown))
+                ) && 
+                (
+                    this.SeriesBreakdowns == input.SeriesBreakdowns ||
+                    this.SeriesBreakdowns != null &&
+                    input.SeriesBreakdowns != null &&
+                    this.SeriesBreakdowns.SequenceEqual(input.SeriesBreakdowns)
                 );
         }
 
@@ -325,6 +341,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.PreviousShareClassBreakdown != null)
                 {
                     hashCode = (hashCode * 59) + this.PreviousShareClassBreakdown.GetHashCode();
+                }
+                if (this.SeriesBreakdowns != null)
+                {
+                    hashCode = (hashCode * 59) + this.SeriesBreakdowns.GetHashCode();
                 }
                 return hashCode;
             }

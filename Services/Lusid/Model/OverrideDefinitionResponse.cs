@@ -43,8 +43,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="properties">The transaction properties stored for the replacement transaction..</param>
         /// <param name="counterpartyId">The identifier for the counterparty of the replacement transaction..</param>
         /// <param name="source">The source of the replacement transaction..</param>
+        /// <param name="custodianAccountId">custodianAccountId.</param>
         /// <param name="precedesEvent">True when this replacement&#39;s trade date is earlier than the target instrument event&#39;s current effective date, which orphans the entry it belongs to..</param>
-        public OverrideDefinitionResponse(string transactionId = default(string), string type = default(string), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), DateTimeOrCutLabel tradeDate = default(DateTimeOrCutLabel), DateTimeOrCutLabel settlementDate = default(DateTimeOrCutLabel), decimal units = default(decimal), TransactionPrice tradePrice = default(TransactionPrice), CurrencyAndAmount totalConsideration = default(CurrencyAndAmount), decimal? exchangeRate = default(decimal?), string tradeCurrency = default(string), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string counterpartyId = default(string), string source = default(string), bool? precedesEvent = default(bool?))
+        public OverrideDefinitionResponse(string transactionId = default(string), string type = default(string), Dictionary<string, string> instrumentIdentifiers = default(Dictionary<string, string>), DateTimeOrCutLabel tradeDate = default(DateTimeOrCutLabel), DateTimeOrCutLabel settlementDate = default(DateTimeOrCutLabel), decimal units = default(decimal), TransactionPrice tradePrice = default(TransactionPrice), CurrencyAndAmount totalConsideration = default(CurrencyAndAmount), decimal? exchangeRate = default(decimal?), string tradeCurrency = default(string), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), string counterpartyId = default(string), string source = default(string), ResourceId custodianAccountId = default(ResourceId), bool? precedesEvent = default(bool?))
         {
             this.TransactionId = transactionId;
             this.Type = type;
@@ -59,6 +60,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Properties = properties;
             this.CounterpartyId = counterpartyId;
             this.Source = source;
+            this.CustodianAccountId = custodianAccountId;
             this.PrecedesEvent = precedesEvent;
         }
 
@@ -152,6 +154,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Source { get; set; }
 
         /// <summary>
+        /// Gets or Sets CustodianAccountId
+        /// </summary>
+        [DataMember(Name = "custodianAccountId", EmitDefaultValue = false)]
+        public ResourceId CustodianAccountId { get; set; }
+
+        /// <summary>
         /// True when this replacement&#39;s trade date is earlier than the target instrument event&#39;s current effective date, which orphans the entry it belongs to.
         /// </summary>
         /// <value>True when this replacement&#39;s trade date is earlier than the target instrument event&#39;s current effective date, which orphans the entry it belongs to.</value>
@@ -179,6 +187,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  CounterpartyId: ").Append(CounterpartyId).Append("\n");
             sb.Append("  Source: ").Append(Source).Append("\n");
+            sb.Append("  CustodianAccountId: ").Append(CustodianAccountId).Append("\n");
             sb.Append("  PrecedesEvent: ").Append(PrecedesEvent).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -282,6 +291,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Source.Equals(input.Source))
                 ) && 
                 (
+                    this.CustodianAccountId == input.CustodianAccountId ||
+                    (this.CustodianAccountId != null &&
+                    this.CustodianAccountId.Equals(input.CustodianAccountId))
+                ) && 
+                (
                     this.PrecedesEvent == input.PrecedesEvent ||
                     (this.PrecedesEvent != null &&
                     this.PrecedesEvent.Equals(input.PrecedesEvent))
@@ -345,6 +359,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Source != null)
                 {
                     hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                }
+                if (this.CustodianAccountId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustodianAccountId.GetHashCode();
                 }
                 if (this.PrecedesEvent != null)
                 {

@@ -6,8 +6,10 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**AcceptEstimateValuationPoint**](#acceptestimatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$acceptestimate` | [EARLY ACCESS] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point. |
+| [**AccrueCarry**](#accruecarry) | **POST** `/api/api/funds/{scope}/{code}/carry/$accrue` | [EARLY ACCESS] AccrueCarry: [EXPERIMENTAL] AccrueCarry: Accrue carried interest to the Fund&#39;s partners. |
 | [**AddAllocationGroups**](#addallocationgroups) | **POST** `/api/api/funds/{scope}/{code}/allocationgroups` | [EARLY ACCESS] AddAllocationGroups: Add Allocation Groups to a Fund. |
 | [**AddSeries**](#addseries) | **POST** `/api/api/funds/{scope}/{code}/series` | [EARLY ACCESS] AddSeries: Add Series to a Fund. |
+| [**CalculateManagementFees**](#calculatemanagementfees) | **POST** `/api/api/funds/{scope}/{code}/fees/$calculate` | [EARLY ACCESS] CalculateManagementFees: [EXPERIMENTAL] CalculateManagementFees: Calculate the management fee per partner for a period. |
 | [**CreateFacility**](#createfacility) | **POST** `/api/api/funds/{scope}/{code}/facilities` | [EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create a Facility. |
 | [**CreateFee**](#createfee) | **POST** `/api/api/funds/{scope}/{code}/fees` | [EARLY ACCESS] CreateFee: Create a Fee. |
 | [**CreateFund**](#createfund) | **POST** `/api/api/funds/{scope}` | [EARLY ACCESS] CreateFund: Create a Fund. |
@@ -19,7 +21,9 @@ All URIs are relative to *http://localhost*
 | [**DeleteFee**](#deletefee) | **DELETE** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EARLY ACCESS] DeleteFee: Delete a Fee. |
 | [**DeleteFund**](#deletefund) | **DELETE** `/api/api/funds/{scope}/{code}` | [EARLY ACCESS] DeleteFund: Delete a Fund. |
 | [**DeleteNavActivityAdjustments**](#deletenavactivityadjustments) | **POST** `/api/api/funds/{scope}/{code}/navAdjustment/$delete` | [EARLY ACCESS] DeleteNavActivityAdjustments: Delete Nav activity adjustments. |
+| [**DeleteSeries**](#deleteseries) | **DELETE** `/api/api/funds/{scope}/{code}/shareclasses/{shareClassCode}/series/{seriesIdentifier}` | [EARLY ACCESS] DeleteSeries: [EARLY ACCESS] DeleteSeries: Remove a Series from a Share Class of a Fund. |
 | [**DeleteValuationPoint**](#deletevaluationpoint) | **DELETE** `/api/api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}` | [EARLY ACCESS] DeleteValuationPoint: Delete a Valuation Point. |
+| [**DiffPartnerStatement**](#diffpartnerstatement) | **GET** `/api/api/funds/{scope}/{code}/partners/{investorRecordId}/statements/{statementId}/$diff` | [EARLY ACCESS] DiffPartnerStatement: [EXPERIMENTAL] DiffPartnerStatement: Compare two of a partner&#39;s statements. |
 | [**FinaliseCandidateValuationPoint**](#finalisecandidatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$finalisecandidate` | [EARLY ACCESS] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point. |
 | [**GetA2BDataForFund**](#geta2bdataforfund) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/a2b/$query` | [EARLY ACCESS] GetA2BDataForFund: Get A2B data for a Fund. |
 | [**GetA2BMovementsForFund**](#geta2bmovementsforfund) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/a2bmovements/$query` | [EARLY ACCESS] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. |
@@ -27,11 +31,16 @@ All URIs are relative to *http://localhost*
 | [**GetFee**](#getfee) | **GET** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EARLY ACCESS] GetFee: Get a Fee for a specified Fund. |
 | [**GetFeeProperties**](#getfeeproperties) | **GET** `/api/api/funds/{scope}/{code}/fees/{feeCode}/properties` | [EARLY ACCESS] GetFeeProperties: Get Fee properties. |
 | [**GetFund**](#getfund) | **GET** `/api/api/funds/{scope}/{code}` | [EARLY ACCESS] GetFund: Get a Fund. |
+| [**GetFundPerformance**](#getfundperformance) | **GET** `/api/api/funds/{scope}/{code}/performance` | [EARLY ACCESS] GetFundPerformance: [EARLY ACCESS] GetFundPerformance: Get a fund&#39;s performance measures over all its partners. |
 | [**GetFundProperties**](#getfundproperties) | **GET** `/api/api/funds/{scope}/{code}/properties` | [EARLY ACCESS] GetFundProperties: Get Fund properties. |
 | [**GetHoldingContributorsForFund**](#getholdingcontributorsforfund) | **POST** `/api/api/funds/{scope}/{code}/holdings/{holdingId}/contributors` | [EARLY ACCESS] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund. |
 | [**GetHoldingsForFund**](#getholdingsforfund) | **POST** `/api/api/funds/{scope}/{code}/$holdings` | [EARLY ACCESS] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund. |
+| [**GetPartnerCapitalAccount**](#getpartnercapitalaccount) | **GET** `/api/api/funds/{scope}/{code}/partners/{irScope}/{irCode}/capitalaccount` | [EARLY ACCESS] GetPartnerCapitalAccount: [EARLY ACCESS] GetPartnerCapitalAccount: Get a partner&#39;s capital account statement. |
+| [**GetPartnerPerformance**](#getpartnerperformance) | **GET** `/api/api/funds/{scope}/{code}/partners/{irScope}/{irCode}/performance` | [EARLY ACCESS] GetPartnerPerformance: [EARLY ACCESS] GetPartnerPerformance: Get a partner&#39;s performance measures. |
 | [**GetPartnerUnfundedReconciliation**](#getpartnerunfundedreconciliation) | **GET** `/api/api/funds/{scope}/{code}/partners/{investorRecordId}/unfundedreconciliation` | [EARLY ACCESS] GetPartnerUnfundedReconciliation: [EARLY ACCESS] GetPartnerUnfundedReconciliation: Get a partner&#39;s unfunded commitment statement. |
 | [**GetPartners**](#getpartners) | **GET** `/api/api/funds/{scope}/{code}/partners` | [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund. |
+| [**GetPartnershipConfigPack**](#getpartnershipconfigpack) | **GET** `/api/api/funds/{scope}/{code}/partnershipaccounting/configpack` | [EARLY ACCESS] GetPartnershipConfigPack: [EXPERIMENTAL] GetPartnershipConfigPack: Get the partnership configuration pack of a Fund. |
+| [**GetSeries**](#getseries) | **GET** `/api/api/funds/{scope}/{code}/series` | [EARLY ACCESS] GetSeries: [EARLY ACCESS] GetSeries: List the Series of a Fund. |
 | [**GetValuationForFund**](#getvaluationforfund) | **POST** `/api/api/funds/{scope}/{code}/$valuation` | [EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund. |
 | [**GetValuationPointData**](#getvaluationpointdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$query` | [EARLY ACCESS] GetValuationPointData: Get Valuation Point Data for a Fund. |
 | [**GetValuationPointJournalEntryLines**](#getvaluationpointjournalentrylines) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query` | [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. |
@@ -46,14 +55,18 @@ All URIs are relative to *http://localhost*
 | [**ListFundCalendarEntries**](#listfundcalendarentries) | **GET** `/api/api/funds/{scope}/{code}/calendars` | [EARLY ACCESS] ListFundCalendarEntries: List Fund Calendar Entries. |
 | [**ListFunds**](#listfunds) | **GET** `/api/api/funds` | [EARLY ACCESS] ListFunds: List Funds. |
 | [**ListNavActivityAdjustments**](#listnavactivityadjustments) | **GET** `/api/api/funds/{scope}/{code}/navAdjustment` | [EARLY ACCESS] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point |
+| [**ListPartnerCapitalAccounts**](#listpartnercapitalaccounts) | **GET** `/api/api/funds/{scope}/{code}/capitalaccounts` | [EARLY ACCESS] ListPartnerCapitalAccounts: [EARLY ACCESS] ListPartnerCapitalAccounts: List the capital account statements of a fund&#39;s partners. |
+| [**ListPartnerStatements**](#listpartnerstatements) | **GET** `/api/api/funds/{scope}/{code}/partners/{investorRecordId}/statements` | [EARLY ACCESS] ListPartnerStatements: [EXPERIMENTAL] ListPartnerStatements: List the statements produced for a partner. |
 | [**ListValuationPointComplexMarketData**](#listvaluationpointcomplexmarketdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/complexmarketdata/$query` | [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point. |
 | [**ListValuationPointInstruments**](#listvaluationpointinstruments) | **GET** `/api/api/funds/{scope}/{code}/valuationpoints/instruments/$query` | [EARLY ACCESS] ListValuationPointInstruments: List Instruments inside a valuation point |
 | [**ListValuationPointOverview**](#listvaluationpointoverview) | **GET** `/api/api/funds/{scope}/{code}/valuationPointOverview` | [EARLY ACCESS] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
 | [**PatchFee**](#patchfee) | **PATCH** `/api/api/funds/{scope}/{code}/fees/{feeCode}` | [EARLY ACCESS] PatchFee: Patch Fee. |
 | [**PatchFund**](#patchfund) | **PATCH** `/api/api/funds/{scope}/{code}` | [EARLY ACCESS] PatchFund: Patch a Fund. |
+| [**ProducePartnerStatement**](#producepartnerstatement) | **POST** `/api/api/funds/{scope}/{code}/partners/{investorRecordId}/statements` | [EARLY ACCESS] ProducePartnerStatement: [EXPERIMENTAL] ProducePartnerStatement: Produce a partner&#39;s capital statement for a period. |
 | [**QueryCashStatement**](#querycashstatement) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/cashstatement/$query` | [DEPRECATED] QueryCashStatement: [DEPRECATED] QueryCashStatement: Query cash statement for a Fund valuation point. |
 | [**QueryCashStatementLocalCurrency**](#querycashstatementlocalcurrency) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/cashstatementlocalcurrency/$query` | [EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point. |
 | [**RevertValuationPointToEstimate**](#revertvaluationpointtoestimate) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$reverttoestimate` | [EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate. |
+| [**RunPartnerAllocations**](#runpartnerallocations) | **POST** `/api/api/funds/{scope}/{code}/partnerallocations/$run` | [EARLY ACCESS] RunPartnerAllocations: [EXPERIMENTAL] RunPartnerAllocations: Allocate a period&#39;s income to the Fund&#39;s partners. |
 | [**SetShareClassInstruments**](#setshareclassinstruments) | **PUT** `/api/api/funds/{scope}/{code}/shareclasses` | [EARLY ACCESS] SetShareClassInstruments: Set the ShareClass Instruments on a Fund. |
 | [**UpdateValuationPoint**](#updatevaluationpoint) | **PUT** `/api/api/funds/{scope}/{code}/valuationpoints` | [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point. |
 | [**UpsertBookmark**](#upsertbookmark) | **POST** `/api/api/funds/{scope}/{code}/bookmarks` | [EARLY ACCESS] UpsertBookmark: Upsert a bookmark. |
@@ -158,6 +171,70 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<AcceptEstimateValuationPointResponse> response = apiInstance.AcceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="accruecarry"></a>
+## AccrueCarry
+
+> CarryAccrualResult AccrueCarry(string scope, string code, CarryAccrualRequest carryAccrualRequest, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] AccrueCarry: [EXPERIMENTAL] AccrueCarry: Accrue carried interest to the Fund's partners.
+
+Take the carry each partner has earned to the period end, as the waterfall states it, and book the movement  against what is already accrued on the books.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var carryAccrualRequest = new CarryAccrualRequest(); // CarryAccrualRequest
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+CarryAccrualResult result = apiInstance.AccrueCarry(scope, code, carryAccrualRequest, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **carryAccrualRequest** | [CarryAccrualRequest](../Model/CarryAccrualRequest.md) | body | **required** | The carry to accrue. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the Fund. Defaults to return the latest version if not specified. |
+
+### Return type
+
+[CarryAccrualResult](../Model/CarryAccrualResult.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The carry accrual movement per partner. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the AccrueCarryWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<CarryAccrualResult> response = apiInstance.AccrueCarryWithHttpInfo(scope, code, carryAccrualRequest, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -282,6 +359,70 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<Fund> response = apiInstance.AddSeriesWithHttpInfo(scope, code, seriesDefinitionRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="calculatemanagementfees"></a>
+## CalculateManagementFees
+
+> ManagementFeeResult CalculateManagementFees(string scope, string code, ManagementFeeRequest managementFeeRequest, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] CalculateManagementFees: [EXPERIMENTAL] CalculateManagementFees: Calculate the management fee per partner for a period.
+
+Charge the Fund's management fee on each partner's capital base for the period, net of any fee income offsets,  and book the net fee unless the request asks only for the calculation.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var managementFeeRequest = new ManagementFeeRequest(); // ManagementFeeRequest
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+ManagementFeeResult result = apiInstance.CalculateManagementFees(scope, code, managementFeeRequest, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **managementFeeRequest** | [ManagementFeeRequest](../Model/ManagementFeeRequest.md) | body | **required** | The fee period, basis and offsets. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the Fund. Defaults to return the latest version if not specified. |
+
+### Return type
+
+[ManagementFeeResult](../Model/ManagementFeeResult.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The management fee per partner. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the CalculateManagementFeesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ManagementFeeResult> response = apiInstance.CalculateManagementFeesWithHttpInfo(scope, code, managementFeeRequest, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -982,6 +1123,70 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="deleteseries"></a>
+## DeleteSeries
+
+> DeletedEntityResponse DeleteSeries(string scope, string code, string shareClassCode, string seriesIdentifier)
+
+[EARLY ACCESS] DeleteSeries: [EARLY ACCESS] DeleteSeries: Remove a Series from a Share Class of a Fund.
+
+Removes the Series from the Share Class. A Series that still has units in issue cannot be removed.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var shareClassCode = "shareClassCode_example";  // string
+var seriesIdentifier = "seriesIdentifier_example";  // string
+DeletedEntityResponse result = apiInstance.DeleteSeries(scope, code, shareClassCode, seriesIdentifier);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **shareClassCode** | **string** | path | **required** | The short code of the Share Class the Series belongs to. |
+| **seriesIdentifier** | **string** | path | **required** | The identifier of the Series to remove. |
+
+### Return type
+
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the Series was removed. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteSeriesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteSeriesWithHttpInfo(scope, code, shareClassCode, seriesIdentifier);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="deletevaluationpoint"></a>
 ## DeleteValuationPoint
 
@@ -1038,6 +1243,72 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteValuationPointWithHttpInfo(scope, code, diaryEntryCode, diaryEntryCodeVariant, navTypeCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="diffpartnerstatement"></a>
+## DiffPartnerStatement
+
+> PartnerStatementDiff DiffPartnerStatement(string scope, string code, string investorRecordId, string statementId, string against)
+
+[EARLY ACCESS] DiffPartnerStatement: [EXPERIMENTAL] DiffPartnerStatement: Compare two of a partner's statements.
+
+Compare a partner's statement against another produced for the same partner, figure by figure.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var investorRecordId = "investorRecordId_example";  // string
+var statementId = "statementId_example";  // string
+var against = "against_example";  // string
+PartnerStatementDiff result = apiInstance.DiffPartnerStatement(scope, code, investorRecordId, statementId, against);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **investorRecordId** | **string** | path | **required** | The investor record the statements are for. |
+| **statementId** | **string** | path | **required** | The identifier of the statement to compare. |
+| **against** | **string** | query | **required** | The identifier of the statement to compare against. |
+
+### Return type
+
+[PartnerStatementDiff](../Model/PartnerStatementDiff.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The figures that differ between the two statements. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DiffPartnerStatementWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PartnerStatementDiff> response = apiInstance.DiffPartnerStatementWithHttpInfo(scope, code, investorRecordId, statementId, against);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1518,6 +1789,70 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="getfundperformance"></a>
+## GetFundPerformance
+
+> PartnerPerformance GetFundPerformance(string scope, string code, string? navTypeCode = null, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] GetFundPerformance: [EARLY ACCESS] GetFundPerformance: Get a fund's performance measures over all its partners.
+
+The fund's PIC, DPI, RVPI, TVPI and net IRR built from the capital activity of every partner on the  register, open or closed, with the same optional with- and without-facility views as the partner read.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+PartnerPerformance result = apiInstance.GetFundPerformance(scope, code, navTypeCode, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **navTypeCode** | **string?** | query | optional | The NAV type to read the register and ledger under. Defaults to the fund&#39;s primary NAV type. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the fund. Defaults to returning the latest version if not specified. |
+
+### Return type
+
+[PartnerPerformance](../Model/PartnerPerformance.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The fund&#39;s performance measures over all its partners. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetFundPerformanceWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PartnerPerformance> response = apiInstance.GetFundPerformanceWithHttpInfo(scope, code, navTypeCode, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="getfundproperties"></a>
 ## GetFundProperties
 
@@ -1734,6 +2069,146 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="getpartnercapitalaccount"></a>
+## GetPartnerCapitalAccount
+
+> PartnerCapitalAccount GetPartnerCapitalAccount(string scope, string code, string irScope, string irCode, DateTimeOffset? periodStart = null, DateTimeOffset? periodEnd = null, string? navTypeCode = null, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] GetPartnerCapitalAccount: [EARLY ACCESS] GetPartnerCapitalAccount: Get a partner's capital account statement.
+
+One partner's capital account over a period, rolled from beginning capital through contributions,  distributions, transfers, allocated income, fees, gains and carried interest to ending capital, with  quarter-, year- and inception-to-date columns. The memo block carries the commitment position. The  statement is an estimate until a final valuation point covers the period end.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var irScope = "irScope_example";  // string
+var irCode = "irCode_example";  // string
+var periodStart = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var periodEnd = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+PartnerCapitalAccount result = apiInstance.GetPartnerCapitalAccount(scope, code, irScope, irCode, periodStart, periodEnd, navTypeCode, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **irScope** | **string** | path | **required** | The scope of the partner&#39;s investor record. |
+| **irCode** | **string** | path | **required** | The code of the partner&#39;s investor record. |
+| **periodStart** | **DateTimeOffset?** | query | optional | The effective datetime the statement period opens at. Defaults to the start of the quarter containing the period end. |
+| **periodEnd** | **DateTimeOffset?** | query | optional | The effective datetime the statement period closes at. Defaults to the current LUSID system datetime. |
+| **navTypeCode** | **string?** | query | optional | The NAV type to read the register and ledger under. Defaults to the fund&#39;s primary NAV type. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the fund. Defaults to returning the latest version if not specified. |
+
+### Return type
+
+[PartnerCapitalAccount](../Model/PartnerCapitalAccount.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The partner&#39;s capital account statement over the period. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetPartnerCapitalAccountWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PartnerCapitalAccount> response = apiInstance.GetPartnerCapitalAccountWithHttpInfo(scope, code, irScope, irCode, periodStart, periodEnd, navTypeCode, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getpartnerperformance"></a>
+## GetPartnerPerformance
+
+> PartnerPerformance GetPartnerPerformance(string scope, string code, string irScope, string irCode, string? navTypeCode = null, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] GetPartnerPerformance: [EARLY ACCESS] GetPartnerPerformance: Get a partner's performance measures.
+
+One partner's paid-in to committed (PIC), distributions to paid-in (DPI), residual value to paid-in (RVPI),  total value to paid-in (TVPI) and net IRR, together with the dated cash flows the IRR was solved from.  Where any of the partner's events were financed by a subscription facility, the measures are also given  with and without the facility, the latter re-dating facility-funded calls to the deal funding date.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var irScope = "irScope_example";  // string
+var irCode = "irCode_example";  // string
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+PartnerPerformance result = apiInstance.GetPartnerPerformance(scope, code, irScope, irCode, navTypeCode, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **irScope** | **string** | path | **required** | The scope of the partner&#39;s investor record. |
+| **irCode** | **string** | path | **required** | The code of the partner&#39;s investor record. |
+| **navTypeCode** | **string?** | query | optional | The NAV type to read the register and ledger under. Defaults to the fund&#39;s primary NAV type. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the fund. Defaults to returning the latest version if not specified. |
+
+### Return type
+
+[PartnerPerformance](../Model/PartnerPerformance.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The partner&#39;s performance measures. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetPartnerPerformanceWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PartnerPerformance> response = apiInstance.GetPartnerPerformanceWithHttpInfo(scope, code, irScope, irCode, navTypeCode, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="getpartnerunfundedreconciliation"></a>
 ## GetPartnerUnfundedReconciliation
 
@@ -1862,6 +2337,134 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PagedResourceListOfFundPartner> response = apiInstance.GetPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getpartnershipconfigpack"></a>
+## GetPartnershipConfigPack
+
+> PartnershipConfigPack GetPartnershipConfigPack(string scope, string code, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] GetPartnershipConfigPack: [EXPERIMENTAL] GetPartnershipConfigPack: Get the partnership configuration pack of a Fund.
+
+Resolve the partnership configuration pack the Fund's configuration names: the partnership transaction types,  the accounts partner capital is posted to and the rules that move each type between them.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+PartnershipConfigPack result = apiInstance.GetPartnershipConfigPack(scope, code, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the pack. Defaults to return the latest version if not specified. |
+
+### Return type
+
+[PartnershipConfigPack](../Model/PartnershipConfigPack.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The partnership configuration pack the Fund runs on. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetPartnershipConfigPackWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PartnershipConfigPack> response = apiInstance.GetPartnershipConfigPackWithHttpInfo(scope, code, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getseries"></a>
+## GetSeries
+
+> ResourceListOfSeries GetSeries(string scope, string code, string? shareClassCode = null, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] GetSeries: [EARLY ACCESS] GetSeries: List the Series of a Fund.
+
+Lists the Series defined on the Share Classes of the Fund, optionally restricted to a single Share Class.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var shareClassCode = "shareClassCode_example";  // string? (optional)
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+ResourceListOfSeries result = apiInstance.GetSeries(scope, code, shareClassCode, effectiveAt, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **shareClassCode** | **string?** | query | optional | Optionally, the short code of the Share Class whose Series to list. Defaults to all Share Classes. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to read the Fund. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the Fund. Defaults to returning the latest version if not specified. |
+
+### Return type
+
+[ResourceListOfSeries](../Model/ResourceListOfSeries.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Series of the requested Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetSeriesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfSeries> response = apiInstance.GetSeriesWithHttpInfo(scope, code, shareClassCode, effectiveAt, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2894,6 +3497,140 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="listpartnercapitalaccounts"></a>
+## ListPartnerCapitalAccounts
+
+> PagedResourceListOfPartnerCapitalAccount ListPartnerCapitalAccounts(string scope, string code, DateTimeOffset? periodStart = null, DateTimeOffset? periodEnd = null, string? navTypeCode = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null)
+
+[EARLY ACCESS] ListPartnerCapitalAccounts: [EARLY ACCESS] ListPartnerCapitalAccounts: List the capital account statements of a fund's partners.
+
+The capital account statement of every open partner on the fund's register over a period, paged in  register order.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var periodStart = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var periodEnd = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var navTypeCode = "navTypeCode_example";  // string? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var page = "page_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+PagedResourceListOfPartnerCapitalAccount result = apiInstance.ListPartnerCapitalAccounts(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **periodStart** | **DateTimeOffset?** | query | optional | The effective datetime the statement period opens at. Defaults to the start of the quarter containing the period end. |
+| **periodEnd** | **DateTimeOffset?** | query | optional | The effective datetime the statement period closes at. Defaults to the current LUSID system datetime. |
+| **navTypeCode** | **string?** | query | optional | The NAV type to read the register and ledger under. Defaults to the fund&#39;s primary NAV type. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the fund. Defaults to returning the latest version if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing statements from a previous call. This value is returned from the previous call. |
+| **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
+
+### Return type
+
+[PagedResourceListOfPartnerCapitalAccount](../Model/PagedResourceListOfPartnerCapitalAccount.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The capital account statements of the fund&#39;s partners over the period. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListPartnerCapitalAccountsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfPartnerCapitalAccount> response = apiInstance.ListPartnerCapitalAccountsWithHttpInfo(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listpartnerstatements"></a>
+## ListPartnerStatements
+
+> ResourceListOfPartnerStatement ListPartnerStatements(string scope, string code, string investorRecordId)
+
+[EARLY ACCESS] ListPartnerStatements: [EXPERIMENTAL] ListPartnerStatements: List the statements produced for a partner.
+
+List every statement produced for the partner on this Fund, most recent first.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var investorRecordId = "investorRecordId_example";  // string
+ResourceListOfPartnerStatement result = apiInstance.ListPartnerStatements(scope, code, investorRecordId);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **investorRecordId** | **string** | path | **required** | The investor record the statements are for. |
+
+### Return type
+
+[ResourceListOfPartnerStatement](../Model/ResourceListOfPartnerStatement.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The statements produced for the partner. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListPartnerStatementsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfPartnerStatement> response = apiInstance.ListPartnerStatementsWithHttpInfo(scope, code, investorRecordId);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="listvaluationpointcomplexmarketdata"></a>
 ## ListValuationPointComplexMarketData
 
@@ -3187,7 +3924,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EARLY ACCESS] PatchFund: Patch a Fund.
 
-Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, AborId, YearEndDate, PricingMethodology, ReportingPrices.
+Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, AborId, YearEndDate, PricingMethodology, ReportingPrices, WhtParameters, ShareClasses.
 
 ### Example
 
@@ -3234,6 +3971,72 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<Fund> response = apiInstance.PatchFundWithHttpInfo(scope, code, operation, effectiveAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="producepartnerstatement"></a>
+## ProducePartnerStatement
+
+> PartnerStatement ProducePartnerStatement(string scope, string code, string investorRecordId, PartnerStatementRequest partnerStatementRequest, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] ProducePartnerStatement: [EXPERIMENTAL] ProducePartnerStatement: Produce a partner's capital statement for a period.
+
+Produce the capital account statement of one partner for the period: opening capital, contributions,  distributions, allocated income, carry and fees, and closing capital. The statement is kept so later  statements for the same period can be compared against it.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var investorRecordId = "investorRecordId_example";  // string
+var partnerStatementRequest = new PartnerStatementRequest(); // PartnerStatementRequest
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+PartnerStatement result = apiInstance.ProducePartnerStatement(scope, code, investorRecordId, partnerStatementRequest, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **investorRecordId** | **string** | path | **required** | The investor record the statement is for. |
+| **partnerStatementRequest** | [PartnerStatementRequest](../Model/PartnerStatementRequest.md) | body | **required** | The statement period. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the Fund. Defaults to return the latest version if not specified. |
+
+### Return type
+
+[PartnerStatement](../Model/PartnerStatement.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The partner&#39;s statement for the period. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ProducePartnerStatementWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PartnerStatement> response = apiInstance.ProducePartnerStatementWithHttpInfo(scope, code, investorRecordId, partnerStatementRequest, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -3446,6 +4249,70 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<RevertValuationPointResponse> response = apiInstance.RevertValuationPointToEstimateWithHttpInfo(scope, code, revertValuationPointDataRequest, navTypeCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="runpartnerallocations"></a>
+## RunPartnerAllocations
+
+> PartnerAllocationRunResult RunPartnerAllocations(string scope, string code, PartnerAllocationRunRequest partnerAllocationRunRequest, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] RunPartnerAllocations: [EXPERIMENTAL] RunPartnerAllocations: Allocate a period's income to the Fund's partners.
+
+Share the Fund's income, gains and expenses for the period across the partners on its register, pool by pool,  and book the allocation unless the run is a dry run.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var partnerAllocationRunRequest = new PartnerAllocationRunRequest(); // PartnerAllocationRunRequest
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+PartnerAllocationRunResult result = apiInstance.RunPartnerAllocations(scope, code, partnerAllocationRunRequest, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **partnerAllocationRunRequest** | [PartnerAllocationRunRequest](../Model/PartnerAllocationRunRequest.md) | body | **required** | The period to allocate and how. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the Fund. Defaults to return the latest version if not specified. |
+
+### Return type
+
+[PartnerAllocationRunResult](../Model/PartnerAllocationRunResult.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The allocation of the period to the partners. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the RunPartnerAllocationsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PartnerAllocationRunResult> response = apiInstance.RunPartnerAllocationsWithHttpInfo(scope, code, partnerAllocationRunRequest, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

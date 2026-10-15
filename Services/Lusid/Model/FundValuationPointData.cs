@@ -43,7 +43,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="nav">The Net Asset Value of the Fund or Share Class at the Valuation Point. This represents the GAV with any fees applied in the period. (required).</param>
         /// <param name="miscellaneous">Not used directly by the LUSID engines but serves as a holding area for any custom derived data points that may be useful in, for example, fee calculations)..</param>
         /// <param name="previousValuationPointData">previousValuationPointData.</param>
-        public FundValuationPointData(Dictionary<string, FundAmount> backOut = default(Dictionary<string, FundAmount>), Dictionary<string, FundAmount> dealing = default(Dictionary<string, FundAmount>), FundPnlBreakdown pnL = default(FundPnlBreakdown), decimal gav = default(decimal), Dictionary<string, FeeAccrual> fees = default(Dictionary<string, FeeAccrual>), decimal nav = default(decimal), Dictionary<string, FundAmount> miscellaneous = default(Dictionary<string, FundAmount>), PreviousFundValuationPointData previousValuationPointData = default(PreviousFundValuationPointData))
+        /// <param name="partnershipAccounting">partnershipAccounting.</param>
+        public FundValuationPointData(Dictionary<string, FundAmount> backOut = default(Dictionary<string, FundAmount>), Dictionary<string, FundAmount> dealing = default(Dictionary<string, FundAmount>), FundPnlBreakdown pnL = default(FundPnlBreakdown), decimal gav = default(decimal), Dictionary<string, FeeAccrual> fees = default(Dictionary<string, FeeAccrual>), decimal nav = default(decimal), Dictionary<string, FundAmount> miscellaneous = default(Dictionary<string, FundAmount>), PreviousFundValuationPointData previousValuationPointData = default(PreviousFundValuationPointData), PartnershipAccountingValuationPointData partnershipAccounting = default(PartnershipAccountingValuationPointData))
         {
             // to ensure "backOut" is required (not null)
             if (backOut == null)
@@ -73,6 +74,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Nav = nav;
             this.Miscellaneous = miscellaneous;
             this.PreviousValuationPointData = previousValuationPointData;
+            this.PartnershipAccounting = partnershipAccounting;
         }
 
         /// <summary>
@@ -130,6 +132,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public PreviousFundValuationPointData PreviousValuationPointData { get; set; }
 
         /// <summary>
+        /// Gets or Sets PartnershipAccounting
+        /// </summary>
+        [DataMember(Name = "partnershipAccounting", EmitDefaultValue = false)]
+        public PartnershipAccountingValuationPointData PartnershipAccounting { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -145,6 +153,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Nav: ").Append(Nav).Append("\n");
             sb.Append("  Miscellaneous: ").Append(Miscellaneous).Append("\n");
             sb.Append("  PreviousValuationPointData: ").Append(PreviousValuationPointData).Append("\n");
+            sb.Append("  PartnershipAccounting: ").Append(PartnershipAccounting).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -221,6 +230,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PreviousValuationPointData == input.PreviousValuationPointData ||
                     (this.PreviousValuationPointData != null &&
                     this.PreviousValuationPointData.Equals(input.PreviousValuationPointData))
+                ) && 
+                (
+                    this.PartnershipAccounting == input.PartnershipAccounting ||
+                    (this.PartnershipAccounting != null &&
+                    this.PartnershipAccounting.Equals(input.PartnershipAccounting))
                 );
         }
 
@@ -258,6 +272,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.PreviousValuationPointData != null)
                 {
                     hashCode = (hashCode * 59) + this.PreviousValuationPointData.GetHashCode();
+                }
+                if (this.PartnershipAccounting != null)
+                {
+                    hashCode = (hashCode * 59) + this.PartnershipAccounting.GetHashCode();
                 }
                 return hashCode;
             }

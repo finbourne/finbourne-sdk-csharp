@@ -9,6 +9,7 @@ All URIs are relative to *http://localhost*
 | [**DeleteAmortisationRuleset**](#deleteamortisationruleset) | **DELETE** `/api/api/amortisation/rulesets/{scope}/{code}` | [EXPERIMENTAL] DeleteAmortisationRuleset: Delete an amortisation rule set. |
 | [**GetAmortisationRuleSet**](#getamortisationruleset) | **GET** `/api/api/amortisation/rulesets/{scope}/{code}` | [EXPERIMENTAL] GetAmortisationRuleSet: Retrieve the definition of a single amortisation rule set |
 | [**ListAmortisationRuleSets**](#listamortisationrulesets) | **GET** `/api/api/amortisation/rulesets` | [EXPERIMENTAL] ListAmortisationRuleSets: List amortisation rule sets. |
+| [**ListAmortisationRulesIntervals**](#listamortisationrulesintervals) | **GET** `/api/api/amortisation/rulesets/{scope}/{code}/rulesIntervals` | ListAmortisationRulesIntervals: List the rules intervals of an amortisation rule set. |
 | [**SetAmortisationRules**](#setamortisationrules) | **PUT** `/api/api/amortisation/rulesets/{scope}/{code}/rules` | [EXPERIMENTAL] SetAmortisationRules: Set Amortisation Rules on an existing Amortisation Rule Set. |
 | [**UpdateAmortisationRuleSetDetails**](#updateamortisationrulesetdetails) | **PUT** `/api/api/amortisation/rulesets/{scope}/{code}/details` | [EXPERIMENTAL] UpdateAmortisationRuleSetDetails: Update an amortisation rule set. |
 
@@ -296,6 +297,72 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PagedResourceListOfAmortisationRuleSet> response = apiInstance.ListAmortisationRuleSetsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listamortisationrulesintervals"></a>
+## ListAmortisationRulesIntervals
+
+> ResourceListOfRulesInterval ListAmortisationRulesIntervals(string scope, string code, DateTimeOrCutLabel? fromEffectiveAt = null, DateTimeOrCutLabel? toEffectiveAt = null, DateTimeOffset? asAt = null)
+
+ListAmortisationRulesIntervals: List the rules intervals of an amortisation rule set.
+
+Lists the rules intervals of the rule set, ordered by from date. Each interval applies from its from date  until the next interval starts. The last interval has no until date.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AmortisationRuleSetsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var fromEffectiveAt = "fromEffectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var toEffectiveAt = "toEffectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+ResourceListOfRulesInterval result = apiInstance.ListAmortisationRulesIntervals(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The rule set scope. |
+| **code** | **string** | path | **required** | The rule set code. |
+| **fromEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | Return only the intervals that overlap the effective range starting at this datetime or cut label.  There is no lower bound if not specified. |
+| **toEffectiveAt** | **DateTimeOrCutLabel?** | query | optional | Return only the intervals that overlap the effective range ending at this datetime or cut label.  There is no upper bound if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the rules intervals. Defaults to returning the latest version if not  specified. |
+
+### Return type
+
+[ResourceListOfRulesInterval](../Model/ResourceListOfRulesInterval.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The rules intervals of the rule set. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListAmortisationRulesIntervalsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfRulesInterval> response = apiInstance.ListAmortisationRulesIntervalsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
