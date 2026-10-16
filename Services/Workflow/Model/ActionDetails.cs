@@ -67,6 +67,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ActionDetails" /> class
+        /// with the <see cref="TriggerNextTaskAction" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of TriggerNextTaskAction.</param>
+        public ActionDetails(TriggerNextTaskAction actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActionDetails" /> class
         /// with the <see cref="TriggerParentTaskAction" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of TriggerParentTaskAction.</param>
@@ -103,13 +115,17 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(TriggerNextTaskAction) || value is TriggerNextTaskAction)
+                {
+                    this._actualInstance = value;
+                }
                 else if (value.GetType() == typeof(TriggerParentTaskAction) || value is TriggerParentTaskAction)
                 {
                     this._actualInstance = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: CreateChildTasksAction, RunWorkerAction, TriggerChildTasksAction, TriggerParentTaskAction");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: CreateChildTasksAction, RunWorkerAction, TriggerChildTasksAction, TriggerNextTaskAction, TriggerParentTaskAction");
                 }
             }
         }
@@ -142,6 +158,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public TriggerChildTasksAction GetTriggerChildTasksAction()
         {
             return (TriggerChildTasksAction)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `TriggerNextTaskAction`. If the actual instance is not `TriggerNextTaskAction`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of TriggerNextTaskAction</returns>
+        public TriggerNextTaskAction GetTriggerNextTaskAction()
+        {
+            return (TriggerNextTaskAction)this.ActualInstance;
         }
 
         /// <summary>
@@ -250,6 +276,26 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TriggerChildTasksAction: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(TriggerNextTaskAction).GetProperty("AdditionalProperties") == null)
+                {
+                    newActionDetails = new ActionDetails(JsonConvert.DeserializeObject<TriggerNextTaskAction>(jsonString, ActionDetails.SerializerSettings));
+                }
+                else
+                {
+                    newActionDetails = new ActionDetails(JsonConvert.DeserializeObject<TriggerNextTaskAction>(jsonString, ActionDetails.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("TriggerNextTaskAction");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into TriggerNextTaskAction: {1}", jsonString, exception.ToString()));
             }
 
             try

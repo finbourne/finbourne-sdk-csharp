@@ -11,6 +11,7 @@ Child Task Configuration
 | **InitialTrigger** | **string** | Optional | The Initial Trigger for automatic start |
 | **ChildTaskFields** | [Dictionary&lt;string, FieldMapping&gt;](FieldMapping.md) | Required | Field Mappings |
 | **MapStackingKeyFrom** | **string** | Optional | The field to be mapped as the ChildTasks Stacking Key |
+| **DisplayName** | **string** | Optional | An optional display name, to tell apart child task configurations that use the same Task Definition |
 
 
 ## Usage
@@ -26,7 +27,8 @@ var instance = new ResultantChildTaskConfiguration(
     taskDefinitionAsAt: DateTimeOffset.Now,  // optional — TaskDefinition AsAt timestamp
     initialTrigger: "...",  // optional — The Initial Trigger for automatic start
     childTaskFields: new FieldMapping(...),  // required — Field Mappings
-    mapStackingKeyFrom: "..."  // optional — The field to be mapped as the ChildTasks Stacking Key
+    mapStackingKeyFrom: "...",  // optional — The field to be mapped as the ChildTasks Stacking Key
+    displayName: "..."  // optional — An optional display name, to tell apart child task configurations that use the same Task Definition
 );
 ```
 ### Serializing to JSON

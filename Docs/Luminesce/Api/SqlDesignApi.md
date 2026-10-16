@@ -8,6 +8,7 @@ All URIs are relative to *http://localhost*
 | [**GetProviderTemplateForExport**](#getprovidertemplateforexport) | **GET** `/honeycomb/api/Sql/providertemplateforexport` | GetProviderTemplateForExport: Makes a fields template for file importing via a writer |
 | [**PutCaseStatementDesignSqlToDesign**](#putcasestatementdesignsqltodesign) | **PUT** `/honeycomb/api/Sql/tocasestatementdesign` | PutCaseStatementDesignSqlToDesign: Convert SQL to a case statement design object |
 | [**PutCaseStatementDesignToSql**](#putcasestatementdesigntosql) | **PUT** `/honeycomb/api/Sql/fromcasestatementdesign` | PutCaseStatementDesignToSql: Convert a case statement design object to SQL |
+| [**PutCustomQueriesToExtractScalarParameters**](#putcustomqueriestoextractscalarparameters) | **PUT** `/honeycomb/api/Sql/extractscalarparameters/custom` | PutCustomQueriesToExtractScalarParameters: Extract scalar parameter information from all the queries of a custom multi-query |
 | [**PutFileReadDesignToSql**](#putfilereaddesigntosql) | **PUT** `/honeycomb/api/Sql/fromfilereaddesign` | PutFileReadDesignToSql: Make file read SQL from a design object |
 | [**PutInlinedPropertiesDesignSqlToDesign**](#putinlinedpropertiesdesignsqltodesign) | **PUT** `/honeycomb/api/Sql/toinlinedpropertiesdesign` | PutInlinedPropertiesDesignSqlToDesign: Make an inlined properties design from SQL |
 | [**PutInlinedPropertiesDesignToSql**](#putinlinedpropertiesdesigntosql) | **PUT** `/honeycomb/api/Sql/frominlinedpropertiesdesign` | PutInlinedPropertiesDesignToSql: Make inlined properties SQL from a design object |
@@ -232,6 +233,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<string> response = apiInstance.PutCaseStatementDesignToSqlWithHttpInfo(caseStatementDesign);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="putcustomqueriestoextractscalarparameters"></a>
+## PutCustomQueriesToExtractScalarParameters
+
+> List&lt;ScalarParameter&gt; PutCustomQueriesToExtractScalarParameters(CustomMultiQueryRequest customMultiQueryRequest)
+
+PutCustomQueriesToExtractScalarParameters: Extract scalar parameter information from all the queries of a custom multi-query
+
+ Extracts information about all the scalar parameters defined across the queries of a custom multi-query, loading the SQL of any given as Saved Queries. Each name is given only once (the first found of it, in query order), as the same value of it is given to every query that is run. The request's own `scalarParameters` are ignored.  The following error codes are to be anticipated with standard Problem Detail reports: - 400 BadRequest - the request was invalid, a Saved Query could not be loaded, or there was something wrong with the syntax of a query - 401 Unauthorized - 403 Forbidden   > This method is generally only intended for IDE generation purposes.  > It is largely internal to the Finbourne web user interfaces and subject to change without notice. 
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<SqlDesignApi>();
+var customMultiQueryRequest = new CustomMultiQueryRequest(); // CustomMultiQueryRequest
+List<ScalarParameter> result = apiInstance.PutCustomQueriesToExtractScalarParameters(customMultiQueryRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **customMultiQueryRequest** | [CustomMultiQueryRequest](../Model/CustomMultiQueryRequest.md) | body | **required** | The same set of queries as would be given to start them via &#x60;api/MultiQueryBackground/custom&#x60; |
+
+### Return type
+
+[List&lt;ScalarParameter&gt;](../Model/ScalarParameter.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
+
+<details>
+<summary>Using the PutCustomQueriesToExtractScalarParametersWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<List<ScalarParameter>> response = apiInstance.PutCustomQueriesToExtractScalarParametersWithHttpInfo(customMultiQueryRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

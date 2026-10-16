@@ -9,6 +9,7 @@ Abstracts the kinds of Actions available in a read-only form
 * [CreateChildTasksActionResponse](./CreateChildTasksActionResponse.md)
 * [RunWorkerActionResponse](./RunWorkerActionResponse.md)
 * [TriggerChildTasksActionResponse](./TriggerChildTasksActionResponse.md)
+* [TriggerNextTaskActionResponse](./TriggerNextTaskActionResponse.md)
 * [TriggerParentTaskActionResponse](./TriggerParentTaskActionResponse.md)
 
 ## Usage
@@ -39,6 +40,7 @@ var instance = JsonConvert.DeserializeObject<ActionDetailsResponse>(json);
 - [CreateChildTasksActionResponse](./CreateChildTasksActionResponse.md)
 - [RunWorkerActionResponse](./RunWorkerActionResponse.md)
 - [TriggerChildTasksActionResponse](./TriggerChildTasksActionResponse.md)
+- [TriggerNextTaskActionResponse](./TriggerNextTaskActionResponse.md)
 - [TriggerParentTaskActionResponse](./TriggerParentTaskActionResponse.md)
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
