@@ -7,6 +7,7 @@ An individual item that makes up (one side of) a rec result. Polymorphic by item
 `RecResultItem` can be one of the following types:
 
 * [RecResultHoldingItem](./RecResultHoldingItem.md)
+* [RecResultRelationalDataItem](./RecResultRelationalDataItem.md)
 * [RecResultSettlementActivityItem](./RecResultSettlementActivityItem.md)
 * [RecResultTransactionItem](./RecResultTransactionItem.md)
 
@@ -36,6 +37,7 @@ var instance = JsonConvert.DeserializeObject<RecResultItem>(json);
 ## Related Models
 
 - [RecResultHoldingItem](./RecResultHoldingItem.md)
+- [RecResultRelationalDataItem](./RecResultRelationalDataItem.md)
 - [RecResultSettlementActivityItem](./RecResultSettlementActivityItem.md)
 - [RecResultTransactionItem](./RecResultTransactionItem.md)
 

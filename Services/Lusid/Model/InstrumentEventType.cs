@@ -758,7 +758,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum InstalmentCallEvent for value: InstalmentCallEvent
         /// </summary>
         [EnumMember(Value = "InstalmentCallEvent")]
-        InstalmentCallEvent = 122
+        InstalmentCallEvent = 122,
+
+        /// <summary>
+        /// Enum DepositInterestCapitalisationEvent for value: DepositInterestCapitalisationEvent
+        /// </summary>
+        [EnumMember(Value = "DepositInterestCapitalisationEvent")]
+        DepositInterestCapitalisationEvent = 123
     }
 
 }

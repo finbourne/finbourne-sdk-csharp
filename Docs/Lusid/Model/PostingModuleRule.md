@@ -8,6 +8,8 @@ A Posting rule
 | **RuleId** | **string** | Required | The identifier for the Posting Rule. |
 | **GeneralLedgerAccountCode** | **string** | Required | The general ledger account to post the Activity credit or debit to. |
 | **RuleFilter** | **string** | Required | The filter syntax for the Posting Rule. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules for more information on filter syntax. |
+| **EffectiveFrom** | **DateTimeOffset?** | Optional | The inclusive accounting date from which the Posting Rule applies. If not set, the rule applies from the beginning of time. |
+| **EffectiveUntil** | **DateTimeOffset?** | Optional | The exclusive accounting date until which the Posting Rule applies. If not set, the rule applies until the end of time. |
 
 
 ## Usage
@@ -20,7 +22,9 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new PostingModuleRule(
     ruleId: "...",  // required — The identifier for the Posting Rule.
     generalLedgerAccountCode: "...",  // required — The general ledger account to post the Activity credit or debit to.
-    ruleFilter: "..."  // required — The filter syntax for the Posting Rule. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules for more information on filter syntax.
+    ruleFilter: "...",  // required — The filter syntax for the Posting Rule. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules for more information on filter syntax.
+    effectiveFrom: DateTimeOffset.Now,  // optional — The inclusive accounting date from which the Posting Rule applies. If not set, the rule applies from the beginning of time.
+    effectiveUntil: DateTimeOffset.Now  // optional — The exclusive accounting date until which the Posting Rule applies. If not set, the rule applies until the end of time.
 );
 ```
 ### Serializing to JSON

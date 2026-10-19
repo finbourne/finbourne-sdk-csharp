@@ -6,6 +6,7 @@
 |------|------|----------|-------------|
 | **Scope** | **string** | Required | The scope of the relational dataset definition. |
 | **Code** | **string** | Required | The code of the relational dataset definition. Together with the scope this uniquely identifies the definition. |
+| **DatasetType** | **string** | Optional | Which of the two rate tables this dataset is: Anomaly or Main. Set when the dataset is created through the withholding tax dataset definitions endpoint and never changed afterwards. Available values: Anomaly, Main. |
 | **Dimensions** | [List&lt;SeriesIdentifierField&gt;](SeriesIdentifierField.md) | Required | The dimensions created on this dataset as series identifiers, as stored. The mandatory core is not returned here; read the full field schema from the relational dataset definition at Href. |
 | **Href** | **string** | Optional | The specific Uri of the relational dataset definition. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
@@ -22,6 +23,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new WithholdingTaxDataset(
     scope: "...",  // required — The scope of the relational dataset definition.
     code: "...",  // required — The code of the relational dataset definition. Together with the scope this uniquely identifies the definition.
+    datasetType: "...",  // optional — Which of the two rate tables this dataset is: Anomaly or Main. Set when the dataset is created through the withholding tax dataset definitions endpoint and never changed afterwards. Available values: Anomaly, Main.
     dimensions: new List<SeriesIdentifierField>(),  // required — The dimensions created on this dataset as series identifiers, as stored. The mandatory core is not returned here; read the full field schema from the relational dataset definition at Href.
     href: "...",  // optional — The specific Uri of the relational dataset definition.
     varVersion: new ModelVersion(...),  // optional

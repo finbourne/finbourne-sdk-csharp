@@ -13,6 +13,7 @@ One margin arrangement under an agreement, either variation or initial.
 | **TheyPost** | [PartyTerms](PartyTerms.md) | Required | *No description available.* |
 | **EligibleCollateral** | [EligibleCollateralReferences](EligibleCollateralReferences.md) | Optional | *No description available.* |
 | **Calculation** | [MarginCalculation](MarginCalculation.md) | Required | *No description available.* |
+| **MarginAccounts** | [MarginAccounts](MarginAccounts.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -30,7 +31,8 @@ var instance = new MarginItem(
     wePost: new PartyTerms(...),  // required
     theyPost: new PartyTerms(...),  // required
     eligibleCollateral: new EligibleCollateralReferences(...),  // optional
-    calculation: new MarginCalculation(...)  // required
+    calculation: new MarginCalculation(...),  // required
+    marginAccounts: new MarginAccounts(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -49,6 +51,7 @@ var instance = JsonConvert.DeserializeObject<MarginItem>(json);
 - [PartyTerms](PartyTerms.md)
 - [EligibleCollateralReferences](EligibleCollateralReferences.md)
 - [MarginCalculation](MarginCalculation.md)
+- [MarginAccounts](MarginAccounts.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -37,11 +37,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="scope">The scope of the relational dataset definition. (required).</param>
         /// <param name="code">The code of the relational dataset definition. Together with the scope this uniquely identifies the definition. (required).</param>
+        /// <param name="datasetType">Which of the two rate tables this dataset is: Anomaly or Main. Set when the dataset is created through the withholding tax dataset definitions endpoint and never changed afterwards. Available values: Anomaly, Main..</param>
         /// <param name="dimensions">The dimensions created on this dataset as series identifiers, as stored. The mandatory core is not returned here; read the full field schema from the relational dataset definition at Href. (required).</param>
         /// <param name="href">The specific Uri of the relational dataset definition..</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="links">links.</param>
-        public WithholdingTaxDataset(string scope = default(string), string code = default(string), List<SeriesIdentifierField> dimensions = default(List<SeriesIdentifierField>), string href = default(string), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
+        public WithholdingTaxDataset(string scope = default(string), string code = default(string), string datasetType = default(string), List<SeriesIdentifierField> dimensions = default(List<SeriesIdentifierField>), string href = default(string), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
         {
             // to ensure "scope" is required (not null)
             if (scope == null)
@@ -61,6 +62,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("dimensions is a required property for WithholdingTaxDataset and cannot be null");
             }
             this.Dimensions = dimensions;
+            this.DatasetType = datasetType;
             this.Href = href;
             this.VarVersion = varVersion;
             this.Links = links;
@@ -79,6 +81,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>The code of the relational dataset definition. Together with the scope this uniquely identifies the definition.</value>
         [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = true)]
         public string Code { get; set; }
+
+        /// <summary>
+        /// Which of the two rate tables this dataset is: Anomaly or Main. Set when the dataset is created through the withholding tax dataset definitions endpoint and never changed afterwards. Available values: Anomaly, Main.
+        /// </summary>
+        /// <value>Which of the two rate tables this dataset is: Anomaly or Main. Set when the dataset is created through the withholding tax dataset definitions endpoint and never changed afterwards. Available values: Anomaly, Main.</value>
+        [DataMember(Name = "datasetType", EmitDefaultValue = true)]
+        public string DatasetType { get; set; }
 
         /// <summary>
         /// The dimensions created on this dataset as series identifiers, as stored. The mandatory core is not returned here; read the full field schema from the relational dataset definition at Href.
@@ -116,6 +125,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class WithholdingTaxDataset {\n");
             sb.Append("  Scope: ").Append(Scope).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  DatasetType: ").Append(DatasetType).Append("\n");
             sb.Append("  Dimensions: ").Append(Dimensions).Append("\n");
             sb.Append("  Href: ").Append(Href).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
@@ -166,6 +176,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Code.Equals(input.Code))
                 ) && 
                 (
+                    this.DatasetType == input.DatasetType ||
+                    (this.DatasetType != null &&
+                    this.DatasetType.Equals(input.DatasetType))
+                ) && 
+                (
                     this.Dimensions == input.Dimensions ||
                     this.Dimensions != null &&
                     input.Dimensions != null &&
@@ -205,6 +220,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Code != null)
                 {
                     hashCode = (hashCode * 59) + this.Code.GetHashCode();
+                }
+                if (this.DatasetType != null)
+                {
+                    hashCode = (hashCode * 59) + this.DatasetType.GetHashCode();
                 }
                 if (this.Dimensions != null)
                 {

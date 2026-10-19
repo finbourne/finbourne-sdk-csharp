@@ -5,7 +5,7 @@ The market quote for an observable which will be used to calibrate the market da
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **QuoteType** | **string** | Required | Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor. |
+| **QuoteType** | **string** | Required | Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed. |
 | **Value** | **decimal** | Required | Numeric value of the quote |
 
 
@@ -17,7 +17,7 @@ The market quote for an observable which will be used to calibrate the market da
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new MarketQuote(
-    quoteType: "...",  // required — Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor.
+    quoteType: "...",  // required — Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed.
     value: 0.0d  // required — Numeric value of the quote
 );
 ```

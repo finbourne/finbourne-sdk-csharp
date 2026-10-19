@@ -11,7 +11,7 @@
 | **ShareClassShortCode** | **string** | Required | A short code that uniquely identifies the share class within the Fund. |
 | **LaunchPrice** | **decimal?** | Optional | The launch price set when a shareclass is added to the fund. Defaults to 1. |
 | **LaunchDate** | **DateTimeOffset?** | Optional | The launch date set when a shareclass is added to the fund. Defaults to Fund Inception Date. |
-| **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | An optional set of properties to attach to the auto-created Instrument. Only applied when createInstrument is true. |
+| **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | An optional set of properties for the Share Class. These must be from the &#39;Instrument&#39; domain. |
 | **InvestorType** | **string** | Required | The Type of Share Class. Available values: Unitised. |
 | **DistributionType** | **string** | Optional | The type of distribution the ShareClass will calculate. Available values: Income, Accumulation. |
 | **DomCcy** | **string** | Required | The domestic currency of the ShareClass instrument. |
@@ -39,7 +39,7 @@ var instance = new ShareClass(
     shareClassShortCode: "...",  // required — A short code that uniquely identifies the share class within the Fund.
     launchPrice: 0.0d,  // optional — The launch price set when a shareclass is added to the fund. Defaults to 1.
     launchDate: DateTimeOffset.Now,  // optional — The launch date set when a shareclass is added to the fund. Defaults to Fund Inception Date.
-    properties: new Property(...),  // optional — An optional set of properties to attach to the auto-created Instrument. Only applied when createInstrument is true.
+    properties: new Property(...),  // optional — An optional set of properties for the Share Class. These must be from the &#39;Instrument&#39; domain.
     investorType: "...",  // required — The Type of Share Class. Available values: Unitised.
     distributionType: "...",  // optional — The type of distribution the ShareClass will calculate. Available values: Income, Accumulation.
     domCcy: "...",  // required — The domestic currency of the ShareClass instrument.

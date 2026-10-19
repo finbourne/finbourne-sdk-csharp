@@ -5,17 +5,17 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateItem**](#createitem) | **POST** `/api/api/workspaces/{visibility}/{workspaceName}/items` | [EXPERIMENTAL] CreateItem: Create a new item in a workspace. |
-| [**CreateWorkspace**](#createworkspace) | **POST** `/api/api/workspaces/{visibility}` | [EXPERIMENTAL] CreateWorkspace: Create a new workspace. |
-| [**DeleteItem**](#deleteitem) | **DELETE** `/api/api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName}` | [EXPERIMENTAL] DeleteItem: Delete an item from a workspace. |
-| [**DeleteWorkspace**](#deleteworkspace) | **DELETE** `/api/api/workspaces/{visibility}/{workspaceName}` | [EXPERIMENTAL] DeleteWorkspace: Delete a workspace. |
-| [**GetItem**](#getitem) | **GET** `/api/api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName}` | [EXPERIMENTAL] GetItem: Get a single workspace item. |
-| [**GetWorkspace**](#getworkspace) | **GET** `/api/api/workspaces/{visibility}/{workspaceName}` | [EXPERIMENTAL] GetWorkspace: Get a workspace. |
-| [**ListItems**](#listitems) | **GET** `/api/api/workspaces/{visibility}/{workspaceName}/items` | [EXPERIMENTAL] ListItems: List the items in a workspace. |
-| [**ListWorkspaces**](#listworkspaces) | **GET** `/api/api/workspaces/{visibility}` | [EXPERIMENTAL] ListWorkspaces: List workspaces. |
-| [**SearchItems**](#searchitems) | **GET** `/api/api/workspaces/{visibility}/items` | [EXPERIMENTAL] SearchItems: List items across all workspaces. |
-| [**UpdateItem**](#updateitem) | **PUT** `/api/api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName}` | [EXPERIMENTAL] UpdateItem: Update an item in a workspace. |
-| [**UpdateWorkspace**](#updateworkspace) | **PUT** `/api/api/workspaces/{visibility}/{workspaceName}` | [EXPERIMENTAL] UpdateWorkspace: Update a workspace. |
+| [**CreateItem**](#createitem) | **POST** `/api/api/workspaces/{visibility}/{workspaceName}/items` | CreateItem: Create a new item in a workspace. |
+| [**CreateWorkspace**](#createworkspace) | **POST** `/api/api/workspaces/{visibility}` | CreateWorkspace: Create a new workspace. |
+| [**DeleteItem**](#deleteitem) | **DELETE** `/api/api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName}` | DeleteItem: Delete an item from a workspace. |
+| [**DeleteWorkspace**](#deleteworkspace) | **DELETE** `/api/api/workspaces/{visibility}/{workspaceName}` | DeleteWorkspace: Delete a workspace. |
+| [**GetItem**](#getitem) | **GET** `/api/api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName}` | GetItem: Get a single workspace item. |
+| [**GetWorkspace**](#getworkspace) | **GET** `/api/api/workspaces/{visibility}/{workspaceName}` | GetWorkspace: Get a workspace. |
+| [**ListItems**](#listitems) | **GET** `/api/api/workspaces/{visibility}/{workspaceName}/items` | ListItems: List the items in a workspace. |
+| [**ListWorkspaces**](#listworkspaces) | **GET** `/api/api/workspaces/{visibility}` | ListWorkspaces: List workspaces. |
+| [**SearchItems**](#searchitems) | **GET** `/api/api/workspaces/{visibility}/items` | SearchItems: List items across all workspaces. |
+| [**UpdateItem**](#updateitem) | **PUT** `/api/api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName}` | UpdateItem: Update an item in a workspace. |
+| [**UpdateWorkspace**](#updateworkspace) | **PUT** `/api/api/workspaces/{visibility}/{workspaceName}` | UpdateWorkspace: Update a workspace. |
 
 ### Example
 
@@ -64,7 +64,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WorkspaceApi>();
 
 > WorkspaceItem CreateItem(string visibility, string workspaceName, WorkspaceItemCreationRequest? workspaceItemCreationRequest = null)
 
-[EXPERIMENTAL] CreateItem: Create a new item in a workspace.
+CreateItem: Create a new item in a workspace.
 
 Create a new item in a workspace.
 
@@ -126,7 +126,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Workspace CreateWorkspace(string visibility, WorkspaceCreationRequest workspaceCreationRequest, bool? includeItemAccess = null)
 
-[EXPERIMENTAL] CreateWorkspace: Create a new workspace.
+CreateWorkspace: Create a new workspace.
 
 Create a new workspace.
 
@@ -188,7 +188,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteItem(string visibility, string workspaceName, string groupName, string itemName)
 
-[EXPERIMENTAL] DeleteItem: Delete an item from a workspace.
+DeleteItem: Delete an item from a workspace.
 
 Delete an item from a workspace.
 
@@ -252,7 +252,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteWorkspace(string visibility, string workspaceName, bool? recurse = null)
 
-[EXPERIMENTAL] DeleteWorkspace: Delete a workspace.
+DeleteWorkspace: Delete a workspace.
 
 Delete a workspace.
 
@@ -314,7 +314,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > WorkspaceItem GetItem(string visibility, string workspaceName, string groupName, string itemName, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetItem: Get a single workspace item.
+GetItem: Get a single workspace item.
 
 Get a single workspace item.
 
@@ -380,7 +380,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Workspace GetWorkspace(string visibility, string workspaceName, DateTimeOffset? asAt = null, bool? includeItemAccess = null)
 
-[EXPERIMENTAL] GetWorkspace: Get a workspace.
+GetWorkspace: Get a workspace.
 
 Get a workspace.
 
@@ -444,7 +444,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfWorkspaceItem ListItems(string visibility, string workspaceName, DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null)
 
-[EXPERIMENTAL] ListItems: List the items in a workspace.
+ListItems: List the items in a workspace.
 
 List the items in a workspace.
 
@@ -514,7 +514,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfWorkspace ListWorkspaces(string visibility, DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null, bool? includeItemAccess = null)
 
-[EXPERIMENTAL] ListWorkspaces: List workspaces.
+ListWorkspaces: List workspaces.
 
 List workspaces.
 
@@ -584,7 +584,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfItemAndWorkspace SearchItems(string visibility, DateTimeOffset? asAt = null, string? page = null, List<string>? sortBy = null, int? limit = null, string? filter = null)
 
-[EXPERIMENTAL] SearchItems: List items across all workspaces.
+SearchItems: List items across all workspaces.
 
 List items across all workspaces.
 
@@ -652,7 +652,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > WorkspaceItem UpdateItem(string visibility, string workspaceName, string groupName, string itemName, WorkspaceItemUpdateRequest? workspaceItemUpdateRequest = null)
 
-[EXPERIMENTAL] UpdateItem: Update an item in a workspace.
+UpdateItem: Update an item in a workspace.
 
 Update an item in a workspace.
 
@@ -718,7 +718,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > Workspace UpdateWorkspace(string visibility, string workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, bool? includeItemAccess = null)
 
-[EXPERIMENTAL] UpdateWorkspace: Update a workspace.
+UpdateWorkspace: Update a workspace.
 
 Update a workspace.
 

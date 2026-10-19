@@ -10,6 +10,7 @@ The outcome of a carry accrual: the movement in each partner's carry against wha
 | **Source** | **string** | Required | The waterfall or model the carry amounts came from. |
 | **Lines** | [List&lt;CarryAccrualLine&gt;](CarryAccrualLine.md) | Required | The accrual movement per partner. |
 | **BookedTransactionIds** | **List&lt;string&gt;** | Required | The identifiers of the transactions booked, if any. |
+| **LaterRunIds** | **List&lt;string&gt;** | Required | The run identifiers of carry accruals already on the ledger with an effective date after this period end. Restating an earlier period moves the to-date balance those runs were accrued against; re-run them to roll the restatement forward. |
 
 
 ## Usage
@@ -24,7 +25,8 @@ var instance = new CarryAccrualResult(
     periodEnd: DateTimeOffset.Now,  // required — The date carry is accrued to.
     source: "...",  // required — The waterfall or model the carry amounts came from.
     lines: new List<CarryAccrualLine>(),  // required — The accrual movement per partner.
-    bookedTransactionIds:   // required — The identifiers of the transactions booked, if any.
+    bookedTransactionIds: ,  // required — The identifiers of the transactions booked, if any.
+    laterRunIds:   // required — The run identifiers of carry accruals already on the ledger with an effective date after this period end. Restating an earlier period moves the to-date balance those runs were accrued against; re-run them to roll the restatement forward.
 );
 ```
 ### Serializing to JSON
