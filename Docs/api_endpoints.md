@@ -75,6 +75,7 @@
 * [ChartOfAccountsApi](Lusid/Api/ChartOfAccountsApi.md)
 * [CheckDefinitionsApi](Lusid/Api/CheckDefinitionsApi.md)
 * [CollateralAgreementsApi](Lusid/Api/CollateralAgreementsApi.md)
+* [CollateralApi](Lusid/Api/CollateralApi.md)
 * [ComplexMarketDataApi](Lusid/Api/ComplexMarketDataApi.md)
 * [ComplianceApi](Lusid/Api/ComplianceApi.md)
 * [ConfigurationRecipeApi](Lusid/Api/ConfigurationRecipeApi.md)

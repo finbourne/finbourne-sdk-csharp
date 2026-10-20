@@ -4,8 +4,8 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Left** | [ResourceId](ResourceId.md) | Required | *No description available.* |
-| **Right** | [ResourceId](ResourceId.md) | Required | *No description available.* |
+| **Left** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **Right** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -16,8 +16,8 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecDefRecipeIds(
-    left: new ResourceId(...),  // required
-    right: new ResourceId(...)  // required
+    left: new ResourceId(...),  // optional
+    right: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON

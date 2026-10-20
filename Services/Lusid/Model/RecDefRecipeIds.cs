@@ -30,39 +30,24 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RecDefRecipeIds" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected RecDefRecipeIds() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RecDefRecipeIds" /> class.
-        /// </summary>
-        /// <param name="left">left (required).</param>
-        /// <param name="right">right (required).</param>
+        /// <param name="left">left.</param>
+        /// <param name="right">right.</param>
         public RecDefRecipeIds(ResourceId left = default(ResourceId), ResourceId right = default(ResourceId))
         {
-            // to ensure "left" is required (not null)
-            if (left == null)
-            {
-                throw new ArgumentNullException("left is a required property for RecDefRecipeIds and cannot be null");
-            }
             this.Left = left;
-            // to ensure "right" is required (not null)
-            if (right == null)
-            {
-                throw new ArgumentNullException("right is a required property for RecDefRecipeIds and cannot be null");
-            }
             this.Right = right;
         }
 
         /// <summary>
         /// Gets or Sets Left
         /// </summary>
-        [DataMember(Name = "left", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "left", EmitDefaultValue = false)]
         public ResourceId Left { get; set; }
 
         /// <summary>
         /// Gets or Sets Right
         /// </summary>
-        [DataMember(Name = "right", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "right", EmitDefaultValue = false)]
         public ResourceId Right { get; set; }
 
         /// <summary>

@@ -4,8 +4,8 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Left** | **string** | Required | The currency used on the left side of the reconciliation. |
-| **Right** | **string** | Required | The currency used on the right side of the reconciliation. |
+| **Left** | **string** | Optional | The currency used on the left side of the reconciliation. Required when the left side has portfolio sources; must be null when it draws on relational data. |
+| **Right** | **string** | Optional | The currency used on the right side of the reconciliation. Required when the right side has portfolio sources; must be null when it draws on relational data. |
 
 
 ## Usage
@@ -16,8 +16,8 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecDefCurrencies(
-    left: "...",  // required — The currency used on the left side of the reconciliation.
-    right: "..."  // required — The currency used on the right side of the reconciliation.
+    left: "...",  // optional — The currency used on the left side of the reconciliation. Required when the left side has portfolio sources; must be null when it draws on relational data.
+    right: "..."  // optional — The currency used on the right side of the reconciliation. Required when the right side has portfolio sources; must be null when it draws on relational data.
 );
 ```
 ### Serializing to JSON
