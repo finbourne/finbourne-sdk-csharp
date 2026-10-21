@@ -50,16 +50,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// </summary>
         /// <param name="launcherType">launcherType.</param>
         /// <param name="eventMatchingPattern">eventMatchingPattern.</param>
+        /// <param name="calendarContexts">The named time zones and holiday calendars the date time adjustments of this Launcher work in.</param>
         /// <param name="mapTaskFields">Fields of the root task filled from the event, keyed by the field name on the root task definition.</param>
         /// <param name="mapCorrelationIds">Correlation IDs of the root task filled from the event.</param>
         /// <param name="runAsUserId">runAsUserId.</param>
         /// <param name="setTaskFields">Fields of the root task set to a fixed value, keyed by the field name on the root task definition.</param>
         /// <param name="setCorrelationIds">Correlation IDs put on the root task as given.</param>
         /// <param name="initialTrigger">The trigger given to the root task once it is made and all of its fields are filled, or null when the root task is left in its initial state.</param>
-        public EventLauncherDetailsResponse(LauncherTypeEnum ?launcherType = default(LauncherTypeEnum?), LauncherEventMatchingPattern eventMatchingPattern = default(LauncherEventMatchingPattern), Dictionary<string, EventTaskFieldMapping> mapTaskFields = default(Dictionary<string, EventTaskFieldMapping>), List<CorrelationIdMapping> mapCorrelationIds = default(List<CorrelationIdMapping>), LauncherMapping runAsUserId = default(LauncherMapping), Dictionary<string, Object> setTaskFields = default(Dictionary<string, Object>), List<string> setCorrelationIds = default(List<string>), string initialTrigger = default(string))
+        public EventLauncherDetailsResponse(LauncherTypeEnum ?launcherType = default(LauncherTypeEnum?), LauncherEventMatchingPattern eventMatchingPattern = default(LauncherEventMatchingPattern), List<CalendarContext> calendarContexts = default(List<CalendarContext>), Dictionary<string, EventTaskFieldMapping> mapTaskFields = default(Dictionary<string, EventTaskFieldMapping>), List<CorrelationIdMapping> mapCorrelationIds = default(List<CorrelationIdMapping>), LauncherMapping runAsUserId = default(LauncherMapping), Dictionary<string, Object> setTaskFields = default(Dictionary<string, Object>), List<string> setCorrelationIds = default(List<string>), string initialTrigger = default(string))
         {
             this.LauncherType = launcherType;
             this.EventMatchingPattern = eventMatchingPattern;
+            this.CalendarContexts = calendarContexts;
             this.MapTaskFields = mapTaskFields;
             this.MapCorrelationIds = mapCorrelationIds;
             this.RunAsUserId = runAsUserId;
@@ -73,6 +75,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// </summary>
         [DataMember(Name = "eventMatchingPattern", EmitDefaultValue = false)]
         public LauncherEventMatchingPattern EventMatchingPattern { get; set; }
+
+        /// <summary>
+        /// The named time zones and holiday calendars the date time adjustments of this Launcher work in
+        /// </summary>
+        /// <value>The named time zones and holiday calendars the date time adjustments of this Launcher work in</value>
+        [DataMember(Name = "calendarContexts", EmitDefaultValue = true)]
+        public List<CalendarContext> CalendarContexts { get; set; }
 
         /// <summary>
         /// Fields of the root task filled from the event, keyed by the field name on the root task definition
@@ -125,6 +134,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("class EventLauncherDetailsResponse {\n");
             sb.Append("  LauncherType: ").Append(LauncherType).Append("\n");
             sb.Append("  EventMatchingPattern: ").Append(EventMatchingPattern).Append("\n");
+            sb.Append("  CalendarContexts: ").Append(CalendarContexts).Append("\n");
             sb.Append("  MapTaskFields: ").Append(MapTaskFields).Append("\n");
             sb.Append("  MapCorrelationIds: ").Append(MapCorrelationIds).Append("\n");
             sb.Append("  RunAsUserId: ").Append(RunAsUserId).Append("\n");
@@ -176,6 +186,12 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.EventMatchingPattern.Equals(input.EventMatchingPattern))
                 ) && 
                 (
+                    this.CalendarContexts == input.CalendarContexts ||
+                    this.CalendarContexts != null &&
+                    input.CalendarContexts != null &&
+                    this.CalendarContexts.SequenceEqual(input.CalendarContexts)
+                ) && 
+                (
                     this.MapTaskFields == input.MapTaskFields ||
                     this.MapTaskFields != null &&
                     input.MapTaskFields != null &&
@@ -224,6 +240,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.EventMatchingPattern != null)
                 {
                     hashCode = (hashCode * 59) + this.EventMatchingPattern.GetHashCode();
+                }
+                if (this.CalendarContexts != null)
+                {
+                    hashCode = (hashCode * 59) + this.CalendarContexts.GetHashCode();
                 }
                 if (this.MapTaskFields != null)
                 {

@@ -41,10 +41,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to delete, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic. In Partial mode failures are returned              in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source of the rows to delete, since it is part of each row&#39;s identity. Omit it              to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not              carry ruleSource in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>BatchDeleteRelationalDataResponse</returns>
-        BatchDeleteRelationalDataResponse BatchDeleteWithholdingTaxRates(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        BatchDeleteRelationalDataResponse BatchDeleteWithholdingTaxRates(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EARLY ACCESS] BatchDeleteWithholdingTaxRates: Batch delete Withholding Tax rate rows from a rate dataset.
@@ -57,41 +58,44 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to delete, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic. In Partial mode failures are returned              in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source of the rows to delete, since it is part of each row&#39;s identity. Omit it              to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not              carry ruleSource in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of BatchDeleteRelationalDataResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse> BatchDeleteWithholdingTaxRatesWithHttpInfo(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse> BatchDeleteWithholdingTaxRatesWithHttpInfo(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands.
         /// </summary>
         /// <remarks>
-        /// Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+        /// Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The Scope of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to upsert, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic, because a partly loaded feed silently              under-withholds. In Partial mode failures are returned in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source every row in the batch is attributed to, compared against the              configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource              in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>BatchUpsertWithholdingTaxRatesResponse</returns>
-        BatchUpsertWithholdingTaxRatesResponse BatchUpsertWithholdingTaxRates(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        BatchUpsertWithholdingTaxRatesResponse BatchUpsertWithholdingTaxRates(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands.
         /// </summary>
         /// <remarks>
-        /// Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+        /// Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The Scope of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to upsert, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic, because a partly loaded feed silently              under-withholds. In Partial mode failures are returned in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source every row in the batch is attributed to, compared against the              configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource              in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of BatchUpsertWithholdingTaxRatesResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse> BatchUpsertWithholdingTaxRatesWithHttpInfo(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse> BatchUpsertWithholdingTaxRatesWithHttpInfo(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] CreateWithholdingTaxDatasetDefinitions: Create the Withholding Tax dataset definitions.
         /// </summary>
@@ -325,6 +329,37 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of WithholdingTaxDataset</returns>
         Finbourne.Sdk.Client.ApiResponse<WithholdingTaxDataset> PatchWithholdingTaxDatasetDefinitionWithHttpInfo(string scope, string code, List<Operation> operation, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply.
+        /// </summary>
+        /// <remarks>
+        /// A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration&#39;s value sources read them from it, as booking reads a transaction&#39;s instrument.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveWithholdingTaxRequest">The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade              date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the configuration and the rates. Defaults to the latest version              if not specified. (optional)</param>
+        /// <param name="limit">The most combinations of values that couldAlsoMatch tries, fewest values first. (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>WithholdingTaxResolution</returns>
+        WithholdingTaxResolution ResolveWithholdingTax(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply.
+        /// </summary>
+        /// <remarks>
+        /// A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration&#39;s value sources read them from it, as booking reads a transaction&#39;s instrument.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveWithholdingTaxRequest">The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade              date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the configuration and the rates. Defaults to the latest version              if not specified. (optional)</param>
+        /// <param name="limit">The most combinations of values that couldAlsoMatch tries, fewest values first. (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of WithholdingTaxResolution</returns>
+        Finbourne.Sdk.Client.ApiResponse<WithholdingTaxResolution> ResolveWithholdingTaxWithHttpInfo(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EARLY ACCESS] UpsertWithholdingTaxConfiguration: Upsert a Withholding Tax Configuration.
         /// </summary>
         /// <remarks>
@@ -373,11 +408,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to delete, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic. In Partial mode failures are returned              in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source of the rows to delete, since it is part of each row&#39;s identity. Omit it              to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not              carry ruleSource in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of BatchDeleteRelationalDataResponse</returns>
-        System.Threading.Tasks.Task<BatchDeleteRelationalDataResponse> BatchDeleteWithholdingTaxRatesAsync(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<BatchDeleteRelationalDataResponse> BatchDeleteWithholdingTaxRatesAsync(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EARLY ACCESS] BatchDeleteWithholdingTaxRates: Batch delete Withholding Tax rate rows from a rate dataset.
@@ -390,44 +426,47 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to delete, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic. In Partial mode failures are returned              in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source of the rows to delete, since it is part of each row&#39;s identity. Omit it              to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not              carry ruleSource in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (BatchDeleteRelationalDataResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse>> BatchDeleteWithholdingTaxRatesWithHttpInfoAsync(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse>> BatchDeleteWithholdingTaxRatesWithHttpInfoAsync(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands.
         /// </summary>
         /// <remarks>
-        /// Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+        /// Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The Scope of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to upsert, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic, because a partly loaded feed silently              under-withholds. In Partial mode failures are returned in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source every row in the batch is attributed to, compared against the              configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource              in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of BatchUpsertWithholdingTaxRatesResponse</returns>
-        System.Threading.Tasks.Task<BatchUpsertWithholdingTaxRatesResponse> BatchUpsertWithholdingTaxRatesAsync(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<BatchUpsertWithholdingTaxRatesResponse> BatchUpsertWithholdingTaxRatesAsync(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands.
         /// </summary>
         /// <remarks>
-        /// Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+        /// Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The Scope of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to upsert, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic, because a partly loaded feed silently              under-withholds. In Partial mode failures are returned in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source every row in the batch is attributed to, compared against the              configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource              in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (BatchUpsertWithholdingTaxRatesResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse>> BatchUpsertWithholdingTaxRatesWithHttpInfoAsync(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse>> BatchUpsertWithholdingTaxRatesWithHttpInfoAsync(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] CreateWithholdingTaxDatasetDefinitions: Create the Withholding Tax dataset definitions.
         /// </summary>
@@ -677,6 +716,39 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (WithholdingTaxDataset)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<WithholdingTaxDataset>> PatchWithholdingTaxDatasetDefinitionWithHttpInfoAsync(string scope, string code, List<Operation> operation, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply.
+        /// </summary>
+        /// <remarks>
+        /// A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration&#39;s value sources read them from it, as booking reads a transaction&#39;s instrument.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveWithholdingTaxRequest">The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade              date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the configuration and the rates. Defaults to the latest version              if not specified. (optional)</param>
+        /// <param name="limit">The most combinations of values that couldAlsoMatch tries, fewest values first. (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of WithholdingTaxResolution</returns>
+        System.Threading.Tasks.Task<WithholdingTaxResolution> ResolveWithholdingTaxAsync(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply.
+        /// </summary>
+        /// <remarks>
+        /// A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration&#39;s value sources read them from it, as booking reads a transaction&#39;s instrument.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveWithholdingTaxRequest">The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade              date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the configuration and the rates. Defaults to the latest version              if not specified. (optional)</param>
+        /// <param name="limit">The most combinations of values that couldAlsoMatch tries, fewest values first. (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (WithholdingTaxResolution)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<WithholdingTaxResolution>> ResolveWithholdingTaxWithHttpInfoAsync(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EARLY ACCESS] UpsertWithholdingTaxConfiguration: Upsert a Withholding Tax Configuration.
         /// </summary>
         /// <remarks>
@@ -809,12 +881,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to delete, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic. In Partial mode failures are returned              in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source of the rows to delete, since it is part of each row&#39;s identity. Omit it              to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not              carry ruleSource in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>BatchDeleteRelationalDataResponse</returns>
-        public BatchDeleteRelationalDataResponse BatchDeleteWithholdingTaxRates(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public BatchDeleteRelationalDataResponse BatchDeleteWithholdingTaxRates(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse> localVarResponse = BatchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse> localVarResponse = BatchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -827,10 +900,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to delete, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic. In Partial mode failures are returned              in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source of the rows to delete, since it is part of each row&#39;s identity. Omit it              to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not              carry ruleSource in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of BatchDeleteRelationalDataResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse> BatchDeleteWithholdingTaxRatesWithHttpInfo(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse> BatchDeleteWithholdingTaxRatesWithHttpInfo(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -903,6 +977,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (successMode != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "successMode", successMode));
+            }
+            if (ruleSource != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "ruleSource", ruleSource));
             }
             localVarRequestOptions.Data = requestBody;
 
@@ -948,13 +1026,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to delete, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic. In Partial mode failures are returned              in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source of the rows to delete, since it is part of each row&#39;s identity. Omit it              to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not              carry ruleSource in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of BatchDeleteRelationalDataResponse</returns>
-        public async System.Threading.Tasks.Task<BatchDeleteRelationalDataResponse> BatchDeleteWithholdingTaxRatesAsync(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<BatchDeleteRelationalDataResponse> BatchDeleteWithholdingTaxRatesAsync(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse> localVarResponse = await BatchDeleteWithholdingTaxRatesWithHttpInfoAsync(scope, code, requestBody, successMode, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse> localVarResponse = await BatchDeleteWithholdingTaxRatesWithHttpInfoAsync(scope, code, requestBody, successMode, ruleSource, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -967,11 +1046,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to delete, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic. In Partial mode failures are returned              in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source of the rows to delete, since it is part of each row&#39;s identity. Omit it              to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not              carry ruleSource in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (BatchDeleteRelationalDataResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse>> BatchDeleteWithholdingTaxRatesWithHttpInfoAsync(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BatchDeleteRelationalDataResponse>> BatchDeleteWithholdingTaxRatesWithHttpInfoAsync(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -1046,6 +1126,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "successMode", successMode));
             }
+            if (ruleSource != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "ruleSource", ruleSource));
+            }
             localVarRequestOptions.Data = requestBody;
 
             localVarRequestOptions.Operation = "WithholdingTaxApi.BatchDeleteWithholdingTaxRates";
@@ -1084,24 +1168,25 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands. Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+        /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands. Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The Scope of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to upsert, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic, because a partly loaded feed silently              under-withholds. In Partial mode failures are returned in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source every row in the batch is attributed to, compared against the              configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource              in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>BatchUpsertWithholdingTaxRatesResponse</returns>
-        public BatchUpsertWithholdingTaxRatesResponse BatchUpsertWithholdingTaxRates(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public BatchUpsertWithholdingTaxRatesResponse BatchUpsertWithholdingTaxRates(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse> localVarResponse = BatchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse> localVarResponse = BatchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands. Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+        /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands. Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1109,10 +1194,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to upsert, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic, because a partly loaded feed silently              under-withholds. In Partial mode failures are returned in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source every row in the batch is attributed to, compared against the              configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource              in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of BatchUpsertWithholdingTaxRatesResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse> BatchUpsertWithholdingTaxRatesWithHttpInfo(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse> BatchUpsertWithholdingTaxRatesWithHttpInfo(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -1186,6 +1272,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "successMode", successMode));
             }
+            if (ruleSource != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "ruleSource", ruleSource));
+            }
             localVarRequestOptions.Data = requestBody;
 
             localVarRequestOptions.Operation = "WithholdingTaxApi.BatchUpsertWithholdingTaxRates";
@@ -1223,25 +1313,26 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands. Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+        /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands. Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The Scope of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to upsert, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic, because a partly loaded feed silently              under-withholds. In Partial mode failures are returned in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source every row in the batch is attributed to, compared against the              configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource              in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of BatchUpsertWithholdingTaxRatesResponse</returns>
-        public async System.Threading.Tasks.Task<BatchUpsertWithholdingTaxRatesResponse> BatchUpsertWithholdingTaxRatesAsync(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<BatchUpsertWithholdingTaxRatesResponse> BatchUpsertWithholdingTaxRatesAsync(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse> localVarResponse = await BatchUpsertWithholdingTaxRatesWithHttpInfoAsync(scope, code, requestBody, successMode, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse> localVarResponse = await BatchUpsertWithholdingTaxRatesWithHttpInfoAsync(scope, code, requestBody, successMode, ruleSource, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands. Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+        /// [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands. Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1249,11 +1340,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The Code of the rate dataset&#39;s relational dataset definition.</param>
         /// <param name="requestBody">The rate rows to upsert, keyed by a correlation id echoed back in the response.</param>
         /// <param name="successMode">Atomic or Partial; defaults to Atomic, because a partly loaded feed silently              under-withholds. In Partial mode failures are returned in the response body with a 200 status. (optional, default to &quot;Atomic&quot;)</param>
+        /// <param name="ruleSource">The source every row in the batch is attributed to, compared against the              configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource              in its own series identifiers. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (BatchUpsertWithholdingTaxRatesResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse>> BatchUpsertWithholdingTaxRatesWithHttpInfoAsync(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BatchUpsertWithholdingTaxRatesResponse>> BatchUpsertWithholdingTaxRatesWithHttpInfoAsync(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = default(string?), string? ruleSource = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -1327,6 +1419,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (successMode != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "successMode", successMode));
+            }
+            if (ruleSource != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "ruleSource", ruleSource));
             }
             localVarRequestOptions.Data = requestBody;
 
@@ -3396,6 +3492,276 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("PatchWithholdingTaxDatasetDefinition", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply. A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration&#39;s value sources read them from it, as booking reads a transaction&#39;s instrument.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveWithholdingTaxRequest">The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade              date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the configuration and the rates. Defaults to the latest version              if not specified. (optional)</param>
+        /// <param name="limit">The most combinations of values that couldAlsoMatch tries, fewest values first. (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>WithholdingTaxResolution</returns>
+        public WithholdingTaxResolution ResolveWithholdingTax(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<WithholdingTaxResolution> localVarResponse = ResolveWithholdingTaxWithHttpInfo(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply. A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration&#39;s value sources read them from it, as booking reads a transaction&#39;s instrument.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="resolveWithholdingTaxRequest">The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade              date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the configuration and the rates. Defaults to the latest version              if not specified. (optional)</param>
+        /// <param name="limit">The most combinations of values that couldAlsoMatch tries, fewest values first. (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of WithholdingTaxResolution</returns>
+        public Finbourne.Sdk.Client.ApiResponse<WithholdingTaxResolution> ResolveWithholdingTaxWithHttpInfo(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'resolveWithholdingTaxRequest' is set
+            if (resolveWithholdingTaxRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'resolveWithholdingTaxRequest' when calling WithholdingTaxApi->ResolveWithholdingTax");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            localVarRequestOptions.Data = resolveWithholdingTaxRequest;
+
+            localVarRequestOptions.Operation = "WithholdingTaxApi.ResolveWithholdingTax";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<WithholdingTaxResolution, AbstractOpenAPISchema>("/api/api/withholdingtax/$resolve", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ResolveWithholdingTax", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply. A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration&#39;s value sources read them from it, as booking reads a transaction&#39;s instrument.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="resolveWithholdingTaxRequest">The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade              date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the configuration and the rates. Defaults to the latest version              if not specified. (optional)</param>
+        /// <param name="limit">The most combinations of values that couldAlsoMatch tries, fewest values first. (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of WithholdingTaxResolution</returns>
+        public async System.Threading.Tasks.Task<WithholdingTaxResolution> ResolveWithholdingTaxAsync(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<WithholdingTaxResolution> localVarResponse = await ResolveWithholdingTaxWithHttpInfoAsync(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply. A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration&#39;s value sources read them from it, as booking reads a transaction&#39;s instrument.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="resolveWithholdingTaxRequest">The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade              date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the configuration and the rates. Defaults to the latest version              if not specified. (optional)</param>
+        /// <param name="limit">The most combinations of values that couldAlsoMatch tries, fewest values first. (optional, default to 100)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (WithholdingTaxResolution)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<WithholdingTaxResolution>> ResolveWithholdingTaxWithHttpInfoAsync(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'resolveWithholdingTaxRequest' is set
+            if (resolveWithholdingTaxRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'resolveWithholdingTaxRequest' when calling WithholdingTaxApi->ResolveWithholdingTax");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            localVarRequestOptions.Data = resolveWithholdingTaxRequest;
+
+            localVarRequestOptions.Operation = "WithholdingTaxApi.ResolveWithholdingTax";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<WithholdingTaxResolution, AbstractOpenAPISchema>("/api/api/withholdingtax/$resolve", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ResolveWithholdingTax", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

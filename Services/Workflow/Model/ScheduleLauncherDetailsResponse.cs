@@ -50,7 +50,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// </summary>
         /// <param name="launcherType">launcherType.</param>
         /// <param name="schedule">schedule.</param>
-        /// <param name="calendarContexts">The named time zones and holiday calendars this Launcher works in.              Only a Schedule Launcher works in a calendar context.</param>
+        /// <param name="calendarContexts">The named time zones and holiday calendars this Launcher works in.</param>
         /// <param name="mapTaskFields">Fields of the root task filled from the instant the schedule fired, keyed by the field name on the root task definition.</param>
         /// <param name="runAsUserId">runAsUserId.</param>
         /// <param name="setTaskFields">Fields of the root task set to a fixed value, keyed by the field name on the root task definition.</param>
@@ -75,9 +75,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public LauncherSchedule Schedule { get; set; }
 
         /// <summary>
-        /// The named time zones and holiday calendars this Launcher works in.              Only a Schedule Launcher works in a calendar context
+        /// The named time zones and holiday calendars this Launcher works in
         /// </summary>
-        /// <value>The named time zones and holiday calendars this Launcher works in.              Only a Schedule Launcher works in a calendar context</value>
+        /// <value>The named time zones and holiday calendars this Launcher works in</value>
         [DataMember(Name = "calendarContexts", EmitDefaultValue = true)]
         public List<CalendarContext> CalendarContexts { get; set; }
 

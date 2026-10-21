@@ -17,6 +17,7 @@ An instruction for an instrument event
 | **QuantityInstructed** | [QuantityInstructed](QuantityInstructed.md) | Optional | *No description available.* |
 | **TaxLotId** | **string** | Optional | For loan facility holding instructions, the tax lot id of the holding for which the instruction will apply |
 | **IgnoreCostImpact** | **bool** | Optional | For loan facility holding instructions, set this flag to &#39;true&#39; if you want the event to not impact cost. If you want to use this option, do not add multiple instructions to the same tax lot or you will get undefined behaviour. |
+| **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -40,6 +41,7 @@ var instance = new InstrumentEventInstruction(
     quantityInstructed: new QuantityInstructed(...),  // optional
     taxLotId: "...",  // optional — For loan facility holding instructions, the tax lot id of the holding for which the instruction will apply
     ignoreCostImpact: true,  // optional — For loan facility holding instructions, set this flag to &#39;true&#39; if you want the event to not impact cost. If you want to use this option, do not add multiple instructions to the same tax lot or you will get undefined behaviour.
+    stagedModifications: new StagedModificationsInfo(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -58,6 +60,7 @@ var instance = JsonConvert.DeserializeObject<InstrumentEventInstruction>(json);
 - [ResourceId](ResourceId.md)
 - [ModelVersion](ModelVersion.md)
 - [QuantityInstructed](QuantityInstructed.md)
+- [StagedModificationsInfo](StagedModificationsInfo.md)
 - [Link](Link.md)
 
 

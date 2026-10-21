@@ -55,13 +55,14 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// </summary>
         /// <param name="launcherType">launcherType (required).</param>
         /// <param name="eventMatchingPattern">eventMatchingPattern (required).</param>
+        /// <param name="calendarContexts">The named time zones and holiday calendars the date time adjustments of this Launcher work in.              Required when any mapped field has a dateTimeAdjustment.</param>
         /// <param name="mapTaskFields">Fields of the root task filled from the event, keyed by the field name on the root task definition.</param>
         /// <param name="mapCorrelationIds">Correlation IDs of the root task filled from the event.</param>
         /// <param name="runAsUserId">runAsUserId (required).</param>
         /// <param name="setTaskFields">Fields of the root task set to a fixed value, keyed by the field name on the root task definition.</param>
         /// <param name="setCorrelationIds">Correlation IDs put on the root task as given.</param>
         /// <param name="initialTrigger">The trigger given to the root task once it is made and all of its fields are filled. When it is left out the root task is left in its initial state.</param>
-        public EventLauncherDetails(LauncherTypeEnum launcherType = default(LauncherTypeEnum), LauncherEventMatchingPattern eventMatchingPattern = default(LauncherEventMatchingPattern), Dictionary<string, EventTaskFieldMapping> mapTaskFields = default(Dictionary<string, EventTaskFieldMapping>), List<CorrelationIdMapping> mapCorrelationIds = default(List<CorrelationIdMapping>), LauncherMapping runAsUserId = default(LauncherMapping), Dictionary<string, Object> setTaskFields = default(Dictionary<string, Object>), List<string> setCorrelationIds = default(List<string>), string initialTrigger = default(string))
+        public EventLauncherDetails(LauncherTypeEnum launcherType = default(LauncherTypeEnum), LauncherEventMatchingPattern eventMatchingPattern = default(LauncherEventMatchingPattern), List<CalendarContext> calendarContexts = default(List<CalendarContext>), Dictionary<string, EventTaskFieldMapping> mapTaskFields = default(Dictionary<string, EventTaskFieldMapping>), List<CorrelationIdMapping> mapCorrelationIds = default(List<CorrelationIdMapping>), LauncherMapping runAsUserId = default(LauncherMapping), Dictionary<string, Object> setTaskFields = default(Dictionary<string, Object>), List<string> setCorrelationIds = default(List<string>), string initialTrigger = default(string))
         {
             this.LauncherType = launcherType;
             // to ensure "eventMatchingPattern" is required (not null)
@@ -76,6 +77,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 throw new ArgumentNullException("runAsUserId is a required property for EventLauncherDetails and cannot be null");
             }
             this.RunAsUserId = runAsUserId;
+            this.CalendarContexts = calendarContexts;
             this.MapTaskFields = mapTaskFields;
             this.MapCorrelationIds = mapCorrelationIds;
             this.SetTaskFields = setTaskFields;
@@ -88,6 +90,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// </summary>
         [DataMember(Name = "eventMatchingPattern", IsRequired = true, EmitDefaultValue = true)]
         public LauncherEventMatchingPattern EventMatchingPattern { get; set; }
+
+        /// <summary>
+        /// The named time zones and holiday calendars the date time adjustments of this Launcher work in.              Required when any mapped field has a dateTimeAdjustment
+        /// </summary>
+        /// <value>The named time zones and holiday calendars the date time adjustments of this Launcher work in.              Required when any mapped field has a dateTimeAdjustment</value>
+        [DataMember(Name = "calendarContexts", EmitDefaultValue = true)]
+        public List<CalendarContext> CalendarContexts { get; set; }
 
         /// <summary>
         /// Fields of the root task filled from the event, keyed by the field name on the root task definition
@@ -140,6 +149,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("class EventLauncherDetails {\n");
             sb.Append("  LauncherType: ").Append(LauncherType).Append("\n");
             sb.Append("  EventMatchingPattern: ").Append(EventMatchingPattern).Append("\n");
+            sb.Append("  CalendarContexts: ").Append(CalendarContexts).Append("\n");
             sb.Append("  MapTaskFields: ").Append(MapTaskFields).Append("\n");
             sb.Append("  MapCorrelationIds: ").Append(MapCorrelationIds).Append("\n");
             sb.Append("  RunAsUserId: ").Append(RunAsUserId).Append("\n");
@@ -191,6 +201,12 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.EventMatchingPattern.Equals(input.EventMatchingPattern))
                 ) && 
                 (
+                    this.CalendarContexts == input.CalendarContexts ||
+                    this.CalendarContexts != null &&
+                    input.CalendarContexts != null &&
+                    this.CalendarContexts.SequenceEqual(input.CalendarContexts)
+                ) && 
+                (
                     this.MapTaskFields == input.MapTaskFields ||
                     this.MapTaskFields != null &&
                     input.MapTaskFields != null &&
@@ -239,6 +255,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.EventMatchingPattern != null)
                 {
                     hashCode = (hashCode * 59) + this.EventMatchingPattern.GetHashCode();
+                }
+                if (this.CalendarContexts != null)
+                {
+                    hashCode = (hashCode * 59) + this.CalendarContexts.GetHashCode();
                 }
                 if (this.MapTaskFields != null)
                 {

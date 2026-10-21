@@ -18,6 +18,7 @@ A flow convention defines the specification for generation of the date schedule 
 | **BusinessDayConvention** | **string** | Optional | When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.                If not set, defaults to the value of RollConvention. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid. |
 | **AccrualDayCountConvention** | **string** | Optional | Optional, if not set the main DayCountConvention is used for all accrual calculations.  This only needs to be set when accrual uses a different day count to the coupon calculation. |
 | **CouponPaymentLag** | [RelativeDateOffset](RelativeDateOffset.md) | Optional | *No description available.* |
+| **PrincipalPaymentLag** | [RelativeDateOffset](RelativeDateOffset.md) | Optional | *No description available.* |
 | **Scope** | **string** | Optional | The scope used when updating or inserting the convention. |
 | **Code** | **string** | Optional | The code of the convention. |
 
@@ -43,6 +44,7 @@ var instance = new FlowConventions(
     businessDayConvention: "...",  // optional — When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.                If not set, defaults to the value of RollConvention. Available values: NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest, Invalid.
     accrualDayCountConvention: "...",  // optional — Optional, if not set the main DayCountConvention is used for all accrual calculations.  This only needs to be set when accrual uses a different day count to the coupon calculation.
     couponPaymentLag: new RelativeDateOffset(...),  // optional
+    principalPaymentLag: new RelativeDateOffset(...),  // optional
     scope: "...",  // optional — The scope used when updating or inserting the convention.
     code: "..."  // optional — The code of the convention.
 );
@@ -59,6 +61,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<FlowConventions>(json);
 ```
 
+- [RelativeDateOffset](RelativeDateOffset.md)
 - [RelativeDateOffset](RelativeDateOffset.md)
 
 

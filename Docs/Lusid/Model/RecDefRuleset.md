@@ -4,7 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **RecType** | **string** | Required | The type of reconciliation this entry configures. Must be valid for the definitionType, and must match the reconciliationType of the referenced matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. |
+| **RecType** | **string** | Required | The type of reconciliation this entry configures. Must be valid for the definitionType, and must match the reconciliationType of the referenced matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. |
 | **MatchingRulesetId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **RelationalDataFilter** | **string** | Optional | Selects the slice of the relational dataset this definition draws from, e.g. \&quot;custodian eq &#39;NT&#39;\&quot;. Only permitted when the referenced ruleset declares a relational side, and combined with AND at run time with that ruleset&#39;s own filter for the side. |
 | **ByTaxLots** | [RecDefByTaxLots](RecDefByTaxLots.md) | Optional | *No description available.* |
@@ -18,7 +18,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecDefRuleset(
-    recType: "...",  // required — The type of reconciliation this entry configures. Must be valid for the definitionType, and must match the reconciliationType of the referenced matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
+    recType: "...",  // required — The type of reconciliation this entry configures. Must be valid for the definitionType, and must match the reconciliationType of the referenced matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
     matchingRulesetId: new ResourceId(...),  // required
     relationalDataFilter: "...",  // optional — Selects the slice of the relational dataset this definition draws from, e.g. \&quot;custodian eq &#39;NT&#39;\&quot;. Only permitted when the referenced ruleset declares a relational side, and combined with AND at run time with that ruleset&#39;s own filter for the side.
     byTaxLots: new RecDefByTaxLots(...)  // optional

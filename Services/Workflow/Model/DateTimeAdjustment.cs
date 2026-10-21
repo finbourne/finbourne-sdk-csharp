@@ -30,7 +30,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DateTimeAdjustment" /> class.
         /// </summary>
-        /// <param name="calendarContext">The name of the calendar context this change happens in, which must be one the Launcher declares. When it is left out a Schedule Launcher uses the context of its schedule.</param>
+        /// <param name="calendarContext">The name of the calendar context this change happens in, which must be one the Launcher declares. It is required on an Event Launcher. When it is left out a Schedule Launcher uses the context of its schedule.</param>
         /// <param name="dateAdjustment">dateAdjustment.</param>
         /// <param name="timeAdjustment">timeAdjustment.</param>
         public DateTimeAdjustment(string calendarContext = default(string), DateAdjustment dateAdjustment = default(DateAdjustment), TimeAdjustment timeAdjustment = default(TimeAdjustment))
@@ -41,9 +41,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         }
 
         /// <summary>
-        /// The name of the calendar context this change happens in, which must be one the Launcher declares. When it is left out a Schedule Launcher uses the context of its schedule
+        /// The name of the calendar context this change happens in, which must be one the Launcher declares. It is required on an Event Launcher. When it is left out a Schedule Launcher uses the context of its schedule
         /// </summary>
-        /// <value>The name of the calendar context this change happens in, which must be one the Launcher declares. When it is left out a Schedule Launcher uses the context of its schedule</value>
+        /// <value>The name of the calendar context this change happens in, which must be one the Launcher declares. It is required on an Event Launcher. When it is left out a Schedule Launcher uses the context of its schedule</value>
         [DataMember(Name = "calendarContext", EmitDefaultValue = true)]
         public string CalendarContext { get; set; }
 

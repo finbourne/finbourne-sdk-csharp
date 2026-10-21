@@ -5,7 +5,7 @@ The collection of reconciliation results for a given rec type within a rec insta
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **RecType** | **string** | Required | The type of rec that this result set belongs to (e.g. Holding). Together with the rec instance, this uniquely identifies the result set. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. |
+| **RecType** | **string** | Required | The type of rec that this result set belongs to (e.g. Holding). Together with the rec instance, this uniquely identifies the result set. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. |
 | **ExternalRecTypeName** | **string** | Optional | The client&#39;s name for an External rec type, as stamped from the matching ruleset&#39;s externalRecType when the run executed. Null for native rec types. Filterable. |
 | **RecInstance** | [RecInstanceSummary](RecInstanceSummary.md) | Required | *No description available.* |
 | **RunNumber** | **int** | Required | The run number within the instance. Increments with each re-run. |
@@ -32,7 +32,7 @@ The collection of reconciliation results for a given rec type within a rec insta
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecResultSet(
-    recType: "...",  // required — The type of rec that this result set belongs to (e.g. Holding). Together with the rec instance, this uniquely identifies the result set. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
+    recType: "...",  // required — The type of rec that this result set belongs to (e.g. Holding). Together with the rec instance, this uniquely identifies the result set. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
     externalRecTypeName: "...",  // optional — The client&#39;s name for an External rec type, as stamped from the matching ruleset&#39;s externalRecType when the run executed. Null for native rec types. Filterable.
     recInstance: new RecInstanceSummary(...),  // required
     runNumber: 0,  // required — The run number within the instance. Increments with each re-run.

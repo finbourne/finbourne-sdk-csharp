@@ -7,6 +7,7 @@ A Launcher that starts a run of its Workflow when a matching platform event arri
 |------|------|----------|-------------|
 | **LauncherType** | **string** | Required | *No description available.* |
 | **EventMatchingPattern** | [LauncherEventMatchingPattern](LauncherEventMatchingPattern.md) | Required | *No description available.* |
+| **CalendarContexts** | [List&lt;CalendarContext&gt;](CalendarContext.md) | Optional | The named time zones and holiday calendars the date time adjustments of this Launcher work in.              Required when any mapped field has a dateTimeAdjustment |
 | **MapTaskFields** | [Dictionary&lt;string, EventTaskFieldMapping&gt;](EventTaskFieldMapping.md) | Optional | Fields of the root task filled from the event, keyed by the field name on the root task definition |
 | **MapCorrelationIds** | [List&lt;CorrelationIdMapping&gt;](CorrelationIdMapping.md) | Optional | Correlation IDs of the root task filled from the event |
 | **RunAsUserId** | [LauncherMapping](LauncherMapping.md) | Required | *No description available.* |
@@ -25,6 +26,7 @@ using Finbourne.Sdk.Services.Workflow.Model;
 var instance = new EventLauncherDetails(
     launcherType: "...",  // required
     eventMatchingPattern: new LauncherEventMatchingPattern(...),  // required
+    calendarContexts: new List<CalendarContext>(),  // optional — The named time zones and holiday calendars the date time adjustments of this Launcher work in.              Required when any mapped field has a dateTimeAdjustment
     mapTaskFields: new EventTaskFieldMapping(...),  // optional — Fields of the root task filled from the event, keyed by the field name on the root task definition
     mapCorrelationIds: new List<CorrelationIdMapping>(),  // optional — Correlation IDs of the root task filled from the event
     runAsUserId: new LauncherMapping(...),  // required
@@ -46,6 +48,7 @@ var instance = JsonConvert.DeserializeObject<EventLauncherDetails>(json);
 ```
 
 - [LauncherEventMatchingPattern](LauncherEventMatchingPattern.md)
+- [CalendarContext](CalendarContext.md) — used in `CalendarContexts`
 - [EventTaskFieldMapping](EventTaskFieldMapping.md) — used in `MapTaskFields`
 - [CorrelationIdMapping](CorrelationIdMapping.md) — used in `MapCorrelationIds`
 - [LauncherMapping](LauncherMapping.md)

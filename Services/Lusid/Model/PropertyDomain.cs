@@ -620,7 +620,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum EligibleCollateralSchedule for value: EligibleCollateralSchedule
         /// </summary>
         [EnumMember(Value = "EligibleCollateralSchedule")]
-        EligibleCollateralSchedule = 99
+        EligibleCollateralSchedule = 99,
+
+        /// <summary>
+        /// Enum RelationalDatasetDefinition for value: RelationalDatasetDefinition
+        /// </summary>
+        [EnumMember(Value = "RelationalDatasetDefinition")]
+        RelationalDatasetDefinition = 100
     }
 
 }

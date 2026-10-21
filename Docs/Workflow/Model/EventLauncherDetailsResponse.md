@@ -7,6 +7,7 @@ A read only Event Launcher, which starts a run of its Workflow when a matching p
 |------|------|----------|-------------|
 | **LauncherType** | **string** | Optional | *No description available.* |
 | **EventMatchingPattern** | [LauncherEventMatchingPattern](LauncherEventMatchingPattern.md) | Optional | *No description available.* |
+| **CalendarContexts** | [List&lt;CalendarContext&gt;](CalendarContext.md) | Optional | The named time zones and holiday calendars the date time adjustments of this Launcher work in |
 | **MapTaskFields** | [Dictionary&lt;string, EventTaskFieldMapping&gt;](EventTaskFieldMapping.md) | Optional | Fields of the root task filled from the event, keyed by the field name on the root task definition |
 | **MapCorrelationIds** | [List&lt;CorrelationIdMapping&gt;](CorrelationIdMapping.md) | Optional | Correlation IDs of the root task filled from the event |
 | **RunAsUserId** | [LauncherMapping](LauncherMapping.md) | Optional | *No description available.* |
@@ -25,6 +26,7 @@ using Finbourne.Sdk.Services.Workflow.Model;
 var instance = new EventLauncherDetailsResponse(
     launcherType: "...",  // optional
     eventMatchingPattern: new LauncherEventMatchingPattern(...),  // optional
+    calendarContexts: new List<CalendarContext>(),  // optional — The named time zones and holiday calendars the date time adjustments of this Launcher work in
     mapTaskFields: new EventTaskFieldMapping(...),  // optional — Fields of the root task filled from the event, keyed by the field name on the root task definition
     mapCorrelationIds: new List<CorrelationIdMapping>(),  // optional — Correlation IDs of the root task filled from the event
     runAsUserId: new LauncherMapping(...),  // optional
@@ -46,6 +48,7 @@ var instance = JsonConvert.DeserializeObject<EventLauncherDetailsResponse>(json)
 ```
 
 - [LauncherEventMatchingPattern](LauncherEventMatchingPattern.md)
+- [CalendarContext](CalendarContext.md) — used in `CalendarContexts`
 - [EventTaskFieldMapping](EventTaskFieldMapping.md) — used in `MapTaskFields`
 - [CorrelationIdMapping](CorrelationIdMapping.md) — used in `MapCorrelationIds`
 - [LauncherMapping](LauncherMapping.md)

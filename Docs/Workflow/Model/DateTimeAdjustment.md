@@ -5,7 +5,7 @@ A change applied to the date and the time of a source value, in a named calendar
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **CalendarContext** | **string** | Optional | The name of the calendar context this change happens in, which must be one the Launcher declares. When it is left out a Schedule Launcher uses the context of its schedule |
+| **CalendarContext** | **string** | Optional | The name of the calendar context this change happens in, which must be one the Launcher declares. It is required on an Event Launcher. When it is left out a Schedule Launcher uses the context of its schedule |
 | **DateAdjustment** | [DateAdjustment](DateAdjustment.md) | Optional | *No description available.* |
 | **TimeAdjustment** | [TimeAdjustment](TimeAdjustment.md) | Optional | *No description available.* |
 
@@ -18,7 +18,7 @@ A change applied to the date and the time of a source value, in a named calendar
 using Finbourne.Sdk.Services.Workflow.Model;
 
 var instance = new DateTimeAdjustment(
-    calendarContext: "...",  // optional — The name of the calendar context this change happens in, which must be one the Launcher declares. When it is left out a Schedule Launcher uses the context of its schedule
+    calendarContext: "...",  // optional — The name of the calendar context this change happens in, which must be one the Launcher declares. It is required on an Event Launcher. When it is left out a Schedule Launcher uses the context of its schedule
     dateAdjustment: new DateAdjustment(...),  // optional
     timeAdjustment: new TimeAdjustment(...)  // optional
 );

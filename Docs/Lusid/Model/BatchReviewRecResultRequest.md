@@ -6,7 +6,7 @@ One item of a batch review request: applies review content to its targeted rec r
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **InstanceId** | [RecInstanceId](RecInstanceId.md) | Required | *No description available.* |
-| **RecType** | **string** | Required | The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. |
+| **RecType** | **string** | Required | The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. |
 | **RunNumber** | **int** | Required | The run of the instance whose results this item targets. |
 | **RecResultIds** | **List&lt;string&gt;** | Required | The rec results targeted by this batch item. Exactly one, except FixAsGroup/ForceMatch which require two or more. |
 | **Decision** | [RecResultDecisionUpdate](RecResultDecisionUpdate.md) | Optional | *No description available.* |
@@ -25,7 +25,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new BatchReviewRecResultRequest(
     instanceId: new RecInstanceId(...),  // required
-    recType: "...",  // required — The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
+    recType: "...",  // required — The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
     runNumber: 0,  // required — The run of the instance whose results this item targets.
     recResultIds: ,  // required — The rec results targeted by this batch item. Exactly one, except FixAsGroup/ForceMatch which require two or more.
     decision: new RecResultDecisionUpdate(...),  // optional

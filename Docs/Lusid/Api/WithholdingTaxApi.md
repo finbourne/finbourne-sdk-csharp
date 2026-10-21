@@ -15,6 +15,7 @@ All URIs are relative to *http://localhost*
 | [**ListWithholdingTaxConfigurations**](#listwithholdingtaxconfigurations) | **GET** `/api/api/withholdingtax/configurations` | [EARLY ACCESS] ListWithholdingTaxConfigurations: List Withholding Tax Configurations. |
 | [**ListWithholdingTaxDatasetDefinitions**](#listwithholdingtaxdatasetdefinitions) | **GET** `/api/api/withholdingtax/datasetdefinitions` | [EARLY ACCESS] ListWithholdingTaxDatasetDefinitions: List Withholding Tax dataset definitions. |
 | [**PatchWithholdingTaxDatasetDefinition**](#patchwithholdingtaxdatasetdefinition) | **PATCH** `/api/api/withholdingtax/datasetdefinitions/{scope}/{code}` | [EARLY ACCESS] PatchWithholdingTaxDatasetDefinition: Patch a Withholding Tax dataset definition. |
+| [**ResolveWithholdingTax**](#resolvewithholdingtax) | **POST** `/api/api/withholdingtax/$resolve` | [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply. |
 | [**UpsertWithholdingTaxConfiguration**](#upsertwithholdingtaxconfiguration) | **POST** `/api/api/withholdingtax/configurations/{scope}/{code}` | [EARLY ACCESS] UpsertWithholdingTaxConfiguration: Upsert a Withholding Tax Configuration. |
 
 ### Example
@@ -62,7 +63,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WithholdingTaxApi
 <a id="batchdeletewithholdingtaxrates"></a>
 ## BatchDeleteWithholdingTaxRates
 
-> BatchDeleteRelationalDataResponse BatchDeleteWithholdingTaxRates(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = null)
+> BatchDeleteRelationalDataResponse BatchDeleteWithholdingTaxRates(string scope, string code, Dictionary<string, DeleteWithholdingTaxRateRequest> requestBody, string? successMode = null, string? ruleSource = null)
 
 [EARLY ACCESS] BatchDeleteWithholdingTaxRates: Batch delete Withholding Tax rate rows from a rate dataset.
 
@@ -76,7 +77,8 @@ var scope = "scope_example";  // string
 var code = "code_example";  // string
 var requestBody = new Dictionary<string, DeleteWithholdingTaxRateRequest>(); // Dictionary<string, DeleteWithholdingTaxRateRequest>
 var successMode = "\"Atomic\"";  // string? (optional)
-BatchDeleteRelationalDataResponse result = apiInstance.BatchDeleteWithholdingTaxRates(scope, code, requestBody, successMode);
+var ruleSource = "ruleSource_example";  // string? (optional)
+BatchDeleteRelationalDataResponse result = apiInstance.BatchDeleteWithholdingTaxRates(scope, code, requestBody, successMode, ruleSource);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -88,6 +90,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The Code of the rate dataset&#39;s relational dataset definition. |
 | **requestBody** | [Dictionary&lt;string, DeleteWithholdingTaxRateRequest&gt;](../Model/DeleteWithholdingTaxRateRequest.md) | body | **required** | The rate rows to delete, keyed by a correlation id echoed back in the response. |
 | **successMode** | **string?** | query | optional | Atomic or Partial; defaults to Atomic. In Partial mode failures are returned              in the response body with a 200 status. Default: `&quot;Atomic&quot;` |
+| **ruleSource** | **string?** | query | optional | The source of the rows to delete, since it is part of each row&#39;s identity. Omit it              to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not              carry ruleSource in its own series identifiers. |
 
 ### Return type
 
@@ -112,7 +115,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<BatchDeleteRelationalDataResponse> response = apiInstance.BatchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode);
+ApiResponse<BatchDeleteRelationalDataResponse> response = apiInstance.BatchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -126,11 +129,11 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="batchupsertwithholdingtaxrates"></a>
 ## BatchUpsertWithholdingTaxRates
 
-> BatchUpsertWithholdingTaxRatesResponse BatchUpsertWithholdingTaxRates(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = null)
+> BatchUpsertWithholdingTaxRatesResponse BatchUpsertWithholdingTaxRates(string scope, string code, Dictionary<string, UpsertWithholdingTaxRateRequest> requestBody, string? successMode = null, string? ruleSource = null)
 
 [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands.
 
-Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
 
 ### Example
 
@@ -140,7 +143,8 @@ var scope = "scope_example";  // string
 var code = "code_example";  // string
 var requestBody = new Dictionary<string, UpsertWithholdingTaxRateRequest>(); // Dictionary<string, UpsertWithholdingTaxRateRequest>
 var successMode = "\"Atomic\"";  // string? (optional)
-BatchUpsertWithholdingTaxRatesResponse result = apiInstance.BatchUpsertWithholdingTaxRates(scope, code, requestBody, successMode);
+var ruleSource = "ruleSource_example";  // string? (optional)
+BatchUpsertWithholdingTaxRatesResponse result = apiInstance.BatchUpsertWithholdingTaxRates(scope, code, requestBody, successMode, ruleSource);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -152,6 +156,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The Code of the rate dataset&#39;s relational dataset definition. |
 | **requestBody** | [Dictionary&lt;string, UpsertWithholdingTaxRateRequest&gt;](../Model/UpsertWithholdingTaxRateRequest.md) | body | **required** | The rate rows to upsert, keyed by a correlation id echoed back in the response. |
 | **successMode** | **string?** | query | optional | Atomic or Partial; defaults to Atomic, because a partly loaded feed silently              under-withholds. In Partial mode failures are returned in the response body with a 200 status. Default: `&quot;Atomic&quot;` |
+| **ruleSource** | **string?** | query | optional | The source every row in the batch is attributed to, compared against the              configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource              in its own series identifiers. |
 
 ### Return type
 
@@ -176,7 +181,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<BatchUpsertWithholdingTaxRatesResponse> response = apiInstance.BatchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode);
+ApiResponse<BatchUpsertWithholdingTaxRatesResponse> response = apiInstance.BatchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -673,6 +678,70 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<WithholdingTaxDataset> response = apiInstance.PatchWithholdingTaxDatasetDefinitionWithHttpInfo(scope, code, operation);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="resolvewithholdingtax"></a>
+## ResolveWithholdingTax
+
+> WithholdingTaxResolution ResolveWithholdingTax(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, int? limit = null)
+
+[EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply.
+
+A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration's value sources read them from it, as booking reads a transaction's instrument.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<WithholdingTaxApi>();
+var resolveWithholdingTaxRequest = new ResolveWithholdingTaxRequest(); // ResolveWithholdingTaxRequest
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var limit = 100;  // int? (optional)
+WithholdingTaxResolution result = apiInstance.ResolveWithholdingTax(resolveWithholdingTaxRequest, effectiveAt, asAt, limit);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **resolveWithholdingTaxRequest** | [ResolveWithholdingTaxRequest](../Model/ResolveWithholdingTaxRequest.md) | body | **required** | The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade              date. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the configuration and the rates. Defaults to the latest version              if not specified. |
+| **limit** | **int?** | query | optional | The most combinations of values that couldAlsoMatch tries, fewest values first. Default: `100` |
+
+### Return type
+
+[WithholdingTaxResolution](../Model/WithholdingTaxResolution.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Withholding Tax rate that booking would apply. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ResolveWithholdingTaxWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<WithholdingTaxResolution> response = apiInstance.ResolveWithholdingTaxWithHttpInfo(resolveWithholdingTaxRequest, effectiveAt, asAt, limit);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

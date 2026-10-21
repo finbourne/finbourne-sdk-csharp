@@ -34,7 +34,7 @@ A list of transactions.
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
 | **CustodianEntries** | [List&lt;CustodianEntry&gt;](CustodianEntry.md) | Optional | A list of Custodian Entries associated with the transaction. |
-| **EntityLinks** | [List&lt;TransactionEntityLink&gt;](TransactionEntityLink.md) | Optional | Links to the entities related to this transaction. |
+| **EntityLinks** | [List&lt;TransactionEntityLink&gt;](TransactionEntityLink.md) | Optional | Links to the entities that manage this transaction. |
 
 
 ## Usage
@@ -74,7 +74,7 @@ var instance = new Transaction(
     varVersion: new ModelVersion(...),  // optional
     stagedModifications: new StagedModificationsInfo(...),  // optional
     custodianEntries: new List<CustodianEntry>(),  // optional — A list of Custodian Entries associated with the transaction.
-    entityLinks: new List<TransactionEntityLink>()  // optional — Links to the entities related to this transaction.
+    entityLinks: new List<TransactionEntityLink>()  // optional — Links to the entities that manage this transaction.
 );
 ```
 ### Serializing to JSON

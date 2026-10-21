@@ -49,6 +49,7 @@ A list of output transactions.
 | **ResolvedCustodianAccounts** | [List&lt;ResolvedCustodianAccount&gt;](ResolvedCustodianAccount.md) | Optional | Set of Custodian Accounts resolved from each movement on the Transaction. |
 | **UnresolvedCustodianAccounts** | [List&lt;CustodianEntry&gt;](CustodianEntry.md) | Optional | Set of Custodian Entries on the Transaction that no movement was booked against, i.e. those which did not match a movement&#39;s account type and selector. |
 | **IsExcluded** | **bool** | Optional | Whether the transaction was excluded from the portfolio&#39;s holdings by the portfolio&#39;s transaction exclusion filter. |
+| **EntityLinks** | [List&lt;TransactionEntityLink&gt;](TransactionEntityLink.md) | Optional | Links to the entities that manage this transaction. |
 
 
 ## Usage
@@ -102,7 +103,8 @@ var instance = new OutputTransaction(
     custodianEntries: new List<CustodianEntry>(),  // optional — Set of of Custodian Entries associated with the transaction.
     resolvedCustodianAccounts: new List<ResolvedCustodianAccount>(),  // optional — Set of Custodian Accounts resolved from each movement on the Transaction.
     unresolvedCustodianAccounts: new List<CustodianEntry>(),  // optional — Set of Custodian Entries on the Transaction that no movement was booked against, i.e. those which did not match a movement&#39;s account type and selector.
-    isExcluded: true  // optional — Whether the transaction was excluded from the portfolio&#39;s holdings by the portfolio&#39;s transaction exclusion filter.
+    isExcluded: true,  // optional — Whether the transaction was excluded from the portfolio&#39;s holdings by the portfolio&#39;s transaction exclusion filter.
+    entityLinks: new List<TransactionEntityLink>()  // optional — Links to the entities that manage this transaction.
 );
 ```
 ### Serializing to JSON
@@ -134,6 +136,7 @@ var instance = JsonConvert.DeserializeObject<OutputTransaction>(json);
 - [CustodianEntry](CustodianEntry.md) — used in `CustodianEntries`
 - [ResolvedCustodianAccount](ResolvedCustodianAccount.md) — used in `ResolvedCustodianAccounts`
 - [CustodianEntry](CustodianEntry.md) — used in `UnresolvedCustodianAccounts`
+- [TransactionEntityLink](TransactionEntityLink.md) — used in `EntityLinks`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

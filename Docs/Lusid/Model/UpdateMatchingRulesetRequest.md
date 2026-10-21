@@ -5,7 +5,7 @@
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **DisplayName** | **string** | Required | The name of the matching ruleset. |
-| **RecType** | **string** | Required | The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. |
+| **RecType** | **string** | Required | The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. |
 | **ExternalRecType** | [ExternalRecType](ExternalRecType.md) | Optional | *No description available.* |
 | **DatasetSchemas** | [RecDatasetSchemas](RecDatasetSchemas.md) | Optional | *No description available.* |
 | **Filters** | [GroupReconciliationFilters](GroupReconciliationFilters.md) | Optional | *No description available.* |
@@ -16,6 +16,7 @@
 | **AllowPartialMatching** | **bool** | Optional | Whether to permit partial matches when applying rules. Optional, defaults to true if a value is not provided. |
 | **SupplementalAttributes** | [List&lt;SupplementalAttribute&gt;](SupplementalAttribute.md) | Optional | Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself. |
 | **WritebackConfigurations** | [List&lt;WritebackConfiguration&gt;](WritebackConfiguration.md) | Optional | The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty. |
+| **PopulateResultProperties** | [List&lt;PopulateResultProperty&gt;](PopulateResultProperty.md) | Optional | The RecResult properties to populate on this ruleset&#39;s results, each from a formula over the result. Optional, and may be empty; at most 20. |
 
 
 ## Usage
@@ -27,7 +28,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new UpdateMatchingRulesetRequest(
     displayName: "...",  // required — The name of the matching ruleset.
-    recType: "...",  // required — The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
+    recType: "...",  // required — The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
     externalRecType: new ExternalRecType(...),  // optional
     datasetSchemas: new RecDatasetSchemas(...),  // optional
     filters: new GroupReconciliationFilters(...),  // optional
@@ -37,7 +38,8 @@ var instance = new UpdateMatchingRulesetRequest(
     aggregateTolerances: new List<ToleranceBase>(),  // optional — Tolerance configurations applied to aggregate rule matching.
     allowPartialMatching: true,  // optional — Whether to permit partial matches when applying rules. Optional, defaults to true if a value is not provided.
     supplementalAttributes: new List<SupplementalAttribute>(),  // optional — Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself.
-    writebackConfigurations: new List<WritebackConfiguration>()  // optional — The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty.
+    writebackConfigurations: new List<WritebackConfiguration>(),  // optional — The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty.
+    populateResultProperties: new List<PopulateResultProperty>()  // optional — The RecResult properties to populate on this ruleset&#39;s results, each from a formula over the result. Optional, and may be empty; at most 20.
 );
 ```
 ### Serializing to JSON
@@ -61,6 +63,7 @@ var instance = JsonConvert.DeserializeObject<UpdateMatchingRulesetRequest>(json)
 - [ToleranceBase](ToleranceBase.md) — used in `AggregateTolerances`
 - [SupplementalAttribute](SupplementalAttribute.md) — used in `SupplementalAttributes`
 - [WritebackConfiguration](WritebackConfiguration.md) — used in `WritebackConfigurations`
+- [PopulateResultProperty](PopulateResultProperty.md) — used in `PopulateResultProperties`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

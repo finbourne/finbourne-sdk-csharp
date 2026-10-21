@@ -7,7 +7,7 @@ A Schedule Launcher, which starts a run of its Workflow at the times a recurrenc
 |------|------|----------|-------------|
 | **LauncherType** | **string** | Optional | *No description available.* |
 | **Schedule** | [LauncherSchedule](LauncherSchedule.md) | Optional | *No description available.* |
-| **CalendarContexts** | [List&lt;CalendarContext&gt;](CalendarContext.md) | Optional | The named time zones and holiday calendars this Launcher works in.              Only a Schedule Launcher works in a calendar context |
+| **CalendarContexts** | [List&lt;CalendarContext&gt;](CalendarContext.md) | Optional | The named time zones and holiday calendars this Launcher works in |
 | **MapTaskFields** | [Dictionary&lt;string, ScheduleTaskFieldMapping&gt;](ScheduleTaskFieldMapping.md) | Optional | Fields of the root task filled from the instant the schedule fired, keyed by the field name on the root task definition |
 | **RunAsUserId** | [LauncherMapping](LauncherMapping.md) | Optional | *No description available.* |
 | **SetTaskFields** | **Dictionary&lt;string, Object&gt;** | Optional | Fields of the root task set to a fixed value, keyed by the field name on the root task definition |
@@ -25,7 +25,7 @@ using Finbourne.Sdk.Services.Workflow.Model;
 var instance = new ScheduleLauncherDetailsResponse(
     launcherType: "...",  // optional
     schedule: new LauncherSchedule(...),  // optional
-    calendarContexts: new List<CalendarContext>(),  // optional — The named time zones and holiday calendars this Launcher works in.              Only a Schedule Launcher works in a calendar context
+    calendarContexts: new List<CalendarContext>(),  // optional — The named time zones and holiday calendars this Launcher works in
     mapTaskFields: new ScheduleTaskFieldMapping(...),  // optional — Fields of the root task filled from the instant the schedule fired, keyed by the field name on the root task definition
     runAsUserId: new LauncherMapping(...),  // optional
     setTaskFields: ,  // optional — Fields of the root task set to a fixed value, keyed by the field name on the root task definition

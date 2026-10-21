@@ -705,7 +705,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **instanceIdType** | **string** | path | **required** | How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual. |
 | **instanceIdValue** | **string** | path | **required** | The unique identifier of the rec instance. |
-| **recType** | **string** | path | **required** | The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. |
+| **recType** | **string** | path | **required** | The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. |
 | **runNumber** | **int** | path | **required** | The run of the instance whose view of the result is read. |
 | **id** | **string** | path | **required** | The display id of the rec result, e.g. \&quot;break-3\&quot;. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the result. Defaults to latest if not specified. |

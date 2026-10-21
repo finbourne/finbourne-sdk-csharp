@@ -19,6 +19,8 @@
 | **TaxLotId** | **string** | Optional | The identifier of the tax lot with which this gain or loss is associated. |
 | **RealisedAmortisation** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **TradeDateToSettlementDateRealisedCurrency** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
+| **TransactionType** | **string** | Optional | The transaction type resolved for the allocation slice that realised this record, which can differ from the output transaction&#39;s type when a slice resolves against the opposite side of the book (for example a Buy whose slice covers a short). |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | The sub-holding key properties of the holding this record was realised against, identifying the allocation slice it belongs to. |
 
 
 ## Usage
@@ -43,7 +45,9 @@ var instance = new RealisedGainLoss(
     realisedCurrency: new CurrencyAndAmount(...),  // optional
     taxLotId: "...",  // optional — The identifier of the tax lot with which this gain or loss is associated.
     realisedAmortisation: new CurrencyAndAmount(...),  // optional
-    tradeDateToSettlementDateRealisedCurrency: new CurrencyAndAmount(...)  // optional
+    tradeDateToSettlementDateRealisedCurrency: new CurrencyAndAmount(...),  // optional
+    transactionType: "...",  // optional — The transaction type resolved for the allocation slice that realised this record, which can differ from the output transaction&#39;s type when a slice resolves against the opposite side of the book (for example a Buy whose slice covers a short).
+    properties: new PerpetualProperty(...)  // optional — The sub-holding key properties of the holding this record was realised against, identifying the allocation slice it belongs to.
 );
 ```
 ### Serializing to JSON
@@ -66,6 +70,7 @@ var instance = JsonConvert.DeserializeObject<RealisedGainLoss>(json);
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
 - [CurrencyAndAmount](CurrencyAndAmount.md)
+- [PerpetualProperty](PerpetualProperty.md) — used in `Properties`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
