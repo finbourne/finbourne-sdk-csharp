@@ -63,7 +63,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="childTaskConfigurations">Tasks can be generated from run worker results; this is the configuration.</param>
         /// <param name="reRunConfigurations">Configuration governing how re-run results are reconciled against existing child tasks from a previous run of this action against the same parent Task instance.</param>
         /// <param name="workerTimeout">Worker WorkerTimeout in seconds.</param>
-        /// <param name="ordering">How the created child tasks are ordered for execution: Parallel (default), Series, or ParallelSeries.</param>
+        /// <param name="ordering">How the created child tasks are ordered for execution: Parallel (default), Series, or ParallelSeries. In Series and ParallelSeries only the first child task of each chain is started; each later one is started by its predecessor&#39;s TriggerNextTask action, or by another trigger such as a TriggerChildTasks filter on previousTask. Without one, the chain stops after its first child..</param>
         public RunWorkerAction(TypeEnum type = default(TypeEnum), ResourceId workerId = default(ResourceId), DateTimeOffset? workerAsAt = default(DateTimeOffset?), Dictionary<string, FieldMapping> workerParameters = default(Dictionary<string, FieldMapping>), WorkerStatusTriggers workerStatusTriggers = default(WorkerStatusTriggers), List<ResultantChildTaskConfiguration> childTaskConfigurations = default(List<ResultantChildTaskConfiguration>), List<ReRunConfiguration> reRunConfigurations = default(List<ReRunConfiguration>), int? workerTimeout = default(int?), string ordering = default(string))
         {
             this.Type = type;
@@ -130,9 +130,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public int? WorkerTimeout { get; set; }
 
         /// <summary>
-        /// How the created child tasks are ordered for execution: Parallel (default), Series, or ParallelSeries
+        /// How the created child tasks are ordered for execution: Parallel (default), Series, or ParallelSeries. In Series and ParallelSeries only the first child task of each chain is started; each later one is started by its predecessor&#39;s TriggerNextTask action, or by another trigger such as a TriggerChildTasks filter on previousTask. Without one, the chain stops after its first child.
         /// </summary>
-        /// <value>How the created child tasks are ordered for execution: Parallel (default), Series, or ParallelSeries</value>
+        /// <value>How the created child tasks are ordered for execution: Parallel (default), Series, or ParallelSeries. In Series and ParallelSeries only the first child task of each chain is started; each later one is started by its predecessor&#39;s TriggerNextTask action, or by another trigger such as a TriggerChildTasks filter on previousTask. Without one, the chain stops after its first child.</value>
         [DataMember(Name = "ordering", EmitDefaultValue = true)]
         public string Ordering { get; set; }
 

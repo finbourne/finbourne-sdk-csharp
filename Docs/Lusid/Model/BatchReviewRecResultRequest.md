@@ -13,7 +13,7 @@ One item of a batch review request: applies review content to its targeted rec r
 | **AssignedUser** | [RecResultAssignmentUpdate](RecResultAssignmentUpdate.md) | Optional | *No description available.* |
 | **AssignedRole** | [RecResultAssignmentUpdate](RecResultAssignmentUpdate.md) | Optional | *No description available.* |
 | **AddCommentText** | **string** | Optional | Optional comment text to add to each targeted result. |
-| **Properties** | [List&lt;PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Properties in the RecResult domain. Filterable and sortable. |
+| **Properties** | [List&lt;PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet. |
 
 
 ## Usage
@@ -32,7 +32,7 @@ var instance = new BatchReviewRecResultRequest(
     assignedUser: new RecResultAssignmentUpdate(...),  // optional
     assignedRole: new RecResultAssignmentUpdate(...),  // optional
     addCommentText: "...",  // optional — Optional comment text to add to each targeted result.
-    properties: new List<PerpetualProperty>()  // optional — Properties in the RecResult domain. Filterable and sortable.
+    properties: new List<PerpetualProperty>()  // optional — Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet.
 );
 ```
 ### Serializing to JSON

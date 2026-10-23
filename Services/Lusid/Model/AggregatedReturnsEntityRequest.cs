@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// The request body for the aggregated-returns (TWR) endpoint: the entity to calculate returns for, the  Returns entity that configures the calculation, the effective window, the metrics to calculate and the  period grid granularity. Supports a single &#x60;Portfolio&#x60; entity, the period &#x60;Return&#x60; metric and  a &#x60;Daily&#x60; grid.
+    /// The request body for the aggregated-returns endpoint: the entity to report returns for, the returns id  under which upserted returns are stored and the Returns entity that configures a calculation, the  effective window, the metrics to report and the period grid granularity. Supports a single  &#x60;Portfolio&#x60; entity, the period &#x60;Return&#x60; metric and a &#x60;Daily&#x60; grid.
     /// </summary>
     [DataContract(Name = "AggregatedReturnsEntityRequest")]
     public partial class AggregatedReturnsEntityRequest : IEquatable<AggregatedReturnsEntityRequest>, IValidatableObject

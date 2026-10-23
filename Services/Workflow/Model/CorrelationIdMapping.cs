@@ -35,7 +35,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CorrelationIdMapping" /> class.
         /// </summary>
-        /// <param name="mapFrom">The path into the event the correlation ID is taken from, for example body.fileId (required).</param>
+        /// <param name="mapFrom">The path into the event the correlation ID is taken from, for example body.fileId. The path must be in the schema of the event type, and a value of any type is written as a string (required).</param>
         public CorrelationIdMapping(string mapFrom = default(string))
         {
             // to ensure "mapFrom" is required (not null)
@@ -47,9 +47,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         }
 
         /// <summary>
-        /// The path into the event the correlation ID is taken from, for example body.fileId
+        /// The path into the event the correlation ID is taken from, for example body.fileId. The path must be in the schema of the event type, and a value of any type is written as a string
         /// </summary>
-        /// <value>The path into the event the correlation ID is taken from, for example body.fileId</value>
+        /// <value>The path into the event the correlation ID is taken from, for example body.fileId. The path must be in the schema of the event type, and a value of any type is written as a string</value>
         [DataMember(Name = "mapFrom", IsRequired = true, EmitDefaultValue = true)]
         public string MapFrom { get; set; }
 

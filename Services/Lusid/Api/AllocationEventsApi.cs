@@ -40,7 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventBookRequest">The booking reference to freeze the event under.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the booking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to book. The booking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationEvent</returns>
@@ -56,7 +56,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventBookRequest">The booking reference to freeze the event under.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the booking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to book. The booking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationEvent</returns>
@@ -92,12 +92,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event.
         /// </summary>
         /// <remarks>
-        /// Delete an Allocation Event from an effective datetime. The Allocation Event remains retrievable at earlier  effective datetimes.
+        /// Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  otherwise it is deleted from the current LUSID system datetime. Only an Allocation Event that has not been  booked can be deleted.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. If not specified, an Allocation Event created without an effective datetime is removed from the beginning of time; any other is deleted from the current LUSID system datetime. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>DeletedEntityResponse</returns>
@@ -107,12 +107,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event.
         /// </summary>
         /// <remarks>
-        /// Delete an Allocation Event from an effective datetime. The Allocation Event remains retrievable at earlier  effective datetimes.
+        /// Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  otherwise it is deleted from the current LUSID system datetime. Only an Allocation Event that has not been  booked can be deleted.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. If not specified, an Allocation Event created without an effective datetime is removed from the beginning of time; any other is deleted from the current LUSID system datetime. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
@@ -348,7 +348,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReallocateRequest">The reason for the reallocation and any basis values to use.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. If not specified, the version in force now is recomputed in place from its own effective date. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationEvent</returns>
@@ -364,7 +364,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReallocateRequest">The reason for the reallocation and any basis values to use.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. If not specified, the version in force now is recomputed in place from its own effective date. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationEvent</returns>
@@ -379,7 +379,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReceiptRequest">The investor, amount and date of the receipt.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event receiving cash. The receipt is recorded on the version in force at that time, from that version&#39;s own effective date; the receipt postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationEvent</returns>
@@ -395,7 +395,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReceiptRequest">The investor, amount and date of the receipt.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event receiving cash. The receipt is recorded on the version in force at that time, from that version&#39;s own effective date; the receipt postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationEvent</returns>
@@ -410,7 +410,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReverseRequest">The reason for the reversal and, optionally, when it should take effect.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to reverse. The reversed status is recorded on the version in force at that time, from that version&#39;s own effective date; the mirror postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationEvent</returns>
@@ -426,7 +426,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReverseRequest">The reason for the reversal and, optionally, when it should take effect.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to reverse. The reversed status is recorded on the version in force at that time, from that version&#39;s own effective date; the mirror postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationEvent</returns>
@@ -441,7 +441,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventUnbookRequest">The reason the booking is being taken back.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to unbook. The unbooking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationEvent</returns>
@@ -457,7 +457,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventUnbookRequest">The reason the booking is being taken back.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to unbook. The unbooking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationEvent</returns>
@@ -510,7 +510,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventBookRequest">The booking reference to freeze the event under.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the booking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to book. The booking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -527,7 +527,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventBookRequest">The booking reference to freeze the event under.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the booking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to book. The booking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -566,12 +566,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event.
         /// </summary>
         /// <remarks>
-        /// Delete an Allocation Event from an effective datetime. The Allocation Event remains retrievable at earlier  effective datetimes.
+        /// Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  otherwise it is deleted from the current LUSID system datetime. Only an Allocation Event that has not been  booked can be deleted.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. If not specified, an Allocation Event created without an effective datetime is removed from the beginning of time; any other is deleted from the current LUSID system datetime. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -582,12 +582,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event.
         /// </summary>
         /// <remarks>
-        /// Delete an Allocation Event from an effective datetime. The Allocation Event remains retrievable at earlier  effective datetimes.
+        /// Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  otherwise it is deleted from the current LUSID system datetime. Only an Allocation Event that has not been  booked can be deleted.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. If not specified, an Allocation Event created without an effective datetime is removed from the beginning of time; any other is deleted from the current LUSID system datetime. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -838,7 +838,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReallocateRequest">The reason for the reallocation and any basis values to use.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. If not specified, the version in force now is recomputed in place from its own effective date. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -855,7 +855,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReallocateRequest">The reason for the reallocation and any basis values to use.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. If not specified, the version in force now is recomputed in place from its own effective date. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -871,7 +871,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReceiptRequest">The investor, amount and date of the receipt.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event receiving cash. The receipt is recorded on the version in force at that time, from that version&#39;s own effective date; the receipt postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -888,7 +888,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReceiptRequest">The investor, amount and date of the receipt.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event receiving cash. The receipt is recorded on the version in force at that time, from that version&#39;s own effective date; the receipt postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -904,7 +904,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReverseRequest">The reason for the reversal and, optionally, when it should take effect.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to reverse. The reversed status is recorded on the version in force at that time, from that version&#39;s own effective date; the mirror postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -921,7 +921,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReverseRequest">The reason for the reversal and, optionally, when it should take effect.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to reverse. The reversed status is recorded on the version in force at that time, from that version&#39;s own effective date; the mirror postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -937,7 +937,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventUnbookRequest">The reason the booking is being taken back.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to unbook. The unbooking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -954,7 +954,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventUnbookRequest">The reason the booking is being taken back.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to unbook. The unbooking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1092,7 +1092,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventBookRequest">The booking reference to freeze the event under.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the booking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to book. The booking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationEvent</returns>
@@ -1110,7 +1110,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventBookRequest">The booking reference to freeze the event under.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the booking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to book. The booking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationEvent</returns>
@@ -1231,7 +1231,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventBookRequest">The booking reference to freeze the event under.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the booking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to book. The booking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1250,7 +1250,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventBookRequest">The booking reference to freeze the event under.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the booking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to book. The booking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1620,12 +1620,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event from an effective datetime. The Allocation Event remains retrievable at earlier  effective datetimes.
+        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  otherwise it is deleted from the current LUSID system datetime. Only an Allocation Event that has not been  booked can be deleted.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. If not specified, an Allocation Event created without an effective datetime is removed from the beginning of time; any other is deleted from the current LUSID system datetime. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>DeletedEntityResponse</returns>
@@ -1636,13 +1636,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event from an effective datetime. The Allocation Event remains retrievable at earlier  effective datetimes.
+        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  otherwise it is deleted from the current LUSID system datetime. Only an Allocation Event that has not been  booked can be deleted.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. If not specified, an Allocation Event created without an effective datetime is removed from the beginning of time; any other is deleted from the current LUSID system datetime. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
@@ -1746,12 +1746,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event from an effective datetime. The Allocation Event remains retrievable at earlier  effective datetimes.
+        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  otherwise it is deleted from the current LUSID system datetime. Only an Allocation Event that has not been  booked can be deleted.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. If not specified, an Allocation Event created without an effective datetime is removed from the beginning of time; any other is deleted from the current LUSID system datetime. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -1763,13 +1763,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event from an effective datetime. The Allocation Event remains retrievable at earlier  effective datetimes.
+        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  otherwise it is deleted from the current LUSID system datetime. Only an Allocation Event that has not been  booked can be deleted.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which to delete the Allocation Event. If not specified, an Allocation Event created without an effective datetime is removed from the beginning of time; any other is deleted from the current LUSID system datetime. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -3810,7 +3810,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReallocateRequest">The reason for the reallocation and any basis values to use.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. If not specified, the version in force now is recomputed in place from its own effective date. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationEvent</returns>
@@ -3828,7 +3828,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReallocateRequest">The reason for the reallocation and any basis values to use.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. If not specified, the version in force now is recomputed in place from its own effective date. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationEvent</returns>
@@ -3949,7 +3949,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReallocateRequest">The reason for the reallocation and any basis values to use.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. If not specified, the version in force now is recomputed in place from its own effective date. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -3968,7 +3968,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReallocateRequest">The reason for the reallocation and any basis values to use.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the reallocation applies. If not specified, the version in force now is recomputed in place from its own effective date. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -4092,7 +4092,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReceiptRequest">The investor, amount and date of the receipt.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event receiving cash. The receipt is recorded on the version in force at that time, from that version&#39;s own effective date; the receipt postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationEvent</returns>
@@ -4110,7 +4110,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReceiptRequest">The investor, amount and date of the receipt.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event receiving cash. The receipt is recorded on the version in force at that time, from that version&#39;s own effective date; the receipt postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationEvent</returns>
@@ -4231,7 +4231,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReceiptRequest">The investor, amount and date of the receipt.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event receiving cash. The receipt is recorded on the version in force at that time, from that version&#39;s own effective date; the receipt postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -4250,7 +4250,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReceiptRequest">The investor, amount and date of the receipt.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the receipt applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event receiving cash. The receipt is recorded on the version in force at that time, from that version&#39;s own effective date; the receipt postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -4374,7 +4374,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReverseRequest">The reason for the reversal and, optionally, when it should take effect.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to reverse. The reversed status is recorded on the version in force at that time, from that version&#39;s own effective date; the mirror postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationEvent</returns>
@@ -4392,7 +4392,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReverseRequest">The reason for the reversal and, optionally, when it should take effect.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to reverse. The reversed status is recorded on the version in force at that time, from that version&#39;s own effective date; the mirror postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationEvent</returns>
@@ -4513,7 +4513,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReverseRequest">The reason for the reversal and, optionally, when it should take effect.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to reverse. The reversed status is recorded on the version in force at that time, from that version&#39;s own effective date; the mirror postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -4532,7 +4532,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventReverseRequest">The reason for the reversal and, optionally, when it should take effect.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the reversal applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to reverse. The reversed status is recorded on the version in force at that time, from that version&#39;s own effective date; the mirror postings are dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -4656,7 +4656,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventUnbookRequest">The reason the booking is being taken back.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to unbook. The unbooking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationEvent</returns>
@@ -4674,7 +4674,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventUnbookRequest">The reason the booking is being taken back.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to unbook. The unbooking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationEvent</returns>
@@ -4795,7 +4795,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventUnbookRequest">The reason the booking is being taken back.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to unbook. The unbooking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -4814,7 +4814,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Event.</param>
         /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
         /// <param name="allocationEventUnbookRequest">The reason the booking is being taken back.</param>
-        /// <param name="effectiveAt">The effective datetime or cut label from which the unbooking applies. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event to unbook. The unbooking is recorded on the version in force at that time, from that version&#39;s own effective date. Defaults to the current LUSID system datetime if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>

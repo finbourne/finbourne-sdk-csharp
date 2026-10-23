@@ -35,7 +35,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EventTaskFieldMapping" /> class.
         /// </summary>
-        /// <param name="mapFrom">The path into the event the value is taken from, for example header.timestamp (required).</param>
+        /// <param name="mapFrom">The path into the event the value is taken from, for example header.timestamp. The path must be in the schema of the event type, and the value must suit the type of the field. A string fills a String or LusidUserId field, a number fills a Decimal field, a boolean fills a Boolean field, and a date and time fills a DateTime field. A path to an identifier collection names a key, for example body.identifiers[Instrument/default/Figi], and fills a String field (required).</param>
         /// <param name="dateTimeAdjustment">dateTimeAdjustment.</param>
         public EventTaskFieldMapping(string mapFrom = default(string), DateTimeAdjustment dateTimeAdjustment = default(DateTimeAdjustment))
         {
@@ -49,9 +49,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         }
 
         /// <summary>
-        /// The path into the event the value is taken from, for example header.timestamp
+        /// The path into the event the value is taken from, for example header.timestamp. The path must be in the schema of the event type, and the value must suit the type of the field. A string fills a String or LusidUserId field, a number fills a Decimal field, a boolean fills a Boolean field, and a date and time fills a DateTime field. A path to an identifier collection names a key, for example body.identifiers[Instrument/default/Figi], and fills a String field
         /// </summary>
-        /// <value>The path into the event the value is taken from, for example header.timestamp</value>
+        /// <value>The path into the event the value is taken from, for example header.timestamp. The path must be in the schema of the event type, and the value must suit the type of the field. A string fills a String or LusidUserId field, a number fills a Decimal field, a boolean fills a Boolean field, and a date and time fills a DateTime field. A path to an identifier collection names a key, for example body.identifiers[Instrument/default/Figi], and fills a String field</value>
         [DataMember(Name = "mapFrom", IsRequired = true, EmitDefaultValue = true)]
         public string MapFrom { get; set; }
 

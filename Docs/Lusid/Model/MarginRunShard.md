@@ -11,7 +11,8 @@ One valuation shard of a margin run: the agreements it values with one recipe, a
 | **Status** | **string** | Required | The status of the shard. One of Pending, Running, Completed or Failed. |
 | **CallCount** | **int** | Required | The number of margin calls the shard published. |
 | **LineCount** | **int** | Required | The number of margin lines the shard published. |
-| **Detail** | **string** | Optional | Why the shard failed, when it did. |
+| **Detail** | **string** | Optional | Why the shard failed, or which of its netting sets it completed without figures and why. |
+| **AsAt** | **DateTimeOffset?** | Optional | When the shard was valued: the run&#39;s as-at, or the time of the retry that valued it. Null until the shard has finished. |
 
 
 ## Usage
@@ -28,7 +29,8 @@ var instance = new MarginRunShard(
     status: "...",  // required — The status of the shard. One of Pending, Running, Completed or Failed.
     callCount: 0,  // required — The number of margin calls the shard published.
     lineCount: 0,  // required — The number of margin lines the shard published.
-    detail: "..."  // optional — Why the shard failed, when it did.
+    detail: "...",  // optional — Why the shard failed, or which of its netting sets it completed without figures and why.
+    asAt: DateTimeOffset.Now  // optional — When the shard was valued: the run&#39;s as-at, or the time of the retry that valued it. Null until the shard has finished.
 );
 ```
 ### Serializing to JSON

@@ -1,11 +1,11 @@
 # Finbourne.Sdk.Lusid.Model.FundPartnersTotals
 
-Totals across every register line of the fund, independent of paging.
+Totals across every register line of the fund, independent of paging. Commitments are totalled per commitment  currency; amounts in different currencies are never added together.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Committed** | **decimal** | Required | The total committed capital across all partners. |
+| **CommittedByCurrency** | **Dictionary&lt;string, decimal&gt;** | Required | The total committed capital across all partners, per commitment currency, keyed by currency code. Commitments in different currencies are not added together. |
 | **PartnerCount** | **int** | Required | The number of partners (register lines) in the fund. |
 
 
@@ -17,7 +17,7 @@ Totals across every register line of the fund, independent of paging.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new FundPartnersTotals(
-    committed: 0.0d,  // required — The total committed capital across all partners.
+    committedByCurrency: ,  // required — The total committed capital across all partners, per commitment currency, keyed by currency code. Commitments in different currencies are not added together.
     partnerCount: 0  // required — The number of partners (register lines) in the fund.
 );
 ```

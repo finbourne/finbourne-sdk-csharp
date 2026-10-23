@@ -5,7 +5,7 @@ How an Event Launcher fills one correlation ID of the root task from the event t
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **MapFrom** | **string** | Required | The path into the event the correlation ID is taken from, for example body.fileId |
+| **MapFrom** | **string** | Required | The path into the event the correlation ID is taken from, for example body.fileId. The path must be in the schema of the event type, and a value of any type is written as a string |
 
 
 ## Usage
@@ -16,7 +16,7 @@ How an Event Launcher fills one correlation ID of the root task from the event t
 using Finbourne.Sdk.Services.Workflow.Model;
 
 var instance = new CorrelationIdMapping(
-    mapFrom: "..."  // required — The path into the event the correlation ID is taken from, for example body.fileId
+    mapFrom: "..."  // required — The path into the event the correlation ID is taken from, for example body.fileId. The path must be in the schema of the event type, and a value of any type is written as a string
 );
 ```
 ### Serializing to JSON

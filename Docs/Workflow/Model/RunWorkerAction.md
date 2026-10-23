@@ -13,7 +13,7 @@ Defines a Run Worker Action
 | **ChildTaskConfigurations** | [List&lt;ResultantChildTaskConfiguration&gt;](ResultantChildTaskConfiguration.md) | Optional | Tasks can be generated from run worker results; this is the configuration |
 | **ReRunConfigurations** | [List&lt;ReRunConfiguration&gt;](ReRunConfiguration.md) | Optional | Configuration governing how re-run results are reconciled against existing child tasks from a previous run of this action against the same parent Task instance |
 | **WorkerTimeout** | **int?** | Optional | Worker WorkerTimeout in seconds |
-| **Ordering** | **string** | Optional | How the created child tasks are ordered for execution: Parallel (default), Series, or ParallelSeries |
+| **Ordering** | **string** | Optional | How the created child tasks are ordered for execution: Parallel (default), Series, or ParallelSeries. In Series and ParallelSeries only the first child task of each chain is started; each later one is started by its predecessor&#39;s TriggerNextTask action, or by another trigger such as a TriggerChildTasks filter on previousTask. Without one, the chain stops after its first child. |
 
 
 ## Usage
@@ -32,7 +32,7 @@ var instance = new RunWorkerAction(
     childTaskConfigurations: new List<ResultantChildTaskConfiguration>(),  // optional — Tasks can be generated from run worker results; this is the configuration
     reRunConfigurations: new List<ReRunConfiguration>(),  // optional — Configuration governing how re-run results are reconciled against existing child tasks from a previous run of this action against the same parent Task instance
     workerTimeout: 0,  // optional — Worker WorkerTimeout in seconds
-    ordering: "..."  // optional — How the created child tasks are ordered for execution: Parallel (default), Series, or ParallelSeries
+    ordering: "..."  // optional — How the created child tasks are ordered for execution: Parallel (default), Series, or ParallelSeries. In Series and ParallelSeries only the first child task of each chain is started; each later one is started by its predecessor&#39;s TriggerNextTask action, or by another trigger such as a TriggerChildTasks filter on previousTask. Without one, the chain stops after its first child.
 );
 ```
 ### Serializing to JSON

@@ -26,7 +26,7 @@ An individual reconciliation result — the aggregate result for a set of core r
 | **Items** | [RecResultItemDetails](RecResultItemDetails.md) | Required | *No description available.* |
 | **LinkedResults** | [List&lt;RecLinkedResult&gt;](RecLinkedResult.md) | Required | Results of other rec types in the same rec instance run whose items share an identifier with this result&#39;s items. Only exceptions link, and only to exceptions; symmetric. Set by the linking pass once every rec type of the run has completed, so empty until then. |
 | **Comments** | [List&lt;RecUserComment&gt;](RecUserComment.md) | Required | User-authored comments attached to the result. Carried forward across runs. |
-| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Properties in the RecResult domain. Filterable and sortable. |
+| **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet. |
 | **AssignedUser** | **string** | Optional | The LUSID user id assigned to the result. |
 | **AssignedRole** | **string** | Optional | The LUSID IAM role id assigned to the result. |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
@@ -63,7 +63,7 @@ var instance = new RecResult(
     items: new RecResultItemDetails(...),  // required
     linkedResults: new List<RecLinkedResult>(),  // required — Results of other rec types in the same rec instance run whose items share an identifier with this result&#39;s items. Only exceptions link, and only to exceptions; symmetric. Set by the linking pass once every rec type of the run has completed, so empty until then.
     comments: new List<RecUserComment>(),  // required — User-authored comments attached to the result. Carried forward across runs.
-    properties: new PerpetualProperty(...),  // optional — Properties in the RecResult domain. Filterable and sortable.
+    properties: new PerpetualProperty(...),  // optional — Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet.
     assignedUser: "...",  // optional — The LUSID user id assigned to the result.
     assignedRole: "...",  // optional — The LUSID IAM role id assigned to the result.
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.

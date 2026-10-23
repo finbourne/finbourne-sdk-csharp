@@ -1,4 +1,4 @@
-# Finbourne.Sdk.Lusid.Model.PagedResourceListOfPostingModuleRule
+# Finbourne.Sdk.Lusid.Model.PagedResourceListOfPostingModuleRuleResponse
 
 ## Properties
 
@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **NextPage** | **string** | Optional | *No description available.* |
 | **PreviousPage** | **string** | Optional | *No description available.* |
-| **Values** | [List&lt;PostingModuleRule&gt;](PostingModuleRule.md) | Required | *No description available.* |
+| **Values** | [List&lt;PostingModuleRuleResponse&gt;](PostingModuleRuleResponse.md) | Required | *No description available.* |
 | **Href** | **string** | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
@@ -18,10 +18,10 @@
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var instance = new PagedResourceListOfPostingModuleRule(
+var instance = new PagedResourceListOfPostingModuleRuleResponse(
     nextPage: "...",  // optional
     previousPage: "...",  // optional
-    values: new List<PostingModuleRule>(),  // required
+    values: new List<PostingModuleRuleResponse>(),  // required
     href: "...",  // optional
     links: new List<Link>()  // optional
 );
@@ -35,10 +35,10 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<PagedResourceListOfPostingModuleRule>(json);
+var instance = JsonConvert.DeserializeObject<PagedResourceListOfPostingModuleRuleResponse>(json);
 ```
 
-- [PostingModuleRule](PostingModuleRule.md)
+- [PostingModuleRuleResponse](PostingModuleRuleResponse.md)
 - [Link](Link.md)
 
 

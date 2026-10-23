@@ -199,14 +199,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// [EXPERIMENTAL] ListRunFiles: List Files in a run
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: fileName, generatedAt, rowCount, fileHash, encrypted, destinationType, destinationPath, status, fileUuid. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to newest first (GeneratedAt DESC, Id DESC). (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfRunFileResponse</returns>
-        PagedResourceListOfRunFileResponse ListRunFiles(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfRunFileResponse ListRunFiles(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListRunFiles: List Files in a run
@@ -215,27 +217,31 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// 
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: fileName, generatedAt, rowCount, fileHash, encrypted, destinationType, destinationPath, status, fileUuid. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to newest first (GeneratedAt DESC, Id DESC). (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfRunFileResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse> ListRunFilesWithHttpInfo(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse> ListRunFilesWithHttpInfo(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListRunTransactions: List Transactions in a run.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="status"> (optional)</param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="status">Filter by publication status (Sent, Skipped, Failed). This is the publication outcome, not the batched-transaction status. (optional)</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to Id ASC. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfTransactionResponse</returns>
-        PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListRunTransactions: List Transactions in a run.
@@ -244,15 +250,17 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// 
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="status"> (optional)</param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="status">Filter by publication status (Sent, Skipped, Failed). This is the publication outcome, not the batched-transaction status. (optional)</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to Id ASC. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfTransactionResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> ListRunTransactionsWithHttpInfo(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> ListRunTransactionsWithHttpInfo(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance
         /// </summary>
@@ -562,15 +570,17 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// 
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: fileName, generatedAt, rowCount, fileHash, encrypted, destinationType, destinationPath, status, fileUuid. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to newest first (GeneratedAt DESC, Id DESC). (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfRunFileResponse</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfRunFileResponse> ListRunFilesAsync(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfRunFileResponse> ListRunFilesAsync(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListRunFiles: List Files in a run
@@ -579,15 +589,17 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// 
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: fileName, generatedAt, rowCount, fileHash, encrypted, destinationType, destinationPath, status, fileUuid. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to newest first (GeneratedAt DESC, Id DESC). (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfRunFileResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse>> ListRunFilesWithHttpInfoAsync(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse>> ListRunFilesWithHttpInfoAsync(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListRunTransactions: List Transactions in a run.
         /// </summary>
@@ -595,16 +607,18 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// 
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="status"> (optional)</param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="status">Filter by publication status (Sent, Skipped, Failed). This is the publication outcome, not the batched-transaction status. (optional)</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to Id ASC. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfTransactionResponse</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfTransactionResponse> ListRunTransactionsAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfTransactionResponse> ListRunTransactionsAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListRunTransactions: List Transactions in a run.
@@ -613,16 +627,18 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// 
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="status"> (optional)</param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="status">Filter by publication status (Sent, Skipped, Failed). This is the publication outcome, not the batched-transaction status. (optional)</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to Id ASC. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfTransactionResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse>> ListRunTransactionsWithHttpInfoAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse>> ListRunTransactionsWithHttpInfoAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance
         /// </summary>
@@ -2347,16 +2363,18 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// [EXPERIMENTAL] ListRunFiles: List Files in a run 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: fileName, generatedAt, rowCount, fileHash, encrypted, destinationType, destinationPath, status, fileUuid. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to newest first (GeneratedAt DESC, Id DESC). (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfRunFileResponse</returns>
-        public PagedResourceListOfRunFileResponse ListRunFiles(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfRunFileResponse ListRunFiles(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse> localVarResponse = ListRunFilesWithHttpInfo(instanceId, runId, page, pageSize, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse> localVarResponse = ListRunFilesWithHttpInfo(instanceId, runId, page, pageSize, filter, sortBy, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -2365,14 +2383,16 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: fileName, generatedAt, rowCount, fileHash, encrypted, destinationType, destinationPath, status, fileUuid. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to newest first (GeneratedAt DESC, Id DESC). (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfRunFileResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse> ListRunFilesWithHttpInfo(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse> ListRunFilesWithHttpInfo(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -2437,6 +2457,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sortBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "sortBy", sortBy));
             }
 
             localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ListRunFiles";
@@ -2477,17 +2505,19 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// [EXPERIMENTAL] ListRunFiles: List Files in a run 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: fileName, generatedAt, rowCount, fileHash, encrypted, destinationType, destinationPath, status, fileUuid. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to newest first (GeneratedAt DESC, Id DESC). (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfRunFileResponse</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfRunFileResponse> ListRunFilesAsync(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfRunFileResponse> ListRunFilesAsync(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse> localVarResponse = await ListRunFilesWithHttpInfoAsync(instanceId, runId, page, pageSize, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse> localVarResponse = await ListRunFilesWithHttpInfoAsync(instanceId, runId, page, pageSize, filter, sortBy, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2496,15 +2526,17 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: fileName, generatedAt, rowCount, fileHash, encrypted, destinationType, destinationPath, status, fileUuid. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to newest first (GeneratedAt DESC, Id DESC). (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfRunFileResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse>> ListRunFilesWithHttpInfoAsync(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfRunFileResponse>> ListRunFilesWithHttpInfoAsync(string instanceId, string runId, string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -2570,6 +2602,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sortBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "sortBy", sortBy));
             }
 
             localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ListRunFiles";
@@ -2611,17 +2651,19 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// [EXPERIMENTAL] ListRunTransactions: List Transactions in a run. 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="status"> (optional)</param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="status">Filter by publication status (Sent, Skipped, Failed). This is the publication outcome, not the batched-transaction status. (optional)</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to Id ASC. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfTransactionResponse</returns>
-        public PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> localVarResponse = ListRunTransactionsWithHttpInfo(instanceId, runId, status, page, pageSize, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> localVarResponse = ListRunTransactionsWithHttpInfo(instanceId, runId, status, page, pageSize, filter, sortBy, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -2630,15 +2672,17 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="status"> (optional)</param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="status">Filter by publication status (Sent, Skipped, Failed). This is the publication outcome, not the batched-transaction status. (optional)</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to Id ASC. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfTransactionResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> ListRunTransactionsWithHttpInfo(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> ListRunTransactionsWithHttpInfo(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -2707,6 +2751,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sortBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "sortBy", sortBy));
             }
 
             localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ListRunTransactions";
@@ -2747,18 +2799,20 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// [EXPERIMENTAL] ListRunTransactions: List Transactions in a run. 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="status"> (optional)</param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="status">Filter by publication status (Sent, Skipped, Failed). This is the publication outcome, not the batched-transaction status. (optional)</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to Id ASC. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfTransactionResponse</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfTransactionResponse> ListRunTransactionsAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfTransactionResponse> ListRunTransactionsAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> localVarResponse = await ListRunTransactionsWithHttpInfoAsync(instanceId, runId, status, page, pageSize, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse> localVarResponse = await ListRunTransactionsWithHttpInfoAsync(instanceId, runId, status, page, pageSize, filter, sortBy, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2767,16 +2821,18 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="instanceId"></param>
-        /// <param name="runId"></param>
-        /// <param name="status"> (optional)</param>
-        /// <param name="page"> (optional, default to &quot;&quot;)</param>
-        /// <param name="pageSize"> (optional, default to 100)</param>
+        /// <param name="instanceId">Integration instance ID.</param>
+        /// <param name="runId">Run ID within the instance.</param>
+        /// <param name="status">Filter by publication status (Sent, Skipped, Failed). This is the publication outcome, not the batched-transaction status. (optional)</param>
+        /// <param name="page">The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. (optional, default to &quot;&quot;)</param>
+        /// <param name="pageSize">Number of results per page. (optional, default to 100)</param>
+        /// <param name="filter">A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. (optional)</param>
+        /// <param name="sortBy">Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to Id ASC. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfTransactionResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse>> ListRunTransactionsWithHttpInfoAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTransactionResponse>> ListRunTransactionsWithHttpInfoAsync(string instanceId, string runId, string? status = default(string?), string? page = default(string?), int? pageSize = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -2846,6 +2902,14 @@ namespace Finbourne.Sdk.Services.Horizon.Api
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sortBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "sortBy", sortBy));
             }
 
             localVarRequestOptions.Operation = "TradePublicationFrameworkApi.ListRunTransactions";

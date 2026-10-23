@@ -27,7 +27,7 @@ A margin call a run produced under a collateral agreement: our figure, the count
 | **StatementReference** | **string** | Optional | A reference to the counterparty&#39;s statement, such as a Drive path. |
 | **DemandNote** | **string** | Optional | A note recorded with the counterparty&#39;s demand. |
 | **AgreedAmount** | **decimal?** | Optional | The amount agreed to move, once the call is accepted or disputed. |
-| **DisputedAmount** | **decimal?** | Optional | The part of the counterparty&#39;s demand left in dispute. |
+| **DisputedAmount** | **decimal?** | Optional | The part of the larger of our call and the counterparty&#39;s demand left in dispute. |
 | **DisputeReason** | **string** | Optional | Why the call is disputed. |
 | **DisputeOwner** | **string** | Optional | Who owns the dispute. |
 | **State** | **string** | Required | Where the call is in its lifecycle. One of Calculated, Accepted or Disputed. Filterable. |
@@ -67,7 +67,7 @@ var instance = new MarginCall(
     statementReference: "...",  // optional — A reference to the counterparty&#39;s statement, such as a Drive path.
     demandNote: "...",  // optional — A note recorded with the counterparty&#39;s demand.
     agreedAmount: 0.0d,  // optional — The amount agreed to move, once the call is accepted or disputed.
-    disputedAmount: 0.0d,  // optional — The part of the counterparty&#39;s demand left in dispute.
+    disputedAmount: 0.0d,  // optional — The part of the larger of our call and the counterparty&#39;s demand left in dispute.
     disputeReason: "...",  // optional — Why the call is disputed.
     disputeOwner: "...",  // optional — Who owns the dispute.
     state: "...",  // required — Where the call is in its lifecycle. One of Calculated, Accepted or Disputed. Filterable.

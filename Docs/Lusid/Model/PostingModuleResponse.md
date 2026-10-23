@@ -10,7 +10,7 @@ A Posting Module definition
 | **ChartOfAccountsId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **DisplayName** | **string** | Required | The name of the Posting Module. |
 | **Description** | **string** | Optional | A description for the Posting Module. |
-| **Rules** | [List&lt;PostingModuleRule&gt;](PostingModuleRule.md) | Optional | The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection. |
+| **Rules** | [List&lt;PostingModuleRuleResponse&gt;](PostingModuleRuleResponse.md) | Optional | The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection. |
 | **Status** | **string** | Required | The Posting Module status. Default value: Active. Available values: Active, Inactive, Deleted. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
@@ -29,7 +29,7 @@ var instance = new PostingModuleResponse(
     chartOfAccountsId: new ResourceId(...),  // required
     displayName: "...",  // required — The name of the Posting Module.
     description: "...",  // optional — A description for the Posting Module.
-    rules: new List<PostingModuleRule>(),  // optional — The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
+    rules: new List<PostingModuleRuleResponse>(),  // optional — The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
     status: "...",  // required — The Posting Module status. Default value: Active. Available values: Active, Inactive, Deleted.
     varVersion: new ModelVersion(...),  // optional
     links: new List<Link>()  // optional
@@ -48,7 +48,7 @@ var instance = JsonConvert.DeserializeObject<PostingModuleResponse>(json);
 ```
 
 - [ResourceId](ResourceId.md)
-- [PostingModuleRule](PostingModuleRule.md) — used in `Rules`
+- [PostingModuleRuleResponse](PostingModuleRuleResponse.md) — used in `Rules`
 - [ModelVersion](ModelVersion.md)
 - [Link](Link.md)
 

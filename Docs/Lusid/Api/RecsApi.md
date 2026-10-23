@@ -709,7 +709,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **runNumber** | **int** | path | **required** | The run of the instance whose view of the result is read. |
 | **id** | **string** | path | **required** | The display id of the rec result, e.g. \&quot;break-3\&quot;. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the result. Defaults to latest if not specified. |
-| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys to decorate onto the result. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys to decorate onto the result. The keys its matching ruleset populates always come back, so list only others here. |
 
 ### Return type
 
@@ -1165,7 +1165,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. |
 | **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
-| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys to decorate onto each result. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys to decorate onto each result. The keys its matching ruleset populates always come back, so list only others here. |
 
 ### Return type
 

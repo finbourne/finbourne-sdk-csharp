@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// Initializes a new instance of the <see cref="LauncherMapping" /> class.
         /// </summary>
         /// <param name="setTo">The value to use, given as it is.</param>
-        /// <param name="mapFrom">The path the value is taken from, for example header.userId.</param>
+        /// <param name="mapFrom">The path the value is taken from. A runAsUserId can only be taken from header.userId, and not for an event type whose header has no user ID.</param>
         public LauncherMapping(string setTo = default(string), string mapFrom = default(string))
         {
             this.SetTo = setTo;
@@ -46,9 +46,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public string SetTo { get; set; }
 
         /// <summary>
-        /// The path the value is taken from, for example header.userId
+        /// The path the value is taken from. A runAsUserId can only be taken from header.userId, and not for an event type whose header has no user ID
         /// </summary>
-        /// <value>The path the value is taken from, for example header.userId</value>
+        /// <value>The path the value is taken from. A runAsUserId can only be taken from header.userId, and not for an event type whose header has no user ID</value>
         [DataMember(Name = "mapFrom", EmitDefaultValue = true)]
         public string MapFrom { get; set; }
 

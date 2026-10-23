@@ -242,7 +242,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="executeinstancewithparams"></a>
 ## ExecuteInstanceWithParams
 
-> ExecuteInstanceResponse ExecuteInstanceWithParams(string instanceId, Dictionary<string, string> requestBody)
+> ExecuteInstanceResponse ExecuteInstanceWithParams(string instanceId, Dictionary<string, Object> requestBody)
 
 [EXPERIMENTAL] ExecuteInstanceWithParams: Execute an integration instance with runtime parameters
 
@@ -253,7 +253,7 @@ Starts execution of an instance, returning its execution identifier. The user mu
 ```csharp
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IntegrationsApi>();
 var instanceId = "instanceId_example";  // string
-var requestBody = new Dictionary<string, string>(); // Dictionary<string, string>
+var requestBody = new Dictionary<string, Object>(); // Dictionary<string, Object>
 ExecuteInstanceResponse result = apiInstance.ExecuteInstanceWithParams(instanceId, requestBody);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
@@ -263,7 +263,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;. |
-| **requestBody** | [Dictionary&lt;string, string&gt;](../Model/string.md) | body | **required** | Dictionary(string,string) of runtime parameters passed to the integration instance |
+| **requestBody** | [Dictionary&lt;string, Object&gt;](../Model/Object.md) | body | **required** | JSON object of runtime parameters passed to the integration instance. A processorName:configPath key overrides one processor config value for this run; any other key is a named run parameter. Nested objects are flattened to dotted keys. |
 
 ### Return type
 

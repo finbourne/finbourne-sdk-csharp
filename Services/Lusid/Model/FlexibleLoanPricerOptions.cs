@@ -38,11 +38,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="FlexibleLoanPricerOptions" /> class.
         /// </summary>
         /// <param name="setCleanPVToZero">If set to true the CleanPV will be set to zero in valuations and PV will effectively just be the Accrual. (required).</param>
+        /// <param name="usePriceQuoteForCleanPV">If set to true the CleanPV calculation will be looking for a price quote (no default price is assumed). CleanPV will be calculated as Holding/Balance * priceQuote / quoteScaleFactor.</param>
         /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
-        public FlexibleLoanPricerOptions(bool setCleanPVToZero = default(bool), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
+        public FlexibleLoanPricerOptions(bool setCleanPVToZero = default(bool), bool? usePriceQuoteForCleanPV = default(bool?), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
         {
             this.SetCleanPVToZero = setCleanPVToZero;
             this.ModelOptionsType = modelOptionsType;
+            this.UsePriceQuoteForCleanPV = usePriceQuoteForCleanPV;
         }
 
         /// <summary>
@@ -51,6 +53,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <value>If set to true the CleanPV will be set to zero in valuations and PV will effectively just be the Accrual.</value>
         [DataMember(Name = "setCleanPVToZero", IsRequired = true, EmitDefaultValue = true)]
         public bool SetCleanPVToZero { get; set; }
+
+        /// <summary>
+        /// If set to true the CleanPV calculation will be looking for a price quote (no default price is assumed). CleanPV will be calculated as Holding/Balance * priceQuote / quoteScaleFactor
+        /// </summary>
+        /// <value>If set to true the CleanPV calculation will be looking for a price quote (no default price is assumed). CleanPV will be calculated as Holding/Balance * priceQuote / quoteScaleFactor</value>
+        [DataMember(Name = "usePriceQuoteForCleanPV", EmitDefaultValue = true)]
+        public bool? UsePriceQuoteForCleanPV { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,6 +71,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class FlexibleLoanPricerOptions {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  SetCleanPVToZero: ").Append(SetCleanPVToZero).Append("\n");
+            sb.Append("  UsePriceQuoteForCleanPV: ").Append(UsePriceQuoteForCleanPV).Append("\n");
             sb.Append("  ModelOptionsType: ").Append(ModelOptionsType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -103,6 +113,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.SetCleanPVToZero.Equals(input.SetCleanPVToZero)
                 ) && base.Equals(input) && 
                 (
+                    this.UsePriceQuoteForCleanPV == input.UsePriceQuoteForCleanPV ||
+                    (this.UsePriceQuoteForCleanPV != null &&
+                    this.UsePriceQuoteForCleanPV.Equals(input.UsePriceQuoteForCleanPV))
+                ) && base.Equals(input) && 
+                (
                     this.ModelOptionsType == input.ModelOptionsType ||
                     this.ModelOptionsType.Equals(input.ModelOptionsType)
                 );
@@ -118,6 +133,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             {
                 int hashCode = base.GetHashCode();
                 hashCode = (hashCode * 59) + this.SetCleanPVToZero.GetHashCode();
+                if (this.UsePriceQuoteForCleanPV != null)
+                {
+                    hashCode = (hashCode * 59) + this.UsePriceQuoteForCleanPV.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.ModelOptionsType.GetHashCode();
                 return hashCode;
             }

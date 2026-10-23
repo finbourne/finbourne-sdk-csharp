@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// Totals across every register line of the fund, independent of paging.
+    /// Totals across every register line of the fund, independent of paging. Commitments are totalled per commitment  currency; amounts in different currencies are never added together.
     /// </summary>
     [DataContract(Name = "FundPartnersTotals")]
     public partial class FundPartnersTotals : IEquatable<FundPartnersTotals>, IValidatableObject
@@ -35,20 +35,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FundPartnersTotals" /> class.
         /// </summary>
-        /// <param name="committed">The total committed capital across all partners. (required).</param>
+        /// <param name="committedByCurrency">The total committed capital across all partners, per commitment currency, keyed by currency code. Commitments in different currencies are not added together. (required).</param>
         /// <param name="partnerCount">The number of partners (register lines) in the fund. (required).</param>
-        public FundPartnersTotals(decimal committed = default(decimal), int partnerCount = default(int))
+        public FundPartnersTotals(Dictionary<string, decimal> committedByCurrency = default(Dictionary<string, decimal>), int partnerCount = default(int))
         {
-            this.Committed = committed;
+            // to ensure "committedByCurrency" is required (not null)
+            if (committedByCurrency == null)
+            {
+                throw new ArgumentNullException("committedByCurrency is a required property for FundPartnersTotals and cannot be null");
+            }
+            this.CommittedByCurrency = committedByCurrency;
             this.PartnerCount = partnerCount;
         }
 
         /// <summary>
-        /// The total committed capital across all partners.
+        /// The total committed capital across all partners, per commitment currency, keyed by currency code. Commitments in different currencies are not added together.
         /// </summary>
-        /// <value>The total committed capital across all partners.</value>
-        [DataMember(Name = "committed", IsRequired = true, EmitDefaultValue = true)]
-        public decimal Committed { get; set; }
+        /// <value>The total committed capital across all partners, per commitment currency, keyed by currency code. Commitments in different currencies are not added together.</value>
+        [DataMember(Name = "committedByCurrency", IsRequired = true, EmitDefaultValue = true)]
+        public Dictionary<string, decimal> CommittedByCurrency { get; set; }
 
         /// <summary>
         /// The number of partners (register lines) in the fund.
@@ -65,7 +70,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class FundPartnersTotals {\n");
-            sb.Append("  Committed: ").Append(Committed).Append("\n");
+            sb.Append("  CommittedByCurrency: ").Append(CommittedByCurrency).Append("\n");
             sb.Append("  PartnerCount: ").Append(PartnerCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -103,8 +108,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             return 
                 (
-                    this.Committed == input.Committed ||
-                    this.Committed.Equals(input.Committed)
+                    this.CommittedByCurrency == input.CommittedByCurrency ||
+                    this.CommittedByCurrency != null &&
+                    input.CommittedByCurrency != null &&
+                    this.CommittedByCurrency.SequenceEqual(input.CommittedByCurrency)
                 ) && 
                 (
                     this.PartnerCount == input.PartnerCount ||
@@ -121,7 +128,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Committed.GetHashCode();
+                if (this.CommittedByCurrency != null)
+                {
+                    hashCode = (hashCode * 59) + this.CommittedByCurrency.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.PartnerCount.GetHashCode();
                 return hashCode;
             }

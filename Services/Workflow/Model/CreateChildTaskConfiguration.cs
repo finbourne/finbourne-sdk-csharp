@@ -41,7 +41,8 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="childTaskFields">Field Mappings.</param>
         /// <param name="mapStackingKeyFrom">If present, the value of this field on the parent task will be the Stacking Key on any created child tasks.</param>
         /// <param name="displayName">An optional display name, to tell apart child task configurations that use the same Task Definition.</param>
-        public CreateChildTaskConfiguration(ResourceId taskDefinitionId = default(ResourceId), DateTimeOffset? taskDefinitionAsAt = default(DateTimeOffset?), string initialTrigger = default(string), Dictionary<string, FieldMapping> childTaskFields = default(Dictionary<string, FieldMapping>), string mapStackingKeyFrom = default(string), string displayName = default(string))
+        /// <param name="condition">A filter expression over the parent Task, in the same form as a transition Guard. If present, the child Task is only created when it evaluates to true, after the field changes of the update that made the transition.</param>
+        public CreateChildTaskConfiguration(ResourceId taskDefinitionId = default(ResourceId), DateTimeOffset? taskDefinitionAsAt = default(DateTimeOffset?), string initialTrigger = default(string), Dictionary<string, FieldMapping> childTaskFields = default(Dictionary<string, FieldMapping>), string mapStackingKeyFrom = default(string), string displayName = default(string), string condition = default(string))
         {
             // to ensure "taskDefinitionId" is required (not null)
             if (taskDefinitionId == null)
@@ -54,6 +55,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             this.ChildTaskFields = childTaskFields;
             this.MapStackingKeyFrom = mapStackingKeyFrom;
             this.DisplayName = displayName;
+            this.Condition = condition;
         }
 
         /// <summary>
@@ -98,6 +100,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// A filter expression over the parent Task, in the same form as a transition Guard. If present, the child Task is only created when it evaluates to true, after the field changes of the update that made the transition
+        /// </summary>
+        /// <value>A filter expression over the parent Task, in the same form as a transition Guard. If present, the child Task is only created when it evaluates to true, after the field changes of the update that made the transition</value>
+        [DataMember(Name = "condition", EmitDefaultValue = true)]
+        public string Condition { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -111,6 +120,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  ChildTaskFields: ").Append(ChildTaskFields).Append("\n");
             sb.Append("  MapStackingKeyFrom: ").Append(MapStackingKeyFrom).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Condition: ").Append(Condition).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -176,6 +186,11 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.DisplayName == input.DisplayName ||
                     (this.DisplayName != null &&
                     this.DisplayName.Equals(input.DisplayName))
+                ) && 
+                (
+                    this.Condition == input.Condition ||
+                    (this.Condition != null &&
+                    this.Condition.Equals(input.Condition))
                 );
         }
 
@@ -212,6 +227,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     hashCode = (hashCode * 59) + this.DisplayName.GetHashCode();
                 }
+                if (this.Condition != null)
+                {
+                    hashCode = (hashCode * 59) + this.Condition.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -235,6 +254,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             if (this.DisplayName != null && false == regexDisplayName.Match(this.DisplayName).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, must match a pattern of " + regexDisplayName, new [] { "DisplayName" });
+            }
+
+            // Condition (string) pattern
+            Regex regexCondition = new Regex(@"^[\s\S]*$", RegexOptions.CultureInvariant);
+            if (this.Condition != null && false == regexCondition.Match(this.Condition).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Condition, must match a pattern of " + regexCondition, new [] { "Condition" });
             }
 
             yield break;

@@ -7,6 +7,7 @@ Defines a Create Child Tasks Action
 |------|------|----------|-------------|
 | **Type** | **string** | Required | Type name for this Action |
 | **ChildTaskConfigurations** | [List&lt;CreateChildTaskConfiguration&gt;](CreateChildTaskConfiguration.md) | Required | The Child Task Configurations |
+| **Ordering** | **string** | Optional | How the created child tasks are ordered for execution: Parallel (default) or Series. In Series the child tasks form a chain and only the first is started; each later one is started by its predecessor&#39;s TriggerNextTask action, or by another trigger such as a TriggerChildTasks filter on previousTask. Without one, the chain stops after the first child. |
 
 
 ## Usage
@@ -18,7 +19,8 @@ using Finbourne.Sdk.Services.Workflow.Model;
 
 var instance = new CreateChildTasksAction(
     type: "...",  // required — Type name for this Action
-    childTaskConfigurations: new List<CreateChildTaskConfiguration>()  // required — The Child Task Configurations
+    childTaskConfigurations: new List<CreateChildTaskConfiguration>(),  // required — The Child Task Configurations
+    ordering: "..."  // optional — How the created child tasks are ordered for execution: Parallel (default) or Series. In Series the child tasks form a chain and only the first is started; each later one is started by its predecessor&#39;s TriggerNextTask action, or by another trigger such as a TriggerChildTasks filter on previousTask. Without one, the chain stops after the first child.
 );
 ```
 ### Serializing to JSON

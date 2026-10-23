@@ -16,7 +16,7 @@ A margin run: the valuation of the collateral agreements for a business date, pl
 | **ShardCount** | **int** | Required | The number of valuation shards the run was planned as. |
 | **CompletedShards** | **int** | Required | The number of shards that have completed. |
 | **FailedShards** | **int** | Required | The number of shards that failed to value. |
-| **Issues** | [List&lt;MarginRunIssue&gt;](MarginRunIssue.md) | Required | Agreements the run could not value, or the caller may not calculate margin for, with the reason. |
+| **Issues** | [List&lt;MarginRunIssue&gt;](MarginRunIssue.md) | Required | Agreements the run could not value or roll up into a call, or the caller may not calculate margin for, with the reason. |
 | **Shards** | [List&lt;MarginRunShard&gt;](MarginRunShard.md) | Required | The valuation shards the run is planned as, with their progress. |
 
 
@@ -39,7 +39,7 @@ var instance = new MarginRun(
     shardCount: 0,  // required — The number of valuation shards the run was planned as.
     completedShards: 0,  // required — The number of shards that have completed.
     failedShards: 0,  // required — The number of shards that failed to value.
-    issues: new List<MarginRunIssue>(),  // required — Agreements the run could not value, or the caller may not calculate margin for, with the reason.
+    issues: new List<MarginRunIssue>(),  // required — Agreements the run could not value or roll up into a call, or the caller may not calculate margin for, with the reason.
     shards: new List<MarginRunShard>()  // required — The valuation shards the run is planned as, with their progress.
 );
 ```

@@ -52,10 +52,12 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// </summary>
         /// <param name="type">Type name for this Action.</param>
         /// <param name="childTaskConfigurations">The Child Task Configurations.</param>
-        public CreateChildTasksActionResponse(TypeEnum ?type = default(TypeEnum?), List<CreateChildTaskConfiguration> childTaskConfigurations = default(List<CreateChildTaskConfiguration>))
+        /// <param name="ordering">How the created child tasks are ordered for execution: Parallel (default) or Series. In Series the child tasks form a chain and only the first is started; each later one is started by its predecessor&#39;s TriggerNextTask action, or by another trigger such as a TriggerChildTasks filter on previousTask. Without one, the chain stops after the first child..</param>
+        public CreateChildTasksActionResponse(TypeEnum ?type = default(TypeEnum?), List<CreateChildTaskConfiguration> childTaskConfigurations = default(List<CreateChildTaskConfiguration>), string ordering = default(string))
         {
             this.Type = type;
             this.ChildTaskConfigurations = childTaskConfigurations;
+            this.Ordering = ordering;
         }
 
         /// <summary>
@@ -64,6 +66,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <value>The Child Task Configurations</value>
         [DataMember(Name = "childTaskConfigurations", EmitDefaultValue = true)]
         public List<CreateChildTaskConfiguration> ChildTaskConfigurations { get; set; }
+
+        /// <summary>
+        /// How the created child tasks are ordered for execution: Parallel (default) or Series. In Series the child tasks form a chain and only the first is started; each later one is started by its predecessor&#39;s TriggerNextTask action, or by another trigger such as a TriggerChildTasks filter on previousTask. Without one, the chain stops after the first child.
+        /// </summary>
+        /// <value>How the created child tasks are ordered for execution: Parallel (default) or Series. In Series the child tasks form a chain and only the first is started; each later one is started by its predecessor&#39;s TriggerNextTask action, or by another trigger such as a TriggerChildTasks filter on previousTask. Without one, the chain stops after the first child.</value>
+        [DataMember(Name = "ordering", EmitDefaultValue = true)]
+        public string Ordering { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,6 +84,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("class CreateChildTasksActionResponse {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  ChildTaskConfigurations: ").Append(ChildTaskConfigurations).Append("\n");
+            sb.Append("  Ordering: ").Append(Ordering).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -119,6 +129,11 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.ChildTaskConfigurations != null &&
                     input.ChildTaskConfigurations != null &&
                     this.ChildTaskConfigurations.SequenceEqual(input.ChildTaskConfigurations)
+                ) && 
+                (
+                    this.Ordering == input.Ordering ||
+                    (this.Ordering != null &&
+                    this.Ordering.Equals(input.Ordering))
                 );
         }
 
@@ -135,6 +150,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.ChildTaskConfigurations != null)
                 {
                     hashCode = (hashCode * 59) + this.ChildTaskConfigurations.GetHashCode();
+                }
+                if (this.Ordering != null)
+                {
+                    hashCode = (hashCode * 59) + this.Ordering.GetHashCode();
                 }
                 return hashCode;
             }

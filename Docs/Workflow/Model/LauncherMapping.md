@@ -6,7 +6,7 @@ A value a Launcher either gives as it is or takes from somewhere.              E
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **SetTo** | **string** | Optional | The value to use, given as it is |
-| **MapFrom** | **string** | Optional | The path the value is taken from, for example header.userId |
+| **MapFrom** | **string** | Optional | The path the value is taken from. A runAsUserId can only be taken from header.userId, and not for an event type whose header has no user ID |
 
 
 ## Usage
@@ -18,7 +18,7 @@ using Finbourne.Sdk.Services.Workflow.Model;
 
 var instance = new LauncherMapping(
     setTo: "...",  // optional — The value to use, given as it is
-    mapFrom: "..."  // optional — The path the value is taken from, for example header.userId
+    mapFrom: "..."  // optional — The path the value is taken from. A runAsUserId can only be taken from header.userId, and not for an event type whose header has no user ID
 );
 ```
 ### Serializing to JSON

@@ -18,6 +18,7 @@ A Journal Entry line entity specifically for fund valuation point lines.
 | **Units** | **decimal** | Required | Units held for the Journal Entry Line. |
 | **PostingModuleCode** | **string** | Optional | The code of the posting module where the posting rules derived the Journal Entry lines. |
 | **PostingRule** | **string** | Required | The rule generating the Journal Entry Line. |
+| **PostingRuleVersion** | **int?** | Optional | The version of the rule generating the Journal Entry Line. Null where no rule matched the line. |
 | **AsAtDate** | **DateTimeOffset** | Required | The corresponding input date and time of the Transaction generating the Journal Entry Line. |
 | **ActivitiesDescription** | **string** | Optional | This would be the description of the business activities this Journal Entry Line is for. |
 | **SourceType** | **string** | Required | The type of source for the Journal Entry Line. Available values: LusidTransaction, LusidValuation, Manual, External. |
@@ -63,6 +64,7 @@ var instance = new FundJournalEntryLine(
     units: 0.0d,  // required — Units held for the Journal Entry Line.
     postingModuleCode: "...",  // optional — The code of the posting module where the posting rules derived the Journal Entry lines.
     postingRule: "...",  // required — The rule generating the Journal Entry Line.
+    postingRuleVersion: 0,  // optional — The version of the rule generating the Journal Entry Line. Null where no rule matched the line.
     asAtDate: DateTimeOffset.Now,  // required — The corresponding input date and time of the Transaction generating the Journal Entry Line.
     activitiesDescription: "...",  // optional — This would be the description of the business activities this Journal Entry Line is for.
     sourceType: "...",  // required — The type of source for the Journal Entry Line. Available values: LusidTransaction, LusidValuation, Manual, External.

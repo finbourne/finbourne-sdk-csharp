@@ -7,7 +7,7 @@ CDSs generally conform to fairly standard definitions, but can be tweaked in a n
 |------|------|----------|-------------|
 | **Seniority** | **string** | Optional | The seniority level of the CDS. Default value: SUB. Available values: Unknown, SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2. Default: `"SUB"` |
 | **RestructuringType** | **string** | Optional | The restructuring clause. Default value: MM. Available values: Unknown, CR, MR, MM, XR, XR14, CR14, MR14, MM14. Default: `"MM"` |
-| **ProtectStartDay** | **bool** | Optional | Does the protection leg pay out in the case of default on the start date. Defaults to true if not set. Default: `true` |
+| **ProtectStartDay** | **bool** | Optional | Does the protection leg pay out in the case of default on the start date. Defaults to false if not set.  If true, the trade date is not included in the accrued interest that a transaction pays or receives. Default: `false` |
 | **PayAccruedInterestOnDefault** | **bool** | Optional | Should accrued interest on the premium leg be paid if a credit event occurs. Defaults to true if not set. Default: `true` |
 
 
@@ -21,7 +21,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new CdsProtectionDetailSpecification(
     seniority: "...",  // optional — The seniority level of the CDS. Default value: SUB. Available values: Unknown, SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2.
     restructuringType: "...",  // optional — The restructuring clause. Default value: MM. Available values: Unknown, CR, MR, MM, XR, XR14, CR14, MR14, MM14.
-    protectStartDay: true,  // optional — Does the protection leg pay out in the case of default on the start date. Defaults to true if not set.
+    protectStartDay: true,  // optional — Does the protection leg pay out in the case of default on the start date. Defaults to false if not set.  If true, the trade date is not included in the accrued interest that a transaction pays or receives.
     payAccruedInterestOnDefault: true  // optional — Should accrued interest on the premium leg be paid if a credit event occurs. Defaults to true if not set.
 );
 ```

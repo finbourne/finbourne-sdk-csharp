@@ -44,7 +44,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="status">The Posting Module status. Default value: Active. Available values: Active, Inactive, Deleted. (required).</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="links">links.</param>
-        public PostingModuleResponse(string href = default(string), string postingModuleCode = default(string), ResourceId chartOfAccountsId = default(ResourceId), string displayName = default(string), string description = default(string), List<PostingModuleRule> rules = default(List<PostingModuleRule>), string status = default(string), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
+        public PostingModuleResponse(string href = default(string), string postingModuleCode = default(string), ResourceId chartOfAccountsId = default(ResourceId), string displayName = default(string), string description = default(string), List<PostingModuleRuleResponse> rules = default(List<PostingModuleRuleResponse>), string status = default(string), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
         {
             // to ensure "postingModuleCode" is required (not null)
             if (postingModuleCode == null)
@@ -116,7 +116,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <value>The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.</value>
         [DataMember(Name = "rules", EmitDefaultValue = true)]
-        public List<PostingModuleRule> Rules { get; set; }
+        public List<PostingModuleRuleResponse> Rules { get; set; }
 
         /// <summary>
         /// The Posting Module status. Default value: Active. Available values: Active, Inactive, Deleted.

@@ -36,6 +36,7 @@ All URIs are relative to *http://localhost*
 | [**SetGeneralLedgerProfileMappings**](#setgeneralledgerprofilemappings) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}/mappings` | [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. |
 | [**SetPostingModuleDetails**](#setpostingmoduledetails) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}` | [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module |
 | [**SetPostingModuleRules**](#setpostingmodulerules) | **PUT** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules` | [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module |
+| [**SupersedePostingModuleRule**](#supersedepostingmodulerule) | **POST** `/api/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/$supersede` | [EARLY ACCESS] SupersedePostingModuleRule: Supersede a rule of a Posting Module |
 | [**UpsertAccountProperties**](#upsertaccountproperties) | **POST** `/api/api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties/$upsert` | [EARLY ACCESS] UpsertAccountProperties: Upsert account properties |
 | [**UpsertAccounts**](#upsertaccounts) | **POST** `/api/api/chartofaccounts/{scope}/{code}/accounts` | [EARLY ACCESS] UpsertAccounts: Upsert Accounts |
 | [**UpsertChartOfAccountsProperties**](#upsertchartofaccountsproperties) | **POST** `/api/api/chartofaccounts/{scope}/{code}/properties/$upsert` | [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties |
@@ -1449,7 +1450,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listpostingmodulerules"></a>
 ## ListPostingModuleRules
 
-> PagedResourceListOfPostingModuleRule ListPostingModuleRules(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null)
+> PagedResourceListOfPostingModuleRuleResponse ListPostingModuleRules(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null)
 
 [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules
 
@@ -1466,7 +1467,7 @@ var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset
 var page = "page_example";  // string? (optional)
 var limit = 56;  // int? (optional)
 var filter = "filter_example";  // string? (optional)
-PagedResourceListOfPostingModuleRule result = apiInstance.ListPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter);
+PagedResourceListOfPostingModuleRuleResponse result = apiInstance.ListPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1484,7 +1485,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 ### Return type
 
-[PagedResourceListOfPostingModuleRule](../Model/PagedResourceListOfPostingModuleRule.md)
+[PagedResourceListOfPostingModuleRuleResponse](../Model/PagedResourceListOfPostingModuleRuleResponse.md)
 
 ### HTTP request headers
 
@@ -1505,7 +1506,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfPostingModuleRule> response = apiInstance.ListPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter);
+ApiResponse<PagedResourceListOfPostingModuleRuleResponse> response = apiInstance.ListPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2086,6 +2087,72 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PostingModuleRulesUpdatedResponse> response = apiInstance.SetPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, postingModuleRule);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="supersedepostingmodulerule"></a>
+## SupersedePostingModuleRule
+
+> PostingModuleRulesUpdatedResponse SupersedePostingModuleRule(string scope, string code, string postingModuleCode, string ruleId, List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest)
+
+[EARLY ACCESS] SupersedePostingModuleRule: Supersede a rule of a Posting Module
+
+Supersede a Posting Rule by one or more rules in a single write. Every rule in the request records the superseded  ruleId as its originalRuleId. At most one of them may have the superseded ruleId: it becomes the rule's next  version, and the rule's latest version stops applying from its effectiveFrom, unless it already ends by then; it  is never extended. Any other rule is new and must not have the ruleId of an existing rule. The rules take the  latest version's place in the rule list, in the order given.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ChartOfAccountsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var postingModuleCode = "postingModuleCode_example";  // string
+var ruleId = "ruleId_example";  // string
+var supersedePostingModuleRuleRequest = new List<SupersedePostingModuleRuleRequest>(); // List<SupersedePostingModuleRuleRequest>
+PostingModuleRulesUpdatedResponse result = apiInstance.SupersedePostingModuleRule(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Chart of Accounts. |
+| **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
+| **postingModuleCode** | **string** | path | **required** | The code of the Posting Module to be updated. |
+| **ruleId** | **string** | path | **required** | The identifier of the Posting Rule to supersede. Its latest version is closed. |
+| **supersedePostingModuleRuleRequest** | [List&lt;SupersedePostingModuleRuleRequest&gt;](../Model/SupersedePostingModuleRuleRequest.md) | body | **required** | The rules that take over from the superseded rule. |
+
+### Return type
+
+[PostingModuleRulesUpdatedResponse](../Model/PostingModuleRulesUpdatedResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Posting Module with updated rules. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the SupersedePostingModuleRuleWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PostingModuleRulesUpdatedResponse> response = apiInstance.SupersedePostingModuleRuleWithHttpInfo(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

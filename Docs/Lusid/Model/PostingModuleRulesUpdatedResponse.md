@@ -5,7 +5,7 @@ A Posting Module rules update response
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Rules** | [List&lt;PostingModuleRule&gt;](PostingModuleRule.md) | Optional | The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection. |
+| **Rules** | [List&lt;PostingModuleRuleResponse&gt;](PostingModuleRuleResponse.md) | Optional | The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
@@ -19,7 +19,7 @@ A Posting Module rules update response
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new PostingModuleRulesUpdatedResponse(
-    rules: new List<PostingModuleRule>(),  // optional — The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
+    rules: new List<PostingModuleRuleResponse>(),  // optional — The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
     varVersion: new ModelVersion(...),  // optional
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
     links: new List<Link>()  // optional
@@ -40,7 +40,7 @@ var instance = JsonConvert.DeserializeObject<PostingModuleRulesUpdatedResponse>(
 
 ## Related Models
 
-- [PostingModuleRule](PostingModuleRule.md) — used in `Rules`
+- [PostingModuleRuleResponse](PostingModuleRuleResponse.md) — used in `Rules`
 - [ModelVersion](ModelVersion.md)
 - [Link](Link.md)
 

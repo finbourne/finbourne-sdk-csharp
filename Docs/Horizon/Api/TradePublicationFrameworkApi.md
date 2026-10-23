@@ -430,7 +430,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listrunfiles"></a>
 ## ListRunFiles
 
-> PagedResourceListOfRunFileResponse ListRunFiles(string instanceId, string runId, string? page = null, int? pageSize = null)
+> PagedResourceListOfRunFileResponse ListRunFiles(string instanceId, string runId, string? page = null, int? pageSize = null, string? filter = null, List<string>? sortBy = null)
 
 [EXPERIMENTAL] ListRunFiles: List Files in a run
 
@@ -442,7 +442,9 @@ var instanceId = "instanceId_example";  // string
 var runId = "runId_example";  // string
 var page = "\"\"";  // string? (optional)
 var pageSize = 100;  // int? (optional)
-PagedResourceListOfRunFileResponse result = apiInstance.ListRunFiles(instanceId, runId, page, pageSize);
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfRunFileResponse result = apiInstance.ListRunFiles(instanceId, runId, page, pageSize, filter, sortBy);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -450,10 +452,12 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **instanceId** | **string** | path | **required** |  |
-| **runId** | **string** | path | **required** |  |
-| **page** | **string?** | query | optional |  Default: `&quot;&quot;` |
-| **pageSize** | **int?** | query | optional |  Default: `100` |
+| **instanceId** | **string** | path | **required** | Integration instance ID. |
+| **runId** | **string** | path | **required** | Run ID within the instance. |
+| **page** | **string?** | query | optional | The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. Default: `&quot;&quot;` |
+| **pageSize** | **int?** | query | optional | Number of results per page. Default: `100` |
+| **filter** | **string?** | query | optional | A Finbourne filter on: fileName, generatedAt, rowCount, fileHash, encrypted, destinationType, destinationPath, status, fileUuid. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to newest first (GeneratedAt DESC, Id DESC). |
 
 ### Return type
 
@@ -479,7 +483,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfRunFileResponse> response = apiInstance.ListRunFilesWithHttpInfo(instanceId, runId, page, pageSize);
+ApiResponse<PagedResourceListOfRunFileResponse> response = apiInstance.ListRunFilesWithHttpInfo(instanceId, runId, page, pageSize, filter, sortBy);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -493,7 +497,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listruntransactions"></a>
 ## ListRunTransactions
 
-> PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string? status = null, string? page = null, int? pageSize = null)
+> PagedResourceListOfTransactionResponse ListRunTransactions(string instanceId, string runId, string? status = null, string? page = null, int? pageSize = null, string? filter = null, List<string>? sortBy = null)
 
 [EXPERIMENTAL] ListRunTransactions: List Transactions in a run.
 
@@ -506,7 +510,9 @@ var runId = "runId_example";  // string
 var status = "status_example";  // string? (optional)
 var page = "\"\"";  // string? (optional)
 var pageSize = 100;  // int? (optional)
-PagedResourceListOfTransactionResponse result = apiInstance.ListRunTransactions(instanceId, runId, status, page, pageSize);
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfTransactionResponse result = apiInstance.ListRunTransactions(instanceId, runId, status, page, pageSize, filter, sortBy);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -514,11 +520,13 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
-| **instanceId** | **string** | path | **required** |  |
-| **runId** | **string** | path | **required** |  |
-| **status** | **string?** | query | optional |  |
-| **page** | **string?** | query | optional |  Default: `&quot;&quot;` |
-| **pageSize** | **int?** | query | optional |  Default: `100` |
+| **instanceId** | **string** | path | **required** | Integration instance ID. |
+| **runId** | **string** | path | **required** | Run ID within the instance. |
+| **status** | **string?** | query | optional | Filter by publication status (Sent, Skipped, Failed). This is the publication outcome, not the batched-transaction status. |
+| **page** | **string?** | query | optional | The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. Default: `&quot;&quot;` |
+| **pageSize** | **int?** | query | optional | Number of results per page. Default: `100` |
+| **filter** | **string?** | query | optional | A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to Id ASC. |
 
 ### Return type
 
@@ -544,7 +552,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfTransactionResponse> response = apiInstance.ListRunTransactionsWithHttpInfo(instanceId, runId, status, page, pageSize);
+ApiResponse<PagedResourceListOfTransactionResponse> response = apiInstance.ListRunTransactionsWithHttpInfo(instanceId, runId, status, page, pageSize, filter, sortBy);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

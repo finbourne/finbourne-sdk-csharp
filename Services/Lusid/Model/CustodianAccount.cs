@@ -40,7 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="accountNumber">The Custodian Account Number (required).</param>
         /// <param name="accountName">The identifiable name given to the Custodian Account (required).</param>
         /// <param name="accountingMethod">The Accounting method to be used. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. (required).</param>
-        /// <param name="currency">The Currency for the Account (required).</param>
+        /// <param name="currency">The Currency for the Account. Optional, with no default..</param>
         /// <param name="properties">Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain..</param>
         /// <param name="custodian">custodian (required).</param>
         /// <param name="accountType">The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default..</param>
@@ -77,18 +77,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("accountingMethod is a required property for CustodianAccount and cannot be null");
             }
             this.AccountingMethod = accountingMethod;
-            // to ensure "currency" is required (not null)
-            if (currency == null)
-            {
-                throw new ArgumentNullException("currency is a required property for CustodianAccount and cannot be null");
-            }
-            this.Currency = currency;
             // to ensure "custodian" is required (not null)
             if (custodian == null)
             {
                 throw new ArgumentNullException("custodian is a required property for CustodianAccount and cannot be null");
             }
             this.Custodian = custodian;
+            this.Currency = currency;
             this.Properties = properties;
             this.AccountType = accountType;
             this.TaxLotSelectionCostBasis = taxLotSelectionCostBasis;
@@ -129,10 +124,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string AccountingMethod { get; set; }
 
         /// <summary>
-        /// The Currency for the Account
+        /// The Currency for the Account. Optional, with no default.
         /// </summary>
-        /// <value>The Currency for the Account</value>
-        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>The Currency for the Account. Optional, with no default.</value>
+        [DataMember(Name = "currency", EmitDefaultValue = true)]
         public string Currency { get; set; }
 
         /// <summary>

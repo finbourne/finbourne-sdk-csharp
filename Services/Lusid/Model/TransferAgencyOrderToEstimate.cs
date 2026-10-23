@@ -327,7 +327,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
 
             // Currency (string) pattern
-            Regex regexCurrency = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
+            Regex regexCurrency = new Regex(@"^[a-zA-Z]*$", RegexOptions.CultureInvariant);
             if (this.Currency != null && false == regexCurrency.Match(this.Currency).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Currency, must match a pattern of " + regexCurrency, new [] { "Currency" });

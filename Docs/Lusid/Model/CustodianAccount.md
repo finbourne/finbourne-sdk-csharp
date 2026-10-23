@@ -9,7 +9,7 @@
 | **AccountNumber** | **string** | Required | The Custodian Account Number |
 | **AccountName** | **string** | Required | The identifiable name given to the Custodian Account |
 | **AccountingMethod** | **string** | Required | The Accounting method to be used. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. |
-| **Currency** | **string** | Required | The Currency for the Account |
+| **Currency** | **string** | Optional | The Currency for the Account. Optional, with no default. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain. |
 | **Custodian** | [LegalEntity](LegalEntity.md) | Required | *No description available.* |
 | **AccountType** | **string** | Optional | The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default. |
@@ -29,7 +29,7 @@ var instance = new CustodianAccount(
     accountNumber: "...",  // required — The Custodian Account Number
     accountName: "...",  // required — The identifiable name given to the Custodian Account
     accountingMethod: "...",  // required — The Accounting method to be used. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
-    currency: "...",  // required — The Currency for the Account
+    currency: "...",  // optional — The Currency for the Account. Optional, with no default.
     properties: new Property(...),  // optional — Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain.
     custodian: new LegalEntity(...),  // required
     accountType: "...",  // optional — The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default.

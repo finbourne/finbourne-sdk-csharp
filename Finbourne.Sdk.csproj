@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo><!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <AssemblyName>Finbourne.Sdk</AssemblyName>
     <PackageId>Finbourne.Sdk</PackageId>
     <OutputType>Library</OutputType>
@@ -12,7 +12,7 @@
     <Description>This is the C# SDK for all of FINBOURNE's APIs</Description>
     <Copyright>FINBOURNE Technology Ltd</Copyright>
     <RootNamespace>Finbourne.Sdk</RootNamespace>
-    <Version>0.1.142</Version>
+    <Version>0.1.144</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Finbourne.Sdk.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/finbourne/finbourne-sdk-csharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
