@@ -15,8 +15,7 @@ All URIs are relative to *http://localhost*
 | [**ListRunTransactions**](#listruntransactions) | **GET** `/horizon/api/trade-publication-framework/instances/{instanceId}/runs/{runId}/transactions` | [EXPERIMENTAL] ListRunTransactions: List Transactions in a run. |
 | [**ReplayTransactions**](#replaytransactions) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/replay` | [EXPERIMENTAL] ReplayTransactions: Replay one or more transactions through a TPF instance |
 | [**ResolveFailedDelivery**](#resolvefaileddelivery) | **PUT** `/horizon/api/trade-publication-framework/instances/{instanceId}/failed/{batchReferenceId}/resolve` | [EXPERIMENTAL] ResolveFailedDelivery: Resolve a failed delivery without retry |
-| [**RetryFailedDelivery**](#retryfaileddelivery) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/failed/retry` | [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework |
-| [**RetryTpfSftpDelivery**](#retrytpfsftpdelivery) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/files/{fileUuid}/retry-sftp` | [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file |
+| [**RetryTpfSftpDelivery**](#retrytpfsftpdelivery) | **POST** `/horizon/api/trade-publication-framework/instances/{instanceId}/files/{fileUuid}/retry-sftp` | [EXPERIMENTAL] RetryTpfSftpDelivery: Resend a TPF file to the destination it was delivered to or failed to reach (SFTP or Drive) |
 
 ### Example
 
@@ -63,7 +62,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationF
 <a id="gettpffiledeliveries"></a>
 ## GetTpfFileDeliveries
 
-> PagedResourceListOfTpfFileDeliveryResponse GetTpfFileDeliveries(string instanceId, FileDeliveryStatus? status = null, DateTimeOffset? dateFrom = null, DateTimeOffset? dateTo = null, int? limit = null, string? page = null)
+> PagedResourceListOfTpfFileDeliveryResponse GetTpfFileDeliveries(string instanceId, TpfFileDeliveryDisplayStatus? status = null, DateTimeOffset? dateFrom = null, DateTimeOffset? dateTo = null, int? limit = null, string? page = null)
 
 [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance
 
@@ -74,7 +73,7 @@ Retrieve file delivery records for a Trade Publication Framework instance. Retur
 ```csharp
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
 var instanceId = "instanceId_example";  // string
-var status = new FileDeliveryStatus?(); // FileDeliveryStatus? (optional)
+var status = new TpfFileDeliveryDisplayStatus?(); // TpfFileDeliveryDisplayStatus? (optional)
 var dateFrom = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var dateTo = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var limit = 50;  // int? (optional)
@@ -88,7 +87,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Integration instance ID |
-| **status** | [FileDeliveryStatus?](../Model/FileDeliveryStatus?.md) | query | optional | Filter by delivery status (Completed, Error, Pending) |
+| **status** | [TpfFileDeliveryDisplayStatus?](../Model/TpfFileDeliveryDisplayStatus?.md) | query | optional | Filter by delivery outcome (Delivered, Failed, Pending) |
 | **dateFrom** | **DateTimeOffset?** | query | optional | Filter deliveries from this time (inclusive) |
 | **dateTo** | **DateTimeOffset?** | query | optional | Filter deliveries to this time (inclusive) |
 | **limit** | **int?** | query | optional | Page size for pagination (default 50, max 500) Default: `50` |
@@ -684,73 +683,12 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
-<a id="retryfaileddelivery"></a>
-## RetryFailedDelivery
-
-> TpfFailedDeliveryResponse RetryFailedDelivery(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest)
-
-[EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework
-
-Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
-
-### Example
-
-```csharp
-var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
-var instanceId = "instanceId_example";  // string
-var tpfRetryFailedDeliveryRequest = new TpfRetryFailedDeliveryRequest(); // TpfRetryFailedDeliveryRequest
-TpfFailedDeliveryResponse result = apiInstance.RetryFailedDelivery(instanceId, tpfRetryFailedDeliveryRequest);
-Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
-```
-
-### Parameters
-
-| Name | Type | In | Required | Description |
-|------|------|----|----------|-------------|
-| **instanceId** | **string** | path | **required** | Integration instance identifier |
-| **tpfRetryFailedDeliveryRequest** | [TpfRetryFailedDeliveryRequest](../Model/TpfRetryFailedDeliveryRequest.md) | body | **required** | Request containing batch element reference identifiers to retry |
-
-### Return type
-
-[TpfFailedDeliveryResponse](../Model/TpfFailedDeliveryResponse.md)
-
-### HTTP request headers
-
- - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
- - **Accept**: `application/json`
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | The details of the input related failure |  -  |
-| **404** | The requested instance does not exist. |  -  |
-| **0** | Error response |  -  |
-
-<details>
-<summary>Using the RetryFailedDeliveryWithHttpInfo variant</summary>
-
-This returns an `ApiResponse` object which contains the response data, status code and headers.
-
-```csharp
-ApiResponse<TpfFailedDeliveryResponse> response = apiInstance.RetryFailedDeliveryWithHttpInfo(instanceId, tpfRetryFailedDeliveryRequest);
-Console.WriteLine("Status Code: " + response.StatusCode);
-Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
-Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
-```
-</details>
-
-[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
-
----
-
 <a id="retrytpfsftpdelivery"></a>
 ## RetryTpfSftpDelivery
 
-> TpfRetrySftpResponse RetryTpfSftpDelivery(string instanceId, string fileUuid)
+> TpfRetrySftpResponse RetryTpfSftpDelivery(string instanceId, string fileUuid, bool? confirmDuplicate = null)
 
-[EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
+[EXPERIMENTAL] RetryTpfSftpDelivery: Resend a TPF file to the destination it was delivered to or failed to reach (SFTP or Drive)
 
 ### Example
 
@@ -758,7 +696,8 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
 var instanceId = "instanceId_example";  // string
 var fileUuid = "fileUuid_example";  // string
-TpfRetrySftpResponse result = apiInstance.RetryTpfSftpDelivery(instanceId, fileUuid);
+var confirmDuplicate = false;  // bool? (optional)
+TpfRetrySftpResponse result = apiInstance.RetryTpfSftpDelivery(instanceId, fileUuid, confirmDuplicate);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -768,6 +707,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Integration instance ID |
 | **fileUuid** | **string** | path | **required** | File delivery UUID to retry, as returned by the run-files and file-deliveries listings |
+| **confirmDuplicate** | **bool?** | query | optional | Resend even though the file already reached this destination Default: `false` |
 
 ### Return type
 
@@ -794,7 +734,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<TpfRetrySftpResponse> response = apiInstance.RetryTpfSftpDeliveryWithHttpInfo(instanceId, fileUuid);
+ApiResponse<TpfRetrySftpResponse> response = apiInstance.RetryTpfSftpDeliveryWithHttpInfo(instanceId, fileUuid, confirmDuplicate);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

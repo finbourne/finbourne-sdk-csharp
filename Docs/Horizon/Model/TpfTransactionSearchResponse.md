@@ -9,6 +9,7 @@ TPF send history record
 | **InstanceId** | **Guid** | Required | Integration instance ID where the transaction was processed |
 | **InstanceName** | **string** | Required | Integration instance name |
 | **BatchId** | **Guid** | Required | Unique identifier of the batch |
+| **RunId** | **Guid** | Required | The run that processed the transaction for this instance, as shown in run monitoring |
 | **RunStartTime** | **DateTimeOffset** | Required | Timestamp when the batch/run started |
 | **PublicationStatus** | **string** | Required | Publication status of the transaction (Sent | Skipped | Failed) |
 | **InstrumentName** | **string** | Required | Instrument name |
@@ -21,6 +22,8 @@ TPF send history record
 | **PortfolioCode** | **string** | Optional | PortfolioCode showing portfolio code |
 | **PortfolioScope** | **string** | Optional | PortfolioScope displaying portfolio scope |
 | **FailureReason** | **string** | Optional | FailureReason to show failure reason |
+| **FailureStage** | **string** | Optional | Stage at which a failed transaction failed: Build or Delivery |
+| **SentAt** | **DateTimeOffset?** | Optional | When the transaction was sent, which is when its file reached a destination. Empty for Skipped and Failed rows |
 | **InstrumentId** | **string** | Optional | InstrumentId showing instrument id of transaction |
 
 
@@ -36,6 +39,7 @@ var instance = new TpfTransactionSearchResponse(
     instanceId: "...",  // required — Integration instance ID where the transaction was processed
     instanceName: "...",  // required — Integration instance name
     batchId: "...",  // required — Unique identifier of the batch
+    runId: "...",  // required — The run that processed the transaction for this instance, as shown in run monitoring
     runStartTime: DateTimeOffset.Now,  // required — Timestamp when the batch/run started
     publicationStatus: "...",  // required — Publication status of the transaction (Sent | Skipped | Failed)
     instrumentName: "...",  // required — Instrument name
@@ -48,6 +52,8 @@ var instance = new TpfTransactionSearchResponse(
     portfolioCode: "...",  // optional — PortfolioCode showing portfolio code
     portfolioScope: "...",  // optional — PortfolioScope displaying portfolio scope
     failureReason: "...",  // optional — FailureReason to show failure reason
+    failureStage: "...",  // optional — Stage at which a failed transaction failed: Build or Delivery
+    sentAt: DateTimeOffset.Now,  // optional — When the transaction was sent, which is when its file reached a destination. Empty for Skipped and Failed rows
     instrumentId: "..."  // optional — InstrumentId showing instrument id of transaction
 );
 ```

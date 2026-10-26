@@ -19,48 +19,52 @@ using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 
-namespace Finbourne.Sdk.Services.Horizon.Model
+namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// Response for bulk retry operation of failed deliveries
+    /// AllocationBasisRule
     /// </summary>
-    [DataContract(Name = "TpfFailedDeliveryResponse")]
-    public partial class TpfFailedDeliveryResponse : IEquatable<TpfFailedDeliveryResponse>, IValidatableObject
+    [DataContract(Name = "AllocationBasisRule")]
+    public partial class AllocationBasisRule : IEquatable<AllocationBasisRule>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TpfFailedDeliveryResponse" /> class.
+        /// Initializes a new instance of the <see cref="AllocationBasisRule" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected TpfFailedDeliveryResponse() { }
+        protected AllocationBasisRule() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="TpfFailedDeliveryResponse" /> class.
+        /// Initializes a new instance of the <see cref="AllocationBasisRule" /> class.
         /// </summary>
-        /// <param name="submitted">Number of batch elements submitted for retry (required).</param>
-        /// <param name="results">Per-element retry results (required).</param>
-        public TpfFailedDeliveryResponse(int submitted = default(int), List<TpfRetryElementResult> results = default(List<TpfRetryElementResult>))
+        /// <param name="character">character (required).</param>
+        /// <param name="basis">Available values: CommittedCapital, PaidInCapital, DealPaidIn. (required).</param>
+        public AllocationBasisRule(string character = default(string), string basis = default(string))
         {
-            this.Submitted = submitted;
-            // to ensure "results" is required (not null)
-            if (results == null)
+            // to ensure "character" is required (not null)
+            if (character == null)
             {
-                throw new ArgumentNullException("results is a required property for TpfFailedDeliveryResponse and cannot be null");
+                throw new ArgumentNullException("character is a required property for AllocationBasisRule and cannot be null");
             }
-            this.Results = results;
+            this.Character = character;
+            // to ensure "basis" is required (not null)
+            if (basis == null)
+            {
+                throw new ArgumentNullException("basis is a required property for AllocationBasisRule and cannot be null");
+            }
+            this.Basis = basis;
         }
 
         /// <summary>
-        /// Number of batch elements submitted for retry
+        /// Gets or Sets Character
         /// </summary>
-        /// <value>Number of batch elements submitted for retry</value>
-        [DataMember(Name = "submitted", IsRequired = true, EmitDefaultValue = true)]
-        public int Submitted { get; set; }
+        [DataMember(Name = "character", IsRequired = true, EmitDefaultValue = true)]
+        public string Character { get; set; }
 
         /// <summary>
-        /// Per-element retry results
+        /// Available values: CommittedCapital, PaidInCapital, DealPaidIn.
         /// </summary>
-        /// <value>Per-element retry results</value>
-        [DataMember(Name = "results", IsRequired = true, EmitDefaultValue = true)]
-        public List<TpfRetryElementResult> Results { get; set; }
+        /// <value>Available values: CommittedCapital, PaidInCapital, DealPaidIn.</value>
+        [DataMember(Name = "basis", IsRequired = true, EmitDefaultValue = true)]
+        public string Basis { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,9 +73,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class TpfFailedDeliveryResponse {\n");
-            sb.Append("  Submitted: ").Append(Submitted).Append("\n");
-            sb.Append("  Results: ").Append(Results).Append("\n");
+            sb.Append("class AllocationBasisRule {\n");
+            sb.Append("  Character: ").Append(Character).Append("\n");
+            sb.Append("  Basis: ").Append(Basis).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,15 +96,15 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TpfFailedDeliveryResponse);
+            return this.Equals(input as AllocationBasisRule);
         }
 
         /// <summary>
-        /// Returns true if TpfFailedDeliveryResponse instances are equal
+        /// Returns true if AllocationBasisRule instances are equal
         /// </summary>
-        /// <param name="input">Instance of TpfFailedDeliveryResponse to be compared</param>
+        /// <param name="input">Instance of AllocationBasisRule to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TpfFailedDeliveryResponse input)
+        public bool Equals(AllocationBasisRule input)
         {
             if (input == null)
             {
@@ -108,14 +112,14 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             }
             return 
                 (
-                    this.Submitted == input.Submitted ||
-                    this.Submitted.Equals(input.Submitted)
+                    this.Character == input.Character ||
+                    (this.Character != null &&
+                    this.Character.Equals(input.Character))
                 ) && 
                 (
-                    this.Results == input.Results ||
-                    this.Results != null &&
-                    input.Results != null &&
-                    this.Results.SequenceEqual(input.Results)
+                    this.Basis == input.Basis ||
+                    (this.Basis != null &&
+                    this.Basis.Equals(input.Basis))
                 );
         }
 
@@ -128,10 +132,13 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Submitted.GetHashCode();
-                if (this.Results != null)
+                if (this.Character != null)
                 {
-                    hashCode = (hashCode * 59) + this.Results.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Character.GetHashCode();
+                }
+                if (this.Basis != null)
+                {
+                    hashCode = (hashCode * 59) + this.Basis.GetHashCode();
                 }
                 return hashCode;
             }

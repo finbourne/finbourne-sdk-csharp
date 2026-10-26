@@ -25,6 +25,7 @@ A Fund entity.
 | **AdditionalNavTypes** | [List&lt;NavType&gt;](NavType.md) | Optional | The definitions for any additional NAVs on the Fund. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the Fund. |
 | **CreateInstrument** | **bool** | Optional | Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false. |
+| **InstrumentScope** | **string** | Optional | The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead. |
 | **AllocationGroups** | [List&lt;AllocationGroup&gt;](AllocationGroup.md) | Optional | An optional list of Allocation Group definitions for the Fund. |
 | **ShareClasses** | [List&lt;ShareClass&gt;](ShareClass.md) | Optional | An optional list of Share Class definitions for the Fund. |
 | **FundInstrument** | [FundInstrument](FundInstrument.md) | Optional | *No description available.* |
@@ -63,6 +64,7 @@ var instance = new Fund(
     additionalNavTypes: new List<NavType>(),  // optional — The definitions for any additional NAVs on the Fund.
     properties: new Property(...),  // optional — A set of properties for the Fund.
     createInstrument: true,  // optional — Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false.
+    instrumentScope: "...",  // optional — The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead.
     allocationGroups: new List<AllocationGroup>(),  // optional — An optional list of Allocation Group definitions for the Fund.
     shareClasses: new List<ShareClass>(),  // optional — An optional list of Share Class definitions for the Fund.
     fundInstrument: new FundInstrument(...),  // optional

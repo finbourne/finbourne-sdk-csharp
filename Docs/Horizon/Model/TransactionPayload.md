@@ -1,6 +1,6 @@
 # Finbourne.Sdk.Horizon.Model.TransactionPayload
 
-record containing the payload for a single transaction. Columns is compiled once from the TPF instance configuration and is identical across every item in the paginated result.
+record containing the payload for a single transaction. Columns is compiled once from the TPF instance configuration and is identical across every item in the paginated result. PublicationStatus is the row's outcome: Sent, or Failed when the file holding it reached no destination.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -9,6 +9,7 @@ record containing the payload for a single transaction. Columns is compiled once
 | **Columns** | **List&lt;string&gt;** | Required | *No description available.* |
 | **Values** | **Dictionary&lt;string, string&gt;** | Required | *No description available.* |
 | **RawCsvRow** | **string** | Required | *No description available.* |
+| **PublicationStatus** | **string** | Required | *No description available.* |
 
 
 ## Usage
@@ -22,7 +23,8 @@ var instance = new TransactionPayload(
     transactionId: "...",  // required
     columns: ,  // required
     values: ,  // required
-    rawCsvRow: "..."  // required
+    rawCsvRow: "...",  // required
+    publicationStatus: "..."  // required
 );
 ```
 ### Serializing to JSON

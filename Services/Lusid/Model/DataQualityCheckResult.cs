@@ -45,7 +45,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="lusidEntity">lusidEntity.</param>
         /// <param name="countRuleBreaches">The count of rule breaches (1 for RuleBreached, multiple for RuleBreachesOverLimit).</param>
         /// <param name="errorDetail">Error details (for RulesetInvalid, RuleInvalid).</param>
-        /// <param name="resultId">Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType..</param>
+        /// <param name="resultId">Unique, stable identifier for this result, scoped to the check definition, result type, ruleset, rule and  breaching entity. Treat as opaque — composition varies by entityType..</param>
         /// <param name="portfolioHolding">portfolioHolding.</param>
         /// <param name="portfolioTransaction">portfolioTransaction.</param>
         /// <param name="structuredResultData">structuredResultData.</param>
@@ -177,9 +177,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string ErrorDetail { get; set; }
 
         /// <summary>
-        /// Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType.
+        /// Unique, stable identifier for this result, scoped to the check definition, result type, ruleset, rule and  breaching entity. Treat as opaque — composition varies by entityType.
         /// </summary>
-        /// <value>Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType.</value>
+        /// <value>Unique, stable identifier for this result, scoped to the check definition, result type, ruleset, rule and  breaching entity. Treat as opaque — composition varies by entityType.</value>
         [DataMember(Name = "resultId", EmitDefaultValue = true)]
         public string ResultId { get; set; }
 

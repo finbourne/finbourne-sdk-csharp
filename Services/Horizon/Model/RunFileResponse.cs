@@ -44,7 +44,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="transactionIds">transactionIds (required).</param>
         /// <param name="fileUuid">fileUuid (required).</param>
         /// <param name="failedTransactionIds">failedTransactionIds (required).</param>
-        public RunFileResponse(string fileName = default(string), DateTimeOffset generatedAt = default(DateTimeOffset), int rowCount = default(int), string fileHash = default(string), bool encrypted = default(bool), List<FileDestinationResponse> destinations = default(List<FileDestinationResponse>), List<string> transactionIds = default(List<string>), Guid fileUuid = default(Guid), List<string> failedTransactionIds = default(List<string>))
+        /// <param name="canResend">Whether the data the file is rebuilt from is still retained, so a resend can be requested. (required).</param>
+        public RunFileResponse(string fileName = default(string), DateTimeOffset generatedAt = default(DateTimeOffset), int rowCount = default(int), string fileHash = default(string), bool encrypted = default(bool), List<FileDestinationResponse> destinations = default(List<FileDestinationResponse>), List<string> transactionIds = default(List<string>), Guid fileUuid = default(Guid), List<string> failedTransactionIds = default(List<string>), bool canResend = default(bool))
         {
             // to ensure "fileName" is required (not null)
             if (fileName == null)
@@ -80,6 +81,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("failedTransactionIds is a required property for RunFileResponse and cannot be null");
             }
             this.FailedTransactionIds = failedTransactionIds;
+            this.CanResend = canResend;
         }
 
         /// <summary>
@@ -137,6 +139,13 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public List<string> FailedTransactionIds { get; set; }
 
         /// <summary>
+        /// Whether the data the file is rebuilt from is still retained, so a resend can be requested.
+        /// </summary>
+        /// <value>Whether the data the file is rebuilt from is still retained, so a resend can be requested.</value>
+        [DataMember(Name = "canResend", IsRequired = true, EmitDefaultValue = true)]
+        public bool CanResend { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -153,6 +162,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  TransactionIds: ").Append(TransactionIds).Append("\n");
             sb.Append("  FileUuid: ").Append(FileUuid).Append("\n");
             sb.Append("  FailedTransactionIds: ").Append(FailedTransactionIds).Append("\n");
+            sb.Append("  CanResend: ").Append(CanResend).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -233,6 +243,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.FailedTransactionIds != null &&
                     input.FailedTransactionIds != null &&
                     this.FailedTransactionIds.SequenceEqual(input.FailedTransactionIds)
+                ) && 
+                (
+                    this.CanResend == input.CanResend ||
+                    this.CanResend.Equals(input.CanResend)
                 );
         }
 
@@ -275,6 +289,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 {
                     hashCode = (hashCode * 59) + this.FailedTransactionIds.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.CanResend.GetHashCode();
                 return hashCode;
             }
         }

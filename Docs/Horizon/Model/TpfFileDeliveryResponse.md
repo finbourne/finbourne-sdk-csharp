@@ -17,6 +17,7 @@ Response model for TPF file delivery search results
 | **DestinationError** | **string** | Optional | *No description available.* |
 | **DestinationName** | **string** | Optional | *No description available.* |
 | **FileUuid** | **Guid** | Required | *No description available.* |
+| **CanResend** | **bool** | Required | Whether the data the file is rebuilt from is still retained, so a resend can be requested. |
 
 
 ## Usage
@@ -38,7 +39,8 @@ var instance = new TpfFileDeliveryResponse(
     destinationStatus: "...",  // required
     destinationError: "...",  // optional
     destinationName: "...",  // optional
-    fileUuid: "..."  // required
+    fileUuid: "...",  // required
+    canResend: true  // required — Whether the data the file is rebuilt from is still retained, so a resend can be requested.
 );
 ```
 ### Serializing to JSON

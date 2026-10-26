@@ -48,8 +48,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="holdingsAsAtOverride">The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt..</param>
         /// <param name="valuationsAsAtOverride">The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt..</param>
         /// <param name="properties">The Fee properties. These will be from the &#39;Fee&#39; domain..</param>
+        /// <param name="bucketSetSeeds">The bucket set seeds set on this variant of the Valuation Point. Null when it has none..</param>
         /// <param name="links">links.</param>
-        public ValuationPointOverview(string href = default(string), string diaryEntryCode = default(string), string diaryEntryVariant = default(string), DateTimeOffset effectiveFrom = default(DateTimeOffset), DateTimeOffset effectiveTo = default(DateTimeOffset), DateTimeOffset queryAsAt = default(DateTimeOffset), string type = default(string), string status = default(string), decimal gav = default(decimal), decimal nav = default(decimal), DateTimeOffset? holdingsAsAtOverride = default(DateTimeOffset?), DateTimeOffset? valuationsAsAtOverride = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), List<Link> links = default(List<Link>))
+        public ValuationPointOverview(string href = default(string), string diaryEntryCode = default(string), string diaryEntryVariant = default(string), DateTimeOffset effectiveFrom = default(DateTimeOffset), DateTimeOffset effectiveTo = default(DateTimeOffset), DateTimeOffset queryAsAt = default(DateTimeOffset), string type = default(string), string status = default(string), decimal gav = default(decimal), decimal nav = default(decimal), DateTimeOffset? holdingsAsAtOverride = default(DateTimeOffset?), DateTimeOffset? valuationsAsAtOverride = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), List<BucketSetSeed> bucketSetSeeds = default(List<BucketSetSeed>), List<Link> links = default(List<Link>))
         {
             // to ensure "diaryEntryCode" is required (not null)
             if (diaryEntryCode == null)
@@ -79,6 +80,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.HoldingsAsAtOverride = holdingsAsAtOverride;
             this.ValuationsAsAtOverride = valuationsAsAtOverride;
             this.Properties = properties;
+            this.BucketSetSeeds = bucketSetSeeds;
             this.Links = links;
         }
 
@@ -174,6 +176,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public Dictionary<string, Property> Properties { get; set; }
 
         /// <summary>
+        /// The bucket set seeds set on this variant of the Valuation Point. Null when it has none.
+        /// </summary>
+        /// <value>The bucket set seeds set on this variant of the Valuation Point. Null when it has none.</value>
+        [DataMember(Name = "bucketSetSeeds", EmitDefaultValue = true)]
+        public List<BucketSetSeed> BucketSetSeeds { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -200,6 +209,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  HoldingsAsAtOverride: ").Append(HoldingsAsAtOverride).Append("\n");
             sb.Append("  ValuationsAsAtOverride: ").Append(ValuationsAsAtOverride).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
+            sb.Append("  BucketSetSeeds: ").Append(BucketSetSeeds).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -301,6 +311,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Properties.SequenceEqual(input.Properties)
                 ) && 
                 (
+                    this.BucketSetSeeds == input.BucketSetSeeds ||
+                    this.BucketSetSeeds != null &&
+                    input.BucketSetSeeds != null &&
+                    this.BucketSetSeeds.SequenceEqual(input.BucketSetSeeds)
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -362,6 +378,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Properties != null)
                 {
                     hashCode = (hashCode * 59) + this.Properties.GetHashCode();
+                }
+                if (this.BucketSetSeeds != null)
+                {
+                    hashCode = (hashCode * 59) + this.BucketSetSeeds.GetHashCode();
                 }
                 if (this.Links != null)
                 {

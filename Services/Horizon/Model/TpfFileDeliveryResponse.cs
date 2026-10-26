@@ -47,7 +47,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="destinationError">destinationError.</param>
         /// <param name="destinationName">destinationName.</param>
         /// <param name="fileUuid">fileUuid (required).</param>
-        public TpfFileDeliveryResponse(string runId = default(string), DateTimeOffset? runStartTime = default(DateTimeOffset?), string fileName = default(string), DateTimeOffset generatedAt = default(DateTimeOffset), int rowCount = default(int), string fileHash = default(string), string destinationType = default(string), string destinationPath = default(string), string destinationStatus = default(string), string destinationError = default(string), string destinationName = default(string), Guid fileUuid = default(Guid))
+        /// <param name="canResend">Whether the data the file is rebuilt from is still retained, so a resend can be requested. (required).</param>
+        public TpfFileDeliveryResponse(string runId = default(string), DateTimeOffset? runStartTime = default(DateTimeOffset?), string fileName = default(string), DateTimeOffset generatedAt = default(DateTimeOffset), int rowCount = default(int), string fileHash = default(string), string destinationType = default(string), string destinationPath = default(string), string destinationStatus = default(string), string destinationError = default(string), string destinationName = default(string), Guid fileUuid = default(Guid), bool canResend = default(bool))
         {
             // to ensure "fileName" is required (not null)
             if (fileName == null)
@@ -70,6 +71,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             }
             this.DestinationStatus = destinationStatus;
             this.FileUuid = fileUuid;
+            this.CanResend = canResend;
             this.RunId = runId;
             this.RunStartTime = runStartTime;
             this.FileHash = fileHash;
@@ -151,6 +153,13 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public Guid FileUuid { get; set; }
 
         /// <summary>
+        /// Whether the data the file is rebuilt from is still retained, so a resend can be requested.
+        /// </summary>
+        /// <value>Whether the data the file is rebuilt from is still retained, so a resend can be requested.</value>
+        [DataMember(Name = "canResend", IsRequired = true, EmitDefaultValue = true)]
+        public bool CanResend { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -170,6 +179,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  DestinationError: ").Append(DestinationError).Append("\n");
             sb.Append("  DestinationName: ").Append(DestinationName).Append("\n");
             sb.Append("  FileUuid: ").Append(FileUuid).Append("\n");
+            sb.Append("  CanResend: ").Append(CanResend).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -263,6 +273,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.FileUuid == input.FileUuid ||
                     (this.FileUuid != null &&
                     this.FileUuid.Equals(input.FileUuid))
+                ) && 
+                (
+                    this.CanResend == input.CanResend ||
+                    this.CanResend.Equals(input.CanResend)
                 );
         }
 
@@ -320,6 +334,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 {
                     hashCode = (hashCode * 59) + this.FileUuid.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.CanResend.GetHashCode();
                 return hashCode;
             }
         }

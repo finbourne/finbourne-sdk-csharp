@@ -53,11 +53,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="additionalNavTypes">The definitions for any additional NAVs on the Fund..</param>
         /// <param name="properties">A set of properties for the Fund..</param>
         /// <param name="createInstrument">Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false..</param>
+        /// <param name="instrumentScope">The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead..</param>
         /// <param name="shareClasses">An optional list of Share Class definitions for the Fund..</param>
         /// <param name="pricingMethodology">pricingMethodology.</param>
         /// <param name="reportingPrices">Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices..</param>
         /// <param name="whtParameters">whtParameters.</param>
-        public FundDefinitionRequest(string code = default(string), string shortCode = default(string), string displayName = default(string), string description = default(string), string baseCurrency = default(string), string investorStructure = default(string), List<PortfolioEntityId> portfolioIds = default(List<PortfolioEntityId>), ResourceId fundConfigurationId = default(ResourceId), List<string> shareClassInstrumentScopes = default(List<string>), List<InstrumentResolutionDetail> shareClassInstruments = default(List<InstrumentResolutionDetail>), string type = default(string), string taxTransparency = default(string), DateTimeOffset inceptionDate = default(DateTimeOffset), int? decimalPlaces = default(int?), NavTypeDefinition primaryNavType = default(NavTypeDefinition), List<NavTypeDefinition> additionalNavTypes = default(List<NavTypeDefinition>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool createInstrument = default(bool), List<ShareClassDefinition> shareClasses = default(List<ShareClassDefinition>), PricingMethodology pricingMethodology = default(PricingMethodology), List<ReportingPrice> reportingPrices = default(List<ReportingPrice>), WhtParameters whtParameters = default(WhtParameters))
+        public FundDefinitionRequest(string code = default(string), string shortCode = default(string), string displayName = default(string), string description = default(string), string baseCurrency = default(string), string investorStructure = default(string), List<PortfolioEntityId> portfolioIds = default(List<PortfolioEntityId>), ResourceId fundConfigurationId = default(ResourceId), List<string> shareClassInstrumentScopes = default(List<string>), List<InstrumentResolutionDetail> shareClassInstruments = default(List<InstrumentResolutionDetail>), string type = default(string), string taxTransparency = default(string), DateTimeOffset inceptionDate = default(DateTimeOffset), int? decimalPlaces = default(int?), NavTypeDefinition primaryNavType = default(NavTypeDefinition), List<NavTypeDefinition> additionalNavTypes = default(List<NavTypeDefinition>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool createInstrument = default(bool), string instrumentScope = default(string), List<ShareClassDefinition> shareClasses = default(List<ShareClassDefinition>), PricingMethodology pricingMethodology = default(PricingMethodology), List<ReportingPrice> reportingPrices = default(List<ReportingPrice>), WhtParameters whtParameters = default(WhtParameters))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -107,6 +108,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.AdditionalNavTypes = additionalNavTypes;
             this.Properties = properties;
             this.CreateInstrument = createInstrument;
+            this.InstrumentScope = instrumentScope;
             this.ShareClasses = shareClasses;
             this.PricingMethodology = pricingMethodology;
             this.ReportingPrices = reportingPrices;
@@ -238,6 +240,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public bool CreateInstrument { get; set; }
 
         /// <summary>
+        /// The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead.
+        /// </summary>
+        /// <value>The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead.</value>
+        [DataMember(Name = "instrumentScope", EmitDefaultValue = true)]
+        public string InstrumentScope { get; set; }
+
+        /// <summary>
         /// An optional list of Share Class definitions for the Fund.
         /// </summary>
         /// <value>An optional list of Share Class definitions for the Fund.</value>
@@ -289,6 +298,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  AdditionalNavTypes: ").Append(AdditionalNavTypes).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  CreateInstrument: ").Append(CreateInstrument).Append("\n");
+            sb.Append("  InstrumentScope: ").Append(InstrumentScope).Append("\n");
             sb.Append("  ShareClasses: ").Append(ShareClasses).Append("\n");
             sb.Append("  PricingMethodology: ").Append(PricingMethodology).Append("\n");
             sb.Append("  ReportingPrices: ").Append(ReportingPrices).Append("\n");
@@ -423,6 +433,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.CreateInstrument.Equals(input.CreateInstrument)
                 ) && 
                 (
+                    this.InstrumentScope == input.InstrumentScope ||
+                    (this.InstrumentScope != null &&
+                    this.InstrumentScope.Equals(input.InstrumentScope))
+                ) && 
+                (
                     this.ShareClasses == input.ShareClasses ||
                     this.ShareClasses != null &&
                     input.ShareClasses != null &&
@@ -524,6 +539,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     hashCode = (hashCode * 59) + this.Properties.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.CreateInstrument.GetHashCode();
+                if (this.InstrumentScope != null)
+                {
+                    hashCode = (hashCode * 59) + this.InstrumentScope.GetHashCode();
+                }
                 if (this.ShareClasses != null)
                 {
                     hashCode = (hashCode * 59) + this.ShareClasses.GetHashCode();
@@ -570,6 +589,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
+            }
+
+            // InstrumentScope (string) pattern
+            Regex regexInstrumentScope = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
+            if (this.InstrumentScope != null && false == regexInstrumentScope.Match(this.InstrumentScope).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InstrumentScope, must match a pattern of " + regexInstrumentScope, new [] { "InstrumentScope" });
             }
 
             yield break;

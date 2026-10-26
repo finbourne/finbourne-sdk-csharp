@@ -1085,7 +1085,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="updateinstance"></a>
 ## UpdateInstance
 
-> void UpdateInstance(string instanceId, UpdateInstanceRequest updateInstanceRequest)
+> UpdateInstanceResponse UpdateInstance(string instanceId, UpdateInstanceRequest updateInstanceRequest)
 
 [EXPERIMENTAL] UpdateInstance: Update a single integration instance.
 
@@ -1097,7 +1097,8 @@ Updates an existing instance of an integration, returning its identifier. The us
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IntegrationsApi>();
 var instanceId = "instanceId_example";  // string
 var updateInstanceRequest = new UpdateInstanceRequest(); // UpdateInstanceRequest
-apiInstance.UpdateInstance(instanceId, updateInstanceRequest);
+UpdateInstanceResponse result = apiInstance.UpdateInstance(instanceId, updateInstanceRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
 ### Parameters
@@ -1109,7 +1110,7 @@ apiInstance.UpdateInstance(instanceId, updateInstanceRequest);
 
 ### Return type
 
-void (empty response body)
+[UpdateInstanceResponse](../Model/UpdateInstanceResponse.md)
 
 ### HTTP request headers
 
@@ -1120,7 +1121,7 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | No Content |  -  |
+| **200** | The instance was updated. Warnings describe non-blocking findings about the saved configuration. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **404** | The instance does not exist. |  -  |
 | **0** | Error response |  -  |
@@ -1131,7 +1132,10 @@ void (empty response body)
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-apiInstance.UpdateInstanceWithHttpInfo(instanceId, updateInstanceRequest);
+ApiResponse<UpdateInstanceResponse> response = apiInstance.UpdateInstanceWithHttpInfo(instanceId, updateInstanceRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
 ```
 </details>
 

@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// Response containing details of a single transaction for a run.
+    /// Response containing details of a single transaction for a run. A transaction built twice in one batch appears once per build. FailureStage says whether a failed transaction failed while being built (Build) or while its file was being delivered (Delivery).
     /// </summary>
     [DataContract(Name = "TransactionResponse")]
     public partial class TransactionResponse : IEquatable<TransactionResponse>, IValidatableObject
@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// Initializes a new instance of the <see cref="TransactionResponse" /> class.
         /// </summary>
         /// <param name="transactionId">transactionId (required).</param>
-        /// <param name="publicationStatus">publicationStatus (required).</param>
+        /// <param name="publicationStatus">The outcome the screens show for this row: Sent, Skipped or Failed. (required).</param>
         /// <param name="portfolioScope">portfolioScope.</param>
         /// <param name="portfolioCode">portfolioCode.</param>
         /// <param name="instrumentId">instrumentId.</param>
@@ -44,13 +44,14 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="instrumentName">instrumentName.</param>
         /// <param name="tradeDate">tradeDate.</param>
         /// <param name="settlementDate">settlementDate.</param>
-        /// <param name="status">status (required).</param>
+        /// <param name="status">The batch element&#39;s processing state as the worker left it, not the outcome; read PublicationStatus for that. (required).</param>
         /// <param name="skipReason">skipReason.</param>
         /// <param name="failureReason">failureReason.</param>
         /// <param name="outputFileName">outputFileName.</param>
         /// <param name="sentAt">sentAt.</param>
         /// <param name="destinations">destinations (required).</param>
-        public TransactionResponse(string transactionId = default(string), string publicationStatus = default(string), string portfolioScope = default(string), string portfolioCode = default(string), string instrumentId = default(string), string instrumentType = default(string), string instrumentName = default(string), DateTimeOffset? tradeDate = default(DateTimeOffset?), DateTimeOffset? settlementDate = default(DateTimeOffset?), string status = default(string), string skipReason = default(string), string failureReason = default(string), string outputFileName = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), List<DestinationResponse> destinations = default(List<DestinationResponse>))
+        /// <param name="failureStage">failureStage.</param>
+        public TransactionResponse(string transactionId = default(string), string publicationStatus = default(string), string portfolioScope = default(string), string portfolioCode = default(string), string instrumentId = default(string), string instrumentType = default(string), string instrumentName = default(string), DateTimeOffset? tradeDate = default(DateTimeOffset?), DateTimeOffset? settlementDate = default(DateTimeOffset?), string status = default(string), string skipReason = default(string), string failureReason = default(string), string outputFileName = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), List<DestinationResponse> destinations = default(List<DestinationResponse>), string failureStage = default(string))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -87,6 +88,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             this.FailureReason = failureReason;
             this.OutputFileName = outputFileName;
             this.SentAt = sentAt;
+            this.FailureStage = failureStage;
         }
 
         /// <summary>
@@ -96,8 +98,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string TransactionId { get; set; }
 
         /// <summary>
-        /// Gets or Sets PublicationStatus
+        /// The outcome the screens show for this row: Sent, Skipped or Failed.
         /// </summary>
+        /// <value>The outcome the screens show for this row: Sent, Skipped or Failed.</value>
         [DataMember(Name = "publicationStatus", IsRequired = true, EmitDefaultValue = true)]
         public string PublicationStatus { get; set; }
 
@@ -144,8 +147,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public DateTimeOffset? SettlementDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// The batch element&#39;s processing state as the worker left it, not the outcome; read PublicationStatus for that.
         /// </summary>
+        /// <value>The batch element&#39;s processing state as the worker left it, not the outcome; read PublicationStatus for that.</value>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
         public string Status { get; set; }
 
@@ -180,6 +184,12 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public List<DestinationResponse> Destinations { get; set; }
 
         /// <summary>
+        /// Gets or Sets FailureStage
+        /// </summary>
+        [DataMember(Name = "failureStage", EmitDefaultValue = true)]
+        public string FailureStage { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -202,6 +212,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  OutputFileName: ").Append(OutputFileName).Append("\n");
             sb.Append("  SentAt: ").Append(SentAt).Append("\n");
             sb.Append("  Destinations: ").Append(Destinations).Append("\n");
+            sb.Append("  FailureStage: ").Append(FailureStage).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -312,6 +323,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.Destinations != null &&
                     input.Destinations != null &&
                     this.Destinations.SequenceEqual(input.Destinations)
+                ) && 
+                (
+                    this.FailureStage == input.FailureStage ||
+                    (this.FailureStage != null &&
+                    this.FailureStage.Equals(input.FailureStage))
                 );
         }
 
@@ -383,6 +399,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 if (this.Destinations != null)
                 {
                     hashCode = (hashCode * 59) + this.Destinations.GetHashCode();
+                }
+                if (this.FailureStage != null)
+                {
+                    hashCode = (hashCode * 59) + this.FailureStage.GetHashCode();
                 }
                 return hashCode;
             }

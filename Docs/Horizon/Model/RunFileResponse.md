@@ -14,6 +14,7 @@ record containing details of a single file for a run.
 | **TransactionIds** | **List&lt;string&gt;** | Required | *No description available.* |
 | **FileUuid** | **Guid** | Required | *No description available.* |
 | **FailedTransactionIds** | **List&lt;string&gt;** | Required | *No description available.* |
+| **CanResend** | **bool** | Required | Whether the data the file is rebuilt from is still retained, so a resend can be requested. |
 
 
 ## Usage
@@ -32,7 +33,8 @@ var instance = new RunFileResponse(
     destinations: new List<FileDestinationResponse>(),  // required
     transactionIds: ,  // required
     fileUuid: "...",  // required
-    failedTransactionIds:   // required
+    failedTransactionIds: ,  // required
+    canResend: true  // required — Whether the data the file is rebuilt from is still retained, so a resend can be requested.
 );
 ```
 ### Serializing to JSON

@@ -10,7 +10,7 @@ A definition reconciling the contents of LUSID portfolios on at least one side, 
 | **ValuationRecipes** | [RecDefRecipeIds](RecDefRecipeIds.md) | Optional | *No description available.* |
 | **Currencies** | [RecDefCurrencies](RecDefCurrencies.md) | Optional | *No description available.* |
 | **Rulesets** | [List&lt;RecDefRuleset&gt;](RecDefRuleset.md) | Required | The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once. |
-| **DefinitionType** | **string** | Required | What this definition reconciles, and so which shape of details it carries. PortfolioContents and External are supported; LusidEntity is not yet. Available values: PortfolioContents, LusidEntity, External. |
+| **DefinitionType** | **string** | Required | What this definition reconciles, and so which shape of details it carries. Available values: PortfolioContents, LusidEntity, External. |
 
 
 ## Usage
@@ -26,7 +26,7 @@ var instance = new PortfolioContentsRecDefinitionDetails(
     valuationRecipes: new RecDefRecipeIds(...),  // optional
     currencies: new RecDefCurrencies(...),  // optional
     rulesets: new List<RecDefRuleset>(),  // required — The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once.
-    definitionType: "..."  // required — What this definition reconciles, and so which shape of details it carries. PortfolioContents and External are supported; LusidEntity is not yet. Available values: PortfolioContents, LusidEntity, External.
+    definitionType: "..."  // required — What this definition reconciles, and so which shape of details it carries. Available values: PortfolioContents, LusidEntity, External.
 );
 ```
 ### Serializing to JSON

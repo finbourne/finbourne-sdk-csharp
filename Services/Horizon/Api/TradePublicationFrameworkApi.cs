@@ -38,7 +38,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
-        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="status">Filter by delivery outcome (Delivered, Failed, Pending) (optional)</param>
         /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
         /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
         /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
@@ -46,7 +46,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfTpfFileDeliveryResponse</returns>
-        PagedResourceListOfTpfFileDeliveryResponse GetTpfFileDeliveries(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfTpfFileDeliveryResponse GetTpfFileDeliveries(string instanceId, TpfFileDeliveryDisplayStatus? status = default(TpfFileDeliveryDisplayStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance
@@ -56,7 +56,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
-        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="status">Filter by delivery outcome (Delivered, Failed, Pending) (optional)</param>
         /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
         /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
         /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
@@ -64,7 +64,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfTpfFileDeliveryResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesWithHttpInfo(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesWithHttpInfo(string instanceId, TpfFileDeliveryDisplayStatus? status = default(TpfFileDeliveryDisplayStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetTpfTransactionHistorySearch: Search TPF transactions by transaction ID(s) and/or instrument identifier(s), with optional filtering by instance, date range, and publication status. Accepts multiple values in TransactionIds and InstrumentIdentifiers (OR&#39;d within each filter, AND&#39;d between filters).
         /// </summary>
@@ -312,45 +312,19 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <returns>ApiResponse of ResolveFailedDeliveryResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<ResolveFailedDeliveryResponse> ResolveFailedDeliveryWithHttpInfo(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework
-        /// </summary>
-        /// <remarks>
-        /// Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
-        /// </remarks>
-        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId">Integration instance identifier</param>
-        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="opts">Options for this request.</param>
-        /// <returns>TpfFailedDeliveryResponse</returns>
-        TpfFailedDeliveryResponse RetryFailedDelivery(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
-
-        /// <summary>
-        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework
-        /// </summary>
-        /// <remarks>
-        /// Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
-        /// </remarks>
-        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId">Integration instance identifier</param>
-        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of TpfFailedDeliveryResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse> RetryFailedDeliveryWithHttpInfo(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
-        /// <summary>
-        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
+        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Resend a TPF file to the destination it was delivered to or failed to reach (SFTP or Drive)
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
         /// <param name="fileUuid">File delivery UUID to retry, as returned by the run-files and file-deliveries listings</param>
+        /// <param name="confirmDuplicate">Resend even though the file already reached this destination (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>TpfRetrySftpResponse</returns>
-        TpfRetrySftpResponse RetryTpfSftpDelivery(string instanceId, string fileUuid, int operationIndex = 0, ConfigurationOptions? opts = null);
+        TpfRetrySftpResponse RetryTpfSftpDelivery(string instanceId, string fileUuid, bool? confirmDuplicate = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
+        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Resend a TPF file to the destination it was delivered to or failed to reach (SFTP or Drive)
         /// </summary>
         /// <remarks>
         /// 
@@ -358,10 +332,11 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
         /// <param name="fileUuid">File delivery UUID to retry, as returned by the run-files and file-deliveries listings</param>
+        /// <param name="confirmDuplicate">Resend even though the file already reached this destination (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of TpfRetrySftpResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse> RetryTpfSftpDeliveryWithHttpInfo(string instanceId, string fileUuid, int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse> RetryTpfSftpDeliveryWithHttpInfo(string instanceId, string fileUuid, bool? confirmDuplicate = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
         #endregion Synchronous Operations
     }
 
@@ -379,7 +354,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
-        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="status">Filter by delivery outcome (Delivered, Failed, Pending) (optional)</param>
         /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
         /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
         /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
@@ -388,7 +363,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfTpfFileDeliveryResponse</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesAsync(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesAsync(string instanceId, TpfFileDeliveryDisplayStatus? status = default(TpfFileDeliveryDisplayStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance
@@ -398,7 +373,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
-        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="status">Filter by delivery outcome (Delivered, Failed, Pending) (optional)</param>
         /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
         /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
         /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
@@ -407,7 +382,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfTpfFileDeliveryResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse>> GetTpfFileDeliveriesWithHttpInfoAsync(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse>> GetTpfFileDeliveriesWithHttpInfoAsync(string instanceId, TpfFileDeliveryDisplayStatus? status = default(TpfFileDeliveryDisplayStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetTpfTransactionHistorySearch: Search TPF transactions by transaction ID(s) and/or instrument identifier(s), with optional filtering by instance, date range, and publication status. Accepts multiple values in TransactionIds and InstrumentIdentifiers (OR&#39;d within each filter, AND&#39;d between filters).
         /// </summary>
@@ -700,36 +675,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <returns>Task of ApiResponse (ResolveFailedDeliveryResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResolveFailedDeliveryResponse>> ResolveFailedDeliveryWithHttpInfoAsync(string instanceId, string batchReferenceId, ResolveFailedDeliveryRequest resolveFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework
-        /// </summary>
-        /// <remarks>
-        /// Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
-        /// </remarks>
-        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId">Integration instance identifier</param>
-        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of TpfFailedDeliveryResponse</returns>
-        System.Threading.Tasks.Task<TpfFailedDeliveryResponse> RetryFailedDeliveryAsync(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
-
-        /// <summary>
-        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework
-        /// </summary>
-        /// <remarks>
-        /// Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
-        /// </remarks>
-        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId">Integration instance identifier</param>
-        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (TpfFailedDeliveryResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse>> RetryFailedDeliveryWithHttpInfoAsync(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
-        /// <summary>
-        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
+        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Resend a TPF file to the destination it was delivered to or failed to reach (SFTP or Drive)
         /// </summary>
         /// <remarks>
         /// 
@@ -737,14 +683,15 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
         /// <param name="fileUuid">File delivery UUID to retry, as returned by the run-files and file-deliveries listings</param>
+        /// <param name="confirmDuplicate">Resend even though the file already reached this destination (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of TpfRetrySftpResponse</returns>
-        System.Threading.Tasks.Task<TpfRetrySftpResponse> RetryTpfSftpDeliveryAsync(string instanceId, string fileUuid, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<TpfRetrySftpResponse> RetryTpfSftpDeliveryAsync(string instanceId, string fileUuid, bool? confirmDuplicate = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file
+        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Resend a TPF file to the destination it was delivered to or failed to reach (SFTP or Drive)
         /// </summary>
         /// <remarks>
         /// 
@@ -752,11 +699,12 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
         /// <param name="fileUuid">File delivery UUID to retry, as returned by the run-files and file-deliveries listings</param>
+        /// <param name="confirmDuplicate">Resend even though the file already reached this destination (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (TpfRetrySftpResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse>> RetryTpfSftpDeliveryWithHttpInfoAsync(string instanceId, string fileUuid, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse>> RetryTpfSftpDeliveryWithHttpInfoAsync(string instanceId, string fileUuid, bool? confirmDuplicate = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         #endregion Asynchronous Operations
     }
 
@@ -856,7 +804,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
-        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="status">Filter by delivery outcome (Delivered, Failed, Pending) (optional)</param>
         /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
         /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
         /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
@@ -864,7 +812,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfTpfFileDeliveryResponse</returns>
-        public PagedResourceListOfTpfFileDeliveryResponse GetTpfFileDeliveries(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfTpfFileDeliveryResponse GetTpfFileDeliveries(string instanceId, TpfFileDeliveryDisplayStatus? status = default(TpfFileDeliveryDisplayStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> localVarResponse = GetTpfFileDeliveriesWithHttpInfo(instanceId, status, dateFrom, dateTo, limit, page, opts: opts);
             return localVarResponse.Data;
@@ -876,7 +824,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="instanceId">Integration instance ID</param>
-        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="status">Filter by delivery outcome (Delivered, Failed, Pending) (optional)</param>
         /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
         /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
         /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
@@ -884,7 +832,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfTpfFileDeliveryResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesWithHttpInfo(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesWithHttpInfo(string instanceId, TpfFileDeliveryDisplayStatus? status = default(TpfFileDeliveryDisplayStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -995,7 +943,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
-        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="status">Filter by delivery outcome (Delivered, Failed, Pending) (optional)</param>
         /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
         /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
         /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
@@ -1004,7 +952,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfTpfFileDeliveryResponse</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesAsync(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfTpfFileDeliveryResponse> GetTpfFileDeliveriesAsync(string instanceId, TpfFileDeliveryDisplayStatus? status = default(TpfFileDeliveryDisplayStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> localVarResponse = await GetTpfFileDeliveriesWithHttpInfoAsync(instanceId, status, dateFrom, dateTo, limit, page, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1016,7 +964,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="instanceId">Integration instance ID</param>
-        /// <param name="status">Filter by delivery status (Completed, Error, Pending) (optional)</param>
+        /// <param name="status">Filter by delivery outcome (Delivered, Failed, Pending) (optional)</param>
         /// <param name="dateFrom">Filter deliveries from this time (inclusive) (optional)</param>
         /// <param name="dateTo">Filter deliveries to this time (inclusive) (optional)</param>
         /// <param name="limit">Page size for pagination (default 50, max 500) (optional, default to 50)</param>
@@ -1025,7 +973,7 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfTpfFileDeliveryResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse>> GetTpfFileDeliveriesWithHttpInfoAsync(string instanceId, FileDeliveryStatus? status = default(FileDeliveryStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfTpfFileDeliveryResponse>> GetTpfFileDeliveriesWithHttpInfoAsync(string instanceId, TpfFileDeliveryDisplayStatus? status = default(TpfFileDeliveryDisplayStatus?), DateTimeOffset? dateFrom = default(DateTimeOffset?), DateTimeOffset? dateTo = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -3462,279 +3410,33 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
-        /// </summary>
-        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId">Integration instance identifier</param>
-        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="opts">Options for this request.</param>
-        /// <returns>TpfFailedDeliveryResponse</returns>
-        public TpfFailedDeliveryResponse RetryFailedDelivery(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
-        {
-            Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse> localVarResponse = RetryFailedDeliveryWithHttpInfo(instanceId, tpfRetryFailedDeliveryRequest, opts: opts);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
-        /// </summary>
-        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="instanceId">Integration instance identifier</param>
-        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of TpfFailedDeliveryResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse> RetryFailedDeliveryWithHttpInfo(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
-        {
-            // verify the required parameter 'instanceId' is set
-            if (instanceId == null)
-            {
-                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->RetryFailedDelivery");
-            }
-
-            // verify the required parameter 'tpfRetryFailedDeliveryRequest' is set
-            if (tpfRetryFailedDeliveryRequest == null)
-            {
-                throw new ArgumentNullException("Missing required parameter 'tpfRetryFailedDeliveryRequest' when calling TradePublicationFrameworkApi->RetryFailedDelivery");
-            }
-
-            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
-
-            if (opts is { TimeoutMs: not null })
-            {
-                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
-            }
-            
-            if (opts is { RateLimitRetries: not null })
-            {
-                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
-            }
-
-            if (opts is { NumberOfRetries: not null })
-            {
-                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
-            }
-
-            if (opts is { RetryBackoffMs: not null })
-            {
-                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
-            }
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
-            localVarRequestOptions.Data = tpfRetryFailedDeliveryRequest;
-
-            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.RetryFailedDelivery";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-            // authentication (oauth2) required
-            // oauth required
-            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-                }
-                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
-                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
-                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
-                         this.Configuration.OAuthFlow != null)
-                {
-                    localVarRequestOptions.OAuth = true;
-                }
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<TpfFailedDeliveryResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/failed/retry", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("RetryFailedDelivery", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
-        /// </summary>
-        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceId">Integration instance identifier</param>
-        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of TpfFailedDeliveryResponse</returns>
-        public async System.Threading.Tasks.Task<TpfFailedDeliveryResponse> RetryFailedDeliveryAsync(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
-        {
-            Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse> localVarResponse = await RetryFailedDeliveryWithHttpInfoAsync(instanceId, tpfRetryFailedDeliveryRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// [EXPERIMENTAL] RetryFailedDelivery: Retry failed deliveries for Trade Publication Framework Re-runs the delivery task only (payload already built - skips build task). Always committed - no preview mode. Increments attempt count on failure, sets resolved to true on success. Uses existing ReplayBatchElement on ITradeTrackingRepository. Requires entitlement to execute integrations.
-        /// </summary>
-        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="instanceId">Integration instance identifier</param>
-        /// <param name="tpfRetryFailedDeliveryRequest">Request containing batch element reference identifiers to retry</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (TpfFailedDeliveryResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TpfFailedDeliveryResponse>> RetryFailedDeliveryWithHttpInfoAsync(string instanceId, TpfRetryFailedDeliveryRequest tpfRetryFailedDeliveryRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
-        {
-            // verify the required parameter 'instanceId' is set
-            if (instanceId == null)
-            {
-                throw new ArgumentNullException("Missing required parameter 'instanceId' when calling TradePublicationFrameworkApi->RetryFailedDelivery");
-            }
-
-            // verify the required parameter 'tpfRetryFailedDeliveryRequest' is set
-            if (tpfRetryFailedDeliveryRequest == null)
-            {
-                throw new ArgumentNullException("Missing required parameter 'tpfRetryFailedDeliveryRequest' when calling TradePublicationFrameworkApi->RetryFailedDelivery");
-            }
-
-
-            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
-
-            if (opts is { TimeoutMs: not null })
-            {
-                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
-            }
-            
-            if (opts is { RateLimitRetries: not null })
-            {
-                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
-            }
-
-            if (opts is { NumberOfRetries: not null })
-            {
-                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
-            }
-
-            if (opts is { RetryBackoffMs: not null })
-            {
-                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
-            }
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
-            localVarRequestOptions.Data = tpfRetryFailedDeliveryRequest;
-
-            localVarRequestOptions.Operation = "TradePublicationFrameworkApi.RetryFailedDelivery";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-            // authentication (oauth2) required
-            // oauth required
-            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
-                {
-                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-                }
-                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
-                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
-                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
-                         this.Configuration.OAuthFlow != null)
-                {
-                    localVarRequestOptions.OAuth = true;
-                }
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<TpfFailedDeliveryResponse, AbstractOpenAPISchema>("/horizon/api/trade-publication-framework/instances/{instanceId}/failed/retry", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("RetryFailedDelivery", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file 
+        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Resend a TPF file to the destination it was delivered to or failed to reach (SFTP or Drive) 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
         /// <param name="fileUuid">File delivery UUID to retry, as returned by the run-files and file-deliveries listings</param>
+        /// <param name="confirmDuplicate">Resend even though the file already reached this destination (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>TpfRetrySftpResponse</returns>
-        public TpfRetrySftpResponse RetryTpfSftpDelivery(string instanceId, string fileUuid, int operationIndex = 0, ConfigurationOptions? opts = null)
+        public TpfRetrySftpResponse RetryTpfSftpDelivery(string instanceId, string fileUuid, bool? confirmDuplicate = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse> localVarResponse = RetryTpfSftpDeliveryWithHttpInfo(instanceId, fileUuid, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse> localVarResponse = RetryTpfSftpDeliveryWithHttpInfo(instanceId, fileUuid, confirmDuplicate, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file 
+        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Resend a TPF file to the destination it was delivered to or failed to reach (SFTP or Drive) 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="instanceId">Integration instance ID</param>
         /// <param name="fileUuid">File delivery UUID to retry, as returned by the run-files and file-deliveries listings</param>
+        /// <param name="confirmDuplicate">Resend even though the file already reached this destination (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of TpfRetrySftpResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse> RetryTpfSftpDeliveryWithHttpInfo(string instanceId, string fileUuid, int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse> RetryTpfSftpDeliveryWithHttpInfo(string instanceId, string fileUuid, bool? confirmDuplicate = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -3792,6 +3494,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
 
             localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("fileUuid", Finbourne.Sdk.Client.ClientUtils.ParameterToString(fileUuid)); // path parameter
+            if (confirmDuplicate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "confirmDuplicate", confirmDuplicate));
+            }
 
             localVarRequestOptions.Operation = "TradePublicationFrameworkApi.RetryTpfSftpDelivery";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3828,33 +3534,35 @@ namespace Finbourne.Sdk.Services.Horizon.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file 
+        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Resend a TPF file to the destination it was delivered to or failed to reach (SFTP or Drive) 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="instanceId">Integration instance ID</param>
         /// <param name="fileUuid">File delivery UUID to retry, as returned by the run-files and file-deliveries listings</param>
+        /// <param name="confirmDuplicate">Resend even though the file already reached this destination (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of TpfRetrySftpResponse</returns>
-        public async System.Threading.Tasks.Task<TpfRetrySftpResponse> RetryTpfSftpDeliveryAsync(string instanceId, string fileUuid, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<TpfRetrySftpResponse> RetryTpfSftpDeliveryAsync(string instanceId, string fileUuid, bool? confirmDuplicate = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse> localVarResponse = await RetryTpfSftpDeliveryWithHttpInfoAsync(instanceId, fileUuid, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse> localVarResponse = await RetryTpfSftpDeliveryWithHttpInfoAsync(instanceId, fileUuid, confirmDuplicate, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Retry SFTP delivery for a previously sent TPF file 
+        /// [EXPERIMENTAL] RetryTpfSftpDelivery: Resend a TPF file to the destination it was delivered to or failed to reach (SFTP or Drive) 
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="instanceId">Integration instance ID</param>
         /// <param name="fileUuid">File delivery UUID to retry, as returned by the run-files and file-deliveries listings</param>
+        /// <param name="confirmDuplicate">Resend even though the file already reached this destination (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (TpfRetrySftpResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse>> RetryTpfSftpDeliveryWithHttpInfoAsync(string instanceId, string fileUuid, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TpfRetrySftpResponse>> RetryTpfSftpDeliveryWithHttpInfoAsync(string instanceId, string fileUuid, bool? confirmDuplicate = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'instanceId' is set
             if (instanceId == null)
@@ -3913,6 +3621,10 @@ namespace Finbourne.Sdk.Services.Horizon.Api
 
             localVarRequestOptions.PathParameters.Add("instanceId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(instanceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("fileUuid", Finbourne.Sdk.Client.ClientUtils.ParameterToString(fileUuid)); // path parameter
+            if (confirmDuplicate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "confirmDuplicate", confirmDuplicate));
+            }
 
             localVarRequestOptions.Operation = "TradePublicationFrameworkApi.RetryTpfSftpDelivery";
             localVarRequestOptions.OperationIndex = operationIndex;

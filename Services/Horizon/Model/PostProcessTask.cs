@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// Initializes a new instance of the <see cref="PostProcessTask" /> class.
         /// </summary>
         /// <param name="action">The type of action to perform (Allowed: RunIntegration, RunWorkflow, TriggerEmail) (required).</param>
-        /// <param name="targetInstance">The instance identifier to trigger (for TriggerIntegration action)..</param>
+        /// <param name="targetInstance">The identifier of the integration instance to run (RunIntegration action only)..</param>
         /// <param name="triggerOn">When the task should be triggered (Allowed: OnSuccess, OnFailure, Always) (required).</param>
         /// <param name="parameters">JSON parameters specific to the action type..</param>
         public PostProcessTask(string action = default(string), string targetInstance = default(string), string triggerOn = default(string), Object parameters = default(Object))
@@ -65,9 +65,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string Action { get; set; }
 
         /// <summary>
-        /// The instance identifier to trigger (for TriggerIntegration action).
+        /// The identifier of the integration instance to run (RunIntegration action only).
         /// </summary>
-        /// <value>The instance identifier to trigger (for TriggerIntegration action).</value>
+        /// <value>The identifier of the integration instance to run (RunIntegration action only).</value>
         [DataMember(Name = "targetInstance", EmitDefaultValue = true)]
         public string TargetInstance { get; set; }
 

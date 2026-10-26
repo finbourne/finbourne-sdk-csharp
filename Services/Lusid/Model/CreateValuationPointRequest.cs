@@ -45,7 +45,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="holdingsAsAtOverride">The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt..</param>
         /// <param name="valuationsAsAtOverride">The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt..</param>
         /// <param name="updateInclusionDateNavAdjustments">Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities..</param>
-        public CreateValuationPointRequest(string valuationPointCode = default(string), string variant = default(string), string name = default(string), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset? queryAsAt = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool applyClearDown = default(bool), DateTimeOffset? holdingsAsAtOverride = default(DateTimeOffset?), DateTimeOffset? valuationsAsAtOverride = default(DateTimeOffset?), bool updateInclusionDateNavAdjustments = default(bool))
+        /// <param name="bucketSetSeeds">Defaults to null. The closing balances to seed for bucket sets at this estimate valuation point, at most one per bucket set. While the valuation point is an estimate, each seeded bucket set&#39;s flow bucket values are its seed; finalising the valuation point stores them, and the next valuation point opens from them. A bucket set can only be seeded when the previous final valuation point has no values for it. The seed is trusted input: it is not reconciled to the share class NAVs..</param>
+        public CreateValuationPointRequest(string valuationPointCode = default(string), string variant = default(string), string name = default(string), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset? queryAsAt = default(DateTimeOffset?), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool applyClearDown = default(bool), DateTimeOffset? holdingsAsAtOverride = default(DateTimeOffset?), DateTimeOffset? valuationsAsAtOverride = default(DateTimeOffset?), bool updateInclusionDateNavAdjustments = default(bool), List<BucketSetSeedRequest> bucketSetSeeds = default(List<BucketSetSeedRequest>))
         {
             // to ensure "valuationPointCode" is required (not null)
             if (valuationPointCode == null)
@@ -62,6 +63,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.HoldingsAsAtOverride = holdingsAsAtOverride;
             this.ValuationsAsAtOverride = valuationsAsAtOverride;
             this.UpdateInclusionDateNavAdjustments = updateInclusionDateNavAdjustments;
+            this.BucketSetSeeds = bucketSetSeeds;
         }
 
         /// <summary>
@@ -135,6 +137,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public bool UpdateInclusionDateNavAdjustments { get; set; }
 
         /// <summary>
+        /// Defaults to null. The closing balances to seed for bucket sets at this estimate valuation point, at most one per bucket set. While the valuation point is an estimate, each seeded bucket set&#39;s flow bucket values are its seed; finalising the valuation point stores them, and the next valuation point opens from them. A bucket set can only be seeded when the previous final valuation point has no values for it. The seed is trusted input: it is not reconciled to the share class NAVs.
+        /// </summary>
+        /// <value>Defaults to null. The closing balances to seed for bucket sets at this estimate valuation point, at most one per bucket set. While the valuation point is an estimate, each seeded bucket set&#39;s flow bucket values are its seed; finalising the valuation point stores them, and the next valuation point opens from them. A bucket set can only be seeded when the previous final valuation point has no values for it. The seed is trusted input: it is not reconciled to the share class NAVs.</value>
+        [DataMember(Name = "bucketSetSeeds", EmitDefaultValue = true)]
+        public List<BucketSetSeedRequest> BucketSetSeeds { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -152,6 +161,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  HoldingsAsAtOverride: ").Append(HoldingsAsAtOverride).Append("\n");
             sb.Append("  ValuationsAsAtOverride: ").Append(ValuationsAsAtOverride).Append("\n");
             sb.Append("  UpdateInclusionDateNavAdjustments: ").Append(UpdateInclusionDateNavAdjustments).Append("\n");
+            sb.Append("  BucketSetSeeds: ").Append(BucketSetSeeds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -235,6 +245,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.UpdateInclusionDateNavAdjustments == input.UpdateInclusionDateNavAdjustments ||
                     this.UpdateInclusionDateNavAdjustments.Equals(input.UpdateInclusionDateNavAdjustments)
+                ) && 
+                (
+                    this.BucketSetSeeds == input.BucketSetSeeds ||
+                    this.BucketSetSeeds != null &&
+                    input.BucketSetSeeds != null &&
+                    this.BucketSetSeeds.SequenceEqual(input.BucketSetSeeds)
                 );
         }
 
@@ -281,6 +297,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     hashCode = (hashCode * 59) + this.ValuationsAsAtOverride.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.UpdateInclusionDateNavAdjustments.GetHashCode();
+                if (this.BucketSetSeeds != null)
+                {
+                    hashCode = (hashCode * 59) + this.BucketSetSeeds.GetHashCode();
+                }
                 return hashCode;
             }
         }

@@ -18,6 +18,7 @@
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | The Valuation Point properties. These are from the &#39;DiaryEntry&#39; domain. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **StagedModifications** | [StagedModificationsInfo](StagedModificationsInfo.md) | Optional | *No description available.* |
+| **BucketSetSeeds** | [List&lt;BucketSetSeed&gt;](BucketSetSeed.md) | Optional | The bucket set seeds set on this variant of the Valuation Point. Null when it has none. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -43,6 +44,7 @@ var instance = new ValuationPoint(
     properties: new Property(...),  // optional — The Valuation Point properties. These are from the &#39;DiaryEntry&#39; domain.
     varVersion: new ModelVersion(...),  // optional
     stagedModifications: new StagedModificationsInfo(...),  // optional
+    bucketSetSeeds: new List<BucketSetSeed>(),  // optional — The bucket set seeds set on this variant of the Valuation Point. Null when it has none.
     links: new List<Link>()  // optional
 );
 ```
@@ -62,6 +64,7 @@ var instance = JsonConvert.DeserializeObject<ValuationPoint>(json);
 - [Property](Property.md) — used in `Properties`
 - [ModelVersion](ModelVersion.md)
 - [StagedModificationsInfo](StagedModificationsInfo.md)
+- [BucketSetSeed](BucketSetSeed.md) — used in `BucketSetSeeds`
 - [Link](Link.md)
 
 

@@ -18,6 +18,8 @@ One holding's contribution to a margin call: its exposure, or its value as colla
 | **Pv** | **decimal?** | Optional | The present value of the holding in the agreement&#39;s base currency, when it contributes to exposure. |
 | **VariationMargin** | **decimal?** | Optional | The holding&#39;s contribution to variation margin, when it contributes to exposure. |
 | **CollateralValue** | **decimal?** | Optional | The holding&#39;s value as collateral after haircuts, when it is held as collateral. |
+| **InitialMarginItem** | **string** | Optional | The initial-margin item the line falls under, when the holding matched one. Filterable. |
+| **InitialMargin** | **decimal?** | Optional | The holding&#39;s share of its netting set&#39;s initial margin, before the threshold, when it contributes to it. |
 
 
 ## Usage
@@ -40,7 +42,9 @@ var instance = new MarginLine(
     units: 0.0d,  // required — The units held.
     pv: 0.0d,  // optional — The present value of the holding in the agreement&#39;s base currency, when it contributes to exposure.
     variationMargin: 0.0d,  // optional — The holding&#39;s contribution to variation margin, when it contributes to exposure.
-    collateralValue: 0.0d  // optional — The holding&#39;s value as collateral after haircuts, when it is held as collateral.
+    collateralValue: 0.0d,  // optional — The holding&#39;s value as collateral after haircuts, when it is held as collateral.
+    initialMarginItem: "...",  // optional — The initial-margin item the line falls under, when the holding matched one. Filterable.
+    initialMargin: 0.0d  // optional — The holding&#39;s share of its netting set&#39;s initial margin, before the threshold, when it contributes to it.
 );
 ```
 ### Serializing to JSON

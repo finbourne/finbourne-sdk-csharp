@@ -13,6 +13,7 @@
 | **Series** | [SeriesConfiguration](SeriesConfiguration.md) | Optional | *No description available.* |
 | **EffectiveCapabilities** | **Dictionary&lt;string, string&gt;** | Optional | Derived on the way out; ignored on the way in. |
 | **Presentation** | [PresentationConfiguration](PresentationConfiguration.md) | Optional | *No description available.* |
+| **AllocationBases** | [List&lt;AllocationBasisRule&gt;](AllocationBasisRule.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -31,7 +32,8 @@ var instance = new PartnershipAccountingConfiguration(
     capabilityOverrides: new List<CapabilityOverride>(),  // optional
     series: new SeriesConfiguration(...),  // optional
     effectiveCapabilities: ,  // optional — Derived on the way out; ignored on the way in.
-    presentation: new PresentationConfiguration(...)  // optional
+    presentation: new PresentationConfiguration(...),  // optional
+    allocationBases: new List<AllocationBasisRule>()  // optional
 );
 ```
 ### Serializing to JSON
@@ -51,6 +53,7 @@ var instance = JsonConvert.DeserializeObject<PartnershipAccountingConfiguration>
 - [CapabilityOverride](CapabilityOverride.md)
 - [SeriesConfiguration](SeriesConfiguration.md)
 - [PresentationConfiguration](PresentationConfiguration.md)
+- [AllocationBasisRule](AllocationBasisRule.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

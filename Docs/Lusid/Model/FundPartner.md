@@ -11,7 +11,8 @@ A register line of a partnership fund: one partner's commitment and its capital 
 | **LusidInstrumentId** | **string** | Required | The LUSID instrument identifier of the register line&#39;s capital-interest instrument. |
 | **PortfolioId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **IsVehicle** | **bool** | Required | Whether the partner is a vehicle (for example a feeder or parallel fund) rather than an end investor. |
-| **PartnerRole** | **string** | Required | The role of the register line. Available values: GPRegister, LPInvestment. |
+| **PartnerRole** | **string** | Required | The role the partner plays in the partnership. Available values: LimitedPartner (the default), GeneralPartner, GPAffiliate, Employee, CarryVehicle. |
+| **RegisterRole** | **string** | Required | The role of the register line. Available values: GPRegister, LPInvestment (the default). |
 | **CommitmentCurrency** | **string** | Required | The currency of the partner&#39;s commitment. |
 | **Balances** | [FundPartnerBalances](FundPartnerBalances.md) | Required | *No description available.* |
 | **ShareOfCommitments** | **decimal** | Required | The partner&#39;s committed capital as a decimal fraction of the fund&#39;s total commitments in the same commitment currency. |
@@ -33,7 +34,8 @@ var instance = new FundPartner(
     lusidInstrumentId: "...",  // required — The LUSID instrument identifier of the register line&#39;s capital-interest instrument.
     portfolioId: new ResourceId(...),  // required
     isVehicle: true,  // required — Whether the partner is a vehicle (for example a feeder or parallel fund) rather than an end investor.
-    partnerRole: "...",  // required — The role of the register line. Available values: GPRegister, LPInvestment.
+    partnerRole: "...",  // required — The role the partner plays in the partnership. Available values: LimitedPartner (the default), GeneralPartner, GPAffiliate, Employee, CarryVehicle.
+    registerRole: "...",  // required — The role of the register line. Available values: GPRegister, LPInvestment (the default).
     commitmentCurrency: "...",  // required — The currency of the partner&#39;s commitment.
     balances: new FundPartnerBalances(...),  // required
     shareOfCommitments: 0.0d,  // required — The partner&#39;s committed capital as a decimal fraction of the fund&#39;s total commitments in the same commitment currency.

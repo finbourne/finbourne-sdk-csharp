@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// record containing the payload for a single transaction. Columns is compiled once from the TPF instance configuration and is identical across every item in the paginated result.
+    /// record containing the payload for a single transaction. Columns is compiled once from the TPF instance configuration and is identical across every item in the paginated result. PublicationStatus is the row&#39;s outcome: Sent, or Failed when the file holding it reached no destination.
     /// </summary>
     [DataContract(Name = "TransactionPayload")]
     public partial class TransactionPayload : IEquatable<TransactionPayload>, IValidatableObject
@@ -39,7 +39,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="columns">columns (required).</param>
         /// <param name="values">values (required).</param>
         /// <param name="rawCsvRow">rawCsvRow (required).</param>
-        public TransactionPayload(string transactionId = default(string), List<string> columns = default(List<string>), Dictionary<string, string> values = default(Dictionary<string, string>), string rawCsvRow = default(string))
+        /// <param name="publicationStatus">publicationStatus (required).</param>
+        public TransactionPayload(string transactionId = default(string), List<string> columns = default(List<string>), Dictionary<string, string> values = default(Dictionary<string, string>), string rawCsvRow = default(string), string publicationStatus = default(string))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -65,6 +66,12 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("rawCsvRow is a required property for TransactionPayload and cannot be null");
             }
             this.RawCsvRow = rawCsvRow;
+            // to ensure "publicationStatus" is required (not null)
+            if (publicationStatus == null)
+            {
+                throw new ArgumentNullException("publicationStatus is a required property for TransactionPayload and cannot be null");
+            }
+            this.PublicationStatus = publicationStatus;
         }
 
         /// <summary>
@@ -92,6 +99,12 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string RawCsvRow { get; set; }
 
         /// <summary>
+        /// Gets or Sets PublicationStatus
+        /// </summary>
+        [DataMember(Name = "publicationStatus", IsRequired = true, EmitDefaultValue = true)]
+        public string PublicationStatus { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -103,6 +116,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  Columns: ").Append(Columns).Append("\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
             sb.Append("  RawCsvRow: ").Append(RawCsvRow).Append("\n");
+            sb.Append("  PublicationStatus: ").Append(PublicationStatus).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -159,6 +173,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.RawCsvRow == input.RawCsvRow ||
                     (this.RawCsvRow != null &&
                     this.RawCsvRow.Equals(input.RawCsvRow))
+                ) && 
+                (
+                    this.PublicationStatus == input.PublicationStatus ||
+                    (this.PublicationStatus != null &&
+                    this.PublicationStatus.Equals(input.PublicationStatus))
                 );
         }
 
@@ -186,6 +205,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 if (this.RawCsvRow != null)
                 {
                     hashCode = (hashCode * 59) + this.RawCsvRow.GetHashCode();
+                }
+                if (this.PublicationStatus != null)
+                {
+                    hashCode = (hashCode * 59) + this.PublicationStatus.GetHashCode();
                 }
                 return hashCode;
             }

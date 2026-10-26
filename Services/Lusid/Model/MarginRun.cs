@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="MarginRun" /> class.
         /// </summary>
         /// <param name="href">The URI of this margin run..</param>
-        /// <param name="id">The identifier of the run: the effective date and the asAt it was valued at. Filterable. (required).</param>
+        /// <param name="id">The identifier of the run: the effective date and the asAt it was valued at, with a suffix naming the scenario for a stress run. Filterable. (required).</param>
         /// <param name="effectiveAt">The business date the run values collateral agreements for. Filterable. (required).</param>
         /// <param name="asAt">The asAt datetime the run reads agreements, portfolios and market data at. Filterable. (required).</param>
         /// <param name="status">The status of the run. One of Pending, Running, Completed or CompletedWithIssues. Filterable. (required).</param>
@@ -48,7 +48,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="failedShards">The number of shards that failed to value. (required).</param>
         /// <param name="issues">Agreements the run could not value or roll up into a call, or the caller may not calculate margin for, with the reason. (required).</param>
         /// <param name="shards">The valuation shards the run is planned as, with their progress. (required).</param>
-        public MarginRun(string href = default(string), string id = default(string), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset asAt = default(DateTimeOffset), string status = default(string), List<ResourceId> agreements = default(List<ResourceId>), int callCount = default(int), int lineCount = default(int), int shardCount = default(int), int completedShards = default(int), int failedShards = default(int), List<MarginRunIssue> issues = default(List<MarginRunIssue>), List<MarginRunShard> shards = default(List<MarginRunShard>))
+        /// <param name="scenario">scenario.</param>
+        public MarginRun(string href = default(string), string id = default(string), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset asAt = default(DateTimeOffset), string status = default(string), List<ResourceId> agreements = default(List<ResourceId>), int callCount = default(int), int lineCount = default(int), int shardCount = default(int), int completedShards = default(int), int failedShards = default(int), List<MarginRunIssue> issues = default(List<MarginRunIssue>), List<MarginRunShard> shards = default(List<MarginRunShard>), ResourceId scenario = default(ResourceId))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -88,6 +89,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.Shards = shards;
             this.Href = href;
+            this.Scenario = scenario;
         }
 
         /// <summary>
@@ -98,9 +100,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Href { get; set; }
 
         /// <summary>
-        /// The identifier of the run: the effective date and the asAt it was valued at. Filterable.
+        /// The identifier of the run: the effective date and the asAt it was valued at, with a suffix naming the scenario for a stress run. Filterable.
         /// </summary>
-        /// <value>The identifier of the run: the effective date and the asAt it was valued at. Filterable.</value>
+        /// <value>The identifier of the run: the effective date and the asAt it was valued at, with a suffix naming the scenario for a stress run. Filterable.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
@@ -182,6 +184,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<MarginRunShard> Shards { get; set; }
 
         /// <summary>
+        /// Gets or Sets Scenario
+        /// </summary>
+        [DataMember(Name = "scenario", EmitDefaultValue = false)]
+        public ResourceId Scenario { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -202,6 +210,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  FailedShards: ").Append(FailedShards).Append("\n");
             sb.Append("  Issues: ").Append(Issues).Append("\n");
             sb.Append("  Shards: ").Append(Shards).Append("\n");
+            sb.Append("  Scenario: ").Append(Scenario).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -299,6 +308,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Shards != null &&
                     input.Shards != null &&
                     this.Shards.SequenceEqual(input.Shards)
+                ) && 
+                (
+                    this.Scenario == input.Scenario ||
+                    (this.Scenario != null &&
+                    this.Scenario.Equals(input.Scenario))
                 );
         }
 
@@ -347,6 +361,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Shards != null)
                 {
                     hashCode = (hashCode * 59) + this.Shards.GetHashCode();
+                }
+                if (this.Scenario != null)
+                {
+                    hashCode = (hashCode * 59) + this.Scenario.GetHashCode();
                 }
                 return hashCode;
             }

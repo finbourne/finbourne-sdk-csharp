@@ -5,7 +5,7 @@ The partnership accounting view of a valuation point: what is left on the income
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **UnallocatedIncomeSummary** | **decimal** | Required | The balance on the income summary account over the valuation point&#39;s period that has not yet been allocated to the partners. Must be zero before the valuation point can be finalised. |
+| **UnallocatedIncomeSummary** | **decimal** | Required | The profit and loss of the valuation point&#39;s period that has not yet been allocated to the partners: what the period&#39;s income, gain and expense lines would pool, less what the partner allocation has posted for the period. Must be zero before the valuation point can be finalised. |
 | **ConfigPackScope** | **string** | Required | The scope of the configuration pack. |
 | **ConfigPackCode** | **string** | Required | The code of the configuration pack. |
 
@@ -18,7 +18,7 @@ The partnership accounting view of a valuation point: what is left on the income
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new PartnershipAccountingValuationPointData(
-    unallocatedIncomeSummary: 0.0d,  // required — The balance on the income summary account over the valuation point&#39;s period that has not yet been allocated to the partners. Must be zero before the valuation point can be finalised.
+    unallocatedIncomeSummary: 0.0d,  // required — The profit and loss of the valuation point&#39;s period that has not yet been allocated to the partners: what the period&#39;s income, gain and expense lines would pool, less what the partner allocation has posted for the period. Must be zero before the valuation point can be finalised.
     configPackScope: "...",  // required — The scope of the configuration pack.
     configPackCode: "..."  // required — The code of the configuration pack.
 );

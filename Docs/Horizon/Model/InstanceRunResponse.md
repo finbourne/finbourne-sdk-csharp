@@ -1,6 +1,6 @@
 # Finbourne.Sdk.Horizon.Model.InstanceRunResponse
 
-Response containing details of a single run for an instance.
+Response containing details of a single run for an instance. The transaction and file figures describe the batch as it stands now, so they are reported on the latest attempt only and are null on earlier attempts of a retried run. Message explains a failed attempt and what will happen or must be done next; it is null for completed, running and queued attempts.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -13,11 +13,12 @@ Response containing details of a single run for an instance.
 | **Duration** | **string** | Optional | *No description available.* |
 | **Status** | **string** | Required | *No description available.* |
 | **TriggeredBy** | **string** | Optional | *No description available.* |
-| **Total** | **int** | Required | *No description available.* |
-| **SentCount** | **long** | Required | *No description available.* |
-| **SkippedCount** | **long** | Required | *No description available.* |
-| **FailedCount** | **long** | Required | *No description available.* |
-| **FailedFiles** | **int** | Required | *No description available.* |
+| **Total** | **int?** | Optional | *No description available.* |
+| **SentCount** | **long?** | Optional | *No description available.* |
+| **SkippedCount** | **long?** | Optional | *No description available.* |
+| **FailedCount** | **long?** | Optional | *No description available.* |
+| **FailedFiles** | **int?** | Optional | *No description available.* |
+| **Message** | **string** | Optional | *No description available.* |
 
 
 ## Usage
@@ -36,11 +37,12 @@ var instance = new InstanceRunResponse(
     duration: "...",  // optional
     status: "...",  // required
     triggeredBy: "...",  // optional
-    total: 0,  // required
-    sentCount: 0L,  // required
-    skippedCount: 0L,  // required
-    failedCount: 0L,  // required
-    failedFiles: 0  // required
+    total: 0,  // optional
+    sentCount: 0L,  // optional
+    skippedCount: 0L,  // optional
+    failedCount: 0L,  // optional
+    failedFiles: 0,  // optional
+    message: "..."  // optional
 );
 ```
 ### Serializing to JSON

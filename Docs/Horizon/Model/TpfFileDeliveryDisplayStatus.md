@@ -1,4 +1,4 @@
-# Finbourne.Sdk.Horizon.Model.FileDeliveryStatus
+# Finbourne.Sdk.Horizon.Model.TpfFileDeliveryDisplayStatus
 
 ## Properties
 

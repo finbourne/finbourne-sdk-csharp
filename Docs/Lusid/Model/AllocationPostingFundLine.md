@@ -7,7 +7,8 @@ One transaction a booking writes on the fund's own books.
 |------|------|----------|-------------|
 | **Id** | **string** | Optional | The deterministic identifier of the posting: the booking reference, investor record, commitment line, component and side. |
 | **Portfolio** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
-| **TransactionType** | **string** | Optional | The transaction type written on the fund side, for instance PA.ContributionCalled. |
+| **TransactionType** | **string** | Optional | The transaction type the booking writes on the fund side, for instance PECall: the type the fund&#39;s configuration maps the partnership transaction type to. |
+| **PartnershipTransactionType** | **string** | Optional | The partnership transaction type the fund-side posting is classified as, for instance PA.ContributionCalled. |
 | **Amount** | **decimal** | Optional | The amount posted, in the event currency. |
 | **Component** | **string** | Optional | The component of the event the posting carries. |
 | **InvestorRecordId** | **string** | Optional | The investor record the posting is for. |
@@ -25,7 +26,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new AllocationPostingFundLine(
     id: "...",  // optional — The deterministic identifier of the posting: the booking reference, investor record, commitment line, component and side.
     portfolio: new ResourceId(...),  // optional
-    transactionType: "...",  // optional — The transaction type written on the fund side, for instance PA.ContributionCalled.
+    transactionType: "...",  // optional — The transaction type the booking writes on the fund side, for instance PECall: the type the fund&#39;s configuration maps the partnership transaction type to.
+    partnershipTransactionType: "...",  // optional — The partnership transaction type the fund-side posting is classified as, for instance PA.ContributionCalled.
     amount: 0.0d,  // optional — The amount posted, in the event currency.
     component: "...",  // optional — The component of the event the posting carries.
     investorRecordId: "...",  // optional — The investor record the posting is for.

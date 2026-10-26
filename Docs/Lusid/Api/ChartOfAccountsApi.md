@@ -1450,7 +1450,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listpostingmodulerules"></a>
 ## ListPostingModuleRules
 
-> PagedResourceListOfPostingModuleRuleResponse ListPostingModuleRules(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null)
+> PagedResourceListOfPostingModuleRuleResponse ListPostingModuleRules(string scope, string code, string postingModuleCode, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, DateTimeOrCutLabel? effectiveAt = null)
 
 [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules
 
@@ -1467,7 +1467,8 @@ var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset
 var page = "page_example";  // string? (optional)
 var limit = 56;  // int? (optional)
 var filter = "filter_example";  // string? (optional)
-PagedResourceListOfPostingModuleRuleResponse result = apiInstance.ListPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter);
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+PagedResourceListOfPostingModuleRuleResponse result = apiInstance.ListPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter, effectiveAt);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -1479,9 +1480,10 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **code** | **string** | path | **required** | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. |
 | **postingModuleCode** | **string** | path | **required** | The code of the posting module. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified. |
-| **page** | **string?** | query | optional | The pagination token to use to continue listing posting module rules; this              value is returned from the previous call. If a pagination token is provided, the filter              and asAt fields must not have changed since the original request. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing posting module rules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
 | **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
 | **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to list the rules. If specified, only              the rules whose effective window contains this date are returned. Defaults to returning all rules if not specified. |
 
 ### Return type
 
@@ -1506,7 +1508,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfPostingModuleRuleResponse> response = apiInstance.ListPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter);
+ApiResponse<PagedResourceListOfPostingModuleRuleResponse> response = apiInstance.ListPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter, effectiveAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

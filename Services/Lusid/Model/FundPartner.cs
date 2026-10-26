@@ -41,13 +41,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="lusidInstrumentId">The LUSID instrument identifier of the register line&#39;s capital-interest instrument. (required).</param>
         /// <param name="portfolioId">portfolioId (required).</param>
         /// <param name="isVehicle">Whether the partner is a vehicle (for example a feeder or parallel fund) rather than an end investor. (required).</param>
-        /// <param name="partnerRole">The role of the register line. Available values: GPRegister, LPInvestment. (required).</param>
+        /// <param name="partnerRole">The role the partner plays in the partnership. Available values: LimitedPartner (the default), GeneralPartner, GPAffiliate, Employee, CarryVehicle. (required).</param>
+        /// <param name="registerRole">The role of the register line. Available values: GPRegister, LPInvestment (the default). (required).</param>
         /// <param name="commitmentCurrency">The currency of the partner&#39;s commitment. (required).</param>
         /// <param name="balances">balances (required).</param>
         /// <param name="shareOfCommitments">The partner&#39;s committed capital as a decimal fraction of the fund&#39;s total commitments in the same commitment currency. (required).</param>
         /// <param name="admittedOn">The date the partner was admitted, being the date of their first commitment..</param>
         /// <param name="totals">totals (required).</param>
-        public FundPartner(string investorRecordId = default(string), string displayName = default(string), string commitmentLineId = default(string), string lusidInstrumentId = default(string), ResourceId portfolioId = default(ResourceId), bool isVehicle = default(bool), string partnerRole = default(string), string commitmentCurrency = default(string), FundPartnerBalances balances = default(FundPartnerBalances), decimal shareOfCommitments = default(decimal), DateTimeOffset? admittedOn = default(DateTimeOffset?), FundPartnersTotals totals = default(FundPartnersTotals))
+        public FundPartner(string investorRecordId = default(string), string displayName = default(string), string commitmentLineId = default(string), string lusidInstrumentId = default(string), ResourceId portfolioId = default(ResourceId), bool isVehicle = default(bool), string partnerRole = default(string), string registerRole = default(string), string commitmentCurrency = default(string), FundPartnerBalances balances = default(FundPartnerBalances), decimal shareOfCommitments = default(decimal), DateTimeOffset? admittedOn = default(DateTimeOffset?), FundPartnersTotals totals = default(FundPartnersTotals))
         {
             // to ensure "investorRecordId" is required (not null)
             if (investorRecordId == null)
@@ -80,6 +81,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("partnerRole is a required property for FundPartner and cannot be null");
             }
             this.PartnerRole = partnerRole;
+            // to ensure "registerRole" is required (not null)
+            if (registerRole == null)
+            {
+                throw new ArgumentNullException("registerRole is a required property for FundPartner and cannot be null");
+            }
+            this.RegisterRole = registerRole;
             // to ensure "commitmentCurrency" is required (not null)
             if (commitmentCurrency == null)
             {
@@ -145,11 +152,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public bool IsVehicle { get; set; }
 
         /// <summary>
-        /// The role of the register line. Available values: GPRegister, LPInvestment.
+        /// The role the partner plays in the partnership. Available values: LimitedPartner (the default), GeneralPartner, GPAffiliate, Employee, CarryVehicle.
         /// </summary>
-        /// <value>The role of the register line. Available values: GPRegister, LPInvestment.</value>
+        /// <value>The role the partner plays in the partnership. Available values: LimitedPartner (the default), GeneralPartner, GPAffiliate, Employee, CarryVehicle.</value>
         [DataMember(Name = "partnerRole", IsRequired = true, EmitDefaultValue = true)]
         public string PartnerRole { get; set; }
+
+        /// <summary>
+        /// The role of the register line. Available values: GPRegister, LPInvestment (the default).
+        /// </summary>
+        /// <value>The role of the register line. Available values: GPRegister, LPInvestment (the default).</value>
+        [DataMember(Name = "registerRole", IsRequired = true, EmitDefaultValue = true)]
+        public string RegisterRole { get; set; }
 
         /// <summary>
         /// The currency of the partner&#39;s commitment.
@@ -199,6 +213,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  PortfolioId: ").Append(PortfolioId).Append("\n");
             sb.Append("  IsVehicle: ").Append(IsVehicle).Append("\n");
             sb.Append("  PartnerRole: ").Append(PartnerRole).Append("\n");
+            sb.Append("  RegisterRole: ").Append(RegisterRole).Append("\n");
             sb.Append("  CommitmentCurrency: ").Append(CommitmentCurrency).Append("\n");
             sb.Append("  Balances: ").Append(Balances).Append("\n");
             sb.Append("  ShareOfCommitments: ").Append(ShareOfCommitments).Append("\n");
@@ -274,6 +289,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PartnerRole.Equals(input.PartnerRole))
                 ) && 
                 (
+                    this.RegisterRole == input.RegisterRole ||
+                    (this.RegisterRole != null &&
+                    this.RegisterRole.Equals(input.RegisterRole))
+                ) && 
+                (
                     this.CommitmentCurrency == input.CommitmentCurrency ||
                     (this.CommitmentCurrency != null &&
                     this.CommitmentCurrency.Equals(input.CommitmentCurrency))
@@ -332,6 +352,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.PartnerRole != null)
                 {
                     hashCode = (hashCode * 59) + this.PartnerRole.GetHashCode();
+                }
+                if (this.RegisterRole != null)
+                {
+                    hashCode = (hashCode * 59) + this.RegisterRole.GetHashCode();
                 }
                 if (this.CommitmentCurrency != null)
                 {

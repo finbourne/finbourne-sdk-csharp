@@ -9,6 +9,7 @@ Response from retrying SFTP file delivery
 | **Message** | **string** | Required | Status message describing the result |
 | **NewFileDeliveryUuid** | **Guid?** | Optional | UUID of the new file delivery record created for this retry (if successful) |
 | **RetriedAt** | **DateTimeOffset?** | Optional | Timestamp when the retry was executed |
+| **ResendRunId** | **Guid?** | Optional | The run queued to resend the file; it appears in run history as a further attempt of the original run |
 | **OriginalFile** | [TpfFileDeliveryInfo](TpfFileDeliveryInfo.md) | Optional | *No description available.* |
 | **DuplicateFile** | [TpfFileDeliveryInfo](TpfFileDeliveryInfo.md) | Optional | *No description available.* |
 
@@ -25,6 +26,7 @@ var instance = new TpfRetrySftpResponse(
     message: "...",  // required — Status message describing the result
     newFileDeliveryUuid: "...",  // optional — UUID of the new file delivery record created for this retry (if successful)
     retriedAt: DateTimeOffset.Now,  // optional — Timestamp when the retry was executed
+    resendRunId: "...",  // optional — The run queued to resend the file; it appears in run history as a further attempt of the original run
     originalFile: new TpfFileDeliveryInfo(...),  // optional
     duplicateFile: new TpfFileDeliveryInfo(...)  // optional
 );

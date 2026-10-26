@@ -15,6 +15,7 @@ A definition for the period you wish to close.
 | **HoldingsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt. |
 | **ValuationsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt. |
 | **UpdateInclusionDateNavAdjustments** | **bool** | Optional | Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities. |
+| **BucketSetSeeds** | [List&lt;BucketSetSeedRequest&gt;](BucketSetSeedRequest.md) | Optional | Defaults to null. The closing balances to seed for bucket sets at this estimate valuation point, at most one per bucket set. While the valuation point is an estimate, each seeded bucket set&#39;s flow bucket values are its seed; finalising the valuation point stores them, and the next valuation point opens from them. A bucket set can only be seeded when the previous final valuation point has no values for it. The seed is trusted input: it is not reconciled to the share class NAVs. |
 
 
 ## Usage
@@ -34,7 +35,8 @@ var instance = new CreateValuationPointRequest(
     applyClearDown: true,  // optional — Defaults to false. Set to true if you want that the closed period to have the clear down applied.
     holdingsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt.
     valuationsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt.
-    updateInclusionDateNavAdjustments: true  // optional — Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities.
+    updateInclusionDateNavAdjustments: true,  // optional — Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities.
+    bucketSetSeeds: new List<BucketSetSeedRequest>()  // optional — Defaults to null. The closing balances to seed for bucket sets at this estimate valuation point, at most one per bucket set. While the valuation point is an estimate, each seeded bucket set&#39;s flow bucket values are its seed; finalising the valuation point stores them, and the next valuation point opens from them. A bucket set can only be seeded when the previous final valuation point has no values for it. The seed is trusted input: it is not reconciled to the share class NAVs.
 );
 ```
 ### Serializing to JSON
@@ -50,6 +52,7 @@ var instance = JsonConvert.DeserializeObject<CreateValuationPointRequest>(json);
 ```
 
 - [Property](Property.md) — used in `Properties`
+- [BucketSetSeedRequest](BucketSetSeedRequest.md) — used in `BucketSetSeeds`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

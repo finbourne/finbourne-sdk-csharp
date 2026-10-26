@@ -9,6 +9,7 @@
 | **Description** | **string** | Required | The description of the transaction template. |
 | **Scope** | **string** | Required | The scope in which the transaction template resides. |
 | **ComponentTransactions** | [List&lt;ComponentTransaction&gt;](ComponentTransaction.md) | Required | A set of component transactions that relate to the template to be created. |
+| **Warnings** | [List&lt;Warning&gt;](Warning.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -25,6 +26,7 @@ var instance = new TransactionTemplate(
     description: "...",  // required — The description of the transaction template.
     scope: "...",  // required — The scope in which the transaction template resides.
     componentTransactions: new List<ComponentTransaction>(),  // required — A set of component transactions that relate to the template to be created.
+    warnings: new List<Warning>(),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -41,6 +43,7 @@ var instance = JsonConvert.DeserializeObject<TransactionTemplate>(json);
 ```
 
 - [ComponentTransaction](ComponentTransaction.md) — used in `ComponentTransactions`
+- [Warning](Warning.md)
 - [Link](Link.md)
 
 

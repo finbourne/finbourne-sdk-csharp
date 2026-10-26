@@ -17,6 +17,7 @@
 | **HoldingsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt. |
 | **ValuationsAsAtOverride** | **DateTimeOffset?** | Optional | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | The Fee properties. These will be from the &#39;Fee&#39; domain. |
+| **BucketSetSeeds** | [List&lt;BucketSetSeed&gt;](BucketSetSeed.md) | Optional | The bucket set seeds set on this variant of the Valuation Point. Null when it has none. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -41,6 +42,7 @@ var instance = new ValuationPointOverview(
     holdingsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt.
     valuationsAsAtOverride: DateTimeOffset.Now,  // optional — The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt.
     properties: new Property(...),  // optional — The Fee properties. These will be from the &#39;Fee&#39; domain.
+    bucketSetSeeds: new List<BucketSetSeed>(),  // optional — The bucket set seeds set on this variant of the Valuation Point. Null when it has none.
     links: new List<Link>()  // optional
 );
 ```
@@ -57,6 +59,7 @@ var instance = JsonConvert.DeserializeObject<ValuationPointOverview>(json);
 ```
 
 - [Property](Property.md) — used in `Properties`
+- [BucketSetSeed](BucketSetSeed.md) — used in `BucketSetSeeds`
 - [Link](Link.md)
 
 

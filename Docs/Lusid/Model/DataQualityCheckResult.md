@@ -20,7 +20,7 @@ Represents the result of a data quality check operation
 | **LusidEntity** | [LusidEntityResult](LusidEntityResult.md) | Optional | *No description available.* |
 | **CountRuleBreaches** | **int?** | Optional | The count of rule breaches (1 for RuleBreached, multiple for RuleBreachesOverLimit) |
 | **ErrorDetail** | **string** | Optional | Error details (for RulesetInvalid, RuleInvalid) |
-| **ResultId** | **string** | Optional | Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType. |
+| **ResultId** | **string** | Optional | Unique, stable identifier for this result, scoped to the check definition, result type, ruleset, rule and  breaching entity. Treat as opaque — composition varies by entityType. |
 | **PortfolioHolding** | [PortfolioHoldingResult](PortfolioHoldingResult.md) | Optional | *No description available.* |
 | **PortfolioTransaction** | [PortfolioTransactionResult](PortfolioTransactionResult.md) | Optional | *No description available.* |
 | **StructuredResultData** | [StructuredResultDataResult](StructuredResultDataResult.md) | Optional | *No description available.* |
@@ -49,7 +49,7 @@ var instance = new DataQualityCheckResult(
     lusidEntity: new LusidEntityResult(...),  // optional
     countRuleBreaches: 0,  // optional — The count of rule breaches (1 for RuleBreached, multiple for RuleBreachesOverLimit)
     errorDetail: "...",  // optional — Error details (for RulesetInvalid, RuleInvalid)
-    resultId: "...",  // optional — Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType.
+    resultId: "...",  // optional — Unique, stable identifier for this result, scoped to the check definition, result type, ruleset, rule and  breaching entity. Treat as opaque — composition varies by entityType.
     portfolioHolding: new PortfolioHoldingResult(...),  // optional
     portfolioTransaction: new PortfolioTransactionResult(...),  // optional
     structuredResultData: new StructuredResultDataResult(...)  // optional

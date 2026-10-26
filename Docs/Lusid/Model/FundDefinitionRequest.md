@@ -23,6 +23,7 @@ The request used to create a Fund.
 | **AdditionalNavTypes** | [List&lt;NavTypeDefinition&gt;](NavTypeDefinition.md) | Optional | The definitions for any additional NAVs on the Fund. |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | A set of properties for the Fund. |
 | **CreateInstrument** | **bool** | Optional | Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false. |
+| **InstrumentScope** | **string** | Optional | The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead. |
 | **ShareClasses** | [List&lt;ShareClassDefinition&gt;](ShareClassDefinition.md) | Optional | An optional list of Share Class definitions for the Fund. |
 | **PricingMethodology** | [PricingMethodology](PricingMethodology.md) | Optional | *No description available.* |
 | **ReportingPrices** | [List&lt;ReportingPrice&gt;](ReportingPrice.md) | Optional | Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices. |
@@ -55,6 +56,7 @@ var instance = new FundDefinitionRequest(
     additionalNavTypes: new List<NavTypeDefinition>(),  // optional — The definitions for any additional NAVs on the Fund.
     properties: new Property(...),  // optional — A set of properties for the Fund.
     createInstrument: true,  // optional — Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false.
+    instrumentScope: "...",  // optional — The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead.
     shareClasses: new List<ShareClassDefinition>(),  // optional — An optional list of Share Class definitions for the Fund.
     pricingMethodology: new PricingMethodology(...),  // optional
     reportingPrices: new List<ReportingPrice>(),  // optional — Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices.

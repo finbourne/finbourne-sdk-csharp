@@ -6,7 +6,7 @@ Request defining a post-processing task for an instance.
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Action** | **string** | Required | The type of action to perform (Allowed: RunIntegration, RunWorkflow, TriggerEmail) |
-| **TargetInstance** | **string** | Optional | The instance identifier to trigger (for TriggerIntegration action). |
+| **TargetInstance** | **string** | Optional | The identifier of the integration instance to run (RunIntegration action only). |
 | **TriggerOn** | **string** | Required | When the task should be triggered (Allowed: OnSuccess, OnFailure, Always) |
 | **Parameters** | **Object** | Optional | JSON parameters specific to the action type. |
 
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new PostProcessTask(
     action: "...",  // required — The type of action to perform (Allowed: RunIntegration, RunWorkflow, TriggerEmail)
-    targetInstance: "...",  // optional — The instance identifier to trigger (for TriggerIntegration action).
+    targetInstance: "...",  // optional — The identifier of the integration instance to run (RunIntegration action only).
     triggerOn: "...",  // required — When the task should be triggered (Allowed: OnSuccess, OnFailure, Always)
     parameters:   // optional — JSON parameters specific to the action type.
 );

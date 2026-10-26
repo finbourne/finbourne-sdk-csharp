@@ -40,7 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="valuationRecipes">valuationRecipes.</param>
         /// <param name="currencies">currencies.</param>
         /// <param name="rulesets">The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once. (required).</param>
-        /// <param name="definitionType">What this definition reconciles, and so which shape of details it carries. PortfolioContents and External are supported; LusidEntity is not yet. Available values: PortfolioContents, LusidEntity, External. (required).</param>
+        /// <param name="definitionType">What this definition reconciles, and so which shape of details it carries. Available values: PortfolioContents, LusidEntity, External. (required).</param>
         public PortfolioContentsRecDefinitionDetails(List<RecDefSource> leftPortfolioSources = default(List<RecDefSource>), List<RecDefSource> rightPortfolioSources = default(List<RecDefSource>), RecDefRecipeIds valuationRecipes = default(RecDefRecipeIds), RecDefCurrencies currencies = default(RecDefCurrencies), List<RecDefRuleset> rulesets = default(List<RecDefRuleset>), string definitionType = default(string))
         {
             // to ensure "leftPortfolioSources" is required (not null)
@@ -105,9 +105,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<RecDefRuleset> Rulesets { get; set; }
 
         /// <summary>
-        /// What this definition reconciles, and so which shape of details it carries. PortfolioContents and External are supported; LusidEntity is not yet. Available values: PortfolioContents, LusidEntity, External.
+        /// What this definition reconciles, and so which shape of details it carries. Available values: PortfolioContents, LusidEntity, External.
         /// </summary>
-        /// <value>What this definition reconciles, and so which shape of details it carries. PortfolioContents and External are supported; LusidEntity is not yet. Available values: PortfolioContents, LusidEntity, External.</value>
+        /// <value>What this definition reconciles, and so which shape of details it carries. Available values: PortfolioContents, LusidEntity, External.</value>
         [DataMember(Name = "definitionType", IsRequired = true, EmitDefaultValue = true)]
         public string DefinitionType { get; set; }
 

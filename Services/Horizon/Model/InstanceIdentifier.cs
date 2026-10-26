@@ -36,7 +36,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// Initializes a new instance of the <see cref="InstanceIdentifier" /> class.
         /// </summary>
         /// <param name="id">Instance identifier. (required).</param>
-        public InstanceIdentifier(string id = default(string))
+        /// <param name="warnings">Non-blocking findings about the saved configuration. Empty when there are none..</param>
+        public InstanceIdentifier(string id = default(string), List<ValidationNoticeResponse> warnings = default(List<ValidationNoticeResponse>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -44,6 +45,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("id is a required property for InstanceIdentifier and cannot be null");
             }
             this.Id = id;
+            this.Warnings = warnings;
         }
 
         /// <summary>
@@ -54,6 +56,13 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string Id { get; set; }
 
         /// <summary>
+        /// Non-blocking findings about the saved configuration. Empty when there are none.
+        /// </summary>
+        /// <value>Non-blocking findings about the saved configuration. Empty when there are none.</value>
+        [DataMember(Name = "warnings", EmitDefaultValue = true)]
+        public List<ValidationNoticeResponse> Warnings { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -62,6 +71,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class InstanceIdentifier {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -101,6 +111,12 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.Warnings == input.Warnings ||
+                    this.Warnings != null &&
+                    input.Warnings != null &&
+                    this.Warnings.SequenceEqual(input.Warnings)
                 );
         }
 
@@ -116,6 +132,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.Warnings != null)
+                {
+                    hashCode = (hashCode * 59) + this.Warnings.GetHashCode();
                 }
                 return hashCode;
             }

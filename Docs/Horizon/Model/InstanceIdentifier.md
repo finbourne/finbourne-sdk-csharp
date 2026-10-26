@@ -6,6 +6,7 @@ Identifies a single instance of an integration.
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Id** | **string** | Required | Instance identifier. |
+| **Warnings** | [List&lt;ValidationNoticeResponse&gt;](ValidationNoticeResponse.md) | Optional | Non-blocking findings about the saved configuration. Empty when there are none. |
 
 
 ## Usage
@@ -16,7 +17,8 @@ Identifies a single instance of an integration.
 using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new InstanceIdentifier(
-    id: "..."  // required — Instance identifier.
+    id: "...",  // required — Instance identifier.
+    warnings: new List<ValidationNoticeResponse>()  // optional — Non-blocking findings about the saved configuration. Empty when there are none.
 );
 ```
 ### Serializing to JSON
@@ -31,6 +33,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<InstanceIdentifier>(json);
 ```
 
+- [ValidationNoticeResponse](ValidationNoticeResponse.md) — used in `Warnings`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
