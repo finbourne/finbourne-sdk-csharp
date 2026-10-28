@@ -40,12 +40,14 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="feedback">Individual Feedback Messages (to replace Progress).  A given message will be returned from only one call..</param>
         /// <param name="status">status.</param>
         /// <param name="queries">queries.</param>
-        public BackgroundMultiQueryProgressResponse(string progress = default(string), List<FeedbackEventArgs> feedback = default(List<FeedbackEventArgs>), TaskStatus ?status = default(TaskStatus?), List<BackgroundQueryProgressResponse> queries = default(List<BackgroundQueryProgressResponse>))
+        /// <param name="export">export.</param>
+        public BackgroundMultiQueryProgressResponse(string progress = default(string), List<FeedbackEventArgs> feedback = default(List<FeedbackEventArgs>), TaskStatus ?status = default(TaskStatus?), List<BackgroundQueryProgressResponse> queries = default(List<BackgroundQueryProgressResponse>), MultiQueryExportState export = default(MultiQueryExportState))
         {
             this.Progress = progress;
             this.Feedback = feedback;
             this.Status = status;
             this.Queries = queries;
+            this.Export = export;
         }
 
         /// <summary>
@@ -69,6 +71,12 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         public List<BackgroundQueryProgressResponse> Queries { get; set; }
 
         /// <summary>
+        /// Gets or Sets Export
+        /// </summary>
+        [DataMember(Name = "export", EmitDefaultValue = false)]
+        public MultiQueryExportState Export { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -80,6 +88,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
             sb.Append("  Feedback: ").Append(Feedback).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Queries: ").Append(Queries).Append("\n");
+            sb.Append("  Export: ").Append(Export).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -135,6 +144,11 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                     this.Queries != null &&
                     input.Queries != null &&
                     this.Queries.SequenceEqual(input.Queries)
+                ) && 
+                (
+                    this.Export == input.Export ||
+                    (this.Export != null &&
+                    this.Export.Equals(input.Export))
                 );
         }
 
@@ -159,6 +173,10 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 if (this.Queries != null)
                 {
                     hashCode = (hashCode * 59) + this.Queries.GetHashCode();
+                }
+                if (this.Export != null)
+                {
+                    hashCode = (hashCode * 59) + this.Export.GetHashCode();
                 }
                 return hashCode;
             }

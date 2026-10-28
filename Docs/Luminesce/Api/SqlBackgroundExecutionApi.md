@@ -18,8 +18,8 @@ All URIs are relative to *http://localhost*
 | [**FetchQueryResultXml**](#fetchqueryresultxml) | **GET** `/honeycomb/api/SqlBackground/{executionId}/xml` | FetchQueryResultXml: Fetch the result of a query as XML |
 | [**GetHistoricalFeedback**](#gethistoricalfeedback) | **GET** `/honeycomb/api/SqlBackground/{executionId}/historicalFeedback` | GetHistoricalFeedback: View historical query progress (for older queries) |
 | [**GetProgressOf**](#getprogressof) | **GET** `/honeycomb/api/SqlBackground/{executionId}` | GetProgressOf: View query progress up to this point. |
-| [**ListQueries**](#listqueries) | **GET** `/honeycomb/api/SqlBackground` | [EXPERIMENTAL] ListQueries: List the background queries available to the calling user |
-| [**SaveQueryResultToDrive**](#savequeryresulttodrive) | **GET** `/honeycomb/api/SqlBackground/{executionId}/drive` | [EXPERIMENTAL] SaveQueryResultToDrive: Saves the query results directly to Drive |
+| [**ListQueries**](#listqueries) | **GET** `/honeycomb/api/SqlBackground` | ListQueries: List the background queries available to the calling user |
+| [**SaveQueryResultToDrive**](#savequeryresulttodrive) | **GET** `/honeycomb/api/SqlBackground/{executionId}/drive` | SaveQueryResultToDrive: Saves the query results directly to Drive |
 | [**StartQuery**](#startquery) | **PUT** `/honeycomb/api/SqlBackground` | StartQuery: Start to Execute Sql in the background |
 
 ### Example
@@ -989,7 +989,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > List&lt;BackgroundQueryListItem&gt; ListQueries(string? sqlLike = null)
 
-[EXPERIMENTAL] ListQueries: List the background queries available to the calling user
+ListQueries: List the background queries available to the calling user
 
 Lists the background queries (started by the calling user) whose results may be fetched, and which have not yet passed their `keepForSeconds` time, most recent first. Multi-queries themselves are not included, though the individual queries they started are (other than those marked as not being external results).  The following error codes are to be anticipated most with standard Problem Detail reports: - 401 Unauthorized
 
@@ -1045,7 +1045,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > string SaveQueryResultToDrive(string executionId, string driveLocationAndFileName, bool? mayOverwrite = null, ExportType? format = null, string? driveTemplateLocation = null, string? tableNameReference = null, string? sortBy = null, string? filter = null, string? sqlFilter = null, string? select = null, string? groupBy = null, string? dateTimeFormat = null, int? loadWaitMilliseconds = null)
 
-[EXPERIMENTAL] SaveQueryResultToDrive: Saves the query results directly to Drive
+SaveQueryResultToDrive: Saves the query results directly to Drive
 
 Saves the results directly to Drive.  This can be useful for sharing results with others, keeping persistent reports, etc.      Of course always consider data visibility and security as who can see these depends on users' permissions to the chosen location within Drive.  Template support is provided, for the export types that allow this, but unlike using the `Drive.SaveAs` provider within the SQL itself, only one data set can be be saved  (the full query result set, optionally manipulated with the various parameters to this method).  The following error codes are to be anticipated most with standard Problem Detail reports: - 400 BadRequest : Something failed with the execution of your query or drive parameters were incorrect in some way - 401 Unauthorized - 403 Forbidden - 404 Not Found : The requested query result doesn't (yet) exist or the calling user did not run the query. - 429 Too Many Requests : Please try your request again soon   1. The query has been executed successfully in the past yet the server-instance receiving this request (e.g. from a load balancer) doesn't yet have this data available.   1. By virtue of the request you have just placed this will have started to load from the persisted cache and will soon be available.   1. It is also the case that the original server-instance to process the original query is likely to already be able to service this request.
 

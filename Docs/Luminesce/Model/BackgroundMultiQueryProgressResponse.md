@@ -8,6 +8,7 @@
 | **Feedback** | [List&lt;FeedbackEventArgs&gt;](FeedbackEventArgs.md) | Optional | Individual Feedback Messages (to replace Progress).  A given message will be returned from only one call. |
 | **Status** | **TaskStatus** | Optional | *No description available.* |
 | **Queries** | [List&lt;BackgroundQueryProgressResponse&gt;](BackgroundQueryProgressResponse.md) | Optional | *No description available.* |
+| **Export** | [MultiQueryExportState](MultiQueryExportState.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -21,7 +22,8 @@ var instance = new BackgroundMultiQueryProgressResponse(
     progress: "...",  // optional — The full progress log (up to this point at least)
     feedback: new List<FeedbackEventArgs>(),  // optional — Individual Feedback Messages (to replace Progress).  A given message will be returned from only one call.
     status: ,  // optional
-    queries: new List<BackgroundQueryProgressResponse>()  // optional
+    queries: new List<BackgroundQueryProgressResponse>(),  // optional
+    export: new MultiQueryExportState(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -38,6 +40,7 @@ var instance = JsonConvert.DeserializeObject<BackgroundMultiQueryProgressRespons
 
 - [FeedbackEventArgs](FeedbackEventArgs.md) — used in `Feedback`
 - [BackgroundQueryProgressResponse](BackgroundQueryProgressResponse.md)
+- [MultiQueryExportState](MultiQueryExportState.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

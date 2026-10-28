@@ -17,6 +17,7 @@ All URIs are relative to *http://localhost*
 | [**GetIntegrationConfigurationFields**](#getintegrationconfigurationfields) | **GET** `/horizon/api/integrations/configuration/{integration}/fields` | [EXPERIMENTAL] GetIntegrationConfigurationFields: Get the Field Mapping configuration for a given integration |
 | [**GetIntegrationConfigurationProperties**](#getintegrationconfigurationproperties) | **GET** `/horizon/api/integrations/configuration/{integration}/properties` | [EXPERIMENTAL] GetIntegrationConfigurationProperties: Get the Property Mapping configuration for a given integration |
 | [**GetSchema**](#getschema) | **GET** `/horizon/api/integrations/schema/{integration}` | [EXPERIMENTAL] GetSchema: Get the JSON schema for the details section of an integration instance. |
+| [**GetWorkflowExecuteParameters**](#getworkflowexecuteparameters) | **GET** `/horizon/api/integrations/instances/{instanceId}/workflow/executeparameters` | [EXPERIMENTAL] GetWorkflowExecuteParameters: Get the execute parameters a Workflow-driven integration instance accepts |
 | [**GetWorkflowResultFields**](#getworkflowresultfields) | **GET** `/horizon/api/integrations/instances/{instanceId}/workflow/resultfields` | [EXPERIMENTAL] GetWorkflowResultFields: Get the Workflow result fields an integration instance returns |
 | [**ListDataflowProcessors**](#listdataflowprocessors) | **GET** `/horizon/api/integrations/dataflow/processors` | [EXPERIMENTAL] ListDataflowProcessors: List processor types. |
 | [**ListInstances**](#listinstances) | **GET** `/horizon/api/integrations/instances` | [EXPERIMENTAL] ListInstances: List instances across all integrations. |
@@ -782,6 +783,65 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<JSchema> response = apiInstance.GetSchemaWithHttpInfo(integration);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getworkflowexecuteparameters"></a>
+## GetWorkflowExecuteParameters
+
+> WorkflowExecuteParametersResponse GetWorkflowExecuteParameters(string instanceId)
+
+[EXPERIMENTAL] GetWorkflowExecuteParameters: Get the execute parameters a Workflow-driven integration instance accepts
+
+Returns the parameters the instance's integration accepts on `executewithparams`: which are always required, which stages each is required for, the values a closed-set parameter admits, and the steps that run for each stage. Only integrations driven by Workflow declare parameters; an instance of any other integration is a bad request.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<IntegrationsApi>();
+var instanceId = "instanceId_example";  // string
+WorkflowExecuteParametersResponse result = apiInstance.GetWorkflowExecuteParameters(instanceId);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **instanceId** | **string** | path | **required** | Instance identifier e.g. \&quot;b64135e7-98a0-41af-a845-d86167d54cc7\&quot;. |
+
+### Return type
+
+[WorkflowExecuteParametersResponse](../Model/WorkflowExecuteParametersResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `application/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The declared execute parameters |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | The integration instance does not exist |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetWorkflowExecuteParametersWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<WorkflowExecuteParametersResponse> response = apiInstance.GetWorkflowExecuteParametersWithHttpInfo(instanceId);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

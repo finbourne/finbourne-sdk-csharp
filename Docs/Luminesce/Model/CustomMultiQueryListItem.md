@@ -11,6 +11,7 @@ A custom multi-query the calling user currently has results of available to them
 | **StartedAt** | **DateTimeOffset?** | Optional | When it was started (UTC) |
 | **When** | **DateTimeOffset** | Optional | When the state of it was last updated (UTC) |
 | **ExpiresAt** | **DateTimeOffset** | Optional | When it (and the data of its queries) may be removed (UTC) |
+| **ExportedTo** | **string** | Optional | The Drive path its results were saved to once done, if it was started with an &#x60;export&#x60; and they were |
 | **Queries** | [List&lt;CustomMultiQueryListItemQuery&gt;](CustomMultiQueryListItemQuery.md) | Optional | Its queries whose results may be fetched (those that are external results), in request order |
 
 
@@ -28,6 +29,7 @@ var instance = new CustomMultiQueryListItem(
     startedAt: DateTimeOffset.Now,  // optional — When it was started (UTC)
     when: DateTimeOffset.Now,  // optional — When the state of it was last updated (UTC)
     expiresAt: DateTimeOffset.Now,  // optional — When it (and the data of its queries) may be removed (UTC)
+    exportedTo: "...",  // optional — The Drive path its results were saved to once done, if it was started with an &#x60;export&#x60; and they were
     queries: new List<CustomMultiQueryListItemQuery>()  // optional — Its queries whose results may be fetched (those that are external results), in request order
 );
 ```
