@@ -1,12 +1,12 @@
 # Finbourne.Sdk.Horizon.Model.RunFileResponse
 
-record containing details of a single file for a run.
+One delivery of a file to one destination within a run, keyed by FileUuid. A file sent to two destinations appears as two rows, so Destinations always holds exactly one element.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **FileName** | **string** | Required | *No description available.* |
-| **GeneratedAt** | **DateTimeOffset** | Required | *No description available.* |
+| **GeneratedAt** | **DateTimeOffset** | Required | When the file was built, or when the attempt failed before a file was built. |
 | **RowCount** | **int** | Required | *No description available.* |
 | **FileHash** | **string** | Required | *No description available.* |
 | **Encrypted** | **bool** | Required | *No description available.* |
@@ -26,7 +26,7 @@ using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new RunFileResponse(
     fileName: "...",  // required
-    generatedAt: DateTimeOffset.Now,  // required
+    generatedAt: DateTimeOffset.Now,  // required — When the file was built, or when the attempt failed before a file was built.
     rowCount: 0,  // required
     fileHash: "...",  // required
     encrypted: true,  // required

@@ -55,7 +55,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="failureStage">Stage at which a failed transaction failed: Build or Delivery.</param>
         /// <param name="sentAt">When the transaction was sent, which is when its file reached a destination. Empty for Skipped and Failed rows.</param>
         /// <param name="instrumentId">InstrumentId showing instrument id of transaction.</param>
-        public TpfTransactionSearchResponse(string transactionId = default(string), Guid instanceId = default(Guid), string instanceName = default(string), Guid batchId = default(Guid), Guid runId = default(Guid), DateTimeOffset runStartTime = default(DateTimeOffset), string publicationStatus = default(string), string instrumentName = default(string), string instrumentType = default(string), DateTimeOffset tradeDate = default(DateTimeOffset), DateTimeOffset? settlementDate = default(DateTimeOffset?), string skipReason = default(string), string fileName = default(string), List<string> destinations = default(List<string>), string portfolioCode = default(string), string portfolioScope = default(string), string failureReason = default(string), string failureStage = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), string instrumentId = default(string))
+        /// <param name="instrumentScope">The scope the build resolved the instrument in; null for rows built before it was recorded.</param>
+        public TpfTransactionSearchResponse(string transactionId = default(string), Guid instanceId = default(Guid), string instanceName = default(string), Guid batchId = default(Guid), Guid runId = default(Guid), DateTimeOffset runStartTime = default(DateTimeOffset), string publicationStatus = default(string), string instrumentName = default(string), string instrumentType = default(string), DateTimeOffset tradeDate = default(DateTimeOffset), DateTimeOffset? settlementDate = default(DateTimeOffset?), string skipReason = default(string), string fileName = default(string), List<string> destinations = default(List<string>), string portfolioCode = default(string), string portfolioScope = default(string), string failureReason = default(string), string failureStage = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), string instrumentId = default(string), string instrumentScope = default(string))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -102,6 +103,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             this.FailureStage = failureStage;
             this.SentAt = sentAt;
             this.InstrumentId = instrumentId;
+            this.InstrumentScope = instrumentScope;
         }
 
         /// <summary>
@@ -245,6 +247,13 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string InstrumentId { get; set; }
 
         /// <summary>
+        /// The scope the build resolved the instrument in; null for rows built before it was recorded
+        /// </summary>
+        /// <value>The scope the build resolved the instrument in; null for rows built before it was recorded</value>
+        [DataMember(Name = "instrumentScope", EmitDefaultValue = true)]
+        public string InstrumentScope { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -272,6 +281,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  FailureStage: ").Append(FailureStage).Append("\n");
             sb.Append("  SentAt: ").Append(SentAt).Append("\n");
             sb.Append("  InstrumentId: ").Append(InstrumentId).Append("\n");
+            sb.Append("  InstrumentScope: ").Append(InstrumentScope).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -407,6 +417,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.InstrumentId == input.InstrumentId ||
                     (this.InstrumentId != null &&
                     this.InstrumentId.Equals(input.InstrumentId))
+                ) && 
+                (
+                    this.InstrumentScope == input.InstrumentScope ||
+                    (this.InstrumentScope != null &&
+                    this.InstrumentScope.Equals(input.InstrumentScope))
                 );
         }
 
@@ -498,6 +513,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 if (this.InstrumentId != null)
                 {
                     hashCode = (hashCode * 59) + this.InstrumentId.GetHashCode();
+                }
+                if (this.InstrumentScope != null)
+                {
+                    hashCode = (hashCode * 59) + this.InstrumentScope.GetHashCode();
                 }
                 return hashCode;
             }

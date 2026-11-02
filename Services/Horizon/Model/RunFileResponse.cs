@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// record containing details of a single file for a run.
+    /// One delivery of a file to one destination within a run, keyed by FileUuid. A file sent to two destinations appears as two rows, so Destinations always holds exactly one element.
     /// </summary>
     [DataContract(Name = "RunFileResponse")]
     public partial class RunFileResponse : IEquatable<RunFileResponse>, IValidatableObject
@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// Initializes a new instance of the <see cref="RunFileResponse" /> class.
         /// </summary>
         /// <param name="fileName">fileName (required).</param>
-        /// <param name="generatedAt">generatedAt (required).</param>
+        /// <param name="generatedAt">When the file was built, or when the attempt failed before a file was built. (required).</param>
         /// <param name="rowCount">rowCount (required).</param>
         /// <param name="fileHash">fileHash (required).</param>
         /// <param name="encrypted">encrypted (required).</param>
@@ -91,8 +91,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string FileName { get; set; }
 
         /// <summary>
-        /// Gets or Sets GeneratedAt
+        /// When the file was built, or when the attempt failed before a file was built.
         /// </summary>
+        /// <value>When the file was built, or when the attempt failed before a file was built.</value>
         [DataMember(Name = "generatedAt", IsRequired = true, EmitDefaultValue = true)]
         public DateTimeOffset GeneratedAt { get; set; }
 

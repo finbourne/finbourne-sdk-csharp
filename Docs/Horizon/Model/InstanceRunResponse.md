@@ -19,6 +19,7 @@ Response containing details of a single run for an instance. The transaction and
 | **FailedCount** | **long?** | Optional | *No description available.* |
 | **FailedFiles** | **int?** | Optional | *No description available.* |
 | **Message** | **string** | Optional | *No description available.* |
+| **FileCount** | **int?** | Optional | The number of rows ListRunFiles returns for the run, every delivery attempt included; latest attempt only. |
 
 
 ## Usage
@@ -42,7 +43,8 @@ var instance = new InstanceRunResponse(
     skippedCount: 0L,  // optional
     failedCount: 0L,  // optional
     failedFiles: 0,  // optional
-    message: "..."  // optional
+    message: "...",  // optional
+    fileCount: 0  // optional — The number of rows ListRunFiles returns for the run, every delivery attempt included; latest attempt only.
 );
 ```
 ### Serializing to JSON

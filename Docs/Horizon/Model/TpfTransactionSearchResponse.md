@@ -25,6 +25,7 @@ TPF send history record
 | **FailureStage** | **string** | Optional | Stage at which a failed transaction failed: Build or Delivery |
 | **SentAt** | **DateTimeOffset?** | Optional | When the transaction was sent, which is when its file reached a destination. Empty for Skipped and Failed rows |
 | **InstrumentId** | **string** | Optional | InstrumentId showing instrument id of transaction |
+| **InstrumentScope** | **string** | Optional | The scope the build resolved the instrument in; null for rows built before it was recorded |
 
 
 ## Usage
@@ -54,7 +55,8 @@ var instance = new TpfTransactionSearchResponse(
     failureReason: "...",  // optional — FailureReason to show failure reason
     failureStage: "...",  // optional — Stage at which a failed transaction failed: Build or Delivery
     sentAt: DateTimeOffset.Now,  // optional — When the transaction was sent, which is when its file reached a destination. Empty for Skipped and Failed rows
-    instrumentId: "..."  // optional — InstrumentId showing instrument id of transaction
+    instrumentId: "...",  // optional — InstrumentId showing instrument id of transaction
+    instrumentScope: "..."  // optional — The scope the build resolved the instrument in; null for rows built before it was recorded
 );
 ```
 ### Serializing to JSON

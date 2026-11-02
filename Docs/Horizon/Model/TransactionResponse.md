@@ -21,6 +21,7 @@ Response containing details of a single transaction for a run. A transaction bui
 | **SentAt** | **DateTimeOffset?** | Optional | *No description available.* |
 | **Destinations** | [List&lt;DestinationResponse&gt;](DestinationResponse.md) | Required | *No description available.* |
 | **FailureStage** | **string** | Optional | *No description available.* |
+| **InstrumentScope** | **string** | Optional | The scope the build resolved the instrument in; null for rows built before it was recorded. |
 
 
 ## Usage
@@ -46,7 +47,8 @@ var instance = new TransactionResponse(
     outputFileName: "...",  // optional
     sentAt: DateTimeOffset.Now,  // optional
     destinations: new List<DestinationResponse>(),  // required
-    failureStage: "..."  // optional
+    failureStage: "...",  // optional
+    instrumentScope: "..."  // optional — The scope the build resolved the instrument in; null for rows built before it was recorded.
 );
 ```
 ### Serializing to JSON

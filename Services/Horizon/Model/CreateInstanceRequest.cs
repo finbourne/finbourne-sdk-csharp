@@ -42,7 +42,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="enabled">enabled (required).</param>
         /// <param name="triggers">triggers (required).</param>
         /// <param name="details">Base DTO type of an integration configuration specific to the integration type.              N.B. ASP.NET Core model validation is normally applied automatically when [ApiController] is added to a controller, however it doesn&#39;t work here with the polymorphic integration subtypes of this class (see https://github.com/dotnet/aspnetcore/issues/27882). The workaround here is to implement the IValidatableObject interface and each subtype must call Validate() or ValidateContents() on its properties (the validation is not recursive).  Located in Horizon.Integrations.Web so both specific integration projects and Horizon.WebApi can reference it. (required).</param>
-        /// <param name="postProcessTasks">postProcessTasks (required).</param>
+        /// <param name="postProcessTasks">Post-process tasks for the instance. On update the stored tasks are replaced by this set when it is present, an empty set clears them, and omitting the field leaves them unchanged..</param>
         /// <param name="alertRules">Alert rules for the instance. On update the stored rules are replaced by this set when it is present, an empty set clears them, and omitting the field leaves them unchanged..</param>
         public CreateInstanceRequest(Dictionary<string, LusidPropertyDefinitionOverridesByType> instanceOptionalProps = default(Dictionary<string, LusidPropertyDefinitionOverridesByType>), string integrationType = default(string), string name = default(string), string description = default(string), bool enabled = default(bool), List<Trigger> triggers = default(List<Trigger>), Object details = default(Object), List<PostProcessTask> postProcessTasks = default(List<PostProcessTask>), List<AlertRule> alertRules = default(List<AlertRule>))
         {
@@ -77,13 +77,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("details is a required property for CreateInstanceRequest and cannot be null");
             }
             this.Details = details;
-            // to ensure "postProcessTasks" is required (not null)
-            if (postProcessTasks == null)
-            {
-                throw new ArgumentNullException("postProcessTasks is a required property for CreateInstanceRequest and cannot be null");
-            }
-            this.PostProcessTasks = postProcessTasks;
             this.InstanceOptionalProps = instanceOptionalProps;
+            this.PostProcessTasks = postProcessTasks;
             this.AlertRules = alertRules;
         }
 
@@ -131,9 +126,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public Object Details { get; set; }
 
         /// <summary>
-        /// Gets or Sets PostProcessTasks
+        /// Post-process tasks for the instance. On update the stored tasks are replaced by this set when it is present, an empty set clears them, and omitting the field leaves them unchanged.
         /// </summary>
-        [DataMember(Name = "postProcessTasks", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>Post-process tasks for the instance. On update the stored tasks are replaced by this set when it is present, an empty set clears them, and omitting the field leaves them unchanged.</value>
+        [DataMember(Name = "postProcessTasks", EmitDefaultValue = true)]
         public List<PostProcessTask> PostProcessTasks { get; set; }
 
         /// <summary>

@@ -92,7 +92,13 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// Enum Pdf for value: pdf
         /// </summary>
         [EnumMember(Value = "pdf")]
-        Pdf = 11
+        Pdf = 11,
+
+        /// <summary>
+        /// Enum JsonProperByTable for value: jsonProperByTable
+        /// </summary>
+        [EnumMember(Value = "jsonProperByTable")]
+        JsonProperByTable = 12
     }
 
 }

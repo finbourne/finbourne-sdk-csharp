@@ -8,7 +8,7 @@ Response model for TPF file delivery search results
 | **RunId** | **string** | Optional | *No description available.* |
 | **RunStartTime** | **DateTimeOffset?** | Optional | *No description available.* |
 | **FileName** | **string** | Required | *No description available.* |
-| **GeneratedAt** | **DateTimeOffset** | Required | *No description available.* |
+| **GeneratedAt** | **DateTimeOffset** | Required | When the file was built, or when the attempt failed before a file was built. |
 | **RowCount** | **int** | Required | *No description available.* |
 | **FileHash** | **string** | Optional | *No description available.* |
 | **DestinationType** | **string** | Required | *No description available.* |
@@ -18,6 +18,7 @@ Response model for TPF file delivery search results
 | **DestinationName** | **string** | Optional | *No description available.* |
 | **FileUuid** | **Guid** | Required | *No description available.* |
 | **CanResend** | **bool** | Required | Whether the data the file is rebuilt from is still retained, so a resend can be requested. |
+| **DeliveredAt** | **DateTimeOffset?** | Optional | When the file reached the destination; null for a Failed or Pending row. |
 
 
 ## Usage
@@ -31,7 +32,7 @@ var instance = new TpfFileDeliveryResponse(
     runId: "...",  // optional
     runStartTime: DateTimeOffset.Now,  // optional
     fileName: "...",  // required
-    generatedAt: DateTimeOffset.Now,  // required
+    generatedAt: DateTimeOffset.Now,  // required — When the file was built, or when the attempt failed before a file was built.
     rowCount: 0,  // required
     fileHash: "...",  // optional
     destinationType: "...",  // required
@@ -40,7 +41,8 @@ var instance = new TpfFileDeliveryResponse(
     destinationError: "...",  // optional
     destinationName: "...",  // optional
     fileUuid: "...",  // required
-    canResend: true  // required — Whether the data the file is rebuilt from is still retained, so a resend can be requested.
+    canResend: true,  // required — Whether the data the file is rebuilt from is still retained, so a resend can be requested.
+    deliveredAt: DateTimeOffset.Now  // optional — When the file reached the destination; null for a Failed or Pending row.
 );
 ```
 ### Serializing to JSON

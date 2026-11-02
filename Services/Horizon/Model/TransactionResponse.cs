@@ -51,7 +51,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="sentAt">sentAt.</param>
         /// <param name="destinations">destinations (required).</param>
         /// <param name="failureStage">failureStage.</param>
-        public TransactionResponse(string transactionId = default(string), string publicationStatus = default(string), string portfolioScope = default(string), string portfolioCode = default(string), string instrumentId = default(string), string instrumentType = default(string), string instrumentName = default(string), DateTimeOffset? tradeDate = default(DateTimeOffset?), DateTimeOffset? settlementDate = default(DateTimeOffset?), string status = default(string), string skipReason = default(string), string failureReason = default(string), string outputFileName = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), List<DestinationResponse> destinations = default(List<DestinationResponse>), string failureStage = default(string))
+        /// <param name="instrumentScope">The scope the build resolved the instrument in; null for rows built before it was recorded..</param>
+        public TransactionResponse(string transactionId = default(string), string publicationStatus = default(string), string portfolioScope = default(string), string portfolioCode = default(string), string instrumentId = default(string), string instrumentType = default(string), string instrumentName = default(string), DateTimeOffset? tradeDate = default(DateTimeOffset?), DateTimeOffset? settlementDate = default(DateTimeOffset?), string status = default(string), string skipReason = default(string), string failureReason = default(string), string outputFileName = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), List<DestinationResponse> destinations = default(List<DestinationResponse>), string failureStage = default(string), string instrumentScope = default(string))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -89,6 +90,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             this.OutputFileName = outputFileName;
             this.SentAt = sentAt;
             this.FailureStage = failureStage;
+            this.InstrumentScope = instrumentScope;
         }
 
         /// <summary>
@@ -190,6 +192,13 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string FailureStage { get; set; }
 
         /// <summary>
+        /// The scope the build resolved the instrument in; null for rows built before it was recorded.
+        /// </summary>
+        /// <value>The scope the build resolved the instrument in; null for rows built before it was recorded.</value>
+        [DataMember(Name = "instrumentScope", EmitDefaultValue = true)]
+        public string InstrumentScope { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -213,6 +222,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  SentAt: ").Append(SentAt).Append("\n");
             sb.Append("  Destinations: ").Append(Destinations).Append("\n");
             sb.Append("  FailureStage: ").Append(FailureStage).Append("\n");
+            sb.Append("  InstrumentScope: ").Append(InstrumentScope).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -328,6 +338,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.FailureStage == input.FailureStage ||
                     (this.FailureStage != null &&
                     this.FailureStage.Equals(input.FailureStage))
+                ) && 
+                (
+                    this.InstrumentScope == input.InstrumentScope ||
+                    (this.InstrumentScope != null &&
+                    this.InstrumentScope.Equals(input.InstrumentScope))
                 );
         }
 
@@ -403,6 +418,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 if (this.FailureStage != null)
                 {
                     hashCode = (hashCode * 59) + this.FailureStage.GetHashCode();
+                }
+                if (this.InstrumentScope != null)
+                {
+                    hashCode = (hashCode * 59) + this.InstrumentScope.GetHashCode();
                 }
                 return hashCode;
             }

@@ -1,6 +1,6 @@
 # Finbourne.Sdk.Horizon.Model.FileDestinationResponse
 
-record containing details of a single file destination for a run.
+The destination a file delivery row describes. A Failed row carries the per-transaction FailureReason when one was recorded, falling back to the raw Error text.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -10,6 +10,8 @@ record containing details of a single file destination for a run.
 | **Status** | **string** | Required | *No description available.* |
 | **Error** | **string** | Optional | *No description available.* |
 | **FailureReason** | **string** | Optional | *No description available.* |
+| **Name** | **string** | Optional | The configured destination name, such as the SFTP host, when one was recorded. |
+| **DeliveredAt** | **DateTimeOffset?** | Optional | When the file reached the destination; null for a Failed or Pending row. |
 
 
 ## Usage
@@ -24,7 +26,9 @@ var instance = new FileDestinationResponse(
     path: "...",  // required
     status: "...",  // required
     error: "...",  // optional
-    failureReason: "..."  // optional
+    failureReason: "...",  // optional
+    name: "...",  // optional — The configured destination name, such as the SFTP host, when one was recorded.
+    deliveredAt: DateTimeOffset.Now  // optional — When the file reached the destination; null for a Failed or Pending row.
 );
 ```
 ### Serializing to JSON

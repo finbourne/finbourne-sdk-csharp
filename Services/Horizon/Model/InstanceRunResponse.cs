@@ -49,7 +49,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="failedCount">failedCount.</param>
         /// <param name="failedFiles">failedFiles.</param>
         /// <param name="message">message.</param>
-        public InstanceRunResponse(Guid runId = default(Guid), Guid referenceId = default(Guid), int? attempt = default(int?), DateTimeOffset startTime = default(DateTimeOffset), DateTimeOffset? endTime = default(DateTimeOffset?), string duration = default(string), string status = default(string), string triggeredBy = default(string), int? total = default(int?), long? sentCount = default(long?), long? skippedCount = default(long?), long? failedCount = default(long?), int? failedFiles = default(int?), string message = default(string))
+        /// <param name="fileCount">The number of rows ListRunFiles returns for the run, every delivery attempt included; latest attempt only..</param>
+        public InstanceRunResponse(Guid runId = default(Guid), Guid referenceId = default(Guid), int? attempt = default(int?), DateTimeOffset startTime = default(DateTimeOffset), DateTimeOffset? endTime = default(DateTimeOffset?), string duration = default(string), string status = default(string), string triggeredBy = default(string), int? total = default(int?), long? sentCount = default(long?), long? skippedCount = default(long?), long? failedCount = default(long?), int? failedFiles = default(int?), string message = default(string), int? fileCount = default(int?))
         {
             this.RunId = runId;
             this.ReferenceId = referenceId;
@@ -70,6 +71,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             this.FailedCount = failedCount;
             this.FailedFiles = failedFiles;
             this.Message = message;
+            this.FileCount = fileCount;
         }
 
         /// <summary>
@@ -157,6 +159,13 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string Message { get; set; }
 
         /// <summary>
+        /// The number of rows ListRunFiles returns for the run, every delivery attempt included; latest attempt only.
+        /// </summary>
+        /// <value>The number of rows ListRunFiles returns for the run, every delivery attempt included; latest attempt only.</value>
+        [DataMember(Name = "fileCount", EmitDefaultValue = true)]
+        public int? FileCount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -178,6 +187,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  FailedCount: ").Append(FailedCount).Append("\n");
             sb.Append("  FailedFiles: ").Append(FailedFiles).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  FileCount: ").Append(FileCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -282,6 +292,11 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.Message == input.Message ||
                     (this.Message != null &&
                     this.Message.Equals(input.Message))
+                ) && 
+                (
+                    this.FileCount == input.FileCount ||
+                    (this.FileCount != null &&
+                    this.FileCount.Equals(input.FileCount))
                 );
         }
 
@@ -349,6 +364,10 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 if (this.Message != null)
                 {
                     hashCode = (hashCode * 59) + this.Message.GetHashCode();
+                }
+                if (this.FileCount != null)
+                {
+                    hashCode = (hashCode * 59) + this.FileCount.GetHashCode();
                 }
                 return hashCode;
             }

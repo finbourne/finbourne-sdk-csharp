@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Horizon.Model
 {
     /// <summary>
-    /// record containing details of a single file destination for a run.
+    /// The destination a file delivery row describes. A Failed row carries the per-transaction FailureReason when one was recorded, falling back to the raw Error text.
     /// </summary>
     [DataContract(Name = "FileDestinationResponse")]
     public partial class FileDestinationResponse : IEquatable<FileDestinationResponse>, IValidatableObject
@@ -40,7 +40,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="status">status (required).</param>
         /// <param name="error">error.</param>
         /// <param name="failureReason">failureReason.</param>
-        public FileDestinationResponse(string type = default(string), string path = default(string), string status = default(string), string error = default(string), string failureReason = default(string))
+        /// <param name="name">The configured destination name, such as the SFTP host, when one was recorded..</param>
+        /// <param name="deliveredAt">When the file reached the destination; null for a Failed or Pending row..</param>
+        public FileDestinationResponse(string type = default(string), string path = default(string), string status = default(string), string error = default(string), string failureReason = default(string), string name = default(string), DateTimeOffset? deliveredAt = default(DateTimeOffset?))
         {
             // to ensure "type" is required (not null)
             if (type == null)
@@ -62,6 +64,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             this.Status = status;
             this.Error = error;
             this.FailureReason = failureReason;
+            this.Name = name;
+            this.DeliveredAt = deliveredAt;
         }
 
         /// <summary>
@@ -95,6 +99,20 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string FailureReason { get; set; }
 
         /// <summary>
+        /// The configured destination name, such as the SFTP host, when one was recorded.
+        /// </summary>
+        /// <value>The configured destination name, such as the SFTP host, when one was recorded.</value>
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// When the file reached the destination; null for a Failed or Pending row.
+        /// </summary>
+        /// <value>When the file reached the destination; null for a Failed or Pending row.</value>
+        [DataMember(Name = "deliveredAt", EmitDefaultValue = true)]
+        public DateTimeOffset? DeliveredAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -107,6 +125,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  DeliveredAt: ").Append(DeliveredAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -166,6 +186,16 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.FailureReason == input.FailureReason ||
                     (this.FailureReason != null &&
                     this.FailureReason.Equals(input.FailureReason))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.DeliveredAt == input.DeliveredAt ||
+                    (this.DeliveredAt != null &&
+                    this.DeliveredAt.Equals(input.DeliveredAt))
                 );
         }
 
@@ -197,6 +227,14 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 if (this.FailureReason != null)
                 {
                     hashCode = (hashCode * 59) + this.FailureReason.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.DeliveredAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.DeliveredAt.GetHashCode();
                 }
                 return hashCode;
             }

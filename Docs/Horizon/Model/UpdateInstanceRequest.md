@@ -12,7 +12,7 @@ A request to update an existing integration instance.
 | **Enabled** | **bool** | Required | *No description available.* |
 | **Triggers** | [List&lt;Trigger&gt;](Trigger.md) | Required | *No description available.* |
 | **Details** | **Object** | Required | Base DTO type of an integration configuration specific to the integration type.              N.B. ASP.NET Core model validation is normally applied automatically when [ApiController] is added to a controller, however it doesn&#39;t work here with the polymorphic integration subtypes of this class (see https://github.com/dotnet/aspnetcore/issues/27882). The workaround here is to implement the IValidatableObject interface and each subtype must call Validate() or ValidateContents() on its properties (the validation is not recursive).  Located in Horizon.Integrations.Web so both specific integration projects and Horizon.WebApi can reference it. |
-| **PostProcessTasks** | [List&lt;PostProcessTask&gt;](PostProcessTask.md) | Required | *No description available.* |
+| **PostProcessTasks** | [List&lt;PostProcessTask&gt;](PostProcessTask.md) | Optional | Post-process tasks for the instance. On update the stored tasks are replaced by this set when it is present, an empty set clears them, and omitting the field leaves them unchanged. |
 | **AlertRules** | [List&lt;AlertRule&gt;](AlertRule.md) | Optional | Alert rules for the instance. On update the stored rules are replaced by this set when it is present, an empty set clears them, and omitting the field leaves them unchanged. |
 
 
@@ -31,7 +31,7 @@ var instance = new UpdateInstanceRequest(
     enabled: true,  // required
     triggers: new List<Trigger>(),  // required
     details: ,  // required — Base DTO type of an integration configuration specific to the integration type.              N.B. ASP.NET Core model validation is normally applied automatically when [ApiController] is added to a controller, however it doesn&#39;t work here with the polymorphic integration subtypes of this class (see https://github.com/dotnet/aspnetcore/issues/27882). The workaround here is to implement the IValidatableObject interface and each subtype must call Validate() or ValidateContents() on its properties (the validation is not recursive).  Located in Horizon.Integrations.Web so both specific integration projects and Horizon.WebApi can reference it.
-    postProcessTasks: new List<PostProcessTask>(),  // required
+    postProcessTasks: new List<PostProcessTask>(),  // optional — Post-process tasks for the instance. On update the stored tasks are replaced by this set when it is present, an empty set clears them, and omitting the field leaves them unchanged.
     alertRules: new List<AlertRule>()  // optional — Alert rules for the instance. On update the stored rules are replaced by this set when it is present, an empty set clears them, and omitting the field leaves them unchanged.
 );
 ```
@@ -48,7 +48,7 @@ var instance = JsonConvert.DeserializeObject<UpdateInstanceRequest>(json);
 ```
 
 - [Trigger](Trigger.md)
-- [PostProcessTask](PostProcessTask.md)
+- [PostProcessTask](PostProcessTask.md) — used in `PostProcessTasks`
 - [AlertRule](AlertRule.md) — used in `AlertRules`
 
 

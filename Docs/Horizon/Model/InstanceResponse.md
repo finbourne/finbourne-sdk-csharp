@@ -15,6 +15,7 @@ record containing details of a single instance.
 | **LastRunStatus** | **string** | Optional | *No description available.* |
 | **LatestRunsIn24Hours** | [LatestRunsResponse](LatestRunsResponse.md) | Optional | *No description available.* |
 | **Destinations** | [List&lt;InstanceDestinations&gt;](InstanceDestinations.md) | Required | *No description available.* |
+| **OutputFormat** | **string** | Optional | *No description available.* |
 
 
 ## Usage
@@ -34,7 +35,8 @@ var instance = new InstanceResponse(
     lastRunAt: DateTimeOffset.Now,  // optional
     lastRunStatus: "...",  // optional
     latestRunsIn24Hours: new LatestRunsResponse(...),  // optional
-    destinations: new List<InstanceDestinations>()  // required
+    destinations: new List<InstanceDestinations>(),  // required
+    outputFormat: "..."  // optional
 );
 ```
 ### Serializing to JSON

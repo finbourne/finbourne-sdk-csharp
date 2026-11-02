@@ -27,6 +27,12 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
     [DataContract(Name = "CustomMultiQueryRequest")]
     public partial class CustomMultiQueryRequest : IEquatable<CustomMultiQueryRequest>, IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets ExecutionFlags
+        /// </summary>
+        [DataMember(Name = "executionFlags", EmitDefaultValue = false)]
+        public SqlExecutionFlags? ExecutionFlags { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomMultiQueryRequest" /> class.
         /// </summary>
@@ -38,13 +44,14 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         /// <param name="executionId">An explicit ExecutionId to use.  This must be blank OR assigned to a valid GUID-as-a-string..</param>
         /// <param name="scalarParameters">Scalar parameter values, handed to every query that runs (e.g. filling in &#x60;:someParameter:defaultValue&#x60; style references). At most 100, each named as an identifier of at most 256 characters, with a value of at most 4096..</param>
         /// <param name="queries">The queries to run.  Those ready are started in the order given here (one still waiting on those it refers to does not hold up a later one), and each may only refer to queries earlier in the list. (required).</param>
-        /// <param name="queriesFromWorkspace">A custom multi-query saved in the Workspaces API to take the queries from, rather than giving them in &#x60;Queries&#x60; (exactly one of which must be given), e.g. &#x60;shared/SomeWorkspace/items/sets/SomeSet&#x60;. What this request leaves unspecified of &#x60;maxInParallel&#x60;, &#x60;timeoutSeconds&#x60;, &#x60;keepForSeconds&#x60; and &#x60;queryName&#x60; is taken from it too, and its saved scalar parameter values are used for any this request does not give..</param>
+        /// <param name="queriesFromWorkspace">A custom multi-query saved in the Workspaces API to take the queries from, rather than giving them in &#x60;Queries&#x60; (exactly one of which must be given), e.g. &#x60;shared/SomeWorkspace/items/sets/SomeSet&#x60;. What this request leaves unspecified of &#x60;maxInParallel&#x60;, &#x60;timeoutSeconds&#x60;, &#x60;keepForSeconds&#x60; and &#x60;queryName&#x60; is taken from it too, and its saved scalar parameter values are used for any this request does not give. It may instead be a Saved Query, e.g. &#x60;shared/SomeWorkspace/items/queries/SomeQuery&#x60;, run as the one query, named &#x60;Result&#x60;..</param>
         /// <param name="maxInParallel">Maximum number of the queries that may run concurrently.  Defaults to 1, meaning they run one after another. Explicitly null means as many as their dependencies allow..</param>
         /// <param name="timeoutSeconds">Maximum time each query may run for, in seconds, timed from when it starts: &lt;0 → ∞, 0 or null → 1200s (20m). There is no limit on the set as a whole.  Null (or absent) with &#x60;queriesFromWorkspace&#x60; is that saved with it..</param>
         /// <param name="keepForSeconds">Maximum time the results may be kept for, in seconds: &lt;0 → 1200 (20m), 0 or null → 28800 (8h), max &#x3D; 2,678,400 (31d). Null (or absent) with &#x60;queriesFromWorkspace&#x60; is that saved with it..</param>
+        /// <param name="executionFlags">executionFlags.</param>
         /// <param name="queryName">A name for this set of queries.  This goes into logs and is returned when listing the sets of queries..</param>
         /// <param name="export">export.</param>
-        public CustomMultiQueryRequest(string executionId = default(string), Dictionary<string, string> scalarParameters = default(Dictionary<string, string>), List<CustomMultiQueryItem> queries = default(List<CustomMultiQueryItem>), string queriesFromWorkspace = default(string), int? maxInParallel = default(int?), int? timeoutSeconds = default(int?), int? keepForSeconds = default(int?), string queryName = default(string), CustomMultiQueryExport export = default(CustomMultiQueryExport))
+        public CustomMultiQueryRequest(string executionId = default(string), Dictionary<string, string> scalarParameters = default(Dictionary<string, string>), List<CustomMultiQueryItem> queries = default(List<CustomMultiQueryItem>), string queriesFromWorkspace = default(string), int? maxInParallel = default(int?), int? timeoutSeconds = default(int?), int? keepForSeconds = default(int?), SqlExecutionFlags ?executionFlags = default(SqlExecutionFlags?), string queryName = default(string), CustomMultiQueryExport export = default(CustomMultiQueryExport))
         {
             // to ensure "queries" is required (not null)
             if (queries == null)
@@ -58,6 +65,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
             this.MaxInParallel = maxInParallel;
             this.TimeoutSeconds = timeoutSeconds;
             this.KeepForSeconds = keepForSeconds;
+            this.ExecutionFlags = executionFlags;
             this.QueryName = queryName;
             this.Export = export;
         }
@@ -84,9 +92,9 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
         public List<CustomMultiQueryItem> Queries { get; set; }
 
         /// <summary>
-        /// A custom multi-query saved in the Workspaces API to take the queries from, rather than giving them in &#x60;Queries&#x60; (exactly one of which must be given), e.g. &#x60;shared/SomeWorkspace/items/sets/SomeSet&#x60;. What this request leaves unspecified of &#x60;maxInParallel&#x60;, &#x60;timeoutSeconds&#x60;, &#x60;keepForSeconds&#x60; and &#x60;queryName&#x60; is taken from it too, and its saved scalar parameter values are used for any this request does not give.
+        /// A custom multi-query saved in the Workspaces API to take the queries from, rather than giving them in &#x60;Queries&#x60; (exactly one of which must be given), e.g. &#x60;shared/SomeWorkspace/items/sets/SomeSet&#x60;. What this request leaves unspecified of &#x60;maxInParallel&#x60;, &#x60;timeoutSeconds&#x60;, &#x60;keepForSeconds&#x60; and &#x60;queryName&#x60; is taken from it too, and its saved scalar parameter values are used for any this request does not give. It may instead be a Saved Query, e.g. &#x60;shared/SomeWorkspace/items/queries/SomeQuery&#x60;, run as the one query, named &#x60;Result&#x60;.
         /// </summary>
-        /// <value>A custom multi-query saved in the Workspaces API to take the queries from, rather than giving them in &#x60;Queries&#x60; (exactly one of which must be given), e.g. &#x60;shared/SomeWorkspace/items/sets/SomeSet&#x60;. What this request leaves unspecified of &#x60;maxInParallel&#x60;, &#x60;timeoutSeconds&#x60;, &#x60;keepForSeconds&#x60; and &#x60;queryName&#x60; is taken from it too, and its saved scalar parameter values are used for any this request does not give.</value>
+        /// <value>A custom multi-query saved in the Workspaces API to take the queries from, rather than giving them in &#x60;Queries&#x60; (exactly one of which must be given), e.g. &#x60;shared/SomeWorkspace/items/sets/SomeSet&#x60;. What this request leaves unspecified of &#x60;maxInParallel&#x60;, &#x60;timeoutSeconds&#x60;, &#x60;keepForSeconds&#x60; and &#x60;queryName&#x60; is taken from it too, and its saved scalar parameter values are used for any this request does not give. It may instead be a Saved Query, e.g. &#x60;shared/SomeWorkspace/items/queries/SomeQuery&#x60;, run as the one query, named &#x60;Result&#x60;.</value>
         [DataMember(Name = "queriesFromWorkspace", EmitDefaultValue = true)]
         public string QueriesFromWorkspace { get; set; }
 
@@ -139,6 +147,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
             sb.Append("  MaxInParallel: ").Append(MaxInParallel).Append("\n");
             sb.Append("  TimeoutSeconds: ").Append(TimeoutSeconds).Append("\n");
             sb.Append("  KeepForSeconds: ").Append(KeepForSeconds).Append("\n");
+            sb.Append("  ExecutionFlags: ").Append(ExecutionFlags).Append("\n");
             sb.Append("  QueryName: ").Append(QueryName).Append("\n");
             sb.Append("  Export: ").Append(Export).Append("\n");
             sb.Append("}\n");
@@ -214,6 +223,10 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                     this.KeepForSeconds.Equals(input.KeepForSeconds))
                 ) && 
                 (
+                    this.ExecutionFlags == input.ExecutionFlags ||
+                    this.ExecutionFlags.Equals(input.ExecutionFlags)
+                ) && 
+                (
                     this.QueryName == input.QueryName ||
                     (this.QueryName != null &&
                     this.QueryName.Equals(input.QueryName))
@@ -262,6 +275,7 @@ namespace Finbourne.Sdk.Services.Luminesce.Model
                 {
                     hashCode = (hashCode * 59) + this.KeepForSeconds.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ExecutionFlags.GetHashCode();
                 if (this.QueryName != null)
                 {
                     hashCode = (hashCode * 59) + this.QueryName.GetHashCode();
