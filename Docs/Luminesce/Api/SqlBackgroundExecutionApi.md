@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CancelQuery**](#cancelquery) | **DELETE** `/honeycomb/api/SqlBackground/{executionId}` | CancelQuery: Cancel / Clear data from a previously run query |
+| [**DownloadQueryResult**](#downloadqueryresult) | **PUT** `/honeycomb/api/SqlBackground/{executionId}/download` | [EXPERIMENTAL] DownloadQueryResult: Downloads the query results in the format specified in the body, optionally formatted as the grid shows them |
 | [**FetchQueryResultCsv**](#fetchqueryresultcsv) | **GET** `/honeycomb/api/SqlBackground/{executionId}/csv` | FetchQueryResultCsv: Fetch the result of a query as CSV |
 | [**FetchQueryResultExcel**](#fetchqueryresultexcel) | **GET** `/honeycomb/api/SqlBackground/{executionId}/excel` | FetchQueryResultExcel: Fetch the result of a query as an Excel file |
 | [**FetchQueryResultHistogram**](#fetchqueryresulthistogram) | **GET** `/honeycomb/api/SqlBackground/{executionId}/histogram` | FetchQueryResultHistogram: Construct a histogram of the result of a query |
@@ -19,6 +20,7 @@ All URIs are relative to *http://localhost*
 | [**GetHistoricalFeedback**](#gethistoricalfeedback) | **GET** `/honeycomb/api/SqlBackground/{executionId}/historicalFeedback` | GetHistoricalFeedback: View historical query progress (for older queries) |
 | [**GetProgressOf**](#getprogressof) | **GET** `/honeycomb/api/SqlBackground/{executionId}` | GetProgressOf: View query progress up to this point. |
 | [**ListQueries**](#listqueries) | **GET** `/honeycomb/api/SqlBackground` | ListQueries: List the background queries available to the calling user |
+| [**SaveFormattedQueryResultToDrive**](#saveformattedqueryresulttodrive) | **PUT** `/honeycomb/api/SqlBackground/{executionId}/drive` | [EXPERIMENTAL] SaveFormattedQueryResultToDrive: Saves the query results directly to Drive, as specified in the body |
 | [**SaveQueryResultToDrive**](#savequeryresulttodrive) | **GET** `/honeycomb/api/SqlBackground/{executionId}/drive` | SaveQueryResultToDrive: Saves the query results directly to Drive |
 | [**StartQuery**](#startquery) | **PUT** `/honeycomb/api/SqlBackground` | StartQuery: Start to Execute Sql in the background |
 
@@ -110,6 +112,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<BackgroundQueryCancelResponse> response = apiInstance.CancelQueryWithHttpInfo(executionId);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="downloadqueryresult"></a>
+## DownloadQueryResult
+
+> string DownloadQueryResult(string executionId, DownloadQueryResultRequest downloadQueryResultRequest, bool? download = null)
+
+[EXPERIMENTAL] DownloadQueryResult: Downloads the query results in the format specified in the body, optionally formatted as the grid shows them
+
+Downloads the results as a file in the requested format, as the endpoint of that format (e.g. `{executionId}/csv`) does, but specified by a JSON body rather than query parameters. Given `?download=false`, the data is returned in the response-body instead.  Given `formatting`, the results are exported as the grid shows them: only the columns given, in their order and with their headers, their numbers and dates shown as given (in the given locale and timezone), and their conditional rules applied. So far only a csv download may be formatted, in which colours and wrapping cannot be shown (so are ignored), nor is it grouped (so `grouping` is ignored), as csv is for passing data on rather than reporting.  The following error codes are to be anticipated most with standard Problem Detail reports: - 400 BadRequest : Something failed with the execution of your query, or the request was invalid - 401 Unauthorized - 403 Forbidden - 404 Not Found : The requested query result doesn't (yet) exist or the calling user did not run the query. - 429 Too Many Requests : Please try your request again soon   1. The query has been executed successfully in the past yet the server-instance receiving this request (e.g. from a load balancer) doesn't yet have this data available.   1. By virtue of the request you have just placed this will have started to load from the persisted cache and will soon be available.   1. It is also the case that the original server-instance to process the original query is likely to already be able to service this request.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<SqlBackgroundExecutionApi>();
+var executionId = "executionId_example";  // string
+var downloadQueryResultRequest = new DownloadQueryResultRequest(); // DownloadQueryResultRequest
+var download = true;  // bool? (optional)
+string result = apiInstance.DownloadQueryResult(executionId, downloadQueryResultRequest, download);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **executionId** | **string** | path | **required** | ExecutionId returned when starting the query |
+| **downloadQueryResultRequest** | [DownloadQueryResultRequest](../Model/DownloadQueryResultRequest.md) | body | **required** | The format to download in, which of the results, and how they are to be formatted |
+| **download** | **bool?** | query | optional | Makes this a file-download request (the default), or else returns the data in the response-body (as &#x60;{executionId}/csv&#x60; does unless asked to download), though binary formats (e.g. excel and parquet) are always downloaded. Default: `true` |
+
+### Return type
+
+**string**
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
+
+<details>
+<summary>Using the DownloadQueryResultWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<string> response = apiInstance.DownloadQueryResultWithHttpInfo(executionId, downloadQueryResultRequest, download);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1030,6 +1094,66 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<List<BackgroundQueryListItem>> response = apiInstance.ListQueriesWithHttpInfo(sqlLike);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="saveformattedqueryresulttodrive"></a>
+## SaveFormattedQueryResultToDrive
+
+> string SaveFormattedQueryResultToDrive(string executionId, SaveQueryResultToDriveRequest saveQueryResultToDriveRequest)
+
+[EXPERIMENTAL] SaveFormattedQueryResultToDrive: Saves the query results directly to Drive, as specified in the body
+
+Saves the results directly to Drive, as `GET {executionId}/drive` does, but specified by a JSON body rather than query parameters.  Given `formatting`, the results are saved as the grid shows them, as `PUT {executionId}/download` downloads them (so far for csv only).  The following error codes are to be anticipated most with standard Problem Detail reports: - 400 BadRequest : Something failed with the execution of your query or drive parameters were incorrect in some way - 401 Unauthorized - 403 Forbidden - 404 Not Found : The requested query result doesn't (yet) exist or the calling user did not run the query. - 429 Too Many Requests : Please try your request again soon   1. The query has been executed successfully in the past yet the server-instance receiving this request (e.g. from a load balancer) doesn't yet have this data available.   1. By virtue of the request you have just placed this will have started to load from the persisted cache and will soon be available.   1. It is also the case that the original server-instance to process the original query is likely to already be able to service this request.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<SqlBackgroundExecutionApi>();
+var executionId = "executionId_example";  // string
+var saveQueryResultToDriveRequest = new SaveQueryResultToDriveRequest(); // SaveQueryResultToDriveRequest
+string result = apiInstance.SaveFormattedQueryResultToDrive(executionId, saveQueryResultToDriveRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **executionId** | **string** | path | **required** | ExecutionId returned when starting the query |
+| **saveQueryResultToDriveRequest** | [SaveQueryResultToDriveRequest](../Model/SaveQueryResultToDriveRequest.md) | body | **required** | Where (and how) to save the results, as the query parameters of &#x60;GET {executionId}/drive&#x60; |
+
+### Return type
+
+**string**
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
+
+<details>
+<summary>Using the SaveFormattedQueryResultToDriveWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<string> response = apiInstance.SaveFormattedQueryResultToDriveWithHttpInfo(executionId, saveQueryResultToDriveRequest);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
