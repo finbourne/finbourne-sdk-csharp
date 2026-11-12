@@ -35,8 +35,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RecLinkedResult" /> class.
         /// </summary>
-        /// <param name="id">The id of the linked result within the same run, as carried in that result&#39;s own id field, e.g. &#39;break-3&#39;. With recType, names the result uniquely. (required).</param>
-        /// <param name="recType">The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. (required).</param>
+        /// <param name="id">The id of the linked result, as carried in that result&#39;s own id field, e.g. &#39;CashHolding-break-3&#39;. Unique within the instance. (required).</param>
+        /// <param name="recType">The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. (required).</param>
         /// <param name="linkedBy">linkedBy (required).</param>
         public RecLinkedResult(string id = default(string), string recType = default(string), RecLinkedBy linkedBy = default(RecLinkedBy))
         {
@@ -61,16 +61,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The id of the linked result within the same run, as carried in that result&#39;s own id field, e.g. &#39;break-3&#39;. With recType, names the result uniquely.
+        /// The id of the linked result, as carried in that result&#39;s own id field, e.g. &#39;CashHolding-break-3&#39;. Unique within the instance.
         /// </summary>
-        /// <value>The id of the linked result within the same run, as carried in that result&#39;s own id field, e.g. &#39;break-3&#39;. With recType, names the result uniquely.</value>
+        /// <value>The id of the linked result, as carried in that result&#39;s own id field, e.g. &#39;CashHolding-break-3&#39;. Unique within the instance.</value>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
 
         /// <summary>
-        /// The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
+        /// The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
         /// </summary>
-        /// <value>The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.</value>
+        /// <value>The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.</value>
         [DataMember(Name = "recType", IsRequired = true, EmitDefaultValue = true)]
         public string RecType { get; set; }
 

@@ -43,7 +43,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="inflowTrigger">inflowTrigger.</param>
         /// <param name="outflowTrigger">outflowTrigger.</param>
         /// <param name="dealingFlows">dealingFlows.</param>
-        public PricingMethodologyAudit(decimal netCashflow = default(decimal), decimal? netCashflowPctOfNav = default(decimal?), SwingSpreadApplied spreadsApplied = default(SwingSpreadApplied), PricingMethodologyEngineProposal engineProposal = default(PricingMethodologyEngineProposal), PricingMethodologyOverride varOverride = default(PricingMethodologyOverride), SwingTriggerEvaluation inflowTrigger = default(SwingTriggerEvaluation), SwingTriggerEvaluation outflowTrigger = default(SwingTriggerEvaluation), DealingFlowSummary dealingFlows = default(DealingFlowSummary))
+        /// <param name="estimateValuation">estimateValuation.</param>
+        /// <param name="approvalStatus">Where a manually approved swing decision stands. Pending until a manager approves or overrides the engine&#39;s proposal, or when the proposal has changed since the decision was taken; Approved when the decision equals the proposal; Overridden when it differs. Absent when the swing policy approves automatically..</param>
+        /// <param name="dealingLinesNotValued">The dealing lines read for the swing decision that could not be valued into the share class currency: an amount in a currency that is neither the fund&#39;s nor any share class&#39;s, or a weight-only line. While any are present and no pricingMethodologyOverride has been submitted, no swing decision is taken, the dealing price is absent and the valuation point cannot be finalised; under an override the override&#39;s price stands and the lines remain listed here. Absent when every line was valued or the methodology does not swing..</param>
+        /// <param name="completeness">completeness.</param>
+        public PricingMethodologyAudit(decimal netCashflow = default(decimal), decimal? netCashflowPctOfNav = default(decimal?), SwingSpreadApplied spreadsApplied = default(SwingSpreadApplied), PricingMethodologyEngineProposal engineProposal = default(PricingMethodologyEngineProposal), PricingMethodologyOverride varOverride = default(PricingMethodologyOverride), SwingTriggerEvaluation inflowTrigger = default(SwingTriggerEvaluation), SwingTriggerEvaluation outflowTrigger = default(SwingTriggerEvaluation), DealingFlowSummary dealingFlows = default(DealingFlowSummary), EstimateValuation estimateValuation = default(EstimateValuation), string approvalStatus = default(string), List<DealingLineNotValued> dealingLinesNotValued = default(List<DealingLineNotValued>), DealingBookCompleteness completeness = default(DealingBookCompleteness))
         {
             this.NetCashflow = netCashflow;
             // to ensure "engineProposal" is required (not null)
@@ -58,6 +62,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.InflowTrigger = inflowTrigger;
             this.OutflowTrigger = outflowTrigger;
             this.DealingFlows = dealingFlows;
+            this.EstimateValuation = estimateValuation;
+            this.ApprovalStatus = approvalStatus;
+            this.DealingLinesNotValued = dealingLinesNotValued;
+            this.Completeness = completeness;
         }
 
         /// <summary>
@@ -111,6 +119,32 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public DealingFlowSummary DealingFlows { get; set; }
 
         /// <summary>
+        /// Gets or Sets EstimateValuation
+        /// </summary>
+        [DataMember(Name = "estimateValuation", EmitDefaultValue = false)]
+        public EstimateValuation EstimateValuation { get; set; }
+
+        /// <summary>
+        /// Where a manually approved swing decision stands. Pending until a manager approves or overrides the engine&#39;s proposal, or when the proposal has changed since the decision was taken; Approved when the decision equals the proposal; Overridden when it differs. Absent when the swing policy approves automatically.
+        /// </summary>
+        /// <value>Where a manually approved swing decision stands. Pending until a manager approves or overrides the engine&#39;s proposal, or when the proposal has changed since the decision was taken; Approved when the decision equals the proposal; Overridden when it differs. Absent when the swing policy approves automatically.</value>
+        [DataMember(Name = "approvalStatus", EmitDefaultValue = true)]
+        public string ApprovalStatus { get; set; }
+
+        /// <summary>
+        /// The dealing lines read for the swing decision that could not be valued into the share class currency: an amount in a currency that is neither the fund&#39;s nor any share class&#39;s, or a weight-only line. While any are present and no pricingMethodologyOverride has been submitted, no swing decision is taken, the dealing price is absent and the valuation point cannot be finalised; under an override the override&#39;s price stands and the lines remain listed here. Absent when every line was valued or the methodology does not swing.
+        /// </summary>
+        /// <value>The dealing lines read for the swing decision that could not be valued into the share class currency: an amount in a currency that is neither the fund&#39;s nor any share class&#39;s, or a weight-only line. While any are present and no pricingMethodologyOverride has been submitted, no swing decision is taken, the dealing price is absent and the valuation point cannot be finalised; under an override the override&#39;s price stands and the lines remain listed here. Absent when every line was valued or the methodology does not swing.</value>
+        [DataMember(Name = "dealingLinesNotValued", EmitDefaultValue = true)]
+        public List<DealingLineNotValued> DealingLinesNotValued { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Completeness
+        /// </summary>
+        [DataMember(Name = "completeness", EmitDefaultValue = false)]
+        public DealingBookCompleteness Completeness { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -126,6 +160,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  InflowTrigger: ").Append(InflowTrigger).Append("\n");
             sb.Append("  OutflowTrigger: ").Append(OutflowTrigger).Append("\n");
             sb.Append("  DealingFlows: ").Append(DealingFlows).Append("\n");
+            sb.Append("  EstimateValuation: ").Append(EstimateValuation).Append("\n");
+            sb.Append("  ApprovalStatus: ").Append(ApprovalStatus).Append("\n");
+            sb.Append("  DealingLinesNotValued: ").Append(DealingLinesNotValued).Append("\n");
+            sb.Append("  Completeness: ").Append(Completeness).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -199,6 +237,27 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.DealingFlows == input.DealingFlows ||
                     (this.DealingFlows != null &&
                     this.DealingFlows.Equals(input.DealingFlows))
+                ) && 
+                (
+                    this.EstimateValuation == input.EstimateValuation ||
+                    (this.EstimateValuation != null &&
+                    this.EstimateValuation.Equals(input.EstimateValuation))
+                ) && 
+                (
+                    this.ApprovalStatus == input.ApprovalStatus ||
+                    (this.ApprovalStatus != null &&
+                    this.ApprovalStatus.Equals(input.ApprovalStatus))
+                ) && 
+                (
+                    this.DealingLinesNotValued == input.DealingLinesNotValued ||
+                    this.DealingLinesNotValued != null &&
+                    input.DealingLinesNotValued != null &&
+                    this.DealingLinesNotValued.SequenceEqual(input.DealingLinesNotValued)
+                ) && 
+                (
+                    this.Completeness == input.Completeness ||
+                    (this.Completeness != null &&
+                    this.Completeness.Equals(input.Completeness))
                 );
         }
 
@@ -239,6 +298,22 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.DealingFlows != null)
                 {
                     hashCode = (hashCode * 59) + this.DealingFlows.GetHashCode();
+                }
+                if (this.EstimateValuation != null)
+                {
+                    hashCode = (hashCode * 59) + this.EstimateValuation.GetHashCode();
+                }
+                if (this.ApprovalStatus != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApprovalStatus.GetHashCode();
+                }
+                if (this.DealingLinesNotValued != null)
+                {
+                    hashCode = (hashCode * 59) + this.DealingLinesNotValued.GetHashCode();
+                }
+                if (this.Completeness != null)
+                {
+                    hashCode = (hashCode * 59) + this.Completeness.GetHashCode();
                 }
                 return hashCode;
             }

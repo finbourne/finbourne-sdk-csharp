@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateAmortisationRuleSet**](#createamortisationruleset) | **POST** `/api/api/amortisation/rulesets/{scope}` | [EXPERIMENTAL] CreateAmortisationRuleSet: Create an amortisation rule set. |
+| [**DeleteAmortisationRulesInterval**](#deleteamortisationrulesinterval) | **DELETE** `/api/api/amortisation/rulesets/{scope}/{code}/rulesIntervals` | DeleteAmortisationRulesInterval: Delete a rules interval of an amortisation rule set. |
 | [**DeleteAmortisationRuleset**](#deleteamortisationruleset) | **DELETE** `/api/api/amortisation/rulesets/{scope}/{code}` | [EXPERIMENTAL] DeleteAmortisationRuleset: Delete an amortisation rule set. |
 | [**GetAmortisationRuleSet**](#getamortisationruleset) | **GET** `/api/api/amortisation/rulesets/{scope}/{code}` | [EXPERIMENTAL] GetAmortisationRuleSet: Retrieve the definition of a single amortisation rule set |
 | [**ListAmortisationRuleSets**](#listamortisationrulesets) | **GET** `/api/api/amortisation/rulesets` | [EXPERIMENTAL] ListAmortisationRuleSets: List amortisation rule sets. |
@@ -105,6 +106,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<AmortisationRuleSet> response = apiInstance.CreateAmortisationRuleSetWithHttpInfo(scope, createAmortisationRuleSetRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="deleteamortisationrulesinterval"></a>
+## DeleteAmortisationRulesInterval
+
+> DeletedEntityResponse DeleteAmortisationRulesInterval(string scope, string code, DateTimeOrCutLabel fromDate)
+
+DeleteAmortisationRulesInterval: Delete a rules interval of an amortisation rule set.
+
+Deletes the rules interval that starts at the given from date. The interval before it, if any, then applies  until the next interval starts. If there is no interval before it, the rule set has no rules until the next  interval starts.                The from date must be the start of an interval. A date inside an interval does not identify one.                The interval remains viewable at previous as at times.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AmortisationRuleSetsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var fromDate = "fromDate_example";  // DateTimeOrCutLabel
+DeletedEntityResponse result = apiInstance.DeleteAmortisationRulesInterval(scope, code, fromDate);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The rule set scope. |
+| **code** | **string** | path | **required** | The rule set code. |
+| **fromDate** | **DateTimeOrCutLabel** | query | **required** | The from date of the interval to delete, as a date, datetime or cut label. |
+
+### Return type
+
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteAmortisationRulesIntervalWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteAmortisationRulesIntervalWithHttpInfo(scope, code, fromDate);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

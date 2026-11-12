@@ -1,19 +1,18 @@
 # Finbourne.Sdk.Lusid.Model.BatchReviewRecResultRequest
 
-One item of a batch review request: applies review content to its targeted rec result(s). Exactly  one target, except FixAsGroup/ForceMatch which require two or more. A result id identifies a result only  within one run of one rec type of one instance, so every item names the run its targets belong to — which  also makes the same-result-set rule for group decisions structural.
+One item of a batch review request: applies review content to its targeted rec result(s). Exactly  one target, except FixAsGroup/ForceMatch which require two or more. A result id is unique within one  instance. Every item names the rec type of its targets, so a group decision covers results of one rec type  only.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **InstanceId** | [RecInstanceId](RecInstanceId.md) | Required | *No description available.* |
-| **RecType** | **string** | Required | The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. |
-| **RunNumber** | **int** | Required | The run of the instance whose results this item targets. |
+| **RecType** | **string** | Required | The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. |
 | **RecResultIds** | **List&lt;string&gt;** | Required | The rec results targeted by this batch item. Exactly one, except FixAsGroup/ForceMatch which require two or more. |
 | **Decision** | [RecResultDecisionUpdate](RecResultDecisionUpdate.md) | Optional | *No description available.* |
 | **AssignedUser** | [RecResultAssignmentUpdate](RecResultAssignmentUpdate.md) | Optional | *No description available.* |
 | **AssignedRole** | [RecResultAssignmentUpdate](RecResultAssignmentUpdate.md) | Optional | *No description available.* |
 | **AddCommentText** | **string** | Optional | Optional comment text to add to each targeted result. |
-| **Properties** | [List&lt;PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet. |
+| **Properties** | [List&lt;PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Properties in the RecResult domain to set on each result. A property with a null value is deleted and omitted properties are left unchanged. |
 
 
 ## Usage
@@ -25,14 +24,13 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new BatchReviewRecResultRequest(
     instanceId: new RecInstanceId(...),  // required
-    recType: "...",  // required — The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
-    runNumber: 0,  // required — The run of the instance whose results this item targets.
+    recType: "...",  // required — The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
     recResultIds: ,  // required — The rec results targeted by this batch item. Exactly one, except FixAsGroup/ForceMatch which require two or more.
     decision: new RecResultDecisionUpdate(...),  // optional
     assignedUser: new RecResultAssignmentUpdate(...),  // optional
     assignedRole: new RecResultAssignmentUpdate(...),  // optional
     addCommentText: "...",  // optional — Optional comment text to add to each targeted result.
-    properties: new List<PerpetualProperty>()  // optional — Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet.
+    properties: new List<PerpetualProperty>()  // optional — Properties in the RecResult domain to set on each result. A property with a null value is deleted and omitted properties are left unchanged.
 );
 ```
 ### Serializing to JSON

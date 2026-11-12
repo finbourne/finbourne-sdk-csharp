@@ -764,7 +764,43 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum DepositInterestCapitalisationEvent for value: DepositInterestCapitalisationEvent
         /// </summary>
         [EnumMember(Value = "DepositInterestCapitalisationEvent")]
-        DepositInterestCapitalisationEvent = 123
+        DepositInterestCapitalisationEvent = 123,
+
+        /// <summary>
+        /// Enum PartialRedemptionWithoutReductionOfNominalValueEvent for value: PartialRedemptionWithoutReductionOfNominalValueEvent
+        /// </summary>
+        [EnumMember(Value = "PartialRedemptionWithoutReductionOfNominalValueEvent")]
+        PartialRedemptionWithoutReductionOfNominalValueEvent = 124,
+
+        /// <summary>
+        /// Enum StripBondCashflowEvent for value: StripBondCashflowEvent
+        /// </summary>
+        [EnumMember(Value = "StripBondCashflowEvent")]
+        StripBondCashflowEvent = 125,
+
+        /// <summary>
+        /// Enum CapitalisationEvent for value: CapitalisationEvent
+        /// </summary>
+        [EnumMember(Value = "CapitalisationEvent")]
+        CapitalisationEvent = 126,
+
+        /// <summary>
+        /// Enum SharesPremiumDividendEvent for value: SharesPremiumDividendEvent
+        /// </summary>
+        [EnumMember(Value = "SharesPremiumDividendEvent")]
+        SharesPremiumDividendEvent = 127,
+
+        /// <summary>
+        /// Enum CashDistributionFromNonEligibleSecuritiesSalesEvent for value: CashDistributionFromNonEligibleSecuritiesSalesEvent
+        /// </summary>
+        [EnumMember(Value = "CashDistributionFromNonEligibleSecuritiesSalesEvent")]
+        CashDistributionFromNonEligibleSecuritiesSalesEvent = 128,
+
+        /// <summary>
+        /// Enum InflationIndexationEvent for value: InflationIndexationEvent
+        /// </summary>
+        [EnumMember(Value = "InflationIndexationEvent")]
+        InflationIndexationEvent = 129
     }
 
 }

@@ -39,7 +39,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="portfolioId">portfolioId.</param>
         /// <param name="component">The component of the event the share belongs to. Absent when the event was resolved whole..</param>
         /// <param name="originMemberShortCode">The deal the share is for, when a capital call&#39;s use of proceeds split one component across deals. Absent when the component&#39;s own origin applies..</param>
-        public AllocationMapAllocation(string investorRecordId = default(string), decimal? basisValue = default(decimal?), decimal weight = default(decimal), decimal amount = default(decimal), string treatment = default(string), string commitmentLineId = default(string), ResourceId portfolioId = default(ResourceId), string component = default(string), string originMemberShortCode = default(string))
+        /// <param name="recallableAmount">For the ROC component of a Distribution with a recallable amount, the investor record&#39;s pro rata share of it. Absent otherwise..</param>
+        public AllocationMapAllocation(string investorRecordId = default(string), decimal? basisValue = default(decimal?), decimal weight = default(decimal), decimal amount = default(decimal), string treatment = default(string), string commitmentLineId = default(string), ResourceId portfolioId = default(ResourceId), string component = default(string), string originMemberShortCode = default(string), decimal? recallableAmount = default(decimal?))
         {
             this.InvestorRecordId = investorRecordId;
             this.BasisValue = basisValue;
@@ -50,6 +51,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.PortfolioId = portfolioId;
             this.Component = component;
             this.OriginMemberShortCode = originMemberShortCode;
+            this.RecallableAmount = recallableAmount;
         }
 
         /// <summary>
@@ -115,6 +117,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string OriginMemberShortCode { get; set; }
 
         /// <summary>
+        /// For the ROC component of a Distribution with a recallable amount, the investor record&#39;s pro rata share of it. Absent otherwise.
+        /// </summary>
+        /// <value>For the ROC component of a Distribution with a recallable amount, the investor record&#39;s pro rata share of it. Absent otherwise.</value>
+        [DataMember(Name = "recallableAmount", EmitDefaultValue = true)]
+        public decimal? RecallableAmount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -131,6 +140,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  PortfolioId: ").Append(PortfolioId).Append("\n");
             sb.Append("  Component: ").Append(Component).Append("\n");
             sb.Append("  OriginMemberShortCode: ").Append(OriginMemberShortCode).Append("\n");
+            sb.Append("  RecallableAmount: ").Append(RecallableAmount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -208,6 +218,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.OriginMemberShortCode == input.OriginMemberShortCode ||
                     (this.OriginMemberShortCode != null &&
                     this.OriginMemberShortCode.Equals(input.OriginMemberShortCode))
+                ) && 
+                (
+                    this.RecallableAmount == input.RecallableAmount ||
+                    (this.RecallableAmount != null &&
+                    this.RecallableAmount.Equals(input.RecallableAmount))
                 );
         }
 
@@ -249,6 +264,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.OriginMemberShortCode != null)
                 {
                     hashCode = (hashCode * 59) + this.OriginMemberShortCode.GetHashCode();
+                }
+                if (this.RecallableAmount != null)
+                {
+                    hashCode = (hashCode * 59) + this.RecallableAmount.GetHashCode();
                 }
                 return hashCode;
             }

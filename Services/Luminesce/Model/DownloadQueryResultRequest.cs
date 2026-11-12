@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Luminesce.Model
 {
     /// <summary>
-    /// How to download the results of a background query: in what format, which of them, and (so far for csv only) formatted as the grid shows them.
+    /// How to download the results of a background query: in what format, which of them, and (so far for csv, pipe and json only) formatted as the grid shows them.
     /// </summary>
     [DataContract(Name = "DownloadQueryResultRequest")]
     public partial class DownloadQueryResultRequest : IEquatable<DownloadQueryResultRequest>, IValidatableObject

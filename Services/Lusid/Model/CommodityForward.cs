@@ -43,8 +43,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="strike">Agreed forward price at trade inception. Reference only — not used in the market value calculation,  which consumes the pre-netted price from the quote store..</param>
         /// <param name="deliveryType">Whether the forward settles in cash or through physical delivery of the underlying.                Supported string (enumeration) values are: [Cash, Physical]. Available values: Cash, Physical. (required).</param>
         /// <param name="underlying">underlying.</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare, CapitalInterest, WholeLoanFacility. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
-        public CommodityForward(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), string domCcy = default(string), decimal? strike = default(decimal?), string deliveryType = default(string), LusidInstrument underlying = default(LusidInstrument), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
+        /// <param name="tradingConventions">tradingConventions.</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare, CapitalInterest, WholeLoanFacility, StripBond. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        public CommodityForward(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), string domCcy = default(string), decimal? strike = default(decimal?), string deliveryType = default(string), LusidInstrument underlying = default(LusidInstrument), TradingConventions tradingConventions = default(TradingConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
             this.StartDate = startDate;
             this.MaturityDate = maturityDate;
@@ -63,6 +64,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.InstrumentType = instrumentType;
             this.Strike = strike;
             this.Underlying = underlying;
+            this.TradingConventions = tradingConventions;
         }
 
         /// <summary>
@@ -107,6 +109,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public LusidInstrument Underlying { get; set; }
 
         /// <summary>
+        /// Gets or Sets TradingConventions
+        /// </summary>
+        [DataMember(Name = "tradingConventions", EmitDefaultValue = false)]
+        public TradingConventions TradingConventions { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -121,6 +129,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Strike: ").Append(Strike).Append("\n");
             sb.Append("  DeliveryType: ").Append(DeliveryType).Append("\n");
             sb.Append("  Underlying: ").Append(Underlying).Append("\n");
+            sb.Append("  TradingConventions: ").Append(TradingConventions).Append("\n");
             sb.Append("  InstrumentType: ").Append(InstrumentType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -188,6 +197,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Underlying.Equals(input.Underlying))
                 ) && base.Equals(input) && 
                 (
+                    this.TradingConventions == input.TradingConventions ||
+                    (this.TradingConventions != null &&
+                    this.TradingConventions.Equals(input.TradingConventions))
+                ) && base.Equals(input) && 
+                (
                     this.InstrumentType == input.InstrumentType ||
                     this.InstrumentType.Equals(input.InstrumentType)
                 );
@@ -225,6 +239,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Underlying != null)
                 {
                     hashCode = (hashCode * 59) + this.Underlying.GetHashCode();
+                }
+                if (this.TradingConventions != null)
+                {
+                    hashCode = (hashCode * 59) + this.TradingConventions.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.InstrumentType.GetHashCode();
                 return hashCode;

@@ -39,7 +39,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="values">values (required).</param>
         /// <param name="navTypeCodesHint">The NAV type codes this list nominates, in priority order; entries may contain &#39;*&#39; wildcards.  For each fund the first matching code the fund defines is picked, falling back to the fund&#39;s  primary (official) NAV type when the list is empty or nothing matches. Optional..</param>
-        /// <param name="referenceListType">The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList. (required) (default to ReferenceListTypeEnum.PortfolioGroupIdList).</param>
+        /// <param name="referenceListType">The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList, FilteredPortfolioIdList. (required) (default to ReferenceListTypeEnum.PortfolioGroupIdList).</param>
         public FundIdList(List<ResourceId> values = default(List<ResourceId>), List<string> navTypeCodesHint = default(List<string>), ReferenceListTypeEnum referenceListType = default(ReferenceListTypeEnum)) : base()
         {
             // to ensure "values" is required (not null)

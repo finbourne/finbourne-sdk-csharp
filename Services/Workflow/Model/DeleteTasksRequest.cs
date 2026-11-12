@@ -30,9 +30,19 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeleteTasksRequest" /> class.
         /// </summary>
-        /// <param name="taskIds">The Ids of the Tasks to delete.</param>
+        [JsonConstructorAttribute]
+        protected DeleteTasksRequest() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeleteTasksRequest" /> class.
+        /// </summary>
+        /// <param name="taskIds">The Ids of the Tasks to delete (required).</param>
         public DeleteTasksRequest(List<string> taskIds = default(List<string>))
         {
+            // to ensure "taskIds" is required (not null)
+            if (taskIds == null)
+            {
+                throw new ArgumentNullException("taskIds is a required property for DeleteTasksRequest and cannot be null");
+            }
             this.TaskIds = taskIds;
         }
 
@@ -40,7 +50,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// The Ids of the Tasks to delete
         /// </summary>
         /// <value>The Ids of the Tasks to delete</value>
-        [DataMember(Name = "taskIds", EmitDefaultValue = true)]
+        [DataMember(Name = "taskIds", IsRequired = true, EmitDefaultValue = true)]
         public List<string> TaskIds { get; set; }
 
         /// <summary>

@@ -8,7 +8,7 @@ The request for an approver to approve a submitted review or request revisions. 
 | **ApprovalCode** | **string** | Required | The approval slot being decided. Must match a required approval code. |
 | **Decision** | **string** | Required | The decision made. Available values: Approve, RequestRevisions. |
 | **Reason** | **string** | Optional | Rationale for the decision. |
-| **RequestedResultRevisions** | [List&lt;RecRequestedResultRevision&gt;](RecRequestedResultRevision.md) | Optional | The results flagged for re-review. Only applicable when the decision is Request Revisions. |
+| **RequestedResultRevisions** | [List&lt;RecRequestedResultRevision&gt;](RecRequestedResultRevision.md) | Optional | The results flagged for re-review. Only applicable when the decision is Request Revisions. Each result must be Reviewed. A flagged result returns to Required and keeps its decision. The reviewer must affirm or change that decision before the review can be resubmitted. Clearing the decision does not count. |
 
 
 ## Usage
@@ -22,7 +22,7 @@ var instance = new RecResultSetApprovalDecisionRequest(
     approvalCode: "...",  // required — The approval slot being decided. Must match a required approval code.
     decision: "...",  // required — The decision made. Available values: Approve, RequestRevisions.
     reason: "...",  // optional — Rationale for the decision.
-    requestedResultRevisions: new List<RecRequestedResultRevision>()  // optional — The results flagged for re-review. Only applicable when the decision is Request Revisions.
+    requestedResultRevisions: new List<RecRequestedResultRevision>()  // optional — The results flagged for re-review. Only applicable when the decision is Request Revisions. Each result must be Reviewed. A flagged result returns to Required and keeps its decision. The reviewer must affirm or change that decision before the review can be resubmitted. Clearing the decision does not count.
 );
 ```
 ### Serializing to JSON

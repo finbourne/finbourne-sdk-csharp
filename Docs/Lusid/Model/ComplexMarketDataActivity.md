@@ -9,7 +9,7 @@
 | **AsAt** | **DateTimeOffset** | Required | The asAt time for which the adjustment is being applied. |
 | **EffectiveAt** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Required | The EffectiveAt time of the entity event that need to be added to the closed period. |
 | **EntityUniqueId** | **string** | Required | The EntityUniqueId from the entity which needs to be added as a post close activity. |
-| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity. Default: `NavActivityAdjustmentTypeEnum.ComplexMarketDataActivity` |
+| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity. Default: `NavActivityAdjustmentTypeEnum.ComplexMarketDataActivity` |
 
 
 ## Usage
@@ -23,7 +23,7 @@ var instance = new ComplexMarketDataActivity(
     asAt: DateTimeOffset.Now,  // required — The asAt time for which the adjustment is being applied.
     effectiveAt: new DateTimeOrCutLabel(...),  // required — The EffectiveAt time of the entity event that need to be added to the closed period.
     entityUniqueId: "...",  // required — The EntityUniqueId from the entity which needs to be added as a post close activity.
-    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity.
+    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity.
 );
 ```
 ### Serializing to JSON

@@ -45,7 +45,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="custodian">custodian (required).</param>
         /// <param name="accountType">The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default..</param>
         /// <param name="taxLotSelectionCostBasis">The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for disposals from this account. This can be: Cost or AmortisedCost. If not specified or reset with Default, resolution falls through to the transaction type and then the portfolio&#39;s default. Available values: Default, Cost, AmortisedCost..</param>
-        public CustodianAccount(ResourceId custodianAccountId = default(ResourceId), string status = default(string), string accountNumber = default(string), string accountName = default(string), string accountingMethod = default(string), string currency = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), LegalEntity custodian = default(LegalEntity), string accountType = default(string), string taxLotSelectionCostBasis = default(string))
+        /// <param name="inactiveFrom">The date from which the account is inactive. Transactions with a trade date before this date still resolve to the account; those on or after it leave the account unresolved. Absent when the account is active..</param>
+        public CustodianAccount(ResourceId custodianAccountId = default(ResourceId), string status = default(string), string accountNumber = default(string), string accountName = default(string), string accountingMethod = default(string), string currency = default(string), Dictionary<string, Property> properties = default(Dictionary<string, Property>), LegalEntity custodian = default(LegalEntity), string accountType = default(string), string taxLotSelectionCostBasis = default(string), DateTimeOffset? inactiveFrom = default(DateTimeOffset?))
         {
             // to ensure "custodianAccountId" is required (not null)
             if (custodianAccountId == null)
@@ -87,6 +88,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Properties = properties;
             this.AccountType = accountType;
             this.TaxLotSelectionCostBasis = taxLotSelectionCostBasis;
+            this.InactiveFrom = inactiveFrom;
         }
 
         /// <summary>
@@ -158,6 +160,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string TaxLotSelectionCostBasis { get; set; }
 
         /// <summary>
+        /// The date from which the account is inactive. Transactions with a trade date before this date still resolve to the account; those on or after it leave the account unresolved. Absent when the account is active.
+        /// </summary>
+        /// <value>The date from which the account is inactive. Transactions with a trade date before this date still resolve to the account; those on or after it leave the account unresolved. Absent when the account is active.</value>
+        [DataMember(Name = "inactiveFrom", EmitDefaultValue = true)]
+        public DateTimeOffset? InactiveFrom { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -175,6 +184,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Custodian: ").Append(Custodian).Append("\n");
             sb.Append("  AccountType: ").Append(AccountType).Append("\n");
             sb.Append("  TaxLotSelectionCostBasis: ").Append(TaxLotSelectionCostBasis).Append("\n");
+            sb.Append("  InactiveFrom: ").Append(InactiveFrom).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -260,6 +270,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.TaxLotSelectionCostBasis == input.TaxLotSelectionCostBasis ||
                     (this.TaxLotSelectionCostBasis != null &&
                     this.TaxLotSelectionCostBasis.Equals(input.TaxLotSelectionCostBasis))
+                ) && 
+                (
+                    this.InactiveFrom == input.InactiveFrom ||
+                    (this.InactiveFrom != null &&
+                    this.InactiveFrom.Equals(input.InactiveFrom))
                 );
         }
 
@@ -311,6 +326,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.TaxLotSelectionCostBasis != null)
                 {
                     hashCode = (hashCode * 59) + this.TaxLotSelectionCostBasis.GetHashCode();
+                }
+                if (this.InactiveFrom != null)
+                {
+                    hashCode = (hashCode * 59) + this.InactiveFrom.GetHashCode();
                 }
                 return hashCode;
             }

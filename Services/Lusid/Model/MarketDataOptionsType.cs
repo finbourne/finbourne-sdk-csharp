@@ -32,7 +32,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum CurveOptions for value: CurveOptions
         /// </summary>
         [EnumMember(Value = "CurveOptions")]
-        CurveOptions = 1
+        CurveOptions = 1,
+
+        /// <summary>
+        /// Enum VolCubeOptions for value: VolCubeOptions
+        /// </summary>
+        [EnumMember(Value = "VolCubeOptions")]
+        VolCubeOptions = 2
     }
 
 }

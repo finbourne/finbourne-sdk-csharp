@@ -1,16 +1,23 @@
 # Finbourne.Sdk.Lusid.Model.RecResultSettlementActivityItem
 
-A settlement-activity item within a rec result.
+A settlement-activity item within a rec result. Names the portfolio, the activity's instrument and the settled  transaction's resolved instrument alongside, for display.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **PortfolioId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
+| **PortfolioDisplayName** | **string** | Optional | The display name of the item&#39;s portfolio, as it stood at the asAt the run read its data. Null where the run did not read it. |
 | **ActivityId** | **string** | Optional | The settlement activity identifier. |
+| **ActivityInstrumentScope** | **string** | Optional | The scope of the settlement activity&#39;s instrument. Null where the source does not state one. |
+| **ActivityLusidInstrumentId** | **string** | Optional | The LUID of the settlement activity&#39;s instrument. Null where the source does not state it. |
+| **ActivityInstrumentName** | **string** | Optional | The name of the settlement activity&#39;s instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it. |
 | **TransactionId** | **string** | Optional | The transaction identifier. |
+| **TransactionInstrumentScope** | **string** | Optional | The scope of the transaction&#39;s resolved instrument. Null where the source does not state one. |
+| **TransactionLusidInstrumentId** | **string** | Optional | The LUID of the transaction&#39;s resolved instrument. Null where the source does not state it. |
+| **TransactionInstrumentName** | **string** | Optional | The name of the transaction&#39;s resolved instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it. |
 | **SettlementInstructionId** | **string** | Optional | The settlement instruction identifier. |
 | **HoldingImpacts** | [List&lt;RecResultHoldingImpact&gt;](RecResultHoldingImpact.md) | Required | The holdings, and where the source states them the tax lots, the item impacted. A distinct set ordered by holdingId then taxLotId; may be empty. An input transaction has not run the movements engine and impacts nothing yet. |
-| **ItemType** | **string** | Required | The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction, SettlementActivity or RelationalDataPoint. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, both transaction rec types produce Transaction items, and a relational dataset side produces RelationalDataPoint items whatever the rec type. Available values: SettlementActivity, Holding, Transaction, ValuedHolding, RelationalDataPoint. |
+| **ItemType** | **string** | Required | The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction, SettlementActivity, RelationalDataPoint or the entity type of a LusidEntity rec. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, both transaction rec types produce Transaction items, and a relational dataset side produces RelationalDataPoint items whatever the rec type. A LusidEntity rec produces items of its entity type, for example Instrument items. Available values: SettlementActivity, Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument, LegalEntity, Portfolio. |
 | **RuleAndAttributeValues** | **Dictionary&lt;string, string&gt;** | Optional | The core rule, aggregate rule and supplemental attribute values for the item, keyed by name. |
 | **WritebackSuggestions** | [List&lt;WritebackSuggestion&gt;](WritebackSuggestion.md) | Required | The writebacks suggested against this item, as configured by the matching ruleset&#39;s writebackConfigurations. Only ever populated on target-side items. Suggestions only: a user is expected to review them before acting. Required, but may be empty. *(read-only)* |
 
@@ -24,11 +31,18 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecResultSettlementActivityItem(
     portfolioId: new ResourceId(...),  // required
+    portfolioDisplayName: "...",  // optional — The display name of the item&#39;s portfolio, as it stood at the asAt the run read its data. Null where the run did not read it.
     activityId: "...",  // optional — The settlement activity identifier.
+    activityInstrumentScope: "...",  // optional — The scope of the settlement activity&#39;s instrument. Null where the source does not state one.
+    activityLusidInstrumentId: "...",  // optional — The LUID of the settlement activity&#39;s instrument. Null where the source does not state it.
+    activityInstrumentName: "...",  // optional — The name of the settlement activity&#39;s instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it.
     transactionId: "...",  // optional — The transaction identifier.
+    transactionInstrumentScope: "...",  // optional — The scope of the transaction&#39;s resolved instrument. Null where the source does not state one.
+    transactionLusidInstrumentId: "...",  // optional — The LUID of the transaction&#39;s resolved instrument. Null where the source does not state it.
+    transactionInstrumentName: "...",  // optional — The name of the transaction&#39;s resolved instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it.
     settlementInstructionId: "...",  // optional — The settlement instruction identifier.
     holdingImpacts: new List<RecResultHoldingImpact>(),  // required — The holdings, and where the source states them the tax lots, the item impacted. A distinct set ordered by holdingId then taxLotId; may be empty. An input transaction has not run the movements engine and impacts nothing yet.
-    itemType: "...",  // required — The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction, SettlementActivity or RelationalDataPoint. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, both transaction rec types produce Transaction items, and a relational dataset side produces RelationalDataPoint items whatever the rec type. Available values: SettlementActivity, Holding, Transaction, ValuedHolding, RelationalDataPoint.
+    itemType: "...",  // required — The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction, SettlementActivity, RelationalDataPoint or the entity type of a LusidEntity rec. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, both transaction rec types produce Transaction items, and a relational dataset side produces RelationalDataPoint items whatever the rec type. A LusidEntity rec produces items of its entity type, for example Instrument items. Available values: SettlementActivity, Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument, LegalEntity, Portfolio.
     ruleAndAttributeValues: ,  // optional — The core rule, aggregate rule and supplemental attribute values for the item, keyed by name.
     writebackSuggestions: new List<WritebackSuggestion>()  // required — The writebacks suggested against this item, as configured by the matching ruleset&#39;s writebackConfigurations. Only ever populated on target-side items. Suggestions only: a user is expected to review them before acting. Required, but may be empty.
 );

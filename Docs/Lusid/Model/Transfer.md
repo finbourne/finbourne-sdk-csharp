@@ -9,6 +9,10 @@ A transfer and both of the transactions it booked.
 | **TransferType** | **string** | Optional | The derived type of the transfer: &#39;Transfer&#39; when the position moves between portfolios, &#39;Switch&#39; when one instrument is exchanged for another within a portfolio, and &#39;Twitch&#39; when the position moves between portfolios and changes instrument at the same time. |
 | **PortfolioIdOut** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **PortfolioIdIn** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **PricingMethod** | **string** | Optional | How the legs were priced: &#39;AtCost&#39; or &#39;AtPrice&#39;. |
+| **TaxLotStructure** | **string** | Optional | What happened to the tax lots of the outgoing position: &#39;Consolidate&#39; or &#39;Preserve&#39;. |
+| **WeightOut** | **decimal?** | Optional | The weighting factor recorded against the outgoing leg. |
+| **AccountingMethod** | **string** | Optional | The accounting method recorded against the transfer. |
 | **TransactionOut** | [Transaction](Transaction.md) | Optional | *No description available.* |
 | **TransactionIn** | [Transaction](Transaction.md) | Optional | *No description available.* |
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | The properties of the transfer, for the requested PropertyKeys. |
@@ -29,6 +33,10 @@ var instance = new Transfer(
     transferType: "...",  // optional — The derived type of the transfer: &#39;Transfer&#39; when the position moves between portfolios, &#39;Switch&#39; when one instrument is exchanged for another within a portfolio, and &#39;Twitch&#39; when the position moves between portfolios and changes instrument at the same time.
     portfolioIdOut: new ResourceId(...),  // optional
     portfolioIdIn: new ResourceId(...),  // optional
+    pricingMethod: "...",  // optional — How the legs were priced: &#39;AtCost&#39; or &#39;AtPrice&#39;.
+    taxLotStructure: "...",  // optional — What happened to the tax lots of the outgoing position: &#39;Consolidate&#39; or &#39;Preserve&#39;.
+    weightOut: 0.0d,  // optional — The weighting factor recorded against the outgoing leg.
+    accountingMethod: "...",  // optional — The accounting method recorded against the transfer.
     transactionOut: new Transaction(...),  // optional
     transactionIn: new Transaction(...),  // optional
     properties: new Property(...),  // optional — The properties of the transfer, for the requested PropertyKeys.

@@ -49,7 +49,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="startEffectiveAt">startEffectiveAt.</param>
         /// <param name="endEffectiveAt">Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping..</param>
         /// <param name="effectiveForwardDays">How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes..</param>
-        public SubscriptionDefinition(string scope = default(string), string code = default(string), string displayName = default(string), string description = default(string), ResourceId portfolioId = default(ResourceId), ResourceId timelineId = default(ResourceId), string timelineProperty = default(string), string portfolioFilter = default(string), List<string> addressKeys = default(List<string>), bool byTaxLots = default(bool), string subscriptionType = default(string), DateTimeOffset? startEffectiveAt = default(DateTimeOffset?), DateTimeOffset? endEffectiveAt = default(DateTimeOffset?), int? effectiveForwardDays = default(int?))
+        /// <param name="instrumentIdentifiers">The instrument identifiers each published holding carries, as Instrument/default/{type} property keys,  for example Instrument/default/ClientInternal. Each must name an instrument identifier type. At most 5.  Not valid for a transactions subscription..</param>
+        public SubscriptionDefinition(string scope = default(string), string code = default(string), string displayName = default(string), string description = default(string), ResourceId portfolioId = default(ResourceId), ResourceId timelineId = default(ResourceId), string timelineProperty = default(string), string portfolioFilter = default(string), List<string> addressKeys = default(List<string>), bool byTaxLots = default(bool), string subscriptionType = default(string), DateTimeOffset? startEffectiveAt = default(DateTimeOffset?), DateTimeOffset? endEffectiveAt = default(DateTimeOffset?), int? effectiveForwardDays = default(int?), List<string> instrumentIdentifiers = default(List<string>))
         {
             // to ensure "scope" is required (not null)
             if (scope == null)
@@ -85,6 +86,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.StartEffectiveAt = startEffectiveAt;
             this.EndEffectiveAt = endEffectiveAt;
             this.EffectiveForwardDays = effectiveForwardDays;
+            this.InstrumentIdentifiers = instrumentIdentifiers;
         }
 
         /// <summary>
@@ -178,6 +180,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public int? EffectiveForwardDays { get; set; }
 
         /// <summary>
+        /// The instrument identifiers each published holding carries, as Instrument/default/{type} property keys,  for example Instrument/default/ClientInternal. Each must name an instrument identifier type. At most 5.  Not valid for a transactions subscription.
+        /// </summary>
+        /// <value>The instrument identifiers each published holding carries, as Instrument/default/{type} property keys,  for example Instrument/default/ClientInternal. Each must name an instrument identifier type. At most 5.  Not valid for a transactions subscription.</value>
+        [DataMember(Name = "instrumentIdentifiers", EmitDefaultValue = true)]
+        public List<string> InstrumentIdentifiers { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -199,6 +208,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  StartEffectiveAt: ").Append(StartEffectiveAt).Append("\n");
             sb.Append("  EndEffectiveAt: ").Append(EndEffectiveAt).Append("\n");
             sb.Append("  EffectiveForwardDays: ").Append(EffectiveForwardDays).Append("\n");
+            sb.Append("  InstrumentIdentifiers: ").Append(InstrumentIdentifiers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -303,6 +313,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.EffectiveForwardDays == input.EffectiveForwardDays ||
                     (this.EffectiveForwardDays != null &&
                     this.EffectiveForwardDays.Equals(input.EffectiveForwardDays))
+                ) && 
+                (
+                    this.InstrumentIdentifiers == input.InstrumentIdentifiers ||
+                    this.InstrumentIdentifiers != null &&
+                    input.InstrumentIdentifiers != null &&
+                    this.InstrumentIdentifiers.SequenceEqual(input.InstrumentIdentifiers)
                 );
         }
 
@@ -367,6 +383,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.EffectiveForwardDays != null)
                 {
                     hashCode = (hashCode * 59) + this.EffectiveForwardDays.GetHashCode();
+                }
+                if (this.InstrumentIdentifiers != null)
+                {
+                    hashCode = (hashCode * 59) + this.InstrumentIdentifiers.GetHashCode();
                 }
                 return hashCode;
             }

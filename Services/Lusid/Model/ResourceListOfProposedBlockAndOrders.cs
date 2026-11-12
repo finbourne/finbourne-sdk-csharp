@@ -22,30 +22,30 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// ResourceListOfCashFlowDetail
+    /// ResourceListOfProposedBlockAndOrders
     /// </summary>
-    [DataContract(Name = "ResourceListOfCashFlowDetail")]
-    public partial class ResourceListOfCashFlowDetail : IEquatable<ResourceListOfCashFlowDetail>, IValidatableObject
+    [DataContract(Name = "ResourceListOfProposedBlockAndOrders")]
+    public partial class ResourceListOfProposedBlockAndOrders : IEquatable<ResourceListOfProposedBlockAndOrders>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ResourceListOfCashFlowDetail" /> class.
+        /// Initializes a new instance of the <see cref="ResourceListOfProposedBlockAndOrders" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ResourceListOfCashFlowDetail() { }
+        protected ResourceListOfProposedBlockAndOrders() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ResourceListOfCashFlowDetail" /> class.
+        /// Initializes a new instance of the <see cref="ResourceListOfProposedBlockAndOrders" /> class.
         /// </summary>
         /// <param name="values">values (required).</param>
         /// <param name="href">href.</param>
         /// <param name="links">links.</param>
         /// <param name="nextPage">nextPage.</param>
         /// <param name="previousPage">previousPage.</param>
-        public ResourceListOfCashFlowDetail(List<CashFlowDetail> values = default(List<CashFlowDetail>), string href = default(string), List<Link> links = default(List<Link>), string nextPage = default(string), string previousPage = default(string))
+        public ResourceListOfProposedBlockAndOrders(List<ProposedBlockAndOrders> values = default(List<ProposedBlockAndOrders>), string href = default(string), List<Link> links = default(List<Link>), string nextPage = default(string), string previousPage = default(string))
         {
             // to ensure "values" is required (not null)
             if (values == null)
             {
-                throw new ArgumentNullException("values is a required property for ResourceListOfCashFlowDetail and cannot be null");
+                throw new ArgumentNullException("values is a required property for ResourceListOfProposedBlockAndOrders and cannot be null");
             }
             this.Values = values;
             this.Href = href;
@@ -58,7 +58,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Gets or Sets Values
         /// </summary>
         [DataMember(Name = "values", IsRequired = true, EmitDefaultValue = true)]
-        public List<CashFlowDetail> Values { get; set; }
+        public List<ProposedBlockAndOrders> Values { get; set; }
 
         /// <summary>
         /// Gets or Sets Href
@@ -91,7 +91,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ResourceListOfCashFlowDetail {\n");
+            sb.Append("class ResourceListOfProposedBlockAndOrders {\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
             sb.Append("  Href: ").Append(Href).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
@@ -117,15 +117,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ResourceListOfCashFlowDetail);
+            return this.Equals(input as ResourceListOfProposedBlockAndOrders);
         }
 
         /// <summary>
-        /// Returns true if ResourceListOfCashFlowDetail instances are equal
+        /// Returns true if ResourceListOfProposedBlockAndOrders instances are equal
         /// </summary>
-        /// <param name="input">Instance of ResourceListOfCashFlowDetail to be compared</param>
+        /// <param name="input">Instance of ResourceListOfProposedBlockAndOrders to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ResourceListOfCashFlowDetail input)
+        public bool Equals(ResourceListOfProposedBlockAndOrders input)
         {
             if (input == null)
             {

@@ -54,17 +54,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="primaryNavType">primaryNavType.</param>
         /// <param name="additionalNavTypes">The definitions for any additional NAVs on the Fund..</param>
         /// <param name="properties">A set of properties for the Fund..</param>
-        /// <param name="createInstrument">Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false..</param>
-        /// <param name="instrumentScope">The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead..</param>
+        /// <param name="createInstrument">Whether to master an instrument upon fund creation. For unitised funds (Classes, Series, or Partners), an instrument is mastered per share class. For non-unitised funds, a single instrument is mastered for the fund itself, with a ClientInternal identifier of {FundScope}:{Code}. Defaults to false..</param>
+        /// <param name="instrumentScope">The scope in which instruments are mastered when CreateInstrument is true. For non-unitised funds the fund scope also forms part of the fund instrument&#39;s ClientInternal identifier: {FundScope}:{Code}. Defaults to the default instrument scope. Legacy share class instruments are resolved via ShareClassInstrumentScopes instead..</param>
         /// <param name="allocationGroups">An optional list of Allocation Group definitions for the Fund..</param>
         /// <param name="shareClasses">An optional list of Share Class definitions for the Fund..</param>
         /// <param name="fundInstrument">fundInstrument.</param>
         /// <param name="pricingMethodology">pricingMethodology.</param>
         /// <param name="reportingPrices">Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices..</param>
+        /// <param name="dealingEstimates">dealingEstimates.</param>
         /// <param name="varVersion">varVersion.</param>
         /// <param name="whtParameters">whtParameters.</param>
+        /// <param name="valuationTemplateId">valuationTemplateId.</param>
         /// <param name="links">links.</param>
-        public Fund(string href = default(string), ResourceId id = default(ResourceId), string displayName = default(string), string description = default(string), string baseCurrency = default(string), string investorStructure = default(string), List<PortfolioEntityIdWithDetails> portfolioIds = default(List<PortfolioEntityIdWithDetails>), ResourceId fundConfigurationId = default(ResourceId), string shortCode = default(string), ResourceId aborId = default(ResourceId), List<InstrumentResolutionDetail> shareClassInstruments = default(List<InstrumentResolutionDetail>), string type = default(string), string taxTransparency = default(string), DateTimeOffset inceptionDate = default(DateTimeOffset), int? decimalPlaces = default(int?), DayMonth yearEndDate = default(DayMonth), NavType primaryNavType = default(NavType), List<NavType> additionalNavTypes = default(List<NavType>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool createInstrument = default(bool), string instrumentScope = default(string), List<AllocationGroup> allocationGroups = default(List<AllocationGroup>), List<ShareClass> shareClasses = default(List<ShareClass>), FundInstrument fundInstrument = default(FundInstrument), PricingMethodology pricingMethodology = default(PricingMethodology), List<ReportingPrice> reportingPrices = default(List<ReportingPrice>), ModelVersion varVersion = default(ModelVersion), WhtParameters whtParameters = default(WhtParameters), List<Link> links = default(List<Link>))
+        public Fund(string href = default(string), ResourceId id = default(ResourceId), string displayName = default(string), string description = default(string), string baseCurrency = default(string), string investorStructure = default(string), List<PortfolioEntityIdWithDetails> portfolioIds = default(List<PortfolioEntityIdWithDetails>), ResourceId fundConfigurationId = default(ResourceId), string shortCode = default(string), ResourceId aborId = default(ResourceId), List<InstrumentResolutionDetail> shareClassInstruments = default(List<InstrumentResolutionDetail>), string type = default(string), string taxTransparency = default(string), DateTimeOffset inceptionDate = default(DateTimeOffset), int? decimalPlaces = default(int?), DayMonth yearEndDate = default(DayMonth), NavType primaryNavType = default(NavType), List<NavType> additionalNavTypes = default(List<NavType>), Dictionary<string, Property> properties = default(Dictionary<string, Property>), bool createInstrument = default(bool), string instrumentScope = default(string), List<AllocationGroup> allocationGroups = default(List<AllocationGroup>), List<ShareClass> shareClasses = default(List<ShareClass>), FundInstrument fundInstrument = default(FundInstrument), PricingMethodology pricingMethodology = default(PricingMethodology), List<ReportingPrice> reportingPrices = default(List<ReportingPrice>), DealingEstimates dealingEstimates = default(DealingEstimates), ModelVersion varVersion = default(ModelVersion), WhtParameters whtParameters = default(WhtParameters), ResourceId valuationTemplateId = default(ResourceId), List<Link> links = default(List<Link>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -102,8 +104,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.FundInstrument = fundInstrument;
             this.PricingMethodology = pricingMethodology;
             this.ReportingPrices = reportingPrices;
+            this.DealingEstimates = dealingEstimates;
             this.VarVersion = varVersion;
             this.WhtParameters = whtParameters;
+            this.ValuationTemplateId = valuationTemplateId;
             this.Links = links;
         }
 
@@ -236,16 +240,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public Dictionary<string, Property> Properties { get; set; }
 
         /// <summary>
-        /// Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false.
+        /// Whether to master an instrument upon fund creation. For unitised funds (Classes, Series, or Partners), an instrument is mastered per share class. For non-unitised funds, a single instrument is mastered for the fund itself, with a ClientInternal identifier of {FundScope}:{Code}. Defaults to false.
         /// </summary>
-        /// <value>Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false.</value>
+        /// <value>Whether to master an instrument upon fund creation. For unitised funds (Classes, Series, or Partners), an instrument is mastered per share class. For non-unitised funds, a single instrument is mastered for the fund itself, with a ClientInternal identifier of {FundScope}:{Code}. Defaults to false.</value>
         [DataMember(Name = "createInstrument", EmitDefaultValue = true)]
         public bool CreateInstrument { get; set; }
 
         /// <summary>
-        /// The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead.
+        /// The scope in which instruments are mastered when CreateInstrument is true. For non-unitised funds the fund scope also forms part of the fund instrument&#39;s ClientInternal identifier: {FundScope}:{Code}. Defaults to the default instrument scope. Legacy share class instruments are resolved via ShareClassInstrumentScopes instead.
         /// </summary>
-        /// <value>The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead.</value>
+        /// <value>The scope in which instruments are mastered when CreateInstrument is true. For non-unitised funds the fund scope also forms part of the fund instrument&#39;s ClientInternal identifier: {FundScope}:{Code}. Defaults to the default instrument scope. Legacy share class instruments are resolved via ShareClassInstrumentScopes instead.</value>
         [DataMember(Name = "instrumentScope", EmitDefaultValue = true)]
         public string InstrumentScope { get; set; }
 
@@ -283,6 +287,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<ReportingPrice> ReportingPrices { get; set; }
 
         /// <summary>
+        /// Gets or Sets DealingEstimates
+        /// </summary>
+        [DataMember(Name = "dealingEstimates", EmitDefaultValue = false)]
+        public DealingEstimates DealingEstimates { get; set; }
+
+        /// <summary>
         /// Gets or Sets VarVersion
         /// </summary>
         [DataMember(Name = "version", EmitDefaultValue = false)]
@@ -293,6 +303,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         [DataMember(Name = "whtParameters", EmitDefaultValue = false)]
         public WhtParameters WhtParameters { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ValuationTemplateId
+        /// </summary>
+        [DataMember(Name = "valuationTemplateId", EmitDefaultValue = false)]
+        public ResourceId ValuationTemplateId { get; set; }
 
         /// <summary>
         /// Gets or Sets Links
@@ -334,8 +350,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  FundInstrument: ").Append(FundInstrument).Append("\n");
             sb.Append("  PricingMethodology: ").Append(PricingMethodology).Append("\n");
             sb.Append("  ReportingPrices: ").Append(ReportingPrices).Append("\n");
+            sb.Append("  DealingEstimates: ").Append(DealingEstimates).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  WhtParameters: ").Append(WhtParameters).Append("\n");
+            sb.Append("  ValuationTemplateId: ").Append(ValuationTemplateId).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -509,6 +527,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.ReportingPrices.SequenceEqual(input.ReportingPrices)
                 ) && 
                 (
+                    this.DealingEstimates == input.DealingEstimates ||
+                    (this.DealingEstimates != null &&
+                    this.DealingEstimates.Equals(input.DealingEstimates))
+                ) && 
+                (
                     this.VarVersion == input.VarVersion ||
                     (this.VarVersion != null &&
                     this.VarVersion.Equals(input.VarVersion))
@@ -517,6 +540,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.WhtParameters == input.WhtParameters ||
                     (this.WhtParameters != null &&
                     this.WhtParameters.Equals(input.WhtParameters))
+                ) && 
+                (
+                    this.ValuationTemplateId == input.ValuationTemplateId ||
+                    (this.ValuationTemplateId != null &&
+                    this.ValuationTemplateId.Equals(input.ValuationTemplateId))
                 ) && 
                 (
                     this.Links == input.Links ||
@@ -636,6 +664,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.ReportingPrices.GetHashCode();
                 }
+                if (this.DealingEstimates != null)
+                {
+                    hashCode = (hashCode * 59) + this.DealingEstimates.GetHashCode();
+                }
                 if (this.VarVersion != null)
                 {
                     hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
@@ -643,6 +675,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.WhtParameters != null)
                 {
                     hashCode = (hashCode * 59) + this.WhtParameters.GetHashCode();
+                }
+                if (this.ValuationTemplateId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ValuationTemplateId.GetHashCode();
                 }
                 if (this.Links != null)
                 {

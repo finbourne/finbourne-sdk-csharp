@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// One holding, and where known the tax lot within it, that a transaction or settlement activity item impacted.
+    /// One holding, and where known the tax lot within it, that a transaction or settlement activity item impacted.  Also holds the display names of the holding&#39;s instrument.
     /// </summary>
     [DataContract(Name = "RecResultHoldingImpact")]
     public partial class RecResultHoldingImpact : IEquatable<RecResultHoldingImpact>, IValidatableObject
@@ -37,7 +37,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="holdingId">The impacted holding, at holding level: the id a holding item over it carries. (required).</param>
         /// <param name="taxLotId">The impacted tax lot within the holding, where the source states one; null when the impact is known at holding level only. Opaque: compare it whole, do not parse it..</param>
-        public RecResultHoldingImpact(string holdingId = default(string), string taxLotId = default(string))
+        /// <param name="holdingInstrumentScope">The scope of the impacted holding&#39;s instrument. Null where the source does not state one..</param>
+        /// <param name="holdingLusidInstrumentId">The LUID of the impacted holding&#39;s instrument. Null where the source does not state it..</param>
+        /// <param name="holdingInstrumentName">The name of the impacted holding&#39;s instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it..</param>
+        public RecResultHoldingImpact(string holdingId = default(string), string taxLotId = default(string), string holdingInstrumentScope = default(string), string holdingLusidInstrumentId = default(string), string holdingInstrumentName = default(string))
         {
             // to ensure "holdingId" is required (not null)
             if (holdingId == null)
@@ -46,6 +49,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.HoldingId = holdingId;
             this.TaxLotId = taxLotId;
+            this.HoldingInstrumentScope = holdingInstrumentScope;
+            this.HoldingLusidInstrumentId = holdingLusidInstrumentId;
+            this.HoldingInstrumentName = holdingInstrumentName;
         }
 
         /// <summary>
@@ -63,6 +69,27 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string TaxLotId { get; set; }
 
         /// <summary>
+        /// The scope of the impacted holding&#39;s instrument. Null where the source does not state one.
+        /// </summary>
+        /// <value>The scope of the impacted holding&#39;s instrument. Null where the source does not state one.</value>
+        [DataMember(Name = "holdingInstrumentScope", EmitDefaultValue = true)]
+        public string HoldingInstrumentScope { get; set; }
+
+        /// <summary>
+        /// The LUID of the impacted holding&#39;s instrument. Null where the source does not state it.
+        /// </summary>
+        /// <value>The LUID of the impacted holding&#39;s instrument. Null where the source does not state it.</value>
+        [DataMember(Name = "holdingLusidInstrumentId", EmitDefaultValue = true)]
+        public string HoldingLusidInstrumentId { get; set; }
+
+        /// <summary>
+        /// The name of the impacted holding&#39;s instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it.
+        /// </summary>
+        /// <value>The name of the impacted holding&#39;s instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it.</value>
+        [DataMember(Name = "holdingInstrumentName", EmitDefaultValue = true)]
+        public string HoldingInstrumentName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -72,6 +99,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class RecResultHoldingImpact {\n");
             sb.Append("  HoldingId: ").Append(HoldingId).Append("\n");
             sb.Append("  TaxLotId: ").Append(TaxLotId).Append("\n");
+            sb.Append("  HoldingInstrumentScope: ").Append(HoldingInstrumentScope).Append("\n");
+            sb.Append("  HoldingLusidInstrumentId: ").Append(HoldingLusidInstrumentId).Append("\n");
+            sb.Append("  HoldingInstrumentName: ").Append(HoldingInstrumentName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,6 +146,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.TaxLotId == input.TaxLotId ||
                     (this.TaxLotId != null &&
                     this.TaxLotId.Equals(input.TaxLotId))
+                ) && 
+                (
+                    this.HoldingInstrumentScope == input.HoldingInstrumentScope ||
+                    (this.HoldingInstrumentScope != null &&
+                    this.HoldingInstrumentScope.Equals(input.HoldingInstrumentScope))
+                ) && 
+                (
+                    this.HoldingLusidInstrumentId == input.HoldingLusidInstrumentId ||
+                    (this.HoldingLusidInstrumentId != null &&
+                    this.HoldingLusidInstrumentId.Equals(input.HoldingLusidInstrumentId))
+                ) && 
+                (
+                    this.HoldingInstrumentName == input.HoldingInstrumentName ||
+                    (this.HoldingInstrumentName != null &&
+                    this.HoldingInstrumentName.Equals(input.HoldingInstrumentName))
                 );
         }
 
@@ -135,6 +180,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.TaxLotId != null)
                 {
                     hashCode = (hashCode * 59) + this.TaxLotId.GetHashCode();
+                }
+                if (this.HoldingInstrumentScope != null)
+                {
+                    hashCode = (hashCode * 59) + this.HoldingInstrumentScope.GetHashCode();
+                }
+                if (this.HoldingLusidInstrumentId != null)
+                {
+                    hashCode = (hashCode * 59) + this.HoldingLusidInstrumentId.GetHashCode();
+                }
+                if (this.HoldingInstrumentName != null)
+                {
+                    hashCode = (hashCode * 59) + this.HoldingInstrumentName.GetHashCode();
                 }
                 return hashCode;
             }

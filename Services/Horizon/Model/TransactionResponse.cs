@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// Initializes a new instance of the <see cref="TransactionResponse" /> class.
         /// </summary>
         /// <param name="transactionId">transactionId (required).</param>
-        /// <param name="publicationStatus">The outcome the screens show for this row: Sent, Skipped or Failed. (required).</param>
+        /// <param name="publicationStatus">The outcome the screens show for this row: Sent, Skipped or Failed, or the element status for an element not yet built. (required).</param>
         /// <param name="portfolioScope">portfolioScope.</param>
         /// <param name="portfolioCode">portfolioCode.</param>
         /// <param name="instrumentId">instrumentId.</param>
@@ -52,7 +52,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="destinations">destinations (required).</param>
         /// <param name="failureStage">failureStage.</param>
         /// <param name="instrumentScope">The scope the build resolved the instrument in; null for rows built before it was recorded..</param>
-        public TransactionResponse(string transactionId = default(string), string publicationStatus = default(string), string portfolioScope = default(string), string portfolioCode = default(string), string instrumentId = default(string), string instrumentType = default(string), string instrumentName = default(string), DateTimeOffset? tradeDate = default(DateTimeOffset?), DateTimeOffset? settlementDate = default(DateTimeOffset?), string status = default(string), string skipReason = default(string), string failureReason = default(string), string outputFileName = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), List<DestinationResponse> destinations = default(List<DestinationResponse>), string failureStage = default(string), string instrumentScope = default(string))
+        /// <param name="outcome">The same value as PublicationStatus under the name the screens use; PublicationStatus stays for existing clients. (required).</param>
+        /// <param name="eventType">The TPF event type that triggered this publication (New, Amended, Cancelled, ...); Queued for an element not yet built; null otherwise..</param>
+        public TransactionResponse(string transactionId = default(string), string publicationStatus = default(string), string portfolioScope = default(string), string portfolioCode = default(string), string instrumentId = default(string), string instrumentType = default(string), string instrumentName = default(string), DateTimeOffset? tradeDate = default(DateTimeOffset?), DateTimeOffset? settlementDate = default(DateTimeOffset?), string status = default(string), string skipReason = default(string), string failureReason = default(string), string outputFileName = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), List<DestinationResponse> destinations = default(List<DestinationResponse>), string failureStage = default(string), string instrumentScope = default(string), string outcome = default(string), string eventType = default(string))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -78,6 +80,12 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("destinations is a required property for TransactionResponse and cannot be null");
             }
             this.Destinations = destinations;
+            // to ensure "outcome" is required (not null)
+            if (outcome == null)
+            {
+                throw new ArgumentNullException("outcome is a required property for TransactionResponse and cannot be null");
+            }
+            this.Outcome = outcome;
             this.PortfolioScope = portfolioScope;
             this.PortfolioCode = portfolioCode;
             this.InstrumentId = instrumentId;
@@ -91,6 +99,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             this.SentAt = sentAt;
             this.FailureStage = failureStage;
             this.InstrumentScope = instrumentScope;
+            this.EventType = eventType;
         }
 
         /// <summary>
@@ -100,9 +109,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string TransactionId { get; set; }
 
         /// <summary>
-        /// The outcome the screens show for this row: Sent, Skipped or Failed.
+        /// The outcome the screens show for this row: Sent, Skipped or Failed, or the element status for an element not yet built.
         /// </summary>
-        /// <value>The outcome the screens show for this row: Sent, Skipped or Failed.</value>
+        /// <value>The outcome the screens show for this row: Sent, Skipped or Failed, or the element status for an element not yet built.</value>
         [DataMember(Name = "publicationStatus", IsRequired = true, EmitDefaultValue = true)]
         public string PublicationStatus { get; set; }
 
@@ -199,6 +208,20 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public string InstrumentScope { get; set; }
 
         /// <summary>
+        /// The same value as PublicationStatus under the name the screens use; PublicationStatus stays for existing clients.
+        /// </summary>
+        /// <value>The same value as PublicationStatus under the name the screens use; PublicationStatus stays for existing clients.</value>
+        [DataMember(Name = "outcome", IsRequired = true, EmitDefaultValue = true)]
+        public string Outcome { get; set; }
+
+        /// <summary>
+        /// The TPF event type that triggered this publication (New, Amended, Cancelled, ...); Queued for an element not yet built; null otherwise.
+        /// </summary>
+        /// <value>The TPF event type that triggered this publication (New, Amended, Cancelled, ...); Queued for an element not yet built; null otherwise.</value>
+        [DataMember(Name = "eventType", EmitDefaultValue = true)]
+        public string EventType { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -223,6 +246,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  Destinations: ").Append(Destinations).Append("\n");
             sb.Append("  FailureStage: ").Append(FailureStage).Append("\n");
             sb.Append("  InstrumentScope: ").Append(InstrumentScope).Append("\n");
+            sb.Append("  Outcome: ").Append(Outcome).Append("\n");
+            sb.Append("  EventType: ").Append(EventType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -343,6 +368,16 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.InstrumentScope == input.InstrumentScope ||
                     (this.InstrumentScope != null &&
                     this.InstrumentScope.Equals(input.InstrumentScope))
+                ) && 
+                (
+                    this.Outcome == input.Outcome ||
+                    (this.Outcome != null &&
+                    this.Outcome.Equals(input.Outcome))
+                ) && 
+                (
+                    this.EventType == input.EventType ||
+                    (this.EventType != null &&
+                    this.EventType.Equals(input.EventType))
                 );
         }
 
@@ -422,6 +457,14 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 if (this.InstrumentScope != null)
                 {
                     hashCode = (hashCode * 59) + this.InstrumentScope.GetHashCode();
+                }
+                if (this.Outcome != null)
+                {
+                    hashCode = (hashCode * 59) + this.Outcome.GetHashCode();
+                }
+                if (this.EventType != null)
+                {
+                    hashCode = (hashCode * 59) + this.EventType.GetHashCode();
                 }
                 return hashCode;
             }

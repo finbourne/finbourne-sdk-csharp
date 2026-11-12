@@ -16,55 +16,92 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using JsonSubTypes;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
+using System.Reflection;
 
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
     /// Base class for the activity windows that give the date range a rec definition&#39;s activity-based  reconciliations cover. Polymorphic by windowType; each supported type has a corresponding inherited class.
     /// </summary>
+    [JsonConverter(typeof(RecActivityWindowJsonConverter))]
     [DataContract(Name = "RecActivityWindow")]
-    public partial class RecActivityWindow : IEquatable<RecActivityWindow>, IValidatableObject
+    public partial class RecActivityWindow : AbstractOpenAPISchema, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RecActivityWindow" /> class.
+        /// Initializes a new instance of the <see cref="RecActivityWindow" /> class
+        /// with the <see cref="ContiguousActivityWindow" /> class
         /// </summary>
-        [JsonConstructorAttribute]
-        protected RecActivityWindow() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RecActivityWindow" /> class.
-        /// </summary>
-        /// <param name="initialActivitySinceEffectiveAt">initialActivitySinceEffectiveAt (required).</param>
-        /// <param name="windowType">Polymorphic discriminator. Supported types: Contiguous. Contiguous requires effectiveAtProgression Series. Available values: Contiguous, FixedLookback, Explicit, ClosedPeriod, ContiguousAsAt. (required).</param>
-        public RecActivityWindow(RecActivitySinceEffectiveAt initialActivitySinceEffectiveAt = default(RecActivitySinceEffectiveAt), string windowType = default(string))
+        /// <param name="actualInstance">An instance of ContiguousActivityWindow.</param>
+        public RecActivityWindow(ContiguousActivityWindow actualInstance)
         {
-            // to ensure "initialActivitySinceEffectiveAt" is required (not null)
-            if (initialActivitySinceEffectiveAt == null)
-            {
-                throw new ArgumentNullException("initialActivitySinceEffectiveAt is a required property for RecActivityWindow and cannot be null");
-            }
-            this.InitialActivitySinceEffectiveAt = initialActivitySinceEffectiveAt;
-            // to ensure "windowType" is required (not null)
-            if (windowType == null)
-            {
-                throw new ArgumentNullException("windowType is a required property for RecActivityWindow and cannot be null");
-            }
-            this.WindowType = windowType;
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
         }
 
         /// <summary>
-        /// Gets or Sets InitialActivitySinceEffectiveAt
+        /// Initializes a new instance of the <see cref="RecActivityWindow" /> class
+        /// with the <see cref="FixedPeriodLookbackActivityWindow" /> class
         /// </summary>
-        [DataMember(Name = "initialActivitySinceEffectiveAt", IsRequired = true, EmitDefaultValue = true)]
-        public RecActivitySinceEffectiveAt InitialActivitySinceEffectiveAt { get; set; }
+        /// <param name="actualInstance">An instance of FixedPeriodLookbackActivityWindow.</param>
+        public RecActivityWindow(FixedPeriodLookbackActivityWindow actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+
+        private Object _actualInstance;
 
         /// <summary>
-        /// Polymorphic discriminator. Supported types: Contiguous. Contiguous requires effectiveAtProgression Series. Available values: Contiguous, FixedLookback, Explicit, ClosedPeriod, ContiguousAsAt.
+        /// Gets or Sets ActualInstance
         /// </summary>
-        /// <value>Polymorphic discriminator. Supported types: Contiguous. Contiguous requires effectiveAtProgression Series. Available values: Contiguous, FixedLookback, Explicit, ClosedPeriod, ContiguousAsAt.</value>
-        [DataMember(Name = "windowType", IsRequired = true, EmitDefaultValue = true)]
-        public string WindowType { get; set; }
+        public override Object ActualInstance
+        {
+            get
+            {
+                return _actualInstance;
+            }
+            set
+            {
+                if (value.GetType() == typeof(ContiguousActivityWindow) || value is ContiguousActivityWindow)
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(FixedPeriodLookbackActivityWindow) || value is FixedPeriodLookbackActivityWindow)
+                {
+                    this._actualInstance = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid instance found. Must be the following types: ContiguousActivityWindow, FixedPeriodLookbackActivityWindow");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get the actual instance of `ContiguousActivityWindow`. If the actual instance is not `ContiguousActivityWindow`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of ContiguousActivityWindow</returns>
+        public ContiguousActivityWindow GetContiguousActivityWindow()
+        {
+            return (ContiguousActivityWindow)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `FixedPeriodLookbackActivityWindow`. If the actual instance is not `FixedPeriodLookbackActivityWindow`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of FixedPeriodLookbackActivityWindow</returns>
+        public FixedPeriodLookbackActivityWindow GetFixedPeriodLookbackActivityWindow()
+        {
+            return (FixedPeriodLookbackActivityWindow)this.ActualInstance;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,10 +109,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append("class RecActivityWindow {\n");
-            sb.Append("  InitialActivitySinceEffectiveAt: ").Append(InitialActivitySinceEffectiveAt).Append("\n");
-            sb.Append("  WindowType: ").Append(WindowType).Append("\n");
+            sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,65 +120,103 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public override string ToJson()
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject(this.ActualInstance, RecActivityWindow.SerializerSettings);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// Converts the JSON string into an instance of RecActivityWindow
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="jsonString">JSON string</param>
+        /// <returns>An instance of RecActivityWindow</returns>
+        public static RecActivityWindow FromJson(string jsonString)
         {
-            return this.Equals(input as RecActivityWindow);
-        }
+            RecActivityWindow newRecActivityWindow = null;
 
-        /// <summary>
-        /// Returns true if RecActivityWindow instances are equal
-        /// </summary>
-        /// <param name="input">Instance of RecActivityWindow to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(RecActivityWindow input)
-        {
-            if (input == null)
+            if (string.IsNullOrEmpty(jsonString))
             {
-                return false;
+                return newRecActivityWindow;
             }
-            return 
-                (
-                    this.InitialActivitySinceEffectiveAt == input.InitialActivitySinceEffectiveAt ||
-                    (this.InitialActivitySinceEffectiveAt != null &&
-                    this.InitialActivitySinceEffectiveAt.Equals(input.InitialActivitySinceEffectiveAt))
-                ) && 
-                (
-                    this.WindowType == input.WindowType ||
-                    (this.WindowType != null &&
-                    this.WindowType.Equals(input.WindowType))
-                );
+
+            try
+            {
+                var discriminatorObj = JObject.Parse(jsonString)["windowType"];
+                string discriminatorValue =  discriminatorObj == null ?string.Empty :discriminatorObj.ToString();
+                switch (discriminatorValue)
+                {
+                    case "Contiguous":
+                        newRecActivityWindow = new RecActivityWindow(JsonConvert.DeserializeObject<ContiguousActivityWindow>(jsonString, RecActivityWindow.AdditionalPropertiesSerializerSettings));
+                        return newRecActivityWindow;
+                    case "FixedPeriodLookback":
+                        newRecActivityWindow = new RecActivityWindow(JsonConvert.DeserializeObject<FixedPeriodLookbackActivityWindow>(jsonString, RecActivityWindow.AdditionalPropertiesSerializerSettings));
+                        return newRecActivityWindow;
+                    default:
+                        System.Diagnostics.Debug.WriteLine(string.Format("Failed to lookup discriminator value `{0}` for RecActivityWindow. Possible values: Contiguous FixedPeriodLookback", discriminatorValue));
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to parse the json data : `{0}` {1}", jsonString, ex.ToString()));
+            }
+
+            int match = 0;
+            List<string> matchedTypes = new List<string>();
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(ContiguousActivityWindow).GetProperty("AdditionalProperties") == null)
+                {
+                    newRecActivityWindow = new RecActivityWindow(JsonConvert.DeserializeObject<ContiguousActivityWindow>(jsonString, RecActivityWindow.SerializerSettings));
+                }
+                else
+                {
+                    newRecActivityWindow = new RecActivityWindow(JsonConvert.DeserializeObject<ContiguousActivityWindow>(jsonString, RecActivityWindow.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("ContiguousActivityWindow");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into ContiguousActivityWindow: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(FixedPeriodLookbackActivityWindow).GetProperty("AdditionalProperties") == null)
+                {
+                    newRecActivityWindow = new RecActivityWindow(JsonConvert.DeserializeObject<FixedPeriodLookbackActivityWindow>(jsonString, RecActivityWindow.SerializerSettings));
+                }
+                else
+                {
+                    newRecActivityWindow = new RecActivityWindow(JsonConvert.DeserializeObject<FixedPeriodLookbackActivityWindow>(jsonString, RecActivityWindow.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("FixedPeriodLookbackActivityWindow");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into FixedPeriodLookbackActivityWindow: {1}", jsonString, exception.ToString()));
+            }
+
+            if (match == 0)
+            {
+                throw new InvalidDataException("The JSON string `" + jsonString + "` cannot be deserialized into any schema defined.");
+            }
+            else if (match > 1)
+            {
+                throw new InvalidDataException("The JSON string `" + jsonString + "` incorrectly matches more than one schema (should be exactly one match): " + String.Join(",", matchedTypes));
+            }
+
+            // deserialization is considered successful at this point if no exception has been thrown.
+            return newRecActivityWindow;
         }
 
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.InitialActivitySinceEffectiveAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.InitialActivitySinceEffectiveAt.GetHashCode();
-                }
-                if (this.WindowType != null)
-                {
-                    hashCode = (hashCode * 59) + this.WindowType.GetHashCode();
-                }
-                return hashCode;
-            }
-        }
 
         /// <summary>
         /// To validate all properties of the instance
@@ -154,4 +228,53 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             yield break;
         }
     }
+
+    /// <summary>
+    /// Custom JSON converter for RecActivityWindow
+    /// </summary>
+    public class RecActivityWindowJsonConverter : JsonConverter
+    {
+        /// <summary>
+        /// To write the JSON string
+        /// </summary>
+        /// <param name="writer">JSON writer</param>
+        /// <param name="value">Object to be converted into a JSON string</param>
+        /// <param name="serializer">JSON Serializer</param>
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            writer.WriteRawValue((string)(typeof(RecActivityWindow).GetMethod("ToJson").Invoke(value, null)));
+        }
+
+        /// <summary>
+        /// To convert a JSON string into an object
+        /// </summary>
+        /// <param name="reader">JSON reader</param>
+        /// <param name="objectType">Object type</param>
+        /// <param name="existingValue">Existing value</param>
+        /// <param name="serializer">JSON Serializer</param>
+        /// <returns>The object converted from the JSON string</returns>
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            switch(reader.TokenType) 
+            {
+                case JsonToken.StartObject:
+                    return RecActivityWindow.FromJson(JObject.Load(reader).ToString(Formatting.None));
+                case JsonToken.StartArray:
+                    return RecActivityWindow.FromJson(JArray.Load(reader).ToString(Formatting.None));
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Check if the object can be converted
+        /// </summary>
+        /// <param name="objectType">Object type</param>
+        /// <returns>True if the object can be converted</returns>
+        public override bool CanConvert(Type objectType)
+        {
+            return false;
+        }
+    }
+
 }

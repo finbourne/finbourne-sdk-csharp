@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **DisplayName** | **string** | Required | The name of the matching ruleset. |
-| **RecType** | **string** | Required | The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. |
+| **RecType** | **string** | Required | The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. |
 | **ExternalRecType** | [ExternalRecType](ExternalRecType.md) | Optional | *No description available.* |
 | **DatasetSchemas** | [RecDatasetSchemas](RecDatasetSchemas.md) | Required | *No description available.* |
 | **Filters** | [GroupReconciliationFilters](GroupReconciliationFilters.md) | Optional | *No description available.* |
@@ -15,7 +15,7 @@
 | **CoreTolerances** | [List&lt;ToleranceBase&gt;](ToleranceBase.md) | Optional | Tolerance configurations applied to core rule matching, in the specified order. |
 | **AggregateTolerances** | [List&lt;ToleranceBase&gt;](ToleranceBase.md) | Optional | Tolerance configurations applied to aggregate rule matching. |
 | **AllowPartialMatching** | **bool** | Optional | Whether to permit partial matches when applying rules. Optional, defaults to true if a value is not provided. |
-| **SupplementalAttributes** | [List&lt;SupplementalAttribute&gt;](SupplementalAttribute.md) | Optional | Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself. |
+| **SupplementalAttributes** | [List&lt;SupplementalAttribute&gt;](SupplementalAttribute.md) | Optional | Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself. Each attribute&#39;s formulas are compiled and evaluated as a rule&#39;s are, so both must return the same value type. |
 | **WritebackConfigurations** | [List&lt;WritebackConfiguration&gt;](WritebackConfiguration.md) | Optional | The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty. |
 | **PopulateResultProperties** | [List&lt;PopulateResultProperty&gt;](PopulateResultProperty.md) | Optional | The RecResult properties to populate on this ruleset&#39;s results, each from a formula over the result. Optional, and may be empty; at most 20. |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |
@@ -33,7 +33,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new MatchingRuleset(
     id: new ResourceId(...),  // required
     displayName: "...",  // required — The name of the matching ruleset.
-    recType: "...",  // required — The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
+    recType: "...",  // required — The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
     externalRecType: new ExternalRecType(...),  // optional
     datasetSchemas: new RecDatasetSchemas(...),  // required
     filters: new GroupReconciliationFilters(...),  // optional
@@ -42,7 +42,7 @@ var instance = new MatchingRuleset(
     coreTolerances: new List<ToleranceBase>(),  // optional — Tolerance configurations applied to core rule matching, in the specified order.
     aggregateTolerances: new List<ToleranceBase>(),  // optional — Tolerance configurations applied to aggregate rule matching.
     allowPartialMatching: true,  // optional — Whether to permit partial matches when applying rules. Optional, defaults to true if a value is not provided.
-    supplementalAttributes: new List<SupplementalAttribute>(),  // optional — Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself.
+    supplementalAttributes: new List<SupplementalAttribute>(),  // optional — Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself. Each attribute&#39;s formulas are compiled and evaluated as a rule&#39;s are, so both must return the same value type.
     writebackConfigurations: new List<WritebackConfiguration>(),  // optional — The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty.
     populateResultProperties: new List<PopulateResultProperty>(),  // optional — The RecResult properties to populate on this ruleset&#39;s results, each from a formula over the result. Optional, and may be empty; at most 20.
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.

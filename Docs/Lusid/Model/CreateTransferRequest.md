@@ -11,7 +11,7 @@ A request to create a transfer: the paired transaction legs that move a position
 | **InstrumentIdentifierOut** | **string** | Required | The LUSID instrument id of the instrument moving out. A position in this instrument must exist in the outgoing portfolio on the outgoing trade date. |
 | **InstrumentIdentifierIn** | **string** | Required | The LUSID instrument id of the instrument moving in. Equal to InstrumentIdentifierOut for a transfer between portfolios. |
 | **PricingMethod** | **string** | Required | How the legs are priced. &#39;AtCost&#39; uses the cost per unit of the outgoing holding; &#39;AtPrice&#39; uses the supplied TransactionPriceOut, which is then required. Available values: AtCost, AtPrice. |
-| **TaxLotStructure** | **string** | Optional | What happens to the tax lots of the outgoing position. Only &#39;Consolidate&#39; is currently supported; &#39;Preserve&#39; is rejected. Defaults to &#39;Consolidate&#39;. Available values: Consolidate, Preserve. |
+| **TaxLotStructure** | **string** | Optional | What happens to the tax lots of the outgoing position. Defaults to &#39;Consolidate&#39;. &#39;Preserve&#39; carries each outgoing lot onto the incoming position; it is not supported when the incoming portfolio uses the AverageCost or Default accounting method, or across share classes in different currencies. Available values: Consolidate, Preserve. |
 | **UnitsOut** | **decimal** | Required | The number of units to move out. Must be greater than zero. |
 | **UnitsIn** | **decimal** | Required | The number of units to move in. Must be greater than zero. |
 | **AmountOut** | **decimal?** | Optional | The total consideration of the outgoing leg. Recorded, not applied. |
@@ -23,18 +23,21 @@ A request to create a transfer: the paired transaction legs that move a position
 | **ExchangeRateOut** | **decimal?** | Optional | The FX rate to apply to the outgoing leg. |
 | **ExchangeRateIn** | **decimal?** | Optional | The FX rate to apply to the incoming leg. |
 | **TransactionPriceOut** | **decimal?** | Optional | The unit price of the outgoing leg. Required when PricingMethod is &#39;AtPrice&#39;, and ignored when it is &#39;AtCost&#39;. |
-| **TransactionPriceIn** | **decimal?** | Optional | The unit price of the incoming leg. Ignored for a transfer, which carries the outgoing price across; defaults to the outgoing price for a switch. |
+| **TransactionPriceIn** | **decimal?** | Optional | The unit price of the incoming leg. Not accepted for a transfer of one instrument between portfolios, which carries the outgoing price across. For a switch, required when PricingMethod is &#39;AtPrice&#39; and defaults to the outgoing price otherwise. |
 | **CounterpartyIdOut** | **string** | Optional | The counterparty identifier of the outgoing leg. |
 | **CounterpartyIdIn** | **string** | Optional | The counterparty identifier of the incoming leg. Defaults to CounterpartyIdOut. |
 | **CustodianAccountIdOut** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **CustodianAccountIdIn** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
-| **Source** | **string** | Required | The transaction source the generated legs are booked against. |
+| **SourceOut** | **string** | Optional | The transaction source the outgoing leg is booked against, and the incoming leg too when SourceIn is not supplied. Defaults to &#39;default&#39;. |
 | **AccountingMethod** | **string** | Optional | An accounting method to record against the transfer. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. |
 | **PropertiesOut** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Transaction Properties to set on the outgoing transaction leg, and on the incoming transaction leg when PropertiesIn is absent. Supplying an empty collection for PropertiesIn leaves the incoming leg with no properties. |
 | **PropertiesIn** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Transaction Properties to set on the incoming transaction leg, replacing rather than adding to PropertiesOut. |
 | **Properties** | [Dictionary&lt;string, PerpetualProperty&gt;](PerpetualProperty.md) | Optional | Properties to set on the transfer itself, in the Transfer domain. These are separate from PropertiesOut and PropertiesIn, which are Transaction domain and land on the legs. |
 | **TransactionToPortfolioRateOut** | **decimal?** | Optional | The rate from the outgoing leg&#39;s trade currency to the outgoing portfolio&#39;s base currency, applied whenever supplied. |
 | **TransactionToPortfolioRateIn** | **decimal?** | Optional | The rate from the incoming leg&#39;s trade currency to the incoming portfolio&#39;s base currency. Required when the two portfolios have different base currencies, and applied whenever supplied. |
+| **SourceIn** | **string** | Optional | The transaction source the incoming leg is booked against. Defaults to SourceOut. |
+| **TransactionTypeOut** | **string** | Optional | The transaction type to book the outgoing leg as. Supply it together with TransactionTypeIn, or supply neither. If not supplied, it will be derived from the transfer type. It must be a different type from TransactionTypeIn, must be configured under SourceOut in the transaction type scope of PortfolioIdOut, and must reduce a position. |
+| **TransactionTypeIn** | **string** | Optional | The transaction type to book the incoming leg as. Supply it together with TransactionTypeOut, or supply neither. If not supplied, it will be derived from the transfer type. It must be configured under SourceIn in the transaction type scope of PortfolioIdIn, and must increase a position. |
 
 
 ## Usage
@@ -51,7 +54,7 @@ var instance = new CreateTransferRequest(
     instrumentIdentifierOut: "...",  // required — The LUSID instrument id of the instrument moving out. A position in this instrument must exist in the outgoing portfolio on the outgoing trade date.
     instrumentIdentifierIn: "...",  // required — The LUSID instrument id of the instrument moving in. Equal to InstrumentIdentifierOut for a transfer between portfolios.
     pricingMethod: "...",  // required — How the legs are priced. &#39;AtCost&#39; uses the cost per unit of the outgoing holding; &#39;AtPrice&#39; uses the supplied TransactionPriceOut, which is then required. Available values: AtCost, AtPrice.
-    taxLotStructure: "...",  // optional — What happens to the tax lots of the outgoing position. Only &#39;Consolidate&#39; is currently supported; &#39;Preserve&#39; is rejected. Defaults to &#39;Consolidate&#39;. Available values: Consolidate, Preserve.
+    taxLotStructure: "...",  // optional — What happens to the tax lots of the outgoing position. Defaults to &#39;Consolidate&#39;. &#39;Preserve&#39; carries each outgoing lot onto the incoming position; it is not supported when the incoming portfolio uses the AverageCost or Default accounting method, or across share classes in different currencies. Available values: Consolidate, Preserve.
     unitsOut: 0.0d,  // required — The number of units to move out. Must be greater than zero.
     unitsIn: 0.0d,  // required — The number of units to move in. Must be greater than zero.
     amountOut: 0.0d,  // optional — The total consideration of the outgoing leg. Recorded, not applied.
@@ -63,18 +66,21 @@ var instance = new CreateTransferRequest(
     exchangeRateOut: 0.0d,  // optional — The FX rate to apply to the outgoing leg.
     exchangeRateIn: 0.0d,  // optional — The FX rate to apply to the incoming leg.
     transactionPriceOut: 0.0d,  // optional — The unit price of the outgoing leg. Required when PricingMethod is &#39;AtPrice&#39;, and ignored when it is &#39;AtCost&#39;.
-    transactionPriceIn: 0.0d,  // optional — The unit price of the incoming leg. Ignored for a transfer, which carries the outgoing price across; defaults to the outgoing price for a switch.
+    transactionPriceIn: 0.0d,  // optional — The unit price of the incoming leg. Not accepted for a transfer of one instrument between portfolios, which carries the outgoing price across. For a switch, required when PricingMethod is &#39;AtPrice&#39; and defaults to the outgoing price otherwise.
     counterpartyIdOut: "...",  // optional — The counterparty identifier of the outgoing leg.
     counterpartyIdIn: "...",  // optional — The counterparty identifier of the incoming leg. Defaults to CounterpartyIdOut.
     custodianAccountIdOut: new ResourceId(...),  // optional
     custodianAccountIdIn: new ResourceId(...),  // optional
-    source: "...",  // required — The transaction source the generated legs are booked against.
+    sourceOut: "...",  // optional — The transaction source the outgoing leg is booked against, and the incoming leg too when SourceIn is not supplied. Defaults to &#39;default&#39;.
     accountingMethod: "...",  // optional — An accounting method to record against the transfer. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
     propertiesOut: new PerpetualProperty(...),  // optional — Transaction Properties to set on the outgoing transaction leg, and on the incoming transaction leg when PropertiesIn is absent. Supplying an empty collection for PropertiesIn leaves the incoming leg with no properties.
     propertiesIn: new PerpetualProperty(...),  // optional — Transaction Properties to set on the incoming transaction leg, replacing rather than adding to PropertiesOut.
     properties: new PerpetualProperty(...),  // optional — Properties to set on the transfer itself, in the Transfer domain. These are separate from PropertiesOut and PropertiesIn, which are Transaction domain and land on the legs.
     transactionToPortfolioRateOut: 0.0d,  // optional — The rate from the outgoing leg&#39;s trade currency to the outgoing portfolio&#39;s base currency, applied whenever supplied.
-    transactionToPortfolioRateIn: 0.0d  // optional — The rate from the incoming leg&#39;s trade currency to the incoming portfolio&#39;s base currency. Required when the two portfolios have different base currencies, and applied whenever supplied.
+    transactionToPortfolioRateIn: 0.0d,  // optional — The rate from the incoming leg&#39;s trade currency to the incoming portfolio&#39;s base currency. Required when the two portfolios have different base currencies, and applied whenever supplied.
+    sourceIn: "...",  // optional — The transaction source the incoming leg is booked against. Defaults to SourceOut.
+    transactionTypeOut: "...",  // optional — The transaction type to book the outgoing leg as. Supply it together with TransactionTypeIn, or supply neither. If not supplied, it will be derived from the transfer type. It must be a different type from TransactionTypeIn, must be configured under SourceOut in the transaction type scope of PortfolioIdOut, and must reduce a position.
+    transactionTypeIn: "..."  // optional — The transaction type to book the incoming leg as. Supply it together with TransactionTypeOut, or supply neither. If not supplied, it will be derived from the transfer type. It must be configured under SourceIn in the transaction type scope of PortfolioIdIn, and must increase a position.
 );
 ```
 ### Serializing to JSON

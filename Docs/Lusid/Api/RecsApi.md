@@ -15,7 +15,7 @@ All URIs are relative to *http://localhost*
 | [**GetMatchingRuleset**](#getmatchingruleset) | **GET** `/api/api/recs/matchingrulesets/{scope}/{code}` | [EXPERIMENTAL] GetMatchingRuleset: GetMatchingRuleset |
 | [**GetRecDefinition**](#getrecdefinition) | **GET** `/api/api/recs/definitions/{scope}/{code}` | [EXPERIMENTAL] GetRecDefinition: GetRecDefinition |
 | [**GetRecInstance**](#getrecinstance) | **GET** `/api/api/recs/instances/{instanceIdType}/{instanceIdValue}` | [EXPERIMENTAL] GetRecInstance: GetRecInstance |
-| [**GetRecResult**](#getrecresult) | **GET** `/api/api/recs/results/{instanceIdType}/{instanceIdValue}/{recType}/{runNumber}/{id}` | [EXPERIMENTAL] GetRecResult: GetRecResult |
+| [**GetRecResult**](#getrecresult) | **GET** `/api/api/recs/results/{instanceIdType}/{instanceIdValue}/{id}` | [EXPERIMENTAL] GetRecResult: GetRecResult |
 | [**GetRecResultSet**](#getrecresultset) | **GET** `/api/api/recs/resultsets/{entityUniqueId}` | [EXPERIMENTAL] GetRecResultSet: GetRecResultSet |
 | [**InstantiateRec**](#instantiaterec) | **POST** `/api/api/recs/instances` | [EXPERIMENTAL] InstantiateRec: InstantiateRec |
 | [**ListMatchingRulesets**](#listmatchingrulesets) | **GET** `/api/api/recs/matchingrulesets` | [EXPERIMENTAL] ListMatchingRulesets: ListMatchingRulesets |
@@ -678,11 +678,11 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="getrecresult"></a>
 ## GetRecResult
 
-> RecResult GetRecResult(string instanceIdType, string instanceIdValue, string recType, int runNumber, string id, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
+> RecResult GetRecResult(string instanceIdType, string instanceIdValue, string id, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
 [EXPERIMENTAL] GetRecResult: GetRecResult
 
-Retrieve a single rec result by its display id, as it stood in the run named.
+Retrieve a single rec result by its id.
 
 ### Example
 
@@ -690,12 +690,10 @@ Retrieve a single rec result by its display id, as it stood in the run named.
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<RecsApi>();
 var instanceIdType = "instanceIdType_example";  // string
 var instanceIdValue = "instanceIdValue_example";  // string
-var recType = "recType_example";  // string
-var runNumber = 56;  // int
 var id = "id_example";  // string
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var propertyKeys = new List<string>?(); // List<string>? (optional)
-RecResult result = apiInstance.GetRecResult(instanceIdType, instanceIdValue, recType, runNumber, id, asAt, propertyKeys);
+RecResult result = apiInstance.GetRecResult(instanceIdType, instanceIdValue, id, asAt, propertyKeys);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -705,9 +703,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **instanceIdType** | **string** | path | **required** | How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual. |
 | **instanceIdValue** | **string** | path | **required** | The unique identifier of the rec instance. |
-| **recType** | **string** | path | **required** | The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. |
-| **runNumber** | **int** | path | **required** | The run of the instance whose view of the result is read. |
-| **id** | **string** | path | **required** | The display id of the rec result, e.g. \&quot;break-3\&quot;. |
+| **id** | **string** | path | **required** | The id of the rec result, e.g. \&quot;Holding-break-3\&quot;. |
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the result. Defaults to latest if not specified. |
 | **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | The property keys to decorate onto the result. The keys its matching ruleset populates always come back, so list only others here. |
 
@@ -734,7 +730,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<RecResult> response = apiInstance.GetRecResultWithHttpInfo(instanceIdType, instanceIdValue, recType, runNumber, id, asAt, propertyKeys);
+ApiResponse<RecResult> response = apiInstance.GetRecResultWithHttpInfo(instanceIdType, instanceIdValue, id, asAt, propertyKeys);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1208,7 +1204,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EXPERIMENTAL] SubmitRecResultSetReview: Submit a rec result set review for approval, or resubmit after addressing requested revisions.
 
-Submit a rec result set review for approval, or resubmit after addressing requested revisions.
+A resubmission is refused while any flagged result awaits revision. If the request flagged no results, the review can be resubmitted at once.
 
 ### Example
 

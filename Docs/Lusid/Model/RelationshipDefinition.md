@@ -6,8 +6,8 @@
 |------|------|----------|-------------|
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **RelationshipDefinitionId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
-| **SourceEntityType** | **string** | Required | The entity type of the source entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction. |
-| **TargetEntityType** | **string** | Required | The entity type of the target entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction. |
+| **SourceEntityType** | **string** | Required | The entity type of the source entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity. |
+| **TargetEntityType** | **string** | Required | The entity type of the target entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity. |
 | **DisplayName** | **string** | Required | The display name of the relationship. |
 | **OutwardDescription** | **string** | Required | The description to relate source entity object and target entity object |
 | **InwardDescription** | **string** | Required | The description to relate target entity object and source entity object |
@@ -26,8 +26,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new RelationshipDefinition(
     varVersion: new ModelVersion(...),  // optional
     relationshipDefinitionId: new ResourceId(...),  // required
-    sourceEntityType: "...",  // required — The entity type of the source entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction.
-    targetEntityType: "...",  // required — The entity type of the target entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction.
+    sourceEntityType: "...",  // required — The entity type of the source entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity.
+    targetEntityType: "...",  // required — The entity type of the target entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity.
     displayName: "...",  // required — The display name of the relationship.
     outwardDescription: "...",  // required — The description to relate source entity object and target entity object
     inwardDescription: "...",  // required — The description to relate target entity object and source entity object

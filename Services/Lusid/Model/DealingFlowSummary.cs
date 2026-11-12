@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// The transfer agency estimates a swing decision was made on: how many orders were dealt at the valuation point and what they summed.
+    /// The transfer agency estimates a swing decision was made on: the orders dealt at the valuation point, what they summed, and how many pending orders were left out and what those were worth.
     /// </summary>
     [DataContract(Name = "DealingFlowSummary")]
     public partial class DealingFlowSummary : IEquatable<DealingFlowSummary>, IValidatableObject
@@ -38,11 +38,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="count">How many orders were summed. (required).</param>
         /// <param name="grossInflow">The sum of the inflows, in the fund currency. Zero or more. (required).</param>
         /// <param name="grossOutflow">The sum of the outflows, in the fund currency, as a magnitude. Zero or more. (required).</param>
-        public DealingFlowSummary(int count = default(int), decimal grossInflow = default(decimal), decimal grossOutflow = default(decimal))
+        /// <param name="pendingNotCounted">How many pending orders at the valuation point were left out of the sums because the fund&#39;s dealing estimates do not count pending orders. Zero when the fund counts them. (required).</param>
+        /// <param name="pendingGrossInflow">The sum of the inflows among the pending orders left out, in the fund currency, with units at the estimate price. Zero or more; zero when the fund counts pending orders. (required).</param>
+        /// <param name="pendingGrossOutflow">The sum of the outflows among the pending orders left out, in the fund currency, as a magnitude, with units at the estimate price. Zero or more; zero when the fund counts pending orders. (required).</param>
+        /// <param name="pendingUnvaluedCount">How many of the pending orders left out could not be valued, such as a unit order with no price yet. They are in pendingNotCounted but absent from pendingGrossInflow and pendingGrossOutflow. (required).</param>
+        public DealingFlowSummary(int count = default(int), decimal grossInflow = default(decimal), decimal grossOutflow = default(decimal), int pendingNotCounted = default(int), decimal pendingGrossInflow = default(decimal), decimal pendingGrossOutflow = default(decimal), int pendingUnvaluedCount = default(int))
         {
             this.Count = count;
             this.GrossInflow = grossInflow;
             this.GrossOutflow = grossOutflow;
+            this.PendingNotCounted = pendingNotCounted;
+            this.PendingGrossInflow = pendingGrossInflow;
+            this.PendingGrossOutflow = pendingGrossOutflow;
+            this.PendingUnvaluedCount = pendingUnvaluedCount;
         }
 
         /// <summary>
@@ -67,6 +75,34 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal GrossOutflow { get; set; }
 
         /// <summary>
+        /// How many pending orders at the valuation point were left out of the sums because the fund&#39;s dealing estimates do not count pending orders. Zero when the fund counts them.
+        /// </summary>
+        /// <value>How many pending orders at the valuation point were left out of the sums because the fund&#39;s dealing estimates do not count pending orders. Zero when the fund counts them.</value>
+        [DataMember(Name = "pendingNotCounted", IsRequired = true, EmitDefaultValue = true)]
+        public int PendingNotCounted { get; set; }
+
+        /// <summary>
+        /// The sum of the inflows among the pending orders left out, in the fund currency, with units at the estimate price. Zero or more; zero when the fund counts pending orders.
+        /// </summary>
+        /// <value>The sum of the inflows among the pending orders left out, in the fund currency, with units at the estimate price. Zero or more; zero when the fund counts pending orders.</value>
+        [DataMember(Name = "pendingGrossInflow", IsRequired = true, EmitDefaultValue = true)]
+        public decimal PendingGrossInflow { get; set; }
+
+        /// <summary>
+        /// The sum of the outflows among the pending orders left out, in the fund currency, as a magnitude, with units at the estimate price. Zero or more; zero when the fund counts pending orders.
+        /// </summary>
+        /// <value>The sum of the outflows among the pending orders left out, in the fund currency, as a magnitude, with units at the estimate price. Zero or more; zero when the fund counts pending orders.</value>
+        [DataMember(Name = "pendingGrossOutflow", IsRequired = true, EmitDefaultValue = true)]
+        public decimal PendingGrossOutflow { get; set; }
+
+        /// <summary>
+        /// How many of the pending orders left out could not be valued, such as a unit order with no price yet. They are in pendingNotCounted but absent from pendingGrossInflow and pendingGrossOutflow.
+        /// </summary>
+        /// <value>How many of the pending orders left out could not be valued, such as a unit order with no price yet. They are in pendingNotCounted but absent from pendingGrossInflow and pendingGrossOutflow.</value>
+        [DataMember(Name = "pendingUnvaluedCount", IsRequired = true, EmitDefaultValue = true)]
+        public int PendingUnvaluedCount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -77,6 +113,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Count: ").Append(Count).Append("\n");
             sb.Append("  GrossInflow: ").Append(GrossInflow).Append("\n");
             sb.Append("  GrossOutflow: ").Append(GrossOutflow).Append("\n");
+            sb.Append("  PendingNotCounted: ").Append(PendingNotCounted).Append("\n");
+            sb.Append("  PendingGrossInflow: ").Append(PendingGrossInflow).Append("\n");
+            sb.Append("  PendingGrossOutflow: ").Append(PendingGrossOutflow).Append("\n");
+            sb.Append("  PendingUnvaluedCount: ").Append(PendingUnvaluedCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,6 +163,22 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.GrossOutflow == input.GrossOutflow ||
                     this.GrossOutflow.Equals(input.GrossOutflow)
+                ) && 
+                (
+                    this.PendingNotCounted == input.PendingNotCounted ||
+                    this.PendingNotCounted.Equals(input.PendingNotCounted)
+                ) && 
+                (
+                    this.PendingGrossInflow == input.PendingGrossInflow ||
+                    this.PendingGrossInflow.Equals(input.PendingGrossInflow)
+                ) && 
+                (
+                    this.PendingGrossOutflow == input.PendingGrossOutflow ||
+                    this.PendingGrossOutflow.Equals(input.PendingGrossOutflow)
+                ) && 
+                (
+                    this.PendingUnvaluedCount == input.PendingUnvaluedCount ||
+                    this.PendingUnvaluedCount.Equals(input.PendingUnvaluedCount)
                 );
         }
 
@@ -138,6 +194,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 hashCode = (hashCode * 59) + this.Count.GetHashCode();
                 hashCode = (hashCode * 59) + this.GrossInflow.GetHashCode();
                 hashCode = (hashCode * 59) + this.GrossOutflow.GetHashCode();
+                hashCode = (hashCode * 59) + this.PendingNotCounted.GetHashCode();
+                hashCode = (hashCode * 59) + this.PendingGrossInflow.GetHashCode();
+                hashCode = (hashCode * 59) + this.PendingGrossOutflow.GetHashCode();
+                hashCode = (hashCode * 59) + this.PendingUnvaluedCount.GetHashCode();
                 return hashCode;
             }
         }

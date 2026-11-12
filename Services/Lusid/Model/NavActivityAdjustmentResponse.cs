@@ -29,15 +29,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     [JsonConverter(typeof(JsonSubtypes), "NavActivityAdjustmentType")]
     [JsonSubtypes.KnownSubType(typeof(ComplexMarketDataActivityAdjustment), "ComplexMarketDataActivityAdjustment")]
     [JsonSubtypes.KnownSubType(typeof(InstrumentActivityAdjustment), "InstrumentActivityAdjustment")]
+    [JsonSubtypes.KnownSubType(typeof(InstrumentEventActivityAdjustment), "InstrumentEventActivityAdjustment")]
     [JsonSubtypes.KnownSubType(typeof(PortfolioSettlementInstructionAdjustment), "PortfolioSettlementInstructionAdjustment")]
     [JsonSubtypes.KnownSubType(typeof(PortfolioTransactionAdjustment), "PortfolioTransactionAdjustment")]
     [JsonSubtypes.KnownSubType(typeof(QuoteActivityAdjustment), "QuoteActivityAdjustment")]
     public partial class NavActivityAdjustmentResponse : IEquatable<NavActivityAdjustmentResponse>, IValidatableObject
     {
         /// <summary>
-        /// The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
+        /// The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment, InstrumentEventActivityAdjustment.
         /// </summary>
-        /// <value>The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.</value>
+        /// <value>The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment, InstrumentEventActivityAdjustment.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum NavActivityAdjustmentTypeEnum
         {
@@ -69,13 +70,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             /// Enum ComplexMarketDataActivityAdjustment for value: ComplexMarketDataActivityAdjustment
             /// </summary>
             [EnumMember(Value = "ComplexMarketDataActivityAdjustment")]
-            ComplexMarketDataActivityAdjustment = 5
+            ComplexMarketDataActivityAdjustment = 5,
+
+            /// <summary>
+            /// Enum InstrumentEventActivityAdjustment for value: InstrumentEventActivityAdjustment
+            /// </summary>
+            [EnumMember(Value = "InstrumentEventActivityAdjustment")]
+            InstrumentEventActivityAdjustment = 6
         }
 
         /// <summary>
-        /// The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
+        /// The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment, InstrumentEventActivityAdjustment.
         /// </summary>
-        /// <value>The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.</value>
+        /// <value>The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment, InstrumentEventActivityAdjustment.</value>
         [DataMember(Name = "navActivityAdjustmentType", IsRequired = true, EmitDefaultValue = true)]
         public NavActivityAdjustmentTypeEnum NavActivityAdjustmentType { get; set; }
         /// <summary>
@@ -86,7 +93,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NavActivityAdjustmentResponse" /> class.
         /// </summary>
-        /// <param name="navActivityAdjustmentType">The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment. (required).</param>
+        /// <param name="navActivityAdjustmentType">The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment, InstrumentEventActivityAdjustment. (required).</param>
         public NavActivityAdjustmentResponse(NavActivityAdjustmentTypeEnum navActivityAdjustmentType = default(NavActivityAdjustmentTypeEnum))
         {
             this.NavActivityAdjustmentType = navActivityAdjustmentType;

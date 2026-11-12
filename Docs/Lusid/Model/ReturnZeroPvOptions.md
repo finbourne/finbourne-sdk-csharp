@@ -5,7 +5,7 @@ Options to indicate which errors to ignore when performing valuation.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **InstrumentMatured** | **bool** | Optional | Indicates whether attempting to value an instrument after its maturity date should produce a failure (false)  or a zero PV (true). |
+| **InstrumentMatured** | **bool** | Optional | Deprecated: use pricing.options.maturedInstrumentValuation, where true corresponds to  \&quot;ZeroPv\&quot; and false to \&quot;Fail\&quot;. Indicates whether attempting to value an instrument after  its maturity date should produce a failure (false) or a zero PV (true).  Ignored when maturedInstrumentValuation is set. |
 
 
 ## Usage
@@ -16,7 +16,7 @@ Options to indicate which errors to ignore when performing valuation.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ReturnZeroPvOptions(
-    instrumentMatured: true  // optional — Indicates whether attempting to value an instrument after its maturity date should produce a failure (false)  or a zero PV (true).
+    instrumentMatured: true  // optional — Deprecated: use pricing.options.maturedInstrumentValuation, where true corresponds to  \&quot;ZeroPv\&quot; and false to \&quot;Fail\&quot;. Indicates whether attempting to value an instrument after  its maturity date should produce a failure (false) or a zero PV (true).  Ignored when maturedInstrumentValuation is set.
 );
 ```
 ### Serializing to JSON

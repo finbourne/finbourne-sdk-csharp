@@ -39,10 +39,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="description">A description of the row. Optional..</param>
         /// <param name="selector">selector (required).</param>
         /// <param name="valuationPercentage">The fraction of an asset&#39;s value that is accepted as collateral, for example 0.95 for 95%. Greater than 0 and at most 1. (required).</param>
-        /// <param name="fxHaircut">The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage * (1 - FxHaircut). At least 0 and less than 1. Not allowed for a BaseCurrencyCash selector. Optional..</param>
+        /// <param name="fxHaircut">The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage - FxHaircut. At least 0 and less than the valuationPercentage. Not allowed for a BaseCurrencyCash selector. Optional..</param>
         /// <param name="minResidualMaturityYears">The inclusive lower bound of the residual maturity in years that the row applies to. Only allowed for an Instrument selector. Optional..</param>
         /// <param name="maxResidualMaturityYears">The exclusive upper bound of the residual maturity in years that the row applies to. Only allowed for an Instrument selector. Optional..</param>
-        public EligibleCollateralRow(string code = default(string), string description = default(string), EligibleCollateralAssetSelector selector = default(EligibleCollateralAssetSelector), decimal valuationPercentage = default(decimal), decimal? fxHaircut = default(decimal?), decimal? minResidualMaturityYears = default(decimal?), decimal? maxResidualMaturityYears = default(decimal?))
+        /// <param name="concentrationGroup">The group the row&#39;s assets count towards for a concentration limit, for example &#39;sovereign&#39; or &#39;issuer&#39;. Rows naming the same group share one limit. Required when a concentrationLimit is set. Optional..</param>
+        /// <param name="concentrationLimit">The largest fraction of the collateral held plus the call that assets of the row&#39;s concentration group may make up, for example 0.3 for 30%. Greater than 0 and at most 1. Required when a concentrationGroup is set. Optional..</param>
+        public EligibleCollateralRow(string code = default(string), string description = default(string), EligibleCollateralAssetSelector selector = default(EligibleCollateralAssetSelector), decimal valuationPercentage = default(decimal), decimal? fxHaircut = default(decimal?), decimal? minResidualMaturityYears = default(decimal?), decimal? maxResidualMaturityYears = default(decimal?), string concentrationGroup = default(string), decimal? concentrationLimit = default(decimal?))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -61,6 +63,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.FxHaircut = fxHaircut;
             this.MinResidualMaturityYears = minResidualMaturityYears;
             this.MaxResidualMaturityYears = maxResidualMaturityYears;
+            this.ConcentrationGroup = concentrationGroup;
+            this.ConcentrationLimit = concentrationLimit;
         }
 
         /// <summary>
@@ -91,9 +95,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal ValuationPercentage { get; set; }
 
         /// <summary>
-        /// The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage * (1 - FxHaircut). At least 0 and less than 1. Not allowed for a BaseCurrencyCash selector. Optional.
+        /// The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage - FxHaircut. At least 0 and less than the valuationPercentage. Not allowed for a BaseCurrencyCash selector. Optional.
         /// </summary>
-        /// <value>The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage * (1 - FxHaircut). At least 0 and less than 1. Not allowed for a BaseCurrencyCash selector. Optional.</value>
+        /// <value>The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage - FxHaircut. At least 0 and less than the valuationPercentage. Not allowed for a BaseCurrencyCash selector. Optional.</value>
         [DataMember(Name = "fxHaircut", EmitDefaultValue = true)]
         public decimal? FxHaircut { get; set; }
 
@@ -112,6 +116,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal? MaxResidualMaturityYears { get; set; }
 
         /// <summary>
+        /// The group the row&#39;s assets count towards for a concentration limit, for example &#39;sovereign&#39; or &#39;issuer&#39;. Rows naming the same group share one limit. Required when a concentrationLimit is set. Optional.
+        /// </summary>
+        /// <value>The group the row&#39;s assets count towards for a concentration limit, for example &#39;sovereign&#39; or &#39;issuer&#39;. Rows naming the same group share one limit. Required when a concentrationLimit is set. Optional.</value>
+        [DataMember(Name = "concentrationGroup", EmitDefaultValue = true)]
+        public string ConcentrationGroup { get; set; }
+
+        /// <summary>
+        /// The largest fraction of the collateral held plus the call that assets of the row&#39;s concentration group may make up, for example 0.3 for 30%. Greater than 0 and at most 1. Required when a concentrationGroup is set. Optional.
+        /// </summary>
+        /// <value>The largest fraction of the collateral held plus the call that assets of the row&#39;s concentration group may make up, for example 0.3 for 30%. Greater than 0 and at most 1. Required when a concentrationGroup is set. Optional.</value>
+        [DataMember(Name = "concentrationLimit", EmitDefaultValue = true)]
+        public decimal? ConcentrationLimit { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -126,6 +144,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  FxHaircut: ").Append(FxHaircut).Append("\n");
             sb.Append("  MinResidualMaturityYears: ").Append(MinResidualMaturityYears).Append("\n");
             sb.Append("  MaxResidualMaturityYears: ").Append(MaxResidualMaturityYears).Append("\n");
+            sb.Append("  ConcentrationGroup: ").Append(ConcentrationGroup).Append("\n");
+            sb.Append("  ConcentrationLimit: ").Append(ConcentrationLimit).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -194,6 +214,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.MaxResidualMaturityYears == input.MaxResidualMaturityYears ||
                     (this.MaxResidualMaturityYears != null &&
                     this.MaxResidualMaturityYears.Equals(input.MaxResidualMaturityYears))
+                ) && 
+                (
+                    this.ConcentrationGroup == input.ConcentrationGroup ||
+                    (this.ConcentrationGroup != null &&
+                    this.ConcentrationGroup.Equals(input.ConcentrationGroup))
+                ) && 
+                (
+                    this.ConcentrationLimit == input.ConcentrationLimit ||
+                    (this.ConcentrationLimit != null &&
+                    this.ConcentrationLimit.Equals(input.ConcentrationLimit))
                 );
         }
 
@@ -231,6 +261,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.MaxResidualMaturityYears.GetHashCode();
                 }
+                if (this.ConcentrationGroup != null)
+                {
+                    hashCode = (hashCode * 59) + this.ConcentrationGroup.GetHashCode();
+                }
+                if (this.ConcentrationLimit != null)
+                {
+                    hashCode = (hashCode * 59) + this.ConcentrationLimit.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -254,6 +292,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             if (this.Description != null && false == regexDescription.Match(this.Description).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Description, must match a pattern of " + regexDescription, new [] { "Description" });
+            }
+
+            // ConcentrationGroup (string) pattern
+            Regex regexConcentrationGroup = new Regex(@"^[a-zA-Z0-9\-_]+$", RegexOptions.CultureInvariant);
+            if (this.ConcentrationGroup != null && false == regexConcentrationGroup.Match(this.ConcentrationGroup).Success)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ConcentrationGroup, must match a pattern of " + regexConcentrationGroup, new [] { "ConcentrationGroup" });
             }
 
             yield break;

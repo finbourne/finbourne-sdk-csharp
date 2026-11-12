@@ -28,12 +28,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     [DataContract(Name = "MarketDataOptions")]
     [JsonConverter(typeof(JsonSubtypes), "MarketDataOptionsType")]
     [JsonSubtypes.KnownSubType(typeof(CurveOptions), "CurveOptions")]
+    [JsonSubtypes.KnownSubType(typeof(VolCubeOptions), "VolCubeOptions")]
     public partial class MarketDataOptions : IEquatable<MarketDataOptions>, IValidatableObject
     {
         /// <summary>
-        /// Available values: CurveOptions. Available values: CurveOptions.
+        /// Available values: CurveOptions, VolCubeOptions. Available values: CurveOptions, VolCubeOptions.
         /// </summary>
-        /// <value>Available values: CurveOptions. Available values: CurveOptions.</value>
+        /// <value>Available values: CurveOptions, VolCubeOptions. Available values: CurveOptions, VolCubeOptions.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum MarketDataOptionsTypeEnum
         {
@@ -41,13 +42,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             /// Enum CurveOptions for value: CurveOptions
             /// </summary>
             [EnumMember(Value = "CurveOptions")]
-            CurveOptions = 1
+            CurveOptions = 1,
+
+            /// <summary>
+            /// Enum VolCubeOptions for value: VolCubeOptions
+            /// </summary>
+            [EnumMember(Value = "VolCubeOptions")]
+            VolCubeOptions = 2
         }
 
         /// <summary>
-        /// Available values: CurveOptions. Available values: CurveOptions.
+        /// Available values: CurveOptions, VolCubeOptions. Available values: CurveOptions, VolCubeOptions.
         /// </summary>
-        /// <value>Available values: CurveOptions. Available values: CurveOptions.</value>
+        /// <value>Available values: CurveOptions, VolCubeOptions. Available values: CurveOptions, VolCubeOptions.</value>
         [DataMember(Name = "marketDataOptionsType", IsRequired = true, EmitDefaultValue = true)]
         public MarketDataOptionsTypeEnum MarketDataOptionsType { get; set; }
         /// <summary>
@@ -58,7 +65,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MarketDataOptions" /> class.
         /// </summary>
-        /// <param name="marketDataOptionsType">Available values: CurveOptions. Available values: CurveOptions. (required).</param>
+        /// <param name="marketDataOptionsType">Available values: CurveOptions, VolCubeOptions. Available values: CurveOptions, VolCubeOptions. (required).</param>
         public MarketDataOptions(MarketDataOptionsTypeEnum marketDataOptionsType = default(MarketDataOptionsTypeEnum))
         {
             this.MarketDataOptionsType = marketDataOptionsType;

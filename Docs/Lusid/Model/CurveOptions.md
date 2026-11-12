@@ -12,7 +12,7 @@ Options for configuring how ComplexMarketData representing a 'curve' is interpre
 | **BackExtrapolationType** | **string** | Optional | What type of extrapolation is used to build the curve.    Imagine that the curve is facing the observer(you), then the \&quot;back\&quot; direction is the furthest point on the curve onward.  example: 30Y tenor to infinity    Default value: Flat. Available values: None, Flat, Linear. |
 | **InterpolationType** | **string** | Optional | What type of interpolation is used to build the curve. Default value: LinearOnRates. Available values: LinearOnRates, LinearOnLogOfRates, LinearOnDiscountFactors, LinearOnLogDiscountFactors, PiecewiseLinearForward, MonotoneConvex, LinearOnLogProbability. |
 | **OriginAnchor** | **string** | Optional | How the curve builder anchors the origin of a bootstrapped curve, i.e. the value the curve  carries in front of its shortest calibration instrument. Default value: ZeroRate, the  historical anchor, under which existing curves are unchanged. Available values: ZeroRate, FirstInstrumentRate. |
-| **MarketDataOptionsType** | **string** | Required | Available values: CurveOptions. Available values: CurveOptions. Default: `MarketDataOptionsTypeEnum.CurveOptions` |
+| **MarketDataOptionsType** | **string** | Required | Available values: CurveOptions, VolCubeOptions. Available values: CurveOptions, VolCubeOptions. Default: `MarketDataOptionsTypeEnum.CurveOptions` |
 
 
 ## Usage
@@ -28,7 +28,7 @@ var instance = new CurveOptions(
     backExtrapolationType: "...",  // optional — What type of extrapolation is used to build the curve.    Imagine that the curve is facing the observer(you), then the \&quot;back\&quot; direction is the furthest point on the curve onward.  example: 30Y tenor to infinity    Default value: Flat. Available values: None, Flat, Linear.
     interpolationType: "...",  // optional — What type of interpolation is used to build the curve. Default value: LinearOnRates. Available values: LinearOnRates, LinearOnLogOfRates, LinearOnDiscountFactors, LinearOnLogDiscountFactors, PiecewiseLinearForward, MonotoneConvex, LinearOnLogProbability.
     originAnchor: "...",  // optional — How the curve builder anchors the origin of a bootstrapped curve, i.e. the value the curve  carries in front of its shortest calibration instrument. Default value: ZeroRate, the  historical anchor, under which existing curves are unchanged. Available values: ZeroRate, FirstInstrumentRate.
-    marketDataOptionsType: "..."  // required — Available values: CurveOptions. Available values: CurveOptions.
+    marketDataOptionsType: "..."  // required — Available values: CurveOptions, VolCubeOptions. Available values: CurveOptions, VolCubeOptions.
 );
 ```
 ### Serializing to JSON

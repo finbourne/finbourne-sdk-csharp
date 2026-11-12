@@ -5,7 +5,7 @@ Contains required info to delete Tasks
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **TaskIds** | **List&lt;string&gt;** | Optional | The Ids of the Tasks to delete |
+| **TaskIds** | **List&lt;string&gt;** | Required | The Ids of the Tasks to delete |
 
 
 ## Usage
@@ -16,7 +16,7 @@ Contains required info to delete Tasks
 using Finbourne.Sdk.Services.Workflow.Model;
 
 var instance = new DeleteTasksRequest(
-    taskIds:   // optional — The Ids of the Tasks to delete
+    taskIds:   // required — The Ids of the Tasks to delete
 );
 ```
 ### Serializing to JSON

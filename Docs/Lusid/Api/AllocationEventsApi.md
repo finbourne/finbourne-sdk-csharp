@@ -5,21 +5,21 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**BookAllocationEvent**](#bookallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/book` | [EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event. |
-| [**CreateAllocationEvent**](#createallocationevent) | **POST** `/api/api/allocationevents/{scope}` | [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event. |
-| [**DeleteAllocationEvent**](#deleteallocationevent) | **DELETE** `/api/api/allocationevents/{scope}/{code}` | [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. |
-| [**GetAllocationEvent**](#getallocationevent) | **GET** `/api/api/allocationevents/{scope}/{code}` | [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event. |
+| [**BookAllocationEvent**](#bookallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/book` | [EARLY ACCESS] BookAllocationEvent: Book an Allocation Event. |
+| [**CreateAllocationEvent**](#createallocationevent) | **POST** `/api/api/allocationevents/{scope}` | [EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event. |
+| [**DeleteAllocationEvent**](#deleteallocationevent) | **DELETE** `/api/api/allocationevents/{scope}/{code}` | [EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event. |
+| [**GetAllocationEvent**](#getallocationevent) | **GET** `/api/api/allocationevents/{scope}/{code}` | [EARLY ACCESS] GetAllocationEvent: Get an Allocation Event. |
 | [**GetAllocationEventNotices**](#getallocationeventnotices) | **GET** `/api/api/allocationevents/{scope}/{code}/notices` | [EARLY ACCESS] GetAllocationEventNotices: [EARLY ACCESS] GetAllocationEventNotices: Get the notices an allocation event issues to its partners. |
-| [**GetAllocationEventReceivables**](#getallocationeventreceivables) | **GET** `/api/api/allocationevents/{scope}/{code}/receivables` | [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event. |
-| [**ListAllocationEvents**](#listallocationevents) | **GET** `/api/api/allocationevents` | [EXPERIMENTAL] ListAllocationEvents: List Allocation Events. |
+| [**GetAllocationEventReceivables**](#getallocationeventreceivables) | **GET** `/api/api/allocationevents/{scope}/{code}/receivables` | [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event. |
+| [**ListAllocationEvents**](#listallocationevents) | **GET** `/api/api/allocationevents` | [EARLY ACCESS] ListAllocationEvents: List Allocation Events. |
 | [**ListAllocationPaymentHolds**](#listallocationpaymentholds) | **GET** `/api/api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/holds` | [EARLY ACCESS] ListAllocationPaymentHolds: [EARLY ACCESS] ListAllocationPaymentHolds: List the holds placed on a partner&#39;s payment. |
-| [**PlanAllocationEventBooking**](#planallocationeventbooking) | **POST** `/api/api/allocationevents/{scope}/{code}/plan` | [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event. |
+| [**PlanAllocationEventBooking**](#planallocationeventbooking) | **POST** `/api/api/allocationevents/{scope}/{code}/plan` | [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event. |
 | [**PutAllocationPaymentHold**](#putallocationpaymenthold) | **PUT** `/api/api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/hold` | [EARLY ACCESS] PutAllocationPaymentHold: [EARLY ACCESS] PutAllocationPaymentHold: Place, move or release a hold on a partner&#39;s payment. |
-| [**ReallocateAllocationEvent**](#reallocateallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/reallocate` | [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event. |
-| [**ReceiveAllocationEvent**](#receiveallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/receipts` | [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event. |
-| [**ReverseAllocationEvent**](#reverseallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/reverse` | [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event. |
-| [**UnbookAllocationEvent**](#unbookallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/unbook` | [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event. |
-| [**UpsertAllocationEvent**](#upsertallocationevent) | **PUT** `/api/api/allocationevents/{scope}/{code}` | [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event. |
+| [**ReallocateAllocationEvent**](#reallocateallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/reallocate` | [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event. |
+| [**ReceiveAllocationEvent**](#receiveallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/receipts` | [EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event. |
+| [**ReverseAllocationEvent**](#reverseallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/reverse` | [EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event. |
+| [**UnbookAllocationEvent**](#unbookallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/unbook` | [EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event. |
+| [**UpsertAllocationEvent**](#upsertallocationevent) | **PUT** `/api/api/allocationevents/{scope}/{code}` | [EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event. |
 
 ### Example
 
@@ -68,7 +68,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AllocationEventsA
 
 > AllocationEvent BookAllocationEvent(string scope, string code, AllocationEventBookRequest allocationEventBookRequest, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event.
+[EARLY ACCESS] BookAllocationEvent: Book an Allocation Event.
 
 Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
 
@@ -132,7 +132,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationEvent CreateAllocationEvent(string scope, AllocationEventRequest allocationEventRequest)
 
-[EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event.
+[EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event.
 
 Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
 
@@ -192,7 +192,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteAllocationEvent(string scope, string code, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event.
+[EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event.
 
 Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
 
@@ -254,7 +254,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationEvent GetAllocationEvent(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event.
+[EARLY ACCESS] GetAllocationEvent: Get an Allocation Event.
 
 Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
 
@@ -384,7 +384,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationReceivablesAgeing GetAllocationEventReceivables(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
+[EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
 
 What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
 
@@ -448,7 +448,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfAllocationEvent ListAllocationEvents(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null)
 
-[EXPERIMENTAL] ListAllocationEvents: List Allocation Events.
+[EARLY ACCESS] ListAllocationEvents: List Allocation Events.
 
 List all the Allocation Events matching a particular criteria.
 
@@ -578,7 +578,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationPostingPlan PlanAllocationEventBooking(string scope, string code, AllocationEventBookRequest allocationEventBookRequest, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
+[EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
 
 Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors' lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map's policy lets through come back on the plan.
 
@@ -706,7 +706,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationEvent ReallocateAllocationEvent(string scope, string code, AllocationEventReallocateRequest allocationEventReallocateRequest, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event.
+[EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event.
 
 Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
 
@@ -770,7 +770,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationEvent ReceiveAllocationEvent(string scope, string code, AllocationEventReceiptRequest allocationEventReceiptRequest, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
+[EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
 
 Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map's policy says, and a receipt in  another currency is converted at the rate given.
 
@@ -834,7 +834,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationEvent ReverseAllocationEvent(string scope, string code, AllocationEventReverseRequest allocationEventReverseRequest, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event.
+[EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event.
 
 Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
 
@@ -898,7 +898,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationEvent UnbookAllocationEvent(string scope, string code, AllocationEventUnbookRequest allocationEventUnbookRequest, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event.
+[EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event.
 
 Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
 
@@ -962,7 +962,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationEvent UpsertAllocationEvent(string scope, string code, AllocationEventRequest allocationEventRequest)
 
-[EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event.
+[EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event.
 
 Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
 

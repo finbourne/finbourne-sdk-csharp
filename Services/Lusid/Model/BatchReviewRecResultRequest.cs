@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// One item of a batch review request: applies review content to its targeted rec result(s). Exactly  one target, except FixAsGroup/ForceMatch which require two or more. A result id identifies a result only  within one run of one rec type of one instance, so every item names the run its targets belong to — which  also makes the same-result-set rule for group decisions structural.
+    /// One item of a batch review request: applies review content to its targeted rec result(s). Exactly  one target, except FixAsGroup/ForceMatch which require two or more. A result id is unique within one  instance. Every item names the rec type of its targets, so a group decision covers results of one rec type  only.
     /// </summary>
     [DataContract(Name = "BatchReviewRecResultRequest")]
     public partial class BatchReviewRecResultRequest : IEquatable<BatchReviewRecResultRequest>, IValidatableObject
@@ -36,15 +36,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="BatchReviewRecResultRequest" /> class.
         /// </summary>
         /// <param name="instanceId">instanceId (required).</param>
-        /// <param name="recType">The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. (required).</param>
-        /// <param name="runNumber">The run of the instance whose results this item targets. (required).</param>
+        /// <param name="recType">The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. (required).</param>
         /// <param name="recResultIds">The rec results targeted by this batch item. Exactly one, except FixAsGroup/ForceMatch which require two or more. (required).</param>
         /// <param name="decision">decision.</param>
         /// <param name="assignedUser">assignedUser.</param>
         /// <param name="assignedRole">assignedRole.</param>
         /// <param name="addCommentText">Optional comment text to add to each targeted result..</param>
-        /// <param name="properties">Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet..</param>
-        public BatchReviewRecResultRequest(RecInstanceId instanceId = default(RecInstanceId), string recType = default(string), int runNumber = default(int), List<string> recResultIds = default(List<string>), RecResultDecisionUpdate decision = default(RecResultDecisionUpdate), RecResultAssignmentUpdate assignedUser = default(RecResultAssignmentUpdate), RecResultAssignmentUpdate assignedRole = default(RecResultAssignmentUpdate), string addCommentText = default(string), List<PerpetualProperty> properties = default(List<PerpetualProperty>))
+        /// <param name="properties">Properties in the RecResult domain to set on each result. A property with a null value is deleted and omitted properties are left unchanged..</param>
+        public BatchReviewRecResultRequest(RecInstanceId instanceId = default(RecInstanceId), string recType = default(string), List<string> recResultIds = default(List<string>), RecResultDecisionUpdate decision = default(RecResultDecisionUpdate), RecResultAssignmentUpdate assignedUser = default(RecResultAssignmentUpdate), RecResultAssignmentUpdate assignedRole = default(RecResultAssignmentUpdate), string addCommentText = default(string), List<PerpetualProperty> properties = default(List<PerpetualProperty>))
         {
             // to ensure "instanceId" is required (not null)
             if (instanceId == null)
@@ -58,7 +57,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("recType is a required property for BatchReviewRecResultRequest and cannot be null");
             }
             this.RecType = recType;
-            this.RunNumber = runNumber;
             // to ensure "recResultIds" is required (not null)
             if (recResultIds == null)
             {
@@ -79,18 +77,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public RecInstanceId InstanceId { get; set; }
 
         /// <summary>
-        /// The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
+        /// The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
         /// </summary>
-        /// <value>The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.</value>
+        /// <value>The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.</value>
         [DataMember(Name = "recType", IsRequired = true, EmitDefaultValue = true)]
         public string RecType { get; set; }
-
-        /// <summary>
-        /// The run of the instance whose results this item targets.
-        /// </summary>
-        /// <value>The run of the instance whose results this item targets.</value>
-        [DataMember(Name = "runNumber", IsRequired = true, EmitDefaultValue = true)]
-        public int RunNumber { get; set; }
 
         /// <summary>
         /// The rec results targeted by this batch item. Exactly one, except FixAsGroup/ForceMatch which require two or more.
@@ -125,9 +116,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string AddCommentText { get; set; }
 
         /// <summary>
-        /// Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet.
+        /// Properties in the RecResult domain to set on each result. A property with a null value is deleted and omitted properties are left unchanged.
         /// </summary>
-        /// <value>Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet.</value>
+        /// <value>Properties in the RecResult domain to set on each result. A property with a null value is deleted and omitted properties are left unchanged.</value>
         [DataMember(Name = "properties", EmitDefaultValue = true)]
         public List<PerpetualProperty> Properties { get; set; }
 
@@ -141,7 +132,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class BatchReviewRecResultRequest {\n");
             sb.Append("  InstanceId: ").Append(InstanceId).Append("\n");
             sb.Append("  RecType: ").Append(RecType).Append("\n");
-            sb.Append("  RunNumber: ").Append(RunNumber).Append("\n");
             sb.Append("  RecResultIds: ").Append(RecResultIds).Append("\n");
             sb.Append("  Decision: ").Append(Decision).Append("\n");
             sb.Append("  AssignedUser: ").Append(AssignedUser).Append("\n");
@@ -194,10 +184,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.RecType.Equals(input.RecType))
                 ) && 
                 (
-                    this.RunNumber == input.RunNumber ||
-                    this.RunNumber.Equals(input.RunNumber)
-                ) && 
-                (
                     this.RecResultIds == input.RecResultIds ||
                     this.RecResultIds != null &&
                     input.RecResultIds != null &&
@@ -248,7 +234,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.RecType.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.RunNumber.GetHashCode();
                 if (this.RecResultIds != null)
                 {
                     hashCode = (hashCode * 59) + this.RecResultIds.GetHashCode();

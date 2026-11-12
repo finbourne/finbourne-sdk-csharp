@@ -6,7 +6,7 @@ Response containing details of a single transaction for a run. A transaction bui
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **TransactionId** | **string** | Required | *No description available.* |
-| **PublicationStatus** | **string** | Required | The outcome the screens show for this row: Sent, Skipped or Failed. |
+| **PublicationStatus** | **string** | Required | The outcome the screens show for this row: Sent, Skipped or Failed, or the element status for an element not yet built. |
 | **PortfolioScope** | **string** | Optional | *No description available.* |
 | **PortfolioCode** | **string** | Optional | *No description available.* |
 | **InstrumentId** | **string** | Optional | *No description available.* |
@@ -22,6 +22,8 @@ Response containing details of a single transaction for a run. A transaction bui
 | **Destinations** | [List&lt;DestinationResponse&gt;](DestinationResponse.md) | Required | *No description available.* |
 | **FailureStage** | **string** | Optional | *No description available.* |
 | **InstrumentScope** | **string** | Optional | The scope the build resolved the instrument in; null for rows built before it was recorded. |
+| **Outcome** | **string** | Required | The same value as PublicationStatus under the name the screens use; PublicationStatus stays for existing clients. |
+| **EventType** | **string** | Optional | The TPF event type that triggered this publication (New, Amended, Cancelled, ...); Queued for an element not yet built; null otherwise. |
 
 
 ## Usage
@@ -33,7 +35,7 @@ using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new TransactionResponse(
     transactionId: "...",  // required
-    publicationStatus: "...",  // required — The outcome the screens show for this row: Sent, Skipped or Failed.
+    publicationStatus: "...",  // required — The outcome the screens show for this row: Sent, Skipped or Failed, or the element status for an element not yet built.
     portfolioScope: "...",  // optional
     portfolioCode: "...",  // optional
     instrumentId: "...",  // optional
@@ -48,7 +50,9 @@ var instance = new TransactionResponse(
     sentAt: DateTimeOffset.Now,  // optional
     destinations: new List<DestinationResponse>(),  // required
     failureStage: "...",  // optional
-    instrumentScope: "..."  // optional — The scope the build resolved the instrument in; null for rows built before it was recorded.
+    instrumentScope: "...",  // optional — The scope the build resolved the instrument in; null for rows built before it was recorded.
+    outcome: "...",  // required — The same value as PublicationStatus under the name the screens use; PublicationStatus stays for existing clients.
+    eventType: "..."  // optional — The TPF event type that triggered this publication (New, Amended, Cancelled, ...); Queued for an element not yet built; null otherwise.
 );
 ```
 ### Serializing to JSON

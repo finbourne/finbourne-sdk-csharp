@@ -127,23 +127,22 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="gettpffiledeliveries"></a>
 ## GetTpfFileDeliveries
 
-> PagedResourceListOfTpfFileDeliveryResponse GetTpfFileDeliveries(string instanceId, TpfFileDeliveryDisplayStatus? status = null, DateTimeOffset? dateFrom = null, DateTimeOffset? dateTo = null, int? limit = null, string? page = null)
+> PagedResourceListOfTpfFileDeliveryResponse GetTpfFileDeliveries(string instanceId, string? filter = null, List<string>? sortBy = null, int? limit = null, string? page = null)
 
 [EXPERIMENTAL] GetTpfFileDeliveries: Search TPF file deliveries for a specific instance
 
-Retrieve file delivery records for a Trade Publication Framework instance. Returns an aggregated view of file delivery outcomes across all runs. Filterable by delivery status and date range. Supports pagination for large result sets.
+Retrieve file delivery records for a Trade Publication Framework instance. Returns an aggregated view of file delivery outcomes across all runs. Filterable via a Finbourne Filtering DSL expression and sortable. Supports pagination for large result sets.
 
 ### Example
 
 ```csharp
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TradePublicationFrameworkApi>();
 var instanceId = "instanceId_example";  // string
-var status = new TpfFileDeliveryDisplayStatus?(); // TpfFileDeliveryDisplayStatus? (optional)
-var dateFrom = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
-var dateTo = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
 var limit = 50;  // int? (optional)
 var page = "\"\"";  // string? (optional)
-PagedResourceListOfTpfFileDeliveryResponse result = apiInstance.GetTpfFileDeliveries(instanceId, status, dateFrom, dateTo, limit, page);
+PagedResourceListOfTpfFileDeliveryResponse result = apiInstance.GetTpfFileDeliveries(instanceId, filter, sortBy, limit, page);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -152,9 +151,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **instanceId** | **string** | path | **required** | Integration instance ID |
-| **status** | [TpfFileDeliveryDisplayStatus?](../Model/TpfFileDeliveryDisplayStatus?.md) | query | optional | Filter by delivery outcome (Delivered, Failed, Pending) |
-| **dateFrom** | **DateTimeOffset?** | query | optional | Filter deliveries from this time (inclusive) |
-| **dateTo** | **DateTimeOffset?** | query | optional | Filter deliveries to this time (inclusive) |
+| **filter** | **string?** | query | optional | Filter expression (e.g. \&quot;DestinationStatus eq &#39;Delivered&#39;\&quot;). Filterable properties: runId, referenceId, runStartTime, fileName, generatedAt, rowCount, fileHash, destinationType, destinationPath, destinationName, deliveredAt, destinationStatus, destinationError, attempt |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Sort fields (e.g. \&quot;generatedAt DESC\&quot;). Up to 2 fields allowed |
 | **limit** | **int?** | query | optional | Page size for pagination (default 50, max 500) Default: `50` |
 | **page** | **string?** | query | optional | Pagination token from previous response Default: `&quot;&quot;` |
 
@@ -181,7 +179,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> response = apiInstance.GetTpfFileDeliveriesWithHttpInfo(instanceId, status, dateFrom, dateTo, limit, page);
+ApiResponse<PagedResourceListOfTpfFileDeliveryResponse> response = apiInstance.GetTpfFileDeliveriesWithHttpInfo(instanceId, filter, sortBy, limit, page);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -199,7 +197,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EXPERIMENTAL] GetTpfTransactionHistorySearch: Search TPF transactions across instances
 
-Matches on transaction ID and/or instrument identifier, optionally narrowed by instance, trade date range, publication status and a Finbourne Filtering expression. Multiple values within transactionIds or instrumentIdentifiers are OR'd; the two filters are AND'd. Instrument identifiers are matched exactly against the stored instrument id; Isin, Figi, Ticker, Cusip, Sedol or ClientInternal values are also resolved against LUSID instruments in the default scope. Transaction IDs that are empty or have leading or trailing whitespace are rejected (400). Filterable properties (via the filter body field): transactionId, instanceName, runStartTime, instrumentName, instrumentType, instrumentId, tradeDate, settlementDate, publicationStatus, skipReason, failureReason, fileName, portfolioScope, portfolioCode. Sortable by the same properties. RunStartTime DESC is the default tiebreaker. Supports pagination.
+Matches on transaction ID and/or instrument identifier, optionally narrowed by instance, trade date range, publication status and a Finbourne Filtering expression. Multiple values within transactionIds or instrumentIdentifiers are OR'd; the two filters are AND'd. Instrument identifiers are matched exactly against the stored instrument id; Isin, Figi, Ticker, Cusip, Sedol or ClientInternal values are also resolved against LUSID instruments in the default scope. Transaction IDs that are empty or have leading or trailing whitespace are rejected (400). Filterable properties (via the filter body field): transactionId, instanceName, runStartTime, instrumentName, instrumentType, instrumentId, tradeDate, settlementDate, eventType, skipReason, failureReason, failureStage, fileName, sentAt, portfolioScope, portfolioCode, runId. Publication status is filtered by the status body field, not the filter. Sortable by the same properties. RunStartTime DESC is the default tiebreaker. Supports pagination.
 
 ### Example
 
@@ -595,7 +593,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **status** | **string?** | query | optional | Filter by publication status (Sent, Skipped, Failed). This is the publication outcome, not the batched-transaction status. |
 | **page** | **string?** | query | optional | The pagination token from the previous response; &lt;i&gt;filter&lt;/i&gt; and &lt;i&gt;sortBy&lt;/i&gt; must be unchanged. Default: `&quot;&quot;` |
 | **pageSize** | **int?** | query | optional | Number of results per page. Default: `100` |
-| **filter** | **string?** | query | optional | A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. |
+| **filter** | **string?** | query | optional | A Finbourne filter on: transactionId, portfolioScope, portfolioCode, instrumentId, instrumentType, instrumentName, tradeDate, settlementDate, status, skipReason, failureReason, outputFileName, sentAt, eventType. The status field here is the batched-transaction status (Complete, Skipped, Failed), not the publication status — use the ?status&#x3D; query parameter for that. eventType is the TPF event type (New, Amended, Cancelled, ..., or Queued for an element not yet built). Comparing a field with null is rejected. |
 | **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Up to two filterable fields, each suffixed \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to Id ASC. |
 
 ### Return type

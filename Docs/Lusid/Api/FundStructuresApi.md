@@ -5,14 +5,14 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddFundStructureMember**](#addfundstructuremember) | **POST** `/api/api/fundstructures/{scope}/{code}/members` | [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure. |
+| [**AddFundStructureMember**](#addfundstructuremember) | **POST** `/api/api/fundstructures/{scope}/{code}/members` | [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure. |
 | [**CloseFundStructure**](#closefundstructure) | **POST** `/api/api/fundstructures/{scope}/{code}/$close` | [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure. |
-| [**CreateFundStructure**](#createfundstructure) | **POST** `/api/api/fundstructures/{scope}` | [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure. |
-| [**DeleteFundStructure**](#deletefundstructure) | **DELETE** `/api/api/fundstructures/{scope}/{code}` | [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure. |
-| [**GetFundStructure**](#getfundstructure) | **GET** `/api/api/fundstructures/{scope}/{code}` | [EXPERIMENTAL] GetFundStructure: Get a Fund Structure. |
-| [**ListFundStructures**](#listfundstructures) | **GET** `/api/api/fundstructures` | [EXPERIMENTAL] ListFundStructures: List Fund Structures. |
-| [**RemoveFundStructureMember**](#removefundstructuremember) | **DELETE** `/api/api/fundstructures/{scope}/{code}/members/{nodeCode}` | [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure. |
-| [**UpsertFundStructure**](#upsertfundstructure) | **PUT** `/api/api/fundstructures/{scope}/{code}` | [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure. |
+| [**CreateFundStructure**](#createfundstructure) | **POST** `/api/api/fundstructures/{scope}` | [EARLY ACCESS] CreateFundStructure: Create a Fund Structure. |
+| [**DeleteFundStructure**](#deletefundstructure) | **DELETE** `/api/api/fundstructures/{scope}/{code}` | [EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure. |
+| [**GetFundStructure**](#getfundstructure) | **GET** `/api/api/fundstructures/{scope}/{code}` | [EARLY ACCESS] GetFundStructure: Get a Fund Structure. |
+| [**ListFundStructures**](#listfundstructures) | **GET** `/api/api/fundstructures` | [EARLY ACCESS] ListFundStructures: List Fund Structures. |
+| [**RemoveFundStructureMember**](#removefundstructuremember) | **DELETE** `/api/api/fundstructures/{scope}/{code}/members/{nodeCode}` | [EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure. |
+| [**UpsertFundStructure**](#upsertfundstructure) | **PUT** `/api/api/fundstructures/{scope}/{code}` | [EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure. |
 
 ### Example
 
@@ -61,7 +61,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundStructuresApi
 
 > FundStructure AddFundStructureMember(string scope, string code, FundStructureMemberRequest fundStructureMemberRequest, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure.
+[EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure.
 
 Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
 
@@ -189,7 +189,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FundStructure CreateFundStructure(string scope, FundStructureRequest fundStructureRequest)
 
-[EXPERIMENTAL] CreateFundStructure: Create a Fund Structure.
+[EARLY ACCESS] CreateFundStructure: Create a Fund Structure.
 
 Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
 
@@ -249,7 +249,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteFundStructure(string scope, string code, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure.
+[EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure.
 
 Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
 
@@ -311,7 +311,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FundStructure GetFundStructure(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] GetFundStructure: Get a Fund Structure.
+[EARLY ACCESS] GetFundStructure: Get a Fund Structure.
 
 Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
 
@@ -377,7 +377,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfFundStructure ListFundStructures(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null, List<string>? propertyKeys = null)
 
-[EXPERIMENTAL] ListFundStructures: List Fund Structures.
+[EARLY ACCESS] ListFundStructures: List Fund Structures.
 
 List all the Fund Structures matching the given criteria.
 
@@ -447,7 +447,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FundStructure RemoveFundStructureMember(string scope, string code, string nodeCode, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure.
+[EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure.
 
 Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
 
@@ -511,7 +511,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > FundStructure UpsertFundStructure(string scope, string code, FundStructureRequest fundStructureRequest)
 
-[EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure.
+[EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure.
 
 Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
 

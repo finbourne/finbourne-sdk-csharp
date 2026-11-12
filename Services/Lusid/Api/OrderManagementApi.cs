@@ -239,6 +239,31 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfPlacement</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfPlacement> PlaceBlocksWithHttpInfo(PlaceBlocksRequest? placeBlocksRequest = default(PlaceBlocksRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// PreviewBlocks: Preview the blocks a set of orders would form
+        /// </summary>
+        /// <remarks>
+        /// Groups a set of orders into blocks according to the requested grouping mode, with each block&#39;s side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="previewBlocksRequest">The orders to group and how to group them.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResourceListOfProposedBlockAndOrders</returns>
+        ResourceListOfProposedBlockAndOrders PreviewBlocks(PreviewBlocksRequest previewBlocksRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// PreviewBlocks: Preview the blocks a set of orders would form
+        /// </summary>
+        /// <remarks>
+        /// Groups a set of orders into blocks according to the requested grouping mode, with each block&#39;s side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="previewBlocksRequest">The orders to group and how to group them.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResourceListOfProposedBlockAndOrders</returns>
+        Finbourne.Sdk.Client.ApiResponse<ResourceListOfProposedBlockAndOrders> PreviewBlocksWithHttpInfo(PreviewBlocksRequest previewBlocksRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// RunAllocationService: Runs the Allocation Service
         /// </summary>
         /// <remarks>
@@ -247,10 +272,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">The List of Placement IDs for which you wish to allocate Executions.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationServiceRunResponse</returns>
-        AllocationServiceRunResponse RunAllocationService(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        AllocationServiceRunResponse RunAllocationService(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// RunAllocationService: Runs the Allocation Service
@@ -261,10 +287,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">The List of Placement IDs for which you wish to allocate Executions.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationServiceRunResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> RunAllocationServiceWithHttpInfo(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> RunAllocationServiceWithHttpInfo(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
         /// </summary>
@@ -274,10 +301,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="weightedAllocationServiceRunRequest">The placement IDs to allocate against, and the portfolio weights to use for the allocation split.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationServiceRunResponse</returns>
-        AllocationServiceRunResponse RunAllocationServiceWithWeights(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        AllocationServiceRunResponse RunAllocationServiceWithWeights(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
@@ -288,10 +316,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="weightedAllocationServiceRunRequest">The placement IDs to allocate against, and the portfolio weights to use for the allocation split.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationServiceRunResponse</returns>
-        Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> RunAllocationServiceWithWeightsWithHttpInfo(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> RunAllocationServiceWithWeightsWithHttpInfo(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful.
         /// </summary>
@@ -601,6 +630,33 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ResourceListOfPlacement)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfPlacement>> PlaceBlocksWithHttpInfoAsync(PlaceBlocksRequest? placeBlocksRequest = default(PlaceBlocksRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
+        /// PreviewBlocks: Preview the blocks a set of orders would form
+        /// </summary>
+        /// <remarks>
+        /// Groups a set of orders into blocks according to the requested grouping mode, with each block&#39;s side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="previewBlocksRequest">The orders to group and how to group them.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResourceListOfProposedBlockAndOrders</returns>
+        System.Threading.Tasks.Task<ResourceListOfProposedBlockAndOrders> PreviewBlocksAsync(PreviewBlocksRequest previewBlocksRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// PreviewBlocks: Preview the blocks a set of orders would form
+        /// </summary>
+        /// <remarks>
+        /// Groups a set of orders into blocks according to the requested grouping mode, with each block&#39;s side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="previewBlocksRequest">The orders to group and how to group them.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResourceListOfProposedBlockAndOrders)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfProposedBlockAndOrders>> PreviewBlocksWithHttpInfoAsync(PreviewBlocksRequest previewBlocksRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
         /// RunAllocationService: Runs the Allocation Service
         /// </summary>
         /// <remarks>
@@ -609,11 +665,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">The List of Placement IDs for which you wish to allocate Executions.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of AllocationServiceRunResponse</returns>
-        System.Threading.Tasks.Task<AllocationServiceRunResponse> RunAllocationServiceAsync(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<AllocationServiceRunResponse> RunAllocationServiceAsync(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// RunAllocationService: Runs the Allocation Service
@@ -624,11 +681,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">The List of Placement IDs for which you wish to allocate Executions.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (AllocationServiceRunResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse>> RunAllocationServiceWithHttpInfoAsync(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse>> RunAllocationServiceWithHttpInfoAsync(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
         /// </summary>
@@ -638,11 +696,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="weightedAllocationServiceRunRequest">The placement IDs to allocate against, and the portfolio weights to use for the allocation split.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of AllocationServiceRunResponse</returns>
-        System.Threading.Tasks.Task<AllocationServiceRunResponse> RunAllocationServiceWithWeightsAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<AllocationServiceRunResponse> RunAllocationServiceWithWeightsAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
@@ -653,11 +712,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="weightedAllocationServiceRunRequest">The placement IDs to allocate against, and the portfolio weights to use for the allocation split.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (AllocationServiceRunResponse)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse>> RunAllocationServiceWithWeightsWithHttpInfoAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse>> RunAllocationServiceWithWeightsWithHttpInfoAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful.
         /// </summary>
@@ -2740,17 +2800,252 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
+        /// PreviewBlocks: Preview the blocks a set of orders would form Groups a set of orders into blocks according to the requested grouping mode, with each block&#39;s side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="previewBlocksRequest">The orders to group and how to group them.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResourceListOfProposedBlockAndOrders</returns>
+        public ResourceListOfProposedBlockAndOrders PreviewBlocks(PreviewBlocksRequest previewBlocksRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfProposedBlockAndOrders> localVarResponse = PreviewBlocksWithHttpInfo(previewBlocksRequest, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// PreviewBlocks: Preview the blocks a set of orders would form Groups a set of orders into blocks according to the requested grouping mode, with each block&#39;s side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="previewBlocksRequest">The orders to group and how to group them.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResourceListOfProposedBlockAndOrders</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ResourceListOfProposedBlockAndOrders> PreviewBlocksWithHttpInfo(PreviewBlocksRequest previewBlocksRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'previewBlocksRequest' is set
+            if (previewBlocksRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'previewBlocksRequest' when calling OrderManagementApi->PreviewBlocks");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = previewBlocksRequest;
+
+            localVarRequestOptions.Operation = "OrderManagementApi.PreviewBlocks";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ResourceListOfProposedBlockAndOrders, AbstractOpenAPISchema>("/api/api/ordermanagement/$previewblocks", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PreviewBlocks", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// PreviewBlocks: Preview the blocks a set of orders would form Groups a set of orders into blocks according to the requested grouping mode, with each block&#39;s side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="previewBlocksRequest">The orders to group and how to group them.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResourceListOfProposedBlockAndOrders</returns>
+        public async System.Threading.Tasks.Task<ResourceListOfProposedBlockAndOrders> PreviewBlocksAsync(PreviewBlocksRequest previewBlocksRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfProposedBlockAndOrders> localVarResponse = await PreviewBlocksWithHttpInfoAsync(previewBlocksRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// PreviewBlocks: Preview the blocks a set of orders would form Groups a set of orders into blocks according to the requested grouping mode, with each block&#39;s side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="previewBlocksRequest">The orders to group and how to group them.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResourceListOfProposedBlockAndOrders)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfProposedBlockAndOrders>> PreviewBlocksWithHttpInfoAsync(PreviewBlocksRequest previewBlocksRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'previewBlocksRequest' is set
+            if (previewBlocksRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'previewBlocksRequest' when calling OrderManagementApi->PreviewBlocks");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = previewBlocksRequest;
+
+            localVarRequestOptions.Operation = "OrderManagementApi.PreviewBlocks";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ResourceListOfProposedBlockAndOrders, AbstractOpenAPISchema>("/api/api/ordermanagement/$previewblocks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PreviewBlocks", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// RunAllocationService: Runs the Allocation Service Allocates Executions for a given list of placements back to their originating orders using one of the LUSID algorithms, creating Allocations to record the results.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">The List of Placement IDs for which you wish to allocate Executions.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationServiceRunResponse</returns>
-        public AllocationServiceRunResponse RunAllocationService(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public AllocationServiceRunResponse RunAllocationService(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> localVarResponse = RunAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> localVarResponse = RunAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, cancelAndCorrect, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -2761,10 +3056,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="resourceId">The List of Placement IDs for which you wish to allocate Executions.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationServiceRunResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> RunAllocationServiceWithHttpInfo(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> RunAllocationServiceWithHttpInfo(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'resourceId' is set
             if (resourceId == null)
@@ -2824,6 +3120,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "allocationAlgorithm", allocationAlgorithm));
             }
+            if (cancelAndCorrect != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "cancelAndCorrect", cancelAndCorrect));
+            }
             localVarRequestOptions.Data = resourceId;
 
             localVarRequestOptions.Operation = "OrderManagementApi.RunAllocationService";
@@ -2866,13 +3166,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="resourceId">The List of Placement IDs for which you wish to allocate Executions.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of AllocationServiceRunResponse</returns>
-        public async System.Threading.Tasks.Task<AllocationServiceRunResponse> RunAllocationServiceAsync(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<AllocationServiceRunResponse> RunAllocationServiceAsync(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> localVarResponse = await RunAllocationServiceWithHttpInfoAsync(resourceId, allocationAlgorithm, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> localVarResponse = await RunAllocationServiceWithHttpInfoAsync(resourceId, allocationAlgorithm, cancelAndCorrect, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2883,11 +3184,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="resourceId">The List of Placement IDs for which you wish to allocate Executions.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (AllocationServiceRunResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse>> RunAllocationServiceWithHttpInfoAsync(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse>> RunAllocationServiceWithHttpInfoAsync(List<ResourceId> resourceId, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'resourceId' is set
             if (resourceId == null)
@@ -2947,6 +3249,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (allocationAlgorithm != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "allocationAlgorithm", allocationAlgorithm));
+            }
+            if (cancelAndCorrect != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "cancelAndCorrect", cancelAndCorrect));
             }
             localVarRequestOptions.Data = resourceId;
 
@@ -2991,12 +3297,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="weightedAllocationServiceRunRequest">The placement IDs to allocate against, and the portfolio weights to use for the allocation split.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationServiceRunResponse</returns>
-        public AllocationServiceRunResponse RunAllocationServiceWithWeights(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public AllocationServiceRunResponse RunAllocationServiceWithWeights(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> localVarResponse = RunAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> localVarResponse = RunAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -3007,10 +3314,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="weightedAllocationServiceRunRequest">The placement IDs to allocate against, and the portfolio weights to use for the allocation split.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationServiceRunResponse</returns>
-        public Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> RunAllocationServiceWithWeightsWithHttpInfo(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> RunAllocationServiceWithWeightsWithHttpInfo(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'weightedAllocationServiceRunRequest' is set
             if (weightedAllocationServiceRunRequest == null)
@@ -3070,6 +3378,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "allocationAlgorithm", allocationAlgorithm));
             }
+            if (cancelAndCorrect != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "cancelAndCorrect", cancelAndCorrect));
+            }
             localVarRequestOptions.Data = weightedAllocationServiceRunRequest;
 
             localVarRequestOptions.Operation = "OrderManagementApi.RunAllocationServiceWithWeights";
@@ -3112,13 +3424,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="weightedAllocationServiceRunRequest">The placement IDs to allocate against, and the portfolio weights to use for the allocation split.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of AllocationServiceRunResponse</returns>
-        public async System.Threading.Tasks.Task<AllocationServiceRunResponse> RunAllocationServiceWithWeightsAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<AllocationServiceRunResponse> RunAllocationServiceWithWeightsAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> localVarResponse = await RunAllocationServiceWithWeightsWithHttpInfoAsync(weightedAllocationServiceRunRequest, allocationAlgorithm, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse> localVarResponse = await RunAllocationServiceWithWeightsWithHttpInfoAsync(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3129,11 +3442,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="weightedAllocationServiceRunRequest">The placement IDs to allocate against, and the portfolio weights to use for the allocation split.</param>
         /// <param name="allocationAlgorithm">A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. (optional)</param>
+        /// <param name="cancelAndCorrect">Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (AllocationServiceRunResponse)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse>> RunAllocationServiceWithWeightsWithHttpInfoAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationServiceRunResponse>> RunAllocationServiceWithWeightsWithHttpInfoAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = default(string?), bool? cancelAndCorrect = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'weightedAllocationServiceRunRequest' is set
             if (weightedAllocationServiceRunRequest == null)
@@ -3193,6 +3507,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (allocationAlgorithm != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "allocationAlgorithm", allocationAlgorithm));
+            }
+            if (cancelAndCorrect != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "cancelAndCorrect", cancelAndCorrect));
             }
             localVarRequestOptions.Data = weightedAllocationServiceRunRequest;
 

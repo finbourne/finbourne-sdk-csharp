@@ -9,9 +9,11 @@ One class of eligible collateral and how it is valued, as supplied when a schedu
 | **Description** | **string** | Optional | A description of the row. Optional. |
 | **Selector** | [EligibleCollateralAssetSelectorRequest](EligibleCollateralAssetSelectorRequest.md) | Required | *No description available.* |
 | **ValuationPercentage** | **decimal** | Required | The fraction of an asset&#39;s value that is accepted as collateral, for example 0.95 for 95%. Greater than 0 and at most 1. |
-| **FxHaircut** | **decimal?** | Optional | The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage * (1 - FxHaircut). At least 0 and less than 1. Not allowed for a BaseCurrencyCash selector. Optional. |
+| **FxHaircut** | **decimal?** | Optional | The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage - FxHaircut. At least 0 and less than the valuationPercentage. Not allowed for a BaseCurrencyCash selector. Optional. |
 | **MinResidualMaturityYears** | **decimal?** | Optional | The inclusive lower bound of the residual maturity in years that the row applies to. Only allowed for an Instrument selector. Optional. |
 | **MaxResidualMaturityYears** | **decimal?** | Optional | The exclusive upper bound of the residual maturity in years that the row applies to. Only allowed for an Instrument selector. Optional. |
+| **ConcentrationGroup** | **string** | Optional | The group the row&#39;s assets count towards for a concentration limit, for example &#39;sovereign&#39; or &#39;issuer&#39;. Rows naming the same group share one limit. Required when a concentrationLimit is set. Optional. |
+| **ConcentrationLimit** | **decimal?** | Optional | The largest fraction of the collateral held plus the call that assets of the row&#39;s concentration group may make up, for example 0.3 for 30%. Greater than 0 and at most 1. Required when a concentrationGroup is set. Optional. |
 
 
 ## Usage
@@ -26,9 +28,11 @@ var instance = new EligibleCollateralRowRequest(
     description: "...",  // optional — A description of the row. Optional.
     selector: new EligibleCollateralAssetSelectorRequest(...),  // required
     valuationPercentage: 0.0d,  // required — The fraction of an asset&#39;s value that is accepted as collateral, for example 0.95 for 95%. Greater than 0 and at most 1.
-    fxHaircut: 0.0d,  // optional — The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage * (1 - FxHaircut). At least 0 and less than 1. Not allowed for a BaseCurrencyCash selector. Optional.
+    fxHaircut: 0.0d,  // optional — The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage - FxHaircut. At least 0 and less than the valuationPercentage. Not allowed for a BaseCurrencyCash selector. Optional.
     minResidualMaturityYears: 0.0d,  // optional — The inclusive lower bound of the residual maturity in years that the row applies to. Only allowed for an Instrument selector. Optional.
-    maxResidualMaturityYears: 0.0d  // optional — The exclusive upper bound of the residual maturity in years that the row applies to. Only allowed for an Instrument selector. Optional.
+    maxResidualMaturityYears: 0.0d,  // optional — The exclusive upper bound of the residual maturity in years that the row applies to. Only allowed for an Instrument selector. Optional.
+    concentrationGroup: "...",  // optional — The group the row&#39;s assets count towards for a concentration limit, for example &#39;sovereign&#39; or &#39;issuer&#39;. Rows naming the same group share one limit. Required when a concentrationLimit is set. Optional.
+    concentrationLimit: 0.0d  // optional — The largest fraction of the collateral held plus the call that assets of the row&#39;s concentration group may make up, for example 0.3 for 30%. Greater than 0 and at most 1. Required when a concentrationGroup is set. Optional.
 );
 ```
 ### Serializing to JSON

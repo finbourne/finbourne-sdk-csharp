@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **ReferenceSide** | **string** | Required | Reference side (source of truth). Available values: Left, Right. |
 | **AbsoluteThreshold** | **decimal?** | Optional | Numeric tolerance absolute value (allowable diff compared to the reference side value). |
-| **RelativeThreshold** | **decimal?** | Optional | Numeric tolerance value as a relative % of the reference value. |
+| **RelativeThreshold** | **decimal?** | Optional | Allowed difference as a fraction of the reference side value, e.g. 0.01 allows a 1% difference. The fraction is applied to the magnitude of the reference value, so a negative reference is tolerated in the same way as a positive one. |
 | **ThresholdPriority** | **string** | Optional | Whether to apply the GreaterOf or LesserOf the absoluteThreshold vs relativeThreshold. Required when both thresholds are provided; must be omitted when only one is. Available values: GreaterOf, LesserOf. |
 | **Offset** | **string** | Optional | How the threshold should be applied to the reference side value. Defaults to Either. Available values: Above, Below, Either. |
 | **ToleranceType** | **string** | Required | Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. |
@@ -23,7 +23,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new AggregateNumericTolerance(
     referenceSide: "...",  // required — Reference side (source of truth). Available values: Left, Right.
     absoluteThreshold: 0.0d,  // optional — Numeric tolerance absolute value (allowable diff compared to the reference side value).
-    relativeThreshold: 0.0d,  // optional — Numeric tolerance value as a relative % of the reference value.
+    relativeThreshold: 0.0d,  // optional — Allowed difference as a fraction of the reference side value, e.g. 0.01 allows a 1% difference. The fraction is applied to the magnitude of the reference value, so a negative reference is tolerated in the same way as a positive one.
     thresholdPriority: "...",  // optional — Whether to apply the GreaterOf or LesserOf the absoluteThreshold vs relativeThreshold. Required when both thresholds are provided; must be omitted when only one is. Available values: GreaterOf, LesserOf.
     offset: "...",  // optional — How the threshold should be applied to the reference side value. Defaults to Either. Available values: Above, Below, Either.
     toleranceType: "...",  // required — Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric.

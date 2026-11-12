@@ -42,8 +42,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="domCcy">The domestic currency of the instrument. (required).</param>
         /// <param name="schedules">Repayment schedules for the loan. (required).</param>
         /// <param name="timeZoneConventions">timeZoneConventions.</param>
-        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare, CapitalInterest, WholeLoanFacility. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
-        public FlexibleLoan(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), string domCcy = default(string), List<Schedule> schedules = default(List<Schedule>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
+        /// <param name="tradingConventions">tradingConventions.</param>
+        /// <param name="originalIssuePrice">The price the loan was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%..</param>
+        /// <param name="instrumentType">Available values: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan, TotalReturnSwap, InflationLeg, FundShareClass, FlexibleLoan, UnsettledCash, Cash, MasteredInstrument, LoanFacility, FlexibleDeposit, FlexibleRepo, ToBeAnnounced, VolatilitySwap, ToBeAnnouncedOption, CommodityForward, BondOption, CdsOption, CommodityCalendarSwap, BondForward, PreferredShare, CapitalInterest, WholeLoanFacility, StripBond. (required) (default to InstrumentTypeEnum.QuotedSecurity).</param>
+        public FlexibleLoan(DateTimeOffset startDate = default(DateTimeOffset), DateTimeOffset maturityDate = default(DateTimeOffset), string domCcy = default(string), List<Schedule> schedules = default(List<Schedule>), TimeZoneConventions timeZoneConventions = default(TimeZoneConventions), TradingConventions tradingConventions = default(TradingConventions), decimal? originalIssuePrice = default(decimal?), InstrumentTypeEnum instrumentType = default(InstrumentTypeEnum)) : base()
         {
             this.StartDate = startDate;
             this.MaturityDate = maturityDate;
@@ -61,6 +63,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Schedules = schedules;
             this.InstrumentType = instrumentType;
             this.TimeZoneConventions = timeZoneConventions;
+            this.TradingConventions = tradingConventions;
+            this.OriginalIssuePrice = originalIssuePrice;
         }
 
         /// <summary>
@@ -128,6 +132,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public TimeZoneConventions TimeZoneConventions { get; set; }
 
         /// <summary>
+        /// Gets or Sets TradingConventions
+        /// </summary>
+        [DataMember(Name = "tradingConventions", EmitDefaultValue = false)]
+        public TradingConventions TradingConventions { get; set; }
+
+        /// <summary>
+        /// The price the loan was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%.
+        /// </summary>
+        /// <value>The price the loan was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%.</value>
+        [DataMember(Name = "originalIssuePrice", EmitDefaultValue = true)]
+        public decimal? OriginalIssuePrice { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -143,6 +160,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ParentFacilityDetails: ").Append(ParentFacilityDetails).Append("\n");
             sb.Append("  Schedules: ").Append(Schedules).Append("\n");
             sb.Append("  TimeZoneConventions: ").Append(TimeZoneConventions).Append("\n");
+            sb.Append("  TradingConventions: ").Append(TradingConventions).Append("\n");
+            sb.Append("  OriginalIssuePrice: ").Append(OriginalIssuePrice).Append("\n");
             sb.Append("  InstrumentType: ").Append(InstrumentType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -217,6 +236,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.TimeZoneConventions.Equals(input.TimeZoneConventions))
                 ) && base.Equals(input) && 
                 (
+                    this.TradingConventions == input.TradingConventions ||
+                    (this.TradingConventions != null &&
+                    this.TradingConventions.Equals(input.TradingConventions))
+                ) && base.Equals(input) && 
+                (
+                    this.OriginalIssuePrice == input.OriginalIssuePrice ||
+                    (this.OriginalIssuePrice != null &&
+                    this.OriginalIssuePrice.Equals(input.OriginalIssuePrice))
+                ) && base.Equals(input) && 
+                (
                     this.InstrumentType == input.InstrumentType ||
                     this.InstrumentType.Equals(input.InstrumentType)
                 );
@@ -258,6 +287,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.TimeZoneConventions != null)
                 {
                     hashCode = (hashCode * 59) + this.TimeZoneConventions.GetHashCode();
+                }
+                if (this.TradingConventions != null)
+                {
+                    hashCode = (hashCode * 59) + this.TradingConventions.GetHashCode();
+                }
+                if (this.OriginalIssuePrice != null)
+                {
+                    hashCode = (hashCode * 59) + this.OriginalIssuePrice.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.InstrumentType.GetHashCode();
                 return hashCode;

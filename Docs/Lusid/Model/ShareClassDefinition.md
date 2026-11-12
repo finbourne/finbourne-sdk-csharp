@@ -15,7 +15,7 @@
 | **DistributionType** | **string** | Optional | The type of distribution the ShareClass will calculate. Available values: Income, Accumulation. |
 | **DomCcy** | **string** | Required | The domestic currency of the ShareClass instrument. |
 | **TradingConventions** | [TradingConventions](TradingConventions.md) | Optional | *No description available.* |
-| **RoundingConventionsPrice** | [List&lt;SimpleRoundingConvention&gt;](SimpleRoundingConvention.md) | Optional | Rounding conventions used for the ShareClass quotes. |
+| **RoundingConventionsPrice** | [List&lt;ShareClassRoundingConvention&gt;](ShareClassRoundingConvention.md) | Optional | Rounding conventions used for the ShareClass quotes. |
 | **RoundingConventionsUnits** | [List&lt;SimpleRoundingConvention&gt;](SimpleRoundingConvention.md) | Optional | Rounding conventions used for the ShareClass units. |
 | **TimeZoneConventions** | [TimeZoneConventions](TimeZoneConventions.md) | Optional | *No description available.* |
 | **DistributionPaymentType** | **string** | Optional | The tax treatment applied to distributions. Available values: Invalid, Gross, Net. |
@@ -42,7 +42,7 @@ var instance = new ShareClassDefinition(
     distributionType: "...",  // optional — The type of distribution the ShareClass will calculate. Available values: Income, Accumulation.
     domCcy: "...",  // required — The domestic currency of the ShareClass instrument.
     tradingConventions: new TradingConventions(...),  // optional
-    roundingConventionsPrice: new List<SimpleRoundingConvention>(),  // optional — Rounding conventions used for the ShareClass quotes.
+    roundingConventionsPrice: new List<ShareClassRoundingConvention>(),  // optional — Rounding conventions used for the ShareClass quotes.
     roundingConventionsUnits: new List<SimpleRoundingConvention>(),  // optional — Rounding conventions used for the ShareClass units.
     timeZoneConventions: new TimeZoneConventions(...),  // optional
     distributionPaymentType: "...",  // optional — The tax treatment applied to distributions. Available values: Invalid, Gross, Net.
@@ -64,7 +64,7 @@ var instance = JsonConvert.DeserializeObject<ShareClassDefinition>(json);
 
 - [Property](Property.md) — used in `Properties`
 - [TradingConventions](TradingConventions.md)
-- [SimpleRoundingConvention](SimpleRoundingConvention.md) — used in `RoundingConventionsPrice`
+- [ShareClassRoundingConvention](ShareClassRoundingConvention.md) — used in `RoundingConventionsPrice`
 - [SimpleRoundingConvention](SimpleRoundingConvention.md) — used in `RoundingConventionsUnits`
 - [TimeZoneConventions](TimeZoneConventions.md)
 - [WhtParameters](WhtParameters.md)

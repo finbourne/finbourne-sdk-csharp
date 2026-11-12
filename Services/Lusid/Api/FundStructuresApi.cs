@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure.
+        /// [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
@@ -47,7 +47,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FundStructure AddFundStructureMember(string scope, string code, FundStructureMemberRequest fundStructureMemberRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure.
+        /// [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
@@ -93,7 +93,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FundStructureCloseResult</returns>
         Finbourne.Sdk.Client.ApiResponse<FundStructureCloseResult> CloseFundStructureWithHttpInfo(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure.
+        /// [EARLY ACCESS] CreateFundStructure: Create a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
@@ -107,7 +107,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FundStructure CreateFundStructure(string scope, FundStructureRequest fundStructureRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure.
+        /// [EARLY ACCESS] CreateFundStructure: Create a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
@@ -120,7 +120,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FundStructure</returns>
         Finbourne.Sdk.Client.ApiResponse<FundStructure> CreateFundStructureWithHttpInfo(string scope, FundStructureRequest fundStructureRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure.
+        /// [EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
@@ -135,7 +135,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeleteFundStructure(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure.
+        /// [EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
@@ -149,7 +149,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteFundStructureWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetFundStructure: Get a Fund Structure.
+        /// [EARLY ACCESS] GetFundStructure: Get a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
@@ -166,7 +166,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FundStructure GetFundStructure(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundStructure: Get a Fund Structure.
+        /// [EARLY ACCESS] GetFundStructure: Get a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
@@ -182,7 +182,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FundStructure</returns>
         Finbourne.Sdk.Client.ApiResponse<FundStructure> GetFundStructureWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListFundStructures: List Fund Structures.
+        /// [EARLY ACCESS] ListFundStructures: List Fund Structures.
         /// </summary>
         /// <remarks>
         /// List all the Fund Structures matching the given criteria.
@@ -201,7 +201,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfFundStructure ListFundStructures(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundStructures: List Fund Structures.
+        /// [EARLY ACCESS] ListFundStructures: List Fund Structures.
         /// </summary>
         /// <remarks>
         /// List all the Fund Structures matching the given criteria.
@@ -219,7 +219,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of PagedResourceListOfFundStructure</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFundStructure> ListFundStructuresWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure.
+        /// [EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
@@ -235,7 +235,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FundStructure RemoveFundStructureMember(string scope, string code, string nodeCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure.
+        /// [EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
@@ -250,7 +250,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of FundStructure</returns>
         Finbourne.Sdk.Client.ApiResponse<FundStructure> RemoveFundStructureMemberWithHttpInfo(string scope, string code, string nodeCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure.
+        /// [EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
@@ -265,7 +265,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         FundStructure UpsertFundStructure(string scope, string code, FundStructureRequest fundStructureRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure.
+        /// [EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
@@ -288,7 +288,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure.
+        /// [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
@@ -305,7 +305,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FundStructure> AddFundStructureMemberAsync(string scope, string code, FundStructureMemberRequest fundStructureMemberRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure.
+        /// [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
@@ -354,7 +354,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (FundStructureCloseResult)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FundStructureCloseResult>> CloseFundStructureWithHttpInfoAsync(string scope, string code, FundStructureCloseRequest fundStructureCloseRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure.
+        /// [EARLY ACCESS] CreateFundStructure: Create a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
@@ -369,7 +369,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FundStructure> CreateFundStructureAsync(string scope, FundStructureRequest fundStructureRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure.
+        /// [EARLY ACCESS] CreateFundStructure: Create a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
@@ -383,7 +383,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (FundStructure)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FundStructure>> CreateFundStructureWithHttpInfoAsync(string scope, FundStructureRequest fundStructureRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure.
+        /// [EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
@@ -399,7 +399,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeleteFundStructureAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure.
+        /// [EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
@@ -414,7 +414,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteFundStructureWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetFundStructure: Get a Fund Structure.
+        /// [EARLY ACCESS] GetFundStructure: Get a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
@@ -432,7 +432,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FundStructure> GetFundStructureAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundStructure: Get a Fund Structure.
+        /// [EARLY ACCESS] GetFundStructure: Get a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
@@ -449,7 +449,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (FundStructure)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FundStructure>> GetFundStructureWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListFundStructures: List Fund Structures.
+        /// [EARLY ACCESS] ListFundStructures: List Fund Structures.
         /// </summary>
         /// <remarks>
         /// List all the Fund Structures matching the given criteria.
@@ -469,7 +469,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfFundStructure> ListFundStructuresAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundStructures: List Fund Structures.
+        /// [EARLY ACCESS] ListFundStructures: List Fund Structures.
         /// </summary>
         /// <remarks>
         /// List all the Fund Structures matching the given criteria.
@@ -488,7 +488,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (PagedResourceListOfFundStructure)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfFundStructure>> ListFundStructuresWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), List<string>? propertyKeys = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure.
+        /// [EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
@@ -505,7 +505,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FundStructure> RemoveFundStructureMemberAsync(string scope, string code, string nodeCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure.
+        /// [EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
@@ -521,7 +521,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (FundStructure)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<FundStructure>> RemoveFundStructureMemberWithHttpInfoAsync(string scope, string code, string nodeCode, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure.
+        /// [EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
@@ -537,7 +537,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<FundStructure> UpsertFundStructureAsync(string scope, string code, FundStructureRequest fundStructureRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure.
+        /// [EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure.
         /// </summary>
         /// <remarks>
         /// Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
@@ -646,7 +646,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure. Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
+        /// [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure. Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure.</param>
@@ -663,7 +663,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure. Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
+        /// [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure. Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -785,7 +785,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure. Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
+        /// [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure. Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure.</param>
@@ -803,7 +803,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure. Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
+        /// [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure. Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1210,7 +1210,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure. Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
+        /// [EARLY ACCESS] CreateFundStructure: Create a Fund Structure. Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure.</param>
@@ -1225,7 +1225,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure. Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
+        /// [EARLY ACCESS] CreateFundStructure: Create a Fund Structure. Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1334,7 +1334,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure. Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
+        /// [EARLY ACCESS] CreateFundStructure: Create a Fund Structure. Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure.</param>
@@ -1350,7 +1350,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure. Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
+        /// [EARLY ACCESS] CreateFundStructure: Create a Fund Structure. Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1462,7 +1462,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure. Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
+        /// [EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure. Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure to be deleted.</param>
@@ -1478,7 +1478,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure. Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
+        /// [EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure. Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1588,7 +1588,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure. Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
+        /// [EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure. Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure to be deleted.</param>
@@ -1605,7 +1605,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure. Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
+        /// [EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure. Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1718,7 +1718,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundStructure: Get a Fund Structure. Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
+        /// [EARLY ACCESS] GetFundStructure: Get a Fund Structure. Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure.</param>
@@ -1736,7 +1736,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundStructure: Get a Fund Structure. Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
+        /// [EARLY ACCESS] GetFundStructure: Get a Fund Structure. Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1856,7 +1856,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundStructure: Get a Fund Structure. Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
+        /// [EARLY ACCESS] GetFundStructure: Get a Fund Structure. Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure.</param>
@@ -1875,7 +1875,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetFundStructure: Get a Fund Structure. Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
+        /// [EARLY ACCESS] GetFundStructure: Get a Fund Structure. Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1998,7 +1998,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundStructures: List Fund Structures. List all the Fund Structures matching the given criteria.
+        /// [EARLY ACCESS] ListFundStructures: List Fund Structures. List all the Fund Structures matching the given criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to list the Fund Structures. Defaults to the current LUSID system datetime if not specified. (optional)</param>
@@ -2018,7 +2018,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundStructures: List Fund Structures. List all the Fund Structures matching the given criteria.
+        /// [EARLY ACCESS] ListFundStructures: List Fund Structures. List all the Fund Structures matching the given criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2142,7 +2142,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundStructures: List Fund Structures. List all the Fund Structures matching the given criteria.
+        /// [EARLY ACCESS] ListFundStructures: List Fund Structures. List all the Fund Structures matching the given criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to list the Fund Structures. Defaults to the current LUSID system datetime if not specified. (optional)</param>
@@ -2163,7 +2163,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListFundStructures: List Fund Structures. List all the Fund Structures matching the given criteria.
+        /// [EARLY ACCESS] ListFundStructures: List Fund Structures. List all the Fund Structures matching the given criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2290,7 +2290,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure. Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
+        /// [EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure. Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure.</param>
@@ -2307,7 +2307,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure. Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
+        /// [EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure. Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2425,7 +2425,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure. Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
+        /// [EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure. Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure.</param>
@@ -2443,7 +2443,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure. Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
+        /// [EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure. Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2564,7 +2564,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure. Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
+        /// [EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure. Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure.</param>
@@ -2580,7 +2580,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure. Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
+        /// [EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure. Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2697,7 +2697,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure. Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
+        /// [EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure. Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund Structure.</param>
@@ -2714,7 +2714,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure. Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
+        /// [EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure. Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

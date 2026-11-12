@@ -5,8 +5,8 @@ Response model for TPF file delivery search results
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **RunId** | **string** | Optional | *No description available.* |
-| **RunStartTime** | **DateTimeOffset?** | Optional | *No description available.* |
+| **RunId** | **string** | Optional | The run id of the latest execution attempt in this row&#39;s run chain (the root run, its automatic retries and resends); equals referenceId when the chain has a single attempt or no recorded execution. |
+| **RunStartTime** | **DateTimeOffset?** | Optional | When the row&#39;s root run started (the batch start), not the latest attempt&#39;s start. |
 | **FileName** | **string** | Required | *No description available.* |
 | **GeneratedAt** | **DateTimeOffset** | Required | When the file was built, or when the attempt failed before a file was built. |
 | **RowCount** | **int** | Required | *No description available.* |
@@ -19,6 +19,8 @@ Response model for TPF file delivery search results
 | **FileUuid** | **Guid** | Required | *No description available.* |
 | **CanResend** | **bool** | Required | Whether the data the file is rebuilt from is still retained, so a resend can be requested. |
 | **DeliveredAt** | **DateTimeOffset?** | Optional | When the file reached the destination; null for a Failed or Pending row. |
+| **Attempt** | **int?** | Optional | The highest attempt number (1-based) made for this delivery&#39;s run, including automatic retries and resends. |
+| **ReferenceId** | **string** | Optional | The root run id of this row&#39;s run chain, the same value run history reports as referenceId. |
 
 
 ## Usage
@@ -29,8 +31,8 @@ Response model for TPF file delivery search results
 using Finbourne.Sdk.Services.Horizon.Model;
 
 var instance = new TpfFileDeliveryResponse(
-    runId: "...",  // optional
-    runStartTime: DateTimeOffset.Now,  // optional
+    runId: "...",  // optional — The run id of the latest execution attempt in this row&#39;s run chain (the root run, its automatic retries and resends); equals referenceId when the chain has a single attempt or no recorded execution.
+    runStartTime: DateTimeOffset.Now,  // optional — When the row&#39;s root run started (the batch start), not the latest attempt&#39;s start.
     fileName: "...",  // required
     generatedAt: DateTimeOffset.Now,  // required — When the file was built, or when the attempt failed before a file was built.
     rowCount: 0,  // required
@@ -42,7 +44,9 @@ var instance = new TpfFileDeliveryResponse(
     destinationName: "...",  // optional
     fileUuid: "...",  // required
     canResend: true,  // required — Whether the data the file is rebuilt from is still retained, so a resend can be requested.
-    deliveredAt: DateTimeOffset.Now  // optional — When the file reached the destination; null for a Failed or Pending row.
+    deliveredAt: DateTimeOffset.Now,  // optional — When the file reached the destination; null for a Failed or Pending row.
+    attempt: 0,  // optional — The highest attempt number (1-based) made for this delivery&#39;s run, including automatic retries and resends.
+    referenceId: "..."  // optional — The root run id of this row&#39;s run chain, the same value run history reports as referenceId.
 );
 ```
 ### Serializing to JSON

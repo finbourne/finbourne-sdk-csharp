@@ -165,6 +165,105 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of MarginCall</returns>
         Finbourne.Sdk.Client.ApiResponse<MarginCall> GetMarginCallWithHttpInfo(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the assets the run&#39;s allocation pass proposes to deliver for the call, or to take back for a return, with  every holding it considered and either its rank or the constraint that excluded it. Each line carries what a  transaction moving it needs: the instrument, the portfolio and custodian account, the units, the price and the  consideration. Not found until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>CollateralAllocation</returns>
+        CollateralAllocation GetMarginCallAllocation(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the assets the run&#39;s allocation pass proposes to deliver for the call, or to take back for a return, with  every holding it considered and either its rank or the constraint that excluded it. Each line carries what a  transaction moving it needs: the instrument, the portfolio and custodian account, the units, the price and the  consideration. Not found until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of CollateralAllocation</returns>
+        Finbourne.Sdk.Client.ApiResponse<CollateralAllocation> GetMarginCallAllocationWithHttpInfo(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call.
+        /// </summary>
+        /// <remarks>
+        /// Show how the required amount of one initial-margin call of a run was arrived at, as a tree of components. Only an  initial-margin call whose run stored its working can be explained, as the call&#39;s ExplainAvailable says. The working  of portfolios the caller may not read is replaced by a single redacted component that keeps its parent adding up.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. Only InitialMargin calls can be explained.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>MarginExplanation</returns>
+        MarginExplanation GetMarginCallExplanation(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call.
+        /// </summary>
+        /// <remarks>
+        /// Show how the required amount of one initial-margin call of a run was arrived at, as a tree of components. Only an  initial-margin call whose run stored its working can be explained, as the call&#39;s ExplainAvailable says. The working  of portfolios the caller may not read is replaced by a single redacted component that keeps its parent adding up.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. Only InitialMargin calls can be explained.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of MarginExplanation</returns>
+        Finbourne.Sdk.Client.ApiResponse<MarginExplanation> GetMarginCallExplanationWithHttpInfo(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line.
+        /// </summary>
+        /// <remarks>
+        /// Show how the figures of one margin line of a run were arrived at, as a tree of components for each figure. The run  must have stored its working, as its lines&#39; ExplainAvailable says. The working of portfolios the caller may not  read is replaced by a single redacted component that keeps its parent adding up. A line the caller may not read is  reported as not found.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="lineKey">The key of the margin line, as listed in the line&#39;s LineKey.</param>
+        /// <param name="figure">The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>MarginExplanation</returns>
+        MarginExplanation GetMarginLineExplanation(string runId, string lineKey, string? figure = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line.
+        /// </summary>
+        /// <remarks>
+        /// Show how the figures of one margin line of a run were arrived at, as a tree of components for each figure. The run  must have stored its working, as its lines&#39; ExplainAvailable says. The working of portfolios the caller may not  read is replaced by a single redacted component that keeps its parent adding up. A line the caller may not read is  reported as not found.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="lineKey">The key of the margin line, as listed in the line&#39;s LineKey.</param>
+        /// <param name="figure">The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of MarginExplanation</returns>
+        Finbourne.Sdk.Client.ApiResponse<MarginExplanation> GetMarginLineExplanationWithHttpInfo(string runId, string lineKey, string? figure = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] GetMarginRun: Get a margin run.
         /// </summary>
         /// <remarks>
@@ -234,35 +333,39 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListMarginCalls: List margin calls.
         /// </summary>
         /// <remarks>
-        /// List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. Restricted to the agreements the caller may read.
+        /// List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. With an effectiveFrom the current calls of each date from it to effectiveAt are listed, in date order.  Restricted to the agreements the caller may read.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="runId">The identifier of the margin run to list the calls of. Lists the current calls for the business date if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing margin calls; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are RunId, AgreementId.Scope, AgreementId.Code, Counterparty.Code, Counterparty.IdTypeScope, Counterparty.IdTypeCode, Item, MarginType, Method, Settlement, Direction, Currency, Required, Held, Call, CounterpartyDemand, Difference, MatchStatus, AgreedAmount, DisputedAmount, DisputeOwner, State and Deadline. For example, to find the breaks, specify \&quot;MatchStatus eq &#39;Break&#39;\&quot;. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified. (optional)</param>
+        /// <param name="effectiveFrom">The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfMarginCall</returns>
-        PagedResourceListOfMarginCall ListMarginCalls(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfMarginCall ListMarginCalls(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), DateTimeOrCutLabel? effectiveFrom = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListMarginCalls: List margin calls.
         /// </summary>
         /// <remarks>
-        /// List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. Restricted to the agreements the caller may read.
+        /// List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. With an effectiveFrom the current calls of each date from it to effectiveAt are listed, in date order.  Restricted to the agreements the caller may read.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="runId">The identifier of the margin run to list the calls of. Lists the current calls for the business date if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing margin calls; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are RunId, AgreementId.Scope, AgreementId.Code, Counterparty.Code, Counterparty.IdTypeScope, Counterparty.IdTypeCode, Item, MarginType, Method, Settlement, Direction, Currency, Required, Held, Call, CounterpartyDemand, Difference, MatchStatus, AgreedAmount, DisputedAmount, DisputeOwner, State and Deadline. For example, to find the breaks, specify \&quot;MatchStatus eq &#39;Break&#39;\&quot;. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified. (optional)</param>
+        /// <param name="effectiveFrom">The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfMarginCall</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall> ListMarginCallsWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall> ListMarginCallsWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), DateTimeOrCutLabel? effectiveFrom = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListMarginLines: List the margin lines of a run.
         /// </summary>
@@ -274,10 +377,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="page">The pagination token to use to continue listing margin lines; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are AgreementId.Scope, AgreementId.Code, Item, PortfolioId.Scope, PortfolioId.Code, HoldingId, CustodianAccountScope, CustodianAccountCode, CustodianAccountName, Units, Pv, VariationMargin and CollateralValue. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfMarginLine</returns>
-        PagedResourceListOfMarginLine ListMarginLines(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        PagedResourceListOfMarginLine ListMarginLines(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListMarginLines: List the margin lines of a run.
@@ -290,10 +394,42 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="page">The pagination token to use to continue listing margin lines; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are AgreementId.Scope, AgreementId.Code, Item, PortfolioId.Scope, PortfolioId.Code, HoldingId, CustodianAccountScope, CustodianAccountCode, CustodianAccountName, Units, Pv, VariationMargin and CollateralValue. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfMarginLine</returns>
-        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine> ListMarginLinesWithHttpInfo(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine> ListMarginLinesWithHttpInfo(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run&#39;s netting recommendations.
+        /// </summary>
+        /// <remarks>
+        /// List the trades a run&#39;s optimisation pass found would attract less initial margin in another netting set of the  run, with both sets&#39; initial margin before and after the move. Empty until the run&#39;s optimisation pass has  completed. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>PagedResourceListOfNettingRecommendation</returns>
+        PagedResourceListOfNettingRecommendation ListMarginRunRecommendations(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run&#39;s netting recommendations.
+        /// </summary>
+        /// <remarks>
+        /// List the trades a run&#39;s optimisation pass found would attract less initial margin in another netting set of the  run, with both sets&#39; initial margin before and after the move. Empty until the run&#39;s optimisation pass has  completed. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of PagedResourceListOfNettingRecommendation</returns>
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation> ListMarginRunRecommendationsWithHttpInfo(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListMarginRuns: List margin runs.
         /// </summary>
@@ -323,6 +459,74 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfMarginRun</returns>
         Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginRun> ListMarginRunsWithHttpInfo(string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations.
+        /// </summary>
+        /// <remarks>
+        /// List the netting recommendations in force for a business date: those of the latest run for the date whose  optimisation pass completed, with an agreement that run could not value served from the most recent run that  did. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current recommendations for. Defaults to today if not specified. (optional)</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>PagedResourceListOfNettingRecommendation</returns>
+        PagedResourceListOfNettingRecommendation ListNettingRecommendations(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations.
+        /// </summary>
+        /// <remarks>
+        /// List the netting recommendations in force for a business date: those of the latest run for the date whose  optimisation pass completed, with an agreement that run could not value served from the most recent run that  did. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current recommendations for. Defaults to today if not specified. (optional)</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of PagedResourceListOfNettingRecommendation</returns>
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation> ListNettingRecommendationsWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices.
+        /// </summary>
+        /// <remarks>
+        /// Value the call&#39;s agreement as of now for the run&#39;s business date and rank its free, eligible holdings for the  call again, keeping the assets and units the caller chose. Each choice is validated against the agreement&#39;s  constraints and kept with its reason when it fails one; the rest of the call is filled from the ranking, cheapest  first, unless fillRemainder is false. Nothing is stored: the result is what to book, for the caller to decide on.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="rankMarginCallRequest">The assets the caller chose, and whether to fill the rest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>CollateralAllocation</returns>
+        CollateralAllocation RankMarginCall(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, RankMarginCallRequest? rankMarginCallRequest = default(RankMarginCallRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices.
+        /// </summary>
+        /// <remarks>
+        /// Value the call&#39;s agreement as of now for the run&#39;s business date and rank its free, eligible holdings for the  call again, keeping the assets and units the caller chose. Each choice is validated against the agreement&#39;s  constraints and kept with its reason when it fails one; the rest of the call is filled from the ranking, cheapest  first, unless fillRemainder is false. Nothing is stored: the result is what to book, for the caller to decide on.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="rankMarginCallRequest">The assets the caller chose, and whether to fill the rest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of CollateralAllocation</returns>
+        Finbourne.Sdk.Client.ApiResponse<CollateralAllocation> RankMarginCallWithHttpInfo(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, RankMarginCallRequest? rankMarginCallRequest = default(RankMarginCallRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] RecordCounterpartyDemand: Record the counterparty&#39;s demand against a margin call.
         /// </summary>
@@ -389,27 +593,27 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation.
         /// </summary>
         /// <remarks>
-        /// Value the collateral agreements for a business date in the background and publish their margin calls as a run.  The run is returned as planned; poll GetMarginRun for its progress, and list its calls as they are published.
+        /// Value the collateral agreements for a business date, or for each weekday of a span, in the background and publish  their margin calls as a run for each date. The base case is always valued, with each scenario named in the request  valued beside it as a case of the same run. A date after the asAt is a projection on the market as at the asAt.  The runs are returned as planned, in date order; poll GetMarginRun for the progress of each, and list the calls as they are published.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marginRunRequest">The business date to value, and optionally the asAt and the agreements to include.</param>
+        /// <param name="marginRunRequest">The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>MarginRun</returns>
-        MarginRun RunMarginCalculation(MarginRunRequest marginRunRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>PagedResourceListOfMarginRun</returns>
+        PagedResourceListOfMarginRun RunMarginCalculation(MarginRunRequest marginRunRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation.
         /// </summary>
         /// <remarks>
-        /// Value the collateral agreements for a business date in the background and publish their margin calls as a run.  The run is returned as planned; poll GetMarginRun for its progress, and list its calls as they are published.
+        /// Value the collateral agreements for a business date, or for each weekday of a span, in the background and publish  their margin calls as a run for each date. The base case is always valued, with each scenario named in the request  valued beside it as a case of the same run. A date after the asAt is a projection on the market as at the asAt.  The runs are returned as planned, in date order; poll GetMarginRun for the progress of each, and list the calls as they are published.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marginRunRequest">The business date to value, and optionally the asAt and the agreements to include.</param>
+        /// <param name="marginRunRequest">The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of MarginRun</returns>
-        Finbourne.Sdk.Client.ApiResponse<MarginRun> RunMarginCalculationWithHttpInfo(MarginRunRequest marginRunRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>ApiResponse of PagedResourceListOfMarginRun</returns>
+        Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginRun> RunMarginCalculationWithHttpInfo(MarginRunRequest marginRunRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         #endregion Synchronous Operations
     }
 
@@ -562,6 +766,111 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (MarginCall)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<MarginCall>> GetMarginCallWithHttpInfoAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the assets the run&#39;s allocation pass proposes to deliver for the call, or to take back for a return, with  every holding it considered and either its rank or the constraint that excluded it. Each line carries what a  transaction moving it needs: the instrument, the portfolio and custodian account, the units, the price and the  consideration. Not found until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of CollateralAllocation</returns>
+        System.Threading.Tasks.Task<CollateralAllocation> GetMarginCallAllocationAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the assets the run&#39;s allocation pass proposes to deliver for the call, or to take back for a return, with  every holding it considered and either its rank or the constraint that excluded it. Each line carries what a  transaction moving it needs: the instrument, the portfolio and custodian account, the units, the price and the  consideration. Not found until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (CollateralAllocation)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<CollateralAllocation>> GetMarginCallAllocationWithHttpInfoAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call.
+        /// </summary>
+        /// <remarks>
+        /// Show how the required amount of one initial-margin call of a run was arrived at, as a tree of components. Only an  initial-margin call whose run stored its working can be explained, as the call&#39;s ExplainAvailable says. The working  of portfolios the caller may not read is replaced by a single redacted component that keeps its parent adding up.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. Only InitialMargin calls can be explained.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of MarginExplanation</returns>
+        System.Threading.Tasks.Task<MarginExplanation> GetMarginCallExplanationAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call.
+        /// </summary>
+        /// <remarks>
+        /// Show how the required amount of one initial-margin call of a run was arrived at, as a tree of components. Only an  initial-margin call whose run stored its working can be explained, as the call&#39;s ExplainAvailable says. The working  of portfolios the caller may not read is replaced by a single redacted component that keeps its parent adding up.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. Only InitialMargin calls can be explained.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (MarginExplanation)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<MarginExplanation>> GetMarginCallExplanationWithHttpInfoAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line.
+        /// </summary>
+        /// <remarks>
+        /// Show how the figures of one margin line of a run were arrived at, as a tree of components for each figure. The run  must have stored its working, as its lines&#39; ExplainAvailable says. The working of portfolios the caller may not  read is replaced by a single redacted component that keeps its parent adding up. A line the caller may not read is  reported as not found.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="lineKey">The key of the margin line, as listed in the line&#39;s LineKey.</param>
+        /// <param name="figure">The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of MarginExplanation</returns>
+        System.Threading.Tasks.Task<MarginExplanation> GetMarginLineExplanationAsync(string runId, string lineKey, string? figure = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line.
+        /// </summary>
+        /// <remarks>
+        /// Show how the figures of one margin line of a run were arrived at, as a tree of components for each figure. The run  must have stored its working, as its lines&#39; ExplainAvailable says. The working of portfolios the caller may not  read is replaced by a single redacted component that keeps its parent adding up. A line the caller may not read is  reported as not found.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="lineKey">The key of the margin line, as listed in the line&#39;s LineKey.</param>
+        /// <param name="figure">The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (MarginExplanation)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<MarginExplanation>> GetMarginLineExplanationWithHttpInfoAsync(string runId, string lineKey, string? figure = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] GetMarginRun: Get a margin run.
         /// </summary>
         /// <remarks>
@@ -635,37 +944,41 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] ListMarginCalls: List margin calls.
         /// </summary>
         /// <remarks>
-        /// List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. Restricted to the agreements the caller may read.
+        /// List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. With an effectiveFrom the current calls of each date from it to effectiveAt are listed, in date order.  Restricted to the agreements the caller may read.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="runId">The identifier of the margin run to list the calls of. Lists the current calls for the business date if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing margin calls; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are RunId, AgreementId.Scope, AgreementId.Code, Counterparty.Code, Counterparty.IdTypeScope, Counterparty.IdTypeCode, Item, MarginType, Method, Settlement, Direction, Currency, Required, Held, Call, CounterpartyDemand, Difference, MatchStatus, AgreedAmount, DisputedAmount, DisputeOwner, State and Deadline. For example, to find the breaks, specify \&quot;MatchStatus eq &#39;Break&#39;\&quot;. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified. (optional)</param>
+        /// <param name="effectiveFrom">The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfMarginCall</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfMarginCall> ListMarginCallsAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfMarginCall> ListMarginCallsAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), DateTimeOrCutLabel? effectiveFrom = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListMarginCalls: List margin calls.
         /// </summary>
         /// <remarks>
-        /// List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. Restricted to the agreements the caller may read.
+        /// List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. With an effectiveFrom the current calls of each date from it to effectiveAt are listed, in date order.  Restricted to the agreements the caller may read.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="runId">The identifier of the margin run to list the calls of. Lists the current calls for the business date if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing margin calls; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are RunId, AgreementId.Scope, AgreementId.Code, Counterparty.Code, Counterparty.IdTypeScope, Counterparty.IdTypeCode, Item, MarginType, Method, Settlement, Direction, Currency, Required, Held, Call, CounterpartyDemand, Difference, MatchStatus, AgreedAmount, DisputedAmount, DisputeOwner, State and Deadline. For example, to find the breaks, specify \&quot;MatchStatus eq &#39;Break&#39;\&quot;. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified. (optional)</param>
+        /// <param name="effectiveFrom">The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfMarginCall)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall>> ListMarginCallsWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall>> ListMarginCallsWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), DateTimeOrCutLabel? effectiveFrom = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListMarginLines: List the margin lines of a run.
         /// </summary>
@@ -677,11 +990,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="page">The pagination token to use to continue listing margin lines; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are AgreementId.Scope, AgreementId.Code, Item, PortfolioId.Scope, PortfolioId.Code, HoldingId, CustodianAccountScope, CustodianAccountCode, CustodianAccountName, Units, Pv, VariationMargin and CollateralValue. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfMarginLine</returns>
-        System.Threading.Tasks.Task<PagedResourceListOfMarginLine> ListMarginLinesAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<PagedResourceListOfMarginLine> ListMarginLinesAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] ListMarginLines: List the margin lines of a run.
@@ -694,11 +1008,45 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="page">The pagination token to use to continue listing margin lines; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are AgreementId.Scope, AgreementId.Code, Item, PortfolioId.Scope, PortfolioId.Code, HoldingId, CustodianAccountScope, CustodianAccountCode, CustodianAccountName, Units, Pv, VariationMargin and CollateralValue. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfMarginLine)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine>> ListMarginLinesWithHttpInfoAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine>> ListMarginLinesWithHttpInfoAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run&#39;s netting recommendations.
+        /// </summary>
+        /// <remarks>
+        /// List the trades a run&#39;s optimisation pass found would attract less initial margin in another netting set of the  run, with both sets&#39; initial margin before and after the move. Empty until the run&#39;s optimisation pass has  completed. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of PagedResourceListOfNettingRecommendation</returns>
+        System.Threading.Tasks.Task<PagedResourceListOfNettingRecommendation> ListMarginRunRecommendationsAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run&#39;s netting recommendations.
+        /// </summary>
+        /// <remarks>
+        /// List the trades a run&#39;s optimisation pass found would attract less initial margin in another netting set of the  run, with both sets&#39; initial margin before and after the move. Empty until the run&#39;s optimisation pass has  completed. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (PagedResourceListOfNettingRecommendation)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation>> ListMarginRunRecommendationsWithHttpInfoAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] ListMarginRuns: List margin runs.
         /// </summary>
@@ -730,6 +1078,78 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfMarginRun)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginRun>> ListMarginRunsWithHttpInfoAsync(string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations.
+        /// </summary>
+        /// <remarks>
+        /// List the netting recommendations in force for a business date: those of the latest run for the date whose  optimisation pass completed, with an agreement that run could not value served from the most recent run that  did. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current recommendations for. Defaults to today if not specified. (optional)</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of PagedResourceListOfNettingRecommendation</returns>
+        System.Threading.Tasks.Task<PagedResourceListOfNettingRecommendation> ListNettingRecommendationsAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations.
+        /// </summary>
+        /// <remarks>
+        /// List the netting recommendations in force for a business date: those of the latest run for the date whose  optimisation pass completed, with an agreement that run could not value served from the most recent run that  did. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current recommendations for. Defaults to today if not specified. (optional)</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (PagedResourceListOfNettingRecommendation)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation>> ListNettingRecommendationsWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices.
+        /// </summary>
+        /// <remarks>
+        /// Value the call&#39;s agreement as of now for the run&#39;s business date and rank its free, eligible holdings for the  call again, keeping the assets and units the caller chose. Each choice is validated against the agreement&#39;s  constraints and kept with its reason when it fails one; the rest of the call is filled from the ranking, cheapest  first, unless fillRemainder is false. Nothing is stored: the result is what to book, for the caller to decide on.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="rankMarginCallRequest">The assets the caller chose, and whether to fill the rest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of CollateralAllocation</returns>
+        System.Threading.Tasks.Task<CollateralAllocation> RankMarginCallAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, RankMarginCallRequest? rankMarginCallRequest = default(RankMarginCallRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices.
+        /// </summary>
+        /// <remarks>
+        /// Value the call&#39;s agreement as of now for the run&#39;s business date and rank its free, eligible holdings for the  call again, keeping the assets and units the caller chose. Each choice is validated against the agreement&#39;s  constraints and kept with its reason when it fails one; the rest of the call is filled from the ranking, cheapest  first, unless fillRemainder is false. Nothing is stored: the result is what to book, for the caller to decide on.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="rankMarginCallRequest">The assets the caller chose, and whether to fill the rest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (CollateralAllocation)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<CollateralAllocation>> RankMarginCallWithHttpInfoAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, RankMarginCallRequest? rankMarginCallRequest = default(RankMarginCallRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] RecordCounterpartyDemand: Record the counterparty&#39;s demand against a margin call.
         /// </summary>
@@ -800,29 +1220,29 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation.
         /// </summary>
         /// <remarks>
-        /// Value the collateral agreements for a business date in the background and publish their margin calls as a run.  The run is returned as planned; poll GetMarginRun for its progress, and list its calls as they are published.
+        /// Value the collateral agreements for a business date, or for each weekday of a span, in the background and publish  their margin calls as a run for each date. The base case is always valued, with each scenario named in the request  valued beside it as a case of the same run. A date after the asAt is a projection on the market as at the asAt.  The runs are returned as planned, in date order; poll GetMarginRun for the progress of each, and list the calls as they are published.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marginRunRequest">The business date to value, and optionally the asAt and the agreements to include.</param>
+        /// <param name="marginRunRequest">The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of MarginRun</returns>
-        System.Threading.Tasks.Task<MarginRun> RunMarginCalculationAsync(MarginRunRequest marginRunRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of PagedResourceListOfMarginRun</returns>
+        System.Threading.Tasks.Task<PagedResourceListOfMarginRun> RunMarginCalculationAsync(MarginRunRequest marginRunRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation.
         /// </summary>
         /// <remarks>
-        /// Value the collateral agreements for a business date in the background and publish their margin calls as a run.  The run is returned as planned; poll GetMarginRun for its progress, and list its calls as they are published.
+        /// Value the collateral agreements for a business date, or for each weekday of a span, in the background and publish  their margin calls as a run for each date. The base case is always valued, with each scenario named in the request  valued beside it as a case of the same run. A date after the asAt is a projection on the market as at the asAt.  The runs are returned as planned, in date order; poll GetMarginRun for the progress of each, and list the calls as they are published.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marginRunRequest">The business date to value, and optionally the asAt and the agreements to include.</param>
+        /// <param name="marginRunRequest">The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (MarginRun)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<MarginRun>> RunMarginCalculationWithHttpInfoAsync(MarginRunRequest marginRunRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of ApiResponse (PagedResourceListOfMarginRun)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginRun>> RunMarginCalculationWithHttpInfoAsync(MarginRunRequest marginRunRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         #endregion Asynchronous Operations
     }
 
@@ -2140,6 +2560,894 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call. Retrieve the assets the run&#39;s allocation pass proposes to deliver for the call, or to take back for a return, with  every holding it considered and either its rank or the constraint that excluded it. Each line carries what a  transaction moving it needs: the instrument, the portfolio and custodian account, the units, the price and the  consideration. Not found until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>CollateralAllocation</returns>
+        public CollateralAllocation GetMarginCallAllocation(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<CollateralAllocation> localVarResponse = GetMarginCallAllocationWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call. Retrieve the assets the run&#39;s allocation pass proposes to deliver for the call, or to take back for a return, with  every holding it considered and either its rank or the constraint that excluded it. Each line carries what a  transaction moving it needs: the instrument, the portfolio and custodian account, the units, the price and the  consideration. Not found until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of CollateralAllocation</returns>
+        public Finbourne.Sdk.Client.ApiResponse<CollateralAllocation> GetMarginCallAllocationWithHttpInfo(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'runId' is set
+            if (runId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'runId' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            // verify the required parameter 'agreementScope' is set
+            if (agreementScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementScope' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            // verify the required parameter 'agreementCode' is set
+            if (agreementCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementCode' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            // verify the required parameter 'item' is set
+            if (item == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'item' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            // verify the required parameter 'marginType' is set
+            if (marginType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'marginType' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            // verify the required parameter 'direction' is set
+            if (direction == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'direction' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementCode)); // path parameter
+            localVarRequestOptions.PathParameters.Add("item", Finbourne.Sdk.Client.ClientUtils.ParameterToString(item)); // path parameter
+            localVarRequestOptions.PathParameters.Add("marginType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(marginType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("direction", Finbourne.Sdk.Client.ClientUtils.ParameterToString(direction)); // path parameter
+
+            localVarRequestOptions.Operation = "CollateralApi.GetMarginCallAllocation";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<CollateralAllocation, AbstractOpenAPISchema>("/api/api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$allocation", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetMarginCallAllocation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call. Retrieve the assets the run&#39;s allocation pass proposes to deliver for the call, or to take back for a return, with  every holding it considered and either its rank or the constraint that excluded it. Each line carries what a  transaction moving it needs: the instrument, the portfolio and custodian account, the units, the price and the  consideration. Not found until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of CollateralAllocation</returns>
+        public async System.Threading.Tasks.Task<CollateralAllocation> GetMarginCallAllocationAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<CollateralAllocation> localVarResponse = await GetMarginCallAllocationWithHttpInfoAsync(runId, agreementScope, agreementCode, item, marginType, direction, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call. Retrieve the assets the run&#39;s allocation pass proposes to deliver for the call, or to take back for a return, with  every holding it considered and either its rank or the constraint that excluded it. Each line carries what a  transaction moving it needs: the instrument, the portfolio and custodian account, the units, the price and the  consideration. Not found until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (CollateralAllocation)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<CollateralAllocation>> GetMarginCallAllocationWithHttpInfoAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'runId' is set
+            if (runId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'runId' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            // verify the required parameter 'agreementScope' is set
+            if (agreementScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementScope' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            // verify the required parameter 'agreementCode' is set
+            if (agreementCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementCode' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            // verify the required parameter 'item' is set
+            if (item == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'item' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            // verify the required parameter 'marginType' is set
+            if (marginType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'marginType' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+            // verify the required parameter 'direction' is set
+            if (direction == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'direction' when calling CollateralApi->GetMarginCallAllocation");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementCode)); // path parameter
+            localVarRequestOptions.PathParameters.Add("item", Finbourne.Sdk.Client.ClientUtils.ParameterToString(item)); // path parameter
+            localVarRequestOptions.PathParameters.Add("marginType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(marginType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("direction", Finbourne.Sdk.Client.ClientUtils.ParameterToString(direction)); // path parameter
+
+            localVarRequestOptions.Operation = "CollateralApi.GetMarginCallAllocation";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<CollateralAllocation, AbstractOpenAPISchema>("/api/api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$allocation", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetMarginCallAllocation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call. Show how the required amount of one initial-margin call of a run was arrived at, as a tree of components. Only an  initial-margin call whose run stored its working can be explained, as the call&#39;s ExplainAvailable says. The working  of portfolios the caller may not read is replaced by a single redacted component that keeps its parent adding up.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. Only InitialMargin calls can be explained.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>MarginExplanation</returns>
+        public MarginExplanation GetMarginCallExplanation(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<MarginExplanation> localVarResponse = GetMarginCallExplanationWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call. Show how the required amount of one initial-margin call of a run was arrived at, as a tree of components. Only an  initial-margin call whose run stored its working can be explained, as the call&#39;s ExplainAvailable says. The working  of portfolios the caller may not read is replaced by a single redacted component that keeps its parent adding up.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. Only InitialMargin calls can be explained.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of MarginExplanation</returns>
+        public Finbourne.Sdk.Client.ApiResponse<MarginExplanation> GetMarginCallExplanationWithHttpInfo(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'runId' is set
+            if (runId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'runId' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            // verify the required parameter 'agreementScope' is set
+            if (agreementScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementScope' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            // verify the required parameter 'agreementCode' is set
+            if (agreementCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementCode' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            // verify the required parameter 'item' is set
+            if (item == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'item' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            // verify the required parameter 'marginType' is set
+            if (marginType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'marginType' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            // verify the required parameter 'direction' is set
+            if (direction == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'direction' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementCode)); // path parameter
+            localVarRequestOptions.PathParameters.Add("item", Finbourne.Sdk.Client.ClientUtils.ParameterToString(item)); // path parameter
+            localVarRequestOptions.PathParameters.Add("marginType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(marginType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("direction", Finbourne.Sdk.Client.ClientUtils.ParameterToString(direction)); // path parameter
+
+            localVarRequestOptions.Operation = "CollateralApi.GetMarginCallExplanation";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<MarginExplanation, AbstractOpenAPISchema>("/api/api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$explain", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetMarginCallExplanation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call. Show how the required amount of one initial-margin call of a run was arrived at, as a tree of components. Only an  initial-margin call whose run stored its working can be explained, as the call&#39;s ExplainAvailable says. The working  of portfolios the caller may not read is replaced by a single redacted component that keeps its parent adding up.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. Only InitialMargin calls can be explained.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of MarginExplanation</returns>
+        public async System.Threading.Tasks.Task<MarginExplanation> GetMarginCallExplanationAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<MarginExplanation> localVarResponse = await GetMarginCallExplanationWithHttpInfoAsync(runId, agreementScope, agreementCode, item, marginType, direction, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call. Show how the required amount of one initial-margin call of a run was arrived at, as a tree of components. Only an  initial-margin call whose run stored its working can be explained, as the call&#39;s ExplainAvailable says. The working  of portfolios the caller may not read is replaced by a single redacted component that keeps its parent adding up.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. Only InitialMargin calls can be explained.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (MarginExplanation)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<MarginExplanation>> GetMarginCallExplanationWithHttpInfoAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'runId' is set
+            if (runId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'runId' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            // verify the required parameter 'agreementScope' is set
+            if (agreementScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementScope' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            // verify the required parameter 'agreementCode' is set
+            if (agreementCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementCode' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            // verify the required parameter 'item' is set
+            if (item == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'item' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            // verify the required parameter 'marginType' is set
+            if (marginType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'marginType' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+            // verify the required parameter 'direction' is set
+            if (direction == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'direction' when calling CollateralApi->GetMarginCallExplanation");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementCode)); // path parameter
+            localVarRequestOptions.PathParameters.Add("item", Finbourne.Sdk.Client.ClientUtils.ParameterToString(item)); // path parameter
+            localVarRequestOptions.PathParameters.Add("marginType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(marginType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("direction", Finbourne.Sdk.Client.ClientUtils.ParameterToString(direction)); // path parameter
+
+            localVarRequestOptions.Operation = "CollateralApi.GetMarginCallExplanation";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<MarginExplanation, AbstractOpenAPISchema>("/api/api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$explain", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetMarginCallExplanation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line. Show how the figures of one margin line of a run were arrived at, as a tree of components for each figure. The run  must have stored its working, as its lines&#39; ExplainAvailable says. The working of portfolios the caller may not  read is replaced by a single redacted component that keeps its parent adding up. A line the caller may not read is  reported as not found.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="lineKey">The key of the margin line, as listed in the line&#39;s LineKey.</param>
+        /// <param name="figure">The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>MarginExplanation</returns>
+        public MarginExplanation GetMarginLineExplanation(string runId, string lineKey, string? figure = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<MarginExplanation> localVarResponse = GetMarginLineExplanationWithHttpInfo(runId, lineKey, figure, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line. Show how the figures of one margin line of a run were arrived at, as a tree of components for each figure. The run  must have stored its working, as its lines&#39; ExplainAvailable says. The working of portfolios the caller may not  read is replaced by a single redacted component that keeps its parent adding up. A line the caller may not read is  reported as not found.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="lineKey">The key of the margin line, as listed in the line&#39;s LineKey.</param>
+        /// <param name="figure">The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of MarginExplanation</returns>
+        public Finbourne.Sdk.Client.ApiResponse<MarginExplanation> GetMarginLineExplanationWithHttpInfo(string runId, string lineKey, string? figure = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'runId' is set
+            if (runId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'runId' when calling CollateralApi->GetMarginLineExplanation");
+            }
+
+            // verify the required parameter 'lineKey' is set
+            if (lineKey == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'lineKey' when calling CollateralApi->GetMarginLineExplanation");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("lineKey", Finbourne.Sdk.Client.ClientUtils.ParameterToString(lineKey)); // path parameter
+            if (figure != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "figure", figure));
+            }
+
+            localVarRequestOptions.Operation = "CollateralApi.GetMarginLineExplanation";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<MarginExplanation, AbstractOpenAPISchema>("/api/api/collateral/runs/{runId}/lines/{lineKey}/$explain", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetMarginLineExplanation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line. Show how the figures of one margin line of a run were arrived at, as a tree of components for each figure. The run  must have stored its working, as its lines&#39; ExplainAvailable says. The working of portfolios the caller may not  read is replaced by a single redacted component that keeps its parent adding up. A line the caller may not read is  reported as not found.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="lineKey">The key of the margin line, as listed in the line&#39;s LineKey.</param>
+        /// <param name="figure">The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of MarginExplanation</returns>
+        public async System.Threading.Tasks.Task<MarginExplanation> GetMarginLineExplanationAsync(string runId, string lineKey, string? figure = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<MarginExplanation> localVarResponse = await GetMarginLineExplanationWithHttpInfoAsync(runId, lineKey, figure, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line. Show how the figures of one margin line of a run were arrived at, as a tree of components for each figure. The run  must have stored its working, as its lines&#39; ExplainAvailable says. The working of portfolios the caller may not  read is replaced by a single redacted component that keeps its parent adding up. A line the caller may not read is  reported as not found.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="lineKey">The key of the margin line, as listed in the line&#39;s LineKey.</param>
+        /// <param name="figure">The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (MarginExplanation)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<MarginExplanation>> GetMarginLineExplanationWithHttpInfoAsync(string runId, string lineKey, string? figure = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'runId' is set
+            if (runId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'runId' when calling CollateralApi->GetMarginLineExplanation");
+            }
+
+            // verify the required parameter 'lineKey' is set
+            if (lineKey == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'lineKey' when calling CollateralApi->GetMarginLineExplanation");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("lineKey", Finbourne.Sdk.Client.ClientUtils.ParameterToString(lineKey)); // path parameter
+            if (figure != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "figure", figure));
+            }
+
+            localVarRequestOptions.Operation = "CollateralApi.GetMarginLineExplanation";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<MarginExplanation, AbstractOpenAPISchema>("/api/api/collateral/runs/{runId}/lines/{lineKey}/$explain", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetMarginLineExplanation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// [EXPERIMENTAL] GetMarginRun: Get a margin run. Retrieve a margin run with its progress: the status of each shard, the calls and lines published so far, and  anything it could not value.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2718,37 +4026,41 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListMarginCalls: List margin calls. List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. Restricted to the agreements the caller may read.
+        /// [EXPERIMENTAL] ListMarginCalls: List margin calls. List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. With an effectiveFrom the current calls of each date from it to effectiveAt are listed, in date order.  Restricted to the agreements the caller may read.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="runId">The identifier of the margin run to list the calls of. Lists the current calls for the business date if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing margin calls; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are RunId, AgreementId.Scope, AgreementId.Code, Counterparty.Code, Counterparty.IdTypeScope, Counterparty.IdTypeCode, Item, MarginType, Method, Settlement, Direction, Currency, Required, Held, Call, CounterpartyDemand, Difference, MatchStatus, AgreedAmount, DisputedAmount, DisputeOwner, State and Deadline. For example, to find the breaks, specify \&quot;MatchStatus eq &#39;Break&#39;\&quot;. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified. (optional)</param>
+        /// <param name="effectiveFrom">The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfMarginCall</returns>
-        public PagedResourceListOfMarginCall ListMarginCalls(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfMarginCall ListMarginCalls(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), DateTimeOrCutLabel? effectiveFrom = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall> localVarResponse = ListMarginCallsWithHttpInfo(effectiveAt, runId, page, limit, filter, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall> localVarResponse = ListMarginCallsWithHttpInfo(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListMarginCalls: List margin calls. List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. Restricted to the agreements the caller may read.
+        /// [EXPERIMENTAL] ListMarginCalls: List margin calls. List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. With an effectiveFrom the current calls of each date from it to effectiveAt are listed, in date order.  Restricted to the agreements the caller may read.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="runId">The identifier of the margin run to list the calls of. Lists the current calls for the business date if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing margin calls; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are RunId, AgreementId.Scope, AgreementId.Code, Counterparty.Code, Counterparty.IdTypeScope, Counterparty.IdTypeCode, Item, MarginType, Method, Settlement, Direction, Currency, Required, Held, Call, CounterpartyDemand, Difference, MatchStatus, AgreedAmount, DisputedAmount, DisputeOwner, State and Deadline. For example, to find the breaks, specify \&quot;MatchStatus eq &#39;Break&#39;\&quot;. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified. (optional)</param>
+        /// <param name="effectiveFrom">The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfMarginCall</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall> ListMarginCallsWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall> ListMarginCallsWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), DateTimeOrCutLabel? effectiveFrom = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
 
@@ -2813,6 +4125,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (filter != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (scenarios != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "scenarios", scenarios));
+            }
+            if (effectiveFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveFrom", effectiveFrom));
             }
 
             localVarRequestOptions.Operation = "CollateralApi.ListMarginCalls";
@@ -2850,39 +4170,43 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListMarginCalls: List margin calls. List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. Restricted to the agreements the caller may read.
+        /// [EXPERIMENTAL] ListMarginCalls: List margin calls. List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. With an effectiveFrom the current calls of each date from it to effectiveAt are listed, in date order.  Restricted to the agreements the caller may read.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="runId">The identifier of the margin run to list the calls of. Lists the current calls for the business date if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing margin calls; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are RunId, AgreementId.Scope, AgreementId.Code, Counterparty.Code, Counterparty.IdTypeScope, Counterparty.IdTypeCode, Item, MarginType, Method, Settlement, Direction, Currency, Required, Held, Call, CounterpartyDemand, Difference, MatchStatus, AgreedAmount, DisputedAmount, DisputeOwner, State and Deadline. For example, to find the breaks, specify \&quot;MatchStatus eq &#39;Break&#39;\&quot;. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified. (optional)</param>
+        /// <param name="effectiveFrom">The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfMarginCall</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfMarginCall> ListMarginCallsAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfMarginCall> ListMarginCallsAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), DateTimeOrCutLabel? effectiveFrom = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall> localVarResponse = await ListMarginCallsWithHttpInfoAsync(effectiveAt, runId, page, limit, filter, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall> localVarResponse = await ListMarginCallsWithHttpInfoAsync(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListMarginCalls: List margin calls. List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. Restricted to the agreements the caller may read.
+        /// [EXPERIMENTAL] ListMarginCalls: List margin calls. List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. With an effectiveFrom the current calls of each date from it to effectiveAt are listed, in date order.  Restricted to the agreements the caller may read.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="runId">The identifier of the margin run to list the calls of. Lists the current calls for the business date if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing margin calls; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are RunId, AgreementId.Scope, AgreementId.Code, Counterparty.Code, Counterparty.IdTypeScope, Counterparty.IdTypeCode, Item, MarginType, Method, Settlement, Direction, Currency, Required, Held, Call, CounterpartyDemand, Difference, MatchStatus, AgreedAmount, DisputedAmount, DisputeOwner, State and Deadline. For example, to find the breaks, specify \&quot;MatchStatus eq &#39;Break&#39;\&quot;. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified. (optional)</param>
+        /// <param name="effectiveFrom">The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfMarginCall)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall>> ListMarginCallsWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginCall>> ListMarginCallsWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? runId = default(string?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), DateTimeOrCutLabel? effectiveFrom = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -2948,6 +4272,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (filter != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (scenarios != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "scenarios", scenarios));
+            }
+            if (effectiveFrom != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveFrom", effectiveFrom));
             }
 
             localVarRequestOptions.Operation = "CollateralApi.ListMarginCalls";
@@ -2993,12 +4325,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="page">The pagination token to use to continue listing margin lines; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are AgreementId.Scope, AgreementId.Code, Item, PortfolioId.Scope, PortfolioId.Code, HoldingId, CustodianAccountScope, CustodianAccountCode, CustodianAccountName, Units, Pv, VariationMargin and CollateralValue. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>PagedResourceListOfMarginLine</returns>
-        public PagedResourceListOfMarginLine ListMarginLines(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public PagedResourceListOfMarginLine ListMarginLines(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine> localVarResponse = ListMarginLinesWithHttpInfo(runId, page, limit, filter, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine> localVarResponse = ListMarginLinesWithHttpInfo(runId, page, limit, filter, scenarios, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -3011,10 +4344,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="page">The pagination token to use to continue listing margin lines; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are AgreementId.Scope, AgreementId.Code, Item, PortfolioId.Scope, PortfolioId.Code, HoldingId, CustodianAccountScope, CustodianAccountCode, CustodianAccountName, Units, Pv, VariationMargin and CollateralValue. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PagedResourceListOfMarginLine</returns>
-        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine> ListMarginLinesWithHttpInfo(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine> ListMarginLinesWithHttpInfo(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'runId' is set
             if (runId == null)
@@ -3078,6 +4412,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (filter != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (scenarios != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "scenarios", scenarios));
             }
 
             localVarRequestOptions.Operation = "CollateralApi.ListMarginLines";
@@ -3122,13 +4460,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="page">The pagination token to use to continue listing margin lines; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are AgreementId.Scope, AgreementId.Code, Item, PortfolioId.Scope, PortfolioId.Code, HoldingId, CustodianAccountScope, CustodianAccountCode, CustodianAccountName, Units, Pv, VariationMargin and CollateralValue. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of PagedResourceListOfMarginLine</returns>
-        public async System.Threading.Tasks.Task<PagedResourceListOfMarginLine> ListMarginLinesAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<PagedResourceListOfMarginLine> ListMarginLinesAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine> localVarResponse = await ListMarginLinesWithHttpInfoAsync(runId, page, limit, filter, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine> localVarResponse = await ListMarginLinesWithHttpInfoAsync(runId, page, limit, filter, scenarios, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3141,11 +4480,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="page">The pagination token to use to continue listing margin lines; this value is returned from the previous call. (optional)</param>
         /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the results. The filterable fields are AgreementId.Scope, AgreementId.Code, Item, PortfolioId.Scope, PortfolioId.Code, HoldingId, CustodianAccountScope, CustodianAccountCode, CustodianAccountName, Units, Pv, VariationMargin and CollateralValue. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="scenarios">The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PagedResourceListOfMarginLine)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine>> ListMarginLinesWithHttpInfoAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginLine>> ListMarginLinesWithHttpInfoAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? scenarios = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'runId' is set
             if (runId == null)
@@ -3211,6 +4551,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
             }
+            if (scenarios != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("multi", "scenarios", scenarios));
+            }
 
             localVarRequestOptions.Operation = "CollateralApi.ListMarginLines";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3238,6 +4582,268 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListMarginLines", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run&#39;s netting recommendations. List the trades a run&#39;s optimisation pass found would attract less initial margin in another netting set of the  run, with both sets&#39; initial margin before and after the move. Empty until the run&#39;s optimisation pass has  completed. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>PagedResourceListOfNettingRecommendation</returns>
+        public PagedResourceListOfNettingRecommendation ListMarginRunRecommendations(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation> localVarResponse = ListMarginRunRecommendationsWithHttpInfo(runId, page, limit, filter, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run&#39;s netting recommendations. List the trades a run&#39;s optimisation pass found would attract less initial margin in another netting set of the  run, with both sets&#39; initial margin before and after the move. Empty until the run&#39;s optimisation pass has  completed. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of PagedResourceListOfNettingRecommendation</returns>
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation> ListMarginRunRecommendationsWithHttpInfo(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'runId' is set
+            if (runId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'runId' when calling CollateralApi->ListMarginRunRecommendations");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+
+            localVarRequestOptions.Operation = "CollateralApi.ListMarginRunRecommendations";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<PagedResourceListOfNettingRecommendation, AbstractOpenAPISchema>("/api/api/collateral/runs/{runId}/recommendations", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListMarginRunRecommendations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run&#39;s netting recommendations. List the trades a run&#39;s optimisation pass found would attract less initial margin in another netting set of the  run, with both sets&#39; initial margin before and after the move. Empty until the run&#39;s optimisation pass has  completed. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of PagedResourceListOfNettingRecommendation</returns>
+        public async System.Threading.Tasks.Task<PagedResourceListOfNettingRecommendation> ListMarginRunRecommendationsAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation> localVarResponse = await ListMarginRunRecommendationsWithHttpInfoAsync(runId, page, limit, filter, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run&#39;s netting recommendations. List the trades a run&#39;s optimisation pass found would attract less initial margin in another netting set of the  run, with both sets&#39; initial margin before and after the move. Empty until the run&#39;s optimisation pass has  completed. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (PagedResourceListOfNettingRecommendation)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation>> ListMarginRunRecommendationsWithHttpInfoAsync(string runId, string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'runId' is set
+            if (runId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'runId' when calling CollateralApi->ListMarginRunRecommendations");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+
+            localVarRequestOptions.Operation = "CollateralApi.ListMarginRunRecommendations";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<PagedResourceListOfNettingRecommendation, AbstractOpenAPISchema>("/api/api/collateral/runs/{runId}/recommendations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListMarginRunRecommendations", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -3482,6 +5088,592 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListMarginRuns", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations. List the netting recommendations in force for a business date: those of the latest run for the date whose  optimisation pass completed, with an agreement that run could not value served from the most recent run that  did. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current recommendations for. Defaults to today if not specified. (optional)</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>PagedResourceListOfNettingRecommendation</returns>
+        public PagedResourceListOfNettingRecommendation ListNettingRecommendations(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation> localVarResponse = ListNettingRecommendationsWithHttpInfo(effectiveAt, page, limit, filter, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations. List the netting recommendations in force for a business date: those of the latest run for the date whose  optimisation pass completed, with an agreement that run could not value served from the most recent run that  did. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current recommendations for. Defaults to today if not specified. (optional)</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of PagedResourceListOfNettingRecommendation</returns>
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation> ListNettingRecommendationsWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+
+            localVarRequestOptions.Operation = "CollateralApi.ListNettingRecommendations";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<PagedResourceListOfNettingRecommendation, AbstractOpenAPISchema>("/api/api/collateral/recommendations", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListNettingRecommendations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations. List the netting recommendations in force for a business date: those of the latest run for the date whose  optimisation pass completed, with an agreement that run could not value served from the most recent run that  did. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current recommendations for. Defaults to today if not specified. (optional)</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of PagedResourceListOfNettingRecommendation</returns>
+        public async System.Threading.Tasks.Task<PagedResourceListOfNettingRecommendation> ListNettingRecommendationsAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation> localVarResponse = await ListNettingRecommendationsWithHttpInfoAsync(effectiveAt, page, limit, filter, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations. List the netting recommendations in force for a business date: those of the latest run for the date whose  optimisation pass completed, with an agreement that run could not value served from the most recent run that  did. Restricted to recommendations whose source and target agreements the caller may read.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="effectiveAt">The business date, datetime or cut label to list the current recommendations for. Defaults to today if not specified. (optional)</param>
+        /// <param name="page">The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)</param>
+        /// <param name="limit">When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)</param>
+        /// <param name="filter">Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (PagedResourceListOfNettingRecommendation)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfNettingRecommendation>> ListNettingRecommendationsWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+
+            localVarRequestOptions.Operation = "CollateralApi.ListNettingRecommendations";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<PagedResourceListOfNettingRecommendation, AbstractOpenAPISchema>("/api/api/collateral/recommendations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListNettingRecommendations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices. Value the call&#39;s agreement as of now for the run&#39;s business date and rank its free, eligible holdings for the  call again, keeping the assets and units the caller chose. Each choice is validated against the agreement&#39;s  constraints and kept with its reason when it fails one; the rest of the call is filled from the ranking, cheapest  first, unless fillRemainder is false. Nothing is stored: the result is what to book, for the caller to decide on.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="rankMarginCallRequest">The assets the caller chose, and whether to fill the rest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>CollateralAllocation</returns>
+        public CollateralAllocation RankMarginCall(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, RankMarginCallRequest? rankMarginCallRequest = default(RankMarginCallRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<CollateralAllocation> localVarResponse = RankMarginCallWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices. Value the call&#39;s agreement as of now for the run&#39;s business date and rank its free, eligible holdings for the  call again, keeping the assets and units the caller chose. Each choice is validated against the agreement&#39;s  constraints and kept with its reason when it fails one; the rest of the call is filled from the ranking, cheapest  first, unless fillRemainder is false. Nothing is stored: the result is what to book, for the caller to decide on.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="rankMarginCallRequest">The assets the caller chose, and whether to fill the rest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of CollateralAllocation</returns>
+        public Finbourne.Sdk.Client.ApiResponse<CollateralAllocation> RankMarginCallWithHttpInfo(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, RankMarginCallRequest? rankMarginCallRequest = default(RankMarginCallRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'runId' is set
+            if (runId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'runId' when calling CollateralApi->RankMarginCall");
+            }
+
+            // verify the required parameter 'agreementScope' is set
+            if (agreementScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementScope' when calling CollateralApi->RankMarginCall");
+            }
+
+            // verify the required parameter 'agreementCode' is set
+            if (agreementCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementCode' when calling CollateralApi->RankMarginCall");
+            }
+
+            // verify the required parameter 'item' is set
+            if (item == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'item' when calling CollateralApi->RankMarginCall");
+            }
+
+            // verify the required parameter 'marginType' is set
+            if (marginType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'marginType' when calling CollateralApi->RankMarginCall");
+            }
+
+            // verify the required parameter 'direction' is set
+            if (direction == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'direction' when calling CollateralApi->RankMarginCall");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementCode)); // path parameter
+            localVarRequestOptions.PathParameters.Add("item", Finbourne.Sdk.Client.ClientUtils.ParameterToString(item)); // path parameter
+            localVarRequestOptions.PathParameters.Add("marginType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(marginType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("direction", Finbourne.Sdk.Client.ClientUtils.ParameterToString(direction)); // path parameter
+            localVarRequestOptions.Data = rankMarginCallRequest;
+
+            localVarRequestOptions.Operation = "CollateralApi.RankMarginCall";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CollateralAllocation, AbstractOpenAPISchema>("/api/api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$rank", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RankMarginCall", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices. Value the call&#39;s agreement as of now for the run&#39;s business date and rank its free, eligible holdings for the  call again, keeping the assets and units the caller chose. Each choice is validated against the agreement&#39;s  constraints and kept with its reason when it fails one; the rest of the call is filled from the ranking, cheapest  first, unless fillRemainder is false. Nothing is stored: the result is what to book, for the caller to decide on.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="rankMarginCallRequest">The assets the caller chose, and whether to fill the rest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of CollateralAllocation</returns>
+        public async System.Threading.Tasks.Task<CollateralAllocation> RankMarginCallAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, RankMarginCallRequest? rankMarginCallRequest = default(RankMarginCallRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<CollateralAllocation> localVarResponse = await RankMarginCallWithHttpInfoAsync(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices. Value the call&#39;s agreement as of now for the run&#39;s business date and rank its free, eligible holdings for the  call again, keeping the assets and units the caller chose. Each choice is validated against the agreement&#39;s  constraints and kept with its reason when it fails one; the rest of the call is filled from the ranking, cheapest  first, unless fillRemainder is false. Nothing is stored: the result is what to book, for the caller to decide on.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="runId">The identifier of the margin run.</param>
+        /// <param name="agreementScope">The scope of the call&#39;s collateral agreement.</param>
+        /// <param name="agreementCode">The code of the call&#39;s collateral agreement.</param>
+        /// <param name="item">The margin item of the call.</param>
+        /// <param name="marginType">The margin type of the call. One of VariationMargin or InitialMargin.</param>
+        /// <param name="direction">Who posts under the call. One of WePost, TheyPost or None.</param>
+        /// <param name="rankMarginCallRequest">The assets the caller chose, and whether to fill the rest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (CollateralAllocation)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<CollateralAllocation>> RankMarginCallWithHttpInfoAsync(string runId, string agreementScope, string agreementCode, string item, string marginType, string direction, RankMarginCallRequest? rankMarginCallRequest = default(RankMarginCallRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'runId' is set
+            if (runId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'runId' when calling CollateralApi->RankMarginCall");
+            }
+
+            // verify the required parameter 'agreementScope' is set
+            if (agreementScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementScope' when calling CollateralApi->RankMarginCall");
+            }
+
+            // verify the required parameter 'agreementCode' is set
+            if (agreementCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'agreementCode' when calling CollateralApi->RankMarginCall");
+            }
+
+            // verify the required parameter 'item' is set
+            if (item == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'item' when calling CollateralApi->RankMarginCall");
+            }
+
+            // verify the required parameter 'marginType' is set
+            if (marginType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'marginType' when calling CollateralApi->RankMarginCall");
+            }
+
+            // verify the required parameter 'direction' is set
+            if (direction == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'direction' when calling CollateralApi->RankMarginCall");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("runId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("agreementCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(agreementCode)); // path parameter
+            localVarRequestOptions.PathParameters.Add("item", Finbourne.Sdk.Client.ClientUtils.ParameterToString(item)); // path parameter
+            localVarRequestOptions.PathParameters.Add("marginType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(marginType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("direction", Finbourne.Sdk.Client.ClientUtils.ParameterToString(direction)); // path parameter
+            localVarRequestOptions.Data = rankMarginCallRequest;
+
+            localVarRequestOptions.Operation = "CollateralApi.RankMarginCall";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CollateralAllocation, AbstractOpenAPISchema>("/api/api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$rank", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RankMarginCall", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -4060,29 +6252,29 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation. Value the collateral agreements for a business date in the background and publish their margin calls as a run.  The run is returned as planned; poll GetMarginRun for its progress, and list its calls as they are published.
+        /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation. Value the collateral agreements for a business date, or for each weekday of a span, in the background and publish  their margin calls as a run for each date. The base case is always valued, with each scenario named in the request  valued beside it as a case of the same run. A date after the asAt is a projection on the market as at the asAt.  The runs are returned as planned, in date order; poll GetMarginRun for the progress of each, and list the calls as they are published.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marginRunRequest">The business date to value, and optionally the asAt and the agreements to include.</param>
+        /// <param name="marginRunRequest">The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>MarginRun</returns>
-        public MarginRun RunMarginCalculation(MarginRunRequest marginRunRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>PagedResourceListOfMarginRun</returns>
+        public PagedResourceListOfMarginRun RunMarginCalculation(MarginRunRequest marginRunRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<MarginRun> localVarResponse = RunMarginCalculationWithHttpInfo(marginRunRequest, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginRun> localVarResponse = RunMarginCalculationWithHttpInfo(marginRunRequest, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation. Value the collateral agreements for a business date in the background and publish their margin calls as a run.  The run is returned as planned; poll GetMarginRun for its progress, and list its calls as they are published.
+        /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation. Value the collateral agreements for a business date, or for each weekday of a span, in the background and publish  their margin calls as a run for each date. The base case is always valued, with each scenario named in the request  valued beside it as a case of the same run. A date after the asAt is a projection on the market as at the asAt.  The runs are returned as planned, in date order; poll GetMarginRun for the progress of each, and list the calls as they are published.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="marginRunRequest">The business date to value, and optionally the asAt and the agreements to include.</param>
+        /// <param name="marginRunRequest">The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of MarginRun</returns>
-        public Finbourne.Sdk.Client.ApiResponse<MarginRun> RunMarginCalculationWithHttpInfo(MarginRunRequest marginRunRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>ApiResponse of PagedResourceListOfMarginRun</returns>
+        public Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginRun> RunMarginCalculationWithHttpInfo(MarginRunRequest marginRunRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'marginRunRequest' is set
             if (marginRunRequest == null)
@@ -4161,7 +6353,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<MarginRun, AbstractOpenAPISchema>("/api/api/collateral/$run", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<PagedResourceListOfMarginRun, AbstractOpenAPISchema>("/api/api/collateral/$run", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RunMarginCalculation", localVarResponse);
@@ -4175,31 +6367,31 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation. Value the collateral agreements for a business date in the background and publish their margin calls as a run.  The run is returned as planned; poll GetMarginRun for its progress, and list its calls as they are published.
+        /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation. Value the collateral agreements for a business date, or for each weekday of a span, in the background and publish  their margin calls as a run for each date. The base case is always valued, with each scenario named in the request  valued beside it as a case of the same run. A date after the asAt is a projection on the market as at the asAt.  The runs are returned as planned, in date order; poll GetMarginRun for the progress of each, and list the calls as they are published.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marginRunRequest">The business date to value, and optionally the asAt and the agreements to include.</param>
+        /// <param name="marginRunRequest">The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of MarginRun</returns>
-        public async System.Threading.Tasks.Task<MarginRun> RunMarginCalculationAsync(MarginRunRequest marginRunRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of PagedResourceListOfMarginRun</returns>
+        public async System.Threading.Tasks.Task<PagedResourceListOfMarginRun> RunMarginCalculationAsync(MarginRunRequest marginRunRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<MarginRun> localVarResponse = await RunMarginCalculationWithHttpInfoAsync(marginRunRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginRun> localVarResponse = await RunMarginCalculationWithHttpInfoAsync(marginRunRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation. Value the collateral agreements for a business date in the background and publish their margin calls as a run.  The run is returned as planned; poll GetMarginRun for its progress, and list its calls as they are published.
+        /// [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation. Value the collateral agreements for a business date, or for each weekday of a span, in the background and publish  their margin calls as a run for each date. The base case is always valued, with each scenario named in the request  valued beside it as a case of the same run. A date after the asAt is a projection on the market as at the asAt.  The runs are returned as planned, in date order; poll GetMarginRun for the progress of each, and list the calls as they are published.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
-        /// <param name="marginRunRequest">The business date to value, and optionally the asAt and the agreements to include.</param>
+        /// <param name="marginRunRequest">The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (MarginRun)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<MarginRun>> RunMarginCalculationWithHttpInfoAsync(MarginRunRequest marginRunRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of ApiResponse (PagedResourceListOfMarginRun)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PagedResourceListOfMarginRun>> RunMarginCalculationWithHttpInfoAsync(MarginRunRequest marginRunRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'marginRunRequest' is set
             if (marginRunRequest == null)
@@ -4279,7 +6471,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<MarginRun, AbstractOpenAPISchema>("/api/api/collateral/$run", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<PagedResourceListOfMarginRun, AbstractOpenAPISchema>("/api/api/collateral/$run", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

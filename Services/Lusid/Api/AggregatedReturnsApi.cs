@@ -31,6 +31,45 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// [EXPERIMENTAL] DeleteReturns: Delete Returns
+        /// </summary>
+        /// <remarks>
+        /// Cancel the Returns stored under the returns series against the specified entity inside the window.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
+        /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>DeletedEntityResponse</returns>
+        DeletedEntityResponse DeleteReturns(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, string? period = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteReturns: Delete Returns
+        /// </summary>
+        /// <remarks>
+        /// Cancel the Returns stored under the returns series against the specified entity inside the window.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
+        /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of DeletedEntityResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteReturnsWithHttpInfo(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, string? period = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] DeleteReturnsEntity: Delete returns entity.
         /// </summary>
         /// <remarks>
@@ -61,7 +100,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity.
         /// </summary>
         /// <remarks>
-        /// Report daily returns for the entity specified in the request body over the effective window.              Currently, supports a single entity of type Portfolio and a daily return grid. Returns upserted to the              Returns store under the supplied returns id take precedence: if any exist in the window they are              reported as-is and nothing is calculated. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. When a reporting currency is requested the              Returns entity is also required, as its recipe supplies the FX rates.
+        /// Report daily returns for the entity specified in the request body over the effective window.              Supports a Portfolio, or a PortfolioGroup whose members&#39; returns are rolled up in their common base              currency, on a daily return grid. Returns upserted to the Returns store under the supplied returns id              take precedence: if any exist in the window for a portfolio they are reported as-is and nothing is              calculated for it. A group member&#39;s upserted returns are weighted by their stored (net) opening market              value and contribute only on the days they cover; a day with no upserted return for that member is              reported from the other members alone. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. A calculated day&#39;s return is the day&#39;s              profit and loss over the portfolio&#39;s net opening value, cash included and signed, so a portfolio              financed by overdraft reports a return on its negative capital; a portfolio whose net opening value is              zero and that takes in no capital during the day reports a zero return, with the day&#39;s gain or loss              visible in its market values. When a reporting currency is requested the Returns entity is also              required, as its recipe supplies the FX rates.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="aggregatedReturnsEntityRequest">The entity to report returns for, the returns id under which upserted returns              are stored and the Returns entity that configures a calculation, the effective window and the metrics              to report.</param>
@@ -74,7 +113,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity.
         /// </summary>
         /// <remarks>
-        /// Report daily returns for the entity specified in the request body over the effective window.              Currently, supports a single entity of type Portfolio and a daily return grid. Returns upserted to the              Returns store under the supplied returns id take precedence: if any exist in the window they are              reported as-is and nothing is calculated. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. When a reporting currency is requested the              Returns entity is also required, as its recipe supplies the FX rates.
+        /// Report daily returns for the entity specified in the request body over the effective window.              Supports a Portfolio, or a PortfolioGroup whose members&#39; returns are rolled up in their common base              currency, on a daily return grid. Returns upserted to the Returns store under the supplied returns id              take precedence: if any exist in the window for a portfolio they are reported as-is and nothing is              calculated for it. A group member&#39;s upserted returns are weighted by their stored (net) opening market              value and contribute only on the days they cover; a day with no upserted return for that member is              reported from the other members alone. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. A calculated day&#39;s return is the day&#39;s              profit and loss over the portfolio&#39;s net opening value, cash included and signed, so a portfolio              financed by overdraft reports a return on its negative capital; a portfolio whose net opening value is              zero and that takes in no capital during the day reports a zero return, with the day&#39;s gain or loss              visible in its market values. When a reporting currency is requested the Returns entity is also              required, as its recipe supplies the FX rates.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="aggregatedReturnsEntityRequest">The entity to report returns for, the returns id under which upserted returns              are stored and the Returns entity that configures a calculation, the effective window and the metrics              to report.</param>
@@ -82,6 +121,47 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AggregatedReturnsResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<AggregatedReturnsResponse> GetAggregatedReturnsWithHttpInfo(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetReturns: Get Returns
+        /// </summary>
+        /// <remarks>
+        /// Get the Returns stored under the returns series against the specified entity.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
+        /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResourceListOfPerformanceReturn</returns>
+        ResourceListOfPerformanceReturn GetReturns(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel? fromEffectiveAt = default(DateTimeOrCutLabel?), DateTimeOrCutLabel? toEffectiveAt = default(DateTimeOrCutLabel?), string? period = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetReturns: Get Returns
+        /// </summary>
+        /// <remarks>
+        /// Get the Returns stored under the returns series against the specified entity.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
+        /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResourceListOfPerformanceReturn</returns>
+        Finbourne.Sdk.Client.ApiResponse<ResourceListOfPerformanceReturn> GetReturnsWithHttpInfo(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel? fromEffectiveAt = default(DateTimeOrCutLabel?), DateTimeOrCutLabel? toEffectiveAt = default(DateTimeOrCutLabel?), string? period = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetReturnsEntity: Get returns entity.
         /// </summary>
@@ -137,6 +217,41 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfReturnsEntity</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfReturnsEntity> ListReturnsEntitiesWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EXPERIMENTAL] UpsertReturns: Upsert Returns
+        /// </summary>
+        /// <remarks>
+        /// Update or insert returns stored under the returns series against the specified entity. Stored              returns take precedence over a calculation in the aggregated returns of that entity.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="performanceReturn">This contains the Returns which need to be upsert.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>UpsertReturnsResponse</returns>
+        UpsertReturnsResponse UpsertReturns(string scope, string code, string entityType, string entityScope, string entityCode, List<PerformanceReturn> performanceReturn, int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertReturns: Upsert Returns
+        /// </summary>
+        /// <remarks>
+        /// Update or insert returns stored under the returns series against the specified entity. Stored              returns take precedence over a calculation in the aggregated returns of that entity.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="performanceReturn">This contains the Returns which need to be upsert.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of UpsertReturnsResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<UpsertReturnsResponse> UpsertReturnsWithHttpInfo(string scope, string code, string entityType, string entityScope, string entityCode, List<PerformanceReturn> performanceReturn, int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] UpsertReturnsEntity: Upsert returns entity.
         /// </summary>
         /// <remarks>
@@ -171,6 +286,47 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Asynchronous Operations
         /// <summary>
+        /// [EXPERIMENTAL] DeleteReturns: Delete Returns
+        /// </summary>
+        /// <remarks>
+        /// Cancel the Returns stored under the returns series against the specified entity inside the window.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
+        /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of DeletedEntityResponse</returns>
+        System.Threading.Tasks.Task<DeletedEntityResponse> DeleteReturnsAsync(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, string? period = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteReturns: Delete Returns
+        /// </summary>
+        /// <remarks>
+        /// Cancel the Returns stored under the returns series against the specified entity inside the window.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
+        /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteReturnsWithHttpInfoAsync(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, string? period = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] DeleteReturnsEntity: Delete returns entity.
         /// </summary>
         /// <remarks>
@@ -203,7 +359,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity.
         /// </summary>
         /// <remarks>
-        /// Report daily returns for the entity specified in the request body over the effective window.              Currently, supports a single entity of type Portfolio and a daily return grid. Returns upserted to the              Returns store under the supplied returns id take precedence: if any exist in the window they are              reported as-is and nothing is calculated. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. When a reporting currency is requested the              Returns entity is also required, as its recipe supplies the FX rates.
+        /// Report daily returns for the entity specified in the request body over the effective window.              Supports a Portfolio, or a PortfolioGroup whose members&#39; returns are rolled up in their common base              currency, on a daily return grid. Returns upserted to the Returns store under the supplied returns id              take precedence: if any exist in the window for a portfolio they are reported as-is and nothing is              calculated for it. A group member&#39;s upserted returns are weighted by their stored (net) opening market              value and contribute only on the days they cover; a day with no upserted return for that member is              reported from the other members alone. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. A calculated day&#39;s return is the day&#39;s              profit and loss over the portfolio&#39;s net opening value, cash included and signed, so a portfolio              financed by overdraft reports a return on its negative capital; a portfolio whose net opening value is              zero and that takes in no capital during the day reports a zero return, with the day&#39;s gain or loss              visible in its market values. When a reporting currency is requested the Returns entity is also              required, as its recipe supplies the FX rates.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="aggregatedReturnsEntityRequest">The entity to report returns for, the returns id under which upserted returns              are stored and the Returns entity that configures a calculation, the effective window and the metrics              to report.</param>
@@ -217,7 +373,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity.
         /// </summary>
         /// <remarks>
-        /// Report daily returns for the entity specified in the request body over the effective window.              Currently, supports a single entity of type Portfolio and a daily return grid. Returns upserted to the              Returns store under the supplied returns id take precedence: if any exist in the window they are              reported as-is and nothing is calculated. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. When a reporting currency is requested the              Returns entity is also required, as its recipe supplies the FX rates.
+        /// Report daily returns for the entity specified in the request body over the effective window.              Supports a Portfolio, or a PortfolioGroup whose members&#39; returns are rolled up in their common base              currency, on a daily return grid. Returns upserted to the Returns store under the supplied returns id              take precedence: if any exist in the window for a portfolio they are reported as-is and nothing is              calculated for it. A group member&#39;s upserted returns are weighted by their stored (net) opening market              value and contribute only on the days they cover; a day with no upserted return for that member is              reported from the other members alone. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. A calculated day&#39;s return is the day&#39;s              profit and loss over the portfolio&#39;s net opening value, cash included and signed, so a portfolio              financed by overdraft reports a return on its negative capital; a portfolio whose net opening value is              zero and that takes in no capital during the day reports a zero return, with the day&#39;s gain or loss              visible in its market values. When a reporting currency is requested the Returns entity is also              required, as its recipe supplies the FX rates.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="aggregatedReturnsEntityRequest">The entity to report returns for, the returns id under which upserted returns              are stored and the Returns entity that configures a calculation, the effective window and the metrics              to report.</param>
@@ -226,6 +382,49 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (AggregatedReturnsResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AggregatedReturnsResponse>> GetAggregatedReturnsWithHttpInfoAsync(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] GetReturns: Get Returns
+        /// </summary>
+        /// <remarks>
+        /// Get the Returns stored under the returns series against the specified entity.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
+        /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResourceListOfPerformanceReturn</returns>
+        System.Threading.Tasks.Task<ResourceListOfPerformanceReturn> GetReturnsAsync(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel? fromEffectiveAt = default(DateTimeOrCutLabel?), DateTimeOrCutLabel? toEffectiveAt = default(DateTimeOrCutLabel?), string? period = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetReturns: Get Returns
+        /// </summary>
+        /// <remarks>
+        /// Get the Returns stored under the returns series against the specified entity.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
+        /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResourceListOfPerformanceReturn)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfPerformanceReturn>> GetReturnsWithHttpInfoAsync(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel? fromEffectiveAt = default(DateTimeOrCutLabel?), DateTimeOrCutLabel? toEffectiveAt = default(DateTimeOrCutLabel?), string? period = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] GetReturnsEntity: Get returns entity.
         /// </summary>
@@ -284,6 +483,43 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (ResourceListOfReturnsEntity)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfReturnsEntity>> ListReturnsEntitiesWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertReturns: Upsert Returns
+        /// </summary>
+        /// <remarks>
+        /// Update or insert returns stored under the returns series against the specified entity. Stored              returns take precedence over a calculation in the aggregated returns of that entity.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="performanceReturn">This contains the Returns which need to be upsert.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of UpsertReturnsResponse</returns>
+        System.Threading.Tasks.Task<UpsertReturnsResponse> UpsertReturnsAsync(string scope, string code, string entityType, string entityScope, string entityCode, List<PerformanceReturn> performanceReturn, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertReturns: Upsert Returns
+        /// </summary>
+        /// <remarks>
+        /// Update or insert returns stored under the returns series against the specified entity. Stored              returns take precedence over a calculation in the aggregated returns of that entity.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="performanceReturn">This contains the Returns which need to be upsert.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (UpsertReturnsResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<UpsertReturnsResponse>> UpsertReturnsWithHttpInfoAsync(string scope, string code, string entityType, string entityScope, string entityCode, List<PerformanceReturn> performanceReturn, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] UpsertReturnsEntity: Upsert returns entity.
         /// </summary>
@@ -403,6 +639,352 @@ namespace Finbourne.Sdk.Services.Lusid.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteReturns: Delete Returns Cancel the Returns stored under the returns series against the specified entity inside the window.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
+        /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>DeletedEntityResponse</returns>
+        public DeletedEntityResponse DeleteReturns(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, string? period = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> localVarResponse = DeleteReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteReturns: Delete Returns Cancel the Returns stored under the returns series against the specified entity inside the window.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
+        /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of DeletedEntityResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteReturnsWithHttpInfo(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, string? period = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'entityType' is set
+            if (entityType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityType' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'entityScope' is set
+            if (entityScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityScope' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'entityCode' is set
+            if (entityCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityCode' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'fromEffectiveAt' is set
+            if (fromEffectiveAt == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'fromEffectiveAt' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'toEffectiveAt' is set
+            if (toEffectiveAt == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'toEffectiveAt' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityCode)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "fromEffectiveAt", fromEffectiveAt));
+            localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "toEffectiveAt", toEffectiveAt));
+            if (period != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "period", period));
+            }
+
+            localVarRequestOptions.Operation = "AggregatedReturnsApi.DeleteReturns";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<DeletedEntityResponse, AbstractOpenAPISchema>("/api/api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}/$delete", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteReturns", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteReturns: Delete Returns Cancel the Returns stored under the returns series against the specified entity inside the window.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
+        /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of DeletedEntityResponse</returns>
+        public async System.Threading.Tasks.Task<DeletedEntityResponse> DeleteReturnsAsync(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, string? period = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> localVarResponse = await DeleteReturnsWithHttpInfoAsync(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] DeleteReturns: Delete Returns Cancel the Returns stored under the returns series against the specified entity inside the window.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to delete the Returns.</param>
+        /// <param name="toEffectiveAt">The end date from which to delete the Returns.</param>
+        /// <param name="period">The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteReturnsWithHttpInfoAsync(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel fromEffectiveAt, DateTimeOrCutLabel toEffectiveAt, string? period = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'entityType' is set
+            if (entityType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityType' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'entityScope' is set
+            if (entityScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityScope' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'entityCode' is set
+            if (entityCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityCode' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'fromEffectiveAt' is set
+            if (fromEffectiveAt == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'fromEffectiveAt' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+            // verify the required parameter 'toEffectiveAt' is set
+            if (toEffectiveAt == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'toEffectiveAt' when calling AggregatedReturnsApi->DeleteReturns");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityCode)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "fromEffectiveAt", fromEffectiveAt));
+            localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "toEffectiveAt", toEffectiveAt));
+            if (period != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "period", period));
+            }
+
+            localVarRequestOptions.Operation = "AggregatedReturnsApi.DeleteReturns";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeletedEntityResponse, AbstractOpenAPISchema>("/api/api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}/$delete", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteReturns", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>
@@ -650,7 +1232,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity. Report daily returns for the entity specified in the request body over the effective window.              Currently, supports a single entity of type Portfolio and a daily return grid. Returns upserted to the              Returns store under the supplied returns id take precedence: if any exist in the window they are              reported as-is and nothing is calculated. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. When a reporting currency is requested the              Returns entity is also required, as its recipe supplies the FX rates.
+        /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity. Report daily returns for the entity specified in the request body over the effective window.              Supports a Portfolio, or a PortfolioGroup whose members&#39; returns are rolled up in their common base              currency, on a daily return grid. Returns upserted to the Returns store under the supplied returns id              take precedence: if any exist in the window for a portfolio they are reported as-is and nothing is              calculated for it. A group member&#39;s upserted returns are weighted by their stored (net) opening market              value and contribute only on the days they cover; a day with no upserted return for that member is              reported from the other members alone. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. A calculated day&#39;s return is the day&#39;s              profit and loss over the portfolio&#39;s net opening value, cash included and signed, so a portfolio              financed by overdraft reports a return on its negative capital; a portfolio whose net opening value is              zero and that takes in no capital during the day reports a zero return, with the day&#39;s gain or loss              visible in its market values. When a reporting currency is requested the Returns entity is also              required, as its recipe supplies the FX rates.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="aggregatedReturnsEntityRequest">The entity to report returns for, the returns id under which upserted returns              are stored and the Returns entity that configures a calculation, the effective window and the metrics              to report.</param>
@@ -664,7 +1246,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity. Report daily returns for the entity specified in the request body over the effective window.              Currently, supports a single entity of type Portfolio and a daily return grid. Returns upserted to the              Returns store under the supplied returns id take precedence: if any exist in the window they are              reported as-is and nothing is calculated. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. When a reporting currency is requested the              Returns entity is also required, as its recipe supplies the FX rates.
+        /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity. Report daily returns for the entity specified in the request body over the effective window.              Supports a Portfolio, or a PortfolioGroup whose members&#39; returns are rolled up in their common base              currency, on a daily return grid. Returns upserted to the Returns store under the supplied returns id              take precedence: if any exist in the window for a portfolio they are reported as-is and nothing is              calculated for it. A group member&#39;s upserted returns are weighted by their stored (net) opening market              value and contribute only on the days they cover; a day with no upserted return for that member is              reported from the other members alone. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. A calculated day&#39;s return is the day&#39;s              profit and loss over the portfolio&#39;s net opening value, cash included and signed, so a portfolio              financed by overdraft reports a return on its negative capital; a portfolio whose net opening value is              zero and that takes in no capital during the day reports a zero return, with the day&#39;s gain or loss              visible in its market values. When a reporting currency is requested the Returns entity is also              required, as its recipe supplies the FX rates.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -765,7 +1347,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity. Report daily returns for the entity specified in the request body over the effective window.              Currently, supports a single entity of type Portfolio and a daily return grid. Returns upserted to the              Returns store under the supplied returns id take precedence: if any exist in the window they are              reported as-is and nothing is calculated. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. When a reporting currency is requested the              Returns entity is also required, as its recipe supplies the FX rates.
+        /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity. Report daily returns for the entity specified in the request body over the effective window.              Supports a Portfolio, or a PortfolioGroup whose members&#39; returns are rolled up in their common base              currency, on a daily return grid. Returns upserted to the Returns store under the supplied returns id              take precedence: if any exist in the window for a portfolio they are reported as-is and nothing is              calculated for it. A group member&#39;s upserted returns are weighted by their stored (net) opening market              value and contribute only on the days they cover; a day with no upserted return for that member is              reported from the other members alone. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. A calculated day&#39;s return is the day&#39;s              profit and loss over the portfolio&#39;s net opening value, cash included and signed, so a portfolio              financed by overdraft reports a return on its negative capital; a portfolio whose net opening value is              zero and that takes in no capital during the day reports a zero return, with the day&#39;s gain or loss              visible in its market values. When a reporting currency is requested the Returns entity is also              required, as its recipe supplies the FX rates.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="aggregatedReturnsEntityRequest">The entity to report returns for, the returns id under which upserted returns              are stored and the Returns entity that configures a calculation, the effective window and the metrics              to report.</param>
@@ -780,7 +1362,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity. Report daily returns for the entity specified in the request body over the effective window.              Currently, supports a single entity of type Portfolio and a daily return grid. Returns upserted to the              Returns store under the supplied returns id take precedence: if any exist in the window they are              reported as-is and nothing is calculated. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. When a reporting currency is requested the              Returns entity is also required, as its recipe supplies the FX rates.
+        /// [EXPERIMENTAL] GetAggregatedReturns: Calculate aggregated returns for an entity. Report daily returns for the entity specified in the request body over the effective window.              Supports a Portfolio, or a PortfolioGroup whose members&#39; returns are rolled up in their common base              currency, on a daily return grid. Returns upserted to the Returns store under the supplied returns id              take precedence: if any exist in the window for a portfolio they are reported as-is and nothing is              calculated for it. A group member&#39;s upserted returns are weighted by their stored (net) opening market              value and contribute only on the days they cover; a day with no upserted return for that member is              reported from the other members alone. Otherwise time-weighted returns are calculated using the              recipe, fee handling and flow-discrepancy handling of the persisted Returns entity identified by the              returns id, and the request fails if no such entity exists. A calculated day&#39;s return is the day&#39;s              profit and loss over the portfolio&#39;s net opening value, cash included and signed, so a portfolio              financed by overdraft reports a return on its negative capital; a portfolio whose net opening value is              zero and that takes in no capital during the day reports a zero return, with the day&#39;s gain or loss              visible in its market values. When a reporting currency is requested the Returns entity is also              required, as its recipe supplies the FX rates.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -874,6 +1456,352 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAggregatedReturns", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetReturns: Get Returns Get the Returns stored under the returns series against the specified entity.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
+        /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResourceListOfPerformanceReturn</returns>
+        public ResourceListOfPerformanceReturn GetReturns(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel? fromEffectiveAt = default(DateTimeOrCutLabel?), DateTimeOrCutLabel? toEffectiveAt = default(DateTimeOrCutLabel?), string? period = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfPerformanceReturn> localVarResponse = GetReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetReturns: Get Returns Get the Returns stored under the returns series against the specified entity.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
+        /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResourceListOfPerformanceReturn</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ResourceListOfPerformanceReturn> GetReturnsWithHttpInfo(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel? fromEffectiveAt = default(DateTimeOrCutLabel?), DateTimeOrCutLabel? toEffectiveAt = default(DateTimeOrCutLabel?), string? period = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling AggregatedReturnsApi->GetReturns");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling AggregatedReturnsApi->GetReturns");
+            }
+
+            // verify the required parameter 'entityType' is set
+            if (entityType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityType' when calling AggregatedReturnsApi->GetReturns");
+            }
+
+            // verify the required parameter 'entityScope' is set
+            if (entityScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityScope' when calling AggregatedReturnsApi->GetReturns");
+            }
+
+            // verify the required parameter 'entityCode' is set
+            if (entityCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityCode' when calling AggregatedReturnsApi->GetReturns");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityCode)); // path parameter
+            if (fromEffectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "fromEffectiveAt", fromEffectiveAt));
+            }
+            if (toEffectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "toEffectiveAt", toEffectiveAt));
+            }
+            if (period != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "period", period));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+
+            localVarRequestOptions.Operation = "AggregatedReturnsApi.GetReturns";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ResourceListOfPerformanceReturn, AbstractOpenAPISchema>("/api/api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetReturns", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetReturns: Get Returns Get the Returns stored under the returns series against the specified entity.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
+        /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResourceListOfPerformanceReturn</returns>
+        public async System.Threading.Tasks.Task<ResourceListOfPerformanceReturn> GetReturnsAsync(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel? fromEffectiveAt = default(DateTimeOrCutLabel?), DateTimeOrCutLabel? toEffectiveAt = default(DateTimeOrCutLabel?), string? period = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfPerformanceReturn> localVarResponse = await GetReturnsWithHttpInfoAsync(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] GetReturns: Get Returns Get the Returns stored under the returns series against the specified entity.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="fromEffectiveAt">The start date from which to get the Returns. (optional)</param>
+        /// <param name="toEffectiveAt">The end date from which to get the Returns. (optional)</param>
+        /// <param name="period">The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResourceListOfPerformanceReturn)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfPerformanceReturn>> GetReturnsWithHttpInfoAsync(string scope, string code, string entityType, string entityScope, string entityCode, DateTimeOrCutLabel? fromEffectiveAt = default(DateTimeOrCutLabel?), DateTimeOrCutLabel? toEffectiveAt = default(DateTimeOrCutLabel?), string? period = default(string?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling AggregatedReturnsApi->GetReturns");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling AggregatedReturnsApi->GetReturns");
+            }
+
+            // verify the required parameter 'entityType' is set
+            if (entityType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityType' when calling AggregatedReturnsApi->GetReturns");
+            }
+
+            // verify the required parameter 'entityScope' is set
+            if (entityScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityScope' when calling AggregatedReturnsApi->GetReturns");
+            }
+
+            // verify the required parameter 'entityCode' is set
+            if (entityCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityCode' when calling AggregatedReturnsApi->GetReturns");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityCode)); // path parameter
+            if (fromEffectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "fromEffectiveAt", fromEffectiveAt));
+            }
+            if (toEffectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "toEffectiveAt", toEffectiveAt));
+            }
+            if (period != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "period", period));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+
+            localVarRequestOptions.Operation = "AggregatedReturnsApi.GetReturns";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ResourceListOfPerformanceReturn, AbstractOpenAPISchema>("/api/api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetReturns", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1350,6 +2278,330 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListReturnsEntities", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertReturns: Upsert Returns Update or insert returns stored under the returns series against the specified entity. Stored              returns take precedence over a calculation in the aggregated returns of that entity.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="performanceReturn">This contains the Returns which need to be upsert.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>UpsertReturnsResponse</returns>
+        public UpsertReturnsResponse UpsertReturns(string scope, string code, string entityType, string entityScope, string entityCode, List<PerformanceReturn> performanceReturn, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<UpsertReturnsResponse> localVarResponse = UpsertReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, performanceReturn, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertReturns: Upsert Returns Update or insert returns stored under the returns series against the specified entity. Stored              returns take precedence over a calculation in the aggregated returns of that entity.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="performanceReturn">This contains the Returns which need to be upsert.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of UpsertReturnsResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<UpsertReturnsResponse> UpsertReturnsWithHttpInfo(string scope, string code, string entityType, string entityScope, string entityCode, List<PerformanceReturn> performanceReturn, int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            // verify the required parameter 'entityType' is set
+            if (entityType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityType' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            // verify the required parameter 'entityScope' is set
+            if (entityScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityScope' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            // verify the required parameter 'entityCode' is set
+            if (entityCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityCode' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            // verify the required parameter 'performanceReturn' is set
+            if (performanceReturn == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'performanceReturn' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityCode)); // path parameter
+            localVarRequestOptions.Data = performanceReturn;
+
+            localVarRequestOptions.Operation = "AggregatedReturnsApi.UpsertReturns";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<UpsertReturnsResponse, AbstractOpenAPISchema>("/api/api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpsertReturns", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertReturns: Upsert Returns Update or insert returns stored under the returns series against the specified entity. Stored              returns take precedence over a calculation in the aggregated returns of that entity.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="performanceReturn">This contains the Returns which need to be upsert.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of UpsertReturnsResponse</returns>
+        public async System.Threading.Tasks.Task<UpsertReturnsResponse> UpsertReturnsAsync(string scope, string code, string entityType, string entityScope, string entityCode, List<PerformanceReturn> performanceReturn, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<UpsertReturnsResponse> localVarResponse = await UpsertReturnsWithHttpInfoAsync(scope, code, entityType, entityScope, entityCode, performanceReturn, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EXPERIMENTAL] UpsertReturns: Upsert Returns Update or insert returns stored under the returns series against the specified entity. Stored              returns take precedence over a calculation in the aggregated returns of that entity.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Returns.</param>
+        /// <param name="code">The code of the Returns.</param>
+        /// <param name="entityType">The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup.</param>
+        /// <param name="entityScope">The scope of the entity.</param>
+        /// <param name="entityCode">The code of the entity.</param>
+        /// <param name="performanceReturn">This contains the Returns which need to be upsert.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (UpsertReturnsResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<UpsertReturnsResponse>> UpsertReturnsWithHttpInfoAsync(string scope, string code, string entityType, string entityScope, string entityCode, List<PerformanceReturn> performanceReturn, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            // verify the required parameter 'entityType' is set
+            if (entityType == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityType' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            // verify the required parameter 'entityScope' is set
+            if (entityScope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityScope' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            // verify the required parameter 'entityCode' is set
+            if (entityCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'entityCode' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+            // verify the required parameter 'performanceReturn' is set
+            if (performanceReturn == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'performanceReturn' when calling AggregatedReturnsApi->UpsertReturns");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityType", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityType)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityScope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityScope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("entityCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(entityCode)); // path parameter
+            localVarRequestOptions.Data = performanceReturn;
+
+            localVarRequestOptions.Operation = "AggregatedReturnsApi.UpsertReturns";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UpsertReturnsResponse, AbstractOpenAPISchema>("/api/api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpsertReturns", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -32,6 +32,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RecResultItem" /> class
+        /// with the <see cref="RecResultExternalIdentifiersItem" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of RecResultExternalIdentifiersItem.</param>
+        public RecResultItem(RecResultExternalIdentifiersItem actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RecResultItem" /> class
         /// with the <see cref="RecResultHoldingItem" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of RecResultHoldingItem.</param>
@@ -48,6 +60,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="actualInstance">An instance of RecResultRelationalDataItem.</param>
         public RecResultItem(RecResultRelationalDataItem actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RecResultItem" /> class
+        /// with the <see cref="RecResultResourceIdItem" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of RecResultResourceIdItem.</param>
+        public RecResultItem(RecResultResourceIdItem actualInstance)
         {
             this.IsNullable = false;
             this.SchemaType= "oneOf";
@@ -92,11 +116,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             set
             {
-                if (value.GetType() == typeof(RecResultHoldingItem) || value is RecResultHoldingItem)
+                if (value.GetType() == typeof(RecResultExternalIdentifiersItem) || value is RecResultExternalIdentifiersItem)
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(RecResultHoldingItem) || value is RecResultHoldingItem)
                 {
                     this._actualInstance = value;
                 }
                 else if (value.GetType() == typeof(RecResultRelationalDataItem) || value is RecResultRelationalDataItem)
+                {
+                    this._actualInstance = value;
+                }
+                else if (value.GetType() == typeof(RecResultResourceIdItem) || value is RecResultResourceIdItem)
                 {
                     this._actualInstance = value;
                 }
@@ -110,9 +142,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: RecResultHoldingItem, RecResultRelationalDataItem, RecResultSettlementActivityItem, RecResultTransactionItem");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem");
                 }
             }
+        }
+
+        /// <summary>
+        /// Get the actual instance of `RecResultExternalIdentifiersItem`. If the actual instance is not `RecResultExternalIdentifiersItem`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of RecResultExternalIdentifiersItem</returns>
+        public RecResultExternalIdentifiersItem GetRecResultExternalIdentifiersItem()
+        {
+            return (RecResultExternalIdentifiersItem)this.ActualInstance;
         }
 
         /// <summary>
@@ -133,6 +175,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public RecResultRelationalDataItem GetRecResultRelationalDataItem()
         {
             return (RecResultRelationalDataItem)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `RecResultResourceIdItem`. If the actual instance is not `RecResultResourceIdItem`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of RecResultResourceIdItem</returns>
+        public RecResultResourceIdItem GetRecResultResourceIdItem()
+        {
+            return (RecResultResourceIdItem)this.ActualInstance;
         }
 
         /// <summary>
@@ -200,6 +252,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     case "Holding":
                         newRecResultItem = new RecResultItem(JsonConvert.DeserializeObject<RecResultHoldingItem>(jsonString, RecResultItem.AdditionalPropertiesSerializerSettings));
                         return newRecResultItem;
+                    case "Instrument":
+                        newRecResultItem = new RecResultItem(JsonConvert.DeserializeObject<RecResultExternalIdentifiersItem>(jsonString, RecResultItem.AdditionalPropertiesSerializerSettings));
+                        return newRecResultItem;
+                    case "LegalEntity":
+                        newRecResultItem = new RecResultItem(JsonConvert.DeserializeObject<RecResultExternalIdentifiersItem>(jsonString, RecResultItem.AdditionalPropertiesSerializerSettings));
+                        return newRecResultItem;
+                    case "Portfolio":
+                        newRecResultItem = new RecResultItem(JsonConvert.DeserializeObject<RecResultResourceIdItem>(jsonString, RecResultItem.AdditionalPropertiesSerializerSettings));
+                        return newRecResultItem;
                     case "RelationalDataPoint":
                         newRecResultItem = new RecResultItem(JsonConvert.DeserializeObject<RecResultRelationalDataItem>(jsonString, RecResultItem.AdditionalPropertiesSerializerSettings));
                         return newRecResultItem;
@@ -213,7 +274,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                         newRecResultItem = new RecResultItem(JsonConvert.DeserializeObject<RecResultHoldingItem>(jsonString, RecResultItem.AdditionalPropertiesSerializerSettings));
                         return newRecResultItem;
                     default:
-                        System.Diagnostics.Debug.WriteLine(string.Format("Failed to lookup discriminator value `{0}` for RecResultItem. Possible values: Holding RelationalDataPoint SettlementActivity Transaction ValuedHolding", discriminatorValue));
+                        System.Diagnostics.Debug.WriteLine(string.Format("Failed to lookup discriminator value `{0}` for RecResultItem. Possible values: Holding Instrument LegalEntity Portfolio RelationalDataPoint SettlementActivity Transaction ValuedHolding", discriminatorValue));
                         break;
                 }
             }
@@ -224,6 +285,26 @@ namespace Finbourne.Sdk.Services.Lusid.Model
 
             int match = 0;
             List<string> matchedTypes = new List<string>();
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(RecResultExternalIdentifiersItem).GetProperty("AdditionalProperties") == null)
+                {
+                    newRecResultItem = new RecResultItem(JsonConvert.DeserializeObject<RecResultExternalIdentifiersItem>(jsonString, RecResultItem.SerializerSettings));
+                }
+                else
+                {
+                    newRecResultItem = new RecResultItem(JsonConvert.DeserializeObject<RecResultExternalIdentifiersItem>(jsonString, RecResultItem.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("RecResultExternalIdentifiersItem");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into RecResultExternalIdentifiersItem: {1}", jsonString, exception.ToString()));
+            }
 
             try
             {
@@ -263,6 +344,26 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into RecResultRelationalDataItem: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(RecResultResourceIdItem).GetProperty("AdditionalProperties") == null)
+                {
+                    newRecResultItem = new RecResultItem(JsonConvert.DeserializeObject<RecResultResourceIdItem>(jsonString, RecResultItem.SerializerSettings));
+                }
+                else
+                {
+                    newRecResultItem = new RecResultItem(JsonConvert.DeserializeObject<RecResultResourceIdItem>(jsonString, RecResultItem.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("RecResultResourceIdItem");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into RecResultResourceIdItem: {1}", jsonString, exception.ToString()));
             }
 
             try

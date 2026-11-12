@@ -62,30 +62,30 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfApplicableInstrumentEvent</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfApplicableInstrumentEvent> QueryApplicableInstrumentEventsWithHttpInfo(DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), QueryApplicableInstrumentEventsRequest? queryApplicableInstrumentEventsRequest = default(QueryApplicableInstrumentEventsRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage.
+        /// [EARLY ACCESS] QueryBucketCashFlowDrillDown: Returns the cashflow buckets of a range of dates, each with its balances and the individual cashflows that make it up, with their source lineage.
         /// </summary>
         /// <remarks>
-        /// Returns the individual cashflows inside the requested bucket window for the holdings of the specified  portfolios, annotated with the source (Instrument, Transaction or SRS) that produced each cashflow.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
+        /// Splits the range from BucketStart to BucketEnd into periods with the BucketingSchedule, and returns one bucket per period,  member portfolio, payment currency and sub-holding key combination. Each bucket has its opening balance, the individual  cashflows that make up its activity, and its closing balance, so every balance and every cashflow appears once. Each  cashflow is annotated with the source (Instrument, Transaction or SRS) that produced it.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryBucketCashFlowDrillDownRequest">The Query Information. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ResourceListOfCashFlowDetail</returns>
-        ResourceListOfCashFlowDetail QueryBucketCashFlowDrillDown(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>BucketCashFlowDrillDownResponse</returns>
+        BucketCashFlowDrillDownResponse QueryBucketCashFlowDrillDown(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage.
+        /// [EARLY ACCESS] QueryBucketCashFlowDrillDown: Returns the cashflow buckets of a range of dates, each with its balances and the individual cashflows that make it up, with their source lineage.
         /// </summary>
         /// <remarks>
-        /// Returns the individual cashflows inside the requested bucket window for the holdings of the specified  portfolios, annotated with the source (Instrument, Transaction or SRS) that produced each cashflow.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
+        /// Splits the range from BucketStart to BucketEnd into periods with the BucketingSchedule, and returns one bucket per period,  member portfolio, payment currency and sub-holding key combination. Each bucket has its opening balance, the individual  cashflows that make up its activity, and its closing balance, so every balance and every cashflow appears once. Each  cashflow is annotated with the source (Instrument, Transaction or SRS) that produced it.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryBucketCashFlowDrillDownRequest">The Query Information. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ResourceListOfCashFlowDetail</returns>
-        Finbourne.Sdk.Client.ApiResponse<ResourceListOfCashFlowDetail> QueryBucketCashFlowDrillDownWithHttpInfo(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <returns>ApiResponse of BucketCashFlowDrillDownResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<BucketCashFlowDrillDownResponse> QueryBucketCashFlowDrillDownWithHttpInfo(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
         /// </summary>
@@ -241,32 +241,32 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ResourceListOfApplicableInstrumentEvent)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfApplicableInstrumentEvent>> QueryApplicableInstrumentEventsWithHttpInfoAsync(DateTimeOffset? asAt = default(DateTimeOffset?), int? limit = default(int?), string? page = default(string?), QueryApplicableInstrumentEventsRequest? queryApplicableInstrumentEventsRequest = default(QueryApplicableInstrumentEventsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage.
+        /// [EARLY ACCESS] QueryBucketCashFlowDrillDown: Returns the cashflow buckets of a range of dates, each with its balances and the individual cashflows that make it up, with their source lineage.
         /// </summary>
         /// <remarks>
-        /// Returns the individual cashflows inside the requested bucket window for the holdings of the specified  portfolios, annotated with the source (Instrument, Transaction or SRS) that produced each cashflow.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
+        /// Splits the range from BucketStart to BucketEnd into periods with the BucketingSchedule, and returns one bucket per period,  member portfolio, payment currency and sub-holding key combination. Each bucket has its opening balance, the individual  cashflows that make up its activity, and its closing balance, so every balance and every cashflow appears once. Each  cashflow is annotated with the source (Instrument, Transaction or SRS) that produced it.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryBucketCashFlowDrillDownRequest">The Query Information. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ResourceListOfCashFlowDetail</returns>
-        System.Threading.Tasks.Task<ResourceListOfCashFlowDetail> QueryBucketCashFlowDrillDownAsync(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of BucketCashFlowDrillDownResponse</returns>
+        System.Threading.Tasks.Task<BucketCashFlowDrillDownResponse> QueryBucketCashFlowDrillDownAsync(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage.
+        /// [EARLY ACCESS] QueryBucketCashFlowDrillDown: Returns the cashflow buckets of a range of dates, each with its balances and the individual cashflows that make it up, with their source lineage.
         /// </summary>
         /// <remarks>
-        /// Returns the individual cashflows inside the requested bucket window for the holdings of the specified  portfolios, annotated with the source (Instrument, Transaction or SRS) that produced each cashflow.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
+        /// Splits the range from BucketStart to BucketEnd into periods with the BucketingSchedule, and returns one bucket per period,  member portfolio, payment currency and sub-holding key combination. Each bucket has its opening balance, the individual  cashflows that make up its activity, and its closing balance, so every balance and every cashflow appears once. Each  cashflow is annotated with the source (Instrument, Transaction or SRS) that produced it.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryBucketCashFlowDrillDownRequest">The Query Information. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ResourceListOfCashFlowDetail)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfCashFlowDetail>> QueryBucketCashFlowDrillDownWithHttpInfoAsync(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <returns>Task of ApiResponse (BucketCashFlowDrillDownResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BucketCashFlowDrillDownResponse>> QueryBucketCashFlowDrillDownWithHttpInfoAsync(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
         /// </summary>
@@ -740,29 +740,29 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage. Returns the individual cashflows inside the requested bucket window for the holdings of the specified  portfolios, annotated with the source (Instrument, Transaction or SRS) that produced each cashflow.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
+        /// [EARLY ACCESS] QueryBucketCashFlowDrillDown: Returns the cashflow buckets of a range of dates, each with its balances and the individual cashflows that make it up, with their source lineage. Splits the range from BucketStart to BucketEnd into periods with the BucketingSchedule, and returns one bucket per period,  member portfolio, payment currency and sub-holding key combination. Each bucket has its opening balance, the individual  cashflows that make up its activity, and its closing balance, so every balance and every cashflow appears once. Each  cashflow is annotated with the source (Instrument, Transaction or SRS) that produced it.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryBucketCashFlowDrillDownRequest">The Query Information. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ResourceListOfCashFlowDetail</returns>
-        public ResourceListOfCashFlowDetail QueryBucketCashFlowDrillDown(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>BucketCashFlowDrillDownResponse</returns>
+        public BucketCashFlowDrillDownResponse QueryBucketCashFlowDrillDown(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ResourceListOfCashFlowDetail> localVarResponse = QueryBucketCashFlowDrillDownWithHttpInfo(queryBucketCashFlowDrillDownRequest, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<BucketCashFlowDrillDownResponse> localVarResponse = QueryBucketCashFlowDrillDownWithHttpInfo(queryBucketCashFlowDrillDownRequest, opts: opts);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage. Returns the individual cashflows inside the requested bucket window for the holdings of the specified  portfolios, annotated with the source (Instrument, Transaction or SRS) that produced each cashflow.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
+        /// [EARLY ACCESS] QueryBucketCashFlowDrillDown: Returns the cashflow buckets of a range of dates, each with its balances and the individual cashflows that make it up, with their source lineage. Splits the range from BucketStart to BucketEnd into periods with the BucketingSchedule, and returns one bucket per period,  member portfolio, payment currency and sub-holding key combination. Each bucket has its opening balance, the individual  cashflows that make up its activity, and its closing balance, so every balance and every cashflow appears once. Each  cashflow is annotated with the source (Instrument, Transaction or SRS) that produced it.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="queryBucketCashFlowDrillDownRequest">The Query Information. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>ApiResponse of ResourceListOfCashFlowDetail</returns>
-        public Finbourne.Sdk.Client.ApiResponse<ResourceListOfCashFlowDetail> QueryBucketCashFlowDrillDownWithHttpInfo(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        /// <returns>ApiResponse of BucketCashFlowDrillDownResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<BucketCashFlowDrillDownResponse> QueryBucketCashFlowDrillDownWithHttpInfo(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
 
@@ -835,7 +835,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<ResourceListOfCashFlowDetail, AbstractOpenAPISchema>("/api/api/instrumentevents/$queryBucketCashFlowDrillDown", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<BucketCashFlowDrillDownResponse, AbstractOpenAPISchema>("/api/api/instrumentevents/$queryBucketCashFlowDrillDown", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("QueryBucketCashFlowDrillDown", localVarResponse);
@@ -849,22 +849,22 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage. Returns the individual cashflows inside the requested bucket window for the holdings of the specified  portfolios, annotated with the source (Instrument, Transaction or SRS) that produced each cashflow.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
+        /// [EARLY ACCESS] QueryBucketCashFlowDrillDown: Returns the cashflow buckets of a range of dates, each with its balances and the individual cashflows that make it up, with their source lineage. Splits the range from BucketStart to BucketEnd into periods with the BucketingSchedule, and returns one bucket per period,  member portfolio, payment currency and sub-holding key combination. Each bucket has its opening balance, the individual  cashflows that make up its activity, and its closing balance, so every balance and every cashflow appears once. Each  cashflow is annotated with the source (Instrument, Transaction or SRS) that produced it.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryBucketCashFlowDrillDownRequest">The Query Information. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ResourceListOfCashFlowDetail</returns>
-        public async System.Threading.Tasks.Task<ResourceListOfCashFlowDetail> QueryBucketCashFlowDrillDownAsync(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of BucketCashFlowDrillDownResponse</returns>
+        public async System.Threading.Tasks.Task<BucketCashFlowDrillDownResponse> QueryBucketCashFlowDrillDownAsync(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<ResourceListOfCashFlowDetail> localVarResponse = await QueryBucketCashFlowDrillDownWithHttpInfoAsync(queryBucketCashFlowDrillDownRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<BucketCashFlowDrillDownResponse> localVarResponse = await QueryBucketCashFlowDrillDownWithHttpInfoAsync(queryBucketCashFlowDrillDownRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage. Returns the individual cashflows inside the requested bucket window for the holdings of the specified  portfolios, annotated with the source (Instrument, Transaction or SRS) that produced each cashflow.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
+        /// [EARLY ACCESS] QueryBucketCashFlowDrillDown: Returns the cashflow buckets of a range of dates, each with its balances and the individual cashflows that make it up, with their source lineage. Splits the range from BucketStart to BucketEnd into periods with the BucketingSchedule, and returns one bucket per period,  member portfolio, payment currency and sub-holding key combination. Each bucket has its opening balance, the individual  cashflows that make up its activity, and its closing balance, so every balance and every cashflow appears once. Each  cashflow is annotated with the source (Instrument, Transaction or SRS) that produced it.                The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -872,8 +872,8 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
-        /// <returns>Task of ApiResponse (ResourceListOfCashFlowDetail)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfCashFlowDetail>> QueryBucketCashFlowDrillDownWithHttpInfoAsync(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        /// <returns>Task of ApiResponse (BucketCashFlowDrillDownResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<BucketCashFlowDrillDownResponse>> QueryBucketCashFlowDrillDownWithHttpInfoAsync(QueryBucketCashFlowDrillDownRequest? queryBucketCashFlowDrillDownRequest = default(QueryBucketCashFlowDrillDownRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
 
             Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
@@ -947,7 +947,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ResourceListOfCashFlowDetail, AbstractOpenAPISchema>("/api/api/instrumentevents/$queryBucketCashFlowDrillDown", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<BucketCashFlowDrillDownResponse, AbstractOpenAPISchema>("/api/api/instrumentevents/$queryBucketCashFlowDrillDown", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

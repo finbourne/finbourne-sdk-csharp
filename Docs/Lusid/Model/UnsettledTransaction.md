@@ -15,6 +15,7 @@ A transaction that remains unsettled as at the valuation point, with per-bucket 
 | **StockIsOverdue** | **bool** | Optional | Whether the stock component is overdue for settlement. |
 | **DeferredCashSettlementStatus** | **string** | Optional | The settlement status of the deferred cash component. |
 | **DeferredCashIsOverdue** | **bool** | Optional | Whether the deferred cash component is overdue for settlement. |
+| **Revaluation** | [UnsettledTransactionRevaluation](UnsettledTransactionRevaluation.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -34,7 +35,8 @@ var instance = new UnsettledTransaction(
     stockSettlementStatus: "...",  // optional — The settlement status of the stock component.
     stockIsOverdue: true,  // optional — Whether the stock component is overdue for settlement.
     deferredCashSettlementStatus: "...",  // optional — The settlement status of the deferred cash component.
-    deferredCashIsOverdue: true  // optional — Whether the deferred cash component is overdue for settlement.
+    deferredCashIsOverdue: true,  // optional — Whether the deferred cash component is overdue for settlement.
+    revaluation: new UnsettledTransactionRevaluation(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -54,6 +56,7 @@ var instance = JsonConvert.DeserializeObject<UnsettledTransaction>(json);
 
 - [OutputTransaction](OutputTransaction.md)
 - [PortfolioId](PortfolioId.md)
+- [UnsettledTransactionRevaluation](UnsettledTransactionRevaluation.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

@@ -5,14 +5,14 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**AddAllocationMapException**](#addallocationmapexception) | **POST** `/api/api/allocationmaps/{scope}/{code}/exceptions` | [EXPERIMENTAL] AddAllocationMapException: Add an exception to an Allocation Map. |
-| [**CreateAllocationMap**](#createallocationmap) | **POST** `/api/api/allocationmaps/{scope}` | [EXPERIMENTAL] CreateAllocationMap: Create an Allocation Map. |
-| [**DeleteAllocationMap**](#deleteallocationmap) | **DELETE** `/api/api/allocationmaps/{scope}/{code}` | [EXPERIMENTAL] DeleteAllocationMap: Delete an Allocation Map. |
-| [**GetAllocationMap**](#getallocationmap) | **GET** `/api/api/allocationmaps/{scope}/{code}` | [EXPERIMENTAL] GetAllocationMap: Get an Allocation Map. |
-| [**ListAllocationMaps**](#listallocationmaps) | **GET** `/api/api/allocationmaps` | [EXPERIMENTAL] ListAllocationMaps: List Allocation Maps. |
-| [**RemoveAllocationMapException**](#removeallocationmapexception) | **DELETE** `/api/api/allocationmaps/{scope}/{code}/exceptions/{investorRecordId}` | [EXPERIMENTAL] RemoveAllocationMapException: Remove an exception from an Allocation Map. |
-| [**ResolveAllocationMap**](#resolveallocationmap) | **POST** `/api/api/allocationmaps/{scope}/{code}/resolve` | [EXPERIMENTAL] ResolveAllocationMap: Resolve an Allocation Map. |
-| [**UpsertAllocationMap**](#upsertallocationmap) | **PUT** `/api/api/allocationmaps/{scope}/{code}` | [EXPERIMENTAL] UpsertAllocationMap: Upsert an Allocation Map. |
+| [**AddAllocationMapException**](#addallocationmapexception) | **POST** `/api/api/allocationmaps/{scope}/{code}/exceptions` | [EARLY ACCESS] AddAllocationMapException: Add an exception to an Allocation Map. |
+| [**CreateAllocationMap**](#createallocationmap) | **POST** `/api/api/allocationmaps/{scope}` | [EARLY ACCESS] CreateAllocationMap: Create an Allocation Map. |
+| [**DeleteAllocationMap**](#deleteallocationmap) | **DELETE** `/api/api/allocationmaps/{scope}/{code}` | [EARLY ACCESS] DeleteAllocationMap: Delete an Allocation Map. |
+| [**GetAllocationMap**](#getallocationmap) | **GET** `/api/api/allocationmaps/{scope}/{code}` | [EARLY ACCESS] GetAllocationMap: Get an Allocation Map. |
+| [**ListAllocationMaps**](#listallocationmaps) | **GET** `/api/api/allocationmaps` | [EARLY ACCESS] ListAllocationMaps: List Allocation Maps. |
+| [**RemoveAllocationMapException**](#removeallocationmapexception) | **DELETE** `/api/api/allocationmaps/{scope}/{code}/exceptions/{investorRecordId}` | [EARLY ACCESS] RemoveAllocationMapException: Remove an exception from an Allocation Map. |
+| [**ResolveAllocationMap**](#resolveallocationmap) | **POST** `/api/api/allocationmaps/{scope}/{code}/resolve` | [EARLY ACCESS] ResolveAllocationMap: Resolve an Allocation Map. |
+| [**UpsertAllocationMap**](#upsertallocationmap) | **PUT** `/api/api/allocationmaps/{scope}/{code}` | [EARLY ACCESS] UpsertAllocationMap: Upsert an Allocation Map. |
 
 ### Example
 
@@ -61,7 +61,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AllocationMapsApi
 
 > AllocationMap AddAllocationMapException(string scope, string code, AllocationMapException allocationMapException, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] AddAllocationMapException: Add an exception to an Allocation Map.
+[EARLY ACCESS] AddAllocationMapException: Add an exception to an Allocation Map.
 
 Add a per-investor exception (an exclusion or a fixed percentage) to the map's participants, from an  effective datetime. The result is a new bitemporal version of the map. An investor record may carry at most  one exception; to change it, remove the existing one first or upsert the whole map.
 
@@ -125,7 +125,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationMap CreateAllocationMap(string scope, AllocationMapRequest allocationMapRequest)
 
-[EXPERIMENTAL] CreateAllocationMap: Create an Allocation Map.
+[EARLY ACCESS] CreateAllocationMap: Create an Allocation Map.
 
 Create a new Allocation Map. The scope is provided in the route and the code in the request body. The map  names the structure member it hangs off, who participates, and the basis used to share each kind of event.
 
@@ -185,7 +185,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > DeletedEntityResponse DeleteAllocationMap(string scope, string code, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] DeleteAllocationMap: Delete an Allocation Map.
+[EARLY ACCESS] DeleteAllocationMap: Delete an Allocation Map.
 
 Delete an Allocation Map from an effective datetime. The Allocation Map is no longer readable from that  effective datetime onwards.
 
@@ -247,7 +247,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationMap GetAllocationMap(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] GetAllocationMap: Get an Allocation Map.
+[EARLY ACCESS] GetAllocationMap: Get an Allocation Map.
 
 Retrieve the definition of a particular Allocation Map at an effective and asAt datetime, including its  participants, exceptions and the basis declared for each event type.
 
@@ -311,7 +311,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > PagedResourceListOfAllocationMap ListAllocationMaps(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null)
 
-[EXPERIMENTAL] ListAllocationMaps: List Allocation Maps.
+[EARLY ACCESS] ListAllocationMaps: List Allocation Maps.
 
 List all the Allocation Maps matching a particular criteria.
 
@@ -379,7 +379,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationMap RemoveAllocationMapException(string scope, string code, string investorRecordId, DateTimeOrCutLabel? effectiveAt = null)
 
-[EXPERIMENTAL] RemoveAllocationMapException: Remove an exception from an Allocation Map.
+[EARLY ACCESS] RemoveAllocationMapException: Remove an exception from an Allocation Map.
 
 Remove the exception held against an investor record, from an effective datetime. The result is a new  bitemporal version of the map in which that investor is treated like every other participant.
 
@@ -443,7 +443,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationMapResolution ResolveAllocationMap(string scope, string code, AllocationMapResolveRequest allocationMapResolveRequest, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
 
-[EXPERIMENTAL] ResolveAllocationMap: Resolve an Allocation Map.
+[EARLY ACCESS] ResolveAllocationMap: Resolve an Allocation Map.
 
 Dry-run the map against an event: share the supplied amount across the participants in force at the  effective datetime, applying fixed-percentage exceptions off the top and the declared basis to the remainder.  Nothing is booked. Basis values (for example committed capital per investor) are supplied in the request  until the investor register can provide them.
 
@@ -509,7 +509,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationMap UpsertAllocationMap(string scope, string code, AllocationMapRequest allocationMapRequest)
 
-[EXPERIMENTAL] UpsertAllocationMap: Upsert an Allocation Map.
+[EARLY ACCESS] UpsertAllocationMap: Upsert an Allocation Map.
 
 Update or insert an Allocation Map. If the Allocation Map does not exist it is created, otherwise it is  updated. The code in the request body must match the code in the route.
 

@@ -1,6 +1,6 @@
 # Finbourne.Sdk.Luminesce.Model.DownloadQueryResultRequest
 
-How to download the results of a background query: in what format, which of them, and (so far for csv only) formatted as the grid shows them.
+How to download the results of a background query: in what format, which of them, and (so far for csv, pipe and json only) formatted as the grid shows them.
 ## Properties
 
 | Name | Type | Required | Description |

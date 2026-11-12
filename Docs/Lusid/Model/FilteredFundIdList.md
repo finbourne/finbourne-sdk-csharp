@@ -11,7 +11,7 @@
 | **NavTypeCodesHint** | **List&lt;string&gt;** | Optional | *No description available.* |
 | **NavTypeSelection** | **string** | Optional | Available values: First, All. |
 | **ResolvedFundNavTypeCodes** | [List&lt;FundNavTypeCodes&gt;](FundNavTypeCodes.md) | Optional | *No description available.* *(read-only)* |
-| **ReferenceListType** | **string** | Required | The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList. Default: `ReferenceListTypeEnum.FilteredFundIdList` |
+| **ReferenceListType** | **string** | Required | The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList, FilteredPortfolioIdList. Default: `ReferenceListTypeEnum.FilteredFundIdList` |
 
 
 ## Usage
@@ -27,7 +27,7 @@ var instance = new FilteredFundIdList(
     navTypeCodesHint: ,  // optional
     navTypeSelection: "...",  // optional — Available values: First, All.
     resolvedFundNavTypeCodes: new List<FundNavTypeCodes>(),  // optional
-    referenceListType: "..."  // required — The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList.
+    referenceListType: "..."  // required — The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList, FilteredPortfolioIdList.
 );
 ```
 ### Serializing to JSON

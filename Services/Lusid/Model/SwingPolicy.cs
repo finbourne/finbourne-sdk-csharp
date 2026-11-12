@@ -40,7 +40,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="spreads">spreads.</param>
         /// <param name="inflowTrigger">inflowTrigger.</param>
         /// <param name="outflowTrigger">outflowTrigger.</param>
-        public SwingPolicy(SwingBaseline baseline = default(SwingBaseline), string defaultSpreadSource = default(string), SwingSpreads spreads = default(SwingSpreads), SwingTrigger inflowTrigger = default(SwingTrigger), SwingTrigger outflowTrigger = default(SwingTrigger))
+        /// <param name="approvalMode">Who settles the swing decision a valuation point deals at. Automatic, the default, finalises the valuation point on the engine&#39;s proposal. Manual holds the proposal: the valuation point cannot be finalised until a manager has submitted a pricingMethodologyOverride on it, equal to the proposal to approve it or different to overrule it. Must be Automatic when defaultSpreadSource is omitted, because a price that never swings has no decision to approve. Available values: Automatic, Manual..</param>
+        public SwingPolicy(SwingBaseline baseline = default(SwingBaseline), string defaultSpreadSource = default(string), SwingSpreads spreads = default(SwingSpreads), SwingTrigger inflowTrigger = default(SwingTrigger), SwingTrigger outflowTrigger = default(SwingTrigger), string approvalMode = default(string))
         {
             // to ensure "baseline" is required (not null)
             if (baseline == null)
@@ -52,6 +53,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Spreads = spreads;
             this.InflowTrigger = inflowTrigger;
             this.OutflowTrigger = outflowTrigger;
+            this.ApprovalMode = approvalMode;
         }
 
         /// <summary>
@@ -86,6 +88,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public SwingTrigger OutflowTrigger { get; set; }
 
         /// <summary>
+        /// Who settles the swing decision a valuation point deals at. Automatic, the default, finalises the valuation point on the engine&#39;s proposal. Manual holds the proposal: the valuation point cannot be finalised until a manager has submitted a pricingMethodologyOverride on it, equal to the proposal to approve it or different to overrule it. Must be Automatic when defaultSpreadSource is omitted, because a price that never swings has no decision to approve. Available values: Automatic, Manual.
+        /// </summary>
+        /// <value>Who settles the swing decision a valuation point deals at. Automatic, the default, finalises the valuation point on the engine&#39;s proposal. Manual holds the proposal: the valuation point cannot be finalised until a manager has submitted a pricingMethodologyOverride on it, equal to the proposal to approve it or different to overrule it. Must be Automatic when defaultSpreadSource is omitted, because a price that never swings has no decision to approve. Available values: Automatic, Manual.</value>
+        [DataMember(Name = "approvalMode", EmitDefaultValue = true)]
+        public string ApprovalMode { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -98,6 +107,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Spreads: ").Append(Spreads).Append("\n");
             sb.Append("  InflowTrigger: ").Append(InflowTrigger).Append("\n");
             sb.Append("  OutflowTrigger: ").Append(OutflowTrigger).Append("\n");
+            sb.Append("  ApprovalMode: ").Append(ApprovalMode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -157,6 +167,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.OutflowTrigger == input.OutflowTrigger ||
                     (this.OutflowTrigger != null &&
                     this.OutflowTrigger.Equals(input.OutflowTrigger))
+                ) && 
+                (
+                    this.ApprovalMode == input.ApprovalMode ||
+                    (this.ApprovalMode != null &&
+                    this.ApprovalMode.Equals(input.ApprovalMode))
                 );
         }
 
@@ -188,6 +203,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.OutflowTrigger != null)
                 {
                     hashCode = (hashCode * 59) + this.OutflowTrigger.GetHashCode();
+                }
+                if (this.ApprovalMode != null)
+                {
+                    hashCode = (hashCode * 59) + this.ApprovalMode.GetHashCode();
                 }
                 return hashCode;
             }

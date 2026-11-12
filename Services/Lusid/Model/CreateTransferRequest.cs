@@ -41,7 +41,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentIdentifierOut">The LUSID instrument id of the instrument moving out. A position in this instrument must exist in the outgoing portfolio on the outgoing trade date. (required).</param>
         /// <param name="instrumentIdentifierIn">The LUSID instrument id of the instrument moving in. Equal to InstrumentIdentifierOut for a transfer between portfolios. (required).</param>
         /// <param name="pricingMethod">How the legs are priced. &#39;AtCost&#39; uses the cost per unit of the outgoing holding; &#39;AtPrice&#39; uses the supplied TransactionPriceOut, which is then required. Available values: AtCost, AtPrice. (required).</param>
-        /// <param name="taxLotStructure">What happens to the tax lots of the outgoing position. Only &#39;Consolidate&#39; is currently supported; &#39;Preserve&#39; is rejected. Defaults to &#39;Consolidate&#39;. Available values: Consolidate, Preserve..</param>
+        /// <param name="taxLotStructure">What happens to the tax lots of the outgoing position. Defaults to &#39;Consolidate&#39;. &#39;Preserve&#39; carries each outgoing lot onto the incoming position; it is not supported when the incoming portfolio uses the AverageCost or Default accounting method, or across share classes in different currencies. Available values: Consolidate, Preserve..</param>
         /// <param name="unitsOut">The number of units to move out. Must be greater than zero. (required).</param>
         /// <param name="unitsIn">The number of units to move in. Must be greater than zero. (required).</param>
         /// <param name="amountOut">The total consideration of the outgoing leg. Recorded, not applied..</param>
@@ -53,19 +53,22 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="exchangeRateOut">The FX rate to apply to the outgoing leg..</param>
         /// <param name="exchangeRateIn">The FX rate to apply to the incoming leg..</param>
         /// <param name="transactionPriceOut">The unit price of the outgoing leg. Required when PricingMethod is &#39;AtPrice&#39;, and ignored when it is &#39;AtCost&#39;..</param>
-        /// <param name="transactionPriceIn">The unit price of the incoming leg. Ignored for a transfer, which carries the outgoing price across; defaults to the outgoing price for a switch..</param>
+        /// <param name="transactionPriceIn">The unit price of the incoming leg. Not accepted for a transfer of one instrument between portfolios, which carries the outgoing price across. For a switch, required when PricingMethod is &#39;AtPrice&#39; and defaults to the outgoing price otherwise..</param>
         /// <param name="counterpartyIdOut">The counterparty identifier of the outgoing leg..</param>
         /// <param name="counterpartyIdIn">The counterparty identifier of the incoming leg. Defaults to CounterpartyIdOut..</param>
         /// <param name="custodianAccountIdOut">custodianAccountIdOut.</param>
         /// <param name="custodianAccountIdIn">custodianAccountIdIn.</param>
-        /// <param name="source">The transaction source the generated legs are booked against. (required).</param>
+        /// <param name="sourceOut">The transaction source the outgoing leg is booked against, and the incoming leg too when SourceIn is not supplied. Defaults to &#39;default&#39;..</param>
         /// <param name="accountingMethod">An accounting method to record against the transfer. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency..</param>
         /// <param name="propertiesOut">Transaction Properties to set on the outgoing transaction leg, and on the incoming transaction leg when PropertiesIn is absent. Supplying an empty collection for PropertiesIn leaves the incoming leg with no properties..</param>
         /// <param name="propertiesIn">Transaction Properties to set on the incoming transaction leg, replacing rather than adding to PropertiesOut..</param>
         /// <param name="properties">Properties to set on the transfer itself, in the Transfer domain. These are separate from PropertiesOut and PropertiesIn, which are Transaction domain and land on the legs..</param>
         /// <param name="transactionToPortfolioRateOut">The rate from the outgoing leg&#39;s trade currency to the outgoing portfolio&#39;s base currency, applied whenever supplied..</param>
         /// <param name="transactionToPortfolioRateIn">The rate from the incoming leg&#39;s trade currency to the incoming portfolio&#39;s base currency. Required when the two portfolios have different base currencies, and applied whenever supplied..</param>
-        public CreateTransferRequest(ResourceId transferId = default(ResourceId), ResourceId portfolioIdOut = default(ResourceId), ResourceId portfolioIdIn = default(ResourceId), string instrumentIdentifierOut = default(string), string instrumentIdentifierIn = default(string), string pricingMethod = default(string), string taxLotStructure = default(string), decimal unitsOut = default(decimal), decimal unitsIn = default(decimal), decimal? amountOut = default(decimal?), decimal? weightOut = default(decimal?), DateTimeOffset tradeDateOut = default(DateTimeOffset), DateTimeOffset tradeDateIn = default(DateTimeOffset), DateTimeOffset settlementDateOut = default(DateTimeOffset), DateTimeOffset? settlementDateIn = default(DateTimeOffset?), decimal? exchangeRateOut = default(decimal?), decimal? exchangeRateIn = default(decimal?), decimal? transactionPriceOut = default(decimal?), decimal? transactionPriceIn = default(decimal?), string counterpartyIdOut = default(string), string counterpartyIdIn = default(string), ResourceId custodianAccountIdOut = default(ResourceId), ResourceId custodianAccountIdIn = default(ResourceId), string source = default(string), string accountingMethod = default(string), Dictionary<string, PerpetualProperty> propertiesOut = default(Dictionary<string, PerpetualProperty>), Dictionary<string, PerpetualProperty> propertiesIn = default(Dictionary<string, PerpetualProperty>), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), decimal? transactionToPortfolioRateOut = default(decimal?), decimal? transactionToPortfolioRateIn = default(decimal?))
+        /// <param name="sourceIn">The transaction source the incoming leg is booked against. Defaults to SourceOut..</param>
+        /// <param name="transactionTypeOut">The transaction type to book the outgoing leg as. Supply it together with TransactionTypeIn, or supply neither. If not supplied, it will be derived from the transfer type. It must be a different type from TransactionTypeIn, must be configured under SourceOut in the transaction type scope of PortfolioIdOut, and must reduce a position..</param>
+        /// <param name="transactionTypeIn">The transaction type to book the incoming leg as. Supply it together with TransactionTypeOut, or supply neither. If not supplied, it will be derived from the transfer type. It must be configured under SourceIn in the transaction type scope of PortfolioIdIn, and must increase a position..</param>
+        public CreateTransferRequest(ResourceId transferId = default(ResourceId), ResourceId portfolioIdOut = default(ResourceId), ResourceId portfolioIdIn = default(ResourceId), string instrumentIdentifierOut = default(string), string instrumentIdentifierIn = default(string), string pricingMethod = default(string), string taxLotStructure = default(string), decimal unitsOut = default(decimal), decimal unitsIn = default(decimal), decimal? amountOut = default(decimal?), decimal? weightOut = default(decimal?), DateTimeOffset tradeDateOut = default(DateTimeOffset), DateTimeOffset tradeDateIn = default(DateTimeOffset), DateTimeOffset settlementDateOut = default(DateTimeOffset), DateTimeOffset? settlementDateIn = default(DateTimeOffset?), decimal? exchangeRateOut = default(decimal?), decimal? exchangeRateIn = default(decimal?), decimal? transactionPriceOut = default(decimal?), decimal? transactionPriceIn = default(decimal?), string counterpartyIdOut = default(string), string counterpartyIdIn = default(string), ResourceId custodianAccountIdOut = default(ResourceId), ResourceId custodianAccountIdIn = default(ResourceId), string sourceOut = default(string), string accountingMethod = default(string), Dictionary<string, PerpetualProperty> propertiesOut = default(Dictionary<string, PerpetualProperty>), Dictionary<string, PerpetualProperty> propertiesIn = default(Dictionary<string, PerpetualProperty>), Dictionary<string, PerpetualProperty> properties = default(Dictionary<string, PerpetualProperty>), decimal? transactionToPortfolioRateOut = default(decimal?), decimal? transactionToPortfolioRateIn = default(decimal?), string sourceIn = default(string), string transactionTypeOut = default(string), string transactionTypeIn = default(string))
         {
             // to ensure "transferId" is required (not null)
             if (transferId == null)
@@ -108,12 +111,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.TradeDateOut = tradeDateOut;
             this.TradeDateIn = tradeDateIn;
             this.SettlementDateOut = settlementDateOut;
-            // to ensure "source" is required (not null)
-            if (source == null)
-            {
-                throw new ArgumentNullException("source is a required property for CreateTransferRequest and cannot be null");
-            }
-            this.Source = source;
             this.TaxLotStructure = taxLotStructure;
             this.AmountOut = amountOut;
             this.WeightOut = weightOut;
@@ -126,12 +123,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.CounterpartyIdIn = counterpartyIdIn;
             this.CustodianAccountIdOut = custodianAccountIdOut;
             this.CustodianAccountIdIn = custodianAccountIdIn;
+            this.SourceOut = sourceOut;
             this.AccountingMethod = accountingMethod;
             this.PropertiesOut = propertiesOut;
             this.PropertiesIn = propertiesIn;
             this.Properties = properties;
             this.TransactionToPortfolioRateOut = transactionToPortfolioRateOut;
             this.TransactionToPortfolioRateIn = transactionToPortfolioRateIn;
+            this.SourceIn = sourceIn;
+            this.TransactionTypeOut = transactionTypeOut;
+            this.TransactionTypeIn = transactionTypeIn;
         }
 
         /// <summary>
@@ -174,9 +175,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string PricingMethod { get; set; }
 
         /// <summary>
-        /// What happens to the tax lots of the outgoing position. Only &#39;Consolidate&#39; is currently supported; &#39;Preserve&#39; is rejected. Defaults to &#39;Consolidate&#39;. Available values: Consolidate, Preserve.
+        /// What happens to the tax lots of the outgoing position. Defaults to &#39;Consolidate&#39;. &#39;Preserve&#39; carries each outgoing lot onto the incoming position; it is not supported when the incoming portfolio uses the AverageCost or Default accounting method, or across share classes in different currencies. Available values: Consolidate, Preserve.
         /// </summary>
-        /// <value>What happens to the tax lots of the outgoing position. Only &#39;Consolidate&#39; is currently supported; &#39;Preserve&#39; is rejected. Defaults to &#39;Consolidate&#39;. Available values: Consolidate, Preserve.</value>
+        /// <value>What happens to the tax lots of the outgoing position. Defaults to &#39;Consolidate&#39;. &#39;Preserve&#39; carries each outgoing lot onto the incoming position; it is not supported when the incoming portfolio uses the AverageCost or Default accounting method, or across share classes in different currencies. Available values: Consolidate, Preserve.</value>
         [DataMember(Name = "taxLotStructure", EmitDefaultValue = true)]
         public string TaxLotStructure { get; set; }
 
@@ -258,9 +259,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal? TransactionPriceOut { get; set; }
 
         /// <summary>
-        /// The unit price of the incoming leg. Ignored for a transfer, which carries the outgoing price across; defaults to the outgoing price for a switch.
+        /// The unit price of the incoming leg. Not accepted for a transfer of one instrument between portfolios, which carries the outgoing price across. For a switch, required when PricingMethod is &#39;AtPrice&#39; and defaults to the outgoing price otherwise.
         /// </summary>
-        /// <value>The unit price of the incoming leg. Ignored for a transfer, which carries the outgoing price across; defaults to the outgoing price for a switch.</value>
+        /// <value>The unit price of the incoming leg. Not accepted for a transfer of one instrument between portfolios, which carries the outgoing price across. For a switch, required when PricingMethod is &#39;AtPrice&#39; and defaults to the outgoing price otherwise.</value>
         [DataMember(Name = "transactionPriceIn", EmitDefaultValue = true)]
         public decimal? TransactionPriceIn { get; set; }
 
@@ -291,11 +292,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ResourceId CustodianAccountIdIn { get; set; }
 
         /// <summary>
-        /// The transaction source the generated legs are booked against.
+        /// The transaction source the outgoing leg is booked against, and the incoming leg too when SourceIn is not supplied. Defaults to &#39;default&#39;.
         /// </summary>
-        /// <value>The transaction source the generated legs are booked against.</value>
-        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = true)]
-        public string Source { get; set; }
+        /// <value>The transaction source the outgoing leg is booked against, and the incoming leg too when SourceIn is not supplied. Defaults to &#39;default&#39;.</value>
+        [DataMember(Name = "sourceOut", EmitDefaultValue = true)]
+        public string SourceOut { get; set; }
 
         /// <summary>
         /// An accounting method to record against the transfer. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency.
@@ -340,6 +341,27 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal? TransactionToPortfolioRateIn { get; set; }
 
         /// <summary>
+        /// The transaction source the incoming leg is booked against. Defaults to SourceOut.
+        /// </summary>
+        /// <value>The transaction source the incoming leg is booked against. Defaults to SourceOut.</value>
+        [DataMember(Name = "sourceIn", EmitDefaultValue = true)]
+        public string SourceIn { get; set; }
+
+        /// <summary>
+        /// The transaction type to book the outgoing leg as. Supply it together with TransactionTypeIn, or supply neither. If not supplied, it will be derived from the transfer type. It must be a different type from TransactionTypeIn, must be configured under SourceOut in the transaction type scope of PortfolioIdOut, and must reduce a position.
+        /// </summary>
+        /// <value>The transaction type to book the outgoing leg as. Supply it together with TransactionTypeIn, or supply neither. If not supplied, it will be derived from the transfer type. It must be a different type from TransactionTypeIn, must be configured under SourceOut in the transaction type scope of PortfolioIdOut, and must reduce a position.</value>
+        [DataMember(Name = "transactionTypeOut", EmitDefaultValue = true)]
+        public string TransactionTypeOut { get; set; }
+
+        /// <summary>
+        /// The transaction type to book the incoming leg as. Supply it together with TransactionTypeOut, or supply neither. If not supplied, it will be derived from the transfer type. It must be configured under SourceIn in the transaction type scope of PortfolioIdIn, and must increase a position.
+        /// </summary>
+        /// <value>The transaction type to book the incoming leg as. Supply it together with TransactionTypeOut, or supply neither. If not supplied, it will be derived from the transfer type. It must be configured under SourceIn in the transaction type scope of PortfolioIdIn, and must increase a position.</value>
+        [DataMember(Name = "transactionTypeIn", EmitDefaultValue = true)]
+        public string TransactionTypeIn { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -370,13 +392,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  CounterpartyIdIn: ").Append(CounterpartyIdIn).Append("\n");
             sb.Append("  CustodianAccountIdOut: ").Append(CustodianAccountIdOut).Append("\n");
             sb.Append("  CustodianAccountIdIn: ").Append(CustodianAccountIdIn).Append("\n");
-            sb.Append("  Source: ").Append(Source).Append("\n");
+            sb.Append("  SourceOut: ").Append(SourceOut).Append("\n");
             sb.Append("  AccountingMethod: ").Append(AccountingMethod).Append("\n");
             sb.Append("  PropertiesOut: ").Append(PropertiesOut).Append("\n");
             sb.Append("  PropertiesIn: ").Append(PropertiesIn).Append("\n");
             sb.Append("  Properties: ").Append(Properties).Append("\n");
             sb.Append("  TransactionToPortfolioRateOut: ").Append(TransactionToPortfolioRateOut).Append("\n");
             sb.Append("  TransactionToPortfolioRateIn: ").Append(TransactionToPortfolioRateIn).Append("\n");
+            sb.Append("  SourceIn: ").Append(SourceIn).Append("\n");
+            sb.Append("  TransactionTypeOut: ").Append(TransactionTypeOut).Append("\n");
+            sb.Append("  TransactionTypeIn: ").Append(TransactionTypeIn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -526,9 +551,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.CustodianAccountIdIn.Equals(input.CustodianAccountIdIn))
                 ) && 
                 (
-                    this.Source == input.Source ||
-                    (this.Source != null &&
-                    this.Source.Equals(input.Source))
+                    this.SourceOut == input.SourceOut ||
+                    (this.SourceOut != null &&
+                    this.SourceOut.Equals(input.SourceOut))
                 ) && 
                 (
                     this.AccountingMethod == input.AccountingMethod ||
@@ -562,6 +587,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.TransactionToPortfolioRateIn == input.TransactionToPortfolioRateIn ||
                     (this.TransactionToPortfolioRateIn != null &&
                     this.TransactionToPortfolioRateIn.Equals(input.TransactionToPortfolioRateIn))
+                ) && 
+                (
+                    this.SourceIn == input.SourceIn ||
+                    (this.SourceIn != null &&
+                    this.SourceIn.Equals(input.SourceIn))
+                ) && 
+                (
+                    this.TransactionTypeOut == input.TransactionTypeOut ||
+                    (this.TransactionTypeOut != null &&
+                    this.TransactionTypeOut.Equals(input.TransactionTypeOut))
+                ) && 
+                (
+                    this.TransactionTypeIn == input.TransactionTypeIn ||
+                    (this.TransactionTypeIn != null &&
+                    this.TransactionTypeIn.Equals(input.TransactionTypeIn))
                 );
         }
 
@@ -660,9 +700,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.CustodianAccountIdIn.GetHashCode();
                 }
-                if (this.Source != null)
+                if (this.SourceOut != null)
                 {
-                    hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SourceOut.GetHashCode();
                 }
                 if (this.AccountingMethod != null)
                 {
@@ -687,6 +727,18 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.TransactionToPortfolioRateIn != null)
                 {
                     hashCode = (hashCode * 59) + this.TransactionToPortfolioRateIn.GetHashCode();
+                }
+                if (this.SourceIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.SourceIn.GetHashCode();
+                }
+                if (this.TransactionTypeOut != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransactionTypeOut.GetHashCode();
+                }
+                if (this.TransactionTypeIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransactionTypeIn.GetHashCode();
                 }
                 return hashCode;
             }

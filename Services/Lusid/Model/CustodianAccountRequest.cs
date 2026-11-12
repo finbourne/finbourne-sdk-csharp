@@ -35,7 +35,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CustodianAccountRequest" /> class.
         /// </summary>
-        /// <param name="scope">The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used.</param>
+        /// <param name="scope">The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used. A new Custodian Account must be in the parent Portfolio Scope. An existing Custodian Account in a different scope can still be updated.</param>
         /// <param name="code">Unique Code representing the Custodian Account (required).</param>
         /// <param name="status">The Account status. Available values: Active, Inactive, Deleted..</param>
         /// <param name="accountNumber">The Custodian Account Number (required).</param>
@@ -87,9 +87,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         }
 
         /// <summary>
-        /// The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used
+        /// The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used. A new Custodian Account must be in the parent Portfolio Scope. An existing Custodian Account in a different scope can still be updated
         /// </summary>
-        /// <value>The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used</value>
+        /// <value>The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used. A new Custodian Account must be in the parent Portfolio Scope. An existing Custodian Account in a different scope can still be updated</value>
         [DataMember(Name = "scope", EmitDefaultValue = true)]
         public string Scope { get; set; }
 

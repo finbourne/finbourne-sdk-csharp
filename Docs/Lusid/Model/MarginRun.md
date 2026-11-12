@@ -18,7 +18,10 @@ A margin run: the valuation of the collateral agreements for a business date, pl
 | **FailedShards** | **int** | Required | The number of shards that failed to value. |
 | **Issues** | [List&lt;MarginRunIssue&gt;](MarginRunIssue.md) | Required | Agreements the run could not value or roll up into a call, or the caller may not calculate margin for, with the reason. |
 | **Shards** | [List&lt;MarginRunShard&gt;](MarginRunShard.md) | Required | The valuation shards the run is planned as, with their progress. |
-| **Scenario** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **Scenarios** | [List&lt;ResourceId&gt;](ResourceId.md) | Required | The stored scenarios the run values the agreements under, each beside the base market the run always values. Empty if only the base market was valued. |
+| **CaptureDiagnostics** | **bool?** | Optional | Whether the run stored the working behind its figures, so that they can be explained. Null for a run made before runs could store it, which did not. |
+| **Optimisation** | [MarginRunOptimisation](MarginRunOptimisation.md) | Optional | *No description available.* |
+| **Allocation** | [MarginRunAllocation](MarginRunAllocation.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -42,7 +45,10 @@ var instance = new MarginRun(
     failedShards: 0,  // required — The number of shards that failed to value.
     issues: new List<MarginRunIssue>(),  // required — Agreements the run could not value or roll up into a call, or the caller may not calculate margin for, with the reason.
     shards: new List<MarginRunShard>(),  // required — The valuation shards the run is planned as, with their progress.
-    scenario: new ResourceId(...)  // optional
+    scenarios: new List<ResourceId>(),  // required — The stored scenarios the run values the agreements under, each beside the base market the run always values. Empty if only the base market was valued.
+    captureDiagnostics: true,  // optional — Whether the run stored the working behind its figures, so that they can be explained. Null for a run made before runs could store it, which did not.
+    optimisation: new MarginRunOptimisation(...),  // optional
+    allocation: new MarginRunAllocation(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -60,7 +66,9 @@ var instance = JsonConvert.DeserializeObject<MarginRun>(json);
 - [ResourceId](ResourceId.md) — used in `Agreements`
 - [MarginRunIssue](MarginRunIssue.md) — used in `Issues`
 - [MarginRunShard](MarginRunShard.md) — used in `Shards`
-- [ResourceId](ResourceId.md)
+- [ResourceId](ResourceId.md) — used in `Scenarios`
+- [MarginRunOptimisation](MarginRunOptimisation.md)
+- [MarginRunAllocation](MarginRunAllocation.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

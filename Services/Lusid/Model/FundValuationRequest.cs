@@ -46,7 +46,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="fundValuationSchedule">fundValuationSchedule (required).</param>
         /// <param name="marketDataOverrides">marketDataOverrides.</param>
         /// <param name="corporateActionSourceId">corporateActionSourceId.</param>
-        public FundValuationRequest(DateTimeOffset? asAt = default(DateTimeOffset?), List<AggregateSpec> metrics = default(List<AggregateSpec>), List<string> groupBy = default(List<string>), List<PropertyFilter> filters = default(List<PropertyFilter>), List<OrderBySpec> sort = default(List<OrderBySpec>), bool equipWithSubtotals = default(bool), bool returnResultAsExpandedTypes = default(bool), OrderFlowConfiguration includeOrderFlow = default(OrderFlowConfiguration), FundValuationSchedule fundValuationSchedule = default(FundValuationSchedule), MarketDataOverrides marketDataOverrides = default(MarketDataOverrides), ResourceId corporateActionSourceId = default(ResourceId))
+        /// <param name="recipeId">recipeId.</param>
+        public FundValuationRequest(DateTimeOffset? asAt = default(DateTimeOffset?), List<AggregateSpec> metrics = default(List<AggregateSpec>), List<string> groupBy = default(List<string>), List<PropertyFilter> filters = default(List<PropertyFilter>), List<OrderBySpec> sort = default(List<OrderBySpec>), bool equipWithSubtotals = default(bool), bool returnResultAsExpandedTypes = default(bool), OrderFlowConfiguration includeOrderFlow = default(OrderFlowConfiguration), FundValuationSchedule fundValuationSchedule = default(FundValuationSchedule), MarketDataOverrides marketDataOverrides = default(MarketDataOverrides), ResourceId corporateActionSourceId = default(ResourceId), ResourceId recipeId = default(ResourceId))
         {
             // to ensure "metrics" is required (not null)
             if (metrics == null)
@@ -69,6 +70,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.IncludeOrderFlow = includeOrderFlow;
             this.MarketDataOverrides = marketDataOverrides;
             this.CorporateActionSourceId = corporateActionSourceId;
+            this.RecipeId = recipeId;
         }
 
         /// <summary>
@@ -145,6 +147,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ResourceId CorporateActionSourceId { get; set; }
 
         /// <summary>
+        /// Gets or Sets RecipeId
+        /// </summary>
+        [DataMember(Name = "recipeId", EmitDefaultValue = false)]
+        public ResourceId RecipeId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -163,6 +171,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  FundValuationSchedule: ").Append(FundValuationSchedule).Append("\n");
             sb.Append("  MarketDataOverrides: ").Append(MarketDataOverrides).Append("\n");
             sb.Append("  CorporateActionSourceId: ").Append(CorporateActionSourceId).Append("\n");
+            sb.Append("  RecipeId: ").Append(RecipeId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -254,6 +263,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.CorporateActionSourceId == input.CorporateActionSourceId ||
                     (this.CorporateActionSourceId != null &&
                     this.CorporateActionSourceId.Equals(input.CorporateActionSourceId))
+                ) && 
+                (
+                    this.RecipeId == input.RecipeId ||
+                    (this.RecipeId != null &&
+                    this.RecipeId.Equals(input.RecipeId))
                 );
         }
 
@@ -303,6 +317,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.CorporateActionSourceId != null)
                 {
                     hashCode = (hashCode * 59) + this.CorporateActionSourceId.GetHashCode();
+                }
+                if (this.RecipeId != null)
+                {
+                    hashCode = (hashCode * 59) + this.RecipeId.GetHashCode();
                 }
                 return hashCode;
             }

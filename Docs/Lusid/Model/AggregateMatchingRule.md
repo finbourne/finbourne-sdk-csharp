@@ -6,9 +6,9 @@
 |------|------|----------|-------------|
 | **RuleName** | **string** | Required | The reference name of the rule. |
 | **LeftFormula** | **string** | Required | Derivation formula evaluated against the left side of the reconciliation. |
-| **LeftOperation** | **string** | Required | Group-level operation applied to the left side&#39;s per-item values during reconciliation, e.g. Sum, Average, Count. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears. |
+| **LeftOperation** | **string** | Required | Group-level operation applied to the left side&#39;s per-item values during reconciliation. Only Sum is currently supported; the other listed values are reserved and are rejected. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears. |
 | **RightFormula** | **string** | Required | Derivation formula evaluated against the right side of the reconciliation. |
-| **RightOperation** | **string** | Required | Group-level operation applied to the right side&#39;s per-item values during reconciliation, e.g. Sum, Average, Count. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears. |
+| **RightOperation** | **string** | Required | Group-level operation applied to the right side&#39;s per-item values during reconciliation. Only Sum is currently supported; the other listed values are reserved and are rejected. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears. |
 
 
 ## Usage
@@ -21,9 +21,9 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new AggregateMatchingRule(
     ruleName: "...",  // required — The reference name of the rule.
     leftFormula: "...",  // required — Derivation formula evaluated against the left side of the reconciliation.
-    leftOperation: "...",  // required — Group-level operation applied to the left side&#39;s per-item values during reconciliation, e.g. Sum, Average, Count. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears.
+    leftOperation: "...",  // required — Group-level operation applied to the left side&#39;s per-item values during reconciliation. Only Sum is currently supported; the other listed values are reserved and are rejected. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears.
     rightFormula: "...",  // required — Derivation formula evaluated against the right side of the reconciliation.
-    rightOperation: "..."  // required — Group-level operation applied to the right side&#39;s per-item values during reconciliation, e.g. Sum, Average, Count. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears.
+    rightOperation: "..."  // required — Group-level operation applied to the right side&#39;s per-item values during reconciliation. Only Sum is currently supported; the other listed values are reserved and are rejected. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears.
 );
 ```
 ### Serializing to JSON

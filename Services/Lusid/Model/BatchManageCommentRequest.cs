@@ -36,12 +36,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="BatchManageCommentRequest" /> class.
         /// </summary>
         /// <param name="instanceId">instanceId (required).</param>
-        /// <param name="recType">The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. (required).</param>
-        /// <param name="runNumber">The run of the instance whose results this item targets. (required).</param>
+        /// <param name="recType">The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. (required).</param>
         /// <param name="recResultId">The rec result the comment operation targets. (required).</param>
         /// <param name="commentId">The comment id. Null with text &#x3D; add; provided with text &#x3D; edit; provided with null text &#x3D; delete..</param>
         /// <param name="commentText">The comment body. See operation inference..</param>
-        public BatchManageCommentRequest(RecInstanceId instanceId = default(RecInstanceId), string recType = default(string), int runNumber = default(int), string recResultId = default(string), string commentId = default(string), string commentText = default(string))
+        public BatchManageCommentRequest(RecInstanceId instanceId = default(RecInstanceId), string recType = default(string), string recResultId = default(string), string commentId = default(string), string commentText = default(string))
         {
             // to ensure "instanceId" is required (not null)
             if (instanceId == null)
@@ -55,7 +54,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("recType is a required property for BatchManageCommentRequest and cannot be null");
             }
             this.RecType = recType;
-            this.RunNumber = runNumber;
             // to ensure "recResultId" is required (not null)
             if (recResultId == null)
             {
@@ -73,18 +71,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public RecInstanceId InstanceId { get; set; }
 
         /// <summary>
-        /// The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
+        /// The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
         /// </summary>
-        /// <value>The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.</value>
+        /// <value>The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.</value>
         [DataMember(Name = "recType", IsRequired = true, EmitDefaultValue = true)]
         public string RecType { get; set; }
-
-        /// <summary>
-        /// The run of the instance whose results this item targets.
-        /// </summary>
-        /// <value>The run of the instance whose results this item targets.</value>
-        [DataMember(Name = "runNumber", IsRequired = true, EmitDefaultValue = true)]
-        public int RunNumber { get; set; }
 
         /// <summary>
         /// The rec result the comment operation targets.
@@ -117,7 +108,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class BatchManageCommentRequest {\n");
             sb.Append("  InstanceId: ").Append(InstanceId).Append("\n");
             sb.Append("  RecType: ").Append(RecType).Append("\n");
-            sb.Append("  RunNumber: ").Append(RunNumber).Append("\n");
             sb.Append("  RecResultId: ").Append(RecResultId).Append("\n");
             sb.Append("  CommentId: ").Append(CommentId).Append("\n");
             sb.Append("  CommentText: ").Append(CommentText).Append("\n");
@@ -167,10 +157,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.RecType.Equals(input.RecType))
                 ) && 
                 (
-                    this.RunNumber == input.RunNumber ||
-                    this.RunNumber.Equals(input.RunNumber)
-                ) && 
-                (
                     this.RecResultId == input.RecResultId ||
                     (this.RecResultId != null &&
                     this.RecResultId.Equals(input.RecResultId))
@@ -204,7 +190,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.RecType.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.RunNumber.GetHashCode();
                 if (this.RecResultId != null)
                 {
                     hashCode = (hashCode * 59) + this.RecResultId.GetHashCode();

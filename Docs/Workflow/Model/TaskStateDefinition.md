@@ -8,7 +8,7 @@ A Task Definition/Task has a given set of States
 | **Name** | **string** | Required | The Name of this State |
 | **DisplayName** | **string** | Optional | The display name of this State |
 | **Description** | **string** | Optional | The description of this State |
-| **Category** | **string** | Optional | The category of this State |
+| **Category** | **string** | Optional | The category of this State. Free text; categories understood by the LUSID web app are: NotStarted, Waiting, Warning, Exceptions, InProgress, Error, CompletedSuccess, CompletedFail, AwaitingApproval, Critical, HighPriority, MediumPriority, LowPriority, Other |
 
 
 ## Usage
@@ -22,7 +22,7 @@ var instance = new TaskStateDefinition(
     name: "...",  // required — The Name of this State
     displayName: "...",  // optional — The display name of this State
     description: "...",  // optional — The description of this State
-    category: "..."  // optional — The category of this State
+    category: "..."  // optional — The category of this State. Free text; categories understood by the LUSID web app are: NotStarted, Waiting, Warning, Exceptions, InProgress, Error, CompletedSuccess, CompletedFail, AwaitingApproval, Critical, HighPriority, MediumPriority, LowPriority, Other
 );
 ```
 ### Serializing to JSON

@@ -22,6 +22,7 @@ All URIs are relative to *http://localhost*
 | [**DeleteFund**](#deletefund) | **DELETE** `/api/api/funds/{scope}/{code}` | [EARLY ACCESS] DeleteFund: Delete a Fund. |
 | [**DeleteNavActivityAdjustments**](#deletenavactivityadjustments) | **POST** `/api/api/funds/{scope}/{code}/navAdjustment/$delete` | [EARLY ACCESS] DeleteNavActivityAdjustments: Delete Nav activity adjustments. |
 | [**DeleteSeries**](#deleteseries) | **DELETE** `/api/api/funds/{scope}/{code}/shareclasses/{shareClassCode}/series/{seriesIdentifier}` | [EARLY ACCESS] DeleteSeries: [EARLY ACCESS] DeleteSeries: Remove a Series from a Share Class of a Fund. |
+| [**DeleteTaxCostRecord**](#deletetaxcostrecord) | **DELETE** `/api/api/funds/{scope}/{code}/taxcostrecords/{taxCostRecordCode}` | [EXPERIMENTAL] DeleteTaxCostRecord: [EXPERIMENTAL] DeleteTaxCostRecord: Delete a Tax Cost Record. |
 | [**DeleteValuationPoint**](#deletevaluationpoint) | **DELETE** `/api/api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}` | [EARLY ACCESS] DeleteValuationPoint: Delete a Valuation Point. |
 | [**DiffPartnerStatement**](#diffpartnerstatement) | **GET** `/api/api/funds/{scope}/{code}/partners/{investorRecordId}/statements/{statementId}/$diff` | [EARLY ACCESS] DiffPartnerStatement: [EXPERIMENTAL] DiffPartnerStatement: Compare two of a partner&#39;s statements. |
 | [**FinaliseCandidateValuationPoint**](#finalisecandidatevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$finalisecandidate` | [EARLY ACCESS] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point. |
@@ -33,6 +34,7 @@ All URIs are relative to *http://localhost*
 | [**GetFund**](#getfund) | **GET** `/api/api/funds/{scope}/{code}` | [EARLY ACCESS] GetFund: Get a Fund. |
 | [**GetFundPerformance**](#getfundperformance) | **GET** `/api/api/funds/{scope}/{code}/performance` | [EARLY ACCESS] GetFundPerformance: [EARLY ACCESS] GetFundPerformance: Get a fund&#39;s performance measures over all its partners. |
 | [**GetFundProperties**](#getfundproperties) | **GET** `/api/api/funds/{scope}/{code}/properties` | [EARLY ACCESS] GetFundProperties: Get Fund properties. |
+| [**GetFundTaxScope**](#getfundtaxscope) | **GET** `/api/api/funds/{scope}/{code}/tax/scope` | [EARLY ACCESS] GetFundTaxScope: [EARLY ACCESS] GetFundTaxScope: Get the UK chargeable-gains tax scope of a fund. |
 | [**GetHoldingContributorsForFund**](#getholdingcontributorsforfund) | **POST** `/api/api/funds/{scope}/{code}/holdings/{holdingId}/contributors` | [EARLY ACCESS] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund. |
 | [**GetHoldingsForFund**](#getholdingsforfund) | **POST** `/api/api/funds/{scope}/{code}/$holdings` | [EARLY ACCESS] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund. |
 | [**GetPartnerCapitalAccount**](#getpartnercapitalaccount) | **GET** `/api/api/funds/{scope}/{code}/partners/{irScope}/{irCode}/capitalaccount` | [EARLY ACCESS] GetPartnerCapitalAccount: [EARLY ACCESS] GetPartnerCapitalAccount: Get a partner&#39;s capital account statement. |
@@ -41,6 +43,7 @@ All URIs are relative to *http://localhost*
 | [**GetPartners**](#getpartners) | **GET** `/api/api/funds/{scope}/{code}/partners` | [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund. |
 | [**GetPartnershipConfigPack**](#getpartnershipconfigpack) | **GET** `/api/api/funds/{scope}/{code}/partnershipaccounting/configpack` | [EARLY ACCESS] GetPartnershipConfigPack: [EXPERIMENTAL] GetPartnershipConfigPack: Get the partnership configuration pack of a Fund. |
 | [**GetSeries**](#getseries) | **GET** `/api/api/funds/{scope}/{code}/series` | [EARLY ACCESS] GetSeries: [EARLY ACCESS] GetSeries: List the Series of a Fund. |
+| [**GetTaxSyncStatus**](#gettaxsyncstatus) | **GET** `/api/api/funds/{scope}/{code}/tax/sync` | [EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund. |
 | [**GetValuationForFund**](#getvaluationforfund) | **POST** `/api/api/funds/{scope}/{code}/$valuation` | [EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund. |
 | [**GetValuationPointData**](#getvaluationpointdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/$query` | [EARLY ACCESS] GetValuationPointData: Get Valuation Point Data for a Fund. |
 | [**GetValuationPointJournalEntryLines**](#getvaluationpointjournalentrylines) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query` | [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. |
@@ -57,6 +60,9 @@ All URIs are relative to *http://localhost*
 | [**ListNavActivityAdjustments**](#listnavactivityadjustments) | **GET** `/api/api/funds/{scope}/{code}/navAdjustment` | [EARLY ACCESS] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point |
 | [**ListPartnerCapitalAccounts**](#listpartnercapitalaccounts) | **GET** `/api/api/funds/{scope}/{code}/capitalaccounts` | [EARLY ACCESS] ListPartnerCapitalAccounts: [EARLY ACCESS] ListPartnerCapitalAccounts: List the capital account statements of a fund&#39;s partners. |
 | [**ListPartnerStatements**](#listpartnerstatements) | **GET** `/api/api/funds/{scope}/{code}/partners/{investorRecordId}/statements` | [EARLY ACCESS] ListPartnerStatements: [EXPERIMENTAL] ListPartnerStatements: List the statements produced for a partner. |
+| [**ListTaxCostRecords**](#listtaxcostrecords) | **GET** `/api/api/funds/{scope}/{code}/taxcostrecords` | [EXPERIMENTAL] ListTaxCostRecords: [EXPERIMENTAL] ListTaxCostRecords: List Tax Cost Records for a specified Fund. |
+| [**ListTaxExceptions**](#listtaxexceptions) | **GET** `/api/api/funds/{scope}/{code}/tax/exceptions` | [EARLY ACCESS] ListTaxExceptions: [EARLY ACCESS] ListTaxExceptions: List the open tax exceptions of a Fund. |
+| [**ListTaxExceptionsAcrossFunds**](#listtaxexceptionsacrossfunds) | **GET** `/api/api/tax/exceptions` | [EARLY ACCESS] ListTaxExceptionsAcrossFunds: [EARLY ACCESS] ListTaxExceptionsAcrossFunds: List the open tax exceptions across every Fund. |
 | [**ListValuationPointComplexMarketData**](#listvaluationpointcomplexmarketdata) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints/complexmarketdata/$query` | [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point. |
 | [**ListValuationPointInstruments**](#listvaluationpointinstruments) | **GET** `/api/api/funds/{scope}/{code}/valuationpoints/instruments/$query` | [EARLY ACCESS] ListValuationPointInstruments: List Instruments inside a valuation point |
 | [**ListValuationPointOverview**](#listvaluationpointoverview) | **GET** `/api/api/funds/{scope}/{code}/valuationPointOverview` | [EARLY ACCESS] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
@@ -71,9 +77,11 @@ All URIs are relative to *http://localhost*
 | [**UpdateValuationPoint**](#updatevaluationpoint) | **PUT** `/api/api/funds/{scope}/{code}/valuationpoints` | [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point. |
 | [**UpsertBookmark**](#upsertbookmark) | **POST** `/api/api/funds/{scope}/{code}/bookmarks` | [EARLY ACCESS] UpsertBookmark: Upsert a bookmark. |
 | [**UpsertDiaryEntryTypeValuationPoint**](#upsertdiaryentrytypevaluationpoint) | **POST** `/api/api/funds/{scope}/{code}/valuationpoints` | [EARLY ACCESS] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point. |
+| [**UpsertExternalDealingEstimates**](#upsertexternaldealingestimates) | **POST** `/api/api/funds/{scope}/{code}/dealingestimates/$external` | [EARLY ACCESS] UpsertExternalDealingEstimates: Load dealing estimates sent by an external transfer agent |
 | [**UpsertFeeProperties**](#upsertfeeproperties) | **POST** `/api/api/funds/{scope}/{code}/fees/{feeCode}/properties/$upsert` | [EARLY ACCESS] UpsertFeeProperties: Upsert Fee properties. |
 | [**UpsertFundProperties**](#upsertfundproperties) | **POST** `/api/api/funds/{scope}/{code}/properties/$upsert` | [EARLY ACCESS] UpsertFundProperties: Upsert Fund properties. |
 | [**UpsertNavActivityAdjustments**](#upsertnavactivityadjustments) | **POST** `/api/api/funds/{scope}/{code}/navAdjustment` | [EARLY ACCESS] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point |
+| [**UpsertTaxCostRecords**](#upserttaxcostrecords) | **POST** `/api/api/funds/{scope}/{code}/taxcostrecords` | [EXPERIMENTAL] UpsertTaxCostRecords: [EXPERIMENTAL] UpsertTaxCostRecords: Upsert Tax Cost Records for a specified Fund. |
 
 ### Example
 
@@ -1187,6 +1195,68 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="deletetaxcostrecord"></a>
+## DeleteTaxCostRecord
+
+> DeletedEntityResponse DeleteTaxCostRecord(string scope, string code, string taxCostRecordCode)
+
+[EXPERIMENTAL] DeleteTaxCostRecord: [EXPERIMENTAL] DeleteTaxCostRecord: Delete a Tax Cost Record.
+
+Delete the given Tax Cost Record.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var taxCostRecordCode = "taxCostRecordCode_example";  // string
+DeletedEntityResponse result = apiInstance.DeleteTaxCostRecord(scope, code, taxCostRecordCode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **taxCostRecordCode** | **string** | path | **required** | The code of the Tax Cost Record to be deleted. |
+
+### Return type
+
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the Tax Cost Record was deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteTaxCostRecordWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteTaxCostRecordWithHttpInfo(scope, code, taxCostRecordCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="deletevaluationpoint"></a>
 ## DeleteValuationPoint
 
@@ -1917,6 +1987,70 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="getfundtaxscope"></a>
+## GetFundTaxScope
+
+> FundTaxScope GetFundTaxScope(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] GetFundTaxScope: [EARLY ACCESS] GetFundTaxScope: Get the UK chargeable-gains tax scope of a fund.
+
+Returns the fund's portfolios within the UK chargeable-gains regime and the exclusions the regime's figures  apply. A fund portfolio is in scope when its own details elect the regime. A NAV type that elects the regime  puts its derived portfolio for each fund portfolio in scope, since that is where the fund accounts for the  holdings under the election.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+FundTaxScope result = apiInstance.GetFundTaxScope(scope, code, effectiveAt, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to read the tax scope. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the tax scope. Defaults to returning the latest version if not specified. |
+
+### Return type
+
+[FundTaxScope](../Model/FundTaxScope.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The tax scope of the requested Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetFundTaxScopeWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<FundTaxScope> response = apiInstance.GetFundTaxScopeWithHttpInfo(scope, code, effectiveAt, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="getholdingcontributorsforfund"></a>
 ## GetHoldingContributorsForFund
 
@@ -2258,6 +2392,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |-------------|-------------|------------------|
 | **200** | The partner&#39;s unfunded commitment statement over the period. |  -  |
 | **400** | The details of the input related failure |  -  |
+| **404** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
 <details>
@@ -2465,6 +2600,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ResourceListOfSeries> response = apiInstance.GetSeriesWithHttpInfo(scope, code, shareClassCode, effectiveAt, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="gettaxsyncstatus"></a>
+## GetTaxSyncStatus
+
+> TaxSyncStatus GetTaxSyncStatus(string scope, string code, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund.
+
+For each portfolio in the Fund, compares the asAt the tax engine last processed the Fund (its latest valuation  point) with the asAt of the latest transaction booked to the portfolio, and says whether the tax position has  caught up.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+TaxSyncStatus result = apiInstance.GetTaxSyncStatus(scope, code, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the Fund. Defaults to returning the latest version if not specified. |
+
+### Return type
+
+[TaxSyncStatus](../Model/TaxSyncStatus.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The tax sync position of each portfolio in the requested Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetTaxSyncStatusWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<TaxSyncStatus> response = apiInstance.GetTaxSyncStatusWithHttpInfo(scope, code, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -2875,7 +3072,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **dataModelCode** | **string?** | query | optional | The optional code of a Custom Data Model to use |
 | **showCancelledTransactions** | **bool?** | query | optional | Option to specify whether or not to include cancelled transactions,              including previous versions of transactions which have since been amended.              Defaults to False if not specified. |
 | **membershipType** | **string?** | query | optional | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. |
-| **returnExcludedTransactions** | **bool?** | query | optional | Option to specify whether or not to include transactions excluded by the              NavType&#39;s TransactionExclusionFilter. Defaults to False if not specified. |
+| **returnExcludedTransactions** | **bool?** | query | optional | Option to specify whether or not to include transactions excluded by the              NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of              a transaction that has since been amended to be excluded is returned regardless of this option.              Defaults to False if not specified. |
 
 ### Return type
 
@@ -3631,6 +3828,204 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="listtaxcostrecords"></a>
+## ListTaxCostRecords
+
+> PagedResourceListOfTaxCostRecord ListTaxCostRecords(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null)
+
+[EXPERIMENTAL] ListTaxCostRecords: [EXPERIMENTAL] ListTaxCostRecords: List Tax Cost Records for a specified Fund.
+
+List all the Tax Cost Records matching a particular criteria.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var page = "page_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfTaxCostRecord result = apiInstance.ListTaxCostRecords(scope, code, effectiveAt, asAt, page, limit, filter, sortBy);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to list the Tax Cost Records. Defaults to the current LUSID              system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Tax Cost Records. Defaults to returning the latest version of each record if not specified. |
+| **page** | **string?** | query | optional | The pagination token to use to continue listing Tax Cost Records; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. |
+| **limit** | **int?** | query | optional | When paginating, limit the results to this number. Defaults to 100 if not specified. |
+| **filter** | **string?** | query | optional | Expression to filter the results.              For example, to filter on the portfolio code, specify \&quot;portfolioCode eq &#39;MyPortfolio&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; |
+
+### Return type
+
+[PagedResourceListOfTaxCostRecord](../Model/PagedResourceListOfTaxCostRecord.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested Tax Cost Records. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListTaxCostRecordsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfTaxCostRecord> response = apiInstance.ListTaxCostRecordsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listtaxexceptions"></a>
+## ListTaxExceptions
+
+> ResourceListOfTaxExceptionItem ListTaxExceptions(string scope, string code, DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null)
+
+[EARLY ACCESS] ListTaxExceptions: [EARLY ACCESS] ListTaxExceptions: List the open tax exceptions of a Fund.
+
+Lists the conditions blocking, or casting doubt on, the Fund's tax computation at the given effective and asAt  datetimes, ordered by tax at stake descending with unknown amounts last. A Fund outside the UK chargeable gains  regime has no exceptions.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+ResourceListOfTaxExceptionItem result = apiInstance.ListTaxExceptions(scope, code, effectiveAt, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to read the Fund. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the Fund. Defaults to returning the latest version if not specified. |
+
+### Return type
+
+[ResourceListOfTaxExceptionItem](../Model/ResourceListOfTaxExceptionItem.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The open tax exceptions of the requested Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListTaxExceptionsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfTaxExceptionItem> response = apiInstance.ListTaxExceptionsWithHttpInfo(scope, code, effectiveAt, asAt);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listtaxexceptionsacrossfunds"></a>
+## ListTaxExceptionsAcrossFunds
+
+> ResourceListOfFundTaxExceptionItem ListTaxExceptionsAcrossFunds(DateTimeOrCutLabel? effectiveAt = null, DateTimeOffset? asAt = null, string? rootCause = null)
+
+[EARLY ACCESS] ListTaxExceptionsAcrossFunds: [EARLY ACCESS] ListTaxExceptionsAcrossFunds: List the open tax exceptions across every Fund.
+
+Lists the conditions blocking, or casting doubt on, the tax computation of every Fund the caller can see, each  row carrying the Fund and, where known, the owning entity. Rows are ordered by tax at stake descending with  unknown amounts last. Funds outside the UK chargeable gains regime contribute no rows.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var rootCause = "rootCause_example";  // string? (optional)
+ResourceListOfFundTaxExceptionItem result = apiInstance.ListTaxExceptionsAcrossFunds(effectiveAt, asAt, rootCause);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to read the Funds. Defaults to the current LUSID system datetime if not specified. |
+| **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to read the Funds. Defaults to returning the latest version if not specified. |
+| **rootCause** | **string?** | query | optional | Optionally, the root cause code to restrict the exceptions to, for example \&quot;PoolOutOfSync\&quot;. Defaults to all root causes. |
+
+### Return type
+
+[ResourceListOfFundTaxExceptionItem](../Model/ResourceListOfFundTaxExceptionItem.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The open tax exceptions across the Funds the caller can see. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListTaxExceptionsAcrossFundsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfFundTaxExceptionItem> response = apiInstance.ListTaxExceptionsAcrossFundsWithHttpInfo(effectiveAt, asAt, rootCause);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="listvaluationpointcomplexmarketdata"></a>
 ## ListValuationPointComplexMarketData
 
@@ -3924,7 +4319,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EARLY ACCESS] PatchFund: Patch a Fund.
 
-Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, AborId, YearEndDate, PricingMethodology, ReportingPrices, WhtParameters, ShareClasses.
+Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: ShortCode, DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, TaxTransparency, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, ShareClasses, PricingMethodology, ReportingPrices, DealingEstimates, WhtParameters, ValuationTemplateId.
 
 ### Example
 
@@ -3945,7 +4340,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Fund. |
 | **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
 | **operation** | [List&lt;Operation&gt;](../Model/Operation.md) | body | **required** | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. |
-| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label from which the patch applies. If not specified, the patch applies for all time.              Only DisplayName and Description can be patched with an effectiveAt, and the Fund is returned as at that datetime.              A value patched with an effectiveAt stays in force from that datetime. A later patch of the same field without an effectiveAt              changes it only before that datetime; to change it from that datetime, patch it again with the same effectiveAt. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label from which the patch applies. If not specified, the patch applies for all time.              Only displayName, description, pricingMethodology, reportingPrices and dealingEstimates, or a field inside the first              and last, can be patched with an effectiveAt, and the Fund is returned as at that datetime.              A value patched with an effectiveAt stays in force from that datetime. A later patch of the same field without an effectiveAt              changes it only before that datetime; to change it from that datetime, patch it again with the same effectiveAt.              A field patched with an effectiveAt merges over the block in force at that datetime and does not carry into a version of              the block that starts later: a whole pricingMethodology or dealingEstimates set from a later datetime keeps its own values. |
 
 ### Return type
 
@@ -4128,7 +4523,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
 
-Returns settled cash movements with a running balance in local currency for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType='B', SourceType=LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses system-generated zero-net reversal/TrueUp pairs into SystemCorrection rows). Base  currency columns are out of scope for this variant and are not returned.
+Returns settled cash movements with a running balance in local currency for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType='B', SourceType=LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses each transaction's system-generated reversal/TrueUp rows into a single SystemCorrection  row carrying their net cashflow, while user-entered rows are always shown individually). Base  currency columns are out of scope for this variant and are not returned.
 
 ### Example
 
@@ -4392,7 +4787,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point.
 
-Updates an existing Valuation Point.
+Updates an existing Valuation Point. Supplying a pricingMethodologyOverride approves or overrides the swing  decision the Valuation Point deals at, which additionally requires the ApprovePricingMethodology action on the Fund.
 
 ### Example
 
@@ -4568,6 +4963,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<DiaryEntry> response = apiInstance.UpsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest, navTypeCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="upsertexternaldealingestimates"></a>
+## UpsertExternalDealingEstimates
+
+> UpsertExternalDealingEstimatesResponse UpsertExternalDealingEstimates(string scope, string code, Dictionary<string, UpsertExternalDealingEstimatesRequest> requestBody)
+
+[EARLY ACCESS] UpsertExternalDealingEstimates: Load dealing estimates sent by an external transfer agent
+
+Loads the dealing estimates a third-party transfer agent dealt for the fund at a dealing point. Each request  key names one set: a dealing point, the sending source and the orders it dealt, each keyed by the source's own  line id. The orders are written in the fund's scope with the code  `{fundCode}-{source}-{yyyyMMddHHmmss}-{lineId}`, the dealing point written in UTC to the second, in the  External order state, priced at the dealing point, so the fund's External dealing source reads them at that  valuation point. A line whose code would exceed 64 characters is refused.                A set replaces what the same source sent before: every External order of that source for the fund's share  classes at the dealing point that the set does not restate is deleted, and the response names them. Two  sets in one request naming the same source and dealing point are refused after the first.                The fund must list External among its dealing estimate sources. Each line must name a share class of the  fund and exactly one of a positive number of units or a positive amount in a valid currency. A set sent  after its dealing point is loaded and flagged late; one sent exactly at the dealing point is on time.  Whether the set is complete is recorded on each order and is not yet enforced at pricing.                Each order carries the properties `Order/TA/PriceDate` (date), `Order/TA/DealingSource` (string),  `Order/TA/DealingSourceReference` (string), `Order/TA/Complete` (string, `True` or `False`),  `Order/TA/Late` (string, `True` or `False`) and `Order/TA/SentAt` (date). LUSID defines these as transfer  agency system properties.                Sets are validated independently: a set that fails validation is reported under failures and the others  still load. The sets that pass are then written together in one command, so a reader never sees half a  dealing point, and a refusal at write time fails the whole request and leaves the book as it was. A request  carries at most 200 sets and at most 2000 lines across all of them.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var requestBody = new Dictionary<string, UpsertExternalDealingEstimatesRequest>(); // Dictionary<string, UpsertExternalDealingEstimatesRequest>
+UpsertExternalDealingEstimatesResponse result = apiInstance.UpsertExternalDealingEstimates(scope, code, requestBody);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the fund. |
+| **code** | **string** | path | **required** | The code of the fund. Together with the scope this uniquely identifies the fund. |
+| **requestBody** | [Dictionary&lt;string, UpsertExternalDealingEstimatesRequest&gt;](../Model/UpsertExternalDealingEstimatesRequest.md) | body | **required** | The sets to load, keyed by a correlation key of the caller&#39;s choosing. |
+
+### Return type
+
+[UpsertExternalDealingEstimatesResponse](../Model/UpsertExternalDealingEstimatesResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The sets loaded and any that failed, keyed by the request key. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpsertExternalDealingEstimatesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<UpsertExternalDealingEstimatesResponse> response = apiInstance.UpsertExternalDealingEstimatesWithHttpInfo(scope, code, requestBody);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -4762,6 +5219,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<DateTimeOffset> response = apiInstance.UpsertNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="upserttaxcostrecords"></a>
+## UpsertTaxCostRecords
+
+> UpsertTaxCostRecordsResponse UpsertTaxCostRecords(string scope, string code, Dictionary<string, TaxCostRecordRequest> requestBody)
+
+[EXPERIMENTAL] UpsertTaxCostRecords: [EXPERIMENTAL] UpsertTaxCostRecords: Upsert Tax Cost Records for a specified Fund.
+
+Create or update Tax Cost Records for the given Fund. Each record is keyed by its code; a record with an  existing code is replaced in full.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var requestBody = new Dictionary<string, TaxCostRecordRequest>(); // Dictionary<string, TaxCostRecordRequest>
+UpsertTaxCostRecordsResponse result = apiInstance.UpsertTaxCostRecords(scope, code, requestBody);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **requestBody** | [Dictionary&lt;string, TaxCostRecordRequest&gt;](../Model/TaxCostRecordRequest.md) | body | **required** | The Tax Cost Records to upsert, keyed by the code of each record. |
+
+### Return type
+
+[UpsertTaxCostRecordsResponse](../Model/UpsertTaxCostRecordsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Tax Cost Records upserted and any that failed, keyed by the record code. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpsertTaxCostRecordsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<UpsertTaxCostRecordsResponse> response = apiInstance.UpsertTaxCostRecordsWithHttpInfo(scope, code, requestBody);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -65,7 +65,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="supersedes">supersedes.</param>
         /// <param name="carriedFrom">carriedFrom.</param>
         /// <param name="carriedDisputedAmount">The amount left in dispute on the carried call. Informational; not added to this call..</param>
-        public MarginCall(string href = default(string), string id = default(string), string runId = default(string), ResourceId agreementId = default(ResourceId), CounterpartyIdentifier counterparty = default(CounterpartyIdentifier), string item = default(string), string marginType = default(string), string method = default(string), string settlement = default(string), string direction = default(string), string currency = default(string), decimal required = default(decimal), decimal held = default(decimal), decimal call = default(decimal), decimal? matchTolerance = default(decimal?), decimal? counterpartyDemand = default(decimal?), decimal? difference = default(decimal?), string matchStatus = default(string), DateTimeOffset? demandReceivedAt = default(DateTimeOffset?), string statementReference = default(string), string demandNote = default(string), decimal? agreedAmount = default(decimal?), decimal? disputedAmount = default(decimal?), string disputeReason = default(string), string disputeOwner = default(string), string state = default(string), DateTimeOffset? deadline = default(DateTimeOffset?), MarginCallReference supersedes = default(MarginCallReference), MarginCallReference carriedFrom = default(MarginCallReference), decimal? carriedDisputedAmount = default(decimal?))
+        /// <param name="scenario">scenario.</param>
+        /// <param name="explainAvailable">Whether the working behind the call&#39;s required amount was stored, so that the call can be explained. Only an initial-margin call can be explained, and only when the run stored its working..</param>
+        /// <param name="proposedAllocation">The assets the allocation pass proposes to deliver for the call, or to take back for a return, cheapest first. Null until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours..</param>
+        public MarginCall(string href = default(string), string id = default(string), string runId = default(string), ResourceId agreementId = default(ResourceId), CounterpartyIdentifier counterparty = default(CounterpartyIdentifier), string item = default(string), string marginType = default(string), string method = default(string), string settlement = default(string), string direction = default(string), string currency = default(string), decimal required = default(decimal), decimal held = default(decimal), decimal call = default(decimal), decimal? matchTolerance = default(decimal?), decimal? counterpartyDemand = default(decimal?), decimal? difference = default(decimal?), string matchStatus = default(string), DateTimeOffset? demandReceivedAt = default(DateTimeOffset?), string statementReference = default(string), string demandNote = default(string), decimal? agreedAmount = default(decimal?), decimal? disputedAmount = default(decimal?), string disputeReason = default(string), string disputeOwner = default(string), string state = default(string), DateTimeOffset? deadline = default(DateTimeOffset?), MarginCallReference supersedes = default(MarginCallReference), MarginCallReference carriedFrom = default(MarginCallReference), decimal? carriedDisputedAmount = default(decimal?), ResourceId scenario = default(ResourceId), bool explainAvailable = default(bool), List<CollateralAllocationLine> proposedAllocation = default(List<CollateralAllocationLine>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -142,6 +145,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Supersedes = supersedes;
             this.CarriedFrom = carriedFrom;
             this.CarriedDisputedAmount = carriedDisputedAmount;
+            this.Scenario = scenario;
+            this.ExplainAvailable = explainAvailable;
+            this.ProposedAllocation = proposedAllocation;
         }
 
         /// <summary>
@@ -351,6 +357,26 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal? CarriedDisputedAmount { get; set; }
 
         /// <summary>
+        /// Gets or Sets Scenario
+        /// </summary>
+        [DataMember(Name = "scenario", EmitDefaultValue = false)]
+        public ResourceId Scenario { get; set; }
+
+        /// <summary>
+        /// Whether the working behind the call&#39;s required amount was stored, so that the call can be explained. Only an initial-margin call can be explained, and only when the run stored its working.
+        /// </summary>
+        /// <value>Whether the working behind the call&#39;s required amount was stored, so that the call can be explained. Only an initial-margin call can be explained, and only when the run stored its working.</value>
+        [DataMember(Name = "explainAvailable", EmitDefaultValue = true)]
+        public bool ExplainAvailable { get; set; }
+
+        /// <summary>
+        /// The assets the allocation pass proposes to deliver for the call, or to take back for a return, cheapest first. Null until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+        /// </summary>
+        /// <value>The assets the allocation pass proposes to deliver for the call, or to take back for a return, cheapest first. Null until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.</value>
+        [DataMember(Name = "proposedAllocation", EmitDefaultValue = true)]
+        public List<CollateralAllocationLine> ProposedAllocation { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -388,6 +414,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Supersedes: ").Append(Supersedes).Append("\n");
             sb.Append("  CarriedFrom: ").Append(CarriedFrom).Append("\n");
             sb.Append("  CarriedDisputedAmount: ").Append(CarriedDisputedAmount).Append("\n");
+            sb.Append("  Scenario: ").Append(Scenario).Append("\n");
+            sb.Append("  ExplainAvailable: ").Append(ExplainAvailable).Append("\n");
+            sb.Append("  ProposedAllocation: ").Append(ProposedAllocation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -569,6 +598,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.CarriedDisputedAmount == input.CarriedDisputedAmount ||
                     (this.CarriedDisputedAmount != null &&
                     this.CarriedDisputedAmount.Equals(input.CarriedDisputedAmount))
+                ) && 
+                (
+                    this.Scenario == input.Scenario ||
+                    (this.Scenario != null &&
+                    this.Scenario.Equals(input.Scenario))
+                ) && 
+                (
+                    this.ExplainAvailable == input.ExplainAvailable ||
+                    this.ExplainAvailable.Equals(input.ExplainAvailable)
+                ) && 
+                (
+                    this.ProposedAllocation == input.ProposedAllocation ||
+                    this.ProposedAllocation != null &&
+                    input.ProposedAllocation != null &&
+                    this.ProposedAllocation.SequenceEqual(input.ProposedAllocation)
                 );
         }
 
@@ -691,6 +735,15 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.CarriedDisputedAmount != null)
                 {
                     hashCode = (hashCode * 59) + this.CarriedDisputedAmount.GetHashCode();
+                }
+                if (this.Scenario != null)
+                {
+                    hashCode = (hashCode * 59) + this.Scenario.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ExplainAvailable.GetHashCode();
+                if (this.ProposedAllocation != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProposedAllocation.GetHashCode();
                 }
                 return hashCode;
             }

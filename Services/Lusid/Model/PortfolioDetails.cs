@@ -165,9 +165,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="taxLotSelectionCostBasis">The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Supply Default to explicitly reset it; a reset or never-configured basis reads back as absent. Available values: Default, Cost, AmortisedCost..</param>
         /// <param name="fractionalUnitsTrueUpConfiguration">fractionalUnitsTrueUpConfiguration.</param>
         /// <param name="holdingsFungibility">Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled..</param>
+        /// <param name="chargeableGainsRegime">The chargeable gains regime the portfolio is elected into. This can be: Default or UkChargeableGains. Defaults to Default if not specified, which means no chargeable gains pooling is applied. Under UkChargeableGains, in-scope holdings (equities, preferred shares, fund share classes and simple instruments) are depleted under the UK chargeable gains rules regardless of the accounting method on the portfolio, transaction or custodian account; other holdings use the portfolio&#39;s accounting method. Supply Default to explicitly reset it; a reset or never-configured regime reads back as absent. Available values: Default, UkChargeableGains..</param>
         /// <param name="whtParameters">whtParameters.</param>
         /// <param name="links">links.</param>
-        public PortfolioDetails(string href = default(string), ResourceId originPortfolioId = default(ResourceId), ModelVersion varVersion = default(ModelVersion), string baseCurrency = default(string), ResourceId corporateActionSourceId = default(ResourceId), List<string> subHoldingKeys = default(List<string>), List<string> instrumentScopes = default(List<string>), AccountingMethodEnum ?accountingMethod = default(AccountingMethodEnum?), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), InstrumentEventConfiguration instrumentEventConfiguration = default(InstrumentEventConfiguration), ResourceId amortisationRuleSetId = default(ResourceId), string taxRuleSetScope = default(string), PortfolioSettlementConfiguration settlementConfiguration = default(PortfolioSettlementConfiguration), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), string transactionExclusionFilter = default(string), string taxLotSelectionCostBasis = default(string), FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration = default(FractionalUnitsTrueUpConfiguration), string holdingsFungibility = default(string), WhtParameters whtParameters = default(WhtParameters), List<Link> links = default(List<Link>))
+        public PortfolioDetails(string href = default(string), ResourceId originPortfolioId = default(ResourceId), ModelVersion varVersion = default(ModelVersion), string baseCurrency = default(string), ResourceId corporateActionSourceId = default(ResourceId), List<string> subHoldingKeys = default(List<string>), List<string> instrumentScopes = default(List<string>), AccountingMethodEnum ?accountingMethod = default(AccountingMethodEnum?), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), InstrumentEventConfiguration instrumentEventConfiguration = default(InstrumentEventConfiguration), ResourceId amortisationRuleSetId = default(ResourceId), string taxRuleSetScope = default(string), PortfolioSettlementConfiguration settlementConfiguration = default(PortfolioSettlementConfiguration), StagedModificationsInfo stagedModifications = default(StagedModificationsInfo), string transactionExclusionFilter = default(string), string taxLotSelectionCostBasis = default(string), FractionalUnitsTrueUpConfiguration fractionalUnitsTrueUpConfiguration = default(FractionalUnitsTrueUpConfiguration), string holdingsFungibility = default(string), string chargeableGainsRegime = default(string), WhtParameters whtParameters = default(WhtParameters), List<Link> links = default(List<Link>))
         {
             // to ensure "originPortfolioId" is required (not null)
             if (originPortfolioId == null)
@@ -204,6 +205,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.TaxLotSelectionCostBasis = taxLotSelectionCostBasis;
             this.FractionalUnitsTrueUpConfiguration = fractionalUnitsTrueUpConfiguration;
             this.HoldingsFungibility = holdingsFungibility;
+            this.ChargeableGainsRegime = chargeableGainsRegime;
             this.WhtParameters = whtParameters;
             this.Links = links;
         }
@@ -333,6 +335,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string HoldingsFungibility { get; set; }
 
         /// <summary>
+        /// The chargeable gains regime the portfolio is elected into. This can be: Default or UkChargeableGains. Defaults to Default if not specified, which means no chargeable gains pooling is applied. Under UkChargeableGains, in-scope holdings (equities, preferred shares, fund share classes and simple instruments) are depleted under the UK chargeable gains rules regardless of the accounting method on the portfolio, transaction or custodian account; other holdings use the portfolio&#39;s accounting method. Supply Default to explicitly reset it; a reset or never-configured regime reads back as absent. Available values: Default, UkChargeableGains.
+        /// </summary>
+        /// <value>The chargeable gains regime the portfolio is elected into. This can be: Default or UkChargeableGains. Defaults to Default if not specified, which means no chargeable gains pooling is applied. Under UkChargeableGains, in-scope holdings (equities, preferred shares, fund share classes and simple instruments) are depleted under the UK chargeable gains rules regardless of the accounting method on the portfolio, transaction or custodian account; other holdings use the portfolio&#39;s accounting method. Supply Default to explicitly reset it; a reset or never-configured regime reads back as absent. Available values: Default, UkChargeableGains.</value>
+        [DataMember(Name = "chargeableGainsRegime", EmitDefaultValue = true)]
+        public string ChargeableGainsRegime { get; set; }
+
+        /// <summary>
         /// Gets or Sets WhtParameters
         /// </summary>
         [DataMember(Name = "whtParameters", EmitDefaultValue = false)]
@@ -372,6 +381,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  TaxLotSelectionCostBasis: ").Append(TaxLotSelectionCostBasis).Append("\n");
             sb.Append("  FractionalUnitsTrueUpConfiguration: ").Append(FractionalUnitsTrueUpConfiguration).Append("\n");
             sb.Append("  HoldingsFungibility: ").Append(HoldingsFungibility).Append("\n");
+            sb.Append("  ChargeableGainsRegime: ").Append(ChargeableGainsRegime).Append("\n");
             sb.Append("  WhtParameters: ").Append(WhtParameters).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
@@ -511,6 +521,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.HoldingsFungibility.Equals(input.HoldingsFungibility))
                 ) && 
                 (
+                    this.ChargeableGainsRegime == input.ChargeableGainsRegime ||
+                    (this.ChargeableGainsRegime != null &&
+                    this.ChargeableGainsRegime.Equals(input.ChargeableGainsRegime))
+                ) && 
+                (
                     this.WhtParameters == input.WhtParameters ||
                     (this.WhtParameters != null &&
                     this.WhtParameters.Equals(input.WhtParameters))
@@ -608,6 +623,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.HoldingsFungibility != null)
                 {
                     hashCode = (hashCode * 59) + this.HoldingsFungibility.GetHashCode();
+                }
+                if (this.ChargeableGainsRegime != null)
+                {
+                    hashCode = (hashCode * 59) + this.ChargeableGainsRegime.GetHashCode();
                 }
                 if (this.WhtParameters != null)
                 {

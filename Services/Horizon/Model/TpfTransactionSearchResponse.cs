@@ -41,7 +41,9 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="batchId">Unique identifier of the batch (required).</param>
         /// <param name="runId">The run that processed the transaction for this instance, as shown in run monitoring (required).</param>
         /// <param name="runStartTime">Timestamp when the batch/run started (required).</param>
-        /// <param name="publicationStatus">Publication status of the transaction (Sent | Skipped | Failed) (required).</param>
+        /// <param name="publicationStatus">Outcome of the transaction&#39;s build (Sent | Skipped | Failed) (required).</param>
+        /// <param name="outcome">The same value as PublicationStatus under the name the screens use; PublicationStatus stays for existing clients. (required).</param>
+        /// <param name="eventType">The TPF event type that triggered this publication (New, Amended, Cancelled, NothingToDo, InstrumentMatured, InstrumentPartialClosure, InstrumentFullClosure, InstrumentInterestPayment, LastSentPropertyUpdated). Null for rows persisted before it was recorded, for transactions skipped as excluded, and for rows written before the build computed it (for example a transaction not found in LUSID). Never Queued: the search returns built rows only. Distinct from PublicationStatus, which says what happened to the row..</param>
         /// <param name="instrumentName">Instrument name (required).</param>
         /// <param name="instrumentType">Instrument type (required).</param>
         /// <param name="tradeDate">Trade date of the transaction (required).</param>
@@ -56,7 +58,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         /// <param name="sentAt">When the transaction was sent, which is when its file reached a destination. Empty for Skipped and Failed rows.</param>
         /// <param name="instrumentId">InstrumentId showing instrument id of transaction.</param>
         /// <param name="instrumentScope">The scope the build resolved the instrument in; null for rows built before it was recorded.</param>
-        public TpfTransactionSearchResponse(string transactionId = default(string), Guid instanceId = default(Guid), string instanceName = default(string), Guid batchId = default(Guid), Guid runId = default(Guid), DateTimeOffset runStartTime = default(DateTimeOffset), string publicationStatus = default(string), string instrumentName = default(string), string instrumentType = default(string), DateTimeOffset tradeDate = default(DateTimeOffset), DateTimeOffset? settlementDate = default(DateTimeOffset?), string skipReason = default(string), string fileName = default(string), List<string> destinations = default(List<string>), string portfolioCode = default(string), string portfolioScope = default(string), string failureReason = default(string), string failureStage = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), string instrumentId = default(string), string instrumentScope = default(string))
+        public TpfTransactionSearchResponse(string transactionId = default(string), Guid instanceId = default(Guid), string instanceName = default(string), Guid batchId = default(Guid), Guid runId = default(Guid), DateTimeOffset runStartTime = default(DateTimeOffset), string publicationStatus = default(string), string outcome = default(string), string eventType = default(string), string instrumentName = default(string), string instrumentType = default(string), DateTimeOffset tradeDate = default(DateTimeOffset), DateTimeOffset? settlementDate = default(DateTimeOffset?), string skipReason = default(string), string fileName = default(string), List<string> destinations = default(List<string>), string portfolioCode = default(string), string portfolioScope = default(string), string failureReason = default(string), string failureStage = default(string), DateTimeOffset? sentAt = default(DateTimeOffset?), string instrumentId = default(string), string instrumentScope = default(string))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -80,6 +82,12 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 throw new ArgumentNullException("publicationStatus is a required property for TpfTransactionSearchResponse and cannot be null");
             }
             this.PublicationStatus = publicationStatus;
+            // to ensure "outcome" is required (not null)
+            if (outcome == null)
+            {
+                throw new ArgumentNullException("outcome is a required property for TpfTransactionSearchResponse and cannot be null");
+            }
+            this.Outcome = outcome;
             // to ensure "instrumentName" is required (not null)
             if (instrumentName == null)
             {
@@ -93,6 +101,7 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             }
             this.InstrumentType = instrumentType;
             this.TradeDate = tradeDate;
+            this.EventType = eventType;
             this.SettlementDate = settlementDate;
             this.SkipReason = skipReason;
             this.FileName = fileName;
@@ -149,11 +158,25 @@ namespace Finbourne.Sdk.Services.Horizon.Model
         public DateTimeOffset RunStartTime { get; set; }
 
         /// <summary>
-        /// Publication status of the transaction (Sent | Skipped | Failed)
+        /// Outcome of the transaction&#39;s build (Sent | Skipped | Failed)
         /// </summary>
-        /// <value>Publication status of the transaction (Sent | Skipped | Failed)</value>
+        /// <value>Outcome of the transaction&#39;s build (Sent | Skipped | Failed)</value>
         [DataMember(Name = "publicationStatus", IsRequired = true, EmitDefaultValue = true)]
         public string PublicationStatus { get; set; }
+
+        /// <summary>
+        /// The same value as PublicationStatus under the name the screens use; PublicationStatus stays for existing clients.
+        /// </summary>
+        /// <value>The same value as PublicationStatus under the name the screens use; PublicationStatus stays for existing clients.</value>
+        [DataMember(Name = "outcome", IsRequired = true, EmitDefaultValue = true)]
+        public string Outcome { get; set; }
+
+        /// <summary>
+        /// The TPF event type that triggered this publication (New, Amended, Cancelled, NothingToDo, InstrumentMatured, InstrumentPartialClosure, InstrumentFullClosure, InstrumentInterestPayment, LastSentPropertyUpdated). Null for rows persisted before it was recorded, for transactions skipped as excluded, and for rows written before the build computed it (for example a transaction not found in LUSID). Never Queued: the search returns built rows only. Distinct from PublicationStatus, which says what happened to the row.
+        /// </summary>
+        /// <value>The TPF event type that triggered this publication (New, Amended, Cancelled, NothingToDo, InstrumentMatured, InstrumentPartialClosure, InstrumentFullClosure, InstrumentInterestPayment, LastSentPropertyUpdated). Null for rows persisted before it was recorded, for transactions skipped as excluded, and for rows written before the build computed it (for example a transaction not found in LUSID). Never Queued: the search returns built rows only. Distinct from PublicationStatus, which says what happened to the row.</value>
+        [DataMember(Name = "eventType", EmitDefaultValue = true)]
+        public string EventType { get; set; }
 
         /// <summary>
         /// Instrument name
@@ -268,6 +291,8 @@ namespace Finbourne.Sdk.Services.Horizon.Model
             sb.Append("  RunId: ").Append(RunId).Append("\n");
             sb.Append("  RunStartTime: ").Append(RunStartTime).Append("\n");
             sb.Append("  PublicationStatus: ").Append(PublicationStatus).Append("\n");
+            sb.Append("  Outcome: ").Append(Outcome).Append("\n");
+            sb.Append("  EventType: ").Append(EventType).Append("\n");
             sb.Append("  InstrumentName: ").Append(InstrumentName).Append("\n");
             sb.Append("  InstrumentType: ").Append(InstrumentType).Append("\n");
             sb.Append("  TradeDate: ").Append(TradeDate).Append("\n");
@@ -351,6 +376,16 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                     this.PublicationStatus == input.PublicationStatus ||
                     (this.PublicationStatus != null &&
                     this.PublicationStatus.Equals(input.PublicationStatus))
+                ) && 
+                (
+                    this.Outcome == input.Outcome ||
+                    (this.Outcome != null &&
+                    this.Outcome.Equals(input.Outcome))
+                ) && 
+                (
+                    this.EventType == input.EventType ||
+                    (this.EventType != null &&
+                    this.EventType.Equals(input.EventType))
                 ) && 
                 (
                     this.InstrumentName == input.InstrumentName ||
@@ -461,6 +496,14 @@ namespace Finbourne.Sdk.Services.Horizon.Model
                 if (this.PublicationStatus != null)
                 {
                     hashCode = (hashCode * 59) + this.PublicationStatus.GetHashCode();
+                }
+                if (this.Outcome != null)
+                {
+                    hashCode = (hashCode * 59) + this.Outcome.GetHashCode();
+                }
+                if (this.EventType != null)
+                {
+                    hashCode = (hashCode * 59) + this.EventType.GetHashCode();
                 }
                 if (this.InstrumentName != null)
                 {

@@ -56,7 +56,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Enum ComplexMarketDataActivity for value: ComplexMarketDataActivity
         /// </summary>
         [EnumMember(Value = "ComplexMarketDataActivity")]
-        ComplexMarketDataActivity = 5
+        ComplexMarketDataActivity = 5,
+
+        /// <summary>
+        /// Enum InstrumentEventActivity for value: InstrumentEventActivity
+        /// </summary>
+        [EnumMember(Value = "InstrumentEventActivity")]
+        InstrumentEventActivity = 6
     }
 
 }

@@ -52,11 +52,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="amortisationRuleSetId">amortisationRuleSetId.</param>
         /// <param name="leaderNavTypeCode">The code of the Nav Type that this Nav Type will follow when set..</param>
         /// <param name="transactionTemplateScope">The Transaction Template Scope used by the NavType. (required).</param>
-        /// <param name="transactionExclusionFilter">Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties..</param>
+        /// <param name="transactionExclusionFilter">Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties. The filter can be changed by patching the NavType, which propagates it to the NavType&#39;s derived portfolios. A NavType never inherits the filter of the Fund&#39;s portfolios: omitting the filter, or setting it to an empty string, means no filter. A transaction amended across a Final valuation point so that it newly matches the filter is reversed in the next valuation point, and one amended so that it stops matching is posted in the next valuation point as a true-up..</param>
         /// <param name="pricingBasis">The side of the quote this Nav Type values the fund on: Mid, Bid or Ask. Overrides the pricing basis of the valuation recipe&#39;s market options for this Nav Type only, so a bid NAV and an ask NAV can share one recipe. Omit it to value on the recipe&#39;s own pricing basis. Available values: Mid, Bid, Ask..</param>
         /// <param name="swingPricing">swingPricing.</param>
         /// <param name="notionalDealingCostTableId">notionalDealingCostTableId.</param>
-        public NavTypeDefinition(string code = default(string), string displayName = default(string), string description = default(string), ResourceId chartOfAccountsId = default(ResourceId), List<string> postingModuleCodes = default(List<string>), List<string> cleardownModuleCodes = default(List<string>), NavSettlementConfiguration settlementConfiguration = default(NavSettlementConfiguration), ResourceId valuationRecipeId = default(ResourceId), ResourceId holdingRecipeId = default(ResourceId), string accountingMethod = default(string), List<string> subHoldingKeys = default(List<string>), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), ResourceId amortisationRuleSetId = default(ResourceId), string leaderNavTypeCode = default(string), string transactionTemplateScope = default(string), string transactionExclusionFilter = default(string), string pricingBasis = default(string), SwingPricingRule swingPricing = default(SwingPricingRule), ResourceId notionalDealingCostTableId = default(ResourceId))
+        /// <param name="valuationTemplateId">valuationTemplateId.</param>
+        /// <param name="chargeableGainsRegime">The chargeable gains regime the Nav Type&#39;s derived portfolio is elected into. This can be: Default or UkChargeableGains. Omit it, or supply Default, to leave the derived portfolio inheriting its parent portfolio&#39;s regime. Under UkChargeableGains, in-scope holdings in the derived portfolio are depleted under the UK chargeable gains rules regardless of the Nav Type&#39;s accounting method; it requires the Fund&#39;s base currency to be GBP. Available values: Default, UkChargeableGains..</param>
+        public NavTypeDefinition(string code = default(string), string displayName = default(string), string description = default(string), ResourceId chartOfAccountsId = default(ResourceId), List<string> postingModuleCodes = default(List<string>), List<string> cleardownModuleCodes = default(List<string>), NavSettlementConfiguration settlementConfiguration = default(NavSettlementConfiguration), ResourceId valuationRecipeId = default(ResourceId), ResourceId holdingRecipeId = default(ResourceId), string accountingMethod = default(string), List<string> subHoldingKeys = default(List<string>), string amortisationMethod = default(string), string transactionTypeScope = default(string), string cashGainLossCalculationDate = default(string), ResourceId amortisationRuleSetId = default(ResourceId), string leaderNavTypeCode = default(string), string transactionTemplateScope = default(string), string transactionExclusionFilter = default(string), string pricingBasis = default(string), SwingPricingRule swingPricing = default(SwingPricingRule), ResourceId notionalDealingCostTableId = default(ResourceId), ResourceId valuationTemplateId = default(ResourceId), string chargeableGainsRegime = default(string))
         {
             // to ensure "chartOfAccountsId" is required (not null)
             if (chartOfAccountsId == null)
@@ -124,6 +126,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.PricingBasis = pricingBasis;
             this.SwingPricing = swingPricing;
             this.NotionalDealingCostTableId = notionalDealingCostTableId;
+            this.ValuationTemplateId = valuationTemplateId;
+            this.ChargeableGainsRegime = chargeableGainsRegime;
         }
 
         /// <summary>
@@ -241,9 +245,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string TransactionTemplateScope { get; set; }
 
         /// <summary>
-        /// Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties.
+        /// Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties. The filter can be changed by patching the NavType, which propagates it to the NavType&#39;s derived portfolios. A NavType never inherits the filter of the Fund&#39;s portfolios: omitting the filter, or setting it to an empty string, means no filter. A transaction amended across a Final valuation point so that it newly matches the filter is reversed in the next valuation point, and one amended so that it stops matching is posted in the next valuation point as a true-up.
         /// </summary>
-        /// <value>Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties.</value>
+        /// <value>Optional filter expression to exclude specific transactions from this NavType&#39;s derived portfolios. The filter can reference Transaction, Portfolio, or Instrument fields and properties. The filter can be changed by patching the NavType, which propagates it to the NavType&#39;s derived portfolios. A NavType never inherits the filter of the Fund&#39;s portfolios: omitting the filter, or setting it to an empty string, means no filter. A transaction amended across a Final valuation point so that it newly matches the filter is reversed in the next valuation point, and one amended so that it stops matching is posted in the next valuation point as a true-up.</value>
         [DataMember(Name = "transactionExclusionFilter", EmitDefaultValue = true)]
         public string TransactionExclusionFilter { get; set; }
 
@@ -265,6 +269,19 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         [DataMember(Name = "notionalDealingCostTableId", EmitDefaultValue = false)]
         public ResourceId NotionalDealingCostTableId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ValuationTemplateId
+        /// </summary>
+        [DataMember(Name = "valuationTemplateId", EmitDefaultValue = false)]
+        public ResourceId ValuationTemplateId { get; set; }
+
+        /// <summary>
+        /// The chargeable gains regime the Nav Type&#39;s derived portfolio is elected into. This can be: Default or UkChargeableGains. Omit it, or supply Default, to leave the derived portfolio inheriting its parent portfolio&#39;s regime. Under UkChargeableGains, in-scope holdings in the derived portfolio are depleted under the UK chargeable gains rules regardless of the Nav Type&#39;s accounting method; it requires the Fund&#39;s base currency to be GBP. Available values: Default, UkChargeableGains.
+        /// </summary>
+        /// <value>The chargeable gains regime the Nav Type&#39;s derived portfolio is elected into. This can be: Default or UkChargeableGains. Omit it, or supply Default, to leave the derived portfolio inheriting its parent portfolio&#39;s regime. Under UkChargeableGains, in-scope holdings in the derived portfolio are depleted under the UK chargeable gains rules regardless of the Nav Type&#39;s accounting method; it requires the Fund&#39;s base currency to be GBP. Available values: Default, UkChargeableGains.</value>
+        [DataMember(Name = "chargeableGainsRegime", EmitDefaultValue = true)]
+        public string ChargeableGainsRegime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -295,6 +312,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  PricingBasis: ").Append(PricingBasis).Append("\n");
             sb.Append("  SwingPricing: ").Append(SwingPricing).Append("\n");
             sb.Append("  NotionalDealingCostTableId: ").Append(NotionalDealingCostTableId).Append("\n");
+            sb.Append("  ValuationTemplateId: ").Append(ValuationTemplateId).Append("\n");
+            sb.Append("  ChargeableGainsRegime: ").Append(ChargeableGainsRegime).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -437,6 +456,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.NotionalDealingCostTableId == input.NotionalDealingCostTableId ||
                     (this.NotionalDealingCostTableId != null &&
                     this.NotionalDealingCostTableId.Equals(input.NotionalDealingCostTableId))
+                ) && 
+                (
+                    this.ValuationTemplateId == input.ValuationTemplateId ||
+                    (this.ValuationTemplateId != null &&
+                    this.ValuationTemplateId.Equals(input.ValuationTemplateId))
+                ) && 
+                (
+                    this.ChargeableGainsRegime == input.ChargeableGainsRegime ||
+                    (this.ChargeableGainsRegime != null &&
+                    this.ChargeableGainsRegime.Equals(input.ChargeableGainsRegime))
                 );
         }
 
@@ -532,6 +561,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.NotionalDealingCostTableId != null)
                 {
                     hashCode = (hashCode * 59) + this.NotionalDealingCostTableId.GetHashCode();
+                }
+                if (this.ValuationTemplateId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ValuationTemplateId.GetHashCode();
+                }
+                if (this.ChargeableGainsRegime != null)
+                {
+                    hashCode = (hashCode * 59) + this.ChargeableGainsRegime.GetHashCode();
                 }
                 return hashCode;
             }

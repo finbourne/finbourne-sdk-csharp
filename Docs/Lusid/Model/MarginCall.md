@@ -35,6 +35,9 @@ A margin call a run produced under a collateral agreement: our figure, the count
 | **Supersedes** | [MarginCallReference](MarginCallReference.md) | Optional | *No description available.* |
 | **CarriedFrom** | [MarginCallReference](MarginCallReference.md) | Optional | *No description available.* |
 | **CarriedDisputedAmount** | **decimal?** | Optional | The amount left in dispute on the carried call. Informational; not added to this call. |
+| **Scenario** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **ExplainAvailable** | **bool** | Optional | Whether the working behind the call&#39;s required amount was stored, so that the call can be explained. Only an initial-margin call can be explained, and only when the run stored its working. |
+| **ProposedAllocation** | [List&lt;CollateralAllocationLine&gt;](CollateralAllocationLine.md) | Optional | The assets the allocation pass proposes to deliver for the call, or to take back for a return, cheapest first. Null until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours. |
 
 
 ## Usage
@@ -74,7 +77,10 @@ var instance = new MarginCall(
     deadline: DateTimeOffset.Now,  // optional — The time the call must be agreed by. Empty until agreements carry a notification time.
     supersedes: new MarginCallReference(...),  // optional
     carriedFrom: new MarginCallReference(...),  // optional
-    carriedDisputedAmount: 0.0d  // optional — The amount left in dispute on the carried call. Informational; not added to this call.
+    carriedDisputedAmount: 0.0d,  // optional — The amount left in dispute on the carried call. Informational; not added to this call.
+    scenario: new ResourceId(...),  // optional
+    explainAvailable: true,  // optional — Whether the working behind the call&#39;s required amount was stored, so that the call can be explained. Only an initial-margin call can be explained, and only when the run stored its working.
+    proposedAllocation: new List<CollateralAllocationLine>()  // optional — The assets the allocation pass proposes to deliver for the call, or to take back for a return, cheapest first. Null until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
 );
 ```
 ### Serializing to JSON
@@ -93,6 +99,8 @@ var instance = JsonConvert.DeserializeObject<MarginCall>(json);
 - [CounterpartyIdentifier](CounterpartyIdentifier.md)
 - [MarginCallReference](MarginCallReference.md)
 - [MarginCallReference](MarginCallReference.md)
+- [ResourceId](ResourceId.md)
+- [CollateralAllocationLine](CollateralAllocationLine.md) — used in `ProposedAllocation`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

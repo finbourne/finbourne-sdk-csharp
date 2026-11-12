@@ -6,8 +6,10 @@ An individual item that makes up (one side of) a rec result. Polymorphic by item
 
 `RecResultItem` can be one of the following types:
 
+* [RecResultExternalIdentifiersItem](./RecResultExternalIdentifiersItem.md)
 * [RecResultHoldingItem](./RecResultHoldingItem.md)
 * [RecResultRelationalDataItem](./RecResultRelationalDataItem.md)
+* [RecResultResourceIdItem](./RecResultResourceIdItem.md)
 * [RecResultSettlementActivityItem](./RecResultSettlementActivityItem.md)
 * [RecResultTransactionItem](./RecResultTransactionItem.md)
 
@@ -18,7 +20,7 @@ An individual item that makes up (one side of) a rec result. Polymorphic by item
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var inner = new RecResultHoldingItem(...);
+var inner = new RecResultExternalIdentifiersItem(...);
 var instance = new RecResultItem(inner);
 ```
 
@@ -36,8 +38,10 @@ var instance = JsonConvert.DeserializeObject<RecResultItem>(json);
 
 ## Related Models
 
+- [RecResultExternalIdentifiersItem](./RecResultExternalIdentifiersItem.md)
 - [RecResultHoldingItem](./RecResultHoldingItem.md)
 - [RecResultRelationalDataItem](./RecResultRelationalDataItem.md)
+- [RecResultResourceIdItem](./RecResultResourceIdItem.md)
 - [RecResultSettlementActivityItem](./RecResultSettlementActivityItem.md)
 - [RecResultTransactionItem](./RecResultTransactionItem.md)
 

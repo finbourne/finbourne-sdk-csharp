@@ -11,6 +11,7 @@ Market Data required to build a volatility cube for swaption pricing,  represent
 | **Instruments** | [List&lt;LusidInstrument&gt;](LusidInstrument.md) | Required | Retrieve the set of instruments that define the cube. |
 | **Quotes** | [List&lt;MarketQuote&gt;](MarketQuote.md) | Required | Access the set of quotes that define the cube. |
 | **Lineage** | **string** | Optional | Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;. |
+| **MarketDataOptions** | [MarketDataOptions](MarketDataOptions.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **MarketDataType** | **string** | Required | Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData. Default: `MarketDataTypeEnum.IrVolCubeData` |
 
@@ -27,6 +28,7 @@ var instance = new IrVolCubeData(
     instruments: new List<LusidInstrument>(),  // required — Retrieve the set of instruments that define the cube.
     quotes: new List<MarketQuote>(),  // required — Access the set of quotes that define the cube.
     lineage: "...",  // optional — Description of the complex market data&#39;s lineage e.g. &#39;FundAccountant_GreenQuality&#39;.
+    marketDataOptions: new MarketDataOptions(...),  // optional
     varVersion: new ModelVersion(...),  // optional
     marketDataType: "..."  // required — Available values: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData, ConstantVolatilitySurface, InflationCurveData.
 );
@@ -46,6 +48,7 @@ var instance = JsonConvert.DeserializeObject<IrVolCubeData>(json);
 
 - [LusidInstrument](LusidInstrument.md) — used in `Instruments`
 - [MarketQuote](MarketQuote.md) — used in `Quotes`
+- [MarketDataOptions](MarketDataOptions.md)
 - [ModelVersion](ModelVersion.md)
 
 

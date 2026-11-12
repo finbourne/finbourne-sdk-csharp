@@ -13,6 +13,10 @@ The working behind a share class's dealing price: the net cashflow it was decide
 | **InflowTrigger** | [SwingTriggerEvaluation](SwingTriggerEvaluation.md) | Optional | *No description available.* |
 | **OutflowTrigger** | [SwingTriggerEvaluation](SwingTriggerEvaluation.md) | Optional | *No description available.* |
 | **DealingFlows** | [DealingFlowSummary](DealingFlowSummary.md) | Optional | *No description available.* |
+| **EstimateValuation** | [EstimateValuation](EstimateValuation.md) | Optional | *No description available.* |
+| **ApprovalStatus** | **string** | Optional | Where a manually approved swing decision stands. Pending until a manager approves or overrides the engine&#39;s proposal, or when the proposal has changed since the decision was taken; Approved when the decision equals the proposal; Overridden when it differs. Absent when the swing policy approves automatically. |
+| **DealingLinesNotValued** | [List&lt;DealingLineNotValued&gt;](DealingLineNotValued.md) | Optional | The dealing lines read for the swing decision that could not be valued into the share class currency: an amount in a currency that is neither the fund&#39;s nor any share class&#39;s, or a weight-only line. While any are present and no pricingMethodologyOverride has been submitted, no swing decision is taken, the dealing price is absent and the valuation point cannot be finalised; under an override the override&#39;s price stands and the lines remain listed here. Absent when every line was valued or the methodology does not swing. |
+| **Completeness** | [DealingBookCompleteness](DealingBookCompleteness.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -30,7 +34,11 @@ var instance = new PricingMethodologyAudit(
     varOverride: new PricingMethodologyOverride(...),  // optional
     inflowTrigger: new SwingTriggerEvaluation(...),  // optional
     outflowTrigger: new SwingTriggerEvaluation(...),  // optional
-    dealingFlows: new DealingFlowSummary(...)  // optional
+    dealingFlows: new DealingFlowSummary(...),  // optional
+    estimateValuation: new EstimateValuation(...),  // optional
+    approvalStatus: "...",  // optional — Where a manually approved swing decision stands. Pending until a manager approves or overrides the engine&#39;s proposal, or when the proposal has changed since the decision was taken; Approved when the decision equals the proposal; Overridden when it differs. Absent when the swing policy approves automatically.
+    dealingLinesNotValued: new List<DealingLineNotValued>(),  // optional — The dealing lines read for the swing decision that could not be valued into the share class currency: an amount in a currency that is neither the fund&#39;s nor any share class&#39;s, or a weight-only line. While any are present and no pricingMethodologyOverride has been submitted, no swing decision is taken, the dealing price is absent and the valuation point cannot be finalised; under an override the override&#39;s price stands and the lines remain listed here. Absent when every line was valued or the methodology does not swing.
+    completeness: new DealingBookCompleteness(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -51,6 +59,9 @@ var instance = JsonConvert.DeserializeObject<PricingMethodologyAudit>(json);
 - [SwingTriggerEvaluation](SwingTriggerEvaluation.md)
 - [SwingTriggerEvaluation](SwingTriggerEvaluation.md)
 - [DealingFlowSummary](DealingFlowSummary.md)
+- [EstimateValuation](EstimateValuation.md)
+- [DealingLineNotValued](DealingLineNotValued.md) — used in `DealingLinesNotValued`
+- [DealingBookCompleteness](DealingBookCompleteness.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

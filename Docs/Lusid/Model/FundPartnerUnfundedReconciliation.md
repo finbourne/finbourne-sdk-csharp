@@ -21,6 +21,7 @@ The unfunded commitment statement of one partner over a period: the register's o
 | **Difference** | **decimal** | Required | Closing unfunded less the register&#39;s unfunded at the closing datetime. Zero when the statement ties. |
 | **Ties** | **bool** | Required | Whether the closing unfunded equals the register&#39;s unfunded at the closing datetime. |
 | **Lines** | [List&lt;FundPartnerUnfundedReconciliationLine&gt;](FundPartnerUnfundedReconciliationLine.md) | Required | Every booked allocation to the partner over the period, in event date order, with the ILPA transaction type each is reported under and its effect on unfunded. |
+| **Warnings** | [List&lt;FundPartnerUnfundedReconciliationWarning&gt;](FundPartnerUnfundedReconciliationWarning.md) | Optional | Soft warnings about how the statement was built. Empty when the period and the register agree without caveats. |
 
 
 ## Usage
@@ -46,7 +47,8 @@ var instance = new FundPartnerUnfundedReconciliation(
     registerUnfunded: 0.0d,  // required — The unfunded commitment at the closing datetime, from the register.
     difference: 0.0d,  // required — Closing unfunded less the register&#39;s unfunded at the closing datetime. Zero when the statement ties.
     ties: true,  // required — Whether the closing unfunded equals the register&#39;s unfunded at the closing datetime.
-    lines: new List<FundPartnerUnfundedReconciliationLine>()  // required — Every booked allocation to the partner over the period, in event date order, with the ILPA transaction type each is reported under and its effect on unfunded.
+    lines: new List<FundPartnerUnfundedReconciliationLine>(),  // required — Every booked allocation to the partner over the period, in event date order, with the ILPA transaction type each is reported under and its effect on unfunded.
+    warnings: new List<FundPartnerUnfundedReconciliationWarning>()  // optional — Soft warnings about how the statement was built. Empty when the period and the register agree without caveats.
 );
 ```
 ### Serializing to JSON
@@ -63,6 +65,7 @@ var instance = JsonConvert.DeserializeObject<FundPartnerUnfundedReconciliation>(
 
 - [ResourceId](ResourceId.md)
 - [FundPartnerUnfundedReconciliationLine](FundPartnerUnfundedReconciliationLine.md) — used in `Lines`
+- [FundPartnerUnfundedReconciliationWarning](FundPartnerUnfundedReconciliationWarning.md) — used in `Warnings`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

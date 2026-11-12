@@ -16,6 +16,7 @@ Specification object for the parameters of a valuation
 | **FundValuationSchedule** | [FundValuationSchedule](FundValuationSchedule.md) | Required | *No description available.* |
 | **MarketDataOverrides** | [MarketDataOverrides](MarketDataOverrides.md) | Optional | *No description available.* |
 | **CorporateActionSourceId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **RecipeId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -36,7 +37,8 @@ var instance = new FundValuationRequest(
     includeOrderFlow: new OrderFlowConfiguration(...),  // optional
     fundValuationSchedule: new FundValuationSchedule(...),  // required
     marketDataOverrides: new MarketDataOverrides(...),  // optional
-    corporateActionSourceId: new ResourceId(...)  // optional
+    corporateActionSourceId: new ResourceId(...),  // optional
+    recipeId: new ResourceId(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -57,6 +59,7 @@ var instance = JsonConvert.DeserializeObject<FundValuationRequest>(json);
 - [OrderFlowConfiguration](OrderFlowConfiguration.md)
 - [FundValuationSchedule](FundValuationSchedule.md)
 - [MarketDataOverrides](MarketDataOverrides.md)
+- [ResourceId](ResourceId.md)
 - [ResourceId](ResourceId.md)
 
 

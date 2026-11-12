@@ -13,6 +13,7 @@ All URIs are relative to *http://localhost*
 | [**GetOrderHistory**](#getorderhistory) | **GET** `/api/api/ordermanagement/order/{scope}/{code}/$history` | GetOrderHistory: Get the history of an order and related entity changes |
 | [**MoveOrders**](#moveorders) | **POST** `/api/api/ordermanagement/moveorders` | [EARLY ACCESS] MoveOrders: Move orders to new or existing block |
 | [**PlaceBlocks**](#placeblocks) | **POST** `/api/api/ordermanagement/placeblocks` | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests. |
+| [**PreviewBlocks**](#previewblocks) | **POST** `/api/api/ordermanagement/$previewblocks` | PreviewBlocks: Preview the blocks a set of orders would form |
 | [**RunAllocationService**](#runallocationservice) | **POST** `/api/api/ordermanagement/allocate` | RunAllocationService: Runs the Allocation Service |
 | [**RunAllocationServiceWithWeights**](#runallocationservicewithweights) | **POST** `/api/api/ordermanagement/allocate/weighted` | [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights |
 | [**SweepBlocks**](#sweepblocks) | **POST** `/api/api/ordermanagement/SweepBlocks` | [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful. |
@@ -534,10 +535,68 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="previewblocks"></a>
+## PreviewBlocks
+
+> ResourceListOfProposedBlockAndOrders PreviewBlocks(PreviewBlocksRequest previewBlocksRequest)
+
+PreviewBlocks: Preview the blocks a set of orders would form
+
+Groups a set of orders into blocks according to the requested grouping mode, with each block's side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<OrderManagementApi>();
+var previewBlocksRequest = new PreviewBlocksRequest(); // PreviewBlocksRequest
+ResourceListOfProposedBlockAndOrders result = apiInstance.PreviewBlocks(previewBlocksRequest);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **previewBlocksRequest** | [PreviewBlocksRequest](../Model/PreviewBlocksRequest.md) | body | **required** | The orders to group and how to group them. |
+
+### Return type
+
+[ResourceListOfProposedBlockAndOrders](../Model/ResourceListOfProposedBlockAndOrders.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The proposed blocks and their orders. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the PreviewBlocksWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ResourceListOfProposedBlockAndOrders> response = apiInstance.PreviewBlocksWithHttpInfo(previewBlocksRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="runallocationservice"></a>
 ## RunAllocationService
 
-> AllocationServiceRunResponse RunAllocationService(List<ResourceId> resourceId, string? allocationAlgorithm = null)
+> AllocationServiceRunResponse RunAllocationService(List<ResourceId> resourceId, string? allocationAlgorithm = null, bool? cancelAndCorrect = null)
 
 RunAllocationService: Runs the Allocation Service
 
@@ -549,7 +608,8 @@ Allocates Executions for a given list of placements back to their originating or
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<OrderManagementApi>();
 var resourceId = new List<ResourceId>(); // List<ResourceId>
 var allocationAlgorithm = "allocationAlgorithm_example";  // string? (optional)
-AllocationServiceRunResponse result = apiInstance.RunAllocationService(resourceId, allocationAlgorithm);
+var cancelAndCorrect = false;  // bool? (optional)
+AllocationServiceRunResponse result = apiInstance.RunAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -559,6 +619,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **resourceId** | [List&lt;ResourceId&gt;](../Model/ResourceId.md) | body | **required** | The List of Placement IDs for which you wish to allocate Executions. |
 | **allocationAlgorithm** | **string?** | query | optional | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. |
+| **cancelAndCorrect** | **bool?** | query | optional | Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. Default: `false` |
 
 ### Return type
 
@@ -583,7 +644,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<AllocationServiceRunResponse> response = apiInstance.RunAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm);
+ApiResponse<AllocationServiceRunResponse> response = apiInstance.RunAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, cancelAndCorrect);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -597,7 +658,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="runallocationservicewithweights"></a>
 ## RunAllocationServiceWithWeights
 
-> AllocationServiceRunResponse RunAllocationServiceWithWeights(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = null)
+> AllocationServiceRunResponse RunAllocationServiceWithWeights(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = null, bool? cancelAndCorrect = null)
 
 [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
 
@@ -609,7 +670,8 @@ Allocates Executions for a given list of placements to a specified set of portfo
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<OrderManagementApi>();
 var weightedAllocationServiceRunRequest = new WeightedAllocationServiceRunRequest(); // WeightedAllocationServiceRunRequest
 var allocationAlgorithm = "allocationAlgorithm_example";  // string? (optional)
-AllocationServiceRunResponse result = apiInstance.RunAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm);
+var cancelAndCorrect = false;  // bool? (optional)
+AllocationServiceRunResponse result = apiInstance.RunAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -619,6 +681,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **weightedAllocationServiceRunRequest** | [WeightedAllocationServiceRunRequest](../Model/WeightedAllocationServiceRunRequest.md) | body | **required** | The placement IDs to allocate against, and the portfolio weights to use for the allocation split. |
 | **allocationAlgorithm** | **string?** | query | optional | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. |
+| **cancelAndCorrect** | **bool?** | query | optional | Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. Default: `false` |
 
 ### Return type
 
@@ -643,7 +706,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<AllocationServiceRunResponse> response = apiInstance.RunAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm);
+ApiResponse<AllocationServiceRunResponse> response = apiInstance.RunAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

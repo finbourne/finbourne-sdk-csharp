@@ -38,7 +38,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="overrideApplicationStatus">Whether all, some, or none of this record&#39;s override and suppression entries are currently applied. Available values: Full, Partial, Orphaned..</param>
         /// <param name="cancelActive">True when an active event-level Cancel instruction also exists for this instrument event, taking precedence over the entries in this record..</param>
         /// <param name="varVersion">varVersion.</param>
-        public VirtualTransactionOverrideRecord(string instrumentEventId = default(string), ResourceId sourcePortfolioId = default(ResourceId), Dictionary<string, OverrideEntryResponse> overrides = default(Dictionary<string, OverrideEntryResponse>), Dictionary<string, SuppressionEntryResponse> suppressions = default(Dictionary<string, SuppressionEntryResponse>), string overrideMatchStatus = default(string), string overrideApplicationStatus = default(string), bool? cancelActive = default(bool?), ModelVersion varVersion = default(ModelVersion))
+        /// <param name="adjustments">The adjustments in this record, keyed by the virtual transaction id they were stored against..</param>
+        public VirtualTransactionOverrideRecord(string instrumentEventId = default(string), ResourceId sourcePortfolioId = default(ResourceId), Dictionary<string, OverrideEntryResponse> overrides = default(Dictionary<string, OverrideEntryResponse>), Dictionary<string, SuppressionEntryResponse> suppressions = default(Dictionary<string, SuppressionEntryResponse>), string overrideMatchStatus = default(string), string overrideApplicationStatus = default(string), bool? cancelActive = default(bool?), ModelVersion varVersion = default(ModelVersion), Dictionary<string, AdjustmentEntryResponse> adjustments = default(Dictionary<string, AdjustmentEntryResponse>))
         {
             this.InstrumentEventId = instrumentEventId;
             this.SourcePortfolioId = sourcePortfolioId;
@@ -48,6 +49,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.OverrideApplicationStatus = overrideApplicationStatus;
             this.CancelActive = cancelActive;
             this.VarVersion = varVersion;
+            this.Adjustments = adjustments;
         }
 
         /// <summary>
@@ -105,6 +107,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ModelVersion VarVersion { get; set; }
 
         /// <summary>
+        /// The adjustments in this record, keyed by the virtual transaction id they were stored against.
+        /// </summary>
+        /// <value>The adjustments in this record, keyed by the virtual transaction id they were stored against.</value>
+        [DataMember(Name = "adjustments", EmitDefaultValue = true)]
+        public Dictionary<string, AdjustmentEntryResponse> Adjustments { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -120,6 +129,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  OverrideApplicationStatus: ").Append(OverrideApplicationStatus).Append("\n");
             sb.Append("  CancelActive: ").Append(CancelActive).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  Adjustments: ").Append(Adjustments).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -196,6 +206,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.VarVersion == input.VarVersion ||
                     (this.VarVersion != null &&
                     this.VarVersion.Equals(input.VarVersion))
+                ) && 
+                (
+                    this.Adjustments == input.Adjustments ||
+                    this.Adjustments != null &&
+                    input.Adjustments != null &&
+                    this.Adjustments.SequenceEqual(input.Adjustments)
                 );
         }
 
@@ -239,6 +255,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.VarVersion != null)
                 {
                     hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
+                }
+                if (this.Adjustments != null)
+                {
+                    hashCode = (hashCode * 59) + this.Adjustments.GetHashCode();
                 }
                 return hashCode;
             }

@@ -41,9 +41,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <param name="valueConstraints">valueConstraints.</param>
         /// <param name="displayName">Display name for field definition.</param>
         /// <param name="description">Description for field definition.</param>
-        /// <param name="category">Category for field definition.</param>
+        /// <param name="category">Display group for the field. Fields sharing a category are presented together in the UI.</param>
         /// <param name="containsUrl">Field contains url.</param>
-        public TaskFieldDefinition(string name = default(string), string type = default(string), ReadOnlyStates readOnlyStates = default(ReadOnlyStates), ValueConstraints valueConstraints = default(ValueConstraints), string displayName = default(string), string description = default(string), string category = default(string), bool? containsUrl = default(bool?))
+        /// <param name="multiline">Whether the field should be rendered as a multi-line text area.</param>
+        public TaskFieldDefinition(string name = default(string), string type = default(string), ReadOnlyStates readOnlyStates = default(ReadOnlyStates), ValueConstraints valueConstraints = default(ValueConstraints), string displayName = default(string), string description = default(string), string category = default(string), bool? containsUrl = default(bool?), bool? multiline = default(bool?))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -63,6 +64,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             this.Description = description;
             this.Category = category;
             this.ContainsUrl = containsUrl;
+            this.Multiline = multiline;
         }
 
         /// <summary>
@@ -106,9 +108,9 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Category for field definition
+        /// Display group for the field. Fields sharing a category are presented together in the UI
         /// </summary>
-        /// <value>Category for field definition</value>
+        /// <value>Display group for the field. Fields sharing a category are presented together in the UI</value>
         [DataMember(Name = "category", EmitDefaultValue = true)]
         public string Category { get; set; }
 
@@ -118,6 +120,13 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         /// <value>Field contains url</value>
         [DataMember(Name = "containsUrl", EmitDefaultValue = true)]
         public bool? ContainsUrl { get; set; }
+
+        /// <summary>
+        /// Whether the field should be rendered as a multi-line text area
+        /// </summary>
+        /// <value>Whether the field should be rendered as a multi-line text area</value>
+        [DataMember(Name = "multiline", EmitDefaultValue = true)]
+        public bool? Multiline { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,6 +144,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  ContainsUrl: ").Append(ContainsUrl).Append("\n");
+            sb.Append("  Multiline: ").Append(Multiline).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -209,6 +219,11 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                     this.ContainsUrl == input.ContainsUrl ||
                     (this.ContainsUrl != null &&
                     this.ContainsUrl.Equals(input.ContainsUrl))
+                ) && 
+                (
+                    this.Multiline == input.Multiline ||
+                    (this.Multiline != null &&
+                    this.Multiline.Equals(input.Multiline))
                 );
         }
 
@@ -252,6 +267,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 if (this.ContainsUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.ContainsUrl.GetHashCode();
+                }
+                if (this.Multiline != null)
+                {
+                    hashCode = (hashCode * 59) + this.Multiline.GetHashCode();
                 }
                 return hashCode;
             }

@@ -13,8 +13,8 @@
 | **Properties** | [Dictionary&lt;string, Property&gt;](Property.md) | Optional | The Closed Periods properties. These will be from the &#39;ClosedPeriod&#39; domain. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
 | **PostCloseActivities** | [List&lt;PostCloseActivity&gt;](PostCloseActivity.md) | Optional | All the post close activities for the closed period. |
-| **HoldingsAsAtClosedOverride** | **DateTimeOffset?** | Optional | The optional AsAtClosed Override to use for building holdings in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used. |
-| **ValuationAsAtClosedOverride** | **DateTimeOffset?** | Optional | The optional AsAtClosed Override to use for performing valuations in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used. |
+| **HoldingsAsAtClosedOverride** | **DateTimeOffset?** | Optional | The optional AsAtClosed Override to use for building holdings in the Closed Period. If not specified, the AsAtClosed on the Closed Period will be used. |
+| **ValuationAsAtClosedOverride** | **DateTimeOffset?** | Optional | The optional AsAtClosed Override to use for performing valuations in the Closed Period. If not specified, the AsAtClosed on the Closed Period will be used. |
 | **BranchStatus** | **string** | Optional | The branch status of the closed period, e.g. Confirmed/Unconfirmed. |
 | **Href** | **string** | Optional | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
@@ -37,8 +37,8 @@ var instance = new ClosedPeriod(
     properties: new Property(...),  // optional — The Closed Periods properties. These will be from the &#39;ClosedPeriod&#39; domain.
     varVersion: new ModelVersion(...),  // optional
     postCloseActivities: new List<PostCloseActivity>(),  // optional — All the post close activities for the closed period.
-    holdingsAsAtClosedOverride: DateTimeOffset.Now,  // optional — The optional AsAtClosed Override to use for building holdings in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used.
-    valuationAsAtClosedOverride: DateTimeOffset.Now,  // optional — The optional AsAtClosed Override to use for performing valuations in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used.
+    holdingsAsAtClosedOverride: DateTimeOffset.Now,  // optional — The optional AsAtClosed Override to use for building holdings in the Closed Period. If not specified, the AsAtClosed on the Closed Period will be used.
+    valuationAsAtClosedOverride: DateTimeOffset.Now,  // optional — The optional AsAtClosed Override to use for performing valuations in the Closed Period. If not specified, the AsAtClosed on the Closed Period will be used.
     branchStatus: "...",  // optional — The branch status of the closed period, e.g. Confirmed/Unconfirmed.
     href: "...",  // optional — The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime.
     links: new List<Link>()  // optional

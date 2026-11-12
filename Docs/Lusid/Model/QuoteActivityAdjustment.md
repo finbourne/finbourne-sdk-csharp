@@ -11,7 +11,7 @@
 | **EffectiveAt** | [DateTimeOrCutLabel](DateTimeOrCutLabel.md) | Required | The EffectiveAt time of the entity event that need to be added to the closed period. |
 | **EntityUniqueId** | **string** | Required | The EntityUniqueId from the entity which needs to be added as a post close activity. |
 | **InstrumentId** | **string** | Required | The InstrumentId from the quote which needs to be added as a post close activity. |
-| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.QuoteActivityAdjustment` |
+| **NavActivityAdjustmentType** | **string** | Required | The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment, InstrumentEventActivityAdjustment. Default: `NavActivityAdjustmentTypeEnum.QuoteActivityAdjustment` |
 
 
 ## Usage
@@ -27,7 +27,7 @@ var instance = new QuoteActivityAdjustment(
     effectiveAt: new DateTimeOrCutLabel(...),  // required — The EffectiveAt time of the entity event that need to be added to the closed period.
     entityUniqueId: "...",  // required — The EntityUniqueId from the entity which needs to be added as a post close activity.
     instrumentId: "...",  // required — The InstrumentId from the quote which needs to be added as a post close activity.
-    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
+    navActivityAdjustmentType: "..."  // required — The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment, InstrumentEventActivityAdjustment.
 );
 ```
 ### Serializing to JSON

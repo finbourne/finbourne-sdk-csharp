@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CalculateOrderDates**](#calculateorderdates) | **POST** `/api/api/transferagency/orderdates` | [EXPERIMENTAL] CalculateOrderDates: Calculate the key dates associated with transfer agency orders |
+| [**CancelTransferAgencyTransactions**](#canceltransferagencytransactions) | **POST** `/api/api/transferagency/transactions/cancel` | [EXPERIMENTAL] CancelTransferAgencyTransactions: Cancel transfer agency transactions, un-pricing their orders |
 | [**DeleteTransferAgencyOrders**](#deletetransferagencyorders) | **POST** `/api/api/transferagency/orders/$delete` | [EXPERIMENTAL] DeleteTransferAgencyOrders: Delete transfer agency orders |
 | [**EstimateTransferAgencyOrders**](#estimatetransferagencyorders) | **POST** `/api/api/transferagency/orders/$estimate` | [EXPERIMENTAL] EstimateTransferAgencyOrders: Estimate the values of transfer agency orders |
 | [**UpsertTransferAgencyOrders**](#upserttransferagencyorders) | **POST** `/api/api/transferagency/orders` | [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders |
@@ -101,6 +102,66 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<CalculateOrderDatesResponse> response = apiInstance.CalculateOrderDatesWithHttpInfo(requestBody);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="canceltransferagencytransactions"></a>
+## CancelTransferAgencyTransactions
+
+> CancelTransferAgencyTransactionsResponse CancelTransferAgencyTransactions(Dictionary<string, CancelTransferAgencyTransactionRequest> requestBody, string? successMode = null)
+
+[EXPERIMENTAL] CancelTransferAgencyTransactions: Cancel transfer agency transactions, un-pricing their orders
+
+Reverses the pricing of a transfer agency order, identified by the security transaction that pricing booked:  cancels that transaction in the investor's portfolio, amends the paired cash transaction back to its  pre-pricing amount, and moves the order from 'Priced' back to 'New'. Both changes are bitemporal, so the  priced state is still visible at an earlier as-at.  A transaction that was never booked, that names no order, that is the cash leg rather than the security leg,  or whose order is not in 'Priced' fails on its own. A leg already cancelled outside this flow is left alone and  the order is still returned to 'New'. A transaction named under two request keys fails the whole request.  The response contains both successfully un-priced orders and any failures, each in the form of a  dictionary keyed by the request's keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransferAgencyApi>();
+var requestBody = new Dictionary<string, CancelTransferAgencyTransactionRequest>(); // Dictionary<string, CancelTransferAgencyTransactionRequest>
+var successMode = "\"Partial\"";  // string? (optional)
+CancelTransferAgencyTransactionsResponse result = apiInstance.CancelTransferAgencyTransactions(requestBody, successMode);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **requestBody** | [Dictionary&lt;string, CancelTransferAgencyTransactionRequest&gt;](../Model/CancelTransferAgencyTransactionRequest.md) | body | **required** | The security transactions to cancel, keyed by a unique request identifier. |
+| **successMode** | **string?** | query | optional | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial Default: `&quot;Partial&quot;` |
+
+### Return type
+
+[CancelTransferAgencyTransactionsResponse](../Model/CancelTransferAgencyTransactionsResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully un-priced orders and any failures. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the CancelTransferAgencyTransactionsWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<CancelTransferAgencyTransactionsResponse> response = apiInstance.CancelTransferAgencyTransactionsWithHttpInfo(requestBody, successMode);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

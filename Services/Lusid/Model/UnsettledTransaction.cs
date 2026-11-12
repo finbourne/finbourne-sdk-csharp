@@ -40,7 +40,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="stockIsOverdue">Whether the stock component is overdue for settlement..</param>
         /// <param name="deferredCashSettlementStatus">The settlement status of the deferred cash component..</param>
         /// <param name="deferredCashIsOverdue">Whether the deferred cash component is overdue for settlement..</param>
-        public UnsettledTransaction(OutputTransaction transaction = default(OutputTransaction), PortfolioId portfolioId = default(PortfolioId), string overallSettlementStatus = default(string), bool overallIsOverdue = default(bool), string cashSettlementStatus = default(string), bool cashIsOverdue = default(bool), string stockSettlementStatus = default(string), bool stockIsOverdue = default(bool), string deferredCashSettlementStatus = default(string), bool deferredCashIsOverdue = default(bool))
+        /// <param name="revaluation">revaluation.</param>
+        public UnsettledTransaction(OutputTransaction transaction = default(OutputTransaction), PortfolioId portfolioId = default(PortfolioId), string overallSettlementStatus = default(string), bool overallIsOverdue = default(bool), string cashSettlementStatus = default(string), bool cashIsOverdue = default(bool), string stockSettlementStatus = default(string), bool stockIsOverdue = default(bool), string deferredCashSettlementStatus = default(string), bool deferredCashIsOverdue = default(bool), UnsettledTransactionRevaluation revaluation = default(UnsettledTransactionRevaluation))
         {
             this.Transaction = transaction;
             this.PortfolioId = portfolioId;
@@ -52,6 +53,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.StockIsOverdue = stockIsOverdue;
             this.DeferredCashSettlementStatus = deferredCashSettlementStatus;
             this.DeferredCashIsOverdue = deferredCashIsOverdue;
+            this.Revaluation = revaluation;
         }
 
         /// <summary>
@@ -123,6 +125,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public bool DeferredCashIsOverdue { get; set; }
 
         /// <summary>
+        /// Gets or Sets Revaluation
+        /// </summary>
+        [DataMember(Name = "revaluation", EmitDefaultValue = false)]
+        public UnsettledTransactionRevaluation Revaluation { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -140,6 +148,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  StockIsOverdue: ").Append(StockIsOverdue).Append("\n");
             sb.Append("  DeferredCashSettlementStatus: ").Append(DeferredCashSettlementStatus).Append("\n");
             sb.Append("  DeferredCashIsOverdue: ").Append(DeferredCashIsOverdue).Append("\n");
+            sb.Append("  Revaluation: ").Append(Revaluation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -220,6 +229,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.DeferredCashIsOverdue == input.DeferredCashIsOverdue ||
                     this.DeferredCashIsOverdue.Equals(input.DeferredCashIsOverdue)
+                ) && 
+                (
+                    this.Revaluation == input.Revaluation ||
+                    (this.Revaluation != null &&
+                    this.Revaluation.Equals(input.Revaluation))
                 );
         }
 
@@ -260,6 +274,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     hashCode = (hashCode * 59) + this.DeferredCashSettlementStatus.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.DeferredCashIsOverdue.GetHashCode();
+                if (this.Revaluation != null)
+                {
+                    hashCode = (hashCode * 59) + this.Revaluation.GetHashCode();
+                }
                 return hashCode;
             }
         }

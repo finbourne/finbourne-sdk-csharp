@@ -103,6 +103,18 @@ namespace Finbourne.Sdk.Services.Workflow.Model
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkerConfigurationResponse" /> class
+        /// with the <see cref="LuminesceMultiQueryResponse" /> class
+        /// </summary>
+        /// <param name="actualInstance">An instance of LuminesceMultiQueryResponse.</param>
+        public WorkerConfigurationResponse(LuminesceMultiQueryResponse actualInstance)
+        {
+            this.IsNullable = false;
+            this.SchemaType= "oneOf";
+            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WorkerConfigurationResponse" /> class
         /// with the <see cref="LuminesceViewResponse" /> class
         /// </summary>
         /// <param name="actualInstance">An instance of LuminesceViewResponse.</param>
@@ -223,6 +235,10 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 {
                     this._actualInstance = value;
                 }
+                else if (value.GetType() == typeof(LuminesceMultiQueryResponse) || value is LuminesceMultiQueryResponse)
+                {
+                    this._actualInstance = value;
+                }
                 else if (value.GetType() == typeof(LuminesceViewResponse) || value is LuminesceViewResponse)
                 {
                     this._actualInstance = value;
@@ -253,7 +269,7 @@ namespace Finbourne.Sdk.Services.Workflow.Model
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: FailResponse, GroupReconciliationResponse, HealthCheckResponse, HorizonIntegrationResponse, InstantiateRecResponse, LibraryResponse, LuminesceViewResponse, LusidEntityDataQualityCheckResponse, PortfolioHoldingDataQualityCheckResponse, PortfolioTransactionDataQualityCheckResponse, SchedulerJobResponse, SleepResponse, StructuredResultDataQualityCheckResponse");
+                    throw new ArgumentException("Invalid instance found. Must be the following types: FailResponse, GroupReconciliationResponse, HealthCheckResponse, HorizonIntegrationResponse, InstantiateRecResponse, LibraryResponse, LuminesceMultiQueryResponse, LuminesceViewResponse, LusidEntityDataQualityCheckResponse, PortfolioHoldingDataQualityCheckResponse, PortfolioTransactionDataQualityCheckResponse, SchedulerJobResponse, SleepResponse, StructuredResultDataQualityCheckResponse");
                 }
             }
         }
@@ -316,6 +332,16 @@ namespace Finbourne.Sdk.Services.Workflow.Model
         public LibraryResponse GetLibraryResponse()
         {
             return (LibraryResponse)this.ActualInstance;
+        }
+
+        /// <summary>
+        /// Get the actual instance of `LuminesceMultiQueryResponse`. If the actual instance is not `LuminesceMultiQueryResponse`,
+        /// the InvalidClassException will be thrown
+        /// </summary>
+        /// <returns>An instance of LuminesceMultiQueryResponse</returns>
+        public LuminesceMultiQueryResponse GetLuminesceMultiQueryResponse()
+        {
+            return (LuminesceMultiQueryResponse)this.ActualInstance;
         }
 
         /// <summary>
@@ -544,6 +570,26 @@ namespace Finbourne.Sdk.Services.Workflow.Model
             {
                 // deserialization failed, try the next one
                 System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into LibraryResponse: {1}", jsonString, exception.ToString()));
+            }
+
+            try
+            {
+                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+                if (typeof(LuminesceMultiQueryResponse).GetProperty("AdditionalProperties") == null)
+                {
+                    newWorkerConfigurationResponse = new WorkerConfigurationResponse(JsonConvert.DeserializeObject<LuminesceMultiQueryResponse>(jsonString, WorkerConfigurationResponse.SerializerSettings));
+                }
+                else
+                {
+                    newWorkerConfigurationResponse = new WorkerConfigurationResponse(JsonConvert.DeserializeObject<LuminesceMultiQueryResponse>(jsonString, WorkerConfigurationResponse.AdditionalPropertiesSerializerSettings));
+                }
+                matchedTypes.Add("LuminesceMultiQueryResponse");
+                match++;
+            }
+            catch (Exception exception)
+            {
+                // deserialization failed, try the next one
+                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into LuminesceMultiQueryResponse: {1}", jsonString, exception.ToString()));
             }
 
             try

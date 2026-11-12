@@ -7,22 +7,30 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**CreateComplianceTemplate**](#createcompliancetemplate) | **POST** `/api/api/compliance/templates/{scope}` | [EARLY ACCESS] CreateComplianceTemplate: Create a Compliance Rule Template |
 | [**DeleteComplianceRule**](#deletecompliancerule) | **DELETE** `/api/api/compliance/rules/{scope}/{code}` | [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule. |
+| [**DeleteComplianceRuleV3**](#deletecompliancerulev3) | **DELETE** `/api/api/compliance/v3/rules/{scope}/{code}` | [EXPERIMENTAL] DeleteComplianceRuleV3: [EXPERIMENTAL] Delete a V3 compliance rule. |
 | [**DeleteComplianceTemplate**](#deletecompliancetemplate) | **DELETE** `/api/api/compliance/templates/{scope}/{code}` | [EARLY ACCESS] DeleteComplianceTemplate: Delete a ComplianceRuleTemplate |
+| [**DescribeComplianceRuleV3**](#describecompliancerulev3) | **GET** `/api/api/compliance/v3/rules/{scope}/{code}/$describe` | [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English. |
 | [**GetComplianceRule**](#getcompliancerule) | **GET** `/api/api/compliance/rules/{scope}/{code}` | [EARLY ACCESS] GetComplianceRule: Get compliance rule. |
 | [**GetComplianceRuleBreakdown**](#getcompliancerulebreakdown) | **GET** `/api/api/compliance/runs/breakdown/{runScope}/{runCode}/{ruleScope}/{ruleCode}` | [EARLY ACCESS] GetComplianceRuleBreakdown: Get the position-level breakdown for a single rule of a compliance run. |
 | [**GetComplianceRuleResult**](#getcomplianceruleresult) | **GET** `/api/api/compliance/runs/summary/{runScope}/{runCode}/{ruleScope}/{ruleCode}` | [EARLY ACCESS] GetComplianceRuleResult: Get detailed results for a specific rule within a compliance run. |
+| [**GetComplianceRuleV3**](#getcompliancerulev3) | **GET** `/api/api/compliance/v3/rules/{scope}/{code}` | [EXPERIMENTAL] GetComplianceRuleV3: [EXPERIMENTAL] Get a V3 compliance rule. |
 | [**GetComplianceTemplate**](#getcompliancetemplate) | **GET** `/api/api/compliance/templates/{scope}/{code}` | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template. |
 | [**GetDecoratedComplianceRunSummary**](#getdecoratedcompliancerunsummary) | **GET** `/api/api/compliance/runs/summary/{scope}/{code}/$decorate` | [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run. |
 | [**GetFilteredDecoratedComplianceRunSummary**](#getfiltereddecoratedcompliancerunsummary) | **POST** `/api/api/compliance/runs/summary/$decorate` | [EARLY ACCESS] GetFilteredDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run, optionally restricted to a set of portfolios or portfolio groups. |
 | [**ListComplianceRules**](#listcompliancerules) | **GET** `/api/api/compliance/rules` | [EARLY ACCESS] ListComplianceRules: List compliance rules. |
+| [**ListComplianceRulesV3**](#listcompliancerulesv3) | **GET** `/api/api/compliance/v3/rules` | [EXPERIMENTAL] ListComplianceRulesV3: [EXPERIMENTAL] List V3 compliance rules. |
 | [**ListComplianceRuns**](#listcomplianceruns) | **GET** `/api/api/compliance/runs` | [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers. |
 | [**ListComplianceTemplates**](#listcompliancetemplates) | **GET** `/api/api/compliance/templates` | [EARLY ACCESS] ListComplianceTemplates: List compliance templates. |
 | [**ListOrderBreachHistory**](#listorderbreachhistory) | **GET** `/api/api/compliance/runs/breaches` | [EXPERIMENTAL] ListOrderBreachHistory: List Historical Order Breaches. |
 | [**RunCompliance**](#runcompliance) | **POST** `/api/api/compliance/runs` | [EARLY ACCESS] RunCompliance: Run a compliance check. |
 | [**RunCompliancePreview**](#runcompliancepreview) | **POST** `/api/api/compliance/preview/runs` | [EARLY ACCESS] RunCompliancePreview: Run a compliance check. |
+| [**RunComplianceV3**](#runcompliancev3) | **POST** `/api/api/compliance/v3/runs` | [EXPERIMENTAL] RunComplianceV3: [EXPERIMENTAL] Run V3 compliance rules against a portfolio group. |
+| [**RunComplianceV3PreTrade**](#runcompliancev3pretrade) | **POST** `/api/api/compliance/v3/runs/$pretrade` | [EXPERIMENTAL] RunComplianceV3PreTrade: [EXPERIMENTAL] Run V3 compliance rules pre-trade against a portfolio group. |
 | [**UpdateComplianceTemplate**](#updatecompliancetemplate) | **PUT** `/api/api/compliance/templates/{scope}/{code}` | [EARLY ACCESS] UpdateComplianceTemplate: Update a ComplianceRuleTemplate |
 | [**UpsertComplianceRule**](#upsertcompliancerule) | **POST** `/api/api/compliance/rules` | [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule. |
+| [**UpsertComplianceRuleV3**](#upsertcompliancerulev3) | **POST** `/api/api/compliance/v3/rules` | [EXPERIMENTAL] UpsertComplianceRuleV3: [EXPERIMENTAL] Upsert a V3 compliance rule. |
 | [**UpsertComplianceRunSummary**](#upsertcompliancerunsummary) | **POST** `/api/api/compliance/runs/summary` | [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary. |
+| [**ValidateComplianceRuleV3**](#validatecompliancerulev3) | **POST** `/api/api/compliance/v3/rules/$validate` | [EXPERIMENTAL] ValidateComplianceRuleV3: [EXPERIMENTAL] Validate a V3 compliance rule definition. |
 
 ### Example
 
@@ -186,6 +194,66 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="deletecompliancerulev3"></a>
+## DeleteComplianceRuleV3
+
+> DeletedEntityResponse DeleteComplianceRuleV3(string scope, string code)
+
+[EXPERIMENTAL] DeleteComplianceRuleV3: [EXPERIMENTAL] Delete a V3 compliance rule.
+
+Use this endpoint to delete a V3 compliance rule.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+DeletedEntityResponse result = apiInstance.DeleteComplianceRuleV3(scope, code);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The compliance rule&#39;s scope. |
+| **code** | **string** | path | **required** | The compliance rule&#39;s code. |
+
+### Return type
+
+[DeletedEntityResponse](../Model/DeletedEntityResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The response from deleting a V3 compliance rule. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DeleteComplianceRuleV3WithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteComplianceRuleV3WithHttpInfo(scope, code);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="deletecompliancetemplate"></a>
 ## DeleteComplianceTemplate
 
@@ -236,6 +304,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteComplianceTemplateWithHttpInfo(scope, code);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="describecompliancerulev3"></a>
+## DescribeComplianceRuleV3
+
+> ComplianceRuleV3DescribeResponse DescribeComplianceRuleV3(string scope, string code, DateTimeOffset? asAt = null)
+
+[EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English.
+
+Use this endpoint to retrieve a plain-English description of a V3 compliance rule. The description  generator is delivered separately, so the description lines are currently empty.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+ComplianceRuleV3DescribeResponse result = apiInstance.DescribeComplianceRuleV3(scope, code, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The compliance rule&#39;s scope. |
+| **code** | **string** | path | **required** | The compliance rule&#39;s code. |
+| **asAt** | **DateTimeOffset?** | query | optional | Optional. The asAt datetime at which to retrieve the rule. Default: latest. |
+
+### Return type
+
+[ComplianceRuleV3DescribeResponse](../Model/ComplianceRuleV3DescribeResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The plain-English description of the V3 compliance rule. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the DescribeComplianceRuleV3WithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ComplianceRuleV3DescribeResponse> response = apiInstance.DescribeComplianceRuleV3WithHttpInfo(scope, code, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -428,6 +558,68 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ComplianceRuleResultV2> response = apiInstance.GetComplianceRuleResultWithHttpInfo(runScope, runCode, ruleScope, ruleCode);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="getcompliancerulev3"></a>
+## GetComplianceRuleV3
+
+> ComplianceRuleV3Response GetComplianceRuleV3(string scope, string code, DateTimeOffset? asAt = null)
+
+[EXPERIMENTAL] GetComplianceRuleV3: [EXPERIMENTAL] Get a V3 compliance rule.
+
+Use this endpoint to retrieve a single V3 compliance rule.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+ComplianceRuleV3Response result = apiInstance.GetComplianceRuleV3(scope, code, asAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The compliance rule&#39;s scope. |
+| **code** | **string** | path | **required** | The compliance rule&#39;s code. |
+| **asAt** | **DateTimeOffset?** | query | optional | Optional. The asAt datetime at which to retrieve the rule. Default: latest. |
+
+### Return type
+
+[ComplianceRuleV3Response](../Model/ComplianceRuleV3Response.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested V3 compliance rule. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the GetComplianceRuleV3WithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ComplianceRuleV3Response> response = apiInstance.GetComplianceRuleV3WithHttpInfo(scope, code, asAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -676,6 +868,72 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<PagedResourceListOfComplianceRuleResponse> response = apiInstance.ListComplianceRulesWithHttpInfo(asAt, page, limit, filter, propertyKeys);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="listcompliancerulesv3"></a>
+## ListComplianceRulesV3
+
+> PagedResourceListOfComplianceRuleV3Response ListComplianceRulesV3(DateTimeOffset? asAt = null, string? page = null, int? limit = null, string? filter = null, List<string>? sortBy = null)
+
+[EXPERIMENTAL] ListComplianceRulesV3: [EXPERIMENTAL] List V3 compliance rules.
+
+Use this endpoint to retrieve the V3 compliance rules in the client's scopes.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
+var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
+var page = "page_example";  // string? (optional)
+var limit = 56;  // int? (optional)
+var filter = "filter_example";  // string? (optional)
+var sortBy = new List<string>?(); // List<string>? (optional)
+PagedResourceListOfComplianceRuleV3Response result = apiInstance.ListComplianceRulesV3(asAt, page, limit, filter, sortBy);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **asAt** | **DateTimeOffset?** | query | optional | Optional. The asAt datetime at which to list rules. Default: latest. |
+| **page** | **string?** | query | optional | Optional. The pagination token from a previous call. |
+| **limit** | **int?** | query | optional | Optional. When paginating, limit the number of returned results to this many. |
+| **filter** | **string?** | query | optional | Not yet supported on this experimental endpoint; supplying a filter returns a 400. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot;. |
+
+### Return type
+
+[PagedResourceListOfComplianceRuleV3Response](../Model/PagedResourceListOfComplianceRuleV3Response.md)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The list of V3 compliance rules. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ListComplianceRulesV3WithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<PagedResourceListOfComplianceRuleV3Response> response = apiInstance.ListComplianceRulesV3WithHttpInfo(asAt, page, limit, filter, sortBy);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
@@ -1014,6 +1272,122 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="runcompliancev3"></a>
+## RunComplianceV3
+
+> ComplianceRunV3Response RunComplianceV3(RunComplianceV3Request? runComplianceV3Request = null)
+
+[EXPERIMENTAL] RunComplianceV3: [EXPERIMENTAL] Run V3 compliance rules against a portfolio group.
+
+Use this endpoint to run one or more V3 compliance rules against a portfolio group, valuing holdings  with the supplied recipe, and return each rule's result.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
+var runComplianceV3Request = new RunComplianceV3Request?(); // RunComplianceV3Request? (optional)
+ComplianceRunV3Response result = apiInstance.RunComplianceV3(runComplianceV3Request);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **runComplianceV3Request** | [RunComplianceV3Request?](../Model/RunComplianceV3Request?.md) | body | optional |  |
+
+### Return type
+
+[ComplianceRunV3Response](../Model/ComplianceRunV3Response.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The result of each V3 compliance rule that was run. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the RunComplianceV3WithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ComplianceRunV3Response> response = apiInstance.RunComplianceV3WithHttpInfo(runComplianceV3Request);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="runcompliancev3pretrade"></a>
+## RunComplianceV3PreTrade
+
+> ComplianceRunV3Response RunComplianceV3PreTrade(RunComplianceV3Request? runComplianceV3Request = null)
+
+[EXPERIMENTAL] RunComplianceV3PreTrade: [EXPERIMENTAL] Run V3 compliance rules pre-trade against a portfolio group.
+
+Use this endpoint to run one or more V3 compliance rules against a portfolio group including its live  order flow (pre-trade), valuing holdings with the supplied recipe, and return each rule's result.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
+var runComplianceV3Request = new RunComplianceV3Request?(); // RunComplianceV3Request? (optional)
+ComplianceRunV3Response result = apiInstance.RunComplianceV3PreTrade(runComplianceV3Request);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **runComplianceV3Request** | [RunComplianceV3Request?](../Model/RunComplianceV3Request?.md) | body | optional |  |
+
+### Return type
+
+[ComplianceRunV3Response](../Model/ComplianceRunV3Response.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The result of each V3 compliance rule that was run pre-trade. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the RunComplianceV3PreTradeWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ComplianceRunV3Response> response = apiInstance.RunComplianceV3PreTradeWithHttpInfo(runComplianceV3Request);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="updatecompliancetemplate"></a>
 ## UpdateComplianceTemplate
 
@@ -1134,6 +1508,64 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 ---
 
+<a id="upsertcompliancerulev3"></a>
+## UpsertComplianceRuleV3
+
+> ComplianceRuleV3Response UpsertComplianceRuleV3(UpsertComplianceRuleV3Request? upsertComplianceRuleV3Request = null)
+
+[EXPERIMENTAL] UpsertComplianceRuleV3: [EXPERIMENTAL] Upsert a V3 compliance rule.
+
+Use this endpoint to create or update a single V3 compliance rule. The rule's own record fully  describes what it checks.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
+var upsertComplianceRuleV3Request = new UpsertComplianceRuleV3Request?(); // UpsertComplianceRuleV3Request? (optional)
+ComplianceRuleV3Response result = apiInstance.UpsertComplianceRuleV3(upsertComplianceRuleV3Request);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **upsertComplianceRuleV3Request** | [UpsertComplianceRuleV3Request?](../Model/UpsertComplianceRuleV3Request?.md) | body | optional |  |
+
+### Return type
+
+[ComplianceRuleV3Response](../Model/ComplianceRuleV3Response.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The upserted V3 compliance rule. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpsertComplianceRuleV3WithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ComplianceRuleV3Response> response = apiInstance.UpsertComplianceRuleV3WithHttpInfo(upsertComplianceRuleV3Request);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
 <a id="upsertcompliancerunsummary"></a>
 ## UpsertComplianceRunSummary
 
@@ -1182,6 +1614,64 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<UpsertComplianceRunSummaryResult> response = apiInstance.UpsertComplianceRunSummaryWithHttpInfo(upsertComplianceRunSummaryRequest);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="validatecompliancerulev3"></a>
+## ValidateComplianceRuleV3
+
+> ComplianceRuleV3Response ValidateComplianceRuleV3(UpsertComplianceRuleV3Request? upsertComplianceRuleV3Request = null)
+
+[EXPERIMENTAL] ValidateComplianceRuleV3: [EXPERIMENTAL] Validate a V3 compliance rule definition.
+
+Use this endpoint to validate a V3 compliance rule definition against the vocabulary and its  referenced reference lists without persisting it. A validation failure returns a 400.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ComplianceApi>();
+var upsertComplianceRuleV3Request = new UpsertComplianceRuleV3Request?(); // UpsertComplianceRuleV3Request? (optional)
+ComplianceRuleV3Response result = apiInstance.ValidateComplianceRuleV3(upsertComplianceRuleV3Request);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **upsertComplianceRuleV3Request** | [UpsertComplianceRuleV3Request?](../Model/UpsertComplianceRuleV3Request?.md) | body | optional |  |
+
+### Return type
+
+[ComplianceRuleV3Response](../Model/ComplianceRuleV3Response.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The validated V3 compliance rule definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the ValidateComplianceRuleV3WithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ComplianceRuleV3Response> response = apiInstance.ValidateComplianceRuleV3WithHttpInfo(upsertComplianceRuleV3Request);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

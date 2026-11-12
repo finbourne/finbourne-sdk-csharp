@@ -14,6 +14,7 @@ One investor record's share of a resolved allocation event.
 | **PortfolioId** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Component** | **string** | Optional | The component of the event the share belongs to. Absent when the event was resolved whole. |
 | **OriginMemberShortCode** | **string** | Optional | The deal the share is for, when a capital call&#39;s use of proceeds split one component across deals. Absent when the component&#39;s own origin applies. |
+| **RecallableAmount** | **decimal?** | Optional | For the ROC component of a Distribution with a recallable amount, the investor record&#39;s pro rata share of it. Absent otherwise. |
 
 
 ## Usage
@@ -32,7 +33,8 @@ var instance = new AllocationMapAllocation(
     commitmentLineId: "...",  // optional — For a Commitment event, the commitment line the share is recorded against. Absent for other event types.
     portfolioId: new ResourceId(...),  // optional
     component: "...",  // optional — The component of the event the share belongs to. Absent when the event was resolved whole.
-    originMemberShortCode: "..."  // optional — The deal the share is for, when a capital call&#39;s use of proceeds split one component across deals. Absent when the component&#39;s own origin applies.
+    originMemberShortCode: "...",  // optional — The deal the share is for, when a capital call&#39;s use of proceeds split one component across deals. Absent when the component&#39;s own origin applies.
+    recallableAmount: 0.0d  // optional — For the ROC component of a Distribution with a recallable amount, the investor record&#39;s pro rata share of it. Absent otherwise.
 );
 ```
 ### Serializing to JSON

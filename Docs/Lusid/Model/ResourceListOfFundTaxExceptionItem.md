@@ -1,10 +1,10 @@
-# Finbourne.Sdk.Lusid.Model.ResourceListOfCashFlowDetail
+# Finbourne.Sdk.Lusid.Model.ResourceListOfFundTaxExceptionItem
 
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Values** | [List&lt;CashFlowDetail&gt;](CashFlowDetail.md) | Required | *No description available.* |
+| **Values** | [List&lt;FundTaxExceptionItem&gt;](FundTaxExceptionItem.md) | Required | *No description available.* |
 | **Href** | **string** | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 | **NextPage** | **string** | Optional | *No description available.* |
@@ -18,8 +18,8 @@
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var instance = new ResourceListOfCashFlowDetail(
-    values: new List<CashFlowDetail>(),  // required
+var instance = new ResourceListOfFundTaxExceptionItem(
+    values: new List<FundTaxExceptionItem>(),  // required
     href: "...",  // optional
     links: new List<Link>(),  // optional
     nextPage: "...",  // optional
@@ -35,13 +35,13 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 ### Deserializing from JSON
 
 ```csharp
-var instance = JsonConvert.DeserializeObject<ResourceListOfCashFlowDetail>(json);
+var instance = JsonConvert.DeserializeObject<ResourceListOfFundTaxExceptionItem>(json);
 ```
 
 
 ## Related Models
 
-- [CashFlowDetail](CashFlowDetail.md)
+- [FundTaxExceptionItem](FundTaxExceptionItem.md)
 - [Link](Link.md)
 
 

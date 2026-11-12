@@ -12,6 +12,7 @@ The result of upserting overrides and suppressions of virtual transactions for a
 | **Overrides** | **Dictionary&lt;string, List&lt;StoredOverrideDefinition&gt;&gt;** | Optional | The replacement transactions persisted for the instrument event, keyed by the virtual transaction id being overridden. |
 | **Suppressions** | **List&lt;string&gt;** | Optional | The virtual transaction ids suppressed for the instrument event. |
 | **CancelActive** | **bool?** | Optional | True when an active event-level Cancel instruction also exists for this instrument event, taking precedence over the entries in this record. |
+| **Adjustments** | [Dictionary&lt;string, AdjustmentDefinitionResponse&gt;](AdjustmentDefinitionResponse.md) | Optional | The adjustments stored for the instrument event, keyed by virtual transaction id. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -30,6 +31,7 @@ var instance = new UpsertVirtualTransactionOverrideResponse(
     overrides: ,  // optional — The replacement transactions persisted for the instrument event, keyed by the virtual transaction id being overridden.
     suppressions: ,  // optional — The virtual transaction ids suppressed for the instrument event.
     cancelActive: true,  // optional — True when an active event-level Cancel instruction also exists for this instrument event, taking precedence over the entries in this record.
+    adjustments: new AdjustmentDefinitionResponse(...),  // optional — The adjustments stored for the instrument event, keyed by virtual transaction id.
     links: new List<Link>()  // optional
 );
 ```
@@ -49,6 +51,7 @@ var instance = JsonConvert.DeserializeObject<UpsertVirtualTransactionOverrideRes
 ## Related Models
 
 - [ModelVersion](ModelVersion.md)
+- [AdjustmentDefinitionResponse](AdjustmentDefinitionResponse.md) — used in `Adjustments`
 - [Link](Link.md)
 
 

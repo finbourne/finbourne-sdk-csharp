@@ -54,7 +54,7 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<OrderGraphApi>();
 <a id="listordergraphblocks"></a>
 ## ListOrderGraphBlocks
 
-> PagedResourceListOfOrderGraphBlock ListOrderGraphBlocks(DateTimeOffset? asAt = null, string? paginationToken = null, List<string>? sortBy = null, int? limit = null, string? filter = null, List<string>? propertyKeys = null, bool? useComplianceV2 = null)
+> PagedResourceListOfOrderGraphBlock ListOrderGraphBlocks(DateTimeOffset? asAt = null, string? paginationToken = null, List<string>? sortBy = null, int? limit = null, string? filter = null, List<string>? propertyKeys = null, bool? useComplianceV2 = null, bool? includeSwept = null)
 
 ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
 
@@ -71,7 +71,8 @@ var limit = 56;  // int? (optional)
 var filter = "\"\"";  // string? (optional)
 var propertyKeys = new List<string>?(); // List<string>? (optional)
 var useComplianceV2 = false;  // bool? (optional)
-PagedResourceListOfOrderGraphBlock result = apiInstance.ListOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2);
+var includeSwept = true;  // bool? (optional)
+PagedResourceListOfOrderGraphBlock result = apiInstance.ListOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -86,6 +87,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **filter** | **string?** | query | optional | See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid Default: `&quot;&quot;` |
 | **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | Must be block-level properties. See https://support.lusid.com/docs/properties |
 | **useComplianceV2** | **bool?** | query | optional | Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false) Default: `false` |
+| **includeSwept** | **bool?** | query | optional | Include Swept Order Blocks. (default: true) Default: `true` |
 
 ### Return type
 
@@ -110,7 +112,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<PagedResourceListOfOrderGraphBlock> response = apiInstance.ListOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2);
+ApiResponse<PagedResourceListOfOrderGraphBlock> response = apiInstance.ListOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

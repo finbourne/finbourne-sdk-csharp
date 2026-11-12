@@ -48,8 +48,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="failedShards">The number of shards that failed to value. (required).</param>
         /// <param name="issues">Agreements the run could not value or roll up into a call, or the caller may not calculate margin for, with the reason. (required).</param>
         /// <param name="shards">The valuation shards the run is planned as, with their progress. (required).</param>
-        /// <param name="scenario">scenario.</param>
-        public MarginRun(string href = default(string), string id = default(string), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset asAt = default(DateTimeOffset), string status = default(string), List<ResourceId> agreements = default(List<ResourceId>), int callCount = default(int), int lineCount = default(int), int shardCount = default(int), int completedShards = default(int), int failedShards = default(int), List<MarginRunIssue> issues = default(List<MarginRunIssue>), List<MarginRunShard> shards = default(List<MarginRunShard>), ResourceId scenario = default(ResourceId))
+        /// <param name="scenarios">The stored scenarios the run values the agreements under, each beside the base market the run always values. Empty if only the base market was valued. (required).</param>
+        /// <param name="captureDiagnostics">Whether the run stored the working behind its figures, so that they can be explained. Null for a run made before runs could store it, which did not..</param>
+        /// <param name="optimisation">optimisation.</param>
+        /// <param name="allocation">allocation.</param>
+        public MarginRun(string href = default(string), string id = default(string), DateTimeOffset effectiveAt = default(DateTimeOffset), DateTimeOffset asAt = default(DateTimeOffset), string status = default(string), List<ResourceId> agreements = default(List<ResourceId>), int callCount = default(int), int lineCount = default(int), int shardCount = default(int), int completedShards = default(int), int failedShards = default(int), List<MarginRunIssue> issues = default(List<MarginRunIssue>), List<MarginRunShard> shards = default(List<MarginRunShard>), List<ResourceId> scenarios = default(List<ResourceId>), bool? captureDiagnostics = default(bool?), MarginRunOptimisation optimisation = default(MarginRunOptimisation), MarginRunAllocation allocation = default(MarginRunAllocation))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -88,8 +91,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("shards is a required property for MarginRun and cannot be null");
             }
             this.Shards = shards;
+            // to ensure "scenarios" is required (not null)
+            if (scenarios == null)
+            {
+                throw new ArgumentNullException("scenarios is a required property for MarginRun and cannot be null");
+            }
+            this.Scenarios = scenarios;
             this.Href = href;
-            this.Scenario = scenario;
+            this.CaptureDiagnostics = captureDiagnostics;
+            this.Optimisation = optimisation;
+            this.Allocation = allocation;
         }
 
         /// <summary>
@@ -184,10 +195,30 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public List<MarginRunShard> Shards { get; set; }
 
         /// <summary>
-        /// Gets or Sets Scenario
+        /// The stored scenarios the run values the agreements under, each beside the base market the run always values. Empty if only the base market was valued.
         /// </summary>
-        [DataMember(Name = "scenario", EmitDefaultValue = false)]
-        public ResourceId Scenario { get; set; }
+        /// <value>The stored scenarios the run values the agreements under, each beside the base market the run always values. Empty if only the base market was valued.</value>
+        [DataMember(Name = "scenarios", IsRequired = true, EmitDefaultValue = true)]
+        public List<ResourceId> Scenarios { get; set; }
+
+        /// <summary>
+        /// Whether the run stored the working behind its figures, so that they can be explained. Null for a run made before runs could store it, which did not.
+        /// </summary>
+        /// <value>Whether the run stored the working behind its figures, so that they can be explained. Null for a run made before runs could store it, which did not.</value>
+        [DataMember(Name = "captureDiagnostics", EmitDefaultValue = true)]
+        public bool? CaptureDiagnostics { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Optimisation
+        /// </summary>
+        [DataMember(Name = "optimisation", EmitDefaultValue = false)]
+        public MarginRunOptimisation Optimisation { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Allocation
+        /// </summary>
+        [DataMember(Name = "allocation", EmitDefaultValue = false)]
+        public MarginRunAllocation Allocation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -210,7 +241,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  FailedShards: ").Append(FailedShards).Append("\n");
             sb.Append("  Issues: ").Append(Issues).Append("\n");
             sb.Append("  Shards: ").Append(Shards).Append("\n");
-            sb.Append("  Scenario: ").Append(Scenario).Append("\n");
+            sb.Append("  Scenarios: ").Append(Scenarios).Append("\n");
+            sb.Append("  CaptureDiagnostics: ").Append(CaptureDiagnostics).Append("\n");
+            sb.Append("  Optimisation: ").Append(Optimisation).Append("\n");
+            sb.Append("  Allocation: ").Append(Allocation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -310,9 +344,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Shards.SequenceEqual(input.Shards)
                 ) && 
                 (
-                    this.Scenario == input.Scenario ||
-                    (this.Scenario != null &&
-                    this.Scenario.Equals(input.Scenario))
+                    this.Scenarios == input.Scenarios ||
+                    this.Scenarios != null &&
+                    input.Scenarios != null &&
+                    this.Scenarios.SequenceEqual(input.Scenarios)
+                ) && 
+                (
+                    this.CaptureDiagnostics == input.CaptureDiagnostics ||
+                    (this.CaptureDiagnostics != null &&
+                    this.CaptureDiagnostics.Equals(input.CaptureDiagnostics))
+                ) && 
+                (
+                    this.Optimisation == input.Optimisation ||
+                    (this.Optimisation != null &&
+                    this.Optimisation.Equals(input.Optimisation))
+                ) && 
+                (
+                    this.Allocation == input.Allocation ||
+                    (this.Allocation != null &&
+                    this.Allocation.Equals(input.Allocation))
                 );
         }
 
@@ -362,9 +412,21 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Shards.GetHashCode();
                 }
-                if (this.Scenario != null)
+                if (this.Scenarios != null)
                 {
-                    hashCode = (hashCode * 59) + this.Scenario.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Scenarios.GetHashCode();
+                }
+                if (this.CaptureDiagnostics != null)
+                {
+                    hashCode = (hashCode * 59) + this.CaptureDiagnostics.GetHashCode();
+                }
+                if (this.Optimisation != null)
+                {
+                    hashCode = (hashCode * 59) + this.Optimisation.GetHashCode();
+                }
+                if (this.Allocation != null)
+                {
+                    hashCode = (hashCode * 59) + this.Allocation.GetHashCode();
                 }
                 return hashCode;
             }

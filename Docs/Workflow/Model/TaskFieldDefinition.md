@@ -11,8 +11,9 @@ Defines a Task Definition Field
 | **ValueConstraints** | [ValueConstraints](ValueConstraints.md) | Optional | *No description available.* |
 | **DisplayName** | **string** | Optional | Display name for field definition |
 | **Description** | **string** | Optional | Description for field definition |
-| **Category** | **string** | Optional | Category for field definition |
+| **Category** | **string** | Optional | Display group for the field. Fields sharing a category are presented together in the UI |
 | **ContainsUrl** | **bool?** | Optional | Field contains url |
+| **Multiline** | **bool?** | Optional | Whether the field should be rendered as a multi-line text area |
 
 
 ## Usage
@@ -29,8 +30,9 @@ var instance = new TaskFieldDefinition(
     valueConstraints: new ValueConstraints(...),  // optional
     displayName: "...",  // optional — Display name for field definition
     description: "...",  // optional — Description for field definition
-    category: "...",  // optional — Category for field definition
-    containsUrl: true  // optional — Field contains url
+    category: "...",  // optional — Display group for the field. Fields sharing a category are presented together in the UI
+    containsUrl: true,  // optional — Field contains url
+    multiline: true  // optional — Whether the field should be rendered as a multi-line text area
 );
 ```
 ### Serializing to JSON

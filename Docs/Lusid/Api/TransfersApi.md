@@ -7,6 +7,7 @@ All URIs are relative to *http://localhost*
 |--------|--------------|-------------|
 | [**CreateTransfer**](#createtransfer) | **POST** `/api/api/transfers` | [EXPERIMENTAL] CreateTransfer: Create a transfer. |
 | [**DeleteTransfer**](#deletetransfer) | **DELETE** `/api/api/transfers/{scope}/{code}` | [EXPERIMENTAL] DeleteTransfer: Delete a transfer. |
+| [**EditTransfer**](#edittransfer) | **POST** `/api/api/transfers/$edit` | [EXPERIMENTAL] EditTransfer: Edit a transfer. |
 | [**GetTransfer**](#gettransfer) | **POST** `/api/api/transfers/$get` | [EXPERIMENTAL] GetTransfer: Get a transfer |
 | [**ListTransfers**](#listtransfers) | **GET** `/api/api/transfers` | [EXPERIMENTAL] ListTransfers: List transfers |
 
@@ -169,6 +170,67 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<DeletedEntityResponse> response = apiInstance.DeleteTransferWithHttpInfo(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="edittransfer"></a>
+## EditTransfer
+
+> EditTransferResponse EditTransfer(EditTransferRequest editTransferRequest, bool? preserveProperties = null)
+
+[EXPERIMENTAL] EditTransfer: Edit a transfer.
+
+Replace an existing transfer with the request, which carries the same fields as a create request and is  validated in the same way. Both transaction legs are rebooked under their existing ids and the Transfer  entity is updated, as a single atomic operation: if any part of the request is rejected, nothing is  changed. A field not supplied is cleared, and the outgoing position is checked with the transfer's own  outgoing leg counted back in.                Properties are treated separately from fields: by default, a property not supplied is kept on the  transfer or leg that holds it, and only the properties supplied are updated. Set preserveProperties to  false to replace the whole property set of the transfer and both legs with the ones supplied.                A transfer is identified by its scope, its code and both of its portfolios, none of which can be changed.  Where no transfer has that scope and code between those portfolios, the request is reported as not found.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<TransfersApi>();
+var editTransferRequest = new EditTransferRequest(); // EditTransferRequest
+var preserveProperties = true;  // bool? (optional)
+EditTransferResponse result = apiInstance.EditTransfer(editTransferRequest, preserveProperties);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **editTransferRequest** | [EditTransferRequest](../Model/EditTransferRequest.md) | body | **required** | The transfer as it should now stand. |
+| **preserveProperties** | **bool?** | query | optional | If set to false, the entire property set of the transfer and both legs               will be overwritten by the provided properties. If not specified or set to true, only the properties               provided will be updated. Default: `true` |
+
+### Return type
+
+[EditTransferResponse](../Model/EditTransferResponse.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The transfer that was edited. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | No transfer exists with the requested scope, code and portfolios. |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the EditTransferWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<EditTransferResponse> response = apiInstance.EditTransferWithHttpInfo(editTransferRequest, preserveProperties);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

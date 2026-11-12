@@ -1,6 +1,6 @@
 # Finbourne.Sdk.Lusid.Model.AllocationReceivable
 
-One investor's position on a booked capital call.
+One investor's position on a booked capital call, on one register.
 ## Properties
 
 | Name | Type | Required | Description |
@@ -11,6 +11,8 @@ One investor's position on a booked capital call.
 | **Outstanding** | **decimal** | Optional | What is still owed. Never negative: an overpayment becomes a refund payable instead. |
 | **DaysPastDue** | **int** | Optional | How many days past the due date the outstanding amount is, or zero when not yet due or nothing is owed. |
 | **Bucket** | **string** | Optional | The ageing bucket: Current, 1-30, 31-60, 61-90 or 90+. |
+| **Portfolio** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
+| **Side** | **string** | Optional | Whether the record owes on its own line (LP) or as a feeder&#39;s roll-up on the master (ROLLUP). |
 
 
 ## Usage
@@ -26,7 +28,9 @@ var instance = new AllocationReceivable(
     received: 0.0d,  // optional — What has been received and applied so far.
     outstanding: 0.0d,  // optional — What is still owed. Never negative: an overpayment becomes a refund payable instead.
     daysPastDue: 0,  // optional — How many days past the due date the outstanding amount is, or zero when not yet due or nothing is owed.
-    bucket: "..."  // optional — The ageing bucket: Current, 1-30, 31-60, 61-90 or 90+.
+    bucket: "...",  // optional — The ageing bucket: Current, 1-30, 31-60, 61-90 or 90+.
+    portfolio: new ResourceId(...),  // optional
+    side: "..."  // optional — Whether the record owes on its own line (LP) or as a feeder&#39;s roll-up on the master (ROLLUP).
 );
 ```
 ### Serializing to JSON
@@ -41,6 +45,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<AllocationReceivable>(json);
 ```
 
+- [ResourceId](ResourceId.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

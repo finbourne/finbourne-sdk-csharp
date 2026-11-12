@@ -31,7 +31,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event.
+        /// [EARLY ACCESS] BookAllocationEvent: Book an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
@@ -47,7 +47,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AllocationEvent BookAllocationEvent(string scope, string code, AllocationEventBookRequest allocationEventBookRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event.
+        /// [EARLY ACCESS] BookAllocationEvent: Book an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
@@ -62,7 +62,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AllocationEvent</returns>
         Finbourne.Sdk.Client.ApiResponse<AllocationEvent> BookAllocationEventWithHttpInfo(string scope, string code, AllocationEventBookRequest allocationEventBookRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event.
+        /// [EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
@@ -76,7 +76,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AllocationEvent CreateAllocationEvent(string scope, AllocationEventRequest allocationEventRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event.
+        /// [EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
@@ -89,7 +89,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AllocationEvent</returns>
         Finbourne.Sdk.Client.ApiResponse<AllocationEvent> CreateAllocationEventWithHttpInfo(string scope, AllocationEventRequest allocationEventRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event.
+        /// [EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
@@ -104,7 +104,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         DeletedEntityResponse DeleteAllocationEvent(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event.
+        /// [EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
@@ -118,7 +118,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DeletedEntityResponse</returns>
         Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse> DeleteAllocationEventWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event.
+        /// [EARLY ACCESS] GetAllocationEvent: Get an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
@@ -134,7 +134,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AllocationEvent GetAllocationEvent(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event.
+        /// [EARLY ACCESS] GetAllocationEvent: Get an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
@@ -182,7 +182,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfAllocationEventNotice</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfAllocationEventNotice> GetAllocationEventNoticesWithHttpInfo(string scope, string code, string? investorRecordId = default(string?), bool? includeZero = default(bool?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
+        /// [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
         /// </summary>
         /// <remarks>
         /// What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
@@ -198,7 +198,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AllocationReceivablesAgeing GetAllocationEventReceivables(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
+        /// [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
         /// </summary>
         /// <remarks>
         /// What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
@@ -213,7 +213,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AllocationReceivablesAgeing</returns>
         Finbourne.Sdk.Client.ApiResponse<AllocationReceivablesAgeing> GetAllocationEventReceivablesWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListAllocationEvents: List Allocation Events.
+        /// [EARLY ACCESS] ListAllocationEvents: List Allocation Events.
         /// </summary>
         /// <remarks>
         /// List all the Allocation Events matching a particular criteria.
@@ -231,7 +231,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         PagedResourceListOfAllocationEvent ListAllocationEvents(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAllocationEvents: List Allocation Events.
+        /// [EARLY ACCESS] ListAllocationEvents: List Allocation Events.
         /// </summary>
         /// <remarks>
         /// List all the Allocation Events matching a particular criteria.
@@ -277,7 +277,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfAllocationPaymentHold</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfAllocationPaymentHold> ListAllocationPaymentHoldsWithHttpInfo(string scope, string code, string investorRecordId, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
+        /// [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
@@ -293,7 +293,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AllocationPostingPlan PlanAllocationEventBooking(string scope, string code, AllocationEventBookRequest allocationEventBookRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
+        /// [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
@@ -339,7 +339,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AllocationPaymentHold</returns>
         Finbourne.Sdk.Client.ApiResponse<AllocationPaymentHold> PutAllocationPaymentHoldWithHttpInfo(string scope, string code, string investorRecordId, AllocationPaymentHoldRequest allocationPaymentHoldRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event.
+        /// [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
@@ -355,7 +355,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AllocationEvent ReallocateAllocationEvent(string scope, string code, AllocationEventReallocateRequest allocationEventReallocateRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event.
+        /// [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
@@ -370,7 +370,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AllocationEvent</returns>
         Finbourne.Sdk.Client.ApiResponse<AllocationEvent> ReallocateAllocationEventWithHttpInfo(string scope, string code, AllocationEventReallocateRequest allocationEventReallocateRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
+        /// [EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
@@ -386,7 +386,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AllocationEvent ReceiveAllocationEvent(string scope, string code, AllocationEventReceiptRequest allocationEventReceiptRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
+        /// [EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
@@ -401,7 +401,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AllocationEvent</returns>
         Finbourne.Sdk.Client.ApiResponse<AllocationEvent> ReceiveAllocationEventWithHttpInfo(string scope, string code, AllocationEventReceiptRequest allocationEventReceiptRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event.
+        /// [EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
@@ -417,7 +417,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AllocationEvent ReverseAllocationEvent(string scope, string code, AllocationEventReverseRequest allocationEventReverseRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event.
+        /// [EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
@@ -432,7 +432,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AllocationEvent</returns>
         Finbourne.Sdk.Client.ApiResponse<AllocationEvent> ReverseAllocationEventWithHttpInfo(string scope, string code, AllocationEventReverseRequest allocationEventReverseRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event.
+        /// [EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
@@ -448,7 +448,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AllocationEvent UnbookAllocationEvent(string scope, string code, AllocationEventUnbookRequest allocationEventUnbookRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event.
+        /// [EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
@@ -463,7 +463,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of AllocationEvent</returns>
         Finbourne.Sdk.Client.ApiResponse<AllocationEvent> UnbookAllocationEventWithHttpInfo(string scope, string code, AllocationEventUnbookRequest allocationEventUnbookRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event.
+        /// [EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
@@ -478,7 +478,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         AllocationEvent UpsertAllocationEvent(string scope, string code, AllocationEventRequest allocationEventRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event.
+        /// [EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
@@ -501,7 +501,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// [EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event.
+        /// [EARLY ACCESS] BookAllocationEvent: Book an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
@@ -518,7 +518,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AllocationEvent> BookAllocationEventAsync(string scope, string code, AllocationEventBookRequest allocationEventBookRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event.
+        /// [EARLY ACCESS] BookAllocationEvent: Book an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
@@ -534,7 +534,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AllocationEvent)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationEvent>> BookAllocationEventWithHttpInfoAsync(string scope, string code, AllocationEventBookRequest allocationEventBookRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event.
+        /// [EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
@@ -549,7 +549,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AllocationEvent> CreateAllocationEventAsync(string scope, AllocationEventRequest allocationEventRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event.
+        /// [EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
@@ -563,7 +563,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AllocationEvent)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationEvent>> CreateAllocationEventWithHttpInfoAsync(string scope, AllocationEventRequest allocationEventRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event.
+        /// [EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
@@ -579,7 +579,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<DeletedEntityResponse> DeleteAllocationEventAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event.
+        /// [EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
@@ -594,7 +594,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (DeletedEntityResponse)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DeletedEntityResponse>> DeleteAllocationEventWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event.
+        /// [EARLY ACCESS] GetAllocationEvent: Get an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
@@ -611,7 +611,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AllocationEvent> GetAllocationEventAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event.
+        /// [EARLY ACCESS] GetAllocationEvent: Get an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
@@ -662,7 +662,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ResourceListOfAllocationEventNotice)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfAllocationEventNotice>> GetAllocationEventNoticesWithHttpInfoAsync(string scope, string code, string? investorRecordId = default(string?), bool? includeZero = default(bool?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
+        /// [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
         /// </summary>
         /// <remarks>
         /// What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
@@ -679,7 +679,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AllocationReceivablesAgeing> GetAllocationEventReceivablesAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
+        /// [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
         /// </summary>
         /// <remarks>
         /// What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
@@ -695,7 +695,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AllocationReceivablesAgeing)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationReceivablesAgeing>> GetAllocationEventReceivablesWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ListAllocationEvents: List Allocation Events.
+        /// [EARLY ACCESS] ListAllocationEvents: List Allocation Events.
         /// </summary>
         /// <remarks>
         /// List all the Allocation Events matching a particular criteria.
@@ -714,7 +714,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<PagedResourceListOfAllocationEvent> ListAllocationEventsAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? page = default(string?), int? limit = default(int?), string? filter = default(string?), List<string>? sortBy = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAllocationEvents: List Allocation Events.
+        /// [EARLY ACCESS] ListAllocationEvents: List Allocation Events.
         /// </summary>
         /// <remarks>
         /// List all the Allocation Events matching a particular criteria.
@@ -763,7 +763,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ResourceListOfAllocationPaymentHold)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfAllocationPaymentHold>> ListAllocationPaymentHoldsWithHttpInfoAsync(string scope, string code, string investorRecordId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
+        /// [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
@@ -780,7 +780,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AllocationPostingPlan> PlanAllocationEventBookingAsync(string scope, string code, AllocationEventBookRequest allocationEventBookRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
+        /// [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
@@ -829,7 +829,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AllocationPaymentHold)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationPaymentHold>> PutAllocationPaymentHoldWithHttpInfoAsync(string scope, string code, string investorRecordId, AllocationPaymentHoldRequest allocationPaymentHoldRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event.
+        /// [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
@@ -846,7 +846,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AllocationEvent> ReallocateAllocationEventAsync(string scope, string code, AllocationEventReallocateRequest allocationEventReallocateRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event.
+        /// [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
@@ -862,7 +862,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AllocationEvent)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationEvent>> ReallocateAllocationEventWithHttpInfoAsync(string scope, string code, AllocationEventReallocateRequest allocationEventReallocateRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
+        /// [EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
@@ -879,7 +879,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AllocationEvent> ReceiveAllocationEventAsync(string scope, string code, AllocationEventReceiptRequest allocationEventReceiptRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
+        /// [EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
@@ -895,7 +895,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AllocationEvent)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationEvent>> ReceiveAllocationEventWithHttpInfoAsync(string scope, string code, AllocationEventReceiptRequest allocationEventReceiptRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event.
+        /// [EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
@@ -912,7 +912,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AllocationEvent> ReverseAllocationEventAsync(string scope, string code, AllocationEventReverseRequest allocationEventReverseRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event.
+        /// [EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
@@ -928,7 +928,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AllocationEvent)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationEvent>> ReverseAllocationEventWithHttpInfoAsync(string scope, string code, AllocationEventReverseRequest allocationEventReverseRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event.
+        /// [EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
@@ -945,7 +945,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AllocationEvent> UnbookAllocationEventAsync(string scope, string code, AllocationEventUnbookRequest allocationEventUnbookRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event.
+        /// [EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
@@ -961,7 +961,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (AllocationEvent)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationEvent>> UnbookAllocationEventWithHttpInfoAsync(string scope, string code, AllocationEventUnbookRequest allocationEventUnbookRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event.
+        /// [EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
@@ -977,7 +977,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         System.Threading.Tasks.Task<AllocationEvent> UpsertAllocationEventAsync(string scope, string code, AllocationEventRequest allocationEventRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event.
+        /// [EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event.
         /// </summary>
         /// <remarks>
         /// Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
@@ -1086,7 +1086,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event. Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
+        /// [EARLY ACCESS] BookAllocationEvent: Book an Allocation Event. Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -1103,7 +1103,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event. Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
+        /// [EARLY ACCESS] BookAllocationEvent: Book an Allocation Event. Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1225,7 +1225,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event. Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
+        /// [EARLY ACCESS] BookAllocationEvent: Book an Allocation Event. Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -1243,7 +1243,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event. Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
+        /// [EARLY ACCESS] BookAllocationEvent: Book an Allocation Event. Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1368,7 +1368,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event. Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
+        /// [EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event. Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -1383,7 +1383,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event. Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
+        /// [EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event. Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1492,7 +1492,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event. Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
+        /// [EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event. Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -1508,7 +1508,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event. Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
+        /// [EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event. Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1620,7 +1620,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
+        /// [EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -1636,7 +1636,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
+        /// [EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1746,7 +1746,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
+        /// [EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -1763,7 +1763,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
+        /// [EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event. Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -1876,7 +1876,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event. Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
+        /// [EARLY ACCESS] GetAllocationEvent: Get an Allocation Event. Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -1893,7 +1893,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event. Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
+        /// [EARLY ACCESS] GetAllocationEvent: Get an Allocation Event. Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2008,7 +2008,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event. Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
+        /// [EARLY ACCESS] GetAllocationEvent: Get an Allocation Event. Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -2026,7 +2026,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event. Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
+        /// [EARLY ACCESS] GetAllocationEvent: Get an Allocation Event. Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2424,7 +2424,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event. What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
+        /// [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event. What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -2441,7 +2441,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event. What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
+        /// [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event. What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2556,7 +2556,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event. What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
+        /// [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event. What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -2574,7 +2574,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event. What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
+        /// [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event. What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2692,7 +2692,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAllocationEvents: List Allocation Events. List all the Allocation Events matching a particular criteria.
+        /// [EARLY ACCESS] ListAllocationEvents: List Allocation Events. List all the Allocation Events matching a particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to list the Allocation Events. Defaults to the current LUSID system datetime if not specified. (optional)</param>
@@ -2711,7 +2711,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAllocationEvents: List Allocation Events. List all the Allocation Events matching a particular criteria.
+        /// [EARLY ACCESS] ListAllocationEvents: List Allocation Events. List all the Allocation Events matching a particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2830,7 +2830,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAllocationEvents: List Allocation Events. List all the Allocation Events matching a particular criteria.
+        /// [EARLY ACCESS] ListAllocationEvents: List Allocation Events. List all the Allocation Events matching a particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="effectiveAt">The effective datetime or cut label at which to list the Allocation Events. Defaults to the current LUSID system datetime if not specified. (optional)</param>
@@ -2850,7 +2850,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ListAllocationEvents: List Allocation Events. List all the Allocation Events matching a particular criteria.
+        /// [EARLY ACCESS] ListAllocationEvents: List Allocation Events. List all the Allocation Events matching a particular criteria.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3234,7 +3234,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event. Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
+        /// [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event. Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -3251,7 +3251,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event. Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
+        /// [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event. Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3373,7 +3373,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event. Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
+        /// [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event. Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -3391,7 +3391,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event. Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
+        /// [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event. Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3804,7 +3804,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event. Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
+        /// [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event. Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -3821,7 +3821,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event. Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
+        /// [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event. Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -3943,7 +3943,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event. Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
+        /// [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event. Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -3961,7 +3961,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event. Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
+        /// [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event. Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4086,7 +4086,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event. Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
+        /// [EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event. Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -4103,7 +4103,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event. Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
+        /// [EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event. Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4225,7 +4225,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event. Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
+        /// [EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event. Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -4243,7 +4243,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event. Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
+        /// [EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event. Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4368,7 +4368,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event. Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
+        /// [EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event. Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -4385,7 +4385,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event. Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
+        /// [EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event. Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4507,7 +4507,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event. Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
+        /// [EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event. Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -4525,7 +4525,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event. Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
+        /// [EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event. Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4650,7 +4650,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event. Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
+        /// [EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event. Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -4667,7 +4667,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event. Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
+        /// [EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event. Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4789,7 +4789,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event. Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
+        /// [EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event. Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -4807,7 +4807,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event. Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
+        /// [EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event. Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -4932,7 +4932,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event. Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
+        /// [EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event. Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -4948,7 +4948,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event. Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
+        /// [EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event. Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -5065,7 +5065,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event. Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
+        /// [EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event. Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Allocation Event.</param>
@@ -5082,7 +5082,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event. Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
+        /// [EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event. Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

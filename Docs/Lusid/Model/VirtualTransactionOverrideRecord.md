@@ -13,6 +13,7 @@ The overrides and suppressions stored against a single instrument event in a sin
 | **OverrideApplicationStatus** | **string** | Optional | Whether all, some, or none of this record&#39;s override and suppression entries are currently applied. Available values: Full, Partial, Orphaned. |
 | **CancelActive** | **bool?** | Optional | True when an active event-level Cancel instruction also exists for this instrument event, taking precedence over the entries in this record. |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **Adjustments** | [Dictionary&lt;string, AdjustmentEntryResponse&gt;](AdjustmentEntryResponse.md) | Optional | The adjustments in this record, keyed by the virtual transaction id they were stored against. |
 
 
 ## Usage
@@ -30,7 +31,8 @@ var instance = new VirtualTransactionOverrideRecord(
     overrideMatchStatus: "...",  // optional — Whether every override and suppression entry in this record still matches a virtual transaction the event currently generates. Available values: Matched, Orphaned.
     overrideApplicationStatus: "...",  // optional — Whether all, some, or none of this record&#39;s override and suppression entries are currently applied. Available values: Full, Partial, Orphaned.
     cancelActive: true,  // optional — True when an active event-level Cancel instruction also exists for this instrument event, taking precedence over the entries in this record.
-    varVersion: new ModelVersion(...)  // optional
+    varVersion: new ModelVersion(...),  // optional
+    adjustments: new AdjustmentEntryResponse(...)  // optional — The adjustments in this record, keyed by the virtual transaction id they were stored against.
 );
 ```
 ### Serializing to JSON
@@ -49,6 +51,7 @@ var instance = JsonConvert.DeserializeObject<VirtualTransactionOverrideRecord>(j
 - [OverrideEntryResponse](OverrideEntryResponse.md) — used in `Overrides`
 - [SuppressionEntryResponse](SuppressionEntryResponse.md) — used in `Suppressions`
 - [ModelVersion](ModelVersion.md)
+- [AdjustmentEntryResponse](AdjustmentEntryResponse.md) — used in `Adjustments`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

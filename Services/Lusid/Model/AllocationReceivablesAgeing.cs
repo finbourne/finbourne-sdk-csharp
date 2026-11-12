@@ -32,14 +32,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="asOf">The date the receivables are aged as of..</param>
         /// <param name="dueDate">The date the cash was due..</param>
-        /// <param name="outstanding">The total still owed across all investor records..</param>
-        /// <param name="receivables">One entry per investor record that was called..</param>
-        public AllocationReceivablesAgeing(DateTimeOffset asOf = default(DateTimeOffset), DateTimeOffset? dueDate = default(DateTimeOffset?), decimal outstanding = default(decimal), List<AllocationReceivable> receivables = default(List<AllocationReceivable>))
+        /// <param name="outstanding">What the investors still owe, looking through feeders to their LPs so a roll-up is not counted twice..</param>
+        /// <param name="receivables">One entry per investor record and side that was called on a register..</param>
+        /// <param name="registers">What each register is owed on its own lines, a feeder&#39;s roll-up included..</param>
+        public AllocationReceivablesAgeing(DateTimeOffset asOf = default(DateTimeOffset), DateTimeOffset? dueDate = default(DateTimeOffset?), decimal outstanding = default(decimal), List<AllocationReceivable> receivables = default(List<AllocationReceivable>), List<AllocationRegisterReceivable> registers = default(List<AllocationRegisterReceivable>))
         {
             this.AsOf = asOf;
             this.DueDate = dueDate;
             this.Outstanding = outstanding;
             this.Receivables = receivables;
+            this.Registers = registers;
         }
 
         /// <summary>
@@ -57,18 +59,25 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public DateTimeOffset? DueDate { get; set; }
 
         /// <summary>
-        /// The total still owed across all investor records.
+        /// What the investors still owe, looking through feeders to their LPs so a roll-up is not counted twice.
         /// </summary>
-        /// <value>The total still owed across all investor records.</value>
+        /// <value>What the investors still owe, looking through feeders to their LPs so a roll-up is not counted twice.</value>
         [DataMember(Name = "outstanding", EmitDefaultValue = true)]
         public decimal Outstanding { get; set; }
 
         /// <summary>
-        /// One entry per investor record that was called.
+        /// One entry per investor record and side that was called on a register.
         /// </summary>
-        /// <value>One entry per investor record that was called.</value>
+        /// <value>One entry per investor record and side that was called on a register.</value>
         [DataMember(Name = "receivables", EmitDefaultValue = true)]
         public List<AllocationReceivable> Receivables { get; set; }
+
+        /// <summary>
+        /// What each register is owed on its own lines, a feeder&#39;s roll-up included.
+        /// </summary>
+        /// <value>What each register is owed on its own lines, a feeder&#39;s roll-up included.</value>
+        [DataMember(Name = "registers", EmitDefaultValue = true)]
+        public List<AllocationRegisterReceivable> Registers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -82,6 +91,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  DueDate: ").Append(DueDate).Append("\n");
             sb.Append("  Outstanding: ").Append(Outstanding).Append("\n");
             sb.Append("  Receivables: ").Append(Receivables).Append("\n");
+            sb.Append("  Registers: ").Append(Registers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -136,6 +146,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Receivables != null &&
                     input.Receivables != null &&
                     this.Receivables.SequenceEqual(input.Receivables)
+                ) && 
+                (
+                    this.Registers == input.Registers ||
+                    this.Registers != null &&
+                    input.Registers != null &&
+                    this.Registers.SequenceEqual(input.Registers)
                 );
         }
 
@@ -160,6 +176,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Receivables != null)
                 {
                     hashCode = (hashCode * 59) + this.Receivables.GetHashCode();
+                }
+                if (this.Registers != null)
+                {
+                    hashCode = (hashCode * 59) + this.Registers.GetHashCode();
                 }
                 return hashCode;
             }

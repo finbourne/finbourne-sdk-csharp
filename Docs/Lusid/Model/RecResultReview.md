@@ -5,7 +5,7 @@ The per-result review axis: the workflow state and the recorded review decision.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **Status** | **string** | Required | The review workflow state: NotRequired, Required or Reviewed. Available values: NotRequired, Required, Reviewed. |
+| **Status** | **string** | Required | The review workflow state: NotRequired, Required or Reviewed. The review configuration sets it. A run sets it to Required when a Force Match no longer holds. Available values: NotRequired, Required, Reviewed. |
 | **Decision** | **string** | Optional | The recorded review decision. Null until a decision is made. Available values: Acknowledge, FixAtSource, FixAsGroup, Accept, ForceMatch, Tolerate. |
 | **DecisionGroup** | [RecResultDecisionGroup](RecResultDecisionGroup.md) | Optional | *No description available.* |
 
@@ -18,7 +18,7 @@ The per-result review axis: the workflow state and the recorded review decision.
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new RecResultReview(
-    status: "...",  // required — The review workflow state: NotRequired, Required or Reviewed. Available values: NotRequired, Required, Reviewed.
+    status: "...",  // required — The review workflow state: NotRequired, Required or Reviewed. The review configuration sets it. A run sets it to Required when a Force Match no longer holds. Available values: NotRequired, Required, Reviewed.
     decision: "...",  // optional — The recorded review decision. Null until a decision is made. Available values: Acknowledge, FixAtSource, FixAsGroup, Accept, ForceMatch, Tolerate.
     decisionGroup: new RecResultDecisionGroup(...)  // optional
 );
