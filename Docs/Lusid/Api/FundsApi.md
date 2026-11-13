@@ -3193,7 +3193,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
 
-Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.                Rows are returned ordered by portfolio (scope then code, ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding keys, so the order is total and stable across pages.
 
 ### Example
 
@@ -3222,7 +3222,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to retrieve the report. Defaults to latest. |
 | **limit** | **int?** | query | optional | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. |
 | **page** | **string?** | query | optional | The pagination token to use to continue listing from a previous call. |
-| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. |
+| **propertyKeys** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;               domain to decorate onto the transactions. |
 | **navTypeCode** | **string?** | query | optional | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |
 | **filter** | **string?** | query | optional | Expression to filter the result set. |
 

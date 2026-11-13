@@ -142,7 +142,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English.
         /// </summary>
         /// <remarks>
-        /// Use this endpoint to retrieve a plain-English description of a V3 compliance rule. The description  generator is delivered separately, so the description lines are currently empty.
+        /// Use this endpoint to retrieve a plain-English description of a V3 compliance rule as a single  sentence. The sentence is empty for a rule the generator cannot fully express.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The compliance rule&#39;s scope.</param>
@@ -157,7 +157,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English.
         /// </summary>
         /// <remarks>
-        /// Use this endpoint to retrieve a plain-English description of a V3 compliance rule. The description  generator is delivered separately, so the description lines are currently empty.
+        /// Use this endpoint to retrieve a plain-English description of a V3 compliance rule as a single  sentence. The sentence is empty for a rule the generator cannot fully express.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The compliance rule&#39;s scope.</param>
@@ -909,7 +909,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English.
         /// </summary>
         /// <remarks>
-        /// Use this endpoint to retrieve a plain-English description of a V3 compliance rule. The description  generator is delivered separately, so the description lines are currently empty.
+        /// Use this endpoint to retrieve a plain-English description of a V3 compliance rule as a single  sentence. The sentence is empty for a rule the generator cannot fully express.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The compliance rule&#39;s scope.</param>
@@ -925,7 +925,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English.
         /// </summary>
         /// <remarks>
-        /// Use this endpoint to retrieve a plain-English description of a V3 compliance rule. The description  generator is delivered separately, so the description lines are currently empty.
+        /// Use this endpoint to retrieve a plain-English description of a V3 compliance rule as a single  sentence. The sentence is empty for a rule the generator cannot fully express.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The compliance rule&#39;s scope.</param>
@@ -2670,7 +2670,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English. Use this endpoint to retrieve a plain-English description of a V3 compliance rule. The description  generator is delivered separately, so the description lines are currently empty.
+        /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English. Use this endpoint to retrieve a plain-English description of a V3 compliance rule as a single  sentence. The sentence is empty for a rule the generator cannot fully express.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The compliance rule&#39;s scope.</param>
@@ -2686,7 +2686,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English. Use this endpoint to retrieve a plain-English description of a V3 compliance rule. The description  generator is delivered separately, so the description lines are currently empty.
+        /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English. Use this endpoint to retrieve a plain-English description of a V3 compliance rule as a single  sentence. The sentence is empty for a rule the generator cannot fully express.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -2796,7 +2796,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English. Use this endpoint to retrieve a plain-English description of a V3 compliance rule. The description  generator is delivered separately, so the description lines are currently empty.
+        /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English. Use this endpoint to retrieve a plain-English description of a V3 compliance rule as a single  sentence. The sentence is empty for a rule the generator cannot fully express.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The compliance rule&#39;s scope.</param>
@@ -2813,7 +2813,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English. Use this endpoint to retrieve a plain-English description of a V3 compliance rule. The description  generator is delivered separately, so the description lines are currently empty.
+        /// [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English. Use this endpoint to retrieve a plain-English description of a V3 compliance rule as a single  sentence. The sentence is empty for a rule the generator cannot fully express.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>

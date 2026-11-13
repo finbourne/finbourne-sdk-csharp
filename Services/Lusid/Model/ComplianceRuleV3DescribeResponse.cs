@@ -22,7 +22,7 @@ using OpenAPIDateConverter = Finbourne.Sdk.Client.OpenAPIDateConverter;
 namespace Finbourne.Sdk.Services.Lusid.Model
 {
     /// <summary>
-    /// A plain-English description of a V3 compliance rule. This is a minimal placeholder shape: the plain-English  generator is delivered separately, so the Lines property is currently empty and only the rule&#39;s identity  and subject are populated.
+    /// A plain-English description of a V3 compliance rule: its identity, the kind of entity it examines, and a  single sentence describing what it checks. The sentence is empty for a rule the generator cannot fully  express.
     /// </summary>
     [DataContract(Name = "ComplianceRuleV3DescribeResponse")]
     public partial class ComplianceRuleV3DescribeResponse : IEquatable<ComplianceRuleV3DescribeResponse>, IValidatableObject
@@ -32,12 +32,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="id">id.</param>
         /// <param name="subject">Available values: Holdings, Orders..</param>
-        /// <param name="lines">lines.</param>
-        public ComplianceRuleV3DescribeResponse(ResourceId id = default(ResourceId), string subject = default(string), List<string> lines = default(List<string>))
+        /// <param name="plainEnglish">plainEnglish.</param>
+        public ComplianceRuleV3DescribeResponse(ResourceId id = default(ResourceId), string subject = default(string), string plainEnglish = default(string))
         {
             this.Id = id;
             this.Subject = subject;
-            this.Lines = lines;
+            this.PlainEnglish = plainEnglish;
         }
 
         /// <summary>
@@ -54,10 +54,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Subject { get; set; }
 
         /// <summary>
-        /// Gets or Sets Lines
+        /// Gets or Sets PlainEnglish
         /// </summary>
-        [DataMember(Name = "lines", EmitDefaultValue = true)]
-        public List<string> Lines { get; set; }
+        [DataMember(Name = "plainEnglish", EmitDefaultValue = true)]
+        public string PlainEnglish { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,7 +69,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("class ComplianceRuleV3DescribeResponse {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Subject: ").Append(Subject).Append("\n");
-            sb.Append("  Lines: ").Append(Lines).Append("\n");
+            sb.Append("  PlainEnglish: ").Append(PlainEnglish).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,10 +116,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Subject.Equals(input.Subject))
                 ) && 
                 (
-                    this.Lines == input.Lines ||
-                    this.Lines != null &&
-                    input.Lines != null &&
-                    this.Lines.SequenceEqual(input.Lines)
+                    this.PlainEnglish == input.PlainEnglish ||
+                    (this.PlainEnglish != null &&
+                    this.PlainEnglish.Equals(input.PlainEnglish))
                 );
         }
 
@@ -140,9 +139,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Subject.GetHashCode();
                 }
-                if (this.Lines != null)
+                if (this.PlainEnglish != null)
                 {
-                    hashCode = (hashCode * 59) + this.Lines.GetHashCode();
+                    hashCode = (hashCode * 59) + this.PlainEnglish.GetHashCode();
                 }
                 return hashCode;
             }

@@ -17,7 +17,7 @@ A request to create or update a Block.
 | **CreatedDate** | **DateTimeOffset** | Required | The date on which the block was made |
 | **LimitPrice** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **StopPrice** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
-| **IsSwept** | **bool** | Optional | Swept blocks are considered no longer of active interest, and no longer take part in various order management processes |
+| **IsSwept** | **bool?** | Optional | Swept blocks are considered no longer of active interest, and no longer take part in various order management processes. If not supplied, an existing block keeps its current value and a new block is not swept. |
 
 
 ## Usage
@@ -40,7 +40,7 @@ var instance = new BlockRequest(
     createdDate: DateTimeOffset.Now,  // required — The date on which the block was made
     limitPrice: new CurrencyAndAmount(...),  // optional
     stopPrice: new CurrencyAndAmount(...),  // optional
-    isSwept: true  // optional — Swept blocks are considered no longer of active interest, and no longer take part in various order management processes
+    isSwept: true  // optional — Swept blocks are considered no longer of active interest, and no longer take part in various order management processes. If not supplied, an existing block keeps its current value and a new block is not swept.
 );
 ```
 ### Serializing to JSON

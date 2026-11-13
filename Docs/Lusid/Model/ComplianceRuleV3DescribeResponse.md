@@ -1,13 +1,13 @@
 # Finbourne.Sdk.Lusid.Model.ComplianceRuleV3DescribeResponse
 
-A plain-English description of a V3 compliance rule. This is a minimal placeholder shape: the plain-English  generator is delivered separately, so the Lines property is currently empty and only the rule's identity  and subject are populated.
+A plain-English description of a V3 compliance rule: its identity, the kind of entity it examines, and a  single sentence describing what it checks. The sentence is empty for a rule the generator cannot fully  express.
 ## Properties
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **Id** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Subject** | **string** | Optional | Available values: Holdings, Orders. |
-| **Lines** | **List&lt;string&gt;** | Optional | *No description available.* |
+| **PlainEnglish** | **string** | Optional | *No description available.* |
 
 
 ## Usage
@@ -20,7 +20,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new ComplianceRuleV3DescribeResponse(
     id: new ResourceId(...),  // optional
     subject: "...",  // optional — Available values: Holdings, Orders.
-    lines:   // optional
+    plainEnglish: "..."  // optional
 );
 ```
 ### Serializing to JSON

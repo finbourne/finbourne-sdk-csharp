@@ -16,6 +16,7 @@ A V3 compliance rule as returned by the API: its identity and administrative fie
 | **Check** | [ComplianceRuleV3Check](ComplianceRuleV3Check.md) | Optional | *No description available.* |
 | **ComputedFilter** | [ComplianceRuleV3ComputedFilter](ComplianceRuleV3ComputedFilter.md) | Optional | *No description available.* |
 | **VarVersion** | [ModelVersion](ModelVersion.md) | Optional | *No description available.* |
+| **PlainEnglish** | **string** | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -38,6 +39,7 @@ var instance = new ComplianceRuleV3Response(
     check: new ComplianceRuleV3Check(...),  // optional
     computedFilter: new ComplianceRuleV3ComputedFilter(...),  // optional
     varVersion: new ModelVersion(...),  // optional
+    plainEnglish: "...",  // optional
     links: new List<Link>()  // optional
 );
 ```

@@ -9,7 +9,7 @@ The memo block of a capital account statement: commitment balances from the regi
 | **UncalledCommitment** | **decimal** | Required | The commitment not yet called. |
 | **Recallable** | **decimal** | Required | Distributions that the fund may recall. |
 | **AvailableCommitment** | **decimal** | Required | The commitment available to call, being uncalled plus recallable. |
-| **ContributionsReceivable** | **decimal?** | Optional | Called contributions not yet received from the partner. Omitted when a register line of the partner has had returned capital marked recallable, since recalled capital is not yet tracked as a balance and the figure would exclude it. |
+| **ContributionsReceivable** | **decimal?** | Optional | Called contributions not yet received from the partner, counting capital that was returned as recallable and has since been recalled. Omitted while a register line of the partner that has had returned capital marked recallable has not been rebuilt with recalled capital as a balance, since the figure could then miss an unpaid recall; the declared distributions are then served gross. |
 | **DistributionsDeclaredNotPaid** | **decimal** | Required | Distributions declared to the partner but not yet paid. |
 
 
@@ -25,7 +25,7 @@ var instance = new PartnerCapitalAccountMemo(
     uncalledCommitment: 0.0d,  // required — The commitment not yet called.
     recallable: 0.0d,  // required — Distributions that the fund may recall.
     availableCommitment: 0.0d,  // required — The commitment available to call, being uncalled plus recallable.
-    contributionsReceivable: 0.0d,  // optional — Called contributions not yet received from the partner. Omitted when a register line of the partner has had returned capital marked recallable, since recalled capital is not yet tracked as a balance and the figure would exclude it.
+    contributionsReceivable: 0.0d,  // optional — Called contributions not yet received from the partner, counting capital that was returned as recallable and has since been recalled. Omitted while a register line of the partner that has had returned capital marked recallable has not been rebuilt with recalled capital as a balance, since the figure could then miss an unpaid recall; the declared distributions are then served gross.
     distributionsDeclaredNotPaid: 0.0d  // required — Distributions declared to the partner but not yet paid.
 );
 ```

@@ -19,6 +19,7 @@
 | **EndEffectiveAt** | **DateTimeOffset?** | Optional | Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping. |
 | **EffectiveForwardDays** | **int?** | Optional | How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes. |
 | **InstrumentIdentifiers** | **List&lt;string&gt;** | Optional | The instrument identifiers each published holding carries, as Instrument/default/{type} property keys,  for example Instrument/default/ClientInternal. Each must name an instrument identifier type. At most 5.  Not valid for a transactions subscription. |
+| **ReportCurrency** | **string** | Optional | The currency the report-currency values are given in, as a three-letter ISO code stored upper-case. Required  when addressKeys names any key other than the quantity, cost, current face, notional cost, variation margin  and currency keys: Holding/Units, Holding/SettledUnits, Holding/Cost/Dom, Holding/Cost/Pfolio,  Holding/CurrentFace, Holding/NotionalCost, Holding/VariationMargin, Holding/VariationMarginInPortfolioCcy,  Holding/HoldingType, Holding/DomCcy and Holding/PortfolioCcy. Not valid for a transactions subscription. |
 
 
 ## Usage
@@ -43,7 +44,8 @@ var instance = new SubscriptionDefinition(
     startEffectiveAt: DateTimeOffset.Now,  // optional
     endEffectiveAt: DateTimeOffset.Now,  // optional — Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping.
     effectiveForwardDays: 0,  // optional — How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes.
-    instrumentIdentifiers:   // optional — The instrument identifiers each published holding carries, as Instrument/default/{type} property keys,  for example Instrument/default/ClientInternal. Each must name an instrument identifier type. At most 5.  Not valid for a transactions subscription.
+    instrumentIdentifiers: ,  // optional — The instrument identifiers each published holding carries, as Instrument/default/{type} property keys,  for example Instrument/default/ClientInternal. Each must name an instrument identifier type. At most 5.  Not valid for a transactions subscription.
+    reportCurrency: "..."  // optional — The currency the report-currency values are given in, as a three-letter ISO code stored upper-case. Required  when addressKeys names any key other than the quantity, cost, current face, notional cost, variation margin  and currency keys: Holding/Units, Holding/SettledUnits, Holding/Cost/Dom, Holding/Cost/Pfolio,  Holding/CurrentFace, Holding/NotionalCost, Holding/VariationMargin, Holding/VariationMarginInPortfolioCcy,  Holding/HoldingType, Holding/DomCcy and Holding/PortfolioCcy. Not valid for a transactions subscription.
 );
 ```
 ### Serializing to JSON

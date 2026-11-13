@@ -6,6 +6,7 @@ An individual item that makes up (one side of) a rec result. Polymorphic by item
 
 `RecResultItem` can be one of the following types:
 
+* [RecResultCustomEntityItem](./RecResultCustomEntityItem.md)
 * [RecResultExternalIdentifiersItem](./RecResultExternalIdentifiersItem.md)
 * [RecResultHoldingItem](./RecResultHoldingItem.md)
 * [RecResultRelationalDataItem](./RecResultRelationalDataItem.md)
@@ -20,7 +21,7 @@ An individual item that makes up (one side of) a rec result. Polymorphic by item
 ```csharp
 using Finbourne.Sdk.Services.Lusid.Model;
 
-var inner = new RecResultExternalIdentifiersItem(...);
+var inner = new RecResultCustomEntityItem(...);
 var instance = new RecResultItem(inner);
 ```
 
@@ -38,6 +39,7 @@ var instance = JsonConvert.DeserializeObject<RecResultItem>(json);
 
 ## Related Models
 
+- [RecResultCustomEntityItem](./RecResultCustomEntityItem.md)
 - [RecResultExternalIdentifiersItem](./RecResultExternalIdentifiersItem.md)
 - [RecResultHoldingItem](./RecResultHoldingItem.md)
 - [RecResultRelationalDataItem](./RecResultRelationalDataItem.md)

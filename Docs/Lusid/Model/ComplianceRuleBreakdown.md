@@ -4,6 +4,7 @@
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
+| **GroupId** | **int** | Required | A stable identifier for this group within the rule, the same across the rule-result and breakdown endpoints,  so a group can be correlated between the two. |
 | **GroupStatus** | **string** | Required | The status of this subset of results. |
 | **ResultsUsed** | **Dictionary&lt;string, decimal&gt;** | Required | Dictionary of AddressKey (as string) and their corresponding decimal values, that were used in this rule. |
 | **FormulaValues** | **Dictionary&lt;string, decimal&gt;** | Optional | The value each formula within the check criterion evaluated to for this group. Empty where the criterion  compares a single value or is not numerical, since the operand values already recorded describe those. |
@@ -20,6 +21,7 @@
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new ComplianceRuleBreakdown(
+    groupId: 0,  // required — A stable identifier for this group within the rule, the same across the rule-result and breakdown endpoints,  so a group can be correlated between the two.
     groupStatus: "...",  // required — The status of this subset of results.
     resultsUsed: ,  // required — Dictionary of AddressKey (as string) and their corresponding decimal values, that were used in this rule.
     formulaValues: ,  // optional — The value each formula within the check criterion evaluated to for this group. Empty where the criterion  compares a single value or is not numerical, since the operand values already recorded describe those.

@@ -6,7 +6,7 @@
 |------|------|----------|-------------|
 | **Id** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **DisplayName** | **string** | Required | The name of the matching ruleset. |
-| **RecType** | **string** | Required | The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. |
+| **RecType** | **string** | Required | The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. A custom entity type is written as its name, which starts with ~. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. |
 | **ExternalRecType** | [ExternalRecType](ExternalRecType.md) | Optional | *No description available.* |
 | **DatasetSchemas** | [RecDatasetSchemas](RecDatasetSchemas.md) | Optional | *No description available.* |
 | **Filters** | [GroupReconciliationFilters](GroupReconciliationFilters.md) | Optional | *No description available.* |
@@ -30,7 +30,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new CreateMatchingRulesetRequest(
     id: new ResourceId(...),  // required
     displayName: "...",  // required — The name of the matching ruleset.
-    recType: "...",  // required — The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
+    recType: "...",  // required — The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. A custom entity type is written as its name, which starts with ~. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
     externalRecType: new ExternalRecType(...),  // optional
     datasetSchemas: new RecDatasetSchemas(...),  // optional
     filters: new GroupReconciliationFilters(...),  // optional

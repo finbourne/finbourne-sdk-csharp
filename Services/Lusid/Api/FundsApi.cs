@@ -1576,7 +1576,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.                Rows are returned ordered by portfolio (scope then code, ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding keys, so the order is total and stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -1585,7 +1585,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="asAt">The asAt datetime at which to retrieve the report. Defaults to latest. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing from a previous call. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -1597,7 +1597,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.                Rows are returned ordered by portfolio (scope then code, ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding keys, so the order is total and stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -1606,7 +1606,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="asAt">The asAt datetime at which to retrieve the report. Defaults to latest. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing from a previous call. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -4300,7 +4300,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.                Rows are returned ordered by portfolio (scope then code, ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding keys, so the order is total and stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -4309,7 +4309,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="asAt">The asAt datetime at which to retrieve the report. Defaults to latest. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing from a previous call. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -4322,7 +4322,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+        /// Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.                Rows are returned ordered by portfolio (scope then code, ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding keys, so the order is total and stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -4331,7 +4331,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="asAt">The asAt datetime at which to retrieve the report. Defaults to latest. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing from a previous call. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -18984,7 +18984,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.                Rows are returned ordered by portfolio (scope then code, ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding keys, so the order is total and stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -18993,7 +18993,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="asAt">The asAt datetime at which to retrieve the report. Defaults to latest. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing from a previous call. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -19006,7 +19006,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.                Rows are returned ordered by portfolio (scope then code, ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding keys, so the order is total and stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -19016,7 +19016,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="asAt">The asAt datetime at which to retrieve the report. Defaults to latest. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing from a previous call. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -19153,7 +19153,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.                Rows are returned ordered by portfolio (scope then code, ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding keys, so the order is total and stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -19162,7 +19162,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="asAt">The asAt datetime at which to retrieve the report. Defaults to latest. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing from a previous call. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
@@ -19176,7 +19176,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+        /// [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.                Rows are returned ordered by portfolio (scope then code, ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding keys, so the order is total and stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -19186,7 +19186,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="asAt">The asAt datetime at which to retrieve the report. Defaults to latest. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing from a previous call. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, or &#39;Account&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>

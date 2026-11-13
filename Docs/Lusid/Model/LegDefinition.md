@@ -22,6 +22,8 @@ Definition of the set of flow and index conventions along with other miscellaneo
 | **LastCouponType** | **string** | Optional | Optional coupon type setting for the last coupon, can be used with Stub coupons.  If set to \&quot;ProRata\&quot; (the default), the coupon year fraction is calculated as normal,  however if set to \&quot;Full\&quot; the year fraction is overwritten with the standard year fraction  for a regular ful\&quot; coupon. Note this does not use the day count convention but rather is defined  directly from the tenor (i.e. a quarterly leg will be set to 0.25).    Supported string (enumeration) values are: [ProRata, Full]. |
 | **FxLinkedNotionalSchedule** | [FxLinkedNotionalSchedule](FxLinkedNotionalSchedule.md) | Optional | *No description available.* |
 | **IntermediateNotionalExchange** | **bool?** | Optional | Indicates whether there are intermediate notional exchanges. |
+| **InitialExchangeAmount** | **decimal?** | Optional | The amount exchanged at the start of the leg, when NotionalExchangeType is Initial or Both.  Defaults to the notional. Coupons accrue on the notional regardless. Must be non-negative, and cannot be  set together with an FxLinkedNotionalSchedule. |
+| **FinalExchangeAmount** | **decimal?** | Optional | The amount exchanged at maturity, when NotionalExchangeType is Final or Both.  Defaults to the notional. Coupons accrue on the notional regardless. Must be non-negative, and cannot be  set together with an FxLinkedNotionalSchedule. |
 
 
 ## Usage
@@ -48,7 +50,9 @@ var instance = new LegDefinition(
     lastRegularPaymentDate: DateTimeOffset.Now,  // optional — Optional payment date of the last regular coupon.  Must be less than the Maturity date.  If set, the regular coupon schedule will be built up to this date and the final  coupon will be a stub between this date and the Maturity date.
     lastCouponType: "...",  // optional — Optional coupon type setting for the last coupon, can be used with Stub coupons.  If set to \&quot;ProRata\&quot; (the default), the coupon year fraction is calculated as normal,  however if set to \&quot;Full\&quot; the year fraction is overwritten with the standard year fraction  for a regular ful\&quot; coupon. Note this does not use the day count convention but rather is defined  directly from the tenor (i.e. a quarterly leg will be set to 0.25).    Supported string (enumeration) values are: [ProRata, Full].
     fxLinkedNotionalSchedule: new FxLinkedNotionalSchedule(...),  // optional
-    intermediateNotionalExchange: true  // optional — Indicates whether there are intermediate notional exchanges.
+    intermediateNotionalExchange: true,  // optional — Indicates whether there are intermediate notional exchanges.
+    initialExchangeAmount: 0.0d,  // optional — The amount exchanged at the start of the leg, when NotionalExchangeType is Initial or Both.  Defaults to the notional. Coupons accrue on the notional regardless. Must be non-negative, and cannot be  set together with an FxLinkedNotionalSchedule.
+    finalExchangeAmount: 0.0d  // optional — The amount exchanged at maturity, when NotionalExchangeType is Final or Both.  Defaults to the notional. Coupons accrue on the notional regardless. Must be non-negative, and cannot be  set together with an FxLinkedNotionalSchedule.
 );
 ```
 ### Serializing to JSON

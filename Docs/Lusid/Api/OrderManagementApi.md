@@ -15,7 +15,7 @@ All URIs are relative to *http://localhost*
 | [**PlaceBlocks**](#placeblocks) | **POST** `/api/api/ordermanagement/placeblocks` | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests. |
 | [**PreviewBlocks**](#previewblocks) | **POST** `/api/api/ordermanagement/$previewblocks` | PreviewBlocks: Preview the blocks a set of orders would form |
 | [**RunAllocationService**](#runallocationservice) | **POST** `/api/api/ordermanagement/allocate` | RunAllocationService: Runs the Allocation Service |
-| [**RunAllocationServiceWithWeights**](#runallocationservicewithweights) | **POST** `/api/api/ordermanagement/allocate/weighted` | [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights |
+| [**RunAllocationServiceWithWeights**](#runallocationservicewithweights) | **POST** `/api/api/ordermanagement/allocate/weighted` | RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights |
 | [**SweepBlocks**](#sweepblocks) | **POST** `/api/api/ordermanagement/SweepBlocks` | [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful. |
 | [**UpdateOrders**](#updateorders) | **POST** `/api/api/ordermanagement/updateorders` | [EARLY ACCESS] UpdateOrders: Update existing orders |
 | [**UpdatePlacements**](#updateplacements) | **POST** `/api/api/ordermanagement/$updateplacements` | [EARLY ACCESS] UpdatePlacements: Update existing placements |
@@ -660,7 +660,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 
 > AllocationServiceRunResponse RunAllocationServiceWithWeights(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, string? allocationAlgorithm = null, bool? cancelAndCorrect = null)
 
-[EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
+RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
 
 Allocates Executions for a given list of placements to a specified set of portfolios by weight,  creating Allocations to record the results. Used for the unsolicited Block and Block Trade booking flows where no Orders exist against the Block.  Weights are relative to each other and are not required to sum to 1 or 100.
 

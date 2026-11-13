@@ -14,7 +14,8 @@ The request used to create or update an Allocation Map.
 | **BasisByEventType** | [List&lt;AllocationMapEventBasis&gt;](AllocationMapEventBasis.md) | Optional | The basis on which each kind of allocation event is shared between the participants. At most one entry per event type and component; an entry without a component is the default for the event type. |
 | **RoundingPartnerLine** | **string** | Optional | The investor record that takes every minor unit left over when the shares of an event are rounded. Absent means the leftover is spread one minor unit at a time over the largest remainders. |
 | **IlpaTransactionTypes** | [List&lt;AllocationMapIlpaTransactionType&gt;](AllocationMapIlpaTransactionType.md) | Optional | The ILPA transaction types the map reports particular kinds of allocation event under, where they differ from the default for the event type and component. At most one entry per event type and component; an entry without a component is the default for the event type. Every value must be one the system IlpaTransactionType data type lists. |
-| **EffectiveAt** | **DateTimeOffset?** | Optional | The effective datetime from which the Allocation Map applies. Defaults to the beginning of time if not specified, so that the map is visible at every effective datetime. |
+| **ExcuseCapMultiple** | **decimal?** | Optional | How far above its pro-rata share of a call a line may be taken when other participants are excused, as a multiple of that share: the LPA&#39;s over-call cap. At least 1. Absent means the platform default of 1.25. |
+| **EffectiveAt** | **DateTimeOffset?** | Optional | The effective datetime from which the Allocation Map applies. On create, defaults to the beginning of time if not specified, so that the map is visible at every effective datetime. On update of an existing Allocation Map it is required, in the body or as the effectiveAt query parameter, so that a change is never back-dated or forward-dated by accident. |
 
 
 ## Usage
@@ -34,7 +35,8 @@ var instance = new AllocationMapRequest(
     basisByEventType: new List<AllocationMapEventBasis>(),  // optional — The basis on which each kind of allocation event is shared between the participants. At most one entry per event type and component; an entry without a component is the default for the event type.
     roundingPartnerLine: "...",  // optional — The investor record that takes every minor unit left over when the shares of an event are rounded. Absent means the leftover is spread one minor unit at a time over the largest remainders.
     ilpaTransactionTypes: new List<AllocationMapIlpaTransactionType>(),  // optional — The ILPA transaction types the map reports particular kinds of allocation event under, where they differ from the default for the event type and component. At most one entry per event type and component; an entry without a component is the default for the event type. Every value must be one the system IlpaTransactionType data type lists.
-    effectiveAt: DateTimeOffset.Now  // optional — The effective datetime from which the Allocation Map applies. Defaults to the beginning of time if not specified, so that the map is visible at every effective datetime.
+    excuseCapMultiple: 0.0d,  // optional — How far above its pro-rata share of a call a line may be taken when other participants are excused, as a multiple of that share: the LPA&#39;s over-call cap. At least 1. Absent means the platform default of 1.25.
+    effectiveAt: DateTimeOffset.Now  // optional — The effective datetime from which the Allocation Map applies. On create, defaults to the beginning of time if not specified, so that the map is visible at every effective datetime. On update of an existing Allocation Map it is required, in the body or as the effectiveAt query parameter, so that a change is never back-dated or forward-dated by accident.
 );
 ```
 ### Serializing to JSON

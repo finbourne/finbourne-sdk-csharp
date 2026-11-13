@@ -507,7 +507,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="upsertallocationmap"></a>
 ## UpsertAllocationMap
 
-> AllocationMap UpsertAllocationMap(string scope, string code, AllocationMapRequest allocationMapRequest)
+> AllocationMap UpsertAllocationMap(string scope, string code, AllocationMapRequest allocationMapRequest, DateTimeOrCutLabel? effectiveAt = null)
 
 [EARLY ACCESS] UpsertAllocationMap: Upsert an Allocation Map.
 
@@ -520,7 +520,8 @@ var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AllocationMapsApi
 var scope = "scope_example";  // string
 var code = "code_example";  // string
 var allocationMapRequest = new AllocationMapRequest(); // AllocationMapRequest
-AllocationMap result = apiInstance.UpsertAllocationMap(scope, code, allocationMapRequest);
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+AllocationMap result = apiInstance.UpsertAllocationMap(scope, code, allocationMapRequest, effectiveAt);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -531,6 +532,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | **scope** | **string** | path | **required** | The scope of the Allocation Map. |
 | **code** | **string** | path | **required** | The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map. |
 | **allocationMapRequest** | [AllocationMapRequest](../Model/AllocationMapRequest.md) | body | **required** | The definition of the Allocation Map. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. |
 
 ### Return type
 
@@ -555,7 +557,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<AllocationMap> response = apiInstance.UpsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest);
+ApiResponse<AllocationMap> response = apiInstance.UpsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest, effectiveAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

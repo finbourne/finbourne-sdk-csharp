@@ -257,10 +257,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Map.</param>
         /// <param name="code">The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.</param>
         /// <param name="allocationMapRequest">The definition of the Allocation Map.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationMap</returns>
-        AllocationMap UpsertAllocationMap(string scope, string code, AllocationMapRequest allocationMapRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        AllocationMap UpsertAllocationMap(string scope, string code, AllocationMapRequest allocationMapRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EARLY ACCESS] UpsertAllocationMap: Upsert an Allocation Map.
@@ -272,10 +273,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Map.</param>
         /// <param name="code">The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.</param>
         /// <param name="allocationMapRequest">The definition of the Allocation Map.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationMap</returns>
-        Finbourne.Sdk.Client.ApiResponse<AllocationMap> UpsertAllocationMapWithHttpInfo(string scope, string code, AllocationMapRequest allocationMapRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
+        Finbourne.Sdk.Client.ApiResponse<AllocationMap> UpsertAllocationMapWithHttpInfo(string scope, string code, AllocationMapRequest allocationMapRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
         #endregion Synchronous Operations
     }
 
@@ -526,11 +528,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Map.</param>
         /// <param name="code">The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.</param>
         /// <param name="allocationMapRequest">The definition of the Allocation Map.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of AllocationMap</returns>
-        System.Threading.Tasks.Task<AllocationMap> UpsertAllocationMapAsync(string scope, string code, AllocationMapRequest allocationMapRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<AllocationMap> UpsertAllocationMapAsync(string scope, string code, AllocationMapRequest allocationMapRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
 
         /// <summary>
         /// [EARLY ACCESS] UpsertAllocationMap: Upsert an Allocation Map.
@@ -542,11 +545,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Map.</param>
         /// <param name="code">The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.</param>
         /// <param name="allocationMapRequest">The definition of the Allocation Map.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (AllocationMap)</returns>
-        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationMap>> UpsertAllocationMapWithHttpInfoAsync(string scope, string code, AllocationMapRequest allocationMapRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationMap>> UpsertAllocationMapWithHttpInfoAsync(string scope, string code, AllocationMapRequest allocationMapRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         #endregion Asynchronous Operations
     }
 
@@ -2554,12 +2558,13 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Map.</param>
         /// <param name="code">The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.</param>
         /// <param name="allocationMapRequest">The definition of the Allocation Map.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>AllocationMap</returns>
-        public AllocationMap UpsertAllocationMap(string scope, string code, AllocationMapRequest allocationMapRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        public AllocationMap UpsertAllocationMap(string scope, string code, AllocationMapRequest allocationMapRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<AllocationMap> localVarResponse = UpsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest, opts: opts);
+            Finbourne.Sdk.Client.ApiResponse<AllocationMap> localVarResponse = UpsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest, effectiveAt, opts: opts);
             return localVarResponse.Data;
         }
 
@@ -2571,10 +2576,11 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Map.</param>
         /// <param name="code">The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.</param>
         /// <param name="allocationMapRequest">The definition of the Allocation Map.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of AllocationMap</returns>
-        public Finbourne.Sdk.Client.ApiResponse<AllocationMap> UpsertAllocationMapWithHttpInfo(string scope, string code, AllocationMapRequest allocationMapRequest, int operationIndex = 0, ConfigurationOptions? opts = null)
+        public Finbourne.Sdk.Client.ApiResponse<AllocationMap> UpsertAllocationMapWithHttpInfo(string scope, string code, AllocationMapRequest allocationMapRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -2644,6 +2650,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
 
             localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
             localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
             localVarRequestOptions.Data = allocationMapRequest;
 
             localVarRequestOptions.Operation = "AllocationMapsApi.UpsertAllocationMap";
@@ -2687,13 +2697,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Map.</param>
         /// <param name="code">The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.</param>
         /// <param name="allocationMapRequest">The definition of the Allocation Map.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of AllocationMap</returns>
-        public async System.Threading.Tasks.Task<AllocationMap> UpsertAllocationMapAsync(string scope, string code, AllocationMapRequest allocationMapRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<AllocationMap> UpsertAllocationMapAsync(string scope, string code, AllocationMapRequest allocationMapRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
-            Finbourne.Sdk.Client.ApiResponse<AllocationMap> localVarResponse = await UpsertAllocationMapWithHttpInfoAsync(scope, code, allocationMapRequest, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            Finbourne.Sdk.Client.ApiResponse<AllocationMap> localVarResponse = await UpsertAllocationMapWithHttpInfoAsync(scope, code, allocationMapRequest, effectiveAt, operationIndex, cancellationToken, opts).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2705,11 +2716,12 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="scope">The scope of the Allocation Map.</param>
         /// <param name="code">The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.</param>
         /// <param name="allocationMapRequest">The definition of the Allocation Map.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (AllocationMap)</returns>
-        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationMap>> UpsertAllocationMapWithHttpInfoAsync(string scope, string code, AllocationMapRequest allocationMapRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationMap>> UpsertAllocationMapWithHttpInfoAsync(string scope, string code, AllocationMapRequest allocationMapRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
         {
             // verify the required parameter 'scope' is set
             if (scope == null)
@@ -2780,6 +2792,10 @@ namespace Finbourne.Sdk.Services.Lusid.Api
 
             localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
             localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
             localVarRequestOptions.Data = allocationMapRequest;
 
             localVarRequestOptions.Operation = "AllocationMapsApi.UpsertAllocationMap";

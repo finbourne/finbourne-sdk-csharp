@@ -38,8 +38,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="conventions">conventions.</param>
         /// <param name="firstResetDate">The date of the first price reset. Optional; when absent the reset dates are rolled forward from the swap start date..</param>
         /// <param name="frequency">The frequency at which the asset price is reset and the price return is exchanged, e.g. 3M. (required).</param>
+        /// <param name="fundingStartLag">fundingStartLag.</param>
         /// <param name="lastResetDate">The date of the last price reset. Optional; when absent the reset dates are rolled forward until the swap maturity date..</param>
-        public ResetSchedule(FlowConventions conventions = default(FlowConventions), DateTimeOffset? firstResetDate = default(DateTimeOffset?), string frequency = default(string), DateTimeOffset? lastResetDate = default(DateTimeOffset?))
+        public ResetSchedule(FlowConventions conventions = default(FlowConventions), DateTimeOffset? firstResetDate = default(DateTimeOffset?), string frequency = default(string), RelativeDateOffset fundingStartLag = default(RelativeDateOffset), DateTimeOffset? lastResetDate = default(DateTimeOffset?))
         {
             // to ensure "frequency" is required (not null)
             if (frequency == null)
@@ -49,6 +50,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Frequency = frequency;
             this.Conventions = conventions;
             this.FirstResetDate = firstResetDate;
+            this.FundingStartLag = fundingStartLag;
             this.LastResetDate = lastResetDate;
         }
 
@@ -73,6 +75,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Frequency { get; set; }
 
         /// <summary>
+        /// Gets or Sets FundingStartLag
+        /// </summary>
+        [DataMember(Name = "fundingStartLag", EmitDefaultValue = false)]
+        public RelativeDateOffset FundingStartLag { get; set; }
+
+        /// <summary>
         /// The date of the last price reset. Optional; when absent the reset dates are rolled forward until the swap maturity date.
         /// </summary>
         /// <value>The date of the last price reset. Optional; when absent the reset dates are rolled forward until the swap maturity date.</value>
@@ -90,6 +98,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Conventions: ").Append(Conventions).Append("\n");
             sb.Append("  FirstResetDate: ").Append(FirstResetDate).Append("\n");
             sb.Append("  Frequency: ").Append(Frequency).Append("\n");
+            sb.Append("  FundingStartLag: ").Append(FundingStartLag).Append("\n");
             sb.Append("  LastResetDate: ").Append(LastResetDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -142,6 +151,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Frequency.Equals(input.Frequency))
                 ) && 
                 (
+                    this.FundingStartLag == input.FundingStartLag ||
+                    (this.FundingStartLag != null &&
+                    this.FundingStartLag.Equals(input.FundingStartLag))
+                ) && 
+                (
                     this.LastResetDate == input.LastResetDate ||
                     (this.LastResetDate != null &&
                     this.LastResetDate.Equals(input.LastResetDate))
@@ -168,6 +182,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.Frequency != null)
                 {
                     hashCode = (hashCode * 59) + this.Frequency.GetHashCode();
+                }
+                if (this.FundingStartLag != null)
+                {
+                    hashCode = (hashCode * 59) + this.FundingStartLag.GetHashCode();
                 }
                 if (this.LastResetDate != null)
                 {

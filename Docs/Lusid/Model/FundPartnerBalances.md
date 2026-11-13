@@ -12,7 +12,7 @@ The capital balances of one register line, in the commitment currency.
 | **Recallable** | **decimal** | Required | The returned capital that may be recalled. |
 | **Unfunded** | **decimal** | Required | The unfunded capital. |
 | **Funded** | **decimal** | Required | The funded capital. |
-| **OutstandingCalls** | **decimal?** | Optional | Capital called but not yet paid in. Omitted on a register line that has had returned capital marked recallable, since recalled capital is not yet tracked as a balance and the figure would exclude it. |
+| **OutstandingCalls** | **decimal?** | Optional | Capital called but not yet paid in, counting capital that was returned as recallable and has since been recalled. Omitted while a line that has had returned capital marked recallable has not been rebuilt with recalled capital as a balance, since the figure could then miss an unpaid recall. |
 
 
 ## Usage
@@ -30,7 +30,7 @@ var instance = new FundPartnerBalances(
     recallable: 0.0d,  // required — The returned capital that may be recalled.
     unfunded: 0.0d,  // required — The unfunded capital.
     funded: 0.0d,  // required — The funded capital.
-    outstandingCalls: 0.0d  // optional — Capital called but not yet paid in. Omitted on a register line that has had returned capital marked recallable, since recalled capital is not yet tracked as a balance and the figure would exclude it.
+    outstandingCalls: 0.0d  // optional — Capital called but not yet paid in, counting capital that was returned as recallable and has since been recalled. Omitted while a line that has had returned capital marked recallable has not been rebuilt with recalled capital as a balance, since the figure could then miss an unpaid recall.
 );
 ```
 ### Serializing to JSON

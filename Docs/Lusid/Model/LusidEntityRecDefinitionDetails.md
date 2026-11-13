@@ -5,7 +5,7 @@ A definition that reconciles one type of LUSID entity. A filter selects the popu
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| **EntityType** | **string** | Required | The type of LUSID entity to reconcile, which is also the rec type of the results. Supported types: Instrument, LegalEntity, Portfolio. Must equal the reconciliationType of the matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. |
+| **EntityType** | **string** | Required | The type of LUSID entity to reconcile, which is also the rec type of the results. Supported types: Instrument, LegalEntity, Portfolio. A custom entity type is written as its name, which starts with ~. Must equal the reconciliationType of the matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. |
 | **MatchingRulesetId** | [ResourceId](ResourceId.md) | Required | *No description available.* |
 | **LeftFilter** | **string** | Optional | Optional filter that selects the population of the left side. It uses the filter syntax of the list endpoint of the entity type. Null reads the whole population of the side. |
 | **RightFilter** | **string** | Optional | Optional filter that selects the population of the right side. It uses the filter syntax of the list endpoint of the entity type. Null reads the whole population of the side. |
@@ -20,7 +20,7 @@ A definition that reconciles one type of LUSID entity. A filter selects the popu
 using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new LusidEntityRecDefinitionDetails(
-    entityType: "...",  // required — The type of LUSID entity to reconcile, which is also the rec type of the results. Supported types: Instrument, LegalEntity, Portfolio. Must equal the reconciliationType of the matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
+    entityType: "...",  // required — The type of LUSID entity to reconcile, which is also the rec type of the results. Supported types: Instrument, LegalEntity, Portfolio. A custom entity type is written as its name, which starts with ~. Must equal the reconciliationType of the matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
     matchingRulesetId: new ResourceId(...),  // required
     leftFilter: "...",  // optional — Optional filter that selects the population of the left side. It uses the filter syntax of the list endpoint of the entity type. Null reads the whole population of the side.
     rightFilter: "...",  // optional — Optional filter that selects the population of the right side. It uses the filter syntax of the list endpoint of the entity type. Null reads the whole population of the side.

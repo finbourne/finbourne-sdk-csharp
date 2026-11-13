@@ -41,8 +41,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="check">check.</param>
         /// <param name="computedFilter">computedFilter.</param>
         /// <param name="varVersion">varVersion.</param>
+        /// <param name="plainEnglish">plainEnglish.</param>
         /// <param name="links">links.</param>
-        public ComplianceRuleV3Response(ResourceId id = default(ResourceId), string name = default(string), string description = default(string), bool active = default(bool), string subject = default(string), ComplianceRuleV3FilterNode filter = default(ComplianceRuleV3FilterNode), List<string> groupBy = default(List<string>), ComplianceRuleV3Measure measure = default(ComplianceRuleV3Measure), ComplianceRuleV3Check check = default(ComplianceRuleV3Check), ComplianceRuleV3ComputedFilter computedFilter = default(ComplianceRuleV3ComputedFilter), ModelVersion varVersion = default(ModelVersion), List<Link> links = default(List<Link>))
+        public ComplianceRuleV3Response(ResourceId id = default(ResourceId), string name = default(string), string description = default(string), bool active = default(bool), string subject = default(string), ComplianceRuleV3FilterNode filter = default(ComplianceRuleV3FilterNode), List<string> groupBy = default(List<string>), ComplianceRuleV3Measure measure = default(ComplianceRuleV3Measure), ComplianceRuleV3Check check = default(ComplianceRuleV3Check), ComplianceRuleV3ComputedFilter computedFilter = default(ComplianceRuleV3ComputedFilter), ModelVersion varVersion = default(ModelVersion), string plainEnglish = default(string), List<Link> links = default(List<Link>))
         {
             this.Id = id;
             this.Name = name;
@@ -55,6 +56,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Check = check;
             this.ComputedFilter = computedFilter;
             this.VarVersion = varVersion;
+            this.PlainEnglish = plainEnglish;
             this.Links = links;
         }
 
@@ -126,6 +128,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public ModelVersion VarVersion { get; set; }
 
         /// <summary>
+        /// Gets or Sets PlainEnglish
+        /// </summary>
+        [DataMember(Name = "plainEnglish", EmitDefaultValue = true)]
+        public string PlainEnglish { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", EmitDefaultValue = true)]
@@ -150,6 +158,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Check: ").Append(Check).Append("\n");
             sb.Append("  ComputedFilter: ").Append(ComputedFilter).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  PlainEnglish: ").Append(PlainEnglish).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -242,6 +251,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.VarVersion.Equals(input.VarVersion))
                 ) && 
                 (
+                    this.PlainEnglish == input.PlainEnglish ||
+                    (this.PlainEnglish != null &&
+                    this.PlainEnglish.Equals(input.PlainEnglish))
+                ) && 
+                (
                     this.Links == input.Links ||
                     this.Links != null &&
                     input.Links != null &&
@@ -298,6 +312,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.VarVersion != null)
                 {
                     hashCode = (hashCode * 59) + this.VarVersion.GetHashCode();
+                }
+                if (this.PlainEnglish != null)
+                {
+                    hashCode = (hashCode * 59) + this.PlainEnglish.GetHashCode();
                 }
                 if (this.Links != null)
                 {

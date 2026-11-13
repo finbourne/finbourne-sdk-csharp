@@ -6,7 +6,7 @@ One item of a batch comment request. The operation (add/edit/delete) is inferred
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | **InstanceId** | [RecInstanceId](RecInstanceId.md) | Required | *No description available.* |
-| **RecType** | **string** | Required | The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. |
+| **RecType** | **string** | Required | The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio, CustomEntity. |
 | **RecResultId** | **string** | Required | The rec result the comment operation targets. |
 | **CommentId** | **string** | Optional | The comment id. Null with text &#x3D; add; provided with text &#x3D; edit; provided with null text &#x3D; delete. |
 | **CommentText** | **string** | Optional | The comment body. See operation inference. |
@@ -21,7 +21,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new BatchManageCommentRequest(
     instanceId: new RecInstanceId(...),  // required
-    recType: "...",  // required — The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
+    recType: "...",  // required — The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio, CustomEntity.
     recResultId: "...",  // required — The rec result the comment operation targets.
     commentId: "...",  // optional — The comment id. Null with text &#x3D; add; provided with text &#x3D; edit; provided with null text &#x3D; delete.
     commentText: "..."  // optional — The comment body. See operation inference.
