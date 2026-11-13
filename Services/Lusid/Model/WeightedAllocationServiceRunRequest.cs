@@ -36,7 +36,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// Initializes a new instance of the <see cref="WeightedAllocationServiceRunRequest" /> class.
         /// </summary>
         /// <param name="placementIds">The set of Placement IDs to allocate. (required).</param>
-        /// <param name="portfolioWeights">The set of Portfolios and their associated weights to use for allocation..</param>
+        /// <param name="portfolioWeights">The set of Portfolios and their associated weights to use for allocation. (required).</param>
         public WeightedAllocationServiceRunRequest(List<ResourceId> placementIds = default(List<ResourceId>), List<PortfolioWeight> portfolioWeights = default(List<PortfolioWeight>))
         {
             // to ensure "placementIds" is required (not null)
@@ -45,6 +45,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("placementIds is a required property for WeightedAllocationServiceRunRequest and cannot be null");
             }
             this.PlacementIds = placementIds;
+            // to ensure "portfolioWeights" is required (not null)
+            if (portfolioWeights == null)
+            {
+                throw new ArgumentNullException("portfolioWeights is a required property for WeightedAllocationServiceRunRequest and cannot be null");
+            }
             this.PortfolioWeights = portfolioWeights;
         }
 
@@ -59,7 +64,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// The set of Portfolios and their associated weights to use for allocation.
         /// </summary>
         /// <value>The set of Portfolios and their associated weights to use for allocation.</value>
-        [DataMember(Name = "portfolioWeights", EmitDefaultValue = true)]
+        [DataMember(Name = "portfolioWeights", IsRequired = true, EmitDefaultValue = true)]
         public List<PortfolioWeight> PortfolioWeights { get; set; }
 
         /// <summary>

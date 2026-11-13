@@ -151,6 +151,70 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of Fund</returns>
         Finbourne.Sdk.Client.ApiResponse<Fund> AddSeriesWithHttpInfo(string scope, string code, List<SeriesDefinitionRequest> seriesDefinitionRequest, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step.
+        /// </summary>
+        /// <remarks>
+        /// Moves the return from Draft to Prepared, Prepared to Reviewed, Reviewed to SignedOff or SignedOff to Final. Advancing past Reviewed requires the tax records to be in sync with the ledger. Each step is recorded with the supplied reason.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for advancing the return.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxReturnResponse</returns>
+        TaxReturnResponse AdvanceTaxReturn(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step.
+        /// </summary>
+        /// <remarks>
+        /// Moves the return from Draft to Prepared, Prepared to Reviewed, Reviewed to SignedOff or SignedOff to Final. Advancing past Reviewed requires the tax records to be in sync with the ledger. Each step is recorded with the supplied reason.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for advancing the return.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxReturnResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> AdvanceTaxReturnWithHttpInfo(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point.
+        /// </summary>
+        /// <remarks>
+        /// Moves the Valuation Point&#39;s deferred-tax provision from Estimate to Approved, stores it as the official  document and books the movement since the previous approved Valuation Point as an accrual on the Fund.  Approving an already approved provision fails. Until tax elections can be configured on the Fund every  provision is struck under the default elections: a 20% rate, indexation allowance applied and losses carried  forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point whose provision is approved.</param>
+        /// <param name="navTypeCode">When provided, approves the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxProvision</returns>
+        TaxProvision ApproveTaxProvision(string scope, string code, string diaryEntryCode, string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point.
+        /// </summary>
+        /// <remarks>
+        /// Moves the Valuation Point&#39;s deferred-tax provision from Estimate to Approved, stores it as the official  document and books the movement since the previous approved Valuation Point as an accrual on the Fund.  Approving an already approved provision fails. Until tax elections can be configured on the Fund every  provision is struck under the default elections: a 20% rate, indexation allowance applied and losses carried  forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point whose provision is approved.</param>
+        /// <param name="navTypeCode">When provided, approves the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxProvision</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxProvision> ApproveTaxProvisionWithHttpInfo(string scope, string code, string diaryEntryCode, string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EARLY ACCESS] CalculateManagementFees: [EXPERIMENTAL] CalculateManagementFees: Calculate the management fee per partner for a period.
         /// </summary>
         /// <remarks>
@@ -1261,6 +1325,276 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfSeries</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfSeries> GetSeriesWithHttpInfo(string scope, string code, string? shareClassCode = default(string?), DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposal: [EARLY ACCESS] GetTaxDeemedDisposal: Get one deemed disposal.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deemed disposal of a holding on a given date.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="date">The date of the deemed disposal.</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposal. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxDeemedDisposalResponse</returns>
+        TaxDeemedDisposalResponse GetTaxDeemedDisposal(string scope, string code, string holdingId, DateTimeOrCutLabel date, DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposal: [EARLY ACCESS] GetTaxDeemedDisposal: Get one deemed disposal.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deemed disposal of a holding on a given date.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="date">The date of the deemed disposal.</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposal. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxDeemedDisposalResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalResponse> GetTaxDeemedDisposalWithHttpInfo(string scope, string code, string holdingId, DateTimeOrCutLabel date, DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposals: [EARLY ACCESS] GetTaxDeemedDisposals: List the deemed disposals of a Fund or company.
+        /// </summary>
+        /// <remarks>
+        /// Returns the period-end deemed disposals, the vintages they roll into and the seven-year spreading matrix. A company&#39;s disposals are actual and a fund&#39;s are notional.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposals. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxDeemedDisposalsResponse</returns>
+        TaxDeemedDisposalsResponse GetTaxDeemedDisposals(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposals: [EARLY ACCESS] GetTaxDeemedDisposals: List the deemed disposals of a Fund or company.
+        /// </summary>
+        /// <remarks>
+        /// Returns the period-end deemed disposals, the vintages they roll into and the seven-year spreading matrix. A company&#39;s disposals are actual and a fund&#39;s are notional.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposals. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxDeemedDisposalsResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalsResponse> GetTaxDeemedDisposalsWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliation: [EARLY ACCESS] GetTaxFundReconciliation: Reconcile a company&#39;s tax figures to its member funds.
+        /// </summary>
+        /// <remarks>
+        /// Compares the company&#39;s return total to the sum of its member funds&#39; notional figures and explains each difference by scope, pool averaging, matching, indexation, the kink test or an out-of-sync holding. Only available for a company; a fund returns a failure.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxFundReconciliationResponse</returns>
+        TaxFundReconciliationResponse GetTaxFundReconciliation(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliation: [EARLY ACCESS] GetTaxFundReconciliation: Reconcile a company&#39;s tax figures to its member funds.
+        /// </summary>
+        /// <remarks>
+        /// Compares the company&#39;s return total to the sum of its member funds&#39; notional figures and explains each difference by scope, pool averaging, matching, indexation, the kink test or an out-of-sync holding. Only available for a company; a fund returns a failure.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxFundReconciliationResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationResponse> GetTaxFundReconciliationWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliationHolding: [EARLY ACCESS] GetTaxFundReconciliationHolding: Drill into one holding of the company-to-funds reconciliation.
+        /// </summary>
+        /// <remarks>
+        /// Returns the company figure for a holding beside each member fund&#39;s notional figure, with the category and explanation of any difference.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxFundReconciliationHoldingResponse</returns>
+        TaxFundReconciliationHoldingResponse GetTaxFundReconciliationHolding(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliationHolding: [EARLY ACCESS] GetTaxFundReconciliationHolding: Drill into one holding of the company-to-funds reconciliation.
+        /// </summary>
+        /// <remarks>
+        /// Returns the company figure for a holding beside each member fund&#39;s notional figure, with the category and explanation of any difference.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxFundReconciliationHoldingResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationHoldingResponse> GetTaxFundReconciliationHoldingWithHttpInfo(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliation: [EARLY ACCESS] GetTaxLedgerReconciliation: Reconcile the tax figures of a Fund or company to its ledger.
+        /// </summary>
+        /// <remarks>
+        /// Compares the ledger&#39;s capital gain or loss for the period to the comparable tax figure, explains each difference as an excluded holding, a tax cost adjustment or an out-of-sync holding, and bridges from the ledger figure to the return total.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxLedgerReconciliationResponse</returns>
+        TaxLedgerReconciliationResponse GetTaxLedgerReconciliation(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliation: [EARLY ACCESS] GetTaxLedgerReconciliation: Reconcile the tax figures of a Fund or company to its ledger.
+        /// </summary>
+        /// <remarks>
+        /// Compares the ledger&#39;s capital gain or loss for the period to the comparable tax figure, explains each difference as an excluded holding, a tax cost adjustment or an out-of-sync holding, and bridges from the ledger figure to the return total.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxLedgerReconciliationResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationResponse> GetTaxLedgerReconciliationWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliationHolding: [EARLY ACCESS] GetTaxLedgerReconciliationHolding: Drill into one holding of the tax-to-ledger reconciliation.
+        /// </summary>
+        /// <remarks>
+        /// Returns the ledger and tax figures of a single holding side by side with the category and explanation of any difference.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxLedgerReconciliationHoldingResponse</returns>
+        TaxLedgerReconciliationHoldingResponse GetTaxLedgerReconciliationHolding(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliationHolding: [EARLY ACCESS] GetTaxLedgerReconciliationHolding: Drill into one holding of the tax-to-ledger reconciliation.
+        /// </summary>
+        /// <remarks>
+        /// Returns the ledger and tax figures of a single holding side by side with the category and explanation of any difference.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxLedgerReconciliationHoldingResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationHoldingResponse> GetTaxLedgerReconciliationHoldingWithHttpInfo(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deferred-tax provision struck for the specified Valuation Point. Where the provision has been  approved by the asAt it is returned as stored, otherwise a live estimate is returned. Until tax elections  can be configured on the Fund every provision is struck under the default elections: a 20% rate, indexation  allowance applied and losses carried forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point the provision is for.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provision. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxProvision</returns>
+        TaxProvision GetTaxProvision(string scope, string code, string diaryEntryCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deferred-tax provision struck for the specified Valuation Point. Where the provision has been  approved by the asAt it is returned as stored, otherwise a live estimate is returned. Until tax elections  can be configured on the Fund every provision is struck under the default elections: a 20% rate, indexation  allowance applied and losses carried forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point the provision is for.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provision. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxProvision</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxProvision> GetTaxProvisionWithHttpInfo(string scope, string code, string diaryEntryCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxReturn: [EARLY ACCESS] GetTaxReturn: Get the year-end tax return of a Fund or company.
+        /// </summary>
+        /// <remarks>
+        /// Returns the chargeable gains on actual disposals (line A), the spread instalments of deemed disposals (line D), the loan relationship net credit or debit (line LR, company level), the holdings outside the regime, the memo rows and the workflow history for the accounting period containing effectiveAt.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the return. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxReturnResponse</returns>
+        TaxReturnResponse GetTaxReturn(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxReturn: [EARLY ACCESS] GetTaxReturn: Get the year-end tax return of a Fund or company.
+        /// </summary>
+        /// <remarks>
+        /// Returns the chargeable gains on actual disposals (line A), the spread instalments of deemed disposals (line D), the loan relationship net credit or debit (line LR, company level), the holdings outside the regime, the memo rows and the workflow history for the accounting period containing effectiveAt.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the return. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxReturnResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> GetTaxReturnWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund.
         /// </summary>
         /// <remarks>
@@ -1357,7 +1691,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
+        /// Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.                Lines are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s lines in the order the accounting engine produced them, so the order is stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -1380,7 +1714,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
+        /// Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.                Lines are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s lines in the order the accounting engine produced them, so the order is stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -1402,14 +1736,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
+        /// Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.                Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for generating the PnL summary.</param>
         /// <param name="generalLedgerProfileCode">The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">\&quot;Expression to filter the result set.\&quot; (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing results from a previous call to GetValuationPointPnlSummary. (optional)</param>
@@ -1423,14 +1757,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
+        /// Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.                Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for generating the PnL summary.</param>
         /// <param name="generalLedgerProfileCode">The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">\&quot;Expression to filter the result set.\&quot; (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing results from a previous call to GetValuationPointPnlSummary. (optional)</param>
@@ -1480,23 +1814,23 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the Transactions for the given Valuation Point for a Fund.
+        /// Gets the Transactions for the given Valuation Point for a Fund.                Transactions are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s transactions in the order the accounting engine produced them, so the order is stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the transactions.</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
-        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,              including previous versions of transactions which have since been amended.              Defaults to False if not specified. (optional)</param>
+        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
-        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the              NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of              a transaction that has since been amended to be excluded is returned regardless of this option.              Defaults to False if not specified. (optional)</param>
+        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the               NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of               a transaction that has since been amended to be excluded is returned regardless of this option.               Defaults to False if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ValuationPointResourceListOfAccountedTransaction</returns>
@@ -1506,23 +1840,23 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the Transactions for the given Valuation Point for a Fund.
+        /// Gets the Transactions for the given Valuation Point for a Fund.                Transactions are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s transactions in the order the accounting engine produced them, so the order is stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the transactions.</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
-        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,              including previous versions of transactions which have since been amended.              Defaults to False if not specified. (optional)</param>
+        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
-        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the              NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of              a transaction that has since been amended to be excluded is returned regardless of this option.              Defaults to False if not specified. (optional)</param>
+        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the               NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of               a transaction that has since been amended to be excluded is returned regardless of this option.               Defaults to False if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ValuationPointResourceListOfAccountedTransaction</returns>
@@ -2017,6 +2351,41 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfFundTaxExceptionItem</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfFundTaxExceptionItem> ListTaxExceptionsAcrossFundsWithHttpInfo(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? rootCause = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions: List the deferred-tax provisions of a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deferred-tax provision of every Valuation Point whose effective date lies in the window, oldest first.  Unapproved Valuation Points are estimated live, so the window may cover at most 100 Valuation Points. Until tax  elections can be configured on the Fund every provision is struck under the default elections: a 20% rate,  indexation allowance applied and losses carried forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="fromEffectiveAt">The lower bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the start of the Fund if not specified. (optional)</param>
+        /// <param name="toEffectiveAt">The upper bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the latest Valuation Point if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provisions. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provisions of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResourceListOfTaxProvision</returns>
+        ResourceListOfTaxProvision ListTaxProvisions(string scope, string code, DateTimeOffset? fromEffectiveAt = default(DateTimeOffset?), DateTimeOffset? toEffectiveAt = default(DateTimeOffset?), DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions: List the deferred-tax provisions of a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deferred-tax provision of every Valuation Point whose effective date lies in the window, oldest first.  Unapproved Valuation Points are estimated live, so the window may cover at most 100 Valuation Points. Until tax  elections can be configured on the Fund every provision is struck under the default elections: a 20% rate,  indexation allowance applied and losses carried forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="fromEffectiveAt">The lower bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the start of the Fund if not specified. (optional)</param>
+        /// <param name="toEffectiveAt">The upper bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the latest Valuation Point if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provisions. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provisions of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResourceListOfTaxProvision</returns>
+        Finbourne.Sdk.Client.ApiResponse<ResourceListOfTaxProvision> ListTaxProvisionsWithHttpInfo(string scope, string code, DateTimeOffset? fromEffectiveAt = default(DateTimeOffset?), DateTimeOffset? toEffectiveAt = default(DateTimeOffset?), DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
         /// </summary>
         /// <remarks>
@@ -2378,6 +2747,39 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of PartnerAllocationRunResult</returns>
         Finbourne.Sdk.Client.ApiResponse<PartnerAllocationRunResult> RunPartnerAllocationsWithHttpInfo(string scope, string code, PartnerAllocationRunRequest partnerAllocationRunRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step.
+        /// </summary>
+        /// <remarks>
+        /// Moves the return one step towards Draft, recording the supplied reason. A Final return cannot be sent back.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for sending the return back.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxReturnResponse</returns>
+        TaxReturnResponse SendBackTaxReturn(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step.
+        /// </summary>
+        /// <remarks>
+        /// Moves the return one step towards Draft, recording the supplied reason. A Final return cannot be sent back.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for sending the return back.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxReturnResponse</returns>
+        Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> SendBackTaxReturnWithHttpInfo(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
         /// </summary>
@@ -2790,6 +3192,74 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (Fund)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<Fund>> AddSeriesWithHttpInfoAsync(string scope, string code, List<SeriesDefinitionRequest> seriesDefinitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step.
+        /// </summary>
+        /// <remarks>
+        /// Moves the return from Draft to Prepared, Prepared to Reviewed, Reviewed to SignedOff or SignedOff to Final. Advancing past Reviewed requires the tax records to be in sync with the ledger. Each step is recorded with the supplied reason.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for advancing the return.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxReturnResponse</returns>
+        System.Threading.Tasks.Task<TaxReturnResponse> AdvanceTaxReturnAsync(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step.
+        /// </summary>
+        /// <remarks>
+        /// Moves the return from Draft to Prepared, Prepared to Reviewed, Reviewed to SignedOff or SignedOff to Final. Advancing past Reviewed requires the tax records to be in sync with the ledger. Each step is recorded with the supplied reason.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for advancing the return.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxReturnResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse>> AdvanceTaxReturnWithHttpInfoAsync(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point.
+        /// </summary>
+        /// <remarks>
+        /// Moves the Valuation Point&#39;s deferred-tax provision from Estimate to Approved, stores it as the official  document and books the movement since the previous approved Valuation Point as an accrual on the Fund.  Approving an already approved provision fails. Until tax elections can be configured on the Fund every  provision is struck under the default elections: a 20% rate, indexation allowance applied and losses carried  forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point whose provision is approved.</param>
+        /// <param name="navTypeCode">When provided, approves the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxProvision</returns>
+        System.Threading.Tasks.Task<TaxProvision> ApproveTaxProvisionAsync(string scope, string code, string diaryEntryCode, string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point.
+        /// </summary>
+        /// <remarks>
+        /// Moves the Valuation Point&#39;s deferred-tax provision from Estimate to Approved, stores it as the official  document and books the movement since the previous approved Valuation Point as an accrual on the Fund.  Approving an already approved provision fails. Until tax elections can be configured on the Fund every  provision is struck under the default elections: a 20% rate, indexation allowance applied and losses carried  forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point whose provision is approved.</param>
+        /// <param name="navTypeCode">When provided, approves the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxProvision)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxProvision>> ApproveTaxProvisionWithHttpInfoAsync(string scope, string code, string diaryEntryCode, string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] CalculateManagementFees: [EXPERIMENTAL] CalculateManagementFees: Calculate the management fee per partner for a period.
         /// </summary>
@@ -3969,6 +4439,292 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ResourceListOfSeries)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfSeries>> GetSeriesWithHttpInfoAsync(string scope, string code, string? shareClassCode = default(string?), DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposal: [EARLY ACCESS] GetTaxDeemedDisposal: Get one deemed disposal.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deemed disposal of a holding on a given date.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="date">The date of the deemed disposal.</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposal. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxDeemedDisposalResponse</returns>
+        System.Threading.Tasks.Task<TaxDeemedDisposalResponse> GetTaxDeemedDisposalAsync(string scope, string code, string holdingId, DateTimeOrCutLabel date, DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposal: [EARLY ACCESS] GetTaxDeemedDisposal: Get one deemed disposal.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deemed disposal of a holding on a given date.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="date">The date of the deemed disposal.</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposal. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxDeemedDisposalResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalResponse>> GetTaxDeemedDisposalWithHttpInfoAsync(string scope, string code, string holdingId, DateTimeOrCutLabel date, DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposals: [EARLY ACCESS] GetTaxDeemedDisposals: List the deemed disposals of a Fund or company.
+        /// </summary>
+        /// <remarks>
+        /// Returns the period-end deemed disposals, the vintages they roll into and the seven-year spreading matrix. A company&#39;s disposals are actual and a fund&#39;s are notional.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposals. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxDeemedDisposalsResponse</returns>
+        System.Threading.Tasks.Task<TaxDeemedDisposalsResponse> GetTaxDeemedDisposalsAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposals: [EARLY ACCESS] GetTaxDeemedDisposals: List the deemed disposals of a Fund or company.
+        /// </summary>
+        /// <remarks>
+        /// Returns the period-end deemed disposals, the vintages they roll into and the seven-year spreading matrix. A company&#39;s disposals are actual and a fund&#39;s are notional.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposals. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxDeemedDisposalsResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalsResponse>> GetTaxDeemedDisposalsWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliation: [EARLY ACCESS] GetTaxFundReconciliation: Reconcile a company&#39;s tax figures to its member funds.
+        /// </summary>
+        /// <remarks>
+        /// Compares the company&#39;s return total to the sum of its member funds&#39; notional figures and explains each difference by scope, pool averaging, matching, indexation, the kink test or an out-of-sync holding. Only available for a company; a fund returns a failure.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxFundReconciliationResponse</returns>
+        System.Threading.Tasks.Task<TaxFundReconciliationResponse> GetTaxFundReconciliationAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliation: [EARLY ACCESS] GetTaxFundReconciliation: Reconcile a company&#39;s tax figures to its member funds.
+        /// </summary>
+        /// <remarks>
+        /// Compares the company&#39;s return total to the sum of its member funds&#39; notional figures and explains each difference by scope, pool averaging, matching, indexation, the kink test or an out-of-sync holding. Only available for a company; a fund returns a failure.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxFundReconciliationResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationResponse>> GetTaxFundReconciliationWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliationHolding: [EARLY ACCESS] GetTaxFundReconciliationHolding: Drill into one holding of the company-to-funds reconciliation.
+        /// </summary>
+        /// <remarks>
+        /// Returns the company figure for a holding beside each member fund&#39;s notional figure, with the category and explanation of any difference.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxFundReconciliationHoldingResponse</returns>
+        System.Threading.Tasks.Task<TaxFundReconciliationHoldingResponse> GetTaxFundReconciliationHoldingAsync(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliationHolding: [EARLY ACCESS] GetTaxFundReconciliationHolding: Drill into one holding of the company-to-funds reconciliation.
+        /// </summary>
+        /// <remarks>
+        /// Returns the company figure for a holding beside each member fund&#39;s notional figure, with the category and explanation of any difference.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxFundReconciliationHoldingResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationHoldingResponse>> GetTaxFundReconciliationHoldingWithHttpInfoAsync(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliation: [EARLY ACCESS] GetTaxLedgerReconciliation: Reconcile the tax figures of a Fund or company to its ledger.
+        /// </summary>
+        /// <remarks>
+        /// Compares the ledger&#39;s capital gain or loss for the period to the comparable tax figure, explains each difference as an excluded holding, a tax cost adjustment or an out-of-sync holding, and bridges from the ledger figure to the return total.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxLedgerReconciliationResponse</returns>
+        System.Threading.Tasks.Task<TaxLedgerReconciliationResponse> GetTaxLedgerReconciliationAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliation: [EARLY ACCESS] GetTaxLedgerReconciliation: Reconcile the tax figures of a Fund or company to its ledger.
+        /// </summary>
+        /// <remarks>
+        /// Compares the ledger&#39;s capital gain or loss for the period to the comparable tax figure, explains each difference as an excluded holding, a tax cost adjustment or an out-of-sync holding, and bridges from the ledger figure to the return total.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxLedgerReconciliationResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationResponse>> GetTaxLedgerReconciliationWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliationHolding: [EARLY ACCESS] GetTaxLedgerReconciliationHolding: Drill into one holding of the tax-to-ledger reconciliation.
+        /// </summary>
+        /// <remarks>
+        /// Returns the ledger and tax figures of a single holding side by side with the category and explanation of any difference.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxLedgerReconciliationHoldingResponse</returns>
+        System.Threading.Tasks.Task<TaxLedgerReconciliationHoldingResponse> GetTaxLedgerReconciliationHoldingAsync(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliationHolding: [EARLY ACCESS] GetTaxLedgerReconciliationHolding: Drill into one holding of the tax-to-ledger reconciliation.
+        /// </summary>
+        /// <remarks>
+        /// Returns the ledger and tax figures of a single holding side by side with the category and explanation of any difference.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxLedgerReconciliationHoldingResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationHoldingResponse>> GetTaxLedgerReconciliationHoldingWithHttpInfoAsync(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deferred-tax provision struck for the specified Valuation Point. Where the provision has been  approved by the asAt it is returned as stored, otherwise a live estimate is returned. Until tax elections  can be configured on the Fund every provision is struck under the default elections: a 20% rate, indexation  allowance applied and losses carried forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point the provision is for.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provision. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxProvision</returns>
+        System.Threading.Tasks.Task<TaxProvision> GetTaxProvisionAsync(string scope, string code, string diaryEntryCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deferred-tax provision struck for the specified Valuation Point. Where the provision has been  approved by the asAt it is returned as stored, otherwise a live estimate is returned. Until tax elections  can be configured on the Fund every provision is struck under the default elections: a 20% rate, indexation  allowance applied and losses carried forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point the provision is for.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provision. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxProvision)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxProvision>> GetTaxProvisionWithHttpInfoAsync(string scope, string code, string diaryEntryCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxReturn: [EARLY ACCESS] GetTaxReturn: Get the year-end tax return of a Fund or company.
+        /// </summary>
+        /// <remarks>
+        /// Returns the chargeable gains on actual disposals (line A), the spread instalments of deemed disposals (line D), the loan relationship net credit or debit (line LR, company level), the holdings outside the regime, the memo rows and the workflow history for the accounting period containing effectiveAt.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the return. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxReturnResponse</returns>
+        System.Threading.Tasks.Task<TaxReturnResponse> GetTaxReturnAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxReturn: [EARLY ACCESS] GetTaxReturn: Get the year-end tax return of a Fund or company.
+        /// </summary>
+        /// <remarks>
+        /// Returns the chargeable gains on actual disposals (line A), the spread instalments of deemed disposals (line D), the loan relationship net credit or debit (line LR, company level), the holdings outside the regime, the memo rows and the workflow history for the accounting period containing effectiveAt.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the return. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxReturnResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse>> GetTaxReturnWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund.
         /// </summary>
         /// <remarks>
@@ -4071,7 +4827,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
+        /// Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.                Lines are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s lines in the order the accounting engine produced them, so the order is stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -4095,7 +4851,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
+        /// Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.                Lines are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s lines in the order the accounting engine produced them, so the order is stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -4118,14 +4874,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
+        /// Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.                Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for generating the PnL summary.</param>
         /// <param name="generalLedgerProfileCode">The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">\&quot;Expression to filter the result set.\&quot; (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing results from a previous call to GetValuationPointPnlSummary. (optional)</param>
@@ -4140,14 +4896,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
+        /// Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.                Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for generating the PnL summary.</param>
         /// <param name="generalLedgerProfileCode">The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">\&quot;Expression to filter the result set.\&quot; (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing results from a previous call to GetValuationPointPnlSummary. (optional)</param>
@@ -4200,23 +4956,23 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the Transactions for the given Valuation Point for a Fund.
+        /// Gets the Transactions for the given Valuation Point for a Fund.                Transactions are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s transactions in the order the accounting engine produced them, so the order is stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the transactions.</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
-        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,              including previous versions of transactions which have since been amended.              Defaults to False if not specified. (optional)</param>
+        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
-        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the              NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of              a transaction that has since been amended to be excluded is returned regardless of this option.              Defaults to False if not specified. (optional)</param>
+        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the               NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of               a transaction that has since been amended to be excluded is returned regardless of this option.               Defaults to False if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -4227,23 +4983,23 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund.
         /// </summary>
         /// <remarks>
-        /// Gets the Transactions for the given Valuation Point for a Fund.
+        /// Gets the Transactions for the given Valuation Point for a Fund.                Transactions are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s transactions in the order the accounting engine produced them, so the order is stable across pages.
         /// </remarks>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the transactions.</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
-        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,              including previous versions of transactions which have since been amended.              Defaults to False if not specified. (optional)</param>
+        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
-        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the              NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of              a transaction that has since been amended to be excluded is returned regardless of this option.              Defaults to False if not specified. (optional)</param>
+        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the               NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of               a transaction that has since been amended to be excluded is returned regardless of this option.               Defaults to False if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -4765,6 +5521,43 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>Task of ApiResponse (ResourceListOfFundTaxExceptionItem)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfFundTaxExceptionItem>> ListTaxExceptionsAcrossFundsWithHttpInfoAsync(DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? rootCause = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions: List the deferred-tax provisions of a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deferred-tax provision of every Valuation Point whose effective date lies in the window, oldest first.  Unapproved Valuation Points are estimated live, so the window may cover at most 100 Valuation Points. Until tax  elections can be configured on the Fund every provision is struck under the default elections: a 20% rate,  indexation allowance applied and losses carried forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="fromEffectiveAt">The lower bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the start of the Fund if not specified. (optional)</param>
+        /// <param name="toEffectiveAt">The upper bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the latest Valuation Point if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provisions. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provisions of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResourceListOfTaxProvision</returns>
+        System.Threading.Tasks.Task<ResourceListOfTaxProvision> ListTaxProvisionsAsync(string scope, string code, DateTimeOffset? fromEffectiveAt = default(DateTimeOffset?), DateTimeOffset? toEffectiveAt = default(DateTimeOffset?), DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions: List the deferred-tax provisions of a Fund.
+        /// </summary>
+        /// <remarks>
+        /// Returns the deferred-tax provision of every Valuation Point whose effective date lies in the window, oldest first.  Unapproved Valuation Points are estimated live, so the window may cover at most 100 Valuation Points. Until tax  elections can be configured on the Fund every provision is struck under the default elections: a 20% rate,  indexation allowance applied and losses carried forward.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="fromEffectiveAt">The lower bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the start of the Fund if not specified. (optional)</param>
+        /// <param name="toEffectiveAt">The upper bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the latest Valuation Point if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provisions. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provisions of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResourceListOfTaxProvision)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfTaxProvision>> ListTaxProvisionsWithHttpInfoAsync(string scope, string code, DateTimeOffset? fromEffectiveAt = default(DateTimeOffset?), DateTimeOffset? toEffectiveAt = default(DateTimeOffset?), DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
         /// </summary>
         /// <remarks>
@@ -5146,6 +5939,41 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (PartnerAllocationRunResult)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<PartnerAllocationRunResult>> RunPartnerAllocationsWithHttpInfoAsync(string scope, string code, PartnerAllocationRunRequest partnerAllocationRunRequest, DateTimeOffset? asAt = default(DateTimeOffset?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step.
+        /// </summary>
+        /// <remarks>
+        /// Moves the return one step towards Draft, recording the supplied reason. A Final return cannot be sent back.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for sending the return back.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxReturnResponse</returns>
+        System.Threading.Tasks.Task<TaxReturnResponse> SendBackTaxReturnAsync(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step.
+        /// </summary>
+        /// <remarks>
+        /// Moves the return one step towards Draft, recording the supplied reason. A Final return cannot be sent back.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for sending the return back.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxReturnResponse)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse>> SendBackTaxReturnWithHttpInfoAsync(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
         /// </summary>
@@ -6628,6 +7456,574 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("AddSeries", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step. Moves the return from Draft to Prepared, Prepared to Reviewed, Reviewed to SignedOff or SignedOff to Final. Advancing past Reviewed requires the tax records to be in sync with the ledger. Each step is recorded with the supplied reason.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for advancing the return.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxReturnResponse</returns>
+        public TaxReturnResponse AdvanceTaxReturn(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> localVarResponse = AdvanceTaxReturnWithHttpInfo(scope, code, taxReturnTransitionRequest, effectiveAt, taxPeriod, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step. Moves the return from Draft to Prepared, Prepared to Reviewed, Reviewed to SignedOff or SignedOff to Final. Advancing past Reviewed requires the tax records to be in sync with the ledger. Each step is recorded with the supplied reason.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for advancing the return.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxReturnResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> AdvanceTaxReturnWithHttpInfo(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->AdvanceTaxReturn");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->AdvanceTaxReturn");
+            }
+
+            // verify the required parameter 'taxReturnTransitionRequest' is set
+            if (taxReturnTransitionRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'taxReturnTransitionRequest' when calling FundsApi->AdvanceTaxReturn");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+            localVarRequestOptions.Data = taxReturnTransitionRequest;
+
+            localVarRequestOptions.Operation = "FundsApi.AdvanceTaxReturn";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TaxReturnResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/return/advance", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AdvanceTaxReturn", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step. Moves the return from Draft to Prepared, Prepared to Reviewed, Reviewed to SignedOff or SignedOff to Final. Advancing past Reviewed requires the tax records to be in sync with the ledger. Each step is recorded with the supplied reason.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for advancing the return.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxReturnResponse</returns>
+        public async System.Threading.Tasks.Task<TaxReturnResponse> AdvanceTaxReturnAsync(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> localVarResponse = await AdvanceTaxReturnWithHttpInfoAsync(scope, code, taxReturnTransitionRequest, effectiveAt, taxPeriod, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step. Moves the return from Draft to Prepared, Prepared to Reviewed, Reviewed to SignedOff or SignedOff to Final. Advancing past Reviewed requires the tax records to be in sync with the ledger. Each step is recorded with the supplied reason.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for advancing the return.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxReturnResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse>> AdvanceTaxReturnWithHttpInfoAsync(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->AdvanceTaxReturn");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->AdvanceTaxReturn");
+            }
+
+            // verify the required parameter 'taxReturnTransitionRequest' is set
+            if (taxReturnTransitionRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'taxReturnTransitionRequest' when calling FundsApi->AdvanceTaxReturn");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+            localVarRequestOptions.Data = taxReturnTransitionRequest;
+
+            localVarRequestOptions.Operation = "FundsApi.AdvanceTaxReturn";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TaxReturnResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/return/advance", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AdvanceTaxReturn", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point. Moves the Valuation Point&#39;s deferred-tax provision from Estimate to Approved, stores it as the official  document and books the movement since the previous approved Valuation Point as an accrual on the Fund.  Approving an already approved provision fails. Until tax elections can be configured on the Fund every  provision is struck under the default elections: a 20% rate, indexation allowance applied and losses carried  forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point whose provision is approved.</param>
+        /// <param name="navTypeCode">When provided, approves the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxProvision</returns>
+        public TaxProvision ApproveTaxProvision(string scope, string code, string diaryEntryCode, string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxProvision> localVarResponse = ApproveTaxProvisionWithHttpInfo(scope, code, diaryEntryCode, navTypeCode, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point. Moves the Valuation Point&#39;s deferred-tax provision from Estimate to Approved, stores it as the official  document and books the movement since the previous approved Valuation Point as an accrual on the Fund.  Approving an already approved provision fails. Until tax elections can be configured on the Fund every  provision is struck under the default elections: a 20% rate, indexation allowance applied and losses carried  forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point whose provision is approved.</param>
+        /// <param name="navTypeCode">When provided, approves the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxProvision</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxProvision> ApproveTaxProvisionWithHttpInfo(string scope, string code, string diaryEntryCode, string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->ApproveTaxProvision");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->ApproveTaxProvision");
+            }
+
+            // verify the required parameter 'diaryEntryCode' is set
+            if (diaryEntryCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'diaryEntryCode' when calling FundsApi->ApproveTaxProvision");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("diaryEntryCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(diaryEntryCode)); // path parameter
+            if (navTypeCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "navTypeCode", navTypeCode));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.ApproveTaxProvision";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TaxProvision, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}/tax/provision/approve", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ApproveTaxProvision", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point. Moves the Valuation Point&#39;s deferred-tax provision from Estimate to Approved, stores it as the official  document and books the movement since the previous approved Valuation Point as an accrual on the Fund.  Approving an already approved provision fails. Until tax elections can be configured on the Fund every  provision is struck under the default elections: a 20% rate, indexation allowance applied and losses carried  forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point whose provision is approved.</param>
+        /// <param name="navTypeCode">When provided, approves the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxProvision</returns>
+        public async System.Threading.Tasks.Task<TaxProvision> ApproveTaxProvisionAsync(string scope, string code, string diaryEntryCode, string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxProvision> localVarResponse = await ApproveTaxProvisionWithHttpInfoAsync(scope, code, diaryEntryCode, navTypeCode, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point. Moves the Valuation Point&#39;s deferred-tax provision from Estimate to Approved, stores it as the official  document and books the movement since the previous approved Valuation Point as an accrual on the Fund.  Approving an already approved provision fails. Until tax elections can be configured on the Fund every  provision is struck under the default elections: a 20% rate, indexation allowance applied and losses carried  forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point whose provision is approved.</param>
+        /// <param name="navTypeCode">When provided, approves the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxProvision)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxProvision>> ApproveTaxProvisionWithHttpInfoAsync(string scope, string code, string diaryEntryCode, string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->ApproveTaxProvision");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->ApproveTaxProvision");
+            }
+
+            // verify the required parameter 'diaryEntryCode' is set
+            if (diaryEntryCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'diaryEntryCode' when calling FundsApi->ApproveTaxProvision");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("diaryEntryCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(diaryEntryCode)); // path parameter
+            if (navTypeCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "navTypeCode", navTypeCode));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.ApproveTaxProvision";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TaxProvision, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}/tax/provision/approve", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ApproveTaxProvision", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -16370,6 +17766,2312 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposal: [EARLY ACCESS] GetTaxDeemedDisposal: Get one deemed disposal. Returns the deemed disposal of a holding on a given date.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="date">The date of the deemed disposal.</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposal. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxDeemedDisposalResponse</returns>
+        public TaxDeemedDisposalResponse GetTaxDeemedDisposal(string scope, string code, string holdingId, DateTimeOrCutLabel date, DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalResponse> localVarResponse = GetTaxDeemedDisposalWithHttpInfo(scope, code, holdingId, date, asAt, taxPeriod, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposal: [EARLY ACCESS] GetTaxDeemedDisposal: Get one deemed disposal. Returns the deemed disposal of a holding on a given date.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="date">The date of the deemed disposal.</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposal. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxDeemedDisposalResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalResponse> GetTaxDeemedDisposalWithHttpInfo(string scope, string code, string holdingId, DateTimeOrCutLabel date, DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxDeemedDisposal");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxDeemedDisposal");
+            }
+
+            // verify the required parameter 'holdingId' is set
+            if (holdingId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'holdingId' when calling FundsApi->GetTaxDeemedDisposal");
+            }
+
+            // verify the required parameter 'date' is set
+            if (date == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'date' when calling FundsApi->GetTaxDeemedDisposal");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("holdingId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(holdingId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("date", Finbourne.Sdk.Client.ClientUtils.ParameterToString(date)); // path parameter
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxDeemedDisposal";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TaxDeemedDisposalResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/deemed-disposals/{holdingId}/{date}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxDeemedDisposal", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposal: [EARLY ACCESS] GetTaxDeemedDisposal: Get one deemed disposal. Returns the deemed disposal of a holding on a given date.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="date">The date of the deemed disposal.</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposal. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxDeemedDisposalResponse</returns>
+        public async System.Threading.Tasks.Task<TaxDeemedDisposalResponse> GetTaxDeemedDisposalAsync(string scope, string code, string holdingId, DateTimeOrCutLabel date, DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalResponse> localVarResponse = await GetTaxDeemedDisposalWithHttpInfoAsync(scope, code, holdingId, date, asAt, taxPeriod, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposal: [EARLY ACCESS] GetTaxDeemedDisposal: Get one deemed disposal. Returns the deemed disposal of a holding on a given date.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="date">The date of the deemed disposal.</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposal. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxDeemedDisposalResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalResponse>> GetTaxDeemedDisposalWithHttpInfoAsync(string scope, string code, string holdingId, DateTimeOrCutLabel date, DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxDeemedDisposal");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxDeemedDisposal");
+            }
+
+            // verify the required parameter 'holdingId' is set
+            if (holdingId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'holdingId' when calling FundsApi->GetTaxDeemedDisposal");
+            }
+
+            // verify the required parameter 'date' is set
+            if (date == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'date' when calling FundsApi->GetTaxDeemedDisposal");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("holdingId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(holdingId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("date", Finbourne.Sdk.Client.ClientUtils.ParameterToString(date)); // path parameter
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxDeemedDisposal";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TaxDeemedDisposalResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/deemed-disposals/{holdingId}/{date}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxDeemedDisposal", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposals: [EARLY ACCESS] GetTaxDeemedDisposals: List the deemed disposals of a Fund or company. Returns the period-end deemed disposals, the vintages they roll into and the seven-year spreading matrix. A company&#39;s disposals are actual and a fund&#39;s are notional.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposals. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxDeemedDisposalsResponse</returns>
+        public TaxDeemedDisposalsResponse GetTaxDeemedDisposals(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalsResponse> localVarResponse = GetTaxDeemedDisposalsWithHttpInfo(scope, code, effectiveAt, asAt, taxPeriod, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposals: [EARLY ACCESS] GetTaxDeemedDisposals: List the deemed disposals of a Fund or company. Returns the period-end deemed disposals, the vintages they roll into and the seven-year spreading matrix. A company&#39;s disposals are actual and a fund&#39;s are notional.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposals. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxDeemedDisposalsResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalsResponse> GetTaxDeemedDisposalsWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxDeemedDisposals");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxDeemedDisposals");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxDeemedDisposals";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TaxDeemedDisposalsResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/deemed-disposals", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxDeemedDisposals", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposals: [EARLY ACCESS] GetTaxDeemedDisposals: List the deemed disposals of a Fund or company. Returns the period-end deemed disposals, the vintages they roll into and the seven-year spreading matrix. A company&#39;s disposals are actual and a fund&#39;s are notional.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposals. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxDeemedDisposalsResponse</returns>
+        public async System.Threading.Tasks.Task<TaxDeemedDisposalsResponse> GetTaxDeemedDisposalsAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalsResponse> localVarResponse = await GetTaxDeemedDisposalsWithHttpInfoAsync(scope, code, effectiveAt, asAt, taxPeriod, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxDeemedDisposals: [EARLY ACCESS] GetTaxDeemedDisposals: List the deemed disposals of a Fund or company. Returns the period-end deemed disposals, the vintages they roll into and the seven-year spreading matrix. A company&#39;s disposals are actual and a fund&#39;s are notional.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the deemed disposals. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxDeemedDisposalsResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxDeemedDisposalsResponse>> GetTaxDeemedDisposalsWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxDeemedDisposals");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxDeemedDisposals");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxDeemedDisposals";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TaxDeemedDisposalsResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/deemed-disposals", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxDeemedDisposals", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliation: [EARLY ACCESS] GetTaxFundReconciliation: Reconcile a company&#39;s tax figures to its member funds. Compares the company&#39;s return total to the sum of its member funds&#39; notional figures and explains each difference by scope, pool averaging, matching, indexation, the kink test or an out-of-sync holding. Only available for a company; a fund returns a failure.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxFundReconciliationResponse</returns>
+        public TaxFundReconciliationResponse GetTaxFundReconciliation(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationResponse> localVarResponse = GetTaxFundReconciliationWithHttpInfo(scope, code, effectiveAt, asAt, taxPeriod, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliation: [EARLY ACCESS] GetTaxFundReconciliation: Reconcile a company&#39;s tax figures to its member funds. Compares the company&#39;s return total to the sum of its member funds&#39; notional figures and explains each difference by scope, pool averaging, matching, indexation, the kink test or an out-of-sync holding. Only available for a company; a fund returns a failure.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxFundReconciliationResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationResponse> GetTaxFundReconciliationWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxFundReconciliation");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxFundReconciliation");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxFundReconciliation";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TaxFundReconciliationResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/fund-reconciliation", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxFundReconciliation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliation: [EARLY ACCESS] GetTaxFundReconciliation: Reconcile a company&#39;s tax figures to its member funds. Compares the company&#39;s return total to the sum of its member funds&#39; notional figures and explains each difference by scope, pool averaging, matching, indexation, the kink test or an out-of-sync holding. Only available for a company; a fund returns a failure.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxFundReconciliationResponse</returns>
+        public async System.Threading.Tasks.Task<TaxFundReconciliationResponse> GetTaxFundReconciliationAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationResponse> localVarResponse = await GetTaxFundReconciliationWithHttpInfoAsync(scope, code, effectiveAt, asAt, taxPeriod, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliation: [EARLY ACCESS] GetTaxFundReconciliation: Reconcile a company&#39;s tax figures to its member funds. Compares the company&#39;s return total to the sum of its member funds&#39; notional figures and explains each difference by scope, pool averaging, matching, indexation, the kink test or an out-of-sync holding. Only available for a company; a fund returns a failure.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxFundReconciliationResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationResponse>> GetTaxFundReconciliationWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxFundReconciliation");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxFundReconciliation");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxFundReconciliation";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TaxFundReconciliationResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/fund-reconciliation", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxFundReconciliation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliationHolding: [EARLY ACCESS] GetTaxFundReconciliationHolding: Drill into one holding of the company-to-funds reconciliation. Returns the company figure for a holding beside each member fund&#39;s notional figure, with the category and explanation of any difference.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxFundReconciliationHoldingResponse</returns>
+        public TaxFundReconciliationHoldingResponse GetTaxFundReconciliationHolding(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationHoldingResponse> localVarResponse = GetTaxFundReconciliationHoldingWithHttpInfo(scope, code, holdingId, effectiveAt, asAt, taxPeriod, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliationHolding: [EARLY ACCESS] GetTaxFundReconciliationHolding: Drill into one holding of the company-to-funds reconciliation. Returns the company figure for a holding beside each member fund&#39;s notional figure, with the category and explanation of any difference.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxFundReconciliationHoldingResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationHoldingResponse> GetTaxFundReconciliationHoldingWithHttpInfo(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxFundReconciliationHolding");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxFundReconciliationHolding");
+            }
+
+            // verify the required parameter 'holdingId' is set
+            if (holdingId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'holdingId' when calling FundsApi->GetTaxFundReconciliationHolding");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("holdingId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(holdingId)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxFundReconciliationHolding";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TaxFundReconciliationHoldingResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/fund-reconciliation/holdings/{holdingId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxFundReconciliationHolding", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliationHolding: [EARLY ACCESS] GetTaxFundReconciliationHolding: Drill into one holding of the company-to-funds reconciliation. Returns the company figure for a holding beside each member fund&#39;s notional figure, with the category and explanation of any difference.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxFundReconciliationHoldingResponse</returns>
+        public async System.Threading.Tasks.Task<TaxFundReconciliationHoldingResponse> GetTaxFundReconciliationHoldingAsync(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationHoldingResponse> localVarResponse = await GetTaxFundReconciliationHoldingWithHttpInfoAsync(scope, code, holdingId, effectiveAt, asAt, taxPeriod, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxFundReconciliationHolding: [EARLY ACCESS] GetTaxFundReconciliationHolding: Drill into one holding of the company-to-funds reconciliation. Returns the company figure for a holding beside each member fund&#39;s notional figure, with the category and explanation of any difference.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxFundReconciliationHoldingResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxFundReconciliationHoldingResponse>> GetTaxFundReconciliationHoldingWithHttpInfoAsync(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxFundReconciliationHolding");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxFundReconciliationHolding");
+            }
+
+            // verify the required parameter 'holdingId' is set
+            if (holdingId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'holdingId' when calling FundsApi->GetTaxFundReconciliationHolding");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("holdingId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(holdingId)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxFundReconciliationHolding";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TaxFundReconciliationHoldingResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/fund-reconciliation/holdings/{holdingId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxFundReconciliationHolding", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliation: [EARLY ACCESS] GetTaxLedgerReconciliation: Reconcile the tax figures of a Fund or company to its ledger. Compares the ledger&#39;s capital gain or loss for the period to the comparable tax figure, explains each difference as an excluded holding, a tax cost adjustment or an out-of-sync holding, and bridges from the ledger figure to the return total.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxLedgerReconciliationResponse</returns>
+        public TaxLedgerReconciliationResponse GetTaxLedgerReconciliation(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationResponse> localVarResponse = GetTaxLedgerReconciliationWithHttpInfo(scope, code, effectiveAt, asAt, taxPeriod, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliation: [EARLY ACCESS] GetTaxLedgerReconciliation: Reconcile the tax figures of a Fund or company to its ledger. Compares the ledger&#39;s capital gain or loss for the period to the comparable tax figure, explains each difference as an excluded holding, a tax cost adjustment or an out-of-sync holding, and bridges from the ledger figure to the return total.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxLedgerReconciliationResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationResponse> GetTaxLedgerReconciliationWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxLedgerReconciliation");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxLedgerReconciliation");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxLedgerReconciliation";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TaxLedgerReconciliationResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/ledger-reconciliation", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxLedgerReconciliation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliation: [EARLY ACCESS] GetTaxLedgerReconciliation: Reconcile the tax figures of a Fund or company to its ledger. Compares the ledger&#39;s capital gain or loss for the period to the comparable tax figure, explains each difference as an excluded holding, a tax cost adjustment or an out-of-sync holding, and bridges from the ledger figure to the return total.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxLedgerReconciliationResponse</returns>
+        public async System.Threading.Tasks.Task<TaxLedgerReconciliationResponse> GetTaxLedgerReconciliationAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationResponse> localVarResponse = await GetTaxLedgerReconciliationWithHttpInfoAsync(scope, code, effectiveAt, asAt, taxPeriod, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliation: [EARLY ACCESS] GetTaxLedgerReconciliation: Reconcile the tax figures of a Fund or company to its ledger. Compares the ledger&#39;s capital gain or loss for the period to the comparable tax figure, explains each difference as an excluded holding, a tax cost adjustment or an out-of-sync holding, and bridges from the ledger figure to the return total.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxLedgerReconciliationResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationResponse>> GetTaxLedgerReconciliationWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxLedgerReconciliation");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxLedgerReconciliation");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxLedgerReconciliation";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TaxLedgerReconciliationResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/ledger-reconciliation", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxLedgerReconciliation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliationHolding: [EARLY ACCESS] GetTaxLedgerReconciliationHolding: Drill into one holding of the tax-to-ledger reconciliation. Returns the ledger and tax figures of a single holding side by side with the category and explanation of any difference.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxLedgerReconciliationHoldingResponse</returns>
+        public TaxLedgerReconciliationHoldingResponse GetTaxLedgerReconciliationHolding(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationHoldingResponse> localVarResponse = GetTaxLedgerReconciliationHoldingWithHttpInfo(scope, code, holdingId, effectiveAt, asAt, taxPeriod, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliationHolding: [EARLY ACCESS] GetTaxLedgerReconciliationHolding: Drill into one holding of the tax-to-ledger reconciliation. Returns the ledger and tax figures of a single holding side by side with the category and explanation of any difference.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxLedgerReconciliationHoldingResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationHoldingResponse> GetTaxLedgerReconciliationHoldingWithHttpInfo(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxLedgerReconciliationHolding");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxLedgerReconciliationHolding");
+            }
+
+            // verify the required parameter 'holdingId' is set
+            if (holdingId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'holdingId' when calling FundsApi->GetTaxLedgerReconciliationHolding");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("holdingId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(holdingId)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxLedgerReconciliationHolding";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TaxLedgerReconciliationHoldingResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/ledger-reconciliation/holdings/{holdingId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxLedgerReconciliationHolding", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliationHolding: [EARLY ACCESS] GetTaxLedgerReconciliationHolding: Drill into one holding of the tax-to-ledger reconciliation. Returns the ledger and tax figures of a single holding side by side with the category and explanation of any difference.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxLedgerReconciliationHoldingResponse</returns>
+        public async System.Threading.Tasks.Task<TaxLedgerReconciliationHoldingResponse> GetTaxLedgerReconciliationHoldingAsync(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationHoldingResponse> localVarResponse = await GetTaxLedgerReconciliationHoldingWithHttpInfoAsync(scope, code, holdingId, effectiveAt, asAt, taxPeriod, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxLedgerReconciliationHolding: [EARLY ACCESS] GetTaxLedgerReconciliationHolding: Drill into one holding of the tax-to-ledger reconciliation. Returns the ledger and tax figures of a single holding side by side with the category and explanation of any difference.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="holdingId">The identifier of the holding to drill into, as returned by the parent reconciliation.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the reconciliation. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxLedgerReconciliationHoldingResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxLedgerReconciliationHoldingResponse>> GetTaxLedgerReconciliationHoldingWithHttpInfoAsync(string scope, string code, string holdingId, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxLedgerReconciliationHolding");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxLedgerReconciliationHolding");
+            }
+
+            // verify the required parameter 'holdingId' is set
+            if (holdingId == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'holdingId' when calling FundsApi->GetTaxLedgerReconciliationHolding");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("holdingId", Finbourne.Sdk.Client.ClientUtils.ParameterToString(holdingId)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxLedgerReconciliationHolding";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TaxLedgerReconciliationHoldingResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/ledger-reconciliation/holdings/{holdingId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxLedgerReconciliationHolding", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point. Returns the deferred-tax provision struck for the specified Valuation Point. Where the provision has been  approved by the asAt it is returned as stored, otherwise a live estimate is returned. Until tax elections  can be configured on the Fund every provision is struck under the default elections: a 20% rate, indexation  allowance applied and losses carried forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point the provision is for.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provision. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxProvision</returns>
+        public TaxProvision GetTaxProvision(string scope, string code, string diaryEntryCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxProvision> localVarResponse = GetTaxProvisionWithHttpInfo(scope, code, diaryEntryCode, asAt, navTypeCode, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point. Returns the deferred-tax provision struck for the specified Valuation Point. Where the provision has been  approved by the asAt it is returned as stored, otherwise a live estimate is returned. Until tax elections  can be configured on the Fund every provision is struck under the default elections: a 20% rate, indexation  allowance applied and losses carried forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point the provision is for.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provision. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxProvision</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxProvision> GetTaxProvisionWithHttpInfo(string scope, string code, string diaryEntryCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxProvision");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxProvision");
+            }
+
+            // verify the required parameter 'diaryEntryCode' is set
+            if (diaryEntryCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'diaryEntryCode' when calling FundsApi->GetTaxProvision");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "diaryEntryCode", diaryEntryCode));
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (navTypeCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "navTypeCode", navTypeCode));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxProvision";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TaxProvision, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/provision", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxProvision", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point. Returns the deferred-tax provision struck for the specified Valuation Point. Where the provision has been  approved by the asAt it is returned as stored, otherwise a live estimate is returned. Until tax elections  can be configured on the Fund every provision is struck under the default elections: a 20% rate, indexation  allowance applied and losses carried forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point the provision is for.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provision. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxProvision</returns>
+        public async System.Threading.Tasks.Task<TaxProvision> GetTaxProvisionAsync(string scope, string code, string diaryEntryCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxProvision> localVarResponse = await GetTaxProvisionWithHttpInfoAsync(scope, code, diaryEntryCode, asAt, navTypeCode, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point. Returns the deferred-tax provision struck for the specified Valuation Point. Where the provision has been  approved by the asAt it is returned as stored, otherwise a live estimate is returned. Until tax elections  can be configured on the Fund every provision is struck under the default elections: a 20% rate, indexation  allowance applied and losses carried forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="diaryEntryCode">The Diary Entry code of the Valuation Point the provision is for.</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provision. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxProvision)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxProvision>> GetTaxProvisionWithHttpInfoAsync(string scope, string code, string diaryEntryCode, DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxProvision");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxProvision");
+            }
+
+            // verify the required parameter 'diaryEntryCode' is set
+            if (diaryEntryCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'diaryEntryCode' when calling FundsApi->GetTaxProvision");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "diaryEntryCode", diaryEntryCode));
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (navTypeCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "navTypeCode", navTypeCode));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxProvision";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TaxProvision, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/provision", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxProvision", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxReturn: [EARLY ACCESS] GetTaxReturn: Get the year-end tax return of a Fund or company. Returns the chargeable gains on actual disposals (line A), the spread instalments of deemed disposals (line D), the loan relationship net credit or debit (line LR, company level), the holdings outside the regime, the memo rows and the workflow history for the accounting period containing effectiveAt.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the return. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxReturnResponse</returns>
+        public TaxReturnResponse GetTaxReturn(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> localVarResponse = GetTaxReturnWithHttpInfo(scope, code, effectiveAt, asAt, taxPeriod, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxReturn: [EARLY ACCESS] GetTaxReturn: Get the year-end tax return of a Fund or company. Returns the chargeable gains on actual disposals (line A), the spread instalments of deemed disposals (line D), the loan relationship net credit or debit (line LR, company level), the holdings outside the regime, the memo rows and the workflow history for the accounting period containing effectiveAt.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the return. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxReturnResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> GetTaxReturnWithHttpInfo(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxReturn");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxReturn");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxReturn";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TaxReturnResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/return", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxReturn", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxReturn: [EARLY ACCESS] GetTaxReturn: Get the year-end tax return of a Fund or company. Returns the chargeable gains on actual disposals (line A), the spread instalments of deemed disposals (line D), the loan relationship net credit or debit (line LR, company level), the holdings outside the regime, the memo rows and the workflow history for the accounting period containing effectiveAt.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the return. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxReturnResponse</returns>
+        public async System.Threading.Tasks.Task<TaxReturnResponse> GetTaxReturnAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> localVarResponse = await GetTaxReturnWithHttpInfoAsync(scope, code, effectiveAt, asAt, taxPeriod, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] GetTaxReturn: [EARLY ACCESS] GetTaxReturn: Get the year-end tax return of a Fund or company. Returns the chargeable gains on actual disposals (line A), the spread instalments of deemed disposals (line D), the loan relationship net credit or debit (line LR, company level), the holdings outside the regime, the memo rows and the workflow history for the accounting period containing effectiveAt.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to read the return. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxReturnResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse>> GetTaxReturnWithHttpInfoAsync(string scope, string code, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), DateTimeOffset? asAt = default(DateTimeOffset?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->GetTaxReturn");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->GetTaxReturn");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.GetTaxReturn";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TaxReturnResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/return", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaxReturn", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// [EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund. For each portfolio in the Fund, compares the asAt the tax engine last processed the Fund (its latest valuation  point) with the asAt of the latest transaction booked to the portfolio, and says whether the tax position has  caught up.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -17190,7 +20892,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
+        /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.                Lines are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s lines in the order the accounting engine produced them, so the order is stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -17214,7 +20916,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
+        /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.                Lines are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s lines in the order the accounting engine produced them, so the order is stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -17371,7 +21073,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
+        /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.                Lines are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s lines in the order the accounting engine produced them, so the order is stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
@@ -17396,7 +21098,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
+        /// [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. Gets the Journal Entry Lines for the given Valuation Point for a Fund.                The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.                Lines are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s lines in the order the accounting engine produced them, so the order is stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -17556,14 +21258,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
+        /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.                Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for generating the PnL summary.</param>
         /// <param name="generalLedgerProfileCode">The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">\&quot;Expression to filter the result set.\&quot; (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing results from a previous call to GetValuationPointPnlSummary. (optional)</param>
@@ -17578,7 +21280,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
+        /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.                Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -17586,7 +21288,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for generating the PnL summary.</param>
         /// <param name="generalLedgerProfileCode">The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">\&quot;Expression to filter the result set.\&quot; (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing results from a previous call to GetValuationPointPnlSummary. (optional)</param>
@@ -17725,14 +21427,14 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
+        /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.                Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for generating the PnL summary.</param>
         /// <param name="generalLedgerProfileCode">The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">\&quot;Expression to filter the result set.\&quot; (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing results from a previous call to GetValuationPointPnlSummary. (optional)</param>
@@ -17748,7 +21450,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
+        /// [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.                Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
@@ -17756,7 +21458,7 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for generating the PnL summary.</param>
         /// <param name="generalLedgerProfileCode">The optional code of a General Ledger Profile used to decorate Journal Entry Lines with levels. (optional)</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">\&quot;Expression to filter the result set.\&quot; (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing results from a previous call to GetValuationPointPnlSummary. (optional)</param>
@@ -18216,23 +21918,23 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. Gets the Transactions for the given Valuation Point for a Fund.
+        /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. Gets the Transactions for the given Valuation Point for a Fund.                Transactions are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s transactions in the order the accounting engine produced them, so the order is stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the transactions.</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
-        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,              including previous versions of transactions which have since been amended.              Defaults to False if not specified. (optional)</param>
+        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
-        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the              NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of              a transaction that has since been amended to be excluded is returned regardless of this option.              Defaults to False if not specified. (optional)</param>
+        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the               NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of               a transaction that has since been amended to be excluded is returned regardless of this option.               Defaults to False if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ValuationPointResourceListOfAccountedTransaction</returns>
@@ -18243,24 +21945,24 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. Gets the Transactions for the given Valuation Point for a Fund.
+        /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. Gets the Transactions for the given Valuation Point for a Fund.                Transactions are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s transactions in the order the accounting engine produced them, so the order is stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the transactions.</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
-        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,              including previous versions of transactions which have since been amended.              Defaults to False if not specified. (optional)</param>
+        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
-        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the              NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of              a transaction that has since been amended to be excluded is returned regardless of this option.              Defaults to False if not specified. (optional)</param>
+        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the               NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of               a transaction that has since been amended to be excluded is returned regardless of this option.               Defaults to False if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="opts">Options for this request.</param>
         /// <returns>ApiResponse of ValuationPointResourceListOfAccountedTransaction</returns>
@@ -18415,23 +22117,23 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. Gets the Transactions for the given Valuation Point for a Fund.
+        /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. Gets the Transactions for the given Valuation Point for a Fund.                Transactions are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s transactions in the order the accounting engine produced them, so the order is stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the transactions.</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
-        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,              including previous versions of transactions which have since been amended.              Defaults to False if not specified. (optional)</param>
+        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
-        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the              NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of              a transaction that has since been amended to be excluded is returned regardless of this option.              Defaults to False if not specified. (optional)</param>
+        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the               NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of               a transaction that has since been amended to be excluded is returned regardless of this option.               Defaults to False if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -18443,24 +22145,24 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
-        /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. Gets the Transactions for the given Valuation Point for a Fund.
+        /// [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. Gets the Transactions for the given Valuation Point for a Fund.                Transactions are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s transactions in the order the accounting engine produced them, so the order is stable across pages.
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
         /// <param name="scope">The scope of the Fund.</param>
         /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
         /// <param name="valuationPointDataQueryParameters">The arguments to use for querying the transactions.</param>
-        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version              of each transaction if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve transactions. Defaults to returning the latest version               of each transaction if not specified. (optional)</param>
         /// <param name="filter">Expression to filter the result set. (optional)</param>
         /// <param name="limit">When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)</param>
         /// <param name="page">The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. (optional)</param>
-        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;              domain to decorate onto the transactions. (optional)</param>
+        /// <param name="propertyKeys">A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;               domain to decorate onto the transactions. (optional)</param>
         /// <param name="navTypeCode">When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
         /// <param name="dataModelScope">The optional scope of a Custom Data Model to use (optional)</param>
         /// <param name="dataModelCode">The optional code of a Custom Data Model to use (optional)</param>
-        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,              including previous versions of transactions which have since been amended.              Defaults to False if not specified. (optional)</param>
+        /// <param name="showCancelledTransactions">Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)</param>
         /// <param name="membershipType">The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. (optional)</param>
-        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the              NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of              a transaction that has since been amended to be excluded is returned regardless of this option.              Defaults to False if not specified. (optional)</param>
+        /// <param name="returnExcludedTransactions">Option to specify whether or not to include transactions excluded by the               NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of               a transaction that has since been amended to be excluded is returned regardless of this option.               Defaults to False if not specified. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="opts">Options for this request.</param>
@@ -22634,6 +26336,298 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         }
 
         /// <summary>
+        /// [EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions: List the deferred-tax provisions of a Fund. Returns the deferred-tax provision of every Valuation Point whose effective date lies in the window, oldest first.  Unapproved Valuation Points are estimated live, so the window may cover at most 100 Valuation Points. Until tax  elections can be configured on the Fund every provision is struck under the default elections: a 20% rate,  indexation allowance applied and losses carried forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="fromEffectiveAt">The lower bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the start of the Fund if not specified. (optional)</param>
+        /// <param name="toEffectiveAt">The upper bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the latest Valuation Point if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provisions. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provisions of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ResourceListOfTaxProvision</returns>
+        public ResourceListOfTaxProvision ListTaxProvisions(string scope, string code, DateTimeOffset? fromEffectiveAt = default(DateTimeOffset?), DateTimeOffset? toEffectiveAt = default(DateTimeOffset?), DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfTaxProvision> localVarResponse = ListTaxProvisionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions: List the deferred-tax provisions of a Fund. Returns the deferred-tax provision of every Valuation Point whose effective date lies in the window, oldest first.  Unapproved Valuation Points are estimated live, so the window may cover at most 100 Valuation Points. Until tax  elections can be configured on the Fund every provision is struck under the default elections: a 20% rate,  indexation allowance applied and losses carried forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="fromEffectiveAt">The lower bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the start of the Fund if not specified. (optional)</param>
+        /// <param name="toEffectiveAt">The upper bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the latest Valuation Point if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provisions. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provisions of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ResourceListOfTaxProvision</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ResourceListOfTaxProvision> ListTaxProvisionsWithHttpInfo(string scope, string code, DateTimeOffset? fromEffectiveAt = default(DateTimeOffset?), DateTimeOffset? toEffectiveAt = default(DateTimeOffset?), DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->ListTaxProvisions");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->ListTaxProvisions");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (fromEffectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "fromEffectiveAt", fromEffectiveAt));
+            }
+            if (toEffectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "toEffectiveAt", toEffectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (navTypeCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "navTypeCode", navTypeCode));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.ListTaxProvisions";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ResourceListOfTaxProvision, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/provisions", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTaxProvisions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions: List the deferred-tax provisions of a Fund. Returns the deferred-tax provision of every Valuation Point whose effective date lies in the window, oldest first.  Unapproved Valuation Points are estimated live, so the window may cover at most 100 Valuation Points. Until tax  elections can be configured on the Fund every provision is struck under the default elections: a 20% rate,  indexation allowance applied and losses carried forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="fromEffectiveAt">The lower bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the start of the Fund if not specified. (optional)</param>
+        /// <param name="toEffectiveAt">The upper bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the latest Valuation Point if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provisions. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provisions of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ResourceListOfTaxProvision</returns>
+        public async System.Threading.Tasks.Task<ResourceListOfTaxProvision> ListTaxProvisionsAsync(string scope, string code, DateTimeOffset? fromEffectiveAt = default(DateTimeOffset?), DateTimeOffset? toEffectiveAt = default(DateTimeOffset?), DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ResourceListOfTaxProvision> localVarResponse = await ListTaxProvisionsWithHttpInfoAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions: List the deferred-tax provisions of a Fund. Returns the deferred-tax provision of every Valuation Point whose effective date lies in the window, oldest first.  Unapproved Valuation Points are estimated live, so the window may cover at most 100 Valuation Points. Until tax  elections can be configured on the Fund every provision is struck under the default elections: a 20% rate,  indexation allowance applied and losses carried forward.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="fromEffectiveAt">The lower bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the start of the Fund if not specified. (optional)</param>
+        /// <param name="toEffectiveAt">The upper bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the latest Valuation Point if not specified. (optional)</param>
+        /// <param name="asAt">The asAt datetime at which to retrieve the provisions. Defaults to returning the latest version if not specified. (optional)</param>
+        /// <param name="navTypeCode">When provided, the provisions of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ResourceListOfTaxProvision)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfTaxProvision>> ListTaxProvisionsWithHttpInfoAsync(string scope, string code, DateTimeOffset? fromEffectiveAt = default(DateTimeOffset?), DateTimeOffset? toEffectiveAt = default(DateTimeOffset?), DateTimeOffset? asAt = default(DateTimeOffset?), string? navTypeCode = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->ListTaxProvisions");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->ListTaxProvisions");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (fromEffectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "fromEffectiveAt", fromEffectiveAt));
+            }
+            if (toEffectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "toEffectiveAt", toEffectiveAt));
+            }
+            if (asAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "asAt", asAt));
+            }
+            if (navTypeCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "navTypeCode", navTypeCode));
+            }
+
+            localVarRequestOptions.Operation = "FundsApi.ListTaxProvisions";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ResourceListOfTaxProvision, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/provisions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTaxProvisions", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point. Lists all complex market data within the effective date range of the specified Valuation Point for a Fund,  including any items added via a Complex Close (Post-Close Activity).
         /// </summary>
         /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -25746,6 +29740,300 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RunPartnerAllocations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step. Moves the return one step towards Draft, recording the supplied reason. A Final return cannot be sent back.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for sending the return back.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>TaxReturnResponse</returns>
+        public TaxReturnResponse SendBackTaxReturn(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> localVarResponse = SendBackTaxReturnWithHttpInfo(scope, code, taxReturnTransitionRequest, effectiveAt, taxPeriod, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step. Moves the return one step towards Draft, recording the supplied reason. A Final return cannot be sent back.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for sending the return back.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of TaxReturnResponse</returns>
+        public Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> SendBackTaxReturnWithHttpInfo(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->SendBackTaxReturn");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->SendBackTaxReturn");
+            }
+
+            // verify the required parameter 'taxReturnTransitionRequest' is set
+            if (taxReturnTransitionRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'taxReturnTransitionRequest' when calling FundsApi->SendBackTaxReturn");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+            localVarRequestOptions.Data = taxReturnTransitionRequest;
+
+            localVarRequestOptions.Operation = "FundsApi.SendBackTaxReturn";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TaxReturnResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/return/send-back", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SendBackTaxReturn", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step. Moves the return one step towards Draft, recording the supplied reason. A Final return cannot be sent back.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for sending the return back.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of TaxReturnResponse</returns>
+        public async System.Threading.Tasks.Task<TaxReturnResponse> SendBackTaxReturnAsync(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse> localVarResponse = await SendBackTaxReturnWithHttpInfoAsync(scope, code, taxReturnTransitionRequest, effectiveAt, taxPeriod, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step. Moves the return one step towards Draft, recording the supplied reason. A Final return cannot be sent back.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="taxReturnTransitionRequest">The reason for sending the return back.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label that selects the accounting period. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="taxPeriod">An optional accounting period label that overrides the period selected by effectiveAt. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (TaxReturnResponse)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<TaxReturnResponse>> SendBackTaxReturnWithHttpInfoAsync(string scope, string code, TaxReturnTransitionRequest taxReturnTransitionRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), string? taxPeriod = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->SendBackTaxReturn");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->SendBackTaxReturn");
+            }
+
+            // verify the required parameter 'taxReturnTransitionRequest' is set
+            if (taxReturnTransitionRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'taxReturnTransitionRequest' when calling FundsApi->SendBackTaxReturn");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            if (taxPeriod != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "taxPeriod", taxPeriod));
+            }
+            localVarRequestOptions.Data = taxReturnTransitionRequest;
+
+            localVarRequestOptions.Operation = "FundsApi.SendBackTaxReturn";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TaxReturnResponse, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/tax/return/send-back", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SendBackTaxReturn", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

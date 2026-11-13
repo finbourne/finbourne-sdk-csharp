@@ -7,6 +7,7 @@ A Settlement Instruction with its Matched Transaction (if any)
 |------|------|----------|-------------|
 | **SettlementInstruction** | [TransactionSettlementInstruction](TransactionSettlementInstruction.md) | Optional | *No description available.* |
 | **MatchedTransaction** | [OutputTransaction](OutputTransaction.md) | Optional | *No description available.* |
+| **SettlementFx** | [SettlementFx](SettlementFx.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -18,7 +19,8 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new SettlementInstructionWithTransaction(
     settlementInstruction: new TransactionSettlementInstruction(...),  // optional
-    matchedTransaction: new OutputTransaction(...)  // optional
+    matchedTransaction: new OutputTransaction(...),  // optional
+    settlementFx: new SettlementFx(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -38,6 +40,7 @@ var instance = JsonConvert.DeserializeObject<SettlementInstructionWithTransactio
 
 - [TransactionSettlementInstruction](TransactionSettlementInstruction.md)
 - [OutputTransaction](OutputTransaction.md)
+- [SettlementFx](SettlementFx.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
