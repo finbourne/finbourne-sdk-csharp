@@ -40,7 +40,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="instrumentIdentifiers">The set of identifiers which determine the instrument this event relates to. (required).</param>
         /// <param name="lusidInstrumentId">The LUID for the instrument. (required).</param>
         /// <param name="instrumentScope">The scope of the instrument. (required).</param>
-        /// <param name="description">The description of the instrument event. (required).</param>
+        /// <param name="description">The description of the instrument event..</param>
         /// <param name="eventDateRange">eventDateRange (required).</param>
         /// <param name="instrumentEvent">instrumentEvent (required).</param>
         /// <param name="properties">The properties attached to this instrument event..</param>
@@ -74,12 +74,6 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 throw new ArgumentNullException("instrumentScope is a required property for InstrumentEventHolder and cannot be null");
             }
             this.InstrumentScope = instrumentScope;
-            // to ensure "description" is required (not null)
-            if (description == null)
-            {
-                throw new ArgumentNullException("description is a required property for InstrumentEventHolder and cannot be null");
-            }
-            this.Description = description;
             // to ensure "eventDateRange" is required (not null)
             if (eventDateRange == null)
             {
@@ -93,6 +87,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.InstrumentEvent = instrumentEvent;
             this.CorporateActionSourceId = corporateActionSourceId;
+            this.Description = description;
             this.Properties = properties;
             this.SequenceNumber = sequenceNumber;
             // use default value if no "participationType" provided
@@ -139,7 +134,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// The description of the instrument event.
         /// </summary>
         /// <value>The description of the instrument event.</value>
-        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>

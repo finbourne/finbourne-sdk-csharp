@@ -7,6 +7,8 @@ Wrapper for one instrument in a larger collateral basket, as part of a repurchas
 |------|------|----------|-------------|
 | **Units** | **decimal** | Required | The amount of the instrument in the basket for this repurchase agreement. |
 | **Instrument** | [MasteredInstrument](MasteredInstrument.md) | Required | *No description available.* |
+| **CollateralStartDate** | **DateTimeOffset?** | Optional | The date from which the instrument is held as collateral for this repurchase agreement.  Read only: an instrument upsert cannot set or change it. An existing value must be sent back unchanged.  When not set, the instrument is held from the StartDate of the FlexibleRepo. |
+| **CollateralEndDate** | **DateTimeOffset?** | Optional | The date on which the instrument stops being held as collateral for this repurchase agreement.  Read only: an instrument upsert cannot set or change it. An existing value must be sent back unchanged.  When not set, the instrument is held until the MaturityDate of the FlexibleRepo. |
 
 
 ## Usage
@@ -18,7 +20,9 @@ using Finbourne.Sdk.Services.Lusid.Model;
 
 var instance = new CollateralInstrument(
     units: 0.0d,  // required — The amount of the instrument in the basket for this repurchase agreement.
-    instrument: new MasteredInstrument(...)  // required
+    instrument: new MasteredInstrument(...),  // required
+    collateralStartDate: DateTimeOffset.Now,  // optional — The date from which the instrument is held as collateral for this repurchase agreement.  Read only: an instrument upsert cannot set or change it. An existing value must be sent back unchanged.  When not set, the instrument is held from the StartDate of the FlexibleRepo.
+    collateralEndDate: DateTimeOffset.Now  // optional — The date on which the instrument stops being held as collateral for this repurchase agreement.  Read only: an instrument upsert cannot set or change it. An existing value must be sent back unchanged.  When not set, the instrument is held until the MaturityDate of the FlexibleRepo.
 );
 ```
 ### Serializing to JSON

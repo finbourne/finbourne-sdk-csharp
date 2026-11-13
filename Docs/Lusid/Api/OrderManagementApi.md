@@ -608,7 +608,7 @@ Allocates Executions for a given list of placements back to their originating or
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<OrderManagementApi>();
 var resourceId = new List<ResourceId>(); // List<ResourceId>
 var allocationAlgorithm = "allocationAlgorithm_example";  // string? (optional)
-var cancelAndCorrect = false;  // bool? (optional)
+var cancelAndCorrect = true;  // bool? (optional)
 AllocationServiceRunResponse result = apiInstance.RunAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
@@ -619,7 +619,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **resourceId** | [List&lt;ResourceId&gt;](../Model/ResourceId.md) | body | **required** | The List of Placement IDs for which you wish to allocate Executions. |
 | **allocationAlgorithm** | **string?** | query | optional | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. |
-| **cancelAndCorrect** | **bool?** | query | optional | Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. Default: `false` |
+| **cancelAndCorrect** | **bool?** | query | optional | Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to true. Set to false to leave allocations with booked transactions untouched. Default: `true` |
 
 ### Return type
 
@@ -670,7 +670,7 @@ Allocates Executions for a given list of placements to a specified set of portfo
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<OrderManagementApi>();
 var weightedAllocationServiceRunRequest = new WeightedAllocationServiceRunRequest(); // WeightedAllocationServiceRunRequest
 var allocationAlgorithm = "allocationAlgorithm_example";  // string? (optional)
-var cancelAndCorrect = false;  // bool? (optional)
+var cancelAndCorrect = true;  // bool? (optional)
 AllocationServiceRunResponse result = apiInstance.RunAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
@@ -681,7 +681,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 |------|------|----|----------|-------------|
 | **weightedAllocationServiceRunRequest** | [WeightedAllocationServiceRunRequest](../Model/WeightedAllocationServiceRunRequest.md) | body | **required** | The placement IDs to allocate against, and the portfolio weights to use for the allocation split. |
 | **allocationAlgorithm** | **string?** | query | optional | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. |
-| **cancelAndCorrect** | **bool?** | query | optional | Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. Default: `false` |
+| **cancelAndCorrect** | **bool?** | query | optional | Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. Default: `true` |
 
 ### Return type
 

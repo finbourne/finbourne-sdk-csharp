@@ -10,7 +10,7 @@ An instrument event equipped with additional metadata.
 | **InstrumentIdentifiers** | **Dictionary&lt;string, string&gt;** | Required | The set of identifiers which determine the instrument this event relates to. |
 | **LusidInstrumentId** | **string** | Required | The LUID for the instrument. |
 | **InstrumentScope** | **string** | Required | The scope of the instrument. |
-| **Description** | **string** | Required | The description of the instrument event. |
+| **Description** | **string** | Optional | The description of the instrument event. |
 | **EventDateRange** | [EventDateRange](EventDateRange.md) | Required | *No description available.* |
 | **Completeness** | **string** | Optional | Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). Available values: Complete, Incomplete. *(read-only)* |
 | **InstrumentEvent** | [InstrumentEvent](InstrumentEvent.md) | Required | *No description available.* |
@@ -35,7 +35,7 @@ var instance = new InstrumentEventHolder(
     instrumentIdentifiers: ,  // required — The set of identifiers which determine the instrument this event relates to.
     lusidInstrumentId: "...",  // required — The LUID for the instrument.
     instrumentScope: "...",  // required — The scope of the instrument.
-    description: "...",  // required — The description of the instrument event.
+    description: "...",  // optional — The description of the instrument event.
     eventDateRange: new EventDateRange(...),  // required
     completeness: "...",  // optional — Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). Available values: Complete, Incomplete.
     instrumentEvent: new InstrumentEvent(...),  // required
