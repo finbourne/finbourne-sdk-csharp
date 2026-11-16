@@ -11,6 +11,7 @@ A bucket's balances for one payment currency, summed across portfolios and sub-h
 | **Open** | [BucketAmounts](BucketAmounts.md) | Optional | *No description available.* |
 | **ActivityTotal** | [BucketAmounts](BucketAmounts.md) | Optional | *No description available.* |
 | **Close** | [BucketAmounts](BucketAmounts.md) | Optional | *No description available.* |
+| **FxTranslation** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -28,6 +29,7 @@ var instance = new BucketCurrencySubtotal(
     open: new BucketAmounts(...),  // optional
     activityTotal: new BucketAmounts(...),  // optional
     close: new BucketAmounts(...),  // optional
+    fxTranslation: new CurrencyAndAmount(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -46,6 +48,7 @@ var instance = JsonConvert.DeserializeObject<BucketCurrencySubtotal>(json);
 - [BucketAmounts](BucketAmounts.md)
 - [BucketAmounts](BucketAmounts.md)
 - [BucketAmounts](BucketAmounts.md)
+- [CurrencyAndAmount](CurrencyAndAmount.md)
 - [Link](Link.md)
 
 

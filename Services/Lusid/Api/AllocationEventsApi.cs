@@ -277,6 +277,37 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of ResourceListOfAllocationPaymentHold</returns>
         Finbourne.Sdk.Client.ApiResponse<ResourceListOfAllocationPaymentHold> ListAllocationPaymentHoldsWithHttpInfo(string scope, string code, string investorRecordId, int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event.
+        /// </summary>
+        /// <remarks>
+        /// Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency&#39;s minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Allocation Event.</param>
+        /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
+        /// <param name="allocationEventRefundPaymentRequest">The investor, amount, date and reference of the payment.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>AllocationEvent</returns>
+        AllocationEvent PayAllocationEventRefund(string scope, string code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event.
+        /// </summary>
+        /// <remarks>
+        /// Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency&#39;s minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Allocation Event.</param>
+        /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
+        /// <param name="allocationEventRefundPaymentRequest">The investor, amount, date and reference of the payment.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of AllocationEvent</returns>
+        Finbourne.Sdk.Client.ApiResponse<AllocationEvent> PayAllocationEventRefundWithHttpInfo(string scope, string code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
         /// </summary>
         /// <remarks>
@@ -762,6 +793,39 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (ResourceListOfAllocationPaymentHold)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ResourceListOfAllocationPaymentHold>> ListAllocationPaymentHoldsWithHttpInfoAsync(string scope, string code, string investorRecordId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event.
+        /// </summary>
+        /// <remarks>
+        /// Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency&#39;s minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Allocation Event.</param>
+        /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
+        /// <param name="allocationEventRefundPaymentRequest">The investor, amount, date and reference of the payment.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of AllocationEvent</returns>
+        System.Threading.Tasks.Task<AllocationEvent> PayAllocationEventRefundAsync(string scope, string code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event.
+        /// </summary>
+        /// <remarks>
+        /// Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency&#39;s minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Allocation Event.</param>
+        /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
+        /// <param name="allocationEventRefundPaymentRequest">The investor, amount, date and reference of the payment.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (AllocationEvent)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationEvent>> PayAllocationEventRefundWithHttpInfoAsync(string scope, string code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
         /// </summary>
@@ -3224,6 +3288,288 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListAllocationPaymentHolds", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event. Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency&#39;s minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Allocation Event.</param>
+        /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
+        /// <param name="allocationEventRefundPaymentRequest">The investor, amount, date and reference of the payment.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>AllocationEvent</returns>
+        public AllocationEvent PayAllocationEventRefund(string scope, string code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<AllocationEvent> localVarResponse = PayAllocationEventRefundWithHttpInfo(scope, code, allocationEventRefundPaymentRequest, effectiveAt, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event. Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency&#39;s minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Allocation Event.</param>
+        /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
+        /// <param name="allocationEventRefundPaymentRequest">The investor, amount, date and reference of the payment.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of AllocationEvent</returns>
+        public Finbourne.Sdk.Client.ApiResponse<AllocationEvent> PayAllocationEventRefundWithHttpInfo(string scope, string code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling AllocationEventsApi->PayAllocationEventRefund");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling AllocationEventsApi->PayAllocationEventRefund");
+            }
+
+            // verify the required parameter 'allocationEventRefundPaymentRequest' is set
+            if (allocationEventRefundPaymentRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'allocationEventRefundPaymentRequest' when calling AllocationEventsApi->PayAllocationEventRefund");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            localVarRequestOptions.Data = allocationEventRefundPaymentRequest;
+
+            localVarRequestOptions.Operation = "AllocationEventsApi.PayAllocationEventRefund";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AllocationEvent, AbstractOpenAPISchema>("/api/api/allocationevents/{scope}/{code}/refunds", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PayAllocationEventRefund", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event. Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency&#39;s minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Allocation Event.</param>
+        /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
+        /// <param name="allocationEventRefundPaymentRequest">The investor, amount, date and reference of the payment.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of AllocationEvent</returns>
+        public async System.Threading.Tasks.Task<AllocationEvent> PayAllocationEventRefundAsync(string scope, string code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<AllocationEvent> localVarResponse = await PayAllocationEventRefundWithHttpInfoAsync(scope, code, allocationEventRefundPaymentRequest, effectiveAt, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event. Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency&#39;s minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Allocation Event.</param>
+        /// <param name="code">The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.</param>
+        /// <param name="allocationEventRefundPaymentRequest">The investor, amount, date and reference of the payment.</param>
+        /// <param name="effectiveAt">The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (AllocationEvent)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<AllocationEvent>> PayAllocationEventRefundWithHttpInfoAsync(string scope, string code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, DateTimeOrCutLabel? effectiveAt = default(DateTimeOrCutLabel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling AllocationEventsApi->PayAllocationEventRefund");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling AllocationEventsApi->PayAllocationEventRefund");
+            }
+
+            // verify the required parameter 'allocationEventRefundPaymentRequest' is set
+            if (allocationEventRefundPaymentRequest == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'allocationEventRefundPaymentRequest' when calling AllocationEventsApi->PayAllocationEventRefund");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (effectiveAt != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Finbourne.Sdk.Client.ClientUtils.ParameterToMultiMap("", "effectiveAt", effectiveAt));
+            }
+            localVarRequestOptions.Data = allocationEventRefundPaymentRequest;
+
+            localVarRequestOptions.Operation = "AllocationEventsApi.PayAllocationEventRefund";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AllocationEvent, AbstractOpenAPISchema>("/api/api/allocationevents/{scope}/{code}/refunds", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PayAllocationEventRefund", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

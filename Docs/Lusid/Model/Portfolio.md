@@ -33,6 +33,7 @@ A portfolio of a particular type.
 | **FractionalUnitsTrueUpConfiguration** | [FractionalUnitsTrueUpConfiguration](FractionalUnitsTrueUpConfiguration.md) | Optional | *No description available.* |
 | **HoldingsFungibility** | **string** | Optional | Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled. |
 | **ChargeableGainsRegime** | **string** | Optional | The chargeable gains regime the portfolio is elected into. This can be: Default or UkChargeableGains. Defaults to Default if not specified, which means no chargeable gains pooling is applied. Under UkChargeableGains, in-scope holdings (equities, preferred shares, fund share classes and simple instruments) are depleted under the UK chargeable gains rules regardless of the accounting method on the portfolio, transaction or custodian account; other holdings use the portfolio&#39;s accounting method. Supply Default to explicitly reset it; a reset or never-configured regime reads back as absent. Available values: Default, UkChargeableGains. |
+| **AmortisationHorizon** | [AmortisationHorizon](AmortisationHorizon.md) | Optional | *No description available.* |
 | **WhtParameters** | [WhtParameters](WhtParameters.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
@@ -73,6 +74,7 @@ var instance = new Portfolio(
     fractionalUnitsTrueUpConfiguration: new FractionalUnitsTrueUpConfiguration(...),  // optional
     holdingsFungibility: "...",  // optional — Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled.
     chargeableGainsRegime: "...",  // optional — The chargeable gains regime the portfolio is elected into. This can be: Default or UkChargeableGains. Defaults to Default if not specified, which means no chargeable gains pooling is applied. Under UkChargeableGains, in-scope holdings (equities, preferred shares, fund share classes and simple instruments) are depleted under the UK chargeable gains rules regardless of the accounting method on the portfolio, transaction or custodian account; other holdings use the portfolio&#39;s accounting method. Supply Default to explicitly reset it; a reset or never-configured regime reads back as absent. Available values: Default, UkChargeableGains.
+    amortisationHorizon: new AmortisationHorizon(...),  // optional
     whtParameters: new WhtParameters(...),  // optional
     links: new List<Link>()  // optional
 );
@@ -99,6 +101,7 @@ var instance = JsonConvert.DeserializeObject<Portfolio>(json);
 - [ResourceId](ResourceId.md)
 - [PortfolioSettlementConfiguration](PortfolioSettlementConfiguration.md)
 - [FractionalUnitsTrueUpConfiguration](FractionalUnitsTrueUpConfiguration.md)
+- [AmortisationHorizon](AmortisationHorizon.md)
 - [WhtParameters](WhtParameters.md)
 - [Link](Link.md)
 

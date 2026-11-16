@@ -37,6 +37,7 @@ One economic event shared across the participants of an Allocation Map: raised a
 | **DueDate** | **DateTimeOffset?** | Optional | The date the investors&#39; cash is due. |
 | **SettlementDate** | **DateTimeOffset?** | Optional | The date the postings settle. Defaults to the event date. |
 | **Receipts** | [List&lt;AllocationEventReceipt&gt;](AllocationEventReceipt.md) | Optional | The cash received against the event, in the order it was recorded. |
+| **RefundPayments** | [List&lt;AllocationEventRefundPayment&gt;](AllocationEventRefundPayment.md) | Optional | The refunds paid out against the event to investors whose receipts exceeded what they owed, in the order they were recorded. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -80,6 +81,7 @@ var instance = new AllocationEvent(
     dueDate: DateTimeOffset.Now,  // optional — The date the investors&#39; cash is due.
     settlementDate: DateTimeOffset.Now,  // optional — The date the postings settle. Defaults to the event date.
     receipts: new List<AllocationEventReceipt>(),  // optional — The cash received against the event, in the order it was recorded.
+    refundPayments: new List<AllocationEventRefundPayment>(),  // optional — The refunds paid out against the event to investors whose receipts exceeded what they owed, in the order they were recorded.
     links: new List<Link>()  // optional
 );
 ```
@@ -112,6 +114,7 @@ var instance = JsonConvert.DeserializeObject<AllocationEvent>(json);
 - [ResourceId](ResourceId.md)
 - [AllocationEventReversal](AllocationEventReversal.md)
 - [AllocationEventReceipt](AllocationEventReceipt.md) — used in `Receipts`
+- [AllocationEventRefundPayment](AllocationEventRefundPayment.md) — used in `RefundPayments`
 - [Link](Link.md)
 
 

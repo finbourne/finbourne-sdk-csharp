@@ -13,6 +13,7 @@
 | **NotionalAmount** | **string** | Optional | The value, field or property key defining the side&#39;s notional amount |
 | **CurrentFace** | **string** | Optional | The value, field or property key defining the side&#39;s current face / outstanding notional. |
 | **Scope** | **string** | Optional | The scope in which the side definition exists. |
+| **Metadata** | **Dictionary&lt;string, List&lt;ResponseMetaData&gt;&gt;** | Optional | Contains warnings related to the side definition, such as a stored copy of a platform side that differs from the platform&#39;s current definition. |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -33,6 +34,7 @@ var instance = new SideDefinition(
     notionalAmount: "...",  // optional — The value, field or property key defining the side&#39;s notional amount
     currentFace: "...",  // optional — The value, field or property key defining the side&#39;s current face / outstanding notional.
     scope: "...",  // optional — The scope in which the side definition exists.
+    metadata: ,  // optional — Contains warnings related to the side definition, such as a stored copy of a platform side that differs from the platform&#39;s current definition.
     links: new List<Link>()  // optional
 );
 ```

@@ -9,6 +9,7 @@ Model options for instruments of type flexibleDeposit and flexibleLoan when used
 |------|------|----------|-------------|
 | **SetCleanPVToZero** | **bool** | Required | If set to true the CleanPV will be set to zero in valuations and PV will effectively just be the Accrual. |
 | **UsePriceQuoteForCleanPV** | **bool?** | Optional | If set to true the CleanPV calculation will be looking for a price quote (no default price is assumed). CleanPV will be calculated as Holding/Balance * priceQuote / quoteScaleFactor |
+| **ExcludeIncomeFromPV** | **bool?** | Optional | Read by a TotalReturnSwap whose asset leg has a ResetSchedule and whose underlying pays interest or coupons. If set to true the swap&#39;s PV leaves out the underlying&#39;s interest and coupon payments and adds the interest accrued on them to the valuation date instead, so CleanPV is the price return and PV is CleanPV + Accrued. |
 | **ModelOptionsType** | **string** | Required | Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions, StripBondModelOptions. Default: `ModelOptionsTypeEnum.FlexibleLoanPricerOptions` |
 
 
@@ -22,6 +23,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new FlexibleLoanPricerOptions(
     setCleanPVToZero: true,  // required — If set to true the CleanPV will be set to zero in valuations and PV will effectively just be the Accrual.
     usePriceQuoteForCleanPV: true,  // optional — If set to true the CleanPV calculation will be looking for a price quote (no default price is assumed). CleanPV will be calculated as Holding/Balance * priceQuote / quoteScaleFactor
+    excludeIncomeFromPV: true,  // optional — Read by a TotalReturnSwap whose asset leg has a ResetSchedule and whose underlying pays interest or coupons. If set to true the swap&#39;s PV leaves out the underlying&#39;s interest and coupon payments and adds the interest accrued on them to the valuation date instead, so CleanPV is the price return and PV is CleanPV + Accrued.
     modelOptionsType: "..."  // required — Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions, StripBondModelOptions.
 );
 ```

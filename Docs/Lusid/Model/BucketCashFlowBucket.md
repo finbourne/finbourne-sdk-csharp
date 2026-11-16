@@ -15,6 +15,8 @@ One tenor bucket for one portfolio, payment currency and set of sub-holding keys
 | **ActivityTotal** | [BucketAmounts](BucketAmounts.md) | Optional | *No description available.* |
 | **Activity** | [List&lt;CashFlowDetail&gt;](CashFlowDetail.md) | Optional | The cash flows in the bucket, with the attributes a cash flow has in Values. |
 | **Close** | [BucketAmounts](BucketAmounts.md) | Optional | *No description available.* |
+| **StartingBalanceRate** | **decimal?** | Optional | The spot rate the starting balance (the holdings&#39; cash at the window start) was converted at to open the report currency balances, under a rate type other than FxSpot. Absent under FxSpot, when the starting balance is zero, or when no report currency was requested. |
+| **FxTranslation** | [CurrencyAndAmount](CurrencyAndAmount.md) | Optional | *No description available.* |
 | **Links** | [List&lt;Link&gt;](Link.md) | Optional | *No description available.* |
 
 
@@ -36,6 +38,8 @@ var instance = new BucketCashFlowBucket(
     activityTotal: new BucketAmounts(...),  // optional
     activity: new List<CashFlowDetail>(),  // optional — The cash flows in the bucket, with the attributes a cash flow has in Values.
     close: new BucketAmounts(...),  // optional
+    startingBalanceRate: 0.0d,  // optional — The spot rate the starting balance (the holdings&#39; cash at the window start) was converted at to open the report currency balances, under a rate type other than FxSpot. Absent under FxSpot, when the starting balance is zero, or when no report currency was requested.
+    fxTranslation: new CurrencyAndAmount(...),  // optional
     links: new List<Link>()  // optional
 );
 ```
@@ -57,6 +61,7 @@ var instance = JsonConvert.DeserializeObject<BucketCashFlowBucket>(json);
 - [BucketAmounts](BucketAmounts.md)
 - [CashFlowDetail](CashFlowDetail.md) — used in `Activity`
 - [BucketAmounts](BucketAmounts.md)
+- [CurrencyAndAmount](CurrencyAndAmount.md)
 - [Link](Link.md)
 
 

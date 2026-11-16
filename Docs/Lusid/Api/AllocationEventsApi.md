@@ -13,6 +13,7 @@ All URIs are relative to *http://localhost*
 | [**GetAllocationEventReceivables**](#getallocationeventreceivables) | **GET** `/api/api/allocationevents/{scope}/{code}/receivables` | [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event. |
 | [**ListAllocationEvents**](#listallocationevents) | **GET** `/api/api/allocationevents` | [EARLY ACCESS] ListAllocationEvents: List Allocation Events. |
 | [**ListAllocationPaymentHolds**](#listallocationpaymentholds) | **GET** `/api/api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/holds` | [EARLY ACCESS] ListAllocationPaymentHolds: [EARLY ACCESS] ListAllocationPaymentHolds: List the holds placed on a partner&#39;s payment. |
+| [**PayAllocationEventRefund**](#payallocationeventrefund) | **POST** `/api/api/allocationevents/{scope}/{code}/refunds` | [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event. |
 | [**PlanAllocationEventBooking**](#planallocationeventbooking) | **POST** `/api/api/allocationevents/{scope}/{code}/plan` | [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event. |
 | [**PutAllocationPaymentHold**](#putallocationpaymenthold) | **PUT** `/api/api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/hold` | [EARLY ACCESS] PutAllocationPaymentHold: [EARLY ACCESS] PutAllocationPaymentHold: Place, move or release a hold on a partner&#39;s payment. |
 | [**ReallocateAllocationEvent**](#reallocateallocationevent) | **POST** `/api/api/allocationevents/{scope}/{code}/reallocate` | [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event. |
@@ -563,6 +564,70 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<ResourceListOfAllocationPaymentHold> response = apiInstance.ListAllocationPaymentHoldsWithHttpInfo(scope, code, investorRecordId);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="payallocationeventrefund"></a>
+## PayAllocationEventRefund
+
+> AllocationEvent PayAllocationEventRefund(string scope, string code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, DateTimeOrCutLabel? effectiveAt = null)
+
+[EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event.
+
+Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency's minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<AllocationEventsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var allocationEventRefundPaymentRequest = new AllocationEventRefundPaymentRequest(); // AllocationEventRefundPaymentRequest
+var effectiveAt = "effectiveAt_example";  // DateTimeOrCutLabel? (optional)
+AllocationEvent result = apiInstance.PayAllocationEventRefund(scope, code, allocationEventRefundPaymentRequest, effectiveAt);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Allocation Event. |
+| **code** | **string** | path | **required** | The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. |
+| **allocationEventRefundPaymentRequest** | [AllocationEventRefundPaymentRequest](../Model/AllocationEventRefundPaymentRequest.md) | body | **required** | The investor, amount, date and reference of the payment. |
+| **effectiveAt** | **DateTimeOrCutLabel?** | query | optional | The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. |
+
+### Return type
+
+[AllocationEvent](../Model/AllocationEvent.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Allocation Event with the refund payment recorded. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the PayAllocationEventRefundWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<AllocationEvent> response = apiInstance.PayAllocationEventRefundWithHttpInfo(scope, code, allocationEventRefundPaymentRequest, effectiveAt);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

@@ -17,6 +17,8 @@ One receipt of cash against a booked capital call, as recorded.
 | **BankChargeBearer** | **string** | Optional | Who bears the bank charge: Partner leaves it outstanding on the investor, Fund books it as a fund expense. Defaults to the map&#39;s policy. |
 | **ShortfallWrittenOff** | **decimal** | Optional | Any small shortfall within the map&#39;s tolerance that was written off rather than left outstanding. |
 | **PostingId** | **string** | Optional | The identifier of the receipt posting on the investor&#39;s line. |
+| **SettledLineId** | **string** | Optional | The register line the receipt settled, as the booking posted it. Written by the booking, not by the caller; absent on a receipt recorded before the line was kept. |
+| **Reference** | **string** | Optional | The caller&#39;s reference the receipt was recorded under, as sent. Absent on a receipt sent without one. |
 
 
 ## Usage
@@ -38,7 +40,9 @@ var instance = new AllocationEventReceipt(
     bankCharge: 0.0d,  // optional — Any bank charge deducted from the cash before it arrived, in the event currency.
     bankChargeBearer: "...",  // optional — Who bears the bank charge: Partner leaves it outstanding on the investor, Fund books it as a fund expense. Defaults to the map&#39;s policy.
     shortfallWrittenOff: 0.0d,  // optional — Any small shortfall within the map&#39;s tolerance that was written off rather than left outstanding.
-    postingId: "..."  // optional — The identifier of the receipt posting on the investor&#39;s line.
+    postingId: "...",  // optional — The identifier of the receipt posting on the investor&#39;s line.
+    settledLineId: "...",  // optional — The register line the receipt settled, as the booking posted it. Written by the booking, not by the caller; absent on a receipt recorded before the line was kept.
+    reference: "..."  // optional — The caller&#39;s reference the receipt was recorded under, as sent. Absent on a receipt sent without one.
 );
 ```
 ### Serializing to JSON

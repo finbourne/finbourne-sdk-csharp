@@ -42,7 +42,9 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="bankChargeBearer">Who bears the bank charge: Partner leaves it outstanding on the investor, Fund books it as a fund expense. Defaults to the map&#39;s policy..</param>
         /// <param name="shortfallWrittenOff">Any small shortfall within the map&#39;s tolerance that was written off rather than left outstanding..</param>
         /// <param name="postingId">The identifier of the receipt posting on the investor&#39;s line..</param>
-        public AllocationEventReceipt(string investorRecordId = default(string), decimal amount = default(decimal), DateTimeOffset receiptDate = default(DateTimeOffset), decimal applied = default(decimal), decimal refund = default(decimal), string paymentCurrency = default(string), decimal? paymentFxRate = default(decimal?), decimal fxDifference = default(decimal), decimal bankCharge = default(decimal), string bankChargeBearer = default(string), decimal shortfallWrittenOff = default(decimal), string postingId = default(string))
+        /// <param name="settledLineId">The register line the receipt settled, as the booking posted it. Written by the booking, not by the caller; absent on a receipt recorded before the line was kept..</param>
+        /// <param name="reference">The caller&#39;s reference the receipt was recorded under, as sent. Absent on a receipt sent without one..</param>
+        public AllocationEventReceipt(string investorRecordId = default(string), decimal amount = default(decimal), DateTimeOffset receiptDate = default(DateTimeOffset), decimal applied = default(decimal), decimal refund = default(decimal), string paymentCurrency = default(string), decimal? paymentFxRate = default(decimal?), decimal fxDifference = default(decimal), decimal bankCharge = default(decimal), string bankChargeBearer = default(string), decimal shortfallWrittenOff = default(decimal), string postingId = default(string), string settledLineId = default(string), string reference = default(string))
         {
             this.InvestorRecordId = investorRecordId;
             this.Amount = amount;
@@ -56,6 +58,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.BankChargeBearer = bankChargeBearer;
             this.ShortfallWrittenOff = shortfallWrittenOff;
             this.PostingId = postingId;
+            this.SettledLineId = settledLineId;
+            this.Reference = reference;
         }
 
         /// <summary>
@@ -143,6 +147,20 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string PostingId { get; set; }
 
         /// <summary>
+        /// The register line the receipt settled, as the booking posted it. Written by the booking, not by the caller; absent on a receipt recorded before the line was kept.
+        /// </summary>
+        /// <value>The register line the receipt settled, as the booking posted it. Written by the booking, not by the caller; absent on a receipt recorded before the line was kept.</value>
+        [DataMember(Name = "settledLineId", EmitDefaultValue = true)]
+        public string SettledLineId { get; set; }
+
+        /// <summary>
+        /// The caller&#39;s reference the receipt was recorded under, as sent. Absent on a receipt sent without one.
+        /// </summary>
+        /// <value>The caller&#39;s reference the receipt was recorded under, as sent. Absent on a receipt sent without one.</value>
+        [DataMember(Name = "reference", EmitDefaultValue = true)]
+        public string Reference { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -162,6 +180,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  BankChargeBearer: ").Append(BankChargeBearer).Append("\n");
             sb.Append("  ShortfallWrittenOff: ").Append(ShortfallWrittenOff).Append("\n");
             sb.Append("  PostingId: ").Append(PostingId).Append("\n");
+            sb.Append("  SettledLineId: ").Append(SettledLineId).Append("\n");
+            sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -250,6 +270,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.PostingId == input.PostingId ||
                     (this.PostingId != null &&
                     this.PostingId.Equals(input.PostingId))
+                ) && 
+                (
+                    this.SettledLineId == input.SettledLineId ||
+                    (this.SettledLineId != null &&
+                    this.SettledLineId.Equals(input.SettledLineId))
+                ) && 
+                (
+                    this.Reference == input.Reference ||
+                    (this.Reference != null &&
+                    this.Reference.Equals(input.Reference))
                 );
         }
 
@@ -291,6 +321,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.PostingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PostingId.GetHashCode();
+                }
+                if (this.SettledLineId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SettledLineId.GetHashCode();
+                }
+                if (this.Reference != null)
+                {
+                    hashCode = (hashCode * 59) + this.Reference.GetHashCode();
                 }
                 return hashCode;
             }

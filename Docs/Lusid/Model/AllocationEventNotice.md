@@ -9,8 +9,9 @@ A capital call or distribution notice for one partner on an allocation event: th
 | **Event** | [AllocationEventNoticeEvent](AllocationEventNoticeEvent.md) | Required | *No description available.* |
 | **Partner** | [AllocationEventNoticePartner](AllocationEventNoticePartner.md) | Required | *No description available.* |
 | **Currency** | **string** | Required | The currency the notice amounts are expressed in. |
-| **Lines** | [List&lt;AllocationEventNoticeLine&gt;](AllocationEventNoticeLine.md) | Required | The notice lines, one per component of the partner&#39;s allocation. |
-| **NetAmountDue** | **decimal** | Required | The net amount due, positive when the partner pays the fund and negative when the fund pays the partner. |
+| **Lines** | [List&lt;AllocationEventNoticeLine&gt;](AllocationEventNoticeLine.md) | Required | The notice lines, one per component of the partner&#39;s allocation. Tax withheld from a distribution on the partner&#39;s behalf is its own line, under the Distribution: Withholding Tax transaction type, as part of what is distributed. |
+| **NetAmountDue** | **decimal** | Required | The net amount due, positive when the partner pays the fund and negative when the fund pays the partner. On a distribution it is what the partner is paid: the lines less any tax withheld on the partner&#39;s behalf. |
+| **TaxWithheld** | **decimal** | Required | Tax withheld from the distribution on the partner&#39;s behalf: distributed to the partner but paid to the tax authority rather than to them, so it is not in the net amount due. Zero when nothing was withheld. |
 | **UnfundedReconciliation** | [AllocationEventNoticeUnfundedReconciliation](AllocationEventNoticeUnfundedReconciliation.md) | Required | *No description available.* |
 | **Cumulative** | [AllocationEventNoticeCumulative](AllocationEventNoticeCumulative.md) | Required | *No description available.* |
 | **GpColumn** | [AllocationEventNoticeCumulative](AllocationEventNoticeCumulative.md) | Optional | *No description available.* |
@@ -31,8 +32,9 @@ var instance = new AllocationEventNotice(
     varEvent: new AllocationEventNoticeEvent(...),  // required
     partner: new AllocationEventNoticePartner(...),  // required
     currency: "...",  // required — The currency the notice amounts are expressed in.
-    lines: new List<AllocationEventNoticeLine>(),  // required — The notice lines, one per component of the partner&#39;s allocation.
-    netAmountDue: 0.0d,  // required — The net amount due, positive when the partner pays the fund and negative when the fund pays the partner.
+    lines: new List<AllocationEventNoticeLine>(),  // required — The notice lines, one per component of the partner&#39;s allocation. Tax withheld from a distribution on the partner&#39;s behalf is its own line, under the Distribution: Withholding Tax transaction type, as part of what is distributed.
+    netAmountDue: 0.0d,  // required — The net amount due, positive when the partner pays the fund and negative when the fund pays the partner. On a distribution it is what the partner is paid: the lines less any tax withheld on the partner&#39;s behalf.
+    taxWithheld: 0.0d,  // required — Tax withheld from the distribution on the partner&#39;s behalf: distributed to the partner but paid to the tax authority rather than to them, so it is not in the net amount due. Zero when nothing was withheld.
     unfundedReconciliation: new AllocationEventNoticeUnfundedReconciliation(...),  // required
     cumulative: new AllocationEventNoticeCumulative(...),  // required
     gpColumn: new AllocationEventNoticeCumulative(...),  // optional

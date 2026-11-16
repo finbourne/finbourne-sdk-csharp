@@ -43,7 +43,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="noticeFxRate">The rate the call was noticed at in the payment currency, in the same terms as the payment FX rate. With one, only the rate&#39;s effect on the payment is an FX difference; without one a payment converting to less than the call is simply short. Only with a payment currency..</param>
         /// <param name="bankCharge">Any bank charge deducted from the cash before it arrived, in the event currency..</param>
         /// <param name="bankChargeBearer">Who bears the bank charge: Partner leaves it outstanding on the investor, Fund books it as a fund expense. Defaults to the map&#39;s policy..</param>
-        public AllocationEventReceiptRequest(string investorRecordId = default(string), decimal amount = default(decimal), DateTimeOffset receiptDate = default(DateTimeOffset), string paymentCurrency = default(string), decimal? paymentFxRate = default(decimal?), decimal? noticeFxRate = default(decimal?), decimal bankCharge = default(decimal), string bankChargeBearer = default(string))
+        /// <param name="reference">The caller&#39;s reference for the payment, for instance a bank statement line or a source row id, of 1 to 128 characters. Optional. Posting the same reference again with the same investor record, amount, currency and receipt date returns the event unchanged and writes nothing; with other content it is refused. Without a reference a repeated receipt is a second payment, warned as a possible duplicate when an earlier receipt matches it..</param>
+        public AllocationEventReceiptRequest(string investorRecordId = default(string), decimal amount = default(decimal), DateTimeOffset receiptDate = default(DateTimeOffset), string paymentCurrency = default(string), decimal? paymentFxRate = default(decimal?), decimal? noticeFxRate = default(decimal?), decimal bankCharge = default(decimal), string bankChargeBearer = default(string), string reference = default(string))
         {
             // to ensure "investorRecordId" is required (not null)
             if (investorRecordId == null)
@@ -58,6 +59,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.NoticeFxRate = noticeFxRate;
             this.BankCharge = bankCharge;
             this.BankChargeBearer = bankChargeBearer;
+            this.Reference = reference;
         }
 
         /// <summary>
@@ -117,6 +119,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string BankChargeBearer { get; set; }
 
         /// <summary>
+        /// The caller&#39;s reference for the payment, for instance a bank statement line or a source row id, of 1 to 128 characters. Optional. Posting the same reference again with the same investor record, amount, currency and receipt date returns the event unchanged and writes nothing; with other content it is refused. Without a reference a repeated receipt is a second payment, warned as a possible duplicate when an earlier receipt matches it.
+        /// </summary>
+        /// <value>The caller&#39;s reference for the payment, for instance a bank statement line or a source row id, of 1 to 128 characters. Optional. Posting the same reference again with the same investor record, amount, currency and receipt date returns the event unchanged and writes nothing; with other content it is refused. Without a reference a repeated receipt is a second payment, warned as a possible duplicate when an earlier receipt matches it.</value>
+        [DataMember(Name = "reference", EmitDefaultValue = true)]
+        public string Reference { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -132,6 +141,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  NoticeFxRate: ").Append(NoticeFxRate).Append("\n");
             sb.Append("  BankCharge: ").Append(BankCharge).Append("\n");
             sb.Append("  BankChargeBearer: ").Append(BankChargeBearer).Append("\n");
+            sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -204,6 +214,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.BankChargeBearer == input.BankChargeBearer ||
                     (this.BankChargeBearer != null &&
                     this.BankChargeBearer.Equals(input.BankChargeBearer))
+                ) && 
+                (
+                    this.Reference == input.Reference ||
+                    (this.Reference != null &&
+                    this.Reference.Equals(input.Reference))
                 );
         }
 
@@ -241,6 +256,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.BankChargeBearer != null)
                 {
                     hashCode = (hashCode * 59) + this.BankChargeBearer.GetHashCode();
+                }
+                if (this.Reference != null)
+                {
+                    hashCode = (hashCode * 59) + this.Reference.GetHashCode();
                 }
                 return hashCode;
             }

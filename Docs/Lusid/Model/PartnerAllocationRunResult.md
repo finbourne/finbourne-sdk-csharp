@@ -11,9 +11,12 @@ The outcome of a partner allocation run: the pools the period's income was split
 | **NavTypeCode** | **string** | Required | The NAV type to allocate under. Defaults to the fund&#39;s primary NAV type. |
 | **Status** | **string** | Required | The outcome of the run. Available values: Computed, Booked, DryRun. |
 | **RunId** | **string** | Required | The identifier of the run, which prefixes every transaction it books. |
-| **Pools** | [List&lt;PartnerAllocationPool&gt;](PartnerAllocationPool.md) | Required | The pools of fund-level amount that were allocated. |
-| **Unattributed** | [List&lt;UnattributedAmount&gt;](UnattributedAmount.md) | Required | Fund-level amounts that no pool claimed. |
+| **Pools** | [List&lt;PartnerAllocationPool&gt;](PartnerAllocationPool.md) | Required | The pools of fund-level amount that were allocated, in the allocation bucket set&#39;s bucket order with any tag pools after. |
+| **Unattributed** | [List&lt;UnattributedAmount&gt;](UnattributedAmount.md) | Required | Always empty: every profit and loss line is now pooled or the run is refused. Kept for one release. |
 | **BookedTransactionIds** | **List&lt;string&gt;** | Required | The identifiers of the transactions the run booked, if any. |
+| **Warnings** | **List&lt;string&gt;** | Optional | What the run noticed but did not refuse, for example an excluded investor record that is not on the register at the period end. |
+| **IgnoredTags** | [List&lt;IgnoredDistributionTag&gt;](IgnoredDistributionTag.md) | Optional | The distribution character tags the run did not pool by, by account. |
+| **AccruedFees** | [List&lt;AccruedFeeLine&gt;](AccruedFeeLine.md) | Optional | The management fees accrued per partner in the period, which the accrual allocates and the run therefore leaves out of the pools. |
 
 
 ## Usage
@@ -30,9 +33,12 @@ var instance = new PartnerAllocationRunResult(
     navTypeCode: "...",  // required — The NAV type to allocate under. Defaults to the fund&#39;s primary NAV type.
     status: "...",  // required — The outcome of the run. Available values: Computed, Booked, DryRun.
     runId: "...",  // required — The identifier of the run, which prefixes every transaction it books.
-    pools: new List<PartnerAllocationPool>(),  // required — The pools of fund-level amount that were allocated.
-    unattributed: new List<UnattributedAmount>(),  // required — Fund-level amounts that no pool claimed.
-    bookedTransactionIds:   // required — The identifiers of the transactions the run booked, if any.
+    pools: new List<PartnerAllocationPool>(),  // required — The pools of fund-level amount that were allocated, in the allocation bucket set&#39;s bucket order with any tag pools after.
+    unattributed: new List<UnattributedAmount>(),  // required — Always empty: every profit and loss line is now pooled or the run is refused. Kept for one release.
+    bookedTransactionIds: ,  // required — The identifiers of the transactions the run booked, if any.
+    warnings: ,  // optional — What the run noticed but did not refuse, for example an excluded investor record that is not on the register at the period end.
+    ignoredTags: new List<IgnoredDistributionTag>(),  // optional — The distribution character tags the run did not pool by, by account.
+    accruedFees: new List<AccruedFeeLine>()  // optional — The management fees accrued per partner in the period, which the accrual allocates and the run therefore leaves out of the pools.
 );
 ```
 ### Serializing to JSON
@@ -53,6 +59,8 @@ var instance = JsonConvert.DeserializeObject<PartnerAllocationRunResult>(json);
 - [ResourceId](ResourceId.md)
 - [PartnerAllocationPool](PartnerAllocationPool.md) — used in `Pools`
 - [UnattributedAmount](UnattributedAmount.md) — used in `Unattributed`
+- [IgnoredDistributionTag](IgnoredDistributionTag.md) — used in `IgnoredTags`
+- [AccruedFeeLine](AccruedFeeLine.md) — used in `AccruedFees`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

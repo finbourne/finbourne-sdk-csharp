@@ -39,12 +39,14 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// </summary>
         /// <param name="setCleanPVToZero">If set to true the CleanPV will be set to zero in valuations and PV will effectively just be the Accrual. (required).</param>
         /// <param name="usePriceQuoteForCleanPV">If set to true the CleanPV calculation will be looking for a price quote (no default price is assumed). CleanPV will be calculated as Holding/Balance * priceQuote / quoteScaleFactor.</param>
+        /// <param name="excludeIncomeFromPV">Read by a TotalReturnSwap whose asset leg has a ResetSchedule and whose underlying pays interest or coupons. If set to true the swap&#39;s PV leaves out the underlying&#39;s interest and coupon payments and adds the interest accrued on them to the valuation date instead, so CleanPV is the price return and PV is CleanPV + Accrued..</param>
         /// <param name="modelOptionsType">Available values: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions, FlexibleLoanPricerOptions, HullWhiteModelOptions, BondLookupModelOptions, BondForwardModelOptions, SimpleModelOptions, StripBondModelOptions. (required) (default to ModelOptionsTypeEnum.Invalid).</param>
-        public FlexibleLoanPricerOptions(bool setCleanPVToZero = default(bool), bool? usePriceQuoteForCleanPV = default(bool?), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
+        public FlexibleLoanPricerOptions(bool setCleanPVToZero = default(bool), bool? usePriceQuoteForCleanPV = default(bool?), bool? excludeIncomeFromPV = default(bool?), ModelOptionsTypeEnum modelOptionsType = default(ModelOptionsTypeEnum)) : base()
         {
             this.SetCleanPVToZero = setCleanPVToZero;
             this.ModelOptionsType = modelOptionsType;
             this.UsePriceQuoteForCleanPV = usePriceQuoteForCleanPV;
+            this.ExcludeIncomeFromPV = excludeIncomeFromPV;
         }
 
         /// <summary>
@@ -62,6 +64,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public bool? UsePriceQuoteForCleanPV { get; set; }
 
         /// <summary>
+        /// Read by a TotalReturnSwap whose asset leg has a ResetSchedule and whose underlying pays interest or coupons. If set to true the swap&#39;s PV leaves out the underlying&#39;s interest and coupon payments and adds the interest accrued on them to the valuation date instead, so CleanPV is the price return and PV is CleanPV + Accrued.
+        /// </summary>
+        /// <value>Read by a TotalReturnSwap whose asset leg has a ResetSchedule and whose underlying pays interest or coupons. If set to true the swap&#39;s PV leaves out the underlying&#39;s interest and coupon payments and adds the interest accrued on them to the valuation date instead, so CleanPV is the price return and PV is CleanPV + Accrued.</value>
+        [DataMember(Name = "excludeIncomeFromPV", EmitDefaultValue = true)]
+        public bool? ExcludeIncomeFromPV { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -72,6 +81,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  SetCleanPVToZero: ").Append(SetCleanPVToZero).Append("\n");
             sb.Append("  UsePriceQuoteForCleanPV: ").Append(UsePriceQuoteForCleanPV).Append("\n");
+            sb.Append("  ExcludeIncomeFromPV: ").Append(ExcludeIncomeFromPV).Append("\n");
             sb.Append("  ModelOptionsType: ").Append(ModelOptionsType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -118,6 +128,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.UsePriceQuoteForCleanPV.Equals(input.UsePriceQuoteForCleanPV))
                 ) && base.Equals(input) && 
                 (
+                    this.ExcludeIncomeFromPV == input.ExcludeIncomeFromPV ||
+                    (this.ExcludeIncomeFromPV != null &&
+                    this.ExcludeIncomeFromPV.Equals(input.ExcludeIncomeFromPV))
+                ) && base.Equals(input) && 
+                (
                     this.ModelOptionsType == input.ModelOptionsType ||
                     this.ModelOptionsType.Equals(input.ModelOptionsType)
                 );
@@ -136,6 +151,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 if (this.UsePriceQuoteForCleanPV != null)
                 {
                     hashCode = (hashCode * 59) + this.UsePriceQuoteForCleanPV.GetHashCode();
+                }
+                if (this.ExcludeIncomeFromPV != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExcludeIncomeFromPV.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ModelOptionsType.GetHashCode();
                 return hashCode;

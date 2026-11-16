@@ -39,7 +39,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="qtd">The quarter-to-date amount for the row. (required).</param>
         /// <param name="ytd">The year-to-date amount for the row. (required).</param>
         /// <param name="itd">The inception-to-date amount for the row. (required).</param>
-        public PartnerCapitalAccountRow(string rowType = default(string), decimal qtd = default(decimal), decimal ytd = default(decimal), decimal itd = default(decimal))
+        /// <param name="details">Labelled parts of the row&#39;s total, each already included in the row&#39;s columns. Tax withheld from a distribution on the partner&#39;s behalf is counted as distributed and shown here as its own entry against the distribution it was withheld on. Empty for a row with nothing to break out..</param>
+        public PartnerCapitalAccountRow(string rowType = default(string), decimal qtd = default(decimal), decimal ytd = default(decimal), decimal itd = default(decimal), List<PartnerCapitalAccountRowDetail> details = default(List<PartnerCapitalAccountRowDetail>))
         {
             // to ensure "rowType" is required (not null)
             if (rowType == null)
@@ -50,6 +51,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Qtd = qtd;
             this.Ytd = ytd;
             this.Itd = itd;
+            this.Details = details;
         }
 
         /// <summary>
@@ -81,6 +83,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal Itd { get; set; }
 
         /// <summary>
+        /// Labelled parts of the row&#39;s total, each already included in the row&#39;s columns. Tax withheld from a distribution on the partner&#39;s behalf is counted as distributed and shown here as its own entry against the distribution it was withheld on. Empty for a row with nothing to break out.
+        /// </summary>
+        /// <value>Labelled parts of the row&#39;s total, each already included in the row&#39;s columns. Tax withheld from a distribution on the partner&#39;s behalf is counted as distributed and shown here as its own entry against the distribution it was withheld on. Empty for a row with nothing to break out.</value>
+        [DataMember(Name = "details", EmitDefaultValue = true)]
+        public List<PartnerCapitalAccountRowDetail> Details { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -92,6 +101,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Qtd: ").Append(Qtd).Append("\n");
             sb.Append("  Ytd: ").Append(Ytd).Append("\n");
             sb.Append("  Itd: ").Append(Itd).Append("\n");
+            sb.Append("  Details: ").Append(Details).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -143,6 +153,12 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.Itd == input.Itd ||
                     this.Itd.Equals(input.Itd)
+                ) && 
+                (
+                    this.Details == input.Details ||
+                    this.Details != null &&
+                    input.Details != null &&
+                    this.Details.SequenceEqual(input.Details)
                 );
         }
 
@@ -162,6 +178,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 hashCode = (hashCode * 59) + this.Qtd.GetHashCode();
                 hashCode = (hashCode * 59) + this.Ytd.GetHashCode();
                 hashCode = (hashCode * 59) + this.Itd.GetHashCode();
+                if (this.Details != null)
+                {
+                    hashCode = (hashCode * 59) + this.Details.GetHashCode();
+                }
                 return hashCode;
             }
         }

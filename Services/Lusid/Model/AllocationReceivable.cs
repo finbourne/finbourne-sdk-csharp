@@ -38,7 +38,8 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="bucket">The ageing bucket: Current, 1-30, 31-60, 61-90 or 90+..</param>
         /// <param name="portfolio">portfolio.</param>
         /// <param name="side">Whether the record owes on its own line (LP) or as a feeder&#39;s roll-up on the master (ROLLUP)..</param>
-        public AllocationReceivable(string investorRecordId = default(string), decimal called = default(decimal), decimal received = default(decimal), decimal outstanding = default(decimal), int daysPastDue = default(int), string bucket = default(string), ResourceId portfolio = default(ResourceId), string side = default(string))
+        /// <param name="refundPayable">What the fund still owes the investor record back: receipts beyond what it owed, less the refunds paid out. Zero once the event is reversed, when the reversal&#39;s own refund takes over..</param>
+        public AllocationReceivable(string investorRecordId = default(string), decimal called = default(decimal), decimal received = default(decimal), decimal outstanding = default(decimal), int daysPastDue = default(int), string bucket = default(string), ResourceId portfolio = default(ResourceId), string side = default(string), decimal refundPayable = default(decimal))
         {
             this.InvestorRecordId = investorRecordId;
             this.Called = called;
@@ -48,6 +49,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             this.Bucket = bucket;
             this.Portfolio = portfolio;
             this.Side = side;
+            this.RefundPayable = refundPayable;
         }
 
         /// <summary>
@@ -106,6 +108,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Side { get; set; }
 
         /// <summary>
+        /// What the fund still owes the investor record back: receipts beyond what it owed, less the refunds paid out. Zero once the event is reversed, when the reversal&#39;s own refund takes over.
+        /// </summary>
+        /// <value>What the fund still owes the investor record back: receipts beyond what it owed, less the refunds paid out. Zero once the event is reversed, when the reversal&#39;s own refund takes over.</value>
+        [DataMember(Name = "refundPayable", EmitDefaultValue = true)]
+        public decimal RefundPayable { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -121,6 +130,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  Bucket: ").Append(Bucket).Append("\n");
             sb.Append("  Portfolio: ").Append(Portfolio).Append("\n");
             sb.Append("  Side: ").Append(Side).Append("\n");
+            sb.Append("  RefundPayable: ").Append(RefundPayable).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -191,6 +201,10 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Side == input.Side ||
                     (this.Side != null &&
                     this.Side.Equals(input.Side))
+                ) && 
+                (
+                    this.RefundPayable == input.RefundPayable ||
+                    this.RefundPayable.Equals(input.RefundPayable)
                 );
         }
 
@@ -223,6 +237,7 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Side.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.RefundPayable.GetHashCode();
                 return hashCode;
             }
         }

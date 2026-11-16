@@ -486,7 +486,7 @@ Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data,
 <a id="listderivedrecipes"></a>
 ## ListDerivedRecipes
 
-> ResourceListOfGetRecipeResponse ListDerivedRecipes(DateTimeOffset? asAt = null, string? filter = null)
+> ResourceListOfGetRecipeResponse ListDerivedRecipes(DateTimeOffset? asAt = null, string? filter = null, List<string>? sortBy = null)
 
 ListDerivedRecipes: List the complete set of all Configuration Recipes, both from the configuration recipe store and also from expanded recipe composers.
 
@@ -498,7 +498,8 @@ This endpoints returns a union of the output of ListConfigurationRecipes and the
 var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<ConfigurationRecipeApi>();
 var asAt = DateTimeOffset.Parse("2013-10-20T19:20:30+01:00");  // DateTimeOffset? (optional)
 var filter = "filter_example";  // string? (optional)
-ResourceListOfGetRecipeResponse result = apiInstance.ListDerivedRecipes(asAt, filter);
+var sortBy = new List<string>?(); // List<string>? (optional)
+ResourceListOfGetRecipeResponse result = apiInstance.ListDerivedRecipes(asAt, filter, sortBy);
 Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 ```
 
@@ -507,7 +508,8 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 | Name | Type | In | Required | Description |
 |------|------|----|----------|-------------|
 | **asAt** | **DateTimeOffset?** | query | optional | The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified. |
-| **filter** | **string?** | query | optional | Expression to filter the result set, note this functionality is not yet enabled for this endpoint. |
+| **filter** | **string?** | query | optional | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. |
+| **sortBy** | [List&lt;string&gt;?](../Model/string.md) | query | optional | A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. |
 
 ### Return type
 
@@ -532,7 +534,7 @@ Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 This returns an `ApiResponse` object which contains the response data, status code and headers.
 
 ```csharp
-ApiResponse<ResourceListOfGetRecipeResponse> response = apiInstance.ListDerivedRecipesWithHttpInfo(asAt, filter);
+ApiResponse<ResourceListOfGetRecipeResponse> response = apiInstance.ListDerivedRecipesWithHttpInfo(asAt, filter, sortBy);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

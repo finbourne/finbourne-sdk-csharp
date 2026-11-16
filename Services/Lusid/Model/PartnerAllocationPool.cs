@@ -39,9 +39,17 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         /// <param name="originMemberShortCode">For a deal-linked pool, the short code of the member fund the amount originates from..</param>
         /// <param name="poolAmount">The amount in the pool. (required).</param>
         /// <param name="basis">The basis the pool was shared on. Available values: CommittedCapital, PaidInCapital, DealPaidIn. (required).</param>
+        /// <param name="basisSource">Where the figures a deal pool was shared on came from; absent on a fund-level pool, which is shared on the register&#39;s balances. Available values: DealContributions (what each partner paid into the pool&#39;s deal, from the booked allocation events), Fallback (a deal pool no partner has paid into, shared on its character&#39;s fund-level basis instead)..</param>
         /// <param name="allocations">Each partner&#39;s share of the pool. (required).</param>
         /// <param name="residual">The rounding residual, carried by the largest allocation. (required).</param>
-        public PartnerAllocationPool(string character = default(string), string originMemberShortCode = default(string), decimal poolAmount = default(decimal), string basis = default(string), List<PartnerAllocation> allocations = default(List<PartnerAllocation>), decimal residual = default(decimal))
+        /// <param name="poolId">The pool&#39;s identifier: the allocation rule&#39;s bucket id, or TAG: followed by the character for lines pooled by their distribution character tag. (required).</param>
+        /// <param name="bucketSet">The code of the allocation bucket set the pool was classified by, with its version, for example PA-ALLOCATION-v1. (required).</param>
+        /// <param name="basisLevel">Which level of the basis precedence decided the pool&#39;s basis. Available values: Rule (the bucket rule&#39;s own basis), CharacterDefault (the configuration&#39;s allocationBases entry for the character), BuiltIn (the built-in default for the character). (required).</param>
+        /// <param name="exemption">The register flag that sat partners out of the pool. Available values: None, FeeExempt, ExpenseExempt. (required).</param>
+        /// <param name="excludedInvestorRecordIds">The partners the pool&#39;s rule left out of it..</param>
+        /// <param name="reportRow">The capital account row the pool&#39;s allocations land on, derived from the character. Available values: NetOperatingIncome, ManagementFeesGross, RealisedGainLoss, UnrealisedGainLoss..</param>
+        /// <param name="sources">sources (required).</param>
+        public PartnerAllocationPool(string character = default(string), string originMemberShortCode = default(string), decimal poolAmount = default(decimal), string basis = default(string), string basisSource = default(string), List<PartnerAllocation> allocations = default(List<PartnerAllocation>), decimal residual = default(decimal), string poolId = default(string), string bucketSet = default(string), string basisLevel = default(string), string exemption = default(string), List<string> excludedInvestorRecordIds = default(List<string>), string reportRow = default(string), PartnerAllocationPoolSources sources = default(PartnerAllocationPoolSources))
         {
             // to ensure "character" is required (not null)
             if (character == null)
@@ -63,7 +71,40 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             }
             this.Allocations = allocations;
             this.Residual = residual;
+            // to ensure "poolId" is required (not null)
+            if (poolId == null)
+            {
+                throw new ArgumentNullException("poolId is a required property for PartnerAllocationPool and cannot be null");
+            }
+            this.PoolId = poolId;
+            // to ensure "bucketSet" is required (not null)
+            if (bucketSet == null)
+            {
+                throw new ArgumentNullException("bucketSet is a required property for PartnerAllocationPool and cannot be null");
+            }
+            this.BucketSet = bucketSet;
+            // to ensure "basisLevel" is required (not null)
+            if (basisLevel == null)
+            {
+                throw new ArgumentNullException("basisLevel is a required property for PartnerAllocationPool and cannot be null");
+            }
+            this.BasisLevel = basisLevel;
+            // to ensure "exemption" is required (not null)
+            if (exemption == null)
+            {
+                throw new ArgumentNullException("exemption is a required property for PartnerAllocationPool and cannot be null");
+            }
+            this.Exemption = exemption;
+            // to ensure "sources" is required (not null)
+            if (sources == null)
+            {
+                throw new ArgumentNullException("sources is a required property for PartnerAllocationPool and cannot be null");
+            }
+            this.Sources = sources;
             this.OriginMemberShortCode = originMemberShortCode;
+            this.BasisSource = basisSource;
+            this.ExcludedInvestorRecordIds = excludedInvestorRecordIds;
+            this.ReportRow = reportRow;
         }
 
         /// <summary>
@@ -95,6 +136,13 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public string Basis { get; set; }
 
         /// <summary>
+        /// Where the figures a deal pool was shared on came from; absent on a fund-level pool, which is shared on the register&#39;s balances. Available values: DealContributions (what each partner paid into the pool&#39;s deal, from the booked allocation events), Fallback (a deal pool no partner has paid into, shared on its character&#39;s fund-level basis instead).
+        /// </summary>
+        /// <value>Where the figures a deal pool was shared on came from; absent on a fund-level pool, which is shared on the register&#39;s balances. Available values: DealContributions (what each partner paid into the pool&#39;s deal, from the booked allocation events), Fallback (a deal pool no partner has paid into, shared on its character&#39;s fund-level basis instead).</value>
+        [DataMember(Name = "basisSource", EmitDefaultValue = true)]
+        public string BasisSource { get; set; }
+
+        /// <summary>
         /// Each partner&#39;s share of the pool.
         /// </summary>
         /// <value>Each partner&#39;s share of the pool.</value>
@@ -109,6 +157,54 @@ namespace Finbourne.Sdk.Services.Lusid.Model
         public decimal Residual { get; set; }
 
         /// <summary>
+        /// The pool&#39;s identifier: the allocation rule&#39;s bucket id, or TAG: followed by the character for lines pooled by their distribution character tag.
+        /// </summary>
+        /// <value>The pool&#39;s identifier: the allocation rule&#39;s bucket id, or TAG: followed by the character for lines pooled by their distribution character tag.</value>
+        [DataMember(Name = "poolId", IsRequired = true, EmitDefaultValue = true)]
+        public string PoolId { get; set; }
+
+        /// <summary>
+        /// The code of the allocation bucket set the pool was classified by, with its version, for example PA-ALLOCATION-v1.
+        /// </summary>
+        /// <value>The code of the allocation bucket set the pool was classified by, with its version, for example PA-ALLOCATION-v1.</value>
+        [DataMember(Name = "bucketSet", IsRequired = true, EmitDefaultValue = true)]
+        public string BucketSet { get; set; }
+
+        /// <summary>
+        /// Which level of the basis precedence decided the pool&#39;s basis. Available values: Rule (the bucket rule&#39;s own basis), CharacterDefault (the configuration&#39;s allocationBases entry for the character), BuiltIn (the built-in default for the character).
+        /// </summary>
+        /// <value>Which level of the basis precedence decided the pool&#39;s basis. Available values: Rule (the bucket rule&#39;s own basis), CharacterDefault (the configuration&#39;s allocationBases entry for the character), BuiltIn (the built-in default for the character).</value>
+        [DataMember(Name = "basisLevel", IsRequired = true, EmitDefaultValue = true)]
+        public string BasisLevel { get; set; }
+
+        /// <summary>
+        /// The register flag that sat partners out of the pool. Available values: None, FeeExempt, ExpenseExempt.
+        /// </summary>
+        /// <value>The register flag that sat partners out of the pool. Available values: None, FeeExempt, ExpenseExempt.</value>
+        [DataMember(Name = "exemption", IsRequired = true, EmitDefaultValue = true)]
+        public string Exemption { get; set; }
+
+        /// <summary>
+        /// The partners the pool&#39;s rule left out of it.
+        /// </summary>
+        /// <value>The partners the pool&#39;s rule left out of it.</value>
+        [DataMember(Name = "excludedInvestorRecordIds", EmitDefaultValue = true)]
+        public List<string> ExcludedInvestorRecordIds { get; set; }
+
+        /// <summary>
+        /// The capital account row the pool&#39;s allocations land on, derived from the character. Available values: NetOperatingIncome, ManagementFeesGross, RealisedGainLoss, UnrealisedGainLoss.
+        /// </summary>
+        /// <value>The capital account row the pool&#39;s allocations land on, derived from the character. Available values: NetOperatingIncome, ManagementFeesGross, RealisedGainLoss, UnrealisedGainLoss.</value>
+        [DataMember(Name = "reportRow", EmitDefaultValue = true)]
+        public string ReportRow { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Sources
+        /// </summary>
+        [DataMember(Name = "sources", IsRequired = true, EmitDefaultValue = true)]
+        public PartnerAllocationPoolSources Sources { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -120,8 +216,16 @@ namespace Finbourne.Sdk.Services.Lusid.Model
             sb.Append("  OriginMemberShortCode: ").Append(OriginMemberShortCode).Append("\n");
             sb.Append("  PoolAmount: ").Append(PoolAmount).Append("\n");
             sb.Append("  Basis: ").Append(Basis).Append("\n");
+            sb.Append("  BasisSource: ").Append(BasisSource).Append("\n");
             sb.Append("  Allocations: ").Append(Allocations).Append("\n");
             sb.Append("  Residual: ").Append(Residual).Append("\n");
+            sb.Append("  PoolId: ").Append(PoolId).Append("\n");
+            sb.Append("  BucketSet: ").Append(BucketSet).Append("\n");
+            sb.Append("  BasisLevel: ").Append(BasisLevel).Append("\n");
+            sb.Append("  Exemption: ").Append(Exemption).Append("\n");
+            sb.Append("  ExcludedInvestorRecordIds: ").Append(ExcludedInvestorRecordIds).Append("\n");
+            sb.Append("  ReportRow: ").Append(ReportRow).Append("\n");
+            sb.Append("  Sources: ").Append(Sources).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -177,6 +281,11 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                     this.Basis.Equals(input.Basis))
                 ) && 
                 (
+                    this.BasisSource == input.BasisSource ||
+                    (this.BasisSource != null &&
+                    this.BasisSource.Equals(input.BasisSource))
+                ) && 
+                (
                     this.Allocations == input.Allocations ||
                     this.Allocations != null &&
                     input.Allocations != null &&
@@ -185,6 +294,42 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 (
                     this.Residual == input.Residual ||
                     this.Residual.Equals(input.Residual)
+                ) && 
+                (
+                    this.PoolId == input.PoolId ||
+                    (this.PoolId != null &&
+                    this.PoolId.Equals(input.PoolId))
+                ) && 
+                (
+                    this.BucketSet == input.BucketSet ||
+                    (this.BucketSet != null &&
+                    this.BucketSet.Equals(input.BucketSet))
+                ) && 
+                (
+                    this.BasisLevel == input.BasisLevel ||
+                    (this.BasisLevel != null &&
+                    this.BasisLevel.Equals(input.BasisLevel))
+                ) && 
+                (
+                    this.Exemption == input.Exemption ||
+                    (this.Exemption != null &&
+                    this.Exemption.Equals(input.Exemption))
+                ) && 
+                (
+                    this.ExcludedInvestorRecordIds == input.ExcludedInvestorRecordIds ||
+                    this.ExcludedInvestorRecordIds != null &&
+                    input.ExcludedInvestorRecordIds != null &&
+                    this.ExcludedInvestorRecordIds.SequenceEqual(input.ExcludedInvestorRecordIds)
+                ) && 
+                (
+                    this.ReportRow == input.ReportRow ||
+                    (this.ReportRow != null &&
+                    this.ReportRow.Equals(input.ReportRow))
+                ) && 
+                (
+                    this.Sources == input.Sources ||
+                    (this.Sources != null &&
+                    this.Sources.Equals(input.Sources))
                 );
         }
 
@@ -210,11 +355,43 @@ namespace Finbourne.Sdk.Services.Lusid.Model
                 {
                     hashCode = (hashCode * 59) + this.Basis.GetHashCode();
                 }
+                if (this.BasisSource != null)
+                {
+                    hashCode = (hashCode * 59) + this.BasisSource.GetHashCode();
+                }
                 if (this.Allocations != null)
                 {
                     hashCode = (hashCode * 59) + this.Allocations.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Residual.GetHashCode();
+                if (this.PoolId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PoolId.GetHashCode();
+                }
+                if (this.BucketSet != null)
+                {
+                    hashCode = (hashCode * 59) + this.BucketSet.GetHashCode();
+                }
+                if (this.BasisLevel != null)
+                {
+                    hashCode = (hashCode * 59) + this.BasisLevel.GetHashCode();
+                }
+                if (this.Exemption != null)
+                {
+                    hashCode = (hashCode * 59) + this.Exemption.GetHashCode();
+                }
+                if (this.ExcludedInvestorRecordIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExcludedInvestorRecordIds.GetHashCode();
+                }
+                if (this.ReportRow != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReportRow.GetHashCode();
+                }
+                if (this.Sources != null)
+                {
+                    hashCode = (hashCode * 59) + this.Sources.GetHashCode();
+                }
                 return hashCode;
             }
         }

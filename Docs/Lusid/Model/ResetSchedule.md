@@ -10,6 +10,7 @@ The schedule on which the price return of the asset leg of a total return swap i
 | **Frequency** | **string** | Required | The frequency at which the asset price is reset and the price return is exchanged, e.g. 3M. |
 | **FundingStartLag** | [RelativeDateOffset](RelativeDateOffset.md) | Optional | *No description available.* |
 | **LastResetDate** | **DateTimeOffset?** | Optional | The date of the last price reset. Optional; when absent the reset dates are rolled forward until the swap maturity date. |
+| **PaymentLag** | [RelativeDateOffset](RelativeDateOffset.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -24,7 +25,8 @@ var instance = new ResetSchedule(
     firstResetDate: DateTimeOffset.Now,  // optional — The date of the first price reset. Optional; when absent the reset dates are rolled forward from the swap start date.
     frequency: "...",  // required — The frequency at which the asset price is reset and the price return is exchanged, e.g. 3M.
     fundingStartLag: new RelativeDateOffset(...),  // optional
-    lastResetDate: DateTimeOffset.Now  // optional — The date of the last price reset. Optional; when absent the reset dates are rolled forward until the swap maturity date.
+    lastResetDate: DateTimeOffset.Now,  // optional — The date of the last price reset. Optional; when absent the reset dates are rolled forward until the swap maturity date.
+    paymentLag: new RelativeDateOffset(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -43,6 +45,7 @@ var instance = JsonConvert.DeserializeObject<ResetSchedule>(json);
 ## Related Models
 
 - [FlowConventions](FlowConventions.md)
+- [RelativeDateOffset](RelativeDateOffset.md)
 - [RelativeDateOffset](RelativeDateOffset.md)
 
 

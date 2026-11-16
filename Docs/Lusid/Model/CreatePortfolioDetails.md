@@ -9,6 +9,7 @@
 | **FractionalUnitsTrueUpConfiguration** | [FractionalUnitsTrueUpConfiguration](FractionalUnitsTrueUpConfiguration.md) | Optional | *No description available.* |
 | **HoldingsFungibility** | **string** | Optional | Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. If not supplied, the portfolio&#39;s current value is left unchanged; supply Default to reset it. A reset or never-configured flag reads back as absent. Available values: Default, Enabled. |
 | **ChargeableGainsRegime** | **string** | Optional | The chargeable gains regime the portfolio is elected into. This can be: Default or UkChargeableGains. If not supplied, the portfolio&#39;s current value is left unchanged; supply Default to reset it. A reset or never-configured regime reads back as absent. Available values: Default, UkChargeableGains. |
+| **AmortisationHorizon** | [AmortisationHorizon](AmortisationHorizon.md) | Optional | *No description available.* |
 | **WhtParameters** | [WhtParameters](WhtParameters.md) | Optional | *No description available.* |
 
 
@@ -25,6 +26,7 @@ var instance = new CreatePortfolioDetails(
     fractionalUnitsTrueUpConfiguration: new FractionalUnitsTrueUpConfiguration(...),  // optional
     holdingsFungibility: "...",  // optional — Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. If not supplied, the portfolio&#39;s current value is left unchanged; supply Default to reset it. A reset or never-configured flag reads back as absent. Available values: Default, Enabled.
     chargeableGainsRegime: "...",  // optional — The chargeable gains regime the portfolio is elected into. This can be: Default or UkChargeableGains. If not supplied, the portfolio&#39;s current value is left unchanged; supply Default to reset it. A reset or never-configured regime reads back as absent. Available values: Default, UkChargeableGains.
+    amortisationHorizon: new AmortisationHorizon(...),  // optional
     whtParameters: new WhtParameters(...)  // optional
 );
 ```
@@ -45,6 +47,7 @@ var instance = JsonConvert.DeserializeObject<CreatePortfolioDetails>(json);
 
 - [ResourceId](ResourceId.md)
 - [FractionalUnitsTrueUpConfiguration](FractionalUnitsTrueUpConfiguration.md)
+- [AmortisationHorizon](AmortisationHorizon.md)
 - [WhtParameters](WhtParameters.md)
 
 

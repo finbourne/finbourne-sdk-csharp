@@ -14,6 +14,8 @@
 | **EffectiveCapabilities** | **Dictionary&lt;string, string&gt;** | Optional | Derived on the way out; ignored on the way in. |
 | **Presentation** | [PresentationConfiguration](PresentationConfiguration.md) | Optional | *No description available.* |
 | **AllocationBases** | [List&lt;AllocationBasisRule&gt;](AllocationBasisRule.md) | Optional | *No description available.* |
+| **AllocationBucketSet** | **string** | Optional | *No description available.* |
+| **AllocationRules** | [List&lt;AllocationRule&gt;](AllocationRule.md) | Optional | On the way in, the configuration&#39;s rules or its overrides of a system set&#39;s rules; on the way out, the  effective rules the fund allocates by. |
 
 
 ## Usage
@@ -33,7 +35,9 @@ var instance = new PartnershipAccountingConfiguration(
     series: new SeriesConfiguration(...),  // optional
     effectiveCapabilities: ,  // optional — Derived on the way out; ignored on the way in.
     presentation: new PresentationConfiguration(...),  // optional
-    allocationBases: new List<AllocationBasisRule>()  // optional
+    allocationBases: new List<AllocationBasisRule>(),  // optional
+    allocationBucketSet: "...",  // optional
+    allocationRules: new List<AllocationRule>()  // optional — On the way in, the configuration&#39;s rules or its overrides of a system set&#39;s rules; on the way out, the  effective rules the fund allocates by.
 );
 ```
 ### Serializing to JSON
@@ -54,6 +58,7 @@ var instance = JsonConvert.DeserializeObject<PartnershipAccountingConfiguration>
 - [SeriesConfiguration](SeriesConfiguration.md)
 - [PresentationConfiguration](PresentationConfiguration.md)
 - [AllocationBasisRule](AllocationBasisRule.md)
+- [AllocationRule](AllocationRule.md) — used in `AllocationRules`
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)

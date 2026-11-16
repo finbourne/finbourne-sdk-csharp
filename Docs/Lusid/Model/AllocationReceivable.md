@@ -13,6 +13,7 @@ One investor's position on a booked capital call, on one register.
 | **Bucket** | **string** | Optional | The ageing bucket: Current, 1-30, 31-60, 61-90 or 90+. |
 | **Portfolio** | [ResourceId](ResourceId.md) | Optional | *No description available.* |
 | **Side** | **string** | Optional | Whether the record owes on its own line (LP) or as a feeder&#39;s roll-up on the master (ROLLUP). |
+| **RefundPayable** | **decimal** | Optional | What the fund still owes the investor record back: receipts beyond what it owed, less the refunds paid out. Zero once the event is reversed, when the reversal&#39;s own refund takes over. |
 
 
 ## Usage
@@ -30,7 +31,8 @@ var instance = new AllocationReceivable(
     daysPastDue: 0,  // optional — How many days past the due date the outstanding amount is, or zero when not yet due or nothing is owed.
     bucket: "...",  // optional — The ageing bucket: Current, 1-30, 31-60, 61-90 or 90+.
     portfolio: new ResourceId(...),  // optional
-    side: "..."  // optional — Whether the record owes on its own line (LP) or as a feeder&#39;s roll-up on the master (ROLLUP).
+    side: "...",  // optional — Whether the record owes on its own line (LP) or as a feeder&#39;s roll-up on the master (ROLLUP).
+    refundPayable: 0.0d  // optional — What the fund still owes the investor record back: receipts beyond what it owed, less the refunds paid out. Zero once the event is reversed, when the reversal&#39;s own refund takes over.
 );
 ```
 ### Serializing to JSON
