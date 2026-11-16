@@ -7,7 +7,7 @@ One node within a bucket set result: the fund aggregate or a single share class.
 |------|------|----------|-------------|
 | **NodeType** | **string** | Required | The kind of node: the fund aggregate or a single share class. Available values: Fund, Class. |
 | **ShareClassShortCode** | **string** | Optional | The short code of the share class this node is for. Omitted on the fund node. |
-| **Nav** | **decimal?** | Optional | The net asset value at this node, in the fund currency. |
+| **Nav** | **decimal?** | Optional | The net asset value at this node, in the fund currency. It is the sum of the node&#39;s buckets&#39; cumulative values, leaving out the reserved _unmatched_* buckets: those hold journal entry lines no bucket classified, which are reported for diagnosis but are not part of the valuation. On an estimate with unmatched lines the NAV is therefore less than the sum of every bucket shown. A finalised valuation point has no unmatched amounts. |
 | **CapitalRatio** | **decimal?** | Optional | The share class&#39;s capital ratio (its share of the fund NAV). Omitted on the fund node. |
 | **Buckets** | [List&lt;BucketSetResultBucket&gt;](BucketSetResultBucket.md) | Required | The buckets on this node, each with its period movement and cumulative values. |
 | **PerUnitValue** | **decimal?** | Optional | The share class&#39;s NAV per unit in issue, in the fund currency, unrounded whatever the share class&#39;s price rounding convention. Omitted on the fund node, for a share class that is not unitised, and for a unitised share class with no units in issue to divide by (SharesInIssue is then reported as zero). The dealing price - in the share class currency, with its rounding convention applied - is on the share class breakdown&#39;s unitisation data. |
@@ -33,7 +33,7 @@ using Finbourne.Sdk.Services.Lusid.Model;
 var instance = new BucketSetNode(
     nodeType: "...",  // required — The kind of node: the fund aggregate or a single share class. Available values: Fund, Class.
     shareClassShortCode: "...",  // optional — The short code of the share class this node is for. Omitted on the fund node.
-    nav: 0.0d,  // optional — The net asset value at this node, in the fund currency.
+    nav: 0.0d,  // optional — The net asset value at this node, in the fund currency. It is the sum of the node&#39;s buckets&#39; cumulative values, leaving out the reserved _unmatched_* buckets: those hold journal entry lines no bucket classified, which are reported for diagnosis but are not part of the valuation. On an estimate with unmatched lines the NAV is therefore less than the sum of every bucket shown. A finalised valuation point has no unmatched amounts.
     capitalRatio: 0.0d,  // optional — The share class&#39;s capital ratio (its share of the fund NAV). Omitted on the fund node.
     buckets: new List<BucketSetResultBucket>(),  // required — The buckets on this node, each with its period movement and cumulative values.
     perUnitValue: 0.0d,  // optional — The share class&#39;s NAV per unit in issue, in the fund currency, unrounded whatever the share class&#39;s price rounding convention. Omitted on the fund node, for a share class that is not unitised, and for a unitised share class with no units in issue to divide by (SharesInIssue is then reported as zero). The dealing price - in the share class currency, with its rounding convention applied - is on the share class breakdown&#39;s unitisation data.

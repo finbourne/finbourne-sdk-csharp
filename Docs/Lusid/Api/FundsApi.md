@@ -93,6 +93,7 @@ All URIs are relative to *http://localhost*
 | [**UpsertFeeProperties**](#upsertfeeproperties) | **POST** `/api/api/funds/{scope}/{code}/fees/{feeCode}/properties/$upsert` | [EARLY ACCESS] UpsertFeeProperties: Upsert Fee properties. |
 | [**UpsertFundProperties**](#upsertfundproperties) | **POST** `/api/api/funds/{scope}/{code}/properties/$upsert` | [EARLY ACCESS] UpsertFundProperties: Upsert Fund properties. |
 | [**UpsertNavActivityAdjustments**](#upsertnavactivityadjustments) | **POST** `/api/api/funds/{scope}/{code}/navAdjustment` | [EARLY ACCESS] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point |
+| [**UpsertShareClassProperties**](#upsertshareclassproperties) | **POST** `/api/api/funds/{scope}/{code}/shareclasses/{shareClassShortCode}/properties/$upsert` | [EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties. |
 | [**UpsertTaxCostRecords**](#upserttaxcostrecords) | **POST** `/api/api/funds/{scope}/{code}/taxcostrecords` | [EXPERIMENTAL] UpsertTaxCostRecords: [EXPERIMENTAL] UpsertTaxCostRecords: Upsert Tax Cost Records for a specified Fund. |
 
 ### Example
@@ -6029,6 +6030,70 @@ This returns an `ApiResponse` object which contains the response data, status co
 
 ```csharp
 ApiResponse<DateTimeOffset> response = apiInstance.UpsertNavActivityAdjustmentsWithHttpInfo(scope, code, valuationPointCode, navActivityAdjustment, navTypeCode, valuationPointCodeVariant);
+Console.WriteLine("Status Code: " + response.StatusCode);
+Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
+Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));
+```
+</details>
+
+[Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
+
+---
+
+<a id="upsertshareclassproperties"></a>
+## UpsertShareClassProperties
+
+> ShareClassProperties UpsertShareClassProperties(string scope, string code, string shareClassShortCode, Dictionary<string, Property>? requestBody = null)
+
+[EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties.
+
+Update or insert one or more Instrument-domain properties onto a single Share Class.  A property will be updated if it already exists and inserted if it does not.  Upserting with a null value deletes the property instance.
+
+### Example
+
+```csharp
+var apiInstance = ApiFactoryBuilder.Build(secretsFilename).Api<FundsApi>();
+var scope = "scope_example";  // string
+var code = "code_example";  // string
+var shareClassShortCode = "shareClassShortCode_example";  // string
+var requestBody = new Dictionary<string, Property>?(); // Dictionary<string, Property>? (optional)
+ShareClassProperties result = apiInstance.UpsertShareClassProperties(scope, code, shareClassShortCode, requestBody);
+Console.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+```
+
+### Parameters
+
+| Name | Type | In | Required | Description |
+|------|------|----|----------|-------------|
+| **scope** | **string** | path | **required** | The scope of the Fund. |
+| **code** | **string** | path | **required** | The code of the Fund. Together with the scope this uniquely identifies the Fund. |
+| **shareClassShortCode** | **string** | path | **required** | The short code of the Share Class to update or insert the properties onto. |
+| **requestBody** | [Dictionary&lt;string, Property&gt;?](../Model/Property.md) | body | optional | The properties to be updated or inserted onto the Share Class, keyed by property key (e.g. \&quot;Instrument/Manager/Id\&quot;). |
+
+### Return type
+
+[ShareClassProperties](../Model/ShareClassProperties.md)
+
+### HTTP request headers
+
+ - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+ - **Accept**: `text/plain`, `application/json`, `text/json`
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated or inserted properties |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<details>
+<summary>Using the UpsertShareClassPropertiesWithHttpInfo variant</summary>
+
+This returns an `ApiResponse` object which contains the response data, status code and headers.
+
+```csharp
+ApiResponse<ShareClassProperties> response = apiInstance.UpsertShareClassPropertiesWithHttpInfo(scope, code, shareClassShortCode, requestBody);
 Console.WriteLine("Status Code: " + response.StatusCode);
 Console.WriteLine("Response Headers: " + JsonConvert.SerializeObject(response.Headers, Formatting.Indented));
 Console.WriteLine("Response Body: " + JsonConvert.SerializeObject(response.Data, Formatting.Indented));

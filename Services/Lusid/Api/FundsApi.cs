@@ -3027,6 +3027,37 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <returns>ApiResponse of DateTimeOffset</returns>
         Finbourne.Sdk.Client.ApiResponse<DateTimeOffset> UpsertNavActivityAdjustmentsWithHttpInfo(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, ConfigurationOptions? opts = null);
         /// <summary>
+        /// [EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties.
+        /// </summary>
+        /// <remarks>
+        /// Update or insert one or more Instrument-domain properties onto a single Share Class.  A property will be updated if it already exists and inserted if it does not.  Upserting with a null value deletes the property instance.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="shareClassShortCode">The short code of the Share Class to update or insert the properties onto.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the Share Class, keyed by property key (e.g. \&quot;Instrument/Manager/Id\&quot;). (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ShareClassProperties</returns>
+        ShareClassProperties UpsertShareClassProperties(string scope, string code, string shareClassShortCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties.
+        /// </summary>
+        /// <remarks>
+        /// Update or insert one or more Instrument-domain properties onto a single Share Class.  A property will be updated if it already exists and inserted if it does not.  Upserting with a null value deletes the property instance.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="shareClassShortCode">The short code of the Share Class to update or insert the properties onto.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the Share Class, keyed by property key (e.g. \&quot;Instrument/Manager/Id\&quot;). (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ShareClassProperties</returns>
+        Finbourne.Sdk.Client.ApiResponse<ShareClassProperties> UpsertShareClassPropertiesWithHttpInfo(string scope, string code, string shareClassShortCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, ConfigurationOptions? opts = null);
+        /// <summary>
         /// [EXPERIMENTAL] UpsertTaxCostRecords: [EXPERIMENTAL] UpsertTaxCostRecords: Upsert Tax Cost Records for a specified Fund.
         /// </summary>
         /// <remarks>
@@ -6236,6 +6267,39 @@ namespace Finbourne.Sdk.Services.Lusid.Api
         /// <param name="opts">Options for this request.</param>
         /// <returns>Task of ApiResponse (DateTimeOffset)</returns>
         System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<DateTimeOffset>> UpsertNavActivityAdjustmentsWithHttpInfoAsync(string scope, string code, string valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment, string? navTypeCode = default(string?), string? valuationPointCodeVariant = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+        /// <summary>
+        /// [EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties.
+        /// </summary>
+        /// <remarks>
+        /// Update or insert one or more Instrument-domain properties onto a single Share Class.  A property will be updated if it already exists and inserted if it does not.  Upserting with a null value deletes the property instance.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="shareClassShortCode">The short code of the Share Class to update or insert the properties onto.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the Share Class, keyed by property key (e.g. \&quot;Instrument/Manager/Id\&quot;). (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ShareClassProperties</returns>
+        System.Threading.Tasks.Task<ShareClassProperties> UpsertShareClassPropertiesAsync(string scope, string code, string shareClassShortCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
+
+        /// <summary>
+        /// [EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties.
+        /// </summary>
+        /// <remarks>
+        /// Update or insert one or more Instrument-domain properties onto a single Share Class.  A property will be updated if it already exists and inserted if it does not.  Upserting with a null value deletes the property instance.
+        /// </remarks>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="shareClassShortCode">The short code of the Share Class to update or insert the properties onto.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the Share Class, keyed by property key (e.g. \&quot;Instrument/Manager/Id\&quot;). (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ShareClassProperties)</returns>
+        System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ShareClassProperties>> UpsertShareClassPropertiesWithHttpInfoAsync(string scope, string code, string shareClassShortCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null);
         /// <summary>
         /// [EXPERIMENTAL] UpsertTaxCostRecords: [EXPERIMENTAL] UpsertTaxCostRecords: Upsert Tax Cost Records for a specified Fund.
         /// </summary>
@@ -32266,6 +32330,282 @@ namespace Finbourne.Sdk.Services.Lusid.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpsertNavActivityAdjustments", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties. Update or insert one or more Instrument-domain properties onto a single Share Class.  A property will be updated if it already exists and inserted if it does not.  Upserting with a null value deletes the property instance.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="shareClassShortCode">The short code of the Share Class to update or insert the properties onto.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the Share Class, keyed by property key (e.g. \&quot;Instrument/Manager/Id\&quot;). (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ShareClassProperties</returns>
+        public ShareClassProperties UpsertShareClassProperties(string scope, string code, string shareClassShortCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ShareClassProperties> localVarResponse = UpsertShareClassPropertiesWithHttpInfo(scope, code, shareClassShortCode, requestBody, opts: opts);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties. Update or insert one or more Instrument-domain properties onto a single Share Class.  A property will be updated if it already exists and inserted if it does not.  Upserting with a null value deletes the property instance.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="shareClassShortCode">The short code of the Share Class to update or insert the properties onto.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the Share Class, keyed by property key (e.g. \&quot;Instrument/Manager/Id\&quot;). (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>ApiResponse of ShareClassProperties</returns>
+        public Finbourne.Sdk.Client.ApiResponse<ShareClassProperties> UpsertShareClassPropertiesWithHttpInfo(string scope, string code, string shareClassShortCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->UpsertShareClassProperties");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->UpsertShareClassProperties");
+            }
+
+            // verify the required parameter 'shareClassShortCode' is set
+            if (shareClassShortCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'shareClassShortCode' when calling FundsApi->UpsertShareClassProperties");
+            }
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json",
+                "application/json",
+                "text/json",
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("shareClassShortCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(shareClassShortCode)); // path parameter
+            localVarRequestOptions.Data = requestBody;
+
+            localVarRequestOptions.Operation = "FundsApi.UpsertShareClassProperties";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ShareClassProperties, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/shareclasses/{shareClassShortCode}/properties/$upsert", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpsertShareClassProperties", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties. Update or insert one or more Instrument-domain properties onto a single Share Class.  A property will be updated if it already exists and inserted if it does not.  Upserting with a null value deletes the property instance.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="shareClassShortCode">The short code of the Share Class to update or insert the properties onto.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the Share Class, keyed by property key (e.g. \&quot;Instrument/Manager/Id\&quot;). (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ShareClassProperties</returns>
+        public async System.Threading.Tasks.Task<ShareClassProperties> UpsertShareClassPropertiesAsync(string scope, string code, string shareClassShortCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            Finbourne.Sdk.Client.ApiResponse<ShareClassProperties> localVarResponse = await UpsertShareClassPropertiesWithHttpInfoAsync(scope, code, shareClassShortCode, requestBody, operationIndex, cancellationToken, opts).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// [EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties. Update or insert one or more Instrument-domain properties onto a single Share Class.  A property will be updated if it already exists and inserted if it does not.  Upserting with a null value deletes the property instance.
+        /// </summary>
+        /// <exception cref="Finbourne.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="ArgumentNullException">Thrown when required parameter is null</exception>
+        /// <param name="scope">The scope of the Fund.</param>
+        /// <param name="code">The code of the Fund. Together with the scope this uniquely identifies the Fund.</param>
+        /// <param name="shareClassShortCode">The short code of the Share Class to update or insert the properties onto.</param>
+        /// <param name="requestBody">The properties to be updated or inserted onto the Share Class, keyed by property key (e.g. \&quot;Instrument/Manager/Id\&quot;). (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <param name="opts">Options for this request.</param>
+        /// <returns>Task of ApiResponse (ShareClassProperties)</returns>
+        public async System.Threading.Tasks.Task<Finbourne.Sdk.Client.ApiResponse<ShareClassProperties>> UpsertShareClassPropertiesWithHttpInfoAsync(string scope, string code, string shareClassShortCode, Dictionary<string, Property>? requestBody = default(Dictionary<string, Property>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), ConfigurationOptions? opts = null)
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'scope' when calling FundsApi->UpsertShareClassProperties");
+            }
+
+            // verify the required parameter 'code' is set
+            if (code == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'code' when calling FundsApi->UpsertShareClassProperties");
+            }
+
+            // verify the required parameter 'shareClassShortCode' is set
+            if (shareClassShortCode == null)
+            {
+                throw new ArgumentNullException("Missing required parameter 'shareClassShortCode' when calling FundsApi->UpsertShareClassProperties");
+            }
+
+
+            Finbourne.Sdk.Client.RequestOptions localVarRequestOptions = new Finbourne.Sdk.Client.RequestOptions();
+
+            if (opts is { TimeoutMs: not null })
+            {
+                localVarRequestOptions.TimeoutMs = opts.TimeoutMs.Value;
+            }
+            
+            if (opts is { RateLimitRetries: not null })
+            {
+                localVarRequestOptions.RateLimitRetries = opts.RateLimitRetries.Value;
+            }
+
+            if (opts is { NumberOfRetries: not null })
+            {
+                localVarRequestOptions.NumberOfRetries = opts.NumberOfRetries.Value;
+            }
+
+            if (opts is { RetryBackoffMs: not null })
+            {
+                localVarRequestOptions.RetryBackoffMs = opts.RetryBackoffMs.Value;
+            }
+
+            string[] _contentTypes = new string[] {
+                "application/json-patch+json", 
+                "application/json", 
+                "text/json", 
+                "application/*+json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+
+            var localVarContentType = Finbourne.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Finbourne.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", Finbourne.Sdk.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.PathParameters.Add("code", Finbourne.Sdk.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.PathParameters.Add("shareClassShortCode", Finbourne.Sdk.Client.ClientUtils.ParameterToString(shareClassShortCode)); // path parameter
+            localVarRequestOptions.Data = requestBody;
+
+            localVarRequestOptions.Operation = "FundsApi.UpsertShareClassProperties";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ShareClassProperties, AbstractOpenAPISchema>("/api/api/funds/{scope}/{code}/shareclasses/{shareClassShortCode}/properties/$upsert", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpsertShareClassProperties", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

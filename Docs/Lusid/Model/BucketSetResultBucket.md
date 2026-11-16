@@ -16,6 +16,7 @@ One bucket's values within a bucket set node: the movement in the period plus th
 | **PreviousCumulativePerUnitValue** | **decimal?** | Optional | The bucket&#39;s cumulative value at the start of the period, per unit in issue at that point - so it reads as it did at the previous valuation point rather than being restated at this period&#39;s unit count. Omitted where the bucket had no per-unit value at the previous valuation point: on the fund node, where the share class or the bucket is not unitised, where the share class then had no units in issue, and at the fund&#39;s first valuation point. |
 | **CumulativePerUnitValue** | **decimal?** | Optional | The bucket&#39;s cumulative value at the end of the period per unit in issue (CumulativeValue divided by UnitsInIssue), unrounded. Omitted where either the share class or the bucket is not unitised, and where a unitised share class has no units in issue to divide by. |
 | **DisplayName** | **string** | Optional | The display name of the bucket, as configured on the fund configuration. |
+| **UnmatchedBreakdown** | [UnmatchedBreakdown](UnmatchedBreakdown.md) | Optional | *No description available.* |
 
 
 ## Usage
@@ -36,7 +37,8 @@ var instance = new BucketSetResultBucket(
     unitsInIssue: 0.0d,  // optional — The share class&#39;s units in issue at the end of the period. Omitted where either the share class or the bucket is not unitised.
     previousCumulativePerUnitValue: 0.0d,  // optional — The bucket&#39;s cumulative value at the start of the period, per unit in issue at that point - so it reads as it did at the previous valuation point rather than being restated at this period&#39;s unit count. Omitted where the bucket had no per-unit value at the previous valuation point: on the fund node, where the share class or the bucket is not unitised, where the share class then had no units in issue, and at the fund&#39;s first valuation point.
     cumulativePerUnitValue: 0.0d,  // optional — The bucket&#39;s cumulative value at the end of the period per unit in issue (CumulativeValue divided by UnitsInIssue), unrounded. Omitted where either the share class or the bucket is not unitised, and where a unitised share class has no units in issue to divide by.
-    displayName: "..."  // optional — The display name of the bucket, as configured on the fund configuration.
+    displayName: "...",  // optional — The display name of the bucket, as configured on the fund configuration.
+    unmatchedBreakdown: new UnmatchedBreakdown(...)  // optional
 );
 ```
 ### Serializing to JSON
@@ -51,6 +53,7 @@ var json = JsonConvert.SerializeObject(instance, Formatting.Indented);
 var instance = JsonConvert.DeserializeObject<BucketSetResultBucket>(json);
 ```
 
+- [UnmatchedBreakdown](UnmatchedBreakdown.md)
 
 
 [Back to top](#) · [Back to API list](../../api_endpoints.md) · [Back to Model list](../../models.md) · [Back to README](../../../README.md)
